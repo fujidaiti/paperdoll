@@ -32,8 +32,10 @@ func seedSchedule(t *testing.T, label string, at time.Time) {
 func TestNewspaperCollectJobs_OneJobPerUser(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := time.Date(2026, 7, 15, 10, 0, 0, 0, time.Local)
-	uidAlice := seedUser(t, "alice@example.com", now)
-	uidBob := seedUser(t, "bob@example.com", now)
+	uidAlice, _ := provisionTestAccount(t,
+		"alice@example.com", "alice#password$123", "Pixel9a", now)
+	uidBob, _ := provisionTestAccount(t,
+		"bob@example.com", "bob#password$123", "Pixel9a", now)
 	seedSchedule(t, "before", now.Add(-2*time.Minute))
 	seedSchedule(t, "after", now.Add(3*time.Minute))
 
@@ -88,12 +90,14 @@ func TestNewspaperCollectJobs_SkipsUserWithExistingNewspaper(t *testing.T) {
 
 	// Alice already has a newspaper for the upcoming schedule tick: run
 	// CollectJobs for her alone first, before bob is registered.
-	uidAlice := seedUser(t, "alice@example.com", now)
+	uidAlice, _ := provisionTestAccount(t,
+		"alice@example.com", "alice#password$123", "Pixel9a", now)
 	if _, err := newspaper.CollectJobs(t.Context(), testenv.DB(), now); err != nil {
 		t.Fatalf("CollectJobs returned an unexpected error: %v", err)
 	}
 
-	uidBob := seedUser(t, "bob@example.com", now)
+	uidBob, _ := provisionTestAccount(t,
+		"bob@example.com", "bob#password$123", "Pixel9a", now)
 	jobs, err := newspaper.CollectJobs(t.Context(), testenv.DB(), now)
 	if err != nil {
 		t.Fatalf("CollectJobs returned an unexpected error: %v", err)
@@ -124,8 +128,10 @@ func TestNewspaperCollectJobs_SkipsUserWithExistingNewspaper(t *testing.T) {
 func TestNewspaperAssemble_ScopesStoriesByUser(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := time.Date(2026, 7, 15, 10, 0, 0, 0, time.Local)
-	uidAlice := seedUser(t, "alice@example.com", now)
-	uidBob := seedUser(t, "bob@example.com", now)
+	uidAlice, _ := provisionTestAccount(t,
+		"alice@example.com", "alice#password$123", "Pixel9a", now)
+	uidBob, _ := provisionTestAccount(t,
+		"bob@example.com", "bob#password$123", "Pixel9a", now)
 	seedSchedule(t, "before", now.Add(-2*time.Minute))
 	seedSchedule(t, "after", now.Add(3*time.Minute))
 	// Inserts a minimal feed and feed entry, bypassing feed
@@ -187,7 +193,7 @@ func TestNewspaperAssemble_ScopesStoriesByUser(t *testing.T) {
 func TestNewspaperAssemble_NoStoriesCleansUpNewspaper(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := time.Date(2026, 7, 15, 10, 0, 0, 0, time.Local)
-	seedUser(t, "alice@example.com", now)
+	provisionDefaultTestAccount(t, now)
 	seedSchedule(t, "before", now.Add(-2*time.Minute))
 	seedSchedule(t, "after", now.Add(3*time.Minute))
 

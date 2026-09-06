@@ -1,6 +1,6 @@
 module github.com/fujidaiti/paperdoll
 
-go 1.26.2
+go 1.27.0
 
 require (
 	codeberg.org/readeck/go-readability/v2 v2.1.1

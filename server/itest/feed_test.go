@@ -6,7 +6,6 @@ import (
 	"database/sql"
 	"net/url"
 	"testing"
-	"time"
 
 	"github.com/fujidaiti/paperdoll/server/feature/feed"
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
@@ -132,18 +131,7 @@ func TestFeed_Subscribe(t *testing.T) {
 	}
 
 	// Seed a user
-	us := user.Service{
-		DB:  testenv.DB(),
-		Now: func() time.Time { return mustTimeUTC("2026-07-01 13:30:00") },
-	}
-	_ = must(us.SignUp(
-		t.Context(),
-		must(user.ParseEmail("alice@example.com")),
-		must(user.ValidatePassword("test#password$1234")),
-		"Pixel9a",
-	))
-	var uid user.UserID
-	scanRowOrFatal(t, `SELECT id FROM users LIMIT 1`, []any{}, &uid)
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-01 13:30:00"))
 
 	for _, tt := range tests {
 		testenv.StubHTTP(tt.host, tt.path, tt.fixture)

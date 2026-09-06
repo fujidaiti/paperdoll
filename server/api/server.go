@@ -20,6 +20,7 @@ import (
 	"github.com/fujidaiti/paperdoll/server/feature/readinglist"
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
+	"github.com/fujidaiti/paperdoll/server/infra"
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
@@ -73,11 +74,8 @@ func StartServer(ctx context.Context) {
 func NewServer(db *sql.DB, httpProxy *url.URL) *http.Server {
 	scrp := scraper.NewService(httpProxy)
 	h := &Handler{
-		DB: db,
-		UserService: &user.Service{
-			DB:  db,
-			Now: func() time.Time { return time.Now() },
-		},
+		DB:                 db,
+		UserService:        user.NewService(db, infra.SendEmail),
 		ReadingListService: readinglist.NewService(db, scrp),
 		FeedService:        feed.NewService(db, scrp),
 		ScraperService:     scrp,
@@ -703,10 +701,8 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusInternalServerError, "Failed to subscribe to feed")
 		return
 	}
-	res := subscribeToFeedResBody{}
-	res.ID = fd.ID
-	res.URL = fd.URL.String()
-	res.Title = fd.Title
+
+	res := subscribeToFeedResBody{ID: fd.ID, URL: fd.URL.String(), Title: fd.Title}
 	if u := fd.SiteURL; u != nil {
 		res.SiteURL = u.String()
 	}
@@ -1137,7 +1133,7 @@ func (h *Handler) SignUp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	token, err := h.UserService.SignUp(r.Context(), email, pswd, req.Device)
+	token, err := h.UserService.SignUp(r.Context(), email, pswd)
 	switch {
 	case errors.Is(err, user.ErrDeviceEmpty):
 		serverError(w, http.StatusBadRequest, "Device is empty")

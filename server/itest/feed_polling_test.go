@@ -18,19 +18,6 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 )
 
-// seedUser creates a real user via user.Service.SignUp and returns their ID.
-func seedUser(t *testing.T, email string, now time.Time) user.UserID {
-	t.Helper()
-	us := user.Service{DB: testenv.DB(), Now: func() time.Time { return now }}
-	_ = must(us.SignUp(
-		t.Context(),
-		must(user.ParseEmail(email)),
-		must(user.ValidatePassword("test#password$1234")),
-		"Pixel9a",
-	))
-	return scanValOrFatal[user.UserID](t, `SELECT id FROM users WHERE email = $1`, email)
-}
-
 // seedFeed subscribes uid to the feed at feedURL through the real
 // feed.Service.Subscribe, stubbing the HTTP fetch with fixturePath so it
 // resolves to a real feed. Returns the feed ID. Calling it again with the
@@ -54,7 +41,7 @@ func seedFeed(t *testing.T, uid user.UserID, feedURL, fixturePath string) int {
 // feeds exist.
 func TestCollectJobs_OneJobPerFeed(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
-	uid := seedUser(t, "seed@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
 	feedAID := seedFeed(t, uid, "http://feed-a.test/rss", "./testdata/feed_polling/seed_feed_a.xml")
 	feedBID := seedFeed(t, uid, "http://feed-b.test/rss", "./testdata/feed_polling/seed_feed_b.xml")
 
@@ -107,7 +94,7 @@ func TestCollectJobs_NoFeeds(t *testing.T) {
 // straddle it.
 func TestCollectJobs_IntervalFromSchedule(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
-	uid := seedUser(t, "seed@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
 	seedFeed(t, uid, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
 	// Seed schedules
 	// TODO: add a domain function for adding a publishing schedule and
@@ -148,7 +135,7 @@ func TestCollectJobs_IntervalFromSchedule(t *testing.T) {
 // with a zero (invalid) editorial interval instead of an error.
 func TestCollectJobs_FailSoftWithoutSchedule(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
-	uid := seedUser(t, "seed@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
 	seedFeed(t, uid, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
 	// No newspaper_schedules rows seeded.
 
@@ -176,7 +163,7 @@ func TestCollectJobs_FailSoftWithoutSchedule(t *testing.T) {
 // fetching and story drafting.
 func TestFeedPolling_HappyPath(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
-	uid := seedUser(t, "alice@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
 	feedID := seedFeed(t, uid, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
 
 	testenv.StubHTTP("feed.test", "/rss", "./testdata/feed_polling/polling_happy_path.xml")
@@ -302,7 +289,7 @@ func TestFeedPolling_RePoll(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Cleanup(testenv.TearDown)
-			uid := seedUser(t, "alice@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+			uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
 			feedID := seedFeed(t, uid, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
 			j := &feed.Job{
 				DB:   testenv.DB(),
@@ -381,7 +368,7 @@ func TestFeedPolling_NoSubscribers(t *testing.T) {
 // itself returns no error.
 func TestFeedPolling_ArticleFetchFails(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
-	uid := seedUser(t, "alice@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
 	feedID := seedFeed(t, uid, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
 	testenv.StubHTTP("feed.test", "/rss", "./testdata/feed_polling/polling_article_fetch_fails.xml")
 	// No StubHTTP rule registered for /missing, so the stub server 404s it.
@@ -413,7 +400,7 @@ func TestFeedPolling_ArticleFetchFails(t *testing.T) {
 // error and nothing is written to feed_entries.
 func TestFeedPolling_FeedFetchFailure(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
-	uid := seedUser(t, "seed@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
 	feedID := seedFeed(t, uid, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
 	// Force the feed's own re-fetch during polling to 404: seeding above
 	// already consumed a successful fetch of this URL, so point the stub at
@@ -444,7 +431,7 @@ func TestFeedPolling_FeedFetchFailure(t *testing.T) {
 // no-op poll, and nothing is written to feed_entries.
 func TestFeedPolling_EmptyFeed(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
-	uid := seedUser(t, "seed@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
 	feedID := seedFeed(t, uid, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
 	testenv.StubHTTP("feed.test", "/rss", "./testdata/feed_polling/polling_empty_feed.xml")
 
@@ -470,9 +457,15 @@ func TestFeedPolling_EmptyFeed(t *testing.T) {
 // into one story per subscriber.
 func TestFeedPolling_MultipleSubscribers(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
-	uidAlice := seedUser(t, "alice@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+	uidAlice, _ := provisionTestAccount(
+		t, "alice@example.com", "alice#password$123", "Pixel9a/Android",
+		mustTimeUTC("2026-07-15 10:00:00"),
+	)
 	feedID := seedFeed(t, uidAlice, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
-	uidBob := seedUser(t, "bob@example.com", mustTimeUTC("2026-07-15 10:00:00"))
+	uidBob, _ := provisionTestAccount(
+		t, "bob@example.com", "bob#password$123", "iPhone17/iOS",
+		mustTimeUTC("2026-07-15 10:00:00"),
+	)
 	seedFeed(t, uidBob, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
 	testenv.StubHTTP("feed.test", "/rss", "./testdata/feed_polling/polling_multiple_subscribers.xml")
 

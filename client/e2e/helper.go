@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/fujidaiti/paperdoll/server/feature/user"
+	"github.com/fujidaiti/paperdoll/server/infra"
 )
 
 type seeder = func(ctx context.Context, db *sql.DB) error
@@ -33,11 +34,21 @@ const (
 	testAccountPassword = "Police-Repurpose-Atypical-Gravel"
 )
 
-func provisionTestAccount(ctx context.Context, db *sql.DB) (user.AuthToken, error) {
+func provisionTestAccount(ctx context.Context, db *sql.DB) (user.Token, error) {
 	email := must(user.ParseEmail(testAccountEmail))
 	pswd := must(user.ValidatePassword(testAccountPassword))
+	code := "123456"
+	ticket, err := user.SignUp(
+		ctx, email, pswd, db, time.Now(),
+		func() (user.VerificationCode, error) { return user.VerificationCode(code), nil },
+		func(_ infra.Draft) error { return nil },
+	)
+	if err != nil {
+		return user.Token{}, err
+	}
+
 	svc := &user.Service{DB: db, Now: time.Now}
-	return svc.SignUp(ctx, email, pswd, "seeder")
+	return svc.VerifySignUpEmailAddress(ctx, ticket.Encode(), code, "TestDevice/OS")
 }
 
 func seedDB(ctx context.Context, db *sql.DB, seederID string) error {
