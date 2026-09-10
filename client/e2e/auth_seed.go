@@ -24,6 +24,6 @@ func seedAuthSuit_SignedIn(ctx context.Context, db *sql.DB) error {
 // seedAuthSuit_ExistingUser inserts a single account so sign-in and
 // taken-email scenarios have something to authenticate against.
 func seedAuthSuit_ExistingUser(ctx context.Context, db *sql.DB) error {
-	_, err := provisionTestAccount(ctx, db)
+	_, err := provisionAccount(ctx, db, "alice@example.com", "Police-Repurpose-Atypical-Gravel")
 	return err
 }

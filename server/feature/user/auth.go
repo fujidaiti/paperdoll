@@ -156,7 +156,7 @@ var verificationEmailTmpl = template.Must(
 func (s *Service) SignUp(
 	ctx context.Context, email CanonicalEmail, pswd ValidPassword,
 ) (Token, error) {
-	return SignUp(ctx, email, pswd, s.DB, time.Now(), NewVerificationCode, infra.SendEmail)
+	return SignUp(ctx, email, pswd, s.DB, s.Now(), NewVerificationCode, s.SendEmail)
 }
 
 func SignUp(
@@ -178,7 +178,7 @@ func (s *Service) ResendSignUpVerificationEmail(
 	ctx context.Context, ticket string,
 ) (Token, error) {
 	return ResendSignUpVerificationEmail(
-		ctx, ticket, s.DB, s.Now(), NewVerificationCode, infra.SendEmail,
+		ctx, ticket, s.DB, s.Now(), NewVerificationCode, s.SendEmail,
 	)
 }
 

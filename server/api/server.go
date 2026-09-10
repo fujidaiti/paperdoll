@@ -20,6 +20,7 @@ import (
 	"github.com/fujidaiti/paperdoll/server/feature/readinglist"
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
+	"github.com/fujidaiti/paperdoll/server/infra"
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
@@ -42,7 +43,7 @@ func StartServer(ctx context.Context) {
 		panic(err)
 	}
 
-	srv := NewServer(db, nil)
+	srv := NewServer(db, nil, infra.SendEmail)
 	srv.BaseContext = func(_ net.Listener) context.Context { return ctx }
 	defer func() {
 		fmt.Println("Shutting down API server...")
@@ -70,11 +71,11 @@ func StartServer(ctx context.Context) {
 	}
 }
 
-func NewServer(db *sql.DB, httpProxy *url.URL) *http.Server {
+func NewServer(db *sql.DB, httpProxy *url.URL, sendEmail infra.EmailSender) *http.Server {
 	scrp := scraper.NewService(httpProxy)
 	h := &Handler{
 		DB:                 db,
-		UserService:        user.NewService(db),
+		UserService:        user.NewService(db, sendEmail),
 		ReadingListService: readinglist.NewService(db, scrp),
 		FeedService:        feed.NewService(db, scrp),
 		ScraperService:     scrp,
