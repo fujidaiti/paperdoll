@@ -25,21 +25,23 @@ var seeders = map[string]seeder{
 	"reading_list_share_sheet": seedReadingListSuit_ShareSheet,
 }
 
-// testAccountEmail and testAccountPassword identify the fixed E2E test
-// account that "/signin" always signs in to (see main.go). Seeders whose test
-// pumps the app via pumpAppWithAuth must call provisionTestAccount before
-// seeding any data they want reachable by the signed-in session.
 const (
 	testAccountEmail    = "e2e-runner@example.com"
 	testAccountPassword = "Police-Repurpose-Atypical-Gravel"
 )
 
 func provisionTestAccount(ctx context.Context, db *sql.DB) (user.Token, error) {
-	email := must(user.ParseEmail(testAccountEmail))
-	pswd := must(user.ValidatePassword(testAccountPassword))
+	return provisionAccount(ctx, db, testAccountEmail, testAccountPassword)
+}
+
+func provisionAccount(
+	ctx context.Context, db *sql.DB, email, password string,
+) (user.Token, error) {
+	addr := must(user.ParseEmail(email))
+	pswd := must(user.ValidatePassword(password))
 	code := must(user.NewVerificationCode())
 	ticket, err := user.SignUp(
-		ctx, email, pswd, db, time.Now(),
+		ctx, addr, pswd, db, time.Now(),
 		func() (user.VerificationCode, error) { return code, nil },
 		func(_ infra.EmailDraft) error { return nil },
 	)

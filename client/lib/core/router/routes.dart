@@ -2,6 +2,7 @@
 const routeSplashName = 'splash';
 const routeSignInName = 'signIn';
 const routeSignUpName = 'signUp';
+const routeVerifyEmailName = 'verifyEmail';
 const routeTodayName = 'today';
 const routeTodayFeedEntryReaderName = 'todayFeedEntryReader';
 const routeReadingListName = 'readingList';
@@ -18,6 +19,7 @@ const routeSettingsName = 'settings';
 const routeSplashPath = '/';
 const routeSignInPath = '/sign-in';
 const routeSignUpPath = '/sign-up';
+const routeVerifyEmailPath = '/verify-email';
 const routeTodayPath = '/today';
 const routeTodayFeedEntryReaderPath = 'feed-entries/:feedEntryId';
 const routeReadingListPath = '/reading-list';

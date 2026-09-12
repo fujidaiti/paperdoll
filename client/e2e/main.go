@@ -5,17 +5,20 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"net"
 	"net/http"
 	"net/url"
 	"os"
 	"os/exec"
 	"os/signal"
+	"sync/atomic"
 	"syscall"
 	"time"
 
 	"github.com/fujidaiti/paperdoll/server/api"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
+	"github.com/fujidaiti/paperdoll/server/infra"
 	"github.com/fujidaiti/paperdoll/server/itest/testenv"
 	"golang.org/x/sync/errgroup"
 )
@@ -142,6 +145,10 @@ type messageBody struct {
 	SeederID string `json:"seeder_id"`
 }
 
+// lastSentEmail is the last email sent by the API server during the current session.
+// This must be cleaned up at the begining of each session.
+var lastSentEmail atomic.Pointer[infra.EmailDraft]
+
 func messageHandler(ctx context.Context, msgc chan<- message) error {
 	mux := http.NewServeMux()
 	mux.HandleFunc("POST /setup", func(w http.ResponseWriter, r *http.Request) {
@@ -166,12 +173,9 @@ func messageHandler(ctx context.Context, msgc chan<- message) error {
 		}
 	})
 
-	// /signin signs in to the fixed test account (see testAccountEmail) on the
-	// already-running session API server and returns its bearer token, so gated
-	// feature tests (e.g. newspaper) can boot already authenticated without
-	// driving the sign-up UI. The seeder for the running session must have
-	// already provisioned the account via provisionTestAccount; otherwise this
-	// fails.
+	// Signs in to the fixed test account with the [testAccountEmail] and returns
+	// its bearer token. The seeder for the running session must have already
+	// provisioned the account via provisionTestAccount; otherwise this fails.
 	mux.HandleFunc("POST /signin", func(w http.ResponseWriter, r *http.Request) {
 		email := must(user.ParseEmail(testAccountEmail))
 		svc := &user.Service{DB: testenv.DB(), Now: time.Now}
@@ -182,6 +186,22 @@ func messageHandler(ctx context.Context, msgc chan<- message) error {
 		}
 		w.Header().Set("Content-Type", "application/json")
 		_ = json.NewEncoder(w).Encode(map[string]string{"token": token.Encode()})
+	})
+
+	// Hands back the last email the running session sent to an address.
+	mux.HandleFunc("GET /mailbox/last", func(w http.ResponseWriter, r *http.Request) {
+		addr := r.URL.Query().Get("addr")
+		if addr == "" {
+			http.Error(w, "the addr query parameter is required", http.StatusBadRequest)
+			return
+		}
+		email := lastSentEmail.Load()
+		if email == nil || email.To != addr {
+			http.Error(w, fmt.Sprintf("no email has been sent to %s", addr), http.StatusNotFound)
+			return
+		}
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		_, _ = io.WriteString(w, email.Body)
 	})
 
 	srv := http.Server{
@@ -244,9 +264,15 @@ func session(ctx context.Context, done chan struct{}, msg message) {
 		return
 	}
 
+	lastSentEmail.Store(nil)
+	emailSender := func(d infra.EmailDraft) error {
+		lastSentEmail.Store(&d)
+		return nil
+	}
+
 	// TODO: make stub HTTP server address configurable
 	proxyURL, _ := url.Parse("http://127.0.0.1:8081")
-	srv := api.NewServer(testenv.DB(), proxyURL)
+	srv := api.NewServer(testenv.DB(), proxyURL, emailSender)
 	defer func() {
 		sctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 		defer cancel()
