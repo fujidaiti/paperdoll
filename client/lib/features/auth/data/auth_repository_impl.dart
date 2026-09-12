@@ -16,21 +16,43 @@ class const AuthRepositoryImpl(final Dio _dio, final SecureStorage _storage)
   Future<void> clearAuthToken() => _storage.writeAuthToken(null);
 
   @override
-  Future<String> signUp({
-    required String email,
-    required String password,
+  Future<String> signUp({required String email, required String password}) {
+    return runRequest(() async {
+      final res = await _dio.post<Map<String, dynamic>>(
+        '/signup',
+        data: api.SignUpRequest(email: email, password: password).toJson(),
+      );
+      return api.SignUpTicket.fromJson(res.data)!.ticket;
+    });
+  }
+
+  @override
+  Future<String> verifySignUpEmail({
+    required String ticket,
+    required String code,
     required String device,
   }) {
     return runRequest(() async {
       final res = await _dio.post<Map<String, dynamic>>(
-        '/signup',
-        data: api.SignUpRequest(
-          email: email,
-          password: password,
+        '/signup/verify-email',
+        data: api.VerifySignUpEmailRequest(
+          ticket: ticket,
+          verificationCode: code,
           device: device,
         ).toJson(),
       );
-      return api.SignUp201Response.fromJson(res.data)!.token;
+      return api.AuthToken.fromJson(res.data)!.token;
+    });
+  }
+
+  @override
+  Future<String> resendSignUpVerification({required String ticket}) {
+    return runRequest(() async {
+      final res = await _dio.post<Map<String, dynamic>>(
+        '/signup/resend-verification',
+        data: api.ResendSignUpVerificationRequest(ticket: ticket).toJson(),
+      );
+      return api.SignUpTicket.fromJson(res.data)!.ticket;
     });
   }
 
@@ -49,9 +71,7 @@ class const AuthRepositoryImpl(final Dio _dio, final SecureStorage _storage)
           device: device,
         ).toJson(),
       );
-      // The signin 200 response has the same {token} shape as signup's 201;
-      // the generator didn't emit a distinct type for it.
-      return api.SignUp201Response.fromJson(res.data)!.token;
+      return api.AuthToken.fromJson(res.data)!.token;
     });
   }
 

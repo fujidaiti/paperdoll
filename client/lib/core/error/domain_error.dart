@@ -26,6 +26,16 @@ final class const BadRequestError([super.message]) extends DomainError {
   String get defaultMessage => 'Invalid request.';
 }
 
+final class const ConflictError([super.message]) extends DomainError {
+  @override
+  String get defaultMessage => 'That already exists.';
+}
+
+final class const TooManyRequestsError([super.message]) extends DomainError {
+  @override
+  String get defaultMessage => 'Too many requests. Please wait and try again.';
+}
+
 final class const ServerError([super.message]) extends DomainError {
   @override
   String get defaultMessage => 'Server error. Please try again.';

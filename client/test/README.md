@@ -23,6 +23,8 @@ test/
     newspaper_test.dart     # today / newspaper
     feed_test.dart          # feeds
     reading_list_test.dart  # reading list
+  core/
+    error_interceptor_test.dart  # plain unit tests for lib/core/
   src/
     boilerplate.dart        # pumpApp + in-memory platform fakes
     fixture.dart            # shared test data (feeds, entries, stories, …)
@@ -31,6 +33,8 @@ test/
 
 Add a new `<feature>_test.dart` for each new feature; don't group unrelated
 features into one file. Shared setup belongs in `src/boilerplate.dart`.
+`test/core/` holds plain unit tests for the shared layer under `lib/core/`,
+which need no app boot.
 
 ## How mocking works
 
@@ -80,8 +84,10 @@ server.stubGet('/feeds', body: api.GetFeeds200Response(feeds: [feed]).toJson());
 
 `StubServer` is **not a queue**: when several registrations match the same
 request, the last one registered wins, and it answers _every_ matching request
-(there's no "first call returns X, second returns Y"). Register a route again to
-override an empty default:
+(there's no "first call returns X, second returns Y"). Two registrations for the
+same path coexist when their `bodyMatcher`s differ, though — that's how a test
+answers one request body with a failure and another with a success. Register a
+route again to override an empty default:
 
 ```dart
 // Overrides the empty default; answers every /feeds load with this feed.
@@ -110,10 +116,10 @@ are exactly where body correctness matters.
 
 `stub*` answers with a body fixed at registration time. When a route must answer
 differently _after_ some request (e.g. `GET /feeds` is empty until a
-`PUT /feeds` subscribes), use `onGet` / `onPut` instead: they take a `respond`
-closure evaluated per request, so it can read a variable the test captured. Have
-the `PUT` handler mutate that variable and the `GET` handler read it — no
-re-registering routes mid-test.
+`PUT /feeds` subscribes), use `onGet` / `onPost` / `onPut` instead: they take a
+`respond` closure evaluated per request, so it can read a variable the test
+captured. Have the `PUT` handler mutate that variable and the `GET` handler read
+it — no re-registering routes mid-test.
 
 ```dart
 var subscribed = false;
@@ -129,7 +135,34 @@ server
 ```
 
 `respond` returns a `(status, body)` record and receives the decoded request
-body as its argument (ignored with `_` above, since a `GET` carries none).
+body as its argument (ignored with `_` above, since a `GET` carries none). The
+same argument lets a test capture what the app sent, which is how it asserts a
+field is _absent_ — something `bodyMatcher` cannot express, as it matches a
+subset:
+
+```dart
+Object? sentBody;
+server.onPost('/signup', respond: (body) {
+  sentBody = body;
+  return (202, api.SignUpTicket(ticket: 'ticket').toJson());
+});
+// ... after the tap:
+expect(sentBody, {'email': email, 'password': password});
+```
+
+## Asserting state the UI doesn't show
+
+`pumpApp` returns the `ProviderContainer` the app runs on, so a test can read a
+provider or the in-memory secure storage directly:
+
+```dart
+final container = await pumpApp(t, server);
+// ... after signing in:
+expect(await container.read(authRepositoryProvider).readAuthToken(), 'token');
+```
+
+Prefer an assertion on what the user sees; reach for the container only for
+state with no visible surface, such as a persisted token.
 
 ## Naming tests
 

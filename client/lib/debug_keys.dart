@@ -56,6 +56,13 @@ abstract final class AppDebugKey {
   static const signUpSubmitButton = Key('signUpSubmitButton');
   static const signUpGoToSignInButton = Key('signUpGoToSignInButton');
   static const subscribeSuccessSnackBar = Key('subscribeSuccessSnackBar');
+  static const verifyEmailScreen = Key('verifyEmailScreen');
+  static const verifyEmailCodeField = Key('verifyEmailCodeField');
+  static const verifyEmailSubmitButton = Key('verifyEmailSubmitButton');
+  static const verifyEmailResendButton = Key('verifyEmailResendButton');
+  static const verifyEmailCodeSentSnackBar = Key('verifyEmailCodeSentSnackBar');
+  static const verifyEmailStartOverButton = Key('verifyEmailStartOverButton');
+  static const verifyEmailGoToSignInButton = Key('verifyEmailGoToSignInButton');
   static const todayNavDestination = Key('todayNavDestination');
   static const todayScreen = Key('todayScreen');
 

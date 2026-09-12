@@ -6,6 +6,7 @@ import 'package:paperdoll/features/auth/presentation/providers/auth_providers.da
 import 'package:paperdoll/features/auth/presentation/sign_in_screen.dart';
 import 'package:paperdoll/features/auth/presentation/sign_up_screen.dart';
 import 'package:paperdoll/features/auth/presentation/splash_screen.dart';
+import 'package:paperdoll/features/auth/presentation/verify_email_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_detail_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_search_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feeds_screen.dart';
@@ -21,10 +22,22 @@ part 'app_router.g.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
+/// Routes a signed-in user has no business being on: reaching one sends them
+/// to Today.
 const Set<String> _authRoutePaths = {
   routeSplashPath,
   routeSignInPath,
   routeSignUpPath,
+  routeVerifyEmailPath,
+};
+
+/// Routes a signed-out user may stay on. Verifying an email happens before a
+/// token exists, so that route has to be here too, otherwise the screen is
+/// bounced to Sign-in the moment it opens.
+const Set<String> _signedOutRoutePaths = {
+  routeSignInPath,
+  routeSignUpPath,
+  routeVerifyEmailPath,
 };
 
 /// The app's navigation graph: a bottom-nav shell over Today and Feeds, with
@@ -38,7 +51,11 @@ GoRouter goRouter(Ref ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: routeSplashPath,
-    redirect: (context, state) => _authRedirect(sessionAsync, state),
+    // The pending attempt is read, not watched: it changes during the flow,
+    // and rebuilding the router on every change would tear down the screen
+    // the user is on.
+    redirect: (context, state) =>
+        _authRedirect(sessionAsync, state, ref.read(signUpFlowProvider)),
     routes: [
       GoRoute(
         path: routeSplashPath,
@@ -54,6 +71,11 @@ GoRouter goRouter(Ref ref) {
         path: routeSignUpPath,
         name: routeSignUpName,
         builder: (context, state) => const SignUpScreen(),
+      ),
+      GoRoute(
+        path: routeVerifyEmailPath,
+        name: routeVerifyEmailName,
+        builder: (context, state) => const VerifyEmailScreen(),
       ),
       GoRoute(
         path: routeSettingsPath,
@@ -158,20 +180,28 @@ GoRouter goRouter(Ref ref) {
 int _idParam(GoRouterState state, String name) =>
     int.tryParse(state.pathParameters[name] ?? '') ?? -1;
 
-/// Sends signed-out users to Sign-in (unless already on an auth route),
-/// signed-in users away from Splash/Sign-in/Sign-up to Today, and holds
-/// signed-out-or-loading users on Splash while the token read is in flight.
-/// A read failure is treated the same as signed-out.
-String? _authRedirect(AsyncValue<String?> sessionAsync, GoRouterState state) {
+/// Sends signed-out users to Sign-in (unless already on a route they may stay
+/// on), signed-in users away from Splash/Sign-in/Sign-up/Verify-email to
+/// Today, and holds signed-out-or-loading users on Splash while the token read
+/// is in flight. A read failure is treated the same as signed-out.
+///
+/// Verify-email additionally needs [attempt]: without one there is no ticket
+/// to verify against, which happens on a deep link or after a hot restart, so
+/// the user is sent back to the form that starts an attempt.
+String? _authRedirect(
+  AsyncValue<String?> sessionAsync,
+  GoRouterState state,
+  PendingSignUpAttempt? attempt,
+) {
   final onAuthRoute = _authRoutePaths.contains(state.matchedLocation);
   return switch (sessionAsync) {
     AsyncData(value: final token?) when token.isNotEmpty =>
       onAuthRoute ? routeTodayPath : null,
-    AsyncData() || AsyncError() =>
-      state.matchedLocation == routeSignInPath ||
-              state.matchedLocation == routeSignUpPath
-          ? null
-          : routeSignInPath,
+    AsyncData() || AsyncError() => switch (state.matchedLocation) {
+      routeVerifyEmailPath when attempt == null => routeSignUpPath,
+      final path when _signedOutRoutePaths.contains(path) => null,
+      _ => routeSignInPath,
+    },
     _ => state.matchedLocation == routeSplashPath ? null : routeSplashPath,
   };
 }

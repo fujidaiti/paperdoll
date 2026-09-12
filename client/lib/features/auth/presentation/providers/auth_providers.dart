@@ -31,10 +31,54 @@ class SessionInvalidationSignal extends _$SessionInvalidationSignal {
   void fire() => state++;
 }
 
+/// The sign-up attempt that `POST /signup` started: the ticket identifying it
+/// server-side, and the address the verification code was mailed to.
+class const PendingSignUpAttempt({
+  required final String ticket,
+  required final String email,
+});
+
+/// Owns the pending sign-up attempt, from `POST /signup` until the code is
+/// accepted. The attempt is held in memory only: the ticket is a bearer secret
+/// and its code expires in ten minutes, so persisting it would buy nothing.
+/// Kept alive because no widget listens to it while the app navigates from the
+/// sign-up screen to the verification screen.
+@Riverpod(keepAlive: true)
+class SignUpFlow extends _$SignUpFlow {
+  @override
+  PendingSignUpAttempt? build() => null;
+
+  /// `POST /signup` → registers the attempt and has a code mailed to [email].
+  /// This no longer creates a session; [AuthSession.verifySignUpEmail] does.
+  Future<void> start({required String email, required String password}) async {
+    final ticket = await ref
+        .read(authRepositoryProvider)
+        .signUp(email: email, password: password);
+    state = PendingSignUpAttempt(ticket: ticket, email: email);
+  }
+
+  /// `POST /signup/resend-verification` → has another code mailed, and adopts
+  /// the replacement ticket. A no-op when no attempt is held.
+  Future<void> resend() async {
+    final attempt = state;
+    if (attempt == null) {
+      return;
+    }
+    final ticket = await ref
+        .read(authRepositoryProvider)
+        .resendSignUpVerification(ticket: attempt.ticket);
+    state = PendingSignUpAttempt(ticket: ticket, email: attempt.email);
+  }
+
+  /// Drops the attempt, after it is verified or once it is dead. The server
+  /// keeps the abandoned row until it expires; there is nothing to cancel.
+  void clear() => state = null;
+}
+
 /// The signed-in session: `null` when signed out, the bearer token when
 /// signed in. [build] resolves the persisted token at startup; [signIn] and
-/// [signUp] authenticate, persist the returned token, and update the state so
-/// the router can react (see `goRouter`'s `redirect`).
+/// [verifySignUpEmail] authenticate, persist the returned token, and update
+/// the state so the router can react (see `goRouter`'s `redirect`).
 @riverpod
 class AuthSession extends _$AuthSession {
   late AuthRepository _repo;
@@ -65,11 +109,18 @@ class AuthSession extends _$AuthSession {
     state = AsyncData(token);
   }
 
-  Future<void> signUp({required String email, required String password}) async {
+  /// Finishes a sign-up attempt: exchanges [ticket] and the mailed [code] for
+  /// a token, which is what creates the session. The device label is read here
+  /// rather than at sign-up time, because this is the call that issues the
+  /// token the label is stored with.
+  Future<void> verifySignUpEmail({
+    required String ticket,
+    required String code,
+  }) async {
     final device = await _device.label();
-    final token = await _repo.signUp(
-      email: email,
-      password: password,
+    final token = await _repo.verifySignUpEmail(
+      ticket: ticket,
+      code: code,
       device: device,
     );
     await _repo.writeAuthToken(token);

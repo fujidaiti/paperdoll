@@ -31,6 +31,12 @@ class const ErrorInterceptor() extends Interceptor {
       if (status == 404) {
         return NotFoundError(message);
       }
+      if (status == 409) {
+        return ConflictError(message);
+      }
+      if (status == 429) {
+        return TooManyRequestsError(message);
+      }
       if (status >= 500) {
         return ServerError(message);
       }

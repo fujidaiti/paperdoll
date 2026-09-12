@@ -28,6 +28,10 @@ paths:
     $ref: "./paths/reading-list-item.yaml"
   /signup:
     $ref: "./paths/auth.yaml#/signup"
+  /signup/verify-email:
+    $ref: "./paths/auth.yaml#/verifyEmail"
+  /signup/resend-verification:
+    $ref: "./paths/auth.yaml#/resendVerification"
   /signin:
     $ref: "./paths/auth.yaml#/signin"
   /signout:
@@ -47,6 +51,10 @@ components:
       $ref: "./components/schemas.yaml#/Story"
     Error:
       $ref: "./components/schemas.yaml#/Error"
+    AuthToken:
+      $ref: "./components/schemas.yaml#/AuthToken"
+    SignUpTicket:
+      $ref: "./components/schemas.yaml#/SignUpTicket"
   responses:
     BadRequest:
       $ref: "./components/responses.yaml#/BadRequest"
@@ -56,5 +64,7 @@ components:
       $ref: "./components/responses.yaml#/NotFound"
     Conflict:
       $ref: "./components/responses.yaml#/Conflict"
+    TooManyRequests:
+      $ref: "./components/responses.yaml#/TooManyRequests"
     InternalServerError:
       $ref: "./components/responses.yaml#/InternalServerError"

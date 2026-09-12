@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class SignUp201Response {
-  /// Returns a new [SignUp201Response] instance.
-  SignUp201Response({
+class AuthToken {
+  /// Returns a new [AuthToken] instance.
+  AuthToken({
     required this.token,
   });
 
@@ -21,8 +21,7 @@ class SignUp201Response {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SignUp201Response && other.token == token;
+      identical(this, other) || other is AuthToken && other.token == token;
 
   @override
   int get hashCode =>
@@ -30,7 +29,7 @@ class SignUp201Response {
       (token.hashCode);
 
   @override
-  String toString() => 'SignUp201Response[token=$token]';
+  String toString() => 'AuthToken[token=$token]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -38,10 +37,10 @@ class SignUp201Response {
     return json;
   }
 
-  /// Returns a new [SignUp201Response] instance and imports its values from
+  /// Returns a new [AuthToken] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SignUp201Response? fromJson(dynamic value) {
+  static AuthToken? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -50,27 +49,27 @@ class SignUp201Response {
       // Note 2: this code is stripped in release mode!
       assert(() {
         assert(json.containsKey(r'token'),
-            'Required key "SignUp201Response[token]" is missing from JSON.');
+            'Required key "AuthToken[token]" is missing from JSON.');
         assert(json[r'token'] != null,
-            'Required key "SignUp201Response[token]" has a null value in JSON.');
+            'Required key "AuthToken[token]" has a null value in JSON.');
         return true;
       }());
 
-      return SignUp201Response(
+      return AuthToken(
         token: mapValueOfType<String>(json, r'token')!,
       );
     }
     return null;
   }
 
-  static List<SignUp201Response> listFromJson(
+  static List<AuthToken> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <SignUp201Response>[];
+    final result = <AuthToken>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SignUp201Response.fromJson(row);
+        final value = AuthToken.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -79,12 +78,12 @@ class SignUp201Response {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SignUp201Response> mapFromJson(dynamic json) {
-    final map = <String, SignUp201Response>{};
+  static Map<String, AuthToken> mapFromJson(dynamic json) {
+    final map = <String, AuthToken>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SignUp201Response.fromJson(entry.value);
+        final value = AuthToken.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -93,17 +92,17 @@ class SignUp201Response {
     return map;
   }
 
-  // maps a json object with a list of SignUp201Response-objects as value to a dart map
-  static Map<String, List<SignUp201Response>> mapListFromJson(
+  // maps a json object with a list of AuthToken-objects as value to a dart map
+  static Map<String, List<AuthToken>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<SignUp201Response>>{};
+    final map = <String, List<AuthToken>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SignUp201Response.listFromJson(
+        map[entry.key] = AuthToken.listFromJson(
           entry.value,
           growable: growable,
         );
