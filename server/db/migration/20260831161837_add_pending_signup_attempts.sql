@@ -1,4 +1,5 @@
 -- +goose Up
+-- TODO: Rename table to signup_tickets
 CREATE TABLE pending_signup_attempts (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     email text NOT NULL,
@@ -7,6 +8,7 @@ CREATE TABLE pending_signup_attempts (
     ticket_hash bytea NOT NULL UNIQUE,
     expires_at timestamptz NOT NULL,
     fail_count int NOT NULL DEFAULT 0,
+    -- TODO: Rename this column to issued_at
     attempted_at timestamptz NOT NULL
 );
 

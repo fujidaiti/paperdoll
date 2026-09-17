@@ -146,7 +146,7 @@ type messageBody struct {
 }
 
 // lastSentEmail is the last email sent by the API server during the current session.
-// This must be cleaned up at the begining of each session.
+// This must be cleaned up at the beginning each session.
 var lastSentEmail atomic.Pointer[infra.EmailDraft]
 
 func messageHandler(ctx context.Context, msgc chan<- message) error {

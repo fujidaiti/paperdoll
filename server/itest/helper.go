@@ -93,8 +93,8 @@ func provisionTestAccount(
 ) (user.UserID, user.Token) {
 	t.Helper()
 
-	code := "123456"
-	ticket, err := user.SignUp(
+	code := must(user.NewVerificationCode())
+	ticket := must(user.SignUp(
 		t.Context(),
 		must(user.ParseEmail(email)),
 		must(user.ValidatePassword(password)),
@@ -102,20 +102,14 @@ func provisionTestAccount(
 		createdAt.Add(-time.Minute),
 		func() (user.VerificationCode, error) { return user.VerificationCode(code), nil },
 		func(_ infra.EmailDraft) error { return nil },
-	)
-	if err != nil {
-		t.Fatalf("failed to sign up for provisioning a test account (%s): %v", email, err)
-	}
+	))
 
 	s := user.Service{
 		DB:  testenv.DB(),
 		Now: func() time.Time { return createdAt },
 	}
-	token, err := s.VerifySignUpEmailAddress(t.Context(), ticket.Encode(), code, device)
-	if err != nil {
-		t.Fatalf("failed to provision a test account (%s): %v", email, err)
-	}
-	// TODO: Remove this workaround when CannonicalEmail is refactored to be a named type.
+	token := must(s.VerifySignUpEmailAddress(t.Context(), ticket.Encode(), string(code), device))
+	// TODO: Stop using strings.ToLower when CannonicalEmail is refactored to be a named type.
 	// SignUp stores the canonicalized (lower-cased) address.
 	uid := scanValOrFatal[user.UserID](t,
 		`SELECT id FROM users WHERE email = $1`, strings.ToLower(email))
@@ -128,8 +122,6 @@ func provisionTestAccount(
 // only be called once per test, since the address is always the same.
 func provisionDefaultTestAccount(t *testing.T, createdAt time.Time) user.UserID {
 	t.Helper()
-	uid, _ := provisionTestAccount(
-		t, "test-account@example.com", "test#password$1234", "Pixel9a/Android", createdAt,
-	)
+	uid, _ := provisionTestAccount(t, "test-account@example.com", "test#password$1234", "Pixel9a/Android", createdAt)
 	return uid
 }

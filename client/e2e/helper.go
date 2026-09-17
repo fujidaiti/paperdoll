@@ -50,7 +50,7 @@ func provisionAccount(
 	}
 
 	svc := &user.Service{DB: db, Now: time.Now}
-	return svc.VerifySignUpEmailAddress(ctx, ticket.Encode(), string(code), "TestDevice/OS")
+	return svc.VerifySignUpEmailAddress(ctx, ticket.Encode(), string(code), "TestDevice")
 }
 
 func seedDB(ctx context.Context, db *sql.DB, seederID string) error {
