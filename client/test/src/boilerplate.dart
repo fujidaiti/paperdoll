@@ -27,14 +27,7 @@ import 'stub_server.dart';
 ///
 /// Starts signed out unless [token] is given; [pumpAppWithAuth] is the
 /// signed-in shortcut for feature tests that aren't about the auth flow.
-///
-/// Returns the container the app runs on, so a test can read a provider or the
-/// stand-in secure storage to assert state the UI doesn't show.
-Future<ProviderContainer> pumpApp(
-  PatrolTester $,
-  StubServer server, {
-  String? token,
-}) async {
+Future<void> pumpApp(PatrolTester $, StubServer server, {String? token}) async {
   installFakeWebViewPlatform();
 
   final container = createPaperdollContainer(
@@ -68,12 +61,11 @@ Future<ProviderContainer> pumpApp(
   // The splash screen outlives the first settle: reading the token and the
   // redirect that follows land a frame later.
   await $.pumpAndTrySettle();
-  return container;
 }
 
 /// [pumpApp] pre-seeded with a signed-in session, so feature tests land
 /// straight on Today instead of the sign-in screen.
-Future<ProviderContainer> pumpAppWithAuth(PatrolTester $, StubServer server) =>
+Future<void> pumpAppWithAuth(PatrolTester $, StubServer server) =>
     pumpApp($, server, token: 'test-token');
 
 class _InMemorySecureStorage implements SecureStorage {

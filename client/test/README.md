@@ -150,20 +150,6 @@ server.onPost('/signup', respond: (body) {
 expect(sentBody, {'email': email, 'password': password});
 ```
 
-## Asserting state the UI doesn't show
-
-`pumpApp` returns the `ProviderContainer` the app runs on, so a test can read a
-provider or the in-memory secure storage directly:
-
-```dart
-final container = await pumpApp(t, server);
-// ... after signing in:
-expect(await container.read(authRepositoryProvider).readAuthToken(), 'token');
-```
-
-Prefer an assertion on what the user sees; reach for the container only for
-state with no visible surface, such as a persisted token.
-
 ## Naming tests
 
 Name each test after the **use case** it covers, not the click sequence — what

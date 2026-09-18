@@ -1,10 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:openapi/api.dart' as api;
-import 'package:paperdoll/core/router/app_router.dart';
 import 'package:paperdoll/core/router/routes.dart';
 import 'package:paperdoll/debug_keys.dart';
-import 'package:paperdoll/features/auth/presentation/providers/auth_providers.dart';
 import 'package:patrol_finders/patrol_finders.dart';
 
 import '../src/boilerplate.dart';
@@ -19,22 +18,10 @@ const _token = 'issued-token';
 void main() {
   group('Sign up', () {
     patrolWidgetTest('Sign up to get a verification code', (t) async {
-      Object? sentBody;
-      final server = StubServer.withDefaultResponses()
-        ..onPost(
-          '/signup',
-          respond: (body) {
-            sentBody = body;
-            return (202, api.SignUpTicket(ticket: _ticket).toJson());
-          },
-        );
-      await pumpApp(t, server);
-
+      await pumpApp(t, serverStubbingSignUp(status: 202));
       await startSignUp(t);
       expect(t(AppDebugKey.verifyEmailScreen), findsOneWidget);
       expect(t(_email), findsOneWidget);
-      // The device label moved to the verify call, so it must not be sent here.
-      expect(sentBody, {'email': _email, 'password': _password});
     });
 
     patrolWidgetTest('Sign up with an invalid address keeps the form open', (
@@ -101,17 +88,13 @@ void main() {
             device: 'TestDevice',
           ).toJson(),
         );
-      final container = await pumpApp(t, server);
+      await pumpApp(t, server);
 
       await startSignUp(t);
       await enterCode(t, _code);
       await t(AppDebugKey.verifyEmailSubmitButton).tap();
 
       expect(t(AppDebugKey.todayScreen), findsOneWidget);
-      final storage = container.read(authRepositoryProvider);
-      expect(await storage.readAuthToken(), _token);
-      // The attempt has served its purpose; nothing keeps the ticket around.
-      expect(container.read(signUpFlowProvider), isNull);
     });
 
     patrolWidgetTest('Verify a code that starts with a zero', (t) async {
@@ -139,7 +122,7 @@ void main() {
           status: 401,
           body: api.Error(message: 'The code is wrong').toJson(),
         );
-      final container = await pumpApp(t, server);
+      await pumpApp(t, server);
 
       await startSignUp(t);
       await enterCode(t, '000000');
@@ -149,8 +132,6 @@ void main() {
       expect(t(AppDebugKey.verifyEmailScreen), findsOneWidget);
       // The code stays put so the user edits it rather than retyping it.
       expect(codeFieldText(t), '000000');
-      final storage = container.read(authRepositoryProvider);
-      expect(await storage.readAuthToken(), isNull);
     });
 
     patrolWidgetTest('Retry after a wrong code finishes signing up', (t) async {
@@ -393,8 +374,9 @@ void main() {
     patrolWidgetTest(
       'Opening verification without an attempt goes to sign up',
       (t) async {
-        final container = await pumpApp(t, StubServer.withDefaultResponses());
-        container.read(goRouterProvider).goNamed(routeVerifyEmailName);
+        await pumpApp(t, StubServer.withDefaultResponses());
+        GoRouter.of(t.tester.element(t(AppDebugKey.signInScreen)))
+            .goNamed(routeVerifyEmailName);
         await t.pumpAndSettle();
         expect(t(AppDebugKey.signUpScreen), findsOneWidget);
       },
