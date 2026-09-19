@@ -48,6 +48,7 @@ func StartServer(ctx context.Context) {
 	if err != nil {
 		panic(err)
 	}
+
 	var emailSender infra.EmailSender
 	switch config.EmailTransport {
 	case cfg.EmailTransportDebug:
@@ -55,6 +56,11 @@ func StartServer(ctx context.Context) {
 			From: config.EmailFrom,
 			Host: config.SMTPHost,
 			Port: config.SMTPPort,
+		}
+	case cfg.EmailTransportResend:
+		emailSender = &infra.ResendClient{
+			From:   config.EmailFrom,
+			APIKey: config.ResendAPIKey,
 		}
 	}
 

@@ -3,6 +3,8 @@ package infra
 import (
 	"net/smtp"
 	"strings"
+
+	"github.com/resend/resend-go/v4"
 )
 
 type EmailDraft struct {
@@ -36,4 +38,21 @@ func (s *DebugSMTPClient) Send(d EmailDraft) error {
 		d.Body,
 	}, delim) + delim
 	return smtp.SendMail(addr, nil, s.From, []string{d.To}, []byte(msg))
+}
+
+// ResendClient is the client for Resend (https://resend.com).
+type ResendClient struct {
+	From   string
+	APIKey string
+}
+
+func (s *ResendClient) Send(d EmailDraft) error {
+	client := resend.NewClient(s.APIKey)
+	_, err := client.Emails.Send(&resend.SendEmailRequest{
+		From:    s.From,
+		To:      []string{d.To},
+		Subject: d.Subject,
+		Html:    d.Body,
+	})
+	return err
 }
