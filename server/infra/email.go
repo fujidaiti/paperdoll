@@ -1,20 +1,44 @@
 package infra
 
 import (
+	"fmt"
 	"net/smtp"
 	"strings"
 
+	"github.com/fujidaiti/paperdoll/server/cfg"
 	"github.com/resend/resend-go/v4"
 )
 
 type EmailDraft struct {
 	To      string
 	Subject string
-	Body    string
+
+	// The HTML body.
+	Body string
 }
 
 type EmailSender interface {
 	Send(d EmailDraft) error
+}
+
+func NewEmailSenderFrom(c cfg.Config) (EmailSender, error) {
+	switch c.EmailTransport {
+	case cfg.EmailTransportDebug:
+		return &DebugSMTPClient{
+			From: c.EmailFrom,
+			Host: c.SMTPHost,
+			Port: c.SMTPPort,
+		}, nil
+
+	case cfg.EmailTransportResend:
+		return &resendClient{
+			fromAddr: c.EmailFrom,
+			inner:    resend.NewClient(c.ResendAPIKey),
+		}, nil
+
+	default:
+		return nil, fmt.Errorf("unknown email transport method: %s", c.EmailTransport)
+	}
 }
 
 // DebugSMTPClient sends emails via SMTP. Do not use in production;
@@ -40,16 +64,14 @@ func (s *DebugSMTPClient) Send(d EmailDraft) error {
 	return smtp.SendMail(addr, nil, s.From, []string{d.To}, []byte(msg))
 }
 
-// ResendClient is the client for Resend (https://resend.com).
-type ResendClient struct {
-	From   string
-	APIKey string
+type resendClient struct {
+	fromAddr string
+	inner    *resend.Client
 }
 
-func (s *ResendClient) Send(d EmailDraft) error {
-	client := resend.NewClient(s.APIKey)
-	_, err := client.Emails.Send(&resend.SendEmailRequest{
-		From:    s.From,
+func (c *resendClient) Send(d EmailDraft) error {
+	_, err := c.inner.Emails.Send(&resend.SendEmailRequest{
+		From:    c.fromAddr,
 		To:      []string{d.To},
 		Subject: d.Subject,
 		Html:    d.Body,

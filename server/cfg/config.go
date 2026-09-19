@@ -13,8 +13,8 @@ type Config struct {
 	// The method used to send emails. Possible values are:
 	//
 	//  - [EmailTransportDebug], which uses SMTP to communicate with a development
-	//    mail server such as Mailpit. Do not use it in production as this method
-	//    never cares about injection attacks.
+	//    mail server such as Mailpit. Do not use this method in production as it
+	//    does not protect emails against injection attacks.
 	//
 	//  - [EmailTransportResend], which uses Resend (https://resend.com).
 	EmailTransport EmailTransport `env:"EMAIL_TRANSPORT,required"`

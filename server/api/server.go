@@ -49,19 +49,9 @@ func StartServer(ctx context.Context) {
 		panic(err)
 	}
 
-	var emailSender infra.EmailSender
-	switch config.EmailTransport {
-	case cfg.EmailTransportDebug:
-		emailSender = &infra.DebugSMTPClient{
-			From: config.EmailFrom,
-			Host: config.SMTPHost,
-			Port: config.SMTPPort,
-		}
-	case cfg.EmailTransportResend:
-		emailSender = &infra.ResendClient{
-			From:   config.EmailFrom,
-			APIKey: config.ResendAPIKey,
-		}
+	emailSender, err := infra.NewEmailSenderFrom(config)
+	if err != nil {
+		panic(err)
 	}
 
 	srv := NewServer(db, nil, emailSender)
