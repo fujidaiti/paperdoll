@@ -50,8 +50,8 @@ func StartServer(ctx context.Context) {
 	}
 	var emailSender infra.EmailSender
 	switch config.EmailTransport {
-	case cfg.EmailTransportSMTP:
-		emailSender = &infra.SMTPClient{
+	case cfg.EmailTransportDebug:
+		emailSender = &infra.DebugSMTPClient{
 			HOST: config.SMTPHost,
 			PORT: config.SMTPPort,
 		}
