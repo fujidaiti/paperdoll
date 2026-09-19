@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"github.com/fujidaiti/paperdoll/server"
+	"github.com/fujidaiti/paperdoll/server/cfg"
 	"github.com/fujidaiti/paperdoll/server/feature/feed"
 	"github.com/fujidaiti/paperdoll/server/feature/readinglist"
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
@@ -43,7 +44,20 @@ func StartServer(ctx context.Context) {
 		panic(err)
 	}
 
-	srv := NewServer(db, nil, infra.SendEmail)
+	config, err := cfg.Read()
+	if err != nil {
+		panic(err)
+	}
+	var emailSender infra.EmailSender
+	switch config.EmailTransport {
+	case cfg.EmailTransportSMTP:
+		emailSender = &infra.SMTPClient{
+			HOST: config.SMTPHost,
+			PORT: config.SMTPPort,
+		}
+	}
+
+	srv := NewServer(db, nil, emailSender)
 	srv.BaseContext = func(_ net.Listener) context.Context { return ctx }
 	defer func() {
 		fmt.Println("Shutting down API server...")
@@ -71,11 +85,11 @@ func StartServer(ctx context.Context) {
 	}
 }
 
-func NewServer(db *sql.DB, httpProxy *url.URL, sendEmail infra.EmailSender) *http.Server {
+func NewServer(db *sql.DB, httpProxy *url.URL, emailSender infra.EmailSender) *http.Server {
 	scrp := scraper.NewService(httpProxy)
 	h := &Handler{
 		DB:                 db,
-		UserService:        user.NewService(db, sendEmail),
+		UserService:        user.NewService(db, emailSender),
 		ReadingListService: readinglist.NewService(db, scrp),
 		FeedService:        feed.NewService(db, scrp),
 		ScraperService:     scrp,

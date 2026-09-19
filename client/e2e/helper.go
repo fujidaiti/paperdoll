@@ -43,7 +43,7 @@ func provisionAccount(
 	ticket, err := user.SignUp(
 		ctx, addr, pswd, db, time.Now(),
 		func() (user.VerificationCode, error) { return code, nil },
-		func(_ infra.EmailDraft) error { return nil },
+		noOpEmailSender,
 	)
 	if err != nil {
 		return user.Token{}, err
@@ -76,3 +76,10 @@ func must[T any](val T, err error) T {
 	}
 	return val
 }
+
+// emailSenderFunc adapts a function to the infra.EmailSender interface.
+type emailSenderFunc func(infra.EmailDraft) error
+
+func (f emailSenderFunc) Send(d infra.EmailDraft) error { return f(d) }
+
+var noOpEmailSender = emailSenderFunc(func(infra.EmailDraft) error { return nil })

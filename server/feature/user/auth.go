@@ -163,14 +163,14 @@ func SignUp(
 	ctx context.Context, email CanonicalEmail, pswd ValidPassword,
 	db *sql.DB, currentTime time.Time,
 	generateCode VerificationCodeGenerator,
-	sendEmail infra.EmailSender,
+	emailSender infra.EmailSender,
 ) (Token, error) {
 	pswdHash, err := pswd.Hash()
 	if err != nil {
 		return Token{}, err
 	}
 	return issueSignUpTicket(
-		ctx, email.value, pswdHash, db, currentTime, generateCode, sendEmail,
+		ctx, email.value, pswdHash, db, currentTime, generateCode, emailSender,
 	)
 }
 
@@ -184,7 +184,7 @@ func (s *Service) ResendSignUpVerificationEmail(
 
 func ResendSignUpVerificationEmail(
 	ctx context.Context, ticket string, db *sql.DB, currentTime time.Time,
-	generateCode VerificationCodeGenerator, sendEmail infra.EmailSender,
+	generateCode VerificationCodeGenerator, emailSender infra.EmailSender,
 ) (Token, error) {
 	tkt, err := DecodeToken(ticket)
 	if err != nil {
@@ -209,12 +209,12 @@ func ResendSignUpVerificationEmail(
 		return Token{}, ErrTokenExpired
 	}
 
-	return issueSignUpTicket(ctx, email, pswdHash, db, currentTime, generateCode, sendEmail)
+	return issueSignUpTicket(ctx, email, pswdHash, db, currentTime, generateCode, emailSender)
 }
 
 func issueSignUpTicket(
 	ctx context.Context, email string, passwordHash []byte, db *sql.DB,
-	now time.Time, generateCode VerificationCodeGenerator, sendEmail infra.EmailSender,
+	now time.Time, generateCode VerificationCodeGenerator, emailSender infra.EmailSender,
 ) (Token, error) {
 	const ticketTTL = 10 * time.Minute
 	const throttleWindow = time.Hour
@@ -272,7 +272,7 @@ func issueSignUpTicket(
 	if err != nil {
 		return Token{}, fmt.Errorf("failed to write verification email body: %w", err)
 	}
-	err = sendEmail(infra.EmailDraft{
+	err = emailSender.Send(infra.EmailDraft{
 		To:      email,
 		Subject: "Your verification code",
 		Body:    buf.String(),

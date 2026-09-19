@@ -6,9 +6,16 @@ type EmailDraft struct {
 	Body    string
 }
 
-type EmailSender = func(d EmailDraft) error
+type EmailSender interface {
+	Send(d EmailDraft) error
+}
 
-func SendEmail(d EmailDraft) error {
-	// TODO: Send an email using Resend
+type SMTPClient struct {
+	HOST string
+	PORT string
+}
+
+func (s *SMTPClient) Send(d EmailDraft) error {
+	// TODO: send the email via SMTP
 	return nil
 }

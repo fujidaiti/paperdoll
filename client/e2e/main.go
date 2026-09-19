@@ -265,10 +265,10 @@ func session(ctx context.Context, done chan struct{}, msg message) {
 	}
 
 	lastSentEmail.Store(nil)
-	emailSender := func(d infra.EmailDraft) error {
+	emailSender := emailSenderFunc(func(d infra.EmailDraft) error {
 		lastSentEmail.Store(&d)
 		return nil
-	}
+	})
 
 	// TODO: make stub HTTP server address configurable
 	proxyURL, _ := url.Parse("http://127.0.0.1:8081")

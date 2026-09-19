@@ -4,6 +4,7 @@ go 1.27.0
 
 require (
 	codeberg.org/readeck/go-readability/v2 v2.1.1
+	github.com/caarlos0/env/v11 v11.4.1
 	github.com/go-co-op/gocron/v2 v2.21.2
 	github.com/google/go-cmp v0.7.0
 	github.com/jackc/pgx/v5 v5.10.0

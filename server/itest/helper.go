@@ -101,7 +101,7 @@ func provisionTestAccount(
 		testenv.DB(),
 		createdAt.Add(-time.Minute),
 		func() (user.VerificationCode, error) { return user.VerificationCode(code), nil },
-		func(_ infra.EmailDraft) error { return nil },
+		noOpEmailSender,
 	))
 
 	s := user.Service{
@@ -125,3 +125,10 @@ func provisionDefaultTestAccount(t *testing.T, createdAt time.Time) user.UserID 
 	uid, _ := provisionTestAccount(t, "test-account@example.com", "test#password$1234", "Pixel9a/Android", createdAt)
 	return uid
 }
+
+// emailSenderFunc adapts a function to the infra.EmailSender interface.
+type emailSenderFunc func(infra.EmailDraft) error
+
+func (f emailSenderFunc) Send(d infra.EmailDraft) error { return f(d) }
+
+var noOpEmailSender = emailSenderFunc(func(infra.EmailDraft) error { return nil })
