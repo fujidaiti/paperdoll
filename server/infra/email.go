@@ -19,13 +19,13 @@ type EmailSender interface {
 // this client never cares about injection attacks.
 type DebugSMTPClient struct {
 	From string
-	HOST string
-	PORT string
+	Host string
+	Port string
 }
 
 func (s *DebugSMTPClient) Send(d EmailDraft) error {
 	const delim = "\r\n"
-	addr := s.HOST + ":" + s.PORT
+	addr := s.Host + ":" + s.Port
 	msg := strings.Join([]string{
 		"From: " + s.From,
 		"To: " + d.To,

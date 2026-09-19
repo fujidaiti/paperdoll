@@ -52,8 +52,9 @@ func StartServer(ctx context.Context) {
 	switch config.EmailTransport {
 	case cfg.EmailTransportDebug:
 		emailSender = &infra.DebugSMTPClient{
-			HOST: config.SMTPHost,
-			PORT: config.SMTPPort,
+			From: config.EmailFrom,
+			Host: config.SMTPHost,
+			Port: config.SMTPPort,
 		}
 	}
 

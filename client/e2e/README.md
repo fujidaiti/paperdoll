@@ -11,8 +11,12 @@ Before running, check that:
 
 - An Android emulator is running (`emulator-5554` by default):
   `fvm flutter devices`
-- Docker is running (the test DB is spun up in a container via testcontainers):
+- Docker is running (the test DB and a mail server, which receives the emails
+  the API server sends, are spun up in containers via testcontainers):
   `docker info > /dev/null 2>&1 && echo "docker is running"`
+- Nothing else is bound to ports 1026 and 8026, which the mail server binds to.
+  These are one above the ports `docker-compose.yml` uses, so the development
+  mail server can stay up.
 
 ## Running
 

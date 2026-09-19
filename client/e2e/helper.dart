@@ -66,9 +66,7 @@ Future<String> signInViaRunner() async {
 }
 
 /// Reads back the body of the last email the running session sent to
-/// [address], so a sign-up test can read the verification code out of it. The
-/// runner captures emails through a stub sender instead of delivering them
-/// (see mailbox.go).
+/// [address], so a sign-up test can read the verification code out of it.
 ///
 /// The email is typically still in flight when this is called, so a missing
 /// email is retried rather than treated as a failure.
@@ -77,9 +75,8 @@ Future<String> readLastEmailViaRunner(String address) async {
   const interval = Duration(milliseconds: 250);
 
   final deadline = DateTime.now().add(timeout);
-  final uri = _runnerUri('/mailbox/last').replace(
-    queryParameters: {'addr': address},
-  );
+  final uri = _runnerUri('/mailbox/last')
+      .replace(queryParameters: {'addr': address});
   while (true) {
     final response = await http.get(uri).timeout(_runnerTimeout);
     if (response.statusCode == 200) {

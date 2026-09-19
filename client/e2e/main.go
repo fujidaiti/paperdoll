@@ -8,11 +8,11 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"os"
 	"os/exec"
 	"os/signal"
-	"sync/atomic"
 	"syscall"
 	"time"
 
@@ -66,7 +66,12 @@ func run() error {
 		cancel()
 	}()
 	// TODO: make the stub server address configurable
-	if err := testenv.SetUp(ctx, "127.0.0.1:8081"); err != nil {
+	err := testenv.SetUp(ctx, "127.0.0.1:8081", testenv.LaunchOption{
+		EnableMailServer:   true,
+		MailServerHost:     netip.MustParseAddr(mailServerHost),
+		MailServerSMTPPort: mailServerSMTPPort,
+	})
+	if err != nil {
 		return err
 	}
 
@@ -145,9 +150,11 @@ type messageBody struct {
 	SeederID string `json:"seeder_id"`
 }
 
-// lastSentEmail is the last email sent by the API server during the current session.
-// This must be cleaned up at the beginning each session.
-var lastSentEmail atomic.Pointer[infra.EmailDraft]
+// TODO: make this address configurable to avoid port conflictions
+const (
+	mailServerHost     = "127.0.0.1"
+	mailServerSMTPPort = "1026"
+)
 
 func messageHandler(ctx context.Context, msgc chan<- message) error {
 	mux := http.NewServeMux()
@@ -195,13 +202,18 @@ func messageHandler(ctx context.Context, msgc chan<- message) error {
 			http.Error(w, "the addr query parameter is required", http.StatusBadRequest)
 			return
 		}
-		email := lastSentEmail.Load()
-		if email == nil || email.To != addr {
-			http.Error(w, fmt.Sprintf("no email has been sent to %s", addr), http.StatusNotFound)
+
+		rctx, cancel := context.WithTimeout(r.Context(), 10*time.Second)
+		defer cancel()
+
+		body, err := testenv.FindLastEmailTo(rctx, addr)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("failed to read the mailbox: %v", err), http.StatusInternalServerError)
 			return
 		}
+
 		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-		_, _ = io.WriteString(w, email.Body)
+		_, _ = io.WriteString(w, body)
 	})
 
 	srv := http.Server{
@@ -264,11 +276,11 @@ func session(ctx context.Context, done chan struct{}, msg message) {
 		return
 	}
 
-	lastSentEmail.Store(nil)
-	emailSender := emailSenderFunc(func(d infra.EmailDraft) error {
-		lastSentEmail.Store(&d)
-		return nil
-	})
+	emailSender := &infra.DebugSMTPClient{
+		From: "e2e-runner@paperdoll.test",
+		Host: mailServerHost,
+		Port: mailServerSMTPPort,
+	}
 
 	// TODO: make stub HTTP server address configurable
 	proxyURL, _ := url.Parse("http://127.0.0.1:8081")
