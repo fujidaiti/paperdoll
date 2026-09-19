@@ -33,7 +33,7 @@ the server and the client together, or version the endpoint.
 
 ## Data model
 
-Create the `pending_signup_attempts` table. All columns are mandatory.
+Create the `signup_tickets` table. All columns are mandatory.
 
 | Column                   | Meaning                                         |
 | ------------------------ | ----------------------------------------------- |
@@ -44,14 +44,14 @@ Create the `pending_signup_attempts` table. All columns are mandatory.
 | `ticket_hash`            | Hashed secret tying the code to the attempt     |
 | `expires_at`             | Deadline of this attempt                        |
 | `fail_count`             | How many times verification has failed          |
-| `created_at`             | When the attempt was made and its code mailed   |
+| `issued_at`              | When the ticket was issued and its code mailed  |
 
 Only the user who made the sign-up request knows the ticket secret.
 
 Indexes:
 
 - `UNIQUE` on `ticket_hash`, the same way `auth_tokens.token_hash` is declared
-- `(email, created_at)`, for the throttle's `COUNT(*)`
+- `(email, issued_at)`, for the throttle's `COUNT(*)`
 
 ### One row per send
 
@@ -164,7 +164,7 @@ of an `AuthToken`. Steps:
 
 1. Reject the email if it is already registered.
 2. Apply the per-address send throttle.
-3. Insert a new attempt to `pending_signup_attempts`.
+3. Insert a new ticket row into `signup_tickets`.
 4. Generate a verification code.
 5. Send the email with the code.
 6. Return a ticket for the attempt.

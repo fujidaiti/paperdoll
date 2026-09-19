@@ -31,14 +31,14 @@ type authTokenRecord struct {
 	ExpiresAt time.Time
 }
 
-type pendingSignUpAttemptRecord struct {
+type signUpTicketRecord struct {
 	ID                   int
 	Email                string
 	PasswordHash         []byte
 	VerificationCodeHash []byte
 	TicketHash           []byte
 	ExpiresAt            time.Time
-	SignedUpAt           time.Time
+	IssuedAt             time.Time
 }
 
 func TestAuth_SignUp_Success(t *testing.T) {
@@ -100,33 +100,33 @@ func TestAuth_SignUp_Success(t *testing.T) {
 			}
 			gotTickets = append(gotTickets, gotTicket)
 
-			var gotAtmpt pendingSignUpAttemptRecord
+			var gotRec signUpTicketRecord
 			scanRowOrFatal(t, `
 				SELECT id, email, password_hash, verification_code_hash, ticket_hash, expires_at
-				FROM pending_signup_attempts WHERE email = $1
-				ORDER BY attempted_at DESC LIMIT 1
-			`, []any{tt.email}, &gotAtmpt.ID, &gotAtmpt.Email, &gotAtmpt.PasswordHash,
-				&gotAtmpt.VerificationCodeHash, &gotAtmpt.TicketHash, &gotAtmpt.ExpiresAt,
+				FROM signup_tickets WHERE email = $1
+				ORDER BY issued_at DESC LIMIT 1
+			`, []any{tt.email}, &gotRec.ID, &gotRec.Email, &gotRec.PasswordHash,
+				&gotRec.VerificationCodeHash, &gotRec.TicketHash, &gotRec.ExpiresAt,
 			)
-			gotPswdHashes = append(gotPswdHashes, string(gotAtmpt.PasswordHash))
+			gotPswdHashes = append(gotPswdHashes, string(gotRec.PasswordHash))
 
-			if gotAtmpt.Email != tt.email {
-				t.Errorf("got %q, want %q", gotAtmpt.Email, tt.email)
+			if gotRec.Email != tt.email {
+				t.Errorf("got %q, want %q", gotRec.Email, tt.email)
 			}
-			if bytes.Equal(gotAtmpt.PasswordHash, []byte(tt.password)) {
+			if bytes.Equal(gotRec.PasswordHash, []byte(tt.password)) {
 				t.Error("raw password must not be stored")
 			}
-			if bytes.Equal(gotAtmpt.VerificationCodeHash, []byte(tt.code)) {
+			if bytes.Equal(gotRec.VerificationCodeHash, []byte(tt.code)) {
 				t.Error("raw code must not be stored")
 			}
-			if bytes.Equal(gotAtmpt.TicketHash, []byte(gotTicket.Encode())) {
+			if bytes.Equal(gotRec.TicketHash, []byte(gotTicket.Encode())) {
 				t.Errorf("raw ticket must not be stored")
 			}
-			if d := gotAtmpt.ExpiresAt.Sub(tt.signUpAt); d != 10*time.Minute {
+			if d := gotRec.ExpiresAt.Sub(tt.signUpAt); d != 10*time.Minute {
 				t.Errorf(
 					"got TTL %g min, want 10 min; expiresAt: %s, signUpAt:%s",
 					d.Minutes(),
-					gotAtmpt.ExpiresAt,
+					gotRec.ExpiresAt,
 					tt.signUpAt,
 				)
 			}
@@ -260,32 +260,32 @@ func TestAuth_ResendSignUpVerificationEmail_Success(t *testing.T) {
 		t.Fatalf("got %q, want nil error", gotErr)
 	}
 
-	var gotAtmpt pendingSignUpAttemptRecord
+	var gotRec signUpTicketRecord
 	scanRowOrFatal(t, `
-		SELECT id, email, password_hash, verification_code_hash, ticket_hash, expires_at, attempted_at
-		FROM pending_signup_attempts ORDER BY attempted_at DESC LIMIT 1
-	`, []any{}, &gotAtmpt.ID, &gotAtmpt.Email, &gotAtmpt.PasswordHash,
-		&gotAtmpt.VerificationCodeHash, &gotAtmpt.TicketHash,
-		&gotAtmpt.ExpiresAt, &gotAtmpt.SignedUpAt,
+		SELECT id, email, password_hash, verification_code_hash, ticket_hash, expires_at, issued_at
+		FROM signup_tickets ORDER BY issued_at DESC LIMIT 1
+	`, []any{}, &gotRec.ID, &gotRec.Email, &gotRec.PasswordHash,
+		&gotRec.VerificationCodeHash, &gotRec.TicketHash,
+		&gotRec.ExpiresAt, &gotRec.IssuedAt,
 	)
 
-	if gotAtmpt.Email != email {
-		t.Errorf("got %q, want %q", gotAtmpt.Email, email)
+	if gotRec.Email != email {
+		t.Errorf("got %q, want %q", gotRec.Email, email)
 	}
-	if bytes.Equal(gotAtmpt.PasswordHash, []byte(password)) {
+	if bytes.Equal(gotRec.PasswordHash, []byte(password)) {
 		t.Error("raw password must not be stored")
 	}
-	if bytes.Equal(gotAtmpt.VerificationCodeHash, []byte(code)) {
+	if bytes.Equal(gotRec.VerificationCodeHash, []byte(code)) {
 		t.Error("raw code must not be stored")
 	}
-	if bytes.Equal(gotAtmpt.TicketHash, gotTkt[:]) {
+	if bytes.Equal(gotRec.TicketHash, gotTkt[:]) {
 		t.Errorf("raw ticket must not be stored")
 	}
-	if d := gotAtmpt.ExpiresAt.Sub(resendAt); d != 10*time.Minute {
+	if d := gotRec.ExpiresAt.Sub(resendAt); d != 10*time.Minute {
 		t.Errorf("got TTL %g min, want 10 min", d.Minutes())
 	}
-	if !gotAtmpt.SignedUpAt.Equal(resendAt) {
-		t.Errorf("got %s, want %s", gotAtmpt.SignedUpAt, resendAt)
+	if !gotRec.IssuedAt.Equal(resendAt) {
+		t.Errorf("got %s, want %s", gotRec.IssuedAt, resendAt)
 	}
 
 	if gotEmailDraft.To != email {
@@ -862,10 +862,10 @@ func TestAuth_VerifySignUpEmailAddress_Success(t *testing.T) {
 			}
 
 			wantPswdHash := scanValOrFatal[[]byte](t, `
-				SELECT password_hash FROM pending_signup_attempts WHERE email = $1
+				SELECT password_hash FROM signup_tickets WHERE email = $1
 			`, tt.email)
 			if d := cmp.Diff(gotUser.PasswordHash, wantPswdHash); d != "" {
-				t.Errorf("password hash must be carried over from the attempt, diff:\n%s", d)
+				t.Errorf("password hash must be carried over from the ticket, diff:\n%s", d)
 			}
 
 			var n int
@@ -1029,7 +1029,7 @@ func TestAuth_VerifySignUpEmailAddress_DuplicateVerifications(t *testing.T) {
 	_, gotErr := s.VerifySignUpEmailAddress(t.Context(), ticket, code, device)
 	if want := user.ErrEmailTaken; !errors.Is(gotErr, want) {
 		t.Errorf(
-			"Duplicate verifications must fail even the attempt isn't expired and the code is correct: "+
+			"Duplicate verifications must fail even the ticket isn't expired and the code is correct: "+
 				"got %q, want %q", gotErr, want,
 		)
 	}
@@ -1048,7 +1048,7 @@ func TestAuth_VerifySignUpEmailAddress_DuplicateVerifications(t *testing.T) {
 func TestAuth_VerifySignUpEmailAddress_TicketExpiry(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 
-	// SignUp gives each attempt a 10-minute lifetime.
+	// SignUp gives each ticket a 10-minute lifetime.
 	signUpAt := mustTimeUTC("2026-07-01 09:20:00")
 	expiresAt := mustTimeUTC("2026-07-01 09:30:00")
 	test := []struct {
@@ -1126,13 +1126,13 @@ func TestAuth_VerifySignUpEmailAddress_EmailAlreadyRegistered(t *testing.T) {
 		email          = "alice@example.com"
 		signUpPassword = "alice#password$123"
 		signUpDevice   = "Pixel9a/Android16"
-		// The pending attempt was started before the address got registered.
+		// The pending ticket was issued before the address got registered.
 		pendingPassword = "alice#password$987"
 		pendingCode     = "123456"
 		pendingDevice   = "iPhone17/iOS26"
 	)
 
-	// The pending attempt is registered before the address gets taken.
+	// The pending ticket is issued before the address gets taken.
 	pendingTicket := must(user.SignUp(
 		t.Context(),
 		must(user.ParseEmail(email)),

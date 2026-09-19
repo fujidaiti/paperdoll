@@ -18,7 +18,7 @@ logged. There are two consequences:
   that guess is not counted.
 
 Fix: increment and read back in a single statement, as `TODO.md` specifies:
-`UPDATE pending_signup_attempts SET fail_count = fail_count + 1 WHERE id = $1 RETURNING fail_count`,
+`UPDATE signup_tickets SET fail_count = fail_count + 1 WHERE id = $1 RETURNING fail_count`,
 then compare the returned value against the cap instead of the separately read
 one. Treat a failure of that statement as an error rather than continuing.
 
@@ -28,7 +28,7 @@ Location: `server/feature/user/auth.go`, `Service.VerifySignUpEmailAddress`.
 
 `TODO.md` requires deleting the attempt row once the email is verified and
 promoted to `users`. The current implementation leaves it, so the password hash
-and the code hash of every verified account stay in `pending_signup_attempts`
+and the code hash of every verified account stay in `signup_tickets`
 indefinitely. The planned GC worker will not remove them either, because it only
 deletes inert rows past the retention window.
 
@@ -61,8 +61,8 @@ functions.
 Location: `server/feature/user/auth.go`, `issueSignUpTicket`.
 
 The `SELECT EXISTS(... FROM users WHERE email = $1)` check and the `INSERT` into
-`pending_signup_attempts` run as separate statements, so two concurrent sign-ups
-for an address that was just registered can both pass the check.
+`signup_tickets` run as separate statements, so two concurrent sign-ups for an
+address that was just registered can both pass the check.
 
 The impact is limited: `Service.VerifySignUpEmailAddress` re-checks uniqueness
 through `INSERT ... ON CONFLICT (email) DO NOTHING`, so the only result is a

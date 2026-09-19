@@ -198,13 +198,13 @@ func ResendSignUpVerificationEmail(
 	)
 	err = db.QueryRowContext(ctx, `
 		SELECT email, password_hash, expires_at
-		FROM pending_signup_attempts WHERE ticket_hash = $1
+		FROM signup_tickets WHERE ticket_hash = $1
 	`, tkt.Hash()).Scan(&email, &pswdHash, &expiresAt)
 	switch {
 	case errors.Is(err, sql.ErrNoRows):
 		return Token{}, ErrTokenInvalid
 	case err != nil:
-		return Token{}, fmt.Errorf("failed to look up an attempt for ticket: %w", err)
+		return Token{}, fmt.Errorf("failed to look up a ticket: %w", err)
 	case currentTime.After(expiresAt):
 		return Token{}, ErrTokenExpired
 	}
@@ -231,15 +231,15 @@ func issueSignUpTicket(
 		return Token{}, ErrEmailTaken
 	}
 
-	var nAttempts int
+	var nIssued int
 	err = db.QueryRowContext(ctx, `
-		SELECT COUNT(*) FROM pending_signup_attempts
-		WHERE email = $1 AND attempted_at >= $2
-	`, email, now.Add(-1*throttleWindow)).Scan(&nAttempts)
+		SELECT COUNT(*) FROM signup_tickets
+		WHERE email = $1 AND issued_at >= $2
+	`, email, now.Add(-1*throttleWindow)).Scan(&nIssued)
 	switch {
 	case err != nil:
-		return Token{}, fmt.Errorf("failed to count attempts: %w", err)
-	case nAttempts >= throttleCap:
+		return Token{}, fmt.Errorf("failed to count issued tickets: %w", err)
+	case nIssued >= throttleCap:
 		return Token{}, ErrTooManyAttempts
 	}
 
@@ -253,15 +253,15 @@ func issueSignUpTicket(
 		return Token{}, fmt.Errorf("failed to generate sign-up verification code: %w", err)
 	}
 
-	var aID int
+	var tID int
 	err = db.QueryRowContext(ctx, `
-		INSERT INTO pending_signup_attempts
-			(email, password_hash, verification_code_hash, ticket_hash, expires_at, attempted_at)
+		INSERT INTO signup_tickets
+			(email, password_hash, verification_code_hash, ticket_hash, expires_at, issued_at)
 		VALUES ($1, $2, $3, $4, $5, $6)
 		RETURNING id
-	`, email, passwordHash, code.Hash(), ticket.Hash(), expiresAt, now).Scan(&aID)
+	`, email, passwordHash, code.Hash(), ticket.Hash(), expiresAt, now).Scan(&tID)
 	if err != nil {
-		return Token{}, fmt.Errorf("failed to register sign-up attempt: %w", err)
+		return Token{}, fmt.Errorf("failed to register sign-up ticket: %w", err)
 	}
 
 	var buf bytes.Buffer
@@ -280,7 +280,7 @@ func issueSignUpTicket(
 	if err != nil {
 		// Don't return the error and issue the ticket anyway, so that users can re-request
 		// a verification email later without sending the address and password again.
-		fmt.Printf("failed to send sign-up verification email; attempt ID: %d; error: %v", aID, err)
+		fmt.Printf("failed to send sign-up verification email; ticket ID: %d; error: %v", tID, err)
 	}
 
 	return ticket, nil
@@ -290,13 +290,13 @@ func issueSignUpTicket(
 // to a new account if confirmed. Clients call this after the user signs up and
 // receives an email with a verification code.
 //
-// The email is verified only if the pair of ticket and code is correct, which are
-// generated in the same sign-up attempt.
+// The email is verified only if the pair of ticket and code is correct, meaning
+// both belong to the same sign-up ticket row.
 //
 // On a wrong code, the per-ticket fail count increases. Once it reaches the threshold,
 // the ticket is dead: verification never succeeds again event with the correct code.
 //
-// Reports an [ErrTokenInvalid] if the ticket is malformed or no attempt is associated
+// Reports an [ErrTokenInvalid] if the ticket is malformed or no ticket row is associated
 // with it, an [ErrTokenExpired] if the ticket is expired or dead, an [ErrCodeInvalid]
 // if the code is malformed, and an [ErrEmailVerifyFailed] if the code is wrong.
 func (s *Service) VerifySignUpEmailAddress(ctx context.Context, ticket, code, device string) (Token, error) {
@@ -315,7 +315,7 @@ func (s *Service) VerifySignUpEmailAddress(ctx context.Context, ticket, code, de
 	}
 
 	var (
-		aID                int
+		tID                int
 		email              string
 		pswdHash, codeHash []byte
 		expiresAt          time.Time
@@ -323,14 +323,14 @@ func (s *Service) VerifySignUpEmailAddress(ctx context.Context, ticket, code, de
 	)
 	err = s.DB.QueryRowContext(ctx, `
 		SELECT id, email, password_hash, verification_code_hash, expires_at, fail_count
-		FROM pending_signup_attempts WHERE ticket_hash = $1
-	`, tkt.Hash()).Scan(&aID, &email, &pswdHash, &codeHash, &expiresAt, &failCount)
+		FROM signup_tickets WHERE ticket_hash = $1
+	`, tkt.Hash()).Scan(&tID, &email, &pswdHash, &codeHash, &expiresAt, &failCount)
 	switch {
 	case errors.Is(err, sql.ErrNoRows):
 		return Token{}, ErrTokenInvalid
 
 	case err != nil:
-		return Token{}, fmt.Errorf("failed to lookup an attempt: %w", err)
+		return Token{}, fmt.Errorf("failed to look up a ticket: %w", err)
 
 	case failCount >= maxFailCount || s.Now().After(expiresAt):
 		return Token{}, ErrTokenExpired
@@ -338,9 +338,9 @@ func (s *Service) VerifySignUpEmailAddress(ctx context.Context, ticket, code, de
 
 	if !VerificationCode(code).Match(codeHash) {
 		_, err := s.DB.ExecContext(ctx, `
-			UPDATE pending_signup_attempts
+			UPDATE signup_tickets
 			SET fail_count = fail_count + 1 WHERE id = $1
-		`, aID)
+		`, tID)
 		if err != nil {
 			fmt.Printf("failed to increase fail count: %v\n", err)
 		}
