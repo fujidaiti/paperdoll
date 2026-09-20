@@ -4,6 +4,7 @@ get:
     Returns all archived reading list items, most recently saved first. The
     response has the same shape as `GET /reading-list`.
   operationId: getArchivedReadingList
+  tags: [Reading List]
   parameters:
     - name: after
       in: query

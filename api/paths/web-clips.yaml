@@ -1,6 +1,7 @@
 get:
   summary: Get a web clip by ID
   operationId: getWebClip
+  tags: [Web Clips]
   parameters:
     - name: id
       in: path

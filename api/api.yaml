@@ -3,6 +3,18 @@ info:
   title: Paperdoll API
   version: "0.1.0"
 
+tags:
+  - name: Authentication
+    description: Signing up, verifying the email address, and managing sessions.
+  - name: Newspapers
+    description: The daily newspaper assembled from subscribed feeds.
+  - name: Feeds
+    description: Feed subscriptions, feed discovery, and feed entries.
+  - name: Reading List
+    description: Items saved for later, including the archive.
+  - name: Web Clips
+    description: Web pages captured from a URL.
+
 paths:
   /health:
     $ref: "./paths/health.yaml"

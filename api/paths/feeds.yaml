@@ -2,6 +2,7 @@ collection:
   get:
     summary: Get subscribed feeds
     operationId: getFeeds
+    tags: [Feeds]
     parameters:
       - name: after
         in: query
@@ -52,6 +53,7 @@ collection:
   put:
     summary: Subscribe to a feed
     operationId: subscribeToFeed
+    tags: [Feeds]
     requestBody:
       required: true
       content:
@@ -89,6 +91,7 @@ search:
   get:
     summary: Search for subscribable feeds
     operationId: searchFeeds
+    tags: [Feeds]
     parameters:
       - name: q
         in: query
@@ -126,6 +129,7 @@ item:
   get:
     summary: Get a feed by ID
     operationId: getFeed
+    tags: [Feeds]
     parameters:
       - name: id
         in: path
@@ -157,6 +161,7 @@ timeline:
   get:
     summary: Get timeline entries for a feed
     operationId: getFeedTimeline
+    tags: [Feeds]
     parameters:
       - name: id
         in: path

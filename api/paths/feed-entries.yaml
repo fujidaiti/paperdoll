@@ -1,6 +1,7 @@
 get:
   summary: Get a feed entry by ID
   operationId: getFeedEntry
+  tags: [Feeds]
   parameters:
     - name: id
       in: path

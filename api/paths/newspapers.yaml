@@ -2,6 +2,7 @@ today:
   get:
     summary: Get today's newspaper
     operationId: getTodaysNewspaper
+    tags: [Newspapers]
     parameters:
       - name: after
         in: query
