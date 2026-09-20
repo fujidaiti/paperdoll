@@ -18,15 +18,10 @@ func TestAuthMiddleware_Success(t *testing.T) {
 
 	s := user.Service{DB: testenv.DB()}
 	s.Now = func() time.Time { return mustTimeUTC("2026-07-01 09:00:00") }
-	aliceEmail := "alice@example.com"
-	token := must(s.SignUp(
-		t.Context(),
-		must(user.ParseEmail(aliceEmail)),
-		must(user.ValidatePassword("alice#password$123")),
-		"Pixel9a",
-	))
-	var aliceID user.UserID
-	scanRowOrFatal(t, `SELECT id FROM users WHERE email = $1`, []any{aliceEmail}, &aliceID)
+	aliceID, token := provisionTestAccount(t,
+		"alice@example.com", "alice#password$123", "Pixel9a",
+		mustTimeUTC("2026-07-01 09:00:00"),
+	)
 
 	var gotCalled bool
 	var gotUID user.UserID
@@ -56,23 +51,17 @@ func TestAuthMiddleware_Failure(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 
 	s := user.Service{DB: testenv.DB()}
-	s.Now = func() time.Time { return mustTimeUTC("2026-07-01 09:00:00") }
-	token := must(s.SignUp(
-		t.Context(),
-		must(user.ParseEmail("alice@example.com")),
-		must(user.ValidatePassword("alice#password$123")),
-		"Pixel9a",
-	))
+	_, token := provisionTestAccount(t,
+		"alice@example.com", "alice#password$123", "Pixel9a",
+		mustTimeUTC("2026-07-01 09:00:00"),
+	)
 
 	// Seed a second user whose token has already expired by the time the
 	// middleware checks it (tokens expire 30 days after issuance).
-	s.Now = func() time.Time { return mustTimeUTC("2020-01-01 00:00:00") }
-	expiredToken := must(s.SignUp(
-		t.Context(),
-		must(user.ParseEmail("bob@example.com")),
-		must(user.ValidatePassword("bob#password$123")),
-		"iPhone17",
-	))
+	_, expiredToken := provisionTestAccount(t,
+		"bob@example.com", "bob#password$123", "iPhone17",
+		mustTimeUTC("2020-01-01 00:00:00"),
+	)
 
 	test := []struct {
 		name       string

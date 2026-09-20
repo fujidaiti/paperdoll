@@ -18,12 +18,11 @@ class SignInRequest {
     required this.device,
   });
 
-  /// The account's email address.
   String email;
 
   String password;
 
-  /// Opaque client identifier stored alongside the issued token (e.g. `platform/app_version`). Recorded once when the token is created; not parsed by the server.
+  /// Human-readable client label stored alongside the issued token. There is no specific format, but empty string is rejected.
   String device;
 
   @override

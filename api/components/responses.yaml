@@ -42,3 +42,12 @@ InternalServerError:
         $ref: "./schemas.yaml#/Error"
       example:
         message: "Failed to fetch feeds"
+
+TooManyRequests:
+  description: Too many requests
+  content:
+    application/json:
+      schema:
+        $ref: "./schemas.yaml#/Error"
+      example:
+        message: "Too many verification emails sent to this address"

@@ -90,6 +90,15 @@ class StubServer() extends Interceptor {
   void onGet(String path, {required StubResponder respond}) =>
       _routes.add(_Route('GET', path, null, respond));
 
+  /// Like [stubPost], but computes the response per request via [respond]. The
+  /// responder receives the request body, so it can both capture what the app
+  /// sent and answer differently across calls (see [onGet]).
+  void onPost(
+    String path, {
+    required StubResponder respond,
+    Object? bodyMatcher,
+  }) => _routes.add(_Route('POST', path, bodyMatcher, respond));
+
   /// Like [stubPut], but computes the response per request via [respond]. The
   /// responder receives the request body and may mutate captured state (see
   /// [onGet]).

@@ -9,9 +9,12 @@ import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/debug_keys.dart';
 import 'package:paperdoll/features/auth/presentation/providers/auth_providers.dart';
+import 'package:paperdoll/features/auth/presentation/verify_email_screen.dart';
 
-/// Create an account with email + password. On success, the router reacts to
-/// the updated [authSessionProvider] state and navigates to Today on its own.
+/// Start creating an account with email + password. Submitting no longer signs
+/// the user in: it registers a pending attempt, has a verification code mailed
+/// to the address, and moves on to [VerifyEmailScreen], which finishes the
+/// flow.
 class const SignUpScreen({super.key}) extends ConsumerStatefulWidget {
   @override
   ConsumerState<SignUpScreen> createState() => _SignUpScreenState();
@@ -36,11 +39,26 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
       return;
     }
     final messenger = ScaffoldMessenger.of(context);
+    final router = GoRouter.of(context);
     setState(() => _submitting = true);
     try {
       await ref
-          .read(authSessionProvider.notifier)
-          .signUp(email: email, password: password);
+          .read(signUpFlowProvider.notifier)
+          .start(email: email, password: password);
+      router.goNamed(routeVerifyEmailName);
+    } on ConflictError catch (error) {
+      // The address is taken, so the user's way forward is signing in. The
+      // form stays open, and the address is not carried over — the user may
+      // well have mistyped it.
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(describeError(error)),
+          action: SnackBarAction(
+            label: 'Sign in',
+            onPressed: () => router.goNamed(routeSignInName),
+          ),
+        ),
+      );
     } on DomainError catch (error) {
       messenger.showSnackBar(SnackBar(content: Text(describeError(error))));
     } finally {

@@ -143,3 +143,24 @@ Error:
   properties:
     message:
       type: string
+
+AuthToken:
+  type: object
+  required: [token]
+  properties:
+    token:
+      description:
+        Opaque bearer token to send in the `Authorization` header on subsequent
+        requests.
+      type: string
+
+SignUpTicket:
+  type: object
+  required: [ticket]
+  properties:
+    ticket:
+      description:
+        Opaque secret identifying the sign-up attempt the verification code was
+        mailed for. Send it back to verify the address or to request another
+        code. Valid for 10 minutes.
+      type: string

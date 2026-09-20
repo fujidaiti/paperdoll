@@ -10,45 +10,38 @@
 
 part of openapi.api;
 
-class SignUpRequest {
-  /// Returns a new [SignUpRequest] instance.
-  SignUpRequest({
-    required this.email,
-    required this.password,
+class ResendSignUpVerificationRequest {
+  /// Returns a new [ResendSignUpVerificationRequest] instance.
+  ResendSignUpVerificationRequest({
+    required this.ticket,
   });
 
-  /// The account's email address. Used as the sign-in identifier, and the address the verification code is mailed to.
-  String email;
-
-  /// Printable ASCII only, 15–64 characters.
-  String password;
+  /// The ticket returned by `POST /signup`, or by an earlier call to this endpoint.
+  String ticket;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SignUpRequest &&
-          other.email == email &&
-          other.password == password;
+      other is ResendSignUpVerificationRequest && other.ticket == ticket;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (email.hashCode) + (password.hashCode);
+      (ticket.hashCode);
 
   @override
-  String toString() => 'SignUpRequest[email=$email, password=$password]';
+  String toString() => 'ResendSignUpVerificationRequest[ticket=$ticket]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'email'] = this.email;
-    json[r'password'] = this.password;
+    json[r'ticket'] = this.ticket;
     return json;
   }
 
-  /// Returns a new [SignUpRequest] instance and imports its values from
+  /// Returns a new [ResendSignUpVerificationRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SignUpRequest? fromJson(dynamic value) {
+  static ResendSignUpVerificationRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -56,33 +49,28 @@ class SignUpRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        assert(json.containsKey(r'email'),
-            'Required key "SignUpRequest[email]" is missing from JSON.');
-        assert(json[r'email'] != null,
-            'Required key "SignUpRequest[email]" has a null value in JSON.');
-        assert(json.containsKey(r'password'),
-            'Required key "SignUpRequest[password]" is missing from JSON.');
-        assert(json[r'password'] != null,
-            'Required key "SignUpRequest[password]" has a null value in JSON.');
+        assert(json.containsKey(r'ticket'),
+            'Required key "ResendSignUpVerificationRequest[ticket]" is missing from JSON.');
+        assert(json[r'ticket'] != null,
+            'Required key "ResendSignUpVerificationRequest[ticket]" has a null value in JSON.');
         return true;
       }());
 
-      return SignUpRequest(
-        email: mapValueOfType<String>(json, r'email')!,
-        password: mapValueOfType<String>(json, r'password')!,
+      return ResendSignUpVerificationRequest(
+        ticket: mapValueOfType<String>(json, r'ticket')!,
       );
     }
     return null;
   }
 
-  static List<SignUpRequest> listFromJson(
+  static List<ResendSignUpVerificationRequest> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <SignUpRequest>[];
+    final result = <ResendSignUpVerificationRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SignUpRequest.fromJson(row);
+        final value = ResendSignUpVerificationRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -91,12 +79,13 @@ class SignUpRequest {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SignUpRequest> mapFromJson(dynamic json) {
-    final map = <String, SignUpRequest>{};
+  static Map<String, ResendSignUpVerificationRequest> mapFromJson(
+      dynamic json) {
+    final map = <String, ResendSignUpVerificationRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SignUpRequest.fromJson(entry.value);
+        final value = ResendSignUpVerificationRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -105,17 +94,17 @@ class SignUpRequest {
     return map;
   }
 
-  // maps a json object with a list of SignUpRequest-objects as value to a dart map
-  static Map<String, List<SignUpRequest>> mapListFromJson(
+  // maps a json object with a list of ResendSignUpVerificationRequest-objects as value to a dart map
+  static Map<String, List<ResendSignUpVerificationRequest>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<SignUpRequest>>{};
+    final map = <String, List<ResendSignUpVerificationRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SignUpRequest.listFromJson(
+        map[entry.key] = ResendSignUpVerificationRequest.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -126,7 +115,6 @@ class SignUpRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'email',
-    'password',
+    'ticket',
   };
 }

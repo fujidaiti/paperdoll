@@ -65,6 +65,55 @@ Future<String> signInViaRunner() async {
   return body['token'] as String;
 }
 
+/// Reads back the body of the last email the running session sent to
+/// [address], so a sign-up test can read the verification code out of it.
+///
+/// The email is typically still in flight when this is called, so a missing
+/// email is retried rather than treated as a failure.
+Future<String> readLastEmailViaRunner(String address) async {
+  const timeout = Duration(seconds: 30);
+  const interval = Duration(milliseconds: 250);
+
+  final deadline = DateTime.now().add(timeout);
+  final uri = _runnerUri('/mailbox/last')
+      .replace(queryParameters: {'addr': address});
+  while (true) {
+    final response = await http.get(uri).timeout(_runnerTimeout);
+    if (response.statusCode == 200) {
+      return response.body;
+    }
+    if (response.statusCode != 404) {
+      throw Exception(
+        'last email request failed '
+        '(${response.statusCode}): ${response.body}',
+      );
+    }
+    if (DateTime.now().isAfter(deadline)) {
+      throw Exception(
+        'no email was sent to $address within ${timeout.inSeconds}s: '
+        '${response.body}',
+      );
+    }
+    await Future<void>.delayed(interval);
+  }
+}
+
+final _verificationCodeInEmail = RegExp(r'\b(\d{6})\b');
+
+/// Extracts the verification code from an email body read via
+/// [readLastEmailViaRunner]. Exactly one 6-digit number must appear, so a
+/// change to the email template fails loudly instead of yielding a wrong code.
+String extractVerificationCode(String emailBody) {
+  final found = _verificationCodeInEmail.allMatches(emailBody).toList();
+  if (found.length != 1) {
+    throw Exception(
+      'expected exactly one 6-digit number in the email, '
+      'found ${found.length}: $emailBody',
+    );
+  }
+  return found.single.group(1)!;
+}
+
 Future<void> setUpServer({required String seederId}) async {
   final response = await http
       .post(

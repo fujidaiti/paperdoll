@@ -1,11 +1,16 @@
 signup:
   post:
-    summary: Sign up a new account
+    summary: Start signing up a new account
     description:
-      Registers a new user with the given email and password, and immediately
-      issues an authentication token. The email is canonicalized (lowercased)
-      before storage, so uniqueness is case-insensitive. Returns 409 if the
-      email is already registered.
+      Registers a pending sign-up attempt for the given email and password, and
+      mails a 6-digit verification code to that address. No account is created
+      and no authentication token is issued yet; the caller must pass the
+      returned ticket and the mailed code to `POST /signup/verify-email` to
+      finish. The email is canonicalized (lowercased) before storage, so
+      uniqueness is case-insensitive. Returns 409 if the email is already
+      registered, and 429 if the address has already been mailed 3 codes within
+      the last hour. A 202 does not guarantee the email was delivered; the
+      caller recovers through `POST /signup/resend-verification`.
     operationId: signUp
     requestBody:
       required: true
@@ -14,43 +19,139 @@ signup:
           schema:
             type: object
             additionalProperties: false
-            required: [email, password, device]
+            required: [email, password]
             properties:
               email:
                 description:
-                  The account's email address. Used as the sign-in identifier.
+                  The account's email address. Used as the sign-in identifier,
+                  and the address the verification code is mailed to.
                 type: string
                 format: email
               password:
                 description: Printable ASCII only, 15–64 characters.
                 type: string
+          example:
+            email: "alice@example.com"
+            password: "Police-Repurpose-Atypical-Gravel-Identical"
+    responses:
+      "202":
+        description: Accepted
+        content:
+          application/json:
+            schema:
+              $ref: "../components/schemas.yaml#/SignUpTicket"
+      "400":
+        $ref: "../components/responses.yaml#/BadRequest"
+      "409":
+        $ref: "../components/responses.yaml#/Conflict"
+      "429":
+        $ref: "../components/responses.yaml#/TooManyRequests"
+      "500":
+        $ref: "../components/responses.yaml#/InternalServerError"
+
+verifyEmail:
+  post:
+    summary: Finish signing up by verifying the email address
+    description:
+      Verifies the address behind the ticket returned by `POST /signup` against
+      the code mailed to it. On success the pending attempt is promoted to a
+      real account and an authentication token is issued, so the caller does not
+      need to sign in afterwards. Returns 401 while the code is wrong and
+      guesses remain, and 404 once no live attempt matches the ticket — which
+      covers an unknown ticket, an expired one, and one whose guesses are used
+      up alike. The attempt expires 10 minutes after the code was mailed, and
+      the 6th wrong code kills it permanently, so even the correct code no
+      longer verifies afterwards and the caller has to start over with `POST
+      /signup`.
+    operationId: verifySignUpEmail
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            required: [ticket, verification_code, device]
+            properties:
+              ticket:
+                description: The ticket returned by `POST /signup`.
+                type: string
+              verification_code:
+                description:
+                  The code mailed to the address, exactly 6 digits. Leading
+                  zeros are significant, so send it as a string.
+                type: string
+                pattern: "^[0-9]{6}$"
               device:
                 description:
                   Human-readable client label stored alongside the issued token.
                   There is no specific format, but empty string is rejected.
                 type: string
           example:
-            email: "alice@example.com"
-            password: "Police-Repurpose-Atypical-Gravel-Identical"
+            ticket: "1cWJlLoZ0mV1oYCd7oOMEXrJHUwFxDLmvUsMFCPFTn0"
+            verification_code: "042931"
             device: "pixel9a/android17"
     responses:
-      "201":
-        description: Created
+      "200":
+        description: OK
         content:
           application/json:
             schema:
-              type: object
-              required: [token]
-              properties:
-                token:
-                  description:
-                    Opaque bearer token to send in the `Authorization` header on
-                    subsequent requests.
-                  type: string
+              $ref: "../components/schemas.yaml#/AuthToken"
       "400":
         $ref: "../components/responses.yaml#/BadRequest"
+      "401":
+        $ref: "../components/responses.yaml#/Unauthorized"
+      "404":
+        $ref: "../components/responses.yaml#/NotFound"
       "409":
         $ref: "../components/responses.yaml#/Conflict"
+      "500":
+        $ref: "../components/responses.yaml#/InternalServerError"
+
+resendVerification:
+  post:
+    summary: Mail another verification code
+    description:
+      Mails a new verification code to the address behind the given ticket, so
+      the caller does not have to hold the password a second time. This starts a
+      fresh attempt rather than reusing the old one, so the response carries a
+      new ticket that replaces the one the caller holds, the code from the
+      earlier email no longer verifies, and the guess count starts over.
+      Requires a live attempt for the given ticket, and is subject to the same
+      limit of 3 codes per address per hour as `POST /signup`.
+    operationId: resendSignUpVerification
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            required: [ticket]
+            properties:
+              ticket:
+                description:
+                  The ticket returned by `POST /signup`, or by an earlier call
+                  to this endpoint.
+                type: string
+          example:
+            ticket: "1cWJlLoZ0mV1oYCd7oOMEXrJHUwFxDLmvUsMFCPFTn0"
+    responses:
+      "202":
+        description: Accepted
+        content:
+          application/json:
+            schema:
+              $ref: "../components/schemas.yaml#/SignUpTicket"
+      "400":
+        $ref: "../components/responses.yaml#/BadRequest"
+      "404":
+        $ref: "../components/responses.yaml#/NotFound"
+      "409":
+        $ref: "../components/responses.yaml#/Conflict"
+      "429":
+        $ref: "../components/responses.yaml#/TooManyRequests"
       "500":
         $ref: "../components/responses.yaml#/InternalServerError"
 
@@ -92,14 +193,7 @@ signin:
         content:
           application/json:
             schema:
-              type: object
-              required: [token]
-              properties:
-                token:
-                  description:
-                    Opaque bearer token to send in the `Authorization` header on
-                    subsequent requests.
-                  type: string
+              $ref: "../components/schemas.yaml#/AuthToken"
       "400":
         $ref: "../components/responses.yaml#/BadRequest"
       "401":

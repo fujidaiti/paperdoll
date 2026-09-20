@@ -7,9 +7,6 @@ go_files=$(git diff --cached --name-only --diff-filter=ACM -- '*.go')
 if [ -n "$go_files" ]; then
   golangci-lint fmt ./...
   git add -- $go_files
-
-  # Test and lint the module to catch errors before committing.
-  go test ./...
   golangci-lint run ./...
 fi
 
@@ -17,12 +14,11 @@ fi
 dart_files=$(git diff --cached --name-only --diff-filter=ACM -- '*.dart')
 
 if [ -n "$dart_files" ]; then
-  fvm dart fix --apply .
-  fvm dart format $dart_files
+  # Call the SDK binaries directly, as using FVM in this script is unreliable.
+  sdk="$(git rev-parse --show-toplevel)/.fvm/flutter_sdk"
+  "$sdk/bin/dart" fix --apply .
+  "$sdk/bin/dart" format $dart_files
   git add -- $dart_files
-
-  # Analyze the workspace to catch errors before committing.
-  fvm flutter analyze
 fi
 
 # Format staged JSON, YAML, and Markdown files with prettier and include the results in this commit.

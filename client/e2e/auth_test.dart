@@ -5,20 +5,46 @@ import 'package:patrol/patrol.dart';
 import 'helper.dart';
 
 void main() {
-  // Initialize the Flutter binding up front so the host-facing socket is ready
-  // before the first request; without it the connection can abort transiently
-  // right after a test's app relaunch ("Software caused connection abort").
   WidgetsFlutterBinding.ensureInitialized();
 
   patrolTest('Sign up for a new account', tags: 'signup', (t) async {
     await setUpServer(seederId: 'auth_no_users');
     await pumpApp(t);
 
+    const newUserEmail = 'newuser@example.com';
     await t(AppDebugKey.signInGoToSignUpButton).tap();
-    await t(AppDebugKey.signUpEmailField).enterText('newuser@example.com');
+    await t(AppDebugKey.signUpEmailField).enterText(newUserEmail);
     await t(AppDebugKey.signUpPasswordField)
         .enterText('New-User-Account-Password');
     await t(AppDebugKey.signUpSubmitButton).tap();
+    await t(AppDebugKey.verifyEmailScreen).waitUntilVisible();
+
+    final code = extractVerificationCode(
+      await readLastEmailViaRunner(newUserEmail),
+    );
+    await t(AppDebugKey.verifyEmailCodeField).enterText(code);
+    await t(AppDebugKey.verifyEmailSubmitButton).tap();
+    await t(AppDebugKey.todayScreen).waitUntilVisible();
+  });
+
+  patrolTest('Send another verification code', tags: 'signup', (t) async {
+    await setUpServer(seederId: 'auth_no_users');
+    await pumpApp(t);
+
+    const newUserEmail = 'newuser@example.com';
+    await t(AppDebugKey.signInGoToSignUpButton).tap();
+    await t(AppDebugKey.signUpEmailField).enterText(newUserEmail);
+    await t(AppDebugKey.signUpPasswordField)
+        .enterText('New-User-Account-Password');
+    await t(AppDebugKey.signUpSubmitButton).tap();
+    await t(AppDebugKey.verifyEmailScreen).waitUntilVisible();
+    await t(AppDebugKey.verifyEmailResendButton).tap();
+    await t(AppDebugKey.verifyEmailCodeSentSnackBar).waitUntilVisible();
+    final code = extractVerificationCode(
+      await readLastEmailViaRunner(newUserEmail),
+    );
+    await t(AppDebugKey.verifyEmailCodeField).enterText(code);
+    await t(AppDebugKey.verifyEmailSubmitButton).tap();
     await t(AppDebugKey.todayScreen).waitUntilVisible();
   });
 

@@ -16,10 +16,12 @@ import (
 	"time"
 
 	"github.com/fujidaiti/paperdoll/server"
+	"github.com/fujidaiti/paperdoll/server/cfg"
 	"github.com/fujidaiti/paperdoll/server/feature/feed"
 	"github.com/fujidaiti/paperdoll/server/feature/readinglist"
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
+	"github.com/fujidaiti/paperdoll/server/infra"
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
@@ -42,7 +44,17 @@ func StartServer(ctx context.Context) {
 		panic(err)
 	}
 
-	srv := NewServer(db, nil)
+	config, err := cfg.Read()
+	if err != nil {
+		panic(err)
+	}
+
+	emailSender, err := infra.NewEmailSenderFrom(config)
+	if err != nil {
+		panic(err)
+	}
+
+	srv := NewServer(db, nil, emailSender)
 	srv.BaseContext = func(_ net.Listener) context.Context { return ctx }
 	defer func() {
 		fmt.Println("Shutting down API server...")
@@ -70,14 +82,11 @@ func StartServer(ctx context.Context) {
 	}
 }
 
-func NewServer(db *sql.DB, httpProxy *url.URL) *http.Server {
+func NewServer(db *sql.DB, httpProxy *url.URL, emailSender infra.EmailSender) *http.Server {
 	scrp := scraper.NewService(httpProxy)
 	h := &Handler{
-		DB: db,
-		UserService: &user.Service{
-			DB:  db,
-			Now: func() time.Time { return time.Now() },
-		},
+		DB:                 db,
+		UserService:        user.NewService(db, emailSender),
 		ReadingListService: readinglist.NewService(db, scrp),
 		FeedService:        feed.NewService(db, scrp),
 		ScraperService:     scrp,
@@ -102,7 +111,9 @@ func NewServer(db *sql.DB, httpProxy *url.URL) *http.Server {
 	mux := http.NewServeMux()
 	mux.Handle("/", AuthMiddleware(authorized, h.UserService))
 	mux.HandleFunc("GET /health", h.getHealth)
-	mux.HandleFunc("POST /signup", h.SignUp)
+	mux.HandleFunc("POST /signup", h.signUp)
+	mux.HandleFunc("POST /signup/verify-email", h.verifySignUpEmail)
+	mux.HandleFunc("POST /signup/resend-verification", h.resendSignUpVerification)
 	mux.HandleFunc("POST /signin", h.signIn)
 
 	return &http.Server{
@@ -703,10 +714,8 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusInternalServerError, "Failed to subscribe to feed")
 		return
 	}
-	res := subscribeToFeedResBody{}
-	res.ID = fd.ID
-	res.URL = fd.URL.String()
-	res.Title = fd.Title
+
+	res := subscribeToFeedResBody{ID: fd.ID, URL: fd.URL.String(), Title: fd.Title}
 	if u := fd.SiteURL; u != nil {
 		res.SiteURL = u.String()
 	}
@@ -1099,18 +1108,17 @@ func (h *Handler) setReadingListItemArchivedStatus(w http.ResponseWriter, r *htt
 	_, _ = w.Write(jres)
 }
 
-type SignUpReqBody struct {
+type signUpReqBody struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
-	Device   string `json:"device"`
 }
 
-type SignUpResBody struct {
-	Token string `json:"token"`
+type signUpResBody struct {
+	Ticket string `json:"ticket"`
 }
 
-func (h *Handler) SignUp(w http.ResponseWriter, r *http.Request) {
-	var req SignUpReqBody
+func (h *Handler) signUp(w http.ResponseWriter, r *http.Request) {
+	var req signUpReqBody
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		serverError(w, http.StatusBadRequest, "Malformed request body")
@@ -1137,10 +1145,70 @@ func (h *Handler) SignUp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	token, err := h.UserService.SignUp(r.Context(), email, pswd, req.Device)
+	ticket, err := h.UserService.SignUp(r.Context(), email, pswd)
 	switch {
+	case errors.Is(err, user.ErrEmailTaken):
+		serverError(w, http.StatusConflict, "Email already exists")
+		return
+	case errors.Is(err, user.ErrTooManyAttempts):
+		serverError(w, http.StatusTooManyRequests, tooManyVerificationEmailsMsg)
+		return
+	case err != nil:
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Something went wrong")
+		return
+	}
+
+	// TODO: DRY JSON response creation
+	jres, err := json.Marshal(signUpResBody{Ticket: ticket.Encode()})
+	if err != nil {
+		serverError(w, http.StatusInternalServerError, "Failed to construct a JSON response")
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusAccepted)
+	_, _ = w.Write(jres)
+}
+
+// Both ErrTokenInvalid and ErrTokenExpired become a 404: the client is not told
+// whether the ticket is unknown, expired, or out of guesses.
+const noPendingSignUpMsg = "No pending sign-up found for this ticket"
+
+const tooManyVerificationEmailsMsg = "Too many verification emails sent to this address"
+
+type verifySignUpEmailReqBody struct {
+	Ticket           string `json:"ticket"`
+	VerificationCode string `json:"verification_code"`
+	Device           string `json:"device"`
+}
+
+type verifySignUpEmailResBody struct {
+	Token string `json:"token"`
+}
+
+func (h *Handler) verifySignUpEmail(w http.ResponseWriter, r *http.Request) {
+	var req verifySignUpEmailReqBody
+	err := json.NewDecoder(r.Body).Decode(&req)
+	if err != nil {
+		serverError(w, http.StatusBadRequest, "Malformed request body")
+		return
+	}
+
+	token, err := h.UserService.VerifySignUpEmailAddress(
+		r.Context(), req.Ticket, req.VerificationCode, req.Device,
+	)
+	switch {
+	case errors.Is(err, user.ErrCodeInvalid):
+		serverError(w, http.StatusBadRequest, "Verification code has invalid format")
+		return
 	case errors.Is(err, user.ErrDeviceEmpty):
 		serverError(w, http.StatusBadRequest, "Device is empty")
+		return
+	case errors.Is(err, user.ErrEmailVerifyFailed):
+		serverError(w, http.StatusUnauthorized, "Verification code is incorrect")
+		return
+	case errors.Is(err, user.ErrTokenInvalid), errors.Is(err, user.ErrTokenExpired):
+		serverError(w, http.StatusNotFound, noPendingSignUpMsg)
 		return
 	case errors.Is(err, user.ErrEmailTaken):
 		serverError(w, http.StatusConflict, "Email already exists")
@@ -1152,13 +1220,53 @@ func (h *Handler) SignUp(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// TODO: DRY JSON response creation
-	jres, err := json.Marshal(SignUpResBody{Token: token.Encode()})
+	jres, err := json.Marshal(verifySignUpEmailResBody{Token: token.Encode()})
 	if err != nil {
 		serverError(w, http.StatusInternalServerError, "Failed to construct a JSON response")
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(jres)
+}
+
+type resendSignUpVerificationReqBody struct {
+	Ticket string `json:"ticket"`
+}
+
+func (h *Handler) resendSignUpVerification(w http.ResponseWriter, r *http.Request) {
+	var req resendSignUpVerificationReqBody
+	err := json.NewDecoder(r.Body).Decode(&req)
+	if err != nil {
+		serverError(w, http.StatusBadRequest, "Malformed request body")
+		return
+	}
+
+	ticket, err := h.UserService.ResendSignUpVerificationEmail(r.Context(), req.Ticket)
+	switch {
+	case errors.Is(err, user.ErrTokenInvalid), errors.Is(err, user.ErrTokenExpired):
+		serverError(w, http.StatusNotFound, noPendingSignUpMsg)
+		return
+	case errors.Is(err, user.ErrEmailTaken):
+		serverError(w, http.StatusConflict, "Email already exists")
+		return
+	case errors.Is(err, user.ErrTooManyAttempts):
+		serverError(w, http.StatusTooManyRequests, tooManyVerificationEmailsMsg)
+		return
+	case err != nil:
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Something went wrong")
+		return
+	}
+
+	// TODO: DRY JSON response creation
+	jres, err := json.Marshal(signUpResBody{Ticket: ticket.Encode()})
+	if err != nil {
+		serverError(w, http.StatusInternalServerError, "Failed to construct a JSON response")
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusAccepted)
 	_, _ = w.Write(jres)
 }
 

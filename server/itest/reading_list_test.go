@@ -35,11 +35,11 @@ func seedFeedEntry(t *testing.T, seed, title, description string) int {
 func TestReadingList_SaveFeedEntry(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := mustTimeUTC("2026-07-15 10:00:00")
-	uidAlice := seedUser(t, "alice@example.com", now)
+	uid := provisionDefaultTestAccount(t, now)
 	entryID := seedFeedEntry(t, "save-me", "Save Me", "An entry worth saving.")
 
 	s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
-	item, err := s.SaveFeedEntry(t.Context(), uidAlice, entryID)
+	item, err := s.SaveFeedEntry(t.Context(), uid, entryID)
 	if err != nil {
 		t.Fatalf("SaveFeedEntry returned an unexpected error: %v", err)
 	}
@@ -110,8 +110,8 @@ func TestReadingList_SaveFeedEntry(t *testing.T) {
 	if !gotSavedAt.Equal(item.SavedAt) {
 		t.Errorf("got stored saved_at %v, want the returned %v", gotSavedAt, item.SavedAt)
 	}
-	if gotUID != uidAlice {
-		t.Errorf("got stored user_id %d, want alice's id %d", gotUID, uidAlice)
+	if gotUID != uid {
+		t.Errorf("got stored user_id %d, want alice's id %d", gotUID, uid)
 	}
 }
 
@@ -120,13 +120,13 @@ func TestReadingList_SaveFeedEntry(t *testing.T) {
 func TestReadingList_SaveWebClip(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := mustTimeUTC("2026-07-15 10:00:00")
-	uidAlice := seedUser(t, "alice@example.com", now)
+	uid := provisionDefaultTestAccount(t, now)
 
 	clipURL := must(url.Parse("http://clip.test/article"))
 	testenv.StubHTTP(clipURL.Host, clipURL.Path, "./testdata/reading_list/web_clip.html")
 
 	s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
-	item, err := s.SaveWebClip(t.Context(), uidAlice, *clipURL, "Placeholder Title")
+	item, err := s.SaveWebClip(t.Context(), uid, *clipURL, "Placeholder Title")
 	if err != nil {
 		t.Fatalf("SaveWebClip returned an unexpected error: %v", err)
 	}
@@ -186,8 +186,8 @@ func TestReadingList_SaveWebClip(t *testing.T) {
 	if !gotSavedAt.Equal(item.SavedAt) {
 		t.Errorf("got stored saved_at %v, want the returned %v", gotSavedAt, item.SavedAt)
 	}
-	if gotUID != uidAlice {
-		t.Errorf("got stored user_id %d, want alice's id %d", gotUID, uidAlice)
+	if gotUID != uid {
+		t.Errorf("got stored user_id %d, want alice's id %d", gotUID, uid)
 	}
 
 	// TODO: make this better
@@ -231,7 +231,7 @@ func TestReadingList_SaveWebClip(t *testing.T) {
 func TestReadingList_SaveWebClipByID(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := mustTimeUTC("2026-07-15 10:00:00")
-	uidBob := seedUser(t, "bob@example.com", now)
+	uid := provisionDefaultTestAccount(t, now)
 	// Insert the clip directly: nothing in the domain creates a bare clip
 	// without also saving it to the caller's own reading list.
 	clipID := scanValOrFatal[int](t, `
@@ -239,7 +239,7 @@ func TestReadingList_SaveWebClipByID(t *testing.T) {
 	`, "http://clip.test/existing", "Existing Clip", "An existing clip.")
 
 	s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
-	item, err := s.SaveWebClipByID(t.Context(), uidBob, clipID)
+	item, err := s.SaveWebClipByID(t.Context(), uid, clipID)
 	if err != nil {
 		t.Fatalf("SaveWebClipByID returned an unexpected error: %v", err)
 	}
@@ -303,8 +303,8 @@ func TestReadingList_SaveWebClipByID(t *testing.T) {
 	if !gotSavedAt.Equal(item.SavedAt) {
 		t.Errorf("got stored saved_at %v, want the returned %v", gotSavedAt, item.SavedAt)
 	}
-	if gotUID != uidBob {
-		t.Errorf("got stored user_id %d, want bob's id %d", gotUID, uidBob)
+	if gotUID != uid {
+		t.Errorf("got stored user_id %d, want bob's id %d", gotUID, uid)
 	}
 }
 
@@ -313,13 +313,13 @@ func TestReadingList_SaveWebClipByID(t *testing.T) {
 func TestReadingList_SaveWebClipByID_UntitledClip(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := mustTimeUTC("2026-07-15 10:00:00")
-	uidBob := seedUser(t, "bob@example.com", now)
+	uid := provisionDefaultTestAccount(t, now)
 	clipID := scanValOrFatal[int](t, `
 		INSERT INTO web_clips (url) VALUES ($1) RETURNING id
 	`, "http://clip.test/untitled")
 
 	s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
-	item, err := s.SaveWebClipByID(t.Context(), uidBob, clipID)
+	item, err := s.SaveWebClipByID(t.Context(), uid, clipID)
 	if err != nil {
 		t.Fatalf("SaveWebClipByID returned an unexpected error: %v", err)
 	}
@@ -338,8 +338,10 @@ func TestReadingList_SaveWebClipByID_UntitledClip(t *testing.T) {
 func TestReadingList_DeleteRequiresOwnership(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := mustTimeUTC("2026-07-15 10:00:00")
-	uidAlice := seedUser(t, "alice@example.com", now)
-	uidBob := seedUser(t, "bob@example.com", now)
+	uidAlice, _ := provisionTestAccount(t,
+		"alice@example.com", "alice#password$123", "Pixel9a", now)
+	uidBob, _ := provisionTestAccount(t,
+		"bob@example.com", "bob#password$123", "Pixel9a", now)
 	entryID := seedFeedEntry(t, "delete-me", "Delete Me", "An entry worth deleting.")
 
 	s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
@@ -382,8 +384,10 @@ func TestReadingList_DeleteRequiresOwnership(t *testing.T) {
 func TestReadingList_ArchiveAndUnarchiveRequireOwnership(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := mustTimeUTC("2026-07-15 10:00:00")
-	uidAlice := seedUser(t, "alice@example.com", now)
-	uidBob := seedUser(t, "bob@example.com", now)
+	uidAlice, _ := provisionTestAccount(t,
+		"alice@example.com", "alice#password$123", "Pixel9a", now)
+	uidBob, _ := provisionTestAccount(t,
+		"bob@example.com", "bob#password$123", "Pixel9a", now)
 	entryID := seedFeedEntry(t, "archive-me", "Archive Me", "An entry worth archiving.")
 
 	s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
