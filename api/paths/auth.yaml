@@ -12,6 +12,7 @@ signup:
       the last hour. A 202 does not guarantee the email was delivered; the
       caller recovers through `POST /signup/resend-verification`.
     operationId: signUp
+    tags: [Authentication]
     requestBody:
       required: true
       content:
@@ -64,6 +65,7 @@ verifyEmail:
       longer verifies afterwards and the caller has to start over with `POST
       /signup`.
     operationId: verifySignUpEmail
+    tags: [Authentication]
     requestBody:
       required: true
       content:
@@ -121,6 +123,7 @@ resendVerification:
       Requires a live attempt for the given ticket, and is subject to the same
       limit of 3 codes per address per hour as `POST /signup`.
     operationId: resendSignUpVerification
+    tags: [Authentication]
     requestBody:
       required: true
       content:
@@ -164,6 +167,7 @@ signin:
       yields multiple concurrent sessions. Returns the same generic 401 whether
       the email is unregistered or the password is wrong.
     operationId: signIn
+    tags: [Authentication]
     requestBody:
       required: true
       content:
@@ -210,6 +214,7 @@ signout:
       returns 200 regardless of whether the token is present, already invalid,
       or malformed.
     operationId: signOut
+    tags: [Authentication]
     parameters:
       - name: Authorization
         in: header

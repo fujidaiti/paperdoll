@@ -1,6 +1,7 @@
 delete:
   summary: Delete a reading list item
   operationId: deleteReadingListItem
+  tags: [Reading List]
   parameters:
     - name: id
       in: path
@@ -20,6 +21,7 @@ delete:
 patch:
   summary: Archive or unarchive a reading list item
   operationId: setReadingListItemArchivedStatus
+  tags: [Reading List]
   parameters:
     - name: id
       in: path

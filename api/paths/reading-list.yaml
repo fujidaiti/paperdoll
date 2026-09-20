@@ -5,6 +5,7 @@ get:
     clips whose content hasn't been fetched yet (or whose fetch failed) are
     still included, with an empty `title`.
   operationId: getReadingList
+  tags: [Reading List]
   parameters:
     - name: after
       in: query
@@ -48,6 +49,7 @@ post:
     page title shared by the browser) to give the placeholder a meaningful label
     until the fetch fills in the real one.
   operationId: saveToReadingList
+  tags: [Reading List]
   requestBody:
     description:
       The item to save. Specify exactly one of `url`, `feed_entry_id`, or
