@@ -323,3 +323,119 @@ the five pages that produced junk lists, only diggersfactory uses words at all:
 Tailwind utility classes and hashed CSS module names carry no meaning, and they
 are the majority. With the class test alone and the menu rejection disabled,
 ycombinator.com-blog returns to 0.41 url precision.
+
+## Defect 5 (fixed): the nesting rejection splits a card into its parts
+
+ycombinator.com-blog renders its three newest posts as one card each, and each
+card holds a group of its own inside it. The nesting rejection of defect 2
+dropped the list of the three cards and kept the smaller groups found inside
+them.
+
+The candidates the page produced, above the score cut of 3.00:
+
+```
+score=12.00 n=6  body > div > div:nth-of-type(5) > div > div > div:nth-of-type(1) > div
+                 the six older posts, all correct
+score=6.00  n=3  body > div > div:nth-of-type(4) > div > div > div
+                 /blog/diana-hu-managing-partner
+                 /blog/welcome-harshita
+                 /blog/adding-canada-back
+score=3.00  n=3  ... div:nth-of-type(1) > div:nth-of-type(2) > *
+                 /blog/diana-hu-managing-partner
+                 /blog/tag/yc-news
+                 /blog/author/garry
+score=3.00  n=3  ... div:nth-of-type(2) > div:nth-of-type(2) > *   (same, harshita)
+score=3.00  n=3  ... div:nth-of-type(3) > div:nth-of-type(2) > *   (same, canada)
+```
+
+The list at score 6.00 is the three cards and is exactly right. The three lists
+at score 3.00 are the metadata row of each card: the post link again, plus the
+tag link and the author link. The nesting rejection dropped the 6.00 list
+because the 3.00 lists sit inside its items, which cost the page the image and
+the timestamp of all three posts, because those sit in the part of the card the
+metadata row does not cover, and added `/blog/tag/yc-news` and
+`/blog/author/garry` as junk. Those two hold 93 bytes of text on average, so the
+menu rejection of defect 4 does not reach them.
+
+github.blog is the page the rejection was written for, and it must keep working.
+Its winning candidate is `main > section > *`, score 14.00, which groups the top
+level sections of the page and reports the heading link of each: `/latest/`,
+`/changelog/`, `/engineering/`, `/news-insights/` and a YouTube link. The real
+post lists, scores 12.00 down to 6.00, sit inside those sections.
+
+### The signal that separates the two
+
+The outer list adds URLs, or it does not.
+
+| page        | outer list      | URLs the outer adds that the inner lists do not hold |
+| ----------- | --------------- | ---------------------------------------------------- |
+| ycombinator | the three cards | 0 of 3                                               |
+| github.blog | the sections    | 6 of 7                                               |
+
+If the outer list adds no URL, the outer and the inner lists describe the same
+posts, and the outer describes them better: the card holds the image and the
+date, and the inner group also holds the tag link and the author link. If the
+outer list does add URLs, its items are page sections rather than posts, and the
+inner lists hold the posts.
+
+### Accepted change
+
+In `DetectPostLists`, the nesting rejection was replaced. The recursive `holds`
+test, which returned a boolean, now collects the indexes of the kept lists that
+sit inside each kept list's items. Each conflict is then resolved by the test
+above: the outer list is dropped when it adds a URL, and otherwise the inner
+lists are dropped.
+
+Measured over the 25 pages. Only ycombinator.com-blog changed:
+
+| metric           | before | after |
+| ---------------- | ------ | ----- |
+| url precision    | 0.82   | 1.00  |
+| url recall       | 0.90   | 0.90  |
+| image precision  | none   | 1.00  |
+| image recall     | 0.00   | 1.00  |
+| timestamp recall | 0.67   | 1.00  |
+
+No other page lost or gained a post. The same 14 pages fail, and
+ycombinator.com-blog now fails only on url recall, for the lone featured post of
+defect 7, and on the titles, for defect 6.
+
+## The leftover of a group that ends with a link to the section itself
+
+github.blog closes its changelog section with a "View all changes" link. That
+link is a child of the same container as the four changelog entries, so the page
+produces two candidates: the four entries at score 8.00, and the four entries
+plus the link at score 5.00. Neither is nested in the other, because the nesting
+test excludes the item node itself. Both are kept, and the URL deduplication
+then leaves the second list with the single URL
+`https://github.blog/changelog/`, which is not a post.
+
+### Accepted change
+
+After the deduplication, a list left with fewer than two posts is dropped.
+
+Two is the threshold rather than `minMembers`, which is 3. Measured over the 25
+pages:
+
+| threshold    | github.blog url precision | other pages                             |
+| ------------ | ------------------------- | --------------------------------------- |
+| none (today) | 0.83 (25/30)              | —                                       |
+| 2            | 0.86 (25/29)              | no change                               |
+| 3            | 0.86 (25/29)              | anthropic.com-news url recall 1.00→0.77 |
+
+anthropic.com-news splits its posts into small groups, and requiring three loses
+three real posts there, so the threshold is two.
+
+## Rejected: reject a list by the host or the target of its links
+
+Proposed for defect 8, the row of four YouTube link cards on github.blog. Both
+tests were measured over the 25 pages and both were rejected.
+
+The host test, "the link host differs from the page host", is wrong because 25
+posts across three pages are legitimately off-site: cursor.com links to press
+coverage on thenewstack.io, techcrunch.com and bloomberg.com, deepmind.google
+/blog links 14 of its 25 posts to blog.google, and paulgraham.com holds 2 posts
+on a CDN.
+
+The `target="_blank"` test would remove 3 junk entries and lose 18 real posts,
+the same cursor.com and deepmind.google posts.

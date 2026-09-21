@@ -184,13 +184,12 @@ func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
 	// renders the same posts twice, as claude.com does with its grid and its
 	// list, collapses by itself.
 	//
-	// A post does not contain other posts, so a list whose items hold the
-	// items of another kept list is dropped. A page whose top level sections
-	// repeat the same shape, as github.blog does, produces a group of those
-	// sections, and that group can win the page while the real post lists sit
-	// inside its items. Only the kept lists are compared, because almost every
-	// post card holds some repeated group of its own, for example a row of
-	// tags, and those groups score far too low to be returned.
+	// A post does not contain other posts, so when the items of one kept list
+	// hold the items of another, only one of the two is a post list. Which one
+	// is decided below, from the URLs the outer list adds. Only the kept lists
+	// are compared, because almost every post card holds some repeated group
+	// of its own, for example a row of tags, and those groups score far too
+	// low to be returned.
 	//
 	// Dropping a list lowers the best score, which lowers the cut and can let
 	// another list in, so the two steps run until the set stops changing.
@@ -210,23 +209,29 @@ func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
 				item[p.Node] = append(item[p.Node], i)
 			}
 		}
-		// holds reports whether the subtree below n, n itself excluded, holds
-		// an item of a kept list other than i. The item itself is excluded
-		// because the group of all children of a container repeats the items
-		// of the groups it was built from.
-		var holds func(int, *html.Node) bool
-		holds = func(i int, n *html.Node) bool {
+		// inner collects, for every kept list, the kept lists whose items sit
+		// inside its own items. The item node itself is excluded because the
+		// group of all children of a container repeats the items of the groups
+		// it was built from.
+		inner := make([]map[int]bool, len(kept))
+		var collect func(int, *html.Node)
+		collect = func(i int, n *html.Node) {
 			for c := n.FirstChild; c != nil; c = c.NextSibling {
 				for _, j := range item[c] {
 					if j != i {
-						return true
+						if inner[i] == nil {
+							inner[i] = map[int]bool{}
+						}
+						inner[i][j] = true
 					}
 				}
-				if holds(i, c) {
-					return true
-				}
+				collect(i, c)
 			}
-			return false
+		}
+		for i, l := range kept {
+			for _, p := range l.Posts {
+				collect(i, p.Node)
+			}
 		}
 		// A page that writes its posts as bare links, as paulgraham.com does,
 		// produces one menu list and nothing else, so a menu list is only
@@ -238,19 +243,47 @@ func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
 				break
 			}
 		}
+		// Resolve every nesting conflict. The outer list reports one post per
+		// container; the inner lists report the groups found inside those
+		// containers. Which of the two is the post list is decided by the URLs
+		// the outer list adds: if it adds none, the two describe the same
+		// posts and the outer list describes them better, because the card
+		// holds the image and the date that the inner group leaves out, and
+		// because the inner group also reports the tag link and the author
+		// link of the card. If the outer list does add URLs, its items are
+		// page sections rather than posts, and the inner lists hold the posts.
+		drop := map[int]bool{}
+		for i, l := range kept {
+			if len(inner[i]) == 0 {
+				continue
+			}
+			have := map[string]bool{}
+			for j := range inner[i] {
+				for _, p := range kept[j].Posts {
+					have[p.URL.String()] = true
+				}
+			}
+			added := false
+			for _, p := range l.Posts {
+				if !have[p.URL.String()] {
+					added = true
+					break
+				}
+			}
+			if added {
+				drop[i] = true
+			} else {
+				for j := range inner[i] {
+					drop[j] = true
+				}
+			}
+		}
 		var flat []PostList
 		for i, l := range kept {
 			if l.menu && real {
 				continue
 			}
-			nested := false
-			for _, p := range l.Posts {
-				if holds(i, p.Node) {
-					nested = true
-					break
-				}
-			}
-			if !nested {
+			if !drop[i] {
 				flat = append(flat, l)
 			}
 		}
@@ -274,7 +307,14 @@ func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
 				posts = append(posts, p)
 			}
 		}
-		if len(posts) == 0 {
+		// A list left with a single URL is what remains of a group that the
+		// page closes with a link to the section itself, as github.blog does
+		// with the "View all changes" link below its changelog: the posts of
+		// the group were reported by the list above it and removed here, and
+		// the link to the section is not a post. Two is the threshold rather
+		// than minMembers because anthropic.com splits its posts into small
+		// groups, and requiring three loses three real posts there.
+		if len(posts) < 2 {
 			continue
 		}
 		l.Posts = posts

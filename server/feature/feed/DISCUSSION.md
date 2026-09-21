@@ -6,9 +6,10 @@ decisions do not have to be made again from scratch.
 
 The finished work is in `DISCUSSION_ARCHIVE.md`: defect 1 (the URL is taken from
 the wrong link), defect 2 (a page section is detected as a post list), defect 4
-(a group of site navigation links is detected as a post list), the three
-accepted changes with the measured effect, and the rejected proposal to pair
-titles and URLs by slug matching.
+(a group of site navigation links is detected as a post list), defect 5 (the
+nesting rejection splits a card into its parts), the accepted changes with the
+measured effect, and the rejected proposals: pairing titles and URLs by slug
+matching, and rejecting a list by the host of its links.
 
 All measurements were taken on the 25 saved pages in `testdata/`, using the
 fixtures as the current result. Counts refer to the 1104 posts the fixtures
@@ -102,28 +103,10 @@ These are not ranking problems and need their own fix:
 - cursor.com-blog, 2 posts: the `<img>` carries `srcSet` and no `src` at all, so
   `image()` finds nothing. Reading the largest descriptor of `srcset` when `src`
   and `data-src` are both empty would return the value the fixture holds.
-- ycombinator.com-blog, 3 posts: the image sits outside the item node, in the
-  part of the card that the nesting rejection removed from the detected list.
-
-## Defect 5: the nesting rejection splits a card into its parts
-
-ycombinator.com-blog renders its three newest posts as one card each, and each
-card holds a group of its own inside it. The nesting rejection of defect 2 drops
-the list of the three cards and keeps the smaller groups found inside them,
-which costs the page:
-
-- 1 real post, `/blog/chris-golda-and-grey-baker-general-partners`, so url
-  recall stays at 0.90;
-- the image and the timestamp of the other three, because the inner group does
-  not contain them, so image recall is 0.00 and timestamp recall is 0.67;
-- 2 junk entries, `/blog/tag/yc-news` and `/blog/author/garry`, which are items
-  of the inner group. They hold 93 bytes of text on average, so the menu
-  rejection does not reach them.
-
-github.blog loses one post to the same rule, the hero item that sits alone in
-its section. The rule is still right on the page it was written for. What is
-missing is a way to prefer the outer list when the outer list is the card and
-the inner group is part of the card.
+- ycombinator.com-blog, 3 posts: fixed. The image sat outside the item node, in
+  the part of the card that the nesting rejection removed from the detected
+  list. Defect 5 restored the card, and all 3 images are now correct. The table
+  above was measured before that fix, so its ycombinator row no longer holds.
 
 ## Defect 6: the title of an item that has no heading
 
@@ -137,19 +120,87 @@ want "Hoe Weekend"
 ```
 
 The genre, the artist and the price are separate elements inside the same link.
-The same fallback is what daily.bandcamp.com, cursor.com, developers.openai.com
-and deepmind.google research publications fail on, all at 0.00 title precision,
-so this is the largest remaining loss across the 25 pages. It has not been
-investigated yet.
+Eight pages miss the title precision they accept:
+
+| page                                  | title precision | posts |
+| ------------------------------------- | --------------- | ----- |
+| daily.bandcamp.com-features           | 0.00            | 30    |
+| daily.bandcamp.com-album-of-the-day   | 0.00            | 30    |
+| deepmind.google-research-publications | 0.00            | 30    |
+| developers.openai.com-blog            | 0.00            | 29    |
+| cursor.com-blog                       | 0.00            | 24    |
+| anthropic.com-news                    | 0.17            | 12    |
+| diggersfactory.com-vinyl-shop-new-ins | 0.00            | 9     |
+| ycombinator.com-blog-tag-essay        | 0.70            | 10    |
+
+This is the largest remaining loss across the 25 pages. The shape is not the
+same on every page. deepmind.google puts the date in front of the title,
+`"1 September 2026 Designing Proactive Thought Partners for Writing"`, while
+diggersfactory appends the other card fields after it. ycombinator.com-blog
+shows a third shape, the first paragraph of the post appended to its heading. It
+has not been investigated yet.
+
+## Defect 7: a post that stands alone is not detected
+
+`minMembers` is 3, so a group of fewer than three items is never a list. A page
+that shows its newest post on its own, above the list, therefore loses it.
+
+ycombinator.com-blog is the only page this still costs a post:
+`/blog/chris-golda-and-grey-baker-general-partners` is the featured post at the
+top of the page, written as one section with a heading link, a "Read More" link
+and an image link, and nothing repeats it. Url recall stays at 0.90 because of
+this one post.
+
+Lowering `minMembers` to 2 or to 1 has not been measured. It would raise the
+number of candidate groups on every page, so it has to be measured across all 25
+pages before it is considered.
+
+## Defect 8: a row of off-site link cards is detected as a post list
+
+github.blog holds a row of four cards under the class
+`featured-external-links-pattern`, each with an image and a title, each linking
+to a YouTube playlist:
+
+```
+https://www.youtube.com/playlist?list=PL0lo9MOBetEFKNlPHNouEmVeYeyoyGTXC  Explore GitHub Universe 2025
+https://www.youtube.com/playlist?list=PL0lo9MOBetEHEHi9h0k_lPn0XZdEeYZDS  Learn about GitHub Copilot
+https://www.youtube.com/playlist?list=PL0lo9MOBetEE0goMLEl97vO7slruNVj43  Stay informed with The Download
+https://www.youtube.com/playlist?list=PL0lo9MOBetEHvO-spzKBAITkkTqv4RvNl  Explore GitHub Copilot CLI for Beginners
+```
+
+It scores 4.00 against a cut of 3.00, so it is returned, and it is the whole
+remaining url precision gap on the page: 0.86 against a target of 0.90.
+
+Structurally it is a post list: four repeated cards, each with an image, a title
+and one link. Two signals were measured and both were rejected:
+
+- **The link host differs from the page host.** Rejected: 25 posts across three
+  pages are legitimately off-site. cursor.com links to press coverage on
+  thenewstack.io, techcrunch.com and bloomberg.com, deepmind.google/blog links
+  14 of its 25 posts to blog.google, and paulgraham.com holds 2 posts on a CDN.
+- **The link carries `target="_blank"`.** Measured over all 25 pages: it would
+  remove 3 junk entries and lose 18 real posts, the same cursor.com and
+  deepmind.google posts. Rejected.
+
+The class name `featured-external-links-pattern` is a WordPress pattern name and
+carries no general meaning, so the class test in `cleanup` does not reach it
+either. No further idea has been measured.
 
 ## Plan
 
-1. Rank the images of an item with `alt+area` instead of taking the first one,
-   and read `srcset` when `src` and `data-src` are empty. This is defect 3.
-2. Investigate defect 6, the title of an item that has no heading. It is the
-   largest remaining loss: five pages report 0.00 title precision.
-3. Investigate defect 5, the nesting rejection splitting a card into its parts.
-   It costs two pages one post each, plus the fields of three more.
+1. Investigate defect 6, the title of an item that has no heading. It is the
+   largest remaining loss: eight pages report a title precision below the value
+   they accept, six of them at 0.00, which is about 174 posts.
+2. Rank the images of an item with `alt+area` instead of taking the first one,
+   and read `srcset` when `src` and `data-src` are empty. This is defect 3, and
+   it reaches about 106 posts over four pages.
+3. Measure `minMembers` at 2 and at 1 across the 25 pages. This is defect 7.
+4. Defect 8 has no measured idea yet.
+
+Level one is otherwise done. Of the 25 pages, only two still miss a level one
+target: ycombinator.com-blog at 0.90 url recall, for the one post of defect 7,
+and github.blog at 0.86 url precision, for the four links of defect 8. Every
+other page reports 1.00 url precision and 1.00 url recall.
 
 If a future page needs slug matching, add it as a check on the chosen pair,
 using the normalization and the exact segment rule written down in
