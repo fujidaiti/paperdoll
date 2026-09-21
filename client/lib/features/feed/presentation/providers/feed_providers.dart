@@ -31,9 +31,63 @@ class Feeds extends _$Feeds {
   );
 }
 
+/// Single source of truth for one feed in the timeline screen. It loads the
+/// feed header and owns both subscription mutations: each one flips
+/// [Feed.subscribed] on the cached feed optimistically so the app bar menu
+/// updates instantly, fires the request, and rolls the state back before
+/// rethrowing if it fails.
+///
+/// Neither mutation touches [feedsProvider]. The feed list keeps its cached
+/// page, so an unsubscribed feed disappears from it only once the user reloads
+/// that screen.
 @riverpod
-Future<Feed> feedDetail(Ref ref, {required int id}) =>
-    ref.watch(feedRepositoryProvider).getFeed(id);
+class FeedDetailController extends _$FeedDetailController {
+  late int _id;
+
+  @override
+  Future<Feed> build({required int id}) {
+    _id = id;
+    return ref.watch(feedRepositoryProvider).getFeed(id);
+  }
+
+  /// Subscribes to the feed. `PUT /feeds` is idempotent and keyed by URL, so
+  /// this is also how a previously unsubscribed feed is subscribed to again.
+  Future<void> subscribe() async {
+    final feed = state.asData?.value;
+    if (feed == null || feed.subscribed) {
+      return;
+    }
+    state = AsyncData(feed.copyWith(subscribed: true));
+    try {
+      await ref.read(feedRepositoryProvider).subscribe(feed.url);
+    } on Exception {
+      final current = state.asData?.value;
+      if (current != null) {
+        state = AsyncData(current.copyWith(subscribed: false));
+      }
+      rethrow;
+    }
+  }
+
+  /// Drops the subscription. The feed itself is shared across all users and
+  /// survives, so the timeline stays readable afterwards.
+  Future<void> unsubscribe() async {
+    final feed = state.asData?.value;
+    if (feed == null || !feed.subscribed) {
+      return;
+    }
+    state = AsyncData(feed.copyWith(subscribed: false));
+    try {
+      await ref.read(feedRepositoryProvider).unsubscribe(_id);
+    } on Exception {
+      final current = state.asData?.value;
+      if (current != null) {
+        state = AsyncData(current.copyWith(subscribed: true));
+      }
+      rethrow;
+    }
+  }
+}
 
 /// A feed's timeline entries, paginated. [build] loads the first page;
 /// [loadMore] appends the next.

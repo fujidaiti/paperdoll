@@ -188,6 +188,37 @@ void main() {
     expect(server.unmatched, isEmpty);
   });
 
+  test('resolves a matching DELETE with 204 and no body', () async {
+    server.stubDelete('/feeds/1');
+
+    final res = await dio.delete<dynamic>('/feeds/1');
+
+    expect(res.statusCode, 204);
+    expect(server.unmatched, isEmpty);
+  });
+
+  test('an onDelete side effect is reflected by a later onGet', () async {
+    var subscribed = true;
+    server
+      ..onGet('/feeds/1', respond: (_) => (200, {'subscribed': subscribed}))
+      ..onDelete(
+        '/feeds/1',
+        respond: (_) {
+          subscribed = false;
+          return (204, null);
+        },
+      );
+
+    final before = await dio.get<dynamic>('/feeds/1');
+    final deleted = await dio.delete<dynamic>('/feeds/1');
+    final after = await dio.get<dynamic>('/feeds/1');
+
+    expect(before.data, {'subscribed': true});
+    expect(deleted.statusCode, 204);
+    expect(after.data, {'subscribed': false});
+    expect(server.unmatched, isEmpty);
+  });
+
   test('the last matching registration wins', () async {
     server.stubGet('/newspapers/today', body: {'id': 1});
     server.stubGet('/newspapers/today', body: {'id': 2});

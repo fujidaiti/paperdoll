@@ -105,47 +105,67 @@ abstract class _$Feeds extends $AsyncNotifier<PagedState<Feed>> {
   }
 }
 
-@ProviderFor(feedDetail)
-final feedDetailProvider = FeedDetailFamily._();
+/// Single source of truth for one feed in the timeline screen. It loads the
+/// feed header and owns both subscription mutations: each one flips
+/// [Feed.subscribed] on the cached feed optimistically so the app bar menu
+/// updates instantly, fires the request, and rolls the state back before
+/// rethrowing if it fails.
+///
+/// Neither mutation touches [feedsProvider]. The feed list keeps its cached
+/// page, so an unsubscribed feed disappears from it only once the user reloads
+/// that screen.
 
-final class FeedDetailProvider
-    extends $FunctionalProvider<AsyncValue<Feed>, Feed, FutureOr<Feed>>
-    with $FutureModifier<Feed>, $FutureProvider<Feed> {
-  FeedDetailProvider._({
-    required FeedDetailFamily super.from,
+@ProviderFor(FeedDetailController)
+final feedDetailControllerProvider = FeedDetailControllerFamily._();
+
+/// Single source of truth for one feed in the timeline screen. It loads the
+/// feed header and owns both subscription mutations: each one flips
+/// [Feed.subscribed] on the cached feed optimistically so the app bar menu
+/// updates instantly, fires the request, and rolls the state back before
+/// rethrowing if it fails.
+///
+/// Neither mutation touches [feedsProvider]. The feed list keeps its cached
+/// page, so an unsubscribed feed disappears from it only once the user reloads
+/// that screen.
+final class FeedDetailControllerProvider
+    extends $AsyncNotifierProvider<FeedDetailController, Feed> {
+  /// Single source of truth for one feed in the timeline screen. It loads the
+  /// feed header and owns both subscription mutations: each one flips
+  /// [Feed.subscribed] on the cached feed optimistically so the app bar menu
+  /// updates instantly, fires the request, and rolls the state back before
+  /// rethrowing if it fails.
+  ///
+  /// Neither mutation touches [feedsProvider]. The feed list keeps its cached
+  /// page, so an unsubscribed feed disappears from it only once the user reloads
+  /// that screen.
+  FeedDetailControllerProvider._({
+    required FeedDetailControllerFamily super.from,
     required int super.argument,
   }) : super(
          retry: null,
-         name: r'feedDetailProvider',
+         name: r'feedDetailControllerProvider',
          isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
 
   @override
-  String debugGetCreateSourceHash() => _$feedDetailHash();
+  String debugGetCreateSourceHash() => _$feedDetailControllerHash();
 
   @override
   String toString() {
-    return r'feedDetailProvider'
+    return r'feedDetailControllerProvider'
         ''
         '($argument)';
   }
 
   @$internal
   @override
-  $FutureProviderElement<Feed> $createElement($ProviderPointer pointer) =>
-      $FutureProviderElement(pointer);
-
-  @override
-  FutureOr<Feed> create(Ref ref) {
-    final argument = this.argument as int;
-    return feedDetail(ref, id: argument);
-  }
+  FeedDetailController create() => FeedDetailController();
 
   @override
   bool operator ==(Object other) {
-    return other is FeedDetailProvider && other.argument == argument;
+    return other is FeedDetailControllerProvider && other.argument == argument;
   }
 
   @override
@@ -154,24 +174,83 @@ final class FeedDetailProvider
   }
 }
 
-String _$feedDetailHash() => r'df5e5de4ca1311fa7cb2ede86ef1fd18a6df27d6';
+String _$feedDetailControllerHash() =>
+    r'c8aebff8976b68c27b28a3736b63b9a4dd2a19d2';
 
-final class FeedDetailFamily extends $Family
-    with $FunctionalFamilyOverride<FutureOr<Feed>, int> {
-  FeedDetailFamily._()
+/// Single source of truth for one feed in the timeline screen. It loads the
+/// feed header and owns both subscription mutations: each one flips
+/// [Feed.subscribed] on the cached feed optimistically so the app bar menu
+/// updates instantly, fires the request, and rolls the state back before
+/// rethrowing if it fails.
+///
+/// Neither mutation touches [feedsProvider]. The feed list keeps its cached
+/// page, so an unsubscribed feed disappears from it only once the user reloads
+/// that screen.
+
+final class FeedDetailControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          FeedDetailController,
+          AsyncValue<Feed>,
+          Feed,
+          FutureOr<Feed>,
+          int
+        > {
+  FeedDetailControllerFamily._()
     : super(
         retry: null,
-        name: r'feedDetailProvider',
+        name: r'feedDetailControllerProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
         isAutoDispose: true,
       );
 
-  FeedDetailProvider call({required int id}) =>
-      FeedDetailProvider._(argument: id, from: this);
+  /// Single source of truth for one feed in the timeline screen. It loads the
+  /// feed header and owns both subscription mutations: each one flips
+  /// [Feed.subscribed] on the cached feed optimistically so the app bar menu
+  /// updates instantly, fires the request, and rolls the state back before
+  /// rethrowing if it fails.
+  ///
+  /// Neither mutation touches [feedsProvider]. The feed list keeps its cached
+  /// page, so an unsubscribed feed disappears from it only once the user reloads
+  /// that screen.
+
+  FeedDetailControllerProvider call({required int id}) =>
+      FeedDetailControllerProvider._(argument: id, from: this);
 
   @override
-  String toString() => r'feedDetailProvider';
+  String toString() => r'feedDetailControllerProvider';
+}
+
+/// Single source of truth for one feed in the timeline screen. It loads the
+/// feed header and owns both subscription mutations: each one flips
+/// [Feed.subscribed] on the cached feed optimistically so the app bar menu
+/// updates instantly, fires the request, and rolls the state back before
+/// rethrowing if it fails.
+///
+/// Neither mutation touches [feedsProvider]. The feed list keeps its cached
+/// page, so an unsubscribed feed disappears from it only once the user reloads
+/// that screen.
+
+abstract class _$FeedDetailController extends $AsyncNotifier<Feed> {
+  late final _$args = ref.$arg as int;
+  int get id => _$args;
+
+  FutureOr<Feed> build({required int id});
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<Feed>, Feed>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<Feed>, Feed>,
+              AsyncValue<Feed>,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, () => build(id: _$args));
+  }
 }
 
 /// A feed's timeline entries, paginated. [build] loads the first page;
