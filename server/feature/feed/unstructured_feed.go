@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/url"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 
@@ -59,6 +60,10 @@ type PostList struct {
 	// comparable between the lists of the same page.
 	Score float64
 	Posts []Post
+	// menu says the items hold a link and almost no text, which describes a
+	// row of tags, a genre list or a site menu as well as it describes a list
+	// of bare post links. See the rejection in DetectPostLists.
+	menu bool
 }
 
 // DetectPostLists parses an HTML page and returns the post lists found in it,
@@ -125,19 +130,17 @@ func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
 				if len(ls) == 0 {
 					continue
 				}
-				// Only the item's first link identifies it. Inline links
-				// inside the text of a full length item are not item targets.
-				p := Post{Node: m, URL: ls[0]}
+				p := Post{Node: m}
 				t := text(m)
 				totalText += len(t)
-				p.Title = title(m, t)
+				p.Title, p.URL = titleAndURL(m, ls, &pageURL, t)
 				p.Timestamp = timestamp(m, t)
 				p.ImageURL = image(m, &pageURL)
 				if p.Timestamp != "" {
 					dated++
 				}
 				posts = append(posts, p)
-				seen[ls[0].String()] = true
+				seen[p.URL.String()] = true
 			}
 			if len(posts) < minMembers || len(seen) < minMembers {
 				continue
@@ -151,13 +154,14 @@ func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
 			if len(seen)*10 < len(posts)*8 {
 				score *= 0.5 // the items share one target: not a post list
 			}
-			if avgText < minItemText {
+			menu := avgText < minItemText
+			if menu {
 				score *= 0.3 // link and nothing else: a menu, not a post
 			}
 			if dated == len(posts) {
 				score *= 2.0
 			}
-			lists = append(lists, PostList{Selector: selector(n, s), Score: score, Posts: posts})
+			lists = append(lists, PostList{Selector: selector(n, s), Score: score, Posts: posts, menu: menu})
 		}
 		for c := n.FirstChild; c != nil; c = c.NextSibling {
 			if c.Type == html.ElementNode {
@@ -179,13 +183,90 @@ func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
 	// duplicated URLs afterwards also replaces a merge step: a page that
 	// renders the same posts twice, as claude.com does with its grid and its
 	// list, collapses by itself.
-	cut := lists[0].Score * unionFraction
+	//
+	// A post does not contain other posts, so a list whose items hold the
+	// items of another kept list is dropped. A page whose top level sections
+	// repeat the same shape, as github.blog does, produces a group of those
+	// sections, and that group can win the page while the real post lists sit
+	// inside its items. Only the kept lists are compared, because almost every
+	// post card holds some repeated group of its own, for example a row of
+	// tags, and those groups score far too low to be returned.
+	//
+	// Dropping a list lowers the best score, which lowers the cut and can let
+	// another list in, so the two steps run until the set stops changing.
+	for {
+		// Every list that scores at least unionFraction of the best one.
+		var kept []PostList
+		cut := lists[0].Score * unionFraction
+		for _, l := range lists {
+			if l.Score < cut {
+				break
+			}
+			kept = append(kept, l)
+		}
+		item := map[*html.Node][]int{}
+		for i, l := range kept {
+			for _, p := range l.Posts {
+				item[p.Node] = append(item[p.Node], i)
+			}
+		}
+		// holds reports whether the subtree below n, n itself excluded, holds
+		// an item of a kept list other than i. The item itself is excluded
+		// because the group of all children of a container repeats the items
+		// of the groups it was built from.
+		var holds func(int, *html.Node) bool
+		holds = func(i int, n *html.Node) bool {
+			for c := n.FirstChild; c != nil; c = c.NextSibling {
+				for _, j := range item[c] {
+					if j != i {
+						return true
+					}
+				}
+				if holds(i, c) {
+					return true
+				}
+			}
+			return false
+		}
+		// A page that writes its posts as bare links, as paulgraham.com does,
+		// produces one menu list and nothing else, so a menu list is only
+		// dropped while a list with real item text is kept beside it.
+		real := false
+		for _, l := range kept {
+			if !l.menu {
+				real = true
+				break
+			}
+		}
+		var flat []PostList
+		for i, l := range kept {
+			if l.menu && real {
+				continue
+			}
+			nested := false
+			for _, p := range l.Posts {
+				if holds(i, p.Node) {
+					nested = true
+					break
+				}
+			}
+			if !nested {
+				flat = append(flat, l)
+			}
+		}
+		if len(flat) == 0 {
+			return nil, nil
+		}
+		done := len(flat) == len(kept)
+		lists = flat
+		if done {
+			break
+		}
+	}
+
 	taken := map[string]bool{}
 	var out []PostList
 	for _, l := range lists {
-		if l.Score < cut {
-			break
-		}
 		var posts []Post
 		for _, p := range l.Posts {
 			if u := p.URL.String(); !taken[u] {
@@ -267,7 +348,8 @@ func cleanup(n *html.Node, inSection bool) {
 			role := strings.ToLower(strings.TrimSpace(attr(c, "role")))
 			isChrome := c.Data == "nav" ||
 				role == "navigation" || role == "contentinfo" || role == "banner" ||
-				(!inSection && (c.Data == "header" || c.Data == "footer"))
+				(!inSection && (c.Data == "header" || c.Data == "footer")) ||
+				named(c, "footer") || named(c, "nav") || named(c, "navigation")
 			if dropElements[c.Data] || isChrome {
 				n.RemoveChild(c)
 				continue
@@ -287,6 +369,22 @@ func cleanup(n *html.Node, inSection bool) {
 			cleanup(c, inSection || sectioning[c.Data])
 		}
 	}
+}
+
+// named reports whether one of the element's class names is exactly the given
+// word. A page region often names itself: diggersfactory.com writes its page
+// footer as <section class="footer">, which neither the tag test nor the role
+// test above reaches, and its genre menu and its policy menu sit inside it.
+//
+// Only whole words are compared. A class name that merely contains the word,
+// such as "featured-external-links-pattern__list" on github.blog, says nothing
+// about the region, and a post card is free to carry a class like "post-links".
+// The word list is short on purpose: a site that builds its class names from
+// Tailwind utilities or from hashed CSS module names, which is most of the
+// saved pages, names nothing at all, so this test cannot carry the work that
+// the score does.
+func named(n *html.Node, word string) bool {
+	return slices.Contains(strings.Fields(strings.ToLower(attr(n, "class"))), word)
 }
 
 // hidden reports whether an element is not shown to the reader. Hiding through
@@ -353,33 +451,53 @@ func selector(container *html.Node, sig string) string {
 	return strings.Join(append(parts, item), " > ")
 }
 
-// links returns every link below n, resolved against the page URL, in document
-// order.
-func links(n *html.Node, page *url.URL) []url.URL {
-	var out []url.URL
+// link is an element that carries an accepted href, together with the target
+// resolved against the page URL. The element is kept because the title is read
+// from it: see titleAndURL.
+type link struct {
+	node *html.Node
+	url  url.URL
+}
+
+// linkOf reports whether one element carries a link a post may use, and
+// returns the target resolved against the page URL.
+func linkOf(x *html.Node, page *url.URL) (url.URL, bool) {
+	// Any element that carries href, not only <a>. blog.google builds its
+	// post cards from custom elements such as <uni-simple-article-card
+	// href="..."> with no <a> around them, so an <a> only rule finds nothing
+	// there. <link> is excluded because it points at assets and at alternate
+	// language versions.
+	if x.Type != html.ElementNode || x.Data == "link" {
+		return url.URL{}, false
+	}
+	h := attr(x, "href")
+	if h == "" {
+		return url.URL{}, false
+	}
+	u, err := page.Parse(h)
+	if err != nil {
+		return url.URL{}, false
+	}
+	u.Fragment = ""
+	// The query string can carry the post identity (developer.apple.com uses
+	// /news/?id=<id>), so it is kept and the self link test compares path and
+	// query together.
+	self := u.Host == page.Host && u.Path == page.Path && u.RawQuery == page.RawQuery
+	bare := (u.Path == "" || u.Path == "/") && u.RawQuery == ""
+	// A cross-origin target is accepted: a post list may link to another site.
+	if (u.Scheme != "http" && u.Scheme != "https") || self || bare {
+		return url.URL{}, false
+	}
+	return *u, true
+}
+
+// links returns every link below n, including n itself, in document order.
+func links(n *html.Node, page *url.URL) []link {
+	var out []link
 	var walk func(*html.Node)
 	walk = func(x *html.Node) {
-		// Any element that carries href, not only <a>. blog.google builds its
-		// post cards from custom elements such as <uni-simple-article-card
-		// href="..."> with no <a> around them, so an <a> only rule finds
-		// nothing there. <link> is excluded because it points at assets and at
-		// alternate language versions.
-		if x.Type == html.ElementNode && x.Data != "link" {
-			if h := attr(x, "href"); h != "" {
-				if u, err := page.Parse(h); err == nil {
-					u.Fragment = ""
-					// The query string can carry the post identity
-					// (developer.apple.com uses /news/?id=<id>), so it is kept
-					// and the self link test compares path and query together.
-					self := u.Host == page.Host && u.Path == page.Path && u.RawQuery == page.RawQuery
-					bare := (u.Path == "" || u.Path == "/") && u.RawQuery == ""
-					// A cross-origin target is accepted: a post list may link
-					// to another site.
-					if (u.Scheme == "http" || u.Scheme == "https") && !self && !bare {
-						out = append(out, *u)
-					}
-				}
-			}
+		if u, ok := linkOf(x, page); ok {
+			out = append(out, link{node: x, url: u})
 		}
 		for c := x.FirstChild; c != nil; c = c.NextSibling {
 			walk(c)
@@ -414,16 +532,65 @@ func attr(n *html.Node, key string) string {
 	return ""
 }
 
-// title returns the post title: the first heading of the item, or the text of
-// the element that carries the item's link, or the item text cut short. full is
+// titleAndURL picks the title and the URL of one item together. Picking them
+// independently pairs a heading with the link of something else: github.blog
+// renders a category badge link above the post heading, so the post was
+// reported under its category URL, and every card of the list reported the
+// same one.
+//
+// ls holds the links of the item in document order, and is not empty. full is
 // the item text, which the caller has already collected.
-func title(item *html.Node, full string) string {
-	var found string
+func titleAndURL(item *html.Node, ls []link, page *url.URL, full string) (string, url.URL) {
+	h := heading(item)
+	if h == nil {
+		// No heading: the title is the text of the element the URL comes
+		// from, so that the two still describe the same thing. A card often
+		// wraps its whole contents in that link, in which case the text is the
+		// item text and the cut below applies to it.
+		t := text(ls[0].node)
+		if t == "" {
+			t = full
+		}
+		// A title is a line, not a paragraph. An item that holds its full text
+		// would otherwise produce a title of several kilobytes.
+		const maxTitle = 120
+		if len(t) > maxTitle {
+			cut := strings.LastIndex(t[:maxTitle], " ")
+			if cut < maxTitle/2 {
+				cut = maxTitle
+			}
+			t = strings.TrimSpace(t[:cut])
+		}
+		return t, ls[0].url
+	}
+
+	// The heading decides the URL. Its own link comes first, then the link the
+	// heading sits inside, which covers a card wrapped in one link and covers
+	// the custom elements on blog.google.
+	if below := links(h, page); len(below) > 0 {
+		return text(h), below[0].url
+	}
+	for x := h; x != nil; x = x.Parent {
+		if u, ok := linkOf(x, page); ok {
+			return text(h), u
+		}
+		if x == item {
+			break
+		}
+	}
+	// The heading carries no link at all. The item keeps the URL it would have
+	// had without this rule, so no item can lose its URL and stop being a post.
+	return text(h), ls[0].url
+}
+
+// heading returns the first h1-h6 of the item that holds text.
+func heading(item *html.Node) *html.Node {
+	var found *html.Node
 	var walk func(*html.Node) bool
 	walk = func(x *html.Node) bool {
 		if x.Type == html.ElementNode && len(x.Data) == 2 && x.Data[0] == 'h' && x.Data[1] >= '1' && x.Data[1] <= '6' {
-			if t := text(x); t != "" {
-				found = t
+			if text(x) != "" {
+				found = x
 				return true
 			}
 		}
@@ -434,40 +601,8 @@ func title(item *html.Node, full string) string {
 		}
 		return false
 	}
-	if walk(item); found != "" {
-		return found
-	}
-	// No heading: the text of the linked element is the next best thing. A
-	// card often wraps its whole contents in the link, in which case that text
-	// is the item text and the cut below applies to it as well.
-	var linked string
-	var find func(*html.Node)
-	find = func(x *html.Node) {
-		if linked != "" {
-			return
-		}
-		if x.Type == html.ElementNode && x.Data != "link" && attr(x, "href") != "" {
-			linked = text(x)
-		}
-		for c := x.FirstChild; c != nil; c = c.NextSibling {
-			find(c)
-		}
-	}
-	find(item)
-	if linked == "" {
-		linked = full
-	}
-	// A title is a line, not a paragraph. An item that holds its full text
-	// would otherwise produce a title of several kilobytes.
-	const maxTitle = 120
-	if len(linked) > maxTitle {
-		cut := strings.LastIndex(linked[:maxTitle], " ")
-		if cut < maxTitle/2 {
-			cut = maxTitle
-		}
-		linked = strings.TrimSpace(linked[:cut])
-	}
-	return linked
+	walk(item)
+	return found
 }
 
 // dateRe matches the date formats the saved pages write. A written month is
