@@ -18,6 +18,11 @@ abstract interface class FeedRepository {
   /// `PUT /feeds` with `{ url }` → the subscribed feed (idempotent).
   Future<Feed> subscribe(String url);
 
+  /// `DELETE /feeds/{id}` → drops the current user's subscription. The feed
+  /// is shared across all users, so it is not deleted and its timeline stays
+  /// readable.
+  Future<void> unsubscribe(int id);
+
   /// `GET /feeds/{id}` → the feed header.
   Future<Feed> getFeed(int id);
 

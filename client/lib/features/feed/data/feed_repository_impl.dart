@@ -57,6 +57,11 @@ class const FeedRepositoryImpl(final Dio _dio) implements FeedRepository {
   }
 
   @override
+  Future<void> unsubscribe(int id) {
+    return runRequest(() => _dio.delete<void>('/feeds/$id'));
+  }
+
+  @override
   Future<Feed> getFeed(int id) {
     return runRequest(() async {
       final res = await _dio.get<Map<String, dynamic>>('/feeds/$id');
@@ -102,5 +107,6 @@ class const FeedRepositoryImpl(final Dio _dio) implements FeedRepository {
     siteUrl: f.siteUrl,
     iconUrl: f.iconUrl,
     description: f.description,
+    subscribed: f.subscribed,
   );
 }

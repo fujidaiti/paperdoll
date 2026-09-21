@@ -22,6 +22,7 @@ class _Feeds {
     iconUrl: 'https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif',
     title: 'BBC News',
     description: 'BBC News - News Front Page',
+    subscribed: true,
   );
 
   final nasa = api.Feed(
@@ -31,6 +32,7 @@ class _Feeds {
     title: 'NASA',
     description:
         'Official National Aeronautics and Space Administration Website',
+    subscribed: true,
   );
 
   final stackOverflow = api.Feed(
@@ -39,6 +41,7 @@ class _Feeds {
     siteUrl: 'https://stackoverflow.com/questions',
     title: 'Recent Questions - Stack Overflow',
     description: 'most recent 30 from stackoverflow.com',
+    subscribed: true,
   );
 
   final wikipedia = api.Feed(
@@ -47,6 +50,7 @@ class _Feeds {
     siteUrl: 'https://en.wikipedia.org/wiki/Special:RecentChanges',
     title: 'Wikipedia  - Recent changes [en]',
     description: 'Track the most recent changes to the wiki in this feed.',
+    subscribed: true,
   );
 }
 

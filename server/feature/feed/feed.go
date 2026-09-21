@@ -68,6 +68,25 @@ func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (F
 	return f, nil
 }
 
+// Unsubscribe drops the user's subscription to the feed. The feeds row is
+// shared across all users, so only the join row is deleted and the feed itself
+// stays intact. Reports false with no error if the user was not subscribed,
+// true otherwise.
+func (s *Service) Unsubscribe(ctx context.Context, uid user.UserID, feedID int) (bool, error) {
+	res, err := s.DB.ExecContext(ctx, `
+		DELETE FROM feed_subscriptions
+		WHERE user_id = $1 AND feed_id = $2;
+	`, uid, feedID)
+	if err != nil {
+		return false, err
+	}
+	n, err := res.RowsAffected()
+	if err != nil {
+		return false, err
+	}
+	return n != 0, nil
+}
+
 // SearchFeeds searches subscriptable feeds by the given query.
 func (s *Service) SearchFeeds(ctx context.Context, query string) ([]FeedAttrs, error) {
 	// TODO: Accept arbitrary keywards as a query

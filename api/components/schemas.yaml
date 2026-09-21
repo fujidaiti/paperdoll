@@ -1,6 +1,6 @@
 Feed:
   type: object
-  required: [id, url, title]
+  required: [id, url, title, subscribed]
   properties:
     id:
       type: integer
@@ -17,6 +17,9 @@ Feed:
       type: string
     description:
       type: string
+    subscribed:
+      description: Whether the calling user is subscribed to this feed.
+      type: boolean
 
 FeedCandidate:
   description:
