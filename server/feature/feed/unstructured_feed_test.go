@@ -1,9 +1,13 @@
 package feed
 
 import (
+	"bytes"
+	"encoding/json"
+	"flag"
 	"net/url"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"testing"
 
@@ -11,121 +15,176 @@ import (
 	"golang.org/x/net/html"
 )
 
-// The pages in testdata/ were saved with curl, without running any JavaScript,
-// so each file is what a plain HTTP client receives. The counts below are what
-// the method currently finds on them, measured page by page and described in
-// docs/html-feed-detection.md. They are not all correct results: bbc.com mixes
-// 19 section links into its 109 links, and the two pages that produce nothing
-// are client rendered. The numbers are here so that a change to the method
-// shows which pages it moves, and in which direction.
-var savedPages = map[string]struct {
-	url   string
-	lists int
-	posts int
-}{
-	"deepmind.google-research-publications.html": {"https://deepmind.google/research/publications/", 1, 30},
-	"claude.com-blog.html":                       {"https://claude.com/blog", 2, 23},
-	"developers.openai.com-blog.html":            {"https://developers.openai.com/blog", 1, 29},
-	"anthropic.com-news.html":                    {"https://www.anthropic.com/news", 2, 12},
-	"cursor.com-blog.html":                       {"https://cursor.com/blog", 4, 24},
-	"deepmind.google-blog.html":                  {"https://deepmind.google/blog/", 2, 24},
-	"paulgraham.com-articles.html":               {"https://www.paulgraham.com/articles.html", 1, 235},
-	"developer.apple.com-news.html":              {"https://developer.apple.com/news/", 1, 108},
-	// Its post items carry no link at all, so it holds nothing a feed can be
-	// built from.
-	"security.apple.com-blog.html": {"https://security.apple.com/blog/", 0, 0},
-	// Client rendered: the saved file holds no post.
-	"apple.com-newsroom.html":                    {"https://www.apple.com/newsroom/", 0, 0},
-	"github.blog-ai-and-ml.html":                 {"https://github.blog/ai-and-ml/", 2, 19},
-	"github.blog.html":                           {"https://github.blog/", 6, 27},
-	"bbc.com.html":                               {"https://www.bbc.com/", 19, 109},
-	"ycombinator.com-blog.html":                  {"https://www.ycombinator.com/blog", 5, 24},
-	"ycombinator.com-blog-tag-essay.html":        {"https://www.ycombinator.com/blog/tag/essay", 2, 10},
-	"blog.google.html":                           {"https://blog.google/", 2, 7},
-	"blog.google-feed.html":                      {"https://blog.google/feed/", 0, 0},
-	"aws.amazon.com-jp-blogs-news.html":          {"https://aws.amazon.com/jp/blogs/news/", 2, 11},
-	"flutter.dev-blog.html":                      {"https://flutter.dev/blog", 1, 284},
-	"go.dev-blog.html":                           {"https://go.dev/blog/", 2, 11},
-	"reddit.com-r-golang.html":                   {"https://www.reddit.com/r/golang/", 0, 0},
-	"qiita.com.html":                             {"https://qiita.com/", 2, 22},
-	"daily.bandcamp.com-features.html":           {"https://daily.bandcamp.com/features", 1, 30},
-	"daily.bandcamp.com-album-of-the-day.html":   {"https://daily.bandcamp.com/album-of-the-day", 1, 30},
-	"diggersfactory.com-vinyl-shop-new-ins.html": {"https://www.diggersfactory.com/vinyl-shop/293/new-ins", 5, 35},
+// update rewrites the fixture files from the current result instead of
+// comparing against them. Run it after a deliberate change to the method:
+//
+//	go test ./server/feature/feed/ -run TestDetectPostLists_SavedPages -update
+//
+// Read the diff before committing it. The fixtures are not all correct
+// results: bbc.com mixes section links into its posts, and the pages that are
+// rendered by JavaScript hold no post at all. They record what the method finds
+// today, so that a change shows which pages it moves and in which direction.
+var update = flag.Bool("update", false, "rewrite the fixture files in testdata/")
+
+// fixture is the expected result for one saved page. It lives next to the page
+// as <page>.fixture.json. url is the address the page was fetched from, which
+// is needed to resolve the links, and note says what is known to be wrong with
+// the result. Both are written by hand and kept when the fixture is rewritten.
+type fixture struct {
+	URL   string        `json:"url"`
+	Note  string        `json:"note,omitempty"`
+	Lists []fixtureList `json:"lists"`
 }
 
+type fixtureList struct {
+	ID       int           `json:"id"`
+	Selector string        `json:"selector"`
+	Score    float64       `json:"score"`
+	Posts    []fixturePost `json:"posts"`
+}
+
+type fixturePost struct {
+	URL       string `json:"url"`
+	Title     string `json:"title"`
+	Timestamp string `json:"timestamp,omitempty"`
+	ImageURL  string `json:"imageUrl,omitempty"`
+}
+
+// The pages in testdata/ were saved with curl, without running any JavaScript,
+// so each file is what a plain HTTP client receives. Every attribute of every
+// post is compared against the fixture of the page, so that a change to the
+// method shows the exact posts, titles, dates and images it adds, drops or
+// rewrites.
 func TestDetectPostLists_SavedPages(t *testing.T) {
-	for file, want := range savedPages {
-		t.Run(file, func(t *testing.T) {
-			lists, doc := detectFile(t, file, want.url)
-			if len(lists) != want.lists {
-				t.Errorf("got %d lists, want %d", len(lists), want.lists)
-			}
-			posts, seen := 0, map[string]bool{}
-			for i, l := range lists {
-				if l.ID != i+1 {
-					t.Errorf("list %d has ID %d, want %d", i, l.ID, i+1)
-				}
-				if i > 0 && l.Score > lists[i-1].Score {
-					t.Errorf("list %d scores %.1f, above the list before it (%.1f)", i, l.Score, lists[i-1].Score)
-				}
-				if len(l.Posts) < 1 {
-					t.Errorf("list %d holds no post", l.ID)
-				}
-				// The same post can be rendered twice on one page, as a grid
-				// and as a list. It must be reported once.
+	paths, err := filepath.Glob(filepath.Join("testdata", "*.fixture.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(paths) == 0 {
+		t.Fatal("no fixture found in testdata/")
+	}
+	sort.Strings(paths)
+
+	for _, path := range paths {
+		t.Run(filepath.Base(path), func(t *testing.T) {
+			want := readFixture(t, path)
+			page := strings.TrimSuffix(filepath.Base(path), ".fixture.json") + ".html"
+			lists, doc := detectFile(t, page, want.URL)
+			got := fixture{URL: want.URL, Note: want.Note, Lists: []fixtureList{}}
+			for _, l := range lists {
+				fl := fixtureList{ID: l.ID, Selector: l.Selector, Score: l.Score, Posts: []fixturePost{}}
 				for _, p := range l.Posts {
-					posts++
-					if !p.URL.IsAbs() {
-						t.Errorf("post URL %q is not absolute", p.URL.String())
+					fp := fixturePost{URL: p.URL.String(), Title: p.Title, Timestamp: p.Timestamp}
+					if p.ImageURL != nil {
+						fp.ImageURL = p.ImageURL.String()
 					}
-					if seen[p.URL.String()] {
-						t.Errorf("post URL %q is reported twice", p.URL.String())
-					}
-					seen[p.URL.String()] = true
-					if p.Node == nil {
-						t.Errorf("post %q carries no node", p.URL.String())
-					}
+					fl.Posts = append(fl.Posts, fp)
 				}
-				// The selector has to find the posts again, so that a caller
-				// can re-read this list from a later copy of the page.
-				matched := map[*html.Node]bool{}
-				goquery.NewDocumentFromNode(doc).Find(l.Selector).Each(func(_ int, s *goquery.Selection) {
-					matched[s.Nodes[0]] = true
-				})
-				for _, p := range l.Posts {
-					if !matched[p.Node] {
-						t.Errorf("selector %q does not match the post %q", l.Selector, p.URL.String())
-						break
-					}
-				}
+				got.Lists = append(got.Lists, fl)
 			}
-			if posts != want.posts {
-				t.Errorf("got %d posts, want %d", posts, want.posts)
+
+			if *update {
+				writeFixture(t, path, got)
+				return
+			}
+
+			checkStructure(t, lists, doc)
+			if len(got.Lists) != len(want.Lists) {
+				t.Errorf("got %d lists, want %d", len(got.Lists), len(want.Lists))
+			}
+			for i := range got.Lists {
+				if i >= len(want.Lists) {
+					t.Errorf("list %d is not in the fixture: selector %q, %d posts",
+						i+1, got.Lists[i].Selector, len(got.Lists[i].Posts))
+					continue
+				}
+				comparePosts(t, got.Lists[i], want.Lists[i])
 			}
 		})
 	}
 }
 
-// The attributes are best effort, so they are measured on the pages that
-// publish them rather than required everywhere.
-func TestDetectPostLists_PostAttributes(t *testing.T) {
-	lists, _ := detectFile(t, "go.dev-blog.html", "https://go.dev/blog/")
-	var got *Post
-	for _, l := range lists {
-		for i, p := range l.Posts {
-			if strings.HasSuffix(p.URL.Path, "/blog/size-specialized-allocations") {
-				got = &l.Posts[i]
-			}
+// comparePosts reports every difference between one detected list and the list
+// the fixture expects, post by post, so that a failure names the posts that
+// changed rather than only the number of them.
+func comparePosts(t *testing.T, got, want fixtureList) {
+	t.Helper()
+	if got.ID != want.ID {
+		t.Errorf("list %d: got ID %d, want %d", want.ID, got.ID, want.ID)
+	}
+	if got.Selector != want.Selector {
+		t.Errorf("list %d: got selector %q, want %q", want.ID, got.Selector, want.Selector)
+	}
+	if got.Score != want.Score {
+		t.Errorf("list %d: got score %v, want %v", want.ID, got.Score, want.Score)
+	}
+	if len(got.Posts) != len(want.Posts) {
+		t.Errorf("list %d: got %d posts, want %d", want.ID, len(got.Posts), len(want.Posts))
+	}
+	for i := 0; i < len(got.Posts) && i < len(want.Posts); i++ {
+		g, w := got.Posts[i], want.Posts[i]
+		if g.URL != w.URL {
+			t.Errorf("list %d post %d: got URL %q, want %q", want.ID, i, g.URL, w.URL)
+		}
+		if g.Title != w.Title {
+			t.Errorf("list %d post %d (%s): got title %q, want %q", want.ID, i, w.URL, g.Title, w.Title)
+		}
+		if g.Timestamp != w.Timestamp {
+			t.Errorf("list %d post %d (%s): got timestamp %q, want %q", want.ID, i, w.URL, g.Timestamp, w.Timestamp)
+		}
+		if g.ImageURL != w.ImageURL {
+			t.Errorf("list %d post %d (%s): got image %q, want %q", want.ID, i, w.URL, g.ImageURL, w.ImageURL)
 		}
 	}
-	if got == nil {
-		t.Fatal("the post size-specialized-allocations was not detected")
+	for i := len(got.Posts); i < len(want.Posts); i++ {
+		t.Errorf("list %d post %d (%s) was not detected", want.ID, i, want.Posts[i].URL)
 	}
-	if want := "Size-Specialized Memory Allocation"; got.Title != want {
-		t.Errorf("got title %q, want %q", got.Title, want)
+	for i := len(want.Posts); i < len(got.Posts); i++ {
+		t.Errorf("list %d post %d (%s) is not in the fixture", want.ID, i, got.Posts[i].URL)
 	}
-	if want := "16 September 2026"; got.Timestamp != want {
-		t.Errorf("got timestamp %q, want %q", got.Timestamp, want)
+}
+
+// checkStructure verifies what holds for every page, whatever its fixture says:
+// the lists are numbered and ordered, every post carries an absolute URL and
+// the node it was read from, no URL is reported twice, and the selector of a
+// list finds its posts again in the document.
+func checkStructure(t *testing.T, lists []PostList, doc *html.Node) {
+	t.Helper()
+	seen := map[string]bool{}
+	for i, l := range lists {
+		if l.ID != i+1 {
+			t.Errorf("list %d has ID %d, want %d", i, l.ID, i+1)
+		}
+		if i > 0 && l.Score > lists[i-1].Score {
+			t.Errorf("list %d scores %.1f, above the list before it (%.1f)", i, l.Score, lists[i-1].Score)
+		}
+		if len(l.Posts) < 1 {
+			t.Errorf("list %d holds no post", l.ID)
+		}
+		for _, p := range l.Posts {
+			if !p.URL.IsAbs() {
+				t.Errorf("post URL %q is not absolute", p.URL.String())
+			}
+			// The same post can be rendered twice on one page, as a grid and
+			// as a list. It must be reported once.
+			if seen[p.URL.String()] {
+				t.Errorf("post URL %q is reported twice", p.URL.String())
+			}
+			seen[p.URL.String()] = true
+			if p.Node == nil {
+				t.Errorf("post %q carries no node", p.URL.String())
+			}
+		}
+		matched := map[*html.Node]bool{}
+		goquery.NewDocumentFromNode(doc).Find(l.Selector).Each(func(_ int, s *goquery.Selection) {
+			matched[s.Nodes[0]] = true
+		})
+		for _, p := range l.Posts {
+			if !matched[p.Node] {
+				t.Errorf("selector %q does not match the post %q", l.Selector, p.URL.String())
+				break
+			}
+		}
 	}
 }
 
@@ -219,6 +278,38 @@ func TestDetectPostLists_IgnoresNavigationAndFooter(t *testing.T) {
 	}
 	if len(lists) != 0 {
 		t.Errorf("got %d lists, want none", len(lists))
+	}
+}
+
+func readFixture(t *testing.T, path string) fixture {
+	t.Helper()
+	b, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var f fixture
+	if err := json.Unmarshal(b, &f); err != nil {
+		t.Fatalf("read %s: %v", path, err)
+	}
+	if f.URL == "" {
+		t.Fatalf("%s carries no url", path)
+	}
+	return f
+}
+
+func writeFixture(t *testing.T, path string, f fixture) {
+	t.Helper()
+	// The default encoder escapes "<", ">" and "&", which would make every
+	// selector in the file unreadable.
+	var b bytes.Buffer
+	enc := json.NewEncoder(&b)
+	enc.SetEscapeHTML(false)
+	enc.SetIndent("", "  ")
+	if err := enc.Encode(f); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, b.Bytes(), 0o644); err != nil {
+		t.Fatal(err)
 	}
 }
 

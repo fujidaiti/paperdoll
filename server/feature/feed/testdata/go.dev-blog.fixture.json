@@ -1,0 +1,65 @@
+{
+  "url": "https://go.dev/blog/",
+  "posts": [
+    {
+      "url": "https://go.dev/blog/size-specialized-allocations",
+      "title": "Size-Specialized Memory Allocation",
+      "description": "Go 1.27 improves performance of small allocations using size-specialized allocation functions.",
+      "timestamp": "16 September 2026"
+    },
+    {
+      "url": "https://go.dev/blog/goroutine-leak-profiles",
+      "title": "Goroutine Leak Profiles",
+      "description": "Go 1.27 includes new goroutine leak profiles.",
+      "timestamp": "2 September 2026"
+    },
+    {
+      "url": "https://go.dev/blog/generic-methods",
+      "title": "Generic Methods",
+      "description": "Go 1.27 adds generic methods—a highly desired language feature.",
+      "timestamp": "26 August 2026"
+    },
+    {
+      "url": "https://go.dev/blog/go1.27",
+      "title": "Go 1.27 is released",
+      "description": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more.",
+      "timestamp": "19 August 2026"
+    },
+    {
+      "url": "https://go.dev/blog/pkgsite-api",
+      "title": "Introducing the pkg.go.dev API",
+      "description": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly.",
+      "timestamp": "21 May 2026"
+    },
+    {
+      "url": "https://go.dev/blog/type-construction-and-cycle-detection",
+      "title": "Type Construction and Cycle Detection",
+      "description": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types.",
+      "timestamp": "24 March 2026"
+    },
+    {
+      "url": "https://go.dev/blog/inliner",
+      "title": "//go:fix inline and the source-level inliner",
+      "description": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations.",
+      "timestamp": "10 March 2026"
+    },
+    {
+      "url": "https://go.dev/blog/allocation-optimizations",
+      "title": "Allocating on the Stack",
+      "description": "A description of some of the recent changes to do allocations on the stack instead of the heap.",
+      "timestamp": "27 February 2026"
+    },
+    {
+      "url": "https://go.dev/blog/gofix",
+      "title": "Using go fix to modernize Go code",
+      "description": "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go.",
+      "timestamp": "17 February 2026"
+    },
+    {
+      "url": "https://go.dev/blog/go1.26",
+      "title": "Go 1.26 is released",
+      "description": "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more.",
+      "timestamp": "10 February 2026"
+    }
+  ]
+}
