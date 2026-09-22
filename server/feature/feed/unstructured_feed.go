@@ -75,11 +75,10 @@ type PostList struct {
 // the same items as a grid and as a list, is kept in the higher scoring one
 // only.
 func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
-	doc, err := html.Parse(r)
+	doc, err := sanitize(r)
 	if err != nil {
-		return nil, fmt.Errorf("parse page: %w", err)
+		return nil, err
 	}
-	cleanup(doc, false)
 
 	var lists []PostList
 	var walk func(*html.Node)
@@ -364,6 +363,17 @@ var dropElements = map[string]bool{
 // <header> is the page banner.
 var sectioning = map[string]bool{
 	"article": true, "aside": true, "main": true, "nav": true, "section": true,
+}
+
+// sanitize parses a page and removes everything from it that cannot hold a
+// post; see cleanup for what is removed and why.
+func sanitize(r io.Reader) (*html.Node, error) {
+	doc, err := html.Parse(r)
+	if err != nil {
+		return nil, fmt.Errorf("parse page: %w", err)
+	}
+	cleanup(doc, false)
+	return doc, nil
 }
 
 // cleanup removes, in place, everything that cannot hold a post: the site
