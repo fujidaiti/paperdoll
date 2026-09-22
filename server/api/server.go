@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -363,6 +364,121 @@ type feedAttrsSchema struct {
 	IconURL     string `json:"icon_url,omitempty"`
 	Title       string `json:"title"`
 	Description string `json:"description,omitempty"`
+	// PostGroups is only set by the search, and only for an HTML page that
+	// publishes no feed.
+	PostGroups []postGroupSchema `json:"post_groups,omitempty"`
+}
+
+type postGroupSchema struct {
+	ID       int                        `json:"id"`
+	Selector string                     `json:"selector"`
+	Count    int                        `json:"count"`
+	Sampled  int                        `json:"sampled"`
+	Links    []attributeCandidateSchema `json:"links"`
+	Texts    []attributeCandidateSchema `json:"texts"`
+	Images   []attributeCandidateSchema `json:"images"`
+}
+
+type attributeCandidateSchema struct {
+	Selector string                 `json:"selector"`
+	Values   []attributeValueSchema `json:"values"`
+}
+
+type attributeValueSchema struct {
+	Value string `json:"value,omitempty"`
+	Alt   string `json:"alt,omitempty"`
+}
+
+// sampleSize is how many items of a group the response describes, before the
+// rule in postGroups adds more.
+const sampleSize = 3
+
+// postGroups turns the enumeration, which answers per item, into the response,
+// which answers per selector. One row of the response is one key, and it holds
+// the value that key produces in each sampled item, so the client can show a
+// preview of item i by reading index i of every row.
+func postGroups(gs []feed.Group) []postGroupSchema {
+	out := make([]postGroupSchema, 0, len(gs))
+	for i, g := range gs {
+		// The sample starts with the first items and then grows to cover every
+		// key of the group. Without the second part, a key that only the eighth
+		// item carries, such as a description that most posts leave out, would
+		// be a row of empty values, and the user could neither tell what it is
+		// nor decide whether to pick it.
+		var sample []int
+		carried := map[string]bool{}
+		for j, p := range g.Posts {
+			take := j < sampleSize
+			for _, a := range attributesOf(p) {
+				if !carried[a.Selector] {
+					take = true
+				}
+			}
+			if !take {
+				continue
+			}
+			for _, a := range attributesOf(p) {
+				carried[a.Selector] = true
+			}
+			sample = append(sample, j)
+		}
+
+		s := postGroupSchema{
+			ID:       i,
+			Selector: g.Selector,
+			Count:    len(g.Posts),
+			Sampled:  len(sample),
+		}
+		for _, f := range []struct {
+			pick func(feed.PostCandidate) []feed.Attribute
+			into *[]attributeCandidateSchema
+		}{
+			{func(p feed.PostCandidate) []feed.Attribute { return p.Links }, &s.Links},
+			{func(p feed.PostCandidate) []feed.Attribute { return p.Texts }, &s.Texts},
+			{func(p feed.PostCandidate) []feed.Attribute { return p.Images }, &s.Images},
+		} {
+			// The rows follow the order in which the keys first appear over
+			// all the items, not only the sampled ones.
+			var keys []string
+			seen := map[string]bool{}
+			for _, p := range g.Posts {
+				for _, a := range f.pick(p) {
+					if !seen[a.Selector] {
+						seen[a.Selector] = true
+						keys = append(keys, a.Selector)
+					}
+				}
+			}
+			rows := make([]attributeCandidateSchema, 0, len(keys))
+			for _, k := range keys {
+				row := attributeCandidateSchema{
+					Selector: k,
+					Values:   make([]attributeValueSchema, 0, len(sample)),
+				}
+				for _, j := range sample {
+					// An item that does not carry the key produces an empty
+					// entry rather than a shorter array, so that every row has
+					// the same length and index i is always item i.
+					var v attributeValueSchema
+					for _, a := range f.pick(g.Posts[j]) {
+						if a.Selector == k {
+							v = attributeValueSchema{Value: a.Value, Alt: a.Alt}
+							break
+						}
+					}
+					row.Values = append(row.Values, v)
+				}
+				rows = append(rows, row)
+			}
+			*f.into = rows
+		}
+		out = append(out, s)
+	}
+	return out
+}
+
+func attributesOf(p feed.PostCandidate) []feed.Attribute {
+	return slices.Concat(p.Links, p.Texts, p.Images)
 }
 
 type feedSchema struct {
@@ -656,7 +772,11 @@ func (h *Handler) searchFeeds(w http.ResponseWriter, r *http.Request) {
 
 	res := searchFeedsResBody{Feeds: []feedAttrsSchema{}}
 	for _, f := range fs {
-		a := feedAttrsSchema{URL: f.URL.String(), Title: f.Title}
+		a := feedAttrsSchema{
+			URL:        f.URL.String(),
+			Title:      f.Title,
+			PostGroups: postGroups(f.Groups),
+		}
 		if u := f.SiteURL; u != nil {
 			a.SiteURL = u.String()
 		}
@@ -681,6 +801,18 @@ func (h *Handler) searchFeeds(w http.ResponseWriter, r *http.Request) {
 
 type subscribeToFeedReqBody struct {
 	URL string `json:"url"`
+	// Selectors is set only for an HTML page that publishes no feed, one entry
+	// per group the user ticked.
+	Selectors []postSelectorsSchema `json:"selectors"`
+}
+
+type postSelectorsSchema struct {
+	Root        string `json:"root"`
+	Link        string `json:"link"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Image       string `json:"image"`
+	Timestamp   string `json:"timestamp"`
 }
 
 type subscribeToFeedResBody struct {
@@ -708,9 +840,32 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusUnauthorized, "unauthorized")
 	}
 
-	fd, err := h.FeedService.Subscribe(ctx, uid, *u)
+	sets := make([]feed.Selectors, 0, len(b.Selectors))
+	for _, s := range b.Selectors {
+		if s.Root == "" || s.Link == "" {
+			serverError(w, http.StatusBadRequest, "A selector set needs both a root and a link")
+			return
+		}
+		sets = append(sets, feed.Selectors{
+			Root:        s.Root,
+			Link:        s.Link,
+			Title:       s.Title,
+			Description: s.Description,
+			Image:       s.Image,
+			Timestamp:   s.Timestamp,
+		})
+	}
+
+	fd, err := h.FeedService.Subscribe(ctx, uid, *u, sets)
 	if err != nil {
 		fmt.Print(err)
+		// The selectors were read against the page the server just fetched, so
+		// a set that produces no post is the client's mistake rather than a
+		// server fault. Saving it would create a feed that stays empty forever.
+		if errors.Is(err, feed.ErrSelectors) {
+			serverError(w, http.StatusBadRequest, err.Error())
+			return
+		}
 		serverError(w, http.StatusInternalServerError, "Failed to subscribe to feed")
 		return
 	}

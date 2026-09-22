@@ -25,13 +25,13 @@ class PostGroup {
   /// Identifies the group inside this `FeedCandidate`. It is assigned per response and is not stored, so it must not be sent back to the server.
   int id;
 
-  /// CSS selector matching the items of the group in the fetched page. Send it back as `root` in `PUT /feeds`.
+  /// The key of the group in the fetched page, written by the server. It reads as a CSS selector and is meant to stay readable, but it is not one. The server never compiles it. It reads the page again and compares it with the keys that reading writes, so the client must send it back as `root` in `PUT /feeds` exactly as it arrived.
   String selector;
 
   /// How many items the group holds in the fetched page.
   int count;
 
-  /// How many of those items the `values` arrays below describe. The server samples the first few items of the group, so `sampled` is at most `count`.
+  /// How many of those items the `values` arrays below describe, at most `count`. The sample always covers every candidate below. An item that carries a selector no other sampled item carries is added to the sample. Without that rule a selector only a few items carry, such as a description that most posts leave out, would show an empty row and could not be chosen.
   int sampled;
 
   /// The candidate selectors for the post link, that is, elements carrying an `href`. A group with no link candidate cannot be subscribed to, because a post without a URL cannot be stored.

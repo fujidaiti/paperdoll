@@ -34,7 +34,7 @@ func seedFeedSuit_BbcNews(ctx context.Context, db *sql.DB) error {
 	testenv.StubHTTP("feeds.bbci.co.uk", "/news/rss.xml", "./testdata/bbc_news_rss.xml")
 
 	svc := feed.NewService(db, scraper.NewService(stubServerAddr))
-	f, err := svc.Subscribe(ctx, uid, *must(url.Parse("http://feeds.bbci.co.uk/news/rss.xml")))
+	f, err := svc.Subscribe(ctx, uid, *must(url.Parse("http://feeds.bbci.co.uk/news/rss.xml")), nil)
 	if err != nil {
 		return err
 	}

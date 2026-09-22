@@ -120,7 +120,7 @@ class _FeedCandidates {
   // What /feeds/search returns for a plain HTML page with no feed. Each group
   // exercises a different rule of the subscription flow:
   // - group 0 is the normal path: one link candidate, so the link question
-  //   is skipped, and a `time` row that does not reach every post.
+  //   is skipped, and a `p` row that only one of the sampled items carries.
   // - group 1 has no link candidate, so it cannot be ticked.
   // - group 2 has two link candidates, so the link question is asked.
   final exampleBlog = api.FeedCandidate(
@@ -132,39 +132,53 @@ class _FeedCandidates {
         id: 0,
         selector: 'main > article',
         count: 24,
-        sampled: 2,
+        // Three sampled items rather than two, because the third is the one
+        // that carries the `p` row. The server grows the sample until every
+        // row it reports has a value somewhere in it.
+        sampled: 3,
         links: [
           api.AttributeCandidate(
             selector: ':scope',
-            matched: 24,
             values: [
               api.AttributeValue(value: 'https://blog.example.com/posts/1'),
               api.AttributeValue(value: 'https://blog.example.com/posts/2'),
+              api.AttributeValue(value: 'https://blog.example.com/posts/3'),
             ],
           ),
         ],
         texts: [
           api.AttributeCandidate(
             selector: 'div > h3',
-            matched: 24,
             values: [
               api.AttributeValue(value: 'Why we moved to a monorepo'),
               api.AttributeValue(value: 'Notes from the September release'),
+              api.AttributeValue(value: 'A week of incident reviews'),
             ],
           ),
           api.AttributeCandidate(
             selector: 'div > time',
-            matched: 23,
             values: [
               api.AttributeValue(value: '2026-09-12'),
               api.AttributeValue(value: '2026-09-03'),
+              api.AttributeValue(value: '2026-08-28'),
+            ],
+          ),
+          // The optional description. Only the third post carries it, so the
+          // first two entries are empty.
+          api.AttributeCandidate(
+            selector: 'p',
+            values: [
+              api.AttributeValue(),
+              api.AttributeValue(),
+              api.AttributeValue(
+                value: 'What three days of incident reviews taught us.',
+              ),
             ],
           ),
         ],
         images: [
           api.AttributeCandidate(
             selector: 'img',
-            matched: 24,
             values: [
               api.AttributeValue(
                 value: 'https://blog.example.com/images/1.png',
@@ -173,6 +187,10 @@ class _FeedCandidates {
               api.AttributeValue(
                 value: 'https://blog.example.com/images/2.png',
                 alt: 'The release banner',
+              ),
+              api.AttributeValue(
+                value: 'https://blog.example.com/images/3.png',
+                alt: 'A wall of sticky notes',
               ),
             ],
           ),
@@ -186,7 +204,6 @@ class _FeedCandidates {
         texts: [
           api.AttributeCandidate(
             selector: ':scope',
-            matched: 6,
             values: [
               api.AttributeValue(value: 'Engineering'),
               api.AttributeValue(value: 'Announcements'),
@@ -202,7 +219,6 @@ class _FeedCandidates {
         links: [
           api.AttributeCandidate(
             selector: 'a.headline',
-            matched: 10,
             values: [
               api.AttributeValue(value: 'https://blog.example.com/news/1'),
               api.AttributeValue(value: 'https://blog.example.com/news/2'),
@@ -210,7 +226,6 @@ class _FeedCandidates {
           ),
           api.AttributeCandidate(
             selector: 'a.more',
-            matched: 10,
             values: [
               api.AttributeValue(value: 'https://blog.example.com/news/1#more'),
               api.AttributeValue(value: 'https://blog.example.com/news/2#more'),
@@ -220,7 +235,6 @@ class _FeedCandidates {
         texts: [
           api.AttributeCandidate(
             selector: 'a.headline',
-            matched: 10,
             values: [
               api.AttributeValue(value: 'Office hours move to Thursdays'),
               api.AttributeValue(value: 'New contributors this month'),

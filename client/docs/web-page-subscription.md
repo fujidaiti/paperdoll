@@ -62,9 +62,9 @@ Three ideas carry the whole design.
   at most five selector strings (`link`, `title`, `description`, `image`,
   `timestamp`). There is no per-post state anywhere.
 - **The preview is built by index.** `AttributeCandidate.values` holds exactly
-  `PostGroup.sampled` entries, in item order. The preview of item _i_ is built
-  by reading `values[i]` of each selected row, so the same data drives the
-  preview and the rows.
+  `PostGroup.sampled` entries, in the order of the sampled items. The preview of
+  sampled item _i_ is built by reading `values[i]` of each selected row, so the
+  same data drives the preview and the rows.
 
 ## The API the client codes against
 
@@ -81,15 +81,16 @@ PostGroup
   id        int              unique inside this response, not stored server side
   selector  String           send back as PostSelectors.root
   count     int              how many items the group holds in the page
-  sampled   int              how many items the values arrays describe
+  sampled   int              how many items the values arrays describe. The
+                             server picks those items so that every candidate
+                             below appears in at least one of them
   links     List<AttributeCandidate>
   texts     List<AttributeCandidate>   title, description and timestamp come from here
   images    List<AttributeCandidate>
 
 AttributeCandidate
   selector  String           relative to the item, ":scope" means the item itself
-  matched   int              how many of the group's count items it reaches
-  values    List<AttributeValue>   exactly `sampled` entries, in item order
+  values    List<AttributeValue>   exactly `sampled` entries, in sampled item order
 
 AttributeValue
   value     String?          text, resolved href, or resolved image URL. Null when
@@ -123,10 +124,13 @@ Two properties of the response shape matter for the UI:
 - **`post_groups` is not capped.** The server returns every group it found,
   which reaches 135 on one of the measured pages. The list must be rendered
   lazily (`ListView.builder`) and must never be loaded into a `Column`.
-- **`matched` may be lower than `count`.** On six of the measured pages the best
-  selector does not reach every item of its group. The row has to show that, for
-  example "reaches 89 of 103 posts", because it is the user's only warning that
-  the choice will leave some posts incomplete.
+- **A row may be empty for some sampled items.** A group holds posts that carry
+  a description and posts that do not, and the same is true of any other
+  attribute. The server guarantees only that every row has a value in at least
+  one sampled item, so a row widget must handle a null `value` and still render
+  the row. The preview therefore shows the first two entries that carry a value,
+  not the first two entries: a description that only the third sampled post has
+  would otherwise show as two empty lines.
 
 ## Screens
 
@@ -159,8 +163,8 @@ timestamp, then image. Each step shows the same body, only the question and the
 source list change.
 
 - the question, for example "Which row holds the title?",
-- one selectable row per `AttributeCandidate`, showing its first two values, and
-  the coverage line when `matched < count`,
+- one selectable row per `AttributeCandidate`, showing its first two values that
+  are not null,
 - a "None of them" action, which stores null for that attribute and moves on,
 - Back and Next.
 
@@ -189,10 +193,8 @@ The tasks are ordered so that tasks 2 to 5 can be written in parallel once task
 - `FeedCandidate` gains `List<PostGroup> postGroups`.
 - `FeedRepository.subscribe` gains `{List<PostSelectors> selectors = const []}`;
   `FeedRepositoryImpl` maps the new fields in both directions.
-- Extend `test/src/fixture.dart` with a candidate that carries post groups, for
-  example a two-group page where one group has two text candidates and one image
-  candidate, and a second group with no links. Every later task stubs against
-  this fixture.
+- Extend `test/src/fixture.dart` with the candidate described in "Test plan"
+  below. Every later task stubs against it, so it has to land with this task.
 
 **2. Selection state.**
 
@@ -218,21 +220,88 @@ The tasks are ordered so that tasks 2 to 5 can be written in parallel once task
 
 - Route `feedSubscriptionAttributes`, path `groups/:groupId`, under the route
   from task 3.
-- The step list, the row widget with the coverage line, "None of them", Back and
-  Next.
+- The step list, the row widget, "None of them", Back and Next.
 - Debug keys: `attributePickerScreen`, `attributeRow(String selector)`,
   `attributeNoneButton`, `attributeNextButton`.
 
-**5. Widget tests, in `test/features/feed_test.dart`.**
+**5. Widget tests, in `test/features/feed_test.dart`.** Written from the "Test
+plan" section below.
 
-- Subscribe to a page with no feed, choosing a title and an image. Assert the
-  `PUT /feeds` body with an exact `bodyMatcher`, which is the real contract
-  check here.
-- A group with no link candidate cannot be ticked.
-- Choices survive going back to screen 1 and returning to screen 2.
-- A 400 keeps the user on the screen and shows the message.
-- The existing "Subscribe to a known web feed" test must keep passing unchanged,
-  which is how the one-tap path is protected.
+## Test plan
+
+Widget tests only. There is no E2E test for this flow: the real value of an E2E
+run here would be checking that a selector extracts what the user expected, and
+that is decided by the Go detector and covered by its own fixtures, not by the
+app.
+
+### The fixture
+
+Every test boots the same candidate, added to `test/src/fixture.dart` in task 1.
+It carries three groups, each one chosen to exercise a different rule:
+
+| group | shape                                                                                                                                                                                           | exists to test                                                 |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| 0     | 24 items, `sampled: 3`, one link (`:scope`), three texts (`div > h3` with a value in every sampled item, `div > time` likewise, and `p` with a value in the third sampled item only), one image | the normal path, and a row that is empty in some sampled items |
+| 1     | 6 items, `links: []`                                                                                                                                                                            | a group that cannot be ticked                                  |
+| 2     | 10 items, two link candidates                                                                                                                                                                   | the link step, which is skipped for group 0                    |
+
+One fixture for all of the tests keeps each test short: it says what the user
+taps and nothing else.
+
+### The tests
+
+Named after the use case, as `test/README.md` requires.
+
+1. **Subscribe to a web page with no feed.** The whole path: search, tap the
+   result, tick group 0, open it, choose the `h3` row as the title, "None of
+   them" for the description, the `time` row for the timestamp, the image row,
+   return, Subscribe. Capture the `PUT /feeds` body in an `onPut` responder and
+   compare it with `expect(sentBody, {...})`, that is full equality rather than
+   `bodyMatcher`, because the point of this test is that no extra and no missing
+   selector is sent. Then assert the new feed appears in the feed list. Covers
+   criteria 2, 3 and 6.
+2. **Skip the link question when the group offers one link.** Open group 0 and
+   assert the first question is the title. Open group 2 and assert the first
+   question is the link. This is the only behaviour in the flow that changes the
+   number of steps, so it gets its own test.
+3. **Keep the choices when a group is unticked and ticked again.** Choose a
+   title for group 0, untick the group, tick it again, reopen it, and assert the
+   title row is still selected. Criterion 5.
+4. **Keep the choices when returning from the attribute screen.** Choose a
+   title, go back to screen 1, assert the group preview shows that title and not
+   the other text rows, then reopen and assert the row is still selected.
+   Criterion 5 and the preview rule.
+5. **A group with no link cannot be subscribed to.** Assert group 1's checkbox
+   does not tick when tapped, and that Subscribe stays disabled when it is the
+   only group the user tried to pick. Criterion 4.
+6. **Show a row that only some posts carry.** Assert that the `p` row of group 0
+   is offered, although it has a value in one sampled item only, and that
+   choosing it sends its selector. This is the row a naive preview would drop.
+7. **A text already chosen as the title is not offered as the description.**
+   Choose `h3` as the title, move to the description step, assert that row is
+   absent and the `time` row is present.
+8. **Report a rejected selector set.** Stub `PUT /feeds` with 400 and an `Error`
+   body. Assert the message appears, the user is still on screen 1, the group is
+   still ticked, and the chosen title is still in the preview. Criterion 7.
+9. **Subscribe to a known web feed**, the test that exists today, unchanged. It
+   is what protects criterion 1, so it must not be edited while this work is
+   done.
+
+Criteria 4 and 7 are the two that are easy to leave untested, because both are
+error paths. Tests 5 and 8 exist for them.
+
+### What is not a widget test
+
+Building the request body from several ticked groups. Test 1 covers one group
+through the UI, and doing the two-group and three-group cases the same way means
+a long sequence of taps for what is a pure mapping. Put those in a plain
+`test()` group in the same file, driving the `SubscriptionDraft` notifier
+directly: two ticked groups produce two `selectors` entries in group order, a
+group with no chosen attributes produces `root` and `link` only, and an unticked
+group produces nothing.
+
+The rendering cost of a list of 135 groups is not tested either. It is checked
+by reading the code for `ListView.builder`.
 
 ## Decisions taken, so nobody has to ask
 
@@ -246,12 +315,16 @@ The tasks are ordered so that tasks 2 to 5 can be written in parallel once task
   selector. Everything shown comes from the search response.
 - **Image previews use the `value` of an `images` row directly.** It is an
   absolute URL, resolved by the server.
-- **Sampled items are few.** Show at most two in a preview, and expect `sampled`
-  to be small. Do not write code that assumes it equals `count`.
+- **Sampled items are few, but not always.** Show at most two in a preview. On
+  most pages `sampled` is 3, and on a group that mixes item shapes it reaches
+  48, because the server grows the sample until it covers every row. Do not
+  write code that assumes it equals `count`, and do not assume it is small
+  enough to render all of it.
+- **No coverage warning.** An earlier draft showed "reaches 89 of 103 posts" on
+  a row. The server no longer reports that number, and the feature is dropped.
 
 ## Open points
 
-- The wording of the coverage line is not fixed. "Reaches 89 of 103 posts" is
-  the placeholder used above.
-- Whether a group with `matched < count` on the link row should warn before
-  subscribing is undecided. The server accepts it.
+- The search response of a large page is a few hundred kilobytes, and 704 KB on
+  the largest measured page. Screen 1 renders it lazily, so this is a transfer
+  and parse cost rather than a rendering one, and nothing is done about it yet.

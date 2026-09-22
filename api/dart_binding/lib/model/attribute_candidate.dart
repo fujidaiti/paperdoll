@@ -14,17 +14,13 @@ class AttributeCandidate {
   /// Returns a new [AttributeCandidate] instance.
   AttributeCandidate({
     required this.selector,
-    required this.matched,
     this.values = const [],
   });
 
-  /// Selector relative to the group item. `:scope` means the item element itself, which happens when the whole card is a link.
+  /// The key of one element inside the items of the group, relative to the item. `:scope` means the item element itself, which happens when the whole card is a link. Like `PostGroup.selector`, it is sent back unchanged.
   String selector;
 
-  /// How many of the group's `count` items this selector reaches. A value lower than `count` means the choice leaves some posts without this attribute, which the client shows as a warning on the row.
-  int matched;
-
-  /// What the selector produces in each sampled item, in the same order as the items. The array holds exactly `sampled` entries, so the client can build the preview of item _i_ by reading index _i_ of every row. An entry with no `value` means the selector reaches nothing in that item.
+  /// What the selector produces in each sampled item, in the order of the sampled items. The array holds exactly `sampled` entries, so the client can build the preview of sampled item _i_ by reading index _i_ of every row. An entry with no `value` means the selector reaches nothing in that item, which happens for a selector only some items of the group carry.
   List<AttributeValue> values;
 
   @override
@@ -32,22 +28,19 @@ class AttributeCandidate {
       identical(this, other) ||
       other is AttributeCandidate &&
           other.selector == selector &&
-          other.matched == matched &&
           _deepEquality.equals(other.values, values);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (selector.hashCode) + (matched.hashCode) + (values.hashCode);
+      (selector.hashCode) + (values.hashCode);
 
   @override
-  String toString() =>
-      'AttributeCandidate[selector=$selector, matched=$matched, values=$values]';
+  String toString() => 'AttributeCandidate[selector=$selector, values=$values]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'selector'] = this.selector;
-    json[r'matched'] = this.matched;
     json[r'values'] = this.values;
     return json;
   }
@@ -67,10 +60,6 @@ class AttributeCandidate {
             'Required key "AttributeCandidate[selector]" is missing from JSON.');
         assert(json[r'selector'] != null,
             'Required key "AttributeCandidate[selector]" has a null value in JSON.');
-        assert(json.containsKey(r'matched'),
-            'Required key "AttributeCandidate[matched]" is missing from JSON.');
-        assert(json[r'matched'] != null,
-            'Required key "AttributeCandidate[matched]" has a null value in JSON.');
         assert(json.containsKey(r'values'),
             'Required key "AttributeCandidate[values]" is missing from JSON.');
         assert(json[r'values'] != null,
@@ -80,7 +69,6 @@ class AttributeCandidate {
 
       return AttributeCandidate(
         selector: mapValueOfType<String>(json, r'selector')!,
-        matched: mapValueOfType<int>(json, r'matched')!,
         values: AttributeValue.listFromJson(json[r'values']),
       );
     }
@@ -139,7 +127,6 @@ class AttributeCandidate {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'selector',
-    'matched',
     'values',
   };
 }

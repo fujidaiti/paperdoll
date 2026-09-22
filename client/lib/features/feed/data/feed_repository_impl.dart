@@ -124,7 +124,6 @@ class const FeedRepositoryImpl(final Dio _dio) implements FeedRepository {
   AttributeCandidate _toAttributeCandidate(api.AttributeCandidate c) =>
       AttributeCandidate(
         selector: c.selector,
-        matched: c.matched,
         values: c.values
             .map((v) => AttributeValue(value: v.value, alt: v.alt))
             .toList(),

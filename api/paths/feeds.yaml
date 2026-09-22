@@ -148,24 +148,20 @@ search:
                       sampled: 2
                       links:
                         - selector: ":scope"
-                          matched: 24
                           values:
                             - value: "https://claude.com/blog/cowork-and-chat"
                             - value: "https://claude.com/blog/claude-in-chrome"
                       texts:
                         - selector: "div > h3"
-                          matched: 24
                           values:
                             - value: "Claude Cowork and chat are now one Claude"
                             - value: "Claude in Chrome is generally available"
                         - selector: "div > time"
-                          matched: 23
                           values:
                             - value: "September 16, 2026"
                             - value: "Aug 10, 2026"
                       images:
                         - selector: "div > img"
-                          matched: 24
                           values:
                             - value: "https://claude.com/images/cowork.png"
                               alt: "Claude Cowork"

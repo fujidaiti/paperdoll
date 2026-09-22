@@ -1,166 +1,133 @@
 package feed
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/url"
-	"regexp"
 	"slices"
-	"sort"
 	"strings"
 
 	"golang.org/x/net/html"
 )
 
-// This file detects a post list in a page that publishes no feed. The method
-// and the measurements behind every constant here are described in
-// docs/html-feed-detection.md. The pages it was measured on are in testdata/.
+// This file reads a page that publishes no feed. It does not decide which
+// elements of the page are posts. It enumerates every group of post-like
+// elements and every value that can be read out of them, and the user resolves
+// the ambiguity in the app. The design and the measurements behind it are in
+// IDEA2.md, and the pages they were taken on are in testdata/.
 //
-// The result is a list of candidates rather than a single one, because a page
-// often splits one post list into several containers, for example a hero item
-// above the rest. The caller decides which candidates are worth keeping: this
-// file only reports what looks like a post list and how strongly.
+// The second half of the file reads posts back out of a page with the keys the
+// user picked. Both halves run the same enumeration, so the screen the user
+// answered on and the posts the feed stores are produced by the same code.
 
-// Post is one item of a detected post list.
-type Post struct {
-	// Node is the element the post was detected from. It stays attached to
-	// the parsed document, so a caller can inspect the subtree to decide
-	// whether the post is worth keeping.
-	Node *html.Node
-	// URL is the first link found in the item, resolved against the page URL.
-	// Every post has one; an item without a link is not a post.
-	URL url.URL
-	// Title, Timestamp and ImageURL are best effort. A page is free not to
-	// carry them, so each may be empty or nil.
-	Title string
-	// Timestamp is the date as the page writes it, either the datetime
-	// attribute of a <time> element or the text a date pattern matched. It is
-	// not parsed here: a page can date a post in a format this package does
-	// not know, and the caller is in a better position to decide what to do
-	// with a date it cannot read.
-	Timestamp string
-	ImageURL  *url.URL
-}
-
-// PostList is a group of posts that share one container and one structure.
-type PostList struct {
-	// ID distinguishes the lists of one page. It is assigned in the order the
-	// lists are returned, starting at 1, and has no meaning beyond that: it
-	// lets a caller tell which posts were rendered together, so that posts of
-	// one page can be grouped again later.
-	ID int
-	// Selector matches the post elements of this list from the document root.
-	// It is built from tag names and positions only, because the saved pages
-	// identify their lists by hashed CSS module names or by Tailwind utility
-	// classes, and both change whenever the site is rebuilt. It may match more
-	// elements than this list holds when the container mixes several item
-	// shapes.
+// Group is one list of post-like items found in a page.
+type Group struct {
+	// Selector is the key of the group: the path from the document root to
+	// its items, written by rootSelector. It only means something inside the
+	// result of an enumeration of the same page; see "What a selector is" in
+	// PLAN.md.
 	Selector string
-	// Score is how strongly the group looks like a post list. It is only
-	// comparable between the lists of the same page.
-	Score float64
-	Posts []Post
-	// menu says the items hold a link and almost no text, which describes a
-	// row of tags, a genre list or a site menu as well as it describes a list
-	// of bare post links. See the rejection in DetectPostLists.
-	menu bool
+	Posts    []PostCandidate
 }
 
-// DetectPostLists parses an HTML page and returns the post lists found in it,
-// in descending score order, with an empty result when the page holds none.
-// pageURL is required: relative links are resolved against it, and a link that
-// points back at the page itself is not a post.
+// PostCandidate is one item of a group with every value that can be read out
+// of it. The values are enumerated per post rather than per group, because two
+// posts of one group may carry different ones: a group holds posts that have a
+// description and posts that have none.
+type PostCandidate struct {
+	// Node is the element the item was read from. It stays attached to the
+	// parsed document, so a caller can inspect the subtree.
+	Node *html.Node
+	// Links, Texts and Images hold the values of the item in document order.
+	// An item that carries no link is not a post, so Links is never empty.
+	Links  []Attribute
+	Texts  []Attribute
+	Images []Attribute
+}
+
+// Attribute is one value found inside a post, with the key that names it.
+type Attribute struct {
+	// Selector is the key of the element inside the item, written by
+	// itemSelector.
+	Selector string
+	// Value is the resolved URL of a link and of an image, and the text of a
+	// text. A <time> element that carries datetime reports the attribute
+	// instead of the text, which is what makes a timestamp key usable at poll
+	// time without a second extraction mode.
+	Value string
+	// Alt is the alt text of an image, and is empty on the other two kinds.
+	Alt string
+}
+
+// EnumeratePostGroups parses an HTML page and returns every group of post-like
+// elements in it, in document order, with nothing scored, cut, rejected or
+// preselected. page is required: every URL is resolved against it, and a link
+// that points back at the page itself is not a post.
 //
-// A post that appears in more than one list, which happens when a page renders
-// the same items as a grid and as a list, is kept in the higher scoring one
-// only.
-func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
+// A group is a set of sibling elements whose subtrees have the same shape two
+// levels deep, which is the approximation of the definition in IDEA2.md. A
+// sibling that carries no link is left out of the group, because a post
+// without a URL cannot be stored, and a group left with no item is not
+// returned.
+//
+// Two reductions run at the end, and nothing else is removed:
+//
+//  1. A group whose URL set is identical to another group's is dropped, and
+//     the one that comes first in the document is kept.
+//  2. A group whose URL set is a strict subset of another group's is dropped.
+//
+// Both keep every URL reachable through some other group, so neither can break
+// the recall requirement of IDEA2.md.
+func EnumeratePostGroups(r io.Reader, page url.URL) ([]Group, error) {
 	doc, err := sanitize(r)
 	if err != nil {
 		return nil, err
 	}
 
-	var lists []PostList
+	var groups []Group
 	var walk func(*html.Node)
 	walk = func(n *html.Node) {
-		// Group the children by structure. Two children belong to the same
-		// group when their subtrees have the same shape two levels deep, for
-		// example article(section(section)). Attributes are not part of the
-		// shape, for the reason given on PostList.Selector.
-		groups := map[string][]*html.Node{}
+		// Group the element children by the shape of their subtree, keeping
+		// the order in which the shapes first appear. Attributes are not part
+		// of the shape, for the reason given on Group.Selector.
+		bySig := map[string][]*html.Node{}
 		var order []string
 		for c := n.FirstChild; c != nil; c = c.NextSibling {
 			if c.Type != html.ElementNode {
 				continue
 			}
 			s := signature(c)
-			if _, ok := groups[s]; !ok {
+			if _, ok := bySig[s]; !ok {
 				order = append(order, s)
 			}
-			groups[s] = append(groups[s], c)
+			bySig[s] = append(bySig[s], c)
 		}
-		// A list whose items differ in shape, for example one card with a
-		// thumbnail and one without, is split into several groups, so evaluate
-		// all children together as well. None of the saved pages needs this
-		// any more, because the structural signature already unifies the two
-		// card variants on developer.apple.com. It is kept as a fallback.
-		if len(order) > 1 {
-			var all []*html.Node
-			for _, s := range order {
-				all = append(all, groups[s]...)
-			}
-			groups["*"] = all
-			order = append(order, "*")
-		}
-
+		// Two shapes under one container can share an item tag, and the key
+		// of a group is written from the tag alone, so the second and later of
+		// them carry a shape number. Without it two groups of one page would
+		// write the same key and the extraction could not tell them apart; see
+		// rootSelector.
+		shapes := map[string]int{}
 		for _, s := range order {
-			g := groups[s]
-			if len(g) < minMembers {
-				continue
-			}
-			// Only members that carry a link are items. Spacer rows,
-			// separators and promo tiles between posts are dropped here
-			// rather than disqualifying the whole group.
-			var posts []Post
-			seen := map[string]bool{}
-			dated, totalText := 0, 0
-			for _, m := range g {
-				ls := links(m, &pageURL)
-				if len(ls) == 0 {
-					continue
+			item, _, _ := strings.Cut(s, "(")
+			shapes[item]++
+			var posts []PostCandidate
+			for _, m := range bySig[s] {
+				// The links are built here because the reduction below needs
+				// them. The texts and the images are built after the
+				// reduction, for the groups that survive it, because most
+				// groups of a large page do not.
+				if ls := itemLinks(m, &page); len(ls) > 0 {
+					posts = append(posts, PostCandidate{Node: m, Links: ls})
 				}
-				p := Post{Node: m}
-				t := text(m)
-				totalText += len(t)
-				p.Title, p.URL = titleAndURL(m, ls, &pageURL, t)
-				p.Timestamp = timestamp(m, t)
-				p.ImageURL = image(m, &pageURL)
-				if p.Timestamp != "" {
-					dated++
-				}
-				posts = append(posts, p)
-				seen[p.URL.String()] = true
 			}
-			if len(posts) < minMembers || len(seen) < minMembers {
-				continue
+			if len(posts) > 0 {
+				groups = append(groups, Group{
+					Selector: rootSelector(n, s, shapes[item]),
+					Posts:    posts,
+				})
 			}
-			avgText := totalText / len(posts)
-
-			// Each item contributes its first link only, so a real list scores
-			// close to its item count and a block of repeated links cannot
-			// inflate its score.
-			score := float64(len(seen))
-			if len(seen)*10 < len(posts)*8 {
-				score *= 0.5 // the items share one target: not a post list
-			}
-			menu := avgText < minItemText
-			if menu {
-				score *= 0.3 // link and nothing else: a menu, not a post
-			}
-			if dated == len(posts) {
-				score *= 2.0
-			}
-			lists = append(lists, PostList{Selector: selector(n, s), Score: score, Posts: posts, menu: menu})
 		}
 		for c := n.FirstChild; c != nil; c = c.NextSibling {
 			if c.Type == html.ElementNode {
@@ -169,176 +136,300 @@ func DetectPostLists(r io.Reader, pageURL url.URL) ([]PostList, error) {
 		}
 	}
 	walk(doc)
-	if len(lists) == 0 {
-		return nil, nil
-	}
 
-	sort.SliceStable(lists, func(i, j int) bool { return lists[i].Score > lists[j].Score })
-
-	// Keep every list that scores at least unionFraction of the best one. A
-	// page often splits one post list into several containers, for example the
-	// hero items and the rest, or the two halves of deepmind.google/blog, so
-	// returning the best list alone returns part of the posts. Removing the
-	// duplicated URLs afterwards also replaces a merge step: a page that
-	// renders the same posts twice, as claude.com does with its grid and its
-	// list, collapses by itself.
-	//
-	// A post does not contain other posts, so when the items of one kept list
-	// hold the items of another, only one of the two is a post list. Which one
-	// is decided below, from the URLs the outer list adds. Only the kept lists
-	// are compared, because almost every post card holds some repeated group
-	// of its own, for example a row of tags, and those groups score far too
-	// low to be returned.
-	//
-	// Dropping a list lowers the best score, which lowers the cut and can let
-	// another list in, so the two steps run until the set stops changing.
-	for {
-		// Every list that scores at least unionFraction of the best one.
-		var kept []PostList
-		cut := lists[0].Score * unionFraction
-		for _, l := range lists {
-			if l.Score < cut {
-				break
-			}
-			kept = append(kept, l)
-		}
-		item := map[*html.Node][]int{}
-		for i, l := range kept {
-			for _, p := range l.Posts {
-				item[p.Node] = append(item[p.Node], i)
-			}
-		}
-		// inner collects, for every kept list, the kept lists whose items sit
-		// inside its own items. The item node itself is excluded because the
-		// group of all children of a container repeats the items of the groups
-		// it was built from.
-		inner := make([]map[int]bool, len(kept))
-		var collect func(int, *html.Node)
-		collect = func(i int, n *html.Node) {
-			for c := n.FirstChild; c != nil; c = c.NextSibling {
-				for _, j := range item[c] {
-					if j != i {
-						if inner[i] == nil {
-							inner[i] = map[int]bool{}
-						}
-						inner[i][j] = true
-					}
-				}
-				collect(i, c)
-			}
-		}
-		for i, l := range kept {
-			for _, p := range l.Posts {
-				collect(i, p.Node)
-			}
-		}
-		// A page that writes its posts as bare links, as paulgraham.com does,
-		// produces one menu list and nothing else, so a menu list is only
-		// dropped while a list with real item text is kept beside it.
-		real := false
-		for _, l := range kept {
-			if !l.menu {
-				real = true
-				break
-			}
-		}
-		// Resolve every nesting conflict. The outer list reports one post per
-		// container; the inner lists report the groups found inside those
-		// containers. Which of the two is the post list is decided by the URLs
-		// the outer list adds: if it adds none, the two describe the same
-		// posts and the outer list describes them better, because the card
-		// holds the image and the date that the inner group leaves out, and
-		// because the inner group also reports the tag link and the author
-		// link of the card. If the outer list does add URLs, its items are
-		// page sections rather than posts, and the inner lists hold the posts.
-		drop := map[int]bool{}
-		for i, l := range kept {
-			if len(inner[i]) == 0 {
-				continue
-			}
-			have := map[string]bool{}
-			for j := range inner[i] {
-				for _, p := range kept[j].Posts {
-					have[p.URL.String()] = true
-				}
-			}
-			added := false
-			for _, p := range l.Posts {
-				if !have[p.URL.String()] {
-					added = true
-					break
-				}
-			}
-			if added {
-				drop[i] = true
-			} else {
-				for j := range inner[i] {
-					drop[j] = true
-				}
-			}
-		}
-		var flat []PostList
-		for i, l := range kept {
-			if l.menu && real {
-				continue
-			}
-			if !drop[i] {
-				flat = append(flat, l)
-			}
-		}
-		if len(flat) == 0 {
-			return nil, nil
-		}
-		done := len(flat) == len(kept)
-		lists = flat
-		if done {
-			break
+	groups = reduce(groups)
+	for i := range groups {
+		for j := range groups[i].Posts {
+			p := &groups[i].Posts[j]
+			p.Texts = itemTexts(p.Node)
+			p.Images = itemImages(p.Node, &page)
 		}
 	}
+	return groups, nil
+}
 
-	taken := map[string]bool{}
-	var out []PostList
-	for _, l := range lists {
-		var posts []Post
-		for _, p := range l.Posts {
-			if u := p.URL.String(); !taken[u] {
-				taken[u] = true
-				posts = append(posts, p)
-			}
+// reduce applies the two rules described on EnumeratePostGroups. It is what
+// turns the raw enumeration into a list a person can read: on
+// developer.apple.com the 968 raw groups come down to 95, and on
+// paulgraham.com the 729 come down to 3. See the measurement table in
+// IDEA2.md.
+func reduce(groups []Group) []Group {
+	// One URL per item, the first link it carries. Taking every link of the
+	// item instead would make the group of the <body> element, which holds one
+	// item carrying every link of the page, a superset of every other group,
+	// and the second rule would then drop the whole page down to that one
+	// group. The first link identifies the item well enough for this
+	// comparison, and it is what the measurement table in IDEA2.md was taken
+	// with.
+	urls := make([]map[string]bool, len(groups))
+	for i, g := range groups {
+		s := map[string]bool{}
+		for _, p := range g.Posts {
+			s[p.Links[0].Value] = true
 		}
-		// A list left with a single URL is what remains of a group that the
-		// page closes with a link to the section itself, as github.blog does
-		// with the "View all changes" link below its changelog: the posts of
-		// the group were reported by the list above it and removed here, and
-		// the link to the section is not a post. Two is the threshold rather
-		// than minMembers because anthropic.com splits its posts into small
-		// groups, and requiring three loses three real posts there.
-		if len(posts) < 2 {
+		urls[i] = s
+	}
+
+	drop := make([]bool, len(groups))
+	seen := map[string]bool{}
+	for i := range groups {
+		keys := make([]string, 0, len(urls[i]))
+		for u := range urls[i] {
+			keys = append(keys, u)
+		}
+		slices.Sort(keys)
+		k := strings.Join(keys, "\n")
+		if seen[k] {
+			drop[i] = true
 			continue
 		}
-		l.Posts = posts
-		l.ID = len(out) + 1
-		out = append(out, l)
+		seen[k] = true
+	}
+	// A dropped group is still compared against, because it holds the same
+	// URLs as the group that replaced it: a strict subset of a dropped group
+	// is a strict subset of that one as well.
+	for i := range groups {
+		if drop[i] {
+			continue
+		}
+		for j := range groups {
+			if i == j || len(urls[i]) >= len(urls[j]) {
+				continue
+			}
+			if subset(urls[i], urls[j]) {
+				drop[i] = true
+				break
+			}
+		}
+	}
+
+	var out []Group
+	for i, g := range groups {
+		if !drop[i] {
+			out = append(out, g)
+		}
+	}
+	return out
+}
+
+func subset(a, b map[string]bool) bool {
+	for u := range a {
+		if !b[u] {
+			return false
+		}
+	}
+	return true
+}
+
+// itemLinks returns every link of one item, including the item element itself,
+// in document order. The whole card is a link on many pages, which is the case
+// that reports the key ":scope".
+func itemLinks(item *html.Node, page *url.URL) []Attribute {
+	var out []Attribute
+	var walk func(*html.Node)
+	walk = func(x *html.Node) {
+		if u, ok := linkOf(x, page); ok {
+			out = append(out, Attribute{Selector: itemSelector(item, x), Value: u.String()})
+		}
+		for c := x.FirstChild; c != nil; c = c.NextSibling {
+			walk(c)
+		}
+	}
+	walk(item)
+	return out
+}
+
+// itemTexts returns every text of one item, in document order.
+//
+// An element is reported when it holds text and no element child of it holds
+// any. Reporting only these leaf blocks is what keeps the list short: without
+// the rule, one heading inside a link inside a card produces three entries
+// carrying the same string, and the user would have to choose between them.
+func itemTexts(item *html.Node) []Attribute {
+	var out []Attribute
+	var walk func(*html.Node)
+	walk = func(x *html.Node) {
+		if x.Type == html.ElementNode {
+			if t := text(x); t != "" && !hasTextChild(x) {
+				// The datetime attribute is a machine readable date, while
+				// the text of the same element is often "two days ago".
+				if x.Data == "time" {
+					if d := attr(x, "datetime"); d != "" {
+						t = d
+					}
+				}
+				out = append(out, Attribute{Selector: itemSelector(item, x), Value: t})
+			}
+		}
+		for c := x.FirstChild; c != nil; c = c.NextSibling {
+			walk(c)
+		}
+	}
+	walk(item)
+	return out
+}
+
+func hasTextChild(n *html.Node) bool {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		if c.Type == html.ElementNode && text(c) != "" {
+			return true
+		}
+	}
+	return false
+}
+
+// itemImages returns every image of one item, in document order, with the URL
+// resolved against the page URL.
+func itemImages(item *html.Node, page *url.URL) []Attribute {
+	var out []Attribute
+	var walk func(*html.Node)
+	walk = func(x *html.Node) {
+		if x.Type == html.ElementNode && x.Data == "img" {
+			src := attr(x, "src")
+			if src == "" {
+				// A lazily loaded image keeps its real source in data-src
+				// until the page's script runs, and no script runs here.
+				src = attr(x, "data-src")
+			}
+			if src != "" && !strings.HasPrefix(strings.ToLower(src), "data:") {
+				if u, err := page.Parse(src); err == nil {
+					out = append(out, Attribute{
+						Selector: itemSelector(item, x),
+						Value:    u.String(),
+						Alt:      attr(x, "alt"),
+					})
+				}
+			}
+		}
+		for c := x.FirstChild; c != nil; c = c.NextSibling {
+			walk(c)
+		}
+	}
+	walk(item)
+	return out
+}
+
+// Post is one post read out of a page with a saved set of keys.
+type Post struct {
+	// URL is the value of the link key, resolved against the page URL. Every
+	// post has one: an item where the link key reaches nothing is not
+	// reported.
+	URL url.URL
+	// Title, Description, Timestamp and ImageURL are optional, because the
+	// user is free to pick no key for them and because an item is free not to
+	// carry the key that was picked.
+	//
+	// Timestamp is the date as the page writes it, either the datetime
+	// attribute of a <time> element or the text of the element the user
+	// picked. It is not parsed here: a page can date a post in a format this
+	// package does not know.
+	Title       string
+	Description string
+	Timestamp   string
+	ImageURL    *url.URL
+}
+
+// Selectors is one saved set of keys for reading posts out of a page. Root and
+// Link are required; the four others are empty when the user picked no element
+// for them.
+type Selectors struct {
+	Root, Link, Title, Description, Image, Timestamp string
+}
+
+// ErrSelectors says a set of keys produces no post on the page that was
+// fetched. Subscribing with such a set would create a feed that stays empty
+// forever, so the request is rejected rather than saved.
+var ErrSelectors = errors.New("the selectors produce no post")
+
+// ExtractPosts enumerates the page and reads the posts that the given sets of
+// keys name. It never matches a key against the DOM tree: a key is written by
+// the enumerator and is read back by comparing it with the keys of another
+// enumeration of the same page.
+//
+// The sets are read in the order they are given and the posts are deduplicated
+// by URL across them, so a page that renders the same post as a grid and as a
+// list reports it once. A set whose Root names no group, and a set whose Link
+// is carried by no post of its group, fails with ErrSelectors.
+func ExtractPosts(r io.Reader, page url.URL, sets []Selectors) ([]Post, error) {
+	groups, err := EnumeratePostGroups(r, page)
+	if err != nil {
+		return nil, err
+	}
+	byRoot := map[string]Group{}
+	for _, g := range groups {
+		// The first group wins, which matters only when two groups of one
+		// page write the same key. See TestEnumeratePostGroups_RootKeys.
+		if _, ok := byRoot[g.Selector]; !ok {
+			byRoot[g.Selector] = g
+		}
+	}
+
+	var out []Post
+	taken := map[string]bool{}
+	for i, s := range sets {
+		g, ok := byRoot[s.Root]
+		if !ok {
+			return nil, fmt.Errorf("%w: selector set %d names no group (%q)", ErrSelectors, i, s.Root)
+		}
+		linked := 0
+		for _, c := range g.Posts {
+			link, ok := valueOf(c.Links, s.Link)
+			if !ok {
+				// An item without a URL is not a post. This is the row of a
+				// group that holds a separator or a promo tile between the
+				// posts, and it is skipped rather than reported empty.
+				continue
+			}
+			linked++
+			u, err := url.Parse(link)
+			if err != nil {
+				continue
+			}
+			if taken[link] {
+				continue
+			}
+			taken[link] = true
+
+			p := Post{URL: *u}
+			p.Title, _ = valueOf(c.Texts, s.Title)
+			p.Description, _ = valueOf(c.Texts, s.Description)
+			p.Timestamp, _ = valueOf(c.Texts, s.Timestamp)
+			if v, ok := valueOf(c.Images, s.Image); ok {
+				if iu, err := url.Parse(v); err == nil {
+					p.ImageURL = iu
+				}
+			}
+			out = append(out, p)
+		}
+		if linked == 0 {
+			return nil, fmt.Errorf(
+				"%w: the link of selector set %d (%q) is carried by no item of %q",
+				ErrSelectors,
+				i,
+				s.Link,
+				s.Root,
+			)
+		}
 	}
 	return out, nil
 }
 
+// valueOf returns the value the given key names in one list of attributes. An
+// empty key means the user picked no element for that attribute, which is not
+// the same as a key that the item does not carry.
+func valueOf(as []Attribute, key string) (string, bool) {
+	if key == "" {
+		return "", false
+	}
+	for _, a := range as {
+		if a.Selector == key {
+			return a.Value, true
+		}
+	}
+	return "", false
+}
+
 const (
-	// minMembers is how many items a group must hold to be a list. Three is
-	// the smallest number that still describes a repetition. A single item
-	// displayed on its own above the list, which some pages use for their
-	// newest post, is therefore not detected on its own.
-	minMembers = 3
-	// minItemText is the average item text length, in bytes, below which the
-	// group is treated as a menu rather than a post list.
-	minItemText = 25
-	// unionFraction is the share of the best score a list must reach to be
-	// returned. Measured on the 25 saved pages: the lowest group that is a
-	// real post list sits at 27% (github.blog/ai-and-ml) and the highest group
-	// that is not sits at 17% (the sidebar on developers.openai.com), so 25%
-	// keeps every real post. It does not separate the two cleanly on every
-	// page; see docs/html-feed-detection.md.
-	unionFraction = 0.25
 	// sigDepth is how many levels of the subtree the signature covers. Two is
 	// the measured optimum: one and two both rank every correct list first,
 	// two gives the wider margins, and three or more splits a list whose items
@@ -480,42 +571,66 @@ func signature(n *html.Node) string {
 	return shape(n, sigDepth)
 }
 
-// selector builds a CSS selector that matches the items of a group: the path
-// of the container from the document root, followed by the item's tag name.
-// The group of all children of a container, which has no single tag name, ends
-// in "*".
-func selector(container *html.Node, sig string) string {
+// rootSelector writes the key of a group: the path from the document root down
+// to its items, for example "html > body > main > div:nth-of-type(2) > a". sig
+// is the signature the group was built from, whose first word is the tag name
+// of the items.
+//
+// shape is 1 for the first group of that item tag under this container and
+// counts up for the ones after it. It is written into the key as
+// ":nth-shape(n)", which is not a CSS pseudo-class: a key is not a CSS
+// selector, and nothing ever compiles it. It exists because the rest of the
+// key is built from tag names only, so two groups that hold different shapes
+// of the same tag under one container would otherwise be impossible to tell
+// apart when the saved key is read back.
+func rootSelector(container *html.Node, sig string, shape int) string {
 	item, _, _ := strings.Cut(sig, "(")
+	if shape > 1 {
+		item = fmt.Sprintf("%s:nth-shape(%d)", item, shape)
+	}
 	var parts []string
 	for x := container; x != nil && x.Type == html.ElementNode; x = x.Parent {
-		part := x.Data
-		// The position is only added when the parent holds more than one
-		// element of that tag, which keeps the common case readable.
-		if x.Parent != nil {
-			nth, total := 0, 0
-			for c := x.Parent.FirstChild; c != nil; c = c.NextSibling {
-				if c.Type == html.ElementNode && c.Data == x.Data {
-					total++
-					if c == x {
-						nth = total
-					}
-				}
-			}
-			if total > 1 {
-				part = fmt.Sprintf("%s:nth-of-type(%d)", x.Data, nth)
-			}
-		}
-		parts = append([]string{part}, parts...)
+		parts = append([]string{step(x)}, parts...)
 	}
 	return strings.Join(append(parts, item), " > ")
 }
 
-// link is an element that carries an accepted href, together with the target
-// resolved against the page URL. The element is kept because the title is read
-// from it: see titleAndURL.
-type link struct {
-	node *html.Node
-	url  url.URL
+// itemSelector writes the key of one element inside a post item: the path of
+// steps from the item down to it, for example "div > h3". The item element
+// itself is ":scope", which happens when the whole card is a link.
+func itemSelector(item, el *html.Node) string {
+	if el == item {
+		return ":scope"
+	}
+	var parts []string
+	for x := el; x != nil && x != item; x = x.Parent {
+		parts = append([]string{step(x)}, parts...)
+	}
+	return strings.Join(parts, " > ")
+}
+
+// step writes one element of a key: the tag name, followed by its position
+// among the children of its parent that carry the same tag. The position is
+// written only when the parent holds more than one of them, which keeps the
+// common case readable and, more importantly, makes two items of the same
+// shape write the same key.
+func step(x *html.Node) string {
+	if x.Parent == nil {
+		return x.Data
+	}
+	nth, total := 0, 0
+	for c := x.Parent.FirstChild; c != nil; c = c.NextSibling {
+		if c.Type == html.ElementNode && c.Data == x.Data {
+			total++
+			if c == x {
+				nth = total
+			}
+		}
+	}
+	if total > 1 {
+		return fmt.Sprintf("%s:nth-of-type(%d)", x.Data, nth)
+	}
+	return x.Data
 }
 
 // linkOf reports whether one element carries a link a post may use, and
@@ -550,22 +665,6 @@ func linkOf(x *html.Node, page *url.URL) (url.URL, bool) {
 	return *u, true
 }
 
-// links returns every link below n, including n itself, in document order.
-func links(n *html.Node, page *url.URL) []link {
-	var out []link
-	var walk func(*html.Node)
-	walk = func(x *html.Node) {
-		if u, ok := linkOf(x, page); ok {
-			out = append(out, link{node: x, url: u})
-		}
-		for c := x.FirstChild; c != nil; c = c.NextSibling {
-			walk(c)
-		}
-	}
-	walk(n)
-	return out
-}
-
 func text(n *html.Node) string {
 	var b strings.Builder
 	var walk func(*html.Node)
@@ -589,155 +688,4 @@ func attr(n *html.Node, key string) string {
 		}
 	}
 	return ""
-}
-
-// titleAndURL picks the title and the URL of one item together. Picking them
-// independently pairs a heading with the link of something else: github.blog
-// renders a category badge link above the post heading, so the post was
-// reported under its category URL, and every card of the list reported the
-// same one.
-//
-// ls holds the links of the item in document order, and is not empty. full is
-// the item text, which the caller has already collected.
-func titleAndURL(item *html.Node, ls []link, page *url.URL, full string) (string, url.URL) {
-	h := heading(item)
-	if h == nil {
-		// No heading: the title is the text of the element the URL comes
-		// from, so that the two still describe the same thing. A card often
-		// wraps its whole contents in that link, in which case the text is the
-		// item text and the cut below applies to it.
-		t := text(ls[0].node)
-		if t == "" {
-			t = full
-		}
-		// A title is a line, not a paragraph. An item that holds its full text
-		// would otherwise produce a title of several kilobytes.
-		const maxTitle = 120
-		if len(t) > maxTitle {
-			cut := strings.LastIndex(t[:maxTitle], " ")
-			if cut < maxTitle/2 {
-				cut = maxTitle
-			}
-			t = strings.TrimSpace(t[:cut])
-		}
-		return t, ls[0].url
-	}
-
-	// The heading decides the URL. Its own link comes first, then the link the
-	// heading sits inside, which covers a card wrapped in one link and covers
-	// the custom elements on blog.google.
-	if below := links(h, page); len(below) > 0 {
-		return text(h), below[0].url
-	}
-	for x := h; x != nil; x = x.Parent {
-		if u, ok := linkOf(x, page); ok {
-			return text(h), u
-		}
-		if x == item {
-			break
-		}
-	}
-	// The heading carries no link at all. The item keeps the URL it would have
-	// had without this rule, so no item can lose its URL and stop being a post.
-	return text(h), ls[0].url
-}
-
-// heading returns the first h1-h6 of the item that holds text.
-func heading(item *html.Node) *html.Node {
-	var found *html.Node
-	var walk func(*html.Node) bool
-	walk = func(x *html.Node) bool {
-		if x.Type == html.ElementNode && len(x.Data) == 2 && x.Data[0] == 'h' && x.Data[1] >= '1' && x.Data[1] <= '6' {
-			if text(x) != "" {
-				found = x
-				return true
-			}
-		}
-		for c := x.FirstChild; c != nil; c = c.NextSibling {
-			if walk(c) {
-				return true
-			}
-		}
-		return false
-	}
-	walk(item)
-	return found
-}
-
-// dateRe matches the date formats the saved pages write. A written month is
-// accepted with or without a day, because some posts are dated by month only.
-// It is deliberately loose, which is why the text it matches is kept as it is
-// rather than parsed; see Post.Timestamp.
-var dateRe = regexp.MustCompile(`(?i)\b(` + strings.Join([]string{
-	`\d{4}-\d{2}-\d{2}`,                         // 2026-09-16
-	`\d{1,2}\s+` + months + `[a-z]*\.?\s+\d{4}`, // 16 September 2026
-	months + `[a-z]*\.?\s+\d{1,2}(,?\s+\d{4})?`, // Sep 16, 2026
-	`\d{4}/\d{1,2}/\d{1,2}`,                     // 2026/9/16
-	`\d{1,2}/\d{1,2}/\d{4}`,                     // 9/16/2026
-	`\d{4}年\d{1,2}月\d{1,2}日`,                    // 2026年9月16日
-	months + `[a-z]*\.?\s+\d{4}`,                // September 2026
-}, "|") + `)\b`)
-
-const months = `(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)`
-
-// timestamp returns the date the item carries, as the page writes it: the
-// datetime attribute of a <time> element if the item has one, otherwise the
-// text a date pattern matched. full is the item text, which the caller has
-// already collected.
-//
-// The result is not parsed, so it can be anything from "2026-09-16T10:00:00Z"
-// to "16 September 2026". It is also a weak signal on its own: the pattern
-// reads "Octoverse 2025" on github.blog as a month and a year. A group where
-// every item carries one is still far more likely to be a post list than a
-// group where none does, which is what the score uses it for.
-func timestamp(item *html.Node, full string) string {
-	var raw string
-	var walk func(*html.Node)
-	walk = func(x *html.Node) {
-		if raw != "" {
-			return
-		}
-		if x.Type == html.ElementNode && x.Data == "time" {
-			if v := attr(x, "datetime"); v != "" {
-				raw = v
-			}
-		}
-		for c := x.FirstChild; c != nil; c = c.NextSibling {
-			walk(c)
-		}
-	}
-	walk(item)
-	if raw == "" {
-		raw = dateRe.FindString(full)
-	}
-	return strings.TrimSpace(raw)
-}
-
-// image returns the first image of the item, resolved against the page URL.
-func image(item *html.Node, page *url.URL) *url.URL {
-	var found *url.URL
-	var walk func(*html.Node)
-	walk = func(x *html.Node) {
-		if found != nil {
-			return
-		}
-		if x.Type == html.ElementNode && x.Data == "img" {
-			src := attr(x, "src")
-			if src == "" {
-				// A lazily loaded image keeps its real source in data-src
-				// until the page's script runs, and no script runs here.
-				src = attr(x, "data-src")
-			}
-			if src != "" && !strings.HasPrefix(strings.ToLower(src), "data:") {
-				if u, err := page.Parse(src); err == nil {
-					found = u
-				}
-			}
-		}
-		for c := x.FirstChild; c != nil; c = c.NextSibling {
-			walk(c)
-		}
-	}
-	walk(item)
-	return found
 }

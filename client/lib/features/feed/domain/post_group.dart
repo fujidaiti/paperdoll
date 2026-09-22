@@ -17,7 +17,9 @@ abstract class PostGroup with _$PostGroup {
     /// How many items the group holds in the page.
     required int count,
 
-    /// How many items each [AttributeCandidate.values] describes.
+    /// How many items each [AttributeCandidate.values] describes. The sample
+    /// always covers every candidate of the group, so a row is never empty in
+    /// all of the sampled items.
     required int sampled,
     required List<AttributeCandidate> links,
     required List<AttributeCandidate> texts,
@@ -33,10 +35,9 @@ abstract class AttributeCandidate with _$AttributeCandidate {
     /// Relative to the item. `:scope` means the item itself.
     required String selector,
 
-    /// How many of the group's items this selector reaches.
-    required int matched,
-
-    /// Exactly `PostGroup.sampled` entries, in item order.
+    /// Exactly `PostGroup.sampled` entries, in item order. An entry with a
+    /// null value means the selector reaches nothing in that item, which
+    /// happens for a selector only some items of the group carry.
     required List<AttributeValue> values,
   }) = _AttributeCandidate;
 }

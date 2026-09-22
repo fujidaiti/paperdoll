@@ -53,9 +53,10 @@ FeedCandidate:
 
 PostGroup:
   description:
-    One list of post-like elements. Every item of the group can be read with the
-    same set of relative selectors, so the user answers for the whole group at
-    once rather than per post.
+    One list of post-like elements. The items are read with one set of relative
+    selectors, so the user answers for the whole group at once rather than per
+    post. An item is free to carry only part of them, which is how a group holds
+    posts that have a description and posts that have none.
   type: object
   required: [id, selector, count, sampled, links, texts, images]
   properties:
@@ -66,17 +67,23 @@ PostGroup:
       type: integer
     selector:
       description:
-        CSS selector matching the items of the group in the fetched page. Send
-        it back as `root` in `PUT /feeds`.
+        The key of the group in the fetched page, written by the server. It
+        reads as a CSS selector and is meant to stay readable, but it is not
+        one. The server never compiles it. It reads the page again and compares
+        it with the keys that reading writes, so the client must send it back as
+        `root` in `PUT /feeds` exactly as it arrived.
       type: string
     count:
       description: How many items the group holds in the fetched page.
       type: integer
     sampled:
       description:
-        How many of those items the `values` arrays below describe. The server
-        samples the first few items of the group, so `sampled` is at most
-        `count`.
+        How many of those items the `values` arrays below describe, at most
+        `count`. The sample always covers every candidate below. An item that
+        carries a selector no other sampled item carries is added to the sample.
+        Without that rule a selector only a few items carry, such as a
+        description that most posts leave out, would show an empty row and could
+        not be chosen.
       type: integer
     links:
       description:
@@ -107,25 +114,22 @@ AttributeCandidate:
     where the user picks a row rather than a value, because the choice applies
     to every item of the group.
   type: object
-  required: [selector, matched, values]
+  required: [selector, values]
   properties:
     selector:
       description:
-        Selector relative to the group item. `:scope` means the item element
-        itself, which happens when the whole card is a link.
+        The key of one element inside the items of the group, relative to the
+        item. `:scope` means the item element itself, which happens when the
+        whole card is a link. Like `PostGroup.selector`, it is sent back
+        unchanged.
       type: string
-    matched:
-      description:
-        How many of the group's `count` items this selector reaches. A value
-        lower than `count` means the choice leaves some posts without this
-        attribute, which the client shows as a warning on the row.
-      type: integer
     values:
       description:
-        What the selector produces in each sampled item, in the same order as
-        the items. The array holds exactly `sampled` entries, so the client can
-        build the preview of item _i_ by reading index _i_ of every row. An
-        entry with no `value` means the selector reaches nothing in that item.
+        What the selector produces in each sampled item, in the order of the
+        sampled items. The array holds exactly `sampled` entries, so the client
+        can build the preview of sampled item _i_ by reading index _i_ of every
+        row. An entry with no `value` means the selector reaches nothing in that
+        item, which happens for a selector only some items of the group carry.
       type: array
       items:
         $ref: "#/AttributeValue"
@@ -153,12 +157,14 @@ PostSelectors:
   properties:
     root:
       description:
-        CSS selector matching the items, taken from `PostGroup.selector`.
+        The key of the group, copied from `PostGroup.selector` without any
+        change.
       type: string
     link:
       description:
-        Selector for the post URL, relative to an item. This one is required,
-        and an item where it matches nothing is skipped at polling time.
+        The key of the post URL inside an item, copied from an
+        `AttributeCandidate.selector` of the group's `links`. This one is
+        required, and an item that does not carry it is skipped at polling time.
       type: string
     title:
       description: Selector for the post title, relative to an item.

@@ -301,7 +301,7 @@ void main() {
     );
   });
 
-  patrolWidgetTest('Warn when a selector does not reach every post', (t) async {
+  patrolWidgetTest('Show a row that only some posts carry', (t) async {
     final candidate = fixture.feedCandidates.exampleBlog;
     final server = StubServer.withDefaultResponses()
       ..stubGet(
@@ -319,13 +319,14 @@ void main() {
     await t(AppDebugKey.feedSubscriptionScreen).waitUntilVisible();
 
     await t(AppDebugKey.postGroupCard(0)).tap();
+    // The `p` row has a value in the third sampled item only. It is still
+    // offered, because it is the description of the posts that have one, and
+    // a preview that dropped it would make that description unreachable.
+    expect(t(AppDebugKey.attributeRow('p')), findsOneWidget);
     expect(
-      t(AppDebugKey.attributeRow('div > time')).$('Reaches 23 of 24 posts'),
+      t(AppDebugKey.attributeRow('p'))
+          .$('What three days of incident reviews taught us.'),
       findsOneWidget,
-    );
-    expect(
-      t(AppDebugKey.attributeRow('div > h3')).$(RegExp('^Reaches')),
-      findsNothing,
     );
   });
 

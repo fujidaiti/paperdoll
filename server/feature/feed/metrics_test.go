@@ -6,16 +6,14 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"testing"
-
-	"github.com/PuerkitoBio/goquery"
-	"golang.org/x/net/html"
 )
 
 // fixture is the ideal result for one saved page, written by hand. It holds
-// the posts a perfect detector would find, so the distance between the two
-// is what the metrics measure.
+// the posts a perfect detector would find, so the distance between the two is
+// what the metrics measure.
 type fixture struct {
 	URL   string        `json:"url"`
 	Posts []fixturePost `json:"posts"`
@@ -28,9 +26,9 @@ type fixturePost struct {
 	ImageURL  string `json:"imageUrl,omitempty"`
 }
 
-// ratio is one precision or recall value, kept as a fraction so that an empty
-// denominator stays visible. A page that dates no post, as paulgraham.com does,
-// has no timestamp recall to report, and reporting 0 there would be wrong.
+// ratio is one recall value, kept as a fraction so that an empty denominator
+// stays visible. A page that dates no post, as paulgraham.com does, has no
+// timestamp recall to report, and reporting 0 there would be wrong.
 type ratio struct{ hit, total int }
 
 func (r ratio) defined() bool { return r.total > 0 }
@@ -47,88 +45,105 @@ func (r ratio) value() float64 {
 // is for now.
 const na = -1.0
 
-// acceptance is the lowest value each metric may take on one page. The values
-// are written by hand, per page, and they are targets rather than a record of
-// what the method reaches today: several pages are expected to fail until the
-// defects in DISCUSSION.md are fixed.
+// acceptance is what one page is required to produce. The three measurements
+// are the ones named in "What does the accuracy test measure now?" in
+// IDEA2.md, and they are read in two different directions.
 //
-// The two levels are measured as follows.
+// URLRecall and the three attribute recalls are floors: the page fails when it
+// falls below them. URLRecall is the hard requirement of the whole design and
+// is 1.00 everywhere, because a post the server never enumerates can never be
+// recovered by the user.
 //
-// Level one matches the detected posts against the fixture posts by URL, over
-// every list the page returns, after the method has removed the URLs that
-// appear in more than one list. Precision is the share of detected posts that
-// the fixture holds, recall the share of fixture posts that were detected.
-//
-// Level two measures the three other fields over the posts matched at level
-// one. For one field, precision is the share of detected values that equal the
-// fixture value, and recall is the share of fixture values that were detected
-// and equal. Values are compared exactly, because the fixtures hold the text as
-// the page writes it, so any normalization inside the method shows up here.
-//
-// UsefulGroups is the share of the returned lists that hold at least one
-// fixture post. It measures the review cost of the group screen described in
-// IDEA2.md: the user reads every returned list and ticks the ones that are post
-// lists, so a low value means the user reads many lists that are not. It is a
-// property of the grouping alone and says nothing about the fields, which is
-// why it does not overlap with the metrics above.
+// Groups, Check and Last are ceilings: the page fails when it goes above them.
+// They measure the review cost of the group screen, where a lower number is
+// better, so a ceiling is what protects the number from growing unnoticed.
+// They are set to what the method produces today rather than to a target, and
+// two pages are accepted as bad: developers.openai.com returns 135 groups, and
+// bbc.com needs 27 of its first 39. Lowering them one page at a time is how
+// the improvement will be visible; see "Open points" in PLAN.md.
 type acceptance struct {
-	URLPrecision, URLRecall     float64
-	TitlePrecision, TitleRecall float64
-	ImagePrecision, ImageRecall float64
-	TimePrecision, TimeRecall   float64
-	UsefulGroups                float64
+	// Groups is how many groups the page may return.
+	Groups int
+	// Check is how many groups the user has to tick before every fixture post
+	// is included, and Last is the position of the last of them in the
+	// returned list, which is how far the user has to scroll.
+	Check, Last int
+	// URLRecall is the share of the fixture posts that one link key of one
+	// returned group reaches. This is the measurement the open question "What
+	// is saved: a selector or a rule?" turns on: these are the posts that
+	// survive to polling time.
+	URLRecall float64
+	// The share of the fixture values that one key of the ticked group
+	// reaches, for the three optional attributes.
+	TitleRecall, ImageRecall, TimeRecall float64
 }
 
 // pageReport is the measured result of one page.
 type pageReport struct {
-	// got is the number of distinct posts the method returned, want the number
-	// the fixture holds. They are kept because a page whose fixture holds no
-	// post is checked on these counts alone.
-	got, want int
-	// Level one: the posts themselves, matched by URL.
-	urlP, urlR ratio
-	// Level two: the fields of the posts that level one matched.
-	titleP, titleR ratio
-	imageP, imageR ratio
-	timeP, timeR   ratio
-	// groupP is the share of the returned lists that hold at least one fixture
-	// post.
-	groupP ratio
-	// notes holds the examples of the differences, printed when the page
-	// fails.
+	groups      int
+	check, last int
+	urlR        ratio
+	titleR      ratio
+	imageR      ratio
+	timeR       ratio
+	// notes holds examples of the differences, printed when the page fails.
 	notes []string
 }
 
-// TestAccuracy measures how well the method reproduces the hand written
-// fixtures, page by page, and fails a page whose metrics fall below the values
-// in the acceptance table.
+// TestAccuracy measures how well the enumeration reproduces the hand written
+// fixtures, page by page, and fails a page whose numbers fall outside the
+// acceptance table.
+//
+// Run it with PAPERDOLL_DUMP=1 to print the measured table instead of only
+// checking it, which is how the ceilings below are written.
 func TestAccuracy(t *testing.T) {
-	names := make([]string, 0, len(accepted))
-	for name := range accepted {
-		names = append(names, name)
+	files, err := filepath.Glob(filepath.Join("testdata", "*.fixture.json"))
+	if err != nil {
+		t.Fatal(err)
 	}
+	if len(files) == 0 {
+		t.Fatal("no fixture found in testdata")
+	}
+	names := make([]string, 0, len(files))
+	for _, f := range files {
+		names = append(names, strings.TrimSuffix(filepath.Base(f), ".fixture.json"))
+	}
+	sort.Strings(names)
 
+	dump := os.Getenv("PAPERDOLL_DUMP") != ""
 	for _, name := range names {
-		a := accepted[name]
+		a, ok := accepted[name]
 		t.Run(name, func(t *testing.T) {
+			if !ok && !dump {
+				t.Fatal("no acceptance values for this page. Run the test " +
+					"with PAPERDOLL_DUMP=1 and add the line it prints to " +
+					"the table at the end of metrics_test.go.")
+			}
 			want := readFixture(t, filepath.Join("testdata", name+".fixture.json"))
-			lists, doc := detectFile(t, name+".html", want.URL)
-			checkStructure(t, lists, doc)
-			r := measure(lists, want)
+			groups := enumerateFile(t, name+".html", want.URL)
+			checkStructure(t, groups)
+			r := measure(groups, want)
 
-			if r.want == 0 && r.got > 0 {
-				t.Errorf("the fixture holds no post, but %d were detected", r.got)
+			if dump {
+				fmt.Printf("\t%q: {%d, %d, %d, %s, %s, %s, %s},\n",
+					name, r.groups, r.check, r.last,
+					dumpRatio(r.urlR), dumpRatio(r.titleR),
+					dumpRatio(r.imageR), dumpRatio(r.timeR))
+				return
 			}
 
-			check(t, "url precision", r.urlP, a.URLPrecision)
-			check(t, "url recall", r.urlR, a.URLRecall)
-			check(t, "title precision", r.titleP, a.TitlePrecision)
-			check(t, "title recall", r.titleR, a.TitleRecall)
-			check(t, "image precision", r.imageP, a.ImagePrecision)
-			check(t, "image recall", r.imageR, a.ImageRecall)
-			check(t, "timestamp precision", r.timeP, a.TimePrecision)
-			check(t, "timestamp recall", r.timeR, a.TimeRecall)
-			check(t, "useful groups", r.groupP, a.UsefulGroups)
+			if len(want.Posts) == 0 && r.groups > 0 {
+				// A page whose content is rendered by JavaScript carries no
+				// post for a plain HTTP client, so it must produce no group.
+				t.Errorf("the fixture holds no post, but %d groups were returned", r.groups)
+			}
+			atMost(t, "groups", r.groups, a.Groups)
+			atMost(t, "groups to check", r.check, a.Check)
+			atMost(t, "last group to check", r.last, a.Last)
+			atLeast(t, "url recall", r.urlR, a.URLRecall)
+			atLeast(t, "title recall", r.titleR, a.TitleRecall)
+			atLeast(t, "image recall", r.imageR, a.ImageRecall)
+			atLeast(t, "timestamp recall", r.timeR, a.TimeRecall)
 			if t.Failed() {
 				for _, n := range r.notes {
 					t.Log(n)
@@ -138,7 +153,16 @@ func TestAccuracy(t *testing.T) {
 	}
 }
 
-func detectFile(t *testing.T, file, page string) ([]PostList, *html.Node) {
+func dumpRatio(r ratio) string {
+	if !r.defined() {
+		return "na"
+	}
+	// Two decimals, rounded down, so that the printed value is one the page
+	// still reaches.
+	return fmt.Sprintf("%.2f", float64(int(r.value()*100))/100)
+}
+
+func enumerateFile(t *testing.T, file, page string) []Group {
 	t.Helper()
 	f, err := os.Open(filepath.Join("testdata", file))
 	if err != nil {
@@ -149,26 +173,17 @@ func detectFile(t *testing.T, file, page string) ([]PostList, *html.Node) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	// The document is parsed twice: DetectPostLists cleans up the tree it
-	// parses, and the selectors are checked against that same tree, which the
-	// returned nodes belong to. Reading it back from the posts is enough.
-	lists, err := DetectPostLists(f, *u)
+	groups, err := EnumeratePostGroups(f, *u)
 	if err != nil {
 		t.Fatal(err)
 	}
-	var root *html.Node
-	if len(lists) > 0 {
-		for n := lists[0].Posts[0].Node; n != nil; n = n.Parent {
-			root = n
-		}
-	}
-	return lists, root
+	return groups
 }
 
-// check fails the page when a metric falls below the value the table requires.
-// A metric with an empty denominator is skipped, and so is a metric the table
-// marks with na.
-func check(t *testing.T, name string, got ratio, min float64) {
+// atLeast fails the page when a recall falls below the value the table
+// requires. A metric with an empty denominator is skipped, and so is a metric
+// the table marks with na.
+func atLeast(t *testing.T, name string, got ratio, min float64) {
 	t.Helper()
 	if min == na {
 		return
@@ -184,189 +199,200 @@ func check(t *testing.T, name string, got ratio, min float64) {
 	}
 }
 
-// measure computes every metric of one page. It works in two levels. Level one
-// matches the detected posts against the fixture posts by URL. Level two
-// compares the other fields of the posts that level one matched.
-func measure(lists []PostList, want fixture) pageReport {
-	// Index the fixture by URL, which is the key the two levels match on.
+// atMost fails the page when a review cost rises above the value the table
+// accepts.
+func atMost(t *testing.T, name string, got, max int) {
+	t.Helper()
+	if got > max {
+		t.Errorf("%s: %d, want at most %d", name, got, max)
+	}
+}
+
+// measure computes every metric of one page.
+//
+// Everything is measured the way the user reads the screen: a group is ticked
+// as a whole, and one row of it is picked for each attribute. So a fixture
+// post counts as reached only when a single link key of a single group
+// produces its URL, and a title counts as reached only when a single text key
+// of that group produces the title of that post. Measuring over all the keys
+// of a group instead would report a recall the user cannot obtain.
+func measure(groups []Group, want fixture) pageReport {
+	r := pageReport{groups: len(groups)}
 	wantByURL := map[string]fixturePost{}
 	for _, p := range want.Posts {
 		wantByURL[p.URL] = p
 	}
+	r.urlR.total = len(want.Posts)
+	if len(want.Posts) == 0 {
+		return r
+	}
 
-	var r pageReport
-	// Only the first few of each are kept. A page can differ on hundreds of
-	// posts, and reading hundreds of lines does not explain more than reading
-	// five: the differences on one page almost always share one cause, and the
-	// metrics themselves say how widespread it is. The field limit is higher
-	// because three fields are compared on every post.
-	const (
-		maxURLExamples   = 5
-		maxFieldExamples = 15
-	)
-	var (
-		// URLs the method returned that the fixture does not hold.
-		extra []string
-		// URLs the fixture holds that the method did not return.
-		missing []string
-		// The fields whose two values differ.
-		wrong []string
-	)
-
-	// Level one, precision: the share of the detected posts that the fixture
-	// holds. A low value means the method returns posts that are not posts.
-	//
-	// The posts of every list are counted together. The lists divide one page
-	// into groups, but the metrics are about the page as a whole. A URL that
-	// appears in two lists is counted once.
-	gotByURL := map[string]Post{}
-	for _, l := range lists {
-		for _, p := range l.Posts {
-			u := p.URL.String()
-			if _, seen := gotByURL[u]; seen {
-				continue
+	// What each link key of each group reaches, counted in fixture posts
+	// only. A key that reaches nothing from the fixture is not listed.
+	type choice struct {
+		group int
+		key   string
+		urls  map[string]bool
+	}
+	var choices []choice
+	for i, g := range groups {
+		byKey := map[string]map[string]bool{}
+		for _, p := range g.Posts {
+			for _, l := range p.Links {
+				if _, ok := wantByURL[l.Value]; !ok {
+					continue
+				}
+				if byKey[l.Selector] == nil {
+					byKey[l.Selector] = map[string]bool{}
+				}
+				byKey[l.Selector][l.Value] = true
 			}
-			gotByURL[u] = p
-			r.urlP.total++
-			if _, ok := wantByURL[u]; ok {
-				r.urlP.hit++
-			} else if len(extra) < maxURLExamples {
-				extra = append(extra, u)
+		}
+		keys := make([]string, 0, len(byKey))
+		for k := range byKey {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+		for _, k := range keys {
+			choices = append(choices, choice{group: i, key: k, urls: byKey[k]})
+		}
+	}
+
+	// Greedy cover: the user ticks the group that adds the most posts, then
+	// the next one, until nothing is left to add. This is the review cost.
+	left := map[string]bool{}
+	for u := range wantByURL {
+		left[u] = true
+	}
+	picked := map[int]string{}
+	for {
+		best, bestN := -1, 0
+		for i, c := range choices {
+			n := 0
+			for u := range c.urls {
+				if left[u] {
+					n++
+				}
+			}
+			if n > bestN {
+				best, bestN = i, n
+			}
+		}
+		if best < 0 {
+			break
+		}
+		c := choices[best]
+		for u := range c.urls {
+			delete(left, u)
+		}
+		if _, ok := picked[c.group]; !ok {
+			picked[c.group] = c.key
+			r.check++
+			if c.group+1 > r.last {
+				r.last = c.group + 1
 			}
 		}
 	}
-	r.got, r.want = len(gotByURL), len(wantByURL)
+	r.urlR.hit = len(want.Posts) - len(left)
 
-	// Level one, recall: the share of the fixture posts that were detected. A
-	// low value means the method misses real posts.
+	const maxExamples = 5
+	var missing []string
 	for _, p := range want.Posts {
-		r.urlR.total++
-		if _, ok := gotByURL[p.URL]; ok {
-			r.urlR.hit++
-		} else if len(missing) < maxURLExamples {
+		if left[p.URL] && len(missing) < maxExamples {
 			missing = append(missing, p.URL)
 		}
 	}
-
-	// The share of the returned lists that hold at least one fixture post. The
-	// user reviews the lists one by one, so this is the part of that work that
-	// leads somewhere. A list is counted as useful as soon as one of its posts
-	// is a real one, because the user keeps the list and corrects the rest by
-	// hand.
-	for _, l := range lists {
-		r.groupP.total++
-		for _, p := range l.Posts {
-			if _, ok := wantByURL[p.URL.String()]; ok {
-				r.groupP.hit++
-				break
-			}
-		}
-	}
-
-	// Level two runs over the matched posts only. A post that level one did not
-	// match has no counterpart to compare its fields with.
-	//
-	// For each field, the value is counted in precision when the method
-	// reported something, and in recall when the fixture holds something. A
-	// field is a hit only when the two strings are exactly equal, because the
-	// fixtures record the text as the page writes it. So precision answers
-	// "when the method fills this field, how often is it right", and recall
-	// answers "of the values the page offers, how many does the method find".
-	// A field that neither side carries is counted in neither, which is why a
-	// metric with an empty denominator is skipped instead of failing as 0.00.
-	for _, w := range want.Posts {
-		g, ok := gotByURL[w.URL]
-		if !ok {
-			continue
-		}
-		image := ""
-		if g.ImageURL != nil {
-			image = g.ImageURL.String()
-		}
-		for _, f := range []struct {
-			name         string
-			got, want    string
-			prec, recall *ratio
-		}{
-			{"title", g.Title, w.Title, &r.titleP, &r.titleR},
-			{"image", image, w.ImageURL, &r.imageP, &r.imageR},
-			{"timestamp", g.Timestamp, w.Timestamp, &r.timeP, &r.timeR},
-		} {
-			equal := f.got == f.want
-			if f.got != "" {
-				f.prec.total++
-				if equal {
-					f.prec.hit++
-				}
-			}
-			if f.want != "" {
-				f.recall.total++
-				if equal {
-					f.recall.hit++
-				}
-			}
-			if !equal && len(wrong) < maxFieldExamples {
-				wrong = append(
-					wrong,
-					fmt.Sprintf("  %s of %s:\n    got  %q\n    want %q", f.name, w.URL, f.got, f.want),
-				)
-			}
-		}
-	}
-
 	if len(missing) > 0 {
-		r.notes = append(r.notes, "posts that were not detected:\n  "+strings.Join(missing, "\n  "))
+		r.notes = append(r.notes, "posts that no single link key reaches:\n  "+strings.Join(missing, "\n  "))
 	}
-	if len(extra) > 0 {
-		r.notes = append(r.notes, "detected posts that the fixture does not hold:\n  "+strings.Join(extra, "\n  "))
-	}
-	if len(wrong) > 0 {
-		r.notes = append(r.notes, "fields that differ:\n"+strings.Join(wrong, "\n"))
+
+	// The attributes of the posts that were reached, over the groups the user
+	// ticked. For one group and one attribute, the row that matches the most
+	// fixture values is the row the user would pick, so it is the one measured.
+	for i, linkKey := range picked {
+		g := groups[i]
+		// The fixture post each item of the group stands for, read through the
+		// link key the user picked.
+		item := make([]fixturePost, len(g.Posts))
+		for j, p := range g.Posts {
+			if v, ok := valueOf(p.Links, linkKey); ok {
+				item[j] = wantByURL[v]
+			}
+		}
+		texts := func(p PostCandidate) []Attribute { return p.Texts }
+		images := func(p PostCandidate) []Attribute { return p.Images }
+		for _, f := range []struct {
+			name   string
+			values func(PostCandidate) []Attribute
+			want   func(fixturePost) string
+			into   *ratio
+		}{
+			{"title", texts, func(p fixturePost) string { return p.Title }, &r.titleR},
+			{"image", images, func(p fixturePost) string { return p.ImageURL }, &r.imageR},
+			{"timestamp", texts, func(p fixturePost) string { return p.Timestamp }, &r.timeR},
+		} {
+			hits := map[string]int{}
+			total := 0
+			for j, p := range g.Posts {
+				w := f.want(item[j])
+				if w == "" {
+					continue
+				}
+				total++
+				for _, a := range f.values(p) {
+					if a.Value == w {
+						hits[a.Selector]++
+					}
+				}
+			}
+			best := 0
+			for _, n := range hits {
+				if n > best {
+					best = n
+				}
+			}
+			f.into.hit += best
+			f.into.total += total
+		}
 	}
 	return r
 }
 
-// checkStructure verifies what holds for every page, whatever its fixture says:
-// the lists are numbered and ordered, every post carries an absolute URL and
-// the node it was read from, no URL is reported twice, and the selector of a
-// list finds its posts again in the document. These are properties of the
-// method, so they are checked separately from the metrics and a page fails on
-// them whatever its acceptance values are.
-func checkStructure(t *testing.T, lists []PostList, doc *html.Node) {
+// checkStructure verifies what holds for every page, whatever its fixture
+// says. These are properties of the method, so a page fails on them whatever
+// its acceptance values are.
+func checkStructure(t *testing.T, groups []Group) {
 	t.Helper()
-	seen := map[string]bool{}
-	for i, l := range lists {
-		if l.ID != i+1 {
-			t.Errorf("list %d has ID %d, want %d", i, l.ID, i+1)
+	keys := map[string]bool{}
+	for i, g := range groups {
+		if len(g.Posts) == 0 {
+			t.Errorf("group %d holds no item", i)
 		}
-		if i > 0 && l.Score > lists[i-1].Score {
-			t.Errorf("list %d scores %.1f, above the list before it (%.1f)", i, l.Score, lists[i-1].Score)
+		// Two groups that write the same key cannot be told apart when the
+		// saved key is read back, so ExtractPosts would answer with the wrong
+		// items. See the shape number in rootSelector.
+		if keys[g.Selector] {
+			t.Errorf("group %d repeats the key %q", i, g.Selector)
 		}
-		if len(l.Posts) < 1 {
-			t.Errorf("list %d holds no post", l.ID)
-		}
-		for _, p := range l.Posts {
-			if !p.URL.IsAbs() {
-				t.Errorf("post URL %q is not absolute", p.URL.String())
+		keys[g.Selector] = true
+		for j, p := range g.Posts {
+			if len(p.Links) == 0 {
+				t.Errorf("group %d item %d carries no link", i, j)
+				continue
 			}
-			// The same post can be rendered twice on one page, as a grid and
-			// as a list. It must be reported once.
-			if seen[p.URL.String()] {
-				t.Errorf("post URL %q is reported twice", p.URL.String())
+			for _, l := range p.Links {
+				if u, err := url.Parse(l.Value); err != nil || !u.IsAbs() {
+					t.Errorf("group %d item %d carries the link %q, which is not absolute", i, j, l.Value)
+				}
 			}
-			seen[p.URL.String()] = true
-			if p.Node == nil {
-				t.Errorf("post %q carries no node", p.URL.String())
-			}
-		}
-		matched := map[*html.Node]bool{}
-		goquery.NewDocumentFromNode(doc).Find(l.Selector).Each(func(_ int, s *goquery.Selection) {
-			matched[s.Nodes[0]] = true
-		})
-		for _, p := range l.Posts {
-			if !matched[p.Node] {
-				t.Errorf("selector %q does not match the post %q", l.Selector, p.URL.String())
-				break
+			seen := map[string]bool{}
+			for _, as := range [][]Attribute{p.Links, p.Texts, p.Images} {
+				for _, a := range as {
+					if a.Selector == "" {
+						t.Errorf("group %d item %d carries a value with no key", i, j)
+					}
+					seen[a.Selector] = true
+				}
 			}
 		}
 	}
@@ -387,7 +413,7 @@ func readFixture(t *testing.T, path string) fixture {
 	}
 	// A page can render the same post twice, as a grid and again as a
 	// carousel. The fixture records it once, with the fields of both copies
-	// merged, because the method reports each URL once as well.
+	// merged.
 	seen := map[string]bool{}
 	for i, p := range f.Posts {
 		if p.URL == "" {
@@ -401,260 +427,78 @@ func readFixture(t *testing.T, path string) fixture {
 	return f
 }
 
-// accepted holds the acceptance values of every saved page. na means the
-// metric is not required on that page.
+// accepted holds the acceptance values of every saved page, written by hand
+// from a PAPERDOLL_DUMP run. The fields are, in order: groups, groups to
+// check, last group to check, then the url, title, image and timestamp recall.
 var accepted = map[string]acceptance{
+	"anthropic.com-news": {5, 2, 5, 1.00, 1.00, na, 1.00},
+
+	"aws.amazon.com-jp-blogs-news": {13, 2, 2, 1.00, 1.00, 1.00, 1.00},
+
 	// A news front page with 19 sections, mixing articles, live pages and
-	// section links. It is the hardest page of the set and is accepted low.
-	// Its images are lazy loaded, so the src attribute holds a placeholder.
-	"bbc.com": {
-		URLPrecision:   0.80,
-		URLRecall:      0.85,
-		TitlePrecision: 0.95,
-		TitleRecall:    0.95,
-		ImagePrecision: 0.80,
-		ImageRecall:    0.80,
-		TimePrecision:  na,
-		TimeRecall:     0.50,
-		UsefulGroups:   0.90,
-	},
-
-	// A shop page. Every item is a record, and the page surrounds them with
-	// footer and banner groups that score high enough to be returned.
-	"diggersfactory.com-vinyl-shop-new-ins": {
-		URLPrecision:   0.80,
-		URLRecall:      1.00,
-		TitlePrecision: 0.80,
-		TitleRecall:    0.80,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  na,
-		TimeRecall:     na,
-		UsefulGroups:   1.00,
-	},
-
-	// A feed page that mixes the post list with campaign banners and event
-	// widgets. Part of the feed is loaded by JavaScript, so recall is capped.
-	"qiita.com": {
-		URLPrecision:   0.90,
-		URLRecall:      0.60,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 0.80,
-		ImageRecall:    na,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
+	// section links. It renders about 26 separate lists, so a large number of
+	// groups to tick is correct here rather than a defect. Its images are lazy
+	// loaded, so the src attribute holds a placeholder.
+	"bbc.com": {40, 23, 39, 1.00, 0.86, 0.98, 0.92},
 
 	// The "AI for Society" cards are custom elements that keep their title and
 	// their image in attributes, so only their links can be read.
-	"blog.google": {
-		URLPrecision:   0.70,
-		URLRecall:      0.60,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  na,
-		TimeRecall:     na,
-		UsefulGroups:   1.00,
-	},
+	"blog.google": {4, 2, 4, 1.00, 1.00, 1.00, na},
 
-	// Ordinary blog index pages. They are required to be exact.
-	"anthropic.com-news": {
-		URLPrecision:   1.00,
-		URLRecall:      0.90,
-		TitlePrecision: 0.90,
-		TitleRecall:    0.90,
-		ImagePrecision: na,
-		ImageRecall:    na,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"aws.amazon.com-jp-blogs-news": {
-		URLPrecision:   0.90,
-		URLRecall:      1.00,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"claude.com-blog": {
-		URLPrecision:   1.00,
-		URLRecall:      0.95,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  0.90,
-		TimeRecall:     0.90,
-		UsefulGroups:   1.00,
-	},
-	"cursor.com-blog": {
-		URLPrecision:   1.00,
-		URLRecall:      0.85,
-		TitlePrecision: 0.90,
-		TitleRecall:    0.90,
-		ImagePrecision: na,
-		ImageRecall:    0.50,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"daily.bandcamp.com-album-of-the-day": {
-		URLPrecision:   1.00,
-		URLRecall:      1.00,
-		TitlePrecision: 0.90,
-		TitleRecall:    0.90,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"daily.bandcamp.com-features": {
-		URLPrecision:   1.00,
-		URLRecall:      1.00,
-		TitlePrecision: 0.90,
-		TitleRecall:    0.90,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"deepmind.google-blog": {
-		URLPrecision:   1.00,
-		URLRecall:      0.95,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"deepmind.google-research-publications": {
-		URLPrecision:   1.00,
-		URLRecall:      1.00,
-		TitlePrecision: 0.90,
-		TitleRecall:    0.90,
-		ImagePrecision: na,
-		ImageRecall:    na,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"developer.apple.com-news": {
-		URLPrecision:   1.00,
-		URLRecall:      1.00,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  0.95,
-		TimeRecall:     0.95,
-		UsefulGroups:   1.00,
-	},
-	"developers.openai.com-blog": {
-		URLPrecision:   1.00,
-		URLRecall:      1.00,
-		TitlePrecision: 0.90,
-		TitleRecall:    0.90,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"flutter.dev-blog": {
-		URLPrecision:   1.00,
-		URLRecall:      1.00,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 0.95,
-		ImageRecall:    1.00,
-		TimePrecision:  0.95,
-		TimeRecall:     0.95,
-		UsefulGroups:   1.00,
-	},
-	"github.blog": {
-		URLPrecision:   0.90,
-		URLRecall:      0.90,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 0.80,
-		ImageRecall:    0.80,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   0.85,
-	},
-	"github.blog-ai-and-ml": {
-		URLPrecision:   1.00,
-		URLRecall:      1.00,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 0.90,
-		ImageRecall:    1.00,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"go.dev-blog": {
-		URLPrecision:   0.90,
-		URLRecall:      1.00,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: na,
-		ImageRecall:    na,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"paulgraham.com-articles": {
-		URLPrecision:   1.00,
-		URLRecall:      1.00,
-		TitlePrecision: 1.00,
-		TitleRecall:    1.00,
-		ImagePrecision: 0.90,
-		ImageRecall:    na,
-		TimePrecision:  0.90,
-		TimeRecall:     na,
-		UsefulGroups:   1.00,
-	},
-	"ycombinator.com-blog": {
-		URLPrecision:   0.80,
-		URLRecall:      1.00,
-		TitlePrecision: 0.90,
-		TitleRecall:    0.90,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
-	"ycombinator.com-blog-tag-essay": {
-		URLPrecision:   1.00,
-		URLRecall:      1.00,
-		TitlePrecision: 0.90,
-		TitleRecall:    0.90,
-		ImagePrecision: 1.00,
-		ImageRecall:    1.00,
-		TimePrecision:  1.00,
-		TimeRecall:     1.00,
-		UsefulGroups:   1.00,
-	},
+	"claude.com-blog": {5, 3, 4, 1.00, 1.00, 0.88, 1.00},
+
+	// Two of its images carry srcset and no src, and the cards that hold an
+	// image are a minority, so one image key reaches a third of the posts.
+	"cursor.com-blog": {13, 2, 4, 1.00, 0.87, 0.33, 0.86},
+
+	// The date is a bare text node next to a category link, so no key reaches
+	// it. All 30 timestamps are lost, which is the case that the open question
+	// "How to parse unstructured timestamps?" in IDEA2.md is about.
+	"daily.bandcamp.com-album-of-the-day": {11, 1, 3, 1.00, 1.00, 1.00, 0.00},
+
+	// Same page shape, same unreachable dates as the page above.
+	"daily.bandcamp.com-features": {12, 1, 3, 1.00, 1.00, 1.00, 0.00},
+
+	"deepmind.google-blog": {4, 3, 3, 1.00, 0.96, 0.54, 0.88},
+
+	"deepmind.google-research-publications": {2, 1, 1, 1.00, 1.00, na, 1.00},
+
+	// 95 groups, but the first one holds every post. Half of its dates are
+	// written as plain text next to other text, which no key can isolate.
+	"developer.apple.com-news": {95, 1, 1, 1.00, 1.00, 0.56, 0.50},
+
+	// The page carries a navigation drawer of 1490 elements that cleanup cannot
+	// see, and that drawer comes first in the document, so the one group worth
+	// ticking is the last of the 135. See "Open points" in PLAN.md.
+	"developers.openai.com-blog": {135, 1, 135, 1.00, 1.00, 1.00, 1.00},
+
+	// A shop page. Every item is a record.
+	"diggersfactory.com-vinyl-shop-new-ins": {1, 1, 1, 1.00, 1.00, 1.00, na},
+
+	"flutter.dev-blog": {3, 2, 3, 1.00, 1.00, 1.00, 0.99},
+
+	// The page puts several small repeated blocks above its post list, so the
+	// posts are spread over 10 groups.
+	"github.blog": {43, 10, 38, 1.00, 1.00, 0.80, 0.84},
+
+	"github.blog-ai-and-ml": {21, 3, 9, 1.00, 1.00, 1.00, 1.00},
+
+	"go.dev-blog": {3, 1, 2, 1.00, 1.00, na, 1.00},
+
+	"paulgraham.com-articles": {3, 1, 3, 1.00, 1.00, na, na},
+
+	// A feed page that mixes the post list with campaign banners and event
+	// widgets. Part of the feed is loaded by JavaScript.
+	"qiita.com": {84, 2, 9, 1.00, 1.00, na, 1.00},
+
+	"ycombinator.com-blog": {11, 3, 5, 1.00, 1.00, 1.00, 1.00},
+
+	"ycombinator.com-blog-tag-essay": {15, 2, 9, 1.00, 1.00, 1.00, 1.00},
 
 	// Pages whose content is rendered by JavaScript. A plain HTTP client
-	// receives no post, so the method must return none. The fixtures of these
-	// pages hold no post either, which the test checks separately.
-	"apple.com-newsroom":      {na, na, na, na, na, na, na, na, na},
-	"blog.google-feed":        {na, na, na, na, na, na, na, na, na},
-	"reddit.com-r-golang":     {na, na, na, na, na, na, na, na, na},
-	"security.apple.com-blog": {na, na, na, na, na, na, na, na, na},
+	// receives no post, so the enumeration must return no group at all.
+	"apple.com-newsroom":      {0, 0, 0, na, na, na, na},
+	"blog.google-feed":        {0, 0, 0, na, na, na, na},
+	"reddit.com-r-golang":     {0, 0, 0, na, na, na, na},
+	"security.apple.com-blog": {0, 0, 0, na, na, na, na},
 }

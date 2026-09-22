@@ -21,10 +21,10 @@ class PostSelectors {
     this.timestamp,
   });
 
-  /// CSS selector matching the items, taken from `PostGroup.selector`.
+  /// The key of the group, copied from `PostGroup.selector` without any change.
   String root;
 
-  /// Selector for the post URL, relative to an item. This one is required, and an item where it matches nothing is skipped at polling time.
+  /// The key of the post URL inside an item, copied from an `AttributeCandidate.selector` of the group's `links`. This one is required, and an item that does not carry it is skipped at polling time.
   String link;
 
   /// Selector for the post title, relative to an item.

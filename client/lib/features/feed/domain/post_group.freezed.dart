@@ -18,7 +18,9 @@ mixin _$PostGroup {
 /// Unique inside one search response only. Never sent back.
  int get id;/// CSS selector matching the items. Sent back as `PostSelectors.root`.
  String get selector;/// How many items the group holds in the page.
- int get count;/// How many items each [AttributeCandidate.values] describes.
+ int get count;/// How many items each [AttributeCandidate.values] describes. The sample
+/// always covers every candidate of the group, so a row is never empty in
+/// all of the sampled items.
  int get sampled; List<AttributeCandidate> get links; List<AttributeCandidate> get texts; List<AttributeCandidate> get images;
 /// Create a copy of PostGroup
 /// with the given fields replaced by the non-null parameter values.
@@ -226,7 +228,9 @@ class _PostGroup implements PostGroup {
 @override final  String selector;
 /// How many items the group holds in the page.
 @override final  int count;
-/// How many items each [AttributeCandidate.values] describes.
+/// How many items each [AttributeCandidate.values] describes. The sample
+/// always covers every candidate of the group, so a row is never empty in
+/// all of the sampled items.
 @override final  int sampled;
  final  List<AttributeCandidate> _links;
 @override List<AttributeCandidate> get links {
@@ -317,8 +321,9 @@ as List<AttributeCandidate>,
 mixin _$AttributeCandidate {
 
 /// Relative to the item. `:scope` means the item itself.
- String get selector;/// How many of the group's items this selector reaches.
- int get matched;/// Exactly `PostGroup.sampled` entries, in item order.
+ String get selector;/// Exactly `PostGroup.sampled` entries, in item order. An entry with a
+/// null value means the selector reaches nothing in that item, which
+/// happens for a selector only some items of the group carry.
  List<AttributeValue> get values;
 /// Create a copy of AttributeCandidate
 /// with the given fields replaced by the non-null parameter values.
@@ -330,16 +335,16 @@ $AttributeCandidateCopyWith<AttributeCandidate> get copyWith => _$AttributeCandi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AttributeCandidate&&(identical(other.selector, selector) || other.selector == selector)&&(identical(other.matched, matched) || other.matched == matched)&&const DeepCollectionEquality().equals(other.values, values));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AttributeCandidate&&(identical(other.selector, selector) || other.selector == selector)&&const DeepCollectionEquality().equals(other.values, values));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,selector,matched,const DeepCollectionEquality().hash(values));
+int get hashCode => Object.hash(runtimeType,selector,const DeepCollectionEquality().hash(values));
 
 @override
 String toString() {
-  return 'AttributeCandidate(selector: $selector, matched: $matched, values: $values)';
+  return 'AttributeCandidate(selector: $selector, values: $values)';
 }
 
 
@@ -350,7 +355,7 @@ abstract mixin class $AttributeCandidateCopyWith<$Res>  {
   factory $AttributeCandidateCopyWith(AttributeCandidate value, $Res Function(AttributeCandidate) _then) = _$AttributeCandidateCopyWithImpl;
 @useResult
 $Res call({
- String selector, int matched, List<AttributeValue> values
+ String selector, List<AttributeValue> values
 });
 
 
@@ -367,11 +372,10 @@ class _$AttributeCandidateCopyWithImpl<$Res>
 
 /// Create a copy of AttributeCandidate
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selector = null,Object? matched = null,Object? values = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? selector = null,Object? values = null,}) {
   return _then(AttributeCandidate(
 selector: null == selector ? _self.selector : selector // ignore: cast_nullable_to_non_nullable
-as String,matched: null == matched ? _self.matched : matched // ignore: cast_nullable_to_non_nullable
-as int,values: null == values ? _self.values : values // ignore: cast_nullable_to_non_nullable
+as String,values: null == values ? _self.values : values // ignore: cast_nullable_to_non_nullable
 as List<AttributeValue>,
   ));
 }
@@ -457,10 +461,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String selector,  int matched,  List<AttributeValue> values)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String selector,  List<AttributeValue> values)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AttributeCandidate() when $default != null:
-return $default(_that.selector,_that.matched,_that.values);case _:
+return $default(_that.selector,_that.values);case _:
   return orElse();
 
 }
@@ -478,10 +482,10 @@ return $default(_that.selector,_that.matched,_that.values);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String selector,  int matched,  List<AttributeValue> values)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String selector,  List<AttributeValue> values)  $default,) {final _that = this;
 switch (_that) {
 case _AttributeCandidate():
-return $default(_that.selector,_that.matched,_that.values);case _:
+return $default(_that.selector,_that.values);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -498,10 +502,10 @@ return $default(_that.selector,_that.matched,_that.values);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String selector,  int matched,  List<AttributeValue> values)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String selector,  List<AttributeValue> values)?  $default,) {final _that = this;
 switch (_that) {
 case _AttributeCandidate() when $default != null:
-return $default(_that.selector,_that.matched,_that.values);case _:
+return $default(_that.selector,_that.values);case _:
   return null;
 
 }
@@ -513,16 +517,18 @@ return $default(_that.selector,_that.matched,_that.values);case _:
 
 
 class _AttributeCandidate implements AttributeCandidate {
-  const _AttributeCandidate({required this.selector, required this.matched, required  List<AttributeValue> values}): _values = values;
+  const _AttributeCandidate({required this.selector, required  List<AttributeValue> values}): _values = values;
   
 
 /// Relative to the item. `:scope` means the item itself.
 @override final  String selector;
-/// How many of the group's items this selector reaches.
-@override final  int matched;
-/// Exactly `PostGroup.sampled` entries, in item order.
+/// Exactly `PostGroup.sampled` entries, in item order. An entry with a
+/// null value means the selector reaches nothing in that item, which
+/// happens for a selector only some items of the group carry.
  final  List<AttributeValue> _values;
-/// Exactly `PostGroup.sampled` entries, in item order.
+/// Exactly `PostGroup.sampled` entries, in item order. An entry with a
+/// null value means the selector reaches nothing in that item, which
+/// happens for a selector only some items of the group carry.
 @override List<AttributeValue> get values {
   if (_values is EqualUnmodifiableListView) return _values;
   // ignore: implicit_dynamic_type
@@ -540,16 +546,16 @@ _$AttributeCandidateCopyWith<_AttributeCandidate> get copyWith => __$AttributeCa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AttributeCandidate&&(identical(other.selector, selector) || other.selector == selector)&&(identical(other.matched, matched) || other.matched == matched)&&const DeepCollectionEquality().equals(other._values, _values));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AttributeCandidate&&(identical(other.selector, selector) || other.selector == selector)&&const DeepCollectionEquality().equals(other._values, _values));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,selector,matched,const DeepCollectionEquality().hash(_values));
+int get hashCode => Object.hash(runtimeType,selector,const DeepCollectionEquality().hash(_values));
 
 @override
 String toString() {
-  return 'AttributeCandidate(selector: $selector, matched: $matched, values: $values)';
+  return 'AttributeCandidate(selector: $selector, values: $values)';
 }
 
 
@@ -560,7 +566,7 @@ abstract mixin class _$AttributeCandidateCopyWith<$Res> implements $AttributeCan
   factory _$AttributeCandidateCopyWith(_AttributeCandidate value, $Res Function(_AttributeCandidate) _then) = __$AttributeCandidateCopyWithImpl;
 @override @useResult
 $Res call({
- String selector, int matched, List<AttributeValue> values
+ String selector, List<AttributeValue> values
 });
 
 
@@ -577,11 +583,10 @@ class __$AttributeCandidateCopyWithImpl<$Res>
 
 /// Create a copy of AttributeCandidate
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? selector = null,Object? matched = null,Object? values = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? selector = null,Object? values = null,}) {
   return _then(_AttributeCandidate(
 selector: null == selector ? _self.selector : selector // ignore: cast_nullable_to_non_nullable
-as String,matched: null == matched ? _self.matched : matched // ignore: cast_nullable_to_non_nullable
-as int,values: null == values ? _self._values : values // ignore: cast_nullable_to_non_nullable
+as String,values: null == values ? _self._values : values // ignore: cast_nullable_to_non_nullable
 as List<AttributeValue>,
   ));
 }

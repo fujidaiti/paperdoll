@@ -4,7 +4,6 @@ import 'package:material_ui/material_ui.dart';
 import 'package:paperdoll/core/ui/tokens/app_radii.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
 import 'package:paperdoll/core/ui/widgets/body_text.dart';
-import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/empty_placeholder.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/core/ui/widgets/heading_text.dart';
@@ -96,7 +95,6 @@ class _AttributePickerScreenState extends ConsumerState<AttributePickerScreen> {
                       final row = rows[index];
                       return _AttributeRow(
                         key: AppDebugKey.attributeRow(row.selector),
-                        group: group,
                         candidate: row,
                         isImage: attribute == PostAttribute.image,
                         selected: row.selector == selected,
@@ -150,7 +148,6 @@ class _AttributePickerScreenState extends ConsumerState<AttributePickerScreen> {
 }
 
 class const _AttributeRow({
-  required final PostGroup group,
   required final AttributeCandidate candidate,
   required final bool isImage,
   required final bool selected,
@@ -159,8 +156,16 @@ class const _AttributeRow({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // The values arrays hold `sampled` entries; show at most two of them.
-    final values = candidate.values.take(2).map((v) => v.value).toList();
+    // The values array holds one entry per sampled item, and a row that only
+    // some items carry is empty in the others. Taking the first two entries
+    // would show nothing for such a row, so the preview takes the first two
+    // entries that carry a value. Every row has at least one, because the
+    // server grows the sample until it does.
+    final values = candidate.values
+        .map((v) => v.value)
+        .nonNulls
+        .take(2)
+        .toList();
     return ListTile(
       selected: selected,
       onTap: onTap,
@@ -173,22 +178,17 @@ class const _AttributeRow({
                 for (final value in values)
                   Padding(
                     padding: const EdgeInsets.only(right: spacingSm),
-                    child: value == null
-                        ? const Icon(Icons.hide_image_outlined, size: iconMd)
-                        : ClipRRect(
-                            borderRadius: borderRadiusCard,
-                            child: Image.network(
-                              value,
-                              width: iconMd,
-                              height: iconMd,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  const Icon(
-                                    Icons.image_outlined,
-                                    size: iconMd,
-                                  ),
-                            ),
-                          ),
+                    child: ClipRRect(
+                      borderRadius: borderRadiusCard,
+                      child: Image.network(
+                        value,
+                        width: iconMd,
+                        height: iconMd,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(Icons.image_outlined, size: iconMd),
+                      ),
+                    ),
                   ),
               ],
             )
@@ -196,18 +196,9 @@ class const _AttributeRow({
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 for (final value in values)
-                  BodyText(
-                    value ?? '(empty)',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                  BodyText(value, maxLines: 1, overflow: TextOverflow.ellipsis),
               ],
             ),
-      // The user's only warning that this choice leaves some posts
-      // incomplete.
-      subtitle: candidate.matched < group.count
-          ? CaptionText('Reaches ${candidate.matched} of ${group.count} posts')
-          : null,
     );
   }
 }
