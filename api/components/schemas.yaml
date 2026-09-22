@@ -37,6 +37,141 @@ FeedCandidate:
       type: string
     description:
       type: string
+    post_groups:
+      description:
+        Lists of post-like elements found in an HTML page that carries no
+        RSS/Atom feed. The user picks which of them are post lists, and which
+        element of an item is the title, the image and so on, then sends the
+        resulting selectors back in `PUT /feeds`. Absent or empty when `url`
+        points at a real feed, in which case the client subscribes with the URL
+        alone. The groups are listed in the order they appear in the page, and
+        the list is not cut. A page may produce a hundred of them, so the client
+        renders it lazily.
+      type: array
+      items:
+        $ref: "#/PostGroup"
+
+PostGroup:
+  description:
+    One list of post-like elements. Every item of the group can be read with the
+    same set of relative selectors, so the user answers for the whole group at
+    once rather than per post.
+  type: object
+  required: [id, selector, count, sampled, links, texts, images]
+  properties:
+    id:
+      description:
+        Identifies the group inside this `FeedCandidate`. It is assigned per
+        response and is not stored, so it must not be sent back to the server.
+      type: integer
+    selector:
+      description:
+        CSS selector matching the items of the group in the fetched page. Send
+        it back as `root` in `PUT /feeds`.
+      type: string
+    count:
+      description: How many items the group holds in the fetched page.
+      type: integer
+    sampled:
+      description:
+        How many of those items the `values` arrays below describe. The server
+        samples the first few items of the group, so `sampled` is at most
+        `count`.
+      type: integer
+    links:
+      description:
+        The candidate selectors for the post link, that is, elements carrying an
+        `href`. A group with no link candidate cannot be subscribed to, because
+        a post without a URL cannot be stored.
+      type: array
+      items:
+        $ref: "#/AttributeCandidate"
+    texts:
+      description:
+        The candidate selectors for the post title, description and timestamp.
+        The three are chosen from the same list, because the server cannot tell
+        them apart.
+      type: array
+      items:
+        $ref: "#/AttributeCandidate"
+    images:
+      description: The candidate selectors for the post thumbnail.
+      type: array
+      items:
+        $ref: "#/AttributeCandidate"
+
+AttributeCandidate:
+  description:
+    One relative selector inside the items of a group, with the values it
+    produces in the sampled items. This is one row of the attribute screen,
+    where the user picks a row rather than a value, because the choice applies
+    to every item of the group.
+  type: object
+  required: [selector, matched, values]
+  properties:
+    selector:
+      description:
+        Selector relative to the group item. `:scope` means the item element
+        itself, which happens when the whole card is a link.
+      type: string
+    matched:
+      description:
+        How many of the group's `count` items this selector reaches. A value
+        lower than `count` means the choice leaves some posts without this
+        attribute, which the client shows as a warning on the row.
+      type: integer
+    values:
+      description:
+        What the selector produces in each sampled item, in the same order as
+        the items. The array holds exactly `sampled` entries, so the client can
+        build the preview of item _i_ by reading index _i_ of every row. An
+        entry with no `value` means the selector reaches nothing in that item.
+      type: array
+      items:
+        $ref: "#/AttributeValue"
+
+AttributeValue:
+  type: object
+  properties:
+    value:
+      description:
+        The text of the element for a `texts` row, the resolved `href` for a
+        `links` row, and the resolved image URL for an `images` row. Absent when
+        the selector reaches nothing in this item.
+      type: string
+    alt:
+      description: The `alt` text of the image. Only set on `images` rows.
+      type: string
+
+PostSelectors:
+  description:
+    One saved recipe for reading posts out of an HTML page. The server applies
+    it on every poll. It matches `root` to find the items, then reads each
+    attribute relative to an item.
+  type: object
+  required: [root, link]
+  properties:
+    root:
+      description:
+        CSS selector matching the items, taken from `PostGroup.selector`.
+      type: string
+    link:
+      description:
+        Selector for the post URL, relative to an item. This one is required,
+        and an item where it matches nothing is skipped at polling time.
+      type: string
+    title:
+      description: Selector for the post title, relative to an item.
+      type: string
+    description:
+      description: Selector for the post description, relative to an item.
+      type: string
+    image:
+      description: Selector for the post thumbnail, relative to an item.
+      type: string
+    timestamp:
+      description: Selector for the post publication date, relative to an item.
+      type: string
 
 FeedEntry:
   type: object

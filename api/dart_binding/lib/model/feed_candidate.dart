@@ -18,6 +18,7 @@ class FeedCandidate {
     this.iconUrl,
     required this.title,
     this.description,
+    this.postGroups = const [],
   });
 
   String url;
@@ -48,6 +49,9 @@ class FeedCandidate {
   ///
   String? description;
 
+  /// Lists of post-like elements found in an HTML page that carries no RSS/Atom feed. The user picks which of them are post lists, and which element of an item is the title, the image and so on, then sends the resulting selectors back in `PUT /feeds`. Absent or empty when `url` points at a real feed, in which case the client subscribes with the URL alone. The groups are listed in the order they appear in the page, and the list is not cut. A page may produce a hundred of them, so the client renders it lazily.
+  List<PostGroup> postGroups;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -56,7 +60,8 @@ class FeedCandidate {
           other.siteUrl == siteUrl &&
           other.iconUrl == iconUrl &&
           other.title == title &&
-          other.description == description;
+          other.description == description &&
+          _deepEquality.equals(other.postGroups, postGroups);
 
   @override
   int get hashCode =>
@@ -65,11 +70,12 @@ class FeedCandidate {
       (siteUrl == null ? 0 : siteUrl!.hashCode) +
       (iconUrl == null ? 0 : iconUrl!.hashCode) +
       (title.hashCode) +
-      (description == null ? 0 : description!.hashCode);
+      (description == null ? 0 : description!.hashCode) +
+      (postGroups.hashCode);
 
   @override
   String toString() =>
-      'FeedCandidate[url=$url, siteUrl=$siteUrl, iconUrl=$iconUrl, title=$title, description=$description]';
+      'FeedCandidate[url=$url, siteUrl=$siteUrl, iconUrl=$iconUrl, title=$title, description=$description, postGroups=$postGroups]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -90,6 +96,7 @@ class FeedCandidate {
     } else {
       json[r'description'] = null;
     }
+    json[r'post_groups'] = this.postGroups;
     return json;
   }
 
@@ -121,6 +128,7 @@ class FeedCandidate {
         iconUrl: mapValueOfType<String>(json, r'icon_url'),
         title: mapValueOfType<String>(json, r'title')!,
         description: mapValueOfType<String>(json, r'description'),
+        postGroups: PostGroup.listFromJson(json[r'post_groups']),
       );
     }
     return null;

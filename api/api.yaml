@@ -55,6 +55,14 @@ components:
       $ref: "./components/schemas.yaml#/Feed"
     FeedCandidate:
       $ref: "./components/schemas.yaml#/FeedCandidate"
+    PostGroup:
+      $ref: "./components/schemas.yaml#/PostGroup"
+    AttributeCandidate:
+      $ref: "./components/schemas.yaml#/AttributeCandidate"
+    AttributeValue:
+      $ref: "./components/schemas.yaml#/AttributeValue"
+    PostSelectors:
+      $ref: "./components/schemas.yaml#/PostSelectors"
     FeedEntry:
       $ref: "./components/schemas.yaml#/FeedEntry"
     ReadingListItem:

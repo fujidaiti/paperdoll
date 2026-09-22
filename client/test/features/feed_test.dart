@@ -57,7 +57,11 @@ void main() {
       )
       ..onPut(
         '/feeds',
-        bodyMatcher: api.SubscribeToFeedRequest(url: nasa.url).toJson(),
+        // Written out rather than built from api.SubscribeToFeedRequest,
+        // whose toJson always writes an empty `selectors` list. A feed URL is
+        // subscribed to with the url alone, so the app sends no `selectors`,
+        // and bodyMatcher matches a subset of what the app actually sent.
+        bodyMatcher: {'url': nasa.url},
         respond: (_) {
           subscriptions.add(nasa);
           return (200, nasa.toJson());
