@@ -8,6 +8,10 @@ abstract final class AppDebugKey {
   static const archivedButton = Key('archivedButton');
   static const archivedReadingListScreen = Key('archivedReadingListScreen');
   static const unarchiveSuccessSnackBar = Key('unarchiveSuccessSnackBar');
+  static const attributeBackButton = Key('attributeBackButton');
+  static const attributeNextButton = Key('attributeNextButton');
+  static const attributeNoneButton = Key('attributeNoneButton');
+  static const attributePickerScreen = Key('attributePickerScreen');
   static const feedDetailScreen = Key('feedDetailScreen');
   static const feedEntryReaderArchiveButton = Key(
     'feedEntryReaderArchiveButton',
@@ -25,6 +29,10 @@ abstract final class AppDebugKey {
   static const feedSearchButton = Key('feedSearchButton');
   static const feedSearchScreen = Key('feedSearchScreen');
   static const feedSearchTextField = Key('feedSearchTextField');
+  static const feedSubscriptionScreen = Key('feedSubscriptionScreen');
+  static const feedSubscriptionSubscribeButton = Key(
+    'feedSubscriptionSubscribeButton',
+  );
   static const feedsNavDestination = Key('feedsNavDestination');
   static const feedsScreen = Key('feedsScreen');
   static const readingListNavDestination = Key('readingListNavDestination');
@@ -66,9 +74,12 @@ abstract final class AppDebugKey {
   static const todayNavDestination = Key('todayNavDestination');
   static const todayScreen = Key('todayScreen');
 
+  static Key attributeRow(String selector) => Key('attributeRow:$selector');
   static Key feedCandidateTile(String title) => Key('feedCandidate:$title');
   static Key feedEntryRow(String title) => Key('feedEntry:$title');
   static Key feedRow(String title) => Key('feed:$title');
+  static Key postGroupCard(int id) => Key('postGroupCard:$id');
+  static Key postGroupCheckbox(int id) => Key('postGroupCheckbox:$id');
   static Key readingListRow(String title) => Key('readingList:$title');
   static Key readerTitle(String title) => Key('readerTitle:$title');
   static Key storyCard(String title) => Key('story:$title');

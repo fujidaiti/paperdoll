@@ -340,3 +340,123 @@ abstract class _$FeedSearchController
     return element.handleCreate(ref, build);
   }
 }
+
+/// Holds the choices of the web page subscription flow for as long as its
+/// screens are open. Ticking and unticking a group never touches its
+/// selection, so the choices survive both.
+
+@ProviderFor(SubscriptionDraft)
+final subscriptionDraftProvider = SubscriptionDraftFamily._();
+
+/// Holds the choices of the web page subscription flow for as long as its
+/// screens are open. Ticking and unticking a group never touches its
+/// selection, so the choices survive both.
+final class SubscriptionDraftProvider
+    extends $NotifierProvider<SubscriptionDraft, SubscriptionDraftState> {
+  /// Holds the choices of the web page subscription flow for as long as its
+  /// screens are open. Ticking and unticking a group never touches its
+  /// selection, so the choices survive both.
+  SubscriptionDraftProvider._({
+    required SubscriptionDraftFamily super.from,
+    required FeedCandidate super.argument,
+  }) : super(
+         retry: null,
+         name: r'subscriptionDraftProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$subscriptionDraftHash();
+
+  @override
+  String toString() {
+    return r'subscriptionDraftProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  SubscriptionDraft create() => SubscriptionDraft();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(SubscriptionDraftState value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SubscriptionDraftState>(value),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SubscriptionDraftProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$subscriptionDraftHash() => r'0d391931cd9d32fe77dfb24de89d81d94d9a478e';
+
+/// Holds the choices of the web page subscription flow for as long as its
+/// screens are open. Ticking and unticking a group never touches its
+/// selection, so the choices survive both.
+
+final class SubscriptionDraftFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          SubscriptionDraft,
+          SubscriptionDraftState,
+          SubscriptionDraftState,
+          SubscriptionDraftState,
+          FeedCandidate
+        > {
+  SubscriptionDraftFamily._()
+    : super(
+        retry: null,
+        name: r'subscriptionDraftProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// Holds the choices of the web page subscription flow for as long as its
+  /// screens are open. Ticking and unticking a group never touches its
+  /// selection, so the choices survive both.
+
+  SubscriptionDraftProvider call(FeedCandidate candidate) =>
+      SubscriptionDraftProvider._(argument: candidate, from: this);
+
+  @override
+  String toString() => r'subscriptionDraftProvider';
+}
+
+/// Holds the choices of the web page subscription flow for as long as its
+/// screens are open. Ticking and unticking a group never touches its
+/// selection, so the choices survive both.
+
+abstract class _$SubscriptionDraft extends $Notifier<SubscriptionDraftState> {
+  late final _$args = ref.$arg as FeedCandidate;
+  FeedCandidate get candidate => _$args;
+
+  SubscriptionDraftState build(FeedCandidate candidate);
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref =
+        this.ref as $Ref<SubscriptionDraftState, SubscriptionDraftState>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<SubscriptionDraftState, SubscriptionDraftState>,
+              SubscriptionDraftState,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, () => build(_$args));
+  }
+}

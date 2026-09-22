@@ -7,8 +7,11 @@ import 'package:paperdoll/features/auth/presentation/sign_in_screen.dart';
 import 'package:paperdoll/features/auth/presentation/sign_up_screen.dart';
 import 'package:paperdoll/features/auth/presentation/splash_screen.dart';
 import 'package:paperdoll/features/auth/presentation/verify_email_screen.dart';
+import 'package:paperdoll/features/feed/domain/feed_candidate.dart';
+import 'package:paperdoll/features/feed/presentation/attribute_picker_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_detail_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_search_screen.dart';
+import 'package:paperdoll/features/feed/presentation/feed_subscription_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feeds_screen.dart';
 import 'package:paperdoll/features/feed_entry/presentation/feed_entry_reader_screen.dart';
 import 'package:paperdoll/features/newspaper/presentation/today_screen.dart';
@@ -150,6 +153,25 @@ GoRouter goRouter(Ref ref) {
                     path: routeFeedSearchPath,
                     name: routeFeedSearchName,
                     builder: (context, state) => const FeedSearchScreen(),
+                  ),
+                  // The candidate comes from the search result as `extra`, so
+                  // neither screen fetches anything of its own.
+                  GoRoute(
+                    path: routeFeedSubscriptionPath,
+                    name: routeFeedSubscriptionName,
+                    builder: (context, state) => FeedSubscriptionScreen(
+                      candidate: state.extra! as FeedCandidate,
+                    ),
+                    routes: [
+                      GoRoute(
+                        path: routeFeedSubscriptionAttributesPath,
+                        name: routeFeedSubscriptionAttributesName,
+                        builder: (context, state) => AttributePickerScreen(
+                          candidate: state.extra! as FeedCandidate,
+                          groupId: _idParam(state, 'groupId'),
+                        ),
+                      ),
+                    ],
                   ),
                   GoRoute(
                     path: routeFeedDetailPath,

@@ -48,6 +48,14 @@ class _Feeds {
     title: 'Wikipedia  - Recent changes [en]',
     description: 'Track the most recent changes to the wiki in this feed.',
   );
+
+  // A plain HTML page with no feed, subscribed to with selectors.
+  final exampleBlog = api.Feed(
+    id: 5,
+    url: 'https://blog.example.com/',
+    siteUrl: 'https://blog.example.com/',
+    title: 'Example Blog',
+  );
 }
 
 final _entries = _Entries();
@@ -107,6 +115,120 @@ class _FeedCandidates {
     iconUrl: 'https://www.google.com/s2/favicons?domain=nasa.gov&sz=64',
     title: _feeds.nasa.title,
     description: _feeds.nasa.description,
+  );
+
+  // What /feeds/search returns for a plain HTML page with no feed. Each group
+  // exercises a different rule of the subscription flow:
+  // - group 0 is the normal path: one link candidate, so the link question
+  //   is skipped, and a `time` row that does not reach every post.
+  // - group 1 has no link candidate, so it cannot be ticked.
+  // - group 2 has two link candidates, so the link question is asked.
+  final exampleBlog = api.FeedCandidate(
+    url: _feeds.exampleBlog.url,
+    siteUrl: _feeds.exampleBlog.siteUrl,
+    title: _feeds.exampleBlog.title,
+    postGroups: [
+      api.PostGroup(
+        id: 0,
+        selector: 'main > article',
+        count: 24,
+        sampled: 2,
+        links: [
+          api.AttributeCandidate(
+            selector: ':scope',
+            matched: 24,
+            values: [
+              api.AttributeValue(value: 'https://blog.example.com/posts/1'),
+              api.AttributeValue(value: 'https://blog.example.com/posts/2'),
+            ],
+          ),
+        ],
+        texts: [
+          api.AttributeCandidate(
+            selector: 'div > h3',
+            matched: 24,
+            values: [
+              api.AttributeValue(value: 'Why we moved to a monorepo'),
+              api.AttributeValue(value: 'Notes from the September release'),
+            ],
+          ),
+          api.AttributeCandidate(
+            selector: 'div > time',
+            matched: 23,
+            values: [
+              api.AttributeValue(value: '2026-09-12'),
+              api.AttributeValue(value: '2026-09-03'),
+            ],
+          ),
+        ],
+        images: [
+          api.AttributeCandidate(
+            selector: 'img',
+            matched: 24,
+            values: [
+              api.AttributeValue(
+                value: 'https://blog.example.com/images/1.png',
+                alt: 'A diagram of the repository layout',
+              ),
+              api.AttributeValue(
+                value: 'https://blog.example.com/images/2.png',
+                alt: 'The release banner',
+              ),
+            ],
+          ),
+        ],
+      ),
+      api.PostGroup(
+        id: 1,
+        selector: 'aside > ul > li',
+        count: 6,
+        sampled: 2,
+        texts: [
+          api.AttributeCandidate(
+            selector: ':scope',
+            matched: 6,
+            values: [
+              api.AttributeValue(value: 'Engineering'),
+              api.AttributeValue(value: 'Announcements'),
+            ],
+          ),
+        ],
+      ),
+      api.PostGroup(
+        id: 2,
+        selector: 'section.news > div',
+        count: 10,
+        sampled: 2,
+        links: [
+          api.AttributeCandidate(
+            selector: 'a.headline',
+            matched: 10,
+            values: [
+              api.AttributeValue(value: 'https://blog.example.com/news/1'),
+              api.AttributeValue(value: 'https://blog.example.com/news/2'),
+            ],
+          ),
+          api.AttributeCandidate(
+            selector: 'a.more',
+            matched: 10,
+            values: [
+              api.AttributeValue(value: 'https://blog.example.com/news/1#more'),
+              api.AttributeValue(value: 'https://blog.example.com/news/2#more'),
+            ],
+          ),
+        ],
+        texts: [
+          api.AttributeCandidate(
+            selector: 'a.headline',
+            matched: 10,
+            values: [
+              api.AttributeValue(value: 'Office hours move to Thursdays'),
+              api.AttributeValue(value: 'New contributors this month'),
+            ],
+          ),
+        ],
+      ),
+    ],
   );
 }
 

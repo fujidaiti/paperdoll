@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:openapi/api.dart' as api;
 import 'package:paperdoll/core/network/dio_provider.dart';
 import 'package:paperdoll/core/pagination/paged_state.dart';
 import 'package:paperdoll/features/feed/data/feed_repository_impl.dart';
 import 'package:paperdoll/features/feed/domain/feed.dart';
 import 'package:paperdoll/features/feed/domain/feed_candidate.dart';
 import 'package:paperdoll/features/feed/domain/feed_repository.dart';
+import 'package:paperdoll/features/feed/domain/post_selection.dart';
 import 'package:paperdoll/features/feed_entry/domain/feed_entry.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -69,6 +71,77 @@ class FeedSearchController extends _$FeedSearchController {
   /// caller can surface a snackbar; on success the Feeds list is invalidated.
   Future<void> subscribe(String url) async {
     await ref.read(feedRepositoryProvider).subscribe(url);
+    ref.invalidate(feedsProvider);
+  }
+}
+
+/// The user's answers while subscribing to a plain HTML page: which post
+/// groups are ticked, and a [PostSelection] per group.
+typedef SubscriptionDraftState = ({
+  Set<int> ticked,
+  Map<int, PostSelection> selections,
+});
+
+/// Holds the choices of the web page subscription flow for as long as its
+/// screens are open. Ticking and unticking a group never touches its
+/// selection, so the choices survive both.
+@riverpod
+class SubscriptionDraft extends _$SubscriptionDraft {
+  @override
+  SubscriptionDraftState build(FeedCandidate candidate) => (
+    ticked: const {},
+    selections: {
+      for (final group in candidate.postGroups)
+        // A group rarely offers more than one link candidate, so the first
+        // one is selected up front and the user only confirms it when there
+        // is a choice to make.
+        group.id: PostSelection(
+          groupId: group.id,
+          link: group.links.firstOrNull?.selector,
+        ),
+    },
+  );
+
+  /// Ticks or unticks a group. A group with no link candidate cannot be
+  /// ticked, because a post with no URL cannot be stored.
+  void toggle(int groupId) {
+    final group = candidate.postGroups.firstWhere((g) => g.id == groupId);
+    if (group.links.isEmpty) {
+      return;
+    }
+    final ticked = {...state.ticked};
+    if (!ticked.remove(groupId)) {
+      ticked.add(groupId);
+    }
+    state = (ticked: ticked, selections: state.selections);
+  }
+
+  /// Chooses [selector] for [attribute] of a group, or clears it when null.
+  void select(int groupId, PostAttribute attribute, String? selector) {
+    state = (
+      ticked: state.ticked,
+      selections: {
+        ...state.selections,
+        groupId: state.selections[groupId]!.withSelector(attribute, selector),
+      },
+    );
+  }
+
+  /// The `selectors` of the `PUT /feeds` request: one entry per ticked
+  /// group, in group order.
+  List<api.PostSelectors> request() => [
+    for (final group in candidate.postGroups)
+      if (state.ticked.contains(group.id))
+        state.selections[group.id]!.toApi(group.selector),
+  ];
+
+  /// Subscribes to the page with the current choices. Throws a domain error
+  /// on failure, leaving the draft untouched; on success the Feeds list is
+  /// invalidated.
+  Future<void> subscribe() async {
+    await ref
+        .read(feedRepositoryProvider)
+        .subscribe(candidate.url, selectors: request());
     ref.invalidate(feedsProvider);
   }
 }

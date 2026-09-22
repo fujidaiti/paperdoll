@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$FeedCandidate {
 
- String get url; String get title; String? get siteUrl; String? get iconUrl; String? get description;
+ String get url; String get title; String? get siteUrl; String? get iconUrl; String? get description; List<PostGroup> get postGroups;
 /// Create a copy of FeedCandidate
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $FeedCandidateCopyWith<FeedCandidate> get copyWith => _$FeedCandidateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FeedCandidate&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.siteUrl, siteUrl) || other.siteUrl == siteUrl)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FeedCandidate&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.siteUrl, siteUrl) || other.siteUrl == siteUrl)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other.postGroups, postGroups));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,url,title,siteUrl,iconUrl,description);
+int get hashCode => Object.hash(runtimeType,url,title,siteUrl,iconUrl,description,const DeepCollectionEquality().hash(postGroups));
 
 @override
 String toString() {
-  return 'FeedCandidate(url: $url, title: $title, siteUrl: $siteUrl, iconUrl: $iconUrl, description: $description)';
+  return 'FeedCandidate(url: $url, title: $title, siteUrl: $siteUrl, iconUrl: $iconUrl, description: $description, postGroups: $postGroups)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $FeedCandidateCopyWith<$Res>  {
   factory $FeedCandidateCopyWith(FeedCandidate value, $Res Function(FeedCandidate) _then) = _$FeedCandidateCopyWithImpl;
 @useResult
 $Res call({
- String url, String title, String? siteUrl, String? iconUrl, String? description
+ String url, String title, String? siteUrl, String? iconUrl, String? description, List<PostGroup> postGroups
 });
 
 
@@ -63,14 +63,15 @@ class _$FeedCandidateCopyWithImpl<$Res>
 
 /// Create a copy of FeedCandidate
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? url = null,Object? title = null,Object? siteUrl = freezed,Object? iconUrl = freezed,Object? description = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? url = null,Object? title = null,Object? siteUrl = freezed,Object? iconUrl = freezed,Object? description = freezed,Object? postGroups = null,}) {
   return _then(FeedCandidate(
 url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,siteUrl: freezed == siteUrl ? _self.siteUrl : siteUrl // ignore: cast_nullable_to_non_nullable
 as String?,iconUrl: freezed == iconUrl ? _self.iconUrl : iconUrl // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,postGroups: null == postGroups ? _self.postGroups : postGroups // ignore: cast_nullable_to_non_nullable
+as List<PostGroup>,
   ));
 }
 
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String url,  String title,  String? siteUrl,  String? iconUrl,  String? description)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String url,  String title,  String? siteUrl,  String? iconUrl,  String? description,  List<PostGroup> postGroups)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FeedCandidate() when $default != null:
-return $default(_that.url,_that.title,_that.siteUrl,_that.iconUrl,_that.description);case _:
+return $default(_that.url,_that.title,_that.siteUrl,_that.iconUrl,_that.description,_that.postGroups);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.url,_that.title,_that.siteUrl,_that.iconUrl,_that.descript
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String url,  String title,  String? siteUrl,  String? iconUrl,  String? description)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String url,  String title,  String? siteUrl,  String? iconUrl,  String? description,  List<PostGroup> postGroups)  $default,) {final _that = this;
 switch (_that) {
 case _FeedCandidate():
-return $default(_that.url,_that.title,_that.siteUrl,_that.iconUrl,_that.description);case _:
+return $default(_that.url,_that.title,_that.siteUrl,_that.iconUrl,_that.description,_that.postGroups);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.url,_that.title,_that.siteUrl,_that.iconUrl,_that.descript
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String url,  String title,  String? siteUrl,  String? iconUrl,  String? description)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String url,  String title,  String? siteUrl,  String? iconUrl,  String? description,  List<PostGroup> postGroups)?  $default,) {final _that = this;
 switch (_that) {
 case _FeedCandidate() when $default != null:
-return $default(_that.url,_that.title,_that.siteUrl,_that.iconUrl,_that.description);case _:
+return $default(_that.url,_that.title,_that.siteUrl,_that.iconUrl,_that.description,_that.postGroups);case _:
   return null;
 
 }
@@ -211,7 +212,7 @@ return $default(_that.url,_that.title,_that.siteUrl,_that.iconUrl,_that.descript
 
 
 class _FeedCandidate implements FeedCandidate {
-  const _FeedCandidate({required this.url, required this.title, this.siteUrl, this.iconUrl, this.description});
+  const _FeedCandidate({required this.url, required this.title, this.siteUrl, this.iconUrl, this.description,  List<PostGroup> postGroups = const []}): _postGroups = postGroups;
   
 
 @override final  String url;
@@ -219,6 +220,13 @@ class _FeedCandidate implements FeedCandidate {
 @override final  String? siteUrl;
 @override final  String? iconUrl;
 @override final  String? description;
+ final  List<PostGroup> _postGroups;
+@override@JsonKey() List<PostGroup> get postGroups {
+  if (_postGroups is EqualUnmodifiableListView) return _postGroups;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_postGroups);
+}
+
 
 /// Create a copy of FeedCandidate
 /// with the given fields replaced by the non-null parameter values.
@@ -230,16 +238,16 @@ _$FeedCandidateCopyWith<_FeedCandidate> get copyWith => __$FeedCandidateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FeedCandidate&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.siteUrl, siteUrl) || other.siteUrl == siteUrl)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FeedCandidate&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.siteUrl, siteUrl) || other.siteUrl == siteUrl)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other._postGroups, _postGroups));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,url,title,siteUrl,iconUrl,description);
+int get hashCode => Object.hash(runtimeType,url,title,siteUrl,iconUrl,description,const DeepCollectionEquality().hash(_postGroups));
 
 @override
 String toString() {
-  return 'FeedCandidate(url: $url, title: $title, siteUrl: $siteUrl, iconUrl: $iconUrl, description: $description)';
+  return 'FeedCandidate(url: $url, title: $title, siteUrl: $siteUrl, iconUrl: $iconUrl, description: $description, postGroups: $postGroups)';
 }
 
 
@@ -250,7 +258,7 @@ abstract mixin class _$FeedCandidateCopyWith<$Res> implements $FeedCandidateCopy
   factory _$FeedCandidateCopyWith(_FeedCandidate value, $Res Function(_FeedCandidate) _then) = __$FeedCandidateCopyWithImpl;
 @override @useResult
 $Res call({
- String url, String title, String? siteUrl, String? iconUrl, String? description
+ String url, String title, String? siteUrl, String? iconUrl, String? description, List<PostGroup> postGroups
 });
 
 
@@ -267,14 +275,15 @@ class __$FeedCandidateCopyWithImpl<$Res>
 
 /// Create a copy of FeedCandidate
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? url = null,Object? title = null,Object? siteUrl = freezed,Object? iconUrl = freezed,Object? description = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? url = null,Object? title = null,Object? siteUrl = freezed,Object? iconUrl = freezed,Object? description = freezed,Object? postGroups = null,}) {
   return _then(_FeedCandidate(
 url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,siteUrl: freezed == siteUrl ? _self.siteUrl : siteUrl // ignore: cast_nullable_to_non_nullable
 as String?,iconUrl: freezed == iconUrl ? _self.iconUrl : iconUrl // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,postGroups: null == postGroups ? _self._postGroups : postGroups // ignore: cast_nullable_to_non_nullable
+as List<PostGroup>,
   ));
 }
 
