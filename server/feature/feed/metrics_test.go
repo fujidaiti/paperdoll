@@ -65,15 +65,18 @@ const na = -1.0
 // and equal. Values are compared exactly, because the fixtures hold the text as
 // the page writes it, so any normalization inside the method shows up here.
 //
-// TopList is the precision of the highest scoring list alone. The other metrics
-// take every list together, so a page whose best list is wrong can still reach
-// a high precision on the union. This value is what tells the two apart.
+// UsefulGroups is the share of the returned lists that hold at least one
+// fixture post. It measures the review cost of the group screen described in
+// IDEA2.md: the user reads every returned list and ticks the ones that are post
+// lists, so a low value means the user reads many lists that are not. It is a
+// property of the grouping alone and says nothing about the fields, which is
+// why it does not overlap with the metrics above.
 type acceptance struct {
 	URLPrecision, URLRecall     float64
 	TitlePrecision, TitleRecall float64
 	ImagePrecision, ImageRecall float64
 	TimePrecision, TimeRecall   float64
-	TopListPrecision            float64
+	UsefulGroups                float64
 }
 
 // pageReport is the measured result of one page.
@@ -88,8 +91,9 @@ type pageReport struct {
 	titleP, titleR ratio
 	imageP, imageR ratio
 	timeP, timeR   ratio
-	// topP is the precision of the highest scoring list alone.
-	topP ratio
+	// groupP is the share of the returned lists that hold at least one fixture
+	// post.
+	groupP ratio
 	// notes holds the examples of the differences, printed when the page
 	// fails.
 	notes []string
@@ -124,7 +128,7 @@ func TestAccuracy(t *testing.T) {
 			check(t, "image recall", r.imageR, a.ImageRecall)
 			check(t, "timestamp precision", r.timeP, a.TimePrecision)
 			check(t, "timestamp recall", r.timeR, a.TimeRecall)
-			check(t, "top list precision", r.topP, a.TopListPrecision)
+			check(t, "useful groups", r.groupP, a.UsefulGroups)
 			if t.Failed() {
 				for _, n := range r.notes {
 					t.Log(n)
@@ -244,15 +248,17 @@ func measure(lists []PostList, want fixture) pageReport {
 		}
 	}
 
-	// The precision of the highest scoring list alone. It separates the quality
-	// of the ranking from the quality of the extraction: a page can reach a
-	// high precision over all its lists while the list the score picked first
-	// is junk.
-	if len(lists) > 0 {
-		for _, p := range lists[0].Posts {
-			r.topP.total++
+	// The share of the returned lists that hold at least one fixture post. The
+	// user reviews the lists one by one, so this is the part of that work that
+	// leads somewhere. A list is counted as useful as soon as one of its posts
+	// is a real one, because the user keeps the list and corrects the rest by
+	// hand.
+	for _, l := range lists {
+		r.groupP.total++
+		for _, p := range l.Posts {
 			if _, ok := wantByURL[p.URL.String()]; ok {
-				r.topP.hit++
+				r.groupP.hit++
+				break
 			}
 		}
 	}
@@ -402,246 +408,246 @@ var accepted = map[string]acceptance{
 	// section links. It is the hardest page of the set and is accepted low.
 	// Its images are lazy loaded, so the src attribute holds a placeholder.
 	"bbc.com": {
-		URLPrecision:     0.80,
-		URLRecall:        0.85,
-		TitlePrecision:   0.95,
-		TitleRecall:      0.95,
-		ImagePrecision:   0.80,
-		ImageRecall:      0.80,
-		TimePrecision:    na,
-		TimeRecall:       0.50,
-		TopListPrecision: 0.20,
+		URLPrecision:   0.80,
+		URLRecall:      0.85,
+		TitlePrecision: 0.95,
+		TitleRecall:    0.95,
+		ImagePrecision: 0.80,
+		ImageRecall:    0.80,
+		TimePrecision:  na,
+		TimeRecall:     0.50,
+		UsefulGroups:   0.90,
 	},
 
 	// A shop page. Every item is a record, and the page surrounds them with
 	// footer and banner groups that score high enough to be returned.
 	"diggersfactory.com-vinyl-shop-new-ins": {
-		URLPrecision:     0.80,
-		URLRecall:        1.00,
-		TitlePrecision:   0.80,
-		TitleRecall:      0.80,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    na,
-		TimeRecall:       na,
-		TopListPrecision: 1.00,
+		URLPrecision:   0.80,
+		URLRecall:      1.00,
+		TitlePrecision: 0.80,
+		TitleRecall:    0.80,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  na,
+		TimeRecall:     na,
+		UsefulGroups:   1.00,
 	},
 
 	// A feed page that mixes the post list with campaign banners and event
 	// widgets. Part of the feed is loaded by JavaScript, so recall is capped.
 	"qiita.com": {
-		URLPrecision:     0.90,
-		URLRecall:        0.60,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   0.80,
-		ImageRecall:      na,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   0.90,
+		URLRecall:      0.60,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 0.80,
+		ImageRecall:    na,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 
 	// The "AI for Society" cards are custom elements that keep their title and
 	// their image in attributes, so only their links can be read.
 	"blog.google": {
-		URLPrecision:     0.70,
-		URLRecall:        0.60,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    na,
-		TimeRecall:       na,
-		TopListPrecision: 1.00,
+		URLPrecision:   0.70,
+		URLRecall:      0.60,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  na,
+		TimeRecall:     na,
+		UsefulGroups:   1.00,
 	},
 
 	// Ordinary blog index pages. They are required to be exact.
 	"anthropic.com-news": {
-		URLPrecision:     1.00,
-		URLRecall:        0.90,
-		TitlePrecision:   0.90,
-		TitleRecall:      0.90,
-		ImagePrecision:   na,
-		ImageRecall:      na,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      0.90,
+		TitlePrecision: 0.90,
+		TitleRecall:    0.90,
+		ImagePrecision: na,
+		ImageRecall:    na,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"aws.amazon.com-jp-blogs-news": {
-		URLPrecision:     0.90,
-		URLRecall:        1.00,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   0.90,
+		URLRecall:      1.00,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"claude.com-blog": {
-		URLPrecision:     1.00,
-		URLRecall:        0.95,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    0.90,
-		TimeRecall:       0.90,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      0.95,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  0.90,
+		TimeRecall:     0.90,
+		UsefulGroups:   1.00,
 	},
 	"cursor.com-blog": {
-		URLPrecision:     1.00,
-		URLRecall:        0.85,
-		TitlePrecision:   0.90,
-		TitleRecall:      0.90,
-		ImagePrecision:   na,
-		ImageRecall:      0.50,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      0.85,
+		TitlePrecision: 0.90,
+		TitleRecall:    0.90,
+		ImagePrecision: na,
+		ImageRecall:    0.50,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"daily.bandcamp.com-album-of-the-day": {
-		URLPrecision:     1.00,
-		URLRecall:        1.00,
-		TitlePrecision:   0.90,
-		TitleRecall:      0.90,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      1.00,
+		TitlePrecision: 0.90,
+		TitleRecall:    0.90,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"daily.bandcamp.com-features": {
-		URLPrecision:     1.00,
-		URLRecall:        1.00,
-		TitlePrecision:   0.90,
-		TitleRecall:      0.90,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      1.00,
+		TitlePrecision: 0.90,
+		TitleRecall:    0.90,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"deepmind.google-blog": {
-		URLPrecision:     1.00,
-		URLRecall:        0.95,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      0.95,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"deepmind.google-research-publications": {
-		URLPrecision:     1.00,
-		URLRecall:        1.00,
-		TitlePrecision:   0.90,
-		TitleRecall:      0.90,
-		ImagePrecision:   na,
-		ImageRecall:      na,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      1.00,
+		TitlePrecision: 0.90,
+		TitleRecall:    0.90,
+		ImagePrecision: na,
+		ImageRecall:    na,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"developer.apple.com-news": {
-		URLPrecision:     1.00,
-		URLRecall:        1.00,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    0.95,
-		TimeRecall:       0.95,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      1.00,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  0.95,
+		TimeRecall:     0.95,
+		UsefulGroups:   1.00,
 	},
 	"developers.openai.com-blog": {
-		URLPrecision:     1.00,
-		URLRecall:        1.00,
-		TitlePrecision:   0.90,
-		TitleRecall:      0.90,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      1.00,
+		TitlePrecision: 0.90,
+		TitleRecall:    0.90,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"flutter.dev-blog": {
-		URLPrecision:     1.00,
-		URLRecall:        1.00,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   0.95,
-		ImageRecall:      1.00,
-		TimePrecision:    0.95,
-		TimeRecall:       0.95,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      1.00,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 0.95,
+		ImageRecall:    1.00,
+		TimePrecision:  0.95,
+		TimeRecall:     0.95,
+		UsefulGroups:   1.00,
 	},
 	"github.blog": {
-		URLPrecision:     0.90,
-		URLRecall:        0.90,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   0.80,
-		ImageRecall:      0.80,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 0.90,
+		URLPrecision:   0.90,
+		URLRecall:      0.90,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 0.80,
+		ImageRecall:    0.80,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   0.85,
 	},
 	"github.blog-ai-and-ml": {
-		URLPrecision:     1.00,
-		URLRecall:        1.00,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   0.90,
-		ImageRecall:      1.00,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      1.00,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 0.90,
+		ImageRecall:    1.00,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"go.dev-blog": {
-		URLPrecision:     0.90,
-		URLRecall:        1.00,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   na,
-		ImageRecall:      na,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   0.90,
+		URLRecall:      1.00,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: na,
+		ImageRecall:    na,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"paulgraham.com-articles": {
-		URLPrecision:     1.00,
-		URLRecall:        1.00,
-		TitlePrecision:   1.00,
-		TitleRecall:      1.00,
-		ImagePrecision:   0.90,
-		ImageRecall:      na,
-		TimePrecision:    0.90,
-		TimeRecall:       na,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      1.00,
+		TitlePrecision: 1.00,
+		TitleRecall:    1.00,
+		ImagePrecision: 0.90,
+		ImageRecall:    na,
+		TimePrecision:  0.90,
+		TimeRecall:     na,
+		UsefulGroups:   1.00,
 	},
 	"ycombinator.com-blog": {
-		URLPrecision:     0.80,
-		URLRecall:        1.00,
-		TitlePrecision:   0.90,
-		TitleRecall:      0.90,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   0.80,
+		URLRecall:      1.00,
+		TitlePrecision: 0.90,
+		TitleRecall:    0.90,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 	"ycombinator.com-blog-tag-essay": {
-		URLPrecision:     1.00,
-		URLRecall:        1.00,
-		TitlePrecision:   0.90,
-		TitleRecall:      0.90,
-		ImagePrecision:   1.00,
-		ImageRecall:      1.00,
-		TimePrecision:    1.00,
-		TimeRecall:       1.00,
-		TopListPrecision: 1.00,
+		URLPrecision:   1.00,
+		URLRecall:      1.00,
+		TitlePrecision: 0.90,
+		TitleRecall:    0.90,
+		ImagePrecision: 1.00,
+		ImageRecall:    1.00,
+		TimePrecision:  1.00,
+		TimeRecall:     1.00,
+		UsefulGroups:   1.00,
 	},
 
 	// Pages whose content is rendered by JavaScript. A plain HTTP client
