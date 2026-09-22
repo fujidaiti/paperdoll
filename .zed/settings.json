@@ -11,5 +11,8 @@
         "buildFlags": ["-tags=integration"]
       }
     }
-  }
+  },
+  "language_servers": [
+    "!tailwindcss-language-server" // Disables the Tailwind LSP
+  ]
 }
