@@ -352,10 +352,19 @@ const (
 // signature and so that a caller reading a returned Node does not have to skip
 // them. <svg> is here because one inline icon can be hundreds of path
 // elements, and <template> because its contents are not part of the page.
+//
+// <button> is here because its text is an action label ("Read more", "Share"),
+// a control label ("Menu", "Close") or a count, and never the title, the
+// description or the date of a post. A card that is written as a <button>
+// instead of a link carries no href, so it cannot become a post either way.
+// Measured over the 25 saved pages, which hold 433 buttons on
+// developer.apple.com, 100 on claude.com and 67 on qiita.com: removing them
+// changes no group and no detected post, and only empties the title of four
+// section links on bbc.com that are not posts.
 var dropElements = map[string]bool{
 	"script": true, "style": true, "noscript": true, "template": true,
 	"svg": true, "math": true, "canvas": true, "iframe": true,
-	"object": true, "embed": true, "head": true,
+	"object": true, "embed": true, "head": true, "button": true,
 }
 
 // Elements that make <header> and <footer> belong to a part of the page rather
