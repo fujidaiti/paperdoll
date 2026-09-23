@@ -187,7 +187,7 @@ fixture value back to the element that holds it on the 25 saved pages:
 | value           | where it is written                                                       |
 | --------------- | ------------------------------------------------------------------------- |
 | title (1067)    | `a` 382, `h3` 309, `h2` 222, `span` 49, `p` 47, `div` 46, `h1` 5, other 6 |
-| timestamp (724) | `span` 356, `time` 146, `p` 108, `div` 52, 62 not found as one text       |
+| timestamp (724) | `span` 356, `time` 146, `div` 112, `p` 108, 2 not found as one text       |
 
 So the element name is a strong signal for a title: a heading, or the text of
 the link itself, covers 921 of 1067 titles. It is a weak signal for a date,
@@ -200,13 +200,56 @@ and 392 of 724 timestamps are both inside one.
 `value` instead of replacing it, which is what the enumeration does today. The
 two say different things, and only `value` can be shown to the reader: on
 `cursor.com` the pair is "Aug 14, 2026" and "2026-08-14T12:00:00.000Z". Of the
-6295 texts in the corpus, 163 carry one.
+6784 texts in the corpus, 163 carry one.
 
 Nothing else is stored. A judgment such as "this text is the date" is left to
 the scoring step, so that the rendered trees keep showing where a scoring rule
 would be wrong. Class names and element ids are not stored either, because most
 of the saved pages build them from utility classes or hashes and they name
 nothing.
+
+### Text written beside a child element
+
+A text is not always alone in its element. When an element holds text directly
+and one of its element children holds text as well, reporting only the deepest
+element loses the rest:
+
+```html
+<a href="u">Learn more about Brazil <span>age ratings</span></a>
+```
+
+Only "age ratings" was kept, and "Learn more about Brazil" was dropped. The same
+happened to the date of every post on the two `daily.bandcamp.com` pages, which
+is written after the links of the card:
+
+```html
+<div class="article-info-text">
+  <a class="franchise" href="/album-of-the-day">ALBUM OF THE DAY</a>
+  <span class="middot">&middot;</span>
+  September 18, 2026
+</div>
+```
+
+So an element that holds text beside a child now reports one text per run of
+text between the children, each with the tag of the element the run sits in. The
+div above gives three texts: `a` "ALBUM OF THE DAY", `span` "·" and `div`
+"September 18, 2026". An element whose children hold no text is still reported
+as one text, which is what keeps the list short.
+
+A run is reported where it stands rather than joined with the other runs of the
+same element, because the position is what makes the list readable. Of the 635
+runs in the corpus, 320 come before any child, 104 sit between two children and
+211 come after the last one, so joining them into one entry per element would
+place two thirds of them in the wrong place.
+
+A run that holds no letter and no digit is dropped, because it is a separator
+between two children rather than a value of a post, such as the `,` between the
+author links on `aws.amazon.com` or the `·` above. That is 81 of the 635 runs.
+Note that the test is on the characters only, so a separator written inside an
+element of its own is still reported, the way the `span` above is.
+
+The corpus grows from 6295 texts to 6784, and 60 fixture timestamps that were in
+no text of the tree are now in one.
 
 ## Open points
 

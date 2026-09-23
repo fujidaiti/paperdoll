@@ -4,6 +4,7 @@ import (
 	"io"
 	"net/url"
 	"strings"
+	"unicode"
 
 	"golang.org/x/net/html"
 )
@@ -140,26 +141,61 @@ type SemanticText struct {
 // copy of itemTexts that keeps the element name and the datetime attribute
 // instead of a selector; the enumeration is left as it is for now.
 //
-// An element is reported when it holds text and no element child of it holds
-// any. Reporting only these leaf blocks is what keeps the list short: without
-// the rule, one heading inside a link inside a card produces three entries
-// carrying the same string.
+// An element whose element children hold no text is reported as one text,
+// which keeps the list short: without the rule, one heading inside a link
+// inside a card produces three entries carrying the same string.
+//
+// An element that holds text directly while one of its element children also
+// holds text is reported once per run of text between the children, so that
+// nothing written beside a child is lost and the order of the list stays the
+// order of the document. This is what
+// <a href="u">Learn more about <span>age ratings</span></a> needs, and what a
+// date written after the links of a card needs. A run that holds no letter and
+// no digit is dropped, because it is a separator such as "," or "·" between
+// two children rather than a value of the post.
 func semanticTexts(n *html.Node) []SemanticText {
 	var out []SemanticText
 	var walk func(*html.Node)
 	walk = func(x *html.Node) {
-		if x.Type == html.ElementNode {
-			if t := text(x); t != "" && !hasTextChild(x) {
+		if !hasTextChild(x) {
+			// No element child holds text, so no descendant does, and the
+			// whole text of x is one block.
+			if t := text(x); t != "" {
 				out = append(out, SemanticText{
 					Tag:      x.Data,
 					Value:    t,
 					Datetime: attr(x, "datetime"),
 				})
 			}
+			return
+		}
+		var run strings.Builder
+		flush := func() {
+			t := strings.Join(strings.Fields(run.String()), " ")
+			run.Reset()
+			if strings.IndexFunc(t, func(r rune) bool {
+				return unicode.IsLetter(r) || unicode.IsDigit(r)
+			}) < 0 {
+				return
+			}
+			out = append(out, SemanticText{
+				Tag:      x.Data,
+				Value:    t,
+				Datetime: attr(x, "datetime"),
+			})
 		}
 		for c := x.FirstChild; c != nil; c = c.NextSibling {
-			walk(c)
+			if c.Type == html.TextNode {
+				run.WriteString(c.Data)
+				run.WriteString(" ")
+				continue
+			}
+			if c.Type == html.ElementNode {
+				flush()
+				walk(c)
+			}
 		}
+		flush()
 	}
 	walk(n)
 	return out
