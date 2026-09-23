@@ -162,6 +162,46 @@ The shape it was written for is a card whose link sits on an ancestor rather
 than inside the card, so that all children of the card carry no link. If a saved
 page with that shape is added, the rule is worth writing again.
 
+## What a text carries
+
+Folding a subtree into one node throws its markup away, so a text is stored as
+an object rather than as a plain string:
+
+```json
+{
+  "tag": "time",
+  "value": "Aug 14, 2026",
+  "datetime": "2026-08-14T12:00:00.000Z"
+}
+```
+
+`tag` is the element the text was read from. It was chosen after matching every
+fixture value back to the element that holds it on the 25 saved pages:
+
+| value           | where it is written                                                       |
+| --------------- | ------------------------------------------------------------------------- |
+| title (1067)    | `a` 382, `h3` 309, `h2` 222, `span` 49, `p` 47, `div` 46, `h1` 5, other 6 |
+| timestamp (724) | `span` 356, `time` 146, `p` 108, `div` 52, 62 not found as one text       |
+
+So the element name is a strong signal for a title: a heading, or the text of
+the link itself, covers 921 of 1067 titles. It is a weak signal for a date,
+because `time` covers only 146 of 724. A date is better found by reading the
+string: a plain date pattern matches 622 of the 724 timestamps and only 8 of the
+1067 titles. Being inside a link separates nothing, since 1012 of 1067 titles
+and 392 of 724 timestamps are both inside one.
+
+`datetime` is the machine readable date of a `<time>` element. It is kept beside
+`value` instead of replacing it, which is what the enumeration does today. The
+two say different things, and only `value` can be shown to the reader: on
+`cursor.com` the pair is "Aug 14, 2026" and "2026-08-14T12:00:00.000Z". Of the
+6295 texts in the corpus, 163 carry one.
+
+Nothing else is stored. A judgment such as "this text is the date" is left to
+the scoring step, so that the rendered trees keep showing where a scoring rule
+would be wrong. Class names and element ids are not stored either, because most
+of the saved pages build them from utility classes or hashes and they name
+nothing.
+
 ## Open points
 
 - **A card that holds a second link splits.** When a card carries an author, a

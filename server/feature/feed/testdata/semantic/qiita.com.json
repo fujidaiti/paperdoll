@@ -4,15 +4,32 @@
       "children": [
         {
           "texts": [
-            "Qiita is a knowledge sharing service for engineers.",
-            "You can follow users and tags",
-            "You can stock useful information",
-            "You can make edit suggestions for articles"
+            {
+              "tag": "p",
+              "value": "Qiita is a knowledge sharing service for engineers."
+            },
+            {
+              "tag": "li",
+              "value": "You can follow users and tags"
+            },
+            {
+              "tag": "li",
+              "value": "You can stock useful information"
+            },
+            {
+              "tag": "li",
+              "value": "You can make edit suggestions for articles"
+            }
           ],
           "children": [
             {
               "links": ["https://help.qiita.com/ja/articles/qiita-login-user"],
-              "texts": ["Functions that can be used after logging in"]
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Functions that can be used after logging in"
+                }
+              ]
             },
             {
               "children": [
@@ -20,13 +37,23 @@
                   "links": [
                     "https://qiita.com/login?callback_action=login_or_signup&redirect_to=%2F&realm=qiita"
                   ],
-                  "texts": ["Login"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Login"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://qiita.com/signup?callback_action=login_or_signup&redirect_to=%2F&realm=qiita"
                   ],
-                  "texts": ["Signup"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Signup"
+                    }
+                  ]
                 }
               ]
             }
@@ -36,15 +63,34 @@
           "children": [
             {
               "texts": [
-                "Tag Rankings",
-                "The Rankings are updated every 24 hours"
+                {
+                  "tag": "p",
+                  "value": "Tag Rankings"
+                },
+                {
+                  "tag": "p",
+                  "value": "The Rankings are updated every 24 hours"
+                }
               ],
               "children": [
                 {
                   "children": [
                     {
                       "links": ["https://qiita.com/tags/ai"],
-                      "texts": ["1", "AI", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "1"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "AI"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-tag-image%2F3a2d84459fcd4baa1ad8878fd96c7163309e701e%2Foriginal.jpg%3F1501238161?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=b16f30a7777a063090a157aea060d4ba"
@@ -53,7 +99,20 @@
                     },
                     {
                       "links": ["https://qiita.com/tags/%e7%94%9f%e6%88%90ai"],
-                      "texts": ["2", "生成AI", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "2"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "生成AI"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Ficon-missing_tag-63d8678a29c9158bc7ccea1c4c8e7114.png?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=6aeb80ce2896eed26f421eb46e99e1a3"
@@ -62,7 +121,20 @@
                     },
                     {
                       "links": ["https://qiita.com/tags/llm"],
-                      "texts": ["3", "LLM", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "3"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "LLM"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-tag-image%2Fd8da2edf49c329380af3989d5fe508c602ad05de%2Foriginal.jpg%3F1752202368?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=c141156aad6f9b3ba1b7d2226a7291a2"
@@ -71,7 +143,20 @@
                     },
                     {
                       "links": ["https://qiita.com/tags/python"],
-                      "texts": ["4", "Python", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "4"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Python"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-tag-image%2F050c0f328a785fa1e6ef905c25202a81b95cbce8%2Foriginal.jpg%3F1660803670?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=c5f96c060825b1655e54beb6d3ba730c"
@@ -80,7 +165,20 @@
                     },
                     {
                       "links": ["https://qiita.com/tags/claudecode"],
-                      "texts": ["5", "ClaudeCode", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "5"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "ClaudeCode"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-tag-image%2F4f7f91cf16d0186d7fe29f0fcb59de8c87bcdd12%2Foriginal.jpg%3F1752145324?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=e1eebbe14c64760fdb3f776cdd7dc4b1"
@@ -89,7 +187,20 @@
                     },
                     {
                       "links": ["https://qiita.com/tags/aws"],
-                      "texts": ["6", "AWS", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "6"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "AWS"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-tag-image%2Ff4f2d94cd53d0bc382e64843f17beeabea23e366%2Foriginal.jpg%3F1650353581?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=a5d39dd65a4a0581a33c3bde590793e9"
@@ -100,7 +211,20 @@
                       "links": [
                         "https://qiita.com/tags/ai%e3%82%a8%e3%83%bc%e3%82%b8%e3%82%a7%e3%83%b3%e3%83%88"
                       ],
-                      "texts": ["7", "AIエージェント", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "7"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "AIエージェント"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Ficon-missing_tag-63d8678a29c9158bc7ccea1c4c8e7114.png?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=6aeb80ce2896eed26f421eb46e99e1a3"
@@ -111,7 +235,20 @@
                       "links": [
                         "https://qiita.com/tags/%e5%88%9d%e5%bf%83%e8%80%85"
                       ],
-                      "texts": ["8", "初心者", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "8"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "初心者"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-tag-image%2F352159020d13d7b8a590edbc15f76694f6c977b9%2Foriginal.jpg%3F1650353640?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=24e397350a55925a4ab7c1296f6f26f0"
@@ -122,7 +259,20 @@
                       "links": [
                         "https://qiita.com/tags/%e5%80%8b%e4%ba%ba%e9%96%8b%e7%99%ba"
                       ],
-                      "texts": ["9", "個人開発", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "9"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "個人開発"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-tag-image%2F43d24bcdb637ca5cdbaa6436b4e71b18c5e0bc9c%2Foriginal.jpg%3F1555128191?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=aaa99fb35acbb4c46d60fb9b4d63b0fd"
@@ -131,7 +281,20 @@
                     },
                     {
                       "links": ["https://qiita.com/tags/security"],
-                      "texts": ["10", "Security", "users"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "10"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Security"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "users"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-tag-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-tag-image%2Fdc8e19ef880bf741af8e3728e0c71850c14307a9%2Foriginal.jpg%3F1425848349?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=32&h=32&s=78c776a0f0c7bfcb87f0f95525567260"
@@ -144,15 +307,34 @@
             },
             {
               "texts": [
-                "User Rankings",
-                "The Rankings are updated every 24 hours"
+                {
+                  "tag": "p",
+                  "value": "User Rankings"
+                },
+                {
+                  "tag": "p",
+                  "value": "The Rankings are updated every 24 hours"
+                }
               ],
               "children": [
                 {
                   "children": [
                     {
                       "links": ["https://qiita.com/suwa_nobu"],
-                      "texts": ["1", "@ suwa_nobu", "Contributions"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "1"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ suwa_nobu"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F4430611%2Fa4e4abd6c5cdfc9793196fe0d1cf620f5ef11694%2Fx_large.png%3F1785289596?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=0f7f8d4e3fca184a19719471cde32bcb",
@@ -163,9 +345,18 @@
                     {
                       "links": ["https://qiita.com/maeda-niku18"],
                       "texts": [
-                        "2",
-                        "@ maeda-niku18 (悟志 前田)",
-                        "Contributions"
+                        {
+                          "tag": "span",
+                          "value": "2"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ maeda-niku18 (悟志 前田)"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
                       ],
                       "images": [
                         {
@@ -177,9 +368,18 @@
                     {
                       "links": ["https://qiita.com/take-yoda"],
                       "texts": [
-                        "3",
-                        "@ take-yoda (依田 健人)",
-                        "Contributions"
+                        {
+                          "tag": "span",
+                          "value": "3"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ take-yoda (依田 健人)"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
                       ],
                       "images": [
                         {
@@ -190,7 +390,20 @@
                     },
                     {
                       "links": ["https://qiita.com/fe1ix"],
-                      "texts": ["4", "@ fe1ix", "Contributions"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "4"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ fe1ix"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F4025790%2Fea098505b0e173679fefa40a378fd15152fc16ec%2Fx_large.png%3F1772286239?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=75b19bcbaa7edd27b9b6f56d0996b9a4",
@@ -201,9 +414,18 @@
                     {
                       "links": ["https://qiita.com/nasuvitz"],
                       "texts": [
-                        "5",
-                        "@ nasuvitz (Kiminori Yokoi)",
-                        "Contributions"
+                        {
+                          "tag": "span",
+                          "value": "5"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ nasuvitz (Kiminori Yokoi)"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
                       ],
                       "images": [
                         {
@@ -215,9 +437,18 @@
                     {
                       "links": ["https://qiita.com/ryoheiiwamoto"],
                       "texts": [
-                        "6",
-                        "@ ryoheiiwamoto (Ryohei Iwamoto)",
-                        "Contributions"
+                        {
+                          "tag": "span",
+                          "value": "6"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ ryoheiiwamoto (Ryohei Iwamoto)"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
                       ],
                       "images": [
                         {
@@ -228,7 +459,20 @@
                     },
                     {
                       "links": ["https://qiita.com/m__ikeda"],
-                      "texts": ["7", "@ m__ikeda (池田)", "Contributions"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "7"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ m__ikeda (池田)"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F4159939%2Fprofile-images%2F1789719685?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=56b1b6304e743d1fb2224fbd1d81af8a",
@@ -238,7 +482,20 @@
                     },
                     {
                       "links": ["https://qiita.com/kanryu"],
-                      "texts": ["8", "@ kanryu (Kanryu KATO)", "Contributions"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "8"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ kanryu (Kanryu KATO)"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2F2.gravatar.com%2Favatar%2Fda22c32576eb5fe47251c4e8643cc4af%3Fd%3Dhttps%253A%252F%252Fidenticons.github.com%252Fcd71fb4ec19ac7a4e25581b27053b728.png?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=7e7f8dd4ca643e0b016b4fa0f7835682",
@@ -249,9 +506,18 @@
                     {
                       "links": ["https://qiita.com/nolanlover0527"],
                       "texts": [
-                        "9",
-                        "@ nolanlover0527 (Yuuki)",
-                        "Contributions"
+                        {
+                          "tag": "span",
+                          "value": "9"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ nolanlover0527 (Yuuki)"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
                       ],
                       "images": [
                         {
@@ -262,7 +528,20 @@
                     },
                     {
                       "links": ["https://qiita.com/nogataka"],
-                      "texts": ["10", "@ nogataka", "Contributions"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "10"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "@ nogataka"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Contributions"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F161298%2Fc1e3ffd6eada1969ff3c44b14fde081bcde6f500%2Fx_large.png%3F1584845584?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=73f79cdc5de2f5e2c65307c9bcb87c3a",
@@ -274,7 +553,12 @@
                 },
                 {
                   "links": ["https://qiita.com/qiita-award"],
-                  "texts": ["Qiita Award Information"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Qiita Award Information"
+                    }
+                  ]
                 }
               ]
             }
@@ -288,7 +572,12 @@
           "links": [
             "https://qiita.com/conference?utm_source=qiita&utm_medium=banner&utm_campaign=main_content_banner_day3&utm_content=home"
           ],
-          "texts": ["38"],
+          "texts": [
+            {
+              "tag": "span",
+              "value": "38"
+            }
+          ],
           "images": [
             {
               "url": "https://qiita-official-contents.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-official-event-image%2F180c6a16a8482015180bcf08e0499b593bf7144f%2Foriginal.jpg%3F1788350431?ixlib=rb-4.1.1&auto=compress%2Cformat&s=6acb98157b4d00355b6e19baabcfc6f6",
@@ -299,10 +588,22 @@
         {
           "links": ["https://qiita.com/popular-items/feed"],
           "texts": [
-            "All",
-            "Personal article",
-            "Organization article",
-            "Remarkable items.Refreshed at every 5 a.m.and 5 p.m."
+            {
+              "tag": "option",
+              "value": "All"
+            },
+            {
+              "tag": "option",
+              "value": "Personal article"
+            },
+            {
+              "tag": "option",
+              "value": "Organization article"
+            },
+            {
+              "tag": "a",
+              "value": "Remarkable items.Refreshed at every 5 a.m.and 5 p.m."
+            }
           ]
         },
         {
@@ -319,7 +620,17 @@
                     "https://qiita.com/Ninagawa123",
                     "https://qiita.com/Ninagawa123"
                   ],
-                  "texts": ["( Izumi Ninagawa )", "2026-09-19T14:29:27Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( Izumi Ninagawa )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-19",
+                      "datetime": "2026-09-19T14:29:27Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F565043%2Ffb6c005300d44fd52a66942bdc3295ea8e90316e%2Fx_large.png%3F1578666979?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=fa8dccba023f216e6ee0bb526698a386",
@@ -331,28 +642,53 @@
                   "links": [
                     "https://qiita.com/Ninagawa123/items/8ec3f5fe18c20fab1b2a"
                   ],
-                  "texts": ["5分でJev入門（すぐ使う）"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "5分でJev入門（すぐ使う）"
+                    }
+                  ]
                 },
                 {
-                  "texts": ["63"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "63"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e5%85%a5%e9%96%80"
                           ],
-                          "texts": ["入門"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "入門"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%83%81%e3%83%a5%e3%83%bc%e3%83%88%e3%83%aa%e3%82%a2%e3%83%ab"
                           ],
-                          "texts": ["チュートリアル"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "チュートリアル"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -379,20 +715,41 @@
                       ]
                     },
                     {
-                      "texts": ["2026-09-19T01:51:19Z"],
+                      "texts": [
+                        {
+                          "tag": "time",
+                          "value": "2026-09-19",
+                          "datetime": "2026-09-19T01:51:19Z"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["in"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "in"
+                            }
+                          ],
                           "children": [
                             {
                               "links": ["https://qiita.com/suwa_nobu"],
-                              "texts": ["@ suwa_nobu"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "@ suwa_nobu"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://qiita.com/organizations/jqiit-co"
                               ],
-                              "texts": ["株式会社JQIT"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "株式会社JQIT"
+                                }
+                              ],
                               "images": [
                                 {
                                   "url": "https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2F20777065338932e21ec297229d5dfb94991b9c1a%2Foriginal.jpg%3F1769000970?ixlib=rb-4.1.1&auto=compress%2Cformat&s=55d95871c6d0226045cd08f5f2afd7fd"
@@ -410,37 +767,70 @@
                     "https://qiita.com/suwa_nobu/items/c795cf89d0fd4091c9cb"
                   ],
                   "texts": [
-                    "Claude Code が AGENTS.md を読むようになった。ただし1回目のセッションでは読まれない"
+                    {
+                      "tag": "a",
+                      "value": "Claude Code が AGENTS.md を読むようになった。ただし1回目のセッションでは読まれない"
+                    }
                   ]
                 },
                 {
-                  "texts": ["56"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "56"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/ai"],
-                          "texts": ["AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e7%94%9f%e6%88%90ai"
                           ],
-                          "texts": ["生成AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "生成AI"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/claudecode"],
-                          "texts": ["ClaudeCode"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ClaudeCode"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/ai%e3%82%a8%e3%83%bc%e3%82%b8%e3%82%a7%e3%83%b3%e3%83%88"
                           ],
-                          "texts": ["AIエージェント"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AIエージェント"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/claude"],
-                          "texts": ["Claude"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Claude"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -467,20 +857,41 @@
                       ]
                     },
                     {
-                      "texts": ["2026-09-17T23:43:54Z"],
+                      "texts": [
+                        {
+                          "tag": "time",
+                          "value": "2026-09-17",
+                          "datetime": "2026-09-17T23:43:54Z"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["in"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "in"
+                            }
+                          ],
                           "children": [
                             {
                               "links": ["https://qiita.com/suwa_nobu"],
-                              "texts": ["@ suwa_nobu"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "@ suwa_nobu"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://qiita.com/organizations/jqiit-co"
                               ],
-                              "texts": ["株式会社JQIT"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "株式会社JQIT"
+                                }
+                              ],
                               "images": [
                                 {
                                   "url": "https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2F20777065338932e21ec297229d5dfb94991b9c1a%2Foriginal.jpg%3F1769000970?ixlib=rb-4.1.1&auto=compress%2Cformat&s=55d95871c6d0226045cd08f5f2afd7fd"
@@ -498,35 +909,68 @@
                     "https://qiita.com/suwa_nobu/items/e867493a5cbcdfaa40c9"
                   ],
                   "texts": [
-                    "Write() で拒否しても、Claude Code は12回とも書き込んだ。効いていたのは Edit() だけだった"
+                    {
+                      "tag": "a",
+                      "value": "Write() で拒否しても、Claude Code は12回とも書き込んだ。効いていたのは Edit() だけだった"
+                    }
                   ]
                 },
                 {
-                  "texts": ["55"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "55"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/ai"],
-                          "texts": ["AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e7%94%9f%e6%88%90ai"
                           ],
-                          "texts": ["生成AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "生成AI"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/claudecode"],
-                          "texts": ["ClaudeCode"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ClaudeCode"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/claude"],
-                          "texts": ["Claude"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Claude"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/security"],
-                          "texts": ["Security"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Security"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -546,7 +990,17 @@
                     "https://qiita.com/kf_webdev",
                     "https://qiita.com/kf_webdev"
                   ],
-                  "texts": ["@ kf_webdev", "2026-09-19T07:56:25Z"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "@ kf_webdev"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-19",
+                      "datetime": "2026-09-19T07:56:25Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F4370880%2F517cd2df423f1a2afead844322d0b01e5a47816f%2Flarge.png%3F1789800597?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=29e79ccc93ec647a979894387489ef81",
@@ -559,11 +1013,19 @@
                     "https://qiita.com/kf_webdev/items/cbd1d7bb724676a3b686"
                   ],
                   "texts": [
-                    "生成AIセキュリティを学んで変わった「AIを安全に使う」という考え方"
+                    {
+                      "tag": "a",
+                      "value": "生成AIセキュリティを学んで変わった「AIを安全に使う」という考え方"
+                    }
                   ]
                 },
                 {
-                  "texts": ["16"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "16"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
@@ -571,25 +1033,50 @@
                           "links": [
                             "https://qiita.com/tags/%e7%94%9f%e6%88%90ai"
                           ],
-                          "texts": ["生成AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "生成AI"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/security"],
-                          "texts": ["Security"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Security"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/llm"],
-                          "texts": ["LLM"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "LLM"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/rag"],
-                          "texts": ["rag"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "rag"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%83%97%e3%83%ad%e3%83%b3%e3%83%97%e3%83%88%e3%82%a4%e3%83%b3%e3%82%b8%e3%82%a7%e3%82%af%e3%82%b7%e3%83%a7%e3%83%b3"
                           ],
-                          "texts": ["プロンプトインジェクション"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "プロンプトインジェクション"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -616,20 +1103,41 @@
                       ]
                     },
                     {
-                      "texts": ["2026-09-18T05:21:55Z"],
+                      "texts": [
+                        {
+                          "tag": "time",
+                          "value": "2026-09-18",
+                          "datetime": "2026-09-18T05:21:55Z"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["in"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "in"
+                            }
+                          ],
                           "children": [
                             {
                               "links": ["https://qiita.com/yushibats"],
-                              "texts": ["@ yushibats"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "@ yushibats"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://qiita.com/organizations/oracle"
                               ],
-                              "texts": ["日本オラクル株式会社"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "日本オラクル株式会社"
+                                }
+                              ],
                               "images": [
                                 {
                                   "url": "https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2F30955fa7f039a85c449ff480a2a7dbc5d9ff5ab0%2Foriginal.jpg%3F1452145683?ixlib=rb-4.1.1&auto=compress%2Cformat&s=f67cc68cc4a0224df091b4fa70192369"
@@ -647,35 +1155,68 @@
                     "https://qiita.com/yushibats/items/472325ce548da370ed5d"
                   ],
                   "texts": [
-                    "話題のJevとは？文章を書かずに判断だけを返すAIモデルをざっくり解説"
+                    {
+                      "tag": "a",
+                      "value": "話題のJevとは？文章を書かずに判断だけを返すAIモデルをざっくり解説"
+                    }
                   ]
                 },
                 {
-                  "texts": ["45"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "45"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/typesafeai"],
-                          "texts": ["TypeSafeAI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "TypeSafeAI"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/llm"],
-                          "texts": ["LLM"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "LLM"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e7%94%9f%e6%88%90ai"
                           ],
-                          "texts": ["生成AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "生成AI"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/ai"],
-                          "texts": ["AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -695,7 +1236,17 @@
                     "https://qiita.com/sadabon444",
                     "https://qiita.com/sadabon444"
                   ],
-                  "texts": ["( ニシ サダオミ )", "2026-09-18T23:51:25Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( ニシ サダオミ )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-18",
+                      "datetime": "2026-09-18T23:51:25Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1835492583499591680%2FSBxv5IvL_bigger.jpg?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=89ab0e1e7f33bf76fa59f7beae84ee0c",
@@ -707,10 +1258,20 @@
                   "links": [
                     "https://qiita.com/sadabon444/items/6b4e0a5e4946d1a941ac"
                   ],
-                  "texts": ["実はコミュニティ運営をやめようと思っていました"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "実はコミュニティ運営をやめようと思っていました"
+                    }
+                  ]
                 },
                 {
-                  "texts": ["40"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "40"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
@@ -718,25 +1279,45 @@
                           "links": [
                             "https://qiita.com/tags/%e3%81%aa%e3%82%93%e3%81%a7%e3%82%82copilot"
                           ],
-                          "texts": ["なんでもCopilot"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "なんでもCopilot"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%82%b3%e3%83%9f%e3%83%a5%e3%83%8b%e3%83%86%e3%82%a3"
                           ],
-                          "texts": ["コミュニティ"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "コミュニティ"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%82%b3%e3%83%9f%e3%83%a5%e3%83%8b%e3%83%86%e3%82%a3%e9%81%8b%e5%96%b6"
                           ],
-                          "texts": ["コミュニティ運営"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "コミュニティ運営"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%83%9d%e3%82%a8%e3%83%a0"
                           ],
-                          "texts": ["ポエム"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ポエム"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -750,7 +1331,12 @@
                   "links": [
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
-                  "texts": ["あなたはもう試した？判断特化AI「Jev」で遊ぼう！"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -762,7 +1348,17 @@
                     "https://qiita.com/shinkai_",
                     "https://qiita.com/shinkai_"
                   ],
-                  "texts": ["( 新海 正明 )", "2026-09-18T06:48:33Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( 新海 正明 )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-18",
+                      "datetime": "2026-09-18T06:48:33Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F1203022%2F0b1100225e69fe7c5def1c1e45e7993c72541583%2Fx_large.png%3F1670996932?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=3e83544cfa3713303bc6699366faf2ce",
@@ -775,11 +1371,19 @@
                     "https://qiita.com/shinkai_/items/61994be44d61c76716d3"
                   ],
                   "texts": [
-                    "「LLMじゃないAI」が来た! TypeSafe AI「Jev」はなぜ文字列生成を捨てたのか"
+                    {
+                      "tag": "a",
+                      "value": "「LLMじゃないAI」が来た! TypeSafe AI「Jev」はなぜ文字列生成を捨てたのか"
+                    }
                   ]
                 },
                 {
-                  "texts": ["19"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "19"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
@@ -787,23 +1391,48 @@
                           "links": [
                             "https://qiita.com/tags/%e7%94%9f%e6%88%90ai"
                           ],
-                          "texts": ["生成AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "生成AI"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/typesafe"],
-                          "texts": ["TypeSafe"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "TypeSafe"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/ai"],
-                          "texts": ["AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/llm"],
-                          "texts": ["LLM"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "LLM"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -817,7 +1446,12 @@
                   "links": [
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
-                  "texts": ["あなたはもう試した？判断特化AI「Jev」で遊ぼう！"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -829,7 +1463,17 @@
                     "https://qiita.com/Isaka-code",
                     "https://qiita.com/Isaka-code"
                   ],
-                  "texts": ["( ねぼすけAI )", "2026-09-18T23:38:51Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( ねぼすけAI )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-18",
+                      "datetime": "2026-09-18T23:38:51Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F2627015%2Fprofile-images%2F1738380028?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=01697c6b3366860c93e8ee05f8a827b4",
@@ -842,37 +1486,70 @@
                     "https://qiita.com/Isaka-code/items/8944ef8b521517f92da0"
                   ],
                   "texts": [
-                    "Jevはどこで使うべきか？ LLM・機械学習・ルールベースとの使い分け"
+                    {
+                      "tag": "a",
+                      "value": "Jevはどこで使うべきか？ LLM・機械学習・ルールベースとの使い分け"
+                    }
                   ]
                 },
                 {
-                  "texts": ["14"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "14"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e6%a9%9f%e6%a2%b0%e5%ad%a6%e7%bf%92"
                           ],
-                          "texts": ["機械学習"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "機械学習"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/llm"],
-                          "texts": ["LLM"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "LLM"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/ai"],
-                          "texts": ["AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e7%94%9f%e6%88%90ai"
                           ],
-                          "texts": ["生成AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "生成AI"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -892,7 +1569,17 @@
                     "https://qiita.com/btncon",
                     "https://qiita.com/btncon"
                   ],
-                  "texts": ["@ btncon", "2026-09-20T01:48:33Z"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "@ btncon"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-20",
+                      "datetime": "2026-09-20T01:48:33Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Flh3.googleusercontent.com%2Fa%2FACg8ocKdhdNpn5CLlUbw4aZUsrlgj1OChWZ-AFPr-lBgUFKxKguMEQ%3Ds96-c?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=c3ebf0763f827a514179efde4100f1a7",
@@ -905,41 +1592,74 @@
                     "https://qiita.com/btncon/items/a79f056fab859293e0b3"
                   ],
                   "texts": [
-                    "取引先からセキュリティチェックシートを求められたら — 回答の進め方と、委託先・保守業者のアクセス管理でまず見直すこと"
+                    {
+                      "tag": "a",
+                      "value": "取引先からセキュリティチェックシートを求められたら — 回答の進め方と、委託先・保守業者のアクセス管理でまず見直すこと"
+                    }
                   ]
                 },
                 {
-                  "texts": ["7"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "7"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/security"],
-                          "texts": ["Security"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Security"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e6%83%85%e3%82%b7%e3%82%b9"
                           ],
-                          "texts": ["情シス"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "情シス"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%82%bb%e3%82%ad%e3%83%a5%e3%83%aa%e3%83%86%e3%82%a3%e3%83%81%e3%82%a7%e3%83%83%e3%82%af%e3%82%b7%e3%83%bc%e3%83%88"
                           ],
-                          "texts": ["セキュリティチェックシート"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "セキュリティチェックシート"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%82%b5%e3%83%97%e3%83%a9%e3%82%a4%e3%83%81%e3%82%a7%e3%83%bc%e3%83%b3"
                           ],
-                          "texts": ["サプライチェーン"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "サプライチェーン"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e4%b8%ad%e5%b0%8f%e4%bc%81%e6%a5%ad"
                           ],
-                          "texts": ["中小企業"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "中小企業"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -959,7 +1679,17 @@
                     "https://qiita.com/maskot1977",
                     "https://qiita.com/maskot1977"
                   ],
-                  "texts": ["( Ikemen Mas Kot )", "2026-09-19T17:07:17Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( Ikemen Mas Kot )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-19",
+                      "datetime": "2026-09-19T17:07:17Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F211162%2F9ce8eece955027de889d5120d4068bd49366857f%2Fx_large.png%3F1732553025?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=3ce9991baa95f11a474701d5de74e4b6",
@@ -971,10 +1701,20 @@
                   "links": [
                     "https://qiita.com/maskot1977/items/d57c6c1913cb8e1fd833"
                   ],
-                  "texts": ["システム設計視点の行動経済学 全30回 総復習"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "システム設計視点の行動経済学 全30回 総復習"
+                    }
+                  ]
                 },
                 {
-                  "texts": ["6"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "6"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
@@ -982,25 +1722,50 @@
                           "links": [
                             "https://qiita.com/tags/%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e8%a8%ad%e8%a8%88"
                           ],
-                          "texts": ["システム設計"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "システム設計"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e8%a1%8c%e5%8b%95%e7%b5%8c%e6%b8%88%e5%ad%a6"
                           ],
-                          "texts": ["行動経済学"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "行動経済学"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/claudecode"],
-                          "texts": ["ClaudeCode"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ClaudeCode"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/gemini"],
-                          "texts": ["Gemini"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Gemini"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/chatgpt"],
-                          "texts": ["ChatGPT"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ChatGPT"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1020,7 +1785,17 @@
                     "https://qiita.com/ktdatascience",
                     "https://qiita.com/ktdatascience"
                   ],
-                  "texts": ["@ ktdatascience", "2026-09-19T03:20:18Z"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "@ ktdatascience"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-19",
+                      "datetime": "2026-09-19T03:20:18Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F3937496%2Fd01fd0404bf68676aae29f3a3f9a53dfe248bb2a%2Flarge.png%3F1745906036?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=2256d93d11426a3304aa10c9ac7fc643",
@@ -1033,37 +1808,70 @@
                     "https://qiita.com/ktdatascience/items/6aec726eac024e83651b"
                   ],
                   "texts": [
-                    "「Googleでログイン」を押したあと、Googleはサービスにパスワードを渡していない。じゃあ何を渡しているのか？"
+                    {
+                      "tag": "a",
+                      "value": "「Googleでログイン」を押したあと、Googleはサービスにパスワードを渡していない。じゃあ何を渡しているのか？"
+                    }
                   ]
                 },
                 {
-                  "texts": ["10"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "10"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/oauth"],
-                          "texts": ["OAuth"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "OAuth"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/openidconnect"],
-                          "texts": ["openidconnect"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "openidconnect"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e8%aa%8d%e8%a8%bc"
                           ],
-                          "texts": ["認証"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "認証"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/security"],
-                          "texts": ["Security"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Security"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e5%88%9d%e5%bf%83%e8%80%85"
                           ],
-                          "texts": ["初心者"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "初心者"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1077,7 +1885,12 @@
                   "links": [
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
-                  "texts": ["あなたはもう試した？判断特化AI「Jev」で遊ぼう！"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -1096,20 +1909,41 @@
                       ]
                     },
                     {
-                      "texts": ["2026-09-19T09:01:19Z"],
+                      "texts": [
+                        {
+                          "tag": "time",
+                          "value": "2026-09-19",
+                          "datetime": "2026-09-19T09:01:19Z"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["in"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "in"
+                            }
+                          ],
                           "children": [
                             {
                               "links": ["https://qiita.com/kamo-shika"],
-                              "texts": ["@ kamo-shika"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "@ kamo-shika"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://qiita.com/organizations/kddiagile"
                               ],
-                              "texts": ["KDDIアジャイル開発センター株式会社"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "KDDIアジャイル開発センター株式会社"
+                                }
+                              ],
                               "images": [
                                 {
                                   "url": "https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2F1e20db5e7e407eae7b970ec999880dc8c3cc0f64%2Foriginal.jpg%3F1667274963?ixlib=rb-4.1.1&auto=compress%2Cformat&s=9ad5ef558b2132835b28b748f7ee7d7b"
@@ -1126,34 +1960,69 @@
                   "links": [
                     "https://qiita.com/kamo-shika/items/99b9a1e6213857126c66"
                   ],
-                  "texts": ["ｽﾀｯｸﾁｬﾝの会話の判断を Jev に任せてみた"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ｽﾀｯｸﾁｬﾝの会話の判断を Jev に任せてみた"
+                    }
+                  ]
                 },
                 {
-                  "texts": ["14"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "14"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/m5stack"],
-                          "texts": ["M5stack"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "M5stack"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/cloudflareworkers"],
-                          "texts": ["CloudflareWorkers"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "CloudflareWorkers"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/databricks"],
-                          "texts": ["Databricks"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Databricks"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/ai%e3%82%a8%e3%83%bc%e3%82%b8%e3%82%a7%e3%83%b3%e3%83%88"
                           ],
-                          "texts": ["AIエージェント"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AIエージェント"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1167,7 +2036,12 @@
                   "links": [
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
-                  "texts": ["あなたはもう試した？判断特化AI「Jev」で遊ぼう！"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -1179,7 +2053,17 @@
                     "https://qiita.com/segavvy",
                     "https://qiita.com/segavvy"
                   ],
-                  "texts": ["( segavvy )", "2026-09-20T05:31:11Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( segavvy )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-20",
+                      "datetime": "2026-09-20T05:31:11Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F139624%2Fprofile-images%2F1473720963?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=eb51802521593e9aeff201d940843640",
@@ -1192,27 +2076,50 @@
                     "https://qiita.com/segavvy/items/b08eee93a0abe0c0726d"
                   ],
                   "texts": [
-                    "Jevは学習なしに使えるカテゴリ分類器だ！ということでMNISTやらせてみたらダメダメだった件"
+                    {
+                      "tag": "a",
+                      "value": "Jevは学習なしに使えるカテゴリ分類器だ！ということでMNISTやらせてみたらダメダメだった件"
+                    }
                   ]
                 },
                 {
-                  "texts": ["5"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "5"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e6%a9%9f%e6%a2%b0%e5%ad%a6%e7%bf%92"
                           ],
-                          "texts": ["機械学習"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "機械学習"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/llm"],
-                          "texts": ["LLM"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "LLM"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1232,7 +2139,17 @@
                     "https://qiita.com/tetsuro731",
                     "https://qiita.com/tetsuro731"
                   ],
-                  "texts": ["( テッツォ )", "2026-09-20T04:59:44Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( テッツォ )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-20",
+                      "datetime": "2026-09-20T04:59:44Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1088033803136786432%2FxZi8P2bh_bigger.jpg?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=a259fbc884cfbcabdcc852bf724ec574",
@@ -1245,35 +2162,68 @@
                     "https://qiita.com/tetsuro731/items/daa5c5938d874af3a335"
                   ],
                   "texts": [
-                    "Jevで水平思考クイズのWebアプリを作ったよ【ウミガメのスープ】"
+                    {
+                      "tag": "a",
+                      "value": "Jevで水平思考クイズのWebアプリを作ったよ【ウミガメのスープ】"
+                    }
                   ]
                 },
                 {
-                  "texts": ["5"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "5"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/fastapi"],
-                          "texts": ["FastAPI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "FastAPI"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/web%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3"
                           ],
-                          "texts": ["Webアプリケーション"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Webアプリケーション"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/llm"],
-                          "texts": ["LLM"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "LLM"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/bert"],
-                          "texts": ["bert"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "bert"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1293,7 +2243,17 @@
                     "https://qiita.com/ryoheiiwamoto",
                     "https://qiita.com/ryoheiiwamoto"
                   ],
-                  "texts": ["( Ryohei Iwamoto )", "2026-09-18T07:02:13Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( Ryohei Iwamoto )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-18",
+                      "datetime": "2026-09-18T07:02:13Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F668950%2Fec914c43f52fa8ef2c5d63ef6d266ce2011322c5%2Fx_large.png%3F1738549714?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=49eca90f9cf5dc0e1496f6c5d5f45a16",
@@ -1306,29 +2266,52 @@
                     "https://qiita.com/ryoheiiwamoto/items/b5805321eaef46b75459"
                   ],
                   "texts": [
-                    "元ヤフーエンジニア社長が考える、AIを使いこなす人と使えない人の決定的な差"
+                    {
+                      "tag": "a",
+                      "value": "元ヤフーエンジニア社長が考える、AIを使いこなす人と使えない人の決定的な差"
+                    }
                   ]
                 },
                 {
-                  "texts": ["53"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "53"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/ai"],
-                          "texts": ["AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/ai%e6%b4%bb%e7%94%a8"
                           ],
-                          "texts": ["AI活用"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI活用"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%83%9e%e3%82%a4%e3%83%b3%e3%83%89%e3%82%bb%e3%83%83%e3%83%88"
                           ],
-                          "texts": ["マインドセット"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "マインドセット"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1348,7 +2331,17 @@
                     "https://qiita.com/ktdatascience",
                     "https://qiita.com/ktdatascience"
                   ],
-                  "texts": ["@ ktdatascience", "2026-09-19T03:51:02Z"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "@ ktdatascience"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-19",
+                      "datetime": "2026-09-19T03:51:02Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F3937496%2Fd01fd0404bf68676aae29f3a3f9a53dfe248bb2a%2Flarge.png%3F1745906036?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=2256d93d11426a3304aa10c9ac7fc643",
@@ -1360,38 +2353,73 @@
                   "links": [
                     "https://qiita.com/ktdatascience/items/666a82fcdf3dc4af00d7"
                   ],
-                  "texts": ["なぜSMS認証は弱いと言われるのか"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "なぜSMS認証は弱いと言われるのか"
+                    }
+                  ]
                 },
                 {
-                  "texts": ["10"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "10"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/security"],
-                          "texts": ["Security"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Security"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e8%aa%8d%e8%a8%bc"
                           ],
-                          "texts": ["認証"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "認証"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/totp"],
-                          "texts": ["TOTP"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "TOTP"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e4%ba%8c%e6%ae%b5%e9%9a%8e%e8%aa%8d%e8%a8%bc"
                           ],
-                          "texts": ["二段階認証"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "二段階認証"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e5%88%9d%e5%bf%83%e8%80%85"
                           ],
-                          "texts": ["初心者"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "初心者"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1405,7 +2433,12 @@
                   "links": [
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
-                  "texts": ["あなたはもう試した？判断特化AI「Jev」で遊ぼう！"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -1417,7 +2450,17 @@
                     "https://qiita.com/miso_taku",
                     "https://qiita.com/miso_taku"
                   ],
-                  "texts": ["@ miso_taku", "2026-09-19T10:36:55Z"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "@ miso_taku"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-19",
+                      "datetime": "2026-09-19T10:36:55Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F350321%2Fprofile-images%2F1643099242?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=b3feacb534a83eb1337f672b8f902e6b",
@@ -1429,28 +2472,58 @@
                   "links": [
                     "https://qiita.com/miso_taku/items/b5e2150055933b51fba3"
                   ],
-                  "texts": ["Jevで要件定義書をレビューするアプリを作った"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Jevで要件定義書をレビューするアプリを作った"
+                    }
+                  ]
                 },
                 {
-                  "texts": ["7"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "7"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/typesafe"],
-                          "texts": ["TypeSafe"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "TypeSafe"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/python"],
-                          "texts": ["Python"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Python"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/streamlit"],
-                          "texts": ["Streamlit"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Streamlit"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1470,7 +2543,17 @@
                     "https://qiita.com/maskot1977",
                     "https://qiita.com/maskot1977"
                   ],
-                  "texts": ["( Ikemen Mas Kot )", "2026-09-20T15:16:02Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( Ikemen Mas Kot )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-20",
+                      "datetime": "2026-09-20T15:16:02Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F211162%2F9ce8eece955027de889d5120d4068bd49366857f%2Fx_large.png%3F1732553025?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=3ce9991baa95f11a474701d5de74e4b6",
@@ -1482,34 +2565,69 @@
                   "links": [
                     "https://qiita.com/maskot1977/items/21dfd854beb49b877564"
                   ],
-                  "texts": ["耳で聞く！Python で学ぶ マクロ経済学 入門 16"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "耳で聞く！Python で学ぶ マクロ経済学 入門 16"
+                    }
+                  ]
                 },
                 {
-                  "texts": ["6"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "6"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/python"],
-                          "texts": ["Python"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Python"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%83%9e%e3%82%af%e3%83%ad%e7%b5%8c%e6%b8%88%e5%ad%a6"
                           ],
-                          "texts": ["マクロ経済学"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "マクロ経済学"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/chatgpt"],
-                          "texts": ["ChatGPT"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ChatGPT"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/gemini"],
-                          "texts": ["Gemini"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Gemini"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/youtube"],
-                          "texts": ["YouTube"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "YouTube"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1529,7 +2647,17 @@
                     "https://qiita.com/11eleven",
                     "https://qiita.com/11eleven"
                   ],
-                  "texts": ["( 向上心工場 )", "2026-09-18T10:01:46Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( 向上心工場 )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-18",
+                      "datetime": "2026-09-18T10:01:46Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F4334411%2F3bea152d2626e2cb590a6dcb8fccc91da5f1f5da%2Fx_large.png%3F1789461938?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=a1642c6cdea8344e2e047a17e6cd6cc8",
@@ -1542,41 +2670,74 @@
                     "https://qiita.com/11eleven/items/29d641197b9320d0e2fa"
                   ],
                   "texts": [
-                    "エンジニアとしては、タスクマネージャーくらい見れるようになりたい"
+                    {
+                      "tag": "a",
+                      "value": "エンジニアとしては、タスクマネージャーくらい見れるようになりたい"
+                    }
                   ]
                 },
                 {
-                  "texts": ["8"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "8"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/pc"],
-                          "texts": ["PC"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "PC"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e5%88%9d%e5%bf%83%e8%80%85"
                           ],
-                          "texts": ["初心者"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "初心者"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e9%9b%91%e8%a8%98"
                           ],
-                          "texts": ["雑記"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "雑記"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%82%bf%e3%82%b9%e3%82%af%e3%83%9e%e3%83%8d%e3%83%bc%e3%82%b8%e3%83%a3%e3%83%bc"
                           ],
-                          "texts": ["タスクマネージャー"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "タスクマネージャー"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%83%91%e3%82%bd%e3%82%b3%e3%83%b3%e5%88%9d%e5%bf%83%e8%80%85"
                           ],
-                          "texts": ["パソコン初心者"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "パソコン初心者"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1596,7 +2757,17 @@
                     "https://qiita.com/masaki-engineer",
                     "https://qiita.com/masaki-engineer"
                   ],
-                  "texts": ["( マサキ )", "2026-09-19T06:44:06Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( マサキ )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-19",
+                      "datetime": "2026-09-19T06:44:06Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F350501%2Fprofile-images%2F1736307764?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=35c2667fca111a4c9863bc15483dfdcf",
@@ -1609,37 +2780,70 @@
                     "https://qiita.com/masaki-engineer/items/5b5c56e7e5a8289b61a1"
                   ],
                   "texts": [
-                    "初心者向けJava学習サイトを作りました。～作ったきっかけとコンセプト編～"
+                    {
+                      "tag": "a",
+                      "value": "初心者向けJava学習サイトを作りました。～作ったきっかけとコンセプト編～"
+                    }
                   ]
                 },
                 {
-                  "texts": ["4"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "4"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/ai"],
-                          "texts": ["AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e5%80%8b%e4%ba%ba%e9%96%8b%e7%99%ba"
                           ],
-                          "texts": ["個人開発"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "個人開発"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/claudecode"],
-                          "texts": ["ClaudeCode"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ClaudeCode"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e5%88%9d%e5%bf%83%e8%80%85"
                           ],
-                          "texts": ["初心者"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "初心者"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/java"],
-                          "texts": ["Java"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Java"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1659,7 +2863,17 @@
                     "https://qiita.com/nobukz",
                     "https://qiita.com/nobukz"
                   ],
-                  "texts": ["( nobukz )", "2026-09-18T23:18:11Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( nobukz )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-18",
+                      "datetime": "2026-09-18T23:18:11Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F585558%2Fprofile-images%2F1690704959?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=7c266bc631d373efb97a76f9a800a134",
@@ -1672,35 +2886,68 @@
                     "https://qiita.com/nobukz/items/64a2ccb8b89fcc439aed"
                   ],
                   "texts": [
-                    "Windows の防御設定を「確かめて、直して、見張る」常駐ツール Agent Fettle をクローズドβ公開しました"
+                    {
+                      "tag": "a",
+                      "value": "Windows の防御設定を「確かめて、直して、見張る」常駐ツール Agent Fettle をクローズドβ公開しました"
+                    }
                   ]
                 },
                 {
-                  "texts": ["4"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "4"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/windows"],
-                          "texts": ["Windows"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Windows"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/security"],
-                          "texts": ["Security"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Security"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/defender"],
-                          "texts": ["Defender"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Defender"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e5%80%8b%e4%ba%ba%e9%96%8b%e7%99%ba"
                           ],
-                          "texts": ["個人開発"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "個人開発"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/powershell"],
-                          "texts": ["PowerShell"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "PowerShell"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1720,7 +2967,17 @@
                     "https://qiita.com/mshdtksk",
                     "https://qiita.com/mshdtksk"
                   ],
-                  "texts": ["@ mshdtksk", "2026-09-20T05:00:59Z"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "@ mshdtksk"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-20",
+                      "datetime": "2026-09-20T05:00:59Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F3880471%2Fe4e90ac36a85c62d4f1ab768032806d7edd9d28c%2Flarge.png%3F1732378790?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=923bcc3ab74b35f3b887ffe95c5ec9a9",
@@ -1733,27 +2990,50 @@
                     "https://qiita.com/mshdtksk/items/82bbdcc79379d1aaca51"
                   ],
                   "texts": [
-                    "Snowflake World Tour Tokyo 2026 参加記（コミュニティブース運営と性格診断アプリ）"
+                    {
+                      "tag": "a",
+                      "value": "Snowflake World Tour Tokyo 2026 参加記（コミュニティブース運営と性格診断アプリ）"
+                    }
                   ]
                 },
                 {
-                  "texts": ["3"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "3"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/snowflake"],
-                          "texts": ["Snowflake"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Snowflake"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/swt2026"],
-                          "texts": ["SWT2026"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "SWT2026"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%82%a4%e3%83%99%e3%83%b3%e3%83%88%e3%83%ac%e3%83%9d%e3%83%bc%e3%83%88"
                           ],
-                          "texts": ["イベントレポート"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "イベントレポート"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1773,7 +3053,17 @@
                     "https://qiita.com/y0us91",
                     "https://qiita.com/y0us91"
                   ],
-                  "texts": ["@ y0us91", "2026-09-19T07:41:57Z"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "@ y0us91"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-19",
+                      "datetime": "2026-09-19T07:41:57Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F169095%2F6b9e3068277ba050145709776d5eda7ddc2d20e8%2Fx_large.png%3F1779943777?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=308e8da6d3c48c710a88be39d929c576",
@@ -1786,11 +3076,19 @@
                     "https://qiita.com/y0us91/items/61edde2960bd6cdbdfa9"
                   ],
                   "texts": [
-                    "AIがテストを書ける時代、「何をテストしないか」をどう決めるか"
+                    {
+                      "tag": "a",
+                      "value": "AIがテストを書ける時代、「何をテストしないか」をどう決めるか"
+                    }
                   ]
                 },
                 {
-                  "texts": ["4"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "4"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
@@ -1798,31 +3096,56 @@
                           "links": [
                             "https://qiita.com/tags/ai%e3%82%a8%e3%83%bc%e3%82%b8%e3%82%a7%e3%83%b3%e3%83%88"
                           ],
-                          "texts": ["AIエージェント"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AIエージェント"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e7%94%9f%e6%88%90ai"
                           ],
-                          "texts": ["生成AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "生成AI"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2%e3%83%86%e3%82%b9%e3%83%88"
                           ],
-                          "texts": ["ソフトウェアテスト"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ソフトウェアテスト"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%83%86%e3%82%b9%e3%83%88%e8%87%aa%e5%8b%95%e5%8c%96"
                           ],
-                          "texts": ["テスト自動化"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "テスト自動化"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e3%83%86%e3%82%b9%e3%83%88%e8%a8%ad%e8%a8%88"
                           ],
-                          "texts": ["テスト設計"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "テスト設計"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1836,7 +3159,12 @@
                   "links": [
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
-                  "texts": ["あなたはもう試した？判断特化AI「Jev」で遊ぼう！"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -1848,7 +3176,17 @@
                     "https://qiita.com/hotstaff",
                     "https://qiita.com/hotstaff"
                   ],
-                  "texts": ["( 万城 秀人 )", "2026-09-18T13:40:48Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( 万城 秀人 )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-18",
+                      "datetime": "2026-09-18T13:40:48Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Favatars2.githubusercontent.com%2Fu%2F9710707%3Fv%3D4?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=6f81ebe35d32db573bed177d3f9a4630",
@@ -1861,35 +3199,68 @@
                     "https://qiita.com/hotstaff/items/8c7201ba36445cb839a2"
                   ],
                   "texts": [
-                    "Jevを触っていたら、30分で「文章の計測器」ができた話"
+                    {
+                      "tag": "a",
+                      "value": "Jevを触っていたら、30分で「文章の計測器」ができた話"
+                    }
                   ]
                 },
                 {
-                  "texts": ["7"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "7"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/chatgpt"],
-                          "texts": ["ChatGPT"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ChatGPT"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/gemini"],
-                          "texts": ["Gemini"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Gemini"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/google"],
-                          "texts": ["Google"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Google"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/ai%e3%82%a8%e3%83%bc%e3%82%b8%e3%82%a7%e3%83%b3%e3%83%88"
                           ],
-                          "texts": ["AIエージェント"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AIエージェント"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1903,7 +3274,12 @@
                   "links": [
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
-                  "texts": ["あなたはもう試した？判断特化AI「Jev」で遊ぼう！"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -1922,20 +3298,41 @@
                       ]
                     },
                     {
-                      "texts": ["2026-09-20T12:47:53Z"],
+                      "texts": [
+                        {
+                          "tag": "time",
+                          "value": "2026-09-20",
+                          "datetime": "2026-09-20T12:47:53Z"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["in"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "in"
+                            }
+                          ],
                           "children": [
                             {
                               "links": ["https://qiita.com/nasuvitz"],
-                              "texts": ["( Kiminori Yokoi )"]
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "( Kiminori Yokoi )"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://qiita.com/organizations/tisi-inc"
                               ],
-                              "texts": ["TISI株式会社"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "TISI株式会社"
+                                }
+                              ],
                               "images": [
                                 {
                                   "url": "https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2F557f2c80e87b028a257e20243fe8e635f171b415%2Foriginal.jpg%3F1782881700?ixlib=rb-4.1.1&auto=compress%2Cformat&s=30fb86155bf78abe671397501a37f980"
@@ -1953,33 +3350,66 @@
                     "https://qiita.com/nasuvitz/items/4d27833640ff36b5d8c5"
                   ],
                   "texts": [
-                    "AWSの最軽量LLM「Amazon Nova Micro」がJevの代わりとなるか検証してみた"
+                    {
+                      "tag": "a",
+                      "value": "AWSの最軽量LLM「Amazon Nova Micro」がJevの代わりとなるか検証してみた"
+                    }
                   ]
                 },
                 {
-                  "texts": ["5"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "5"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/aws"],
-                          "texts": ["AWS"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AWS"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/bedrock"],
-                          "texts": ["bedrock"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "bedrock"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/typesafe"],
-                          "texts": ["TypeSafe"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "TypeSafe"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/agentcore"],
-                          "texts": ["AgentCore"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AgentCore"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1993,7 +3423,12 @@
                   "links": [
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
-                  "texts": ["あなたはもう試した？判断特化AI「Jev」で遊ぼう！"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -2012,20 +3447,41 @@
                       ]
                     },
                     {
-                      "texts": ["2026-09-18T10:46:43Z"],
+                      "texts": [
+                        {
+                          "tag": "time",
+                          "value": "2026-09-18",
+                          "datetime": "2026-09-18T10:46:43Z"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["in"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "in"
+                            }
+                          ],
                           "children": [
                             {
                               "links": ["https://qiita.com/harupython"],
-                              "texts": ["@ harupython"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "@ harupython"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://qiita.com/organizations/Disnana-Service"
                               ],
-                              "texts": ["Disnana"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "Disnana"
+                                }
+                              ],
                               "images": [
                                 {
                                   "url": "https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2F90b7d5e6a02a586dafc46aa6a321aeac8a8f439d%2Foriginal.jpg%3F1764585111?ixlib=rb-4.1.1&auto=compress%2Cformat&s=93b0baada60a5c9be27af96f12939adb"
@@ -2043,35 +3499,68 @@
                     "https://qiita.com/harupython/items/fbe98be6d136d5b9d14a"
                   ],
                   "texts": [
-                    "LLMの代わりになる？ 文章を生成しないAI「Jev」を日本語で試してみた"
+                    {
+                      "tag": "a",
+                      "value": "LLMの代わりになる？ 文章を生成しないAI「Jev」を日本語で試してみた"
+                    }
                   ]
                 },
                 {
-                  "texts": ["7"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "7"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/ai"],
-                          "texts": ["AI"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/llm"],
-                          "texts": ["LLM"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "LLM"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e6%a9%9f%e6%a2%b0%e5%ad%a6%e7%bf%92"
                           ],
-                          "texts": ["機械学習"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "機械学習"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/api"],
-                          "texts": ["API"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "API"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -2098,20 +3587,41 @@
                       ]
                     },
                     {
-                      "texts": ["2026-09-20T13:44:16Z"],
+                      "texts": [
+                        {
+                          "tag": "time",
+                          "value": "2026-09-20",
+                          "datetime": "2026-09-20T13:44:16Z"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["in"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "in"
+                            }
+                          ],
                           "children": [
                             {
                               "links": ["https://qiita.com/o68606007"],
-                              "texts": ["@ o68606007"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "@ o68606007"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://qiita.com/organizations/jisou"
                               ],
-                              "texts": ["JISOU | プログラミングコーチング"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "JISOU | プログラミングコーチング"
+                                }
+                              ],
                               "images": [
                                 {
                                   "url": "https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2Fdb464ee832f8806a5f89e94b446c72fa3df3a38c%2Foriginal.jpg%3F1712546356?ixlib=rb-4.1.1&auto=compress%2Cformat&s=ff9d499003b1a0fc2b6b714afd6d38ec"
@@ -2128,11 +3638,25 @@
                   "links": [
                     "https://qiita.com/o68606007/items/9fd7796707594ac79a9f"
                   ],
-                  "texts": ["AWSのSign up for AWS (new)で困ったこと"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "AWSのSign up for AWS (new)で困ったこと"
+                    }
+                  ]
                 },
                 {
                   "links": ["https://qiita.com/tags/aws"],
-                  "texts": ["AWS", "2"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "AWS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "2"
+                    }
+                  ]
                 }
               ]
             },
@@ -2142,7 +3666,12 @@
                   "links": [
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
-                  "texts": ["あなたはもう試した？判断特化AI「Jev」で遊ぼう！"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -2161,18 +3690,39 @@
                       ]
                     },
                     {
-                      "texts": ["2026-09-19T08:05:17Z"],
+                      "texts": [
+                        {
+                          "tag": "time",
+                          "value": "2026-09-19",
+                          "datetime": "2026-09-19T08:05:17Z"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["in"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "in"
+                            }
+                          ],
                           "children": [
                             {
                               "links": ["https://qiita.com/asahide"],
-                              "texts": ["@ asahide"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "@ asahide"
+                                }
+                              ]
                             },
                             {
                               "links": ["https://qiita.com/organizations/nri"],
-                              "texts": ["株式会社野村総合研究所"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "株式会社野村総合研究所"
+                                }
+                              ],
                               "images": [
                                 {
                                   "url": "https://qiita-organization-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-organization-image%2F43d9d0d9f05c7d88e948d6b54f7b072686336087%2Foriginal.jpg%3F1720407214?ixlib=rb-4.1.1&auto=compress%2Cformat&s=8896c9a2e600879140db0c1322570aaa"
@@ -2189,34 +3739,69 @@
                   "links": [
                     "https://qiita.com/asahide/items/7fb4c44ebb4b7097c873"
                   ],
-                  "texts": ["Autonomous AI Database から Jev を呼んでみた"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Autonomous AI Database から Jev を呼んでみた"
+                    }
+                  ]
                 },
                 {
-                  "texts": ["3"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "3"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/oracle"],
-                          "texts": ["oracle"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "oracle"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/oraclecloud"],
-                          "texts": ["oraclecloud"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "oraclecloud"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/oracledatabase"],
-                          "texts": ["OracleDatabase"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "OracleDatabase"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/autonomous_database"
                           ],
-                          "texts": ["autonomous_database"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "autonomous_database"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/jev"],
-                          "texts": ["Jev"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jev"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -2236,7 +3821,17 @@
                     "https://qiita.com/ubakichi_sr_mc_ai_06",
                     "https://qiita.com/ubakichi_sr_mc_ai_06"
                   ],
-                  "texts": ["@ ubakichi_sr_mc_ai_06", "2026-09-19T23:21:07Z"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "@ ubakichi_sr_mc_ai_06"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-19",
+                      "datetime": "2026-09-19T23:21:07Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fqiita-image-store%2F0%2F4452087%2F3f79b08166245d07360dd0874dc894429993ae6c%2Flarge.png%3F1782567588?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=6a48452e10403e28aad4bdafe39cf180",
@@ -2249,33 +3844,66 @@
                     "https://qiita.com/ubakichi_sr_mc_ai_06/items/8041fa1a2aa024f121b7"
                   ],
                   "texts": [
-                    "Dreamforce 2026まとめ:Claudeforce・Koaなど新発表を実装目線で整理する"
+                    {
+                      "tag": "a",
+                      "value": "Dreamforce 2026まとめ:Claudeforce・Koaなど新発表を実装目線で整理する"
+                    }
                   ]
                 },
                 {
-                  "texts": ["2"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "2"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/dreamforce"],
-                          "texts": ["Dreamforce"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Dreamforce"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/salesforce"],
-                          "texts": ["Salesforce"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Salesforce"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/agentforce"],
-                          "texts": ["Agentforce"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Agentforce"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/claude"],
-                          "texts": ["Claude"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Claude"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/coworker"],
-                          "texts": ["coworker"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "coworker"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -2295,7 +3923,17 @@
                     "https://qiita.com/lab8010",
                     "https://qiita.com/lab8010"
                   ],
-                  "texts": ["( Yamato Sakai )", "2026-09-20T06:30:02Z"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "( Yamato Sakai )"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "2026-09-20",
+                      "datetime": "2026-09-20T06:30:02Z"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F680306%2Fprofile-images%2F1744717724?ixlib=rb-4.1.1&auto=compress%2Cformat&lossless=0&w=128&s=39a8459447a2ff1c3d6d180b5b75a387",
@@ -2308,37 +3946,70 @@
                     "https://qiita.com/lab8010/items/ca56ee3b479bc61c46f3"
                   ],
                   "texts": [
-                    "【2026年8月】RHCA保有者のKubestronaut挑戦記(1) CKA・CKAD合格編 〜バウチャーを11ヶ月放置してからの巻き返し〜"
+                    {
+                      "tag": "a",
+                      "value": "【2026年8月】RHCA保有者のKubestronaut挑戦記(1) CKA・CKAD合格編 〜バウチャーを11ヶ月放置してからの巻き返し〜"
+                    }
                   ]
                 },
                 {
-                  "texts": ["2"],
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "2"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://qiita.com/tags/kubernetes"],
-                          "texts": ["kubernetes"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "kubernetes"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/cka"],
-                          "texts": ["CKA"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "CKA"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://qiita.com/tags/ckad"],
-                          "texts": ["ckad"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "ckad"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e8%b3%87%e6%a0%bc"
                           ],
-                          "texts": ["資格"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "資格"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://qiita.com/tags/%e8%aa%8d%e5%ae%9a%e8%b3%87%e6%a0%bc"
                           ],
-                          "texts": ["認定資格"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "認定資格"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -2357,8 +4028,14 @@
           "children": [
             {
               "texts": [
-                "Why don't you log in to Qiita to read more recommended articles?",
-                "We'll bring you recommendations based on your behavior on Qiita. :)"
+                {
+                  "tag": "h2",
+                  "value": "Why don't you log in to Qiita to read more recommended articles?"
+                },
+                {
+                  "tag": "p",
+                  "value": "We'll bring you recommendations based on your behavior on Qiita. :)"
+                }
               ],
               "children": [
                 {
@@ -2367,13 +4044,23 @@
                       "links": [
                         "https://qiita.com/login?callback_action=login_or_signup&redirect_to=%2F&realm=qiita"
                       ],
-                      "texts": ["Login"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Login"
+                        }
+                      ]
                     },
                     {
                       "links": [
                         "https://qiita.com/signup?callback_action=login_or_signup&redirect_to=%2F&realm=qiita"
                       ],
-                      "texts": ["Sign up"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Sign up"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -2390,16 +4077,30 @@
             "https://blog.qiita.com/2026-09-26-maintenance/?utm_source=qiita&utm_medium=announce"
           ],
           "texts": [
-            "2026/09/26 (土) 計画メンテナンスのお知らせ",
-            "Qiita, Qiita Team 計画メンテナンスを実施します。 2026/09/26 (土) 00:00開始、02:00終了予定となります（24時間表記）。 メンテナンス実施中は一時的にアクセスすることが出来ません。 ご利用の皆様にはご迷惑をおかけしますが、よろしくお願いいたします。",
-            "View detail"
+            {
+              "tag": "p",
+              "value": "2026/09/26 (土) 計画メンテナンスのお知らせ"
+            },
+            {
+              "tag": "p",
+              "value": "Qiita, Qiita Team 計画メンテナンスを実施します。 2026/09/26 (土) 00:00開始、02:00終了予定となります（24時間表記）。 メンテナンス実施中は一時的にアクセスすることが出来ません。 ご利用の皆様にはご迷惑をおかけしますが、よろしくお願いいたします。"
+            },
+            {
+              "tag": "a",
+              "value": "View detail"
+            }
           ]
         },
         {
           "children": [
             {
               "links": ["https://qiita.com/official-events"],
-              "texts": ["All"]
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "All"
+                }
+              ]
             },
             {
               "children": [
@@ -2408,10 +4109,22 @@
                     "https://qiita.com/official-events/dc6e42e0897543216e34"
                   ],
                   "texts": [
-                    "~ 2026-10-02",
-                    "participating users",
-                    "57",
-                    "+ 50"
+                    {
+                      "tag": "p",
+                      "value": "~ 2026-10-02"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "participating users"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "57"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "+ 50"
+                    }
                   ],
                   "images": [
                     {
@@ -2453,10 +4166,22 @@
                     "https://qiita.com/official-events/5f0addee251c14fbc031"
                   ],
                   "texts": [
-                    "~ 2026-09-23",
-                    "participating users",
-                    "261",
-                    "+ 254"
+                    {
+                      "tag": "p",
+                      "value": "~ 2026-09-23"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "participating users"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "261"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "+ 254"
+                    }
                   ],
                   "images": [
                     {
@@ -2501,15 +4226,26 @@
           "children": [
             {
               "links": ["https://qiita.com/official-events"],
-              "texts": ["All"]
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "All"
+                }
+              ]
             },
             {
               "children": [
                 {
                   "links": ["https://increments.connpass.com/event/406144/"],
                   "texts": [
-                    "2026-10-29 19:00 ~ 21:35",
-                    "パナソニック コネクト新大阪オフィス（大阪府大阪市淀川区宮原４丁目５−４１ J.NODE 新大阪Ⅱ10階COMMONS）"
+                    {
+                      "tag": "p",
+                      "value": "2026-10-29 19:00 ~ 21:35"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "パナソニック コネクト新大阪オフィス（大阪府大阪市淀川区宮原４丁目５−４１ J.NODE 新大阪Ⅱ10階COMMONS）"
+                    }
                   ],
                   "images": [
                     {
@@ -2521,8 +4257,14 @@
                 {
                   "links": ["https://increments.connpass.com/event/401892/"],
                   "texts": [
-                    "2026-10-09 19:00 ~ 21:35",
-                    "パナソニック コネクト株式会社 東京都中央区銀座8丁目21番1号 住友不動産汐留浜離宮ビル11階COMMONS"
+                    {
+                      "tag": "p",
+                      "value": "2026-10-09 19:00 ~ 21:35"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "パナソニック コネクト株式会社 東京都中央区銀座8丁目21番1号 住友不動産汐留浜離宮ビル11階COMMONS"
+                    }
                   ],
                   "images": [
                     {
@@ -2539,7 +4281,12 @@
           "children": [
             {
               "links": ["https://qiita.com/official-columns"],
-              "texts": ["All"]
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "All"
+                }
+              ]
             },
             {
               "children": [
@@ -2548,9 +4295,18 @@
                     "https://blog.qiita.com/adventcalendar-2025-presents/?utm_source=qiita&utm_medium=referral&utm_content=sidebar%20feed"
                   ],
                   "texts": [
-                    "Qiita Advent Calendar 2025 プレゼントカレンダーのご紹介🎁",
-                    "2025/10/30",
-                    "Announcement"
+                    {
+                      "tag": "a",
+                      "value": "Qiita Advent Calendar 2025 プレゼントカレンダーのご紹介🎁"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "2025/10/30"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Announcement"
+                    }
                   ]
                 },
                 {
@@ -2558,9 +4314,18 @@
                     "https://blog.qiita.com/adventcalendar-2025-qiitapresents/?utm_source=qiita&utm_medium=referral&utm_content=sidebar%20feed"
                   ],
                   "texts": [
-                    "Qiita Advent Calendar 2025 Qiita賞・特別企画の参加方法・選定基準について",
-                    "2025/10/30",
-                    "Announcement"
+                    {
+                      "tag": "a",
+                      "value": "Qiita Advent Calendar 2025 Qiita賞・特別企画の参加方法・選定基準について"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "2025/10/30"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Announcement"
+                    }
                   ]
                 }
               ]
@@ -2568,7 +4333,12 @@
           ]
         },
         {
-          "texts": ["Qiita Related Services"],
+          "texts": [
+            {
+              "tag": "p",
+              "value": "Qiita Related Services"
+            }
+          ],
           "children": [
             {
               "images": [
@@ -2610,7 +4380,16 @@
               "links": [
                 "https://business.qiita.com/?utm_source=qiita&utm_medium=referral&utm_campaign=community_sponsor_link"
               ],
-              "texts": ["Community sponser", "About community sponsors"]
+              "texts": [
+                {
+                  "tag": "p",
+                  "value": "Community sponser"
+                },
+                {
+                  "tag": "a",
+                  "value": "About community sponsors"
+                }
+              ]
             },
             {
               "images": [

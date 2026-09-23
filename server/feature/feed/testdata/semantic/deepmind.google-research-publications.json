@@ -1,11 +1,25 @@
 {
-  "texts": ["Skip to main content"],
+  "texts": [
+    {
+      "tag": "a",
+      "value": "Skip to main content"
+    }
+  ],
   "children": [
     {
       "texts": [
-        "Publications",
-        "Explore a selection of our recent research on some of the most complex and interesting challenges in AI.",
-        "263 publications"
+        {
+          "tag": "h1",
+          "value": "Publications"
+        },
+        {
+          "tag": "p",
+          "value": "Explore a selection of our recent research on some of the most complex and interesting challenges in AI."
+        },
+        {
+          "tag": "p",
+          "value": "263 publications"
+        }
       ],
       "children": [
         {
@@ -15,8 +29,14 @@
                 "https://deepmind.google/research/publications/265605/"
               ],
               "texts": [
-                "1 September 2026",
-                "Designing Proactive Thought Partners for Writing"
+                {
+                  "tag": "span",
+                  "value": "1 September 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Designing Proactive Thought Partners for Writing"
+                }
               ]
             },
             {
@@ -24,8 +44,14 @@
                 "https://deepmind.google/research/publications/270149/"
               ],
               "texts": [
-                "26 August 2026",
-                "Visual General Intelligence: A White Paper"
+                {
+                  "tag": "span",
+                  "value": "26 August 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Visual General Intelligence: A White Paper"
+                }
               ]
             },
             {
@@ -33,8 +59,14 @@
                 "https://deepmind.google/research/publications/118955/"
               ],
               "texts": [
-                "5 August 2026",
-                "A moral Turing test: How belief and source shape detection of and agreement with LLM judgments"
+                {
+                  "tag": "span",
+                  "value": "5 August 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "A moral Turing test: How belief and source shape detection of and agreement with LLM judgments"
+                }
               ]
             },
             {
@@ -42,8 +74,14 @@
                 "https://deepmind.google/research/publications/264392/"
               ],
               "texts": [
-                "28 July 2026",
-                "Visual prompt engineering for video models"
+                {
+                  "tag": "span",
+                  "value": "28 July 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Visual prompt engineering for video models"
+                }
               ]
             },
             {
@@ -51,8 +89,14 @@
                 "https://deepmind.google/research/publications/225819/"
               ],
               "texts": [
-                "10 July 2026",
-                "Quantifying the Salience of Geo-Cultural Values for Pluralistic Safety Alignment"
+                {
+                  "tag": "span",
+                  "value": "10 July 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Quantifying the Salience of Geo-Cultural Values for Pluralistic Safety Alignment"
+                }
               ]
             },
             {
@@ -60,8 +104,14 @@
                 "https://deepmind.google/research/publications/260960/"
               ],
               "texts": [
-                "6 July 2026",
-                "The Case for Globally Beneficial Technology"
+                {
+                  "tag": "span",
+                  "value": "6 July 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "The Case for Globally Beneficial Technology"
+                }
               ]
             },
             {
@@ -69,8 +119,14 @@
                 "https://deepmind.google/research/publications/203490/"
               ],
               "texts": [
-                "2 July 2026",
-                "Towards Structural Understanding of LLM Overthinking"
+                {
+                  "tag": "span",
+                  "value": "2 July 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Towards Structural Understanding of LLM Overthinking"
+                }
               ]
             },
             {
@@ -78,8 +134,14 @@
                 "https://deepmind.google/research/publications/224297/"
               ],
               "texts": [
-                "26 June 2026",
-                "Real-Time Group Dynamics with LLM Facilitation: Evidence from a Charity Allocation Task"
+                {
+                  "tag": "span",
+                  "value": "26 June 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Real-Time Group Dynamics with LLM Facilitation: Evidence from a Charity Allocation Task"
+                }
               ]
             },
             {
@@ -87,8 +149,14 @@
                 "https://deepmind.google/research/publications/149262/"
               ],
               "texts": [
-                "26 June 2026",
-                "Bridging the Scale Gap: Augmenting Human Red-Teaming to Uncover Latent Risks in T2I Models"
+                {
+                  "tag": "span",
+                  "value": "26 June 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Bridging the Scale Gap: Augmenting Human Red-Teaming to Uncover Latent Risks in T2I Models"
+                }
               ]
             },
             {
@@ -96,8 +164,14 @@
                 "https://deepmind.google/research/publications/224397/"
               ],
               "texts": [
-                "25 June 2026",
-                "Going PLACES: Participatory Localized Red Teaming forText-to-Image Safety in the Global South"
+                {
+                  "tag": "span",
+                  "value": "25 June 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Going PLACES: Participatory Localized Red Teaming forText-to-Image Safety in the Global South"
+                }
               ]
             },
             {
@@ -105,23 +179,44 @@
                 "https://deepmind.google/research/publications/248131/"
               ],
               "texts": [
-                "15 June 2026",
-                "Artificial Minds, Human Disagreement: The Politics of AI Consciousness"
+                {
+                  "tag": "span",
+                  "value": "15 June 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Artificial Minds, Human Disagreement: The Politics of AI Consciousness"
+                }
               ]
             },
             {
               "links": [
                 "https://deepmind.google/research/publications/239142/"
               ],
-              "texts": ["12 June 2026", "From AGI to ASI"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "12 June 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "From AGI to ASI"
+                }
+              ]
             },
             {
               "links": [
                 "https://deepmind.google/research/publications/231466/"
               ],
               "texts": [
-                "4 June 2026",
-                "Solipsistic superintelligence is unlikely to be cooperative"
+                {
+                  "tag": "span",
+                  "value": "4 June 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Solipsistic superintelligence is unlikely to be cooperative"
+                }
               ]
             },
             {
@@ -129,8 +224,14 @@
                 "https://deepmind.google/research/publications/253391/"
               ],
               "texts": [
-                "28 May 2026",
-                "Realistic honeypot evaluations for scheming propensity"
+                {
+                  "tag": "span",
+                  "value": "28 May 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Realistic honeypot evaluations for scheming propensity"
+                }
               ]
             },
             {
@@ -138,8 +239,14 @@
                 "https://deepmind.google/research/publications/252981/"
               ],
               "texts": [
-                "28 May 2026",
-                "Gram: Assessing sabotage propensities via automated alignment auditing"
+                {
+                  "tag": "span",
+                  "value": "28 May 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Gram: Assessing sabotage propensities via automated alignment auditing"
+                }
               ]
             },
             {
@@ -147,8 +254,14 @@
                 "https://deepmind.google/research/publications/239849/"
               ],
               "texts": [
-                "6 May 2026",
-                "Did US Worker Retraining Reduce Participant Automation Exposure?"
+                {
+                  "tag": "span",
+                  "value": "6 May 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Did US Worker Retraining Reduce Participant Automation Exposure?"
+                }
               ]
             },
             {
@@ -156,8 +269,14 @@
                 "https://deepmind.google/research/publications/238239/"
               ],
               "texts": [
-                "25 April 2026",
-                "ProEval: Proactive Failure Discovery and Efficient Performance Estimation for Generative AI Evaluation"
+                {
+                  "tag": "span",
+                  "value": "25 April 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "ProEval: Proactive Failure Discovery and Efficient Performance Estimation for Generative AI Evaluation"
+                }
               ]
             },
             {
@@ -165,8 +284,14 @@
                 "https://deepmind.google/research/publications/193694/"
               ],
               "texts": [
-                "23 April 2026",
-                "Dynamic Reflections: Probing Video Representations with Text Alignment"
+                {
+                  "tag": "span",
+                  "value": "23 April 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Dynamic Reflections: Probing Video Representations with Text Alignment"
+                }
               ]
             },
             {
@@ -174,8 +299,14 @@
                 "https://deepmind.google/research/publications/240658/"
               ],
               "texts": [
-                "22 April 2026",
-                "Image Generators are Generalist Vision Learners"
+                {
+                  "tag": "span",
+                  "value": "22 April 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Image Generators are Generalist Vision Learners"
+                }
               ]
             },
             {
@@ -183,8 +314,14 @@
                 "https://deepmind.google/research/publications/146950/"
               ],
               "texts": [
-                "22 March 2026",
-                "Strategic Tradeoffs Between Humans and AI in Multi-Agent Bargaining"
+                {
+                  "tag": "span",
+                  "value": "22 March 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Strategic Tradeoffs Between Humans and AI in Multi-Agent Bargaining"
+                }
               ]
             },
             {
@@ -192,8 +329,14 @@
                 "https://deepmind.google/research/publications/231971/"
               ],
               "texts": [
-                "10 March 2026",
-                "The Abstraction Fallacy: Why AI Can Simulate But Not Instantiate Consciousness"
+                {
+                  "tag": "span",
+                  "value": "10 March 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "The Abstraction Fallacy: Why AI Can Simulate But Not Instantiate Consciousness"
+                }
               ]
             },
             {
@@ -201,8 +344,14 @@
                 "https://deepmind.google/research/publications/225507/"
               ],
               "texts": [
-                "15 February 2026",
-                "Simplicity and Complexity in Combinatorial Optimization"
+                {
+                  "tag": "span",
+                  "value": "15 February 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Simplicity and Complexity in Combinatorial Optimization"
+                }
               ]
             },
             {
@@ -210,15 +359,27 @@
                 "https://deepmind.google/research/publications/137741/"
               ],
               "texts": [
-                "12 February 2026",
-                "Decoding Safety Feedback from Diverse Raters: A Data-driven Lens on Responsiveness to Severity"
+                {
+                  "tag": "span",
+                  "value": "12 February 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Decoding Safety Feedback from Diverse Raters: A Data-driven Lens on Responsiveness to Severity"
+                }
               ]
             },
             {
               "links": ["https://deepmind.google/research/publications/94006/"],
               "texts": [
-                "5 February 2026",
-                "Hybrid neural–cognitive models reveal how memory shapes human reward learning"
+                {
+                  "tag": "span",
+                  "value": "5 February 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Hybrid neural–cognitive models reveal how memory shapes human reward learning"
+                }
               ]
             },
             {
@@ -226,8 +387,14 @@
                 "https://deepmind.google/research/publications/122591/"
               ],
               "texts": [
-                "9 January 2026",
-                "TRecViT: A Recurrent Video Transformer"
+                {
+                  "tag": "span",
+                  "value": "9 January 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "TRecViT: A Recurrent Video Transformer"
+                }
               ]
             },
             {
@@ -235,15 +402,27 @@
                 "https://deepmind.google/research/publications/141313/"
               ],
               "texts": [
-                "3 December 2025",
-                "Capturing Human Preferences with Reward Features"
+                {
+                  "tag": "span",
+                  "value": "3 December 2025"
+                },
+                {
+                  "tag": "span",
+                  "value": "Capturing Human Preferences with Reward Features"
+                }
               ]
             },
             {
               "links": ["https://deepmind.google/research/publications/42697/"],
               "texts": [
-                "21 November 2025",
-                "Imitation Learning is Probably Existentially Safe"
+                {
+                  "tag": "span",
+                  "value": "21 November 2025"
+                },
+                {
+                  "tag": "span",
+                  "value": "Imitation Learning is Probably Existentially Safe"
+                }
               ]
             },
             {
@@ -251,47 +430,92 @@
                 "https://deepmind.google/research/publications/180362/"
               ],
               "texts": [
-                "4 November 2025",
-                "To Mask or to Mirror: Human-AI Alignment in Collective Reasoning"
+                {
+                  "tag": "span",
+                  "value": "4 November 2025"
+                },
+                {
+                  "tag": "span",
+                  "value": "To Mask or to Mirror: Human-AI Alignment in Collective Reasoning"
+                }
               ]
             },
             {
               "links": [
                 "https://deepmind.google/research/publications/210560/"
               ],
-              "texts": ["30 October 2025", "A Pragmatic View of AI Personhood"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "30 October 2025"
+                },
+                {
+                  "tag": "span",
+                  "value": "A Pragmatic View of AI Personhood"
+                }
+              ]
             },
             {
               "links": [
                 "https://deepmind.google/research/publications/160567/"
               ],
               "texts": [
-                "29 September 2025",
-                "AI-Generated Video Detection via Perceptual Straightening"
+                {
+                  "tag": "span",
+                  "value": "29 September 2025"
+                },
+                {
+                  "tag": "span",
+                  "value": "AI-Generated Video Detection via Perceptual Straightening"
+                }
               ]
             }
           ]
         },
         {
-          "texts": ["1", "…"],
+          "texts": [
+            {
+              "tag": "span",
+              "value": "1"
+            },
+            {
+              "tag": "span",
+              "value": "…"
+            }
+          ],
           "children": [
             {
               "links": [
                 "https://deepmind.google/research/publications/page/2/"
               ],
-              "texts": ["Page"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "Page"
+                }
+              ]
             },
             {
               "links": [
                 "https://deepmind.google/research/publications/page/3/"
               ],
-              "texts": ["Page"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "Page"
+                }
+              ]
             },
             {
               "links": [
                 "https://deepmind.google/research/publications/page/9/"
               ],
-              "texts": ["Page"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "Page"
+                }
+              ]
             },
             {
               "links": ["https://deepmind.google/research/publications/page/2/"]

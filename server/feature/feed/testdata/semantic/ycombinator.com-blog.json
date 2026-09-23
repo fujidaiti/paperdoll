@@ -1,5 +1,22 @@
 {
-  "texts": ["Select a tab", "All Posts", "Startup Jobs", "Startup School"],
+  "texts": [
+    {
+      "tag": "label",
+      "value": "Select a tab"
+    },
+    {
+      "tag": "option",
+      "value": "All Posts"
+    },
+    {
+      "tag": "option",
+      "value": "Startup Jobs"
+    },
+    {
+      "tag": "option",
+      "value": "Startup School"
+    }
+  ],
   "children": [
     {
       "links": [
@@ -8,9 +25,18 @@
         "https://www.ycombinator.com/blog/chris-golda-and-grey-baker-general-partners"
       ],
       "texts": [
-        "Christopher Golda and Grey Baker Join YC as General Partners",
-        "We're excited to announce that Christopher Golda and Grey Baker are joining YC as General Partners.",
-        "Read More"
+        {
+          "tag": "h2",
+          "value": "Christopher Golda and Grey Baker Join YC as General Partners"
+        },
+        {
+          "tag": "p",
+          "value": "We're excited to announce that Christopher Golda and Grey Baker are joining YC as General Partners."
+        },
+        {
+          "tag": "span",
+          "value": "Read More"
+        }
       ],
       "images": [
         {
@@ -19,7 +45,12 @@
       ]
     },
     {
-      "texts": ["Recent Posts"],
+      "texts": [
+        {
+          "tag": "h3",
+          "value": "Recent Posts"
+        }
+      ],
       "children": [
         {
           "children": [
@@ -42,20 +73,44 @@
                         "https://www.ycombinator.com/blog/diana-hu-managing-partner"
                       ],
                       "texts": [
-                        "Diana Hu Is YC's Newest Managing Partner",
-                        "We're thrilled to announce that Diana Hu has been promoted to Managing Partner at Y Combinator. Few people have built a startup from zero and also shipped tech to 100 million people. Diana has done both."
+                        {
+                          "tag": "p",
+                          "value": "Diana Hu Is YC's Newest Managing Partner"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "We're thrilled to announce that Diana Hu has been promoted to Managing Partner at Y Combinator. Few people have built a startup from zero and also shipped tech to 100 million people. Diana has done both."
+                        }
                       ]
                     },
                     {
                       "links": ["https://www.ycombinator.com/blog/tag/yc-news"],
-                      "texts": ["YC News"]
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "YC News"
+                        }
+                      ]
                     },
                     {
                       "links": [
                         "https://www.ycombinator.com/blog/author/garry",
                         "https://www.ycombinator.com/blog/author/garry"
                       ],
-                      "texts": ["Garry Tan", "Garry Tan", "6/11/2026"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "Garry Tan"
+                        },
+                        {
+                          "tag": "a",
+                          "value": "Garry Tan"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "6/11/2026"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://www.ycombinator.com/blog/content/images/2023/03/Instagram-Image-Template--Square---21-.png"
@@ -85,20 +140,44 @@
                         "https://www.ycombinator.com/blog/welcome-harshita"
                       ],
                       "texts": [
-                        "Harshita Arora Joins YC as General Partner",
-                        "We're thrilled to announce that Harshita Arora is joining Y Combinator as a General Partner. She brings deep fintech and infrastructure experience, a founder's instinct for product, and the perspective of someone who's been building companies since she was a teenager."
+                        {
+                          "tag": "p",
+                          "value": "Harshita Arora Joins YC as General Partner"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "We're thrilled to announce that Harshita Arora is joining Y Combinator as a General Partner. She brings deep fintech and infrastructure experience, a founder's instinct for product, and the perspective of someone who's been building companies since she was a teenager."
+                        }
                       ]
                     },
                     {
                       "links": ["https://www.ycombinator.com/blog/tag/yc-news"],
-                      "texts": ["YC News"]
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "YC News"
+                        }
+                      ]
                     },
                     {
                       "links": [
                         "https://www.ycombinator.com/blog/author/garry",
                         "https://www.ycombinator.com/blog/author/garry"
                       ],
-                      "texts": ["Garry Tan", "Garry Tan", "4/6/2026"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "Garry Tan"
+                        },
+                        {
+                          "tag": "a",
+                          "value": "Garry Tan"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "4/6/2026"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://www.ycombinator.com/blog/content/images/2023/03/Instagram-Image-Template--Square---21-.png"
@@ -128,20 +207,44 @@
                         "https://www.ycombinator.com/blog/adding-canada-back"
                       ],
                       "texts": [
-                        "Adding Canada Back to Our List of Accepted Countries of Incorporation",
-                        "After hearing feedback from Canadian founders in our network, we are adding Canada back to our list of accepted countries of incorporation."
+                        {
+                          "tag": "p",
+                          "value": "Adding Canada Back to Our List of Accepted Countries of Incorporation"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "After hearing feedback from Canadian founders in our network, we are adding Canada back to our list of accepted countries of incorporation."
+                        }
                       ]
                     },
                     {
                       "links": ["https://www.ycombinator.com/blog/tag/yc-news"],
-                      "texts": ["YC News"]
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "YC News"
+                        }
+                      ]
                     },
                     {
                       "links": [
                         "https://www.ycombinator.com/blog/author/garry",
                         "https://www.ycombinator.com/blog/author/garry"
                       ],
-                      "texts": ["Garry Tan", "Garry Tan", "2/5/2026"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "Garry Tan"
+                        },
+                        {
+                          "tag": "a",
+                          "value": "Garry Tan"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "2/5/2026"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://www.ycombinator.com/blog/content/images/2023/03/Instagram-Image-Template--Square---21-.png"
@@ -159,192 +262,387 @@
     {
       "children": [
         {
-          "texts": ["All Posts"],
+          "texts": [
+            {
+              "tag": "h3",
+              "value": "All Posts"
+            }
+          ],
           "children": [
             {
               "texts": [
-                "Today, EquipmentShare (YC W15) goes public. From Missouri to 373 locations nationwide, they've built the operating system construction has been missing—built by contractors, for contractors. Congrats to Jabbok, Willy, and the EquipmentShare team on a huge milestone."
+                {
+                  "tag": "p",
+                  "value": "Today, EquipmentShare (YC W15) goes public. From Missouri to 373 locations nationwide, they've built the operating system construction has been missing—built by contractors, for contractors. Congrats to Jabbok, Willy, and the EquipmentShare team on a huge milestone."
+                }
               ],
               "children": [
                 {
                   "links": [
                     "https://www.ycombinator.com/blog/congratulations-to-equipmentshare"
                   ],
-                  "texts": ["Congratulations to EquipmentShare on Going Public"]
+                  "texts": [
+                    {
+                      "tag": "p",
+                      "value": "Congratulations to EquipmentShare on Going Public"
+                    }
+                  ]
                 },
                 {
                   "links": ["https://www.ycombinator.com/blog/author/garry"],
-                  "texts": ["Garry Tan", "1/23/2026"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "Garry Tan"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "1/23/2026"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://www.ycombinator.com/blog/congratulations-to-equipmentshare"
                   ],
-                  "texts": ["Read More"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Read More"
+                    }
+                  ]
                 }
               ]
             },
             {
               "texts": [
-                "We've partnered with nearly two dozen companies to offer students who attend YC events a suite of over $25,000 in free credits for AI devtools."
+                {
+                  "tag": "p",
+                  "value": "We've partnered with nearly two dozen companies to offer students who attend YC events a suite of over $25,000 in free credits for AI devtools."
+                }
               ],
               "children": [
                 {
                   "links": [
                     "https://www.ycombinator.com/blog/the-yc-ai-student-starter-pack"
                   ],
-                  "texts": ["Announcing the YC AI Stack"]
+                  "texts": [
+                    {
+                      "tag": "p",
+                      "value": "Announcing the YC AI Stack"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://www.ycombinator.com/blog/author/ankit-gupta"
                   ],
-                  "texts": ["Ankit Gupta", "1/16/2026"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "Ankit Gupta"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "1/16/2026"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://www.ycombinator.com/blog/the-yc-ai-student-starter-pack"
                   ],
-                  "texts": ["Read More"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Read More"
+                    }
+                  ]
                 }
               ]
             },
             {
               "texts": [
-                "We’re excited to share the Demo Day dates for 2026 so founders, investors, and our broader community can plan ahead."
+                {
+                  "tag": "p",
+                  "value": "We’re excited to share the Demo Day dates for 2026 so founders, investors, and our broader community can plan ahead."
+                }
               ],
               "children": [
                 {
                   "links": ["https://www.ycombinator.com/blog/2026-demo-days"],
-                  "texts": ["2026 Demo Day Dates"]
+                  "texts": [
+                    {
+                      "tag": "p",
+                      "value": "2026 Demo Day Dates"
+                    }
+                  ]
                 },
                 {
                   "links": ["https://www.ycombinator.com/blog/author/yc"],
-                  "texts": ["Y Combinator", "12/18/2025"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "Y Combinator"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "12/18/2025"
+                    }
+                  ]
                 },
                 {
                   "links": ["https://www.ycombinator.com/blog/2026-demo-days"],
-                  "texts": ["Read More"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Read More"
+                    }
+                  ]
                 }
               ]
             },
             {
               "texts": [
-                "Meesho goes public today. From S16 to IPO, they’ve built one of India’s largest e-commerce platforms—empowering millions of small merchants to grow their businesses. Congrats to Vidit and Sanjeev on a decade of relentless building and listening to users!"
+                {
+                  "tag": "p",
+                  "value": "Meesho goes public today. From S16 to IPO, they’ve built one of India’s largest e-commerce platforms—empowering millions of small merchants to grow their businesses. Congrats to Vidit and Sanjeev on a decade of relentless building and listening to users!"
+                }
               ],
               "children": [
                 {
                   "links": [
                     "https://www.ycombinator.com/blog/meesho-goes-public"
                   ],
-                  "texts": ["Meesho Goes Public"]
+                  "texts": [
+                    {
+                      "tag": "p",
+                      "value": "Meesho Goes Public"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://www.ycombinator.com/blog/author/tim-brady"
                   ],
-                  "texts": ["Tim Brady", "12/10/2025"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "Tim Brady"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "12/10/2025"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://www.ycombinator.com/blog/meesho-goes-public"
                   ],
-                  "texts": ["Read More"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Read More"
+                    }
+                  ]
                 }
               ]
             },
             {
               "texts": [
-                "Today, Groww, India's leading digital investing platform, goes public. Tens of millions use Groww to invest simply and confidently in stocks, mutual funds, and ETFs. As YC's first company to list in India, we couldn't be more proud."
+                {
+                  "tag": "p",
+                  "value": "Today, Groww, India's leading digital investing platform, goes public. Tens of millions use Groww to invest simply and confidently in stocks, mutual funds, and ETFs. As YC's first company to list in India, we couldn't be more proud."
+                }
               ],
               "children": [
                 {
                   "links": ["https://www.ycombinator.com/blog/groww"],
-                  "texts": ["Congratulations to Groww"]
+                  "texts": [
+                    {
+                      "tag": "p",
+                      "value": "Congratulations to Groww"
+                    }
+                  ]
                 },
                 {
                   "links": ["https://www.ycombinator.com/blog/author/jon-levy"],
-                  "texts": ["Jon Levy", "11/12/2025"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "Jon Levy"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "11/12/2025"
+                    }
+                  ]
                 },
                 {
                   "links": ["https://www.ycombinator.com/blog/groww"],
-                  "texts": ["Read More"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Read More"
+                    }
+                  ]
                 }
               ]
             },
             {
               "texts": [
-                "Today, BillionToOne goes public, becoming YC's fourth publicly traded biotech company. More importantly, they have built one of the most important genetic tests in the U.S. Today, 1 in 11 babies born in the US are tested with BillionToOne's fetal genetic test."
+                {
+                  "tag": "p",
+                  "value": "Today, BillionToOne goes public, becoming YC's fourth publicly traded biotech company. More importantly, they have built one of the most important genetic tests in the U.S. Today, 1 in 11 babies born in the US are tested with BillionToOne's fetal genetic test."
+                }
               ],
               "children": [
                 {
                   "links": ["https://www.ycombinator.com/blog/billiontoone"],
                   "texts": [
-                    "BillionToOne Goes Public — The Startup That Made Genetic Testing Universal"
+                    {
+                      "tag": "p",
+                      "value": "BillionToOne Goes Public — The Startup That Made Genetic Testing Universal"
+                    }
                   ]
                 },
                 {
                   "links": [
                     "https://www.ycombinator.com/blog/author/jared-friedman"
                   ],
-                  "texts": ["Jared Friedman", "11/6/2025"]
+                  "texts": [
+                    {
+                      "tag": "span",
+                      "value": "Jared Friedman"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "11/6/2025"
+                    }
+                  ]
                 },
                 {
                   "links": ["https://www.ycombinator.com/blog/billiontoone"],
-                  "texts": ["Read More"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Read More"
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "texts": ["Categories"],
+          "texts": [
+            {
+              "tag": "p",
+              "value": "Categories"
+            }
+          ],
           "children": [
             {
               "links": ["https://www.ycombinator.com/blog/tag/admissions"],
-              "texts": ["Admissions"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Admissions"
+                }
+              ]
             },
             {
               "links": ["https://www.ycombinator.com/blog/tag/advice"],
-              "texts": ["Advice"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Advice"
+                }
+              ]
             },
             {
               "links": ["https://www.ycombinator.com/blog/tag/biotech"],
-              "texts": ["Biotech"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Biotech"
+                }
+              ]
             },
             {
               "links": ["https://www.ycombinator.com/blog/tag/blockchain"],
-              "texts": ["Blockchain"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Blockchain"
+                }
+              ]
             },
             {
               "links": ["https://www.ycombinator.com/blog/tag/essay"],
-              "texts": ["Essay"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Essay"
+                }
+              ]
             },
             {
               "links": ["https://www.ycombinator.com/blog/tag/female-founders"],
-              "texts": ["Female Founders"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Female Founders"
+                }
+              ]
             },
             {
               "links": ["https://www.ycombinator.com/blog/tag/founder-stories"],
-              "texts": ["Founder Stories"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Founder Stories"
+                }
+              ]
             },
             {
               "links": ["https://www.ycombinator.com/blog/tag/interview"],
-              "texts": ["Interviews"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Interviews"
+                }
+              ]
             },
             {
               "links": ["https://www.ycombinator.com/blog/tag/startup-school"],
-              "texts": ["Startup School"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Startup School"
+                }
+              ]
             },
             {
               "links": [
                 "https://www.ycombinator.com/blog/tag/work-at-a-startup"
               ],
-              "texts": ["Work at a Startup"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "Work at a Startup"
+                }
+              ]
             },
             {
               "links": ["https://www.ycombinator.com/blog/tag/yc-events"],
-              "texts": ["YC Events"]
+              "texts": [
+                {
+                  "tag": "div",
+                  "value": "YC Events"
+                }
+              ]
             }
           ]
         }
@@ -354,7 +652,12 @@
       "links": [
         "https://www.ycombinator.com/newsletter/subscribe?signup_source=ycdc_blog"
       ],
-      "texts": ["Sign up for the newsletter"]
+      "texts": [
+        {
+          "tag": "a",
+          "value": "Sign up for the newsletter"
+        }
+      ]
     }
   ]
 }

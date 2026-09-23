@@ -1,82 +1,236 @@
 {
-  "texts": ["Explore here"],
+  "texts": [
+    {
+      "tag": "div",
+      "value": "Explore here"
+    }
+  ],
   "children": [
     {
       "texts": [
-        "Filter and sort",
-        "Newest",
-        "Alphabetically (A to Z)",
-        "Alphabetically (Z to A)",
-        "Agents",
-        "Claude Code",
-        "Enterprise AI",
-        "Product announcements",
-        "Claude for Small Business",
-        "Claude Science",
-        "Claude Tag",
-        "Claude Design",
-        "Claude Security",
-        "Claude Cowork",
-        "Claude Enterprise",
-        "Claude apps",
-        "Claude Platform",
-        "Claude Code",
-        "Agents",
-        "Business",
-        "Coding",
-        "Content Creation",
-        "Design",
-        "Education",
-        "Financial services",
-        "Government",
-        "Health care and life sciences",
-        "Learning",
-        "Legal",
-        "Productivity",
-        "Sales",
-        "Startups",
-        "Work",
-        "Reset",
-        "Apply",
-        "Thank you! Your submission has been received!",
-        "Oops! Something went wrong while submitting the form."
+        {
+          "tag": "div",
+          "value": "Filter and sort"
+        },
+        {
+          "tag": "span",
+          "value": "Newest"
+        },
+        {
+          "tag": "span",
+          "value": "Alphabetically (A to Z)"
+        },
+        {
+          "tag": "span",
+          "value": "Alphabetically (Z to A)"
+        },
+        {
+          "tag": "span",
+          "value": "Agents"
+        },
+        {
+          "tag": "span",
+          "value": "Claude Code"
+        },
+        {
+          "tag": "span",
+          "value": "Enterprise AI"
+        },
+        {
+          "tag": "span",
+          "value": "Product announcements"
+        },
+        {
+          "tag": "span",
+          "value": "Claude for Small Business"
+        },
+        {
+          "tag": "span",
+          "value": "Claude Science"
+        },
+        {
+          "tag": "span",
+          "value": "Claude Tag"
+        },
+        {
+          "tag": "span",
+          "value": "Claude Design"
+        },
+        {
+          "tag": "span",
+          "value": "Claude Security"
+        },
+        {
+          "tag": "span",
+          "value": "Claude Cowork"
+        },
+        {
+          "tag": "span",
+          "value": "Claude Enterprise"
+        },
+        {
+          "tag": "span",
+          "value": "Claude apps"
+        },
+        {
+          "tag": "span",
+          "value": "Claude Platform"
+        },
+        {
+          "tag": "span",
+          "value": "Claude Code"
+        },
+        {
+          "tag": "span",
+          "value": "Agents"
+        },
+        {
+          "tag": "span",
+          "value": "Business"
+        },
+        {
+          "tag": "span",
+          "value": "Coding"
+        },
+        {
+          "tag": "span",
+          "value": "Content Creation"
+        },
+        {
+          "tag": "span",
+          "value": "Design"
+        },
+        {
+          "tag": "span",
+          "value": "Education"
+        },
+        {
+          "tag": "span",
+          "value": "Financial services"
+        },
+        {
+          "tag": "span",
+          "value": "Government"
+        },
+        {
+          "tag": "span",
+          "value": "Health care and life sciences"
+        },
+        {
+          "tag": "span",
+          "value": "Learning"
+        },
+        {
+          "tag": "span",
+          "value": "Legal"
+        },
+        {
+          "tag": "span",
+          "value": "Productivity"
+        },
+        {
+          "tag": "span",
+          "value": "Sales"
+        },
+        {
+          "tag": "span",
+          "value": "Startups"
+        },
+        {
+          "tag": "span",
+          "value": "Work"
+        },
+        {
+          "tag": "span",
+          "value": "Reset"
+        },
+        {
+          "tag": "span",
+          "value": "Apply"
+        },
+        {
+          "tag": "div",
+          "value": "Thank you! Your submission has been received!"
+        },
+        {
+          "tag": "div",
+          "value": "Oops! Something went wrong while submitting the form."
+        }
       ],
       "children": [
         {
           "children": [
             {
               "texts": [
-                "Blog",
-                "Product news and best practices for teams building with Claude.",
-                "Try Claude"
+                {
+                  "tag": "h1",
+                  "value": "Blog"
+                },
+                {
+                  "tag": "p",
+                  "value": "Product news and best practices for teams building with Claude."
+                },
+                {
+                  "tag": "span",
+                  "value": "Try Claude"
+                }
               ],
               "children": [
                 {
-                  "texts": ["All", "1"],
+                  "texts": [
+                    {
+                      "tag": "div",
+                      "value": "All"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "1"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://claude.com/blog-category/agents"],
-                          "texts": ["Agents"]
+                          "texts": [
+                            {
+                              "tag": "h2",
+                              "value": "Agents"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://claude.com/blog-category/claude-code"
                           ],
-                          "texts": ["Claude Code"]
+                          "texts": [
+                            {
+                              "tag": "h2",
+                              "value": "Claude Code"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://claude.com/blog-category/enterprise-ai"
                           ],
-                          "texts": ["Enterprise AI"]
+                          "texts": [
+                            {
+                              "tag": "h2",
+                              "value": "Enterprise AI"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://claude.com/blog-category/announcements"
                           ],
-                          "texts": ["Product announcements"]
+                          "texts": [
+                            {
+                              "tag": "h2",
+                              "value": "Product announcements"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -91,9 +245,18 @@
                     {
                       "links": ["https://claude.com/blog/cowork-is-now-claude"],
                       "texts": [
-                        "Claude Cowork and chat are now one Claude",
-                        "September 16, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude Cowork and chat are now one Claude"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "September 16, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -101,9 +264,18 @@
                         "https://claude.com/blog/claude-for-small-business-launches-new-workflows-integrations-and-training-programs"
                       ],
                       "texts": [
-                        "Claude for Small Business launches new workflows, integrations, and training programs",
-                        "September 15, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude for Small Business launches new workflows, integrations, and training programs"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "September 15, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -111,9 +283,18 @@
                         "https://claude.com/blog/claude-in-chrome-generally-available"
                       ],
                       "texts": [
-                        "Claude in Chrome is generally available",
-                        "August 26, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude in Chrome is generally available"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "August 26, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -121,9 +302,18 @@
                         "https://claude.com/blog/cowork-built-in-browser"
                       ],
                       "texts": [
-                        "Claude gets its own browser in Cowork",
-                        "August 26, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude gets its own browser in Cowork"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "August 26, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -131,9 +321,18 @@
                         "https://claude.com/blog/artifacts-in-claude-code"
                       ],
                       "texts": [
-                        "Claude Code now supports artifacts",
-                        "June 18, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude Code now supports artifacts"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "June 18, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -141,9 +340,18 @@
                         "https://claude.com/blog/claude-for-foundation-models"
                       ],
                       "texts": [
-                        "Building intelligent apps for Apple platforms with Claude in the Foundation Models framework",
-                        "June 8, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Building intelligent apps for Apple platforms with Claude in the Foundation Models framework"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "June 8, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -151,9 +359,18 @@
                         "https://claude.com/blog/claude-managed-agents-updates"
                       ],
                       "texts": [
-                        "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels",
-                        "May 19, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "May 19, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -161,9 +378,18 @@
                         "https://claude.com/blog/new-in-claude-managed-agents"
                       ],
                       "texts": [
-                        "New in Claude Managed Agents: dreaming, outcomes, and multiagent orchestration",
-                        "May 19, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "New in Claude Managed Agents: dreaming, outcomes, and multiagent orchestration"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "May 19, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -171,9 +397,18 @@
                         "https://claude.com/blog/connectors-for-everyday-life"
                       ],
                       "texts": [
-                        "New connectors in Claude for everyday life",
-                        "April 23, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "New connectors in Claude for everyday life"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "April 23, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -181,9 +416,18 @@
                         "https://claude.com/blog/claude-managed-agents-memory"
                       ],
                       "texts": [
-                        "Built-in memory for Claude Managed Agents",
-                        "April 23, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Built-in memory for Claude Managed Agents"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "April 23, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     }
                   ]
@@ -193,9 +437,18 @@
                     {
                       "links": ["https://claude.com/blog/cowork-is-now-claude"],
                       "texts": [
-                        "Claude Cowork and chat are now one Claude",
-                        "September 16, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude Cowork and chat are now one Claude"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "September 16, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -203,9 +456,18 @@
                         "https://claude.com/blog/claude-for-small-business-launches-new-workflows-integrations-and-training-programs"
                       ],
                       "texts": [
-                        "Claude for Small Business launches new workflows, integrations, and training programs",
-                        "September 15, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude for Small Business launches new workflows, integrations, and training programs"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "September 15, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -213,9 +475,18 @@
                         "https://claude.com/blog/claude-in-chrome-generally-available"
                       ],
                       "texts": [
-                        "Claude in Chrome is generally available",
-                        "August 26, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude in Chrome is generally available"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "August 26, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -223,9 +494,18 @@
                         "https://claude.com/blog/cowork-built-in-browser"
                       ],
                       "texts": [
-                        "Claude gets its own browser in Cowork",
-                        "August 26, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude gets its own browser in Cowork"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "August 26, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -233,9 +513,18 @@
                         "https://claude.com/blog/artifacts-in-claude-code"
                       ],
                       "texts": [
-                        "Claude Code now supports artifacts",
-                        "June 18, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Claude Code now supports artifacts"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "June 18, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -243,9 +532,18 @@
                         "https://claude.com/blog/claude-for-foundation-models"
                       ],
                       "texts": [
-                        "Building intelligent apps for Apple platforms with Claude in the Foundation Models framework",
-                        "June 8, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Building intelligent apps for Apple platforms with Claude in the Foundation Models framework"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "June 8, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -253,9 +551,18 @@
                         "https://claude.com/blog/claude-managed-agents-updates"
                       ],
                       "texts": [
-                        "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels",
-                        "May 19, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "May 19, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -263,9 +570,18 @@
                         "https://claude.com/blog/new-in-claude-managed-agents"
                       ],
                       "texts": [
-                        "New in Claude Managed Agents: dreaming, outcomes, and multiagent orchestration",
-                        "May 19, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "New in Claude Managed Agents: dreaming, outcomes, and multiagent orchestration"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "May 19, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -273,9 +589,18 @@
                         "https://claude.com/blog/connectors-for-everyday-life"
                       ],
                       "texts": [
-                        "New connectors in Claude for everyday life",
-                        "April 23, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "New connectors in Claude for everyday life"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "April 23, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     },
                     {
@@ -283,9 +608,18 @@
                         "https://claude.com/blog/claude-managed-agents-memory"
                       ],
                       "texts": [
-                        "Built-in memory for Claude Managed Agents",
-                        "April 23, 2026",
-                        "Read more"
+                        {
+                          "tag": "h2",
+                          "value": "Built-in memory for Claude Managed Agents"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "April 23, 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ]
                     }
                   ]
@@ -296,59 +630,194 @@
         },
         {
           "texts": [
-            "Search",
-            "Thank you! Your submission has been received!",
-            "Oops! Something went wrong while submitting the form."
+            {
+              "tag": "span",
+              "value": "Search"
+            },
+            {
+              "tag": "div",
+              "value": "Thank you! Your submission has been received!"
+            },
+            {
+              "tag": "div",
+              "value": "Oops! Something went wrong while submitting the form."
+            }
           ],
           "children": [
             {
               "texts": [
-                "Filter and sort",
-                "Sort by",
-                "Newest",
-                "Alphabetically (A to Z)",
-                "Alphabetically (Z to A)",
-                "Agents",
-                "Claude Code",
-                "Enterprise AI",
-                "Product announcements",
-                "Claude for Small Business",
-                "Claude Science",
-                "Claude Tag",
-                "Claude Design",
-                "Claude Security",
-                "Claude Cowork",
-                "Claude Enterprise",
-                "Claude apps",
-                "Claude Platform",
-                "Claude Code",
-                "Agents",
-                "Business",
-                "Coding",
-                "Content Creation",
-                "Design",
-                "Education",
-                "Financial services",
-                "Government",
-                "Health care and life sciences",
-                "Learning",
-                "Legal",
-                "Productivity",
-                "Sales",
-                "Startups",
-                "Work",
-                "Thank you! Your submission has been received!",
-                "Oops! Something went wrong while submitting the form."
+                {
+                  "tag": "div",
+                  "value": "Filter and sort"
+                },
+                {
+                  "tag": "span",
+                  "value": "Sort by"
+                },
+                {
+                  "tag": "option",
+                  "value": "Newest"
+                },
+                {
+                  "tag": "option",
+                  "value": "Alphabetically (A to Z)"
+                },
+                {
+                  "tag": "option",
+                  "value": "Alphabetically (Z to A)"
+                },
+                {
+                  "tag": "span",
+                  "value": "Agents"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude Code"
+                },
+                {
+                  "tag": "span",
+                  "value": "Enterprise AI"
+                },
+                {
+                  "tag": "span",
+                  "value": "Product announcements"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude for Small Business"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude Science"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude Tag"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude Design"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude Security"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude Cowork"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude Enterprise"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude apps"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude Platform"
+                },
+                {
+                  "tag": "span",
+                  "value": "Claude Code"
+                },
+                {
+                  "tag": "span",
+                  "value": "Agents"
+                },
+                {
+                  "tag": "span",
+                  "value": "Business"
+                },
+                {
+                  "tag": "span",
+                  "value": "Coding"
+                },
+                {
+                  "tag": "span",
+                  "value": "Content Creation"
+                },
+                {
+                  "tag": "span",
+                  "value": "Design"
+                },
+                {
+                  "tag": "span",
+                  "value": "Education"
+                },
+                {
+                  "tag": "span",
+                  "value": "Financial services"
+                },
+                {
+                  "tag": "span",
+                  "value": "Government"
+                },
+                {
+                  "tag": "span",
+                  "value": "Health care and life sciences"
+                },
+                {
+                  "tag": "span",
+                  "value": "Learning"
+                },
+                {
+                  "tag": "span",
+                  "value": "Legal"
+                },
+                {
+                  "tag": "span",
+                  "value": "Productivity"
+                },
+                {
+                  "tag": "span",
+                  "value": "Sales"
+                },
+                {
+                  "tag": "span",
+                  "value": "Startups"
+                },
+                {
+                  "tag": "span",
+                  "value": "Work"
+                },
+                {
+                  "tag": "div",
+                  "value": "Thank you! Your submission has been received!"
+                },
+                {
+                  "tag": "div",
+                  "value": "Oops! Something went wrong while submitting the form."
+                }
               ],
               "children": [
                 {
                   "texts": [
-                    "Search",
-                    "Thank you! Your submission has been received!",
-                    "Oops! Something went wrong while submitting the form.",
-                    "No posts for those filters",
-                    "Try another search or clear some of your filters.",
-                    "Clear all filters"
+                    {
+                      "tag": "span",
+                      "value": "Search"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Thank you! Your submission has been received!"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Oops! Something went wrong while submitting the form."
+                    },
+                    {
+                      "tag": "p",
+                      "value": "No posts for those filters"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Try another search or clear some of your filters."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Clear all filters"
+                    }
                   ],
                   "children": [
                     {
@@ -359,13 +828,34 @@
                             "https://claude.com/blog/working-at-the-frontier-how-balyasny-asset-management-evaluates-and-governs-claude-fable-5"
                           ],
                           "texts": [
-                            "Sep 17, 2026",
-                            "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5",
-                            "Enterprise AI",
-                            "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5",
-                            "September 17, 2026",
-                            "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5",
-                            "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+                            {
+                              "tag": "div",
+                              "value": "Sep 17, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Enterprise AI"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 17, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+                            }
                           ],
                           "images": [
                             {
@@ -379,13 +869,34 @@
                             "https://claude.com/blog/projects-redesigned"
                           ],
                           "texts": [
-                            "Sep 17, 2026",
-                            "Projects redesigned: from folder to conversation",
-                            "Product announcements",
-                            "Projects redesigned: from folder to conversation",
-                            "September 17, 2026",
-                            "Projects redesigned: from folder to conversation",
-                            "Projects redesigned: from folder to conversation"
+                            {
+                              "tag": "div",
+                              "value": "Sep 17, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Projects redesigned: from folder to conversation"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Product announcements"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Projects redesigned: from folder to conversation"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 17, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Projects redesigned: from folder to conversation"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Projects redesigned: from folder to conversation"
+                            }
                           ],
                           "images": [
                             {
@@ -399,13 +910,34 @@
                             "https://claude.com/blog/cowork-is-now-claude"
                           ],
                           "texts": [
-                            "Sep 16, 2026",
-                            "Claude Cowork and chat are now one Claude",
-                            "Product announcements",
-                            "Claude Cowork and chat are now one Claude",
-                            "September 16, 2026",
-                            "Claude Cowork and chat are now one Claude",
-                            "Claude Cowork and chat are now one Claude"
+                            {
+                              "tag": "div",
+                              "value": "Sep 16, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Claude Cowork and chat are now one Claude"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Product announcements"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Claude Cowork and chat are now one Claude"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 16, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Claude Cowork and chat are now one Claude"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Claude Cowork and chat are now one Claude"
+                            }
                           ],
                           "images": [
                             {
@@ -419,13 +951,34 @@
                             "https://claude.com/blog/salesforce-in-claude"
                           ],
                           "texts": [
-                            "Sep 15, 2026",
-                            "Bringing Salesforce into Claude",
-                            "Enterprise AI",
-                            "Bringing Salesforce into Claude",
-                            "September 15, 2026",
-                            "Bringing Salesforce into Claude",
-                            "Bringing Salesforce into Claude"
+                            {
+                              "tag": "div",
+                              "value": "Sep 15, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Bringing Salesforce into Claude"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Enterprise AI"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Bringing Salesforce into Claude"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 15, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Bringing Salesforce into Claude"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Bringing Salesforce into Claude"
+                            }
                           ],
                           "images": [
                             {
@@ -439,13 +992,34 @@
                             "https://claude.com/blog/building-an-ai-native-revenue-organization"
                           ],
                           "texts": [
-                            "Sep 15, 2026",
-                            "Building an AI-native revenue organization",
-                            "Enterprise AI",
-                            "Building an AI-native revenue organization",
-                            "September 15, 2026",
-                            "Building an AI-native revenue organization",
-                            "Building an AI-native revenue organization"
+                            {
+                              "tag": "div",
+                              "value": "Sep 15, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Building an AI-native revenue organization"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Enterprise AI"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Building an AI-native revenue organization"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 15, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Building an AI-native revenue organization"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Building an AI-native revenue organization"
+                            }
                           ],
                           "images": [
                             {
@@ -459,13 +1033,34 @@
                             "https://claude.com/blog/claude-for-small-business-launches-new-workflows-integrations-and-training-programs"
                           ],
                           "texts": [
-                            "Sep 15, 2026",
-                            "Claude for Small Business launches new workflows, integrations, and training programs",
-                            "Product announcements",
-                            "Claude for Small Business launches new workflows, integrations, and training programs",
-                            "September 15, 2026",
-                            "Claude for Small Business launches new workflows, integrations, and training programs",
-                            "Claude for Small Business launches new workflows, integrations, and training programs"
+                            {
+                              "tag": "div",
+                              "value": "Sep 15, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Claude for Small Business launches new workflows, integrations, and training programs"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Product announcements"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Claude for Small Business launches new workflows, integrations, and training programs"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 15, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Claude for Small Business launches new workflows, integrations, and training programs"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Claude for Small Business launches new workflows, integrations, and training programs"
+                            }
                           ],
                           "images": [
                             {
@@ -479,13 +1074,34 @@
                             "https://claude.com/blog/agentic-coding-is-straining-ci-heres-how-we-scaled-test-impact-analysis-at-anthropic"
                           ],
                           "texts": [
-                            "Sep 14, 2026",
-                            "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic",
-                            "Claude Code",
-                            "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic",
-                            "September 14, 2026",
-                            "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic",
-                            "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic"
+                            {
+                              "tag": "div",
+                              "value": "Sep 14, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Claude Code"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 14, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic"
+                            }
                           ],
                           "images": [
                             {
@@ -499,13 +1115,34 @@
                             "https://claude.com/blog/claude-for-financial-advisors"
                           ],
                           "texts": [
-                            "Sep 14, 2026",
-                            "Claude for Financial Advisors",
-                            "Product announcements",
-                            "Claude for Financial Advisors",
-                            "September 14, 2026",
-                            "Claude for Financial Advisors",
-                            "Claude for Financial Advisors"
+                            {
+                              "tag": "div",
+                              "value": "Sep 14, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Claude for Financial Advisors"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Product announcements"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Claude for Financial Advisors"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 14, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Claude for Financial Advisors"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Claude for Financial Advisors"
+                            }
                           ],
                           "images": [
                             {
@@ -519,13 +1156,34 @@
                             "https://claude.com/blog/how-healthcare-organizations-use-claude-tag"
                           ],
                           "texts": [
-                            "Sep 14, 2026",
-                            "How healthcare organizations use Claude Tag",
-                            "Enterprise AI",
-                            "How healthcare organizations use Claude Tag",
-                            "September 14, 2026",
-                            "How healthcare organizations use Claude Tag",
-                            "How healthcare organizations use Claude Tag"
+                            {
+                              "tag": "div",
+                              "value": "Sep 14, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "How healthcare organizations use Claude Tag"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Enterprise AI"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "How healthcare organizations use Claude Tag"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 14, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "How healthcare organizations use Claude Tag"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "How healthcare organizations use Claude Tag"
+                            }
                           ],
                           "images": [
                             {
@@ -539,13 +1197,34 @@
                             "https://claude.com/blog/deploying-ai-from-pilot-to-production"
                           ],
                           "texts": [
-                            "Sep 14, 2026",
-                            "Deploying AI from pilot to production",
-                            "Enterprise AI",
-                            "Deploying AI from pilot to production",
-                            "September 14, 2026",
-                            "Deploying AI from pilot to production",
-                            "Deploying AI from pilot to production"
+                            {
+                              "tag": "div",
+                              "value": "Sep 14, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Deploying AI from pilot to production"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Enterprise AI"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Deploying AI from pilot to production"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 14, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Deploying AI from pilot to production"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Deploying AI from pilot to production"
+                            }
                           ],
                           "images": [
                             {
@@ -559,12 +1238,30 @@
                             "https://claude.com/blog/t-rowe-price-brings-more-of-claude-to-its-investment-process"
                           ],
                           "texts": [
-                            "Sep 10, 2026",
-                            "T. Rowe Price brings more of Claude to its investment process",
-                            "T. Rowe Price brings more of Claude to its investment process",
-                            "September 10, 2026",
-                            "T. Rowe Price brings more of Claude to its investment process",
-                            "T. Rowe Price brings more of Claude to its investment process"
+                            {
+                              "tag": "div",
+                              "value": "Sep 10, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "T. Rowe Price brings more of Claude to its investment process"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "T. Rowe Price brings more of Claude to its investment process"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 10, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "T. Rowe Price brings more of Claude to its investment process"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "T. Rowe Price brings more of Claude to its investment process"
+                            }
                           ],
                           "images": [
                             {
@@ -578,13 +1275,34 @@
                             "https://claude.com/blog/what-1-000-small-business-owners-taught-us-about-ai"
                           ],
                           "texts": [
-                            "Sep 10, 2026",
-                            "What 1,000 small business owners taught us about AI",
-                            "Enterprise AI",
-                            "What 1,000 small business owners taught us about AI",
-                            "September 10, 2026",
-                            "What 1,000 small business owners taught us about AI",
-                            "What 1,000 small business owners taught us about AI"
+                            {
+                              "tag": "div",
+                              "value": "Sep 10, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "What 1,000 small business owners taught us about AI"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Enterprise AI"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "What 1,000 small business owners taught us about AI"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 10, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "What 1,000 small business owners taught us about AI"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "What 1,000 small business owners taught us about AI"
+                            }
                           ],
                           "images": [
                             {
@@ -598,13 +1316,34 @@
                             "https://claude.com/blog/reducing-cost-and-improving-performance-with-claude-platform"
                           ],
                           "texts": [
-                            "Sep 8, 2026",
-                            "Reducing cost and improving performance with Claude Platform",
-                            "Agents",
-                            "Reducing cost and improving performance with Claude Platform",
-                            "September 8, 2026",
-                            "Reducing cost and improving performance with Claude Platform",
-                            "Reducing cost and improving performance with Claude Platform"
+                            {
+                              "tag": "div",
+                              "value": "Sep 8, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Reducing cost and improving performance with Claude Platform"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Agents"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Reducing cost and improving performance with Claude Platform"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 8, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Reducing cost and improving performance with Claude Platform"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Reducing cost and improving performance with Claude Platform"
+                            }
                           ],
                           "images": [
                             {
@@ -618,13 +1357,34 @@
                             "https://claude.com/blog/the-anatomy-of-effective-commerce-agents"
                           ],
                           "texts": [
-                            "Sep 2, 2026",
-                            "A guide to the anatomy of effective commerce agents",
-                            "Agents",
-                            "A guide to the anatomy of effective commerce agents",
-                            "September 2, 2026",
-                            "A guide to the anatomy of effective commerce agents",
-                            "A guide to the anatomy of effective commerce agents"
+                            {
+                              "tag": "div",
+                              "value": "Sep 2, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "A guide to the anatomy of effective commerce agents"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Agents"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "A guide to the anatomy of effective commerce agents"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 2, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "A guide to the anatomy of effective commerce agents"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "A guide to the anatomy of effective commerce agents"
+                            }
                           ],
                           "images": [
                             {
@@ -638,13 +1398,34 @@
                             "https://claude.com/blog/claude-for-commerce-agents"
                           ],
                           "texts": [
-                            "Sep 2, 2026",
-                            "Building commerce agents with Claude",
-                            "Product announcements",
-                            "Building commerce agents with Claude",
-                            "September 2, 2026",
-                            "Building commerce agents with Claude",
-                            "Building commerce agents with Claude"
+                            {
+                              "tag": "div",
+                              "value": "Sep 2, 2026"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Building commerce agents with Claude"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Product announcements"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "Building commerce agents with Claude"
+                            },
+                            {
+                              "tag": "div",
+                              "value": "September 2, 2026"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Building commerce agents with Claude"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Building commerce agents with Claude"
+                            }
                           ],
                           "images": [
                             {
@@ -655,7 +1436,20 @@
                       ]
                     },
                     {
-                      "texts": ["Category", "Product", "Usecase"],
+                      "texts": [
+                        {
+                          "tag": "div",
+                          "value": "Category"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Product"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Usecase"
+                        }
+                      ],
                       "children": [
                         {
                           "children": [
@@ -665,14 +1459,38 @@
                                 "https://claude.com/blog/working-at-the-frontier-how-balyasny-asset-management-evaluates-and-governs-claude-fable-5"
                               ],
                               "texts": [
-                                "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5",
-                                "Category",
-                                "Enterprise AI",
-                                "Product",
-                                "Usecase",
-                                "September 17, 2026",
-                                "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5",
-                                "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+                                {
+                                  "tag": "h3",
+                                  "value": "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Enterprise AI"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 17, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+                                }
                               ]
                             },
                             {
@@ -681,14 +1499,38 @@
                                 "https://claude.com/blog/projects-redesigned"
                               ],
                               "texts": [
-                                "Projects redesigned: from folder to conversation",
-                                "Category",
-                                "Product announcements",
-                                "Product",
-                                "Usecase",
-                                "September 17, 2026",
-                                "Projects redesigned: from folder to conversation",
-                                "Projects redesigned: from folder to conversation"
+                                {
+                                  "tag": "h3",
+                                  "value": "Projects redesigned: from folder to conversation"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product announcements"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 17, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Projects redesigned: from folder to conversation"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Projects redesigned: from folder to conversation"
+                                }
                               ]
                             },
                             {
@@ -697,14 +1539,38 @@
                                 "https://claude.com/blog/cowork-is-now-claude"
                               ],
                               "texts": [
-                                "Claude Cowork and chat are now one Claude",
-                                "Category",
-                                "Product announcements",
-                                "Product",
-                                "Usecase",
-                                "September 16, 2026",
-                                "Claude Cowork and chat are now one Claude",
-                                "Claude Cowork and chat are now one Claude"
+                                {
+                                  "tag": "h3",
+                                  "value": "Claude Cowork and chat are now one Claude"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product announcements"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 16, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Claude Cowork and chat are now one Claude"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Claude Cowork and chat are now one Claude"
+                                }
                               ]
                             },
                             {
@@ -713,14 +1579,38 @@
                                 "https://claude.com/blog/salesforce-in-claude"
                               ],
                               "texts": [
-                                "Bringing Salesforce into Claude",
-                                "Category",
-                                "Enterprise AI",
-                                "Product",
-                                "Usecase",
-                                "September 15, 2026",
-                                "Bringing Salesforce into Claude",
-                                "Bringing Salesforce into Claude"
+                                {
+                                  "tag": "h3",
+                                  "value": "Bringing Salesforce into Claude"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Enterprise AI"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 15, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Bringing Salesforce into Claude"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Bringing Salesforce into Claude"
+                                }
                               ]
                             },
                             {
@@ -729,14 +1619,38 @@
                                 "https://claude.com/blog/building-an-ai-native-revenue-organization"
                               ],
                               "texts": [
-                                "Building an AI-native revenue organization",
-                                "Category",
-                                "Enterprise AI",
-                                "Product",
-                                "Usecase",
-                                "September 15, 2026",
-                                "Building an AI-native revenue organization",
-                                "Building an AI-native revenue organization"
+                                {
+                                  "tag": "h3",
+                                  "value": "Building an AI-native revenue organization"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Enterprise AI"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 15, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Building an AI-native revenue organization"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Building an AI-native revenue organization"
+                                }
                               ]
                             },
                             {
@@ -745,14 +1659,38 @@
                                 "https://claude.com/blog/claude-for-small-business-launches-new-workflows-integrations-and-training-programs"
                               ],
                               "texts": [
-                                "Claude for Small Business launches new workflows, integrations, and training programs",
-                                "Category",
-                                "Product announcements",
-                                "Product",
-                                "Usecase",
-                                "September 15, 2026",
-                                "Claude for Small Business launches new workflows, integrations, and training programs",
-                                "Claude for Small Business launches new workflows, integrations, and training programs"
+                                {
+                                  "tag": "h3",
+                                  "value": "Claude for Small Business launches new workflows, integrations, and training programs"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product announcements"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 15, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Claude for Small Business launches new workflows, integrations, and training programs"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Claude for Small Business launches new workflows, integrations, and training programs"
+                                }
                               ]
                             },
                             {
@@ -761,14 +1699,38 @@
                                 "https://claude.com/blog/agentic-coding-is-straining-ci-heres-how-we-scaled-test-impact-analysis-at-anthropic"
                               ],
                               "texts": [
-                                "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic",
-                                "Category",
-                                "Claude Code",
-                                "Product",
-                                "Usecase",
-                                "September 14, 2026",
-                                "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic",
-                                "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic"
+                                {
+                                  "tag": "h3",
+                                  "value": "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Claude Code"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 14, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Agentic coding is straining CI. Here’s how we scaled test impact analysis at Anthropic"
+                                }
                               ]
                             },
                             {
@@ -777,14 +1739,38 @@
                                 "https://claude.com/blog/claude-for-financial-advisors"
                               ],
                               "texts": [
-                                "Claude for Financial Advisors",
-                                "Category",
-                                "Product announcements",
-                                "Product",
-                                "Usecase",
-                                "September 14, 2026",
-                                "Claude for Financial Advisors",
-                                "Claude for Financial Advisors"
+                                {
+                                  "tag": "h3",
+                                  "value": "Claude for Financial Advisors"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product announcements"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 14, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Claude for Financial Advisors"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Claude for Financial Advisors"
+                                }
                               ]
                             },
                             {
@@ -793,14 +1779,38 @@
                                 "https://claude.com/blog/how-healthcare-organizations-use-claude-tag"
                               ],
                               "texts": [
-                                "How healthcare organizations use Claude Tag",
-                                "Category",
-                                "Enterprise AI",
-                                "Product",
-                                "Usecase",
-                                "September 14, 2026",
-                                "How healthcare organizations use Claude Tag",
-                                "How healthcare organizations use Claude Tag"
+                                {
+                                  "tag": "h3",
+                                  "value": "How healthcare organizations use Claude Tag"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Enterprise AI"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 14, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "How healthcare organizations use Claude Tag"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "How healthcare organizations use Claude Tag"
+                                }
                               ]
                             },
                             {
@@ -809,14 +1819,38 @@
                                 "https://claude.com/blog/deploying-ai-from-pilot-to-production"
                               ],
                               "texts": [
-                                "Deploying AI from pilot to production",
-                                "Category",
-                                "Enterprise AI",
-                                "Product",
-                                "Usecase",
-                                "September 14, 2026",
-                                "Deploying AI from pilot to production",
-                                "Deploying AI from pilot to production"
+                                {
+                                  "tag": "h3",
+                                  "value": "Deploying AI from pilot to production"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Enterprise AI"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 14, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Deploying AI from pilot to production"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Deploying AI from pilot to production"
+                                }
                               ]
                             },
                             {
@@ -825,13 +1859,34 @@
                                 "https://claude.com/blog/t-rowe-price-brings-more-of-claude-to-its-investment-process"
                               ],
                               "texts": [
-                                "T. Rowe Price brings more of Claude to its investment process",
-                                "Category",
-                                "Product",
-                                "Usecase",
-                                "September 10, 2026",
-                                "T. Rowe Price brings more of Claude to its investment process",
-                                "T. Rowe Price brings more of Claude to its investment process"
+                                {
+                                  "tag": "h3",
+                                  "value": "T. Rowe Price brings more of Claude to its investment process"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 10, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "T. Rowe Price brings more of Claude to its investment process"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "T. Rowe Price brings more of Claude to its investment process"
+                                }
                               ]
                             },
                             {
@@ -840,14 +1895,38 @@
                                 "https://claude.com/blog/what-1-000-small-business-owners-taught-us-about-ai"
                               ],
                               "texts": [
-                                "What 1,000 small business owners taught us about AI",
-                                "Category",
-                                "Enterprise AI",
-                                "Product",
-                                "Usecase",
-                                "September 10, 2026",
-                                "What 1,000 small business owners taught us about AI",
-                                "What 1,000 small business owners taught us about AI"
+                                {
+                                  "tag": "h3",
+                                  "value": "What 1,000 small business owners taught us about AI"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Enterprise AI"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 10, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "What 1,000 small business owners taught us about AI"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "What 1,000 small business owners taught us about AI"
+                                }
                               ]
                             },
                             {
@@ -856,14 +1935,38 @@
                                 "https://claude.com/blog/reducing-cost-and-improving-performance-with-claude-platform"
                               ],
                               "texts": [
-                                "Reducing cost and improving performance with Claude Platform",
-                                "Category",
-                                "Agents",
-                                "Product",
-                                "Usecase",
-                                "September 8, 2026",
-                                "Reducing cost and improving performance with Claude Platform",
-                                "Reducing cost and improving performance with Claude Platform"
+                                {
+                                  "tag": "h3",
+                                  "value": "Reducing cost and improving performance with Claude Platform"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Agents"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 8, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Reducing cost and improving performance with Claude Platform"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Reducing cost and improving performance with Claude Platform"
+                                }
                               ]
                             },
                             {
@@ -872,14 +1975,38 @@
                                 "https://claude.com/blog/the-anatomy-of-effective-commerce-agents"
                               ],
                               "texts": [
-                                "A guide to the anatomy of effective commerce agents",
-                                "Category",
-                                "Agents",
-                                "Product",
-                                "Usecase",
-                                "September 2, 2026",
-                                "A guide to the anatomy of effective commerce agents",
-                                "A guide to the anatomy of effective commerce agents"
+                                {
+                                  "tag": "h3",
+                                  "value": "A guide to the anatomy of effective commerce agents"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Agents"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 2, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "A guide to the anatomy of effective commerce agents"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "A guide to the anatomy of effective commerce agents"
+                                }
                               ]
                             },
                             {
@@ -888,14 +2015,38 @@
                                 "https://claude.com/blog/claude-for-commerce-agents"
                               ],
                               "texts": [
-                                "Building commerce agents with Claude",
-                                "Category",
-                                "Product announcements",
-                                "Product",
-                                "Usecase",
-                                "September 2, 2026",
-                                "Building commerce agents with Claude",
-                                "Building commerce agents with Claude"
+                                {
+                                  "tag": "h3",
+                                  "value": "Building commerce agents with Claude"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Category"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product announcements"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Product"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "Usecase"
+                                },
+                                {
+                                  "tag": "div",
+                                  "value": "September 2, 2026"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Building commerce agents with Claude"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "Building commerce agents with Claude"
+                                }
                               ]
                             }
                           ]
@@ -907,12 +2058,30 @@
                         "https://claude.com/blog/the-ai-native-sdlc-playbook"
                       ],
                       "texts": [
-                        "eBook",
-                        "Webinar",
-                        "Link",
-                        "The AI-Native SDLC playbook",
-                        "How to transform your software development lifecycle with AI—stage by stage.",
-                        "Read more"
+                        {
+                          "tag": "div",
+                          "value": "eBook"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Webinar"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Link"
+                        },
+                        {
+                          "tag": "h2",
+                          "value": "The AI-Native SDLC playbook"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "How to transform your software development lifecycle with AI—stage by stage."
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Read more"
+                        }
                       ],
                       "images": [
                         {
@@ -934,26 +2103,59 @@
         },
         {
           "texts": [
-            "Get the developer newsletter",
-            "Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox.",
-            "Subscribe",
-            "Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time.",
-            "Thank you! You’re subscribed.",
-            "Sorry, there was a problem with your submission, please try again later."
+            {
+              "tag": "p",
+              "value": "Get the developer newsletter"
+            },
+            {
+              "tag": "p",
+              "value": "Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox."
+            },
+            {
+              "tag": "span",
+              "value": "Subscribe"
+            },
+            {
+              "tag": "p",
+              "value": "Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscribe at any time."
+            },
+            {
+              "tag": "div",
+              "value": "Thank you! You’re subscribed."
+            },
+            {
+              "tag": "div",
+              "value": "Sorry, there was a problem with your submission, please try again later."
+            }
           ],
           "children": [
             {
-              "texts": ["Transform how your organization operates with Claude"],
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Transform how your organization operates with Claude"
+                }
+              ],
               "children": [
                 {
                   "children": [
                     {
                       "links": ["https://claude.com/pricing"],
-                      "texts": ["See pricing"]
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "See pricing"
+                        }
+                      ]
                     },
                     {
                       "links": ["https://claude.com/contact-sales"],
-                      "texts": ["Contact sales"]
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "Contact sales"
+                        }
+                      ]
                     }
                   ]
                 }

@@ -1,5 +1,14 @@
 {
-  "texts": ["More updates", "Tips and tricks"],
+  "texts": [
+    {
+      "tag": "h3",
+      "value": "More updates"
+    },
+    {
+      "tag": "h3",
+      "value": "Tips and tricks"
+    }
+  ],
   "children": [
     {
       "children": [
@@ -8,10 +17,22 @@
             "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/"
           ],
           "texts": [
-            "Gemini models",
-            "Our most advanced live dialogue models",
-            "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are built for natural conversation.",
-            "Read more"
+            {
+              "tag": "p",
+              "value": "Gemini models"
+            },
+            {
+              "tag": "h1",
+              "value": "Our most advanced live dialogue models"
+            },
+            {
+              "tag": "p",
+              "value": "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are built for natural conversation."
+            },
+            {
+              "tag": "uni-cta",
+              "value": "Read more"
+            }
           ],
           "images": [
             {
@@ -25,10 +46,22 @@
             "https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-windows/"
           ],
           "texts": [
-            "Gemini App",
-            "The Gemini app is now available for Windows",
-            "We’re launching the Gemini app for Windows, the new desktop app built to work alongside your favorite tools and daily applications.",
-            "Read more"
+            {
+              "tag": "p",
+              "value": "Gemini App"
+            },
+            {
+              "tag": "h1",
+              "value": "The Gemini app is now available for Windows"
+            },
+            {
+              "tag": "p",
+              "value": "We’re launching the Gemini app for Windows, the new desktop app built to work alongside your favorite tools and daily applications."
+            },
+            {
+              "tag": "uni-cta",
+              "value": "Read more"
+            }
           ]
         },
         {
@@ -36,10 +69,22 @@
             "https://blog.google/company-news/inside-google/company-announcements/chicago-thompson-center-designs/"
           ],
           "texts": [
-            "Company announcements",
-            "Reimagining Chicago's Thompson Center",
-            "Our new Chicago office at Thompson Center brings together art, community and architecture.",
-            "Read more"
+            {
+              "tag": "p",
+              "value": "Company announcements"
+            },
+            {
+              "tag": "h1",
+              "value": "Reimagining Chicago's Thompson Center"
+            },
+            {
+              "tag": "p",
+              "value": "Our new Chicago office at Thompson Center brings together art, community and architecture."
+            },
+            {
+              "tag": "uni-cta",
+              "value": "Read more"
+            }
           ],
           "images": [
             {
@@ -53,10 +98,22 @@
             "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-atlas/"
           ],
           "texts": [
-            "Google DeepMind",
-            "AlphaGenome Atlas: Human DNA in high resolution",
-            "We’re introducing AlphaGenome Atlas, a database predicting the effects of every possible single nucleotide variant in the human genome.",
-            "Read more"
+            {
+              "tag": "p",
+              "value": "Google DeepMind"
+            },
+            {
+              "tag": "h1",
+              "value": "AlphaGenome Atlas: Human DNA in high resolution"
+            },
+            {
+              "tag": "p",
+              "value": "We’re introducing AlphaGenome Atlas, a database predicting the effects of every possible single nucleotide variant in the human genome."
+            },
+            {
+              "tag": "uni-cta",
+              "value": "Read more"
+            }
           ],
           "images": [
             {
@@ -70,10 +127,22 @@
             "https://blog.google/innovation-and-ai/technology/ai/love-rendered-film/"
           ],
           "texts": [
-            "AI",
-            "Recreating a 70-year love story frame by frame",
-            "Discover how filmmakers and Google DeepMind used AI to recreate a couple's unrecorded past in the short film \"Love, Rendered.\"",
-            "Read more"
+            {
+              "tag": "p",
+              "value": "AI"
+            },
+            {
+              "tag": "h1",
+              "value": "Recreating a 70-year love story frame by frame"
+            },
+            {
+              "tag": "p",
+              "value": "Discover how filmmakers and Google DeepMind used AI to recreate a couple's unrecorded past in the short film \"Love, Rendered.\""
+            },
+            {
+              "tag": "uni-cta",
+              "value": "Read more"
+            }
           ],
           "images": [
             {
@@ -93,10 +162,22 @@
                 "https://blog.google/innovation-and-ai/technology/ai/ai-for-societal-impact/"
               ],
               "texts": [
-                "Collection",
-                "AI for Society",
-                "See how experts and local leaders are using AI breakthroughs to ensure everyone can share the opportunity of AI.",
-                "View the collection"
+                {
+                  "tag": "p",
+                  "value": "Collection"
+                },
+                {
+                  "tag": "h2",
+                  "value": "AI for Society"
+                },
+                {
+                  "tag": "div",
+                  "value": "See how experts and local leaders are using AI breakthroughs to ensure everyone can share the opportunity of AI."
+                },
+                {
+                  "tag": "uni-cta",
+                  "value": "View the collection"
+                }
               ]
             },
             {
@@ -144,12 +225,30 @@
     {
       "links": ["https://policies.google.com/privacy"],
       "texts": [
-        "Get the latest news from Google in your inbox",
-        "Sign up for our newsletters with product updates, event information, special offers, and more.",
-        "Done. Just one step more.",
-        "Check your inbox to confirm your subscription.",
-        "You can also subscribe with a .",
-        "Google's privacy policy."
+        {
+          "tag": "h2",
+          "value": "Get the latest news from Google in your inbox"
+        },
+        {
+          "tag": "p",
+          "value": "Sign up for our newsletters with product updates, event information, special offers, and more."
+        },
+        {
+          "tag": "p",
+          "value": "Done. Just one step more."
+        },
+        {
+          "tag": "p",
+          "value": "Check your inbox to confirm your subscription."
+        },
+        {
+          "tag": "p",
+          "value": "You can also subscribe with a ."
+        },
+        {
+          "tag": "a",
+          "value": "Google's privacy policy."
+        }
       ]
     }
   ]

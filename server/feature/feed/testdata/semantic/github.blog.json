@@ -1,5 +1,10 @@
 {
-  "texts": ["Notifications"],
+  "texts": [
+    {
+      "tag": "p",
+      "value": "Notifications"
+    }
+  ],
   "children": [
     {
       "children": [
@@ -17,15 +22,26 @@
                   "children": [
                     {
                       "links": ["https://github.blog/ai-and-ml/"],
-                      "texts": ["AI & ML"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "AI & ML"
+                        }
+                      ]
                     },
                     {
                       "links": [
                         "https://github.blog/ai-and-ml/should-you-read-the-code-is-rag-dead-and-did-skills-kill-mcp/"
                       ],
                       "texts": [
-                        "Should you read the code, is RAG dead, and did Skills kill MCP?",
-                        "We dive into these questions and other AI hot takes on the latest episode of the GitHub Podcast."
+                        {
+                          "tag": "a",
+                          "value": "Should you read the code, is RAG dead, and did Skills kill MCP?"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "We dive into these questions and other AI hot takes on the latest episode of the GitHub Podcast."
+                        }
                       ]
                     },
                     {
@@ -33,7 +49,21 @@
                         "https://github.blog/author/madebygps/",
                         "https://github.blog/author/madebygps/"
                       ],
-                      "texts": ["GPS", "·", "2026-09-18"],
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "GPS"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "·"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "September 18, 2026",
+                          "datetime": "2026-09-18"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://avatars.githubusercontent.com/u/6733686?v=4&s=40",
@@ -56,24 +86,49 @@
                   "children": [
                     {
                       "texts": [
-                        "A rewrite this size wasn’t affordable before agents. Here’s what porting the Copilot agent runtime to 800,000 lines of production Rust actually took."
+                        {
+                          "tag": "p",
+                          "value": "A rewrite this size wasn’t affordable before agents. Here’s what porting the Copilot agent runtime to 800,000 lines of production Rust actually took."
+                        }
                       ],
                       "children": [
                         {
                           "links": ["https://github.blog/ai-and-ml/"],
-                          "texts": ["AI & ML"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI & ML"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"
                           ],
                           "texts": [
-                            "Migrating the GitHub Copilot runtime to Rust, using Copilot"
+                            {
+                              "tag": "a",
+                              "value": "Migrating the GitHub Copilot runtime to Rust, using Copilot"
+                            }
                           ]
                         },
                         {
                           "links": ["https://github.blog/author/stephentoub/"],
-                          "texts": ["Stephen Toub", "·", "2026-09-16"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Stephen Toub"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "September 16, 2026",
+                              "datetime": "2026-09-16"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -92,24 +147,49 @@
                   "children": [
                     {
                       "texts": [
-                        "If you can write down how you do your work, you can automate it. Here’s what I did to support GitHub’s APAC marketing team."
+                        {
+                          "tag": "p",
+                          "value": "If you can write down how you do your work, you can automate it. Here’s what I did to support GitHub’s APAC marketing team."
+                        }
                       ],
                       "children": [
                         {
                           "links": ["https://github.blog/ai-and-ml/"],
-                          "texts": ["AI & ML"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI & ML"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://github.blog/ai-and-ml/github-copilot/marketing-ops-as-code-automating-events-from-planning-to-follow-up-on-github/"
                           ],
                           "texts": [
-                            "Marketing ops as code: Automating events from planning to follow-up on GitHub"
+                            {
+                              "tag": "a",
+                              "value": "Marketing ops as code: Automating events from planning to follow-up on GitHub"
+                            }
                           ]
                         },
                         {
                           "links": ["https://github.blog/author/tomokota/"],
-                          "texts": ["Tomoko Tanaka", "·", "2026-09-11"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Tomoko Tanaka"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "September 11, 2026",
+                              "datetime": "2026-09-11"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -129,24 +209,49 @@
                   "children": [
                     {
                       "texts": [
-                        "Checking agent-generated code usually means hopping between tabs. Learn how to view diffs, run terminal commands, and preview web apps side by side in the GitHub Copilot app."
+                        {
+                          "tag": "p",
+                          "value": "Checking agent-generated code usually means hopping between tabs. Learn how to view diffs, run terminal commands, and preview web apps side by side in the GitHub Copilot app."
+                        }
                       ],
                       "children": [
                         {
                           "links": ["https://github.blog/ai-and-ml/"],
-                          "texts": ["AI & ML"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "AI & ML"
+                            }
+                          ]
                         },
                         {
                           "links": [
                             "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-using-the-diff-terminal-and-browser/"
                           ],
                           "texts": [
-                            "GitHub Copilot app for Beginners: Using the diff, terminal, and browser"
+                            {
+                              "tag": "a",
+                              "value": "GitHub Copilot app for Beginners: Using the diff, terminal, and browser"
+                            }
                           ]
                         },
                         {
                           "links": ["https://github.blog/author/cinnamonmsft/"],
-                          "texts": ["Kayla Cinnamon", "·", "2026-09-10"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Kayla Cinnamon"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "September 10, 2026",
+                              "datetime": "2026-09-10"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -157,11 +262,26 @@
             {
               "links": ["https://github.com/site/privacy"],
               "texts": [
-                "We do newsletters, too",
-                "Discover tips, technical guides, and best practices in our biweekly newsletter just for devs.",
-                "Your email address",
-                "Your email address",
-                "GitHub Privacy Statement"
+                {
+                  "tag": "h2",
+                  "value": "We do newsletters, too"
+                },
+                {
+                  "tag": "p",
+                  "value": "Discover tips, technical guides, and best practices in our biweekly newsletter just for devs."
+                },
+                {
+                  "tag": "label",
+                  "value": "Your email address"
+                },
+                {
+                  "tag": "label",
+                  "value": "Your email address"
+                },
+                {
+                  "tag": "a",
+                  "value": "GitHub Privacy Statement"
+                }
               ]
             }
           ]
@@ -172,7 +292,16 @@
               "children": [
                 {
                   "links": ["https://github.blog/latest/"],
-                  "texts": ["Latest", "View all"]
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Latest"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "View all"
+                    }
+                  ]
                 },
                 {
                   "children": [
@@ -188,28 +317,53 @@
                       "children": [
                         {
                           "texts": [
-                            "In August, we experienced five incidents that resulted in degraded performance across GitHub services."
+                            {
+                              "tag": "p",
+                              "value": "In August, we experienced five incidents that resulted in degraded performance across GitHub services."
+                            }
                           ],
                           "children": [
                             {
                               "links": [
                                 "https://github.blog/news-insights/company-news/"
                               ],
-                              "texts": ["Company news"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Company news"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://github.blog/news-insights/company-news/github-availability-report-august-2026/"
                               ],
                               "texts": [
-                                "GitHub availability report: August 2026"
+                                {
+                                  "tag": "a",
+                                  "value": "GitHub availability report: August 2026"
+                                }
                               ]
                             },
                             {
                               "links": [
                                 "https://github.blog/author/jakuboleksy/"
                               ],
-                              "texts": ["Jakub Oleksy", "·", "2026-09-09"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Jakub Oleksy"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "·"
+                                },
+                                {
+                                  "tag": "time",
+                                  "value": "September 9, 2026",
+                                  "datetime": "2026-09-09"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -228,24 +382,49 @@
                       "children": [
                         {
                           "texts": [
-                            "In controlled offline evaluations, HydraFusion’s selective coding workflows matched or exceeded the evaluated Opus 5 baseline while reducing estimated workflow cost. Now available as a research preview in GitHub Copilot."
+                            {
+                              "tag": "p",
+                              "value": "In controlled offline evaluations, HydraFusion’s selective coding workflows matched or exceeded the evaluated Opus 5 baseline while reducing estimated workflow cost. Now available as a research preview in GitHub Copilot."
+                            }
                           ],
                           "children": [
                             {
                               "links": ["https://github.blog/ai-and-ml/"],
-                              "texts": ["AI & ML"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "AI & ML"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/"
                               ],
                               "texts": [
-                                "Project HydraFusion: Frontier quality via multi-model orchestration"
+                                {
+                                  "tag": "a",
+                                  "value": "Project HydraFusion: Frontier quality via multi-model orchestration"
+                                }
                               ]
                             },
                             {
                               "links": ["https://github.blog/author/staff/"],
-                              "texts": ["GitHub Staff", "·", "2026-09-04"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "GitHub Staff"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "·"
+                                },
+                                {
+                                  "tag": "time",
+                                  "value": "September 4, 2026",
+                                  "datetime": "2026-09-04"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -265,26 +444,51 @@
                       "children": [
                         {
                           "texts": [
-                            "Learn how to run parallel agents in the GitHub Copilot app, and experience the moment it stops feeling scary and starts feeling powerful."
+                            {
+                              "tag": "p",
+                              "value": "Learn how to run parallel agents in the GitHub Copilot app, and experience the moment it stops feeling scary and starts feeling powerful."
+                            }
                           ],
                           "children": [
                             {
                               "links": ["https://github.blog/ai-and-ml/"],
-                              "texts": ["AI & ML"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "AI & ML"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-run-several-agents-at-once/"
                               ],
                               "texts": [
-                                "GitHub Copilot app for Beginners: Run several agents at once"
+                                {
+                                  "tag": "a",
+                                  "value": "GitHub Copilot app for Beginners: Run several agents at once"
+                                }
                               ]
                             },
                             {
                               "links": [
                                 "https://github.blog/author/cinnamonmsft/"
                               ],
-                              "texts": ["Kayla Cinnamon", "·", "2026-09-03"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Kayla Cinnamon"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "·"
+                                },
+                                {
+                                  "tag": "time",
+                                  "value": "September 3, 2026",
+                                  "datetime": "2026-09-03"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -295,7 +499,12 @@
               ]
             },
             {
-              "texts": ["Popular"],
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Popular"
+                }
+              ],
               "children": [
                 {
                   "children": [
@@ -311,38 +520,74 @@
                       "children": [
                         {
                           "texts": [
-                            "On March 13, we will officially begin rolling out our initiative to require all developers who contribute code on GitHub.com to enable one or more forms of two-factor authentication (2FA) by the end of 2023. Read on to learn about what the process entails and how you can help secure the software supply chain with 2FA."
+                            {
+                              "tag": "p",
+                              "value": "On March 13, we will officially begin rolling out our initiative to require all developers who contribute code on GitHub.com to enable one or more forms of two-factor authentication (2FA) by the end of 2023. Read on to learn about what the process entails and how you can help secure the software supply chain with 2FA."
+                            }
                           ],
                           "children": [
                             {
                               "links": ["https://github.blog/news-insights/"],
-                              "texts": ["News & insights"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "News & insights"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://github.blog/news-insights/product-news/raising-the-bar-for-software-security-github-2fa-begins-march-13/"
                               ],
                               "texts": [
-                                "Raising the bar for software security: GitHub 2FA begins March 13"
+                                {
+                                  "tag": "a",
+                                  "value": "Raising the bar for software security: GitHub 2FA begins March 13"
+                                }
                               ]
                             },
                             {
-                              "texts": ["·", "2023-03-09"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "·"
+                                },
+                                {
+                                  "tag": "time",
+                                  "value": "March 9, 2023",
+                                  "datetime": "2023-03-09"
+                                }
+                              ],
                               "children": [
                                 {
-                                  "texts": ["&"],
+                                  "texts": [
+                                    {
+                                      "tag": "span",
+                                      "value": "&"
+                                    }
+                                  ],
                                   "children": [
                                     {
                                       "links": [
                                         "https://github.blog/author/lauraleap/"
                                       ],
-                                      "texts": ["Laura Paine"]
+                                      "texts": [
+                                        {
+                                          "tag": "a",
+                                          "value": "Laura Paine"
+                                        }
+                                      ]
                                     },
                                     {
                                       "links": [
                                         "https://github.blog/author/hpsin/"
                                       ],
-                                      "texts": ["Hirsch Singhal"]
+                                      "texts": [
+                                        {
+                                          "tag": "a",
+                                          "value": "Hirsch Singhal"
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -364,26 +609,51 @@
                       "children": [
                         {
                           "texts": [
-                            "As part of the GitHub for Beginners guide, learn how to improve the security of your profile and create a profile README. This will let you give your GitHub account a little more personality."
+                            {
+                              "tag": "p",
+                              "value": "As part of the GitHub for Beginners guide, learn how to improve the security of your profile and create a profile README. This will let you give your GitHub account a little more personality."
+                            }
                           ],
                           "children": [
                             {
                               "links": [
                                 "https://github.blog/developer-skills/"
                               ],
-                              "texts": ["Developer skills"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Developer skills"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://github.blog/developer-skills/github/beginners-guide-to-github-setting-up-and-securing-your-profile/"
                               ],
                               "texts": [
-                                "Beginner’s guide to GitHub: Setting up and securing your profile"
+                                {
+                                  "tag": "a",
+                                  "value": "Beginner’s guide to GitHub: Setting up and securing your profile"
+                                }
                               ]
                             },
                             {
                               "links": ["https://github.blog/author/ladykerr/"],
-                              "texts": ["Kedasha Kerr", "·", "2024-09-09"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Kedasha Kerr"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "·"
+                                },
+                                {
+                                  "tag": "time",
+                                  "value": "September 9, 2024",
+                                  "datetime": "2024-09-09"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -401,24 +671,49 @@
                       "children": [
                         {
                           "texts": [
-                            "Developers can use their AI tool of choice for spec-driven development with this open source toolkit."
+                            {
+                              "tag": "p",
+                              "value": "Developers can use their AI tool of choice for spec-driven development with this open source toolkit."
+                            }
                           ],
                           "children": [
                             {
                               "links": ["https://github.blog/ai-and-ml/"],
-                              "texts": ["AI & ML"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "AI & ML"
+                                }
+                              ]
                             },
                             {
                               "links": [
                                 "https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/"
                               ],
                               "texts": [
-                                "Spec-driven development with AI: Get started with a new open source toolkit"
+                                {
+                                  "tag": "a",
+                                  "value": "Spec-driven development with AI: Get started with a new open source toolkit"
+                                }
                               ]
                             },
                             {
                               "links": ["https://github.blog/author/localden/"],
-                              "texts": ["Den Delimarsky", "·", "2025-09-02"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Den Delimarsky"
+                                },
+                                {
+                                  "tag": "span",
+                                  "value": "·"
+                                },
+                                {
+                                  "tag": "time",
+                                  "value": "September 2, 2025",
+                                  "datetime": "2025-09-02"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -434,7 +729,16 @@
           "children": [
             {
               "links": ["https://github.blog/changelog/"],
-              "texts": ["Changelog", "View all changes"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Changelog"
+                },
+                {
+                  "tag": "a",
+                  "value": "View all changes"
+                }
+              ]
             },
             {
               "children": [
@@ -443,8 +747,15 @@
                     "https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience"
                   ],
                   "texts": [
-                    "Copilot code review: An improved review experience",
-                    "2026-09-18"
+                    {
+                      "tag": "a",
+                      "value": "Copilot code review: An improved review experience"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "September 18, 2026",
+                      "datetime": "2026-09-18"
+                    }
                   ]
                 },
                 {
@@ -452,8 +763,15 @@
                     "https://github.blog/changelog/2026-09-18-manage-the-code-coverage-ruleset-condition-with-the-rest-api"
                   ],
                   "texts": [
-                    "Manage the code coverage ruleset condition with the REST API",
-                    "2026-09-18"
+                    {
+                      "tag": "a",
+                      "value": "Manage the code coverage ruleset condition with the REST API"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "September 18, 2026",
+                      "datetime": "2026-09-18"
+                    }
                   ]
                 },
                 {
@@ -461,8 +779,15 @@
                     "https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14"
                   ],
                   "texts": [
-                    "GitHub Copilot weekly releases — September 14",
-                    "2026-09-18"
+                    {
+                      "tag": "a",
+                      "value": "GitHub Copilot weekly releases — September 14"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "September 18, 2026",
+                      "datetime": "2026-09-18"
+                    }
                   ]
                 },
                 {
@@ -470,13 +795,25 @@
                     "https://github.blog/changelog/2026-09-18-upcoming-deprecation-of-selected-github-copilot-models-in-mid-october"
                   ],
                   "texts": [
-                    "Upcoming deprecation of selected GitHub Copilot models in mid-October",
-                    "2026-09-18"
+                    {
+                      "tag": "a",
+                      "value": "Upcoming deprecation of selected GitHub Copilot models in mid-October"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "September 18, 2026",
+                      "datetime": "2026-09-18"
+                    }
                   ]
                 },
                 {
                   "links": ["https://github.blog/changelog/"],
-                  "texts": ["View all changes"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "View all changes"
+                    }
+                  ]
                 }
               ]
             }
@@ -486,7 +823,16 @@
           "children": [
             {
               "links": ["https://github.blog/engineering/"],
-              "texts": ["Engineering", "More engineering articles"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Engineering"
+                },
+                {
+                  "tag": "a",
+                  "value": "More engineering articles"
+                }
+              ]
             },
             {
               "children": [
@@ -507,8 +853,14 @@
                         "https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality/"
                       ],
                       "texts": [
-                        "How we make AI coding more cost efficient without sacrificing task quality",
-                        "Why shorter outputs can cost more, and how GitHub Copilot reduces wasted work across the complete coding task."
+                        {
+                          "tag": "a",
+                          "value": "How we make AI coding more cost efficient without sacrificing task quality"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Why shorter outputs can cost more, and how GitHub Copilot reduces wasted work across the complete coding task."
+                        }
                       ]
                     },
                     {
@@ -538,22 +890,47 @@
                           ]
                         },
                         {
-                          "texts": ["·", "2026-09-02"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "September 2, 2026",
+                              "datetime": "2026-09-02"
+                            }
+                          ],
                           "children": [
                             {
-                              "texts": ["&"],
+                              "texts": [
+                                {
+                                  "tag": "span",
+                                  "value": "&"
+                                }
+                              ],
                               "children": [
                                 {
                                   "links": [
                                     "https://github.blog/author/erikkrogh/"
                                   ],
-                                  "texts": ["Erik Kristensen"]
+                                  "texts": [
+                                    {
+                                      "tag": "a",
+                                      "value": "Erik Kristensen"
+                                    }
+                                  ]
                                 },
                                 {
                                   "links": [
                                     "https://github.blog/author/napalys/"
                                   ],
-                                  "texts": ["Napalys Klicius"]
+                                  "texts": [
+                                    {
+                                      "tag": "a",
+                                      "value": "Napalys Klicius"
+                                    }
+                                  ]
                                 }
                               ]
                             }
@@ -576,25 +953,56 @@
                         "https://github.blog/engineering/user-experience/your-alt-text-passes-automated-checks-that-doesnt-mean-its-any-good/"
                       ],
                       "texts": [
-                        "Your alt text passes automated checks. That doesn’t mean it’s any good.",
-                        "We built a plugin for the GitHub Accessibility Scanner to make sure your alt text is actually accessible. Here’s how it works."
+                        {
+                          "tag": "a",
+                          "value": "Your alt text passes automated checks. That doesn’t mean it’s any good."
+                        },
+                        {
+                          "tag": "p",
+                          "value": "We built a plugin for the GitHub Accessibility Scanner to make sure your alt text is actually accessible. Here’s how it works."
+                        }
                       ]
                     },
                     {
-                      "texts": ["·", "2026-08-24"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "·"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 24, 2026",
+                          "datetime": "2026-08-24"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["&"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "&"
+                            }
+                          ],
                           "children": [
                             {
                               "links": [
                                 "https://github.blog/author/taarikashenafi/"
                               ],
-                              "texts": ["Taarik Ashenafi"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Taarik Ashenafi"
+                                }
+                              ]
                             },
                             {
                               "links": ["https://github.blog/author/kzhou314/"],
-                              "texts": ["Keenan Zhou"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Keenan Zhou"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -615,13 +1023,33 @@
                         "https://github.blog/engineering/using-the-github-copilot-sdk-for-java/"
                       ],
                       "texts": [
-                        "Using the GitHub Copilot SDK for Java",
-                        "Enterprise Java developers have a new superpower—drive GitHub Copilot from idiomatic Java code with annotations, virtual threads, and more."
+                        {
+                          "tag": "a",
+                          "value": "Using the GitHub Copilot SDK for Java"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Enterprise Java developers have a new superpower—drive GitHub Copilot from idiomatic Java code with annotations, virtual threads, and more."
+                        }
                       ]
                     },
                     {
                       "links": ["https://github.blog/author/edburns/"],
-                      "texts": ["Edward Burns", "·", "2026-08-10"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Edward Burns"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "·"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 10, 2026",
+                          "datetime": "2026-08-10"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -638,13 +1066,33 @@
                         "https://github.blog/engineering/turn-one-giant-ai-generated-pull-request-to-a-reviewable-stack/"
                       ],
                       "texts": [
-                        "Turn one giant AI-generated pull request to a reviewable stack",
-                        "Instead of one huge, un-reviewable pull request, teach coding agents to decompose work into a clean, ordered stack with GitHub stacked pull requests."
+                        {
+                          "tag": "a",
+                          "value": "Turn one giant AI-generated pull request to a reviewable stack"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Instead of one huge, un-reviewable pull request, teach coding agents to decompose work into a clean, ordered stack with GitHub stacked pull requests."
+                        }
                       ]
                     },
                     {
                       "links": ["https://github.blog/author/juliamuiruri4/"],
-                      "texts": ["Julia Muiruri", "·", "2026-08-04"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Julia Muiruri"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "·"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 4, 2026",
+                          "datetime": "2026-08-04"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -661,23 +1109,54 @@
                         "https://github.blog/engineering/architecture-optimization/dont-stop-early-case-folding-source-code-at-memory-speed/"
                       ],
                       "texts": [
-                        "Don’t stop early: Case-folding source code at memory speed",
-                        "How a branch-free loop and byte-space arithmetic let GitHub case-fold every byte of code search at >45 GiB/s on a single core."
+                        {
+                          "tag": "a",
+                          "value": "Don’t stop early: Case-folding source code at memory speed"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "How a branch-free loop and byte-space arithmetic let GitHub case-fold every byte of code search at >45 GiB/s on a single core."
+                        }
                       ]
                     },
                     {
-                      "texts": ["·", "2026-07-31"],
+                      "texts": [
+                        {
+                          "tag": "span",
+                          "value": "·"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "July 31, 2026",
+                          "datetime": "2026-07-31"
+                        }
+                      ],
                       "children": [
                         {
-                          "texts": ["&"],
+                          "texts": [
+                            {
+                              "tag": "span",
+                              "value": "&"
+                            }
+                          ],
                           "children": [
                             {
                               "links": ["https://github.blog/author/aneubeck/"],
-                              "texts": ["Alexander Neubeck"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Alexander Neubeck"
+                                }
+                              ]
                             },
                             {
                               "links": ["https://github.blog/author/gorzell/"],
-                              "texts": ["Greg Orzell"]
+                              "texts": [
+                                {
+                                  "tag": "a",
+                                  "value": "Greg Orzell"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -695,17 +1174,44 @@
               "children": [
                 {
                   "links": ["https://www.youtube.com/github"],
-                  "texts": ["Spotlight", "View GitHub on YouTube"]
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Spotlight"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "View GitHub on YouTube"
+                    }
+                  ]
                 },
                 {
                   "links": ["https://www.youtube.com/watch?v=b5Ho2_Si6hY"],
                   "texts": [
-                    "Octoverse 2025: AI, India, and the new #1 programming language",
-                    "Dive into the key findings from Octoverse 2025! This year saw record-breaking growth with over 180 million developers now on GitHub. We explore three big shifts: generative AI becoming ordinary engineering, TypeScript’s rise to the #1 language, and how AI is influencing developer choices. See how the developer map is redrawing itself faster than ever.",
-                    "The untold story of Log4j and Log4Shell",
-                    "In late 2021, the Log4Shell vulnerability sent shockwaves through the global tech community. Hear the untold, inside story from Christian Grobmeier, a maintainer of the Log4j project.",
-                    "Two decades of Git: A conversation with creator Linus Torvalds",
-                    "Twenty years ago, Linus Torvalds created the basis for Git in just 10 days, forever changing how developers collaborate on code. In this interview, Linus Torvalds discusses Git’s unexpected journey."
+                    {
+                      "tag": "h3",
+                      "value": "Octoverse 2025: AI, India, and the new #1 programming language"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Dive into the key findings from Octoverse 2025! This year saw record-breaking growth with over 180 million developers now on GitHub. We explore three big shifts: generative AI becoming ordinary engineering, TypeScript’s rise to the #1 language, and how AI is influencing developer choices. See how the developer map is redrawing itself faster than ever."
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "The untold story of Log4j and Log4Shell"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "In late 2021, the Log4Shell vulnerability sent shockwaves through the global tech community. Hear the untold, inside story from Christian Grobmeier, a maintainer of the Log4j project."
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Two decades of Git: A conversation with creator Linus Torvalds"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Twenty years ago, Linus Torvalds created the basis for Git in just 10 days, forever changing how developers collaborate on code. In this interview, Linus Torvalds discusses Git’s unexpected journey."
+                    }
                   ],
                   "images": [
                     {
@@ -728,7 +1234,16 @@
               "children": [
                 {
                   "links": ["https://www.youtube.com/@GitHub/playlists"],
-                  "texts": ["Featured playlists", "View all playlists"]
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Featured playlists"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "View all playlists"
+                    }
+                  ]
                 },
                 {
                   "children": [
@@ -736,7 +1251,12 @@
                       "links": [
                         "https://www.youtube.com/playlist?list=PL0lo9MOBetEFKNlPHNouEmVeYeyoyGTXC"
                       ],
-                      "texts": ["Explore GitHub Universe 2025"],
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Explore GitHub Universe 2025"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://github.blog/wp-content/uploads/2025/05/Universe-2025.png?resize=1200%2C630"
@@ -747,7 +1267,12 @@
                       "links": [
                         "https://www.youtube.com/playlist?list=PL0lo9MOBetEHEHi9h0k_lPn0XZdEeYZDS"
                       ],
-                      "texts": ["Learn about GitHub Copilot"],
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Learn about GitHub Copilot"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://blog-github-com-preprod.go-vip.net/wp-content/uploads/2024/07/maxresdefault-1.jpg?resize=1280%2C720",
@@ -759,7 +1284,12 @@
                       "links": [
                         "https://www.youtube.com/playlist?list=PL0lo9MOBetEE0goMLEl97vO7slruNVj43"
                       ],
-                      "texts": ["Stay informed with The Download"],
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Stay informed with The Download"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://github.blog/wp-content/uploads/2026/02/GIT770_THUMB_DOWLOAD_B.png?resize=1280%2C720"
@@ -771,7 +1301,12 @@
                         "https://www.youtube.com/playlist?list=PL0lo9MOBetEHvO-spzKBAITkkTqv4RvNl",
                         "https://www.youtube.com/playlist?list=PL0lo9MOBetEHvO-spzKBAITkkTqv4RvNl"
                       ],
-                      "texts": ["Explore GitHub Copilot CLI for Beginners"],
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Explore GitHub Copilot CLI for Beginners"
+                        }
+                      ],
                       "images": [
                         {
                           "url": "https://github.blog/wp-content/uploads/2026/04/Episode-1.png?resize=1280%2C720",
@@ -789,7 +1324,16 @@
           "children": [
             {
               "links": ["https://github.blog/news-insights/"],
-              "texts": ["News & insights", "More News & insights articles"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "News & insights"
+                },
+                {
+                  "tag": "a",
+                  "value": "More News & insights articles"
+                }
+              ]
             },
             {
               "children": [
@@ -807,18 +1351,40 @@
                   "children": [
                     {
                       "texts": [
-                        "An update on the August 17 outage and the steps we’re taking to improve reliability."
+                        {
+                          "tag": "p",
+                          "value": "An update on the August 17 outage and the steps we’re taking to improve reliability."
+                        }
                       ],
                       "children": [
                         {
                           "links": [
                             "https://github.blog/news-insights/company-news/the-august-17-outage-and-the-work-ahead/"
                           ],
-                          "texts": ["The August 17 outage, and the work ahead"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "The August 17 outage, and the work ahead"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://github.blog/author/vfedorovgh/"],
-                          "texts": ["Vlad Fedorov", "·", "2026-08-20"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Vlad Fedorov"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "August 20, 2026",
+                              "datetime": "2026-08-20"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -837,7 +1403,10 @@
                   "children": [
                     {
                       "texts": [
-                        "The GitHub Universe session catalog is live. Explore interactive workshops, community talks, demos, and panels. Plus, register before August 19 to save $300."
+                        {
+                          "tag": "p",
+                          "value": "The GitHub Universe session catalog is live. Explore interactive workshops, community talks, demos, and panels. Plus, register before August 19 to save $300."
+                        }
                       ],
                       "children": [
                         {
@@ -845,12 +1414,29 @@
                             "https://github.blog/news-insights/company-news/your-guide-to-github-universe-2026-is-here-the-schedule-just-launched/"
                           ],
                           "texts": [
-                            "Your guide to GitHub Universe 2026 is here: The schedule just launched!"
+                            {
+                              "tag": "a",
+                              "value": "Your guide to GitHub Universe 2026 is here: The schedule just launched!"
+                            }
                           ]
                         },
                         {
                           "links": ["https://github.blog/author/arielkanter/"],
-                          "texts": ["Ariel Kanter", "·", "2026-08-13"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Ariel Kanter"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "August 13, 2026",
+                              "datetime": "2026-08-13"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -868,18 +1454,40 @@
                   "children": [
                     {
                       "texts": [
-                        "In July, we experienced eight incidents that resulted in degraded performance across GitHub services."
+                        {
+                          "tag": "p",
+                          "value": "In July, we experienced eight incidents that resulted in degraded performance across GitHub services."
+                        }
                       ],
                       "children": [
                         {
                           "links": [
                             "https://github.blog/news-insights/company-news/github-availability-report-july-2026/"
                           ],
-                          "texts": ["GitHub availability report: July 2026"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "GitHub availability report: July 2026"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://github.blog/author/jakuboleksy/"],
-                          "texts": ["Jakub Oleksy", "·", "2026-08-12"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jakub Oleksy"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "August 12, 2026",
+                              "datetime": "2026-08-12"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -897,18 +1505,40 @@
                   "children": [
                     {
                       "texts": [
-                        "In June, we experienced six incidents that resulted in degraded performance across GitHub services."
+                        {
+                          "tag": "p",
+                          "value": "In June, we experienced six incidents that resulted in degraded performance across GitHub services."
+                        }
                       ],
                       "children": [
                         {
                           "links": [
                             "https://github.blog/news-insights/company-news/github-availability-report-june-2026/"
                           ],
-                          "texts": ["GitHub availability report: June 2026"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "GitHub availability report: June 2026"
+                            }
+                          ]
                         },
                         {
                           "links": ["https://github.blog/author/jakuboleksy/"],
-                          "texts": ["Jakub Oleksy", "·", "2026-07-08"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Jakub Oleksy"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "July 8, 2026",
+                              "datetime": "2026-07-08"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -926,7 +1556,10 @@
                   "children": [
                     {
                       "texts": [
-                        "New Innovation Graph data shows global developer communities growing faster than ever, with collaboration reaching new highs across many economies."
+                        {
+                          "tag": "p",
+                          "value": "New Innovation Graph data shows global developer communities growing faster than ever, with collaboration reaching new highs across many economies."
+                        }
                       ],
                       "children": [
                         {
@@ -934,12 +1567,29 @@
                             "https://github.blog/news-insights/policy-news-and-insights/q1-2026-innovation-graph-update-open-source-collaboration-is-accelerating-worldwide/"
                           ],
                           "texts": [
-                            "Q1 2026 Innovation Graph update: Open source collaboration is accelerating worldwide"
+                            {
+                              "tag": "a",
+                              "value": "Q1 2026 Innovation Graph update: Open source collaboration is accelerating worldwide"
+                            }
                           ]
                         },
                         {
                           "links": ["https://github.blog/author/khxu/"],
-                          "texts": ["Kevin Xu", "·", "2026-07-07"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Kevin Xu"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "July 7, 2026",
+                              "datetime": "2026-07-07"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -959,7 +1609,10 @@
                   "children": [
                     {
                       "texts": [
-                        "We’re calling for targeted amendments to resolve conflicts with open source licensing and align with international transparency frameworks while preserving regulatory intent."
+                        {
+                          "tag": "p",
+                          "value": "We’re calling for targeted amendments to resolve conflicts with open source licensing and align with international transparency frameworks while preserving regulatory intent."
+                        }
                       ],
                       "children": [
                         {
@@ -967,14 +1620,31 @@
                             "https://github.blog/news-insights/policy-news-and-insights/github-joins-coalition-advocating-for-fixes-to-california-ai-transparency-act-to-protect-open-source/"
                           ],
                           "texts": [
-                            "GitHub joins coalition advocating for fixes to California AI Transparency Act to protect open source"
+                            {
+                              "tag": "a",
+                              "value": "GitHub joins coalition advocating for fixes to California AI Transparency Act to protect open source"
+                            }
                           ]
                         },
                         {
                           "links": [
                             "https://github.blog/author/margarettucker/"
                           ],
-                          "texts": ["Margaret Tucker", "·", "2026-06-23"]
+                          "texts": [
+                            {
+                              "tag": "a",
+                              "value": "Margaret Tucker"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "·"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "June 23, 2026",
+                              "datetime": "2026-06-23"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -985,16 +1655,39 @@
           ]
         },
         {
-          "texts": ["The world's largest developer platform"],
+          "texts": [
+            {
+              "tag": "h2",
+              "value": "The world's largest developer platform"
+            }
+          ],
           "children": [
             {
               "texts": [
-                "Docs",
-                "Everything you need to master GitHub, all in one place.",
-                "Go to Docs",
-                "GitHub",
-                "Build what’s next on GitHub, the place for anyone from anywhere to build anything.",
-                "Start building"
+                {
+                  "tag": "h3",
+                  "value": "Docs"
+                },
+                {
+                  "tag": "p",
+                  "value": "Everything you need to master GitHub, all in one place."
+                },
+                {
+                  "tag": "a",
+                  "value": "Go to Docs"
+                },
+                {
+                  "tag": "h3",
+                  "value": "GitHub"
+                },
+                {
+                  "tag": "p",
+                  "value": "Build what’s next on GitHub, the place for anyone from anywhere to build anything."
+                },
+                {
+                  "tag": "a",
+                  "value": "Start building"
+                }
               ],
               "images": [
                 {
@@ -1010,9 +1703,18 @@
                 {
                   "links": ["https://github.com/customer-stories"],
                   "texts": [
-                    "Customer stories",
-                    "Meet the companies and engineering teams that build with GitHub.",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Customer stories"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Meet the companies and engineering teams that build with GitHub."
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -1026,9 +1728,18 @@
                     "https://githubuniverse.com/?utm_source=Blog&utm_medium=GitHub&utm_campaign=module_uni_26"
                   ],
                   "texts": [
-                    "GitHub Universe 2026",
-                    "Join us October 28-29 in San Francisco or online for GitHub Universe, our flagship developer event uniting people, agents, and the world’s code.",
-                    "Register now"
+                    {
+                      "tag": "h3",
+                      "value": "GitHub Universe 2026"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Join us October 28-29 in San Francisco or online for GitHub Universe, our flagship developer event uniting people, agents, and the world’s code."
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Register now"
+                    }
                   ],
                   "images": [
                     {

@@ -2,12 +2,26 @@
   "children": [
     {
       "links": ["http://www.google.com/chrome"],
-      "texts": ["upgrade your browser"]
+      "texts": [
+        {
+          "tag": "a",
+          "value": "upgrade your browser"
+        }
+      ]
     },
     {
       "children": [
         {
-          "texts": ["Album of the Day", "1 to 30 of 2375"],
+          "texts": [
+            {
+              "tag": "a",
+              "value": "Album of the Day"
+            },
+            {
+              "tag": "div",
+              "value": "1 to 30 of 2375"
+            }
+          ],
           "children": [
             {
               "children": [
@@ -16,7 +30,20 @@
                     "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review",
                     "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review"
                   ],
-                  "texts": ["ALBUM OF THE DAY", "·", "Curly Castro, “Yaphet”"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Curly Castro, “Yaphet”"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0047422564_2.jpg"
@@ -29,9 +56,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Actress, “Radical Frame”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Actress, “Radical Frame”"
+                    }
                   ],
                   "images": [
                     {
@@ -45,9 +81,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/green-lung-necropolitan-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Green Lung, “Necropolitan”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Green Lung, “Necropolitan”"
+                    }
                   ],
                   "images": [
                     {
@@ -60,7 +105,20 @@
                     "https://daily.bandcamp.com/album-of-the-day/perennial-modernism-review",
                     "https://daily.bandcamp.com/album-of-the-day/perennial-modernism-review"
                   ],
-                  "texts": ["ALBUM OF THE DAY", "·", "Perennial, “Modernism”"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Perennial, “Modernism”"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0047270853_2.jpg"
@@ -73,9 +131,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/haruomi-hosono-yours-sincerely-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Haruomi Hosono, “Yours Sincerely”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Haruomi Hosono, “Yours Sincerely”"
+                    }
                   ],
                   "images": [
                     {
@@ -89,9 +156,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/angela-autumn-believer-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Angela Autumn, “Believer”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Angela Autumn, “Believer”"
+                    }
                   ],
                   "images": [
                     {
@@ -105,9 +181,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/nate-mercereau-fantastic-thoughts-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Nate Mercereau, “Fantastic Thoughts”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Nate Mercereau, “Fantastic Thoughts”"
+                    }
                   ],
                   "images": [
                     {
@@ -121,9 +206,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/vanishing-twin-archives-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Vanishing Twin, “Archives”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Vanishing Twin, “Archives”"
+                    }
                   ],
                   "images": [
                     {
@@ -137,9 +231,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/doseone-wino-willy-zetroc-sighting-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "doseone, Wino Willy & Zetroc, “sighting”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "doseone, Wino Willy & Zetroc, “sighting”"
+                    }
                   ],
                   "images": [
                     {
@@ -153,9 +256,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/various-artists-cant-stop-it-ii-australian-post-punk-1979-84-2026-deluxe-edition-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Various Artists, “Can’t Stop It! II: Australian Post Punk 1979–84” (2026 Deluxe Edition)"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Various Artists, “Can’t Stop It! II: Australian Post Punk 1979–84” (2026 Deluxe Edition)"
+                    }
                   ],
                   "images": [
                     {
@@ -168,7 +280,20 @@
                     "https://daily.bandcamp.com/album-of-the-day/cyst-ee-ee-review",
                     "https://daily.bandcamp.com/album-of-the-day/cyst-ee-ee-review"
                   ],
-                  "texts": ["ALBUM OF THE DAY", "·", "Cyst, “ᲘᲘ”"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Cyst, “ᲘᲘ”"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0047125606_2.jpg"
@@ -180,7 +305,20 @@
                     "https://daily.bandcamp.com/album-of-the-day/rap-navigator-review",
                     "https://daily.bandcamp.com/album-of-the-day/rap-navigator-review"
                   ],
-                  "texts": ["ALBUM OF THE DAY", "·", "RAP, “Navigator”"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "RAP, “Navigator”"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0046991867_2.jpg"
@@ -193,9 +331,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/blind-yeo-the-lemoine-point-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Blind Yeo, “The Lemoine Point”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Blind Yeo, “The Lemoine Point”"
+                    }
                   ],
                   "images": [
                     {
@@ -209,9 +356,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/marci-mask-lady-and-late-night-girl-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Marci, “Mask Lady and Late Night Girl”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Marci, “Mask Lady and Late Night Girl”"
+                    }
                   ],
                   "images": [
                     {
@@ -225,9 +381,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/henry-threadgill-vijay-iyer-dafnis-prieto-fifteen-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Henry Threadgill, Vijay Iyer & Dafnis Prieto, “Fifteen”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Henry Threadgill, Vijay Iyer & Dafnis Prieto, “Fifteen”"
+                    }
                   ],
                   "images": [
                     {
@@ -241,9 +406,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/scrambled-eggs-happier-together-filthier-than-ever-the-best-of-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Scrambled Eggs, “Happier Together, Filthier Than Ever: The Best Of”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Scrambled Eggs, “Happier Together, Filthier Than Ever: The Best Of”"
+                    }
                   ],
                   "images": [
                     {
@@ -256,7 +430,20 @@
                     "https://daily.bandcamp.com/album-of-the-day/lusine-melting-days-review",
                     "https://daily.bandcamp.com/album-of-the-day/lusine-melting-days-review"
                   ],
-                  "texts": ["ALBUM OF THE DAY", "·", "Lusine, “Melting Days”"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Lusine, “Melting Days”"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0046862858_2.jpg"
@@ -269,9 +456,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/frances-chang-been-thinking-bout-confession-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "frances chang, “been thinking bout confession”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "frances chang, “been thinking bout confession”"
+                    }
                   ],
                   "images": [
                     {
@@ -285,9 +481,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/ok-cowgirl-rhinestone-cowgirl-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Ok Cowgirl, “Rhinestone Cowgirl”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Ok Cowgirl, “Rhinestone Cowgirl”"
+                    }
                   ],
                   "images": [
                     {
@@ -301,9 +506,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/tyondai-braxton-splayed-werks-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Tyondai Braxton, “Splayed Werks”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Tyondai Braxton, “Splayed Werks”"
+                    }
                   ],
                   "images": [
                     {
@@ -317,9 +531,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/open-mike-eagle-kenny-segal-doomed-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Open Mike Eagle & Kenny Segal, “DOOMED!”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Open Mike Eagle & Kenny Segal, “DOOMED!”"
+                    }
                   ],
                   "images": [
                     {
@@ -333,9 +556,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/michael-christmas-chris-crack-girl-talk-dont-come-to-my-house-sharing-your-location-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Michael Christmas, Chris Crack & Girl Talk, “Don’t Come To My House Sharing Your Location”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Michael Christmas, Chris Crack & Girl Talk, “Don’t Come To My House Sharing Your Location”"
+                    }
                   ],
                   "images": [
                     {
@@ -348,7 +580,20 @@
                     "https://daily.bandcamp.com/album-of-the-day/lrain-fata-morgana-review",
                     "https://daily.bandcamp.com/album-of-the-day/lrain-fata-morgana-review"
                   ],
-                  "texts": ["ALBUM OF THE DAY", "·", "L’Rain, “fata morgana”"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "L’Rain, “fata morgana”"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0046719784_2.jpg"
@@ -360,7 +605,20 @@
                     "https://daily.bandcamp.com/album-of-the-day/kiwi-jr-blowin-up-review",
                     "https://daily.bandcamp.com/album-of-the-day/kiwi-jr-blowin-up-review"
                   ],
-                  "texts": ["ALBUM OF THE DAY", "·", "Kiwi Jr, “Blowin Up”"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Kiwi Jr, “Blowin Up”"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0046725790_2.jpg"
@@ -373,9 +631,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/andre-cymone-the-resurrection-of-funk-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "André Cymone, “The Resurrection of Funk”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "André Cymone, “The Resurrection of Funk”"
+                    }
                   ],
                   "images": [
                     {
@@ -389,9 +656,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/maya-ongaku-nothing-space-music-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Maya Ongaku, “Nothing Space Music”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Maya Ongaku, “Nothing Space Music”"
+                    }
                   ],
                   "images": [
                     {
@@ -405,9 +681,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/alfonso-soliano-tiga-trombone-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "Alfonso Soliano, “Tiga Trombone”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Alfonso Soliano, “Tiga Trombone”"
+                    }
                   ],
                   "images": [
                     {
@@ -420,7 +705,20 @@
                     "https://daily.bandcamp.com/album-of-the-day/hulder-verbolgen-review",
                     "https://daily.bandcamp.com/album-of-the-day/hulder-verbolgen-review"
                   ],
-                  "texts": ["ALBUM OF THE DAY", "·", "HULDER, “Verbolgen”"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "HULDER, “Verbolgen”"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0046494932_2.jpg"
@@ -432,7 +730,20 @@
                     "https://daily.bandcamp.com/album-of-the-day/papangu-celestial-review",
                     "https://daily.bandcamp.com/album-of-the-day/papangu-celestial-review"
                   ],
-                  "texts": ["ALBUM OF THE DAY", "·", "Papangu, “Celestial”"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Papangu, “Celestial”"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0046515999_2.jpg"
@@ -445,9 +756,18 @@
                     "https://daily.bandcamp.com/album-of-the-day/abracadabra-peel-away-review"
                   ],
                   "texts": [
-                    "ALBUM OF THE DAY",
-                    "·",
-                    "abracadabra, “peel away”"
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "abracadabra, “peel away”"
+                    }
                   ],
                   "images": [
                     {
@@ -459,12 +779,26 @@
             },
             {
               "links": ["https://daily.bandcamp.com/album-of-the-day?page=2"],
-              "texts": ["posts", "posts"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "posts"
+                },
+                {
+                  "tag": "span",
+                  "value": "posts"
+                }
+              ]
             }
           ]
         },
         {
-          "texts": ["Top Stories"],
+          "texts": [
+            {
+              "tag": "h2",
+              "value": "Top Stories"
+            }
+          ],
           "children": [
             {
               "children": [
@@ -480,14 +814,26 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/lists"],
-                  "texts": ["LISTS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "LISTS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
                   ],
                   "texts": [
-                    "A Brief History of Atlantic Canada’s Guitar Pop Explosions"
+                    {
+                      "tag": "a",
+                      "value": "A Brief History of Atlantic Canada’s Guitar Pop Explosions"
+                    }
                   ]
                 }
               ]
@@ -506,13 +852,27 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/lists"],
-                  "texts": ["LISTS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "LISTS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide"
                   ],
-                  "texts": ["The Secret Life of the Hardanger Fiddle"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "The Secret Life of the Hardanger Fiddle"
+                    }
+                  ]
                 }
               ]
             },
@@ -530,19 +890,38 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/scene-report"],
-                  "texts": ["SCENE REPORT", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "SCENE REPORT"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/scene-report/gqom-album-guide"
                   ],
-                  "texts": ["The Sound of Gqom Circa 2026"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "The Sound of Gqom Circa 2026"
+                    }
+                  ]
                 }
               ]
             },
             {
               "links": ["https://daily.bandcamp.com/latest"],
-              "texts": ["see all stories"]
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "see all stories"
+                }
+              ]
             },
             {
               "children": [
@@ -558,14 +937,26 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/lists"],
-                  "texts": ["LISTS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "LISTS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
                   ],
                   "texts": [
-                    "A Brief History of Atlantic Canada’s Guitar Pop Explosions"
+                    {
+                      "tag": "a",
+                      "value": "A Brief History of Atlantic Canada’s Guitar Pop Explosions"
+                    }
                   ]
                 }
               ]
@@ -584,13 +975,27 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/features"],
-                  "texts": ["FEATURES", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/features/laurentius-the-profit-interview"
                   ],
-                  "texts": ["Laurentius the Profit Found Heaven in a Cave"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Laurentius the Profit Found Heaven in a Cave"
+                    }
+                  ]
                 }
               ]
             },
@@ -599,7 +1004,20 @@
                 "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review",
                 "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review"
               ],
-              "texts": ["ALBUM OF THE DAY", "·", "Curly Castro, “Yaphet”"],
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "ALBUM OF THE DAY"
+                },
+                {
+                  "tag": "span",
+                  "value": "·"
+                },
+                {
+                  "tag": "a",
+                  "value": "Curly Castro, “Yaphet”"
+                }
+              ],
               "images": [
                 {
                   "url": "https://f4.bcbits.com/img/0047422564_2.jpg"
@@ -620,14 +1038,26 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/big-ups"],
-                  "texts": ["BIG UPS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "BIG UPS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/big-ups/sleeps-two-newest-members-pick-their-bandcamp-favorites"
                   ],
                   "texts": [
-                    "Sleep’s Two Newest Members Pick Their Bandcamp Favorites"
+                    {
+                      "tag": "a",
+                      "value": "Sleep’s Two Newest Members Pick Their Bandcamp Favorites"
+                    }
                   ]
                 }
               ]
@@ -646,13 +1076,27 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/lists"],
-                  "texts": ["LISTS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "LISTS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide"
                   ],
-                  "texts": ["The Secret Life of the Hardanger Fiddle"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "The Secret Life of the Hardanger Fiddle"
+                    }
+                  ]
                 }
               ]
             },
@@ -661,7 +1105,20 @@
                 "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review",
                 "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review"
               ],
-              "texts": ["ALBUM OF THE DAY", "·", "Actress, “Radical Frame”"],
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "ALBUM OF THE DAY"
+                },
+                {
+                  "tag": "span",
+                  "value": "·"
+                },
+                {
+                  "tag": "a",
+                  "value": "Actress, “Radical Frame”"
+                }
+              ],
               "images": [
                 {
                   "url": "https://f4.bcbits.com/img/0047292430_2.jpg"
@@ -672,7 +1129,12 @@
               "children": [
                 {
                   "links": ["https://bandcamp.com/?show_archive=1"],
-                  "texts": ["see all"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "see all"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -680,8 +1142,14 @@
                     "https://bandcamp.com/?play=1"
                   ],
                   "texts": [
-                    "Listen to the latest episode of Bandcamp Radio.",
-                    "Listen now →"
+                    {
+                      "tag": "span",
+                      "value": "Listen to the latest episode of Bandcamp Radio."
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Listen now →"
+                    }
                   ],
                   "images": [
                     {

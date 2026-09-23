@@ -2,15 +2,29 @@
   "children": [
     {
       "links": ["http://www.google.com/chrome"],
-      "texts": ["upgrade your browser"]
+      "texts": [
+        {
+          "tag": "a",
+          "value": "upgrade your browser"
+        }
+      ]
     },
     {
       "children": [
         {
           "texts": [
-            "Features",
-            "Get to know your next favorite artist.",
-            "1 to 30 of 2678"
+            {
+              "tag": "a",
+              "value": "Features"
+            },
+            {
+              "tag": "div",
+              "value": "Get to know your next favorite artist."
+            },
+            {
+              "tag": "div",
+              "value": "1 to 30 of 2678"
+            }
           ],
           "children": [
             {
@@ -21,9 +35,18 @@
                     "https://daily.bandcamp.com/features/laurentius-the-profit-interview"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Laurentius the Profit Found Heaven in a Cave"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Laurentius the Profit Found Heaven in a Cave"
+                    }
                   ],
                   "images": [
                     {
@@ -37,9 +60,18 @@
                     "https://daily.bandcamp.com/features/perennial-death-label-profile"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Perennial Death on DIY, Olympia, and their Current Pop Hot Streak"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Perennial Death on DIY, Olympia, and their Current Pop Hot Streak"
+                    }
                   ],
                   "images": [
                     {
@@ -53,9 +85,18 @@
                     "https://daily.bandcamp.com/features/tony-humphries-kiss-fm-zanzibar-years-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "How Tony Humphries Brought New Jersey House to the Masses"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "How Tony Humphries Brought New Jersey House to the Masses"
+                    }
                   ],
                   "images": [
                     {
@@ -68,7 +109,20 @@
                     "https://daily.bandcamp.com/features/solex-low-kick-and-hard-bop-album-guide",
                     "https://daily.bandcamp.com/features/solex-low-kick-and-hard-bop-album-guide"
                   ],
-                  "texts": ["FEATURES", "·", "Solex Does It Again"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Solex Does It Again"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0047251833_150.jpg"
@@ -80,7 +134,20 @@
                     "https://daily.bandcamp.com/features/kristin-hersh-sugar-on-blackstone-interview",
                     "https://daily.bandcamp.com/features/kristin-hersh-sugar-on-blackstone-interview"
                   ],
-                  "texts": ["FEATURES", "·", "Kristin Hersh Comes Home"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Kristin Hersh Comes Home"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0047112140_150.jpg"
@@ -93,9 +160,18 @@
                     "https://daily.bandcamp.com/features/jem-finer-john-matthias-almost-starlight-interview"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Jem Finer and John Matthias on the Strange Magic of “Almost Starlight”"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Jem Finer and John Matthias on the Strange Magic of “Almost Starlight”"
+                    }
                   ],
                   "images": [
                     {
@@ -109,9 +185,18 @@
                     "https://daily.bandcamp.com/features/no-neck-blues-band-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Cicada Hum: No-Neck Blues Band Returns"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Cicada Hum: No-Neck Blues Band Returns"
+                    }
                   ],
                   "images": [
                     {
@@ -125,9 +210,18 @@
                     "https://daily.bandcamp.com/features/for-shabaam-sahdeeq-everything-is-art"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "For Shabaam Sahdeeq, Everything Is Art"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "For Shabaam Sahdeeq, Everything Is Art"
+                    }
                   ],
                   "images": [
                     {
@@ -140,7 +234,20 @@
                     "https://daily.bandcamp.com/features/bandcamp-fridays",
                     "https://daily.bandcamp.com/features/bandcamp-fridays"
                   ],
-                  "texts": ["FEATURES", "·", "Today is Bandcamp Friday"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Today is Bandcamp Friday"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0042629193_150.jpg"
@@ -153,9 +260,18 @@
                     "https://daily.bandcamp.com/features/sarah-davachi-the-will-of-tongues-interview"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Inside “The Will of Tongues,” Sarah Davachi’s Organ Music Masterpiece"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Inside “The Will of Tongues,” Sarah Davachi’s Organ Music Masterpiece"
+                    }
                   ],
                   "images": [
                     {
@@ -169,9 +285,18 @@
                     "https://daily.bandcamp.com/features/my-heart-is-dust-before-him-21st-century-gasba-from-algeria-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Gasba Forever: The Next Phase of Algeria’s Millenia-Old Folk Tradition"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Gasba Forever: The Next Phase of Algeria’s Millenia-Old Folk Tradition"
+                    }
                   ],
                   "images": [
                     {
@@ -185,9 +310,18 @@
                     "https://daily.bandcamp.com/features/melaina-kol-okay-thats-great-because-if-i-do-that-then-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Learning by Doing: Making Music as Melaina Kol"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Learning by Doing: Making Music as Melaina Kol"
+                    }
                   ],
                   "images": [
                     {
@@ -201,9 +335,18 @@
                     "https://daily.bandcamp.com/features/the-cramps-gravest-gravy-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Henry Rollins and The Lost Cramps Album"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Henry Rollins and The Lost Cramps Album"
+                    }
                   ],
                   "images": [
                     {
@@ -216,7 +359,20 @@
                     "https://daily.bandcamp.com/features/uncovering-obscure-records",
                     "https://daily.bandcamp.com/features/uncovering-obscure-records"
                   ],
-                  "texts": ["FEATURES", "·", "Uncovering Obscure Records"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Uncovering Obscure Records"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0046681263_150.jpg"
@@ -229,9 +385,18 @@
                     "https://daily.bandcamp.com/features/the-womack-sisters-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "The Womack Sisters Keep It In the Family"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "The Womack Sisters Keep It In the Family"
+                    }
                   ],
                   "images": [
                     {
@@ -245,9 +410,18 @@
                     "https://daily.bandcamp.com/features/contemporary-early-music-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Faire Play: The Modern World of Early Music"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Faire Play: The Modern World of Early Music"
+                    }
                   ],
                   "images": [
                     {
@@ -261,9 +435,18 @@
                     "https://daily.bandcamp.com/features/nora-stanley-glass-interview"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Saxophonist Nora Stanley Goes Solo with “Glass”"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Saxophonist Nora Stanley Goes Solo with “Glass”"
+                    }
                   ],
                   "images": [
                     {
@@ -277,9 +460,18 @@
                     "https://daily.bandcamp.com/features/the-duplex-planet-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "It Starts with a Question: How Duplex Planet Connects Humanity"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "It Starts with a Question: How Duplex Planet Connects Humanity"
+                    }
                   ],
                   "images": [
                     {
@@ -293,9 +485,18 @@
                     "https://daily.bandcamp.com/features/michael-cloud-duguay-kingdom-come-kingdom-go-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "“Kingdom Come, Kingdom Go” Brings Aging Church Organs Back to Life"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "“Kingdom Come, Kingdom Go” Brings Aging Church Organs Back to Life"
+                    }
                   ],
                   "images": [
                     {
@@ -309,9 +510,18 @@
                     "https://daily.bandcamp.com/features/big-blood-album-guide"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Trust the Music: A Guide to the Big Blood Family"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Trust the Music: A Guide to the Big Blood Family"
+                    }
                   ],
                   "images": [
                     {
@@ -325,9 +535,18 @@
                     "https://daily.bandcamp.com/features/tomo-katsurada-jonny-nash-at-the-emerald-pool-interview"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Tomo Katsurada and Jonny Nash Make Music for Everyone"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Tomo Katsurada and Jonny Nash Make Music for Everyone"
+                    }
                   ],
                   "images": [
                     {
@@ -340,7 +559,20 @@
                     "https://daily.bandcamp.com/features/twee-pop-feature",
                     "https://daily.bandcamp.com/features/twee-pop-feature"
                   ],
-                  "texts": ["FEATURES", "·", "The Shape of Twee to Come"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "The Shape of Twee to Come"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0046108789_150.jpg"
@@ -353,9 +585,18 @@
                     "https://daily.bandcamp.com/features/arc-iris-itmrw-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Arc Iris Built An Art-Pop Sanctuary In Their Own Backyard (Literally)"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Arc Iris Built An Art-Pop Sanctuary In Their Own Backyard (Literally)"
+                    }
                   ],
                   "images": [
                     {
@@ -368,7 +609,20 @@
                     "https://daily.bandcamp.com/features/parts-and-labor-set-of-all-sets-feature",
                     "https://daily.bandcamp.com/features/parts-and-labor-set-of-all-sets-feature"
                   ],
-                  "texts": ["FEATURES", "·", "Parts & Labor Return to Forever"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Parts & Labor Return to Forever"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0045977951_150.jpg"
@@ -381,9 +635,18 @@
                     "https://daily.bandcamp.com/features/debt-rag-it-is-clear-whats-going-on-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Debt Rag Turn Limits Into Limitless Creativity"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Debt Rag Turn Limits Into Limitless Creativity"
+                    }
                   ],
                   "images": [
                     {
@@ -397,9 +660,18 @@
                     "https://daily.bandcamp.com/features/i-between-two-worlds-interview"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "“Between Two Worlds” Comes Alive at Fire In the Mountains Festival"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "“Between Two Worlds” Comes Alive at Fire In the Mountains Festival"
+                    }
                   ],
                   "images": [
                     {
@@ -413,9 +685,18 @@
                     "https://daily.bandcamp.com/features/mal-waldron-album-guide"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Mal Waldron’s Metamorphosis Changed Jazz Piano Forever"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Mal Waldron’s Metamorphosis Changed Jazz Piano Forever"
+                    }
                   ],
                   "images": [
                     {
@@ -429,9 +710,18 @@
                     "https://daily.bandcamp.com/features/cocanha-flame-folclore-feature"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Cocanha Celebrate Occitan Culture with Collaboration and Community"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Cocanha Celebrate Occitan Culture with Collaboration and Community"
+                    }
                   ],
                   "images": [
                     {
@@ -444,7 +734,20 @@
                     "https://daily.bandcamp.com/features/spacemen-3-influence-album-guide",
                     "https://daily.bandcamp.com/features/spacemen-3-influence-album-guide"
                   ],
-                  "texts": ["FEATURES", "·", "The Endless Orbit of Spacemen 3"],
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "The Endless Orbit of Spacemen 3"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://f4.bcbits.com/img/0045773521_150.jpg"
@@ -457,9 +760,18 @@
                     "https://daily.bandcamp.com/features/power-pop-scene-report"
                   ],
                   "texts": [
-                    "FEATURES",
-                    "·",
-                    "Why Power Pop is the Sound of Now"
+                    {
+                      "tag": "a",
+                      "value": "FEATURES"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Why Power Pop is the Sound of Now"
+                    }
                   ],
                   "images": [
                     {
@@ -471,12 +783,26 @@
             },
             {
               "links": ["https://daily.bandcamp.com/features?page=2"],
-              "texts": ["posts", "posts"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "posts"
+                },
+                {
+                  "tag": "span",
+                  "value": "posts"
+                }
+              ]
             }
           ]
         },
         {
-          "texts": ["Top Stories"],
+          "texts": [
+            {
+              "tag": "h2",
+              "value": "Top Stories"
+            }
+          ],
           "children": [
             {
               "children": [
@@ -492,14 +818,26 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/lists"],
-                  "texts": ["LISTS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "LISTS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
                   ],
                   "texts": [
-                    "A Brief History of Atlantic Canada’s Guitar Pop Explosions"
+                    {
+                      "tag": "a",
+                      "value": "A Brief History of Atlantic Canada’s Guitar Pop Explosions"
+                    }
                   ]
                 }
               ]
@@ -518,13 +856,27 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/lists"],
-                  "texts": ["LISTS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "LISTS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide"
                   ],
-                  "texts": ["The Secret Life of the Hardanger Fiddle"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "The Secret Life of the Hardanger Fiddle"
+                    }
+                  ]
                 }
               ]
             },
@@ -542,19 +894,38 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/scene-report"],
-                  "texts": ["SCENE REPORT", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "SCENE REPORT"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/scene-report/gqom-album-guide"
                   ],
-                  "texts": ["The Sound of Gqom Circa 2026"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "The Sound of Gqom Circa 2026"
+                    }
+                  ]
                 }
               ]
             },
             {
               "links": ["https://daily.bandcamp.com/latest"],
-              "texts": ["see all stories"]
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "see all stories"
+                }
+              ]
             },
             {
               "children": [
@@ -570,14 +941,26 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/lists"],
-                  "texts": ["LISTS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "LISTS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
                   ],
                   "texts": [
-                    "A Brief History of Atlantic Canada’s Guitar Pop Explosions"
+                    {
+                      "tag": "a",
+                      "value": "A Brief History of Atlantic Canada’s Guitar Pop Explosions"
+                    }
                   ]
                 }
               ]
@@ -588,9 +971,18 @@
                 "https://daily.bandcamp.com/features/laurentius-the-profit-interview"
               ],
               "texts": [
-                "FEATURES",
-                "·",
-                "Laurentius the Profit Found Heaven in a Cave"
+                {
+                  "tag": "a",
+                  "value": "FEATURES"
+                },
+                {
+                  "tag": "span",
+                  "value": "·"
+                },
+                {
+                  "tag": "a",
+                  "value": "Laurentius the Profit Found Heaven in a Cave"
+                }
               ],
               "images": [
                 {
@@ -612,13 +1004,27 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/album-of-the-day"],
-                  "texts": ["ALBUM OF THE DAY", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review"
                   ],
-                  "texts": ["Curly Castro, “Yaphet”"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Curly Castro, “Yaphet”"
+                    }
+                  ]
                 }
               ]
             },
@@ -636,14 +1042,26 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/big-ups"],
-                  "texts": ["BIG UPS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "BIG UPS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/big-ups/sleeps-two-newest-members-pick-their-bandcamp-favorites"
                   ],
                   "texts": [
-                    "Sleep’s Two Newest Members Pick Their Bandcamp Favorites"
+                    {
+                      "tag": "a",
+                      "value": "Sleep’s Two Newest Members Pick Their Bandcamp Favorites"
+                    }
                   ]
                 }
               ]
@@ -662,13 +1080,27 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/lists"],
-                  "texts": ["LISTS", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "LISTS"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide"
                   ],
-                  "texts": ["The Secret Life of the Hardanger Fiddle"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "The Secret Life of the Hardanger Fiddle"
+                    }
+                  ]
                 }
               ]
             },
@@ -686,13 +1118,27 @@
                 },
                 {
                   "links": ["https://daily.bandcamp.com/album-of-the-day"],
-                  "texts": ["ALBUM OF THE DAY", "·"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "ALBUM OF THE DAY"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "·"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review"
                   ],
-                  "texts": ["Actress, “Radical Frame”"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Actress, “Radical Frame”"
+                    }
+                  ]
                 }
               ]
             },
@@ -700,7 +1146,12 @@
               "children": [
                 {
                   "links": ["https://bandcamp.com/?show_archive=1"],
-                  "texts": ["see all"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "see all"
+                    }
+                  ]
                 },
                 {
                   "links": [
@@ -708,8 +1159,14 @@
                     "https://bandcamp.com/?play=1"
                   ],
                   "texts": [
-                    "Listen to the latest episode of Bandcamp Radio.",
-                    "Listen now →"
+                    {
+                      "tag": "span",
+                      "value": "Listen to the latest episode of Bandcamp Radio."
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Listen now →"
+                    }
                   ],
                   "images": [
                     {

@@ -29,7 +29,7 @@ type SemanticNode struct {
 	// node that has children holds only the values that sit directly on Node,
 	// because everything else belongs to one of the children.
 	Links  []string        `json:"links,omitempty"`
-	Texts  []string        `json:"texts,omitempty"`
+	Texts  []SemanticText  `json:"texts,omitempty"`
 	Images []SemanticImage `json:"images,omitempty"`
 	// Children are the parts of the subtree that hold a post of their own.
 	Children []*SemanticNode `json:"children,omitempty"`
@@ -113,6 +113,52 @@ func mergeLinkless(n *SemanticNode) {
 	}
 }
 
+// SemanticText is one text candidate, kept with the facts about the element it
+// was read from. Folding a subtree into one node throws the markup away, and
+// these are the parts of it that say what the text is: a title is written as a
+// heading or as the text of the link itself far more often than as anything
+// else, and a date is often written as a relative phrase such as "2 days ago"
+// while the element carries the real date in an attribute.
+type SemanticText struct {
+	// Tag is the name of the element the text was read from.
+	Tag string `json:"tag"`
+	// Value is the text as the reader sees it.
+	Value string `json:"value"`
+	// Datetime is the machine readable date of a <time> element, if it has
+	// one. Value is kept as it is, because the two say different things and
+	// only one of them can be shown to the reader.
+	Datetime string `json:"datetime,omitempty"`
+}
+
+// semanticTexts returns every text of one subtree, in document order. It is a
+// copy of itemTexts that keeps the element name and the datetime attribute
+// instead of a selector; the enumeration is left as it is for now.
+//
+// An element is reported when it holds text and no element child of it holds
+// any. Reporting only these leaf blocks is what keeps the list short: without
+// the rule, one heading inside a link inside a card produces three entries
+// carrying the same string.
+func semanticTexts(n *html.Node) []SemanticText {
+	var out []SemanticText
+	var walk func(*html.Node)
+	walk = func(x *html.Node) {
+		if x.Type == html.ElementNode {
+			if t := text(x); t != "" && !hasTextChild(x) {
+				out = append(out, SemanticText{
+					Tag:      x.Data,
+					Value:    t,
+					Datetime: attr(x, "datetime"),
+				})
+			}
+		}
+		for c := x.FirstChild; c != nil; c = c.NextSibling {
+			walk(c)
+		}
+	}
+	walk(n)
+	return out
+}
+
 // SemanticImage is one image candidate. The alt text is kept because it is
 // often the only place a card names the post it shows.
 type SemanticImage struct {
@@ -128,7 +174,7 @@ func semanticNode(n *html.Node, page *url.URL) *SemanticNode {
 	}
 
 	if len(distinct) <= 1 {
-		texts := itemTexts(n)
+		texts := semanticTexts(n)
 		images := itemImages(n, page)
 		if len(links) == 0 && len(texts) == 0 && len(images) == 0 {
 			// Nothing a post can be built from, so the subtree is dropped.
@@ -138,9 +184,7 @@ func semanticNode(n *html.Node, page *url.URL) *SemanticNode {
 		for _, a := range links {
 			node.Links = append(node.Links, a.Value)
 		}
-		for _, a := range texts {
-			node.Texts = append(node.Texts, a.Value)
-		}
+		node.Texts = append(node.Texts, texts...)
 		for _, a := range images {
 			node.Images = append(node.Images, SemanticImage{URL: a.Value, Alt: a.Alt})
 		}
@@ -173,7 +217,7 @@ func semanticNode(n *html.Node, page *url.URL) *SemanticNode {
 		}
 	}
 	if t := strings.Join(strings.Fields(loose.String()), " "); t != "" {
-		own.Texts = append(own.Texts, t)
+		own.Texts = append(own.Texts, SemanticText{Tag: n.Data, Value: t})
 	}
 
 	if len(own.Links) == 0 && len(own.Texts) == 0 && len(children) == 1 {

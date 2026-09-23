@@ -1,8 +1,18 @@
 {
-  "texts": ["Skip to content"],
+  "texts": [
+    {
+      "tag": "a",
+      "value": "Skip to content"
+    }
+  ],
   "children": [
     {
-      "texts": ["Site search"],
+      "texts": [
+        {
+          "tag": "span",
+          "value": "Site search"
+        }
+      ],
       "children": [
         {
           "links": ["https://www.bbc.com/sport"]
@@ -25,10 +35,22 @@
             {
               "links": ["https://www.bbc.com/news/articles/cvwyz29n0nn2o"],
               "texts": [
-                "German Chancellor Merz calls state election a 'disaster' for his party but vows to stay on",
-                "Exit polls show damaging losses for Merz's centre-right CDU party in the states of Berlin and Mecklenburg-Vorpommern.",
-                "3 hrs ago",
-                "Europe"
+                {
+                  "tag": "h2",
+                  "value": "German Chancellor Merz calls state election a 'disaster' for his party but vows to stay on"
+                },
+                {
+                  "tag": "p",
+                  "value": "Exit polls show damaging losses for Merz's centre-right CDU party in the states of Berlin and Mecklenburg-Vorpommern."
+                },
+                {
+                  "tag": "span",
+                  "value": "3 hrs ago"
+                },
+                {
+                  "tag": "span",
+                  "value": "Europe"
+                }
               ],
               "images": [
                 {
@@ -45,10 +67,22 @@
                 {
                   "links": ["https://www.bbc.com/news/articles/c34gdjk1ne8yo"],
                   "texts": [
-                    "Largest attack on Moscow sees Ukraine fire hundreds of drones, mayor says",
-                    "Moscow's mayor says 450 drones were downed during the overnight barrage, in which two people died.",
-                    "12 hrs ago",
-                    "Europe"
+                    {
+                      "tag": "h2",
+                      "value": "Largest attack on Moscow sees Ukraine fire hundreds of drones, mayor says"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Moscow's mayor says 450 drones were downed during the overnight barrage, in which two people died."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "12 hrs ago"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Europe"
+                    }
                   ],
                   "images": [
                     {
@@ -63,10 +97,22 @@
                 {
                   "links": ["https://www.bbc.com/news/articles/cwj3d7zrgvk1o"],
                   "texts": [
-                    "Harry and Meghan's media treatment echoes what happened to Diana, Earl Spencer tells BBC",
-                    "Princess Diana's brother describes press coverage of Prince Harry and Meghan as a \"cancerous influence in their life\" and says he saw his sister cry \"tears of despair\" over interest in her.",
-                    "11 hrs ago",
-                    "UK"
+                    {
+                      "tag": "h2",
+                      "value": "Harry and Meghan's media treatment echoes what happened to Diana, Earl Spencer tells BBC"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Princess Diana's brother describes press coverage of Prince Harry and Meghan as a \"cancerous influence in their life\" and says he saw his sister cry \"tears of despair\" over interest in her."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "11 hrs ago"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "UK"
+                    }
                   ],
                   "images": [
                     {
@@ -85,37 +131,85 @@
                 {
                   "links": ["https://www.bbc.com/news/articles/cm1j4kl80z56o"],
                   "texts": [
-                    "Workers came across human remains – and unearthed a mass grave of 572 people",
-                    "Workers in northern Sri Lanka accidentally uncovered the country's largest mass grave – and reopened wounds from its civil war.",
-                    "41 mins ago",
-                    "Asia"
+                    {
+                      "tag": "h2",
+                      "value": "Workers came across human remains – and unearthed a mass grave of 572 people"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Workers in northern Sri Lanka accidentally uncovered the country's largest mass grave – and reopened wounds from its civil war."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "41 mins ago"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Asia"
+                    }
                   ]
                 },
                 {
                   "links": ["https://www.bbc.com/news/articles/cqdj4pez00dzo"],
                   "texts": [
-                    "Trump says triumphal arch will be military complex with drones and snipers",
-                    "Trump said the updated plans were at the request of the US military and for national security purposes.",
-                    "7 hrs ago",
-                    "US & Canada"
+                    {
+                      "tag": "h2",
+                      "value": "Trump says triumphal arch will be military complex with drones and snipers"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Trump said the updated plans were at the request of the US military and for national security purposes."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "7 hrs ago"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "US & Canada"
+                    }
                   ]
                 },
                 {
                   "links": ["https://www.bbc.com/news/videos/cw62mdrjll18o"],
                   "texts": [
-                    "Watch: Emotional Earl Spencer says he misses sister Diana every day",
-                    "\"This is my swan song too. I'm not here to bang on about Diana, this is my final word, celebration of her\", Earl Spencer told presenter Laura Kuenssberg.",
-                    "8 hrs ago",
-                    "UK"
+                    {
+                      "tag": "h2",
+                      "value": "Watch: Emotional Earl Spencer says he misses sister Diana every day"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "\"This is my swan song too. I'm not here to bang on about Diana, this is my final word, celebration of her\", Earl Spencer told presenter Laura Kuenssberg."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "8 hrs ago"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "UK"
+                    }
                   ]
                 },
                 {
                   "links": ["https://www.bbc.com/news/articles/cm5y7qj54klpo"],
                   "texts": [
-                    "Not all AI workers think the tech could kill everyone",
-                    "In text exchanges and conversations, multiple people who have worked for leading companies are sceptical of the warnings.",
-                    "1 day ago",
-                    "Technology"
+                    {
+                      "tag": "h2",
+                      "value": "Not all AI workers think the tech could kill everyone"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "In text exchanges and conversations, multiple people who have worked for leading companies are sceptical of the warnings."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "1 day ago"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Technology"
+                    }
                   ]
                 }
               ]
@@ -123,7 +217,12 @@
           ]
         },
         {
-          "texts": ["Weekend reads"],
+          "texts": [
+            {
+              "tag": "h2",
+              "value": "Weekend reads"
+            }
+          ],
           "children": [
             {
               "children": [
@@ -132,8 +231,14 @@
                     "https://www.bbc.com/travel/article/20260917-sleep-in-a-different-century-along-the-co-canal"
                   ],
                   "texts": [
-                    "Sleep in a different era along Maryland's 200-year-old canal",
-                    "The C&O Canal was a thriving 19th-Century waterway, and a strategic asset during the Civil War. Today, its historic lockhouses offer overnight guests a unique way to relive US history."
+                    {
+                      "tag": "h2",
+                      "value": "Sleep in a different era along Maryland's 200-year-old canal"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "The C&O Canal was a thriving 19th-Century waterway, and a strategic asset during the Civil War. Today, its historic lockhouses offer overnight guests a unique way to relive US history."
+                    }
                   ],
                   "images": [
                     {
@@ -150,8 +255,14 @@
                     "https://www.bbc.com/future/article/20260916-new-york-has-a-food-waste-problem-south-korea-has-already-solved-it"
                   ],
                   "texts": [
-                    "New York has a food waste problem. South Korea has already solved it",
-                    "South Korea has cut household food waste going to landfill from 97% to almost nothing. New York City has started sending its scraps the same way."
+                    {
+                      "tag": "h2",
+                      "value": "New York has a food waste problem. South Korea has already solved it"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "South Korea has cut household food waste going to landfill from 97% to almost nothing. New York City has started sending its scraps the same way."
+                    }
                   ],
                   "images": [
                     {
@@ -170,15 +281,26 @@
           "children": [
             {
               "links": ["https://www.bbc.com/audio"],
-              "texts": ["Best audio of the week"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Best audio of the week"
+                }
+              ]
             },
             {
               "children": [
                 {
                   "links": ["https://www.bbc.com/audio/play/w3ct8m99"],
                   "texts": [
-                    "The Global Story",
-                    "Dave Ramsey: Iran, tariffs and affordability"
+                    {
+                      "tag": "h2",
+                      "value": "The Global Story"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Dave Ramsey: Iran, tariffs and affordability"
+                    }
                   ],
                   "images": [
                     {
@@ -193,8 +315,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0pbk7cj"],
                   "texts": [
-                    "Global News Podcast",
-                    "Ed Sheeran speaks out on Gaza"
+                    {
+                      "tag": "h2",
+                      "value": "Global News Podcast"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Ed Sheeran speaks out on Gaza"
+                    }
                   ],
                   "images": [
                     {
@@ -209,8 +337,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/w3ct99j1"],
                   "texts": [
-                    "The Climate Question",
-                    "The solar power boom in Pakistan and the Philippines"
+                    {
+                      "tag": "h2",
+                      "value": "The Climate Question"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "The solar power boom in Pakistan and the Philippines"
+                    }
                   ],
                   "images": [
                     {
@@ -225,8 +359,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0pb2l8r"],
                   "texts": [
-                    "The Documentary Podcast",
-                    "The dictators' survival guide"
+                    {
+                      "tag": "h2",
+                      "value": "The Documentary Podcast"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "The dictators' survival guide"
+                    }
                   ],
                   "images": [
                     {
@@ -241,8 +381,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/w3ct9998"],
                   "texts": [
-                    "More or Less",
-                    "Are carrots becoming less nutritious?"
+                    {
+                      "tag": "h2",
+                      "value": "More or Less"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Are carrots becoming less nutritious?"
+                    }
                   ],
                   "images": [
                     {
@@ -257,8 +403,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0pbck56"],
                   "texts": [
-                    "The Documentary Podcast",
-                    "Can we live without our phones?"
+                    {
+                      "tag": "h2",
+                      "value": "The Documentary Podcast"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Can we live without our phones?"
+                    }
                   ],
                   "images": [
                     {
@@ -273,8 +425,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/w3ct98f5"],
                   "texts": [
-                    "Witness History",
-                    "The discovery of the San José shipwreck"
+                    {
+                      "tag": "h2",
+                      "value": "Witness History"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "The discovery of the San José shipwreck"
+                    }
                   ],
                   "images": [
                     {
@@ -289,8 +447,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0pb25d2"],
                   "texts": [
-                    "The Documentary Podcast",
-                    "How to leave this Earth"
+                    {
+                      "tag": "h2",
+                      "value": "The Documentary Podcast"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "How to leave this Earth"
+                    }
                   ],
                   "images": [
                     {
@@ -305,8 +469,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/w3ct98kp"],
                   "texts": [
-                    "The Interview",
-                    "Mirjana Spoljaric, president of the ICRC: The rules of war are being ignored"
+                    {
+                      "tag": "h2",
+                      "value": "The Interview"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Mirjana Spoljaric, president of the ICRC: The rules of war are being ignored"
+                    }
                   ],
                   "images": [
                     {
@@ -321,8 +491,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/w3ct8g9t"],
                   "texts": [
-                    "Business Daily",
-                    "Taking Stock: Can Big Tech rivals be trusted to develop safe AI?"
+                    {
+                      "tag": "h2",
+                      "value": "Business Daily"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Taking Stock: Can Big Tech rivals be trusted to develop safe AI?"
+                    }
                   ],
                   "images": [
                     {
@@ -336,7 +512,16 @@
                 },
                 {
                   "links": ["https://www.bbc.com/audio/play/p0pb1vgs"],
-                  "texts": ["World of Secrets", "Trailer"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "World of Secrets"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Trailer"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
@@ -350,8 +535,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/w3ct98bx"],
                   "texts": [
-                    "Witness History",
-                    "The birth of India's call centre industry"
+                    {
+                      "tag": "h2",
+                      "value": "Witness History"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "The birth of India's call centre industry"
+                    }
                   ],
                   "images": [
                     {
@@ -371,7 +562,12 @@
           "children": [
             {
               "links": ["https://www.bbc.com/news"],
-              "texts": ["More news"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "More news"
+                }
+              ]
             },
             {
               "children": [
@@ -381,10 +577,22 @@
                     "https://www.bbc.com/news/articles/cry4z1xykeleo"
                   ],
                   "texts": [
-                    "Key takeaways from BBC interview as Earl Spencer defends claims about King",
-                    "Earl Spencer speaks to the BBC's Laura Kuenssberg ahead of the publication of his book about his sister Diana, Princess of Wales.",
-                    "8 hrs ago",
-                    "UK"
+                    {
+                      "tag": "h2",
+                      "value": "Key takeaways from BBC interview as Earl Spencer defends claims about King"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Earl Spencer speaks to the BBC's Laura Kuenssberg ahead of the publication of his book about his sister Diana, Princess of Wales."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "8 hrs ago"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "UK"
+                    }
                   ],
                   "images": [
                     {
@@ -403,10 +611,22 @@
                         "https://www.bbc.com/reel/video/p0p9z80d/watch"
                       ],
                       "texts": [
-                        "People are talking less, but no one's quite sure why",
-                        "Between 2005 and 2019, there was a 28% drop in the number of words an average person spoke in a given day.",
-                        "2 days ago",
-                        "Katty Kay"
+                        {
+                          "tag": "h2",
+                          "value": "People are talking less, but no one's quite sure why"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Between 2005 and 2019, there was a 28% drop in the number of words an average person spoke in a given day."
+                        },
+                        {
+                          "tag": "span",
+                          "value": "2 days ago"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Katty Kay"
+                        }
                       ],
                       "images": [
                         {
@@ -423,10 +643,22 @@
                         "https://www.bbc.com/news/articles/cw62m6z7m7zjo"
                       ],
                       "texts": [
-                        "Mum's viral barefoot race sparks debate over India's education crisis",
-                        "The 47-year-old ran - and won - a 3km race where she hoped to win enough prize money to buy study books for her daughter.",
-                        "24 hrs ago",
-                        "Asia"
+                        {
+                          "tag": "h2",
+                          "value": "Mum's viral barefoot race sparks debate over India's education crisis"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "The 47-year-old ran - and won - a 3km race where she hoped to win enough prize money to buy study books for her daughter."
+                        },
+                        {
+                          "tag": "span",
+                          "value": "24 hrs ago"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Asia"
+                        }
                       ]
                     },
                     {
@@ -434,10 +666,22 @@
                         "https://www.bbc.com/news/articles/cvgy1q2k2z0o"
                       ],
                       "texts": [
-                        "Cultural treasures are being destroyed worldwide - so why is no-one being punished?",
-                        "A cauldron of conflicts is bubbling across the world, with cultural monuments being destroyed. These people are fighting against it.",
-                        "24 hrs ago",
-                        "BBC InDepth"
+                        {
+                          "tag": "h2",
+                          "value": "Cultural treasures are being destroyed worldwide - so why is no-one being punished?"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "A cauldron of conflicts is bubbling across the world, with cultural monuments being destroyed. These people are fighting against it."
+                        },
+                        {
+                          "tag": "span",
+                          "value": "24 hrs ago"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "BBC InDepth"
+                        }
                       ]
                     }
                   ]
@@ -449,10 +693,22 @@
                         "https://www.bbc.com/news/articles/cqm27pnyd294o"
                       ],
                       "texts": [
-                        "Man, 82, dies after beach fight with 76-year-old over sunlounger in Greece",
-                        "One eyewitness said the scene was so chaotic that screaming could be heard from the other end of the beach.",
-                        "2 hrs ago",
-                        "Europe"
+                        {
+                          "tag": "h2",
+                          "value": "Man, 82, dies after beach fight with 76-year-old over sunlounger in Greece"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "One eyewitness said the scene was so chaotic that screaming could be heard from the other end of the beach."
+                        },
+                        {
+                          "tag": "span",
+                          "value": "2 hrs ago"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Europe"
+                        }
                       ],
                       "images": [
                         {
@@ -469,10 +725,22 @@
                         "https://www.bbc.com/sport/football/articles/cvp8d4116zglo"
                       ],
                       "texts": [
-                        "What have we learned from the Premier League so far?",
-                        "BBC Sport takes a look at the opening weeks of the Premier League season as a long international break arrives.",
-                        "4 hrs ago",
-                        "Premier League"
+                        {
+                          "tag": "h2",
+                          "value": "What have we learned from the Premier League so far?"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "BBC Sport takes a look at the opening weeks of the Premier League season as a long international break arrives."
+                        },
+                        {
+                          "tag": "span",
+                          "value": "4 hrs ago"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Premier League"
+                        }
                       ],
                       "images": [
                         {
@@ -489,10 +757,22 @@
                         "https://www.bbc.com/news/articles/cm36l2pye2kwo"
                       ],
                       "texts": [
-                        "Sister of Pakistan's ex-PM Imran Khan arrested",
-                        "Aleema Khanum is accused of mobilising her brother’s supporters ahead of country-wide protests.",
-                        "4 hrs ago",
-                        "Asia"
+                        {
+                          "tag": "h2",
+                          "value": "Sister of Pakistan's ex-PM Imran Khan arrested"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Aleema Khanum is accused of mobilising her brother’s supporters ahead of country-wide protests."
+                        },
+                        {
+                          "tag": "span",
+                          "value": "4 hrs ago"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Asia"
+                        }
                       ],
                       "images": [
                         {
@@ -509,10 +789,22 @@
                         "https://www.bbc.com/news/articles/cm780ll1de18o"
                       ],
                       "texts": [
-                        "Ed Sheeran admits 'mistakes' at first show since Macklemore controversy",
-                        "The singer spoke about Israel and Gaza after Macklemore was dropped from his tour for making pro-Palestinian remarks on stage.",
-                        "18 hrs ago",
-                        "US & Canada"
+                        {
+                          "tag": "h2",
+                          "value": "Ed Sheeran admits 'mistakes' at first show since Macklemore controversy"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "The singer spoke about Israel and Gaza after Macklemore was dropped from his tour for making pro-Palestinian remarks on stage."
+                        },
+                        {
+                          "tag": "span",
+                          "value": "18 hrs ago"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "US & Canada"
+                        }
                       ],
                       "images": [
                         {
@@ -531,7 +823,12 @@
           ]
         },
         {
-          "texts": ["Covert Operations"],
+          "texts": [
+            {
+              "tag": "h2",
+              "value": "Covert Operations"
+            }
+          ],
           "children": [
             {
               "children": [
@@ -540,8 +837,14 @@
                     "https://www.bbc.com/culture/article/20260619-how-john-le-carrs-spy-novels-were-shaped-by-his-con-man-father"
                   ],
                   "texts": [
-                    "How John le Carré's spy novels were shaped by his con-man father",
-                    "The author's childhood was rocked by bankruptcy and deceit. In 2008, he told the BBC that his \"hectic background\" trained him to be an author – and a spy."
+                    {
+                      "tag": "h2",
+                      "value": "How John le Carré's spy novels were shaped by his con-man father"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "The author's childhood was rocked by bankruptcy and deceit. In 2008, he told the BBC that his \"hectic background\" trained him to be an author – and a spy."
+                    }
                   ],
                   "images": [
                     {
@@ -556,8 +859,14 @@
                 {
                   "links": ["https://www.bbc.com/reel/video/p0bzwxqy/watch"],
                   "texts": [
-                    "The Chevalier d'Éon: The 18th Century transgender spy",
-                    "The Chevalier d'Éon: Nobleman, spy to King Louis XV, and for the last 33 years of their life, a woman."
+                    {
+                      "tag": "h2",
+                      "value": "The Chevalier d'Éon: The 18th Century transgender spy"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "The Chevalier d'Éon: Nobleman, spy to King Louis XV, and for the last 33 years of their life, a woman."
+                    }
                   ],
                   "images": [
                     {
@@ -574,8 +883,14 @@
                     "https://www.bbc.com/culture/article/20260904-the-poison-tipped-umbrella-that-pointed-to-a-kgb-murder"
                   ],
                   "texts": [
-                    "The poison-tipped umbrella that pointed to a KGB murder - on British soil",
-                    "In 1978, Georgi Markov was killed with a poison-tipped umbrella. The following year, his widow and elder brother told the BBC how they were warned about the murder plot months before."
+                    {
+                      "tag": "h2",
+                      "value": "The poison-tipped umbrella that pointed to a KGB murder - on British soil"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "In 1978, Georgi Markov was killed with a poison-tipped umbrella. The following year, his widow and elder brother told the BBC how they were warned about the murder plot months before."
+                    }
                   ],
                   "images": [
                     {
@@ -595,13 +910,27 @@
           "children": [
             {
               "links": ["https://www.bbc.com/video"],
-              "texts": ["Must watch"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Must watch"
+                }
+              ]
             },
             {
               "children": [
                 {
                   "links": ["https://www.bbc.com/sport/videos/ckqxvp07rrnvo"],
-                  "texts": ["Man United Fan - \"CARRICK GONE!\"", "Man Utd"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Man United Fan - \"CARRICK GONE!\""
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Man Utd"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
@@ -615,9 +944,18 @@
                 {
                   "links": ["https://www.bbc.com/news/videos/cm4glen7dpx9o"],
                   "texts": [
-                    "Sixth batch of UFO files includes orbs from 1952",
-                    "The footage was filmed by a US Navy officer who reported the group of bright airborne objects to the Air Force's UFO investigation programme.",
-                    "US & Canada"
+                    {
+                      "tag": "h2",
+                      "value": "Sixth batch of UFO files includes orbs from 1952"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "The footage was filmed by a US Navy officer who reported the group of bright airborne objects to the Air Force's UFO investigation programme."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "US & Canada"
+                    }
                   ],
                   "images": [
                     {
@@ -632,9 +970,18 @@
                 {
                   "links": ["https://www.bbc.com/news/videos/cmy0z2ljelgko"],
                   "texts": [
-                    "Earl Spencer's claims about King's reaction to Diana's death open old wounds",
-                    "His comments come ahead of a controversial new memoir examining the life and death of Princess Diana",
-                    "UK"
+                    {
+                      "tag": "h2",
+                      "value": "Earl Spencer's claims about King's reaction to Diana's death open old wounds"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "His comments come ahead of a controversial new memoir examining the life and death of Princess Diana"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "UK"
+                    }
                   ],
                   "images": [
                     {
@@ -649,9 +996,18 @@
                 {
                   "links": ["https://www.bbc.com/reel/video/p0p1xjjs/watch"],
                   "texts": [
-                    "The life-changing potential of next-generation prosthetics",
-                    "A prosthetics expert's life changed after a cycling accident. Now he is testing new technology himself.",
-                    "Tech Now"
+                    {
+                      "tag": "h2",
+                      "value": "The life-changing potential of next-generation prosthetics"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "A prosthetics expert's life changed after a cycling accident. Now he is testing new technology himself."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Tech Now"
+                    }
                   ],
                   "images": [
                     {
@@ -666,9 +1022,18 @@
                 {
                   "links": ["https://www.bbc.com/news/videos/c6q8jpxxv9k2o"],
                   "texts": [
-                    "Watch: Earl Spencer says he felt Charles had 'giddy tone' during call after Diana's death",
-                    "Princess Diana's brother has been interviewed by the BBC ahead of the release of his book on the late Princess of Wales.",
-                    "UK"
+                    {
+                      "tag": "h2",
+                      "value": "Watch: Earl Spencer says he felt Charles had 'giddy tone' during call after Diana's death"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Princess Diana's brother has been interviewed by the BBC ahead of the release of his book on the late Princess of Wales."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "UK"
+                    }
                   ],
                   "images": [
                     {
@@ -685,9 +1050,18 @@
                     "https://www.bbc.com/sport/cricket/videos/cmkg89kvnq7xo"
                   ],
                   "texts": [
-                    "'It's one of the most prestigious jobs in cricket' - new Test coach Stephen Fleming",
-                    "Stephen Fleming explains why he took the England coaching job and what his hopes are going forward.",
-                    "Cricket"
+                    {
+                      "tag": "h2",
+                      "value": "'It's one of the most prestigious jobs in cricket' - new Test coach Stephen Fleming"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Stephen Fleming explains why he took the England coaching job and what his hopes are going forward."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Cricket"
+                    }
                   ],
                   "images": [
                     {
@@ -702,9 +1076,18 @@
                 {
                   "links": ["https://www.bbc.com/news/videos/cv1j4794gn6po"],
                   "texts": [
-                    "Diana's brother says press has 'cancerous influence' on Harry and Meghan's lives",
-                    "Earl Spencer says that he can see echoes of Princess Diana's treatment from the press in the way Harry and Meghan are scrutinised.",
-                    "UK"
+                    {
+                      "tag": "h2",
+                      "value": "Diana's brother says press has 'cancerous influence' on Harry and Meghan's lives"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Earl Spencer says that he can see echoes of Princess Diana's treatment from the press in the way Harry and Meghan are scrutinised."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "UK"
+                    }
                   ],
                   "images": [
                     {
@@ -719,9 +1102,18 @@
                 {
                   "links": ["https://www.bbc.com/news/videos/ck980m0pr1e0o"],
                   "texts": [
-                    "Fans cheer as Ed Sheeran speaks out over Macklemore controversy at show",
-                    "Ed Sheeran told the crowd he had made mistakes after Macklemore was dropped from his tour for making pro-Palestinian remarks.",
-                    "Suffolk"
+                    {
+                      "tag": "h2",
+                      "value": "Fans cheer as Ed Sheeran speaks out over Macklemore controversy at show"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Ed Sheeran told the crowd he had made mistakes after Macklemore was dropped from his tour for making pro-Palestinian remarks."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Suffolk"
+                    }
                   ],
                   "images": [
                     {
@@ -741,7 +1133,12 @@
           "children": [
             {
               "links": ["https://www.bbc.com/health"],
-              "texts": ["Health"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Health"
+                }
+              ]
             },
             {
               "links": [
@@ -749,8 +1146,14 @@
                 "https://www.bbc.com/future/article/20260917-confusion-in-the-immune-system-how-allergies-can-develop-later-in-life"
               ],
               "texts": [
-                "'Confusion in the immune system': How allergies can develop later in life",
-                "We often think of allergies as the result of an unlucky hand dealt in childhood, or even before birth. But \"any person, at any point in their life, can develop a new allergy\"."
+                {
+                  "tag": "h2",
+                  "value": "'Confusion in the immune system': How allergies can develop later in life"
+                },
+                {
+                  "tag": "p",
+                  "value": "We often think of allergies as the result of an unlucky hand dealt in childhood, or even before birth. But \"any person, at any point in their life, can develop a new allergy\"."
+                }
               ],
               "images": [
                 {
@@ -768,7 +1171,12 @@
           "children": [
             {
               "links": ["https://www.bbc.com/culture"],
-              "texts": ["Culture"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Culture"
+                }
+              ]
             },
             {
               "links": [
@@ -776,8 +1184,14 @@
                 "https://www.bbc.com/culture/article/20260917-10-of-the-best-tv-shows-to-watch-this-october"
               ],
               "texts": [
-                "10 of the best TV shows to watch this October",
-                "From new adaptations of beloved John Steinbeck and Stephen King novels to a Newfoundland-set monster horror with Josh Hartnett – these are the best series to watch and stream."
+                {
+                  "tag": "h2",
+                  "value": "10 of the best TV shows to watch this October"
+                },
+                {
+                  "tag": "p",
+                  "value": "From new adaptations of beloved John Steinbeck and Stephen King novels to a Newfoundland-set monster horror with Josh Hartnett – these are the best series to watch and stream."
+                }
               ],
               "images": [
                 {
@@ -799,7 +1213,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/news/us-canada"],
-                      "texts": ["US & Canada News"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "US & Canada News"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -808,8 +1227,14 @@
                             "https://www.bbc.com/news/articles/cj4gklz9dxplo"
                           ],
                           "texts": [
-                            "Journalists denied White House access after Trump banned some media outlets",
-                            "CNN, MS NOW and Politico reporters' White House press badges were confiscated, the outlets reported."
+                            {
+                              "tag": "h2",
+                              "value": "Journalists denied White House access after Trump banned some media outlets"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "CNN, MS NOW and Politico reporters' White House press badges were confiscated, the outlets reported."
+                            }
                           ],
                           "images": [
                             {
@@ -826,7 +1251,10 @@
                             "https://www.bbc.com/news/articles/cmn8ed1xpxnyo"
                           ],
                           "texts": [
-                            "Trump escalates media fight after week of setbacks"
+                            {
+                              "tag": "h2",
+                              "value": "Trump escalates media fight after week of setbacks"
+                            }
                           ]
                         },
                         {
@@ -834,7 +1262,10 @@
                             "https://www.bbc.com/news/articles/crwyzj53pl1lo"
                           ],
                           "texts": [
-                            "Converse pulls 'deeply upsetting' advert after backlash"
+                            {
+                              "tag": "h2",
+                              "value": "Converse pulls 'deeply upsetting' advert after backlash"
+                            }
                           ]
                         },
                         {
@@ -842,7 +1273,10 @@
                             "https://www.bbc.com/news/articles/c6e30580jqjpo"
                           ],
                           "texts": [
-                            "Trump says he is banning CNN and Politico from White House"
+                            {
+                              "tag": "h2",
+                              "value": "Trump says he is banning CNN and Politico from White House"
+                            }
                           ]
                         }
                       ]
@@ -853,7 +1287,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/news/world"],
-                      "texts": ["More World News"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "More World News"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -862,8 +1301,14 @@
                             "https://www.bbc.com/news/articles/c8207255rq5lo"
                           ],
                           "texts": [
-                            "Burnham hails Greenland deal ahead of expected first Trump meeting",
-                            "While Burnham praised the agreement, Lib Dem leader Ed Davey called it a \"pretend\" victory for Trump."
+                            {
+                              "tag": "h2",
+                              "value": "Burnham hails Greenland deal ahead of expected first Trump meeting"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "While Burnham praised the agreement, Lib Dem leader Ed Davey called it a \"pretend\" victory for Trump."
+                            }
                           ],
                           "images": [
                             {
@@ -880,7 +1325,10 @@
                             "https://www.bbc.com/news/articles/cme8xj6g2ny7o"
                           ],
                           "texts": [
-                            "German elections under way which could decide fate of Chancellor Merz"
+                            {
+                              "tag": "h2",
+                              "value": "German elections under way which could decide fate of Chancellor Merz"
+                            }
                           ]
                         },
                         {
@@ -888,7 +1336,10 @@
                             "https://www.bbc.com/news/videos/ckd68l9g0gy5o"
                           ],
                           "texts": [
-                            "Concertgoers and pro-Palestinian activists arrive at Ed Sheeran concert"
+                            {
+                              "tag": "h2",
+                              "value": "Concertgoers and pro-Palestinian activists arrive at Ed Sheeran concert"
+                            }
                           ]
                         },
                         {
@@ -896,7 +1347,10 @@
                             "https://www.bbc.com/news/articles/cwly5d9v7r43o"
                           ],
                           "texts": [
-                            "Houthis say they targeted Saudi capital with ballistic missiles"
+                            {
+                              "tag": "h2",
+                              "value": "Houthis say they targeted Saudi capital with ballistic missiles"
+                            }
                           ]
                         }
                       ]
@@ -911,7 +1365,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/business"],
-                      "texts": ["Business"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "Business"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -920,8 +1379,14 @@
                             "https://www.bbc.com/news/articles/crq5x74yv6dxo"
                           ],
                           "texts": [
-                            "Will you get £13,000 a year when you stop working? Here's how to check",
-                            "How to find out how much state pension you're likely to receive - and what you can do about it now."
+                            {
+                              "tag": "h2",
+                              "value": "Will you get £13,000 a year when you stop working? Here's how to check"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "How to find out how much state pension you're likely to receive - and what you can do about it now."
+                            }
                           ],
                           "images": [
                             {
@@ -938,7 +1403,10 @@
                             "https://www.bbc.com/news/articles/cqlykr2vrv04o"
                           ],
                           "texts": [
-                            "Trump says US will form 'AI Force' and appoint an artificial intelligence tsar"
+                            {
+                              "tag": "h2",
+                              "value": "Trump says US will form 'AI Force' and appoint an artificial intelligence tsar"
+                            }
                           ]
                         },
                         {
@@ -946,7 +1414,10 @@
                             "https://www.bbc.com/news/articles/c607l0k72rlvo"
                           ],
                           "texts": [
-                            "Google's Gemini AI hacked three companies in security test"
+                            {
+                              "tag": "h2",
+                              "value": "Google's Gemini AI hacked three companies in security test"
+                            }
                           ]
                         },
                         {
@@ -954,7 +1425,10 @@
                             "https://www.bbc.com/news/articles/cq0m3gmv8n7ko"
                           ],
                           "texts": [
-                            "'We simply don't know': JP Morgan struggling to forecast oil prices due to Trump's war with Iran"
+                            {
+                              "tag": "h2",
+                              "value": "'We simply don't know': JP Morgan struggling to forecast oil prices due to Trump's war with Iran"
+                            }
                           ]
                         }
                       ]
@@ -965,7 +1439,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/technology"],
-                      "texts": ["Technology"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "Technology"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -974,8 +1453,14 @@
                             "https://www.bbc.com/news/videos/c8p3020ge51ko"
                           ],
                           "texts": [
-                            "Could AI wipe out humans and how might that happen?",
-                            "Cyber Correspondent Joe Tidy looks at some of the scenarios being imagined and assesses how likely they are."
+                            {
+                              "tag": "h2",
+                              "value": "Could AI wipe out humans and how might that happen?"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Cyber Correspondent Joe Tidy looks at some of the scenarios being imagined and assesses how likely they are."
+                            }
                           ],
                           "images": [
                             {
@@ -992,7 +1477,10 @@
                             "https://www.bbc.com/news/articles/cw5y4jz6k2p3o"
                           ],
                           "texts": [
-                            "I found love at an Irish matchmaking festival - and I want others to do the same"
+                            {
+                              "tag": "h2",
+                              "value": "I found love at an Irish matchmaking festival - and I want others to do the same"
+                            }
                           ]
                         },
                         {
@@ -1000,7 +1488,10 @@
                             "https://www.bbc.com/news/videos/cm9w4nenzv4no"
                           ],
                           "texts": [
-                            "Would Australians support a smart glasses ban?"
+                            {
+                              "tag": "h2",
+                              "value": "Would Australians support a smart glasses ban?"
+                            }
                           ]
                         },
                         {
@@ -1008,7 +1499,10 @@
                             "https://www.bbc.com/news/articles/c79g0j3d4q9o"
                           ],
                           "texts": [
-                            "The virtual worlds where robots are trained"
+                            {
+                              "tag": "h2",
+                              "value": "The virtual worlds where robots are trained"
+                            }
                           ]
                         }
                       ]
@@ -1023,15 +1517,26 @@
           "children": [
             {
               "links": ["https://www.bbc.com/audio/category/sport"],
-              "texts": ["Latest Sport Audio"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Latest Sport Audio"
+                }
+              ]
             },
             {
               "children": [
                 {
                   "links": ["https://www.bbc.com/audio/play/m00321lw"],
                   "texts": [
-                    "Football Daily",
-                    "PL Review: Man Utd Struggle & Brighton Sensational"
+                    {
+                      "tag": "h2",
+                      "value": "Football Daily"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "PL Review: Man Utd Struggle & Brighton Sensational"
+                    }
                   ],
                   "images": [
                     {
@@ -1046,8 +1551,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0pbm3cg"],
                   "texts": [
-                    "BBC Women's Football Weekly",
-                    "The Football Interview with Michele Kang"
+                    {
+                      "tag": "h2",
+                      "value": "BBC Women's Football Weekly"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "The Football Interview with Michele Kang"
+                    }
                   ],
                   "images": [
                     {
@@ -1062,8 +1573,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0pbl168"],
                   "texts": [
-                    "Test Match Special",
-                    "“Beat the Aussies” is goal for Fleming"
+                    {
+                      "tag": "h2",
+                      "value": "Test Match Special"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "“Beat the Aussies” is goal for Fleming"
+                    }
                   ],
                   "images": [
                     {
@@ -1078,8 +1595,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0p9wjcq"],
                   "texts": [
-                    "Football Daily",
-                    "Alexander Isak - The Football Interview"
+                    {
+                      "tag": "h2",
+                      "value": "Football Daily"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Alexander Isak - The Football Interview"
+                    }
                   ],
                   "images": [
                     {
@@ -1093,7 +1616,16 @@
                 },
                 {
                   "links": ["https://www.bbc.com/audio/play/w3ct9970"],
-                  "texts": ["Not by the Playbook", "To the extreme"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Not by the Playbook"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "To the extreme"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
@@ -1106,7 +1638,16 @@
                 },
                 {
                   "links": ["https://www.bbc.com/audio/play/m0032gcn"],
-                  "texts": ["Football Daily", "The Commentators' View"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Football Daily"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "The Commentators' View"
+                    }
+                  ],
                   "images": [
                     {
                       "url": "https://static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
@@ -1120,8 +1661,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0pb68mn"],
                   "texts": [
-                    "Test Match Special",
-                    "Explosive England seal T20 series against Sri Lanka"
+                    {
+                      "tag": "h2",
+                      "value": "Test Match Special"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Explosive England seal T20 series against Sri Lanka"
+                    }
                   ],
                   "images": [
                     {
@@ -1136,8 +1683,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0pb23sn"],
                   "texts": [
-                    "F1: Chequered Flag",
-                    "Chequered Flag Extra: Verstappen vs 100 Go-Karts"
+                    {
+                      "tag": "h2",
+                      "value": "F1: Chequered Flag"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Chequered Flag Extra: Verstappen vs 100 Go-Karts"
+                    }
                   ],
                   "images": [
                     {
@@ -1152,8 +1705,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0p9zll2"],
                   "texts": [
-                    "Rugby Union Weekly",
-                    "Prem Players Special: Fin Smith, LRZ, JVP & more!"
+                    {
+                      "tag": "h2",
+                      "value": "Rugby Union Weekly"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Prem Players Special: Fin Smith, LRZ, JVP & more!"
+                    }
                   ],
                   "images": [
                     {
@@ -1168,8 +1727,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0p9zfpn"],
                   "texts": [
-                    "Football Daily",
-                    "Manchester United’s latest nightmare & Sunderland shine in Europe – 5 Live reaction"
+                    {
+                      "tag": "h2",
+                      "value": "Football Daily"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "Manchester United’s latest nightmare & Sunderland shine in Europe – 5 Live reaction"
+                    }
                   ],
                   "images": [
                     {
@@ -1184,8 +1749,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0p9vfnw"],
                   "texts": [
-                    "Test Match Special",
-                    "View from the Boundary - Count Binface aka Jon Harvey."
+                    {
+                      "tag": "h2",
+                      "value": "Test Match Special"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "View from the Boundary - Count Binface aka Jon Harvey."
+                    }
                   ],
                   "images": [
                     {
@@ -1200,8 +1771,14 @@
                 {
                   "links": ["https://www.bbc.com/audio/play/p0p9rd63"],
                   "texts": [
-                    "More than the Score",
-                    "US tennis: Can Ben Shelton's generation claim men's Grand Slam glory?"
+                    {
+                      "tag": "h2",
+                      "value": "More than the Score"
+                    },
+                    {
+                      "tag": "h3",
+                      "value": "US tennis: Can Ben Shelton's generation claim men's Grand Slam glory?"
+                    }
                   ],
                   "images": [
                     {
@@ -1225,7 +1802,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/sport"],
-                      "texts": ["Sport"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "Sport"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -1234,8 +1816,14 @@
                             "https://www.bbc.com/sport/football/articles/c6m27p9e24zno"
                           ],
                           "texts": [
-                            "Mourinho prints out 'red card' incidents after Real lose derby",
-                            "Real Madrid manager Jose Mourinho prints out screenshots displaying two incidents he believes should have resulted in Atletico Madrid dismissals."
+                            {
+                              "tag": "h2",
+                              "value": "Mourinho prints out 'red card' incidents after Real lose derby"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Real Madrid manager Jose Mourinho prints out screenshots displaying two incidents he believes should have resulted in Atletico Madrid dismissals."
+                            }
                           ],
                           "images": [
                             {
@@ -1252,7 +1840,10 @@
                             "https://www.bbc.com/sport/football/articles/cmly4pe6yrqzo"
                           ],
                           "texts": [
-                            "Neville calls Man Utd 'pathetic' - but Carrick maintains belief"
+                            {
+                              "tag": "h2",
+                              "value": "Neville calls Man Utd 'pathetic' - but Carrick maintains belief"
+                            }
                           ]
                         },
                         {
@@ -1260,7 +1851,10 @@
                             "https://www.bbc.com/sport/football/articles/c6z7z2we5lgwo"
                           ],
                           "texts": [
-                            "Perfect 24 hours as Man City put pressure on Arsenal"
+                            {
+                              "tag": "h2",
+                              "value": "Perfect 24 hours as Man City put pressure on Arsenal"
+                            }
                           ]
                         },
                         {
@@ -1268,7 +1862,10 @@
                             "https://www.bbc.com/sport/football/articles/c317j2lzg8rdo"
                           ],
                           "texts": [
-                            "Rangers look like they know where they want to go - Celtic just look lost"
+                            {
+                              "tag": "h2",
+                              "value": "Rangers look like they know where they want to go - Celtic just look lost"
+                            }
                           ]
                         }
                       ]
@@ -1279,7 +1876,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/health"],
-                      "texts": ["Health"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "Health"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -1288,8 +1890,14 @@
                             "https://www.bbc.com/future/article/20260911-four-30-second-habits-that-could-make-you-calmer"
                           ],
                           "texts": [
-                            "The 30-second habits to lift your mood and relieve stress",
-                            "If you're feeling overwhelmed, consider taking part in short simple \"micropractices\" to improve your wellbeing."
+                            {
+                              "tag": "h2",
+                              "value": "The 30-second habits to lift your mood and relieve stress"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "If you're feeling overwhelmed, consider taking part in short simple \"micropractices\" to improve your wellbeing."
+                            }
                           ],
                           "images": [
                             {
@@ -1306,7 +1914,10 @@
                             "https://www.bbc.com/future/article/20260911-should-you-try-to-catch-up-on-sleep-at-the-weekend"
                           ],
                           "texts": [
-                            "Here's how to catch up on sleep, the right way"
+                            {
+                              "tag": "h2",
+                              "value": "Here's how to catch up on sleep, the right way"
+                            }
                           ]
                         },
                         {
@@ -1314,7 +1925,10 @@
                             "https://www.bbc.com/future/article/20260904-how-getting-your-hands-dirty-boosts-your-health-within-weeks"
                           ],
                           "texts": [
-                            "Why getting your hands dirty is good for you"
+                            {
+                              "tag": "h2",
+                              "value": "Why getting your hands dirty is good for you"
+                            }
                           ]
                         },
                         {
@@ -1322,7 +1936,10 @@
                             "https://www.bbc.com/future/article/20260904-how-to-future-proof-your-wrists"
                           ],
                           "texts": [
-                            "Modern life is ruining our wrists. We can do something about it"
+                            {
+                              "tag": "h2",
+                              "value": "Modern life is ruining our wrists. We can do something about it"
+                            }
                           ]
                         }
                       ]
@@ -1337,7 +1954,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/culture"],
-                      "texts": ["Culture"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "Culture"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -1346,8 +1968,14 @@
                             "https://www.bbc.com/news/articles/cmzxz260020qo"
                           ],
                           "texts": [
-                            "Kelsey Parker welcomes baby after 'devastating' stillbirth last year",
-                            "The widow of The Wanted singer Tom Parker has given birth after last year announcing the \"devastating\" loss of a stillborn baby."
+                            {
+                              "tag": "h2",
+                              "value": "Kelsey Parker welcomes baby after 'devastating' stillbirth last year"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "The widow of The Wanted singer Tom Parker has given birth after last year announcing the \"devastating\" loss of a stillborn baby."
+                            }
                           ],
                           "images": [
                             {
@@ -1364,7 +1992,10 @@
                             "https://www.bbc.com/news/articles/c6n4523ge3n9o"
                           ],
                           "texts": [
-                            "Bergerac director finds Jersey a real revelation"
+                            {
+                              "tag": "h2",
+                              "value": "Bergerac director finds Jersey a real revelation"
+                            }
                           ]
                         },
                         {
@@ -1372,7 +2003,10 @@
                             "https://www.bbc.com/news/articles/czxz0zq9y6do"
                           ],
                           "texts": [
-                            "Sex and dating for the sandwich generation - Sharon Horgan on her latest comedy Youth"
+                            {
+                              "tag": "h2",
+                              "value": "Sex and dating for the sandwich generation - Sharon Horgan on her latest comedy Youth"
+                            }
                           ]
                         },
                         {
@@ -1380,7 +2014,10 @@
                             "https://www.bbc.com/news/articles/c64g7wm0pyw9o"
                           ],
                           "texts": [
-                            "How Queen perfected trademark harmonies in a cave"
+                            {
+                              "tag": "h2",
+                              "value": "How Queen perfected trademark harmonies in a cave"
+                            }
                           ]
                         }
                       ]
@@ -1391,7 +2028,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/travel"],
-                      "texts": ["Travel"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "Travel"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -1400,8 +2042,14 @@
                             "https://www.bbc.com/travel/article/20260917-why-monty-python-star-eric-idle-escaped-to-france"
                           ],
                           "texts": [
-                            "Why Monty Python star Eric Idle escaped to France",
-                            "The Monty Python star bought a shack in Provence in 1972. Here's how he spent the next 55 years making it his refuge from fame – and how it somehow became a celebrity retreat."
+                            {
+                              "tag": "h2",
+                              "value": "Why Monty Python star Eric Idle escaped to France"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "The Monty Python star bought a shack in Provence in 1972. Here's how he spent the next 55 years making it his refuge from fame – and how it somehow became a celebrity retreat."
+                            }
                           ],
                           "images": [
                             {
@@ -1418,7 +2066,10 @@
                             "https://www.bbc.com/travel/article/20260915-scrimshaw-the-controversial-art-form-on-the-brink-of-extinction"
                           ],
                           "texts": [
-                            "Scrimshaw: The controversial art form on the brink of extinction"
+                            {
+                              "tag": "h2",
+                              "value": "Scrimshaw: The controversial art form on the brink of extinction"
+                            }
                           ]
                         },
                         {
@@ -1426,7 +2077,10 @@
                             "https://www.bbc.com/travel/article/20260911-what-locals-wish-visitors-knew-about-hawaii"
                           ],
                           "texts": [
-                            "'Aloha is more than a word we say': What locals wish visitors knew about Hawaii"
+                            {
+                              "tag": "h2",
+                              "value": "'Aloha is more than a word we say': What locals wish visitors knew about Hawaii"
+                            }
                           ]
                         },
                         {
@@ -1434,7 +2088,10 @@
                             "https://www.bbc.com/travel/article/20260911-why-visitors-to-prague-should-drink-in-a-traditional-pub"
                           ],
                           "texts": [
-                            "In this corner of Prague, the beer keeps coming until you say stop"
+                            {
+                              "tag": "h2",
+                              "value": "In this corner of Prague, the beer keeps coming until you say stop"
+                            }
                           ]
                         }
                       ]
@@ -1449,7 +2106,12 @@
           "children": [
             {
               "links": ["https://www.bbc.com/video"],
-              "texts": ["Watch"]
+              "texts": [
+                {
+                  "tag": "h2",
+                  "value": "Watch"
+                }
+              ]
             },
             {
               "links": [
@@ -1457,9 +2119,18 @@
                 "https://www.bbc.com/reel/video/p0p515ww/watch"
               ],
               "texts": [
-                "Stunning bird photography in the 'owl capital' of Europe",
-                "Budapest-based wildlife photographer Manó Aliczki shares his top tips for taking amazing shots of birds.",
-                "See more"
+                {
+                  "tag": "h2",
+                  "value": "Stunning bird photography in the 'owl capital' of Europe"
+                },
+                {
+                  "tag": "div",
+                  "value": "Budapest-based wildlife photographer Manó Aliczki shares his top tips for taking amazing shots of birds."
+                },
+                {
+                  "tag": "span",
+                  "value": "See more"
+                }
               ],
               "images": [
                 {
@@ -1481,7 +2152,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/arts"],
-                      "texts": ["Arts"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "Arts"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -1490,8 +2166,14 @@
                             "https://www.bbc.com/culture/article/20260910-the-extraordinary-story-of-barbara-cartland-the-forgotten-billions-selling-romance-author"
                           ],
                           "texts": [
-                            "She sold millions of romance novels. Why has Barbara Cartland been forgotten?",
-                            "Barbara Cartland was outsold only by Shakespeare and Agatha Christie. So why has the UK's master of romantic fiction disappeared from memory?"
+                            {
+                              "tag": "h2",
+                              "value": "She sold millions of romance novels. Why has Barbara Cartland been forgotten?"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Barbara Cartland was outsold only by Shakespeare and Agatha Christie. So why has the UK's master of romantic fiction disappeared from memory?"
+                            }
                           ],
                           "images": [
                             {
@@ -1508,7 +2190,10 @@
                             "https://www.bbc.com/culture/article/20250326-why-the-quaint-paintings-of-thomas-kinkade-divided-the-us"
                           ],
                           "texts": [
-                            "The dark side of the US's most divisive painter"
+                            {
+                              "tag": "h2",
+                              "value": "The dark side of the US's most divisive painter"
+                            }
                           ]
                         },
                         {
@@ -1516,14 +2201,22 @@
                             "https://www.bbc.com/culture/article/20260909-how-the-obscenity-trial-against-1950s-poem-howl-reshaped-us-free-speech"
                           ],
                           "texts": [
-                            "How the 'obscene' Allen Ginsberg poem Howl outraged Cold War US"
+                            {
+                              "tag": "h2",
+                              "value": "How the 'obscene' Allen Ginsberg poem Howl outraged Cold War US"
+                            }
                           ]
                         },
                         {
                           "links": [
                             "https://www.bbc.com/reel/video/p0816p3b/watch"
                           ],
-                          "texts": ["The secret lives of Yakuza women"]
+                          "texts": [
+                            {
+                              "tag": "h2",
+                              "value": "The secret lives of Yakuza women"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1533,7 +2226,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/future-planet"],
-                      "texts": ["Earth"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "Earth"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -1542,8 +2240,14 @@
                             "https://www.bbc.com/future/article/20260917-the-moment-the-world-discovered-whales-sing"
                           ],
                           "texts": [
-                            "A 'haunting voice from the deep': The moment the world discovered whales sing",
-                            "A series of discoveries in the 1950s, 60s and 70s overturned everything we knew about whales, propelling them into human culture as the charismatic animals we know today."
+                            {
+                              "tag": "h2",
+                              "value": "A 'haunting voice from the deep': The moment the world discovered whales sing"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "A series of discoveries in the 1950s, 60s and 70s overturned everything we knew about whales, propelling them into human culture as the charismatic animals we know today."
+                            }
                           ],
                           "images": [
                             {
@@ -1560,7 +2264,10 @@
                             "https://www.bbc.com/future/article/20260915-to-save-scarlet-macaws-scientists-are-rescuing-chicks-from-their-lethal-parents"
                           ],
                           "texts": [
-                            "Scarlet macaws starve the chicks that hatch last. Scientists have a rescue plan"
+                            {
+                              "tag": "h2",
+                              "value": "Scarlet macaws starve the chicks that hatch last. Scientists have a rescue plan"
+                            }
                           ]
                         },
                         {
@@ -1568,7 +2275,10 @@
                             "https://www.bbc.com/future/article/20260911-10-of-the-most-striking-ocean-images-of-2026"
                           ],
                           "texts": [
-                            "10 of the most striking ocean images of 2026"
+                            {
+                              "tag": "h2",
+                              "value": "10 of the most striking ocean images of 2026"
+                            }
                           ]
                         },
                         {
@@ -1576,7 +2286,10 @@
                             "https://www.bbc.com/future/article/20260909-the-quest-to-save-turkeys-lake-of-birds"
                           ],
                           "texts": [
-                            "Four out of five lakes in Turkey have dried up. What happens to the birds?​"
+                            {
+                              "tag": "h2",
+                              "value": "Four out of five lakes in Turkey have dried up. What happens to the birds?​"
+                            }
                           ]
                         }
                       ]
@@ -1591,7 +2304,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/video"],
-                      "texts": ["Video"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "Video"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -1600,8 +2318,14 @@
                             "https://www.bbc.com/reel/video/p0nyl4zp/watch"
                           ],
                           "texts": [
-                            "How fruit flies led to a discovery about our body clock",
-                            "A chronobiologist explains how his Nobel Prize-winning research uncovered the secrets of our biological clock."
+                            {
+                              "tag": "h2",
+                              "value": "How fruit flies led to a discovery about our body clock"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "A chronobiologist explains how his Nobel Prize-winning research uncovered the secrets of our biological clock."
+                            }
                           ],
                           "images": [
                             {
@@ -1618,7 +2342,10 @@
                             "https://www.bbc.com/reel/video/p0p61r70/watch"
                           ],
                           "texts": [
-                            "Aboard one of Poland's iconic search-and-rescue ships"
+                            {
+                              "tag": "h2",
+                              "value": "Aboard one of Poland's iconic search-and-rescue ships"
+                            }
                           ]
                         },
                         {
@@ -1626,7 +2353,10 @@
                             "https://www.bbc.com/reel/video/p0nrh71j/watch"
                           ],
                           "texts": [
-                            "This robot dog patrols greenhouses to protect plants"
+                            {
+                              "tag": "h2",
+                              "value": "This robot dog patrols greenhouses to protect plants"
+                            }
                           ]
                         },
                         {
@@ -1634,7 +2364,10 @@
                             "https://www.bbc.com/reel/video/p0p518sh/watch"
                           ],
                           "texts": [
-                            "Photographing the vast wildlife of Yellowstone"
+                            {
+                              "tag": "h2",
+                              "value": "Photographing the vast wildlife of Yellowstone"
+                            }
                           ]
                         }
                       ]
@@ -1645,7 +2378,12 @@
                   "children": [
                     {
                       "links": ["https://www.bbc.com/travel/worlds-table"],
-                      "texts": ["World's Table"]
+                      "texts": [
+                        {
+                          "tag": "h2",
+                          "value": "World's Table"
+                        }
+                      ]
                     },
                     {
                       "children": [
@@ -1654,8 +2392,14 @@
                             "https://www.bbc.com/travel/article/20260811-the-supermarket-is-becoming-a-tourist-attraction"
                           ],
                           "texts": [
-                            "Why travellers are obsessed with foreign supermarkets",
-                            "From Tokyo egg sandwiches to Greek dairy aisles, supermarket aisles are becoming one of travel's most revealing and beloved experiences."
+                            {
+                              "tag": "h2",
+                              "value": "Why travellers are obsessed with foreign supermarkets"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "From Tokyo egg sandwiches to Greek dairy aisles, supermarket aisles are becoming one of travel's most revealing and beloved experiences."
+                            }
                           ],
                           "images": [
                             {
@@ -1672,7 +2416,10 @@
                             "https://www.bbc.com/travel/article/20260807-the-five-meals-andrew-zimmern-will-never-forget"
                           ],
                           "texts": [
-                            "The five meals Andrew Zimmern will never forget"
+                            {
+                              "tag": "h2",
+                              "value": "The five meals Andrew Zimmern will never forget"
+                            }
                           ]
                         },
                         {
@@ -1680,7 +2427,10 @@
                             "https://www.bbc.com/travel/article/20260731-why-estonians-invite-strangers-into-their-backyards-each-summer"
                           ],
                           "texts": [
-                            "Why Estonians invite strangers into their back yards each summer"
+                            {
+                              "tag": "h2",
+                              "value": "Why Estonians invite strangers into their back yards each summer"
+                            }
                           ]
                         },
                         {
@@ -1688,7 +2438,10 @@
                             "https://www.bbc.com/travel/article/20260714-nonnamaxxing-tourists-are-paying-to-travel-like-grandmothers"
                           ],
                           "texts": [
-                            "'NonnaMaxxing': Tourists are paying to travel like grandmothers"
+                            {
+                              "tag": "h2",
+                              "value": "'NonnaMaxxing': Tourists are paying to travel like grandmothers"
+                            }
                           ]
                         }
                       ]
@@ -1705,10 +2458,22 @@
             "https://www.bbc.com/newsletters?at_bbc_team=studios&at_medium=onsite&at_objective=acquisition&at_ptr_name=bbc.com&at_format=placement&at_link_origin=homepage&at_campaign=newsletters&at_campaign_type=owned&no_app=1"
           ],
           "texts": [
-            "Discover more from the BBC",
-            "The best of the BBC, delivered to you",
-            "Get news and insights with BBC newsletters, sent direct to your inbox. Sign up for free.",
-            "See more"
+            {
+              "tag": "h2",
+              "value": "Discover more from the BBC"
+            },
+            {
+              "tag": "h2",
+              "value": "The best of the BBC, delivered to you"
+            },
+            {
+              "tag": "div",
+              "value": "Get news and insights with BBC newsletters, sent direct to your inbox. Sign up for free."
+            },
+            {
+              "tag": "span",
+              "value": "See more"
+            }
           ],
           "images": [
             {
@@ -1727,8 +2492,14 @@
                 "http://www.bbc.com/newsletters?RoyalWatch&at_bbc_team=studios&at_medium=onsite&at_objective=acquisition&at_ptr_name=bbc.com&at_format=carousel&at_link_origin=homepage&at_campaign=royalwatch&at_campaign_type=owned&no_app=1"
               ],
               "texts": [
-                "Royal Watch",
-                "The full story on the British Royal Family, in your inbox every Thursday."
+                {
+                  "tag": "h2",
+                  "value": "Royal Watch"
+                },
+                {
+                  "tag": "p",
+                  "value": "The full story on the British Royal Family, in your inbox every Thursday."
+                }
               ],
               "images": [
                 {
@@ -1745,8 +2516,14 @@
                 "https://www.bbc.com/newsletters?howtosleepbetter&at_bbc_team=studios&at_medium=onsite&at_objective=acquisition&at_ptr_name=bbc.com&at_format=placement&at_link_origin=homepage&at_campaign=htsleepb&at_campaign_type=owned&no_app=1"
               ],
               "texts": [
-                "How to Sleep Better",
-                "Wake up rested and feel more alert, with expert tips to improve your sleep in a six-part course."
+                {
+                  "tag": "h2",
+                  "value": "How to Sleep Better"
+                },
+                {
+                  "tag": "p",
+                  "value": "Wake up rested and feel more alert, with expert tips to improve your sleep in a six-part course."
+                }
               ],
               "images": [
                 {
@@ -1763,8 +2540,14 @@
                 "http://www.bbc.com/newsletters?WorldOfBusiness&at_bbc_team=studios&at_medium=onsite&at_objective=acquisition&at_ptr_name=bbc.com&at_format=carousel&at_link_origin=homepage&at_campaign=wob&at_campaign_type=owned&no_app=1"
               ],
               "texts": [
-                "Sign up to World of Business",
-                "Gain the leading edge with global insights for the boardroom and beyond, in your inbox every Wednesday."
+                {
+                  "tag": "h2",
+                  "value": "Sign up to World of Business"
+                },
+                {
+                  "tag": "p",
+                  "value": "Gain the leading edge with global insights for the boardroom and beyond, in your inbox every Wednesday."
+                }
               ],
               "images": [
                 {
@@ -1781,8 +2564,14 @@
                 "http://www.bbc.com/newsletters?TheEssentialList&at_bbc_team=studios&at_medium=onsite&at_objective=acquisition&at_ptr_name=bbc.com&at_format=carousel&at_link_origin=homepage&at_campaign=essentiallist&at_campaign_type=owned&no_app=1"
               ],
               "texts": [
-                "Get The Essential List",
-                "The week's best stories, handpicked by BBC editors, in your inbox every Tuesday and Friday."
+                {
+                  "tag": "h2",
+                  "value": "Get The Essential List"
+                },
+                {
+                  "tag": "p",
+                  "value": "The week's best stories, handpicked by BBC editors, in your inbox every Tuesday and Friday."
+                }
               ],
               "images": [
                 {
@@ -1799,8 +2588,14 @@
                 "https://www.britbox.com/?utm_source=bbc.com&utm_medium=referral&utm_campaign=bottom-anchored-rail"
               ],
               "texts": [
-                "Stream the best of British TV",
-                "Endlessly entertaining. Delightfully different. Enjoy worlds of wit, mystery and drama with BritBox."
+                {
+                  "tag": "h2",
+                  "value": "Stream the best of British TV"
+                },
+                {
+                  "tag": "p",
+                  "value": "Endlessly entertaining. Delightfully different. Enjoy worlds of wit, mystery and drama with BritBox."
+                }
               ],
               "images": [
                 {
@@ -1815,8 +2610,14 @@
             {
               "links": ["https://www.bbc.com/video/docs"],
               "texts": [
-                "Watch Documentaries",
-                "Watch critically acclaimed and award-winning documentaries from the BBC, including History, Nature, True Crime and more."
+                {
+                  "tag": "h2",
+                  "value": "Watch Documentaries"
+                },
+                {
+                  "tag": "p",
+                  "value": "Watch critically acclaimed and award-winning documentaries from the BBC, including History, Nature, True Crime and more."
+                }
               ],
               "images": [
                 {
@@ -1831,8 +2632,14 @@
             {
               "links": ["https://www.bbc.com/pages/download-the-bbc-app"],
               "texts": [
-                "Download the BBC app",
-                "Click here to download the BBC app for Apple and Android devices."
+                {
+                  "tag": "h2",
+                  "value": "Download the BBC app"
+                },
+                {
+                  "tag": "p",
+                  "value": "Click here to download the BBC app for Apple and Android devices."
+                }
               ],
               "images": [
                 {
@@ -1849,8 +2656,14 @@
                 "https://session.bbc.com/session?userOrigin=BBCS_BBC&ptrt=https%3A%2F%2Fwww.bbc.com%2F"
               ],
               "texts": [
-                "Register for a BBC account",
-                "Don't have time to read everything right now? Your BBC account lets you save articles and videos for later."
+                {
+                  "tag": "h2",
+                  "value": "Register for a BBC account"
+                },
+                {
+                  "tag": "p",
+                  "value": "Don't have time to read everything right now? Your BBC account lets you save articles and videos for later."
+                }
               ],
               "images": [
                 {

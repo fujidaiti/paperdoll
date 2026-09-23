@@ -1,10 +1,21 @@
 {
-  "texts": ["Skip to main content"],
+  "texts": [
+    {
+      "tag": "a",
+      "value": "Skip to main content"
+    }
+  ],
   "children": [
     {
       "texts": [
-        "News",
-        "Discover our latest AI breakthroughs, projects, and updates"
+        {
+          "tag": "h1",
+          "value": "News"
+        },
+        {
+          "tag": "p",
+          "value": "Discover our latest AI breakthroughs, projects, and updates"
+        }
       ],
       "children": [
         {
@@ -17,10 +28,23 @@
                     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
                   ],
                   "texts": [
-                    "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
-                    "September 2026",
-                    "Models",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "September 2026",
+                      "datetime": "September 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Models"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -39,10 +63,23 @@
                         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/"
                       ],
                       "texts": [
-                        "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
-                        "September 2026",
-                        "Models",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "September 2026",
+                          "datetime": "September 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Models"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -59,10 +96,23 @@
                         "https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/"
                       ],
                       "texts": [
-                        "AlphaGenome Atlas: A predictive map of every possible DNA letter change in the human genome",
-                        "September 2026",
-                        "Science",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "AlphaGenome Atlas: A predictive map of every possible DNA letter change in the human genome"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "September 2026",
+                          "datetime": "September 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Science"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -76,10 +126,23 @@
                         "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-weathernext-3/"
                       ],
                       "texts": [
-                        "Introducing WeatherNext 3, our most advanced and accurate global weather AI model",
-                        "September 2026",
-                        "Science",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "Introducing WeatherNext 3, our most advanced and accurate global weather AI model"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "September 2026",
+                          "datetime": "September 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Science"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -93,10 +156,23 @@
                         "https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/"
                       ],
                       "texts": [
-                        "Proactive cyber defense for governments and enterprises",
-                        "September 2026",
-                        "Models",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "Proactive cyber defense for governments and enterprises"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "September 2026",
+                          "datetime": "September 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Models"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -113,10 +189,23 @@
                         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini/"
                       ],
                       "texts": [
-                        "Introducing agentic video understanding with Gemini",
-                        "September 2026",
-                        "Models",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "Introducing agentic video understanding with Gemini"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "September 2026",
+                          "datetime": "September 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Models"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -133,10 +222,23 @@
                         "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/"
                       ],
                       "texts": [
-                        "Gemini Omni 1.1 Flash lets you build with more control",
-                        "August 2026",
-                        "Models",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "Gemini Omni 1.1 Flash lets you build with more control"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 2026",
+                          "datetime": "August 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Models"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -153,10 +255,23 @@
                         "https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/"
                       ],
                       "texts": [
-                        "Piloting the world's first double-blind AI evaluations",
-                        "August 2026",
-                        "Responsibility & Safety",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "Piloting the world's first double-blind AI evaluations"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 2026",
+                          "datetime": "August 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Responsibility & Safety"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -170,9 +285,19 @@
                         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe/"
                       ],
                       "texts": [
-                        "Intelligent transcription with Gemini 3.5 Transcribe",
-                        "August 2026",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "Intelligent transcription with Gemini 3.5 Transcribe"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 2026",
+                          "datetime": "August 2026"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -189,10 +314,23 @@
                         "https://deepmind.google/blog/from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games/"
                       ],
                       "texts": [
-                        "From Atari to EVE Online: Building on 15 Years of AI Research in Games",
-                        "August 2026",
-                        "Research",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "From Atari to EVE Online: Building on 15 Years of AI Research in Games"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 2026",
+                          "datetime": "August 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Research"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -206,10 +344,23 @@
                         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/"
                       ],
                       "texts": [
-                        "Introducing Gemini 3.7 Flash",
-                        "August 2026",
-                        "Models",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "Introducing Gemini 3.7 Flash"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 2026",
+                          "datetime": "August 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Models"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -226,10 +377,23 @@
                         "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands/"
                       ],
                       "texts": [
-                        "Putting sign language AI into users’ hands",
-                        "August 2026",
-                        "Models",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "Putting sign language AI into users’ hands"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 2026",
+                          "datetime": "August 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Models"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -243,10 +407,23 @@
                         "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/"
                       ],
                       "texts": [
-                        "WeatherNext: AI model achieves breakthrough in forecasting cyclones",
-                        "August 2026",
-                        "Science",
-                        "Learn more"
+                        {
+                          "tag": "h3",
+                          "value": "WeatherNext: AI model achieves breakthrough in forecasting cyclones"
+                        },
+                        {
+                          "tag": "time",
+                          "value": "August 2026",
+                          "datetime": "August 2026"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Science"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "Learn more"
+                        }
                       ],
                       "images": [
                         {
@@ -266,10 +443,23 @@
                     "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
                   ],
                   "texts": [
-                    "Gemini Robotics ER 2: powering robotics with video understanding, task orchestration, and multi-robot collaboration",
-                    "July 2026",
-                    "Models",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Gemini Robotics ER 2: powering robotics with video understanding, task orchestration, and multi-robot collaboration"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "July 2026",
+                      "datetime": "July 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Models"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -286,10 +476,23 @@
                     "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/"
                   ],
                   "texts": [
-                    "Gemini Robotics 2 brings whole body intelligence to robots",
-                    "July 2026",
-                    "Models",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Gemini Robotics 2 brings whole body intelligence to robots"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "July 2026",
+                      "datetime": "July 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Models"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -306,10 +509,23 @@
                     "https://blog.google/innovation-and-ai/models-and-research/google-labs/lyria-3-5/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
                   ],
                   "texts": [
-                    "We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control",
-                    "July 2026",
-                    "Models",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "July 2026",
+                      "datetime": "July 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Models"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -326,9 +542,19 @@
                     "https://cloud.google.com/blog/topics/public-sector/accelerating-frontiers-of-scientific-discovery-40-million-dollar-commitment-genesis-mission"
                   ],
                   "texts": [
-                    "Accelerating the frontiers of scientific discovery: Google’s $40M commitment to the Genesis Mission",
-                    "July 2026",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Accelerating the frontiers of scientific discovery: Google’s $40M commitment to the Genesis Mission"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "July 2026",
+                      "datetime": "July 2026"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -342,10 +568,23 @@
                     "https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber/"
                   ],
                   "texts": [
-                    "Introducing Gemini 3.5 Flash Cyber",
-                    "July 2026",
-                    "Models",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Introducing Gemini 3.5 Flash Cyber"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "July 2026",
+                      "datetime": "July 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Models"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -362,10 +601,23 @@
                     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
                   ],
                   "texts": [
-                    "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
-                    "July 2026",
-                    "Models",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "July 2026",
+                      "datetime": "July 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Models"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -382,10 +634,23 @@
                     "https://deepmind.google/blog/our-approach-to-bioresilience/"
                   ],
                   "texts": [
-                    "Our approach to bioresilience",
-                    "July 2026",
-                    "Responsibility & Safety",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Our approach to bioresilience"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "July 2026",
+                      "datetime": "July 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Responsibility & Safety"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -399,10 +664,23 @@
                     "https://deepmind.google/blog/empowering-indias-next-generation-of-innovators-with-atl-saathi/"
                   ],
                   "texts": [
-                    "Empowering India’s next generation of innovators with ATL Saathi",
-                    "July 2026",
-                    "Responsibility & Safety",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Empowering India’s next generation of innovators with ATL Saathi"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "July 2026",
+                      "datetime": "July 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Responsibility & Safety"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -416,10 +694,23 @@
                     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/"
                   ],
                   "texts": [
-                    "Start building with Nano Banana 2 Lite and Gemini Omni Flash",
-                    "June 2026",
-                    "Models",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Start building with Nano Banana 2 Lite and Gemini Omni Flash"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "June 2026",
+                      "datetime": "June 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Models"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -433,10 +724,23 @@
                     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
                   ],
                   "texts": [
-                    "Introducing computer use in Gemini 3.5 Flash",
-                    "June 2026",
-                    "Models",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Introducing computer use in Gemini 3.5 Flash"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "June 2026",
+                      "datetime": "June 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Models"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -453,10 +757,23 @@
                     "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/deepmind-a24-research-partnership/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
                   ],
                   "texts": [
-                    "Google DeepMind and A24 announce first-of-its-kind research partnership",
-                    "June 2026",
-                    "Company",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Google DeepMind and A24 announce first-of-its-kind research partnership"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "June 2026",
+                      "datetime": "June 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Company"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ]
                 },
                 {
@@ -465,10 +782,23 @@
                     "https://deepmind.google/blog/securing-the-future-of-ai-agents/"
                   ],
                   "texts": [
-                    "Securing the future of AI agents",
-                    "June 2026",
-                    "Responsibility & Safety",
-                    "Learn more"
+                    {
+                      "tag": "h3",
+                      "value": "Securing the future of AI agents"
+                    },
+                    {
+                      "tag": "time",
+                      "value": "June 2026",
+                      "datetime": "June 2026"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Responsibility & Safety"
+                    },
+                    {
+                      "tag": "div",
+                      "value": "Learn more"
+                    }
                   ],
                   "images": [
                     {
@@ -481,19 +811,43 @@
           ]
         },
         {
-          "texts": ["1", "…"],
+          "texts": [
+            {
+              "tag": "span",
+              "value": "1"
+            },
+            {
+              "tag": "span",
+              "value": "…"
+            }
+          ],
           "children": [
             {
               "links": ["https://deepmind.google/blog/page/2/"],
-              "texts": ["Page"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "Page"
+                }
+              ]
             },
             {
               "links": ["https://deepmind.google/blog/page/3/"],
-              "texts": ["Page"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "Page"
+                }
+              ]
             },
             {
               "links": ["https://deepmind.google/blog/page/19/"],
-              "texts": ["Page"]
+              "texts": [
+                {
+                  "tag": "span",
+                  "value": "Page"
+                }
+              ]
             },
             {
               "links": ["https://deepmind.google/blog/page/2/"]

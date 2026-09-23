@@ -7,13 +7,35 @@
             {
               "links": ["https://cursor.com/blog/joining-spacex"],
               "texts": [
-                "2026-08-14T12:00:00.000Z",
-                "Company",
-                "Cursor is now a part of SpaceX",
-                "Cursor has officially been acquired by SpaceX.",
-                "Cursor Team",
-                "2m",
-                "2 min read"
+                {
+                  "tag": "time",
+                  "value": "Aug 14, 2026",
+                  "datetime": "2026-08-14T12:00:00.000Z"
+                },
+                {
+                  "tag": "span",
+                  "value": "Company"
+                },
+                {
+                  "tag": "p",
+                  "value": "Cursor is now a part of SpaceX"
+                },
+                {
+                  "tag": "p",
+                  "value": "Cursor has officially been acquired by SpaceX."
+                },
+                {
+                  "tag": "span",
+                  "value": "Cursor Team"
+                },
+                {
+                  "tag": "span",
+                  "value": "2m"
+                },
+                {
+                  "tag": "span",
+                  "value": "2 min read"
+                }
               ],
               "images": [
                 {
@@ -27,13 +49,35 @@
                 {
                   "links": ["https://cursor.com/blog/grok-4-6"],
                   "texts": [
-                    "2026-08-12T00:00:00.000Z",
-                    "Research",
-                    "Introducing Grok 4.6",
-                    "Built for long-running agents and more ambitious interactive and visual work.",
-                    "Cursor Team",
-                    "3m",
-                    "3 min read"
+                    {
+                      "tag": "time",
+                      "value": "Aug 12, 2026",
+                      "datetime": "2026-08-12T00:00:00.000Z"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Research"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Introducing Grok 4.6"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Built for long-running agents and more ambitious interactive and visual work."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Cursor Team"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "3m"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "3 min read"
+                    }
                   ],
                   "images": [
                     {
@@ -45,13 +89,35 @@
                 {
                   "links": ["https://cursor.com/blog/git-at-any-scale"],
                   "texts": [
-                    "2026-08-18T12:00:00.000Z",
-                    "Research",
-                    "Git at any scale",
-                    "VM",
-                    "Vicent Martí",
-                    "27m",
-                    "27 min read"
+                    {
+                      "tag": "time",
+                      "value": "Aug 18, 2026",
+                      "datetime": "2026-08-18T12:00:00.000Z"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Research"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Git at any scale"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "VM"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Vicent Martí"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "27m"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "27 min read"
+                    }
                   ]
                 }
               ]
@@ -61,104 +127,285 @@
         {
           "children": [
             {
-              "texts": ["Blog"],
+              "texts": [
+                {
+                  "tag": "h1",
+                  "value": "Blog"
+                }
+              ],
               "children": [
                 {
                   "children": [
                     {
                       "links": ["https://cursor.com/blog/projects"],
                       "texts": [
-                        "2026-09-10T12:00:00.000Z",
-                        "product",
-                        "Introducing Projects",
-                        "Alexi & Fredrika",
-                        "5m",
-                        "Alexi & Fredrika",
-                        "5m"
+                        {
+                          "tag": "time",
+                          "value": "Sep 10, 2026",
+                          "datetime": "2026-09-10T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "product"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Introducing Projects"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Alexi & Fredrika"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "5m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Alexi & Fredrika"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "5m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/self-hosted-machines"],
                       "texts": [
-                        "2026-09-02T12:00:00.000Z",
-                        "product",
-                        "Run cloud agents on machines you manage",
-                        "Jack Pertschuk",
-                        "6m",
-                        "Jack Pertschuk",
-                        "6m"
+                        {
+                          "tag": "time",
+                          "value": "Sep 2, 2026",
+                          "datetime": "2026-09-02T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "product"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Run cloud agents on machines you manage"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Jack Pertschuk"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "6m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Jack Pertschuk"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "6m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/git-at-any-scale"],
                       "texts": [
-                        "2026-08-18T12:00:00.000Z",
-                        "research",
-                        "Git at any scale",
-                        "Vicent Martí",
-                        "27m",
-                        "Vicent Martí",
-                        "27m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 18, 2026",
+                          "datetime": "2026-08-18T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Git at any scale"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Vicent Martí"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "27m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Vicent Martí"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "27m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/joining-spacex"],
                       "texts": [
-                        "2026-08-14T12:00:00.000Z",
-                        "company",
-                        "Cursor is now a part of SpaceX",
-                        "Cursor Team",
-                        "2m",
-                        "Cursor Team",
-                        "2m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 14, 2026",
+                          "datetime": "2026-08-14T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "company"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Cursor is now a part of SpaceX"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "2m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "2m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/firetiger"],
                       "texts": [
-                        "2026-08-13T19:00:00.000Z",
-                        "company",
-                        "Firetiger joins Cursor",
-                        "Maxime Prades",
-                        "2m",
-                        "Maxime Prades",
-                        "2m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 13, 2026",
+                          "datetime": "2026-08-13T19:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "company"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Firetiger joins Cursor"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Maxime Prades"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "2m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Maxime Prades"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "2m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/aiuc-1"],
                       "texts": [
-                        "2026-08-13T12:00:00.000Z",
-                        "company",
-                        "Cursor earns AIUC-1 certification for agent security and reliability",
-                        "Kenneth Moras",
-                        "4m",
-                        "Kenneth Moras",
-                        "4m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 13, 2026",
+                          "datetime": "2026-08-13T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "company"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Cursor earns AIUC-1 certification for agent security and reliability"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Kenneth Moras"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "4m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Kenneth Moras"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "4m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/builds"],
                       "texts": [
-                        "2026-08-13T12:00:00.000Z",
-                        "product",
-                        "Cloud agents start 3x faster with builds",
-                        "Cursor Team",
-                        "4m",
-                        "Cursor Team",
-                        "4m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 13, 2026",
+                          "datetime": "2026-08-13T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "product"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Cloud agents start 3x faster with builds"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "4m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "4m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/grok-4-6"],
                       "texts": [
-                        "2026-08-12T00:00:00.000Z",
-                        "research",
-                        "Introducing Grok 4.6",
-                        "Cursor Team",
-                        "3m",
-                        "Cursor Team",
-                        "3m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 12, 2026",
+                          "datetime": "2026-08-12T00:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Introducing Grok 4.6"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "3m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "3m"
+                        }
                       ]
                     },
                     {
@@ -166,25 +413,69 @@
                         "https://cursor.com/blog/how-cursor-router-works"
                       ],
                       "texts": [
-                        "2026-08-06T12:00:00.000Z",
-                        "research",
-                        "How Cursor Router chooses the right model for the task",
-                        "Connor & Yuri",
-                        "6m",
-                        "Connor & Yuri",
-                        "6m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 6, 2026",
+                          "datetime": "2026-08-06T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "How Cursor Router chooses the right model for the task"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Connor & Yuri"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "6m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Connor & Yuri"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "6m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/mixture-of-kittens"],
                       "texts": [
-                        "2026-08-04T12:00:00.000Z",
-                        "research",
-                        "Mixture-of-Kittens: our open-source MoE megakernel for NVL72s",
-                        "Stuart, Nash, Henry, William & Federico",
-                        "28m",
-                        "Stuart, Nash, Henry, William & Federico",
-                        "28m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 4, 2026",
+                          "datetime": "2026-08-04T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Mixture-of-Kittens: our open-source MoE megakernel for NVL72s"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Stuart, Nash, Henry, William & Federico"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "28m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Stuart, Nash, Henry, William & Federico"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "28m"
+                        }
                       ]
                     },
                     {
@@ -192,25 +483,69 @@
                         "https://cursor.com/blog/cloud-agent-environment"
                       ],
                       "texts": [
-                        "2026-07-30T12:00:00.000Z",
-                        "research",
-                        "How we set up our cloud agent environment",
-                        "Mathew & Arvind",
-                        "7m",
-                        "Mathew & Arvind",
-                        "7m"
+                        {
+                          "tag": "time",
+                          "value": "Jul 30, 2026",
+                          "datetime": "2026-07-30T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "How we set up our cloud agent environment"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Mathew & Arvind"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "7m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Mathew & Arvind"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "7m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/cursor-start-india"],
                       "texts": [
-                        "2026-07-28T12:00:00.000Z",
-                        "product",
-                        "Introducing Cursor Start",
-                        "Cursor Team",
-                        "3m",
-                        "Cursor Team",
-                        "3m"
+                        {
+                          "tag": "time",
+                          "value": "Jul 28, 2026",
+                          "datetime": "2026-07-28T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "product"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Introducing Cursor Start"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "3m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "3m"
+                        }
                       ]
                     }
                   ]
@@ -222,54 +557,106 @@
                 {
                   "links": ["https://cursor.com/blog/self-driving-codebases"],
                   "texts": [
-                    "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”",
-                    "From “Towards self-driving codebases”",
-                    "Read more →"
+                    {
+                      "tag": "p",
+                      "value": "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "From “Towards self-driving codebases”"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Read more →"
+                    }
                   ]
                 },
                 {
-                  "texts": ["Customer stories"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Customer stories"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://cursor.com/blog/grab"],
                           "texts": [
-                            "How Grab put Cursor in the hands of Design, Ops, and Engineering",
-                            "2026-09-15T12:00:00.000Z"
+                            {
+                              "tag": "p",
+                              "value": "How Grab put Cursor in the hands of Design, Ops, and Engineering"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Sep 15, 2026",
+                              "datetime": "2026-09-15T12:00:00.000Z"
+                            }
                           ]
                         },
                         {
                           "links": ["https://cursor.com/blog/basis"],
                           "texts": [
-                            "How Basis builds long-horizon accounting agents with Cursor",
-                            "2026-09-04T12:00:00.000Z"
+                            {
+                              "tag": "p",
+                              "value": "How Basis builds long-horizon accounting agents with Cursor"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Sep 4, 2026",
+                              "datetime": "2026-09-04T12:00:00.000Z"
+                            }
                           ]
                         },
                         {
                           "links": ["https://cursor.com/blog/nokia"],
                           "texts": [
-                            "Nokia analyzes 50M+ lines of code in two weeks with Cursor",
-                            "2026-09-02T12:00:00.000Z"
+                            {
+                              "tag": "p",
+                              "value": "Nokia analyzes 50M+ lines of code in two weeks with Cursor"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Sep 2, 2026",
+                              "datetime": "2026-09-02T12:00:00.000Z"
+                            }
                           ]
                         },
                         {
                           "links": ["https://cursor.com/blog/imdex"],
                           "texts": [
-                            "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years",
-                            "2026-08-25T12:00:00.000Z"
+                            {
+                              "tag": "p",
+                              "value": "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Aug 25, 2026",
+                              "datetime": "2026-08-25T12:00:00.000Z"
+                            }
                           ]
                         }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/topic/customers"],
-                      "texts": ["View all stories →"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "View all stories →"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "texts": ["Press"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Press"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
@@ -278,9 +665,19 @@
                             "https://thenewstack.io/cursor-open-sources-security-agents/"
                           ],
                           "texts": [
-                            "Cursor built a fleet of security agents to solve a familiar frustration",
-                            "2026-03-16T00:00:00.000Z",
-                            "Read on The New Stack ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor built a fleet of security agents to solve a familiar frustration"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Mar 16, 2026",
+                              "datetime": "2026-03-16T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Read on The New Stack ↗"
+                            }
                           ]
                         },
                         {
@@ -288,9 +685,19 @@
                             "https://techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding/"
                           ],
                           "texts": [
-                            "Cursor is rolling out a new kind of agentic coding tool",
-                            "2026-03-05T00:00:00.000Z",
-                            "Read on TechCrunch ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor is rolling out a new kind of agentic coding tool"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Mar 5, 2026",
+                              "datetime": "2026-03-05T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Read on TechCrunch ↗"
+                            }
                           ]
                         },
                         {
@@ -298,9 +705,19 @@
                             "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
                           ],
                           "texts": [
-                            "Cursor Recurring Revenue Doubles in Three Months to $2 Billion",
-                            "2026-03-02T00:00:00.000Z",
-                            "Read on Bloomberg ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Mar 2, 2026",
+                              "datetime": "2026-03-02T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Read on Bloomberg ↗"
+                            }
                           ]
                         },
                         {
@@ -308,21 +725,41 @@
                             "https://www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html"
                           ],
                           "texts": [
-                            "Cursor announces major update to AI agents as coding tool battle heats up",
-                            "2026-02-24T00:00:00.000Z",
-                            "Read on CNBC ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor announces major update to AI agents as coding tool battle heats up"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Feb 24, 2026",
+                              "datetime": "2026-02-24T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Read on CNBC ↗"
+                            }
                           ]
                         }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/topic/press"],
-                      "texts": ["View all press →"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "View all press →"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "texts": ["Videos"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Videos"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
@@ -331,9 +768,18 @@
                             "https://youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei"
                           ],
                           "texts": [
-                            "Cursor now shows you demos, not diffs",
-                            "1:43",
-                            "Watch on YouTube ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor now shows you demos, not diffs"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "1:43"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Watch on YouTube ↗"
+                            }
                           ],
                           "images": [
                             {
@@ -347,9 +793,18 @@
                             "https://youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY"
                           ],
                           "texts": [
-                            "John Schulman on dead ends, scaling RL, and building research institutions",
-                            "51:26",
-                            "Watch on YouTube ↗"
+                            {
+                              "tag": "p",
+                              "value": "John Schulman on dead ends, scaling RL, and building research institutions"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "51:26"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Watch on YouTube ↗"
+                            }
                           ],
                           "images": [
                             {
@@ -363,9 +818,18 @@
                             "https://youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk"
                           ],
                           "texts": [
-                            "Our designer built an operating system with Cursor",
-                            "50:15",
-                            "Watch on YouTube ↗"
+                            {
+                              "tag": "p",
+                              "value": "Our designer built an operating system with Cursor"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "50:15"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Watch on YouTube ↗"
+                            }
                           ],
                           "images": [
                             {
@@ -379,9 +843,18 @@
                             "https://youtu.be/IccjZDV93lw?si=f3mepO4Ptiqdg4F8"
                           ],
                           "texts": [
-                            "AI Foundations: Introduction",
-                            "4:03",
-                            "Watch on YouTube ↗"
+                            {
+                              "tag": "p",
+                              "value": "AI Foundations: Introduction"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "4:03"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Watch on YouTube ↗"
+                            }
                           ],
                           "images": [
                             {
@@ -394,20 +867,37 @@
                     },
                     {
                       "links": ["https://www.youtube.com/@cursor_ai"],
-                      "texts": ["Visit our YouTube channel ↗"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Visit our YouTube channel ↗"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "texts": ["Changelog"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Changelog"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://cursor.com/changelog/projects"],
                           "texts": [
-                            "2026-09-10T00:00:00.000Z",
-                            "Cursor Projects"
+                            {
+                              "tag": "time",
+                              "value": "Sep 10, 2026",
+                              "datetime": "2026-09-10T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Cursor Projects"
+                            }
                           ]
                         },
                         {
@@ -415,8 +905,15 @@
                             "https://cursor.com/changelog/self-hosted-machines"
                           ],
                           "texts": [
-                            "2026-09-02T00:00:00.000Z",
-                            "Self-hosted machines"
+                            {
+                              "tag": "time",
+                              "value": "Sep 2, 2026",
+                              "datetime": "2026-09-02T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Self-hosted machines"
+                            }
                           ]
                         },
                         {
@@ -424,22 +921,41 @@
                             "https://cursor.com/changelog/start-from-scratch"
                           ],
                           "texts": [
-                            "2026-08-27T00:00:00.000Z",
-                            "Start from scratch, without a repo"
+                            {
+                              "tag": "time",
+                              "value": "Aug 27, 2026",
+                              "datetime": "2026-08-27T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Start from scratch, without a repo"
+                            }
                           ]
                         },
                         {
                           "links": ["https://cursor.com/changelog/08-19-26"],
                           "texts": [
-                            "2026-08-19T00:00:00.000Z",
-                            "Cloud Agents and Cursor Harness Improvements"
+                            {
+                              "tag": "time",
+                              "value": "Aug 19, 2026",
+                              "datetime": "2026-08-19T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Cloud Agents and Cursor Harness Improvements"
+                            }
                           ]
                         }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/changelog"],
-                      "texts": ["See what's new in Cursor →"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "See what's new in Cursor →"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -448,19 +964,34 @@
           ]
         },
         {
-          "texts": ["Get started with Cursor."],
+          "texts": [
+            {
+              "tag": "h2",
+              "value": "Get started with Cursor."
+            }
+          ],
           "children": [
             {
               "children": [
                 {
                   "links": ["https://cursor.com/download"],
-                  "texts": ["Download"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Download"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://cursor.com/contact-sales?source=blog_footer"
                   ],
-                  "texts": ["Contact Sales"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Contact Sales"
+                    }
+                  ]
                 }
               ]
             }
@@ -475,13 +1006,35 @@
             {
               "links": ["https://cursor.com/blog/joining-spacex"],
               "texts": [
-                "2026-08-14T12:00:00.000Z",
-                "Company",
-                "Cursor is now a part of SpaceX",
-                "Cursor has officially been acquired by SpaceX.",
-                "Cursor Team",
-                "2m",
-                "2 min read"
+                {
+                  "tag": "time",
+                  "value": "Aug 14, 2026",
+                  "datetime": "2026-08-14T12:00:00.000Z"
+                },
+                {
+                  "tag": "span",
+                  "value": "Company"
+                },
+                {
+                  "tag": "p",
+                  "value": "Cursor is now a part of SpaceX"
+                },
+                {
+                  "tag": "p",
+                  "value": "Cursor has officially been acquired by SpaceX."
+                },
+                {
+                  "tag": "span",
+                  "value": "Cursor Team"
+                },
+                {
+                  "tag": "span",
+                  "value": "2m"
+                },
+                {
+                  "tag": "span",
+                  "value": "2 min read"
+                }
               ],
               "images": [
                 {
@@ -495,13 +1048,35 @@
                 {
                   "links": ["https://cursor.com/blog/grok-4-6"],
                   "texts": [
-                    "2026-08-12T00:00:00.000Z",
-                    "Research",
-                    "Introducing Grok 4.6",
-                    "Built for long-running agents and more ambitious interactive and visual work.",
-                    "Cursor Team",
-                    "3m",
-                    "3 min read"
+                    {
+                      "tag": "time",
+                      "value": "Aug 12, 2026",
+                      "datetime": "2026-08-12T00:00:00.000Z"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Research"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Introducing Grok 4.6"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Built for long-running agents and more ambitious interactive and visual work."
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Cursor Team"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "3m"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "3 min read"
+                    }
                   ],
                   "images": [
                     {
@@ -513,13 +1088,35 @@
                 {
                   "links": ["https://cursor.com/blog/git-at-any-scale"],
                   "texts": [
-                    "2026-08-18T12:00:00.000Z",
-                    "Research",
-                    "Git at any scale",
-                    "VM",
-                    "Vicent Martí",
-                    "27m",
-                    "27 min read"
+                    {
+                      "tag": "time",
+                      "value": "Aug 18, 2026",
+                      "datetime": "2026-08-18T12:00:00.000Z"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Research"
+                    },
+                    {
+                      "tag": "p",
+                      "value": "Git at any scale"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "VM"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "Vicent Martí"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "27m"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "27 min read"
+                    }
                   ]
                 }
               ]
@@ -529,104 +1126,285 @@
         {
           "children": [
             {
-              "texts": ["Blog"],
+              "texts": [
+                {
+                  "tag": "h1",
+                  "value": "Blog"
+                }
+              ],
               "children": [
                 {
                   "children": [
                     {
                       "links": ["https://cursor.com/blog/projects"],
                       "texts": [
-                        "2026-09-10T12:00:00.000Z",
-                        "product",
-                        "Introducing Projects",
-                        "Alexi & Fredrika",
-                        "5m",
-                        "Alexi & Fredrika",
-                        "5m"
+                        {
+                          "tag": "time",
+                          "value": "Sep 10, 2026",
+                          "datetime": "2026-09-10T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "product"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Introducing Projects"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Alexi & Fredrika"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "5m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Alexi & Fredrika"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "5m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/self-hosted-machines"],
                       "texts": [
-                        "2026-09-02T12:00:00.000Z",
-                        "product",
-                        "Run cloud agents on machines you manage",
-                        "Jack Pertschuk",
-                        "6m",
-                        "Jack Pertschuk",
-                        "6m"
+                        {
+                          "tag": "time",
+                          "value": "Sep 2, 2026",
+                          "datetime": "2026-09-02T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "product"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Run cloud agents on machines you manage"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Jack Pertschuk"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "6m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Jack Pertschuk"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "6m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/git-at-any-scale"],
                       "texts": [
-                        "2026-08-18T12:00:00.000Z",
-                        "research",
-                        "Git at any scale",
-                        "Vicent Martí",
-                        "27m",
-                        "Vicent Martí",
-                        "27m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 18, 2026",
+                          "datetime": "2026-08-18T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Git at any scale"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Vicent Martí"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "27m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Vicent Martí"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "27m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/joining-spacex"],
                       "texts": [
-                        "2026-08-14T12:00:00.000Z",
-                        "company",
-                        "Cursor is now a part of SpaceX",
-                        "Cursor Team",
-                        "2m",
-                        "Cursor Team",
-                        "2m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 14, 2026",
+                          "datetime": "2026-08-14T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "company"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Cursor is now a part of SpaceX"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "2m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "2m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/firetiger"],
                       "texts": [
-                        "2026-08-13T19:00:00.000Z",
-                        "company",
-                        "Firetiger joins Cursor",
-                        "Maxime Prades",
-                        "2m",
-                        "Maxime Prades",
-                        "2m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 13, 2026",
+                          "datetime": "2026-08-13T19:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "company"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Firetiger joins Cursor"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Maxime Prades"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "2m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Maxime Prades"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "2m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/aiuc-1"],
                       "texts": [
-                        "2026-08-13T12:00:00.000Z",
-                        "company",
-                        "Cursor earns AIUC-1 certification for agent security and reliability",
-                        "Kenneth Moras",
-                        "4m",
-                        "Kenneth Moras",
-                        "4m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 13, 2026",
+                          "datetime": "2026-08-13T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "company"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Cursor earns AIUC-1 certification for agent security and reliability"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Kenneth Moras"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "4m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Kenneth Moras"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "4m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/builds"],
                       "texts": [
-                        "2026-08-13T12:00:00.000Z",
-                        "product",
-                        "Cloud agents start 3x faster with builds",
-                        "Cursor Team",
-                        "4m",
-                        "Cursor Team",
-                        "4m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 13, 2026",
+                          "datetime": "2026-08-13T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "product"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Cloud agents start 3x faster with builds"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "4m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "4m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/grok-4-6"],
                       "texts": [
-                        "2026-08-12T00:00:00.000Z",
-                        "research",
-                        "Introducing Grok 4.6",
-                        "Cursor Team",
-                        "3m",
-                        "Cursor Team",
-                        "3m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 12, 2026",
+                          "datetime": "2026-08-12T00:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Introducing Grok 4.6"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "3m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "3m"
+                        }
                       ]
                     },
                     {
@@ -634,25 +1412,69 @@
                         "https://cursor.com/blog/how-cursor-router-works"
                       ],
                       "texts": [
-                        "2026-08-06T12:00:00.000Z",
-                        "research",
-                        "How Cursor Router chooses the right model for the task",
-                        "Connor & Yuri",
-                        "6m",
-                        "Connor & Yuri",
-                        "6m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 6, 2026",
+                          "datetime": "2026-08-06T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "How Cursor Router chooses the right model for the task"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Connor & Yuri"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "6m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Connor & Yuri"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "6m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/mixture-of-kittens"],
                       "texts": [
-                        "2026-08-04T12:00:00.000Z",
-                        "research",
-                        "Mixture-of-Kittens: our open-source MoE megakernel for NVL72s",
-                        "Stuart, Nash, Henry, William & Federico",
-                        "28m",
-                        "Stuart, Nash, Henry, William & Federico",
-                        "28m"
+                        {
+                          "tag": "time",
+                          "value": "Aug 4, 2026",
+                          "datetime": "2026-08-04T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Mixture-of-Kittens: our open-source MoE megakernel for NVL72s"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Stuart, Nash, Henry, William & Federico"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "28m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Stuart, Nash, Henry, William & Federico"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "28m"
+                        }
                       ]
                     },
                     {
@@ -660,25 +1482,69 @@
                         "https://cursor.com/blog/cloud-agent-environment"
                       ],
                       "texts": [
-                        "2026-07-30T12:00:00.000Z",
-                        "research",
-                        "How we set up our cloud agent environment",
-                        "Mathew & Arvind",
-                        "7m",
-                        "Mathew & Arvind",
-                        "7m"
+                        {
+                          "tag": "time",
+                          "value": "Jul 30, 2026",
+                          "datetime": "2026-07-30T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "research"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "How we set up our cloud agent environment"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Mathew & Arvind"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "7m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Mathew & Arvind"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "7m"
+                        }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/cursor-start-india"],
                       "texts": [
-                        "2026-07-28T12:00:00.000Z",
-                        "product",
-                        "Introducing Cursor Start",
-                        "Cursor Team",
-                        "3m",
-                        "Cursor Team",
-                        "3m"
+                        {
+                          "tag": "time",
+                          "value": "Jul 28, 2026",
+                          "datetime": "2026-07-28T12:00:00.000Z"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "product"
+                        },
+                        {
+                          "tag": "p",
+                          "value": "Introducing Cursor Start"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "div",
+                          "value": "3m"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "Cursor Team"
+                        },
+                        {
+                          "tag": "span",
+                          "value": "3m"
+                        }
                       ]
                     }
                   ]
@@ -690,54 +1556,106 @@
                 {
                   "links": ["https://cursor.com/blog/self-driving-codebases"],
                   "texts": [
-                    "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”",
-                    "From “Towards self-driving codebases”",
-                    "Read more →"
+                    {
+                      "tag": "p",
+                      "value": "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”"
+                    },
+                    {
+                      "tag": "span",
+                      "value": "From “Towards self-driving codebases”"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "Read more →"
+                    }
                   ]
                 },
                 {
-                  "texts": ["Customer stories"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Customer stories"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://cursor.com/blog/grab"],
                           "texts": [
-                            "How Grab put Cursor in the hands of Design, Ops, and Engineering",
-                            "2026-09-15T12:00:00.000Z"
+                            {
+                              "tag": "p",
+                              "value": "How Grab put Cursor in the hands of Design, Ops, and Engineering"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Sep 15, 2026",
+                              "datetime": "2026-09-15T12:00:00.000Z"
+                            }
                           ]
                         },
                         {
                           "links": ["https://cursor.com/blog/basis"],
                           "texts": [
-                            "How Basis builds long-horizon accounting agents with Cursor",
-                            "2026-09-04T12:00:00.000Z"
+                            {
+                              "tag": "p",
+                              "value": "How Basis builds long-horizon accounting agents with Cursor"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Sep 4, 2026",
+                              "datetime": "2026-09-04T12:00:00.000Z"
+                            }
                           ]
                         },
                         {
                           "links": ["https://cursor.com/blog/nokia"],
                           "texts": [
-                            "Nokia analyzes 50M+ lines of code in two weeks with Cursor",
-                            "2026-09-02T12:00:00.000Z"
+                            {
+                              "tag": "p",
+                              "value": "Nokia analyzes 50M+ lines of code in two weeks with Cursor"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Sep 2, 2026",
+                              "datetime": "2026-09-02T12:00:00.000Z"
+                            }
                           ]
                         },
                         {
                           "links": ["https://cursor.com/blog/imdex"],
                           "texts": [
-                            "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years",
-                            "2026-08-25T12:00:00.000Z"
+                            {
+                              "tag": "p",
+                              "value": "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Aug 25, 2026",
+                              "datetime": "2026-08-25T12:00:00.000Z"
+                            }
                           ]
                         }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/topic/customers"],
-                      "texts": ["View all stories →"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "View all stories →"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "texts": ["Press"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Press"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
@@ -746,9 +1664,19 @@
                             "https://thenewstack.io/cursor-open-sources-security-agents/"
                           ],
                           "texts": [
-                            "Cursor built a fleet of security agents to solve a familiar frustration",
-                            "2026-03-16T00:00:00.000Z",
-                            "Read on The New Stack ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor built a fleet of security agents to solve a familiar frustration"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Mar 16, 2026",
+                              "datetime": "2026-03-16T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Read on The New Stack ↗"
+                            }
                           ]
                         },
                         {
@@ -756,9 +1684,19 @@
                             "https://techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding/"
                           ],
                           "texts": [
-                            "Cursor is rolling out a new kind of agentic coding tool",
-                            "2026-03-05T00:00:00.000Z",
-                            "Read on TechCrunch ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor is rolling out a new kind of agentic coding tool"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Mar 5, 2026",
+                              "datetime": "2026-03-05T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Read on TechCrunch ↗"
+                            }
                           ]
                         },
                         {
@@ -766,9 +1704,19 @@
                             "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
                           ],
                           "texts": [
-                            "Cursor Recurring Revenue Doubles in Three Months to $2 Billion",
-                            "2026-03-02T00:00:00.000Z",
-                            "Read on Bloomberg ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Mar 2, 2026",
+                              "datetime": "2026-03-02T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Read on Bloomberg ↗"
+                            }
                           ]
                         },
                         {
@@ -776,21 +1724,41 @@
                             "https://www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html"
                           ],
                           "texts": [
-                            "Cursor announces major update to AI agents as coding tool battle heats up",
-                            "2026-02-24T00:00:00.000Z",
-                            "Read on CNBC ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor announces major update to AI agents as coding tool battle heats up"
+                            },
+                            {
+                              "tag": "time",
+                              "value": "Feb 24, 2026",
+                              "datetime": "2026-02-24T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Read on CNBC ↗"
+                            }
                           ]
                         }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/blog/topic/press"],
-                      "texts": ["View all press →"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "View all press →"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "texts": ["Videos"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Videos"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
@@ -799,9 +1767,18 @@
                             "https://youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei"
                           ],
                           "texts": [
-                            "Cursor now shows you demos, not diffs",
-                            "1:43",
-                            "Watch on YouTube ↗"
+                            {
+                              "tag": "p",
+                              "value": "Cursor now shows you demos, not diffs"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "1:43"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Watch on YouTube ↗"
+                            }
                           ],
                           "images": [
                             {
@@ -815,9 +1792,18 @@
                             "https://youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY"
                           ],
                           "texts": [
-                            "John Schulman on dead ends, scaling RL, and building research institutions",
-                            "51:26",
-                            "Watch on YouTube ↗"
+                            {
+                              "tag": "p",
+                              "value": "John Schulman on dead ends, scaling RL, and building research institutions"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "51:26"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Watch on YouTube ↗"
+                            }
                           ],
                           "images": [
                             {
@@ -831,9 +1817,18 @@
                             "https://youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk"
                           ],
                           "texts": [
-                            "Our designer built an operating system with Cursor",
-                            "50:15",
-                            "Watch on YouTube ↗"
+                            {
+                              "tag": "p",
+                              "value": "Our designer built an operating system with Cursor"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "50:15"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Watch on YouTube ↗"
+                            }
                           ],
                           "images": [
                             {
@@ -847,9 +1842,18 @@
                             "https://youtu.be/IccjZDV93lw?si=f3mepO4Ptiqdg4F8"
                           ],
                           "texts": [
-                            "AI Foundations: Introduction",
-                            "4:03",
-                            "Watch on YouTube ↗"
+                            {
+                              "tag": "p",
+                              "value": "AI Foundations: Introduction"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "4:03"
+                            },
+                            {
+                              "tag": "span",
+                              "value": "Watch on YouTube ↗"
+                            }
                           ],
                           "images": [
                             {
@@ -862,20 +1866,37 @@
                     },
                     {
                       "links": ["https://www.youtube.com/@cursor_ai"],
-                      "texts": ["Visit our YouTube channel ↗"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "Visit our YouTube channel ↗"
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "texts": ["Changelog"],
+                  "texts": [
+                    {
+                      "tag": "h2",
+                      "value": "Changelog"
+                    }
+                  ],
                   "children": [
                     {
                       "children": [
                         {
                           "links": ["https://cursor.com/changelog/projects"],
                           "texts": [
-                            "2026-09-10T00:00:00.000Z",
-                            "Cursor Projects"
+                            {
+                              "tag": "time",
+                              "value": "Sep 10, 2026",
+                              "datetime": "2026-09-10T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Cursor Projects"
+                            }
                           ]
                         },
                         {
@@ -883,8 +1904,15 @@
                             "https://cursor.com/changelog/self-hosted-machines"
                           ],
                           "texts": [
-                            "2026-09-02T00:00:00.000Z",
-                            "Self-hosted machines"
+                            {
+                              "tag": "time",
+                              "value": "Sep 2, 2026",
+                              "datetime": "2026-09-02T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Self-hosted machines"
+                            }
                           ]
                         },
                         {
@@ -892,22 +1920,41 @@
                             "https://cursor.com/changelog/start-from-scratch"
                           ],
                           "texts": [
-                            "2026-08-27T00:00:00.000Z",
-                            "Start from scratch, without a repo"
+                            {
+                              "tag": "time",
+                              "value": "Aug 27, 2026",
+                              "datetime": "2026-08-27T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Start from scratch, without a repo"
+                            }
                           ]
                         },
                         {
                           "links": ["https://cursor.com/changelog/08-19-26"],
                           "texts": [
-                            "2026-08-19T00:00:00.000Z",
-                            "Cloud Agents and Cursor Harness Improvements"
+                            {
+                              "tag": "time",
+                              "value": "Aug 19, 2026",
+                              "datetime": "2026-08-19T00:00:00.000Z"
+                            },
+                            {
+                              "tag": "p",
+                              "value": "Cloud Agents and Cursor Harness Improvements"
+                            }
                           ]
                         }
                       ]
                     },
                     {
                       "links": ["https://cursor.com/changelog"],
-                      "texts": ["See what's new in Cursor →"]
+                      "texts": [
+                        {
+                          "tag": "a",
+                          "value": "See what's new in Cursor →"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -916,19 +1963,34 @@
           ]
         },
         {
-          "texts": ["Get started with Cursor."],
+          "texts": [
+            {
+              "tag": "h2",
+              "value": "Get started with Cursor."
+            }
+          ],
           "children": [
             {
               "children": [
                 {
                   "links": ["https://cursor.com/download"],
-                  "texts": ["Download"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Download"
+                    }
+                  ]
                 },
                 {
                   "links": [
                     "https://cursor.com/contact-sales?source=blog_footer"
                   ],
-                  "texts": ["Contact Sales"]
+                  "texts": [
+                    {
+                      "tag": "a",
+                      "value": "Contact Sales"
+                    }
+                  ]
                 }
               ]
             }
