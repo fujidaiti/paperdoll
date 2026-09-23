@@ -43,6 +43,12 @@ two or more distinct links describes more than one post, so it keeps one child
 per part that holds a post. A wrapper that adds no value of its own and holds a
 single child is replaced by that child.
 
+A node therefore holds one link at most, and it is stored as a single string.
+Measured over the rendered trees, 2530 nodes hold one distinct link, 991 hold
+none, and none holds two. 168 nodes did hold the same URL more than once,
+because a card is often covered by an empty element repeating its link, and
+those repeats are dropped.
+
 ## What was measured
 
 Against the hand written fixtures in `testdata/`, with two definitions:
@@ -115,13 +121,13 @@ A child that carries no link is removed, and its texts and images are moved up
 into the parent:
 
 ```json
-{ "children": [{ "texts": ["A"] }, { "links": ["u"], "texts": ["B"] }] }
+{ "children": [{ "texts": ["A"] }, { "link": "u", "texts": ["B"] }] }
 ```
 
 becomes
 
 ```json
-{ "texts": ["A"], "children": [{ "links": ["u"], "texts": ["B"] }] }
+{ "texts": ["A"], "children": [{ "link": "u", "texts": ["B"] }] }
 ```
 
 Measured over the corpus: 966 link-less children before, 0 after, and the tree

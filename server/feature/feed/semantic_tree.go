@@ -24,11 +24,17 @@ import (
 type SemanticNode struct {
 	// Node is the element of the parsed document the node was folded from.
 	Node *html.Node `json:"-"`
-	// Links, Texts and Images are the candidate values of the node, in
-	// document order. A folded node holds the values of its whole subtree; a
-	// node that has children holds only the values that sit directly on Node,
-	// because everything else belongs to one of the children.
-	Links  []string        `json:"links,omitempty"`
+	// Link, Texts and Images are the candidate values of the node. A folded
+	// node holds the values of its whole subtree; a node that has children
+	// holds only the values that sit directly on Node, because everything else
+	// belongs to one of the children. The texts and the images are in document
+	// order.
+	//
+	// Link is a single URL, not a list, because a subtree is folded only when
+	// it carries at most one distinct link. A page often repeats that link,
+	// for example as an empty element covering a whole card, and the repeats
+	// say nothing about the post.
+	Link   string          `json:"link,omitempty"`
 	Texts  []SemanticText  `json:"texts,omitempty"`
 	Images []SemanticImage `json:"images,omitempty"`
 	// Children are the parts of the subtree that hold a post of their own.
@@ -89,7 +95,7 @@ func mergeLinkless(n *SemanticNode) {
 		mergeLinkless(c)
 	}
 
-	linkless := func(c *SemanticNode) bool { return len(c.Links) == 0 && len(c.Children) == 0 }
+	linkless := func(c *SemanticNode) bool { return c.Link == "" && len(c.Children) == 0 }
 	linked := false
 	for _, c := range n.Children {
 		if !linkless(c) {
@@ -181,8 +187,8 @@ func semanticNode(n *html.Node, page *url.URL) *SemanticNode {
 			return nil
 		}
 		node := &SemanticNode{Node: n}
-		for _, a := range links {
-			node.Links = append(node.Links, a.Value)
+		if len(links) > 0 {
+			node.Link = links[0].Value
 		}
 		node.Texts = append(node.Texts, texts...)
 		for _, a := range images {
@@ -207,7 +213,7 @@ func semanticNode(n *html.Node, page *url.URL) *SemanticNode {
 	// list. Both are kept because they describe the whole group.
 	var own SemanticNode
 	if u, ok := linkOf(n, page); ok {
-		own.Links = append(own.Links, u.String())
+		own.Link = u.String()
 	}
 	var loose strings.Builder
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
@@ -220,12 +226,12 @@ func semanticNode(n *html.Node, page *url.URL) *SemanticNode {
 		own.Texts = append(own.Texts, SemanticText{Tag: n.Data, Value: t})
 	}
 
-	if len(own.Links) == 0 && len(own.Texts) == 0 && len(children) == 1 {
+	if own.Link == "" && len(own.Texts) == 0 && len(children) == 1 {
 		return children[0]
 	}
 	return &SemanticNode{
 		Node:     n,
-		Links:    own.Links,
+		Link:     own.Link,
 		Texts:    own.Texts,
 		Children: children,
 	}
