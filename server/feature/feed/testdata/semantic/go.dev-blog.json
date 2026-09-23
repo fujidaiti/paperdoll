@@ -1,11 +1,22 @@
 {
   "children": [
     {
+      "texts": ["The Go Blog"],
       "children": [
         {
-          "texts": ["The Go Blog"]
-        },
-        {
+          "texts": [
+            "Go 1.27 improves performance of small allocations using size-specialized allocation functions.",
+            "Go 1.27 includes new goroutine leak profiles.",
+            "Go 1.27 adds generic methods—a highly desired language feature.",
+            "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more.",
+            "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly.",
+            "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types.",
+            "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations.",
+            "A description of some of the recent changes to do allocations on the stack instead of the heap.",
+            "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go.",
+            "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more.",
+            "Opens in new window."
+          ],
           "children": [
             {
               "links": ["https://go.dev/blog/size-specialized-allocations"],
@@ -13,11 +24,6 @@
                 "Size-Specialized Memory Allocation",
                 "16 September 2026",
                 "Michael Matloob"
-              ]
-            },
-            {
-              "texts": [
-                "Go 1.27 improves performance of small allocations using size-specialized allocation functions."
               ]
             },
             {
@@ -29,16 +35,8 @@
               ]
             },
             {
-              "texts": ["Go 1.27 includes new goroutine leak profiles."]
-            },
-            {
               "links": ["https://go.dev/blog/generic-methods"],
               "texts": ["Generic Methods", "26 August 2026", "Mark Freeman"]
-            },
-            {
-              "texts": [
-                "Go 1.27 adds generic methods—a highly desired language feature."
-              ]
             },
             {
               "links": ["https://go.dev/blog/go1.27"],
@@ -49,21 +47,11 @@
               ]
             },
             {
-              "texts": [
-                "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more."
-              ]
-            },
-            {
               "links": ["https://go.dev/blog/pkgsite-api"],
               "texts": [
                 "Introducing the pkg.go.dev API",
                 "21 May 2026",
                 "Ethan Lee, Hana Kim, and Jonathan Amsterdam"
-              ]
-            },
-            {
-              "texts": [
-                "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly."
               ]
             },
             {
@@ -77,21 +65,11 @@
               ]
             },
             {
-              "texts": [
-                "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types."
-              ]
-            },
-            {
               "links": ["https://go.dev/blog/inliner"],
               "texts": [
                 "//go:fix inline and the source-level inliner",
                 "10 March 2026",
                 "Alan Donovan"
-              ]
-            },
-            {
-              "texts": [
-                "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations."
               ]
             },
             {
@@ -103,21 +81,11 @@
               ]
             },
             {
-              "texts": [
-                "A description of some of the recent changes to do allocations on the stack instead of the heap."
-              ]
-            },
-            {
               "links": ["https://go.dev/blog/gofix"],
               "texts": [
                 "Using go fix to modernize Go code",
                 "17 February 2026",
                 "Alan Donovan"
-              ]
-            },
-            {
-              "texts": [
-                "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go."
               ]
             },
             {
@@ -129,16 +97,8 @@
               ]
             },
             {
-              "texts": [
-                "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more."
-              ]
-            },
-            {
               "links": ["https://go.dev/blog/all"],
               "texts": ["More articles..."]
-            },
-            {
-              "texts": ["Opens in new window."]
             }
           ]
         }

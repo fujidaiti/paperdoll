@@ -1,4 +1,5 @@
 {
+  "texts": ["Notifications"],
   "children": [
     {
       "children": [
@@ -7,15 +8,13 @@
             {
               "children": [
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?resize=800%2C425",
-                          "alt": "Video thumbnail that reads 'AI jargon explained' with photos of GPS, Marlene Mhangami, and Cassidy Williams."
-                        }
-                      ]
-                    },
+                      "url": "https://github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?resize=800%2C425",
+                      "alt": "Video thumbnail that reads 'AI jargon explained' with photos of GPS, Marlene Mhangami, and Cassidy Williams."
+                    }
+                  ],
+                  "children": [
                     {
                       "links": ["https://github.blog/ai-and-ml/"],
                       "texts": ["AI & ML"]
@@ -45,19 +44,20 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe-1-e1767925988355.png?resize=200%2C200"
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe.png?resize=400%2C212",
-                          "alt": "Copilot appears against a decorative background with scattered green squares."
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe-1-e1767925988355.png?resize=200%2C200"
                     },
                     {
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe.png?resize=400%2C212",
+                      "alt": "Copilot appears against a decorative background with scattered green squares."
+                    }
+                  ],
+                  "children": [
+                    {
+                      "texts": [
+                        "A rewrite this size wasn’t affordable before agents. Here’s what porting the Copilot agent runtime to 800,000 lines of production Rust actually took."
+                      ],
                       "children": [
                         {
                           "links": ["https://github.blog/ai-and-ml/"],
@@ -72,11 +72,6 @@
                           ]
                         },
                         {
-                          "texts": [
-                            "A rewrite this size wasn’t affordable before agents. Here’s what porting the Copilot agent runtime to 800,000 lines of production Rust actually took."
-                          ]
-                        },
-                        {
                           "links": ["https://github.blog/author/stephentoub/"],
                           "texts": ["Stephen Toub", "·", "2026-09-16"]
                         }
@@ -85,19 +80,20 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-mona-copilot-logo-1-e1767926145319.png?resize=200%2C200"
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-mona-copilot-logo.png?resize=400%2C212",
-                          "alt": "Decorative background featuring two Copilot figures moving among abstract green and translucent blocks."
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-mona-copilot-logo-1-e1767926145319.png?resize=200%2C200"
                     },
                     {
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-mona-copilot-logo.png?resize=400%2C212",
+                      "alt": "Decorative background featuring two Copilot figures moving among abstract green and translucent blocks."
+                    }
+                  ],
+                  "children": [
+                    {
+                      "texts": [
+                        "If you can write down how you do your work, you can automate it. Here’s what I did to support GitHub’s APAC marketing team."
+                      ],
                       "children": [
                         {
                           "links": ["https://github.blog/ai-and-ml/"],
@@ -112,11 +108,6 @@
                           ]
                         },
                         {
-                          "texts": [
-                            "If you can write down how you do your work, you can automate it. Here’s what I did to support GitHub’s APAC marketing team."
-                          ]
-                        },
-                        {
                           "links": ["https://github.blog/author/tomokota/"],
                           "texts": ["Tomoko Tanaka", "·", "2026-09-11"]
                         }
@@ -125,20 +116,21 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-09-at-3.23.34-PM.png?resize=200%2C200",
-                          "alt": "GitHub Copilot app for Beginners: Stop switching tabs"
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-09-at-3.23.34-PM.png?resize=400%2C212",
-                          "alt": "GitHub Copilot app for Beginners: Stop switching tabs"
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-09-at-3.23.34-PM.png?resize=200%2C200",
+                      "alt": "GitHub Copilot app for Beginners: Stop switching tabs"
                     },
                     {
+                      "url": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-09-at-3.23.34-PM.png?resize=400%2C212",
+                      "alt": "GitHub Copilot app for Beginners: Stop switching tabs"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "texts": [
+                        "Checking agent-generated code usually means hopping between tabs. Learn how to view diffs, run terminal commands, and preview web apps side by side in the GitHub Copilot app."
+                      ],
                       "children": [
                         {
                           "links": ["https://github.blog/ai-and-ml/"],
@@ -150,11 +142,6 @@
                           ],
                           "texts": [
                             "GitHub Copilot app for Beginners: Using the diff, terminal, and browser"
-                          ]
-                        },
-                        {
-                          "texts": [
-                            "Checking agent-generated code usually means hopping between tabs. Learn how to view diffs, run terminal commands, and preview web apps side by side in the GitHub Copilot app."
                           ]
                         },
                         {
@@ -190,18 +177,19 @@
                 {
                   "children": [
                     {
-                      "children": [
+                      "images": [
                         {
-                          "images": [
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2025/09/wallpaper-generic-blog-header.png?resize=200%2C200"
-                            },
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2025/09/wallpaper-generic-blog-header.png?resize=400%2C212"
-                            }
-                          ]
+                          "url": "https://github.blog/wp-content/uploads/2025/09/wallpaper-generic-blog-header.png?resize=200%2C200"
                         },
                         {
+                          "url": "https://github.blog/wp-content/uploads/2025/09/wallpaper-generic-blog-header.png?resize=400%2C212"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "texts": [
+                            "In August, we experienced five incidents that resulted in degraded performance across GitHub services."
+                          ],
                           "children": [
                             {
                               "links": [
@@ -218,11 +206,6 @@
                               ]
                             },
                             {
-                              "texts": [
-                                "In August, we experienced five incidents that resulted in degraded performance across GitHub services."
-                              ]
-                            },
-                            {
                               "links": [
                                 "https://github.blog/author/jakuboleksy/"
                               ],
@@ -233,19 +216,20 @@
                       ]
                     },
                     {
-                      "children": [
+                      "images": [
                         {
-                          "images": [
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2026/09/OptA_UI_874b3d-e1788309424105.jpg?resize=200%2C200"
-                            },
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2026/09/OptA_UI.jpg?resize=400%2C212",
-                              "alt": "Research preview: HydraFusion. Advanced runtime model orchestration in GitHub Copilot."
-                            }
-                          ]
+                          "url": "https://github.blog/wp-content/uploads/2026/09/OptA_UI_874b3d-e1788309424105.jpg?resize=200%2C200"
                         },
                         {
+                          "url": "https://github.blog/wp-content/uploads/2026/09/OptA_UI.jpg?resize=400%2C212",
+                          "alt": "Research preview: HydraFusion. Advanced runtime model orchestration in GitHub Copilot."
+                        }
+                      ],
+                      "children": [
+                        {
+                          "texts": [
+                            "In controlled offline evaluations, HydraFusion’s selective coding workflows matched or exceeded the evaluated Opus 5 baseline while reducing estimated workflow cost. Now available as a research preview in GitHub Copilot."
+                          ],
                           "children": [
                             {
                               "links": ["https://github.blog/ai-and-ml/"],
@@ -260,11 +244,6 @@
                               ]
                             },
                             {
-                              "texts": [
-                                "In controlled offline evaluations, HydraFusion’s selective coding workflows matched or exceeded the evaluated Opus 5 baseline while reducing estimated workflow cost. Now available as a research preview in GitHub Copilot."
-                              ]
-                            },
-                            {
                               "links": ["https://github.blog/author/staff/"],
                               "texts": ["GitHub Staff", "·", "2026-09-04"]
                             }
@@ -273,20 +252,21 @@
                       ]
                     },
                     {
-                      "children": [
+                      "images": [
                         {
-                          "images": [
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-02-at-12.28.34-PM.png?resize=200%2C200",
-                              "alt": "GitHub Copilot app for Beginners: Run multiple agents safely"
-                            },
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-02-at-12.28.34-PM.png?resize=400%2C212",
-                              "alt": "GitHub Copilot app for Beginners: Run multiple agents safely"
-                            }
-                          ]
+                          "url": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-02-at-12.28.34-PM.png?resize=200%2C200",
+                          "alt": "GitHub Copilot app for Beginners: Run multiple agents safely"
                         },
                         {
+                          "url": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-02-at-12.28.34-PM.png?resize=400%2C212",
+                          "alt": "GitHub Copilot app for Beginners: Run multiple agents safely"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "texts": [
+                            "Learn how to run parallel agents in the GitHub Copilot app, and experience the moment it stops feeling scary and starts feeling powerful."
+                          ],
                           "children": [
                             {
                               "links": ["https://github.blog/ai-and-ml/"],
@@ -298,11 +278,6 @@
                               ],
                               "texts": [
                                 "GitHub Copilot app for Beginners: Run several agents at once"
-                              ]
-                            },
-                            {
-                              "texts": [
-                                "Learn how to run parallel agents in the GitHub Copilot app, and experience the moment it stops feeling scary and starts feeling powerful."
                               ]
                             },
                             {
@@ -320,25 +295,24 @@
               ]
             },
             {
+              "texts": ["Popular"],
               "children": [
-                {
-                  "texts": ["Popular"]
-                },
                 {
                   "children": [
                     {
-                      "children": [
+                      "images": [
                         {
-                          "images": [
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2022/12/2fa-social.png?resize=200%2C200"
-                            },
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2022/12/2fa-blog-banner.png?resize=400%2C212"
-                            }
-                          ]
+                          "url": "https://github.blog/wp-content/uploads/2022/12/2fa-social.png?resize=200%2C200"
                         },
                         {
+                          "url": "https://github.blog/wp-content/uploads/2022/12/2fa-blog-banner.png?resize=400%2C212"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "texts": [
+                            "On March 13, we will officially begin rolling out our initiative to require all developers who contribute code on GitHub.com to enable one or more forms of two-factor authentication (2FA) by the end of 2023. Read on to learn about what the process entails and how you can help secure the software supply chain with 2FA."
+                          ],
                           "children": [
                             {
                               "links": ["https://github.blog/news-insights/"],
@@ -353,11 +327,7 @@
                               ]
                             },
                             {
-                              "texts": [
-                                "On March 13, we will officially begin rolling out our initiative to require all developers who contribute code on GitHub.com to enable one or more forms of two-factor authentication (2FA) by the end of 2023. Read on to learn about what the process entails and how you can help secure the software supply chain with 2FA."
-                              ]
-                            },
-                            {
+                              "texts": ["·", "2023-03-09"],
                               "children": [
                                 {
                                   "texts": ["&"],
@@ -375,12 +345,6 @@
                                       "texts": ["Hirsch Singhal"]
                                     }
                                   ]
-                                },
-                                {
-                                  "texts": ["·"]
-                                },
-                                {
-                                  "texts": ["2023-03-09"]
                                 }
                               ]
                             }
@@ -389,18 +353,19 @@
                       ]
                     },
                     {
-                      "children": [
+                      "images": [
                         {
-                          "images": [
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2024/06/Professortocat_v2.png?resize=200%2C200"
-                            },
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2024/05/GitHub-for-beginners.png?resize=400%2C212"
-                            }
-                          ]
+                          "url": "https://github.blog/wp-content/uploads/2024/06/Professortocat_v2.png?resize=200%2C200"
                         },
                         {
+                          "url": "https://github.blog/wp-content/uploads/2024/05/GitHub-for-beginners.png?resize=400%2C212"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "texts": [
+                            "As part of the GitHub for Beginners guide, learn how to improve the security of your profile and create a profile README. This will let you give your GitHub account a little more personality."
+                          ],
                           "children": [
                             {
                               "links": [
@@ -417,11 +382,6 @@
                               ]
                             },
                             {
-                              "texts": [
-                                "As part of the GitHub for Beginners guide, learn how to improve the security of your profile and create a profile README. This will let you give your GitHub account a little more personality."
-                              ]
-                            },
-                            {
                               "links": ["https://github.blog/author/ladykerr/"],
                               "texts": ["Kedasha Kerr", "·", "2024-09-09"]
                             }
@@ -430,18 +390,19 @@
                       ]
                     },
                     {
-                      "children": [
+                      "images": [
                         {
-                          "images": [
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2025/08/wallpaper-generic-image-header.png?resize=200%2C200"
-                            },
-                            {
-                              "url": "https://github.blog/wp-content/uploads/2025/08/wallpaper-generic-image-header.png?resize=400%2C212"
-                            }
-                          ]
+                          "url": "https://github.blog/wp-content/uploads/2025/08/wallpaper-generic-image-header.png?resize=200%2C200"
                         },
                         {
+                          "url": "https://github.blog/wp-content/uploads/2025/08/wallpaper-generic-image-header.png?resize=400%2C212"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "texts": [
+                            "Developers can use their AI tool of choice for spec-driven development with this open source toolkit."
+                          ],
                           "children": [
                             {
                               "links": ["https://github.blog/ai-and-ml/"],
@@ -453,11 +414,6 @@
                               ],
                               "texts": [
                                 "Spec-driven development with AI: Get started with a new open source toolkit"
-                              ]
-                            },
-                            {
-                              "texts": [
-                                "Developers can use their AI tool of choice for spec-driven development with this open source toolkit."
                               ]
                             },
                             {
@@ -535,19 +491,17 @@
             {
               "children": [
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-commit-logo.png?resize=800%2C425",
-                          "alt": "Copilot hovering above a mosaic of green squares in a decorative scene."
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-commit-logo.png?resize=600%2C600",
-                          "alt": "Copilot hovering above a mosaic of green squares in a decorative scene."
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-commit-logo.png?resize=800%2C425",
+                      "alt": "Copilot hovering above a mosaic of green squares in a decorative scene."
                     },
+                    {
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-commit-logo.png?resize=600%2C600",
+                      "alt": "Copilot hovering above a mosaic of green squares in a decorative scene."
+                    }
+                  ],
+                  "children": [
                     {
                       "links": [
                         "https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality/"
@@ -584,6 +538,7 @@
                           ]
                         },
                         {
+                          "texts": ["·", "2026-09-02"],
                           "children": [
                             {
                               "texts": ["&"],
@@ -601,12 +556,6 @@
                                   "texts": ["Napalys Klicius"]
                                 }
                               ]
-                            },
-                            {
-                              "texts": ["·"]
-                            },
-                            {
-                              "texts": ["2026-09-02"]
                             }
                           ]
                         }
@@ -615,15 +564,13 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/08/header-1.png?resize=400%2C212",
-                          "alt": "Humorous header image with 'alt=IMG_2847.png' written across the top, and Mona's head looking up at a cube next to a GitHub logo on the bottom."
-                        }
-                      ]
-                    },
+                      "url": "https://github.blog/wp-content/uploads/2026/08/header-1.png?resize=400%2C212",
+                      "alt": "Humorous header image with 'alt=IMG_2847.png' written across the top, and Mona's head looking up at a cube next to a GitHub logo on the bottom."
+                    }
+                  ],
+                  "children": [
                     {
                       "links": [
                         "https://github.blog/engineering/user-experience/your-alt-text-passes-automated-checks-that-doesnt-mean-its-any-good/"
@@ -634,6 +581,7 @@
                       ]
                     },
                     {
+                      "texts": ["·", "2026-08-24"],
                       "children": [
                         {
                           "texts": ["&"],
@@ -649,27 +597,19 @@
                               "texts": ["Keenan Zhou"]
                             }
                           ]
-                        },
-                        {
-                          "texts": ["·"]
-                        },
-                        {
-                          "texts": ["2026-08-24"]
                         }
                       ]
                     }
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-copilot-flying-invertocat-logo-github.png?resize=400%2C212",
-                          "alt": "Copilot hovering above geometric blocks featuring the GitHub invertocat logo in a decorative scene."
-                        }
-                      ]
-                    },
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-copilot-flying-invertocat-logo-github.png?resize=400%2C212",
+                      "alt": "Copilot hovering above geometric blocks featuring the GitHub invertocat logo in a decorative scene."
+                    }
+                  ],
+                  "children": [
                     {
                       "links": [
                         "https://github.blog/engineering/using-the-github-copilot-sdk-for-java/"
@@ -686,15 +626,13 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-mona-github.png?resize=400%2C212",
-                          "alt": "Mona sits on a raised green block beside another block displaying a circular refresh-style icon."
-                        }
-                      ]
-                    },
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-mona-github.png?resize=400%2C212",
+                      "alt": "Mona sits on a raised green block beside another block displaying a circular refresh-style icon."
+                    }
+                  ],
+                  "children": [
                     {
                       "links": [
                         "https://github.blog/engineering/turn-one-giant-ai-generated-pull-request-to-a-reviewable-stack/"
@@ -711,15 +649,13 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-invertocat-logo.png?resize=400%2C212",
-                          "alt": "Geometric background featuring cubes with the GitHub invertocat logo and related icons."
-                        }
-                      ]
-                    },
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-invertocat-logo.png?resize=400%2C212",
+                      "alt": "Geometric background featuring cubes with the GitHub invertocat logo and related icons."
+                    }
+                  ],
+                  "children": [
                     {
                       "links": [
                         "https://github.blog/engineering/architecture-optimization/dont-stop-early-case-folding-source-code-at-memory-speed/"
@@ -730,6 +666,7 @@
                       ]
                     },
                     {
+                      "texts": ["·", "2026-07-31"],
                       "children": [
                         {
                           "texts": ["&"],
@@ -743,12 +680,6 @@
                               "texts": ["Greg Orzell"]
                             }
                           ]
-                        },
-                        {
-                          "texts": ["·"]
-                        },
-                        {
-                          "texts": ["2026-07-31"]
                         }
                       ]
                     }
@@ -863,31 +794,27 @@
             {
               "children": [
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-logo-left.png?resize=200%2C200",
-                          "alt": "Image featuring the GitHub logo alongside decorative geometric shapes used as branding artwork."
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-logo-left.png?resize=400%2C212",
-                          "alt": "Image featuring the GitHub logo alongside decorative geometric shapes used as branding artwork."
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-logo-left.png?resize=200%2C200",
+                      "alt": "Image featuring the GitHub logo alongside decorative geometric shapes used as branding artwork."
                     },
                     {
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-logo-left.png?resize=400%2C212",
+                      "alt": "Image featuring the GitHub logo alongside decorative geometric shapes used as branding artwork."
+                    }
+                  ],
+                  "children": [
+                    {
+                      "texts": [
+                        "An update on the August 17 outage and the steps we’re taking to improve reliability."
+                      ],
                       "children": [
                         {
                           "links": [
                             "https://github.blog/news-insights/company-news/the-august-17-outage-and-the-work-ahead/"
                           ],
                           "texts": ["The August 17 outage, and the work ahead"]
-                        },
-                        {
-                          "texts": [
-                            "An update on the August 17 outage and the steps we’re taking to improve reliability."
-                          ]
                         },
                         {
                           "links": ["https://github.blog/author/vfedorovgh/"],
@@ -898,19 +825,20 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/06/630x630-U25-Blog-Featured_Square-B_x2.png?resize=200%2C200"
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/06/1200x630-U25-Blog-Hero_x2.png?resize=400%2C212",
-                          "alt": "Decorative header with Mona and coding imagery."
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2026/06/630x630-U25-Blog-Featured_Square-B_x2.png?resize=200%2C200"
                     },
                     {
+                      "url": "https://github.blog/wp-content/uploads/2026/06/1200x630-U25-Blog-Hero_x2.png?resize=400%2C212",
+                      "alt": "Decorative header with Mona and coding imagery."
+                    }
+                  ],
+                  "children": [
+                    {
+                      "texts": [
+                        "The GitHub Universe session catalog is live. Explore interactive workshops, community talks, demos, and panels. Plus, register before August 19 to save $300."
+                      ],
                       "children": [
                         {
                           "links": [
@@ -918,11 +846,6 @@
                           ],
                           "texts": [
                             "Your guide to GitHub Universe 2026 is here: The schedule just launched!"
-                          ]
-                        },
-                        {
-                          "texts": [
-                            "The GitHub Universe session catalog is live. Explore interactive workshops, community talks, demos, and panels. Plus, register before August 19 to save $300."
                           ]
                         },
                         {
@@ -934,29 +857,25 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2025/08/wallpaper-generic-.png?resize=200%2C200"
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2025/08/wallpaper-generic-.png?resize=400%2C212"
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2025/08/wallpaper-generic-.png?resize=200%2C200"
                     },
                     {
+                      "url": "https://github.blog/wp-content/uploads/2025/08/wallpaper-generic-.png?resize=400%2C212"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "texts": [
+                        "In July, we experienced eight incidents that resulted in degraded performance across GitHub services."
+                      ],
                       "children": [
                         {
                           "links": [
                             "https://github.blog/news-insights/company-news/github-availability-report-july-2026/"
                           ],
                           "texts": ["GitHub availability report: July 2026"]
-                        },
-                        {
-                          "texts": [
-                            "In July, we experienced eight incidents that resulted in degraded performance across GitHub services."
-                          ]
                         },
                         {
                           "links": ["https://github.blog/author/jakuboleksy/"],
@@ -967,29 +886,25 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2025/08/github-generic-wallpaper-pink.png?resize=200%2C200"
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2025/08/github-generic-wallpaper-pink.png?resize=400%2C212"
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2025/08/github-generic-wallpaper-pink.png?resize=200%2C200"
                     },
                     {
+                      "url": "https://github.blog/wp-content/uploads/2025/08/github-generic-wallpaper-pink.png?resize=400%2C212"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "texts": [
+                        "In June, we experienced six incidents that resulted in degraded performance across GitHub services."
+                      ],
                       "children": [
                         {
                           "links": [
                             "https://github.blog/news-insights/company-news/github-availability-report-june-2026/"
                           ],
                           "texts": ["GitHub availability report: June 2026"]
-                        },
-                        {
-                          "texts": [
-                            "In June, we experienced six incidents that resulted in degraded performance across GitHub services."
-                          ]
                         },
                         {
                           "links": ["https://github.blog/author/jakuboleksy/"],
@@ -1000,18 +915,19 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2023/09/screencapture-innovationgraph-github-2023-09-20-15_44_54-1-e1755122432792.png?resize=200%2C200"
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2025/01/innovation_graph_1.png?resize=400%2C212"
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2023/09/screencapture-innovationgraph-github-2023-09-20-15_44_54-1-e1755122432792.png?resize=200%2C200"
                     },
                     {
+                      "url": "https://github.blog/wp-content/uploads/2025/01/innovation_graph_1.png?resize=400%2C212"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "texts": [
+                        "New Innovation Graph data shows global developer communities growing faster than ever, with collaboration reaching new highs across many economies."
+                      ],
                       "children": [
                         {
                           "links": [
@@ -1019,11 +935,6 @@
                           ],
                           "texts": [
                             "Q1 2026 Innovation Graph update: Open source collaboration is accelerating worldwide"
-                          ]
-                        },
-                        {
-                          "texts": [
-                            "New Innovation Graph data shows global developer communities growing faster than ever, with collaboration reaching new highs across many economies."
                           ]
                         },
                         {
@@ -1035,20 +946,21 @@
                   ]
                 },
                 {
-                  "children": [
+                  "images": [
                     {
-                      "images": [
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-logo-left.png?resize=200%2C200",
-                          "alt": "Image featuring the GitHub logo alongside decorative geometric shapes used as branding artwork."
-                        },
-                        {
-                          "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-logo-left.png?resize=400%2C212",
-                          "alt": "Image featuring the GitHub logo alongside decorative geometric shapes used as branding artwork."
-                        }
-                      ]
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-logo-left.png?resize=200%2C200",
+                      "alt": "Image featuring the GitHub logo alongside decorative geometric shapes used as branding artwork."
                     },
                     {
+                      "url": "https://github.blog/wp-content/uploads/2026/01/generic-github-logo-left.png?resize=400%2C212",
+                      "alt": "Image featuring the GitHub logo alongside decorative geometric shapes used as branding artwork."
+                    }
+                  ],
+                  "children": [
+                    {
+                      "texts": [
+                        "We’re calling for targeted amendments to resolve conflicts with open source licensing and align with international transparency frameworks while preserving regulatory intent."
+                      ],
                       "children": [
                         {
                           "links": [
@@ -1056,11 +968,6 @@
                           ],
                           "texts": [
                             "GitHub joins coalition advocating for fixes to California AI Transparency Act to protect open source"
-                          ]
-                        },
-                        {
-                          "texts": [
-                            "We’re calling for targeted amendments to resolve conflicts with open source licensing and align with international transparency frameworks while preserving regulatory intent."
                           ]
                         },
                         {
@@ -1078,38 +985,28 @@
           ]
         },
         {
+          "texts": ["The world's largest developer platform"],
           "children": [
             {
-              "texts": ["The world's largest developer platform"]
-            },
-            {
+              "texts": [
+                "Docs",
+                "Everything you need to master GitHub, all in one place.",
+                "Go to Docs",
+                "GitHub",
+                "Build what’s next on GitHub, the place for anyone from anywhere to build anything.",
+                "Start building"
+              ],
+              "images": [
+                {
+                  "url": "https://github.blog/wp-content/uploads/2024/07/Icon-Circle.svg",
+                  "alt": "Docs"
+                },
+                {
+                  "url": "https://github.blog/wp-content/uploads/2024/07/recirculation-github-icon.svg",
+                  "alt": "GitHub"
+                }
+              ],
               "children": [
-                {
-                  "texts": [
-                    "Docs",
-                    "Everything you need to master GitHub, all in one place.",
-                    "Go to Docs"
-                  ],
-                  "images": [
-                    {
-                      "url": "https://github.blog/wp-content/uploads/2024/07/Icon-Circle.svg",
-                      "alt": "Docs"
-                    }
-                  ]
-                },
-                {
-                  "texts": [
-                    "GitHub",
-                    "Build what’s next on GitHub, the place for anyone from anywhere to build anything.",
-                    "Start building"
-                  ],
-                  "images": [
-                    {
-                      "url": "https://github.blog/wp-content/uploads/2024/07/recirculation-github-icon.svg",
-                      "alt": "GitHub"
-                    }
-                  ]
-                },
                 {
                   "links": ["https://github.com/customer-stories"],
                   "texts": [
@@ -1145,9 +1042,6 @@
           ]
         }
       ]
-    },
-    {
-      "texts": ["Notifications"]
     }
   ]
 }

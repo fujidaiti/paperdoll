@@ -1,15 +1,11 @@
 {
   "children": [
     {
+      "texts": ["Newsroom"],
       "children": [
         {
-          "texts": ["Newsroom"]
-        },
-        {
+          "texts": ["Press inquiries", "press@anthropic.com"],
           "children": [
-            {
-              "texts": ["Press inquiries", "press@anthropic.com"]
-            },
             {
               "links": [
                 "https://support.claude.com/en/articles/9015913-how-to-get-support"
@@ -74,15 +70,11 @@
       ]
     },
     {
+      "texts": ["News", "Search"],
       "children": [
         {
-          "texts": ["News", "Search"]
-        },
-        {
+          "texts": ["Date", "Category", "Title", "See more"],
           "children": [
-            {
-              "texts": ["Date", "Category", "Title"]
-            },
             {
               "children": [
                 {
@@ -184,9 +176,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "texts": ["See more"]
             }
           ]
         }

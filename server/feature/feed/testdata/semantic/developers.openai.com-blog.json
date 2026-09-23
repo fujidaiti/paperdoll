@@ -1,32 +1,27 @@
 {
+  "texts": ["Loading docs agent..."],
   "children": [
     {
       "links": ["https://developers.openai.com/llms.txt"],
       "texts": ["llms.txt", ".md"]
     },
     {
+      "texts": ["Primary navigation"],
       "children": [
         {
-          "texts": ["Primary navigation"]
-        },
-        {
+          "texts": ["Search docs", "Suggested"],
           "children": [
             {
-              "texts": ["Search docs", "Suggested"]
-            },
-            {
+              "texts": [
+                "Overview",
+                "Models",
+                "Agents",
+                "Tools",
+                "Audio & voice",
+                "Production",
+                "API reference"
+              ],
               "children": [
-                {
-                  "texts": [
-                    "Overview",
-                    "Models",
-                    "Agents",
-                    "Tools",
-                    "Audio & voice",
-                    "Production",
-                    "API reference"
-                  ]
-                },
                 {
                   "children": [
                     {
@@ -34,10 +29,8 @@
                       "texts": ["Home"]
                     },
                     {
+                      "texts": ["Get started"],
                       "children": [
-                        {
-                          "texts": ["Get started"]
-                        },
                         {
                           "children": [
                             {
@@ -63,10 +56,8 @@
                       ]
                     },
                     {
+                      "texts": ["Core concepts"],
                       "children": [
-                        {
-                          "texts": ["Core concepts"]
-                        },
                         {
                           "children": [
                             {
@@ -140,10 +131,8 @@
                       ]
                     },
                     {
+                      "texts": ["SDKs and CLI"],
                       "children": [
-                        {
-                          "texts": ["SDKs and CLI"]
-                        },
                         {
                           "children": [
                             {
@@ -163,10 +152,8 @@
                       ]
                     },
                     {
+                      "texts": ["Resources"],
                       "children": [
-                        {
-                          "texts": ["Resources"]
-                        },
                         {
                           "children": [
                             {
@@ -202,17 +189,13 @@
                       ]
                     },
                     {
+                      "texts": ["Legacy APIs"],
                       "children": [
-                        {
-                          "texts": ["Legacy APIs"]
-                        },
                         {
                           "children": [
                             {
+                              "texts": ["Agent Builder"],
                               "children": [
-                                {
-                                  "texts": ["Agent Builder"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -244,10 +227,8 @@
                               ]
                             },
                             {
+                              "texts": ["Evals"],
                               "children": [
-                                {
-                                  "texts": ["Evals"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -291,10 +272,8 @@
                               ]
                             },
                             {
+                              "texts": ["Fine-tuning"],
                               "children": [
-                                {
-                                  "texts": ["Fine-tuning"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -366,10 +345,8 @@
                       "texts": ["Model catalog"]
                     },
                     {
+                      "texts": ["Choose a model"],
                       "children": [
-                        {
-                          "texts": ["Choose a model"]
-                        },
                         {
                           "children": [
                             {
@@ -389,10 +366,8 @@
                       ]
                     },
                     {
+                      "texts": ["Text and code"],
                       "children": [
-                        {
-                          "texts": ["Text and code"]
-                        },
                         {
                           "children": [
                             {
@@ -418,10 +393,8 @@
                       ]
                     },
                     {
+                      "texts": ["Prompting"],
                       "children": [
-                        {
-                          "texts": ["Prompting"]
-                        },
                         {
                           "children": [
                             {
@@ -465,10 +438,8 @@
                       ]
                     },
                     {
+                      "texts": ["Reasoning"],
                       "children": [
-                        {
-                          "texts": ["Reasoning"]
-                        },
                         {
                           "children": [
                             {
@@ -488,10 +459,8 @@
                       ]
                     },
                     {
+                      "texts": ["Images and video"],
                       "children": [
-                        {
-                          "texts": ["Images and video"]
-                        },
                         {
                           "children": [
                             {
@@ -547,10 +516,8 @@
                       ]
                     },
                     {
+                      "texts": ["Realtime and audio"],
                       "children": [
-                        {
-                          "texts": ["Realtime and audio"]
-                        },
                         {
                           "children": [
                             {
@@ -576,10 +543,8 @@
                       ]
                     },
                     {
+                      "texts": ["Specialized models"],
                       "children": [
-                        {
-                          "texts": ["Specialized models"]
-                        },
                         {
                           "children": [
                             {
@@ -615,10 +580,8 @@
                       "texts": ["Overview"]
                     },
                     {
+                      "texts": ["Agents API"],
                       "children": [
-                        {
-                          "texts": ["Agents API"]
-                        },
                         {
                           "children": [
                             {
@@ -646,10 +609,8 @@
                               "texts": ["Configuring Agents"]
                             },
                             {
+                              "texts": ["Sessions"],
                               "children": [
-                                {
-                                  "texts": ["Sessions"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -681,10 +642,8 @@
                               ]
                             },
                             {
+                              "texts": ["Environments and sandboxes"],
                               "children": [
-                                {
-                                  "texts": ["Environments and sandboxes"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -722,10 +681,8 @@
                               ]
                             },
                             {
+                              "texts": ["Tools and integrations"],
                               "children": [
-                                {
-                                  "texts": ["Tools and integrations"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -785,10 +742,8 @@
                       ]
                     },
                     {
+                      "texts": ["Agents SDK"],
                       "children": [
-                        {
-                          "texts": ["Agents SDK"]
-                        },
                         {
                           "children": [
                             {
@@ -862,10 +817,8 @@
                       ]
                     },
                     {
+                      "texts": ["ChatKit"],
                       "children": [
-                        {
-                          "texts": ["ChatKit"]
-                        },
                         {
                           "children": [
                             {
@@ -923,10 +876,8 @@
                       ]
                     },
                     {
+                      "texts": ["Search and retrieval"],
                       "children": [
-                        {
-                          "texts": ["Search and retrieval"]
-                        },
                         {
                           "children": [
                             {
@@ -952,10 +903,8 @@
                       ]
                     },
                     {
+                      "texts": ["Connect tools and data"],
                       "children": [
-                        {
-                          "texts": ["Connect tools and data"]
-                        },
                         {
                           "children": [
                             {
@@ -975,10 +924,8 @@
                       ]
                     },
                     {
+                      "texts": ["Build tool workflows"],
                       "children": [
-                        {
-                          "texts": ["Build tool workflows"]
-                        },
                         {
                           "children": [
                             {
@@ -1010,10 +957,8 @@
                       ]
                     },
                     {
+                      "texts": ["Computer and code"],
                       "children": [
-                        {
-                          "texts": ["Computer and code"]
-                        },
                         {
                           "children": [
                             {
@@ -1067,10 +1012,8 @@
                       "texts": ["Overview"]
                     },
                     {
+                      "texts": ["GPT-Live"],
                       "children": [
-                        {
-                          "texts": ["GPT-Live"]
-                        },
                         {
                           "children": [
                             {
@@ -1114,10 +1057,8 @@
                       ]
                     },
                     {
+                      "texts": ["Realtime API"],
                       "children": [
-                        {
-                          "texts": ["Realtime API"]
-                        },
                         {
                           "children": [
                             {
@@ -1155,10 +1096,8 @@
                       ]
                     },
                     {
+                      "texts": ["Build with voice"],
                       "children": [
-                        {
-                          "texts": ["Build with voice"]
-                        },
                         {
                           "children": [
                             {
@@ -1184,10 +1123,8 @@
                       ]
                     },
                     {
+                      "texts": ["Connections"],
                       "children": [
-                        {
-                          "texts": ["Connections"]
-                        },
                         {
                           "children": [
                             {
@@ -1219,10 +1156,8 @@
                       ]
                     },
                     {
+                      "texts": ["Audio processing"],
                       "children": [
-                        {
-                          "texts": ["Audio processing"]
-                        },
                         {
                           "children": [
                             {
@@ -1264,10 +1199,8 @@
                 {
                   "children": [
                     {
+                      "texts": ["Go live"],
                       "children": [
-                        {
-                          "texts": ["Go live"]
-                        },
                         {
                           "children": [
                             {
@@ -1287,10 +1220,8 @@
                       ]
                     },
                     {
+                      "texts": ["Performance and quality"],
                       "children": [
-                        {
-                          "texts": ["Performance and quality"]
-                        },
                         {
                           "children": [
                             {
@@ -1322,10 +1253,8 @@
                       ]
                     },
                     {
+                      "texts": ["Cost and throughput"],
                       "children": [
-                        {
-                          "texts": ["Cost and throughput"]
-                        },
                         {
                           "children": [
                             {
@@ -1367,10 +1296,8 @@
                       ]
                     },
                     {
+                      "texts": ["Safety and governance"],
                       "children": [
-                        {
-                          "texts": ["Safety and governance"]
-                        },
                         {
                           "children": [
                             {
@@ -1386,10 +1313,8 @@
                               "texts": ["Red teaming"]
                             },
                             {
+                              "texts": ["Safety checks"],
                               "children": [
-                                {
-                                  "texts": ["Safety checks"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -1449,10 +1374,8 @@
                       ]
                     },
                     {
+                      "texts": ["Infrastructure and access"],
                       "children": [
-                        {
-                          "texts": ["Infrastructure and access"]
-                        },
                         {
                           "children": [
                             {
@@ -1610,10 +1533,8 @@
                       ]
                     },
                     {
+                      "texts": ["Operations"],
                       "children": [
-                        {
-                          "texts": ["Operations"]
-                        },
                         {
                           "children": [
                             {
@@ -1649,6 +1570,7 @@
               ]
             },
             {
+              "texts": ["Docs", "Use cases"],
               "children": [
                 {
                   "children": [
@@ -1661,17 +1583,12 @@
                       "texts": ["Use cases"]
                     }
                   ]
-                },
-                {
-                  "texts": ["Docs", "Use cases"]
                 }
               ]
             },
             {
+              "texts": ["Plugins", "Workspace Agents", "Commerce", "Ads"],
               "children": [
-                {
-                  "texts": ["Plugins", "Workspace Agents", "Commerce", "Ads"]
-                },
                 {
                   "children": [
                     {
@@ -1689,10 +1606,8 @@
                       ]
                     },
                     {
+                      "texts": ["Core concepts"],
                       "children": [
-                        {
-                          "texts": ["Core concepts"]
-                        },
                         {
                           "children": [
                             {
@@ -1718,10 +1633,8 @@
                       ]
                     },
                     {
+                      "texts": ["Plan"],
                       "children": [
-                        {
-                          "texts": ["Plan"]
-                        },
                         {
                           "children": [
                             {
@@ -1741,10 +1654,8 @@
                       ]
                     },
                     {
+                      "texts": ["Build"],
                       "children": [
-                        {
-                          "texts": ["Build"]
-                        },
                         {
                           "children": [
                             {
@@ -1788,10 +1699,8 @@
                       ]
                     },
                     {
+                      "texts": ["Test and publish"],
                       "children": [
-                        {
-                          "texts": ["Test and publish"]
-                        },
                         {
                           "children": [
                             {
@@ -1817,10 +1726,8 @@
                       ]
                     },
                     {
+                      "texts": ["Conversion specs"],
                       "children": [
-                        {
-                          "texts": ["Conversion specs"]
-                        },
                         {
                           "children": [
                             {
@@ -1846,10 +1753,8 @@
                       ]
                     },
                     {
+                      "texts": ["Guides"],
                       "children": [
-                        {
-                          "texts": ["Guides"]
-                        },
                         {
                           "children": [
                             {
@@ -1887,10 +1792,8 @@
                       ]
                     },
                     {
+                      "texts": ["Resources"],
                       "children": [
-                        {
-                          "texts": ["Resources"]
-                        },
                         {
                           "children": [
                             {
@@ -1938,10 +1841,8 @@
                       "texts": ["Home"]
                     },
                     {
+                      "texts": ["Get started"],
                       "children": [
-                        {
-                          "texts": ["Get started"]
-                        },
                         {
                           "children": [
                             {
@@ -1971,10 +1872,8 @@
                       "texts": ["Home"]
                     },
                     {
+                      "texts": ["Guides"],
                       "children": [
-                        {
-                          "texts": ["Guides"]
-                        },
                         {
                           "children": [
                             {
@@ -1994,10 +1893,8 @@
                       ]
                     },
                     {
+                      "texts": ["File Upload"],
                       "children": [
-                        {
-                          "texts": ["File Upload"]
-                        },
                         {
                           "children": [
                             {
@@ -2017,10 +1914,8 @@
                       ]
                     },
                     {
+                      "texts": ["API"],
                       "children": [
-                        {
-                          "texts": ["API"]
-                        },
                         {
                           "children": [
                             {
@@ -2060,10 +1955,8 @@
                       "texts": ["Ads Overview"]
                     },
                     {
+                      "texts": ["Measurement"],
                       "children": [
-                        {
-                          "texts": ["Measurement"]
-                        },
                         {
                           "children": [
                             {
@@ -2101,10 +1994,8 @@
                       ]
                     },
                     {
+                      "texts": ["Advertiser API"],
                       "children": [
-                        {
-                          "texts": ["Advertiser API"]
-                        },
                         {
                           "children": [
                             {
@@ -2166,10 +2057,8 @@
                       ]
                     },
                     {
+                      "texts": ["API Reference"],
                       "children": [
-                        {
-                          "texts": ["API Reference"]
-                        },
                         {
                           "children": [
                             {
@@ -2229,19 +2118,17 @@
               ]
             },
             {
+              "texts": [
+                "Overview",
+                "Features",
+                "Configuration",
+                "Developers",
+                "Security",
+                "Administration",
+                "Use Cases",
+                "Resources"
+              ],
               "children": [
-                {
-                  "texts": [
-                    "Overview",
-                    "Features",
-                    "Configuration",
-                    "Developers",
-                    "Security",
-                    "Administration",
-                    "Use Cases",
-                    "Resources"
-                  ]
-                },
                 {
                   "children": [
                     {
@@ -2249,10 +2136,8 @@
                       "texts": ["Home"]
                     },
                     {
+                      "texts": ["Get started"],
                       "children": [
-                        {
-                          "texts": ["Get started"]
-                        },
                         {
                           "children": [
                             {
@@ -2284,10 +2169,8 @@
                       ]
                     },
                     {
+                      "texts": ["Foundations"],
                       "children": [
-                        {
-                          "texts": ["Foundations"]
-                        },
                         {
                           "children": [
                             {
@@ -2319,10 +2202,8 @@
                       ]
                     },
                     {
+                      "texts": ["Explore"],
                       "children": [
-                        {
-                          "texts": ["Explore"]
-                        },
                         {
                           "children": [
                             {
@@ -2354,10 +2235,8 @@
                       ]
                     },
                     {
+                      "texts": ["Available on"],
                       "children": [
-                        {
-                          "texts": ["Available on"]
-                        },
                         {
                           "children": [
                             {
@@ -2401,10 +2280,8 @@
                       ]
                     },
                     {
+                      "texts": ["Releases"],
                       "children": [
-                        {
-                          "texts": ["Releases"]
-                        },
                         {
                           "children": [
                             {
@@ -2438,10 +2315,8 @@
                       "texts": ["Overview"]
                     },
                     {
+                      "texts": ["Workflows"],
                       "children": [
-                        {
-                          "texts": ["Workflows"]
-                        },
                         {
                           "children": [
                             {
@@ -2497,10 +2372,8 @@
                       ]
                     },
                     {
+                      "texts": ["Capabilities"],
                       "children": [
-                        {
-                          "texts": ["Capabilities"]
-                        },
                         {
                           "children": [
                             {
@@ -2568,10 +2441,8 @@
                       ]
                     },
                     {
+                      "texts": ["Reference"],
                       "children": [
-                        {
-                          "texts": ["Reference"]
-                        },
                         {
                           "children": [
                             {
@@ -2613,10 +2484,8 @@
                       "texts": ["Overview"]
                     },
                     {
+                      "texts": ["Customization"],
                       "children": [
-                        {
-                          "texts": ["Customization"]
-                        },
                         {
                           "children": [
                             {
@@ -2642,10 +2511,8 @@
                       ]
                     },
                     {
+                      "texts": ["Config file"],
                       "children": [
-                        {
-                          "texts": ["Config file"]
-                        },
                         {
                           "children": [
                             {
@@ -2683,10 +2550,8 @@
                       ]
                     },
                     {
+                      "texts": ["Agent configuration"],
                       "children": [
-                        {
-                          "texts": ["Agent configuration"]
-                        },
                         {
                           "children": [
                             {
@@ -2718,10 +2583,8 @@
                       ]
                     },
                     {
+                      "texts": ["Extend ChatGPT and Codex"],
                       "children": [
-                        {
-                          "texts": ["Extend ChatGPT and Codex"]
-                        },
                         {
                           "children": [
                             {
@@ -2747,10 +2610,8 @@
                       "texts": ["Linux", "Desktop app"]
                     },
                     {
+                      "texts": ["Windows"],
                       "children": [
-                        {
-                          "texts": ["Windows"]
-                        },
                         {
                           "children": [
                             {
@@ -2786,10 +2647,8 @@
                       "texts": ["Overview"]
                     },
                     {
+                      "texts": ["Development workflows"],
                       "children": [
-                        {
-                          "texts": ["Development workflows"]
-                        },
                         {
                           "children": [
                             {
@@ -2809,10 +2668,8 @@
                       ]
                     },
                     {
+                      "texts": ["Extend and automate"],
                       "children": [
-                        {
-                          "texts": ["Extend and automate"]
-                        },
                         {
                           "children": [
                             {
@@ -2844,10 +2701,8 @@
                       ]
                     },
                     {
+                      "texts": ["Environments"],
                       "children": [
-                        {
-                          "texts": ["Environments"]
-                        },
                         {
                           "children": [
                             {
@@ -2879,10 +2734,8 @@
                       ]
                     },
                     {
+                      "texts": ["Build with Codex"],
                       "children": [
-                        {
-                          "texts": ["Build with Codex"]
-                        },
                         {
                           "children": [
                             {
@@ -2914,10 +2767,8 @@
                       ]
                     },
                     {
+                      "texts": ["Third-party integrations"],
                       "children": [
-                        {
-                          "texts": ["Third-party integrations"]
-                        },
                         {
                           "children": [
                             {
@@ -2949,10 +2800,8 @@
                       ]
                     },
                     {
+                      "texts": ["Reference"],
                       "children": [
-                        {
-                          "texts": ["Reference"]
-                        },
                         {
                           "children": [
                             {
@@ -2988,10 +2837,8 @@
                       "texts": ["Overview"]
                     },
                     {
+                      "texts": ["Permissions"],
                       "children": [
-                        {
-                          "texts": ["Permissions"]
-                        },
                         {
                           "children": [
                             {
@@ -3029,10 +2876,8 @@
                       ]
                     },
                     {
+                      "texts": ["Codex Security"],
                       "children": [
-                        {
-                          "texts": ["Codex Security"]
-                        },
                         {
                           "children": [
                             {
@@ -3042,10 +2887,8 @@
                               "texts": ["Overview"]
                             },
                             {
+                              "texts": ["Codex Security plugin"],
                               "children": [
-                                {
-                                  "texts": ["Codex Security plugin"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -3119,10 +2962,8 @@
                               ]
                             },
                             {
+                              "texts": ["Codex Security CLI"],
                               "children": [
-                                {
-                                  "texts": ["Codex Security CLI"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -3172,10 +3013,8 @@
                               "texts": ["TypeScript SDK"]
                             },
                             {
+                              "texts": ["Codex Security cloud"],
                               "children": [
-                                {
-                                  "texts": ["Codex Security cloud"]
-                                },
                                 {
                                   "children": [
                                     {
@@ -3211,10 +3050,8 @@
                       ]
                     },
                     {
+                      "texts": ["Cyber safety"],
                       "children": [
-                        {
-                          "texts": ["Cyber safety"]
-                        },
                         {
                           "children": [
                             {
@@ -3250,10 +3087,8 @@
                       "texts": ["Getting started", "Admin rollout guide"]
                     },
                     {
+                      "texts": ["ChatGPT Work"],
                       "children": [
-                        {
-                          "texts": ["ChatGPT Work"]
-                        },
                         {
                           "children": [
                             {
@@ -3291,10 +3126,8 @@
                       ]
                     },
                     {
+                      "texts": ["Identity and authentication"],
                       "children": [
-                        {
-                          "texts": ["Identity and authentication"]
-                        },
                         {
                           "children": [
                             {
@@ -3320,10 +3153,8 @@
                       ]
                     },
                     {
+                      "texts": ["Workspace access, policy, and models"],
                       "children": [
-                        {
-                          "texts": ["Workspace access, policy, and models"]
-                        },
                         {
                           "children": [
                             {
@@ -3379,10 +3210,8 @@
                       ]
                     },
                     {
+                      "texts": ["Plugin and connector controls"],
                       "children": [
-                        {
-                          "texts": ["Plugin and connector controls"]
-                        },
                         {
                           "children": [
                             {
@@ -3408,10 +3237,8 @@
                       ]
                     },
                     {
+                      "texts": ["Usage, governance, and compliance"],
                       "children": [
-                        {
-                          "texts": ["Usage, governance, and compliance"]
-                        },
                         {
                           "children": [
                             {
@@ -3455,10 +3282,8 @@
                       ]
                     },
                     {
+                      "texts": ["Deployment and model providers"],
                       "children": [
-                        {
-                          "texts": ["Deployment and model providers"]
-                        },
                         {
                           "children": [
                             {
@@ -3538,10 +3363,8 @@
                       ]
                     },
                     {
+                      "texts": ["Community"],
                       "children": [
-                        {
-                          "texts": ["Community"]
-                        },
                         {
                           "children": [
                             {
@@ -3623,10 +3446,8 @@
                   ]
                 },
                 {
+                  "texts": ["Community"],
                   "children": [
-                    {
-                      "texts": ["Community"]
-                    },
                     {
                       "children": [
                         {
@@ -3664,30 +3485,18 @@
               ]
             },
             {
+              "texts": ["Showcase", "Blog", "Cookbook", "Learn", "Community"],
               "children": [
                 {
                   "links": ["https://developers.openai.com/showcase"],
                   "texts": ["Showcase"]
                 },
                 {
-                  "texts": [
-                    "Showcase",
-                    "Blog",
-                    "Cookbook",
-                    "Learn",
-                    "Community"
-                  ]
-                },
-                {
+                  "texts": ["All posts"],
                   "children": [
                     {
-                      "texts": ["All posts"]
-                    },
-                    {
+                      "texts": ["Recent"],
                       "children": [
-                        {
-                          "texts": ["Recent"]
-                        },
                         {
                           "children": [
                             {
@@ -3733,10 +3542,8 @@
                       ]
                     },
                     {
+                      "texts": ["Topics"],
                       "children": [
-                        {
-                          "texts": ["Topics"]
-                        },
                         {
                           "children": [
                             {
@@ -3788,10 +3595,8 @@
                       "texts": ["Home"]
                     },
                     {
+                      "texts": ["Topics"],
                       "children": [
-                        {
-                          "texts": ["Topics"]
-                        },
                         {
                           "children": [
                             {
@@ -3881,10 +3686,8 @@
                       ]
                     },
                     {
+                      "texts": ["Categories"],
                       "children": [
-                        {
-                          "texts": ["Categories"]
-                        },
                         {
                           "children": [
                             {
@@ -3904,10 +3707,8 @@
                       ]
                     },
                     {
+                      "texts": ["Topics"],
                       "children": [
-                        {
-                          "texts": ["Topics"]
-                        },
                         {
                           "children": [
                             {
@@ -3989,10 +3790,8 @@
                       "texts": ["Community"]
                     },
                     {
+                      "texts": ["Programs"],
                       "children": [
-                        {
-                          "texts": ["Programs"]
-                        },
                         {
                           "children": [
                             {
@@ -4024,20 +3823,16 @@
                       ]
                     },
                     {
+                      "texts": ["Spaces"],
                       "children": [
                         {
-                          "texts": ["Spaces"]
-                        },
-                        {
+                          "texts": ["Developer Forum"],
                           "children": [
                             {
                               "links": [
                                 "https://luma.com/codex-community?utm_source=oaidevs"
                               ],
                               "texts": ["Events"]
-                            },
-                            {
-                              "texts": ["Developer Forum"]
                             },
                             {
                               "links": ["https://discord.com/invite/openai"],
@@ -4068,13 +3863,11 @@
       ]
     },
     {
+      "texts": [
+        "OpenAI Developer Blog",
+        "Insights for developers building with OpenAI"
+      ],
       "children": [
-        {
-          "texts": [
-            "OpenAI Developer Blog",
-            "Insights for developers building with OpenAI"
-          ]
-        },
         {
           "children": [
             {
@@ -4554,9 +4347,6 @@
           ]
         }
       ]
-    },
-    {
-      "texts": ["Loading docs agent..."]
     }
   ]
 }

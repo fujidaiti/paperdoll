@@ -1,16 +1,12 @@
 {
+  "texts": ["Skip to main content"],
   "children": [
     {
-      "texts": ["Skip to main content"]
-    },
-    {
+      "texts": [
+        "News",
+        "Discover our latest AI breakthroughs, projects, and updates"
+      ],
       "children": [
-        {
-          "texts": [
-            "News",
-            "Discover our latest AI breakthroughs, projects, and updates"
-          ]
-        },
         {
           "children": [
             {
@@ -485,10 +481,8 @@
           ]
         },
         {
+          "texts": ["1", "…"],
           "children": [
-            {
-              "texts": ["1"]
-            },
             {
               "links": ["https://deepmind.google/blog/page/2/"],
               "texts": ["Page"]
@@ -496,9 +490,6 @@
             {
               "links": ["https://deepmind.google/blog/page/3/"],
               "texts": ["Page"]
-            },
-            {
-              "texts": ["…"]
             },
             {
               "links": ["https://deepmind.google/blog/page/19/"],

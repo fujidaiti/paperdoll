@@ -61,7 +61,56 @@ func BuildSemanticTree(r io.Reader, page url.URL) (*SemanticNode, error) {
 	if root == nil {
 		return nil, nil
 	}
-	return semanticNode(root, &page), nil
+	n := semanticNode(root, &page)
+	mergeLinkless(n)
+	return n, nil
+}
+
+// mergeLinkless moves the values of the nodes that carry no link into their
+// parent, on the assumption that a value next to a link describes the post
+// that link points at, the way a tag, a banner or a date does. A node that
+// carries no link is never a post of its own, so leaving it in the tree as a
+// child would offer the user a post that does not exist.
+//
+// A node that carries no link also has no children, because a node only gets
+// children when its subtree holds two links or more, so the nodes moved here
+// are always leaves. The values are moved only when the parent keeps a child
+// that carries a link: a parent whose children all carry no link holds no post
+// to attach them to.
+//
+// This is what a page that lists its posts as running text needs, rather than
+// as cards: on developer.apple.com the image and the date of an item sit
+// beside the link instead of inside it.
+func mergeLinkless(n *SemanticNode) {
+	if n == nil {
+		return
+	}
+	for _, c := range n.Children {
+		mergeLinkless(c)
+	}
+
+	linkless := func(c *SemanticNode) bool { return len(c.Links) == 0 && len(c.Children) == 0 }
+	linked := false
+	for _, c := range n.Children {
+		if !linkless(c) {
+			linked = true
+			break
+		}
+	}
+	if !linked {
+		return
+	}
+
+	children := n.Children
+	n.Children = nil
+	for _, c := range children {
+		if linkless(c) {
+			n.Texts = append(n.Texts, c.Texts...)
+			n.Images = append(n.Images, c.Images...)
+			continue
+		}
+		n.Children = append(n.Children, c)
+	}
 }
 
 // SemanticImage is one image candidate. The alt text is kept because it is
