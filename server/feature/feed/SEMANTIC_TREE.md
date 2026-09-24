@@ -263,12 +263,31 @@ no text of the tree are now in one.
   also holds the author name and the category. The vertical rule does not reach
   this case, because the node holding the date has children of its own when the
   body text contains links.
-- **Which node is a post list is not yet a rule.** The tables above were
-  produced with the fixtures in hand. The largest node that covers every post is
-  usually not the list: on `anthropic.com` it is the page container, which has
-  three children. The candidate rule to test is that a node is a group when at
-  least two of its children each hold exactly one link, and the group is the set
-  of those children.
-- **Whether the tree replaces the enumeration or feeds it** is open. The next
-  step is to read posts out of the tree with the rule above and to run the
-  acceptance table in `metrics_test.go` against them.
+- **Which node is a post list is now a rule**, measured in
+  `SEMANTIC_TREE_SCORING.md`. A group is a node with two or more children, and
+  it is offered when a score built from what its members hold, how much they
+  look alike and how many links each of them holds reaches 80% of the best score
+  of the same page. Over the 21 pages with a fixture this gives precision 0.971
+  and recall 0.969 with 72 groups, and precision 0.963 and recall 0.977 when the
+  weights are chosen on the other twenty pages.
+
+  - The rule and the measurements:
+    file:///Users/fujidaiti/Dev/paperdoll/server/feature/feed/SEMANTIC_TREE_SCORING.md
+
+- **Whether the tree replaces the enumeration or feeds it.** Reading the posts
+  out of the tree is implemented in `semantic_groups.go` and measured by
+  `TestSemanticGroups`, which has an acceptance table of its own. Over the 21
+  pages it returns 72 groups where `EnumeratePostGroups` returns 523, and it
+  finds 1037 of the 1070 posts where the enumeration finds all of them.
+
+  The recommendation, with the numbers it rests on, is in
+  `SEMANTIC_TREE_SCORING.md`: offer the tree, lower the threshold to 0.75 or
+  0.70 to recover 10 or 20 of the 33 lost posts, and keep the enumeration for a
+  page where the tree finds nothing. Only 67 of the 523 groups the enumeration
+  returns are worth ticking, so it does not offer the user more, it offers the
+  same posts with eight times the reading. What is still open is the choice
+  between 0.75 and 0.70, which depends on whether the selection screen is used
+  once per site or often.
+
+  - The recommendation:
+    file:///Users/fujidaiti/Dev/paperdoll/server/feature/feed/SEMANTIC_TREE_SCORING.md
