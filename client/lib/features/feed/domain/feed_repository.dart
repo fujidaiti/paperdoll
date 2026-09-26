@@ -1,3 +1,4 @@
+import 'package:openapi/api.dart' as api;
 import 'package:paperdoll/core/pagination/page_result.dart';
 import 'package:paperdoll/features/feed/domain/feed.dart';
 import 'package:paperdoll/features/feed/domain/feed_candidate.dart';
@@ -16,7 +17,13 @@ abstract interface class FeedRepository {
   Future<List<FeedCandidate>> search(String query);
 
   /// `PUT /feeds` with `{ url }` → the subscribed feed (idempotent).
-  Future<Feed> subscribe(String url);
+  ///
+  /// [selectors] is required for a plain HTML page with no feed, one entry
+  /// per post group the user ticked, and omitted from the request when empty.
+  Future<Feed> subscribe(
+    String url, {
+    List<api.PostSelectors> selectors = const [],
+  });
 
   /// `GET /feeds/{id}` → the feed header.
   Future<Feed> getFeed(int id);

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:paperdoll/core/error/domain_error.dart';
+import 'package:paperdoll/core/router/routes.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
 import 'package:paperdoll/core/ui/widgets/app_divider.dart';
 import 'package:paperdoll/core/ui/widgets/async_value_view.dart';
@@ -39,6 +40,12 @@ class _FeedSearchScreenState extends ConsumerState<FeedSearchScreen> {
   }
 
   Future<void> _subscribe(FeedCandidate candidate, int index) async {
+    // A plain HTML page with no feed: the user has to tell which elements of
+    // the page are posts before it can be subscribed to.
+    if (candidate.postGroups.isNotEmpty) {
+      await context.pushNamed(routeFeedSubscriptionName, extra: candidate);
+      return;
+    }
     final messenger = ScaffoldMessenger.of(context);
     final router = GoRouter.of(context);
     setState(() => _subscribingIndex = index);

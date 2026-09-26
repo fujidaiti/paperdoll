@@ -18,6 +18,8 @@ import 'package:collection/collection.dart';
 import 'package:http/http.dart';
 
 part 'api_helper.dart';
+part 'model/attribute_candidate.dart';
+part 'model/attribute_value.dart';
 part 'model/auth_token.dart';
 part 'model/error.dart';
 part 'model/feed.dart';
@@ -28,6 +30,8 @@ part 'model/get_feeds200_response.dart';
 part 'model/get_reading_list200_response.dart';
 part 'model/get_todays_newspaper200_response.dart';
 part 'model/get_web_clip200_response.dart';
+part 'model/post_group.dart';
+part 'model/post_selectors.dart';
 part 'model/read_later.dart';
 part 'model/reading_list_item.dart';
 part 'model/resend_sign_up_verification_request.dart';

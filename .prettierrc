@@ -10,6 +10,13 @@
       "options": {
         "proseWrap": "preserve"
       }
+    },
+    {
+      "comment": "The sanitize fixtures are the literal output of the cleaning step, compared byte for byte by TestSanitize. Formatting the CSS inside their style attributes rewrites that output and breaks the test.",
+      "files": "server/feature/feed/testdata/sanitize/*.fixture.html",
+      "options": {
+        "embeddedLanguageFormatting": "off"
+      }
     }
   ]
 }

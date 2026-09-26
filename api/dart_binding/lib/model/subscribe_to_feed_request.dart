@@ -14,26 +14,33 @@ class SubscribeToFeedRequest {
   /// Returns a new [SubscribeToFeedRequest] instance.
   SubscribeToFeedRequest({
     required this.url,
+    this.selectors = const [],
   });
 
   String url;
 
+  /// How to read posts out of an HTML page. Omit it when `url` points at an RSS/Atom feed or at a page that links to one. Several entries are allowed, one per group the user ticked; posts are deduplicated by URL across them.
+  List<PostSelectors> selectors;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SubscribeToFeedRequest && other.url == url;
+      other is SubscribeToFeedRequest &&
+          other.url == url &&
+          _deepEquality.equals(other.selectors, selectors);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (url.hashCode);
+      (url.hashCode) + (selectors.hashCode);
 
   @override
-  String toString() => 'SubscribeToFeedRequest[url=$url]';
+  String toString() => 'SubscribeToFeedRequest[url=$url, selectors=$selectors]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'url'] = this.url;
+    json[r'selectors'] = this.selectors;
     return json;
   }
 
@@ -57,6 +64,7 @@ class SubscribeToFeedRequest {
 
       return SubscribeToFeedRequest(
         url: mapValueOfType<String>(json, r'url')!,
+        selectors: PostSelectors.listFromJson(json[r'selectors']),
       );
     }
     return null;

@@ -1,0 +1,255 @@
+{
+  "url": "https://go.dev/blog/",
+  "posts": [
+    {
+      "link": "https://go.dev/blog/size-specialized-allocations",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Size-Specialized Memory Allocation",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "16 September 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Michael Matloob",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "Go 1.27 improves performance of small allocations using size-specialized allocation functions.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "link": "https://go.dev/blog/goroutine-leak-profiles",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Goroutine Leak Profiles",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "2 September 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Vlad Saioc",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "Go 1.27 includes new goroutine leak profiles.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "link": "https://go.dev/blog/generic-methods",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Generic Methods",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "26 August 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Mark Freeman",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "Go 1.27 adds generic methods—a highly desired language feature.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "link": "https://go.dev/blog/go1.27",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Go 1.27 is released",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "19 August 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Nicholas Husin, on behalf of the Go team",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "link": "https://go.dev/blog/pkgsite-api",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Introducing the pkg.go.dev API",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "21 May 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Ethan Lee, Hana Kim, and Jonathan Amsterdam",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "link": "https://go.dev/blog/type-construction-and-cycle-detection",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Type Construction and Cycle Detection",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "24 March 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Mark Freeman",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "link": "https://go.dev/blog/inliner",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "//go:fix inline and the source-level inliner",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "10 March 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Alan Donovan",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "link": "https://go.dev/blog/allocation-optimizations",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Allocating on the Stack",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "27 February 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Keith Randall",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "A description of some of the recent changes to do allocations on the stack instead of the heap.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "link": "https://go.dev/blog/gofix",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Using go fix to modernize Go code",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "17 February 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Alan Donovan",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "link": "https://go.dev/blog/go1.26",
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Go 1.26 is released",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "10 February 2026",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Carlos Amedee, on behalf of the Go team",
+          "required": false
+        },
+        {
+          "kind": "description",
+          "value": "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more.",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

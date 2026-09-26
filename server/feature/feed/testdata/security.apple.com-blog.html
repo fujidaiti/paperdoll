@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blog - Apple Security Research</title>
+    <meta
+      name="description"
+      content="Explore featured posts from Apple Security Research, including the latest security research discoveries."
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Blog - Apple Security Research" />
+    <meta
+      property="og:description"
+      content="Explore featured posts from Apple Security Research, including the latest security research discoveries."
+    />
+    <meta
+      property="og:image"
+      content="https://security.apple.com/assets/image/seo-image.jpg"
+    />
+    <meta property="og:image:alt" content="Blog - Apple Security Research" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Blog - Apple Security Research" />
+    <meta property="og:url" content="https://security.apple.com/blog/" />
+    <link rel="canonical" href="https://security.apple.com/blog/" />
+    <meta name="next-head-count" content="15" />
+    <link
+      rel="stylesheet"
+      href="https://www.apple.com/wss/fonts?families=SF+Pro,v3|SF+Pro+Icons,v3|SF+Mono,v1"
+    />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
+    <link
+      rel="preload"
+      href="/_next/static/css/219539992c2e67b8.css"
+      as="style"
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="/_next/static/css/219539992c2e67b8.css"
+      crossorigin=""
+      data-n-g=""
+    />
+    <link
+      rel="preload"
+      href="/_next/static/css/3541bfa4d951225b.css"
+      as="style"
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="/_next/static/css/3541bfa4d951225b.css"
+      crossorigin=""
+      data-n-p=""
+    />
+    <noscript data-n-css=""></noscript>
+    <script
+      defer=""
+      crossorigin=""
+      nomodule=""
+      src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"
+    ></script>
+    <script
+      src="/_next/static/chunks/webpack-7040e5419f130088.js"
+      defer=""
+      crossorigin=""
+    ></script>
+    <script
+      src="/_next/static/chunks/framework-f707628ec3f247aa.js"
+      defer=""
+      crossorigin=""
+    ></script>
+    <script
+      src="/_next/static/chunks/main-d6ca93fb6cd6ec69.js"
+      defer=""
+      crossorigin=""
+    ></script>
+    <script
+      src="/_next/static/chunks/pages/_app-421ec81abb51fc71.js"
+      defer=""
+      crossorigin=""
+    ></script>
+    <script
+      src="/_next/static/chunks/613-923cf28cfeb59cdc.js"
+      defer=""
+      crossorigin=""
+    ></script>
+    <script
+      src="/_next/static/chunks/446-84824631cccdd303.js"
+      defer=""
+      crossorigin=""
+    ></script>
+    <script
+      src="/_next/static/chunks/816-7f11b8f952613ca6.js"
+      defer=""
+      crossorigin=""
+    ></script>
+    <script
+      src="/_next/static/chunks/pages/blog-2a80ef62ae4cfea9.js"
+      defer=""
+      crossorigin=""
+    ></script>
+    <script
+      src="/_next/static/sYGN0L8PuAZH7ZEsvJb8k/_buildManifest.js"
+      defer=""
+      crossorigin=""
+    ></script>
+    <script
+      src="/_next/static/sYGN0L8PuAZH7ZEsvJb8k/_ssgManifest.js"
+      defer=""
+      crossorigin=""
+    ></script>
+  </head>
+  <body>
+    <script>
+      /* RSID: */
+      var s_account = "awdapplesecurity";
+    </script>
+    <script src="https://developer.apple.com/assets/metrics/scripts/analytics.js"></script>
+    <script>
+      s.pageName = AC && AC.Tracking && AC.Tracking.pageName();
+      /************* DO NOT ALTER THE NEXT LINE ! **************/
+      var s_code = s.t();
+      if (s_code) document.write(s_code);
+    </script>
+    <div id="__next">
+      <div>
+        <input
+          type="checkbox"
+          id="localnav-menustate"
+          class="localnav-menustate"
+        />
+        <nav
+          id="localnav"
+          class="localnav theme-dark localnav-scrim localnav-noborder"
+          data-sticky="true"
+          role="navigation"
+          aria-label="Global"
+        >
+          <div class="localnav-wrapper localnav-noborder">
+            <div class="localnav-background"></div>
+            <div class="localnav-content">
+              <div class="localnav-title">
+                <a class="localnav-icon" href="/"
+                  ><svg
+                    viewBox="0 0 2537 325"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Apple Security Research</title>
+                    <path
+                      d="m320.25 218-.14-2.11h34.73l.28 1.69c2.68 17.43 20.54 28.26 46 28.26s41.62-11.39 41.62-28.83v-.14c0-15.18-10.54-23.34-36.7-28.82l-21.8-4.5c-39.93-8.3-59.62-26.86-59.62-57.1v-.14c.14-35.72 31.5-59.9 75.23-59.9 44.3 0 73.27 23.34 75.38 58.07l.14 2.39h-34.75l-.28-1.68c-2.39-17.72-18-28.27-40.78-28.27-23.76.13-38.56 11.24-38.56 27.41v.14c0 14.35 11.11 22.78 35.58 27.85l21.94 4.5c42.18 8.72 60.61 25.87 60.61 57.51v.14c0 37.83-29.82 61.88-79.32 61.88-46.51 0-77.17-21.94-79.56-58.35zM492.27 198.72v-.14c0-47 27.42-77.9 70-77.9s69.05 29.95 69.05 74.95v11.25H527c.56 26.16 14.9 41.62 37.68 41.62 17.44 0 28.83-9.28 32.21-19.26l.28-1h32.76l-.42 1.55c-4.64 22.92-26.58 46-65.53 46-44.71 0-71.71-29.68-71.71-77.07zm35.16-15.18h69.89c-2.53-23.63-16-35.44-34.59-35.44s-32.49 12.51-35.3 35.44zM643.34 198.16V198c0-47.53 28.13-77.34 71.58-77.34 39.24 0 63.7 24.89 65.81 54.7l.14 1.12h-33l-.28-1.26c-3-14.49-13.64-26.16-32.21-26.16-22.07 0-36.28 18.71-36.28 49.22v.14c0 31.08 14.35 49.08 36.42 49.08 17.72 0 29-10.55 32.21-26.16l.28-1.26h33l-.15 1c-2.67 31.08-27.84 54.71-65.53 54.71-44.28 0-71.99-29.79-71.99-77.63zM796.8 220.1v-96.33h35v89.44c0 21.09 9.84 33 29.81 33s32.91-14.48 32.91-36.14v-86.3h35v149.06h-35v-23.34h-.7c-7.74 15.89-23.07 26.3-45.57 26.3-32.74 0-51.45-21.1-51.45-55.69zM953.92 123.77h35v25.73h.7c4.64-18 17-28.82 34.17-28.82a45.8 45.8 0 0 1 11.11 1.4v31.64c-3-1.12-8.3-2-14.2-2-19.83 0-31.78 12.52-31.78 34.6v86.48h-35zM1047.62 83.27a19.48 19.48 0 1 1 19.54 19.13 19.27 19.27 0 0 1-19.54-19.13zm2 40.5h35v149.06h-35zM1119.38 232.47v-81.7h-21.1v-27h21.1V85.94H1155v37.83h27.71v27H1155v78.75c0 14.63 6.47 19.27 19.27 19.27 3.37 0 6-.43 8.44-.57v26.3a127.62 127.62 0 0 1-17.3 1.27c-31.27 0-46.03-12.66-46.03-43.32zM1204.21 320.79v-26.72a56.57 56.57 0 0 0 11.67 1.26c13.36 0 20.82-3.79 25.32-16.31l2.11-6-53.58-149.2H1228L1262.85 243h1l35-119.25h36.85l-53.58 154.15c-11.39 32.76-28.83 44.43-59.91 44.43a118.07 118.07 0 0 1-18-1.54zM1404.4 69.91h81c43.31 0 69.75 24 69.75 63.28v.28c0 27.28-14.62 49.36-38.25 57.94l44.3 81.42h-41.35l-39.93-75.93h-39.24v75.93h-36.28zm77.2 98.3c22.93 0 36.43-12.66 36.43-34.46v-.28c0-21.23-14.35-34.17-37.13-34.17h-40.22v68.91zM1569.53 198.72v-.14c0-47 27.43-77.9 70-77.9s69 29.95 69 74.95v11.25h-104.26c.56 26.16 14.9 41.62 37.69 41.62 17.43 0 28.82-9.28 32.2-19.26l.28-1h32.77l-.43 1.55c-4.64 22.92-26.57 46-65.53 46-44.72 0-71.72-29.68-71.72-77.07zm35.16-15.18h69.89c-2.53-23.63-16-35.44-34.59-35.44s-32.49 12.51-35.3 35.44zM1720.46 229.52l-.14-1.27h34.46l.28 1.27c2.67 12.8 12.37 20.39 30.09 20.39 17 0 27.28-6.89 27.28-17.86v-.14c0-9-5.2-14.06-20.67-17.58l-24.76-5.48c-28.55-6.33-42.89-20.25-42.89-42.33v-.14c0-27.28 23.76-45.7 59.76-45.7 37.13 0 58.79 20.39 60 46.12l.14 1.55h-32.62l-.14-1.13c-1.55-11.95-11.11-20.67-27.43-20.67-15.46 0-25.17 7.17-25.17 18.14v.14c0 8.58 5.77 14.21 21.24 17.72l24.89 5.49c30.79 6.89 42.75 19 42.75 40.64v.14c0 28.12-26 47-62.58 47-39.03-.03-61.39-18.6-64.49-46.3zM1859.3 198.72v-.14c0-47 27.42-77.9 70-77.9s69.05 29.95 69.05 74.95v11.25H1894c.57 26.16 14.91 41.62 37.69 41.62 17.44 0 28.83-9.28 32.2-19.26l.29-1H1997l-.42 1.55c-4.64 22.92-26.58 46-65.53 46-44.75 0-71.75-29.68-71.75-77.07zm35.16-15.18h69.89c-2.53-23.63-16-35.44-34.6-35.44s-32.48 12.51-35.29 35.44zM2010.65 230.36v-.28c0-26.43 20.53-42.33 56.67-44.58l39-2.39v-10.26c0-15-9.85-24.19-27.57-24.19-16.59 0-26.71 7.74-29 18.7l-.29 1.27H2017l.14-1.69c2.11-26.44 25-46.26 62.86-46.26 37.27 0 61.31 19.68 61.31 49.64v102.51h-35v-22.92h-.85c-8.58 15.61-25.17 25.45-44.86 25.45-29.84 0-49.95-18.42-49.95-45zm60.35 18.29c20.11 0 35.3-13.36 35.3-31.08v-11.25l-34 2.11c-17.3 1.12-26.72 8.57-26.72 20.39v.18c-.05 12.19 10.07 19.65 25.42 19.65zM2165.1 123.77h35v25.73h.71c4.64-18 17-28.82 34.17-28.82a45.86 45.86 0 0 1 11.11 1.4v31.64c-3-1.12-8.3-2-14.21-2-19.82 0-31.78 12.52-31.78 34.6v86.48h-35zM2248 198.16V198c0-47.53 28.13-77.34 71.58-77.34 39.24 0 63.71 24.89 65.82 54.7l.14 1.12h-33.05l-.28-1.26c-3-14.49-13.64-26.16-32.21-26.16-22.07 0-36.28 18.71-36.28 49.22v.14c0 31.08 14.35 49.08 36.43 49.08 17.71 0 29-10.55 32.2-26.16l.28-1.26h33l-.14 1c-2.68 31.08-27.85 54.71-65.54 54.71-44.28 0-71.95-29.79-71.95-77.63zM2403.11 69.91h35v78.89h.84c7.74-17.86 23.63-28.12 46-28.12 32.06 0 52.59 23.34 52.59 59.34v92.81h-35v-85.92c0-22.92-11.54-36.7-31.65-36.7-19.82 0-32.76 15-32.76 36.7v85.92h-35zM221.56 96.27c-1.71 1.28-30.27 17.55-30.27 53.81 0 41.82 36.38 56.8 37.52 57.09-.15 1-5.83 20.27-19.19 40.11-12.08 17.27-24.73 34.82-43.77 34.82s-24.16-11.27-46-11.27c-21.6 0-29.27 11.56-46.61 11.56-17.62 0-29.84-16.13-43.77-35.83C13.09 223.3 0 187.19 0 152.93 0 98.12 35.54 69 70.64 69c18.48 0 33.82 12.13 45.62 12.13 11.08 0 28.42-13 49.59-13 7.96.02 36.81.87 55.71 28.14zM117.82 65.15a21.59 21.59 0 0 1-3.84-.43 27.29 27.29 0 0 1-.56-5.13c0-14.56 7.39-29.12 15.49-38.26C139 9.35 156.05.5 170.26-.08a33.43 33.43 0 0 1 .42 5.57c0 14.56-6.11 29-14.77 39.54-9.53 11.56-25.44 20.12-38.09 20.12z"
+                    ></path></svg
+                ></a>
+              </div>
+              <div class="localnav-actions">
+                <div class="localnav-action localnav-action-menucta">
+                  <label
+                    role="button"
+                    for="localnav-menustate"
+                    class="localnav-menucta"
+                    tabindex="0"
+                    aria-expanded="false"
+                    ><span
+                      class="localnav-menuicon-bread localnav-menuicon-bread-top"
+                      ><span
+                        class="localnav-menuicon-bread-crust localnav-menuicon-bread-crust-top"
+                      ></span></span
+                    ><span
+                      class="localnav-menuicon-bread localnav-menuicon-bread-bottom"
+                      ><span
+                        class="localnav-menuicon-bread-crust localnav-menuicon-bread-crust-bottom"
+                      ></span></span
+                    ><span class="visuallyhidden"
+                      >Local Nav
+                      <!-- -->Open<!-- -->
+                      Menu</span
+                    ></label
+                  >
+                </div>
+              </div>
+              <div class="localnav-menu">
+                <div class="localnav-menu-tray">
+                  <ul class="localnav-menu-items">
+                    <li class="localnav-menu-item">
+                      <a class="localnav-menu-link" href="/">Overview</a>
+                    </li>
+                    <li class="localnav-menu-item">
+                      <a class="localnav-menu-link" href="/blog/">Blog</a>
+                    </li>
+                    <li class="localnav-menu-item">
+                      <a class="localnav-menu-link" href="/bounty/">Bounty</a>
+                    </li>
+                    <li class="localnav-menu-item">
+                      <a class="localnav-menu-link" href="/research-device/"
+                        >Research Device</a
+                      >
+                    </li>
+                    <li class="localnav-menu-item localnav-menu-item-button">
+                      <a
+                        class="localnav-button button button-reduced"
+                        href="/submit/"
+                        >Submit a Report</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <label id="localnav-curtain" for="localnav-menustate"></label>
+      </div>
+      <main class="">
+        <section>
+          <section class="blog_blog-hero__UB2EU">
+            <div class="section-content" style="opacity: 0">
+              <h1
+                class="blog_blog-hero__heading__7dI9r"
+                style="opacity: 0; transform: translateY(50px) translateZ(0)"
+              >
+                Read the latest from<br /><em>Apple Security Research</em>
+              </h1>
+            </div>
+          </section>
+        </section>
+        <section class="blog_main__EYPln">
+          <div class="section-content" style="--content-height: 0px">
+            <div style="opacity: 0">
+              <div id="blogs-list" class="blog-list_blog-list__RksSl">
+                <ul>
+                  <li id="first-item">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">September 15, 2026</span>
+                      </div>
+                      <h2>
+                        Apple Reference Image: A New Approach for Verified
+                        Photography
+                      </h2>
+                      <p>
+                        Introducing Apple Reference Image, a new solution for
+                        verifiable photography on iPhone. This new, opt-in
+                        camera mode lets a photographer create a securely
+                        timestamped reference image that accurately depicts what
+                        was captured by the iPhone&#x27;s camera sensor. Apple
+                        Reference Image offers a trustworthy, scalable guarantee
+                        that a reference image is what it claims to be: a real
+                        photograph, captured by a real sensor in an iPhone
+                        camera, at a specific period in time.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about Apple Reference Image: A New Approach for Verified Photography"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">June 8, 2026</span>
+                      </div>
+                      <h2>Expanding Private Cloud Compute</h2>
+                      <p>
+                        Alongside the next generation of Apple Intelligence,
+                        today we’re expanding Private Cloud Compute (PCC) beyond
+                        Apple’s data centers. When Apple introduced Private
+                        Cloud Compute in 2024, we defined a new frontier for
+                        private AI inference, extending the security and privacy
+                        of Apple devices into the cloud for those AI workloads
+                        more complex than on-device models can handle. Now, we
+                        are collaborating with Google and NVIDIA to run new
+                        Apple Intelligence workloads on Google Cloud Platform,
+                        extending our industry-leading PCC privacy commitments
+                        to third-party data centers for the first time.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about Expanding Private Cloud Compute"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">May 22, 2026</span>
+                      </div>
+                      <h2>
+                        A blueprint for formal verification of Apple corecrypto
+                      </h2>
+                      <p>
+                        With the latest release of corecrypto, we’re publishing
+                        our implementations of quantum-secure ML-KEM and ML-DSA
+                        algorithms, along with the mathematical proofs we built
+                        to assure they are faithful to the FIPS 203 and FIPS 204
+                        specifications. To advance the state of the art for
+                        assuring critical software, we&#x27;re also publishing
+                        the formal verification libraries and tools that we
+                        created to achieve the strongest known correctness
+                        results for any widely-deployed production
+                        implementation of the relevant algorithms.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about A blueprint for formal verification of Apple corecrypto"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">October 10, 2025</span>
+                      </div>
+                      <h2>
+                        A major evolution of Apple Security Bounty, with the
+                        industry&#x27;s top awards for the most advanced
+                        research
+                      </h2>
+                      <p>
+                        Today we’re announcing the next major chapter for Apple
+                        Security Bounty, featuring the industry’s highest
+                        rewards — up to $2 million and a maximum payout in
+                        excess of $5 million — expanded research categories, and
+                        a flag system for researchers to objectively demonstrate
+                        vulnerabilities and obtain accelerated awards.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about A major evolution of Apple Security Bounty, with the industry&#x27;s top awards for the most advanced research"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">September 9, 2025</span>
+                      </div>
+                      <h2>
+                        Memory Integrity Enforcement: A complete vision for
+                        memory safety in Apple devices
+                      </h2>
+                      <p>
+                        Memory Integrity Enforcement (MIE) is the culmination of
+                        an unprecedented design and engineering effort spanning
+                        half a decade that combines the unique strengths of
+                        Apple silicon hardware with our advanced operating
+                        system security to provide industry-first, always-on
+                        memory safety protection across our devices — without
+                        compromising our best-in-class device performance. We
+                        believe Memory Integrity Enforcement represents the most
+                        significant upgrade to memory safety in the history of
+                        consumer operating systems.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about Memory Integrity Enforcement: A complete vision for memory safety in Apple devices"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">October 24, 2024</span>
+                      </div>
+                      <h2>Security research on Private Cloud Compute</h2>
+                      <p>
+                        Private Cloud Compute (PCC) fulfills computationally
+                        intensive requests for Apple Intelligence while
+                        providing groundbreaking privacy and security
+                        protections — by bringing our industry-leading device
+                        security model into the cloud. To build public trust in
+                        our system, we’re making it possible for researchers to
+                        inspect and verify PCC’s security and privacy guarantees
+                        by releasing tools and resources including a
+                        comprehensive PCC Security Guide, the software binaries
+                        and source code of key PCC components, and — in a first
+                        for any Apple platform — a Virtual Research Environment,
+                        which allows anyone to install and test the PCC software
+                        on a Mac with Apple silicon.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about Security research on Private Cloud Compute"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">June 10, 2024</span>
+                      </div>
+                      <h2>
+                        Private Cloud Compute: A new frontier for AI privacy in
+                        the cloud
+                      </h2>
+                      <p>
+                        Secure and private AI processing in the cloud poses a
+                        formidable new challenge. To support advanced features
+                        of Apple Intelligence with larger foundation models, we
+                        created Private Cloud Compute (PCC), a groundbreaking
+                        cloud intelligence system designed specifically for
+                        private AI processing. Built with custom Apple silicon
+                        and a hardened operating system, Private Cloud Compute
+                        extends the industry-leading security and privacy of
+                        Apple devices into the cloud, making sure that personal
+                        user data sent to PCC isn’t accessible to anyone other
+                        than the user — not even to Apple. We believe Private
+                        Cloud Compute is the most advanced security architecture
+                        ever deployed for cloud AI compute at scale.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about Private Cloud Compute: A new frontier for AI privacy in the cloud"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">February 21, 2024</span>
+                      </div>
+                      <h2>
+                        iMessage with PQ3: The new state of the art in
+                        quantum-secure messaging at scale
+                      </h2>
+                      <p>
+                        We are introducing PQ3, a groundbreaking cryptographic
+                        protocol for iMessage that advances the state of the art
+                        of end-to-end secure messaging. With
+                        compromise-resilient encryption and extensive defenses
+                        against even highly sophisticated quantum attacks, PQ3
+                        provides protocol protections that surpass those in all
+                        other widely deployed messaging apps.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about iMessage with PQ3: The new state of the art in quantum-secure messaging at scale"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">October 27, 2023</span>
+                      </div>
+                      <h2>
+                        Advancing iMessage security: iMessage Contact Key
+                        Verification
+                      </h2>
+                      <p>
+                        iMessage broke new ground in 2011 as the first widely
+                        available messaging service to provide secure end-to-end
+                        encryption by default. Ever since, we’ve been making
+                        ongoing improvements to iMessage security to protect our
+                        users’ most sensitive communications. This brief
+                        technical overview introduces the security model behind
+                        iMessage Contact Key Verification, a new feature
+                        available in the developer previews of iOS 17.2, macOS
+                        14.2, and watchOS 10.2, that advances the state of the
+                        art of key directory security in messaging systems and
+                        allows users to verify they’re messaging only with the
+                        people they intend.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about Advancing iMessage security: iMessage Contact Key Verification"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">August 30, 2023</span>
+                      </div>
+                      <h2>
+                        2024 Apple Security Research Device Program now
+                        accepting applications
+                      </h2>
+                      <p>
+                        Starting today, security researchers are invited to
+                        apply for the 2024 Security Research Device Program.
+                        Learn about eligibility requirements and how our
+                        Security Research Device helps both new and experienced
+                        researchers accelerate their work with iOS. We&#x27;re
+                        accepting applications through October 31, 2023.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about 2024 Apple Security Research Device Program now accepting applications"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">May 23, 2023</span>
+                      </div>
+                      <h2>
+                        What if we had the SockPuppet vulnerability in iOS 16?
+                      </h2>
+                      <p>
+                        The next post in our XNU memory safety series examines
+                        how our hardened kernel allocator performs in the real
+                        world against a previously patched but powerful UAF
+                        software vulnerability. In this detailed analysis, we
+                        find out what might happen if SockPuppet were to meet
+                        kalloc_type in iOS 16.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about What if we had the SockPuppet vulnerability in iOS 16? "
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">October 27, 2022</span>
+                      </div>
+                      <h2>Apple Security Bounty. Upgraded.</h2>
+                      <p>
+                        Apple’s Security Bounty program has paid nearly $20
+                        million in rewards to security researchers in just two
+                        and a half years. Our new site makes it easier than ever
+                        for researchers to submit reports on the web, get
+                        real-time updates from Apple engineering, and earn
+                        recognition for helping to improve security for the
+                        users of over 1.8 billion devices worldwide.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about Apple Security Bounty. Upgraded."
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                  <li id="">
+                    <div>
+                      <div class="blog-list_blog-date__y06Tq">
+                        <span role="time">October 27, 2022</span>
+                      </div>
+                      <h2>
+                        Towards the next generation of XNU memory safety:
+                        kalloc_type
+                      </h2>
+                      <p>
+                        Improving software memory safety is a key security
+                        objective for engineering teams across the industry.
+                        Here we begin a journey into the XNU kernel at the core
+                        of iOS and explore the intricate work our engineering
+                        teams have done to harden the memory allocator and make
+                        our software much more difficult to exploit.
+                      </p>
+                      <a
+                        class="more blog-list_blog-more__link__qJnr7"
+                        aria-label="Click to read more about Towards the next generation of XNU memory safety: kalloc_type"
+                        >Read more</a
+                      >
+                    </div>
+                  </li>
+                </ul>
+                <div class="blog-list_pagination__gTT2w">
+                  <button disabled="" aria-label="Previous">
+                    <svg
+                      width="10"
+                      height="17"
+                      viewBox="0 0 10 17"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.203 16.484.766 10.422a2.323 2.323 0 0 1 0-3.375L7.203.984C7.75.47 8.578.47 9.093.938c.563.53.563 1.421.016 1.937L2.875 8.719l6.234 5.875a1.349 1.349 0 0 1 0 1.937c-.468.453-1.406.422-1.906-.047Z"
+                        fill="#fff"
+                        fill-rule="nonzero"
+                      ></path>
+                    </svg></button
+                  ><span
+                    >1<!-- -->
+                    of
+                    <!-- -->3</span
+                  ><button aria-label="Next">
+                    <svg
+                      width="10"
+                      height="17"
+                      viewBox="0 0 10 17"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.203 16.484.766 10.422a2.323 2.323 0 0 1 0-3.375L7.203.984C7.75.47 8.578.47 9.093.938c.563.53.563 1.421.016 1.937L2.875 8.719l6.234 5.875a1.349 1.349 0 0 1 0 1.937c-.468.453-1.406.422-1.906-.047Z"
+                        fill="#fff"
+                        fill-rule="nonzero"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer
+        id="footer"
+        class="footer"
+        role="contentinfo"
+        aria-labelledby="footer-label"
+      >
+        <div class="footer-content">
+          <h2 class="footer-label" id="footer-label">Apple Footer</h2>
+          <nav class="footer-breadcrumbs" aria-label="Breadcrumbs">
+            <a class="home footer-breadcrumbs-home" href="/"
+              ><span class="footer-breadcrumbs-home-label"
+                >Apple Security Research</span
+              ></a
+            >
+            <div class="footer-breadcrumbs-path">
+              <ol class="footer-breadcrumbs-list">
+                <li class="footer-breadcrumbs-item">Blog</li>
+              </ol>
+            </div>
+          </nav>
+          <section
+            class="footer-mini"
+            vocab="http://schema.org/"
+            typeof="Organization"
+          >
+            <div class="footer-mini-legal">
+              <div
+                class="footer-mini-legal-copyright footer-mini-legal-copyright--small"
+              >
+                Copyright <span aria-hidden="true">©</span>
+                <!-- -->2026<!-- -->
+                Apple Inc. All rights reserved.
+              </div>
+              <div class="footer-mini-legal-links">
+                <a
+                  href="https://support.apple.com/contact"
+                  class="footer-mini-legal-link"
+                  rel="nofollow"
+                  >Support</a
+                ><a
+                  href="https://support.apple.com/guide/security/welcome/web"
+                  class="footer-mini-legal-link"
+                  rel="nofollow"
+                  >Apple Platform Security</a
+                ><a
+                  href="https://www.apple.com/legal/privacy/"
+                  class="footer-mini-legal-link"
+                  rel="nofollow"
+                  >Privacy Policy</a
+                ><a
+                  href="https://www.apple.com/legal/"
+                  class="footer-mini-legal-link"
+                  rel="nofollow"
+                  >Legal</a
+                >
+              </div>
+              <div
+                class="footer-mini-legal-copyright footer-mini-legal-copyright--large"
+              >
+                Copyright <span aria-hidden="true">©</span>
+                <!-- -->2026<!-- -->
+                Apple Inc. All rights reserved.
+              </div>
+            </div>
+          </section>
+        </div>
+      </footer>
+    </div>
+    <script id="__NEXT_DATA__" type="application/json" crossorigin="">
+      {
+        "props": {
+          "pageProps": {
+            "blogsCount": 13,
+            "blogs": [
+              {
+                "id": "151",
+                "slug": "apple-reference-image",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "Apple Reference Image: A New Approach for Verified Photography",
+                "description": "Introducing Apple Reference Image, a new solution for verifiable photography on iPhone. This new, opt-in camera mode lets a photographer create a securely timestamped reference image that accurately depicts what was captured by the iPhone's camera sensor. Apple Reference Image offers a trustworthy, scalable guarantee that a reference image is what it claims to be: a real photograph, captured by a real sensor in an iPhone camera, at a specific period in time.",
+                "date": "2026-09-15"
+              },
+              {
+                "id": "150",
+                "slug": "expanding-pcc",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "Expanding Private Cloud Compute",
+                "description": "Alongside the next generation of Apple Intelligence, today we’re expanding Private Cloud Compute (PCC) beyond Apple’s data centers. When Apple introduced Private Cloud Compute in 2024, we defined a new frontier for private AI inference, extending the security and privacy of Apple devices into the cloud for those AI workloads more complex than on-device models can handle. Now, we are collaborating with Google and NVIDIA to run new Apple Intelligence workloads on Google Cloud Platform, extending our industry-leading PCC privacy commitments to third-party data centers for the first time.",
+                "date": "2026-06-08"
+              },
+              {
+                "id": "149",
+                "slug": "formal-verification-corecrypto",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "A blueprint for formal verification of Apple corecrypto",
+                "description": "With the latest release of corecrypto, we’re publishing our implementations of quantum-secure ML-KEM and ML-DSA algorithms, along with the mathematical proofs we built to assure they are faithful to the FIPS 203 and FIPS 204 specifications. To advance the state of the art for assuring critical software, we're also publishing the formal verification libraries and tools that we created to achieve the strongest known correctness results for any widely-deployed production implementation of the relevant algorithms.",
+                "date": "2026-05-22"
+              },
+              {
+                "id": "148",
+                "slug": "apple-security-bounty-evolved",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "A major evolution of Apple Security Bounty, with the industry's top awards for the most advanced research",
+                "description": "Today we’re announcing the next major chapter for Apple Security Bounty, featuring the industry’s highest rewards — up to $2 million and a maximum payout in excess of $5 million — expanded research categories, and a flag system for researchers to objectively demonstrate vulnerabilities and obtain accelerated awards. ",
+                "date": "2025-10-10"
+              },
+              {
+                "id": "147",
+                "slug": "memory-integrity-enforcement",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "Memory Integrity Enforcement: A complete vision for memory safety in Apple devices",
+                "description": "Memory Integrity Enforcement (MIE) is the culmination of an unprecedented design and engineering effort spanning half a decade that combines the unique strengths of Apple silicon hardware with our advanced operating system security to provide industry-first, always-on memory safety protection across our devices — without compromising our best-in-class device performance. We believe Memory Integrity Enforcement represents the most significant upgrade to memory safety in the history of consumer operating systems.",
+                "date": "2025-09-09"
+              },
+              {
+                "id": "146",
+                "slug": "pcc-security-research",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "Security research on Private Cloud Compute",
+                "description": "Private Cloud Compute (PCC) fulfills computationally intensive requests for Apple Intelligence while providing groundbreaking privacy and security protections — by bringing our industry-leading device security model into the cloud. To build public trust in our system, we’re making it possible for researchers to inspect and verify PCC’s security and privacy guarantees by releasing tools and resources including a comprehensive PCC Security Guide, the software binaries and source code of key PCC components, and — in a first for any Apple platform — a Virtual Research Environment, which allows anyone to install and test the PCC software on a Mac with Apple silicon.",
+                "date": "2024-10-24"
+              },
+              {
+                "id": "145",
+                "slug": "private-cloud-compute",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "Private Cloud Compute: A new frontier for AI privacy in the cloud",
+                "description": "Secure and private AI processing in the cloud poses a formidable new challenge. To support advanced features of Apple Intelligence with larger foundation models, we created Private Cloud Compute (PCC), a groundbreaking cloud intelligence system designed specifically for private AI processing. Built with custom Apple silicon and a hardened operating system, Private Cloud Compute extends the industry-leading security and privacy of Apple devices into the cloud, making sure that personal user data sent to PCC isn’t accessible to anyone other than the user — not even to Apple. We believe Private Cloud Compute is the most advanced security architecture ever deployed for cloud AI compute at scale.",
+                "date": "2024-06-10"
+              },
+              {
+                "id": "144",
+                "slug": "imessage-pq3",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "iMessage with PQ3: The new state of the art in quantum-secure messaging at scale",
+                "description": "We are introducing PQ3, a groundbreaking cryptographic protocol for iMessage that advances the state of the art of end-to-end secure messaging. With compromise-resilient encryption and extensive defenses against even highly sophisticated quantum attacks, PQ3 provides protocol protections that surpass those in all other widely deployed messaging apps.",
+                "date": "2024-02-21"
+              },
+              {
+                "id": "143",
+                "slug": "imessage-contact-key-verification",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "Advancing iMessage security: iMessage Contact Key Verification",
+                "description": "iMessage broke new ground in 2011 as the first widely available messaging service to provide secure end-to-end encryption by default. Ever since, we’ve been making ongoing improvements to iMessage security to protect our users’ most sensitive communications. This brief technical overview introduces the security model behind iMessage Contact Key Verification, a new feature available in the developer previews of iOS 17.2, macOS 14.2, and watchOS 10.2, that advances the state of the art of key directory security in messaging systems and allows users to verify they’re messaging only with the people they intend.",
+                "date": "2023-10-27"
+              },
+              {
+                "id": "142",
+                "slug": "security-research-device-program-2024",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "2024 Apple Security Research Device Program now accepting applications",
+                "description": "Starting today, security researchers are invited to apply for the 2024 Security Research Device Program. Learn about eligibility requirements and how our Security Research Device helps both new and experienced researchers accelerate their work with iOS. We're accepting applications through October 31, 2023.",
+                "date": "2023-08-30"
+              },
+              {
+                "id": "141",
+                "slug": "what-if-we-had-sockpuppet-in-ios16",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "What if we had the SockPuppet vulnerability in iOS 16? ",
+                "description": "The next post in our XNU memory safety series examines how our hardened kernel allocator performs in the real world against a previously patched but powerful UAF software vulnerability. In this detailed analysis, we find out what might happen if SockPuppet were to meet kalloc_type in iOS 16.",
+                "date": "2023-05-23"
+              },
+              {
+                "id": "73",
+                "slug": "apple-security-bounty-upgraded",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "Apple Security Bounty. Upgraded.",
+                "description": "Apple’s Security Bounty program has paid nearly $20 million in rewards to security researchers in just two and a half years. Our new site makes it easier than ever for researchers to submit reports on the web, get real-time updates from Apple engineering, and earn recognition for helping to improve security for the users of over 1.8 billion devices worldwide.",
+                "date": "2022-10-27"
+              },
+              {
+                "id": "74",
+                "slug": "towards-the-next-generation-of-xnu-memory-safety",
+                "image": { "url": "", "width": "", "height": "", "alt": "" },
+                "title": "Towards the next generation of XNU memory safety: kalloc_type",
+                "description": "Improving software memory safety is a key security objective for engineering teams across the industry. Here we begin a journey into the XNU kernel at the core of iOS and explore the intricate work our engineering teams have done to harden the memory allocator and make our software much more difficult to exploit.",
+                "date": "2022-10-27"
+              }
+            ]
+          },
+          "__N_SSG": true
+        },
+        "page": "/blog",
+        "query": {},
+        "buildId": "sYGN0L8PuAZH7ZEsvJb8k",
+        "isFallback": false,
+        "gsp": true,
+        "scriptLoader": []
+      }
+    </script>
+  </body>
+</html>

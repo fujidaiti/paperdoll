@@ -54,6 +54,15 @@ collection:
     summary: Subscribe to a feed
     operationId: subscribeToFeed
     tags: [Feeds]
+    description:
+      Subscribes to `url`. For an RSS/Atom feed, or for an HTML page that links
+      to one, send the URL alone. For an HTML page with no feed, send the
+      `selectors` the user built from the `post_groups` of `GET /feeds/search`.
+      The server fetches the page again and rejects the request with 400 when a
+      `root` matches no element, or when a `link` matches nothing in any item,
+      because such a subscription would stay empty forever. When the selectors
+      do produce posts, they are stored as feed entries right away, so `GET
+      /feeds/{id}/timeline` answers without waiting for the next poll.
     requestBody:
       required: true
       content:
@@ -65,6 +74,15 @@ collection:
               url:
                 type: string
                 format: uri
+              selectors:
+                description:
+                  How to read posts out of an HTML page. Omit it when `url`
+                  points at an RSS/Atom feed or at a page that links to one.
+                  Several entries are allowed, one per group the user ticked;
+                  posts are deduplicated by URL across them.
+                type: array
+                items:
+                  $ref: "../components/schemas.yaml#/PostSelectors"
           example:
             url: "https://dart.dev/blog/feed.xml"
     responses:
@@ -92,6 +110,12 @@ search:
     summary: Search for subscribable feeds
     operationId: searchFeeds
     tags: [Feeds]
+    description:
+      Looks up `q` as a feed URL or as the URL of a web page. When the page is
+      an RSS/Atom feed, or links to one, the candidate carries no `post_groups`
+      and the client subscribes with the URL alone. Otherwise the server
+      enumerates the lists of post-like elements in the page and returns them as
+      `post_groups`, for the user to resolve on the subscription screen.
     parameters:
       - name: q
         in: query
@@ -114,12 +138,35 @@ search:
                     $ref: "../components/schemas.yaml#/FeedCandidate"
             example:
               feeds:
-                - url: "https://dart.dev/blog/feed.xml"
-                  site_url: "https://dart.dev/blog"
-                  title: "The Dart Blog"
-                  description:
-                    "Dart is an approachable, portable, and productive language
-                    for high-quality apps on any platform."
+                - url: "https://claude.com/blog"
+                  site_url: "https://claude.com/blog"
+                  title: "Blog | Claude by Anthropic"
+                  post_groups:
+                    - id: 0
+                      selector: "html > body > main > div:nth-of-type(2) > a"
+                      count: 24
+                      sampled: 2
+                      links:
+                        - selector: ":scope"
+                          values:
+                            - value: "https://claude.com/blog/cowork-and-chat"
+                            - value: "https://claude.com/blog/claude-in-chrome"
+                      texts:
+                        - selector: "div > h3"
+                          values:
+                            - value: "Claude Cowork and chat are now one Claude"
+                            - value: "Claude in Chrome is generally available"
+                        - selector: "div > time"
+                          values:
+                            - value: "September 16, 2026"
+                            - value: "Aug 10, 2026"
+                      images:
+                        - selector: "div > img"
+                          values:
+                            - value: "https://claude.com/images/cowork.png"
+                              alt: "Claude Cowork"
+                            - value: "https://claude.com/images/chrome.png"
+                              alt: "Claude in Chrome"
       "404":
         $ref: "../components/responses.yaml#/NotFound"
       "500":

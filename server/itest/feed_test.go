@@ -4,7 +4,9 @@ package itest
 
 import (
 	"database/sql"
+	"errors"
 	"net/url"
+	"strings"
 	"testing"
 
 	"github.com/fujidaiti/paperdoll/server/feature/feed"
@@ -138,7 +140,7 @@ func TestFeed_Subscribe(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			feedURL := must(url.Parse(tt.feedURL))
 			s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
-			fd, err := s.Subscribe(t.Context(), uid, *feedURL)
+			fd, err := s.Subscribe(t.Context(), uid, *feedURL, nil)
 			if err != nil {
 				t.Fatalf("got %q, want a nil error", err)
 			}
@@ -233,8 +235,171 @@ func TestFeed_SearchFeeds(t *testing.T) {
 				t.Fatalf("got %d results, want exactly 1", len(got))
 			}
 			wantValue := newFeedValue(feed.Feed{FeedAttrs: tt.want})
-			if d := cmp.Diff(wantValue, newFeedValue(feed.Feed{FeedAttrs: got[0]})); d != "" {
+			if d := cmp.Diff(wantValue, newFeedValue(feed.Feed{FeedAttrs: got[0].FeedAttrs})); d != "" {
 				t.Errorf("returned feed mismatch:\n%s", d)
+			}
+			// A real feed is subscribed to with its URL alone, so the client
+			// must not be sent a group screen for it.
+			if len(got[0].Groups) != 0 {
+				t.Errorf("got %d post groups, want none for a feed URL", len(got[0].Groups))
+			}
+		})
+	}
+}
+
+// The three tests below cover the page flow: a URL that is neither a feed nor
+// a page that links to one. The page is served from the stub server, so it has
+// to be fetched over http.
+const (
+	pageHost = "blog.example.test"
+	pageURL  = "http://" + pageHost + "/"
+)
+
+// searchPage searches the stubbed page and returns the candidate.
+func searchPage(t *testing.T, fixture string) feed.Candidate {
+	t.Helper()
+	testenv.StubHTTP(pageHost, "/", fixture)
+	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
+	got, err := s.SearchFeeds(t.Context(), pageURL)
+	if err != nil {
+		t.Fatalf("got %v, want a nil error", err)
+	}
+	if len(got) != 1 {
+		t.Fatalf("got %d results, want exactly 1", len(got))
+	}
+	return got[0]
+}
+
+// postSet builds the keys a user would send back after ticking the group that
+// holds the posts and picking one row for each attribute.
+func postSet(t *testing.T, c feed.Candidate) feed.Selectors {
+	t.Helper()
+	var g feed.Group
+	for _, x := range c.Groups {
+		if len(x.Posts) > len(g.Posts) {
+			g = x
+		}
+	}
+	if len(g.Posts) == 0 {
+		t.Fatal("the page produced no group with items")
+	}
+	set := feed.Selectors{Root: g.Selector, Link: g.Posts[0].Links[0].Selector}
+	for _, a := range g.Posts[0].Texts {
+		switch {
+		case set.Title == "":
+			set.Title = a.Selector
+		case set.Timestamp == "":
+			set.Timestamp = a.Selector
+		case set.Description == "":
+			set.Description = a.Selector
+		}
+	}
+	if len(g.Posts[0].Images) > 0 {
+		set.Image = g.Posts[0].Images[0].Selector
+	}
+	return set
+}
+
+func TestFeed_SearchFeeds_Page(t *testing.T) {
+	t.Cleanup(testenv.TearDown)
+
+	t.Run("a page that publishes no feed answers with its groups", func(t *testing.T) {
+		c := searchPage(t, "./testdata/feed/page_blog.html")
+		if want := "The Example Blog"; c.Title != want {
+			t.Errorf("got title %q, want %q", c.Title, want)
+		}
+		if c.SiteURL == nil || c.SiteURL.String() != pageURL {
+			t.Errorf("got site url %v, want %s", c.SiteURL, pageURL)
+		}
+		if len(c.Groups) == 0 {
+			t.Fatal("got no post group, want at least one")
+		}
+		set := postSet(t, c)
+		if !strings.HasSuffix(set.Root, "li") {
+			t.Errorf("got the group key %q, want one that ends in the item tag", set.Root)
+		}
+	})
+
+	t.Run("a page that links to a feed answers with the feed", func(t *testing.T) {
+		testenv.StubHTTP("www.nasa.gov", "/news-release/feed/", "./testdata/feed/nasa_news_release.xml")
+		c := searchPage(t, "./testdata/feed/page_with_feed_link.html")
+		if want := "NASA"; c.Title != want {
+			t.Errorf("got title %q, want %q", c.Title, want)
+		}
+		if want := "http://www.nasa.gov/news-release/feed/"; c.URL.String() != want {
+			t.Errorf("got url %q, want %q", c.URL.String(), want)
+		}
+		if len(c.Groups) != 0 {
+			t.Errorf("got %d post groups, want none for a page that links to a feed", len(c.Groups))
+		}
+	})
+}
+
+func TestFeed_Subscribe_Page(t *testing.T) {
+	t.Cleanup(testenv.TearDown)
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-01 13:30:00"))
+	c := searchPage(t, "./testdata/feed/page_blog.html")
+	set := postSet(t, c)
+	svc := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
+
+	fd, err := svc.Subscribe(t.Context(), uid, *must(url.Parse(pageURL)), []feed.Selectors{set})
+	if err != nil {
+		t.Fatalf("got %q, want a nil error", err)
+	}
+	if fd.ID == 0 {
+		t.Fatal("feed ID must be assigned")
+	}
+
+	var stored feed.Selectors
+	scanRowOrFatal(t, `
+		SELECT root, link, title, description, image, published_at
+		FROM feed_post_selectors WHERE feed_id = $1 ORDER BY id
+	`, []any{fd.ID}, &stored.Root, &stored.Link, &stored.Title, &stored.Description, &stored.Image, &stored.Timestamp)
+	if d := cmp.Diff(set, stored); d != "" {
+		t.Errorf("stored selector record mismatch:\n%s", d)
+	}
+
+	// The posts are stored as entries right away, so the timeline answers
+	// before the first poll runs.
+	got := scanRowsOrFatal(t, `
+		SELECT url, title FROM feed_entries WHERE feed_id = $1 ORDER BY url
+	`, []any{fd.ID}, func(r *sql.Rows, dest *[2]string) error {
+		return r.Scan(&dest[0], &dest[1])
+	})
+	want := [][2]string{
+		{"http://blog.example.test/posts/first", "The first post"},
+		{"http://blog.example.test/posts/second", "The second post"},
+		{"http://blog.example.test/posts/third", "The third post"},
+	}
+	if d := cmp.Diff(want, got); d != "" {
+		t.Errorf("stored entries mismatch:\n%s", d)
+	}
+}
+
+func TestFeed_Subscribe_PageWithBrokenSelectors(t *testing.T) {
+	t.Cleanup(testenv.TearDown)
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-01 13:30:00"))
+	c := searchPage(t, "./testdata/feed/page_blog.html")
+	good := postSet(t, c)
+
+	tests := []struct {
+		name string
+		sets []feed.Selectors
+	}{
+		{"no selectors at all", nil},
+		{"a root that names no group", []feed.Selectors{{Root: "html > body > main > ol > li", Link: good.Link}}},
+		{"a link that no item carries", []feed.Selectors{{Root: good.Root, Link: "div > a"}}},
+	}
+	svc := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			_, err := svc.Subscribe(t.Context(), uid, *must(url.Parse(pageURL)), tt.sets)
+			if !errors.Is(err, feed.ErrSelectors) {
+				t.Fatalf("got error %v, want ErrSelectors", err)
+			}
+			n := scanValOrFatal[int](t, "SELECT count(*) FROM feeds WHERE url = $1", pageURL)
+			if n != 0 {
+				t.Errorf("the feed was written although the request was refused")
 			}
 		})
 	}

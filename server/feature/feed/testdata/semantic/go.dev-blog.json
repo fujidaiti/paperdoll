@@ -1,0 +1,256 @@
+{
+  "children": [
+    {
+      "texts": [
+        {
+          "tag": "h1",
+          "value": "The Go Blog"
+        }
+      ],
+      "children": [
+        {
+          "texts": [
+            {
+              "tag": "p",
+              "value": "Go 1.27 improves performance of small allocations using size-specialized allocation functions."
+            },
+            {
+              "tag": "p",
+              "value": "Go 1.27 includes new goroutine leak profiles."
+            },
+            {
+              "tag": "p",
+              "value": "Go 1.27 adds generic methods—a highly desired language feature."
+            },
+            {
+              "tag": "p",
+              "value": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more."
+            },
+            {
+              "tag": "p",
+              "value": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly."
+            },
+            {
+              "tag": "p",
+              "value": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types."
+            },
+            {
+              "tag": "p",
+              "value": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations."
+            },
+            {
+              "tag": "p",
+              "value": "A description of some of the recent changes to do allocations on the stack instead of the heap."
+            },
+            {
+              "tag": "p",
+              "value": "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go."
+            },
+            {
+              "tag": "p",
+              "value": "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more."
+            },
+            {
+              "tag": "div",
+              "value": "Opens in new window."
+            }
+          ],
+          "children": [
+            {
+              "link": "https://go.dev/blog/size-specialized-allocations",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Size-Specialized Memory Allocation"
+                },
+                {
+                  "tag": "span",
+                  "value": "16 September 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Michael Matloob"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/goroutine-leak-profiles",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Goroutine Leak Profiles"
+                },
+                {
+                  "tag": "span",
+                  "value": "2 September 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Vlad Saioc"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/generic-methods",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Generic Methods"
+                },
+                {
+                  "tag": "span",
+                  "value": "26 August 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Mark Freeman"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/go1.27",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Go 1.27 is released"
+                },
+                {
+                  "tag": "span",
+                  "value": "19 August 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Nicholas Husin, on behalf of the Go team"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/pkgsite-api",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Introducing the pkg.go.dev API"
+                },
+                {
+                  "tag": "span",
+                  "value": "21 May 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Ethan Lee, Hana Kim, and Jonathan Amsterdam"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/type-construction-and-cycle-detection",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Type Construction and Cycle Detection"
+                },
+                {
+                  "tag": "span",
+                  "value": "24 March 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Mark Freeman"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/inliner",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "//go:fix inline and the source-level inliner"
+                },
+                {
+                  "tag": "span",
+                  "value": "10 March 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Alan Donovan"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/allocation-optimizations",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Allocating on the Stack"
+                },
+                {
+                  "tag": "span",
+                  "value": "27 February 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Keith Randall"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/gofix",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Using go fix to modernize Go code"
+                },
+                {
+                  "tag": "span",
+                  "value": "17 February 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Alan Donovan"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/go1.26",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "Go 1.26 is released"
+                },
+                {
+                  "tag": "span",
+                  "value": "10 February 2026"
+                },
+                {
+                  "tag": "span",
+                  "value": "Carlos Amedee, on behalf of the Go team"
+                }
+              ]
+            },
+            {
+              "link": "https://go.dev/blog/all",
+              "texts": [
+                {
+                  "tag": "a",
+                  "value": "More articles..."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "link": "https://policies.google.com/technologies/cookies",
+      "texts": [
+        {
+          "tag": "div",
+          "value": "go.dev uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic."
+        },
+        {
+          "tag": "a",
+          "value": "Learn more."
+        }
+      ]
+    }
+  ]
+}

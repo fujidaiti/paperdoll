@@ -30,7 +30,7 @@ func seedFeed(t *testing.T, uid user.UserID, feedURL, fixturePath string) int {
 	u := must(url.Parse(feedURL))
 	testenv.StubHTTP(u.Host, u.Path, fixturePath)
 	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
-	f, err := s.Subscribe(t.Context(), uid, *u)
+	f, err := s.Subscribe(t.Context(), uid, *u, nil)
 	if err != nil {
 		t.Fatalf("failed to seed feed %q: %v", feedURL, err)
 	}
@@ -488,5 +488,56 @@ func TestFeedPolling_MultipleSubscribers(t *testing.T) {
 	}
 	if n := scanValOrFatal[int](t, `SELECT count(*) FROM stories WHERE user_id = $1`, uidBob); n != 1 {
 		t.Errorf("got %d stories for bob, want 1", n)
+	}
+}
+
+// A page feed is polled by enumerating the page again and reading the saved
+// keys out of the result. Only the posts that were not on the page at
+// subscription time become new entries.
+func TestFeedPolling_PageFeed(t *testing.T) {
+	t.Cleanup(testenv.TearDown)
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
+
+	c := searchPage(t, "./testdata/feed/page_blog.html")
+	set := postSet(t, c)
+	svc := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
+	fd, err := svc.Subscribe(t.Context(), uid, *must(url.Parse(pageURL)), []feed.Selectors{set})
+	if err != nil {
+		t.Fatalf("failed to subscribe to the page: %v", err)
+	}
+	if n := scanValOrFatal[int](t, `SELECT count(*) FROM feed_entries WHERE feed_id = $1`, fd.ID); n != 3 {
+		t.Fatalf("got %d entries after subscribing, want 3", n)
+	}
+
+	// The page publishes a fourth post. The three older ones are still on it
+	// and must not be stored twice.
+	testenv.StubHTTP(pageHost, "/", "./testdata/feed/page_blog_updated.html")
+	j := &feed.Job{
+		DB:   testenv.DB(),
+		Feed: feed.FeedRecord{ID: fd.ID, URL: pageURL, Title: fd.Title},
+		Interval: newspaper.EditorialInterval{
+			Last: mustTimeUTC("2026-07-15 09:55:00"),
+			Next: mustTimeUTC("2026-07-15 10:05:00"),
+		},
+		NewspaperSvc: &newspaper.Service{DB: testenv.DB()},
+		ScrpSvc:      scraper.NewService(stubServerAddr),
+	}
+	if err := j.Do(t.Context()); err != nil {
+		t.Fatalf("job.Do returned an unexpected error: %v", err)
+	}
+
+	got := scanRowsOrFatal(t, `
+		SELECT url, title FROM feed_entries WHERE feed_id = $1 ORDER BY url
+	`, []any{fd.ID}, func(r *sql.Rows, dest *[2]string) error {
+		return r.Scan(&dest[0], &dest[1])
+	})
+	want := [][2]string{
+		{"http://blog.example.test/posts/first", "The first post"},
+		{"http://blog.example.test/posts/fourth", "The fourth post"},
+		{"http://blog.example.test/posts/second", "The second post"},
+		{"http://blog.example.test/posts/third", "The third post"},
+	}
+	if d := cmp.Diff(want, got); d != "" {
+		t.Errorf("stored entries after the poll mismatch:\n%s", d)
 	}
 }

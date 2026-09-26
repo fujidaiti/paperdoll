@@ -1,16 +1,19 @@
 package feed
 
 import (
+	"bytes"
 	"context"
 	"database/sql"
 	"errors"
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
 
 	"codeberg.org/readeck/go-readability/v2"
+	"github.com/araddon/dateparse"
 	"github.com/fujidaiti/paperdoll/server/feature/newspaper"
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
@@ -57,6 +60,14 @@ func (j *Job) Do(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+	// A feed that has selector rows is a page feed: it is read by enumerating
+	// the page and looking the saved keys up in the result, which is the same
+	// code the user answered the subscription screen on.
+	selectors, err := loadSelectors(ctx, db, feed.ID)
+	if err != nil {
+		return err
+	}
+
 	res, err := j.ScrpSvc.Fetch(ctx, *link)
 	if err != nil {
 		return err
@@ -69,69 +80,36 @@ func (j *Job) Do(ctx context.Context) error {
 			fmt.Println(err)
 		}
 	}()
-
-	fp := gofeed.NewParser()
-	raw, err := fp.Parse(res.Body)
+	// TODO: Limit body size
+	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return err
 	}
-	if len(raw.Items) == 0 {
+
+	var entries []entryRecord
+	if len(selectors) == 0 {
+		raw, err := gofeed.NewParser().Parse(bytes.NewReader(body))
+		if err != nil {
+			return err
+		}
+		for _, item := range raw.Items {
+			entries = append(entries, normalizeEntry(item, feed.ID))
+		}
+	} else {
+		posts, err := ExtractPosts(bytes.NewReader(body), *link, selectors)
+		if err != nil {
+			return err
+		}
+		entries = entriesFromPosts(feed.ID, posts, time.Now())
+	}
+	if len(entries) == 0 {
 		return fmt.Errorf("feed %d has no items", feed.ID)
 	}
 
-	fmt.Printf("Got %d entries from %s\n", len(raw.Items), feed.URL)
+	fmt.Printf("Got %d entries from %s\n", len(entries), feed.URL)
 
-	// TODO: Batch insertions if the feed is too large
-	ncols := 7
-	vals := make([]string, 0, len(raw.Items))
-	args := make([]any, 0, len(raw.Items)*ncols)
-	snapshotAt := time.Now()
-	for i, item := range raw.Items {
-		j := i * ncols
-		vals = append(
-			vals,
-			fmt.Sprintf("($%d, $%d, $%d, $%d, $%d, $%d, $%d)", j+1, j+2, j+3, j+4, j+5, j+6, j+7),
-		)
-		e := normalizeEntry(item, feed.ID)
-		args = append(
-			args, e.dedupKey, e.feedId, e.url, e.title, e.description, snapshotAt, e.publishedAt,
-		)
-	}
-	sql := fmt.Sprintf(`
-		INSERT INTO feed_entries (dedup_key, feed_id, url, title, description, snapshot_at, published_at)
-		VALUES %s
-		ON CONFLICT (dedup_key) DO NOTHING
-		RETURNING id, dedup_key, feed_id, url, title, description, published_at;
-	`, strings.Join(vals, ","))
-	rows, err := db.QueryContext(ctx, sql, args...)
+	newEntries, err := insertEntries(ctx, db, entries)
 	if err != nil {
-		return err
-	}
-	defer func() {
-		if err := rows.Close(); err != nil {
-			fmt.Println(err)
-		}
-	}()
-
-	var newEntries []entryRecord
-	for rows.Next() {
-		e := entryRecord{}
-		err := rows.Scan(
-			&e.id,
-			&e.dedupKey,
-			&e.feedId,
-			&e.url,
-			&e.title,
-			&e.description,
-			&e.publishedAt,
-		)
-		if err != nil {
-			// TODO: Make this case fail-soft instead of exiting.
-			return err
-		}
-		newEntries = append(newEntries, e)
-	}
-	if err := rows.Err(); err != nil {
 		return err
 	}
 	if len(newEntries) == 0 {
@@ -232,6 +210,89 @@ func normalizeEntry(entry *gofeed.Item, feedId int) entryRecord {
 	}
 
 	return e
+}
+
+// insertEntries writes the entries of one poll and returns the ones that did
+// not exist yet. It is the step where an RSS feed and a page feed meet again:
+// everything from here on is the same for both.
+func insertEntries(ctx context.Context, db *sql.DB, es []entryRecord) ([]entryRecord, error) {
+	// TODO: Batch insertions if the feed is too large
+	const ncols = 7
+	vals := make([]string, 0, len(es))
+	args := make([]any, 0, len(es)*ncols)
+	snapshotAt := time.Now()
+	for i, e := range es {
+		j := i * ncols
+		vals = append(
+			vals,
+			fmt.Sprintf("($%d, $%d, $%d, $%d, $%d, $%d, $%d)", j+1, j+2, j+3, j+4, j+5, j+6, j+7),
+		)
+		args = append(
+			args, e.dedupKey, e.feedId, e.url, e.title, e.description, snapshotAt, e.publishedAt,
+		)
+	}
+	stmt := fmt.Sprintf(`
+		INSERT INTO feed_entries (dedup_key, feed_id, url, title, description, snapshot_at, published_at)
+		VALUES %s
+		ON CONFLICT (dedup_key) DO NOTHING
+		RETURNING id, dedup_key, feed_id, url, title, description, published_at;
+	`, strings.Join(vals, ","))
+	rows, err := db.QueryContext(ctx, stmt, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		if err := rows.Close(); err != nil {
+			fmt.Println(err)
+		}
+	}()
+
+	var out []entryRecord
+	for rows.Next() {
+		e := entryRecord{}
+		err := rows.Scan(
+			&e.id,
+			&e.dedupKey,
+			&e.feedId,
+			&e.url,
+			&e.title,
+			&e.description,
+			&e.publishedAt,
+		)
+		if err != nil {
+			// TODO: Make this case fail-soft instead of exiting.
+			return nil, err
+		}
+		out = append(out, e)
+	}
+	return out, rows.Err()
+}
+
+// entriesFromPosts turns the posts read out of a page into entry records.
+//
+// The post URL is the dedup key, which is the convention normalizeEntry
+// already falls back to for a feed item with no GUID. A post whose date cannot
+// be read is dated at the moment it was first seen, because an entry with no
+// published_at never becomes a story, and a page feed would then produce
+// nothing for the newspaper. An entry is inserted once, so that date does not
+// move on later polls.
+func entriesFromPosts(feedID int, ps []Post, seenAt time.Time) []entryRecord {
+	var out []entryRecord
+	for _, p := range ps {
+		e := entryRecord{
+			feedId:      feedID,
+			dedupKey:    p.URL.String(),
+			url:         p.URL.String(),
+			title:       p.Title,
+			description: nullString(p.Description),
+			publishedAt: sql.NullTime{Time: seenAt, Valid: true},
+		}
+		if t, err := dateparse.ParseAny(p.Timestamp); err == nil {
+			e.publishedAt.Time = t
+		}
+		out = append(out, e)
+	}
+	return out
 }
 
 func writeStories(ctx context.Context, db *sql.DB, svc *newspaper.Service, f FeedRecord, es []entryRecord) error {
