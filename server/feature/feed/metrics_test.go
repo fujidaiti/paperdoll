@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"testing"
@@ -19,11 +20,68 @@ type fixture struct {
 	Posts []fixturePost `json:"posts"`
 }
 
+// fixturePost is one post of a fixture, reduced to the values these metrics
+// read. The file records every value the page shows beside the post, each with
+// the kind of value it is, and each field below is the first value of its kind.
 type fixturePost struct {
-	URL       string `json:"url"`
-	Title     string `json:"title,omitempty"`
-	Timestamp string `json:"timestamp,omitempty"`
-	ImageURL  string `json:"imageUrl,omitempty"`
+	URL       string
+	Title     string
+	Timestamp string
+	ImageURL  string
+}
+
+// fixtureValue is one recorded value. required marks a value without which the
+// post is not worth showing, and is read by the semantic tree experiment
+// rather than here.
+type fixtureValue struct {
+	Kind     string `json:"kind,omitempty"`
+	Value    string `json:"value"`
+	Required bool   `json:"required"`
+}
+
+// machineDate reports whether the value is a date written for a machine, such
+// as "2026-09-18" or "2020-12-14T14:37:00+00:00".
+func machineDate(v string) bool {
+	return machineDatePattern.MatchString(v)
+}
+
+var machineDatePattern = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}`)
+
+func (p *fixturePost) UnmarshalJSON(b []byte) error {
+	var raw struct {
+		Link   string         `json:"link"`
+		Texts  []fixtureValue `json:"texts"`
+		Images []fixtureValue `json:"images"`
+	}
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return err
+	}
+	first := func(vs []fixtureValue, kind string) string {
+		for _, v := range vs {
+			if v.Kind == kind {
+				return v.Value
+			}
+		}
+		return ""
+	}
+	p.URL = raw.Link
+	p.Title = first(raw.Texts, "title")
+	// A dated post records its date twice, once as the machine readable value
+	// of the time element and once as the text the reader sees. The machine one
+	// is preferred, because that is the value the enumeration reports for a
+	// time element and the reader's text is often relative, such as "2 days
+	// ago".
+	for _, v := range raw.Texts {
+		if v.Kind == "pub-date" && machineDate(v.Value) {
+			p.Timestamp = v.Value
+			break
+		}
+	}
+	if p.Timestamp == "" {
+		p.Timestamp = first(raw.Texts, "pub-date")
+	}
+	p.ImageURL = first(raw.Images, "thumbnail")
+	return nil
 }
 
 // ratio is one recall value, kept as a fraction so that an empty denominator
@@ -439,10 +497,21 @@ var accepted = map[string]acceptance{
 	// section links. It renders about 26 separate lists, so a large number of
 	// groups to tick is correct here rather than a defect. Its images are lazy
 	// loaded, so the src attribute holds a placeholder.
-	"bbc.com": {40, 23, 39, 1.00, 0.86, 0.98, 0.92},
+	// One story of the list, a Future article, is written in a section the
+	// enumeration does not reach, so this is the one page where a fixture post
+	// survives nowhere.
+	"bbc.com": {40, 23, 39, 0.99, 0.86, 0.98, 0.92},
 
 	// The "AI for Society" cards are custom elements that keep their title and
 	// their image in attributes, so only their links can be read.
+	// A blog that prints three whole articles rather than a list of cards, so
+	// every outbound link of every body is a sibling of the post links.
+	// The only image beside a post here is the author photo, which is not a
+	// thumbnail, so there is no image recall to measure.
+	"blog.codinghorror.com": {17, 1, 1, 1.00, 1.00, na, 1.00},
+
+	"blog.acolyer.org": {3, 1, 2, 1.00, 1.00, na, 1.00},
+
 	"blog.google": {4, 2, 4, 1.00, 1.00, 1.00, na},
 
 	"claude.com-blog": {5, 3, 4, 1.00, 1.00, 0.88, 1.00},
@@ -465,7 +534,11 @@ var accepted = map[string]acceptance{
 
 	// 95 groups, but the first one holds every post. Half of its dates are
 	// written as plain text next to other text, which no key can isolate.
-	"developer.apple.com-news": {95, 1, 1, 1.00, 1.00, 0.56, 0.50},
+	// Its images are lazy loaded and the src attribute holds a data URI
+	// placeholder, so no image key reaches a real URL.
+	"devblogs.microsoft.com": {28, 3, 16, 1.00, 0.88, 0.00, 1.00},
+
+	"developer.apple.com-news": {95, 1, 1, 1.00, 1.00, 0.51, 0.50},
 
 	// The page carries a navigation drawer of 1490 elements that cleanup cannot
 	// see, and that drawer comes first in the document, so the one group worth
@@ -474,6 +547,15 @@ var accepted = map[string]acceptance{
 
 	// A shop page. Every item is a record.
 	"diggersfactory.com-vinyl-shop-new-ins": {1, 1, 1, 1.00, 1.00, 1.00, na},
+
+	// A news front page. A card writes the photo credit, such as
+	// "Jeff Chiu/AP/File", before the headline, and the title key reads the
+	// credit on some of them. The page dates nothing.
+	"edition.cnn.com-us": {10, 7, 10, 1.00, 0.59, 1.00, na},
+
+	"engineering.atspotify.com": {6, 2, 2, 1.00, 1.00, 1.00, 1.00},
+
+	"engineering.fb.com": {16, 3, 7, 1.00, 1.00, 1.00, 1.00},
 
 	"flutter.dev-blog": {3, 2, 3, 1.00, 1.00, 1.00, 0.99},
 
@@ -485,11 +567,25 @@ var accepted = map[string]acceptance{
 
 	"go.dev-blog": {3, 1, 2, 1.00, 1.00, na, 1.00},
 
+	// One of the 21 cards points at another host, which the enumeration drops,
+	// and the page dates nothing.
+	"newsroom.spotify.com": {9, 4, 9, 0.95, 1.00, 0.95, na},
+
+	// The date sits in a second <p class="meta"> after the one holding the
+	// author, so the timestamp key reads the author line on most cards.
+	"oreilly.com-radar": {5, 2, 5, 1.00, 1.00, 0.94, 0.15},
+
 	"paulgraham.com-articles": {3, 1, 3, 1.00, 1.00, na, na},
 
 	// A feed page that mixes the post list with campaign banners and event
 	// widgets. Part of the feed is loaded by JavaScript.
 	"qiita.com": {84, 2, 9, 1.00, 1.00, na, 1.00},
+
+	// A front page of 15 sections. It dates nothing, and five of its images are
+	// served as markup while the rest are loaded by script.
+	// A few entries appear only as a bare link inside the newsletter text and
+	// carry no title of their own.
+	"technologyreview.com": {41, 9, 33, 1.00, 0.98, 1.00, na},
 
 	"ycombinator.com-blog": {11, 3, 5, 1.00, 1.00, 1.00, 1.00},
 

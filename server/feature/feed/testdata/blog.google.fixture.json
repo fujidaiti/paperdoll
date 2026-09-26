@@ -1,48 +1,142 @@
 {
   "url": "https://blog.google/",
-  "note": "The six 'AI for Society' cards are <uni-simple-article-card> custom elements. The page holds the same three cards twice, once in a grid and once in a carousel.",
   "posts": [
     {
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
-      "title": "Our most advanced live dialogue models",
-      "description": "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are built for natural conversation.",
-      "imageUrl": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_3-8_live___ke.2e16d0ba.fill-1200x800.format-webp.webp"
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+      "texts": [
+        {
+          "kind": "category",
+          "value": "Gemini models",
+          "required": false
+        },
+        {
+          "kind": "title",
+          "value": "Our most advanced live dialogue models",
+          "required": true
+        },
+        {
+          "kind": "description",
+          "value": "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are built for natural conversation.",
+          "required": true
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_3-8_live___ke.2e16d0ba.fill-1200x800.format-webp.webp",
+          "required": true
+        }
+      ]
     },
     {
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-windows/",
-      "title": "The Gemini app is now available for Windows",
-      "description": "We’re launching the Gemini app for Windows, the new desktop app built to work alongside your favorite tools and daily applications."
+      "link": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-windows/",
+      "texts": [
+        {
+          "kind": "category",
+          "value": "Gemini App",
+          "required": false
+        },
+        {
+          "kind": "title",
+          "value": "The Gemini app is now available for Windows",
+          "required": true
+        },
+        {
+          "kind": "description",
+          "value": "We’re launching the Gemini app for Windows, the new desktop app built to work alongside your favorite tools and daily applications.",
+          "required": true
+        }
+      ]
     },
     {
-      "url": "https://blog.google/company-news/inside-google/company-announcements/chicago-thompson-center-designs/",
-      "title": "Reimagining Chicago's Thompson Center",
-      "description": "Our new Chicago office at Thompson Center brings together art, community and architecture.",
-      "imageUrl": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Thompson_Center_hero.2e16d0ba.fill-1200x800.format-webp.webp"
+      "link": "https://blog.google/company-news/inside-google/company-announcements/chicago-thompson-center-designs/",
+      "texts": [
+        {
+          "kind": "category",
+          "value": "Company announcements",
+          "required": false
+        },
+        {
+          "kind": "title",
+          "value": "Reimagining Chicago's Thompson Center",
+          "required": true
+        },
+        {
+          "kind": "description",
+          "value": "Our new Chicago office at Thompson Center brings together art, community and architecture.",
+          "required": true
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Thompson_Center_hero.2e16d0ba.fill-1200x800.format-webp.webp",
+          "required": true
+        }
+      ]
     },
     {
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-atlas/",
-      "title": "AlphaGenome Atlas: Human DNA in high resolution",
-      "description": "We’re introducing AlphaGenome Atlas, a database predicting the effects of every possible single nucleotide variant in the human genome.",
-      "imageUrl": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AlphaGenome_Atlas_he.2e16d0ba.fill-1200x800.format-webp.webp"
+      "link": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-atlas/",
+      "texts": [
+        {
+          "kind": "category",
+          "value": "Google DeepMind",
+          "required": false
+        },
+        {
+          "kind": "title",
+          "value": "AlphaGenome Atlas: Human DNA in high resolution",
+          "required": true
+        },
+        {
+          "kind": "description",
+          "value": "We’re introducing AlphaGenome Atlas, a database predicting the effects of every possible single nucleotide variant in the human genome.",
+          "required": true
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AlphaGenome_Atlas_he.2e16d0ba.fill-1200x800.format-webp.webp",
+          "required": true
+        }
+      ]
     },
     {
-      "url": "https://blog.google/innovation-and-ai/technology/ai/love-rendered-film/",
-      "title": "Recreating a 70-year love story frame by frame",
-      "description": "Discover how filmmakers and Google DeepMind used AI to recreate a couple's unrecorded past in the short film \"Love, Rendered.\"",
-      "imageUrl": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/LOVE_RENDERED_HERO_B.2e16d0ba.fill-1200x800.format-webp.webp"
+      "link": "https://blog.google/innovation-and-ai/technology/ai/love-rendered-film/",
+      "texts": [
+        {
+          "kind": "category",
+          "value": "AI",
+          "required": false
+        },
+        {
+          "kind": "title",
+          "value": "Recreating a 70-year love story frame by frame",
+          "required": true
+        },
+        {
+          "kind": "description",
+          "value": "Discover how filmmakers and Google DeepMind used AI to recreate a couple's unrecorded past in the short film \"Love, Rendered.\"",
+          "required": true
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/LOVE_RENDERED_HERO_B.2e16d0ba.fill-1200x800.format-webp.webp",
+          "required": true
+        }
+      ]
     },
     {
-      "group": "AI for Society",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/ai-applications-science-people/",
-      "note": "The title is missing on purpose. This card is a <uni-simple-article-card> element that carries its title in a headline attribute and its image in an image-src attribute. Neither is text in the document, so no detector that reads text can extract them. Only the href is usable."
+      "link": "https://blog.google/innovation-and-ai/technology/ai/ai-applications-science-people/"
     },
     {
-      "group": "AI for Society",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/ai-for-every-language/"
+      "link": "https://blog.google/innovation-and-ai/technology/ai/ai-for-every-language/"
     },
     {
-      "group": "AI for Society",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/ai-economy-atlas-september-2026/"
+      "link": "https://blog.google/innovation-and-ai/technology/ai/ai-economy-atlas-september-2026/"
     }
   ]
 }

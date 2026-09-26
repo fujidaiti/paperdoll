@@ -2,74 +2,574 @@
   "url": "https://aws.amazon.com/jp/blogs/news/",
   "posts": [
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/software-factory-1000-prs/",
-      "title": "Kiro Crew でソフトウェアファクトリーを構築し、1 週間で 1000 件の PR をマージした方法",
-      "description": "先週、Kiro Crew をフルタイムで開発している私たち3人は、7日間で 1,000 件の pull request をマージしました。1日あたり 120 件を超え、そのすべてが CI とレビューを通っています。Kiro Crew は、このフルタイムのエンジニア3人を中心に、500 人近い熱心なコミュニティコントリビューターとともに開発されています。",
-      "timestamp": "2026-09-19T20:19:07+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/software-factory-1000-prs-1024x538.jpg"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Kiro Crew でソフトウェアファクトリーを構築し、1 週間で 1000 件の PR をマージした方法",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "稲田大陸",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-19T20:19:07+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "19 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Q Developer",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Developer Tools",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Kiro",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/software-factory-1000-prs-1024x538.jpg",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/software-factory-1000-prs/"
     },
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/monthly-manufacturing-202609/",
-      "title": "月刊 AWS 製造 2026 年 9 月号",
-      "description": "今月は「エージェントに現場を任せるとき、境界線をどこに引くか」をピックアップトピックとしてお届けしつつ、8 月に公開された製造業向けのブログとサービスアップデートをご紹介します。",
-      "timestamp": "2026-09-19T15:17:23+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/AWS_Seizou_9gatsu_op.gif"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "月刊 AWS 製造 2026 年 9 月号",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "大前 遼",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-19T15:17:23+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "19 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Bedrock AgentCore",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Amazon SageMaker",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Analytics",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Generative AI",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "High Performance Computing",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Internet of Things",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Manufacturing",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/AWS_Seizou_9gatsu_op.gif",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/monthly-manufacturing-202609/"
     },
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/converting-an-rds-for-sql-server-instance-from-license-included-to-bring-your-own-media-byom/",
-      "title": "RDS for SQL Server インスタンスを License Included から Bring Your Own Media (BYOM) へ変換",
-      "description": "本記事では、RDS for SQL Server インスタンスを License Included から Bring Your Own Media (BYOM) へ変換するためのインストールメディアの準備、BYOM エンジンバージョンの作成、インプレースでのライセンスモデル変更というエンドツーエンドの変換プロセスを説明します。",
-      "timestamp": "2026-09-18T12:00:53+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/16/DB5675-1024x512-1.png"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "RDS for SQL Server インスタンスを License Included から Bring Your Own Media (BYOM) へ変換",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Yoshinori Sawada",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-18T12:00:53+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "18 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Simple Storage Service (S3)",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Intermediate (200)",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "RDS for SQL Server",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Technical How-to",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/16/DB5675-1024x512-1.png",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/converting-an-rds-for-sql-server-instance-from-license-included-to-bring-your-own-media-byom/"
     },
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/unlock-license-mobility-with-bring-your-own-media-on-fully-managed-amazon-rds-for-sql-server/",
-      "title": "フルマネージドの Amazon RDS for SQL Server で Bring Your Own Media によるライセンスモビリティの実現",
-      "description": "Amazon RDS for SQL Server の Bring Your Own Media (BYOM) は、既存の SQL Server インストールメディアと、すでに投資済みのライセンスを持ち込み、フルマネージドデータベースサービスである RDS for SQL Server 上で追加のライセンス費用なしに利用できます。本記事では、SQL Server のインストールメディアを Amazon Simple Storage Service (Amazon S3) にアップロードし、BYOM インスタンスを起動する方法を説明します。",
-      "timestamp": "2026-09-18T11:59:44+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/16/5650.png"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "フルマネージドの Amazon RDS for SQL Server で Bring Your Own Media によるライセンスモビリティの実現",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Yoshinori Sawada",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-18T11:59:44+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "18 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Announcements",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Intermediate (200)",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "RDS for SQL Server",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/16/5650.png",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/unlock-license-mobility-with-bring-your-own-media-on-fully-managed-amazon-rds-for-sql-server/"
     },
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/integrating-sap-commerce-cloud-with-sap-cloud-erp-private-on-aws-a-practical-and-proven-approach/",
-      "title": "SAP Commerce Cloud と SAP Cloud ERP Private on AWS の統合 – 実践的で実証済みのアプローチ",
-      "description": "SAP Commerce（SAP Hybris）2205 のメインストリームメンテナンス終了を控え、多くの企業が SAP Commerce Cloud SaaS と AWS 上の SAP Cloud ERP Private の統合によるモダナイゼーションを進めています。本記事では、リージョン選択、レイテンシー最適化（Amazon CloudFront・SAP BTP Integration Suite の活用）、ネットワーキング（AWS Global Accelerator・Amazon Route 53）、セキュリティの 4 つの観点から、実証済みのアーキテクチャベストプラクティスを解説します。さらに、Buy with Prime や Amazon Multi-Channel Fulfillment（MCF）との統合による e コマース業務の拡張についても紹介します。",
-      "timestamp": "2026-09-18T11:12:55+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "SAP Commerce Cloud と SAP Cloud ERP Private on AWS の統合 – 実践的で実証済みのアプローチ",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Koshi Matsumoto",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-18T11:12:55+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "18 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Best Practices",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "SAP on AWS",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Technical How-to",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/integrating-sap-commerce-cloud-with-sap-cloud-erp-private-on-aws-a-practical-and-proven-approach/"
     },
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/aws-agentic-standard-operating-procedures-sops-for-erp-automation/",
-      "title": "ERP例外処理をAWSエージェント型標準作業手順書（SOP）で自動化",
-      "description": "エンタープライズ ERP の例外対応は、SAP のスリーウェイマッチや RPA、従来型 ML でも解決しきれず、手作業に依存してきました。本稿では、Amazon Bedrock AgentCore と Strands を基盤に、ナレッジベースの SOP を実行時に解釈して SAP／非 SAP システム横断で例外を自律解決する「エージェント型 SOP」フレームワークを紹介します。EventBridge・Lambda・DynamoDB・Bedrock Knowledge Bases・SES を組み合わせ、ヒューマン・イン・ザ・ループと監査水準の証跡を備えたリファレンスアーキテクチャと技術的ベストプラクティスを解説します。あるグローバル製造業では 30 日超を要した PO 引当計上が数分に短縮されました。",
-      "timestamp": "2026-09-18T11:08:13+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "ERP例外処理をAWSエージェント型標準作業手順書（SOP）で自動化",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Koshi Matsumoto",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-18T11:08:13+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "18 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Bedrock",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Bedrock AgentCore",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Bedrock Knowledge Bases",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Amazon CloudWatch",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Cognito",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Amazon DynamoDB",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Amazon EventBridge",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "AWS Lambda",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Best Practices",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "SAP on AWS",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Technical How-to",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/aws-agentic-standard-operating-procedures-sops-for-erp-automation/"
     },
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/restar-ai-platform/",
-      "title": "【寄稿】株式会社レスター、Amazon Bedrock で顧客課題とグループの解決力をつなぐ情報プラットフォームを構築",
-      "description": "はじめに 本記事は、株式会社レスター（以下、レスター）の加瀬 友基 氏による寄稿記事です。 レスターでは、各社 […]",
-      "timestamp": "2026-09-18T09:56:28+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "【寄稿】株式会社レスター、Amazon Bedrock で顧客課題とグループの解決力をつなぐ情報プラットフォームを構築",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Shota Nakamoto",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-18T09:56:28+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "18 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Bedrock",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Bedrock AgentCore",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Bedrock Knowledge Bases",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "General",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Generative AI",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Industries",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/restar-ai-platform/"
     },
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-2/",
-      "title": "NTTドコモ モバイルイノベーションテック部における AI-DLC 実践（第2回）：2チーム並行開発の実験結果と知見",
-      "description": "※ この投稿はお客様に寄稿いただいた記事です。 本稿は、NTTドコモ モバイルイノベーションテック部（以下、M […]",
-      "timestamp": "2026-09-18T09:02:27+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/08/25/thumb_H_arm30__shadow_web-1024x683.png"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "NTTドコモ モバイルイノベーションテック部における AI-DLC 実践（第2回）：2チーム並行開発の実験結果と知見",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Takaaki Kikuchi",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-18T09:02:27+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "18 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Artificial Intelligence",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Case Study",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Developer Tools",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "General",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Kiro",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/08/25/thumb_H_arm30__shadow_web-1024x683.png",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-2/"
     },
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-1/",
-      "title": "NTTドコモ モバイルイノベーションテック部における AI-DLC 実践（第1回）：フィジカルAI領域でのML開発への適用",
-      "description": "※ この投稿はお客様に寄稿いただいた記事です。 本稿では、株式会社NTTドコモ（以下、ドコモ）モバイルイノベー […]",
-      "timestamp": "2026-09-18T09:02:16+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/08/25/thumb_H_arm30__shadow_web-1024x683.png"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "NTTドコモ モバイルイノベーションテック部における AI-DLC 実践（第1回）：フィジカルAI領域でのML開発への適用",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "Takaaki Kikuchi",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-18T09:02:16+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "18 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Artificial Intelligence",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Case Study",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Developer Tools",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "General",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Kiro",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/08/25/thumb_H_arm30__shadow_web-1024x683.png",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-1/"
     },
     {
-      "url": "https://aws.amazon.com/jp/blogs/news/fable-5-1/",
-      "title": "Claude Fable 5.1 が Kiro で利用可能になりました",
-      "description": "Claude Fable 5.1 が本日より Kiro のエンタープライズ顧客向けに利用可能になりました。長時間にわたるコンテキスト量の多いエージェントセッションにおいて、Fable 5.1 は新しい基準を打ち立てます。症状を並べるのではなくコードの根本原因まで問題を追跡し、複雑なタスクの全体を通してコンテキストと意図を保持します。",
-      "timestamp": "2026-09-18T04:45:31+09:00",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/17/kiro-fable-5-1-1024x538.jpg"
+      "texts": [
+        {
+          "kind": "title",
+          "value": "Claude Fable 5.1 が Kiro で利用可能になりました",
+          "required": true
+        },
+        {
+          "kind": "author",
+          "value": "稲田大陸",
+          "required": false
+        },
+        {
+          "kind": "pub-date",
+          "value": "2026-09-18T04:45:31+09:00",
+          "required": true
+        },
+        {
+          "kind": "pub-date",
+          "value": "18 9月 2026",
+          "required": true
+        },
+        {
+          "kind": "category",
+          "value": "Amazon Q Developer",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Developer Tools",
+          "required": false
+        },
+        {
+          "kind": "category",
+          "value": "Kiro",
+          "required": false
+        }
+      ],
+      "images": [
+        {
+          "kind": "thumbnail",
+          "value": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/17/kiro-fable-5-1-1024x538.jpg",
+          "required": true
+        }
+      ],
+      "link": "https://aws.amazon.com/jp/blogs/news/fable-5-1/"
     }
   ]
 }

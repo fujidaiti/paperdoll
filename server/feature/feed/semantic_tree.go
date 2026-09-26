@@ -57,6 +57,22 @@ type SemanticNode struct {
 // wrapper that adds no value of its own and holds a single child is replaced
 // by that child, so the tree holds no step a reader has to look through.
 func BuildSemanticTree(r io.Reader, page url.URL) (*SemanticNode, error) {
+	return buildSemanticTree(r, page, false)
+}
+
+// BuildSemanticTreeWithHeadings is BuildSemanticTree with tag escalation
+// turned on, and is an experiment that stands beside it.
+//
+// Folding a subtree keeps the element name of the innermost element a text was
+// read from, so the title of a post written as <h1><a>title</a></h1> arrives
+// as the text of a link and the heading is lost. Escalation reports such a
+// text under the heading instead, which is what says the text is a title
+// rather than any other text of the card.
+func BuildSemanticTreeWithHeadings(r io.Reader, page url.URL) (*SemanticNode, error) {
+	return buildSemanticTree(r, page, true)
+}
+
+func buildSemanticTree(r io.Reader, page url.URL, escalate bool) (*SemanticNode, error) {
 	doc, err := sanitize(r)
 	if err != nil {
 		return nil, err
@@ -68,7 +84,7 @@ func BuildSemanticTree(r io.Reader, page url.URL) (*SemanticNode, error) {
 	if root == nil {
 		return nil, nil
 	}
-	n := semanticNode(root, &page)
+	n := semanticNode(root, &page, escalate)
 	mergeLinkless(n)
 	return n, nil
 }
@@ -153,16 +169,32 @@ type SemanticText struct {
 // date written after the links of a card needs. A run that holds no letter and
 // no digit is dropped, because it is a separator such as "," or "·" between
 // two children rather than a value of the post.
-func semanticTexts(n *html.Node) []SemanticText {
+//
+// escalate turns tag escalation on: a text is reported under the heading it
+// sits inside, anywhere between the folded subtree and the element the text
+// was read from, instead of under that element. The highest ranked heading of
+// the path wins, so a text inside an <h2> inside an <h1> is reported as an
+// <h1>. Without it the heading is lost as soon as the title is written inside
+// a link, which is how a post list normally writes it.
+func semanticTexts(n *html.Node, escalate bool) []SemanticText {
 	var out []SemanticText
-	var walk func(*html.Node)
-	walk = func(x *html.Node) {
+	// heading is the heading the element sits inside, and is only ever set
+	// while escalate is on.
+	var walk func(x *html.Node, heading string)
+	walk = func(x *html.Node, heading string) {
+		if escalate && headingTags[x.Data] && (heading == "" || x.Data < heading) {
+			heading = x.Data
+		}
+		tag := x.Data
+		if heading != "" {
+			tag = heading
+		}
 		if !hasTextChild(x) {
 			// No element child holds text, so no descendant does, and the
 			// whole text of x is one block.
 			if t := text(x); t != "" {
 				out = append(out, SemanticText{
-					Tag:      x.Data,
+					Tag:      tag,
 					Value:    t,
 					Datetime: attr(x, "datetime"),
 				})
@@ -179,7 +211,7 @@ func semanticTexts(n *html.Node) []SemanticText {
 				return
 			}
 			out = append(out, SemanticText{
-				Tag:      x.Data,
+				Tag:      tag,
 				Value:    t,
 				Datetime: attr(x, "datetime"),
 			})
@@ -192,12 +224,12 @@ func semanticTexts(n *html.Node) []SemanticText {
 			}
 			if c.Type == html.ElementNode {
 				flush()
-				walk(c)
+				walk(c, heading)
 			}
 		}
 		flush()
 	}
-	walk(n)
+	walk(n, "")
 	return out
 }
 
@@ -208,7 +240,7 @@ type SemanticImage struct {
 	Alt string `json:"alt,omitempty"`
 }
 
-func semanticNode(n *html.Node, page *url.URL) *SemanticNode {
+func semanticNode(n *html.Node, page *url.URL, escalate bool) *SemanticNode {
 	links := itemLinks(n, page)
 	distinct := map[string]bool{}
 	for _, l := range links {
@@ -216,7 +248,7 @@ func semanticNode(n *html.Node, page *url.URL) *SemanticNode {
 	}
 
 	if len(distinct) <= 1 {
-		texts := semanticTexts(n)
+		texts := semanticTexts(n, escalate)
 		images := itemImages(n, page)
 		if len(links) == 0 && len(texts) == 0 && len(images) == 0 {
 			// Nothing a post can be built from, so the subtree is dropped.
@@ -238,7 +270,7 @@ func semanticNode(n *html.Node, page *url.URL) *SemanticNode {
 		if c.Type != html.ElementNode {
 			continue
 		}
-		if s := semanticNode(c, page); s != nil {
+		if s := semanticNode(c, page, escalate); s != nil {
 			children = append(children, s)
 		}
 	}

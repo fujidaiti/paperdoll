@@ -68,6 +68,24 @@ var (
 // replacing the other. A group that lost members is scored again, because what
 // is left of it is not what was scored.
 func SelectPostGroups(root *SemanticNode, alpha float64) []PostGroup {
+	return selectPostGroups(root, alpha, false)
+}
+
+// SelectPostGroupsWithHeadings is SelectPostGroups with the heading rule
+// turned on, and is an experiment that stands beside it.
+//
+// candidateLinks drops a URL shape that occurs more than once inside one card,
+// because five links to /tags/<name> cannot be the single post of that card.
+// A page that prints whole articles rather than a list of cards links from the
+// body of a post to other posts of the same site, so the post's own link is
+// dropped by that test before anything else can read it. The heading rule says
+// that a link whose text is a heading is the post whatever the other links of
+// the card look like, which puts such a link back.
+func SelectPostGroupsWithHeadings(root *SemanticNode, alpha float64) []PostGroup {
+	return selectPostGroups(root, alpha, true)
+}
+
+func selectPostGroups(root *SemanticNode, alpha float64, headings bool) []PostGroup {
 	var candidates []*SemanticNode
 	var walk func(*SemanticNode)
 	walk = func(n *SemanticNode) {
@@ -92,7 +110,7 @@ func SelectPostGroups(root *SemanticNode, alpha float64) []PostGroup {
 	}
 	all := make([]scored, 0, len(candidates))
 	for _, n := range candidates {
-		all = append(all, scored{n, groupScore(groupFeatures(n.Children))})
+		all = append(all, scored{n, groupScore(groupFeatures(n.Children, headings))})
 	}
 	sort.SliceStable(all, func(i, j int) bool { return all[i].score > all[j].score })
 
@@ -120,7 +138,7 @@ func SelectPostGroups(root *SemanticNode, alpha float64) []PostGroup {
 		}
 		p := PostGroup{Members: members}
 		if len(members) > 1 {
-			p.Score = groupScore(groupFeatures(members))
+			p.Score = groupScore(groupFeatures(members, headings))
 		}
 		kept = append(kept, p)
 	}
@@ -137,7 +155,7 @@ func SelectPostGroups(root *SemanticNode, alpha float64) []PostGroup {
 		if len(g.Members) > 1 && best > 0 && g.Score < alpha*best {
 			continue
 		}
-		g.Links = GroupLinks(g.Members)
+		g.Links = groupLinks(g.Members, headings)
 		out = append(out, g)
 	}
 	return out
@@ -164,7 +182,11 @@ func holdsGroup(n *SemanticNode, taken map[*SemanticNode]bool) bool {
 // an item links to other pages, and only the agreement of the other members
 // says which link is the item itself.
 func GroupLinks(members []*SemanticNode) []string {
-	return groupLinksWith(members, candidatesOf(members))
+	return groupLinks(members, false)
+}
+
+func groupLinks(members []*SemanticNode, headings bool) []string {
+	return groupLinksWith(members, candidatesOf(members), headings)
 }
 
 // candidatesOf reads the candidate links of every member of a group.
@@ -187,10 +209,10 @@ func candidatesOf(members []*SemanticNode) []map[string]bool {
 	return out
 }
 
-func groupLinksWith(members []*SemanticNode, cands []map[string]bool) []string {
+func groupLinksWith(members []*SemanticNode, cands []map[string]bool, headings bool) []string {
 	first := make([]string, len(members))
 	for i, m := range members {
-		first[i] = representativeLink(m, cands[i], "")
+		first[i] = representativeLink(m, cands[i], "", headings)
 	}
 
 	var order []string
@@ -217,7 +239,7 @@ func groupLinksWith(members []*SemanticNode, cands []map[string]bool) []string {
 
 	out := make([]string, len(members))
 	for i, m := range members {
-		out[i] = representativeLink(m, cands[i], shape)
+		out[i] = representativeLink(m, cands[i], shape, headings)
 	}
 	return out
 }
@@ -226,7 +248,10 @@ func groupLinksWith(members []*SemanticNode, cands []map[string]bool) []string {
 // the candidate links, the post is the one the card repeats, then the one the
 // longest text sits on. When shape is set, a candidate of that shape is
 // preferred over every other one.
-func representativeLink(n *SemanticNode, allowed map[string]bool, shape string) string {
+//
+// headings reads the links whose text is a heading before the candidates are
+// read, so that such a link is the post even when candidateLinks dropped it.
+func representativeLink(n *SemanticNode, allowed map[string]bool, shape string, headings bool) string {
 	found := linkedNodes(n)
 	if len(found) == 0 {
 		return ""
@@ -240,6 +265,11 @@ func representativeLink(n *SemanticNode, allowed map[string]bool, shape string) 
 		}
 		if len(same) > 0 {
 			allowed = same
+		}
+	}
+	if headings {
+		if headed := headedLinks(found, shape); len(headed) > 0 {
+			allowed = headed
 		}
 	}
 
@@ -318,6 +348,34 @@ func candidateLinks(n *SemanticNode, carried map[string]int) map[string]bool {
 	}
 	if len(out) == 0 {
 		return links
+	}
+	return out
+}
+
+// headedLinks returns the links of nodes whose own text is a heading, which is
+// how a list of posts writes the title of an item. When shape is set and some
+// of them have it, only those are returned.
+func headedLinks(found []*SemanticNode, shape string) map[string]bool {
+	out := map[string]bool{}
+	for _, x := range found {
+		for _, t := range x.Texts {
+			if headingTags[t.Tag] {
+				out[x.Link] = true
+				break
+			}
+		}
+	}
+	if shape == "" || len(out) == 0 {
+		return out
+	}
+	same := map[string]bool{}
+	for l := range out {
+		if urlTemplate(l) == shape {
+			same[l] = true
+		}
+	}
+	if len(same) > 0 {
+		return same
 	}
 	return out
 }
@@ -401,10 +459,10 @@ type groupStats struct {
 	dateRate    float64
 }
 
-func groupFeatures(members []*SemanticNode) groupStats {
+func groupFeatures(members []*SemanticNode, headings bool) groupStats {
 	n := len(members)
 	cands := candidatesOf(members)
-	links := groupLinksWith(members, cands)
+	links := groupLinksWith(members, cands, headings)
 
 	var order []string
 	shapes := map[string]int{}
@@ -444,8 +502,17 @@ func groupFeatures(members []*SemanticNode) groupStats {
 		// One is what a row of the selection screen needs: a page container
 		// holds a whole list per member, and a member of a list of tags holds
 		// none of the shape the posts share.
+		// The heading rule is read here as well, so that a member whose post
+		// link candidateLinks dropped is still counted as holding one link of
+		// the shape the group agreed on.
 		ofShape := 0
-		for l := range cands[i] {
+		cand := cands[i]
+		if headings {
+			if headed := headedLinks(linkedNodes(m), ""); len(headed) > 0 {
+				cand = headed
+			}
+		}
+		for l := range cand {
 			if urlTemplate(l) == shape {
 				ofShape++
 			}

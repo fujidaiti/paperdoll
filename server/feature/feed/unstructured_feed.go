@@ -285,10 +285,12 @@ func itemImages(item *html.Node, page *url.URL) []Attribute {
 	var walk func(*html.Node)
 	walk = func(x *html.Node) {
 		if x.Type == html.ElementNode && x.Data == "img" {
+			// A lazily loaded image keeps its real source in data-src until
+			// the page's script runs, and no script runs here. Until then
+			// src is either missing or a placeholder written inline as a
+			// data: URL, so both cases fall back to data-src.
 			src := attr(x, "src")
-			if src == "" {
-				// A lazily loaded image keeps its real source in data-src
-				// until the page's script runs, and no script runs here.
+			if src == "" || strings.HasPrefix(strings.ToLower(src), "data:") {
 				src = attr(x, "data-src")
 			}
 			if src != "" && !strings.HasPrefix(strings.ToLower(src), "data:") {
