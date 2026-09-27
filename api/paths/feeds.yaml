@@ -1,6 +1,9 @@
 collection:
   get:
     summary: Get subscribed feeds
+    description:
+      Returns only the caller's own subscriptions. The `subscribed` is always
+      `true`.
     operationId: getFeeds
     tags: [Feeds]
     parameters:
@@ -55,6 +58,10 @@ collection:
         $ref: "../components/responses.yaml#/InternalServerError"
   put:
     summary: Subscribe to a feed
+    description:
+      Creates the caller's subscription. The `subscribed` is always `true`. This
+      operation is idempotent, so subscribing to a feed the caller is already
+      subscribed to has no additional effect.
     operationId: subscribeToFeed
     tags: [Feeds]
     requestBody:
@@ -132,6 +139,9 @@ search:
 item:
   get:
     summary: Get a feed by ID
+    description:
+      Does not require a subscription. `subscribed` reports whether the caller
+      is subscribed, so this is the only operation that can report `false`.
     operationId: getFeed
     tags: [Feeds]
     parameters:

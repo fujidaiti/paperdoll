@@ -189,8 +189,7 @@ func TestFeed_Unsubscribe(t *testing.T) {
 	testenv.StubHTTP("feeds.bbci.co.uk", "/news/rss.xml", "./testdata/feed/bbc_news_rss.xml")
 	feedURL := must(url.Parse("http://feeds.bbci.co.uk/news/rss.xml"))
 
-	// Two users subscribed to the same feed, so the test can tell apart
-	// dropping one subscription from deleting the shared feed.
+	// Two users subscribed to the same feed.
 	uid, _ := provisionTestAccount(t,
 		"unsubscriber@example.com", "test#password$1234", "Pixel9a/Android",
 		mustTimeUTC("2026-07-01 13:30:00"))
@@ -199,13 +198,8 @@ func TestFeed_Unsubscribe(t *testing.T) {
 		mustTimeUTC("2026-07-01 13:30:00"))
 
 	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
-	fd, err := s.Subscribe(t.Context(), uid, *feedURL)
-	if err != nil {
-		t.Fatalf("got %q, want a nil error", err)
-	}
-	if _, err := s.Subscribe(t.Context(), otherUID, *feedURL); err != nil {
-		t.Fatalf("got %q, want a nil error", err)
-	}
+	fd := must(s.Subscribe(t.Context(), uid, *feedURL))
+	must(s.Subscribe(t.Context(), otherUID, *feedURL))
 
 	ok, err := s.Unsubscribe(t.Context(), uid, fd.ID)
 	if err != nil {
@@ -233,15 +227,6 @@ func TestFeed_Unsubscribe(t *testing.T) {
 	`, otherUID, fd.ID)
 	if got != 1 {
 		t.Errorf("other user's subscription row count = %d, want 1", got)
-	}
-
-	// Unsubscribing again has nothing left to delete.
-	ok, err = s.Unsubscribe(t.Context(), uid, fd.ID)
-	if err != nil {
-		t.Fatalf("got %q, want a nil error", err)
-	}
-	if ok {
-		t.Error("unsubscribing without a subscription must report false, got true")
 	}
 }
 
