@@ -24,6 +24,34 @@ void main() {
     await t(AppDebugKey.readerTitle(targetEntryTitle)).waitUntilVisible();
   });
 
+  patrolTest('Unsubscribe from a feed', tags: 'feed-unsubscribe', (t) async {
+    await setUpServer(seederId: 'feed_bbc_news');
+    await pumpAppWithAuth(t);
+
+    await t(AppDebugKey.feedsNavDestination).tap();
+    await t(AppDebugKey.feedsScreen).waitUntilVisible();
+    await t(AppDebugKey.feedRow('BBC News')).tap();
+    await t(AppDebugKey.feedDetailScreen).waitUntilVisible();
+    await t(
+      AppDebugKey.feedEntryRow(
+        'US signs landmark nuclear deal with Saudi Arabia',
+      ),
+    ).waitUntilVisible();
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.unsubscribeMenuItem).tap();
+    await t(AppDebugKey.unsubscribeSuccessSnackBar).waitUntilVisible();
+
+    await t.tester.pageBack();
+    await t(AppDebugKey.feedsScreen).waitUntilVisible();
+    // Refresh the page and see if the feed disappears from the list.
+    await t.tester.fling(
+      t(AppDebugKey.feedsScreen).finder,
+      const Offset(0, 300),
+      1000,
+    );
+    await t('No feeds yet. Add one to get started.').waitUntilVisible();
+  });
+
   patrolTest('Subscribe to a known web feed', tags: 'feed-subscribe', (
     t,
   ) async {

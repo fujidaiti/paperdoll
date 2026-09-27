@@ -183,6 +183,53 @@ func TestFeed_Subscribe(t *testing.T) {
 	}
 }
 
+func TestFeed_Unsubscribe(t *testing.T) {
+	t.Cleanup(testenv.TearDown)
+
+	testenv.StubHTTP("feeds.bbci.co.uk", "/news/rss.xml", "./testdata/feed/bbc_news_rss.xml")
+	feedURL := must(url.Parse("http://feeds.bbci.co.uk/news/rss.xml"))
+
+	// Two users subscribed to the same feed.
+	uid, _ := provisionTestAccount(t,
+		"unsubscriber@example.com", "test#password$1234", "Pixel9a/Android",
+		mustTimeUTC("2026-07-01 13:30:00"))
+	otherUID, _ := provisionTestAccount(t,
+		"other-subscriber@example.com", "test#password$1234", "Pixel9a/Android",
+		mustTimeUTC("2026-07-01 13:30:00"))
+
+	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
+	fd := must(s.Subscribe(t.Context(), uid, *feedURL))
+	must(s.Subscribe(t.Context(), otherUID, *feedURL))
+
+	ok, err := s.Unsubscribe(t.Context(), uid, fd.ID)
+	if err != nil {
+		t.Fatalf("got %q, want a nil error", err)
+	}
+	if !ok {
+		t.Error("unsubscribing an existing subscription must report true, got false")
+	}
+
+	got := scanValOrFatal[int](t, `
+		SELECT COUNT(*) FROM feed_subscriptions WHERE user_id = $1 AND feed_id = $2
+	`, uid, fd.ID)
+	if got != 0 {
+		t.Errorf("subscription row count = %d, want 0", got)
+	}
+
+	// The feed is shared across all users, so it must survive along with the
+	// other user's subscription to it.
+	got = scanValOrFatal[int](t, `SELECT COUNT(*) FROM feeds WHERE id = $1`, fd.ID)
+	if got != 1 {
+		t.Errorf("feed row count = %d, want 1", got)
+	}
+	got = scanValOrFatal[int](t, `
+		SELECT COUNT(*) FROM feed_subscriptions WHERE user_id = $1 AND feed_id = $2
+	`, otherUID, fd.ID)
+	if got != 1 {
+		t.Errorf("other user's subscription row count = %d, want 1", got)
+	}
+}
+
 func TestFeed_SearchFeeds(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 

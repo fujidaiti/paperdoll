@@ -9,6 +9,9 @@ abstract final class AppDebugKey {
   static const archivedReadingListScreen = Key('archivedReadingListScreen');
   static const unarchiveSuccessSnackBar = Key('unarchiveSuccessSnackBar');
   static const feedDetailScreen = Key('feedDetailScreen');
+  static const feedDetailMenuButton = Key('feedDetailMenuButton');
+  static const subscribeMenuItem = Key('subscribeMenuItem');
+  static const unsubscribeMenuItem = Key('unsubscribeMenuItem');
   static const feedEntryReaderArchiveButton = Key(
     'feedEntryReaderArchiveButton',
   );
@@ -56,6 +59,7 @@ abstract final class AppDebugKey {
   static const signUpSubmitButton = Key('signUpSubmitButton');
   static const signUpGoToSignInButton = Key('signUpGoToSignInButton');
   static const subscribeSuccessSnackBar = Key('subscribeSuccessSnackBar');
+  static const unsubscribeSuccessSnackBar = Key('unsubscribeSuccessSnackBar');
   static const verifyEmailScreen = Key('verifyEmailScreen');
   static const verifyEmailCodeField = Key('verifyEmailCodeField');
   static const verifyEmailSubmitButton = Key('verifyEmailSubmitButton');

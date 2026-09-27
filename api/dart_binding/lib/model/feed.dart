@@ -19,6 +19,7 @@ class Feed {
     this.iconUrl,
     required this.title,
     this.description,
+    required this.subscribed,
   });
 
   int id;
@@ -51,6 +52,9 @@ class Feed {
   ///
   String? description;
 
+  /// Whether the calling user is subscribed to this feed.
+  bool subscribed;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -60,7 +64,8 @@ class Feed {
           other.siteUrl == siteUrl &&
           other.iconUrl == iconUrl &&
           other.title == title &&
-          other.description == description;
+          other.description == description &&
+          other.subscribed == subscribed;
 
   @override
   int get hashCode =>
@@ -70,11 +75,12 @@ class Feed {
       (siteUrl == null ? 0 : siteUrl!.hashCode) +
       (iconUrl == null ? 0 : iconUrl!.hashCode) +
       (title.hashCode) +
-      (description == null ? 0 : description!.hashCode);
+      (description == null ? 0 : description!.hashCode) +
+      (subscribed.hashCode);
 
   @override
   String toString() =>
-      'Feed[id=$id, url=$url, siteUrl=$siteUrl, iconUrl=$iconUrl, title=$title, description=$description]';
+      'Feed[id=$id, url=$url, siteUrl=$siteUrl, iconUrl=$iconUrl, title=$title, description=$description, subscribed=$subscribed]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -96,6 +102,7 @@ class Feed {
     } else {
       json[r'description'] = null;
     }
+    json[r'subscribed'] = this.subscribed;
     return json;
   }
 
@@ -122,6 +129,10 @@ class Feed {
             'Required key "Feed[title]" is missing from JSON.');
         assert(json[r'title'] != null,
             'Required key "Feed[title]" has a null value in JSON.');
+        assert(json.containsKey(r'subscribed'),
+            'Required key "Feed[subscribed]" is missing from JSON.');
+        assert(json[r'subscribed'] != null,
+            'Required key "Feed[subscribed]" has a null value in JSON.');
         return true;
       }());
 
@@ -132,6 +143,7 @@ class Feed {
         iconUrl: mapValueOfType<String>(json, r'icon_url'),
         title: mapValueOfType<String>(json, r'title')!,
         description: mapValueOfType<String>(json, r'description'),
+        subscribed: mapValueOfType<bool>(json, r'subscribed')!,
       );
     }
     return null;
@@ -191,5 +203,6 @@ class Feed {
     'id',
     'url',
     'title',
+    'subscribed',
   };
 }

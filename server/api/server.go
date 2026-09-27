@@ -98,6 +98,7 @@ func NewServer(db *sql.DB, httpProxy *url.URL, emailSender infra.EmailSender) *h
 	authorized.HandleFunc("PUT /feeds", h.subscribeToFeed)
 	authorized.HandleFunc("GET /feeds/search", h.searchFeeds)
 	authorized.HandleFunc("GET /feeds/{id}", h.getFeed)
+	authorized.HandleFunc("DELETE /feeds/{id}", h.unsubscribeFromFeed)
 	authorized.HandleFunc("GET /feeds/{id}/timeline", h.getFeedTimeline)
 	authorized.HandleFunc("GET /feed-entries/{id}", h.getFeedEntry)
 	authorized.HandleFunc("GET /web-clips/{id}", h.getWebClip)
@@ -368,6 +369,9 @@ type feedAttrsSchema struct {
 type feedSchema struct {
 	ID int `json:"id"`
 	feedAttrsSchema
+	// Subscribed reports whether the calling user is subscribed to this feed.
+	// The feeds row itself is shared across all users.
+	Subscribed bool `json:"subscribed"`
 }
 
 type getFeedsResBody struct {
@@ -394,7 +398,9 @@ func (h *Handler) getFeeds(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var res getFeedsResBody
+	// Initialized so an empty page marshals as [] rather than null, which the
+	// clients reject.
+	res := getFeedsResBody{Feeds: []feedSchema{}}
 	var where string
 	args := []any{uid}
 	if cursor != nil {
@@ -440,6 +446,8 @@ func (h *Handler) getFeeds(w http.ResponseWriter, r *http.Request) {
 		if desc.Valid {
 			f.Description = desc.String
 		}
+		// Every row here comes from the caller's own subscriptions join.
+		f.Subscribed = true
 		res.Feeds = append(res.Feeds, f)
 	}
 	if rows.Err() != nil {
@@ -490,13 +498,24 @@ func (h *Handler) getFeed(w http.ResponseWriter, r *http.Request) {
 	}
 
 	ctx := r.Context()
+	uid, ok := UserIDFromContext(ctx)
+	if !ok {
+		serverError(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+
 	var res getFeedResBody
 	var su, iu, desc sql.NullString
 	err = h.DB.QueryRowContext(ctx, `
-		SELECT id, url, site_url, icon_url, title, description
+		SELECT
+			id, url, site_url, icon_url, title, description,
+			EXISTS (
+				SELECT 1 FROM feed_subscriptions
+				WHERE user_id = $2 AND feed_id = feeds.id
+			)
 		FROM feeds
 		WHERE id = $1;
-	`, id).Scan(&res.ID, &res.URL, &su, &iu, &res.Title, &desc)
+	`, id, uid).Scan(&res.ID, &res.URL, &su, &iu, &res.Title, &desc, &res.Subscribed)
 	if errors.Is(err, sql.ErrNoRows) {
 		fmt.Print(err)
 		serverError(w, http.StatusNotFound, "No feed found")
@@ -524,6 +543,34 @@ func (h *Handler) getFeed(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	_, _ = w.Write(jres)
+}
+
+// unsubscribeFromFeed drops the caller's subscription. The feed itself is
+// shared across all users, so it survives and its timeline stays readable.
+func (h *Handler) unsubscribeFromFeed(w http.ResponseWriter, r *http.Request) {
+	id, err := strconv.Atoi(r.PathValue("id"))
+	if err != nil {
+		fmt.Print(err)
+		serverError(w, http.StatusBadRequest, "Invalid feed id")
+		return
+	}
+	ctx := r.Context()
+	uid, authOK := UserIDFromContext(ctx)
+	if !authOK {
+		serverError(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	ok, err := h.FeedService.Unsubscribe(ctx, uid, id)
+	if err != nil {
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to unsubscribe from feed")
+		return
+	}
+	if !ok {
+		serverError(w, http.StatusNotFound, "No subscription found")
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
 }
 
 type feedTimelineEntry struct {
@@ -715,7 +762,12 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	res := subscribeToFeedResBody{ID: fd.ID, URL: fd.URL.String(), Title: fd.Title}
+	res := subscribeToFeedResBody{
+		ID:         fd.ID,
+		URL:        fd.URL.String(),
+		Title:      fd.Title,
+		Subscribed: true,
+	}
 	if u := fd.SiteURL; u != nil {
 		res.SiteURL = u.String()
 	}

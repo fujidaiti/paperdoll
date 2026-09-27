@@ -28,18 +28,18 @@ class const FeedDetailScreen({required final int id, super.key})
     extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final feedAsync = ref.watch(feedDetailProvider(id: id));
+    final feedAsync = ref.watch(feedDetailControllerProvider(id: id));
     final timelineAsync = ref.watch(feedTimelineProvider(id: id));
     return Scaffold(
       key: AppDebugKey.feedDetailScreen,
       body: RefreshIndicator(
         onRefresh: () {
-          ref.invalidate(feedDetailProvider(id: id));
+          ref.invalidate(feedDetailControllerProvider(id: id));
           return ref.refresh(feedTimelineProvider(id: id).future);
         },
         child: AsyncValueView<Feed>(
           value: feedAsync,
-          onRetry: () => ref.invalidate(feedDetailProvider(id: id)),
+          onRetry: () => ref.invalidate(feedDetailControllerProvider(id: id)),
           data: (feed) => _FeedDetailBody(
             feed: feed,
             timeline: timelineAsync,
@@ -78,6 +78,7 @@ class const _FeedDetailBody({
             pinned: true,
             centerTitle: false,
             title: BodyText(feed.title),
+            actions: [_SubscriptionMenu(feed: feed)],
           ),
           SliverToBoxAdapter(child: _FeedDetails(feed: feed)),
           ...timeline.when(
@@ -137,6 +138,94 @@ class const _FeedDetailBody({
         ),
     ];
   }
+}
+
+/// The app bar's overflow menu, offering the single subscription action that
+/// applies right now: "Unsubscribe" while subscribed, "Subscribe" once not.
+///
+/// The feed's state and both mutations live in [feedDetailControllerProvider];
+/// this widget only reflects [feed] and shows snackbars. Unsubscribing does not
+/// leave the screen — the feed is shared across all users and survives, so its
+/// timeline stays readable. The menu is disabled while a request it started is
+/// in flight so a second tap can't fire the opposite mutation on stale state.
+class const _SubscriptionMenu({required final Feed feed})
+    extends ConsumerStatefulWidget {
+  @override
+  ConsumerState<_SubscriptionMenu> createState() => _SubscriptionMenuState();
+}
+
+class _SubscriptionMenuState extends ConsumerState<_SubscriptionMenu> {
+  var _busy = false;
+
+  FeedDetailController get _controller =>
+      ref.read(feedDetailControllerProvider(id: widget.feed.id).notifier);
+
+  @override
+  Widget build(BuildContext context) {
+    final subscribed = widget.feed.subscribed;
+    return PopupMenuButton<void>(
+      key: AppDebugKey.feedDetailMenuButton,
+      icon: const Icon(Icons.more_vert),
+      itemBuilder: (context) => [
+        PopupMenuItem<void>(
+          key: subscribed
+              ? AppDebugKey.unsubscribeMenuItem
+              : AppDebugKey.subscribeMenuItem,
+          enabled: !_busy,
+          onTap: () => unawaited(subscribed ? _unsubscribe() : _subscribe()),
+          child: Text(subscribed ? 'Unsubscribe' : 'Subscribe'),
+        ),
+      ],
+    );
+  }
+
+  /// Shows [success] straight away, runs the controller mutation, and keeps the
+  /// menu disabled until it settles. The controller owns the optimistic state
+  /// change and its rollback; this only surfaces snackbars.
+  ///
+  /// The snackbar is hosted by the [ScaffoldMessenger], so its "Undo" action
+  /// outlives this screen if the user navigates back while it is still up.
+  /// Tapping it then does nothing rather than reading a disposed [ref].
+  Future<void> _run(SnackBar success, Future<void> Function() action) async {
+    if (!mounted) {
+      return;
+    }
+    final messenger = ScaffoldMessenger.of(context);
+    setState(() => _busy = true);
+    messenger.showSnackBar(success);
+    try {
+      await action();
+    } on Exception {
+      messenger.showSnackBar(
+        const SnackBar(content: Text('Something went wrong', maxLines: 1)),
+      );
+    } finally {
+      if (mounted) {
+        setState(() => _busy = false);
+      }
+    }
+  }
+
+  Future<void> _subscribe() => _run(
+    const SnackBar(
+      key: AppDebugKey.subscribeSuccessSnackBar,
+      content: Text('Subscribed'),
+    ),
+    _controller.subscribe,
+  );
+
+  Future<void> _unsubscribe() => _run(
+    SnackBar(
+      key: AppDebugKey.unsubscribeSuccessSnackBar,
+      persist: false,
+      content: const Text('Unsubscribed'),
+      action: SnackBarAction(
+        label: 'Undo',
+        onPressed: () => unawaited(_subscribe()),
+      ),
+    ),
+    _controller.unsubscribe,
+  );
 }
 
 /// The feed's description and a link to its site, shown below the app bar.

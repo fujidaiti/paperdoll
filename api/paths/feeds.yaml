@@ -1,6 +1,9 @@
 collection:
   get:
     summary: Get subscribed feeds
+    description:
+      Returns only the caller's own subscriptions. The `subscribed` is always
+      `true`.
     operationId: getFeeds
     tags: [Feeds]
     parameters:
@@ -38,9 +41,11 @@ collection:
                   icon_url: "https://www.anthropic.com/images/icons/apple-touch-icon.png"
                   title: "Anthropic Engineering Blog"
                   description: "Inside the team building reliable AI systems"
+                  subscribed: true
                 - id: 30
                   url: "https://blog.golang.org/feed.atom"
                   title: "The Go Blog"
+                  subscribed: true
                 - id: 29
                   url: "https://dart.dev/blog/feed.xml"
                   site_url: "https://dart.dev/blog"
@@ -48,10 +53,15 @@ collection:
                   description:
                     "Dart is an approachable, portable, and productive language
                     for high-quality apps on any platform."
+                  subscribed: true
       "500":
         $ref: "../components/responses.yaml#/InternalServerError"
   put:
     summary: Subscribe to a feed
+    description:
+      Creates the caller's subscription. The `subscribed` is always `true`. This
+      operation is idempotent, so subscribing to a feed the caller is already
+      subscribed to has no additional effect.
     operationId: subscribeToFeed
     tags: [Feeds]
     requestBody:
@@ -82,6 +92,7 @@ collection:
               description:
                 "Dart is an approachable, portable, and productive language for
                 high-quality apps on any platform."
+              subscribed: true
       "400":
         $ref: "../components/responses.yaml#/BadRequest"
       "500":
@@ -128,6 +139,9 @@ search:
 item:
   get:
     summary: Get a feed by ID
+    description:
+      Does not require a subscription. `subscribed` reports whether the caller
+      is subscribed, so this is the only operation that can report `false`.
     operationId: getFeed
     tags: [Feeds]
     parameters:
@@ -150,6 +164,29 @@ item:
               icon_url: "https://www.anthropic.com/images/icons/apple-touch-icon.png"
               title: "Anthropic Engineering Blog"
               description: "Inside the team building reliable AI systems"
+              subscribed: true
+      "400":
+        $ref: "../components/responses.yaml#/BadRequest"
+      "404":
+        $ref: "../components/responses.yaml#/NotFound"
+      "500":
+        $ref: "../components/responses.yaml#/InternalServerError"
+  delete:
+    summary: Unsubscribe from a feed
+    description:
+      Drops the calling user's subscription. The feed itself is shared across
+      all users and is left intact, so its entries remain reachable.
+    operationId: unsubscribeFromFeed
+    tags: [Feeds]
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    responses:
+      "204":
+        description: No Content
       "400":
         $ref: "../components/responses.yaml#/BadRequest"
       "404":

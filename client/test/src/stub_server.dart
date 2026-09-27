@@ -84,6 +84,9 @@ class StubServer() extends Interceptor {
     Object? bodyMatcher,
   }) => _routes.add(_Route('PATCH', path, bodyMatcher, (_) => (status, body)));
 
+  void stubDelete(String path, {int status = 204, Object? body}) =>
+      _routes.add(_Route('DELETE', path, null, (_) => (status, body)));
+
   /// Like [stubGet], but computes the response per request via [respond] so it
   /// can vary with state a test captured (e.g. answer differently before and
   /// after a [onPut] mutates that state).
@@ -107,6 +110,12 @@ class StubServer() extends Interceptor {
     required StubResponder respond,
     Object? bodyMatcher,
   }) => _routes.add(_Route('PUT', path, bodyMatcher, respond));
+
+  /// Like [stubDelete], but computes the response per request via [respond] so
+  /// it can mutate captured state (see [onGet]). A DELETE carries no body, so
+  /// the responder is always passed null.
+  void onDelete(String path, {required StubResponder respond}) =>
+      _routes.add(_Route('DELETE', path, null, respond));
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
