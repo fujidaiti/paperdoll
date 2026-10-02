@@ -18,7 +18,7 @@ overwelmed by a wall of rows to review.
 ## Input/Output
 
 The algorithm receives a root node of the input HTML, and outputs a list of
-structures. A structure is a set of _fields_.
+structures. A structure is a tree of _parts_, and a part is a set of _fields_.
 
 ### Values
 
@@ -50,35 +50,52 @@ review screen can show the user what was actually found, and it is never applied
 to a page of a later build. Extraction on a later build is done by the matchers
 described below.
 
-### Structure
+### Structure and part
 
-A structure is a set of fields, representing a boundary for a chunk of related
-information, such as posts. For example, the posts in the Today's headline news
-section (see the Field section below) consist of a title and a description, so
-the title field and the description field make up a generalized post that stands
-for the posts in that section.
+A structure stands for the shape of one post, representing a boundary for a
+chunk of related information. For example, the posts in the Today's headline
+news section (see the Field section below) consist of a title and a description,
+so the title field and the description field make up a generalized post that
+stands for the posts in that section.
 
 It is called a structure and not a candidate because the same object survives
 the review: before the review it is one of the choices offered to the user, and
 after the review it is what the polling job applies to every later build.
 
-A structure has a **structure matcher**, which finds every subtree that holds
-one occurrence of the chunk, such as one post card.
+A structure is a **tree of parts**, because the shape of a post is often split
+across containers in the markup. A part is one node of that tree. It holds a set
+of fields and a **part matcher**:
 
-- input: a DOM tree, either the page the structure was built from or the same
-  page of a later build.
-- output: a list of nodes, each being the root of one subtree. The subtrees do
-  not overlap, and they keep the order of the page.
+- input: a DOM subtree. For the root part this is the whole page. For any other
+  part it is one subtree its parent part matched.
+- output: a list of nodes, each being the root of one subtree inside the input.
+  The subtrees do not overlap, and they keep the order of the page.
 
-Each subtree the structure matcher finds is an **instance** of the structure.
-Instances are therefore derived rather than stored: on a later build the same
-structure matcher finds the instances of that build.
+A structure whose tree is a single part is the common case, and a structure with
+only one field is valid.
 
-The subtrees of one structure have the same shape, except where a blob covers a
-part whose shape disagrees. That is what a blob is for.
+### Instance
 
-Since structures are the output of the algorithm, a structure having only one
-field is valid.
+An **instance** is one subtree the root part's matcher found. It stands for one
+post. An instance is a tree as well: inside it, the matcher of each child part
+runs and finds subtrees, and those are the parts of the instance. The root part
+of the instance is the subtree the root part matched.
+
+A structure part may match several subtrees inside one instance, so the instance
+tree is not always a one-to-one copy of the structure tree. A part that stands
+for a tag chip matches one subtree per tag, which gives that instance one part
+per tag.
+
+Instances are derived rather than stored: on a later build the same matchers
+find the instances of that build.
+
+The subtrees one part matches do not have to have exactly the same shape. A part
+may match post cards that differ in whether a byline is present, and a field
+whose matcher finds nothing in such a subtree simply contributes nothing there.
+This is so that an implementation can cover posts with optional fields with one
+structure instead of one structure per shape. A part that matches exactly one
+shape is equally valid. Where the markup of a region disagrees between subtrees
+and no field matcher can cover it, that region is a blob.
 
 ### Field
 
@@ -122,19 +139,20 @@ point to. This is what is used later to extract semantically the same fragment
 from the same page of different builds, e.g., the updated page listing headlines
 of the next week.
 
-- input: one instance of the structure that holds the field, not the whole page.
-- output: at most one node inside that instance.
+- input: one subtree that the part holding the field matched, not the whole
+  page.
+- output: at most one node inside that subtree.
 - observed: the values of that node.
 
 Applied to the page as a whole a field matcher therefore finds one node per
-instance, which is many. It is only inside a single instance that it finds at
-most one. That restriction is what makes it useful: a title that could be
-anywhere on the page says nothing about which post it belongs to.
+subtree its part matched, which is many. It is only inside a single subtree that
+it finds at most one. That restriction is what makes it useful: a title that
+could be anywhere on the page says nothing about which post it belongs to.
 
-Because a field offers at most one node per instance, a post that holds several
+Because a field offers at most one node per subtree, a post that holds several
 of the same thing, such as a list of tags, is not one field with many nodes. It
-is a child structure whose structure matcher finds one instance per tag. This
-keeps the review step where the user can drop the tags on their own.
+is a child part whose part matcher finds one subtree per tag. This keeps the
+review step where the user can drop the tags on their own.
 
 A field is a tick unit. The user can tick one field on its own, for example the
 titles of a section without its descriptions.
@@ -153,22 +171,26 @@ reach the links and images inside it.
 
 A blob field has a **blob matcher** in place of a field matcher:
 
-- input: one instance of the structure that holds the field.
+- input: one subtree that the part holding the field matched.
 - output: a run of consecutive sibling nodes under one parent inside that
-  instance, and everything below them.
+  subtree, and everything below them.
 - observed: the values of every node in that run, in document order.
 
 The samples of a blob field are runs of sibling nodes rather than single nodes,
 for the same reason.
 
-A blob is a leaf of the output. No field or structure describes anything inside
-it, and the user ticks it as one row. The user cannot tick part of a body.
+A blob is a leaf of the output. No field or part describes anything inside it,
+and the user ticks it as one row. The user cannot tick part of a body.
 
 ### Ticking
 
-A structure is a tick unit as well. Ticking a structure ticks every field in it,
-so the user does not have to tick the title field and the description field
-separately to observe whole posts.
+A part is a tick unit as well. Ticking a part ticks every field in it and every
+part below it, so the user does not have to tick the title field and the
+description field separately to observe whole posts.
+
+Ticking a structure means ticking its root part, which takes the whole
+structure. Users can't tick only a part below the root: ticking a part
+implicitly ticks all its ancestor parts.
 
 ### Why a structure is needed
 
@@ -180,13 +202,12 @@ no description, the second description lines up with the third title. Note that
 in the example above, "News title 3" and "News title 5" have no description, so
 the two fields have different sizes.
 
-The structure matcher removes the question: a title and a description belong to
-the same post when they are found in the same instance.
+The root part's matcher removes the question: a title and a description belong
+to the same post when they are found in the same instance.
 
 ### Nesting
 
-A structure may hold another structure. Think of posts that have small flyers at
-the bottom of the card:
+Think of posts that have small flyers at the bottom of the card:
 
 ```
 [Thumbnail]
@@ -197,25 +218,22 @@ News title
 
 Since typical HTML pages lay such flyers out in a container separate from other
 elements like the title, and structures are infered from the input HTML, it
-would be common that a structure representing a post card has a child structure,
-which has a field that stands for the flyers.
+would be common that the structure of a post card has a child part, which has a
+field that stands for the flyers.
 
-A child structure stands for a subtree that is part of the larger subtree its
-parent stands for. Its structure matcher is therefore applied inside one
-instance of the parent, and each instance it finds sits inside one instance of
-the parent.
+A part matches a subtree inside the subtree its parent matched. Its part matcher
+is therefore applied inside one subtree the parent matched, and everything it
+finds sits inside that subtree.
 
-Ticking a structure means taking that structure and everything below it, so the
-user does not have to tick the flyer structure separately to observe the flyers
-of a post. The child structure exists so that the user can drop the flyers while
-keeping the rest, not so that they have to tick it to get them. Also, users
-can't tick only child structures: ticking a structure implicitly ticks all
-ancestor structures as well.
+Ticking a part means taking that part and everything below it, so the user does
+not have to tick the flyer part separately to observe the flyers of a post. The
+child part exists so that the user can drop the flyers while keeping the rest,
+not so that they have to tick it to get them.
 
 ## Requirements
 
-- The algorithm never drops any sample, field and structure. Who judges is the
-  user. The algorithm just provides choices.
+- The algorithm never drops any sample, field, part and structure. Who judges is
+  the user. The algorithm just provides choices.
 
 - The output must say which extracted values belong to the same post. Observing
   a page means reporting posts, and one post is a link together with the title,
@@ -235,13 +253,19 @@ ancestor structures as well.
   by the user at review time, not by the algorithm, because a page can list
   posts inside any of them.
 
-- A structure must stand for a chunk that really repeats in the page. It may
-  have a few instances that are not posts, such as a promotion card sitting in
-  the same list, but it must not be a container that happens to hold several
-  unrelated things.
+- All the subtrees one part matches must stand for the same kind of chunk. A
+  part may match a few subtrees that are not posts, such as a promotion card
+  sitting in the same list, but it must not be a container that happens to hold
+  several unrelated things. The number of subtrees may be one: a page that shows
+  a single hero post above a list is a real case, so a structure with one
+  instance is valid.
 
-- A field matcher and a structure matcher must not depend on values that change
-  per build. In particular they must not require a class name that a build tool
+- One instance must stand for one post. A part must not be so wide that a single
+  subtree holds the values of two posts. This is what the `merge` metric
+  measures.
+
+- A field matcher and a part matcher must not depend on values that change per
+  build. In particular they must not require a class name that a build tool
   generates, such as `style-1w7apwp` or `storycard__header--474c6553bfa`.
 
 ## Metrics
@@ -255,17 +279,17 @@ produces. No user behaviour is simulated.
 
 Extraction takes a structure and a page, and goes in three steps:
 
-1. apply the structure matcher to the page, which gives one instance per
+1. apply the root part's matcher to the page, which gives one instance per
    occurrence of the chunk.
-2. inside each instance, apply the field matcher of every field of the
-   structure, which gives at most one node per field, and read that node's
-   values.
-3. do the same for every structure below this one, applying its structure
-   matcher inside each instance, and add the values it returns.
+2. inside each instance, apply the field matcher of every field of the root
+   part, which gives at most one node per field, and read that node's values.
+3. for every child part, apply its part matcher inside the instance, and repeat
+   step 2 for each subtree it finds. Repeat this for the parts below them, and
+   add every value found to the instance.
 
 The values of one instance are what these three steps produce for it, so a
-structure yields exactly as many sets of values as its structure matcher finds
-instances. A field whose matcher finds nothing in a given instance contributes
+structure yields exactly as many sets of values as the root part's matcher finds
+instances. A field whose matcher finds nothing in a given subtree contributes
 nothing there, which is how an absent description or a missing thumbnail is
 represented.
 
@@ -294,21 +318,46 @@ the question is: "is this instance a superset of this fixture?".
 
 - recall, the share of the fixture posts from the source page, that match one of
   the instances of any structure.
-- recall+, the same share using exact matching.
-- distrib, the mean number of **structures** a fixture post needs. For one post,
-  it is the smallest number of structures whose instances together hold every
-  matching value of that post. If it's 1, one structure stands for a whole list
-  of the fixture posts, meaning the users need to tick only one structure to
-  observe or drop that list. So lower is better. It becames above 1, for
-  example, when the title lives in the root structure and the description sits
-  in the child structure.
 
-  It counts structures and not fields on purpose. The number of fields grows
-  with the number of attributes a post has, which is not a fault of the output,
-  while a post whose values are split across two structures costs the user a
-  second visit for the same attributes.
+- recall+, the same share using exact matching.
+
+- merge, the mean number of fixture posts one instance stands for. It is counted
+  over the instances that match at least one fixture post, so junk instances do
+  not move it. 1 is best and means each instance stands for a single post.
+
+  It is what stops the output from collapsing into one monolithic structure. An
+  algorithm can produce a single part that matches the whole page, with one
+  field per post title, one per post link and so on. That output has recall 1,
+  distrib 1 and structures 1, while being a positional enumeration that cannot
+  survive a later build. Its merge is the number of posts in the page.
+
+  This metric assumes no two posts of a page share both a link and a title,
+  otherwise one correct instance would count as standing for two posts. That
+  holds for all 34 fixtures today: no page records the same link twice.
+
+- distrib, the mean number of **parts** a fixture post needs. For one post that
+  matches an instance, it is the number of parts in the smallest subtree of that
+  instance holding every matching value of the post. The smallest subtree is
+  unique and includes the parts in between that hold no value of the post,
+  because the user still passes through them to reach the ones that do.
+
+  1 is best and means one part holds every field of the post, so the user
+  reviews it without expanding anything. It goes above 1 when the values of a
+  post are spread over several levels of the instance.
+
+  It counts parts and not fields on purpose. The number of fields grows with the
+  number of attributes a post has, which is not a fault of the output, while a
+  post whose values are spread over several parts costs the user extra rows to
+  expand for the same attributes.
 
 - distrib+, the same mean using exact matching.
+
+- wrappers, the mean number of parts of an instance that sit outside the
+  smallest subtree distrib measured. 0 is best. These are parts the user reads
+  or expands without reaching any value of the post, so they are review cost
+  that buys nothing. distrib alone does not report them: an instance of four
+  parts whose values sit in the lower two gives the same distrib as an instance
+  of exactly those two parts.
 
 ### Review size metrics
 
@@ -316,7 +365,7 @@ the question is: "is this instance a superset of this fixture?".
   the wall the goals ask to keep small, and it is the number that matters most,
   because reading the fields of one structure is much cheaper than visiting two
   structures for the same fields.
-- depth, the deepest chain of structures inside structures on the page.
+- depth, the deepest chain of parts inside a structure on the page.
 
 ### Blob metrics
 
@@ -349,6 +398,20 @@ split rest on those two pages. Leak is measurable on all 34.
 - Junk structures: users can drop junks by hands, so the recall matters more and
   some structures that stand for nothing useful are acceptable, as long as there
   are not so many that the review becomes a wall.
+- The best value distrib can reach is not 1 on every page, and the value it can
+  reach is unknown. A field matcher points at most one node per subtree, so a
+  post that records several values of the same kind coming from different nodes
+  needs a child part, which puts distrib above 1 however good the output is.
+  This affects 124 of the 1302 fixture posts, on 12 of the 30 pages that have
+  posts, the largest being flutter.dev-blog 33, qiita.com 29, bbc.com 18 and
+  aws.amazon.com-jp-blogs-news 10. So distrib is read as a trend within one
+  page, not compared across pages.
+
+  Note that several values of one kind do not always need a child part. A
+  `pub-date` recorded twice is usually the `datetime` attribute and the visible
+  text of one node, and one field covers both because a field reads every value
+  of its node.
+
 - Robustness across builds is not measured. Every metric runs on one saved copy
   of a page, so the goal of absorbing per-build changes is stated but not
   checked.
