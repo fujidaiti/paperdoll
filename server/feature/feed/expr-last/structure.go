@@ -60,14 +60,6 @@ type FieldMatcher func(root *html.Node) *html.Node
 // nothing there.
 type BlobMatcher func(root *html.Node) []*html.Node
 
-// Build produces the structures of a page.
-//
-// It is a stub. The metrics are written before the algorithm so that an
-// implementation can be measured from the moment it exists.
-func Build(page *html.Node, base *url.URL) []*Structure {
-	return nil
-}
-
 // Depth returns the length of the deepest chain of parts in the structure. A
 // structure of a single part has depth 1.
 func (s *Structure) Depth() int {
