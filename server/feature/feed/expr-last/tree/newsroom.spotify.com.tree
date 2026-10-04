@@ -1,0 +1,579 @@
+# newsroom.spotify.com
+url               https://newsroom.spotify.com/
+posts in fixture  21
+structures        13
+recall            1.000, recall+ 1.000
+merge             1.55
+distrib           1.24, wrappers 1.14
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×2 instances
+  part   html > body > div > div  ×2
+    field  main > h1  ×1
+      "Home V2"
+    part   ul > li  ×2
+      field  a  ×2
+        "News"
+        "newsroom.spotify.com"
+        "Company"
+      part   ul.menu.nested.vertical > li  ×13
+        field  a  ×11
+          "News & Announcements"
+          "newsroom.spotify.com/news?_filter=news-announcements"
+          "Artists & Creators"
+          (22 values)
+        field  div.featured-categories:not(.side-links)  ×2
+          "Featured"
+        field  div.featured-categories:not(.side-links) > span  ×2
+          "categories"
+        part   div.side-links:not(.featured-categories) > div.side-link  ×7
+          field  a.aspect:not(.button)  ×7
+            "newsroom.spotify.com/news"
+            "newsroom.spotify.com/books"
+            "loudandclear.byspotify.com"
+            (7 values)
+          field  a.aspect:not(.button) > img  ×7
+            "storage.googleapis.com/pr-newsroom-wp/1/2025/01/2023_BOB_JEUSETTE_SPOTIFY_SHOT_26_0072_RVB_crop.jpg"
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/07/books-menu.png"
+            "An image of a cartoon person hanging from a hammock on a bookshelf"
+            (8 values)
+          field  a.button:not(.aspect)  ×7
+            "Company News"
+            "newsroom.spotify.com/news"
+            "Books on Spotify"
+            (14 values)
+    part   header > div  ×4
+      field  div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.main-links.small-12 > a  ×1
+        "View All News"
+        "newsroom.spotify.com/news"
+      field  div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.small-12:not(.main-links) > div.featured-categories:not(.side-links)  ×2
+        "Featured"
+      field  div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.small-12:not(.main-links) > div.featured-categories:not(.side-links) > span  ×2
+        "categories"
+      part   div:not(.grid-container):not(.wide) > div  ×3
+        part   ul.menu > li  ×4
+          field  a  ×1
+            "newsroom.spotify.com"
+          field  form > label > span  ×1
+            "Search for:"
+        part   nav > ul > li  ×2
+          field  button.nav-menu-trigger.with-dropdown  ×2
+            "News"
+            "Company"
+      part   div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.main-links.small-12 > ul.large-links.menu.vertical > li  ×10
+        field  a.flip-animate  ×10
+          "About Spotify"
+          "newsroom.spotify.com/company-info"
+          "Investors"
+          (20 values)
+      part   div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.small-12:not(.main-links) > div.side-links:not(.featured-categories) > div.side-link  ×7
+        field  a.aspect:not(.button)  ×7
+          "timetoplayfair.com"
+          "loudandclear.byspotify.com"
+          "newsroom.spotify.com/stream-on-2023"
+          (7 values)
+        field  a.aspect:not(.button) > img  ×7
+          "storage.googleapis.com/pr-newsroom-wp/1/2021/11/thecase-01-768x432.png"
+          "storage.googleapis.com/pr-newsroom-wp/1/2021/11/20210317_1731_LC_Spotify_Streaming_Animation-copy1-copy-768x43…"
+          "storage.googleapis.com/pr-newsroom-wp/1/2023/02/stream-on-2023_nav-bar-image.png"
+          (8 values)
+        field  a.button:not(.aspect)  ×7
+          "Time to Play Fair"
+          "timetoplayfair.com"
+          "Spotify Loud & Clear"
+          (14 values)
+      part   div.grid-container:not(.wide) > div > div  ×2
+        field  form > label > span  ×1
+          "Search for:"
+        part   div  ×2
+          field  h4  ×2
+            "Suggestions"
+            "Popular Topics"
+          field  ul > li > a  ×1
+            "Audiobooks"
+            "newsroom.spotify.com/audiobooks"
+    part   main > div > section  ×5
+      field  h2  ×1
+        "More news"
+      part   div:not(.grid-padding-x):not(.grid-x)  ×5
+        part   div:not(.grid-padding-x):not(.grid-x)  ×4
+          field  article > a  ×1
+            "newsroom.spotify.com/2026-09-23/taste-profile-shape-home-feed"
+          field  article > a > img  ×1
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/Taste-Profile_Blog-header-479583745973495.png"
+            "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage"
+          field  article > a > div > div > div > div > h2  ×1
+            "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage"
+          field  article > div > div > a  ×1
+            "newsroom.spotify.com/songs-of-summer-2026"
+          field  article > div > div > a > img  ×1
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/05/SoS-LandingPage-FTRHeader-Desktop-1-1440x810.png"
+            "\"Songs of Summer\" text appearing on a photo of palm trees against a cloudy sky backdrop"
+          field  article > div > p  ×1
+            "HEATING UP"
+          field  article > div > p > span  ×1
+            "2026 marks 20 years of Spotify. To commemorate the milestone, we’re taking a look back at the moments that mad…"
+          field  article > div > h3 > a  ×1
+            "Songs of Summer 2026"
+            "newsroom.spotify.com/songs-of-summer-2026"
+          field  div > h2  ×1
+            "Discover"
+        part   div.grid-padding-x.grid-x > div.cell.small-12  ×7
+          field  div > h2  ×1
+            "Tune in to the Latest"
+          field  article.creator-stories.mobile-column.post-box.v2:not(.news-announcements) > div.image:not(.title) > a.square-image  ×4
+            "newsroom.spotify.com/2026-09-17/fresh-finds-forward"
+            "newsroom.spotify.com/2026-09-17/partner-program-expansion-global"
+            "newsroom.spotify.com/2026-09-17/corey-kent-homegrown-live-questionnaire"
+            (4 values)
+          field  article.creator-stories.mobile-column.post-box.v2:not(.news-announcements) > div.image:not(.title) > a.square-image > img.attachment-large.size-large.wp-post-im…  ×4
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-2-FF-larger2309428304-1024x583.png"
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-2-FF-larger2309428304-300x171.png"
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-2-FF-larger2309428304-768x438.png"
+            (31 values)
+          field  article.creator-stories.mobile-column.post-box.v2:not(.news-announcements) > div.title:not(.image) > p.cat  ×4
+            "Artists & Creators"
+          field  article.creator-stories.mobile-column.post-box.v2:not(.news-announcements) > div.title:not(.image) > h3 > a  ×4
+            "Introducing Fresh Finds Forward: Spotify’s New Program to Champion the Next Generation of Independent Artists"
+            "newsroom.spotify.com/2026-09-17/fresh-finds-forward"
+            "The Spotify Partner Program Expands to More Than 35 New Markets"
+            (8 values)
+          field  article.mobile-column.news-announcements.post-box.v2:not(.creator-stories) > div.image:not(.title) > a.square-image  ×2
+            "newsroom.spotify.com/2026-09-16/coach-tabby-tour-launch"
+            "newsroom.spotify.com/2026-09-15/exclude-kids-family-music-toggle"
+          field  article.mobile-column.news-announcements.post-box.v2:not(.creator-stories) > div.image:not(.title) > a.square-image > img.attachment-large.size-large.wp-post-im…  ×2
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-Coach-Carousel-819x1024.png"
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-Coach-Carousel-240x300.png"
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-Coach-Carousel-768x960.png"
+            (12 values)
+          field  article.mobile-column.news-announcements.post-box.v2:not(.creator-stories) > div.title:not(.image) > p.cat  ×2
+            "News & Announcements"
+          field  article.mobile-column.news-announcements.post-box.v2:not(.creator-stories) > div.title:not(.image) > h3 > a  ×2
+            "Spotify and Coach Take Self-Expression on the Road With the Tabby Tour"
+            "newsroom.spotify.com/2026-09-16/coach-tabby-tour-launch"
+            "Reclaim Your Wrapped: You Can Now Control Whether Kids and Family Music Shapes Your Recommendations"
+            (4 values)
+      part   div.grid-padding-x.grid-x > div.cell.small-12  ×7
+        field  nav > h2  ×1
+          "Click a topic for more news"
+        field  article.mobile-row.news-announcements.post-box.v2 > div.image:not(.title) > a.wide-image  ×4
+          "newsroom.spotify.com/2026-09-11/open-mic-verified-genius-video-series-partnership"
+          "newsroom.spotify.com/2026-07-15/music-video-debuts"
+          "newsroom.spotify.com/2026-09-03/songs-of-summer-reveal"
+          (4 values)
+        field  article.mobile-row.news-announcements.post-box.v2 > div.image:not(.title) > a.wide-image > img.attachment-large.size-large.wp-post-image  ×4
+          "storage.googleapis.com/pr-newsroom-wp/1/2026/09/IMG_6770-1024x576.jpeg"
+          "storage.googleapis.com/pr-newsroom-wp/1/2026/09/IMG_6770-300x169.jpeg"
+          "storage.googleapis.com/pr-newsroom-wp/1/2026/09/IMG_6770-768x432.jpeg"
+          (34 values)
+        field  article.mobile-row.news-announcements.post-box.v2 > div.title:not(.image) > p.cat  ×4
+          "News & Announcements"
+        field  article.mobile-row.news-announcements.post-box.v2 > div.title:not(.image) > h3 > a  ×4
+          "Spotify and Genius Bring Fans Closer to the Music With New Video Series Partnership"
+          "newsroom.spotify.com/2026-09-11/open-mic-verified-genius-video-series-partnership"
+          "How to Watch Music Videos First on Spotify"
+          (8 values)
+        field  a  ×1
+          "newsroom.spotify.com/news"
+        field  a > span  ×1
+          "View all news"
+        part   nav > ul > li  ×4
+          field  a.button  ×4
+            "News & Announcements"
+            "newsroom.spotify.com/news#news-announcements"
+            "Artists & Creators"
+            (8 values)
+        part   article.mobile-row.post-box.v2:not(.news-announcements) > div  ×2
+          field  a  ×1
+            "newsroom.spotify.com/2026-09-14/el-bogueto-performance-event-photos"
+          field  a > img  ×1
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyBogueto2026_0911_211737-6697_-ZL-1024x684.jpg"
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyBogueto2026_0911_211737-6697_-ZL-300x200.jpg"
+            "storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyBogueto2026_0911_211737-6697_-ZL-768x513.jpg"
+            (9 values)
+          field  p  ×1
+            "Artists & Creators"
+          field  h3 > a  ×1
+            "Superfans Chose El Bogueto’s Setlist at Bogueto Pa’ los OG, Hosted by Spotify"
+            "newsroom.spotify.com/2026-09-14/el-bogueto-performance-event-photos"
+    part   main > div > aside > div > div  ×3
+      field  h2  ×1
+        "Spotify news in your inbox"
+      part   div > form > input  ×2
+        field  self  ×2
+          "3602b045de1f74054a9713911"
+          "c34fbf1bbd"
+      part   div > form > div  ×2
+        part   div  ×5
+          field  div > label  ×1
+            "Email Address"
+          field  div > input  ×0
+          field  p.disclaimer  ×2
+            "By clicking “Sign Up” you’ll receive occasional emails from Spotify."
+            "You always have the choice to adjust your interest settings or unsubscribe."
+            "By clicking “Sign Up” you’ll receive occasional emails from Spotify. You always have the choice to adjust your…"
+          field  ul > li > input  ×1
+            "Weekly"
+          field  ul > li > label  ×1
+            "Weekly Roundup"
+          field  ul > input  ×1
+            "Both"
+    part   footer > div > div > div  ×7
+      field  meta  ×1
+        "Spotify"
+      field  a  ×2
+        "www.spotify.com"
+        "Get Spotify"
+      field  a > img  ×1
+        "newsroom.spotify.com/wp-content/themes/ftr/assets/images/spotify-logo.png"
+        "Spotify"
+      field  a > span.screen-reader-text  ×2
+        "(opens in a new tab)"
+      field  p > small  ×1
+        "© 2026"
+        "."
+      field  p > small > span  ×1
+        "Spotify AB"
+      part   nav.footer-nav  ×3
+        field  h2.footer-nav-title  ×3
+          "Communities"
+          "Company"
+          "Useful Links"
+        part   ul:not(.menu):not(.vertical) > li  ×9
+          field  a  ×9
+            "artists.spotify.com"
+            "podcasters.spotify.com"
+            "ads.spotify.com/en-US"
+            (9 values)
+          field  a > span:not(.screen-reader-text)  ×9
+            "For Artists"
+            "For Creators"
+            "For Advertisers"
+            (9 values)
+          field  a > span.screen-reader-text  ×9
+            "(opens in a new tab)"
+        part   ul.menu.vertical > li.menu-item.menu-item-object-custom.menu-item-type-custom  ×5
+          field  a  ×5
+            "About"
+            "www.spotify.com/us/about-us/contact"
+            "Jobs"
+            (10 values)
+      part   nav:not(.footer-nav) > ul > li  ×8
+        field  a  ×8
+          "www.instagram.com/thisisspotify"
+          "x.com/ThisIsSpotify"
+          "www.tiktok.com/@spotifynews"
+          (13 values)
+        field  a > span.screen-reader-text  ×3
+          "(opens in a new tab)"
+
+structure 2  ×2 instances
+  part   html > body > div > div > ul > li  ×2
+    field  a  ×2
+      "News"
+      "newsroom.spotify.com"
+      "Company"
+    part   ul.menu.nested.vertical > li  ×13
+      field  a  ×11
+        "News & Announcements"
+        "newsroom.spotify.com/news?_filter=news-announcements"
+        "Artists & Creators"
+        (22 values)
+      field  div.featured-categories:not(.side-links)  ×2
+        "Featured"
+      field  div.featured-categories:not(.side-links) > span  ×2
+        "categories"
+      part   div.side-links:not(.featured-categories) > div.side-link  ×7
+        field  a.aspect:not(.button)  ×7
+          "newsroom.spotify.com/news"
+          "newsroom.spotify.com/books"
+          "loudandclear.byspotify.com"
+          (7 values)
+        field  a.aspect:not(.button) > img  ×7
+          "storage.googleapis.com/pr-newsroom-wp/1/2025/01/2023_BOB_JEUSETTE_SPOTIFY_SHOT_26_0072_RVB_crop.jpg"
+          "storage.googleapis.com/pr-newsroom-wp/1/2026/07/books-menu.png"
+          "An image of a cartoon person hanging from a hammock on a bookshelf"
+          (8 values)
+        field  a.button:not(.aspect)  ×7
+          "Company News"
+          "newsroom.spotify.com/news"
+          "Books on Spotify"
+          (14 values)
+
+structure 3  ×4 instances
+  part   html > body > div > div > ul > li > ul.news > li > div > div  ×4
+    field  a.aspect:not(.button)  ×4
+      "newsroom.spotify.com/news"
+      "newsroom.spotify.com/books"
+      "loudandclear.byspotify.com"
+      (4 values)
+    field  a.aspect:not(.button) > img  ×4
+      "storage.googleapis.com/pr-newsroom-wp/1/2025/01/2023_BOB_JEUSETTE_SPOTIFY_SHOT_26_0072_RVB_crop.jpg"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/07/books-menu.png"
+      "An image of a cartoon person hanging from a hammock on a bookshelf"
+      (5 values)
+    field  a.button:not(.aspect)  ×4
+      "Company News"
+      "newsroom.spotify.com/news"
+      "Books on Spotify"
+      (8 values)
+
+structure 4  ×3 instances
+  part   html > body > div > div > ul > li > ul.company-info > li > div > div  ×3
+    field  a.aspect:not(.button)  ×3
+      "timetoplayfair.com"
+      "loudandclear.byspotify.com"
+      "newsroom.spotify.com/stream-on-2023"
+    field  a.aspect:not(.button) > img  ×3
+      "storage.googleapis.com/pr-newsroom-wp/1/2021/11/thecase-01-768x432.png"
+      "storage.googleapis.com/pr-newsroom-wp/1/2021/11/20210317_1731_LC_Spotify_Streaming_Animation-copy1-copy-768x43…"
+      "storage.googleapis.com/pr-newsroom-wp/1/2023/02/stream-on-2023_nav-bar-image.png"
+    field  a.button:not(.aspect)  ×3
+      "Time to Play Fair"
+      "timetoplayfair.com"
+      "Spotify Loud & Clear"
+      (6 values)
+
+structure 5  ×4 instances
+  part   html > body > div > div > header > div  ×4
+    field  div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.main-links.small-12 > a  ×1
+      "View All News"
+      "newsroom.spotify.com/news"
+    field  div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.small-12:not(.main-links) > div.featured-categories:not(.side-links)  ×2
+      "Featured"
+    field  div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.small-12:not(.main-links) > div.featured-categories:not(.side-links) > span  ×2
+      "categories"
+    part   div:not(.grid-container):not(.wide) > div  ×3
+      part   ul.menu > li  ×4
+        field  a  ×1
+          "newsroom.spotify.com"
+        field  form > label > span  ×1
+          "Search for:"
+        part   button > svg  ×2
+        part   button > span  ×3
+      part   nav > ul > li  ×2
+        field  button.nav-menu-trigger.with-dropdown  ×2
+          "News"
+          "Company"
+    part   div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.main-links.small-12 > ul.large-links.menu.vertical > li  ×10
+      field  a.flip-animate  ×10
+        "About Spotify"
+        "newsroom.spotify.com/company-info"
+        "Investors"
+        (20 values)
+    part   div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.small-12:not(.main-links) > div.side-links:not(.featured-categories) > div.side-link  ×7
+      field  a.aspect:not(.button)  ×7
+        "timetoplayfair.com"
+        "loudandclear.byspotify.com"
+        "newsroom.spotify.com/stream-on-2023"
+        (7 values)
+      field  a.aspect:not(.button) > img  ×7
+        "storage.googleapis.com/pr-newsroom-wp/1/2021/11/thecase-01-768x432.png"
+        "storage.googleapis.com/pr-newsroom-wp/1/2021/11/20210317_1731_LC_Spotify_Streaming_Animation-copy1-copy-768x43…"
+        "storage.googleapis.com/pr-newsroom-wp/1/2023/02/stream-on-2023_nav-bar-image.png"
+        (8 values)
+      field  a.button:not(.aspect)  ×7
+        "Time to Play Fair"
+        "timetoplayfair.com"
+        "Spotify Loud & Clear"
+        (14 values)
+    part   div.grid-container:not(.wide) > div > div  ×2
+      field  form > label > span  ×1
+        "Search for:"
+      part   div  ×2
+        field  h4  ×2
+          "Suggestions"
+          "Popular Topics"
+        part   ul > li  ×6
+          field  a.button  ×6
+            "Audiobooks"
+            "newsroom.spotify.com/audiobooks"
+            "Podcasts"
+            (12 values)
+
+structure 6  ×3 instances
+  part   html > body > div > div > header > div > div > div > div.large-4 > div > div  ×3
+    field  a.aspect:not(.button)  ×3
+      "timetoplayfair.com"
+      "loudandclear.byspotify.com"
+      "newsroom.spotify.com/stream-on-2023"
+    field  a.aspect:not(.button) > img  ×3
+      "storage.googleapis.com/pr-newsroom-wp/1/2021/11/thecase-01-768x432.png"
+      "storage.googleapis.com/pr-newsroom-wp/1/2021/11/20210317_1731_LC_Spotify_Streaming_Animation-copy1-copy-768x43…"
+      "storage.googleapis.com/pr-newsroom-wp/1/2023/02/stream-on-2023_nav-bar-image.png"
+    field  a.button:not(.aspect)  ×3
+      "Time to Play Fair"
+      "timetoplayfair.com"
+      "Spotify Loud & Clear"
+      (6 values)
+
+structure 7  ×4 instances
+  part   html > body > div > div > header > div > div > div > div.large-7 > div > div  ×4
+    field  a.aspect:not(.button)  ×4
+      "newsroom.spotify.com/news"
+      "newsroom.spotify.com/books"
+      "loudandclear.byspotify.com"
+      (4 values)
+    field  a.aspect:not(.button) > img  ×4
+      "storage.googleapis.com/pr-newsroom-wp/1/2025/01/2023_BOB_JEUSETTE_SPOTIFY_SHOT_26_0072_RVB_crop.jpg"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/07/books-menu.png"
+      "An image of a cartoon person hanging from a hammock on a bookshelf"
+      (5 values)
+    field  a.button:not(.aspect)  ×4
+      "Company News"
+      "newsroom.spotify.com/news"
+      "Books on Spotify"
+      (8 values)
+
+structure 8  ×5 instances
+  part   html > body > div > div > main > div > section > div > div > article.white  ×5
+    field  a  ×5
+      "newsroom.spotify.com/2026-09-23/taste-profile-shape-home-feed"
+      "newsroom.spotify.com/2026-09-23/jorja-smith-hometown-performance-video"
+      "newsroom.spotify.com/2026-09-22/gemischtes-hack-felix-lobrecht-tommi-schmitt-interview"
+      (5 values)
+    field  a > img  ×5
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/Taste-Profile_Blog-header-479583745973495.png"
+      "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/17-1440x960.jpg"
+      (10 values)
+    field  a > div.slide-content > div.grid-container.wide > div.grid-padding-x.grid-x > div.cell.small-12.text-container > h2  ×5
+      "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage"
+      "Jorja Smith Comes Home to Walsall for Spotify’s First Hometown Concert Film"
+      "‘Gemischtes Hack’ Hosts on Dream Guests, Favorite Episodes, and Reaching 1 Billion Streams"
+      (5 values)
+
+structure 9  ×6 instances
+  part   html > body > div > div > main > div > section > div > div > div.large-4  ×6
+    field  article.creator-stories.mobile-column.post-box.v2:not(.news-announcements) > div.image:not(.title) > a.square-image  ×4
+      "newsroom.spotify.com/2026-09-17/fresh-finds-forward"
+      "newsroom.spotify.com/2026-09-17/partner-program-expansion-global"
+      "newsroom.spotify.com/2026-09-17/corey-kent-homegrown-live-questionnaire"
+      (4 values)
+    field  article.creator-stories.mobile-column.post-box.v2:not(.news-announcements) > div.image:not(.title) > a.square-image > img.attachment-large.size-large.wp-post-im…  ×4
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-2-FF-larger2309428304-1024x583.png"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-2-FF-larger2309428304-300x171.png"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-2-FF-larger2309428304-768x438.png"
+      (31 values)
+    field  article.creator-stories.mobile-column.post-box.v2:not(.news-announcements) > div.title:not(.image) > p.cat  ×4
+      "Artists & Creators"
+    field  article.creator-stories.mobile-column.post-box.v2:not(.news-announcements) > div.title:not(.image) > h3 > a  ×4
+      "Introducing Fresh Finds Forward: Spotify’s New Program to Champion the Next Generation of Independent Artists"
+      "newsroom.spotify.com/2026-09-17/fresh-finds-forward"
+      "The Spotify Partner Program Expands to More Than 35 New Markets"
+      (8 values)
+    field  article.mobile-column.news-announcements.post-box.v2:not(.creator-stories) > div.image:not(.title) > a.square-image  ×2
+      "newsroom.spotify.com/2026-09-16/coach-tabby-tour-launch"
+      "newsroom.spotify.com/2026-09-15/exclude-kids-family-music-toggle"
+    field  article.mobile-column.news-announcements.post-box.v2:not(.creator-stories) > div.image:not(.title) > a.square-image > img.attachment-large.size-large.wp-post-im…  ×2
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-Coach-Carousel-819x1024.png"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-Coach-Carousel-240x300.png"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-Coach-Carousel-768x960.png"
+      (12 values)
+    field  article.mobile-column.news-announcements.post-box.v2:not(.creator-stories) > div.title:not(.image) > p.cat  ×2
+      "News & Announcements"
+    field  article.mobile-column.news-announcements.post-box.v2:not(.creator-stories) > div.title:not(.image) > h3 > a  ×2
+      "Spotify and Coach Take Self-Expression on the Road With the Tabby Tour"
+      "newsroom.spotify.com/2026-09-16/coach-tabby-tour-launch"
+      "Reclaim Your Wrapped: You Can Now Control Whether Kids and Family Music Shapes Your Recommendations"
+      (4 values)
+
+structure 10  ×5 instances
+  part   html > body > div > div > main > div > section > div > div > article.spotlight-item  ×5
+    field  div.spotlight-image:not(.spotlight-text) > div.inner-image > a.wide-image  ×5
+      "newsroom.spotify.com/songs-of-summer-2026"
+      "newsroom.spotify.com/investorday2026"
+      "newsroom.spotify.com/spotify20"
+      (5 values)
+    field  div.spotlight-image:not(.spotlight-text) > div.inner-image > a.wide-image > img  ×5
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/05/SoS-LandingPage-FTRHeader-Desktop-1-1440x810.png"
+      "\"Songs of Summer\" text appearing on a photo of palm trees against a cloudy sky backdrop"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/05/Spotify-Investor-Day-logo-1440x810.jpeg"
+      (10 values)
+    field  div.spotlight-text:not(.spotlight-image) > p.subtitle:not(.excerpt)  ×5
+      "HEATING UP"
+      "Announcements"
+      "SPOTIFY 20"
+      (5 values)
+    field  div.spotlight-text:not(.spotlight-image) > h3 > a.clamp  ×5
+      "Songs of Summer 2026"
+      "newsroom.spotify.com/songs-of-summer-2026"
+      "Investor Day 2026"
+      (10 values)
+    part   div.spotlight-text:not(.spotlight-image) > p:not(.subtitle):not(.excerpt)  ×10
+      field  self  ×3
+        "Our Songs of Summer have officially arrived. Take a closer look at the tracks that defined the sound of summer…"
+        "Hear from our leadership team as they lay out our long-term vision, strategic priorities, and the financial ro…"
+        "We believe companies should be able to compete to the very best of their abilities for the hearts and minds of…"
+      field  span  ×2
+        "2026 marks 20 years of Spotify. To commemorate the milestone, we’re taking a look back at the moments that mad…"
+        "Spotify’s CLASSICS program celebrates influential music from the streaming era across genres. For this edition…"
+
+structure 11  ×6 instances
+  part   html > body > div > div > main > div > section > div > div.large-4  ×6
+    field  article.mobile-row.news-announcements.post-box.v2 > div.image:not(.title) > a.wide-image  ×4
+      "newsroom.spotify.com/2026-09-11/open-mic-verified-genius-video-series-partnership"
+      "newsroom.spotify.com/2026-07-15/music-video-debuts"
+      "newsroom.spotify.com/2026-09-03/songs-of-summer-reveal"
+      (4 values)
+    field  article.mobile-row.news-announcements.post-box.v2 > div.image:not(.title) > a.wide-image > img.attachment-large.size-large.wp-post-image  ×4
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/IMG_6770-1024x576.jpeg"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/IMG_6770-300x169.jpeg"
+      "storage.googleapis.com/pr-newsroom-wp/1/2026/09/IMG_6770-768x432.jpeg"
+      (34 values)
+    field  article.mobile-row.news-announcements.post-box.v2 > div.title:not(.image) > p.cat  ×4
+      "News & Announcements"
+    field  article.mobile-row.news-announcements.post-box.v2 > div.title:not(.image) > h3 > a  ×4
+      "Spotify and Genius Bring Fans Closer to the Music With New Video Series Partnership"
+      "newsroom.spotify.com/2026-09-11/open-mic-verified-genius-video-series-partnership"
+      "How to Watch Music Videos First on Spotify"
+      (8 values)
+    field  a  ×1
+      "newsroom.spotify.com/news"
+    field  a > span  ×1
+      "View all news"
+    part   article.mobile-row.post-box.v2:not(.news-announcements) > div  ×2
+      field  a  ×1
+        "newsroom.spotify.com/2026-09-14/el-bogueto-performance-event-photos"
+      field  a > img  ×1
+        "storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyBogueto2026_0911_211737-6697_-ZL-1024x684.jpg"
+        "storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyBogueto2026_0911_211737-6697_-ZL-300x200.jpg"
+        "storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyBogueto2026_0911_211737-6697_-ZL-768x513.jpg"
+        (9 values)
+      field  p  ×1
+        "Artists & Creators"
+      field  h3 > a  ×1
+        "Superfans Chose El Bogueto’s Setlist at Bogueto Pa’ los OG, Hosted by Spotify"
+        "newsroom.spotify.com/2026-09-14/el-bogueto-performance-event-photos"
+
+structure 12  ×9 instances
+  part   html > body > div > div > footer > div > div > div > nav > ul.communities > li  ×9
+    field  a  ×9
+      "artists.spotify.com"
+      "podcasters.spotify.com"
+      "ads.spotify.com/en-US"
+      (9 values)
+    field  a > span:not(.screen-reader-text)  ×9
+      "For Artists"
+      "For Creators"
+      "For Advertisers"
+      (9 values)
+    field  a > span.screen-reader-text  ×9
+      "(opens in a new tab)"
+    part   a > svg > path  ×73
+
+structure 13  ×3 instances
+  part   html > body > div > div > footer > div > div > div > nav > ul.social > li  ×3
+    field  a  ×3
+      "www.instagram.com/thisisspotify"
+      "x.com/ThisIsSpotify"
+      "www.tiktok.com/@spotifynews"
+    field  a > span.screen-reader-text  ×3
+      "(opens in a new tab)"

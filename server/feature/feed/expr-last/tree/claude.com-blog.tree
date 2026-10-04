@@ -1,0 +1,584 @@
+# claude.com-blog
+url               https://claude.com/blog
+posts in fixture  24
+structures        18
+recall            0.958, recall+ 0.958
+merge             1.11
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×7 instances
+  part   html > body > div > div > div > div > nav > div > ul > li > div > nav.is-products > div > div > div > div.is-mega  ×7
+    part   div.nav_dropdown_label.u-text-style-caption:not(.nav_dropdown_divider_fill)  ×5
+      field  self  ×5
+        "Products"
+        "Specialized"
+        "Capabilities"
+        (5 values)
+    part   ul.nav_dropdown_list  ×5
+      part   li.nav_dropdown_item  ×17
+        field  a.nav_dropdown_link.w-inline-block  ×17
+          "claude.com/product/overview"
+          "claude.com/product/claude-code"
+          "claude.com/product/tag"
+          (17 values)
+        field  a.nav_dropdown_link.w-inline-block > div.nav_dropdown_text:not(.nav_dropdown_icon):not(.u-display-none)  ×17
+          "Claude"
+          "Claude Code"
+          "@Claude"
+          (17 values)
+        field  link  ×3
+          "claude.com/product/claude-code"
+          "claude.com/product/tag"
+          "claude.com/product/claude-science"
+
+structure 2  ×17 instances
+  part   html > body > div > div > div > div > nav > div > ul > li > div > nav.is-products > div > div > div > div > ul > li  ×17
+    field  a.nav_dropdown_link.w-inline-block  ×17
+      "claude.com/product/overview"
+      "claude.com/product/claude-code"
+      "claude.com/product/tag"
+      (17 values)
+    field  a.nav_dropdown_link.w-inline-block > div.nav_dropdown_text:not(.nav_dropdown_icon):not(.u-display-none)  ×17
+      "Claude"
+      "Claude Code"
+      "@Claude"
+      (17 values)
+    field  link  ×3
+      "claude.com/product/claude-code"
+      "claude.com/product/tag"
+      "claude.com/product/claude-science"
+
+structure 3  ×17 instances
+  part   html > body > div > div > div > div > nav > div > ul > li > div > nav.is-enterprise > div > div > div > div > ul > li  ×17
+    field  a.nav_dropdown_link.w-inline-block  ×17
+      "claude.com/solutions/enterprise"
+      "claude.com/product/claude-code/enterprise"
+      "claude.com/platform/api"
+      (17 values)
+    field  a.nav_dropdown_link.w-inline-block > div.nav_dropdown_text:not(.nav_dropdown_icon):not(.u-display-none)  ×17
+      "Overview"
+      "Claude Code for Enterprise"
+      "Claude Platform"
+      (17 values)
+
+structure 4  ×7 instances
+  part   html > body > div > div > nav > div > div > div > div > div > ul > li > div > nav.is-products > div > div > div > div.is-mega  ×7
+    part   div.nav_dropdown_label.u-text-style-caption.w-variant-a32dbd8b-fe5b-f07d-4c02-33134a110ceb:not(.nav_dropdown_divider_fill)  ×5
+      field  self  ×5
+        "Products"
+        "Specialized"
+        "Capabilities"
+        (5 values)
+    part   ul.nav_dropdown_list.w-variant-a32dbd8b-fe5b-f07d-4c02-33134a110ceb  ×5
+      part   li.nav_dropdown_item.w-variant-a32dbd8b-fe5b-f07d-4c02-33134a110ceb  ×17
+        field  a.nav_dropdown_link.w-inline-block.w-variant-a32dbd8b-fe5b-f07d-4c02-33134a110ceb  ×17
+          "claude.com/product/overview"
+          "claude.com/product/claude-code"
+          "claude.com/product/tag"
+          (17 values)
+        field  a.nav_dropdown_link.w-inline-block.w-variant-a32dbd8b-fe5b-f07d-4c02-33134a110ceb > div.nav_dropdown_text:not(.nav_dropdown_icon):not(.u-display-none)  ×17
+          "Claude"
+          "Claude Code"
+          "@Claude"
+          (17 values)
+        field  link  ×3
+          "claude.com/product/claude-code"
+          "claude.com/product/tag"
+          "claude.com/product/claude-science"
+
+structure 5  ×17 instances
+  part   html > body > div > div > nav > div > div > div > div > div > ul > li > div > nav.is-products > div > div > div > div > ul > li  ×17
+    field  a.nav_dropdown_link.w-inline-block.w-variant-a32dbd8b-fe5b-f07d-4c02-33134a110ceb  ×17
+      "claude.com/product/overview"
+      "claude.com/product/claude-code"
+      "claude.com/product/tag"
+      (17 values)
+    field  a.nav_dropdown_link.w-inline-block.w-variant-a32dbd8b-fe5b-f07d-4c02-33134a110ceb > div.nav_dropdown_text:not(.nav_dropdown_icon):not(.u-display-none)  ×17
+      "Claude"
+      "Claude Code"
+      "@Claude"
+      (17 values)
+    field  link  ×3
+      "claude.com/product/claude-code"
+      "claude.com/product/tag"
+      "claude.com/product/claude-science"
+
+structure 6  ×17 instances
+  part   html > body > div > div > nav > div > div > div > div > div > ul > li > div > nav.is-enterprise > div > div > div > div > ul > li  ×17
+    field  a.nav_dropdown_link.w-inline-block.w-variant-a32dbd8b-fe5b-f07d-4c02-33134a110ceb  ×17
+      "claude.com/solutions/enterprise"
+      "claude.com/product/claude-code/enterprise"
+      "claude.com/platform/api"
+      (17 values)
+    field  a.nav_dropdown_link.w-inline-block.w-variant-a32dbd8b-fe5b-f07d-4c02-33134a110ceb > div.nav_dropdown_text:not(.nav_dropdown_icon):not(.u-display-none)  ×17
+      "Overview"
+      "Claude Code for Enterprise"
+      "Claude Platform"
+      (17 values)
+
+structure 7  ×2 instances
+  part   html > body > div > div > div > div > div > nav > div > div > div > ul > li  ×2
+    field  a.is-secondary.nav_dropdown_link.w-inline-block  ×2
+      "claude.com/blog"
+    field  a.is-secondary.nav_dropdown_link.w-inline-block > div.nav_dropdown_text:not(.nav_dropdown_icon)  ×2
+      "Ask questions about this page"
+      "Copy as markdown"
+
+structure 8  ×2 instances
+  part   html > body > div > main > div  ×2
+    part   div > form > div  ×2
+      field  div  ×1
+        "Filter and sort"
+      part   div > div  ×3
+        part   div  ×4
+          field  button.stories_filters_dropdown_toggle.w-variant-ab256f07-5326-78b8-b8b3-68efdf6b45c4 > span.stories_filters_dropdown_text.u-foreground-tertiary.u-text-style-ca…  ×4
+            "Sort by"
+            "Category"
+            "Product"
+            (4 values)
+          field  div.stories_filters_dropdown_menu.w-variant-ab256f07-5326-78b8-b8b3-68efdf6b45c4 > div.stories_filters_dropdown_inner.w-variant-ab256f07-5326-78b8-b8b3-68efdf6b…  ×1
+            "Newest"
+          field  div.stories_filters_dropdown_menu.w-variant-ab256f07-5326-78b8-b8b3-68efdf6b45c4 > div.stories_filters_dropdown_inner.w-variant-ab256f07-5326-78b8-b8b3-68efdf6b…  ×0
+          field  div.stories_filters_dropdown_menu.w-variant-ab256f07-5326-78b8-b8b3-68efdf6b45c4 > div.stories_filters_dropdown_inner.w-variant-ab256f07-5326-78b8-b8b3-68efdf6b…  ×3
+            "Agents"
+            "Claude for Small Business"
+    part   div > form > ul > li  ×2
+      field  div.button_main_wrap > div.clickable_wrap.u-cover-absolute:not(.u-embed-css):not(.w-embed) > a.clickable_link.w-inline-block  ×2
+        "claude.com/blog"
+      field  div.button_main_wrap > div.clickable_wrap.u-cover-absolute:not(.u-embed-css):not(.w-embed) > a.clickable_link.w-inline-block > span.clickable_text.u-sr-only  ×2
+        "Reset"
+        "Apply"
+      field  div.button_main_wrap > div.clickable_wrap.u-cover-absolute:not(.u-embed-css):not(.w-embed) > button.clickable_btn > span.clickable_text.u-sr-only  ×2
+        "Reset"
+        "Apply"
+    part   div > div  ×2
+      field  div  ×2
+        "Thank you! Your submission has been received!"
+        "Oops! Something went wrong while submitting the form."
+    part   section > div  ×4
+      part   div  ×2
+        part   div.u-gap-row-4 > div  ×2
+          field  div > div > h2  ×1
+            "Transform how your organization operates with Claude"
+          field  div > div > div > div > div > a  ×1
+            "claude.com/pricing#api"
+          field  div > div > div > div > div > a > span  ×1
+            "See pricing"
+          field  div > div > div > div > div > button > span  ×1
+            "See pricing"
+          field  div > div > div > div > div > div > div > div  ×0
+          field  div > div > div > div > div > div > p  ×1
+            "Get the developer newsletter"
+          field  div > div > div > div > div > div > form > div > div > div > a  ×1
+            "claude.com/blog"
+          field  div > div > div > div > div > div > form > div > div > div > a > span  ×1
+            "Subscribe"
+          field  div > div > div > div > div > div > form > div > div > div > button > span  ×1
+            "Subscribe"
+          field  div > div > div > div > div > div > form > div > p  ×1
+            "Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscri…"
+
+structure 9  ×6 instances
+  part   html > body > div > main > section.hero_blog_wrap > div  ×6
+    part   div  ×3
+      part   div:not(.marquee_cms_blog_list):not(.w-dyn-items)  ×2
+        part   div.hero_stories_heading_wrap > div  ×3
+          field  h1  ×1
+            "Blog"
+          field  div  ×1
+            "All"
+          field  div > div  ×1
+            "1"
+          field  div > div > a  ×1
+            "claude.com/blog-category/agents"
+          field  div > div > a > div > h2  ×1
+            "Agents"
+        part   div:not(.hero_stories_heading_wrap) > div  ×2
+          field  p  ×1
+            "Product news and best practices for teams building with Claude."
+          field  div > div > div > div > a  ×1
+            "claude.ai"
+          field  div > div > div > div > a > span  ×1
+            "Try Claude"
+          field  div > div > div > div > button > span  ×1
+            "Try Claude"
+      part   div.marquee_cms_blog_list.w-dyn-items > div.marquee_cms_blog_list_item.w-dyn-item  ×20
+        field  div.marquee_cms_blog_list_item_content:not(.clickable_wrap):not(.u-cover-absolute) > h2.u-mb-1.u-text-style-h6.u-text-wrap-balance  ×20
+          "Claude Cowork and chat are now one Claude"
+          "Claude for Small Business launches new workflows, integrations, and training programs"
+          "Claude in Chrome is generally available"
+          (20 values)
+        field  div.marquee_cms_blog_list_item_content:not(.clickable_wrap):not(.u-cover-absolute) > div.u-foreground-tertiary.u-text-style-caption  ×20
+          "September 16, 2026"
+          "September 15, 2026"
+          "August 26, 2026"
+          (20 values)
+        field  div.clickable_wrap.u-cover-absolute:not(.marquee_cms_blog_list_item_content) > a.clickable_link.w-inline-block  ×20
+          "claude.com/blog/cowork-is-now-claude"
+          "claude.com/blog/claude-for-small-business-launches-new-workflows-integrations-and-training-programs"
+          "claude.com/blog/claude-in-chrome-generally-available"
+          (20 values)
+        field  div.clickable_wrap.u-cover-absolute:not(.marquee_cms_blog_list_item_content) > a.clickable_link.w-inline-block > span.clickable_text.u-sr-only  ×20
+          "Read more"
+        field  div.clickable_wrap.u-cover-absolute:not(.marquee_cms_blog_list_item_content) > button.clickable_btn > span.clickable_text.u-sr-only  ×20
+          "Read more"
+
+structure 10  ×2 instances
+  part   html > body > div > main > section > div > div > div.u-column-custom  ×2
+    part   div.hero_stories_heading_wrap > div  ×3
+      field  h1  ×1
+        "Blog"
+      part   div  ×3
+        field  self  ×1
+          "All"
+        part   div  ×5
+          field  self  ×1
+            "1"
+          field  a.w-inline-block  ×4
+            "claude.com/blog-category/agents"
+            "claude.com/blog-category/claude-code"
+            "claude.com/blog-category/enterprise-ai"
+            (4 values)
+          field  a.w-inline-block > div.hero_blog_list_item_content.w-embed > h2.hero_blog_list_item_title.u-text-style-h1  ×4
+            "Agents"
+            "Claude Code"
+            "Enterprise AI"
+            (4 values)
+    part   div:not(.hero_stories_heading_wrap) > div  ×2
+      field  p  ×1
+        "Product news and best practices for teams building with Claude."
+      part   div > div > div > div  ×3
+        field  a  ×1
+          "claude.ai"
+        field  a > span  ×1
+          "Try Claude"
+        field  button > span  ×1
+          "Try Claude"
+
+structure 11  ×20 instances
+  part   html > body > div > main > section > div > div > div > div.w-dyn-item  ×20
+    field  div.marquee_cms_blog_list_item_content:not(.clickable_wrap):not(.u-cover-absolute) > h2.u-mb-1.u-text-style-h6.u-text-wrap-balance  ×20
+      "Claude Cowork and chat are now one Claude"
+      "Claude for Small Business launches new workflows, integrations, and training programs"
+      "Claude in Chrome is generally available"
+      (20 values)
+    field  div.marquee_cms_blog_list_item_content:not(.clickable_wrap):not(.u-cover-absolute) > div.u-foreground-tertiary.u-text-style-caption  ×20
+      "September 16, 2026"
+      "September 15, 2026"
+      "August 26, 2026"
+      (20 values)
+    field  div.clickable_wrap.u-cover-absolute:not(.marquee_cms_blog_list_item_content) > a.clickable_link.w-inline-block  ×20
+      "claude.com/blog/cowork-is-now-claude"
+      "claude.com/blog/claude-for-small-business-launches-new-workflows-integrations-and-training-programs"
+      "claude.com/blog/claude-in-chrome-generally-available"
+      (20 values)
+    field  div.clickable_wrap.u-cover-absolute:not(.marquee_cms_blog_list_item_content) > a.clickable_link.w-inline-block > span.clickable_text.u-sr-only  ×20
+      "Read more"
+    field  div.clickable_wrap.u-cover-absolute:not(.marquee_cms_blog_list_item_content) > button.clickable_btn > span.clickable_text.u-sr-only  ×20
+      "Read more"
+
+structure 12  ×15 instances
+  part   html > body > div > main > section > div > div > div > div > div > div.u-grid-autofill > div  ×15
+    field  div.card_blog_wrap > div.card_blog_visual_wrap:not(.card_blog_content):not(.u-display-none):not(.u-display-contents):not(.w-condition-invisible) > div.card_blog…  ×15
+      "cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6903d2287f90c57df4c9dd97_c1ef4c0b6882dfe985555b52999d370ea…"
+      "cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6a42c9bc20d2072552ef256a_Node-EnterpriseAgents.svg"
+      "cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6aaaa060d1aec4a549c537ef_Object-Easel.svg"
+      (15 values)
+    field  div.card_blog_wrap > div.card_blog_content:not(.card_blog_visual_wrap):not(.u-display-none):not(.u-display-contents):not(.w-condition-invisible) > div:not(.w-dy…  ×15
+      "Sep 17, 2026"
+      "Sep 16, 2026"
+      "Sep 15, 2026"
+      (15 values)
+    field  div.card_blog_wrap > div.card_blog_content:not(.card_blog_visual_wrap):not(.u-display-none):not(.u-display-contents):not(.w-condition-invisible) > div:not(.w-dy…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    field  div.card_blog_wrap > div.card_blog_content:not(.card_blog_visual_wrap):not(.u-display-none):not(.u-display-contents):not(.w-condition-invisible) > div.w-dyn-lis…  ×14
+      "Enterprise AI"
+      "Product announcements"
+      "Claude Code"
+      (14 values)
+    field  div.card_blog_wrap > div.u-display-contents:not(.card_blog_visual_wrap):not(.card_blog_content):not(.u-display-none):not(.w-condition-invisible) > div.clickable…  ×15
+      "claude.com/blog/working-at-the-frontier-how-balyasny-asset-management-evaluates-and-governs-claude-fable-5"
+      "claude.com/blog/projects-redesigned"
+      "claude.com/blog/cowork-is-now-claude"
+      (15 values)
+    field  div.card_blog_wrap > div.u-display-contents:not(.card_blog_visual_wrap):not(.card_blog_content):not(.u-display-none):not(.w-condition-invisible) > div.clickable…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    field  div.card_blog_wrap > div.u-display-contents:not(.card_blog_visual_wrap):not(.card_blog_content):not(.u-display-none):not(.w-condition-invisible) > div.clickable…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    field  div.card_blog_wrap > div.u-display-contents.w-condition-invisible:not(.card_blog_visual_wrap):not(.card_blog_content):not(.u-display-none) > div.clickable_wrap.…  ×15
+      "claude.com/blog"
+    field  div.card_blog_wrap > div.u-display-contents.w-condition-invisible:not(.card_blog_visual_wrap):not(.card_blog_content):not(.u-display-none) > div.clickable_wrap.…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    field  div.card_blog_wrap > div.u-display-contents.w-condition-invisible:not(.card_blog_visual_wrap):not(.card_blog_content):not(.u-display-none) > div.clickable_wrap.…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    part   div.card_blog_wrap > div.card_blog_content:not(.card_blog_visual_wrap):not(.u-display-none):not(.u-display-contents):not(.w-condition-invisible) > div.w-dyn-lis…  ×42
+    part   div.card_blog_wrap > div.u-display-none:not(.card_blog_visual_wrap):not(.card_blog_content):not(.u-display-contents):not(.w-condition-invisible) > div  ×60
+      field  self  ×30
+        "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+        "September 17, 2026"
+        "Projects redesigned: from folder to conversation"
+        (30 values)
+
+structure 13  ×75 instances
+  part   html > body > div > main > section > div > div > div > div > div > div > div > div.card_blog_wrap > div  ×75
+    field  div.card_blog_visual:not(.card_blog_visual_bg):not(.w-dyn-list):not(.clickable_wrap):not(.u-cover-absolute) > div.card_blog_hero > img.card_blog_illo  ×15
+      "cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6903d2287f90c57df4c9dd97_c1ef4c0b6882dfe985555b52999d370ea…"
+      "cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6a42c9bc20d2072552ef256a_Node-EnterpriseAgents.svg"
+      "cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6aaaa060d1aec4a549c537ef_Object-Easel.svg"
+      (15 values)
+    field  div.w-dyn-list:not(.card_blog_visual_bg):not(.card_blog_visual):not(.clickable_wrap):not(.u-cover-absolute) > div.w-dyn-items > div.u-foreground-tertiary.w-dyn-…  ×14
+      "Enterprise AI"
+      "Product announcements"
+      "Claude Code"
+      (14 values)
+    field  div.clickable_wrap.u-cover-absolute:not(.card_blog_visual_bg):not(.card_blog_visual):not(.w-dyn-list) > a.clickable_link.w-inline-block  ×30
+      "claude.com/blog/working-at-the-frontier-how-balyasny-asset-management-evaluates-and-governs-claude-fable-5"
+      "claude.com/blog"
+      "claude.com/blog/projects-redesigned"
+      (30 values)
+    field  div.clickable_wrap.u-cover-absolute:not(.card_blog_visual_bg):not(.card_blog_visual):not(.w-dyn-list) > a.clickable_link.w-inline-block > span.clickable_text.u-…  ×30
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (30 values)
+    field  div.clickable_wrap.u-cover-absolute:not(.card_blog_visual_bg):not(.card_blog_visual):not(.w-dyn-list) > button.clickable_btn > span.clickable_text.u-sr-only  ×30
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (30 values)
+    part   div:not(.card_blog_visual_bg):not(.card_blog_visual):not(.w-dyn-list):not(.clickable_wrap):not(.u-cover-absolute)  ×75
+      field  self  ×30
+        "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+        "September 17, 2026"
+        "Projects redesigned: from folder to conversation"
+        (30 values)
+      field  div.u-foreground-tertiary.u-mb-1-5.u-text-style-caption:not(.card_blog_title):not(.u-text-style-h6)  ×15
+        "Sep 17, 2026"
+        "Sep 16, 2026"
+        "Sep 15, 2026"
+        (15 values)
+      field  div.card_blog_title.u-text-style-h6:not(.u-foreground-tertiary):not(.u-mb-1-5):not(.u-text-style-caption)  ×15
+        "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+        "Projects redesigned: from folder to conversation"
+        "Claude Cowork and chat are now one Claude"
+        (15 values)
+    part   div.w-dyn-list:not(.card_blog_visual_bg):not(.card_blog_visual):not(.clickable_wrap):not(.u-cover-absolute) > div.w-dyn-items > div.u-foreground-tertiary.w-dyn-…  ×42
+
+structure 14  ×15 instances
+  part   html > body > div > main > section > div > div > div > div > div > div.blog_cms_list > div  ×15
+    field  article.card_blog_list_wrap > div.card_blog_list_content:not(.u-display-contents):not(.w-condition-invisible) > div.card_blog_list_head:not(.card_blog_list_meta…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    field  article.card_blog_list_wrap > div.card_blog_list_content:not(.u-display-contents):not(.w-condition-invisible) > div.card_blog_list_meta.u-grid-custom:not(.card_…  ×15
+      "September 17, 2026"
+      "September 16, 2026"
+      "September 15, 2026"
+      (15 values)
+    field  article.card_blog_list_wrap > div.u-display-contents:not(.card_blog_list_content):not(.w-condition-invisible) > div.clickable_wrap.u-cover-absolute > a.clickabl…  ×15
+      "claude.com/blog/working-at-the-frontier-how-balyasny-asset-management-evaluates-and-governs-claude-fable-5"
+      "claude.com/blog/projects-redesigned"
+      "claude.com/blog/cowork-is-now-claude"
+      (15 values)
+    field  article.card_blog_list_wrap > div.u-display-contents:not(.card_blog_list_content):not(.w-condition-invisible) > div.clickable_wrap.u-cover-absolute > a.clickabl…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    field  article.card_blog_list_wrap > div.u-display-contents:not(.card_blog_list_content):not(.w-condition-invisible) > div.clickable_wrap.u-cover-absolute > button.cli…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    field  article.card_blog_list_wrap > div.u-display-contents.w-condition-invisible:not(.card_blog_list_content) > div.clickable_wrap.u-cover-absolute > a.clickable_link…  ×15
+      "claude.com/blog"
+    field  article.card_blog_list_wrap > div.u-display-contents.w-condition-invisible:not(.card_blog_list_content) > div.clickable_wrap.u-cover-absolute > a.clickable_link…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    field  article.card_blog_list_wrap > div.u-display-contents.w-condition-invisible:not(.card_blog_list_content) > div.clickable_wrap.u-cover-absolute > button.clickable…  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    part   article.card_blog_list_wrap > div.card_blog_list_content:not(.u-display-contents):not(.w-condition-invisible) > div.card_blog_list_meta.u-grid-custom:not(.card_…  ×45
+      field  div.card_blog_list_label.u-text-style-micro:not(.w-dyn-list)  ×45
+        "Category"
+        "Product"
+        "Usecase"
+      field  div.w-dyn-list:not(.card_blog_list_label):not(.u-text-style-micro) > div.w-dyn-items > div.w-dyn-item > div.card_cs_list_val.u-text-style-caption  ×14
+        "Enterprise AI"
+        "Product announcements"
+        "Claude Code"
+        (14 values)
+
+structure 15  ×45 instances
+  part   html > body > div > main > section > div > div > div > div > div > div > div > article > div  ×45
+    field  div.card_blog_list_head:not(.card_blog_list_meta):not(.u-grid-custom):not(.clickable_wrap):not(.u-cover-absolute) > h3.card_blog_list_title.u-text-wrap-balance  ×15
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (15 values)
+    field  div.card_blog_list_meta.u-grid-custom:not(.card_blog_list_head):not(.clickable_wrap):not(.u-cover-absolute) > div.u-display-none:not(.card_blog_list_field)  ×15
+      "September 17, 2026"
+      "September 16, 2026"
+      "September 15, 2026"
+      (15 values)
+    field  div.clickable_wrap.u-cover-absolute:not(.card_blog_list_head):not(.card_blog_list_meta):not(.u-grid-custom) > a.clickable_link.w-inline-block  ×30
+      "claude.com/blog/working-at-the-frontier-how-balyasny-asset-management-evaluates-and-governs-claude-fable-5"
+      "claude.com/blog"
+      "claude.com/blog/projects-redesigned"
+      (30 values)
+    field  div.clickable_wrap.u-cover-absolute:not(.card_blog_list_head):not(.card_blog_list_meta):not(.u-grid-custom) > a.clickable_link.w-inline-block > span.clickable_t…  ×30
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (30 values)
+    field  div.clickable_wrap.u-cover-absolute:not(.card_blog_list_head):not(.card_blog_list_meta):not(.u-grid-custom) > button.clickable_btn > span.clickable_text.u-sr-on…  ×30
+      "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5"
+      "Projects redesigned: from folder to conversation"
+      "Claude Cowork and chat are now one Claude"
+      (30 values)
+    part   div.card_blog_list_meta.u-grid-custom:not(.card_blog_list_head):not(.clickable_wrap):not(.u-cover-absolute) > div.card_blog_list_field:not(.u-display-none)  ×45
+      field  div.card_blog_list_label.u-text-style-micro:not(.w-dyn-list)  ×45
+        "Category"
+        "Product"
+        "Usecase"
+      field  div.w-dyn-list:not(.card_blog_list_label):not(.u-text-style-micro) > div.w-dyn-items > div.w-dyn-item > div.card_cs_list_val.u-text-style-caption  ×14
+        "Enterprise AI"
+        "Product announcements"
+        "Claude Code"
+        (14 values)
+
+structure 16  ×2 instances
+  part   html > body > div > main > div > section > div > div > div > div  ×2
+    part   div > div  ×3
+      field  h2  ×1
+        "Transform how your organization operates with Claude"
+      part   div > div  ×3
+        field  div.clickable_wrap.u-cover-absolute:not(.u-embed-css):not(.w-embed) > a.clickable_link.w-inline-block  ×2
+          "claude.com/pricing#api"
+          "claude.com/contact-sales"
+        field  div.clickable_wrap.u-cover-absolute:not(.u-embed-css):not(.w-embed) > a.clickable_link.w-inline-block > span.clickable_text.u-sr-only  ×2
+          "See pricing"
+          "Contact sales"
+        field  div.clickable_wrap.u-cover-absolute:not(.u-embed-css):not(.w-embed) > button.clickable_btn > span.clickable_text.u-sr-only  ×2
+          "See pricing"
+          "Contact sales"
+        part   div:not(.u-embed-css):not(.w-embed):not(.clickable_wrap):not(.u-cover-absolute) > div  ×4
+          field  div > div  ×1
+            "Thank you! You’re subscribed."
+          field  p  ×2
+            "Get the developer newsletter"
+            "Product updates, how-tos, community spotlights, and more. Delivered monthly to your inbox."
+          field  form > div > div > div > a  ×1
+            "claude.com/blog"
+          field  form > div > div > div > a > span  ×1
+            "Subscribe"
+          field  form > div > div > div > button > span  ×1
+            "Subscribe"
+          field  form > div > p  ×1
+            "Please provide your email address if you'd like to receive our monthly developer newsletter. You can unsubscri…"
+
+structure 17  ×15 instances
+  part   html > body > div > footer > div > div > div > div > div > div.footer_links_list_wrap  ×15
+    field  div.footer_links_heading.u-text-style-caption  ×15
+      "Products"
+      "Capabilities"
+      "Extensions"
+      (15 values)
+    part   ul.footer_links_list > li.footer_link  ×81
+      field  div.clickable_wrap.u-cover-absolute > a.clickable_link.w-inline-block  ×80
+        "claude.com/product/overview"
+        "claude.com/product/claude-code"
+        "claude.com/product/cowork"
+        (80 values)
+      field  div.clickable_wrap.u-cover-absolute > a.clickable_link.w-inline-block > span.clickable_text.u-sr-only  ×80
+        "Claude"
+        "Claude Code"
+        "Claude Cowork"
+        (80 values)
+      field  div.clickable_wrap.u-cover-absolute > button.clickable_btn > span.clickable_text.u-sr-only  ×80
+        "Claude"
+        "Claude Code"
+        "Claude Cowork"
+        (80 values)
+      part   div:not(.clickable_wrap):not(.u-cover-absolute) > div  ×2
+        field  dialog > div > h3  ×1
+          "Cookie settings"
+        field  dialog > div > p  ×1
+          "We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or pers…"
+          "."
+        field  dialog > div > p > a  ×1
+          "here"
+          "www.anthropic.com/legal/cookies"
+        part   dialog > div > div > button  ×4
+          field  self  ×4
+            "Customize"
+            "Reject"
+            "Accept"
+            (4 values)
+          field  span  ×3
+            "cookie settings"
+            "all cookies"
+
+structure 18  ×81 instances
+  part   html > body > div > footer > div > div > div > div > div > div > ul > li  ×81
+    field  div.clickable_wrap.u-cover-absolute > a.clickable_link.w-inline-block  ×80
+      "claude.com/product/overview"
+      "claude.com/product/claude-code"
+      "claude.com/product/cowork"
+      (80 values)
+    field  div.clickable_wrap.u-cover-absolute > a.clickable_link.w-inline-block > span.clickable_text.u-sr-only  ×80
+      "Claude"
+      "Claude Code"
+      "Claude Cowork"
+      (80 values)
+    field  div.clickable_wrap.u-cover-absolute > button.clickable_btn > span.clickable_text.u-sr-only  ×80
+      "Claude"
+      "Claude Code"
+      "Claude Cowork"
+      (80 values)
+    part   div:not(.clickable_wrap):not(.u-cover-absolute) > div  ×2
+      field  dialog > div > h3  ×1
+        "Cookie settings"
+      field  dialog > div > p  ×1
+        "We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or pers…"
+        "."
+      field  dialog > div > p > a  ×1
+        "here"
+        "www.anthropic.com/legal/cookies"
+      part   dialog > div > div > button  ×4
+        field  self  ×4
+          "Customize"
+          "Reject"
+          "Accept"
+          (4 values)
+        field  span  ×3
+          "cookie settings"
+          "all cookies"

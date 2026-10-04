@@ -1,0 +1,1035 @@
+# technologyreview.com
+url               https://www.technologyreview.com/
+posts in fixture  71
+structures        25
+recall            0.986, recall+ 0.958
+merge             1.49
+distrib           1.06, wrappers 0.14
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×3 instances
+  part   html > body > div > div > header > div.navbar__navbar--4dbcf8da11c05bed609c1a308227ce24 > div  ×3
+    field  a  ×1
+      "www.technologyreview.com"
+    field  a > div > h1  ×1
+      "MIT Technology Review"
+    part   div  ×2
+      field  button > span  ×1
+        "Menu"
+      part   button > svg > line  ×3
+    part   ul > li  ×7
+      field  a.navbar__darkText--6d0e8869c5f2ad60d9ff679675a81044.navbar__quicklink--6b6741ffa1e9ec283d036fb9e63a6d40  ×7
+        "The Big Story"
+        "www.technologyreview.com/tag/the-big-story"
+        "Artificial intelligence"
+        (14 values)
+
+structure 2  ×15 instances
+  part   html > body > div > div > main > section  ×15
+    field  div > div.gallerySection__container--589fe2ddb66e731094f270640b18936c:not(.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb):not(.adSection__ad_sl…  ×4
+      "Collection"
+      "Explainers"
+      "September/October 2026"
+    field  div > div.gallerySection__container--589fe2ddb66e731094f270640b18936c:not(.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb):not(.adSection__ad_sl…  ×4
+      "Most Popular"
+      "What's Next"
+      "MIT Technology Review Explains"
+      (4 values)
+    field  div > div.gallerySection__container--589fe2ddb66e731094f270640b18936c:not(.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb):not(.adSection__ad_sl…  ×3
+      "MIT Technology Review’s What’s Next series looks across industries, trends, and technologies to give you a fir…"
+      "Let our writers untangle the complex, messy world of technology to help you understand what’s coming next in o…"
+      "All the latest from MIT Alumni News, the alumni magazine of the Massachusetts Institute of Technology."
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "Features"
+      "10 Things That Matter in AI Right Now"
+      "Highlights"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×2
+      "The Big Story"
+      "Our new list"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "www.technologyreview.com/topic/culture"
+      "www.technologyreview.com/topic/artificial-intelligence"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "Culture"
+      "Artificial intelligence"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "2 weeks"
+      "5 months"
+      "8 months"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "www.technologyreview.com/2026/09/10/1143588/indxcoin-god-regalados-sell-crypto-investors-lost-everything"
+      "www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026"
+      "www.technologyreview.com/2026/01/12/1130697/10-breakthrough-technologies-2026"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "God told them to sell crypto. Their investors lost everything."
+      "10 Things That Matter in AI Right Now"
+      "10 Breakthrough Technologies 2026"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×2
+      "A pastor and his wife created a cryptocurrency and hawked it in Christian communities. When it came crashing d…"
+      "Here are our picks for the advances to watch in the years ahead—and why we think they matter right now."
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×1
+      "MIT Technology Review's authoritative overview of the 10 technologies, emerging trends, bold ideas, and powerf…"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "www.technologyreview.com/topic/artificial-intelligence"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "Artificial intelligence"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "www.technologyreview.com/2026/08/13/1141410/how-kids-feel-about-ai-own-words"
+      "www.technologyreview.com/2026/04/21/1135921/ai-malaise-artificial-intelligence-public-sentiment"
+      "www.technologyreview.com/2026/01/06/1130707/why-ai-predictions-are-so-hard"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "How kids feel about AI, in their own words"
+      "The era of AI malaise"
+      "Why AI predictions are so hard"
+    field  div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×3
+      "Does an AI-filled future seem like promise or peril to today’s teens and tweens? We went right to the source."
+      "AI is everywhere, all at once. How does that make you feel?"
+      "And why we're predicting what's next for the technology in 2026 anyway."
+    part   div > section > div > div > div  ×4
+      field  article.storyCard__linked--200735a4774f3106b0a3b5ede6df9c4f.storyCard__storyCard--1d075ab5c55d9f54a710ca1e2250a34a:not(.storyCard__unpadded--cc559e5f3134d18bb88…  ×1
+        "Roundtables: The Deadly Failures of The Virtual Border Wall"
+        "www.technologyreview.com/2026/09/22/1144890/roundtables-the-deadly-failures-of-the-virtual-border-wall"
+      part   div  ×2
+        part   div  ×2
+          field  article > div > div > div > span  ×1
+            "Roundtables"
+          field  article > div > div > div > a  ×1
+            "Artificial intelligence"
+            "www.technologyreview.com/topic/artificial-intelligence"
+          field  article > div > div > div > p  ×1
+            "Join a subscriber-only conversation with our experts examining the failures of border surveillance technology.…"
+          field  article > div > div > h3 > a  ×1
+            "Roundtables: The Deadly Failures of The Virtual Border Wall"
+            "www.technologyreview.com/2026/09/22/1144890/roundtables-the-deadly-failures-of-the-virtual-border-wall"
+          field  div  ×1
+            "Never miss a story. Sign up for our"
+            "."
+          field  div > a  ×1
+            "newsletters"
+            "www.technologyreview.com/newsletter-preferences"
+      part   article.storyCard__linked--200735a4774f3106b0a3b5ede6df9c4f.storyCard__storyCard--1d075ab5c55d9f54a710ca1e2250a34a.storyCard__unpadded--cc559e5f3134d18bb88d7e5c…  ×5
+        field  div.storyCard__media--8e57666ecb122528f124f325bb71c32e:not(.storyCard__body--c229228b8a1f530662c400cf4b7ab197):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×1
+          "wp.technologyreview.com/wp-content/uploads/2026/08/260824_metaindia.jpg"
+          "wp.technologyreview.com/wp-content/uploads/2026/08/260824_metaindia.jpg?fit=590"
+          "www.technologyreview.com/19998"
+          (10 values)
+        field  div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.storyCard__media--8e57666ecb122528f124f325bb71c32e):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×1
+          "Smart glasses are already causing havoc in India"
+          "www.technologyreview.com/2026/09/23/1144953/smart-glasses-havoc-india"
+        field  div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.storyCard__media--8e57666ecb122528f124f325bb71c32e):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×4
+          "Policy"
+          "www.technologyreview.com/topic/policy"
+          "Artificial intelligence"
+          (8 values)
+        field  div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.storyCard__media--8e57666ecb122528f124f325bb71c32e):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×4
+          "A congressional representative just proposed killing America’s border tower program"
+          "www.technologyreview.com/2026/09/23/1145002/a-congressional-representative-just-proposed-killing-americas-bord…"
+          "The AI Hype Index: AI loves cheating"
+          (8 values)
+        field  div.heroSection__secondaryMedia--ddef3833c60d85693be50af27de378da.storyCard__media--8e57666ecb122528f124f325bb71c32e:not(.storyCard__body--c229228b8a1f530662c40…  ×3
+          "wp.technologyreview.com/wp-content/uploads/2026/09/2026-07-22_BT_0663.jpg"
+          "wp.technologyreview.com/wp-content/uploads/2026/09/2026-07-22_BT_0663.jpg?fit=590"
+          "www.technologyreview.com/19998"
+          (42 values)
+        field  div.heroSection__secondaryMedia--ddef3833c60d85693be50af27de378da.storyCard__media--8e57666ecb122528f124f325bb71c32e:not(.storyCard__body--c229228b8a1f530662c40…  ×1
+          "wp.technologyreview.com/wp-content/uploads/2026/09/NewLede_9-15-26_Border_322.jpg"
+          "wp.technologyreview.com/wp-content/uploads/2026/09/NewLede_9-15-26_Border_322.jpg?fit=590"
+          "www.technologyreview.com/19998"
+          (14 values)
+        part   div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.storyCard__media--8e57666ecb122528f124f325bb71c32e):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×2
+          field  span  ×1
+            "Latest"
+          field  a  ×1
+            "Culture"
+            "www.technologyreview.com/topic/culture"
+          field  p  ×1
+            "And the chances of a crackdown are slim, as the authorities spy opportunities for surveillance."
+      part   article.storyCard__linked--200735a4774f3106b0a3b5ede6df9c4f.storyCard__storyCard--1d075ab5c55d9f54a710ca1e2250a34a:not(.storyCard__unpadded--cc559e5f3134d18bb88…  ×2
+        field  span  ×1
+          "Roundtables"
+        field  a  ×1
+          "Artificial intelligence"
+          "www.technologyreview.com/topic/artificial-intelligence"
+        field  p  ×1
+          "Join a subscriber-only conversation with our experts examining the failures of border surveillance technology.…"
+      part   aside > div > div  ×3
+        field  p  ×1
+          "Featuring"
+        field  a  ×1
+          "Read more"
+          "www.technologyreview.com/supertopic/border-towers"
+        part   div  ×2
+          field  p  ×1
+            "Investigation"
+          field  h2 > a  ×1
+            "The failures of the US border’s “virtual wall”"
+            "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation"
+          field  div > a  ×1
+            "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation"
+          field  div > a > span > img  ×1
+            "wp.technologyreview.com/wp-content/uploads/2026/09/MITTR-Investigation_Dying-on-camera_Spotlight-Thumbnail.jpg"
+            "wp.technologyreview.com/wp-content/uploads/2026/09/MITTR-Investigation_Dying-on-camera_Spotlight-Thumbnail.jpg…"
+            "www.technologyreview.com/1262"
+            (25 values)
+        part   ul > li  ×3
+          field  h3.spotlightRail__storyTitle--8690b3b6206568efe61db11bd5b5c382 > a  ×3
+            "The US spent billions on border surveillance. Why can’t it catch people before they die?"
+            "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation"
+            "4 ways to address the failures we found along the US border’s “virtual wall”"
+            (6 values)
+    part   div > div:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb):not(.adSection_…  ×6
+      part   div  ×11
+        field  self  ×1
+          "You've seen"
+          "73"
+          "stories, or"
+          (5 values)
+        field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782:not(.feedLoader__wrapper--7414519b0dec0ec67e412f85dc2fe0da) > div.homepageStoryCard__cardConten…  ×1
+          "Our new issue!"
+        field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782:not(.feedLoader__wrapper--7414519b0dec0ec67e412f85dc2fe0da) > div.homepageStoryCard__cardConten…  ×1
+          "September/October 2026"
+        field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782:not(.feedLoader__wrapper--7414519b0dec0ec67e412f85dc2fe0da) > div.homepageStoryCard__cardConten…  ×1
+          "www.technologyreview.com/topic/artificial-intelligence"
+        field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782:not(.feedLoader__wrapper--7414519b0dec0ec67e412f85dc2fe0da) > div.homepageStoryCard__cardConten…  ×1
+          "Artificial intelligence"
+        field  h2  ×2
+          "Magazine"
+          "The Feed"
+        field  p  ×1
+          "Sign up to get"
+          "The Checkup"
+          "weekly"
+          (4 values)
+        field  button > div  ×1
+          "Load more stories"
+        part   div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782):not(.feedLoader__wrapper--7414519b0dec0ec67e412f85dc2fe0da)  ×13
+          field  self  ×1
+            "Today's Newsletter"
+          field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×4
+            "www.technologyreview.com/topic/climate-change"
+            "www.technologyreview.com/topic/artificial-intelligence"
+            "www.technologyreview.com/topic/culture"
+          field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×4
+            "Climate change and energy"
+            "Artificial intelligence"
+            "Culture"
+          field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×4
+            "www.technologyreview.com/2026/08/20/1141686/support-networks-help-kids-polycrisis"
+            "www.technologyreview.com/2026/08/17/1141568/moxie-when-kids-robot-best-friend-dies"
+            "www.technologyreview.com/2026/08/24/1141740/kids-machines-language-learning"
+            (4 values)
+          field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×4
+            "Support networks aim to help kids through the polycrisis"
+            "What happens when a kid’s robot best friend dies?"
+            "Kids outlearn AI—and we still don’t know why"
+            (4 values)
+          field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×3
+            "Today’s world is a mess of troubling trends. Some groups are trying to help kids navigate their anxieties abou…"
+            "AI companion toys for neurodivergent children promise connection and therapy, but can they deliver for the lon…"
+            "Monitoring apps promise to keep young people safer online, but looking in on kids’ phones can backfire. Online…"
+          field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×1
+            "LLMs need vastly more data than children to learn language. Understanding why could help us create more effici…"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782)  ×1
+            "46,466"
+            "stories."
+            "3,450"
+            (6 values)
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > div  ×1
+            "Sponsored"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > div > div > div > p  ×1
+            "In recent weeks, leaders of some of the biggest AI companies have warned that the very tech they are developin…"
+            "and that progress should be slowed. OpenAI CEO Sam Altman"
+            ": “I agree with Dario that we need to pace the frontier.”"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > div > div > div > p > a  ×1
+            "carries serious risk"
+            "darioamodei.com/post/we-must-pace-the-frontier"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > div > div > div > p > a > em  ×1
+            "sign up here"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > div > div > div > p > em  ×1
+            "40,000 molecules"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > div > aside > h2  ×1
+            "Related Story"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > div > aside > div > a  ×0
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > div > aside > div > a > div  ×1
+            "No one's sure if synthetic mirror life will kill us all"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > h3  ×1
+            "The specter of AI-enabled bioweapons is a wake-up call for biotech"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > p  ×1
+            "How companies are freeing themselves of legacy data systems to power AI agents that deliver trusted, autonomou…"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div > button > div  ×1
+            "Filter by topic"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > form > label  ×1
+            "Enter your email"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > form > div > button > div  ×1
+            "Sign up for free"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > a  ×1
+            "www.technologyreview.com/2026/08/12/1141032/scaling-ai-agents-with-trustworthy-data"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > a > h3  ×1
+            "Scaling AI agents with trustworthy data"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > section > p > span  ×1
+            "In partnership with"
+          field  div:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > section > p > a  ×1
+            "Google Cloud"
+            "cloud.google.com"
+          field  p  ×1
+            "The latest from"
+          field  span  ×1
+            "The Checkup"
+          field  a  ×1
+            "www.technologyreview.com/newsletter-preferences"
+          field  a > div  ×1
+            "More Newsletters"
+        part   div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782:not(.feedLoader__wrapper--7414519b0dec0ec67e412f85dc2fe0da) > div.homepageStoryCard__cardConten…  ×3
+          field  a  ×2
+            "www.technologyreview.com/magazines/the-kids-issue"
+            "www.technologyreview.com/2026/08/13/1141410/how-kids-feel-about-ai-own-words"
+          field  a > h3.homepageStoryCard__hed--92c78a74bbc694463e43e32aafbbdfd7  ×2
+            "The Kids issue"
+            "How kids feel about AI, in their own words"
+          field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3  ×1
+            "What does growing up in an age of chatbots and agents mean for kids’ future? From the role AI plays in their d…"
+          field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3 > p  ×1
+            "Does an AI-filled future seem like promise or peril to today’s teens and tweens? We went right to the source."
+          field  div:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > a  ×1
+            "www.technologyreview.com/magazines/the-kids-issue#features"
+          field  div:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > a > div  ×1
+            "Read now"
+        part   div.feedLoader__wrapper--7414519b0dec0ec67e412f85dc2fe0da:not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > div.feedLoader__loader--7848d1115…  ×18
+        part   button > svg > g  ×8
+    part   div > div.gallerySection__container--589fe2ddb66e731094f270640b18936c:not(.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb):not(.adSection__ad_sl…  ×8
+      field  span.screen-reader-text  ×8
+        "Previous slide"
+        "Next slide"
+      part   svg > path  ×24
+    part   div > div.gallerySection__container--589fe2ddb66e731094f270640b18936c:not(.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb):not(.adSection__ad_sl…  ×40
+      field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div.homepageStoryCard__e…  ×39
+        "www.technologyreview.com/topic/artificial-intelligence"
+        "www.technologyreview.com/topic/policy"
+        "www.technologyreview.com/topic/biotechnology"
+        (39 values)
+      field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div.homepageStoryCard__e…  ×39
+        "Artificial intelligence"
+        "Policy"
+        "Biotechnology and health"
+        (39 values)
+      field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div.homepageStoryCard__e…  ×1
+        "Sept/Oct 2026"
+      field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×40
+        "www.technologyreview.com/2026/07/30/1140927/a-fundamental-flaw-leaves-llms-vulnerable-to-attack"
+        "www.technologyreview.com/2026/08/18/1142188/ai-recursive-self-improvement"
+        "www.technologyreview.com/2026/08/03/1141009/heres-why-ai-agents-lie-and-cheat-to-reach-their-goals"
+        (40 values)
+      field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×40
+        "A fundamental flaw leaves LLMs strikingly vulnerable to attack"
+        "AI’s recursive self-improvement might not come so quickly after all"
+        "Here’s why AI agents lie and cheat to reach their goals"
+        (40 values)
+      field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×1
+        "Read the whole issue of MIT Alumni News, the alumni magazine of Massachusetts Institute of Technology."
+      field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×29
+        "It makes it easy to trick them into doing things they shouldn’t, such as telling you how to sabotage an aircra…"
+        "Meet the new kids nipping at the heels of the AI giants."
+        "In a new interview,"
+        (31 values)
+      field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×1
+        "AI agents are not yet creative enough to carry out genuinely innovative open-ended AI research, it seems."
+      field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×10
+        "The misbehavior is called reward hacking. This is what you need to know."
+        "the billionaire philanthropist"
+        "A decade-old experiment showed OpenAI how far an AI will go to achieve the goals it’s given."
+        (10 values)
+    part   div > div.highlightsSection__container--a5f49cc1066b2d5f33c224875154a6eb:not(.gallerySection__container--589fe2ddb66e731094f270640b18936c):not(.adSection__ad_sl…  ×12
+      field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×12
+        "www.technologyreview.com/topic/climate-change"
+        "www.technologyreview.com/topic/biotechnology"
+        "www.technologyreview.com/topic/artificial-intelligence"
+        (12 values)
+      field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×12
+        "Climate change and energy"
+        "Biotechnology and health"
+        "Artificial intelligence"
+        (12 values)
+      field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×12
+        "www.technologyreview.com/2026/09/09/1143680/batteries-us-record"
+        "www.technologyreview.com/2026/08/27/1143037/startup-claims-its-found-a-drug-to-make-your-blood-young"
+        "www.technologyreview.com/2026/07/30/1140942/montana-experimental-medical-hub-pushed-forward-right-to-try"
+        (12 values)
+      field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×12
+        "Batteries just broke another record in the US"
+        "A startup claims it’s found a drug to make your blood young"
+        "Montana’s plan to become an experimental medical hub just pushed forward"
+        (12 values)
+      field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×7
+        "Huge grid-scale batteries are thriving, but smaller residential systems have lagged."
+        "Generation Lab claims its drug combo can “stop the spread of aging” around the body. And it’s looking for infl…"
+        "The state’s effort to expand the “right to try” is making headway, and the first drugs are about to be reviewe…"
+        (7 values)
+      field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×1
+        "The technology could make commercially available bulk datasets even more of a privacy concern."
+      part   div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×6
+        field  self  ×6
+          "But a new study shows that work use cases make up less of the picture than AI companies claim."
+          "Today’s AI is still unreliable. Some researchers think solving that problem requires teaching AI systems to un…"
+          "Robotics companies want tremendous amounts of data on how we move our hands and limbs, and their tactics are g…"
+          (6 values)
+
+structure 3  ×4 instances
+  part   html > body > div > div > main > section > div > section > div > div > div  ×4
+    field  article.storyCard__linked--200735a4774f3106b0a3b5ede6df9c4f.storyCard__storyCard--1d075ab5c55d9f54a710ca1e2250a34a:not(.storyCard__unpadded--cc559e5f3134d18bb88…  ×1
+      "Roundtables: The Deadly Failures of The Virtual Border Wall"
+      "www.technologyreview.com/2026/09/22/1144890/roundtables-the-deadly-failures-of-the-virtual-border-wall"
+    part   div  ×2
+      part   div  ×2
+        field  article > div > div > h3 > a  ×1
+          "Roundtables: The Deadly Failures of The Virtual Border Wall"
+          "www.technologyreview.com/2026/09/22/1144890/roundtables-the-deadly-failures-of-the-virtual-border-wall"
+        field  div  ×1
+          "Never miss a story. Sign up for our"
+          "."
+        field  div > a  ×1
+          "newsletters"
+          "www.technologyreview.com/newsletter-preferences"
+        part   article > div > div > div  ×2
+          field  span  ×1
+            "Roundtables"
+          field  a  ×1
+            "Artificial intelligence"
+            "www.technologyreview.com/topic/artificial-intelligence"
+          field  p  ×1
+            "Join a subscriber-only conversation with our experts examining the failures of border surveillance technology.…"
+        part   svg > rect  ×2
+    part   article.storyCard__linked--200735a4774f3106b0a3b5ede6df9c4f.storyCard__storyCard--1d075ab5c55d9f54a710ca1e2250a34a.storyCard__unpadded--cc559e5f3134d18bb88d7e5c…  ×5
+      field  div.storyCard__media--8e57666ecb122528f124f325bb71c32e:not(.storyCard__body--c229228b8a1f530662c400cf4b7ab197):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×1
+        "wp.technologyreview.com/wp-content/uploads/2026/08/260824_metaindia.jpg"
+        "wp.technologyreview.com/wp-content/uploads/2026/08/260824_metaindia.jpg?fit=590"
+        "www.technologyreview.com/19998"
+        (10 values)
+      field  div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.storyCard__media--8e57666ecb122528f124f325bb71c32e):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×1
+        "Smart glasses are already causing havoc in India"
+        "www.technologyreview.com/2026/09/23/1144953/smart-glasses-havoc-india"
+      field  div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.storyCard__media--8e57666ecb122528f124f325bb71c32e):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×4
+        "Policy"
+        "www.technologyreview.com/topic/policy"
+        "Artificial intelligence"
+        (8 values)
+      field  div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.storyCard__media--8e57666ecb122528f124f325bb71c32e):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×4
+        "A congressional representative just proposed killing America’s border tower program"
+        "www.technologyreview.com/2026/09/23/1145002/a-congressional-representative-just-proposed-killing-americas-bord…"
+        "The AI Hype Index: AI loves cheating"
+        (8 values)
+      field  div.heroSection__secondaryMedia--ddef3833c60d85693be50af27de378da.storyCard__media--8e57666ecb122528f124f325bb71c32e:not(.storyCard__body--c229228b8a1f530662c40…  ×3
+        "wp.technologyreview.com/wp-content/uploads/2026/09/2026-07-22_BT_0663.jpg"
+        "wp.technologyreview.com/wp-content/uploads/2026/09/2026-07-22_BT_0663.jpg?fit=590"
+        "www.technologyreview.com/19998"
+        (42 values)
+      field  div.heroSection__secondaryMedia--ddef3833c60d85693be50af27de378da.storyCard__media--8e57666ecb122528f124f325bb71c32e:not(.storyCard__body--c229228b8a1f530662c40…  ×1
+        "wp.technologyreview.com/wp-content/uploads/2026/09/NewLede_9-15-26_Border_322.jpg"
+        "wp.technologyreview.com/wp-content/uploads/2026/09/NewLede_9-15-26_Border_322.jpg?fit=590"
+        "www.technologyreview.com/19998"
+        (14 values)
+      part   div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.storyCard__media--8e57666ecb122528f124f325bb71c32e):not(.heroSection__secondaryMedia--ddef3833c60d856…  ×2
+        field  span  ×1
+          "Latest"
+        field  a  ×1
+          "Culture"
+          "www.technologyreview.com/topic/culture"
+        field  p  ×1
+          "And the chances of a crackdown are slim, as the authorities spy opportunities for surveillance."
+    part   article.storyCard__linked--200735a4774f3106b0a3b5ede6df9c4f.storyCard__storyCard--1d075ab5c55d9f54a710ca1e2250a34a:not(.storyCard__unpadded--cc559e5f3134d18bb88…  ×2
+      field  span  ×1
+        "Roundtables"
+      field  a  ×1
+        "Artificial intelligence"
+        "www.technologyreview.com/topic/artificial-intelligence"
+      field  p  ×1
+        "Join a subscriber-only conversation with our experts examining the failures of border surveillance technology.…"
+    part   aside > div > div  ×3
+      field  p  ×1
+        "Featuring"
+      field  a  ×1
+        "Read more"
+        "www.technologyreview.com/supertopic/border-towers"
+      part   div  ×2
+        field  p  ×1
+          "Investigation"
+        field  h2 > a  ×1
+          "The failures of the US border’s “virtual wall”"
+          "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation"
+        field  div > a  ×1
+          "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation"
+        field  div > a > span > img  ×1
+          "wp.technologyreview.com/wp-content/uploads/2026/09/MITTR-Investigation_Dying-on-camera_Spotlight-Thumbnail.jpg"
+          "wp.technologyreview.com/wp-content/uploads/2026/09/MITTR-Investigation_Dying-on-camera_Spotlight-Thumbnail.jpg…"
+          "www.technologyreview.com/1262"
+          (25 values)
+      part   ul > li  ×3
+        field  h3.spotlightRail__storyTitle--8690b3b6206568efe61db11bd5b5c382 > a  ×3
+          "The US spent billions on border surveillance. Why can’t it catch people before they die?"
+          "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation"
+          "4 ways to address the failures we found along the US border’s “virtual wall”"
+          (6 values)
+
+structure 4  ×2 instances
+  part   html > body > div > div > main > section > div > section > div > div > div > div > div  ×2
+    field  article > div > div > h3 > a  ×1
+      "Roundtables: The Deadly Failures of The Virtual Border Wall"
+      "www.technologyreview.com/2026/09/22/1144890/roundtables-the-deadly-failures-of-the-virtual-border-wall"
+    field  div  ×1
+      "Never miss a story. Sign up for our"
+      "."
+    field  div > a  ×1
+      "newsletters"
+      "www.technologyreview.com/newsletter-preferences"
+    part   article > div > div > div  ×2
+      field  span  ×1
+        "Roundtables"
+      field  a  ×1
+        "Artificial intelligence"
+        "www.technologyreview.com/topic/artificial-intelligence"
+      field  p  ×1
+        "Join a subscriber-only conversation with our experts examining the failures of border surveillance technology.…"
+    part   svg > rect  ×2
+
+structure 5  ×4 instances
+  part   html > body > div > div > main > section > div > section > div > div > div > article.heroSection__secondaryCard--86a2b9372dda20a2dd64da156facc39a  ×4
+    field  div.heroSection__secondaryMedia--ddef3833c60d85693be50af27de378da.storyCard__media--8e57666ecb122528f124f325bb71c32e:not(.storyCard__body--c229228b8a1f530662c40…  ×3
+      "wp.technologyreview.com/wp-content/uploads/2026/09/2026-07-22_BT_0663.jpg"
+      "wp.technologyreview.com/wp-content/uploads/2026/09/2026-07-22_BT_0663.jpg?fit=590"
+      "www.technologyreview.com/19998"
+      (42 values)
+    field  div.heroSection__secondaryMedia--ddef3833c60d85693be50af27de378da.storyCard__media--8e57666ecb122528f124f325bb71c32e:not(.storyCard__body--c229228b8a1f530662c40…  ×1
+      "wp.technologyreview.com/wp-content/uploads/2026/09/NewLede_9-15-26_Border_322.jpg"
+      "wp.technologyreview.com/wp-content/uploads/2026/09/NewLede_9-15-26_Border_322.jpg?fit=590"
+      "www.technologyreview.com/19998"
+      (14 values)
+    field  div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.heroSection__secondaryMedia--ddef3833c60d85693be50af27de378da):not(.storyCard__media--8e57666ecb12252…  ×4
+      "Policy"
+      "www.technologyreview.com/topic/policy"
+      "Artificial intelligence"
+      (8 values)
+    field  div.storyCard__body--c229228b8a1f530662c400cf4b7ab197:not(.heroSection__secondaryMedia--ddef3833c60d85693be50af27de378da):not(.storyCard__media--8e57666ecb12252…  ×4
+      "A congressional representative just proposed killing America’s border tower program"
+      "www.technologyreview.com/2026/09/23/1145002/a-congressional-representative-just-proposed-killing-americas-bord…"
+      "The AI Hype Index: AI loves cheating"
+      (8 values)
+
+structure 6  ×3 instances
+  part   html > body > div > div > main > section > div > section > div > div > div > aside > div > div  ×3
+    field  p  ×1
+      "Featuring"
+    field  a  ×1
+      "Read more"
+      "www.technologyreview.com/supertopic/border-towers"
+    part   div  ×2
+      field  p  ×1
+        "Investigation"
+      field  h2 > a  ×1
+        "The failures of the US border’s “virtual wall”"
+        "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation"
+      field  div > a  ×1
+        "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation"
+      field  div > a > span > img  ×1
+        "wp.technologyreview.com/wp-content/uploads/2026/09/MITTR-Investigation_Dying-on-camera_Spotlight-Thumbnail.jpg"
+        "wp.technologyreview.com/wp-content/uploads/2026/09/MITTR-Investigation_Dying-on-camera_Spotlight-Thumbnail.jpg…"
+        "www.technologyreview.com/1262"
+        (25 values)
+    part   ul > li  ×3
+      field  h3.spotlightRail__storyTitle--8690b3b6206568efe61db11bd5b5c382 > a  ×3
+        "The US spent billions on border surveillance. Why can’t it catch people before they die?"
+        "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation"
+        "4 ways to address the failures we found along the US border’s “virtual wall”"
+        (6 values)
+
+structure 7  ×40 instances
+  part   html > body > div > div > main > section > div > div > div > div > div.galleryPosts__swiper--9b79fc2f1882e42b557afabfa004989a > div  ×40
+    field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div.homepageStoryCard__e…  ×39
+      "www.technologyreview.com/topic/artificial-intelligence"
+      "www.technologyreview.com/topic/policy"
+      "www.technologyreview.com/topic/biotechnology"
+      (39 values)
+    field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div.homepageStoryCard__e…  ×39
+      "Artificial intelligence"
+      "Policy"
+      "Biotechnology and health"
+      (39 values)
+    field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div.homepageStoryCard__e…  ×1
+      "Sept/Oct 2026"
+    field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×40
+      "www.technologyreview.com/2026/07/30/1140927/a-fundamental-flaw-leaves-llms-vulnerable-to-attack"
+      "www.technologyreview.com/2026/08/18/1142188/ai-recursive-self-improvement"
+      "www.technologyreview.com/2026/08/03/1141009/heres-why-ai-agents-lie-and-cheat-to-reach-their-goals"
+      (40 values)
+    field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×40
+      "A fundamental flaw leaves LLMs strikingly vulnerable to attack"
+      "AI’s recursive self-improvement might not come so quickly after all"
+      "Here’s why AI agents lie and cheat to reach their goals"
+      (40 values)
+    field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×1
+      "Read the whole issue of MIT Alumni News, the alumni magazine of Massachusetts Institute of Technology."
+    field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×29
+      "It makes it easy to trick them into doing things they shouldn’t, such as telling you how to sabotage an aircra…"
+      "Meet the new kids nipping at the heels of the AI giants."
+      "In a new interview,"
+      (31 values)
+    field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×1
+      "AI agents are not yet creative enough to carry out genuinely innovative open-ended AI research, it seems."
+    field  div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__image--077673f304cb3ec987d68910f53bb07a) > div:not(.homepageStoryCa…  ×10
+      "The misbehavior is called reward hacking. This is what you need to know."
+      "the billionaire philanthropist"
+      "A decade-old experiment showed OpenAI how far an AI will go to achieve the goals it’s given."
+      (10 values)
+
+structure 8  ×80 instances
+  part   html > body > div > div > main > section > div > div > div > div > div.galleryPosts__swiper--9b79fc2f1882e42b557afabfa004989a > div > div > div  ×80
+    field  div.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__con…  ×39
+      "www.technologyreview.com/topic/artificial-intelligence"
+      "www.technologyreview.com/topic/policy"
+      "www.technologyreview.com/topic/biotechnology"
+      (39 values)
+    field  div.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__con…  ×39
+      "Artificial intelligence"
+      "Policy"
+      "Biotechnology and health"
+      (39 values)
+    field  div.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__con…  ×1
+      "Sept/Oct 2026"
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4)  ×1
+      "Read the whole issue of MIT Alumni News, the alumni magazine of Massachusetts Institute of Technology."
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4) > p  ×29
+      "It makes it easy to trick them into doing things they shouldn’t, such as telling you how to sabotage an aircra…"
+      "Meet the new kids nipping at the heels of the AI giants."
+      "In a new interview,"
+      (31 values)
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4) > p > b  ×1
+      "AI agents are not yet creative enough to carry out genuinely innovative open-ended AI research, it seems."
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4) > p > span  ×10
+      "The misbehavior is called reward hacking. This is what you need to know."
+      "the billionaire philanthropist"
+      "A decade-old experiment showed OpenAI how far an AI will go to achieve the goals it’s given."
+      (10 values)
+    field  a  ×40
+      "www.technologyreview.com/2026/07/30/1140927/a-fundamental-flaw-leaves-llms-vulnerable-to-attack"
+      "www.technologyreview.com/2026/08/18/1142188/ai-recursive-self-improvement"
+      "www.technologyreview.com/2026/08/03/1141009/heres-why-ai-agents-lie-and-cheat-to-reach-their-goals"
+      (40 values)
+    field  a > h3.homepageStoryCard__hed--92c78a74bbc694463e43e32aafbbdfd7  ×40
+      "A fundamental flaw leaves LLMs strikingly vulnerable to attack"
+      "AI’s recursive self-improvement might not come so quickly after all"
+      "Here’s why AI agents lie and cheat to reach their goals"
+      (40 values)
+
+structure 9  ×2 instances
+  part   html > body > div > div > main > section > div > div > div > div > div.homepageStoryCard__copyFirst--452476e9198a9132bcb327d33b689521 > div > div  ×2
+    field  div > div > a  ×1
+      "www.technologyreview.com/topic/artificial-intelligence"
+    field  div > div > a > span  ×1
+      "Artificial intelligence"
+    field  div > p  ×1
+      "Does an AI-filled future seem like promise or peril to today’s teens and tweens? We went right to the source."
+    field  a  ×1
+      "www.technologyreview.com/2026/08/13/1141410/how-kids-feel-about-ai-own-words"
+    field  a > h3  ×1
+      "How kids feel about AI, in their own words"
+
+structure 10  ×4 instances
+  part   html > body > div > div > main > section > div > div > div > div.magazineSection__features--c446f927f2189e1838a3cf0982107c49 > div  ×4
+    field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×4
+      "www.technologyreview.com/topic/climate-change"
+      "www.technologyreview.com/topic/artificial-intelligence"
+      "www.technologyreview.com/topic/culture"
+    field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×4
+      "Climate change and energy"
+      "Artificial intelligence"
+      "Culture"
+    field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×4
+      "www.technologyreview.com/2026/08/20/1141686/support-networks-help-kids-polycrisis"
+      "www.technologyreview.com/2026/08/17/1141568/moxie-when-kids-robot-best-friend-dies"
+      "www.technologyreview.com/2026/08/24/1141740/kids-machines-language-learning"
+      (4 values)
+    field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×4
+      "Support networks aim to help kids through the polycrisis"
+      "What happens when a kid’s robot best friend dies?"
+      "Kids outlearn AI—and we still don’t know why"
+      (4 values)
+    field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×3
+      "Today’s world is a mess of troubling trends. Some groups are trying to help kids navigate their anxieties abou…"
+      "AI companion toys for neurodivergent children promise connection and therapy, but can they deliver for the lon…"
+      "Monitoring apps promise to keep young people safer online, but looking in on kids’ phones can backfire. Online…"
+    field  div.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2:not(.homepageStoryCard__…  ×1
+      "LLMs need vastly more data than children to learn language. Understanding why could help us create more effici…"
+
+structure 11  ×8 instances
+  part   html > body > div > div > main > section > div > div > div > div.magazineSection__features--c446f927f2189e1838a3cf0982107c49 > div > div > div > div  ×8
+    field  div.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__con…  ×4
+      "www.technologyreview.com/topic/climate-change"
+      "www.technologyreview.com/topic/artificial-intelligence"
+      "www.technologyreview.com/topic/culture"
+    field  div.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__con…  ×4
+      "Climate change and energy"
+      "Artificial intelligence"
+      "Culture"
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4) > p  ×3
+      "Today’s world is a mess of troubling trends. Some groups are trying to help kids navigate their anxieties abou…"
+      "AI companion toys for neurodivergent children promise connection and therapy, but can they deliver for the lon…"
+      "Monitoring apps promise to keep young people safer online, but looking in on kids’ phones can backfire. Online…"
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4) > div  ×1
+      "LLMs need vastly more data than children to learn language. Understanding why could help us create more effici…"
+    field  a  ×4
+      "www.technologyreview.com/2026/08/20/1141686/support-networks-help-kids-polycrisis"
+      "www.technologyreview.com/2026/08/17/1141568/moxie-when-kids-robot-best-friend-dies"
+      "www.technologyreview.com/2026/08/24/1141740/kids-machines-language-learning"
+      (4 values)
+    field  a > h3.homepageStoryCard__hed--92c78a74bbc694463e43e32aafbbdfd7  ×4
+      "Support networks aim to help kids through the polycrisis"
+      "What happens when a kid’s robot best friend dies?"
+      "Kids outlearn AI—and we still don’t know why"
+      (4 values)
+
+structure 12  ×6 instances
+  part   html > body > div > div > main > section > div > div > div > div > div.homepageStoryCard__wrapperHorizontal--f50dea096bc0df6353964526c2547c8c > div > div  ×6
+    field  div.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__con…  ×3
+      "www.technologyreview.com/topic/artificial-intelligence"
+    field  div.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__con…  ×3
+      "Artificial intelligence"
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4) > p  ×3
+      "Does an AI-filled future seem like promise or peril to today’s teens and tweens? We went right to the source."
+      "AI is everywhere, all at once. How does that make you feel?"
+      "And why we're predicting what's next for the technology in 2026 anyway."
+    field  a  ×3
+      "www.technologyreview.com/2026/08/13/1141410/how-kids-feel-about-ai-own-words"
+      "www.technologyreview.com/2026/04/21/1135921/ai-malaise-artificial-intelligence-public-sentiment"
+      "www.technologyreview.com/2026/01/06/1130707/why-ai-predictions-are-so-hard"
+    field  a > h3.homepageStoryCard__hed--92c78a74bbc694463e43e32aafbbdfd7  ×3
+      "How kids feel about AI, in their own words"
+      "The era of AI malaise"
+      "Why AI predictions are so hard"
+
+structure 13  ×12 instances
+  part   html > body > div > div > main > section > div > div > div > div.highlightsSection__cards--7eb6b095cf77dd4afc7da9cb98ebae1a > div  ×12
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×12
+      "www.technologyreview.com/topic/climate-change"
+      "www.technologyreview.com/topic/biotechnology"
+      "www.technologyreview.com/topic/artificial-intelligence"
+      (12 values)
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×12
+      "Climate change and energy"
+      "Biotechnology and health"
+      "Artificial intelligence"
+      (12 values)
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×12
+      "www.technologyreview.com/2026/09/09/1143680/batteries-us-record"
+      "www.technologyreview.com/2026/08/27/1143037/startup-claims-its-found-a-drug-to-make-your-blood-young"
+      "www.technologyreview.com/2026/07/30/1140942/montana-experimental-medical-hub-pushed-forward-right-to-try"
+      (12 values)
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×12
+      "Batteries just broke another record in the US"
+      "A startup claims it’s found a drug to make your blood young"
+      "Montana’s plan to become an experimental medical hub just pushed forward"
+      (12 values)
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×7
+      "Huge grid-scale batteries are thriving, but smaller residential systems have lagged."
+      "Generation Lab claims its drug combo can “stop the spread of aging” around the body. And it’s looking for infl…"
+      "The state’s effort to expand the “right to try” is making headway, and the first drugs are about to be reviewe…"
+      (7 values)
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×1
+      "The technology could make commercially available bulk datasets even more of a privacy concern."
+    part   div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×6
+      field  self  ×6
+        "But a new study shows that work use cases make up less of the picture than AI companies claim."
+        "Today’s AI is still unreliable. Some researchers think solving that problem requires teaching AI systems to un…"
+        "Robotics companies want tremendous amounts of data on how we move our hands and limbs, and their tactics are g…"
+        (6 values)
+
+structure 14  ×24 instances
+  part   html > body > div > div > main > section > div > div > div > div > div > div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a > div > div  ×24
+    field  div.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__con…  ×12
+      "www.technologyreview.com/topic/climate-change"
+      "www.technologyreview.com/topic/biotechnology"
+      "www.technologyreview.com/topic/artificial-intelligence"
+      (12 values)
+    field  div.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__con…  ×12
+      "Climate change and energy"
+      "Biotechnology and health"
+      "Artificial intelligence"
+      (12 values)
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4) > p  ×7
+      "Huge grid-scale batteries are thriving, but smaller residential systems have lagged."
+      "Generation Lab claims its drug combo can “stop the spread of aging” around the body. And it’s looking for infl…"
+      "The state’s effort to expand the “right to try” is making headway, and the first drugs are about to be reviewe…"
+      (7 values)
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4) > div > span  ×1
+      "The technology could make commercially available bulk datasets even more of a privacy concern."
+    field  a  ×12
+      "www.technologyreview.com/2026/09/09/1143680/batteries-us-record"
+      "www.technologyreview.com/2026/08/27/1143037/startup-claims-its-found-a-drug-to-make-your-blood-young"
+      "www.technologyreview.com/2026/07/30/1140942/montana-experimental-medical-hub-pushed-forward-right-to-try"
+      (12 values)
+    field  a > h3.homepageStoryCard__hed--92c78a74bbc694463e43e32aafbbdfd7  ×12
+      "Batteries just broke another record in the US"
+      "A startup claims it’s found a drug to make your blood young"
+      "Montana’s plan to become an experimental medical hub just pushed forward"
+      (12 values)
+    part   div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--dark--341e3d40725d92dad0fd23dcfae43ed4) > p > span  ×6
+      field  self  ×6
+        "But a new study shows that work use cases make up less of the picture than AI companies claim."
+        "Today’s AI is still unreliable. Some researchers think solving that problem requires teaching AI systems to un…"
+        "Robotics companies want tremendous amounts of data on how we move our hands and limbs, and their tactics are g…"
+        (6 values)
+
+structure 15  ×6 instances
+  part   html > body > div > div > main > section > div > div > div > div > div > div.homepageStoryCard__noPadding--12896dc1cb7d28b7c79b3fd03939adcc > div > div  ×6
+    field  div.homepageEyebrow__container--light--b01af4105ae273f62631634790a1e05d:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__co…  ×2
+      "The Big Story"
+      "Our new list"
+    field  div.homepageEyebrow__container--light--b01af4105ae273f62631634790a1e05d:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__co…  ×3
+      "www.technologyreview.com/topic/culture"
+      "www.technologyreview.com/topic/artificial-intelligence"
+    field  div.homepageEyebrow__container--light--b01af4105ae273f62631634790a1e05d:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__co…  ×3
+      "Culture"
+      "Artificial intelligence"
+    field  div.homepageEyebrow__container--light--b01af4105ae273f62631634790a1e05d:not(.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3) > div.homepageEyebrow__co…  ×3
+      "2 weeks"
+      "5 months"
+      "8 months"
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--light--b01af4105ae273f62631634790a1e05d) > p  ×2
+      "A pastor and his wife created a cryptocurrency and hawked it in Christian communities. When it came crashing d…"
+      "Here are our picks for the advances to watch in the years ahead—and why we think they matter right now."
+    field  div.homepageStoryCard__dek--7c9e3c85841df43b5fb2385cdf2b46e3:not(.homepageEyebrow__container--light--b01af4105ae273f62631634790a1e05d) > p > span  ×1
+      "MIT Technology Review's authoritative overview of the 10 technologies, emerging trends, bold ideas, and powerf…"
+    field  a  ×3
+      "www.technologyreview.com/2026/09/10/1143588/indxcoin-god-regalados-sell-crypto-investors-lost-everything"
+      "www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026"
+      "www.technologyreview.com/2026/01/12/1130697/10-breakthrough-technologies-2026"
+    field  a > h3.homepageStoryCard__hed--92c78a74bbc694463e43e32aafbbdfd7  ×3
+      "God told them to sell crypto. Their investors lost everything."
+      "10 Things That Matter in AI Right Now"
+      "10 Breakthrough Technologies 2026"
+
+structure 16  ×5 instances
+  part   html > body > div > div > main > section > div > div > div > div.newsletterSection__newsletter--ad4a93c2b832fbe3b78ab0d0f497d4cd > div  ×5
+    field  self  ×1
+      "Today's Newsletter"
+    field  p  ×1
+      "The latest from"
+    field  a  ×1
+      "www.technologyreview.com/newsletter-preferences"
+    field  a > div  ×1
+      "More Newsletters"
+    part   span  ×2
+      field  self  ×2
+        "The Checkup"
+        ":"
+        "Our weekly biotech and health email"
+    part   div  ×4
+      field  form > label  ×1
+        "Enter your email"
+      field  form > div > button > div  ×1
+        "Sign up for free"
+      part   div  ×4
+        field  h3  ×1
+          "The specter of AI-enabled bioweapons is a wake-up call for biotech"
+        part   div  ×5
+          field  div > div > p  ×1
+            "In recent weeks, leaders of some of the biggest AI companies have warned that the very tech they are developin…"
+            "and that progress should be slowed. OpenAI CEO Sam Altman"
+            ": “I agree with Dario that we need to pace the frontier.”"
+          field  div > div > p > a  ×1
+            "carries serious risk"
+            "darioamodei.com/post/we-must-pace-the-frontier"
+          field  div > div > p > a > em  ×1
+            "sign up here"
+          field  div > div > p > em  ×1
+            "40,000 molecules"
+          field  aside > h2  ×1
+            "Related Story"
+          field  aside > div > a  ×0
+          field  aside > div > a > div  ×1
+            "No one's sure if synthetic mirror life will kill us all"
+
+structure 17  ×2 instances
+  part   html > body > div > div > main > section > div > div > div > div > div > div > div > div > aside  ×2
+    field  h2.related__header  ×2
+      "Related Story"
+    field  div.related__content-wrap > a.related__link:not(.button__primary--491aa0c640a989ad473fb309ceadf5d1):not(.button__wrapper--20b97b227471b3dd002defc980e6f965):not(…  ×2
+      "www.technologyreview.com/2026/04/15/1135197/synthetic-mirror-life-microbes-kill-us-all"
+      "www.technologyreview.com/2026/08/03/1141009/heres-why-ai-agents-lie-and-cheat-to-reach-their-goals"
+    field  div.related__content-wrap > a.related__link:not(.button__primary--491aa0c640a989ad473fb309ceadf5d1):not(.button__wrapper--20b97b227471b3dd002defc980e6f965):not(…  ×2
+      "No one's sure if synthetic mirror life will kill us all"
+      "Here’s why AI agents lie and cheat to reach their goals"
+    field  div.related__content-wrap > a.button__primary--491aa0c640a989ad473fb309ceadf5d1.button__wrapper--20b97b227471b3dd002defc980e6f965.related__button:not(.related__…  ×2
+      "Read next"
+      "www.technologyreview.com/2026/04/15/1135197/synthetic-mirror-life-microbes-kill-us-all"
+      "www.technologyreview.com/2026/08/03/1141009/heres-why-ai-agents-lie-and-cheat-to-reach-their-goals"
+
+structure 18  ×17 instances
+  part   html > body > div > div > main > section > div > div > div > div > div > div > div > div > div > div.html_first > p  ×17
+    field  self  ×17
+      "In recent weeks, leaders of some of the biggest AI companies have warned that the very tech they are developin…"
+      "and that progress should be slowed. OpenAI CEO Sam Altman"
+      ": “I agree with Dario that we need to pace the frontier.”"
+      (32 values)
+    part   a  ×12
+      field  self  ×12
+        "carries serious risk"
+        "darioamodei.com/post/we-must-pace-the-frontier"
+        "responded on X"
+        (23 values)
+      field  em  ×1
+        "sign up here"
+    part   em  ×5
+      field  self  ×5
+        "40,000 molecules"
+        "was"
+        "and"
+        (5 values)
+
+structure 19  ×17 instances
+  part   html > body > div > div > main > section > div > div > div > div > div > div > div > div > div > div.html_3 > p  ×17
+    field  self  ×17
+      "In recent weeks, leaders of some of the biggest AI companies have warned that the very tech they are developin…"
+      "and that progress should be slowed. OpenAI CEO Sam Altman"
+      ": “I agree with Dario that we need to pace the frontier.”"
+      (32 values)
+    part   a  ×12
+      field  self  ×12
+        "carries serious risk"
+        "darioamodei.com/post/we-must-pace-the-frontier"
+        "responded on X"
+        (23 values)
+      field  em  ×1
+        "sign up here"
+    part   em  ×5
+      field  self  ×5
+        "40,000 molecules"
+        "was"
+        "and"
+        (5 values)
+
+structure 20  ×17 instances
+  part   html > body > div > div > main > section > div > div > div > div > div > div > div > div > div > div.html_5 > p  ×17
+    field  self  ×17
+      "In recent weeks, leaders of some of the biggest AI companies have warned that the very tech they are developin…"
+      "and that progress should be slowed. OpenAI CEO Sam Altman"
+      ": “I agree with Dario that we need to pace the frontier.”"
+      (32 values)
+    part   a  ×12
+      field  self  ×12
+        "carries serious risk"
+        "darioamodei.com/post/we-must-pace-the-frontier"
+        "responded on X"
+        (23 values)
+      field  em  ×1
+        "sign up here"
+    part   em  ×5
+      field  self  ×5
+        "40,000 molecules"
+        "was"
+        "and"
+        (5 values)
+
+structure 21  ×3 instances
+  part   html > body > div > div > main > section > div > div > div > div > div.homepageStoryCard__cardContent--781b0933a7501874d3861a7401adaad2 > div  ×3
+    field  div > div  ×1
+      "Sponsored"
+    field  div > p  ×1
+      "How companies are freeing themselves of legacy data systems to power AI agents that deliver trusted, autonomou…"
+    field  a  ×1
+      "www.technologyreview.com/2026/08/12/1141032/scaling-ai-agents-with-trustworthy-data"
+    field  a > h3  ×1
+      "Scaling AI agents with trustworthy data"
+    field  section > p > span  ×1
+      "In partnership with"
+    field  section > p > a  ×1
+      "Google Cloud"
+      "cloud.google.com"
+
+structure 22  ×2 instances
+  part   html > body > div > div > footer > div  ×2
+    part   div  ×3
+      part   div  ×6
+        field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×2
+          "The latest iteration of a legacy"
+          "Advertise with MIT Technology Review"
+        field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×2
+          "Founded at the Massachusetts Institute of Technology in 1899, MIT Technology Review is a world-renowned, indep…"
+          "Elevate your brand to the forefront of conversation around emerging technologies that are radically transformi…"
+        field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×2
+          "www.technologyreview.com/supertopic/about-mit-technology-review"
+          "mediakit.technologyreview.com"
+        field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×2
+          "READ ABOUT OUR HISTORY"
+          "ADVERTISE WITH US"
+        part   div:not(.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a):not(.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782) > ul > li  ×2
+          field  h3.siteFooterMenuItem__parent--4b1e20b1bcb5e2008b54659d43524217  ×2
+            "About"
+            "Help"
+          field  div > div.menu__wrapper--215ab959a37bd6c49eff66dd0ba75f9d > ul.menu__list--aef02d1e298e9652c52bbd29fba75321 > li.siteFooterMenuItem__wrapper--ac4d2b8537d8be78e7…  ×2
+            "www.technologyreview.com/supertopic/about-mit-technology-review"
+            "www.technologyreview.com/help"
+          field  div > div.menu__wrapper--215ab959a37bd6c49eff66dd0ba75f9d > ul.menu__list--aef02d1e298e9652c52bbd29fba75321 > li.siteFooterMenuItem__wrapper--ac4d2b8537d8be78e7…  ×2
+            "About us"
+            "Help & FAQ"
+        part   p  ×2
+          field  self  ×1
+            "©"
+            "2026"
+            "MIT Technology Review"
+        part   ul > li  ×5
+          field  a.footer__anchor--fdcb59c028ba6cde16bdec3223baca76.mittr-share-link.socialItem__anchor--f2d7cab71ed8f8aed2789d2f48f79d1a  ×5
+            "www.linkedin.com/company/mit-technology-review"
+            "www.instagram.com/technologyreview"
+            "www.reddit.com/user/techreview"
+            (5 values)
+          field  a.footer__anchor--fdcb59c028ba6cde16bdec3223baca76.mittr-share-link.socialItem__anchor--f2d7cab71ed8f8aed2789d2f48f79d1a > span.footer__screenReaderLabel--9a6de…  ×5
+            "linkedin opens in a new window"
+            "instagram opens in a new window"
+            "reddit opens in a new window"
+            (5 values)
+
+structure 23  ×2 instances
+  part   html > body > div > div > footer > div > div > div.footer__storyCard--f2b0e559b8be3fc26a2def890a947555  ×2
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×2
+      "The latest iteration of a legacy"
+      "Advertise with MIT Technology Review"
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×2
+      "Founded at the Massachusetts Institute of Technology in 1899, MIT Technology Review is a world-renowned, indep…"
+      "Elevate your brand to the forefront of conversation around emerging technologies that are radically transformi…"
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×2
+      "www.technologyreview.com/supertopic/about-mit-technology-review"
+      "mediakit.technologyreview.com"
+    field  div.homepageStoryCard__sizeSmall--b663142b4afddc58b8412c53256a362a.homepageStoryCard__wrapper--5d95dc382241d259dc249996a6e29782 > div.homepageStoryCard__cardCon…  ×2
+      "READ ABOUT OUR HISTORY"
+      "ADVERTISE WITH US"
+
+structure 24  ×14 instances
+  part   html > body > div > div > footer > div > div > div > div > ul > li > div > div > ul > li  ×14
+    field  a.link__siteFooter--a99f5f35b4490cb9efb77864edaa1b62.siteFooterMenuItem__link--a73e107b28fe1d40f4fdc3aefc963f73  ×14
+      "www.technologyreview.com/supertopic/about-mit-technology-review"
+      "www.technologyreview.com/open-positions"
+      "www.technologyreview.com/custom-content"
+      (14 values)
+    field  a.link__siteFooter--a99f5f35b4490cb9efb77864edaa1b62.siteFooterMenuItem__link--a73e107b28fe1d40f4fdc3aefc963f73 > span  ×14
+      "About us"
+      "Careers"
+      "Custom content"
+      (14 values)
+
+structure 25  ×5 instances
+  part   html > body > div > div > footer > div > div > div > ul > li  ×5
+    field  a.footer__anchor--fdcb59c028ba6cde16bdec3223baca76.mittr-share-link.socialItem__anchor--f2d7cab71ed8f8aed2789d2f48f79d1a  ×5
+      "www.linkedin.com/company/mit-technology-review"
+      "www.instagram.com/technologyreview"
+      "www.reddit.com/user/techreview"
+      (5 values)
+    field  a.footer__anchor--fdcb59c028ba6cde16bdec3223baca76.mittr-share-link.socialItem__anchor--f2d7cab71ed8f8aed2789d2f48f79d1a > span.footer__screenReaderLabel--9a6de…  ×5
+      "linkedin opens in a new window"
+      "instagram opens in a new window"
+      "reddit opens in a new window"
+      (5 values)

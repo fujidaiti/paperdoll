@@ -1,0 +1,119 @@
+# go.dev-blog
+url               https://go.dev/blog/
+posts in fixture  10
+structures        4
+recall            1.000, recall+ 0.000
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×14 instances
+  part   html > body > header > div > nav > div > ul > li > ul > li  ×14
+    field  p  ×13
+      "Common problems companies solve with Go"
+      "Stories about how and why companies use Go"
+      "How Go can help keep you secure by default"
+      (13 values)
+    part   div  ×15
+      field  self  ×1
+        "Get connected"
+      part   a  ×21
+        field  self  ×21
+          "Case Studies"
+          "go.dev/solutions/case-studies"
+          "Use Cases"
+          (34 values)
+        field  i.material-icons  ×2
+          "open_in_new"
+        field  img  ×8
+          "go.dev/images/logos/social/google-groups.svg"
+          "go.dev/images/logos/social/github.svg"
+          "go.dev/images/logos/social/bluesky.svg"
+          (8 values)
+
+structure 2  ×5 instances
+  part   html > body > aside > nav > ul > li  ×5
+    field  a  ×5
+      "go.dev/blog"
+      "Learn"
+      "go.dev/learn"
+      (7 values)
+    field  a > span  ×3
+      "Why Go"
+      "Docs"
+      "Community"
+    field  a > i.material-icons  ×3
+      "navigate_next"
+    field  div.NavigationDrawer.NavigationDrawer-submenuItem > nav.NavigationDrawer-nav > div.NavigationDrawer-header > a  ×3
+      "Why Go"
+      "go.dev/blog"
+      "Docs"
+      (6 values)
+    field  div.NavigationDrawer.NavigationDrawer-submenuItem > nav.NavigationDrawer-nav > div.NavigationDrawer-header > a > i.material-icons  ×3
+      "navigate_before"
+    part   div.NavigationDrawer.NavigationDrawer-submenuItem > nav.NavigationDrawer-nav > ul.NavigationDrawer-list > li.NavigationDrawer-listItem  ×14
+      field  a  ×13
+        "Case Studies"
+        "go.dev/solutions/case-studies"
+        "Use Cases"
+        (26 values)
+      field  a > i.material-icons  ×2
+        "open_in_new"
+      part   div  ×2
+        field  self  ×1
+          "Get connected"
+        part   a  ×8
+          field  self  ×8
+            "groups.google.com/g/golang-nuts"
+            "github.com/golang"
+            "bsky.app/profile/golang.org"
+            (8 values)
+          field  img  ×8
+            "go.dev/images/logos/social/google-groups.svg"
+            "go.dev/images/logos/social/github.svg"
+            "go.dev/images/logos/social/bluesky.svg"
+            (8 values)
+
+structure 3  ×21 instances
+  part   html > body > main > div > div > div > div > div > div > p  ×21
+    field  self  ×20
+      ","
+      "Go 1.27 improves performance of small allocations using size-specialized allocation functions."
+      "Go 1.27 includes new goroutine leak profiles."
+      (20 values)
+    field  a  ×11
+      "Size-Specialized Memory Allocation"
+      "go.dev/blog/size-specialized-allocations"
+      "Goroutine Leak Profiles"
+      (22 values)
+    field  span.date:not(.author)  ×10
+      "16 September 2026"
+      "2 September 2026"
+      "26 August 2026"
+      (10 values)
+    field  span.author:not(.date)  ×10
+      "Michael Matloob"
+      "Vlad Saioc"
+      "Mark Freeman"
+      (10 values)
+
+structure 4  ×5 instances
+  part   html > body > footer > div > div > div > div  ×5
+    field  a.Footer-link.Footer-link--primary  ×5
+      "Why Go"
+      "go.dev/solutions"
+      "Get Started"
+      (10 values)
+    part   a.Footer-link:not(.Footer-link--primary)  ×23
+      field  self  ×23
+        "Use Cases"
+        "go.dev/solutions/use-cases"
+        "Case Studies"
+        (46 values)

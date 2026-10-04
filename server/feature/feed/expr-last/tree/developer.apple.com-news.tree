@@ -1,0 +1,507 @@
+# developer.apple.com-news
+url               https://developer.apple.com/news/
+posts in fixture  110
+structures        18
+recall            1.000, recall+ 0.982
+merge             1.04
+distrib           3.32, wrappers 1.48
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×7 instances
+  part   html > body > nav > div > ul > li > div > div > div.globalnav-item-submenu  ×7
+    field  div.globalnav-flyout.globalnav-submenu > div.globalnav-flyout-scroll-container > div.globalnav-flyout-content.globalnav-submenu-content > div.globalnav-submenu-…  ×7
+      "Explore Get Started"
+      "Explore Platforms"
+      "Explore Technologies"
+      (7 values)
+    field  div.globalnav-flyout.globalnav-submenu > div.globalnav-flyout-scroll-container > div.globalnav-flyout-content.globalnav-submenu-content > div.globalnav-submenu-…  ×7
+      "Stay Updated"
+      "Featured"
+      "Release Notes"
+    part   ul.globalnav-submenu-trigger-group > li.globalnav-submenu-trigger-item  ×14
+      field  a.globalnav-link.globalnav-submenu-trigger-link  ×7
+        "developer.apple.com/get-started"
+        "developer.apple.com/platforms"
+        "developer.apple.com/technologies"
+        (7 values)
+      field  a.globalnav-link.globalnav-submenu-trigger-link > span.globalnav-link-text-container:not(.globalnav-link-chevron) > span.globalnav-link-text  ×7
+        "Get Started"
+        "Platforms"
+        "Technologies"
+        (7 values)
+    part   div.globalnav-flyout.globalnav-submenu > div.globalnav-flyout-scroll-container > div.globalnav-flyout-content.globalnav-submenu-content > div.globalnav-submenu-…  ×34
+      field  a.globalnav-submenu-link  ×34
+        "Overview"
+        "developer.apple.com/get-started"
+        "Learn"
+        (68 values)
+    part   div.globalnav-flyout.globalnav-submenu > div.globalnav-flyout-scroll-container > div.globalnav-flyout-content.globalnav-submenu-content > div.globalnav-submenu-…  ×41
+      field  a.globalnav-submenu-link  ×41
+        "Latest News"
+        "developer.apple.com/news"
+        "Hello Developer"
+        (82 values)
+
+structure 2  ×2 instances
+  part   html > body > nav > div > ul > li > div > div > div.globalnav-item-getting-started > div > div > div > div  ×2
+    field  h2.globalnav-submenu-header  ×2
+      "Explore Get Started"
+      "Stay Updated"
+    part   ul.globalnav-submenu-list > li  ×5
+      field  a.globalnav-submenu-link  ×5
+        "Overview"
+        "developer.apple.com/get-started"
+        "Learn"
+        (10 values)
+
+structure 3  ×2 instances
+  part   html > body > nav > div > ul > li > div > div > div.globalnav-item-technologies > div > div > div > div  ×2
+    field  h2.globalnav-submenu-header  ×2
+      "Explore Technologies"
+      "Featured"
+    part   ul.globalnav-submenu-list > li  ×11
+      field  a.globalnav-submenu-link  ×11
+        "Overview"
+        "developer.apple.com/technologies"
+        "Xcode"
+        (22 values)
+
+structure 4  ×2 instances
+  part   html > body > nav > div > ul > li > div > div > div.globalnav-item-community > div > div > div > div  ×2
+    field  h2.globalnav-submenu-header  ×2
+      "Explore Community"
+      "Featured"
+    part   ul.globalnav-submenu-list > li  ×11
+      field  a.globalnav-submenu-link  ×11
+        "Overview"
+        "developer.apple.com/community"
+        "Meet with Apple events"
+        (22 values)
+
+structure 5  ×2 instances
+  part   html > body > nav > div > ul > li > div > div > div.globalnav-item-documentation > div > div > div > div  ×2
+    field  h2.globalnav-submenu-header  ×2
+      "Explore Documentation"
+      "Release Notes"
+    part   ul.globalnav-submenu-list > li  ×13
+      field  a.globalnav-submenu-link  ×13
+        "Documentation Library"
+        "developer.apple.com/documentation"
+        "Technology Overviews"
+        (26 values)
+
+structure 6  ×2 instances
+  part   html > body > nav > div > ul > li > div > div > div.globalnav-item-support > div > div > div > div  ×2
+    field  h2.globalnav-submenu-header  ×2
+      "Explore Support"
+      "Featured"
+    part   ul.globalnav-submenu-list > li  ×11
+      field  a.globalnav-submenu-link  ×11
+        "Overview"
+        "developer.apple.com/support"
+        "Help Guides"
+        (22 values)
+
+structure 7  ×108 instances
+  part   html > body > main > section > section > section > article  ×108
+    field  section.row-full > section.article-content-container.column.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-12:not(.divid…  ×1
+      "developer.apple.com/news?id=nyuppv9r"
+    field  section.row-full > section.article-content-container.column.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-12:not(.divid…  ×1
+      "Build for iPhone Duo with new resources"
+    field  section.row-full > section.article-content-container.column.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-12:not(.divid…  ×1
+      "September 18, 2026"
+    field  section.row-full > section.article-content-container.column.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-12:not(.divid…  ×1
+      "devimages-cdn.apple.com/wwdc-services/articles/images/DF24E0B0-3564-444A-B15A-344E3FDC834F/2048.jpeg"
+      "Front and rear views of iPhone Duo shown side by side in Star White and Night Sky, displaying desert landscape…"
+    field  section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×46
+      "developer.apple.com/assets/elements/icons/sdk-27/sdk-27-256x256_2x.png"
+      "Get ready with the latest beta releases"
+      "developer.apple.com/assets/elements/icons/ios-27-round/ios-27-round-128x128_2x.png"
+      (92 values)
+    field  section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×107
+      "September 16, 2026"
+      "September 9, 2026"
+      "September 1, 2026"
+      (107 values)
+    field  section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×11
+      "Read more"
+      "developer.apple.com/news?id=artln8br"
+      "developer.apple.com/news?id=dhwadr2x"
+      (22 values)
+    field  section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×34
+      "devimages-cdn.apple.com/wwdc-services/articles/images/022EB77D-3E86-4604-B38E-39F1B024E868/2048.jpeg"
+      "Two iPhone screens demonstrating an App Store subscription bundle: an in-app promotional sheet in the Forest E…"
+      "devimages-cdn.apple.com/wwdc-services/articles/images/1E836BD5-C933-4BC4-98D2-0ABF4777C9BA/2048.jpeg"
+      (66 values)
+    field  section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×107
+      "developer.apple.com/news?id=rfb1rooi"
+      "developer.apple.com/news?id=likeohx4"
+      "developer.apple.com/news?id=idsft9ai"
+      (107 values)
+    field  section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×107
+      "Get ready with the latest beta releases"
+      "Get your subscriptions ready for iOS 27"
+      "Updates to App Tracking Transparency in the European Union"
+      (107 values)
+    part   section.row-full > section.article-content-container.column.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-12:not(.divid…  ×8
+      field  self  ×4
+        "Get Xcode 27.1 beta."
+        "Get Figma and Sketch design kits for iPhone Duo from the Apple Design Resources."
+        "Sign up for workshops around the world to learn how to optimize your app and build customized experiences for …"
+        (4 values)
+      field  a  ×4
+        "View downloads"
+        "developer.apple.com/news/releases"
+        "Download design kits from"
+        (7 values)
+      field  a > span.icon.icon-after.icon-chevronright.nowrap  ×4
+        "and release notes"
+        "the Apple Design Resources"
+        "Explore workshops"
+        (4 values)
+    part   section.row-full > section.article-content-container.column.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-12:not(.divid…  ×4
+    part   section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×472
+      field  self  ×285
+        "The beta versions of iOS 27.2, iPadOS 27.2, macOS 27.2, tvOS 27.2, visionOS 27.2, and watchOS 27.2 are now ava…"
+        "When iPhone Duo becomes available on October 23, it will run iOS 27.1. This version builds on the foundation o…"
+        "Xcode 27.1 will add development support for iPhone Duo. This includes updated SDKs and a simulator that suppor…"
+        (389 values)
+      field  strong  ×64
+        "Note about iOS 27.1 and iPhone Duo"
+        "Download the Xcode 27 Release Candidate."
+        "Optimize your app for macOS 27."
+        (64 values)
+      field  a.icon.icon-after.icon-chevronright  ×2
+        "Take the survey"
+        "essentials.applesurveys.com/jfe/form/SV_5tJK78sSEAWRhsi?chnl=2"
+        "Apple Design Resources"
+        (4 values)
+      part   a:not(.icon):not(.icon-after):not(.icon-chevronright)  ×230
+        field  self  ×230
+          "View downloads and"
+          "developer.apple.com/news/releases"
+          "Learn about testing a"
+          (450 values)
+        field  span.icon.icon-after.icon-chevronright.nowrap  ×136
+          "release notes"
+          "beta OS"
+          "sending feedback"
+          (136 values)
+      part   br  ×4
+      part   code  ×6
+        field  self  ×6
+          "privaterelay.appleid.com"
+          "private.icloud.com"
+          "icloud.com"
+    part   section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×19
+      field  self  ×17
+        "Translations of the updated agreement will be available on the"
+        "within one month."
+        "The"
+        (31 values)
+      field  em  ×2
+        "¹ Translations of the updated agreement are available on the Apple Developer website today."
+        "² Excludes auto-renewable subscriptions."
+      part   a  ×14
+        field  self  ×14
+          "Apple Developer website"
+          "developer.apple.com/support/terms"
+          "Apple Developer Program License Agreement"
+          (28 values)
+    part   section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×9
+      field  self  ×9
+        "Request access to Bundles and Suites"
+        "Multiseat purchasing enabled in App Store Connect"
+        "What you need to do"
+        (9 values)
+    part   section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×50
+      part   li  ×174
+        field  self  ×163
+          "iOS and iPadOS apps must be built with the iOS 27 & iPadOS 27 SDK or later"
+          "tvOS apps must be built with the tvOS 27 SDK or later"
+          "visionOS apps must be built with the visionOS 27 SDK or later"
+          (175 values)
+        field  strong  ×12
+          "If you haven’t updated your app yet:"
+          "If you already offer an Apple silicon version:"
+          "Auto-renewing subscriptions, manually priced apps and In‑App Purchases, or apps and In‑App Purchases with Bulg…"
+          (12 values)
+        field  a  ×29
+          "Declared Age Range API"
+          "developer.apple.com/documentation/declaredagerange"
+          "Significant Change API under PermissionKit"
+          (58 values)
+    part   section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×2
+      field  li  ×2
+        "Review documentation and implement the following:"
+        "Use Apple’s sandbox testing environment to validate that the APIs have been implemented correctly."
+    part   section.row-full > section.article-content-container.column.divider-top.large-9.large-centered.medium-9.no-padding-left.padding-bottom-small.padding-top.small-1…  ×428
+
+structure 8  ×191 instances
+  part   html > body > main > section > section > section > article.no-image > section > section > div > span > p  ×191
+    field  self  ×127
+      "Get Xcode 27.1 beta."
+      "Get Figma and Sketch design kits for iPhone Duo from the Apple Design Resources."
+      "Sign up for workshops around the world to learn how to optimize your app and build customized experiences for …"
+      (181 values)
+    field  a.icon.icon-after.icon-chevronright  ×2
+      "Take the survey"
+      "essentials.applesurveys.com/jfe/form/SV_5tJK78sSEAWRhsi?chnl=2"
+      "Apple Design Resources"
+      (4 values)
+    field  strong  ×15
+      "Download the Xcode 27 Release Candidate."
+      "Optimize your app for macOS 27."
+      "Answer age rating questions."
+      (15 values)
+    part   a:not(.icon):not(.icon-after):not(.icon-chevronright)  ×104
+      field  self  ×104
+        "View downloads"
+        "developer.apple.com/news/releases"
+        "Download design kits from"
+        (197 values)
+      field  span.icon.icon-after.icon-chevronright.nowrap  ×52
+        "and release notes"
+        "the Apple Design Resources"
+        "Explore workshops"
+        (52 values)
+    part   br  ×4
+
+structure 9  ×308 instances
+  part   html > body > main > section > section > section > article.thumbnail-layout > section > section > div > span > p  ×308
+    field  self  ×179
+      "The beta versions of iOS 27.2, iPadOS 27.2, macOS 27.2, tvOS 27.2, visionOS 27.2, and watchOS 27.2 are now ava…"
+      "When iPhone Duo becomes available on October 23, it will run iOS 27.1. This version builds on the foundation o…"
+      "Xcode 27.1 will add development support for iPhone Duo. This includes updated SDKs and a simulator that suppor…"
+      (243 values)
+    field  strong  ×49
+      "Note about iOS 27.1 and iPhone Duo"
+      "What this means for developers who have macOS apps:"
+      "What you need to do:"
+      (49 values)
+    field  em  ×2
+      "¹ Translations of the updated agreement are available on the Apple Developer website today."
+      "² Excludes auto-renewable subscriptions."
+    part   a  ×144
+      field  self  ×144
+        "View downloads and"
+        "developer.apple.com/news/releases"
+        "Learn about testing a"
+        (288 values)
+      field  span.icon.icon-after.icon-chevronright.nowrap  ×88
+        "release notes"
+        "beta OS"
+        "sending feedback"
+        (88 values)
+    part   code  ×6
+      field  self  ×6
+        "privaterelay.appleid.com"
+        "private.icloud.com"
+        "icloud.com"
+
+structure 10  ×183 instances
+  part   html > body > main > section > section > section > article.no-image > section > section.divider-top > div > span > p  ×183
+    field  self  ×123
+      "Discover how you can expand the reach of your subscriptions with new features in iOS 27. You can start prepari…"
+      "Offer multiple subscriptions as a single Apple In-App Purchase in your apps with new Bundles and Suites capabi…"
+      "The App Store provides the purchase experience, which displays all apps included in your Bundle or Suite, so i…"
+      (177 values)
+    field  a.icon.icon-after.icon-chevronright  ×2
+      "Take the survey"
+      "essentials.applesurveys.com/jfe/form/SV_5tJK78sSEAWRhsi?chnl=2"
+      "Apple Design Resources"
+      (4 values)
+    field  strong  ×15
+      "Download the Xcode 27 Release Candidate."
+      "Optimize your app for macOS 27."
+      "Answer age rating questions."
+      (15 values)
+    part   a:not(.icon):not(.icon-after):not(.icon-chevronright)  ×100
+      field  self  ×100
+        "Bundles and Suites page"
+        "developer.apple.com/app-store/subscriptions/bundles-and-suites"
+        "developer.apple.com/videos/play/wwdc2026/210?time=530"
+        (190 values)
+      field  span.icon.icon-after.icon-chevronright.nowrap  ×48
+        "Offer Bundles and Suites"
+        "Bundles and Suites video"
+        "auto-renewable subscription"
+        (48 values)
+    part   br  ×4
+
+structure 11  ×24 instances
+  part   html > body > main > section > section > section > article.no-image > section > section > div > span > ul  ×24
+    part   li  ×102
+      field  self  ×93
+        "iOS and iPadOS apps must be built with the iOS 27 & iPadOS 27 SDK or later"
+        "tvOS apps must be built with the tvOS 27 SDK or later"
+        "visionOS apps must be built with the visionOS 27 SDK or later"
+        (99 values)
+      field  a  ×18
+        "Declared Age Range API"
+        "developer.apple.com/documentation/declaredagerange"
+        "Significant Change API under PermissionKit"
+        (36 values)
+      field  strong  ×3
+        "Redesigned invitations."
+        "Tester enrollment criteria."
+        "Public link metrics."
+
+structure 12  ×102 instances
+  part   html > body > main > section > section > section > article.no-image > section > section > div > span > ul > li  ×102
+    field  self  ×93
+      "iOS and iPadOS apps must be built with the iOS 27 & iPadOS 27 SDK or later"
+      "tvOS apps must be built with the tvOS 27 SDK or later"
+      "visionOS apps must be built with the visionOS 27 SDK or later"
+      (99 values)
+    field  a  ×18
+      "Declared Age Range API"
+      "developer.apple.com/documentation/declaredagerange"
+      "Significant Change API under PermissionKit"
+      (36 values)
+    field  strong  ×3
+      "Redesigned invitations."
+      "Tester enrollment criteria."
+      "Public link metrics."
+
+structure 13  ×26 instances
+  part   html > body > main > section > section > section > article.thumbnail-layout > section > section > div > span > ul  ×26
+    part   li  ×72
+      field  self  ×70
+        "macOS 26.4 or later: Users may receive a system notification when launching apps that rely on Rosetta, alertin…"
+        "macOS 27: Final release to support Rosetta — Intel-only apps will no longer run on Mac computers with Apple si…"
+        "Begin the transition immediately. Build and distribute your app as a universal binary, which runs natively on …"
+        (76 values)
+      field  strong  ×9
+        "If you haven’t updated your app yet:"
+        "If you already offer an Apple silicon version:"
+        "Auto-renewing subscriptions, manually priced apps and In‑App Purchases, or apps and In‑App Purchases with Bulg…"
+        (9 values)
+      field  a  ×11
+        "TN3194: Handling account deletions and revoking tokens for Sign in with Apple"
+        "developer.apple.com/documentation/technotes/tn3194-handling-account-deletions-and-revoking-tokens-for-sign-in-…"
+        "App Review Guidelines"
+        (22 values)
+
+structure 14  ×72 instances
+  part   html > body > main > section > section > section > article.thumbnail-layout > section > section > div > span > ul > li  ×72
+    field  self  ×70
+      "macOS 26.4 or later: Users may receive a system notification when launching apps that rely on Rosetta, alertin…"
+      "macOS 27: Final release to support Rosetta — Intel-only apps will no longer run on Mac computers with Apple si…"
+      "Begin the transition immediately. Build and distribute your app as a universal binary, which runs natively on …"
+      (76 values)
+    field  strong  ×9
+      "If you haven’t updated your app yet:"
+      "If you already offer an Apple silicon version:"
+      "Auto-renewing subscriptions, manually priced apps and In‑App Purchases, or apps and In‑App Purchases with Bulg…"
+      (9 values)
+    field  a  ×11
+      "TN3194: Handling account deletions and revoking tokens for Sign in with Apple"
+      "developer.apple.com/documentation/technotes/tn3194-handling-account-deletions-and-revoking-tokens-for-sign-in-…"
+      "App Review Guidelines"
+      (22 values)
+
+structure 15  ×4 instances
+  part   html > body > footer > div > nav > div  ×4
+    part   input.footer-directory-column-section-state  ×8
+    part   div.footer-directory-column-section  ×8
+      field  label.footer-directory-column-section-label > h3.footer-directory-column-section-title  ×8
+        "Platforms"
+        "Tools"
+        "Technologies"
+        (8 values)
+      field  a.footer-directory-column-section-anchor.footer-directory-column-section-anchor-open:not(.footer-directory-column-section-anchor-close)  ×8
+        "developer.apple.com/news#footer-directory-column-section-state-platform"
+        "developer.apple.com/news#footer-directory-column-section-state-tools"
+        "developer.apple.com/news#footer-directory-column-section-state-topics"
+        (8 values)
+      field  a.footer-directory-column-section-anchor.footer-directory-column-section-anchor-open:not(.footer-directory-column-section-anchor-close) > span.footer-directory-…  ×8
+        "Open Menu"
+      field  a.footer-directory-column-section-anchor.footer-directory-column-section-anchor-close:not(.footer-directory-column-section-anchor-open)  ×8
+        "developer.apple.com/news"
+      field  a.footer-directory-column-section-anchor.footer-directory-column-section-anchor-close:not(.footer-directory-column-section-anchor-open) > span.footer-directory-…  ×8
+        "Close Menu"
+      part   ul.footer-directory-column-section-list > li.footer-directory-column-section-item  ×61
+        field  a.footer-directory-column-section-link  ×61
+          "iOS"
+          "developer.apple.com/ios"
+          "iPadOS"
+          (122 values)
+
+structure 16  ×8 instances
+  part   html > body > footer > div > nav > div > div  ×8
+    field  label.footer-directory-column-section-label > h3.footer-directory-column-section-title  ×8
+      "Platforms"
+      "Tools"
+      "Technologies"
+      (8 values)
+    field  a.footer-directory-column-section-anchor.footer-directory-column-section-anchor-open:not(.footer-directory-column-section-anchor-close)  ×8
+      "developer.apple.com/news#footer-directory-column-section-state-platform"
+      "developer.apple.com/news#footer-directory-column-section-state-tools"
+      "developer.apple.com/news#footer-directory-column-section-state-topics"
+      (8 values)
+    field  a.footer-directory-column-section-anchor.footer-directory-column-section-anchor-open:not(.footer-directory-column-section-anchor-close) > span.footer-directory-…  ×8
+      "Open Menu"
+    field  a.footer-directory-column-section-anchor.footer-directory-column-section-anchor-close:not(.footer-directory-column-section-anchor-open)  ×8
+      "developer.apple.com/news"
+    field  a.footer-directory-column-section-anchor.footer-directory-column-section-anchor-close:not(.footer-directory-column-section-anchor-open) > span.footer-directory-…  ×8
+      "Close Menu"
+    part   ul.footer-directory-column-section-list > li.footer-directory-column-section-item  ×61
+      field  a.footer-directory-column-section-link  ×61
+        "iOS"
+        "developer.apple.com/ios"
+        "iPadOS"
+        (122 values)
+
+structure 17  ×3 instances
+  part   html > body > footer > div > section > div  ×3
+    part   div  ×4
+      field  self  ×2
+        "Follow us on"
+        ","
+        ", and"
+        (7 values)
+      part   div  ×3
+        field  self  ×2
+          "Read the"
+          "."
+          "Get the"
+        field  a  ×2
+          "latest news"
+          "developer.apple.com/news"
+          "Apple Developer app"
+          (4 values)
+        part   label  ×3
+          field  input  ×3
+            "light"
+            "dark"
+            "auto"
+          field  div.text  ×3
+            "Light"
+            "Dark"
+            "Auto"
+      part   a  ×8
+        field  self  ×8
+          "bilibili"
+          "space.bilibili.com/429911174"
+          "LinkedIn"
+          (16 values)
+
+structure 18  ×2 instances
+  part   html > body > footer > div > section > div.footer-mini-legal > div  ×2
+    field  self  ×1
+      "Copyright © 2026"
+      "All rights reserved."
+    part   a  ×4
+      field  self  ×4
+        "Apple Inc."
+        "www.apple.com"
+        "Terms of Use"
+        (8 values)

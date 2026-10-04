@@ -1,0 +1,259 @@
+# oreilly.com-radar
+url               https://www.oreilly.com/radar/
+posts in fixture  19
+structures        7
+recall            1.000, recall+ 0.947
+merge             1.00
+distrib           1.32, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×22 instances
+  part   html > body > header > div > div > nav > ul > li > dialog > ul > li  ×22
+    field  button.orm-global-site-menu__link  ×11
+      "Cloud Computing"
+      "Data Engineering"
+      "Data Science"
+      (11 values)
+    field  dialog.orm-global-site-menu__popover > footer.orm-global-site-menu__footer > a.orm-global-site-menu__view-all  ×11
+      "View all"
+      "www.oreilly.com/search/skills/cloud-computing"
+      "www.oreilly.com/search/skills/data-engineering"
+      (22 values)
+    field  a.orm-global-site-menu__link  ×11
+      "All features"
+      "www.oreilly.com/online-learning/features.html"
+      "Expert Intelligence"
+      (22 values)
+    part   dialog.orm-global-site-menu__popover > ul.orm-global-site-menu > li.orm-global-site-menu__item  ×98
+      field  a.orm-global-site-menu__link  ×98
+        "Microsoft Azure"
+        "www.oreilly.com/search/skills/microsoft-azure"
+        "Amazon Web Services (AWS)"
+        (196 values)
+
+structure 2  ×4 instances
+  part   html > body > main > div > div > div.module  ×4
+    field  form > h2  ×1
+      "Get the Radar Trends newsletter"
+    field  div > h2  ×1
+      "Thank you for subscribing to the O’Reilly Radar Trends to Watch newsletter."
+    field  h2  ×2
+      "Try the O’Reilly learning platform"
+      "Try a course for free"
+    field  p  ×2
+      "With the O’Reilly learning platform, you get the resources and guidance to keep your skills sharp and stay ahe…"
+      "Join a live online event on the O’Reilly platform to learn from the experts shaping tech."
+    field  a.ctaLink  ×2
+      "Start trial"
+      "www.oreilly.com/start-trial?type=team"
+      "See what’s coming soon"
+      (4 values)
+    field  link  ×1
+      "www.oreilly.com/radar/wp-content/themes/signal/files/marketing-cloud-subscribe-20220726.css"
+    part   form > input  ×9
+      field  self  ×8
+        "7200351"
+        "3559B084-4962-47D6-AD05-DAA2DE51CF45"
+        "add"
+        (8 values)
+    part   form > div  ×2
+      part   div  ×5
+        field  label  ×2
+          "Your email"
+          "Country"
+        field  button  ×1
+          "Subscribe"
+        field  p  ×1
+          "Please read our"
+          "."
+        field  p > a  ×1
+          "privacy policy"
+          "oreilly.com/oreilly/privacy.html"
+        part   select > option  ×200
+          field  self  ×200
+            "- Select country -"
+            "United States"
+            "Afghanistan"
+            (399 values)
+    part   div > a  ×6
+      field  self  ×6
+        "AI & ML"
+        "www.oreilly.com/radar/topics/ai-ml"
+        "Business"
+        (12 values)
+
+structure 3  ×3 instances
+  part   html > body > main > div > div > div > a.sticky  ×3
+    field  self  ×3
+      "www.oreilly.com/radar/will-typesafes-jev-change-how-we-build-ai-applications"
+      "www.oreilly.com/radar/mcp-is-not-just-another-api-standard"
+      "www.oreilly.com/radar/the-accelerationist-case-for-frontier-pacing"
+    field  figure.article > img  ×3
+      "www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Will-TypeSafes-Jev-change-how-we-build-AI-application…"
+      "www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/MCP-is-not-just-another-API-standard-1600x1244.jpg"
+      "www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-accelerationist-case-for-frontier-pacing-1600x124…"
+    field  div.inner > div.item-text > p.dek:not(.article):not(.post-type)  ×2
+      "What Model Context Protocol actually changes for agentic systems, and what it doesn’t"
+      "Slow AI is smooth AI, smooth AI is fast AI"
+    field  div.inner > div.item-text > h2  ×3
+      "Will TypeSafe’s Jev Change How We Build AI Applications?"
+      "MCP Is Not Just Another API Standard"
+      "The Accelerationist Case for Frontier Pacing"
+    part   div.inner > div.item-text > p.article.post-type:not(.dek) > span  ×6
+      field  self  ×6
+        "article"
+        "AI & ML"
+    part   div.inner > div.item-text > div.metaWrap > p.meta  ×6
+      field  self  ×6
+        "By Laurie Voss |"
+        "September 23, 2026"
+        "By Balaji Venkatasubramaniyar |"
+        (6 values)
+
+structure 4  ×16 instances
+  part   html > body > main > div > div > div.combined-blog-feed > a  ×16
+    field  self  ×16
+      "www.oreilly.com/radar/ai-sovereignty-bargaining-with-big-tech-and-the-promise-of-full-stack-open-source-ai"
+      "www.oreilly.com/radar/zero-to-agent-in-30-minutes-build-a-sports-concierge-agent-with-chester-ismay"
+      "www.oreilly.com/radar/the-post-training-process-openai-used-for-chatgpt"
+      (16 values)
+    field  div.inner > figure > img  ×16
+      "www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/AI-Sovereignty—Bargaining-with-Big-Tech-and-the-Promi…"
+      "www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_zero-to-agent-radar-1600x840-1-160x160.png"
+      "www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-post-training-process-OpenAI-used-for-ChatGPT-160…"
+      (16 values)
+    field  div.inner > div.item-text > p.article.post-type:not(.video) > span  ×13
+      "article"
+    field  div.inner > div.item-text > p.post-type.video:not(.article) > span  ×3
+      "video"
+    field  div.inner > div.item-text > h2  ×16
+      "AI Sovereignty: Bargaining with Big Tech and the Promise of Full Stack Open Source AI"
+      "Zero to Agent in 30 Minutes: Build a Sports Concierge Agent with Chester Ismay"
+      "The Post-training Process OpenAI Used for ChatGPT"
+      (16 values)
+    field  div.inner > div.item-text > div.meta  ×16
+      "By Nicole Butterfield | September 22, 2026"
+      "By Michelle Smith | September 21, 2026"
+      "By Sharon Zhou | September 21, 2026"
+      (16 values)
+
+structure 5  ×3 instances
+  part   html > body > footer > div > section  ×3
+    field  p  ×1
+      "Follow us"
+    field  a  ×1
+      "www.oreilly.com"
+      "home page"
+    field  a > img  ×1
+      "cdn.oreillystatic.com/images/sitewide-headers/oreilly_logo_mark_red.svg"
+      "cdn.oreillystatic.com/images/sitewide-headers/oreilly_logo_mark_red_@2x.png"
+      "O'Reilly home"
+    part   ul > li  ×2
+      field  a.site-footer-social-list__link  ×2
+        "www.linkedin.com/company/oreilly-media"
+        "O'Reilly on LinkedIn"
+        "www.youtube.com/user/OreillyMedia"
+        (4 values)
+    part   div  ×4
+      field  p  ×2
+        "."
+        "© 2026, O'Reilly Media, Inc. All trademarks and registered trademarks appearing on oreilly.com are the propert…"
+      field  p > a  ×1
+        "Do not sell or share my personal information"
+        "www.oreilly.com/privacy.html?donotsell=show"
+      part   div.site-footer__list  ×4
+        field  h2.site-footer__heading  ×2
+          "International"
+          "Download the O'Reilly App"
+        field  h2.site-footer__heading > a  ×2
+          "About O'Reilly"
+          "www.oreilly.com/about"
+          "Support"
+          (4 values)
+        field  p  ×1
+          "Take O'Reilly with you and learn anywhere, anytime on your phone and tablet."
+        part   ul.site-footer-list__ul > li  ×16
+          field  a  ×16
+            "Teach/Write/Train"
+            "www.oreilly.com/work-with-us.html"
+            "Careers"
+            (31 values)
+          field  a > img.site-footer__image  ×2
+            "cdn.oreillystatic.com/oreilly/images/app-store-logo.png"
+            "Apple app store"
+            "cdn.oreillystatic.com/oreilly/images/google-play-logo.png"
+            (4 values)
+      part   ul > li  ×4
+        field  a  ×4
+          "Terms of Service"
+          "www.oreilly.com/terms"
+          "Privacy Policy"
+          (8 values)
+
+structure 6  ×4 instances
+  part   html > body > footer > div > section > div > div  ×4
+    field  h2.site-footer__heading  ×2
+      "International"
+      "Download the O'Reilly App"
+    field  h2.site-footer__heading > a  ×2
+      "About O'Reilly"
+      "www.oreilly.com/about"
+      "Support"
+      (4 values)
+    field  p  ×1
+      "Take O'Reilly with you and learn anywhere, anytime on your phone and tablet."
+    part   ul.site-footer-list__ul > li  ×16
+      field  a  ×16
+        "Teach/Write/Train"
+        "www.oreilly.com/work-with-us.html"
+        "Careers"
+        (31 values)
+      field  a > img.site-footer__image  ×2
+        "cdn.oreillystatic.com/oreilly/images/app-store-logo.png"
+        "Apple app store"
+        "cdn.oreillystatic.com/oreilly/images/google-play-logo.png"
+        (4 values)
+
+structure 7  ×4 instances
+  part   html > body > footer > div > section > div  ×4
+    field  p  ×2
+      "."
+      "© 2026, O'Reilly Media, Inc. All trademarks and registered trademarks appearing on oreilly.com are the propert…"
+    field  p > a  ×1
+      "Do not sell or share my personal information"
+      "www.oreilly.com/privacy.html?donotsell=show"
+    part   div.site-footer__list  ×4
+      field  h2.site-footer__heading  ×2
+        "International"
+        "Download the O'Reilly App"
+      field  h2.site-footer__heading > a  ×2
+        "About O'Reilly"
+        "www.oreilly.com/about"
+        "Support"
+        (4 values)
+      field  p  ×1
+        "Take O'Reilly with you and learn anywhere, anytime on your phone and tablet."
+      part   ul.site-footer-list__ul > li  ×16
+        field  a  ×16
+          "Teach/Write/Train"
+          "www.oreilly.com/work-with-us.html"
+          "Careers"
+          (31 values)
+        field  a > img.site-footer__image  ×2
+          "cdn.oreillystatic.com/oreilly/images/app-store-logo.png"
+          "Apple app store"
+          "cdn.oreillystatic.com/oreilly/images/google-play-logo.png"
+          (4 values)
+    part   ul > li  ×4
+      field  a  ×4
+        "Terms of Service"
+        "www.oreilly.com/terms"
+        "Privacy Policy"
+        (8 values)

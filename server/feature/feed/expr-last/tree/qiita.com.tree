@@ -1,0 +1,264 @@
+# qiita.com
+url               https://qiita.com/
+posts in fixture  30
+structures        6
+recall            1.000, recall+ 0.000
+merge             1.00
+distrib           2.00, wrappers 1.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×10 instances
+  part   html > body > div > div > div > div > div > div > div > div > div > ol > li  ×10
+    field  a.style-cit2l5  ×10
+      "qiita.com/suwa_nobu"
+      "suwa_nobu"
+      "qiita.com/maeda-niku18"
+      (20 values)
+    field  a.style-cit2l5 > div.style-1q7zmtt:not(.style-135heiq):not(.style-y87z4f) > div > span.style-1qxtz39  ×3
+      "1"
+      "2"
+      "3"
+    field  a.style-cit2l5 > div.style-1q7zmtt:not(.style-135heiq):not(.style-y87z4f) > span.style-1qxtz39  ×7
+      "4"
+      "5"
+      "6"
+      (7 values)
+    field  a.style-cit2l5 > div.style-135heiq:not(.style-1q7zmtt):not(.style-y87z4f) > img.style-1h6ertn  ×10
+      "qiita-user-profile-images.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-image-store/0/4430611/a4e4ab…"
+      "suwa_nobu"
+      "qiita-user-profile-images.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-image-store/0/4074489/15e607…"
+      (20 values)
+    field  a.style-cit2l5 > div.style-y87z4f:not(.style-1q7zmtt):not(.style-135heiq) > p.style-8uhtka.userRanking-screenName:not(.style-yppjuf)  ×10
+      "@"
+      "suwa_nobu"
+      "maeda-niku18"
+      (27 values)
+    field  a.style-cit2l5 > div.style-y87z4f:not(.style-1q7zmtt):not(.style-135heiq) > p.style-yppjuf:not(.style-8uhtka):not(.userRanking-screenName)  ×10
+      "1371"
+      "618"
+      "340"
+      (10 values)
+    field  a.style-cit2l5 > div.style-y87z4f:not(.style-1q7zmtt):not(.style-135heiq) > p.style-yppjuf:not(.style-8uhtka):not(.userRanking-screenName) > span.style-1riy0k6  ×10
+      "Contributions"
+
+structure 2  ×30 instances
+  part   html > body > div > div > div > div > main > div > article  ×30
+    field  header.style-12s080b > a.style-1iu85lq  ×30
+      "qiita.com/Ninagawa123"
+      "qiita.com/suwa_nobu"
+      "qiita.com/kf_webdev"
+      (30 values)
+    field  header.style-12s080b > a.style-1iu85lq > div.style-135heiq > img.style-1h6ertn  ×30
+      "qiita-user-profile-images.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-image-store/0/565043/fb6c005…"
+      "Ninagawa123"
+      "qiita-user-profile-images.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-image-store/0/4430611/a4e4ab…"
+      (60 values)
+    field  header.style-12s080b > div.style-1jaw0rg > p.style-1kfhly > a.style-1h2ruwl:not(.style-lm2llx)  ×30
+      "@"
+      "Ninagawa123"
+      "qiita.com/Ninagawa123"
+      (90 values)
+    field  header.style-12s080b > div.style-1jaw0rg > p.style-1kfhly > a.style-1h2ruwl:not(.style-lm2llx) > span.style-15fzge  ×15
+      "("
+      "Izumi Ninagawa"
+      ")"
+      (45 values)
+    field  header.style-12s080b > div.style-1jaw0rg > p.style-1kfhly > a.style-lm2llx:not(.style-1h2ruwl)  ×8
+      "qiita.com/organizations/jqiit-co"
+      "qiita.com/organizations/oracle"
+      "qiita.com/organizations/kddiagile"
+      (8 values)
+    field  header.style-12s080b > div.style-1jaw0rg > p.style-1kfhly > a.style-lm2llx:not(.style-1h2ruwl) > img.style-rdqgjc  ×8
+      "qiita-organization-images.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-organization-image/207770653…"
+      "qiita-organization-images.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-organization-image/30955fa7f…"
+      "qiita-organization-images.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-organization-image/1e20db5e7…"
+      (8 values)
+    field  header.style-12s080b > div.style-1jaw0rg > p.style-1kfhly > a.style-lm2llx:not(.style-1h2ruwl) > span.style-8uhtka  ×8
+      "株式会社JQIT"
+      "日本オラクル株式会社"
+      "KDDIアジャイル開発センター株式会社"
+      (8 values)
+    field  header.style-12s080b > div.style-1jaw0rg > p.style-1kfhly > span  ×8
+      "in"
+    field  header.style-12s080b > div.style-1jaw0rg > span.style-hl9vr4 > time  ×30
+      "2026-09-19"
+      "2026-09-19T14:29:27Z"
+      "2026-09-19T01:51:19Z"
+      (60 values)
+    field  h2.style-1ws5e6r > a.style-2vm86z  ×30
+      "5分でJev入門（すぐ使う）"
+      "qiita.com/Ninagawa123/items/8ec3f5fe18c20fab1b2a"
+      "Claude Code が AGENTS.md を読むようになった。ただし1回目のセッションでは読まれない"
+      (60 values)
+    field  footer.style-wr1ke6 > div.style-16lfj6j > div.style-1fvis2l:not(.style-1lorm6t) > span.style-qrq9vy:not(.style-fv2drl)  ×30
+      "63"
+      "56"
+      "55"
+      (30 values)
+    field  a.style-hayto5  ×9
+      "qiita.com/official-events/dc6e42e0897543216e34"
+    field  a.style-hayto5 > span  ×0
+    part   footer.style-wr1ke6 > ul.style-1av12sx > li  ×136
+      field  a.style-19h8hex  ×136
+        "Jev"
+        "qiita.com/tags/jev"
+        "入門"
+        (272 values)
+    part   footer.style-wr1ke6 > div.style-16lfj6j > div.style-1lorm6t:not(.style-1fvis2l) > button.style-1ckr73v  ×60
+
+structure 3  ×6 instances
+  part   html > body > div > div > div > div > div > section  ×6
+    field  p.style-103g62b  ×3
+      "Being held posting campaigns"
+      "Being held and before held events"
+      "Column"
+    field  p.style-103g62b > a.style-3wm20r  ×3
+      "All"
+      "qiita.com/official-events#being_held_posting_campaigns"
+      "qiita.com/official-events#being_held_and_before_held_events"
+      (6 values)
+    field  p:not(.style-103g62b)  ×1
+      "Qiita Related Services"
+    part   div:not(.style-1fhe7t3)  ×7
+      field  p  ×2
+        "2026/09/26 (土) 計画メンテナンスのお知らせ"
+        "Community sponser"
+      part   div  ×3
+        field  p  ×1
+          "Qiita, Qiita Team 計画メンテナンスを実施します。"
+          "2026/09/26 (土) 00:00開始、02:00終了予定となります（24時間表記）。"
+          "メンテナンス実施中は一時的にアクセスすることが出来ません。"
+          (4 values)
+        field  a.style-fws1g0  ×2
+          "Qiita Advent Calendar 2025 プレゼントカレンダーのご紹介🎁"
+          "blog.qiita.com/adventcalendar-2025-presents?utm_source=qiita&utm_medium=referral&utm_content=sidebar feed"
+          "Qiita Advent Calendar 2025 Qiita賞・特別企画の参加方法・選定基準について"
+          (4 values)
+        field  div.style-1dbhlz5 > span:not(.style-15fzge)  ×2
+          "2025/10/30"
+        field  div.style-1dbhlz5 > span.style-15fzge  ×2
+          "Announcement"
+        part   p > br  ×3
+      part   a  ×10
+        field  self  ×10
+          "View detail"
+          "blog.qiita.com/2026-09-26-maintenance?utm_source=qiita&utm_medium=announce"
+          "business.qiita.com?utm_source=qiita&utm_medium=referral&utm_campaign=qiita_services"
+          (12 values)
+        field  img.style-1xsjv59:not(.style-1t44qz4)  ×3
+          "cdn.qiita.com/assets/public/qiita_services/banner-qiita_ad-4c8cbb944b848b9ec91031cb735b563b.png"
+          "Qiita上で企業のPRができる Qiita for Business"
+          "cdn.qiita.com/assets/public/qiita_services/banner-qiita_careers-6cdfc92cb612450396bf8770999e671d.png"
+          (6 values)
+        field  img.style-1t44qz4:not(.style-1xsjv59)  ×5
+          "cdn.qiita.com/assets/public/community-sponsors/logo-google_cloud-4ef09412bbcf4ba87511c89453d737a9.webp"
+          "グーグル・クラウド・ジャパン合同会社"
+          "cdn.qiita.com/assets/public/community-sponsors/logo-hireroo-33180b9864fe1f6b1f0337b0a56b0898.webp"
+          (10 values)
+    part   div.style-1fhe7t3 > div  ×4
+      field  a.style-8jdmws  ×4
+        "qiita.com/official-events/dc6e42e0897543216e34"
+        "qiita.com/official-events/5f0addee251c14fbc031"
+        "increments.connpass.com/event/406144"
+        (4 values)
+      field  a.style-8jdmws > img.style-1rpreay  ×4
+        "qiita-official-contents.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-official-event-image/e29973fa1…"
+        "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+        "qiita-official-contents.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-official-event-image/c2d5bc7b8…"
+        (8 values)
+      field  div.style-15e1065:not(.style-15ebdnz) > p  ×2
+        "~"
+        "2026-10-02"
+        "2026-09-23"
+      field  div.style-15e1065:not(.style-15ebdnz) > div.style-1n8ridv > span.style-1afofdy  ×2
+        "participating users"
+      field  div.style-15e1065:not(.style-15ebdnz) > div.style-1n8ridv > span:not(.style-1afofdy)  ×0
+      field  div.style-15e1065:not(.style-15ebdnz) > div.style-1n8ridv > div.style-1u3f7f6 > span.style-15fzge  ×2
+        "+"
+        "50"
+        "254"
+      field  div.style-15ebdnz:not(.style-15e1065) > p:not(.style-16f42p9)  ×2
+        "2026-10-29 19:00 ~ 21:35"
+        "2026-10-09 19:00 ~ 21:35"
+      field  div.style-15ebdnz:not(.style-15e1065) > p.style-16f42p9 > span.style-8uhtka  ×2
+        "パナソニック コネクト新大阪オフィス（大阪府大阪市淀川区宮原４丁目５−４１ J.NODE 新大阪Ⅱ10階COMMONS）"
+        "パナソニック コネクト株式会社 東京都中央区銀座8丁目21番1号 住友不動産汐留浜離宮ビル11階COMMONS"
+      part   div.style-15e1065:not(.style-15ebdnz) > div.style-1n8ridv > div.style-1u3f7f6 > ol.style-hkccl0 > li.style-dp83bi  ×14
+        field  div.style-14aa08z > img.style-112j2aw  ×14
+          "qiita-user-profile-images.imgix.net/https://lh3.googleusercontent.com/a/ACg8ocJdRMil6pR05o94k0kz2lzgKhguUy_Atr…"
+          "matsu_ken57"
+          "qiita-user-profile-images.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-image-store/0/435233/3aea22c…"
+          (28 values)
+
+structure 4  ×4 instances
+  part   html > body > div > div > div > div > div > section > div.style-1fhe7t3 > div  ×4
+    field  a.style-8jdmws  ×4
+      "qiita.com/official-events/dc6e42e0897543216e34"
+      "qiita.com/official-events/5f0addee251c14fbc031"
+      "increments.connpass.com/event/406144"
+      (4 values)
+    field  a.style-8jdmws > img.style-1rpreay  ×4
+      "qiita-official-contents.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-official-event-image/e29973fa1…"
+      "あなたはもう試した？判断特化AI「Jev」で遊ぼう！"
+      "qiita-official-contents.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-official-event-image/c2d5bc7b8…"
+      (8 values)
+    field  div.style-15e1065:not(.style-15ebdnz) > p  ×2
+      "~"
+      "2026-10-02"
+      "2026-09-23"
+    field  div.style-15e1065:not(.style-15ebdnz) > div.style-1n8ridv > span.style-1afofdy  ×2
+      "participating users"
+    field  div.style-15e1065:not(.style-15ebdnz) > div.style-1n8ridv > span:not(.style-1afofdy)  ×0
+    field  div.style-15e1065:not(.style-15ebdnz) > div.style-1n8ridv > div.style-1u3f7f6 > span.style-15fzge  ×2
+      "+"
+      "50"
+      "254"
+    field  div.style-15ebdnz:not(.style-15e1065) > p:not(.style-16f42p9)  ×2
+      "2026-10-29 19:00 ~ 21:35"
+      "2026-10-09 19:00 ~ 21:35"
+    field  div.style-15ebdnz:not(.style-15e1065) > p.style-16f42p9 > span.style-8uhtka  ×2
+      "パナソニック コネクト新大阪オフィス（大阪府大阪市淀川区宮原４丁目５−４１ J.NODE 新大阪Ⅱ10階COMMONS）"
+      "パナソニック コネクト株式会社 東京都中央区銀座8丁目21番1号 住友不動産汐留浜離宮ビル11階COMMONS"
+    part   div.style-15e1065:not(.style-15ebdnz) > div.style-1n8ridv > div.style-1u3f7f6 > ol.style-hkccl0 > li.style-dp83bi  ×14
+      field  div.style-14aa08z > img.style-112j2aw  ×14
+        "qiita-user-profile-images.imgix.net/https://lh3.googleusercontent.com/a/ACg8ocJdRMil6pR05o94k0kz2lzgKhguUy_Atr…"
+        "matsu_ken57"
+        "qiita-user-profile-images.imgix.net/https://s3-ap-northeast-1.amazonaws.com/qiita-image-store/0/435233/3aea22c…"
+        (28 values)
+
+structure 5  ×2 instances
+  part   html > body > div > div > div > div > div > section > div > div.style-1hm4ftb  ×2
+    field  a.style-fws1g0  ×2
+      "Qiita Advent Calendar 2025 プレゼントカレンダーのご紹介🎁"
+      "blog.qiita.com/adventcalendar-2025-presents?utm_source=qiita&utm_medium=referral&utm_content=sidebar feed"
+      "Qiita Advent Calendar 2025 Qiita賞・特別企画の参加方法・選定基準について"
+      (4 values)
+    field  div.style-1dbhlz5 > span:not(.style-15fzge)  ×2
+      "2025/10/30"
+    field  div.style-1dbhlz5 > span.style-15fzge  ×2
+      "Announcement"
+
+structure 6  ×5 instances
+  part   html > body > div > div > footer > div > nav > div  ×5
+    field  p.style-35ezg3  ×5
+      "Guide & Help"
+      "Contents"
+      "Official Accounts"
+      (5 values)
+    part   ul.style-1fhgjcy > li  ×29
+      field  a.style-ah54os  ×29
+        "About"
+        "qiita.com/about"
+        "Terms"
+        (55 values)
+      field  a.style-ah54os > span.style-15fzge  ×3
+        "@Qiita"
+        "@qiita_milestone"
+        "@qiitapoi"

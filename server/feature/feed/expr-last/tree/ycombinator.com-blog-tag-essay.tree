@@ -1,0 +1,241 @@
+# ycombinator.com-blog-tag-essay
+url               https://www.ycombinator.com/blog/tag/essay
+posts in fixture  10
+structures        8
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×3 instances
+  part   html > body > div > div > div > header > nav > div > div  ×3
+    field  a  ×1
+      "www.ycombinator.com"
+      "Y Combinator"
+    field  a > img  ×1
+      "Y Combinator"
+    part   div.inline-block.relative  ×6
+      field  a.cursor-pointer.gap-1.inline-flex.items-center.nav-link  ×6
+        "About"
+        "www.ycombinator.com/about"
+        "Companies"
+        (12 values)
+      part   div.dropdown-menu.hidden > div.dropdown-container > div.dropdown-items > a.dropdown-item  ×19
+        field  self  ×19
+          "What Happens at YC?"
+          "www.ycombinator.com/about"
+          "Apply"
+          (38 values)
+
+structure 2  ×3 instances
+  part   html > body > div > div > div > header > nav > div > div.justify-end > div  ×3
+    field  a.cursor-pointer.gap-1.inline-flex.items-center.nav-link  ×3
+      "About"
+      "www.ycombinator.com/about"
+      "Companies"
+      (6 values)
+    part   div.dropdown-menu.hidden > div.dropdown-container > div.dropdown-items > a.dropdown-item  ×9
+      field  self  ×9
+        "What Happens at YC?"
+        "www.ycombinator.com/about"
+        "Apply"
+        (18 values)
+
+structure 3  ×3 instances
+  part   html > body > div > div > div > div > div.shadow-sm  ×3
+    field  div.shrink-0:not(.bg-white):not(.flex):not(.flex-1):not(.flex-col):not(.justify-between):not(.p-6) > a  ×3
+      "www.ycombinator.com/blog/why-would-you-work-at-a-startup-in-an-economic-downturn"
+      "www.ycombinator.com/blog/why-would-you-start-a-startup-in-an-economic-downturn"
+      "www.ycombinator.com/blog/how-to-maintain-engineering-velocity-as-you-scale"
+    field  div.shrink-0:not(.bg-white):not(.flex):not(.flex-1):not(.flex-col):not(.justify-between):not(.p-6) > a > img.h-48.object-cover.w-full  ×3
+      "www.ycombinator.com/blog/content/images/2023/02/BlogTwitter-Image-Template--5-.png"
+      "www.ycombinator.com/blog/content/images/2023/02/stephblog.png"
+      "www.ycombinator.com/blog/content/images/2022/10/BlogTwitter-Image-Template-2.jpeg"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex-1:not(.mt-2):not(.flex):not(.items-center):not(.mt-6) > a.block.mt-2  ×3
+      "www.ycombinator.com/blog/why-would-you-work-at-a-startup-in-an-economic-downturn"
+      "www.ycombinator.com/blog/why-would-you-start-a-startup-in-an-economic-downturn"
+      "www.ycombinator.com/blog/how-to-maintain-engineering-velocity-as-you-scale"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex-1:not(.mt-2):not(.flex):not(.items-center):not(.mt-6) > a.block.mt-2 > p.font-se…  ×3
+      "Why would you work at a startup in an economic downturn?"
+      "Why would you start a startup in an economic downturn?"
+      "How to maintain engineering velocity as you scale"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex-1:not(.mt-2):not(.flex):not(.items-center):not(.mt-6) > a.block.mt-2 > p.mt-3.te…  ×3
+      "Now is as good a time as any to start a startup – especially if you get into YC. But what about joining a star…"
+      "In an economic downturn, there are obvious downsides of starting a startup — but there are also powerful upsid…"
+      "Faire’s engineering team grew from five to over 100 engineers in three years. Throughout this growth, we were …"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.shrink-0:not(.ml-4) > a  ×3
+      "www.ycombinator.com/blog/author/rchoi"
+      "www.ycombinator.com/blog/author/stephanie"
+      "www.ycombinator.com/blog/author/marcelo-cortes"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.shrink-0:not(.ml-4) > a > span.s…  ×3
+      "Ryan Choi"
+      "Stephanie Simon"
+      "Marcelo Cortes"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.shrink-0:not(.ml-4) > a > img.h-…  ×3
+      "www.gravatar.com/avatar/36ba914c5f191f813e96db0296154469?s=250&d=mm&r=x"
+      "www.ycombinator.com/blog/content/images/2022/02/steph-af6b11e61b7a3c55b099c780fe0a359236ceaab496850b530d178aed…"
+      "www.ycombinator.com/blog/content/images/2022/10/Instagram-Image-Template--Square---7-.jpg"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.ml-4:not(.shrink-0) > p.font-med…  ×3
+      "Ryan Choi"
+      "www.ycombinator.com/blog/author/rchoi"
+      "Stephanie Simon"
+      (6 values)
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.ml-4:not(.shrink-0) > div.flex.s…  ×3
+      "2/23/2023"
+      "2/21/2023"
+      "10/25/2022"
+    part   div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.mt-2:not(.flex-1):not(.flex):not(.items-center):not(.mt-6) > p.font-medium.text-indig…  ×13
+      field  self  ×13
+        "www.ycombinator.com/blog/tag/jobs"
+        "www.ycombinator.com/blog/tag/essay"
+        "www.ycombinator.com/blog/tag/yc-news"
+        (13 values)
+      field  span.bg-gray-200.font-medium.inline-flex.items-center.mb-2.mr-4.px-2.py-0.5.rounded.text-gray-800.text-xs  ×13
+        "Jobs"
+        "Essay"
+        "YC News"
+        (13 values)
+
+structure 4  ×9 instances
+  part   html > body > div > div > div > div > div > div.p-6 > div  ×9
+    field  a.block.mt-2  ×3
+      "www.ycombinator.com/blog/why-would-you-work-at-a-startup-in-an-economic-downturn"
+      "www.ycombinator.com/blog/why-would-you-start-a-startup-in-an-economic-downturn"
+      "www.ycombinator.com/blog/how-to-maintain-engineering-velocity-as-you-scale"
+    field  a.block.mt-2 > p.font-semibold.text-gray-900.text-xl:not(.mt-3):not(.text-base):not(.text-gray-700)  ×3
+      "Why would you work at a startup in an economic downturn?"
+      "Why would you start a startup in an economic downturn?"
+      "How to maintain engineering velocity as you scale"
+    field  a.block.mt-2 > p.mt-3.text-base.text-gray-700:not(.font-semibold):not(.text-gray-900):not(.text-xl)  ×3
+      "Now is as good a time as any to start a startup – especially if you get into YC. But what about joining a star…"
+      "In an economic downturn, there are obvious downsides of starting a startup — but there are also powerful upsid…"
+      "Faire’s engineering team grew from five to over 100 engineers in three years. Throughout this growth, we were …"
+    field  div.shrink-0:not(.ml-4) > a  ×3
+      "www.ycombinator.com/blog/author/rchoi"
+      "www.ycombinator.com/blog/author/stephanie"
+      "www.ycombinator.com/blog/author/marcelo-cortes"
+    field  div.shrink-0:not(.ml-4) > a > span.sr-only  ×3
+      "Ryan Choi"
+      "Stephanie Simon"
+      "Marcelo Cortes"
+    field  div.shrink-0:not(.ml-4) > a > img.h-10.rounded-full.w-10  ×3
+      "www.gravatar.com/avatar/36ba914c5f191f813e96db0296154469?s=250&d=mm&r=x"
+      "www.ycombinator.com/blog/content/images/2022/02/steph-af6b11e61b7a3c55b099c780fe0a359236ceaab496850b530d178aed…"
+      "www.ycombinator.com/blog/content/images/2022/10/Instagram-Image-Template--Square---7-.jpg"
+    field  div.ml-4:not(.shrink-0) > p.font-medium.text-gray-800.text-sm > a.hover:underline  ×3
+      "Ryan Choi"
+      "www.ycombinator.com/blog/author/rchoi"
+      "Stephanie Simon"
+      (6 values)
+    field  div.ml-4:not(.shrink-0) > div.flex.space-x-1.text-gray-500.text-sm > span  ×3
+      "2/23/2023"
+      "2/21/2023"
+      "10/25/2022"
+    part   p.font-medium.text-indigo-600.text-sm > a  ×13
+      field  self  ×13
+        "www.ycombinator.com/blog/tag/jobs"
+        "www.ycombinator.com/blog/tag/essay"
+        "www.ycombinator.com/blog/tag/yc-news"
+        (13 values)
+      field  span.bg-gray-200.font-medium.inline-flex.items-center.mb-2.mr-4.px-2.py-0.5.rounded.text-gray-800.text-xs  ×13
+        "Jobs"
+        "Essay"
+        "YC News"
+        (13 values)
+
+structure 5  ×6 instances
+  part   html > body > div > div > div > div > div > div > div.items-center > div  ×6
+    field  a  ×3
+      "www.ycombinator.com/blog/author/rchoi"
+      "www.ycombinator.com/blog/author/stephanie"
+      "www.ycombinator.com/blog/author/marcelo-cortes"
+    field  a > span.sr-only  ×3
+      "Ryan Choi"
+      "Stephanie Simon"
+      "Marcelo Cortes"
+    field  a > img.h-10.rounded-full.w-10  ×3
+      "www.gravatar.com/avatar/36ba914c5f191f813e96db0296154469?s=250&d=mm&r=x"
+      "www.ycombinator.com/blog/content/images/2022/02/steph-af6b11e61b7a3c55b099c780fe0a359236ceaab496850b530d178aed…"
+      "www.ycombinator.com/blog/content/images/2022/10/Instagram-Image-Template--Square---7-.jpg"
+    field  p.font-medium.text-gray-800.text-sm > a.hover:underline  ×3
+      "Ryan Choi"
+      "www.ycombinator.com/blog/author/rchoi"
+      "Stephanie Simon"
+      (6 values)
+    field  div.flex.space-x-1.text-gray-500.text-sm > span  ×3
+      "2/23/2023"
+      "2/21/2023"
+      "10/25/2022"
+
+structure 6  ×7 instances
+  part   html > body > div > div > div > div > div > div.rounded-lg  ×7
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > a.block.mt-2  ×7
+      "www.ycombinator.com/blog/2021-yc-year-in-review"
+      "www.ycombinator.com/blog/venture-debt-101-basics-and-approach"
+      "www.ycombinator.com/blog/2020-year-in-review"
+      (7 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > a.block.mt-2 > p.font-semibold.text-3xl.text-gray-900  ×7
+      "2021 — YC Year in Review"
+      "Venture Debt 101: Basics and Approach"
+      "2020 — Year in Review"
+      (7 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800)  ×7
+      "by"
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800) > a.hover:underlin…  ×7
+      "www.ycombinator.com/blog/author/geoff-ralston"
+      "www.ycombinator.com/blog/author/jon-levy"
+      "www.ycombinator.com/blog/author/jared-friedman"
+      (7 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800) > a.hover:underlin…  ×7
+      "Geoff Ralston"
+      "Jon Levy"
+      "Jared Friedman"
+      (7 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800) > span.font-normal…  ×7
+      "1/19/2022"
+      "8/26/2021"
+      "12/22/2020"
+      (7 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.mt-3.text-base.text-gray-800:not(.py-2):not(.text-gray-500):not(.text-md)  ×7
+      "In 2021, many YC founders led their companies to achieve outstanding results, and we are honored to be part of…"
+      "In this guide, YC Managing Director Jon Levy talks about venture debt. He covers what it is, walks through som…"
+      "In early 2020 the entire world underwent a transformation. The planet was consumed by a pandemic that altered …"
+      (7 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > div.mt-4 > a.font-medium.inline-flex.md:text-base.text-blue-500.text-sm  ×7
+      "Read More"
+      "www.ycombinator.com/blog/2021-yc-year-in-review"
+      "www.ycombinator.com/blog/venture-debt-101-basics-and-approach"
+      (14 values)
+
+structure 7  ×11 instances
+  part   html > body > div > div > div > div > div > div > a.flex  ×11
+    field  self  ×11
+      "www.ycombinator.com/blog/tag/admissions"
+      "www.ycombinator.com/blog/tag/advice"
+      "www.ycombinator.com/blog/tag/biotech"
+      (11 values)
+    field  div.bg-beige-medium.font-medium.mb-3.px-2.py-1.rounded.text-gray-800.text-md  ×11
+      "Admissions"
+      "Advice"
+      "Biotech"
+      (11 values)
+
+structure 8  ×3 instances
+  part   html > body > div > footer > div > div > div.lg:gap-20 > div  ×3
+    field  h3.font-['Outfit',sans-serif].font-medium.text-beige-light.text-sm.tracking-wider  ×3
+      "Programs"
+      "Resources"
+      "Company"
+    part   ul.mt-2.space-y-1 > li  ×21
+      field  a.font-['Outfit',sans-serif].font-light.hover:text-white.text-beige-light.text-sm.transition-colors  ×21
+        "YC Program"
+        "www.ycombinator.com/about"
+        "Startup School"
+        (42 values)

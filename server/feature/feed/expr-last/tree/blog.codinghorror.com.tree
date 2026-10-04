@@ -1,0 +1,190 @@
+# blog.codinghorror.com
+url               https://blog.codinghorror.com/
+posts in fixture  3
+structures        2
+recall            1.000, recall+ 0.667
+merge             1.00
+distrib           7.33, wrappers 2.67
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×3 instances
+  part   html > body > div > section > div > main > div > article  ×3
+    field  header.gh-article-header.gh-canvas > h1.gh-article-title.is-title > a  ×3
+      "You Can't \"Vibe Code\" Love"
+      "blog.codinghorror.com/you-cant-vibe-code-love"
+      "Every Choice Changes Everything: The Show"
+      (6 values)
+    field  header.gh-article-header.gh-canvas > div.gh-article-meta > div.gh-article-author-image.instapaper_ignore:not(.gh-article-meta-wrapper) > a  ×3
+      "blog.codinghorror.com/author/jeff-atwood"
+    field  header.gh-article-header.gh-canvas > div.gh-article-meta > div.gh-article-author-image.instapaper_ignore:not(.gh-article-meta-wrapper) > a > img.author-profile-…  ×3
+      "blog.codinghorror.com/assets/images/codinghorror.png"
+      "Jeff Atwood"
+    field  header.gh-article-header.gh-canvas > div.gh-article-meta > div.gh-article-meta-wrapper:not(.gh-article-author-image):not(.instapaper_ignore) > h4.gh-article-aut…  ×3
+      "Jeff Atwood"
+      "blog.codinghorror.com/author/jeff-atwood"
+    field  header.gh-article-header.gh-canvas > div.gh-article-meta > div.gh-article-meta-wrapper:not(.gh-article-author-image):not(.instapaper_ignore) > div.gh-article-me…  ×3
+      "30 Aug 2026"
+      "2026-08-30"
+      "22 Jun 2026"
+      (6 values)
+    field  header.gh-article-header.gh-canvas > div.gh-article-meta > div.gh-article-meta-wrapper:not(.gh-article-author-image):not(.instapaper_ignore) > div.gh-article-me…  ×3
+      "3 min read"
+      "5 min read"
+      "2 min read"
+    field  header.gh-article-header.gh-canvas > div.gh-article-meta > div.gh-article-meta-wrapper:not(.gh-article-author-image):not(.instapaper_ignore) > div.gh-article-me…  ×3
+      "—"
+    field  section.gh-canvas.gh-content.is-body > figure.kg-card.kg-card-hascaption.kg-image-card:not(.kg-embed-card) > img  ×1
+      "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/2026/08/39b3f803d2a81f3f.jpg"
+    field  section.gh-canvas.gh-content.is-body > figure.kg-card.kg-card-hascaption.kg-image-card:not(.kg-embed-card) > figcaption > span  ×2
+      "it is difficult to get a German to smile so you have to sneak attack"
+      "art by the incredibly talented"
+    field  section.gh-canvas.gh-content.is-body > figure.kg-card.kg-card-hascaption.kg-image-card:not(.kg-embed-card) > figcaption > a  ×1
+      "www.claygrahamart.com"
+    field  section.gh-canvas.gh-content.is-body > figure.kg-card.kg-card-hascaption.kg-image-card:not(.kg-embed-card) > figcaption > a > span  ×1
+      "claygrahamart.com"
+    field  section.gh-canvas.gh-content.is-body > figure.kg-card.kg-card-hascaption.kg-image-card:not(.kg-embed-card) > a  ×1
+      "twit.tv/obo"
+    field  section.gh-canvas.gh-content.is-body > figure.kg-card.kg-card-hascaption.kg-image-card:not(.kg-embed-card) > a > img  ×1
+      "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/2026/06/fca2de3652b07a0e.jpeg"
+      "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/size/w600/2026/06/fca2de3652b07a0…"
+      "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/size/w1000/2026/06/fca2de3652b07a…"
+      (6 values)
+    field  section.gh-canvas.gh-content.is-body > figure.kg-card:not(.kg-embed-card):not(.kg-card-hascaption):not(.kg-image-card) > a  ×1
+      "rgmii.org/why-pledge-to-share-the-american-dream"
+    field  section.gh-canvas.gh-content.is-body > div.gh-discussion-meta > a  ×3
+      "Discussion"
+      "blog.codinghorror.com/you-cant-vibe-code-love#discourse-comments"
+      "blog.codinghorror.com/every-choice-changes-everything-the-show#discourse-comments"
+      (6 values)
+    part   section.gh-canvas.gh-content.is-body > p  ×33
+      field  self  ×32
+        "About a year ago, I was offered a presentation slot at the"
+        "World Congress in Berlin. I rarely take speaking engagements, especially international ones, but this one arri…"
+        "joins me in the presentation. Ben is an"
+        (72 values)
+      part   a  ×28
+        field  self  ×28
+          "WeAreDevelopers"
+          "www.wearedevelopers.com"
+          "Ben Dumke-von der Ehe"
+          (54 values)
+        field  strong  ×2
+          "Off By One with Jeff Atwood"
+          "Stack Overflow"
+      part   strong  ×10
+        field  self  ×10
+          "I owe you so much"
+          "We did it together, under a bedrock Creative Commons license"
+          "But what happens to the commons when everyone is privately whispering to LLMs?"
+          (12 values)
+        field  em  ×3
+          "feel"
+          "everyone"
+          "could not code at all"
+      part   em  ×8
+        field  self  ×8
+          "doing things he loved"
+          "mandatory fun"
+          "only if"
+          (8 values)
+    part   section.gh-canvas.gh-content.is-body > figure.kg-card.kg-embed-card:not(.kg-card-hascaption):not(.kg-image-card)  ×5
+      field  iframe  ×5
+        "www.youtube.com/embed/j7x0BTwfn_I?feature=oembed"
+        "WWC26 - None of Us Is As Dumb As All of Us: Community And Knowledge Go Hand In Hand"
+        "www.youtube.com/embed/jveUllo7Mjs?feature=oembed"
+        (10 values)
+    part   section.gh-canvas.gh-content.is-body > figure.kg-card.kg-image-card:not(.kg-embed-card):not(.kg-card-hascaption)  ×4
+      field  img.kg-image  ×2
+        "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/2026/08/af7d7754bae6a65b.jpg"
+        "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/size/w600/2026/08/af7d7754bae6a65…"
+        "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/size/w1000/2026/08/af7d7754bae6a6…"
+        (9 values)
+      field  a  ×2
+        "www.martinfowler.com/bliki/TwoHardThings.html"
+        "bookshop.org/p/books/watchmen-2019-edition-alan-moore/d6070514ef8a64d5"
+      field  a > img.kg-image  ×2
+        "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/2026/05/image.png"
+        "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/size/w600/2026/05/image.png"
+        "storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/size/w1000/2026/05/image.png"
+        (9 values)
+    part   section.gh-canvas.gh-content.is-body > figure.kg-card:not(.kg-embed-card):not(.kg-card-hascaption):not(.kg-image-card) > a > div  ×2
+      field  img  ×1
+        "storage.ghost.io/c/c5/40/c5405d40-5ed6-4e52-8454-abc01f974d22/content/images/size/w1200/2026/01/atwood-burton-…"
+      part   div  ×3
+        field  self  ×2
+          "Why Pledge to Share the American Dream? • RGMII"
+          "Why we pledged to Share the American Dream: RGMII’s $50M plan funds rural guaranteed minimum income studies to…"
+        field  img  ×1
+          "static.ghost.org/v5.0.0/images/link-icon.svg"
+        part   span  ×2
+          field  self  ×2
+            "Rural Guaranteed Minimum Income Initiative • RGMII"
+            "Jeff Atwood"
+    part   section.gh-canvas.gh-content.is-body > blockquote  ×11
+      field  self  ×11
+        "The long version of this story is that we changed each others' lives. The short version is:"
+        "."
+        "Passively searching and reading highly ranked Stack Overflow answers as they appear in web search results is a…"
+        (37 values)
+      field  em  ×2
+        "unicorns"
+        "I'm in this picture and I don't like it."
+      part   a  ×3
+        field  self  ×3
+          "Stack Overflow"
+          "stackoverflow.com"
+          "Discourse"
+          (6 values)
+      part   strong  ×11
+        field  self  ×11
+          "My happiness only becomes real when I share it with all of you."
+          "was"
+          "we went back and made it better for everyone"
+          (11 values)
+      part   br  ×24
+    part   section.gh-canvas.gh-content.is-body > div:not(.gh-discussion-meta)  ×6
+      field  a.kg-btn.kg-btn-accent  ×6
+        "Off By One, Episode #2, 45:47"
+        "youtu.be/jveUllo7Mjs?si=-zx-IWmxldVCPf4w&t=2748"
+        "Off by One, Episode #2, 01:05:37"
+        (12 values)
+
+structure 2  ×33 instances
+  part   html > body > div > section > div > main > div > article > section > p  ×33
+    field  self  ×32
+      "About a year ago, I was offered a presentation slot at the"
+      "World Congress in Berlin. I rarely take speaking engagements, especially international ones, but this one arri…"
+      "joins me in the presentation. Ben is an"
+      (72 values)
+    part   a  ×28
+      field  self  ×28
+        "WeAreDevelopers"
+        "www.wearedevelopers.com"
+        "Ben Dumke-von der Ehe"
+        (54 values)
+      field  strong  ×2
+        "Off By One with Jeff Atwood"
+        "Stack Overflow"
+    part   strong  ×10
+      field  self  ×10
+        "I owe you so much"
+        "We did it together, under a bedrock Creative Commons license"
+        "But what happens to the commons when everyone is privately whispering to LLMs?"
+        (12 values)
+      field  em  ×3
+        "feel"
+        "everyone"
+        "could not code at all"
+    part   em  ×8
+      field  self  ×8
+        "doing things he loved"
+        "mandatory fun"
+        "only if"
+        (8 values)

@@ -10,6 +10,10 @@ nothing in this directory is used by the feed package.
   computation the metrics read.
 - `go test -run TestMetrics -v ./server/feature/feed/expr-last/` prints the
   table below.
+- `tree/` holds the structures of each page, one file per page, written by
+  `go test -run TestWriteTrees ./server/feature/feed/expr-last/`. A file shows
+  the path each matcher reads, how many subtrees it reached and samples of the
+  values it read, so that the output can be read rather than only counted.
 
 ## How it works
 

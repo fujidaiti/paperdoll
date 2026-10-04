@@ -1,0 +1,54 @@
+# paulgraham.com-articles
+url               https://www.paulgraham.com/articles.html
+posts in fixture  235
+structures        2
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×239 instances
+  part   html > body > table > tbody > tr > td > table > tbody > tr > td > font > a  ×239
+    field  self  ×239
+      "www.paulgraham.com/greatwork.html"
+      "www.paulgraham.com/kids.html"
+      "www.paulgraham.com/selfindulgence.html"
+      (475 values)
+    field  u  ×3
+      "How to Do Great Work"
+      "Having Kids"
+      "How to Lose Time and Money"
+
+structure 2  ×472 instances
+  part   html > body > table > tbody > tr > td > table > tbody > tr  ×472
+    field  td > img  ×471
+      "s.turbifycdn.com/aah/paulgraham/essays-8.gif"
+      "Essays"
+      "sep.turbifycdn.com/ca/Img/trans_1x1.gif"
+      (472 values)
+    field  td > font  ×2
+      "If you're not sure which to read, try"
+      ","
+      ", or"
+      (5 values)
+    field  td > font > img  ×235
+      "sep.turbifycdn.com/ca/Img/trans_1x1.gif"
+    part   td > br  ×2
+    part   td > font > a  ×239
+      field  self  ×239
+        "www.paulgraham.com/greatwork.html"
+        "www.paulgraham.com/kids.html"
+        "www.paulgraham.com/selfindulgence.html"
+        (475 values)
+      field  u  ×3
+        "How to Do Great Work"
+        "Having Kids"
+        "How to Lose Time and Money"
+    part   td > font > br  ×245

@@ -1,0 +1,100 @@
+# anthropic.com-news
+url               https://www.anthropic.com/news
+posts in fixture  13
+structures        5
+recall            0.923, recall+ 0.923
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×3 instances
+  part   html > body > main > article > section > div > div > div > div > ul > li  ×3
+    field  span.HeroTwoColumn-module-scss-module__pM-nba__listLabel.body-3  ×3
+      "Press inquiries"
+      "Non-media inquiries"
+      "Media assets"
+    field  a.ButtonTextLink-module-scss-module__q8IAwW__textLink.HeroTwoColumn-module-scss-module__pM-nba__listLink  ×2
+      "support.claude.com/en/articles/9015913-how-to-get-support"
+      "anthropic.com/press-kit"
+    field  a.ButtonTextLink-module-scss-module__q8IAwW__textLink.HeroTwoColumn-module-scss-module__pM-nba__listLink > span.body-3:not(.ButtonTextLink-module-scss-module__q…  ×3
+      "press@anthropic.com"
+      "How to get support"
+      "Download press kit"
+
+structure 2  ×3 instances
+  part   html > body > main > article > section > div > div > div > a.FeaturedGrid-module-scss-module__W1FydW__gridItem  ×3
+    field  self  ×3
+      "www.anthropic.com/institute/measuring-pace-of-ai-development"
+      "www.anthropic.com/threat-intelligence-report-september-2026"
+      "www.anthropic.com/news/improving-alignment-security-efforts"
+    field  div.FeaturedGrid-module-scss-module__W1FydW__meta > time.FeaturedGrid-module-scss-module__W1FydW__date.bold.caption  ×3
+      "Sep 17, 2026"
+      "Sep 10, 2026"
+      "Aug 31, 2026"
+    field  div.FeaturedGrid-module-scss-module__W1FydW__meta > span.bold.caption  ×2
+      "Announcements"
+    field  h4.FeaturedGrid-module-scss-module__W1FydW__title.headline-6  ×3
+      "Measurements for understanding the pace of AI development inside frontier labs"
+      "Detecting and countering misuse of AI: September 2026"
+      "Improving our alignment and security efforts"
+    field  p.FeaturedGrid-module-scss-module__W1FydW__body.body-3.serif  ×3
+      "Today, the world can’t see what’s going on inside AI labs. Anthropic is proposing new metrics that would give …"
+      "Over the past eight months, our Threat Intelligence team identified and disrupted operations in which threat a…"
+      "On July 30, we reported three incidents in which Claude models gained unauthorized access to real computer sys…"
+
+structure 3  ×10 instances
+  part   html > body > main > article > section > div > div > div > ul > li  ×10
+    field  a.PublicationList-module-scss-module__KxYrHG__listItem  ×10
+      "www.anthropic.com/news/accenture-embedded-evaluation"
+      "www.anthropic.com/news/life-sciences-verification-program"
+      "www.anthropic.com/news/enterprise-frontier-safeguards"
+      (10 values)
+    field  a.PublicationList-module-scss-module__KxYrHG__listItem > div.PublicationList-module-scss-module__KxYrHG__meta > time.PublicationList-module-scss-module__KxYrHG_…  ×10
+      "Sep 18, 2026"
+      "Sep 17, 2026"
+      "Sep 1, 2026"
+      (10 values)
+    field  a.PublicationList-module-scss-module__KxYrHG__listItem > div.PublicationList-module-scss-module__KxYrHG__meta > span.PublicationList-module-scss-module__KxYrHG_…  ×10
+      "Announcements"
+      "Product"
+    field  a.PublicationList-module-scss-module__KxYrHG__listItem > span.PublicationList-module-scss-module__KxYrHG__title.body-3  ×10
+      "Partnering with Accenture on embedded evaluation"
+      "Introducing the Life Sciences Verification Program"
+      "Developing Enterprise Frontier Safeguards with our customers"
+      (10 values)
+
+structure 4  ×4 instances
+  part   html > body > footer > div > nav > div  ×4
+    part   div.SiteFooter-module-scss-module__JdOqwq__listSection  ×9
+      field  h3.body-4.bold  ×9
+        "Products"
+        "Models"
+        "Solutions"
+        (9 values)
+      part   ul.SiteFooter-module-scss-module__JdOqwq__list > li  ×86
+        field  a.SiteFooter-module-scss-module__JdOqwq__listItem.body-4  ×86
+          "Claude"
+          "claude.com/product/overview"
+          "Claude Code"
+          (172 values)
+
+structure 5  ×9 instances
+  part   html > body > footer > div > nav > div > div  ×9
+    field  h3.body-4.bold  ×9
+      "Products"
+      "Models"
+      "Solutions"
+      (9 values)
+    part   ul.SiteFooter-module-scss-module__JdOqwq__list > li  ×86
+      field  a.SiteFooter-module-scss-module__JdOqwq__listItem.body-4  ×86
+        "Claude"
+        "claude.com/product/overview"
+        "Claude Code"
+        (172 values)

@@ -1,0 +1,298 @@
+# blog.acolyer.org
+url               https://blog.acolyer.org/
+posts in fixture  10
+structures        11
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×10 instances
+  part   html > body > div > div > div > main > article  ×10
+    field  header.entry-header > h1.entry-title > a  ×10
+      "The ants and the pheromones"
+      "blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones"
+      "An overview of end-to-end entity resolution for big data"
+      (20 values)
+    field  div.entry-meta:not(.entry-content) > span.posted-on:not(.byline) > a  ×10
+      "blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones"
+      "blog.acolyer.org/2020/12/14/entity-resolution"
+      "blog.acolyer.org/2020/12/08/bias-in-word-embeddings"
+      (10 values)
+    field  div.entry-meta:not(.entry-content) > span.posted-on:not(.byline) > a > time.entry-date.published:not(.updated)  ×10
+      "February 8, 2021"
+      "2021-02-08T14:46:00+00:00"
+      "December 14, 2020"
+      (20 values)
+    field  div.entry-meta:not(.entry-content) > span.posted-on:not(.byline) > a > time.updated:not(.entry-date):not(.published)  ×10
+      "October 20, 2025"
+      "2025-10-20T14:52:08+01:00"
+      "2025-10-20T14:45:32+01:00"
+      (20 values)
+    field  div.entry-meta:not(.entry-content) > span.byline:not(.posted-on) > span.author.vcard > span.sep  ×10
+      "~"
+    field  div.entry-meta:not(.entry-content) > span.byline:not(.posted-on) > span.author.vcard > a.fn.n.url  ×10
+      "adriancolyer"
+      "blog.acolyer.org/author/adriancolyer"
+    field  div.entry-content:not(.entry-meta) > p  ×10
+      "TLDR; this is the last edition of The Morning Paper for now. Plus: one strand of research you won’t want to mi…"
+      "An overview of end-to-end entity resolution for big data, Christophides et al., ACM Computing Surveys, Dec. 20…"
+      "Bias in word embeddings, Papakyriakopoulos et al., FAT*’20 There are no (stochastic) parrots in this paper, bu…"
+      (10 values)
+    field  div.entry-content:not(.entry-meta) > p > a.more-link  ×10
+      "Continue reading"
+      "blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones"
+      "blog.acolyer.org/2020/12/14/entity-resolution"
+      (20 values)
+    field  div.entry-content:not(.entry-meta) > p > a.more-link > span.screen-reader-text  ×10
+      "The ants and the pheromones"
+      "An overview of end-to-end entity resolution for big data"
+      "Bias in word embeddings"
+      (10 values)
+
+structure 2  ×2 instances
+  part   html > body > div > div > div > main > article.post-9919 > div  ×2
+    field  p  ×1
+      "TLDR; this is the last edition of The Morning Paper for now. Plus: one strand of research you won’t want to mi…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones"
+    field  p > a > span  ×1
+      "The ants and the pheromones"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "February 8, 2021"
+          "2021-02-08T14:46:00+00:00"
+          "October 20, 2025"
+          (4 values)
+
+structure 3  ×2 instances
+  part   html > body > div > div > div > main > article.tag-algorithms-and-data-structures > div  ×2
+    field  p  ×1
+      "An overview of end-to-end entity resolution for big data, Christophides et al., ACM Computing Surveys, Dec. 20…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2020/12/14/entity-resolution"
+    field  p > a > span  ×1
+      "An overview of end-to-end entity resolution for big data"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2020/12/14/entity-resolution"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "December 14, 2020"
+          "2020-12-14T14:37:00+00:00"
+          "October 20, 2025"
+          (4 values)
+
+structure 4  ×2 instances
+  part   html > body > div > div > div > main > article.post-9892 > div  ×2
+    field  p  ×1
+      "Bias in word embeddings, Papakyriakopoulos et al., FAT*’20 There are no (stochastic) parrots in this paper, bu…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2020/12/08/bias-in-word-embeddings"
+    field  p > a > span  ×1
+      "Bias in word embeddings"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2020/12/08/bias-in-word-embeddings"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "December 8, 2020"
+          "2020-12-08T14:32:00+00:00"
+          "October 20, 2025"
+          (4 values)
+
+structure 5  ×2 instances
+  part   html > body > div > div > div > main > article.post-9882 > div  ×2
+    field  p  ×1
+      "Seeing is believing: a client-centric specification of database isolation, Crooks et al., PODC’17. Last week w…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2020/11/30/seeing-is-believing"
+    field  p > a > span  ×1
+      "Seeing is believing: a client-centric specification of database isolation"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2020/11/30/seeing-is-believing"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "November 30, 2020"
+          "2020-11-30T14:08:00+00:00"
+          "October 20, 2025"
+          (4 values)
+
+structure 6  ×2 instances
+  part   html > body > div > div > div > main > article.post-9874 > div  ×2
+    field  p  ×1
+      "Elle: inferring isolation anomalies from experimental observations, Kingsbury & Alvaro, VLDB’20 Is there anyth…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2020/11/23/elle"
+    field  p > a > span  ×1
+      "Elle: inferring isolation anomalies from experimental observations"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2020/11/23/elle"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "November 23, 2020"
+          "2020-11-23T13:56:00+00:00"
+          "October 20, 2025"
+          (4 values)
+
+structure 7  ×2 instances
+  part   html > body > div > div > div > main > article.tag-networking > div  ×2
+    field  p  ×1
+      "Achieving 100 Gbps intrusion prevention on a single server, Zhao et al., OSDI’20 Papers-we-love is hosting a m…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2020/11/16/pigasus"
+    field  p > a > span  ×1
+      "Achieving 100Gbps intrusion prevention on a single server"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2020/11/16/pigasus"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "November 16, 2020"
+          "2020-11-16T13:42:00+00:00"
+          "October 20, 2025"
+          (4 values)
+
+structure 8  ×2 instances
+  part   html > body > div > div > div > main > article.tag-distributed-systems > div  ×2
+    field  p  ×1
+      "Virtual consensus in Delos, Balakrishnan et al. (Facebook, Inc.), OSDI’2020 Before we dive into this paper, if…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2020/11/09/delos"
+    field  p > a > span  ×1
+      "Virtual consensus in Delos"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2020/11/09/delos"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "November 9, 2020"
+          "2020-11-09T13:34:00+00:00"
+          "October 20, 2025"
+          (4 values)
+
+structure 9  ×2 instances
+  part   html > body > div > div > div > main > article.post-9841 > div  ×2
+    field  p  ×1
+      "Helios: hyperscale indexing for the cloud & edge, Potharaju et al., PVLDB’20 Last time out we looked at the mo…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2020/11/02/helios-part-ii"
+    field  p > a > span  ×1
+      "Helios: hyperscale indexing for the cloud & edge (part II)"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2020/11/02/helios-part-ii"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "November 2, 2020"
+          "2020-11-02T13:20:00+00:00"
+          "October 20, 2025"
+          (4 values)
+
+structure 10  ×2 instances
+  part   html > body > div > div > div > main > article.post-9832 > div  ×2
+    field  p  ×1
+      "Helios: hyperscale indexing for the cloud & edge, Potharaju et al., PVLDB’20 On the surface this is a paper ab…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2020/10/26/helios-part-1"
+    field  p > a > span  ×1
+      "Helios: hyperscale indexing for the cloud & edge – part 1"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2020/10/26/helios-part-1"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "October 26, 2020"
+          "2020-10-26T20:22:00+00:00"
+          "October 19, 2025"
+          (4 values)
+
+structure 11  ×2 instances
+  part   html > body > div > div > div > main > article.post-9818 > div  ×2
+    field  p  ×1
+      "The case for a learned sorting algorithm, Kristo, Vaidya, et al., SIGMOD’20 We’ve watched machine learning tho…"
+    field  p > a  ×1
+      "Continue reading"
+      "blog.acolyer.org/2020/10/19/the-case-for-a-learned-sorting-algorithm"
+    field  p > a > span  ×1
+      "The case for a learned sorting algorithm"
+    part   span  ×2
+      field  a  ×1
+        "blog.acolyer.org/2020/10/19/the-case-for-a-learned-sorting-algorithm"
+      field  span > span  ×1
+        "~"
+      field  span > a  ×1
+        "adriancolyer"
+        "blog.acolyer.org/author/adriancolyer"
+      part   a > time  ×2
+        field  self  ×2
+          "October 19, 2020"
+          "2020-10-19T20:11:00+01:00"
+          "October 19, 2025"
+          (4 values)

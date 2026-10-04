@@ -57,7 +57,7 @@ func Build(page *html.Node, base *url.URL) []*Structure {
 		// the set of siblings it was read from, because the chain is what runs
 		// on a later build.
 		c = trimClasses(c, page, found)
-		root := buildPart("post", found, base, 1)
+		root := buildPart(c.String(), found, base, 1)
 		root.Match = func(n *html.Node) []*html.Node { return c.find(n) }
 		out = append(out, &Structure{Root: root})
 	}
@@ -437,17 +437,16 @@ type spot struct {
 
 // buildPart describes the subtrees one part matched. It walks them level by
 // level, so that the nodes of every subtree that sit at the same path are seen
-// together and become one field.
+// together and become one field. The walk follows the page order, so that the
+// fields of a part are offered in the order the page writes them.
 func buildPart(name string, subtrees []*html.Node, base *url.URL, level int) *Part {
 	part := &Part{Name: name}
 	start := spot{nodes: make([][]*html.Node, len(subtrees))}
 	for i, n := range subtrees {
 		start.nodes[i] = []*html.Node{n}
 	}
-	for queue := []spot{start}; len(queue) > 0; {
-		s := queue[0]
-		queue = queue[1:]
-
+	var visit func(spot)
+	visit = func(s spot) {
 		most := 0
 		for _, ns := range s.nodes {
 			most = max(most, len(ns))
@@ -460,13 +459,16 @@ func buildPart(name string, subtrees []*html.Node, base *url.URL, level int) *Pa
 			child := buildPart(s.c.String(), flat, base, level+1)
 			child.Match = func(n *html.Node) []*html.Node { return s.c.find(n) }
 			part.Children = append(part.Children, child)
-			continue
+			return
 		}
 		if f := s.field(base); f != nil {
 			part.Fields = append(part.Fields, f)
 		}
-		queue = append(queue, s.children()...)
+		for _, next := range s.children() {
+			visit(next)
+		}
 	}
+	visit(start)
 	return part
 }
 

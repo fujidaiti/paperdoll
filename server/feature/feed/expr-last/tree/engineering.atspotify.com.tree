@@ -1,0 +1,83 @@
+# engineering.atspotify.com
+url               https://engineering.atspotify.com/
+posts in fixture  13
+structures        2
+recall            0.923, recall+ 0.923
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×12 instances
+  part   html > body > div > div > main > section > section > div  ×12
+    field  div.post-card__image:not(.post-card__content) > a  ×12
+      "engineering.atspotify.com/2026/9/ai-changed-how-spotify-builds-what-we-learned-and-fixed-about-quality-at-high…"
+      "engineering.atspotify.com/2026/9/why-spotify-is-not-using-bayesian-a-b-testing"
+      "engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90"
+      (12 values)
+    field  div.post-card__image:not(.post-card__content) > a > img  ×12
+      "images.ctfassets.net/p762jor363g1/6gLL3mDjx3AoPGWca14Xe7/c30c8bdfd06f78383da92f3df819d798/Option_2.1.png"
+      "sticky"
+      "images.ctfassets.net/p762jor363g1/7MYEdTbczd11VcDP5GMLrp/755c9f5d9d2bc9362c1b3c5baf6f6df8/image3.png"
+      (24 values)
+    field  div.post-card__content:not(.post-card__image) > div.top-content:not(.post-card__tags) > div.post-card__date:not(.post-card__description):not(.post-card__publish…  ×12
+      "Sep 16, 2026"
+      "Sep 8, 2026"
+      "Sep 3, 2026"
+      (12 values)
+    field  div.post-card__content:not(.post-card__image) > div.top-content:not(.post-card__tags) > div.post-card__description:not(.post-card__date):not(.post-card__publish…  ×12
+      "Quality and reliability have always been a point of pride for Spotify. We run an extraordinarily complex..."
+      "Clearing the confusion about what Bayesian A/B testing is."
+      "Most of what an AI coding agent does for me isn't thinking. It's I/O."
+      (12 values)
+    field  div.post-card__content:not(.post-card__image) > div.top-content:not(.post-card__tags) > a  ×12
+      "engineering.atspotify.com/2026/9/ai-changed-how-spotify-builds-what-we-learned-and-fixed-about-quality-at-high…"
+      "engineering.atspotify.com/2026/9/why-spotify-is-not-using-bayesian-a-b-testing"
+      "engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90"
+      (12 values)
+    field  div.post-card__content:not(.post-card__image) > div.top-content:not(.post-card__tags) > a > h4.post-card__title  ×12
+      "AI Changed How Spotify Builds. What We Learned (and Fixed) About Quality at Higher Velocity"
+      "Why Spotify Is Not Using Bayesian A/B Testing"
+      "Portal by Spotify cut my Claude Code token usage by 90%"
+      (12 values)
+    part   div.post-card__content:not(.post-card__image) > div.post-card__tags:not(.top-content) > a.tag  ×22
+      field  self  ×22
+        "Data"
+        "engineering.atspotify.com/category/data"
+        "Data Science"
+        (44 values)
+
+structure 2  ×24 instances
+  part   html > body > div > div > main > section > section > div > div > div  ×24
+    field  div.post-card__date:not(.post-card__description):not(.post-card__published)  ×12
+      "Sep 16, 2026"
+      "Sep 8, 2026"
+      "Sep 3, 2026"
+      (12 values)
+    field  div.post-card__description:not(.post-card__date):not(.post-card__published)  ×12
+      "Quality and reliability have always been a point of pride for Spotify. We run an extraordinarily complex..."
+      "Clearing the confusion about what Bayesian A/B testing is."
+      "Most of what an AI coding agent does for me isn't thinking. It's I/O."
+      (12 values)
+    field  a:not(.tag)  ×12
+      "engineering.atspotify.com/2026/9/ai-changed-how-spotify-builds-what-we-learned-and-fixed-about-quality-at-high…"
+      "engineering.atspotify.com/2026/9/why-spotify-is-not-using-bayesian-a-b-testing"
+      "engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90"
+      (12 values)
+    field  a:not(.tag) > h4.post-card__title  ×12
+      "AI Changed How Spotify Builds. What We Learned (and Fixed) About Quality at Higher Velocity"
+      "Why Spotify Is Not Using Bayesian A/B Testing"
+      "Portal by Spotify cut my Claude Code token usage by 90%"
+      (12 values)
+    part   a.tag  ×22
+      field  self  ×22
+        "Data"
+        "engineering.atspotify.com/category/data"
+        "Data Science"
+        (44 values)

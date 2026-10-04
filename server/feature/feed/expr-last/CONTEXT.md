@@ -16,6 +16,8 @@ siblings tried it and were measured against each other:
 - `../expr-selectors-minclass` is the same with the class names trimmed down to
   the ones a selector needs.
 
+(Note that the expr directories above aren't commited in the repo.)
+
 Each of those rounds defined its output and its metrics as it went, so the
 rounds could not be compared with each other and it was never clear what a
 better number meant. `expr-last` restarts from the other end: the output and the
@@ -57,6 +59,8 @@ small.
   reachability check.
 - **metrics_test.go** drives the metric code with structures written by hand.
 - **build.go** and **build_test.go** are round 1.
+- **dump_test.go** writes `tree/`, one file per page, holding the structures
+  that page produces with samples of the values each field reads.
 
 ## Decisions already taken
 
@@ -143,11 +147,13 @@ Over the 30 saved pages that record posts, 1302 posts in all:
 go test ./server/feature/feed/expr-last/                      # the unit tests
 go test -run TestMetrics -v ./server/feature/feed/expr-last/  # the page table
 go test -run TestFixtureReach -v ./server/feature/feed/expr-last/
+go test -run TestWriteTrees ./server/feature/feed/expr-last/   # rewrite tree/
 ```
 
 `TestMetrics` prints one row per page and the totals. `TestFixtureReach` counts
 the fixture values that equal a value some node of the page offers, which is the
-cap on recall+ that no algorithm can lift.
+cap on recall+ that no algorithm can lift. `TestWriteTrees` rewrites `tree/`,
+which is where to look to see what a structure actually holds.
 
 ## Working rules for this folder
 

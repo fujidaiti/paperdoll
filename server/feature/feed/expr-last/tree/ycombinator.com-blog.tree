@@ -1,0 +1,330 @@
+# ycombinator.com-blog
+url               https://www.ycombinator.com/blog
+posts in fixture  10
+structures        7
+recall            1.000, recall+ 1.000
+merge             1.58
+distrib           1.10, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×6 instances
+  part   html > body > div > div  ×6
+    field  div.max-w-ycdc-page.mx-auto.px-4 > div:not(.grid):not(.lg:grid-cols-3):not(.lg:max-w-none):not(.max-w-lg) > p  ×1
+      "Want to sign up for weekly updates from YC?"
+    field  div.max-w-ycdc-page.mx-auto.px-4 > div:not(.grid):not(.lg:grid-cols-3):not(.lg:max-w-none):not(.max-w-lg) > p > a  ×1
+      "Sign up for the newsletter"
+      "www.ycombinator.com/newsletter/subscribe?signup_source=ycdc_blog"
+    field  div.max-w-ycdc-page.mx-auto.px-4 > h3  ×1
+      "Recent Posts"
+    part   div:not(.max-w-ycdc-page):not(.mx-auto):not(.px-4) > header > nav  ×2
+      field  a  ×1
+        "www.ycombinator.com"
+        "Y Combinator"
+      field  a > img  ×1
+        "Y Combinator"
+      field  button > span  ×1
+        "Open menu"
+      part   div  ×2
+        part   div  ×3
+          field  div.inline-block.relative > a.cursor-pointer.gap-1.inline-flex.items-center.nav-link  ×2
+            "About"
+            "www.ycombinator.com/about"
+            "Partners"
+            (4 values)
+          field  div.inline-block.relative > div.dropdown-menu.hidden > div.dropdown-container > div.dropdown-items > a.dropdown-item  ×2
+            "What Happens at YC?"
+            "www.ycombinator.com/about"
+            "Startup School"
+            (4 values)
+          field  a  ×1
+            "www.ycombinator.com"
+            "Y Combinator"
+          field  a > img  ×1
+            "Y Combinator"
+        part   a  ×2
+          field  self  ×2
+            "Log in"
+            "account.ycombinator.com?continue=https://www.ycombinator.com/blog"
+            "Apply"
+            (4 values)
+    part   div.max-w-ycdc-page.mx-auto.px-4 > div:not(.grid):not(.lg:grid-cols-3):not(.lg:max-w-none):not(.max-w-lg) > div  ×4
+      field  label  ×1
+        "Select a tab"
+      field  div > nav > div > div > label  ×1
+        "Search Blog Posts"
+      field  div > a  ×1
+        "www.ycombinator.com/blog/chris-golda-and-grey-baker-general-partners"
+      field  div > a > h2  ×1
+        "Christopher Golda and Grey Baker Join YC as General Partners"
+      field  div > p  ×1
+        "We're excited to announce that Christopher Golda and Grey Baker are joining YC as General Partners."
+      field  div > figure > a  ×1
+        "www.ycombinator.com/blog/chris-golda-and-grey-baker-general-partners"
+      field  div > figure > a > img  ×1
+        "www.ycombinator.com/blog/content/images/2026/06/BlogTwitter-Image-Template.jpg"
+      field  p > a  ×1
+        "www.ycombinator.com/blog/chris-golda-and-grey-baker-general-partners"
+      field  p > a > span  ×1
+        "Read More"
+      part   select > option  ×3
+        field  self  ×3
+          "All Posts"
+          "Startup Jobs"
+          "Startup School"
+      part   div > nav > a  ×3
+        field  self  ×3
+          "All Posts"
+          "www.ycombinator.com/blog"
+          "Startup Jobs"
+          (6 values)
+    part   div.max-w-ycdc-page.mx-auto.px-4 > div.grid.lg:grid-cols-3.lg:max-w-none.max-w-lg > div  ×5
+      field  div.shrink-0:not(.bg-white):not(.flex):not(.flex-1):not(.flex-col):not(.justify-between):not(.p-6) > a  ×3
+        "www.ycombinator.com/blog/diana-hu-managing-partner"
+        "www.ycombinator.com/blog/welcome-harshita"
+        "www.ycombinator.com/blog/adding-canada-back"
+      field  div.shrink-0:not(.bg-white):not(.flex):not(.flex-1):not(.flex-col):not(.justify-between):not(.p-6) > a > img.h-48.object-cover.w-full  ×3
+        "www.ycombinator.com/blog/content/images/2026/06/S25-Kick-Off-Day-1_128.jpg"
+        "www.ycombinator.com/blog/content/images/2026/04/2025-YC-Intern-Happy-Hour-0708_013.jpg"
+        "www.ycombinator.com/vite/assets/yc-blog-placeholder-Cx3N3yop.png"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex-1:not(.mt-2):not(.flex):not(.items-center):not(.mt-6) > a.block.mt-2  ×3
+        "www.ycombinator.com/blog/diana-hu-managing-partner"
+        "www.ycombinator.com/blog/welcome-harshita"
+        "www.ycombinator.com/blog/adding-canada-back"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex-1:not(.mt-2):not(.flex):not(.items-center):not(.mt-6) > a.block.mt-2 > p.font-se…  ×3
+        "Diana Hu Is YC's Newest Managing Partner"
+        "Harshita Arora Joins YC as General Partner"
+        "Adding Canada Back to Our List of Accepted Countries of Incorporation"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex-1:not(.mt-2):not(.flex):not(.items-center):not(.mt-6) > a.block.mt-2 > p.mt-3.te…  ×3
+        "We're thrilled to announce that Diana Hu has been promoted to Managing Partner at Y Combinator. Few people hav…"
+        "We're thrilled to announce that Harshita Arora is joining Y Combinator as a General Partner. She brings deep f…"
+        "After hearing feedback from Canadian founders in our network, we are adding Canada back to our list of accepte…"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.mt-2:not(.flex-1):not(.flex):not(.items-center):not(.mt-6) > p.font-medium.text-indig…  ×3
+        "www.ycombinator.com/blog/tag/yc-news"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.mt-2:not(.flex-1):not(.flex):not(.items-center):not(.mt-6) > p.font-medium.text-indig…  ×3
+        "YC News"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.shrink-0:not(.ml-4) > a  ×3
+        "www.ycombinator.com/blog/author/garry"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.shrink-0:not(.ml-4) > a > span.s…  ×3
+        "Garry Tan"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.shrink-0:not(.ml-4) > a > img.h-…  ×3
+        "www.ycombinator.com/blog/content/images/2023/03/Instagram-Image-Template--Square---21-.png"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.ml-4:not(.shrink-0) > p.font-med…  ×3
+        "Garry Tan"
+        "www.ycombinator.com/blog/author/garry"
+      field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.ml-4:not(.shrink-0) > div.flex.s…  ×3
+        "6/11/2026"
+        "4/6/2026"
+        "2/5/2026"
+      field  div:not(.shrink-0):not(.bg-white):not(.flex):not(.flex-1):not(.flex-col):not(.justify-between):not(.p-6) > p  ×1
+        "Categories"
+      field  h3  ×1
+        "All Posts"
+      part   div.flex.flex-col:not(.shrink-0):not(.bg-white):not(.flex-1):not(.justify-between):not(.p-6)  ×6
+        field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > a.block.mt-2  ×6
+          "www.ycombinator.com/blog/congratulations-to-equipmentshare"
+          "www.ycombinator.com/blog/the-yc-ai-student-starter-pack"
+          "www.ycombinator.com/blog/2026-demo-days"
+          (6 values)
+        field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > a.block.mt-2 > p.font-semibold.text-3xl.text-gray-900  ×6
+          "Congratulations to EquipmentShare on Going Public"
+          "Announcing the YC AI Stack"
+          "2026 Demo Day Dates"
+          (6 values)
+        field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800)  ×6
+          "by"
+        field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800) > a.hover:underlin…  ×6
+          "www.ycombinator.com/blog/author/garry"
+          "www.ycombinator.com/blog/author/ankit-gupta"
+          "www.ycombinator.com/blog/author/yc"
+          (6 values)
+        field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800) > a.hover:underlin…  ×6
+          "Garry Tan"
+          "Ankit Gupta"
+          "Y Combinator"
+          (6 values)
+        field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800) > span.font-normal…  ×6
+          "1/23/2026"
+          "1/16/2026"
+          "12/18/2025"
+          (6 values)
+        field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.mt-3.text-base.text-gray-800:not(.py-2):not(.text-gray-500):not(.text-md)  ×6
+          "Today, EquipmentShare (YC W15) goes public. From Missouri to 373 locations nationwide, they've built the opera…"
+          "We've partnered with nearly two dozen companies to offer students who attend YC events a suite of over $25,000…"
+          "We’re excited to share the Demo Day dates for 2026 so founders, investors, and our broader community can plan …"
+          (6 values)
+        field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > div.mt-4 > a.font-medium.inline-flex.md:text-base.text-blue-500.text-sm  ×6
+          "Read More"
+          "www.ycombinator.com/blog/congratulations-to-equipmentshare"
+          "www.ycombinator.com/blog/the-yc-ai-student-starter-pack"
+          (12 values)
+      part   div:not(.shrink-0):not(.bg-white):not(.flex):not(.flex-1):not(.flex-col):not(.justify-between):not(.p-6) > a  ×11
+        field  self  ×11
+          "www.ycombinator.com/blog/tag/admissions"
+          "www.ycombinator.com/blog/tag/advice"
+          "www.ycombinator.com/blog/tag/biotech"
+          (11 values)
+        field  div.bg-beige-medium.font-medium.mb-3.px-2.py-1.rounded.text-gray-800.text-md  ×11
+          "Admissions"
+          "Advice"
+          "Biotech"
+          (11 values)
+      part   nav > div  ×2
+        field  p  ×1
+          "Showing"
+          "to"
+          "of"
+          (4 values)
+        field  a  ×1
+          "Next"
+        part   p > span  ×3
+          field  self  ×3
+            "1"
+            "10"
+            "2681"
+
+structure 2  ×3 instances
+  part   html > body > div > div > div > header > nav > div > div  ×3
+    field  a  ×1
+      "www.ycombinator.com"
+      "Y Combinator"
+    field  a > img  ×1
+      "Y Combinator"
+    part   div.inline-block.relative  ×6
+      field  a.cursor-pointer.gap-1.inline-flex.items-center.nav-link  ×6
+        "About"
+        "www.ycombinator.com/about"
+        "Companies"
+        (12 values)
+      part   div.dropdown-menu.hidden > div.dropdown-container > div.dropdown-items > a.dropdown-item  ×19
+        field  self  ×19
+          "What Happens at YC?"
+          "www.ycombinator.com/about"
+          "Apply"
+          (38 values)
+
+structure 3  ×3 instances
+  part   html > body > div > div > div > header > nav > div > div.justify-end > div  ×3
+    field  a.cursor-pointer.gap-1.inline-flex.items-center.nav-link  ×3
+      "About"
+      "www.ycombinator.com/about"
+      "Companies"
+      (6 values)
+    part   div.dropdown-menu.hidden > div.dropdown-container > div.dropdown-items > a.dropdown-item  ×9
+      field  self  ×9
+        "What Happens at YC?"
+        "www.ycombinator.com/about"
+        "Apply"
+        (18 values)
+
+structure 4  ×3 instances
+  part   html > body > div > div > div > div > div.shadow-sm  ×3
+    field  div.shrink-0:not(.bg-white):not(.flex):not(.flex-1):not(.flex-col):not(.justify-between):not(.p-6) > a  ×3
+      "www.ycombinator.com/blog/diana-hu-managing-partner"
+      "www.ycombinator.com/blog/welcome-harshita"
+      "www.ycombinator.com/blog/adding-canada-back"
+    field  div.shrink-0:not(.bg-white):not(.flex):not(.flex-1):not(.flex-col):not(.justify-between):not(.p-6) > a > img.h-48.object-cover.w-full  ×3
+      "www.ycombinator.com/blog/content/images/2026/06/S25-Kick-Off-Day-1_128.jpg"
+      "www.ycombinator.com/blog/content/images/2026/04/2025-YC-Intern-Happy-Hour-0708_013.jpg"
+      "www.ycombinator.com/vite/assets/yc-blog-placeholder-Cx3N3yop.png"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex-1:not(.mt-2):not(.flex):not(.items-center):not(.mt-6) > a.block.mt-2  ×3
+      "www.ycombinator.com/blog/diana-hu-managing-partner"
+      "www.ycombinator.com/blog/welcome-harshita"
+      "www.ycombinator.com/blog/adding-canada-back"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex-1:not(.mt-2):not(.flex):not(.items-center):not(.mt-6) > a.block.mt-2 > p.font-se…  ×3
+      "Diana Hu Is YC's Newest Managing Partner"
+      "Harshita Arora Joins YC as General Partner"
+      "Adding Canada Back to Our List of Accepted Countries of Incorporation"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex-1:not(.mt-2):not(.flex):not(.items-center):not(.mt-6) > a.block.mt-2 > p.mt-3.te…  ×3
+      "We're thrilled to announce that Diana Hu has been promoted to Managing Partner at Y Combinator. Few people hav…"
+      "We're thrilled to announce that Harshita Arora is joining Y Combinator as a General Partner. She brings deep f…"
+      "After hearing feedback from Canadian founders in our network, we are adding Canada back to our list of accepte…"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.mt-2:not(.flex-1):not(.flex):not(.items-center):not(.mt-6) > p.font-medium.text-indig…  ×3
+      "www.ycombinator.com/blog/tag/yc-news"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.mt-2:not(.flex-1):not(.flex):not(.items-center):not(.mt-6) > p.font-medium.text-indig…  ×3
+      "YC News"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.shrink-0:not(.ml-4) > a  ×3
+      "www.ycombinator.com/blog/author/garry"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.shrink-0:not(.ml-4) > a > span.s…  ×3
+      "Garry Tan"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.shrink-0:not(.ml-4) > a > img.h-…  ×3
+      "www.ycombinator.com/blog/content/images/2023/03/Instagram-Image-Template--Square---21-.png"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.ml-4:not(.shrink-0) > p.font-med…  ×3
+      "Garry Tan"
+      "www.ycombinator.com/blog/author/garry"
+    field  div.bg-white.flex.flex-1.flex-col.justify-between.p-6:not(.shrink-0) > div.flex.items-center.mt-6:not(.flex-1):not(.mt-2) > div.ml-4:not(.shrink-0) > div.flex.s…  ×3
+      "6/11/2026"
+      "4/6/2026"
+      "2/5/2026"
+
+structure 5  ×6 instances
+  part   html > body > div > div > div > div > div > div.rounded-lg  ×6
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > a.block.mt-2  ×6
+      "www.ycombinator.com/blog/congratulations-to-equipmentshare"
+      "www.ycombinator.com/blog/the-yc-ai-student-starter-pack"
+      "www.ycombinator.com/blog/2026-demo-days"
+      (6 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > a.block.mt-2 > p.font-semibold.text-3xl.text-gray-900  ×6
+      "Congratulations to EquipmentShare on Going Public"
+      "Announcing the YC AI Stack"
+      "2026 Demo Day Dates"
+      (6 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800)  ×6
+      "by"
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800) > a.hover:underlin…  ×6
+      "www.ycombinator.com/blog/author/garry"
+      "www.ycombinator.com/blog/author/ankit-gupta"
+      "www.ycombinator.com/blog/author/yc"
+      (6 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800) > a.hover:underlin…  ×6
+      "Garry Tan"
+      "Ankit Gupta"
+      "Y Combinator"
+      (6 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.py-2.text-gray-500.text-md:not(.mt-3):not(.text-base):not(.text-gray-800) > span.font-normal…  ×6
+      "1/23/2026"
+      "1/16/2026"
+      "12/18/2025"
+      (6 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > p.mt-3.text-base.text-gray-800:not(.py-2):not(.text-gray-500):not(.text-md)  ×6
+      "Today, EquipmentShare (YC W15) goes public. From Missouri to 373 locations nationwide, they've built the opera…"
+      "We've partnered with nearly two dozen companies to offer students who attend YC events a suite of over $25,000…"
+      "We’re excited to share the Demo Day dates for 2026 so founders, investors, and our broader community can plan …"
+      (6 values)
+    field  div.flex.flex-1.flex-col.justify-between.mb-6.mr-6 > div.flex-1 > div.mt-4 > a.font-medium.inline-flex.md:text-base.text-blue-500.text-sm  ×6
+      "Read More"
+      "www.ycombinator.com/blog/congratulations-to-equipmentshare"
+      "www.ycombinator.com/blog/the-yc-ai-student-starter-pack"
+      (12 values)
+
+structure 6  ×11 instances
+  part   html > body > div > div > div > div > div > div > a.flex  ×11
+    field  self  ×11
+      "www.ycombinator.com/blog/tag/admissions"
+      "www.ycombinator.com/blog/tag/advice"
+      "www.ycombinator.com/blog/tag/biotech"
+      (11 values)
+    field  div.bg-beige-medium.font-medium.mb-3.px-2.py-1.rounded.text-gray-800.text-md  ×11
+      "Admissions"
+      "Advice"
+      "Biotech"
+      (11 values)
+
+structure 7  ×3 instances
+  part   html > body > div > footer > div > div > div.lg:gap-20 > div  ×3
+    field  h3.font-['Outfit',sans-serif].font-medium.text-beige-light.text-sm.tracking-wider  ×3
+      "Programs"
+      "Resources"
+      "Company"
+    part   ul.mt-2.space-y-1 > li  ×21
+      field  a.font-['Outfit',sans-serif].font-light.hover:text-white.text-beige-light.text-sm.transition-colors  ×21
+        "YC Program"
+        "www.ycombinator.com/about"
+        "Startup School"
+        (42 values)

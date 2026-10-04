@@ -1,0 +1,185 @@
+# aws.amazon.com-jp-blogs-news
+url               https://aws.amazon.com/jp/blogs/news/
+posts in fixture  10
+structures        4
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           3.00, wrappers 2.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×10 instances
+  part   html > body > div > div > main > article  ×10
+    field  div.lb-row.lb-snap > div.lb-col.lb-mid-6.lb-tiny-24:not(.lb-mid-18) > a  ×10
+      "aws.amazon.com/jp/blogs/news/software-factory-1000-prs"
+      "aws.amazon.com/jp/blogs/news/monthly-manufacturing-202609"
+      "aws.amazon.com/jp/blogs/news/converting-an-rds-for-sql-server-instance-from-license-included-to-bring-your-own…"
+      (10 values)
+    field  div.lb-row.lb-snap > div.lb-col.lb-mid-6.lb-tiny-24:not(.lb-mid-18) > a > img.attachment-large.size-large.wp-post-image  ×7
+      "d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/software-factory-1000-prs-10…"
+      "d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/AWS_Seizou_9gatsu_op.gif"
+      "AWS製造9月号タイトル"
+      (8 values)
+    field  div.lb-row.lb-snap > div.lb-col.lb-mid-6.lb-tiny-24:not(.lb-mid-18) > a > img.wp-post-image:not(.attachment-large):not(.size-large)  ×3
+      "d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+    field  div.lb-row.lb-snap > div.lb-col.lb-mid-18.lb-tiny-24:not(.lb-mid-6) > h2.blog-post-title.lb-bold > a  ×10
+      "aws.amazon.com/jp/blogs/news/software-factory-1000-prs"
+      "aws.amazon.com/jp/blogs/news/monthly-manufacturing-202609"
+      "aws.amazon.com/jp/blogs/news/converting-an-rds-for-sql-server-instance-from-license-included-to-bring-your-own…"
+      (10 values)
+    field  div.lb-row.lb-snap > div.lb-col.lb-mid-18.lb-tiny-24:not(.lb-mid-6) > h2.blog-post-title.lb-bold > a > span  ×10
+      "Kiro Crew でソフトウェアファクトリーを構築し、1 週間で 1000 件の PR をマージした方法"
+      "月刊 AWS 製造 2026 年 9 月号"
+      "RDS for SQL Server インスタンスを License Included から Bring Your Own Media (BYOM) へ変換"
+      (10 values)
+    part   meta  ×17
+      field  self  ×17
+        "ja-JP"
+        "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/software-factory-100…"
+        "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/AWS_Seizou_9gatsu_op…"
+        (17 values)
+    part   div.lb-row.lb-snap > div.lb-col.lb-mid-18.lb-tiny-24:not(.lb-mid-6) > footer.blog-post-meta > span  ×50
+      field  self  ×30
+        "by"
+        "on"
+        "in"
+      field  span:not(.blog-post-categories) > a  ×6
+        "稲田大陸"
+        "aws.amazon.com/jp/blogs/news/author/inariku"
+        "Posts by 稲田大陸"
+        (18 values)
+      field  span:not(.blog-post-categories) > span  ×4
+        "大前 遼"
+        "Shota Nakamoto"
+        "Takaaki Kikuchi"
+      field  span.blog-post-categories  ×10
+        ","
+      field  time  ×10
+        "19 9月 2026"
+        "2026-09-19T20:19:07+09:00"
+        "2026-09-19T15:17:23+09:00"
+        (20 values)
+      field  a  ×20
+        "Permalink"
+        "aws.amazon.com/jp/blogs/news/software-factory-1000-prs"
+        "Share"
+        (40 values)
+      part   span.blog-post-categories > a  ×50
+        field  self  ×50
+          "aws.amazon.com/jp/blogs/news/category/amazon-q/amazon-q-developer"
+          "View all posts in Amazon Q Developer"
+          "aws.amazon.com/jp/blogs/news/category/developer-tools"
+          (100 values)
+        field  span  ×50
+          "Amazon Q Developer"
+          "Developer Tools"
+          "Kiro"
+          (50 values)
+    part   div.lb-row.lb-snap > div.lb-col.lb-mid-18.lb-tiny-24:not(.lb-mid-6) > section.blog-post-excerpt.lb-rtxt > p  ×11
+      field  self  ×11
+        "先週、Kiro Crew をフルタイムで開発している私たち3人は、7日間で 1,000 件の pull request をマージしました。1日あたり 120 件を超え、そのすべてが CI とレビューを通っています。Kir…"
+        "この数字を狙っていたわけではありません。並行して開発を進めるやり方が次々に限界にぶつかり、それを越えるたびに少しずつ到達した結果です。ボトルネックにぶつかるたびに、1人がより多くのセッションを回せる新しい進め方が生まれま…"
+        "今月は「エージェントに現場を任せるとき、境界線をどこに引くか」をピックアップトピックとしてお届けしつつ、8 月に公開された製造業向けのブログとサービスアップデートをご紹介します。"
+        (11 values)
+
+structure 2  ×50 instances
+  part   html > body > div > div > main > article > div > div > footer > span > span.blog-post-categories > a  ×50
+    field  self  ×50
+      "aws.amazon.com/jp/blogs/news/category/amazon-q/amazon-q-developer"
+      "View all posts in Amazon Q Developer"
+      "aws.amazon.com/jp/blogs/news/category/developer-tools"
+      (100 values)
+    field  span  ×50
+      "Amazon Q Developer"
+      "Developer Tools"
+      "Kiro"
+      (50 values)
+
+structure 3  ×50 instances
+  part   html > body > div > div > main > article > div > div > footer > span  ×50
+    field  self  ×30
+      "by"
+      "on"
+      "in"
+    field  span:not(.blog-post-categories) > a  ×6
+      "稲田大陸"
+      "aws.amazon.com/jp/blogs/news/author/inariku"
+      "Posts by 稲田大陸"
+      (18 values)
+    field  span:not(.blog-post-categories) > span  ×4
+      "大前 遼"
+      "Shota Nakamoto"
+      "Takaaki Kikuchi"
+    field  span.blog-post-categories  ×10
+      ","
+    field  time  ×10
+      "19 9月 2026"
+      "2026-09-19T20:19:07+09:00"
+      "2026-09-19T15:17:23+09:00"
+      (20 values)
+    field  a  ×20
+      "Permalink"
+      "aws.amazon.com/jp/blogs/news/software-factory-1000-prs"
+      "Share"
+      (40 values)
+    part   span.blog-post-categories > a  ×50
+      field  self  ×50
+        "aws.amazon.com/jp/blogs/news/category/amazon-q/amazon-q-developer"
+        "View all posts in Amazon Q Developer"
+        "aws.amazon.com/jp/blogs/news/category/developer-tools"
+        (100 values)
+      field  span  ×50
+        "Amazon Q Developer"
+        "Developer Tools"
+        "Kiro"
+        (50 values)
+
+structure 4  ×10 instances
+  part   html > body > div > div > div > div > div > div > footer > div > div > div > div > div > div > div > div > div  ×10
+    field  a  ×1
+      "signin.aws.amazon.com/signup?request_type=register"
+    field  a > span  ×1
+      "AWS アカウントを作成する"
+    field  h2.rgft_7047aa37.rgft_8711ccd9.rgft_b97b7b3b  ×4
+      "学ぶ"
+      "リソース"
+      "デベロッパー"
+      (4 values)
+    field  button  ×1
+      "先頭に戻る"
+    field  span  ×1
+      "Amazon は男女雇用機会均等法を順守しています。人種、出身国、性別、性的指向、障がい、年齢、その他の属性によって差別することなく、平等に採用選考の機会を提供しています。"
+    field  div > div > span  ×1
+      "© 2026, Amazon Web Services, Inc. or its affiliates.All rights reserved."
+    part   ul.rgft_290ac8b1 > li  ×31
+      field  a.rgft_13008707.rgft_27323f5c.rgft_275611e5.rgft_2a7f98ee.rgft_8711ccd9.rgft_98b54368  ×31
+        "AWS とは？"
+        "aws.amazon.com/what-is-aws?nc1=f_cc"
+        "クラウドコンピューティングとは?"
+        (62 values)
+    part   ul:not(.rgft_290ac8b1) > li  ×3
+      field  a.rgft_007aef8b.rgft_13008707.rgft_27323f5c.rgft_2a7f98ee.rgft_8711ccd9.rgft_98b54368  ×3
+        "プライバシー"
+        "aws.amazon.com/privacy?nc1=f_pr"
+        "サイト規約"
+        (6 values)
+    part   button > span  ×3
+      field  self  ×1
+        "English"
+    part   div > a  ×8
+      field  self  ×8
+        "twitter.com/awscloud"
+        "www.facebook.com/amazonwebservices"
+        "www.linkedin.com/company/amazon-web-services"
+        (8 values)
+      field  span.rgft_3ed66ff4.rgft_a1b66739.rgft_bc1a8743 > svg > title  ×8
+        "x"
+        "facebook"
+        "linkedin"
+        (8 values)

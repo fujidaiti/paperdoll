@@ -1,0 +1,651 @@
+# bbc.com
+url               https://www.bbc.com/
+posts in fixture  103
+structures        13
+recall            1.000, recall+ 0.961
+merge             2.13
+distrib           1.11, wrappers 0.31
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×15 instances
+  part   html > body > div > div > main > article > section  ×15
+    field  div.Section-styles__SectionStyled-sc-934b69c3-2.kMAHme:not(.Container-styles__ContainerStyled-sc-8b855a6c-0):not(.tGPCn) > div.SectionTitle-styles__SectionTitle…  ×2
+      "Weekend reads"
+      "Covert Operations"
+    field  div.Section-styles__SectionStyled-sc-934b69c3-2.kMAHme:not(.Container-styles__ContainerStyled-sc-8b855a6c-0):not(.tGPCn) > div.SectionTitle-styles__SectionTitle…  ×3
+      "www.bbc.com/audio"
+      "www.bbc.com/video"
+      "www.bbc.com/audio/category/sport"
+    field  div.Section-styles__SectionStyled-sc-934b69c3-2.kMAHme:not(.Container-styles__ContainerStyled-sc-8b855a6c-0):not(.tGPCn) > div.SectionTitle-styles__SectionTitle…  ×2
+      "Best audio of the week"
+      "Latest Sport Audio"
+    field  div.Section-styles__SectionStyled-sc-934b69c3-2.kMAHme:not(.Container-styles__ContainerStyled-sc-8b855a6c-0):not(.tGPCn) > div.SectionTitle-styles__SectionTitle…  ×1
+      "Must watch"
+    field  div.Container-styles__ContainerStyled-sc-8b855a6c-0.tGPCn:not(.Section-styles__SectionStyled-sc-934b69c3-2):not(.kMAHme) > div.Grid-styles__GridStyled-sc-70d903…  ×4
+      "www.bbc.com/news"
+      "www.bbc.com/health"
+      "www.bbc.com/culture"
+      (4 values)
+    field  div.Container-styles__ContainerStyled-sc-8b855a6c-0.tGPCn:not(.Section-styles__SectionStyled-sc-934b69c3-2):not(.kMAHme) > div.Grid-styles__GridStyled-sc-70d903…  ×4
+      "More news"
+      "Health"
+      "Culture"
+      (4 values)
+    field  div.Container-styles__ContainerStyled-sc-8b855a6c-0.tGPCn:not(.Section-styles__SectionStyled-sc-934b69c3-2):not(.kMAHme) > div.Grid-styles__GridStyled-sc-70d903…  ×1
+      "Discover more from the BBC"
+    part   section.Container-styles__ContainerStyled-sc-8b855a6c-0.eWVxhX > div.Grid-styles__GridStyled-sc-70d90311-0:not(.eFgmZv) > div.GridItem-styles__GridItemStyled-sc…  ×6
+      part   div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG:not(.Grid-styles__GridStyled-sc-70d90311-0) > div > div  ×3
+        part   div  ×4
+          field  div > div > img  ×1
+            "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+          field  div > a  ×3
+            "www.bbc.com/news/articles/cvwyz29n0nn2o"
+            "www.bbc.com/news/articles/cry4z1xykeleo"
+          field  div > a > div > div > h2  ×1
+            "German Chancellor Merz calls state election a 'disaster' for his party but vows to stay on"
+          field  div > a > div > div > div > h2  ×1
+            "Key takeaways from BBC interview as Earl Spencer defends claims about King"
+          field  div > a > div > div > span  ×1
+            "8 hrs ago"
+          field  div > a > div > img  ×1
+            "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+          field  div > a > div > p  ×1
+            "Earl Spencer speaks to the BBC's Laura Kuenssberg ahead of the publication of his book about his sister Diana,…"
+          field  div > span  ×1
+            "3 hrs ago"
+          field  p  ×1
+            "Exit polls show damaging losses for Merz's centre-right CDU party in the states of Berlin and Mecklenburg-Vorp…"
+      part   div.Grid-styles__GridStyled-sc-70d90311-0:not(.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0):not(.jeApUG) > div.GridItem-styles__GridItemStyled-sc-6cc20e4a-0  ×13
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×13
+          "www.bbc.com/news/articles/c34gdjk1ne8yo"
+          "www.bbc.com/news/articles/cwj3d7zrgvk1o"
+          "www.bbc.com/news/articles/cm1j4kl80z56o"
+          (13 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×6
+          "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×6
+          "ichef.bbci.co.uk/news/480/cpsprodpb/15c3/live/41153930-b4bb-11f1-b1d1-571ed4d7ff2c.jpg.webp"
+          "ichef.bbci.co.uk/news/240/cpsprodpb/15c3/live/41153930-b4bb-11f1-b1d1-571ed4d7ff2c.jpg.webp"
+          "ichef.bbci.co.uk/news/320/cpsprodpb/15c3/live/41153930-b4bb-11f1-b1d1-571ed4d7ff2c.jpg.webp"
+          (56 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×6
+          "Largest attack on Moscow sees Ukraine fire hundreds of drones, mayor says"
+          "People are talking less, but no one's quite sure why"
+          "Man, 82, dies after beach fight with 76-year-old over sunlounger in Greece"
+          (6 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×6
+          "12 hrs ago"
+          "2 days ago"
+          "2 hrs ago"
+          (6 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×6
+          "Europe"
+          "Katty Kay"
+          "Premier League"
+          (6 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×6
+          "Moscow's mayor says 450 drones were downed during the overnight barrage, in which two people died."
+          "Between 2005 and 2019, there was a 28% drop in the number of words an average person spoke in a given day."
+          "One eyewitness said the scene was so chaotic that screaming could be heard from the other end of the beach."
+          (6 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×4
+          "Workers came across human remains – and unearthed a mass grave of 572 people"
+          "Trump says triumphal arch will be military complex with drones and snipers"
+          "Watch: Emotional Earl Spencer says he misses sister Diana every day"
+          (4 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×4
+          "41 mins ago"
+          "7 hrs ago"
+          "8 hrs ago"
+          (4 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×4
+          "Asia"
+          "US & Canada"
+          "UK"
+          (4 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×4
+          "Workers in northern Sri Lanka accidentally uncovered the country's largest mass grave – and reopened wounds fr…"
+          "Trump said the updated plans were at the request of the US military and for national security purposes."
+          "\"This is my swan song too. I'm not here to bang on about Diana, this is my final word, celebration of her\", Ea…"
+          (4 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×2
+          "Mum's viral barefoot race sparks debate over India's education crisis"
+          "Cultural treasures are being destroyed worldwide - so why is no-one being punished?"
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×2
+          "24 hrs ago"
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×2
+          "Asia"
+          "BBC InDepth"
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×2
+          "The 47-year-old ran - and won - a 3km race where she hoped to win enough prize money to buy study books for he…"
+          "A cauldron of conflicts is bubbling across the world, with cultural monuments being destroyed. These people ar…"
+        part   div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×2
+          field  div > div > img  ×1
+            "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+          field  div > div > h2  ×1
+            "Harry and Meghan's media treatment echoes what happened to Diana, Earl Spencer tells BBC"
+          field  div > span  ×1
+            "11 hrs ago"
+          field  p  ×1
+            "Princess Diana's brother describes press coverage of Prince Harry and Meghan as a \"cancerous influence in thei…"
+    part   section.Container-styles__ContainerStyled-sc-8b855a6c-0.eWVxhX > div.Grid-styles__GridStyled-sc-70d90311-0.eFgmZv > div.GridItem-styles__GridItemStyled-sc-6cc20…  ×4
+      field  div.London-styles__LondonMediaStyled-sc-269f9f6d-3.jqvHMb:not(.London-styles__LondonAnchorStyled-sc-269f9f6d-0):not(.kRdcYr) > div > a.London-styles__LondonMedi…  ×2
+        "www.bbc.com/future/article/20260917-confusion-in-the-immune-system-how-allergies-can-develop-later-in-life"
+        "www.bbc.com/culture/article/20260917-10-of-the-best-tv-shows-to-watch-this-october"
+      field  div.London-styles__LondonMediaStyled-sc-269f9f6d-3.jqvHMb:not(.London-styles__LondonAnchorStyled-sc-269f9f6d-0):not(.kRdcYr) > div > a.London-styles__LondonMedi…  ×2
+        "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+      field  div.London-styles__LondonMediaStyled-sc-269f9f6d-3.jqvHMb:not(.London-styles__LondonAnchorStyled-sc-269f9f6d-0):not(.kRdcYr) > div > a.London-styles__LondonMedi…  ×2
+        "ichef.bbci.co.uk/images/ic/480x270/p0pb3hjm.jpg.webp"
+        "ichef.bbci.co.uk/images/ic/160x90/p0pb3hjm.jpg.webp"
+        "ichef.bbci.co.uk/images/ic/240x135/p0pb3hjm.jpg.webp"
+        (22 values)
+      field  div.London-styles__LondonAnchorStyled-sc-269f9f6d-0.kRdcYr:not(.London-styles__LondonMediaStyled-sc-269f9f6d-3):not(.jqvHMb) > div > a.London-styles__LondonText…  ×2
+        "www.bbc.com/future/article/20260917-confusion-in-the-immune-system-how-allergies-can-develop-later-in-life"
+        "www.bbc.com/culture/article/20260917-10-of-the-best-tv-shows-to-watch-this-october"
+      field  div.London-styles__LondonAnchorStyled-sc-269f9f6d-0.kRdcYr:not(.London-styles__LondonMediaStyled-sc-269f9f6d-3):not(.jqvHMb) > div > a.London-styles__LondonText…  ×2
+        "'Confusion in the immune system': How allergies can develop later in life"
+        "10 of the best TV shows to watch this October"
+      field  div.London-styles__LondonAnchorStyled-sc-269f9f6d-0.kRdcYr:not(.London-styles__LondonMediaStyled-sc-269f9f6d-3):not(.jqvHMb) > div > a.London-styles__LondonText…  ×2
+        "We often think of allergies as the result of an unlucky hand dealt in childhood, or even before birth. But \"an…"
+        "From new adaptations of beloved John Steinbeck and Stephen King novels to a Newfoundland-set monster horror wi…"
+    part   section.Container-styles__ContainerStyled-sc-8b855a6c-0.eWVxhX > div.Grid-styles__GridStyled-sc-70d90311-0.eFgmZv > div.GridItem-styles__GridItemStyled-sc-6cc20…  ×2
+      field  div > div > a  ×2
+        "www.bbc.com/newsletters?at_bbc_team=studios&at_medium=onsite&at_objective=acquisition&at_ptr_name=bbc.com&at_f…"
+      part   div > div > a > div > img  ×2
+        field  self  ×2
+          "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+          "ichef.bbci.co.uk/images/ic/raw/p0nw7m52.jpg.webp"
+          "The best of the BBC, delivered to you"
+      part   div > div > a > div > div  ×3
+        field  self  ×1
+          "Get news and insights with BBC newsletters, sent direct to your inbox. Sign up for free."
+        field  div > div > h2  ×1
+          "The best of the BBC, delivered to you"
+        field  span  ×1
+          "See more"
+    part   div.Section-styles__SectionStyled-sc-934b69c3-2.kMAHme:not(.Container-styles__ContainerStyled-sc-8b855a6c-0):not(.tGPCn) > div:not(.SectionTitle-styles__Section…  ×3
+      part   div  ×10
+        field  a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×2
+          "www.bbc.com/travel/article/20260917-sleep-in-a-different-century-along-the-co-canal"
+          "www.bbc.com/future/article/20260916-new-york-has-a-food-waste-problem-south-korea-has-already-solved-it"
+        field  a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6adba-0.dJmOvO > div.Edinburgh-styles__MediaWrapperStyled-sc-73f6adb…  ×2
+          "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+        field  a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6adba-0.dJmOvO > div.Edinburgh-styles__MediaWrapperStyled-sc-73f6adb…  ×2
+          "ichef.bbci.co.uk/images/ic/480x270/p0pb68gr.jpg.webp"
+          "ichef.bbci.co.uk/images/ic/160x90/p0pb68gr.jpg.webp"
+          "ichef.bbci.co.uk/images/ic/240x135/p0pb68gr.jpg.webp"
+          (21 values)
+        field  a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6adba-0.dJmOvO > div.Edinburgh-styles__TextWrapperStyled-sc-73f6adba…  ×2
+          "Sleep in a different era along Maryland's 200-year-old canal"
+          "New York has a food waste problem. South Korea has already solved it"
+        field  a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6adba-0.dJmOvO > div.Edinburgh-styles__TextWrapperStyled-sc-73f6adba…  ×2
+          "The C&O Canal was a thriving 19th-Century waterway, and a strategic asset during the Civil War. Today, its his…"
+          "South Korea has cut household food waste going to landfill from 97% to almost nothing. New York City has start…"
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×8
+          "www.bbc.com/sport/videos/ckqxvp07rrnvo"
+          "www.bbc.com/news/videos/cm4glen7dpx9o"
+          "www.bbc.com/news/videos/cmy0z2ljelgko"
+          (8 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×8
+          "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×8
+          "ichef.bbci.co.uk/news/480/cpsprodpb/9314/live/e68f8f00-b538-11f1-bc1f-3f186ca4140c.jpg.webp"
+          "ichef.bbci.co.uk/news/240/cpsprodpb/9314/live/e68f8f00-b538-11f1-bc1f-3f186ca4140c.jpg.webp"
+          "ichef.bbci.co.uk/news/320/cpsprodpb/9314/live/e68f8f00-b538-11f1-bc1f-3f186ca4140c.jpg.webp"
+          (74 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×8
+          "Man United Fan - \"CARRICK GONE!\""
+          "Sixth batch of UFO files includes orbs from 1952"
+          "Earl Spencer's claims about King's reaction to Diana's death open old wounds"
+          (8 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×8
+          "Man Utd"
+          "US & Canada"
+          "UK"
+          (8 values)
+        field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×7
+          "The footage was filmed by a US Navy officer who reported the group of bright airborne objects to the Air Force…"
+          "His comments come ahead of a controversial new memoir examining the life and death of Princess Diana"
+          "A prosthetics expert's life changed after a cycling accident. Now he is testing new technology himself."
+          (7 values)
+    part   div.Section-styles__SectionStyled-sc-934b69c3-2.kMAHme:not(.Container-styles__ContainerStyled-sc-8b855a6c-0):not(.tGPCn) > div.Iowa-styles__SectionStyled-sc-208…  ×24
+      field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+        "www.bbc.com/audio/play/w3ct8m99"
+        "www.bbc.com/audio/play/p0pbk7cj"
+        "www.bbc.com/audio/play/w3ct99j1"
+        (24 values)
+      field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+        "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+      field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+        "ichef.bbci.co.uk/images/ic/480x270/p0pb846k.jpg.webp"
+        "ichef.bbci.co.uk/images/ic/160x90/p0pb846k.jpg.webp"
+        "ichef.bbci.co.uk/images/ic/240x135/p0pb846k.jpg.webp"
+        (264 values)
+      field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+        "The Global Story"
+        "Global News Podcast"
+        "The Climate Question"
+        (24 values)
+      field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+        "Dave Ramsey: Iran, tariffs and affordability"
+        "Ed Sheeran speaks out on Gaza"
+        "The solar power boom in Pakistan and the Philippines"
+        (24 values)
+      part   div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×120
+    part   div.Section-styles__SectionStyled-sc-934b69c3-2.kMAHme:not(.Container-styles__ContainerStyled-sc-8b855a6c-0):not(.tGPCn) > div.Grid-styles__GridStyled-sc-772acf…  ×11
+      field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×11
+        "www.bbc.com/culture/article/20260619-how-john-le-carrs-spy-novels-were-shaped-by-his-con-man-father"
+        "www.bbc.com/reel/video/p0bzwxqy/watch"
+        "www.bbc.com/culture/article/20260904-the-poison-tipped-umbrella-that-pointed-to-a-kgb-murder"
+        (11 values)
+      field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Dundee-styles__ImageWrapperStyled-sc-50abbc9…  ×11
+        "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+      field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Dundee-styles__ImageWrapperStyled-sc-50abbc9…  ×11
+        "ichef.bbci.co.uk/images/ic/480x270/p0nsyvdp.jpg.webp"
+        "ichef.bbci.co.uk/images/ic/160x90/p0nsyvdp.jpg.webp"
+        "ichef.bbci.co.uk/images/ic/240x135/p0nsyvdp.jpg.webp"
+        (121 values)
+      field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Grid-styles__GridStyled-sc-772acff9-0.kYsqtw…  ×11
+        "How John le Carré's spy novels were shaped by his con-man father"
+        "The Chevalier d'Éon: The 18th Century transgender spy"
+        "The poison-tipped umbrella that pointed to a KGB murder - on British soil"
+        (11 values)
+      field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Grid-styles__GridStyled-sc-772acff9-0.kYsqtw…  ×11
+        "The author's childhood was rocked by bankruptcy and deceit. In 2008, he told the BBC that his \"hectic backgrou…"
+        "The Chevalier d'Éon: Nobleman, spy to King Louis XV, and for the last 33 years of their life, a woman."
+        "In 1978, Georgi Markov was killed with a poison-tipped umbrella. The following year, his widow and elder broth…"
+        (11 values)
+    part   div.Section-styles__SectionStyled-sc-934b69c3-2.kMAHme:not(.Container-styles__ContainerStyled-sc-8b855a6c-0):not(.tGPCn) > div.Grid-styles__GridStyled-sc-772acf…  ×6
+      part   div.Wyoming-styles__WyomingColumnStyled-sc-a5d523a7-0.dEOaks  ×12
+        field  div.SectionTitle-styles__SectionTitleContainerStyled-sc-2dfed50c-2.cdzHai:not(.Grid-styles__GridStyled-sc-772acff9-0):not(.goDMtE) > div.SectionTitle-styles__Se…  ×12
+          "www.bbc.com/news/us-canada"
+          "www.bbc.com/news/world"
+          "www.bbc.com/business"
+          (12 values)
+        field  div.SectionTitle-styles__SectionTitleContainerStyled-sc-2dfed50c-2.cdzHai:not(.Grid-styles__GridStyled-sc-772acff9-0):not(.goDMtE) > div.SectionTitle-styles__Se…  ×12
+          "US & Canada News"
+          "More World News"
+          "Business"
+          (12 values)
+        part   div.Grid-styles__GridStyled-sc-772acff9-0.goDMtE:not(.SectionTitle-styles__SectionTitleContainerStyled-sc-2dfed50c-2):not(.cdzHai) > div.IndexCard-styles__Index…  ×48
+          field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×48
+            "www.bbc.com/news/articles/cj4gklz9dxplo"
+            "www.bbc.com/news/articles/cmn8ed1xpxnyo"
+            "www.bbc.com/news/articles/crwyzj53pl1lo"
+            (48 values)
+          field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+            "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+          field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+            "ichef.bbci.co.uk/news/480/cpsprodpb/1b27/live/d8b31f40-b435-11f1-9fa0-111a12dcb7b0.jpg.webp"
+            "ichef.bbci.co.uk/news/240/cpsprodpb/1b27/live/d8b31f40-b435-11f1-9fa0-111a12dcb7b0.jpg.webp"
+            "ichef.bbci.co.uk/news/320/cpsprodpb/1b27/live/d8b31f40-b435-11f1-9fa0-111a12dcb7b0.jpg.webp"
+            (120 values)
+          field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+            "Journalists denied White House access after Trump banned some media outlets"
+            "Burnham hails Greenland deal ahead of expected first Trump meeting"
+            "Will you get £13,000 a year when you stop working? Here's how to check"
+            (12 values)
+          field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+            "CNN, MS NOW and Politico reporters' White House press badges were confiscated, the outlets reported."
+            "While Burnham praised the agreement, Lib Dem leader Ed Davey called it a \"pretend\" victory for Trump."
+            "How to find out how much state pension you're likely to receive - and what you can do about it now."
+            (12 values)
+          field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Chester-styles__CardStyled-sc-340eb5f4-0.fwrgVI:not(.Dundee-styles__CardStyled-sc-50abbc98-1):not…  ×36
+            "Trump escalates media fight after week of setbacks"
+            "Converse pulls 'deeply upsetting' advert after backlash"
+            "Trump says he is banning CNN and Politico from White House"
+            (36 values)
+    part   div.Container-styles__ContainerStyled-sc-8b855a6c-0:not(.Section-styles__SectionStyled-sc-934b69c3-2):not(.kMAHme):not(.tGPCn) > div > div > div > div > div  ×2
+      part   div > div  ×3
+        field  a  ×2
+          "www.bbc.com/reel/video/p0p515ww/watch"
+        part   a > div > img  ×2
+          field  self  ×2
+            "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+            "ichef.bbci.co.uk/images/ic/480x270/p0p54n0z.jpg.webp"
+            "ichef.bbci.co.uk/images/ic/160x90/p0p54n0z.jpg.webp"
+            (12 values)
+        part   a > div > div  ×3
+          field  self  ×1
+            "Budapest-based wildlife photographer Manó Aliczki shares his top tips for taking amazing shots of birds."
+          field  div > div > h2  ×1
+            "Stunning bird photography in the 'owl capital' of Europe"
+          field  span  ×1
+            "See more"
+
+structure 2  ×2 instances
+  part   html > body > div > div > main > article > section > section > div > div > div > div.jxyCyo  ×2
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×2
+      "www.bbc.com/news/articles/c34gdjk1ne8yo"
+      "www.bbc.com/news/articles/cwj3d7zrgvk1o"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×2
+      "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×2
+      "ichef.bbci.co.uk/news/480/cpsprodpb/15c3/live/41153930-b4bb-11f1-b1d1-571ed4d7ff2c.jpg.webp"
+      "ichef.bbci.co.uk/news/240/cpsprodpb/15c3/live/41153930-b4bb-11f1-b1d1-571ed4d7ff2c.jpg.webp"
+      "ichef.bbci.co.uk/news/320/cpsprodpb/15c3/live/41153930-b4bb-11f1-b1d1-571ed4d7ff2c.jpg.webp"
+      (18 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×2
+      "Largest attack on Moscow sees Ukraine fire hundreds of drones, mayor says"
+      "Harry and Meghan's media treatment echoes what happened to Diana, Earl Spencer tells BBC"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×2
+      "12 hrs ago"
+      "11 hrs ago"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×2
+      "Europe"
+      "UK"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×2
+      "Moscow's mayor says 450 drones were downed during the overnight barrage, in which two people died."
+      "Princess Diana's brother describes press coverage of Prince Harry and Meghan as a \"cancerous influence in thei…"
+
+structure 3  ×4 instances
+  part   html > body > div > div > main > article > section > section > div > div > div.bPPQrx > div  ×4
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×4
+      "www.bbc.com/news/articles/cm1j4kl80z56o"
+      "www.bbc.com/news/articles/cqdj4pez00dzo"
+      "www.bbc.com/news/videos/cw62mdrjll18o"
+      (4 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×4
+      "Workers came across human remains – and unearthed a mass grave of 572 people"
+      "Trump says triumphal arch will be military complex with drones and snipers"
+      "Watch: Emotional Earl Spencer says he misses sister Diana every day"
+      (4 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×4
+      "41 mins ago"
+      "7 hrs ago"
+      "8 hrs ago"
+      (4 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×4
+      "Asia"
+      "US & Canada"
+      "UK"
+      (4 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×4
+      "Workers in northern Sri Lanka accidentally uncovered the country's largest mass grave – and reopened wounds fr…"
+      "Trump said the updated plans were at the request of the US military and for national security purposes."
+      "\"This is my swan song too. I'm not here to bang on about Diana, this is my final word, celebration of her\", Ea…"
+      (4 values)
+
+structure 4  ×2 instances
+  part   html > body > div > div > main > article > section > div > div.hKjThg > div  ×2
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×2
+      "www.bbc.com/travel/article/20260917-sleep-in-a-different-century-along-the-co-canal"
+      "www.bbc.com/future/article/20260916-new-york-has-a-food-waste-problem-south-korea-has-already-solved-it"
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6adba-0.dJmOvO > div.Edinburgh-styles__MediaWrapperStyled-sc-7…  ×2
+      "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6adba-0.dJmOvO > div.Edinburgh-styles__MediaWrapperStyled-sc-7…  ×2
+      "ichef.bbci.co.uk/images/ic/480x270/p0pb68gr.jpg.webp"
+      "ichef.bbci.co.uk/images/ic/160x90/p0pb68gr.jpg.webp"
+      "ichef.bbci.co.uk/images/ic/240x135/p0pb68gr.jpg.webp"
+      (21 values)
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6adba-0.dJmOvO > div.Edinburgh-styles__TextWrapperStyled-sc-73…  ×2
+      "Sleep in a different era along Maryland's 200-year-old canal"
+      "New York has a food waste problem. South Korea has already solved it"
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6adba-0.dJmOvO > div.Edinburgh-styles__TextWrapperStyled-sc-73…  ×2
+      "The C&O Canal was a thriving 19th-Century waterway, and a strategic asset during the Civil War. Today, its his…"
+      "South Korea has cut household food waste going to landfill from 97% to almost nothing. New York City has start…"
+
+structure 5  ×24 instances
+  part   html > body > div > div > main > article > section > div > div > div.hjVxBM > div  ×24
+    field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+      "www.bbc.com/audio/play/w3ct8m99"
+      "www.bbc.com/audio/play/p0pbk7cj"
+      "www.bbc.com/audio/play/w3ct99j1"
+      (24 values)
+    field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+      "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+    field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+      "ichef.bbci.co.uk/images/ic/480x270/p0pb846k.jpg.webp"
+      "ichef.bbci.co.uk/images/ic/160x90/p0pb846k.jpg.webp"
+      "ichef.bbci.co.uk/images/ic/240x135/p0pb846k.jpg.webp"
+      (264 values)
+    field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+      "The Global Story"
+      "Global News Podcast"
+      "The Climate Question"
+      (24 values)
+    field  div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×24
+      "Dave Ramsey: Iran, tariffs and affordability"
+      "Ed Sheeran speaks out on Gaza"
+      "The solar power boom in Pakistan and the Philippines"
+      (24 values)
+    part   div.Ipswich-styles__IpswichCardStyled-sc-9e107448-4.gjTCVG > div:not(.Ipswich-styles__SaveRowWrapper-sc-9e107448-3):not(.sAONU) > a.Anchor-styles__AnchorStyled-…  ×120
+
+structure 6  ×3 instances
+  part   html > body > div > div > main > article > section > section > div > div > div.hGwupz > div  ×3
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×3
+      "www.bbc.com/reel/video/p0p9z80d/watch"
+      "www.bbc.com/news/articles/cw62m6z7m7zjo"
+      "www.bbc.com/news/articles/cvgy1q2k2z0o"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×2
+      "Mum's viral barefoot race sparks debate over India's education crisis"
+      "Cultural treasures are being destroyed worldwide - so why is no-one being punished?"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×2
+      "24 hrs ago"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×2
+      "Asia"
+      "BBC InDepth"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Manchester-styles__CardStyled-sc-5c1…  ×2
+      "The 47-year-old ran - and won - a 3km race where she hoped to win enough prize money to buy study books for he…"
+      "A cauldron of conflicts is bubbling across the world, with cultural monuments being destroyed. These people ar…"
+    part   div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div:not(.Manchester-styles__CardStyled-s…  ×2
+      field  p  ×1
+        "Between 2005 and 2019, there was a 28% drop in the number of words an average person spoke in a given day."
+      part   div  ×3
+        part   div  ×4
+          field  img  ×1
+            "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+          field  h2  ×1
+            "People are talking less, but no one's quite sure why"
+        part   span  ×2
+          field  self  ×2
+            "2 days ago"
+            "Katty Kay"
+
+structure 7  ×4 instances
+  part   html > body > div > div > main > article > section > section > div > div > div.dEVJyg > div  ×4
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×4
+      "www.bbc.com/news/articles/cqm27pnyd294o"
+      "www.bbc.com/sport/football/articles/cvp8d4116zglo"
+      "www.bbc.com/news/articles/cm36l2pye2kwo"
+      (4 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×4
+      "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×4
+      "ichef.bbci.co.uk/news/480/cpsprodpb/ba6d/live/1888a050-b534-11f1-8269-df0566d86672.jpg.webp"
+      "ichef.bbci.co.uk/news/240/cpsprodpb/ba6d/live/1888a050-b534-11f1-8269-df0566d86672.jpg.webp"
+      "ichef.bbci.co.uk/news/320/cpsprodpb/ba6d/live/1888a050-b534-11f1-8269-df0566d86672.jpg.webp"
+      (36 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×4
+      "Man, 82, dies after beach fight with 76-year-old over sunlounger in Greece"
+      "What have we learned from the Premier League so far?"
+      "Sister of Pakistan's ex-PM Imran Khan arrested"
+      (4 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×4
+      "2 hrs ago"
+      "4 hrs ago"
+      "18 hrs ago"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×4
+      "Europe"
+      "Premier League"
+      "Asia"
+      (4 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc9…  ×4
+      "One eyewitness said the scene was so chaotic that screaming could be heard from the other end of the beach."
+      "BBC Sport takes a look at the opening weeks of the Premier League season as a long international break arrives…"
+      "Aleema Khanum is accused of mobilising her brother’s supporters ahead of country-wide protests."
+      (4 values)
+
+structure 8  ×3 instances
+  part   html > body > div > div > main > article > section > div > div.eHlZoR > div  ×3
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×3
+      "www.bbc.com/culture/article/20260619-how-john-le-carrs-spy-novels-were-shaped-by-his-con-man-father"
+      "www.bbc.com/reel/video/p0bzwxqy/watch"
+      "www.bbc.com/culture/article/20260904-the-poison-tipped-umbrella-that-pointed-to-a-kgb-murder"
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Dundee-styles__ImageWrapperStyled-sc-50abbc9…  ×3
+      "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Dundee-styles__ImageWrapperStyled-sc-50abbc9…  ×3
+      "ichef.bbci.co.uk/images/ic/480x270/p0nsyvdp.jpg.webp"
+      "ichef.bbci.co.uk/images/ic/160x90/p0nsyvdp.jpg.webp"
+      "ichef.bbci.co.uk/images/ic/240x135/p0nsyvdp.jpg.webp"
+      (33 values)
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Grid-styles__GridStyled-sc-772acff9-0.kYsqtw…  ×3
+      "How John le Carré's spy novels were shaped by his con-man father"
+      "The Chevalier d'Éon: The 18th Century transgender spy"
+      "The poison-tipped umbrella that pointed to a KGB murder - on British soil"
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Grid-styles__GridStyled-sc-772acff9-0.kYsqtw…  ×3
+      "The author's childhood was rocked by bankruptcy and deceit. In 2008, he told the BBC that his \"hectic backgrou…"
+      "The Chevalier d'Éon: Nobleman, spy to King Louis XV, and for the last 33 years of their life, a woman."
+      "In 1978, Georgi Markov was killed with a poison-tipped umbrella. The following year, his widow and elder broth…"
+
+structure 9  ×8 instances
+  part   html > body > div > div > main > article > section > div > div > div > div.bnoABX  ×8
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×8
+      "www.bbc.com/sport/videos/ckqxvp07rrnvo"
+      "www.bbc.com/news/videos/cm4glen7dpx9o"
+      "www.bbc.com/news/videos/cmy0z2ljelgko"
+      (8 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×8
+      "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×8
+      "ichef.bbci.co.uk/news/480/cpsprodpb/9314/live/e68f8f00-b538-11f1-bc1f-3f186ca4140c.jpg.webp"
+      "ichef.bbci.co.uk/news/240/cpsprodpb/9314/live/e68f8f00-b538-11f1-bc1f-3f186ca4140c.jpg.webp"
+      "ichef.bbci.co.uk/news/320/cpsprodpb/9314/live/e68f8f00-b538-11f1-bc1f-3f186ca4140c.jpg.webp"
+      (74 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×8
+      "Man United Fan - \"CARRICK GONE!\""
+      "Sixth batch of UFO files includes orbs from 1952"
+      "Earl Spencer's claims about King's reaction to Diana's death open old wounds"
+      (8 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×8
+      "Man Utd"
+      "US & Canada"
+      "UK"
+      (8 values)
+    field  div.IndexCard-styles__IndexCardStyled-sc-3a0d8802-0.jeApUG > div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Edinburgh-styles__CardStyled-sc-73f6…  ×7
+      "The footage was filmed by a US Navy officer who reported the group of bright airborne objects to the Air Force…"
+      "His comments come ahead of a controversial new memoir examining the life and death of Princess Diana"
+      "A prosthetics expert's life changed after a cycling accident. Now he is testing new technology himself."
+      (7 values)
+
+structure 10  ×6 instances
+  part   html > body > div > div > main > article > section > div > div > div.lFyYQ  ×6
+    part   div.Wyoming-styles__WyomingColumnStyled-sc-a5d523a7-0.dEOaks  ×12
+      field  div.SectionTitle-styles__SectionTitleContainerStyled-sc-2dfed50c-2.cdzHai:not(.Grid-styles__GridStyled-sc-772acff9-0):not(.goDMtE) > div.SectionTitle-styles__Se…  ×12
+        "www.bbc.com/news/us-canada"
+        "www.bbc.com/news/world"
+        "www.bbc.com/business"
+        (12 values)
+      field  div.SectionTitle-styles__SectionTitleContainerStyled-sc-2dfed50c-2.cdzHai:not(.Grid-styles__GridStyled-sc-772acff9-0):not(.goDMtE) > div.SectionTitle-styles__Se…  ×12
+        "US & Canada News"
+        "More World News"
+        "Business"
+        (12 values)
+      part   div.Grid-styles__GridStyled-sc-772acff9-0.goDMtE:not(.SectionTitle-styles__SectionTitleContainerStyled-sc-2dfed50c-2):not(.cdzHai) > div.IndexCard-styles__Index…  ×48
+        field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×48
+          "www.bbc.com/news/articles/cj4gklz9dxplo"
+          "www.bbc.com/news/articles/cmn8ed1xpxnyo"
+          "www.bbc.com/news/articles/crwyzj53pl1lo"
+          (48 values)
+        field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+          "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+        field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+          "ichef.bbci.co.uk/news/480/cpsprodpb/1b27/live/d8b31f40-b435-11f1-9fa0-111a12dcb7b0.jpg.webp"
+          "ichef.bbci.co.uk/news/240/cpsprodpb/1b27/live/d8b31f40-b435-11f1-9fa0-111a12dcb7b0.jpg.webp"
+          "ichef.bbci.co.uk/news/320/cpsprodpb/1b27/live/d8b31f40-b435-11f1-9fa0-111a12dcb7b0.jpg.webp"
+          (120 values)
+        field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+          "Journalists denied White House access after Trump banned some media outlets"
+          "Burnham hails Greenland deal ahead of expected first Trump meeting"
+          "Will you get £13,000 a year when you stop working? Here's how to check"
+          (12 values)
+        field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+          "CNN, MS NOW and Politico reporters' White House press badges were confiscated, the outlets reported."
+          "While Burnham praised the agreement, Lib Dem leader Ed Davey called it a \"pretend\" victory for Trump."
+          "How to find out how much state pension you're likely to receive - and what you can do about it now."
+          (12 values)
+        field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Chester-styles__CardStyled-sc-340eb5f4-0.fwrgVI:not(.Dundee-styles__CardStyled-sc-50abbc98-1):not…  ×36
+          "Trump escalates media fight after week of setbacks"
+          "Converse pulls 'deeply upsetting' advert after backlash"
+          "Trump says he is banning CNN and Politico from White House"
+          (36 values)
+
+structure 11  ×48 instances
+  part   html > body > div > div > main > article > section > div > div > div > div > div > div.jeApUG  ×48
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×48
+      "www.bbc.com/news/articles/cj4gklz9dxplo"
+      "www.bbc.com/news/articles/cmn8ed1xpxnyo"
+      "www.bbc.com/news/articles/crwyzj53pl1lo"
+      (48 values)
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+      "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+      "ichef.bbci.co.uk/news/480/cpsprodpb/1b27/live/d8b31f40-b435-11f1-9fa0-111a12dcb7b0.jpg.webp"
+      "ichef.bbci.co.uk/news/240/cpsprodpb/1b27/live/d8b31f40-b435-11f1-9fa0-111a12dcb7b0.jpg.webp"
+      "ichef.bbci.co.uk/news/320/cpsprodpb/1b27/live/d8b31f40-b435-11f1-9fa0-111a12dcb7b0.jpg.webp"
+      (120 values)
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+      "Journalists denied White House access after Trump banned some media outlets"
+      "Burnham hails Greenland deal ahead of expected first Trump meeting"
+      "Will you get £13,000 a year when you stop working? Here's how to check"
+      (12 values)
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw:not(.Chester-styles__CardStyled-sc-340eb5f4-0):not…  ×12
+      "CNN, MS NOW and Politico reporters' White House press badges were confiscated, the outlets reported."
+      "While Burnham praised the agreement, Lib Dem leader Ed Davey called it a \"pretend\" victory for Trump."
+      "How to find out how much state pension you're likely to receive - and what you can do about it now."
+      (12 values)
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Chester-styles__CardStyled-sc-340eb5f4-0.fwrgVI:not(.Dundee-styles__CardStyled-sc-50abbc98-1):not…  ×36
+      "Trump escalates media fight after week of setbacks"
+      "Converse pulls 'deeply upsetting' advert after backlash"
+      "Trump says he is banning CNN and Politico from White House"
+      (36 values)
+
+structure 12  ×8 instances
+  part   html > body > div > div > main > article > section > div > div.fMeOuJ > div  ×8
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX  ×8
+      "www.bbc.com/newsletters?RoyalWatch&at_bbc_team=studios&at_medium=onsite&at_objective=acquisition&at_ptr_name=b…"
+      "www.bbc.com/newsletters?howtosleepbetter&at_bbc_team=studios&at_medium=onsite&at_objective=acquisition&at_ptr_…"
+      "www.bbc.com/newsletters?WorldOfBusiness&at_bbc_team=studios&at_medium=onsite&at_objective=acquisition&at_ptr_n…"
+      (8 values)
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Dundee-styles__ImageWrapperStyled-sc-50abbc9…  ×8
+      "static.files.bbci.co.uk/bbcdotcom/web/20260907-085256-bea8b058c0-web-3.21.0/grey-placeholder.png"
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Dundee-styles__ImageWrapperStyled-sc-50abbc9…  ×8
+      "ichef.bbci.co.uk/images/ic/raw/p0k48s7x.jpg.webp"
+      "Royal Watch"
+      "ichef.bbci.co.uk/images/ic/raw/p0p82rc9.jpg.webp"
+      (88 values)
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Grid-styles__GridStyled-sc-772acff9-0.kYsqtw…  ×8
+      "Royal Watch"
+      "How to Sleep Better"
+      "Sign up to World of Business"
+      (8 values)
+    field  div > a.Anchor-styles__AnchorStyled-sc-651d33db-0.hygVWX > div.Dundee-styles__CardStyled-sc-50abbc98-1.elbPvw > div.Grid-styles__GridStyled-sc-772acff9-0.kYsqtw…  ×8
+      "The full story on the British Royal Family, in your inbox every Thursday."
+      "Wake up rested and feel more alert, with expert tips to improve your sleep in a six-part course."
+      "Gain the leading edge with global insights for the boardroom and beyond, in your inbox every Wednesday."
+      (8 values)
+
+structure 13  ×3 instances
+  part   html > body > div > div > footer > div  ×3
+    part   div  ×3
+      field  self  ×1
+        "Follow BBC on:"
+      field  a  ×1
+        "www.bbc.com"
+      field  a > svg > title  ×1
+        "British Broadcasting Corporation"
+      part   button  ×6
+    part   p  ×2
+      field  self  ×1
+        "Copyright 2026 BBC. All rights reserved. The BBC is not responsible for the content of external sites."
+      field  a  ×1
+        "www.bbc.com/editorialguidelines/guidance/links-and-feeds"
+      field  a > b  ×1
+        "Read about our approach to external linking."

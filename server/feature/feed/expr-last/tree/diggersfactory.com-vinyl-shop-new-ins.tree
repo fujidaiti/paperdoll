@@ -1,0 +1,94 @@
+# diggersfactory.com-vinyl-shop-new-ins
+url               https://www.diggersfactory.com/vinyl-shop/293/new-ins
+posts in fixture  9
+structures        2
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           3.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×9 instances
+  part   html > body > div > div > div > div > div > div.references > div  ×9
+    field  a.group.no-underline.reference-item  ×9
+      "www.diggersfactory.com/vinyl/335718/only-fire-hoe-weekend"
+      "www.diggersfactory.com/vinyl/335445/kabaka-pyramid-rebel-music-the-lyrics-tape-d2c-exclusive-red-marble-vinyl"
+      "www.diggersfactory.com/vinyl/335317/total-tommy-trapezoid-silver-vinyl"
+      (9 values)
+    field  a.group.no-underline.reference-item > div.flex.flex-col.items-center.undefined > div.duration-300.group.jsx-835244409.max-md:overflow-hidden.max-w-[650px].refer…  ×9
+      "diggers-public.s3.eu-west-3.amazonaws.com/projects/03b4fe3e-5bef-41ef-9aab-081a20b1a828/preview_m.png"
+      "Vinyl - Only Fire - Hoe Weekend"
+      "diggers-public.s3.eu-west-3.amazonaws.com/projects/70483b1a-a976-4967-b663-1a9355811e1a/preview_m.png"
+      (18 values)
+    field  a.group.no-underline.reference-item > div.flex.flex-col.items-center.undefined > div.flex.flex-col.items-center.mt-3.text-[18px].text-center.undefined:not(.dura…  ×9
+      "Hoe Weekend"
+      "Rebel Music – The Lyrics Tape [D2C-Exclusive Red Marble Vinyl]"
+      "Trapezoid - Silver Vinyl"
+      (9 values)
+    field  a.group.no-underline.reference-item > div.flex.flex-col.items-center.undefined > div.flex.flex-col.items-center.mt-3.text-[18px].text-center.undefined:not(.dura…  ×9
+      "Only Fire"
+      "Kabaka Pyramid"
+      "Total Tommy"
+      (9 values)
+    field  a.group.no-underline.reference-item > div.flex.flex-col.items-center.undefined > div.flex.flex-col.items-center.mt-3.text-[18px].text-center.undefined:not(.dura…  ×7
+      "¥5,690"
+      "¥6,475"
+      "¥5,218"
+      (7 values)
+    field  a.group.no-underline.reference-item > div.flex.flex-col.items-center.undefined > div.flex.flex-col.items-center.mt-3.text-[18px].text-center.undefined:not(.dura…  ×2
+      "Sold out"
+    part   a.group.no-underline.reference-item > div.flex.flex-col.items-center.undefined > div.duration-300.group.jsx-835244409.max-md:overflow-hidden.max-w-[650px].refer…  ×18
+      field  self  ×18
+        "diggers-public.s3.eu-west-3.amazonaws.com/projects/03b4fe3e-5bef-41ef-9aab-081a20b1a828/preview_m.webp"
+        "diggers-public.s3.eu-west-3.amazonaws.com/projects/03b4fe3e-5bef-41ef-9aab-081a20b1a828/preview_m.png"
+        "diggers-public.s3.eu-west-3.amazonaws.com/projects/70483b1a-a976-4967-b663-1a9355811e1a/preview_m.webp"
+        (18 values)
+    part   a.group.no-underline.reference-item > div.flex.flex-col.items-center.undefined > div.flex.flex-col.items-center.mt-3.text-[18px].text-center.undefined:not(.dura…  ×14
+      field  self  ×14
+        "Electronic"
+        "Reggae"
+        "Roots Reggae"
+        (14 values)
+
+structure 2  ×3 instances
+  part   html > body > div > div > section > div > div > div.gap-10 > div  ×3
+    field  div.jsx-2736813817.title.undefined > div.jsx-2736813817.t1  ×2
+      "Shop"
+      "Diggers Factory"
+    part   div:not(.jsx-2736813817):not(.title):not(.undefined)  ×2
+      field  div.jsx-2736813817.title.undefined > div.jsx-2736813817.t1  ×2
+        "Language"
+        "Currency"
+      part   ul.jsx-c0b25e3d4b06292a.links > li.jsx-c0b25e3d4b06292a  ×9
+        field  button.active.jsx-c0b25e3d4b06292a  ×2
+          "English"
+          "¥"
+        part   button.jsx-c0b25e3d4b06292a:not(.active)  ×15
+          field  self  ×15
+            "Français"
+            "Español"
+            "Português"
+            (15 values)
+    part   ul.jsx-c0b25e3d4b06292a.links > li.jsx-c0b25e3d4b06292a  ×17
+      field  a:not(.footer_about)  ×14
+        "Top Diggers"
+        "www.diggersfactory.com/vinyl-shop/9/staff-picks"
+        "Exclusives"
+        (28 values)
+      field  a.footer_about  ×2
+        "About us"
+        "www.diggersfactory.com/about"
+        "Blog"
+        (4 values)
+      part   div > a  ×9
+        field  self  ×9
+          "Pop"
+          "www.diggersfactory.com/vinyl-shop?genre=8"
+          "Rock / Metal"
+          (18 values)

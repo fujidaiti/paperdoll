@@ -1,0 +1,112 @@
+# daily.bandcamp.com-features
+url               https://daily.bandcamp.com/features
+posts in fixture  30
+structures        3
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×4 instances
+  part   html > body > div > div > nav > div > section  ×4
+    field  h1  ×1
+      "Bandcamp Daily"
+    part   div  ×43
+      field  svg > use  ×1
+        "daily.bandcamp.com/features#close-search-results"
+      field  a  ×42
+        "Lists"
+        "daily.bandcamp.com/lists"
+        "Features"
+        (84 values)
+    part   section  ×2
+      part   div  ×27
+        field  a  ×27
+          "Best of 2026"
+          "daily.bandcamp.com/best-of-2026"
+          "Best of 2025"
+          (54 values)
+
+structure 2  ×30 instances
+  part   html > body > div > div > div > articles-list > div  ×30
+    field  a.thumb  ×30
+      "daily.bandcamp.com/features/laurentius-the-profit-interview"
+      "daily.bandcamp.com/features/perennial-death-label-profile"
+      "daily.bandcamp.com/features/tony-humphries-kiss-fm-zanzibar-years-feature"
+      (30 values)
+    field  a.thumb > img  ×30
+      "f4.bcbits.com/img/0047383984_150.jpg"
+      "f4.bcbits.com/img/0047403106_150.jpg"
+      "f4.bcbits.com/img/0047366237_150.jpg"
+      (30 values)
+    field  div.article-info-text:not(.title-wrapper)  ×30
+      "September 18, 2026"
+      "September 16, 2026"
+      "September 15, 2026"
+      (30 values)
+    field  div.article-info-text:not(.title-wrapper) > a.franchise  ×30
+      "FEATURES"
+      "daily.bandcamp.com/features"
+    field  div.article-info-text:not(.title-wrapper) > span.middot  ×30
+      "·"
+    field  div.title-wrapper:not(.article-info-text) > a.title  ×30
+      "Laurentius the Profit Found Heaven in a Cave"
+      "daily.bandcamp.com/features/laurentius-the-profit-interview"
+      "Perennial Death on DIY, Olympia, and their Current Pop Hot Streak"
+      (60 values)
+
+structure 3  ×10 instances
+  part   html > body > div > div > dailyfooter > div  ×10
+    field  a.thumb:not(.aotd-image)  ×7
+      "daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
+      "daily.bandcamp.com/lists/hardanger-fiddle-album-guide"
+      "daily.bandcamp.com/scene-report/gqom-album-guide"
+      (7 values)
+    field  a.thumb:not(.aotd-image) > img  ×7
+      "f4.bcbits.com/img/0047405347_150.jpg"
+      "f4.bcbits.com/img/0047404866_150.jpg"
+      "f4.bcbits.com/img/0047382746_150.jpg"
+      (7 values)
+    field  a.aotd-image.thumb  ×2
+      "daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review"
+      "daily.bandcamp.com/album-of-the-day/actress-radical-frame-review"
+    field  a.aotd-image.thumb > img  ×2
+      "f4.bcbits.com/img/0047422564_2.jpg"
+      "f4.bcbits.com/img/0047292430_2.jpg"
+    field  div.article-info-text:not(.title-wrapper)  ×9
+      "September 18, 2026"
+      "September 17, 2026"
+      "September 15, 2026"
+    field  div.article-info-text:not(.title-wrapper) > a.franchise  ×9
+      "LISTS"
+      "daily.bandcamp.com/lists"
+      "SCENE REPORT"
+      (18 values)
+    field  div.article-info-text:not(.title-wrapper) > span.middot  ×9
+      "·"
+    field  div.title-wrapper:not(.article-info-text) > a.title  ×9
+      "A Brief History of Atlantic Canada’s Guitar Pop Explosions"
+      "daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
+      "The Secret Life of the Hardanger Fiddle"
+      (18 values)
+    field  div:not(.article-info-text):not(.title-wrapper) > a  ×1
+      "bandcamp.com?play=1"
+    field  div:not(.article-info-text):not(.title-wrapper) > a > img  ×1
+      "bandcamp.com/bcweekly_full.jpg"
+    field  div:not(.article-info-text):not(.title-wrapper) > div > span  ×1
+      "Listen to the latest episode of Bandcamp Radio."
+    field  div:not(.article-info-text):not(.title-wrapper) > div > a  ×1
+      "Listen now →"
+      "bandcamp.com?play=1"
+    field  h2  ×1
+      "On Bandcamp Radio"
+    field  h2 > a  ×1
+      "see all"
+      "bandcamp.com?show_archive=1"

@@ -1,0 +1,164 @@
+# devblogs.microsoft.com
+url               https://devblogs.microsoft.com/
+posts in fixture  39
+structures        5
+recall            1.000, recall+ 0.923
+merge             1.02
+distrib           1.23, wrappers 1.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×5 instances
+  part   html > body > uhf-header > uhf-contextual-nav > uhf-dropdown  ×5
+    part   a.uhf-dropdown-link.uhf-nav-item  ×33
+      field  self  ×33
+        "All .NET posts"
+        "devblogs.microsoft.com/dotnet"
+        ".NET Blog in Chinese"
+        (66 values)
+    part   uhf-flyout  ×4
+      part   a.uhf-dropdown-link.uhf-nav-item  ×18
+        field  self  ×18
+          ".NET MAUI"
+          "devblogs.microsoft.com/dotnet/category/maui"
+          "ASP.NET Core"
+          (36 values)
+
+structure 2  ×2 instances
+  part   html > body > main > div > div > section > div > div  ×2
+    part   div  ×4
+      field  img  ×1
+        "devblogs.microsoft.com/wp-content/uploads/2026/09/net-conf-2026-community-days-scaled.webp"
+        "net conf 2026 community days image"
+      field  div:not(.card-body) > div > div > h3 > a  ×1
+        ".NET Conf 2026 Community Days Call for Presenters Is Open"
+        "devblogs.microsoft.com/dotnet/dotnet-conf-2026-community-days-call-for-presenters"
+      field  div:not(.card-body) > div > div > div  ×1
+        "Submit your session proposal for the community-led .NET Conf 2026 Community Days by October 6, 2026."
+      field  div:not(.card-body) > div > div > a  ×1
+        "Read more"
+        "devblogs.microsoft.com/dotnet/dotnet-conf-2026-community-days-call-for-presenters"
+      field  div:not(.card-body) > div > div > a > span  ×1
+        "Click to read more about this post"
+      field  div.card-body > div.card-top > h3.fs-24.mb-16 > a.excerpt-title.netsposts-posttitle-link.single-click  ×2
+        "Microsoft at CppCon 2026"
+        "devblogs.microsoft.com/cppblog/microsoft-at-cppcon-2026"
+        "Share your .NET story with the community"
+        (4 values)
+      field  div.card-body > div.card-top > div.fs-16.mb-16.postexcerpt  ×2
+        "Microsoft will be at CppCon 2026 in Aurora, Colorado, which is taking place from September 14 through 18. Join…"
+        "Share how your team uses .NET to solve real problems and help us bring more community stories to .NET Conf 202…"
+      field  div.card-body > div.card-top > a.read-more  ×2
+        "Read more"
+        "devblogs.microsoft.com/cppblog/microsoft-at-cppcon-2026"
+        "devblogs.microsoft.com/dotnet/share-your-dotnet-story"
+      field  div.card-body > div.card-top > a.read-more > span.screen-reader-text  ×2
+        "Click to read more about this post"
+
+structure 3  ×2 instances
+  part   html > body > main > div > div > section > div > div > div.pb-24  ×2
+    field  div.card-body > div.card-top > h3.fs-24.mb-16 > a.excerpt-title.netsposts-posttitle-link.single-click  ×2
+      "Microsoft at CppCon 2026"
+      "devblogs.microsoft.com/cppblog/microsoft-at-cppcon-2026"
+      "Share your .NET story with the community"
+      (4 values)
+    field  div.card-body > div.card-top > div.fs-16.mb-16.postexcerpt  ×2
+      "Microsoft will be at CppCon 2026 in Aurora, Colorado, which is taking place from September 14 through 18. Join…"
+      "Share how your team uses .NET to solve real problems and help us bring more community stories to .NET Conf 202…"
+    field  div.card-body > div.card-top > a.read-more  ×2
+      "Read more"
+      "devblogs.microsoft.com/cppblog/microsoft-at-cppcon-2026"
+      "devblogs.microsoft.com/dotnet/share-your-dotnet-story"
+    field  div.card-body > div.card-top > a.read-more > span.screen-reader-text  ×2
+      "Click to read more about this post"
+
+structure 4  ×36 instances
+  part   html > body > main > div > div > div > section > div > div.post-card  ×36
+    field  div.masonry-thumbnail:not(.card-body) > img.lazyload.post-thumbnail:not(.wp-image-35994):not(.wp-image-111744)  ×27
+      "devblogs.microsoft.com/wp-content/uploads/sites/10/2026/09/microsoft-author-signing-certificate-update-2026.we…"
+      "devblogs.microsoft.com/wp-content/uploads/sites/73/2026/09/Copilot-Dev-Camp-Summit-Fall-2026-Promo-with-Agenda…"
+      "devblogs.microsoft.com/wp-content/uploads/sites/4/2026/09/today-i-will-debug-production-crash-hero.webp"
+      (27 values)
+    field  div.masonry-thumbnail:not(.card-body) > img.lazyload.post-thumbnail.wp-image-35994:not(.wp-image-111744)  ×2
+      "devblogs.microsoft.com/wp-content/uploads/sites/9/2025/11/cplusplusfeature.webp"
+    field  div.masonry-thumbnail:not(.card-body) > img.lazyload.post-thumbnail.wp-image-111744:not(.wp-image-35994)  ×6
+      "devblogs.microsoft.com/wp-content/uploads/sites/38/2025/10/banner-oldnewthing-blue.webp"
+    field  div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×36
+      "Sep 23, 2026"
+      "Sep 22, 2026"
+      "Sep 21, 2026"
+      (36 values)
+    field  div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×36
+      "0"
+      "2"
+      "8"
+      (36 values)
+    field  div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×36
+      "Post comments count"
+    field  div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×33
+      "devblogs.microsoft.com/wp-content/uploads/sites/10/2025/03/logo-og-600x600-1-96x96.png"
+      "devblogs.microsoft.com/wp-content/uploads/sites/73/2025/12/PaoloPia-08-2024-Gray-BG-800x800-1-96x96.webp"
+      "devblogs.microsoft.com/wp-content/uploads/sites/9/2022/03/i-WmBC8vP-X4-2-96x96.jpg"
+      (33 values)
+    field  div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×33
+      "The NuGet Team"
+      "Paolo Pialorsi"
+      "Sinem Akinci"
+      (33 values)
+    field  div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×36
+      "Microsoft is updating its author-signing certificate starting September 23, 2026"
+      "devblogs.microsoft.com/dotnet/microsoft-author-signing-certificate-update-2026"
+      "Join the Copilot Dev Camp Summit Fall Edition on September 30"
+      (74 values)
+    field  div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×36
+      "Starting September 23, 2026, Microsoft is updating the author-signing certificate used for NuGet packages. Cus…"
+      "The very first Copilot Dev Camp Summit will take place on September 30, 2026, at 8:00 AM Pacific Time, launchi…"
+      "C++ repositories can contain millions of lines of code spread across deeply connected source files and headers…"
+      (36 values)
+    field  div.card-body:not(.masonry-thumbnail) > div.border-top-light.card-source-blog.clr-grey-61.fs-14.netsposts-blogname.pt-16:not(.card-top) > a.netsposts-blogname-l…  ×36
+      ".NET Blog"
+      "devblogs.microsoft.com/dotnet/microsoft-author-signing-certificate-update-2026"
+      "Microsoft 365 Developer Blog"
+      (72 values)
+    part   div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×72
+      field  self  ×36
+        "0"
+        "1"
+        "2"
+        (36 values)
+      field  span.screen-reader-text  ×36
+        "Post likes count"
+    part   div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×8
+      field  self  ×8
+        "devblogs.microsoft.com/wp-content/uploads/sites/78/2024/03/19890735-96x96.png"
+        "devblogs.microsoft.com/wp-content/uploads/sites/78/2024/07/IMG_0822_Square-96x96.jpg"
+        "devblogs.microsoft.com/wp-content/uploads/sites/9/letter-avatar/a476ca191a5aee96d8e63d0569fbbef2.svg"
+        (8 values)
+    part   div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×8
+      field  self  ×8
+        "Roger,"
+        "Tao"
+        "Cody,"
+        (8 values)
+    part   div.card-body:not(.masonry-thumbnail) > div.card-top:not(.border-top-light):not(.card-source-blog):not(.clr-grey-61):not(.fs-14):not(.netsposts-blogname):not(.p…  ×6
+      field  self  ×6
+        "FILETIME"
+        "std::"
+        "call_"
+        (9 values)
+      part   wbr  ×3
+
+structure 5  ×6 instances
+  part   html > body > uhf-footer > uhf-footer-nav > div > uhf-footer-nav-group  ×6
+    part   a.uhf-footer-link  ×48
+      field  self  ×48
+        "Surface Pro"
+        "www.microsoft.com/surface/devices/surface-pro"
+        "Surface Laptop"
+        (96 values)

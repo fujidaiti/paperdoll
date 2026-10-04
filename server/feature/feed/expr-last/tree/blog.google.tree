@@ -1,0 +1,109 @@
+# blog.google
+url               https://blog.google/
+posts in fixture  8
+structures        3
+recall            0.625, recall+ 0.625
+merge             1.67
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×4 instances
+  part   html > body > header > div > nav > div > ul > li  ×4
+    field  button.font-body-s.uni-nav-link.uni-nav-link--desktop.uni-nav-link--dropdown.uni-nav-link--expand  ×3
+      "Innovation & AI"
+      "Products & platforms"
+      "Company news"
+    field  button.font-body-s.uni-nav-link.uni-nav-link--desktop.uni-nav-link--dropdown.uni-nav-link--expand > svg > use  ×3
+      "blog.google/static/blogv2/images/icons.svg?version=pr20260902-1737#mi-expand"
+    field  a  ×1
+      "Feed"
+      "blog.google/feed"
+
+structure 2  ×6 instances
+  part   html > body > main > article > section  ×6
+    field  h3.font-h3.uni-nup__headline  ×2
+      "More updates"
+      "Tips and tricks"
+    field  div > div > div > div > div > h2  ×1
+      "Get the latest news from Google in your inbox"
+    part   section > uni-hero-carousel > uni-hero-carousel-viewport > uni-hero-carousel-slide  ×5
+      field  div.uni-hero-carousel__card > div.uni-hero-carousel__content:not(.uni-hero-carousel__media-container) > div.uni-hero-carousel__article-content:not(.uni-hero-car…  ×5
+        "Gemini models"
+        "Gemini App"
+        "Company announcements"
+        (5 values)
+      field  div.uni-hero-carousel__card > div.uni-hero-carousel__content:not(.uni-hero-carousel__media-container) > div.uni-hero-carousel__article-content:not(.uni-hero-car…  ×5
+        "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are built for natural conversation."
+        "We’re launching the Gemini app for Windows, the new desktop app built to work alongside your favorite tools an…"
+        "Our new Chicago office at Thompson Center brings together art, community and architecture."
+        (5 values)
+      field  div.uni-hero-carousel__card > div.uni-hero-carousel__content:not(.uni-hero-carousel__media-container) > div.uni-hero-carousel__article-content:not(.uni-hero-car…  ×5
+        "Our most advanced live dialogue models"
+        "The Gemini app is now available for Windows"
+        "Reimagining Chicago's Thompson Center"
+        (5 values)
+      field  div.uni-hero-carousel__card > div.uni-hero-carousel__content:not(.uni-hero-carousel__media-container) > div.uni-hero-carousel__cta-container:not(.uni-hero-carou…  ×5
+        "Read more"
+        "blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-think…"
+        "blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-windows"
+        (10 values)
+      field  div.uni-hero-carousel__card > div.uni-hero-carousel__media-container:not(.uni-hero-carousel__content) > div.uni-hero-carousel__media-clip-mask > img.uni-hero-ca…  ×4
+        "storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_3-8_live___ke.2e16d0ba.fill-1200x800.format-web…"
+        "Text \"Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking\" with the Gemini Spark, all on a light blue b…"
+        "storage.googleapis.com/gweb-uniblog-publish-prod/images/Thompson_Center_hero.2e16d0ba.fill-1200x800.format-web…"
+        (8 values)
+    part   ul.uni-grid.uni-nup__grid--3 > li.uni-nup__item  ×6
+    part   div > div > div > div > div > p  ×2
+      field  self  ×2
+        "Sign up for our newsletters with product updates, event information, special offers, and more."
+        "Your information will be used in accordance with"
+        "You may opt out at any time."
+      field  a  ×1
+        "Google's privacy policy."
+        "policies.google.com/privacy"
+    part   div > div > div > div > div > div  ×2
+      field  p  ×1
+        "You can also subscribe with a"
+        "."
+      field  p > button  ×1
+        "different email address"
+      part   div > div  ×2
+        part   p  ×2
+          field  self  ×2
+            "Done. Just one step more."
+            "Check your inbox to confirm your subscription."
+
+structure 3  ×5 instances
+  part   html > body > main > article > section > section > uni-hero-carousel > uni-hero-carousel-viewport > uni-hero-carousel-slide  ×5
+    field  div.uni-hero-carousel__card > div.uni-hero-carousel__content:not(.uni-hero-carousel__media-container) > div.uni-hero-carousel__article-content:not(.uni-hero-car…  ×5
+      "Gemini models"
+      "Gemini App"
+      "Company announcements"
+      (5 values)
+    field  div.uni-hero-carousel__card > div.uni-hero-carousel__content:not(.uni-hero-carousel__media-container) > div.uni-hero-carousel__article-content:not(.uni-hero-car…  ×5
+      "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are built for natural conversation."
+      "We’re launching the Gemini app for Windows, the new desktop app built to work alongside your favorite tools an…"
+      "Our new Chicago office at Thompson Center brings together art, community and architecture."
+      (5 values)
+    field  div.uni-hero-carousel__card > div.uni-hero-carousel__content:not(.uni-hero-carousel__media-container) > div.uni-hero-carousel__article-content:not(.uni-hero-car…  ×5
+      "Our most advanced live dialogue models"
+      "The Gemini app is now available for Windows"
+      "Reimagining Chicago's Thompson Center"
+      (5 values)
+    field  div.uni-hero-carousel__card > div.uni-hero-carousel__content:not(.uni-hero-carousel__media-container) > div.uni-hero-carousel__cta-container:not(.uni-hero-carou…  ×5
+      "Read more"
+      "blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-think…"
+      "blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-windows"
+      (10 values)
+    field  div.uni-hero-carousel__card > div.uni-hero-carousel__media-container:not(.uni-hero-carousel__content) > div.uni-hero-carousel__media-clip-mask > img.uni-hero-ca…  ×4
+      "storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_3-8_live___ke.2e16d0ba.fill-1200x800.format-web…"
+      "Text \"Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking\" with the Gemini Spark, all on a light blue b…"
+      "storage.googleapis.com/gweb-uniblog-publish-prod/images/Thompson_Center_hero.2e16d0ba.fill-1200x800.format-web…"
+      (8 values)

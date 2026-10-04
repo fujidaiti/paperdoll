@@ -1,0 +1,690 @@
+# edition.cnn.com-us
+url               https://edition.cnn.com/us
+posts in fixture  42
+structures        15
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           1.26, wrappers 0.17
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×2 instances
+  part   html > body > header > div > div > div > div > nav > div > div > div  ×2
+    part   div  ×3
+      field  div.header__user-account-nav-icon > nav.user-account-nav.user-account-nav--subscriptions > div.user-account-nav__icons:not(.user-account-nav__menu):not(.userAcc…  ×2
+        "Sign in"
+      field  div.header__user-account-nav-icon > nav.user-account-nav.user-account-nav--subscriptions > div.user-account-nav__menu.userAccountNavMenu:not(.user-account-nav__…  ×2
+        "My Account"
+      field  div.header__user-account-nav-icon > nav.user-account-nav.user-account-nav--subscriptions > div.user-account-nav__user:not(.user-account-nav__icons):not(.user-ac…  ×2
+        "Your CNN account"
+      field  div.header__user-account-nav-icon > nav.user-account-nav.user-account-nav--subscriptions > div.user-account-nav__user:not(.user-account-nav__icons):not(.user-ac…  ×2
+        "Sign in to your CNN account"
+      field  div.header__user-account-nav-icon > nav.user-account-nav.user-account-nav--subscriptions > a.user-account-nav__override-link  ×2
+        "edition.cnn.com/us"
+      field  a.header__video-link:not(.header__audio-link):not(.header__live-tv-link)  ×2
+        "Watch"
+        "edition.cnn.com/watch"
+      field  a.header__audio-link:not(.header__video-link):not(.header__live-tv-link)  ×2
+        "Listen"
+        "edition.cnn.com/audio"
+      field  a.header__live-tv-link:not(.header__video-link):not(.header__audio-link)  ×2
+        "Live TV"
+        "edition.cnn.com/live-tv"
+      part   button  ×4
+        field  self  ×1
+          "Subscribe"
+        field  svg > title  ×1
+          "Close icon"
+      part   div:not(.header__user-account-nav-icon)  ×4
+        field  form > button  ×1
+          "Submit"
+        field  span  ×1
+          "Download the CNN App"
+        part   a  ×2
+          field  self  ×2
+            "edition.cnn.com"
+            "CNN logo"
+            "edition.cnn.com/us"
+          field  span  ×1
+            "US"
+        part   nav > div  ×5
+          field  a.header__nav-item-link  ×5
+            "Crime & Justice"
+            "edition.cnn.com/us/crime-and-justice"
+            "Immigration"
+            (10 values)
+        part   hr  ×2
+        part   div  ×3
+          field  div > span  ×1
+            "Follow CNN"
+          field  div > ul > li > a  ×1
+            "facebook.com/CNN"
+            "Visit us on Facebook"
+          field  div > a  ×1
+            "cnn.onelink.me/PVpf/q9j1odhf"
+          field  span  ×1
+            "Download the CNN App"
+          field  a  ×1
+            "cnn.onelink.me/PVpf/q9j1odhf"
+      part   div.header__user-account-nav-icon > nav.user-account-nav.user-account-nav--subscriptions > div.user-account-nav__menu.userAccountNavMenu:not(.user-account-nav__…  ×8
+        field  a.user-account-nav__menu-link:not(.user-account-nav__menu-link--hide)  ×6
+          "Settings"
+          "edition.cnn.com/account/settings"
+          "Newsletters"
+          (12 values)
+        field  a.user-account-nav__menu-link.user-account-nav__menu-link--hide  ×2
+          "Topics you follow"
+          "edition.cnn.com/follow?iid=fw_var-nav"
+      part   nav  ×3
+        part   div  ×3
+          field  div  ×2
+            "Edition"
+          field  div > a  ×2
+            "Crime & Justice"
+            "edition.cnn.com/us/crime-and-justice"
+            "US"
+            (4 values)
+          field  div > button > span  ×1
+            "More"
+          field  div > div > div > a  ×1
+            "Crime & Justice"
+            "edition.cnn.com/us/crime-and-justice"
+          field  ul > li > a  ×1
+            "US"
+            "us.cnn.com?hpt=header_edition-picker"
+        part   ul > li  ×20
+          field  a.subnav__section-link  ×20
+            "World"
+            "edition.cnn.com/world"
+            "US Politics"
+            (40 values)
+          field  ul.subnav__subsections > li.subnav__subsection > a.subnav__subsection-link  ×18
+            "Africa"
+            "edition.cnn.com/world/africa"
+            "Elections 2026"
+            (36 values)
+      part   hr  ×4
+
+structure 2  ×2 instances
+  part   html > body > header > div > div > div > div > nav > div > div > div.header__container > div  ×2
+    field  div > nav > a  ×1
+      "edition.cnn.com/us"
+    part   button  ×4
+      field  self  ×1
+        "Subscribe"
+      field  svg > title  ×1
+        "Close icon"
+    part   div > a  ×2
+      field  self  ×2
+        "edition.cnn.com"
+        "CNN logo"
+        "edition.cnn.com/us"
+      field  span  ×1
+        "US"
+      part   span > svg > path  ×2
+    part   div > nav > div  ×3
+      field  div  ×1
+        "My Account"
+      part   button  ×3
+        field  self  ×1
+          "Sign in"
+      part   ul > li  ×4
+        field  a.user-account-nav__menu-link  ×4
+          "Settings"
+          "edition.cnn.com/account/settings"
+          "Newsletters"
+          (8 values)
+      part   span  ×2
+        field  self  ×2
+          "Your CNN account"
+          "Sign in to your CNN account"
+    part   nav > div > div  ×6
+      field  a.header__nav-item-link  ×5
+        "Crime & Justice"
+        "edition.cnn.com/us/crime-and-justice"
+        "Immigration"
+        (10 values)
+      field  button > span  ×1
+        "More"
+      part   div > div > a  ×5
+        field  self  ×5
+          "Crime & Justice"
+          "edition.cnn.com/us/crime-and-justice"
+          "Immigration"
+          (10 values)
+    part   a  ×3
+      field  self  ×3
+        "Watch"
+        "edition.cnn.com/watch"
+        "Listen"
+        (6 values)
+
+structure 3  ×4 instances
+  part   html > body > header > div > div > div > div > nav > div > div > div > div.header__container > div  ×4
+    field  form > button  ×1
+      "Submit"
+    field  nav > a  ×1
+      "edition.cnn.com/us"
+    field  span  ×1
+      "Download the CNN App"
+    part   nav > div  ×8
+      field  div  ×1
+        "My Account"
+      field  a.header__nav-item-link  ×5
+        "Crime & Justice"
+        "edition.cnn.com/us/crime-and-justice"
+        "Immigration"
+        (10 values)
+      part   button  ×3
+        field  self  ×1
+          "Sign in"
+      part   ul > li  ×4
+        field  a.user-account-nav__menu-link  ×4
+          "Settings"
+          "edition.cnn.com/account/settings"
+          "Newsletters"
+          (8 values)
+      part   span  ×2
+        field  self  ×2
+          "Your CNN account"
+          "Sign in to your CNN account"
+    part   hr  ×2
+    part   div  ×3
+      field  div > span  ×1
+        "Follow CNN"
+      field  span  ×1
+        "Download the CNN App"
+      part   div > ul > li  ×6
+        field  a.social-links__link  ×6
+          "facebook.com/CNN"
+          "Visit us on Facebook"
+          "twitter.com/CNN"
+          (12 values)
+      part   div > a  ×2
+        field  self  ×2
+          "cnn.onelink.me/PVpf/q9j1odhf"
+          "cnn.onelink.me/PVpf/43qg6lsp"
+        part   span.header__app-badge.header__app-badge--dark:not(.header__app-badge--light) > svg > g  ×3
+        part   span.header__app-badge.header__app-badge--dark:not(.header__app-badge--light) > svg > rect  ×2
+        part   span.header__app-badge.header__app-badge--dark:not(.header__app-badge--light) > svg > path  ×2
+        part   span.header__app-badge.header__app-badge--light:not(.header__app-badge--dark) > svg > g > g  ×2
+        part   span.header__app-badge.header__app-badge--light:not(.header__app-badge--dark) > svg > g > path  ×13
+      part   a  ×2
+        field  self  ×2
+          "cnn.onelink.me/PVpf/q9j1odhf"
+          "cnn.onelink.me/PVpf/43qg6lsp"
+        part   span.header__app-badge.header__app-badge--dark:not(.header__app-badge--light) > svg > g  ×3
+        part   span.header__app-badge.header__app-badge--dark:not(.header__app-badge--light) > svg > rect  ×2
+        part   span.header__app-badge.header__app-badge--dark:not(.header__app-badge--light) > svg > path  ×2
+        part   span.header__app-badge.header__app-badge--light:not(.header__app-badge--dark) > svg > g > g  ×2
+        part   span.header__app-badge.header__app-badge--light:not(.header__app-badge--dark) > svg > g > path  ×13
+
+structure 4  ×20 instances
+  part   html > body > header > div > div > div > div > nav > div > div > div > div > nav > ul > li  ×20
+    field  a.subnav__section-link  ×20
+      "World"
+      "edition.cnn.com/world"
+      "US Politics"
+      (40 values)
+    part   ul.subnav__subsections > li.subnav__subsection  ×88
+      field  a.subnav__subsection-link  ×88
+        "Africa"
+        "edition.cnn.com/world/africa"
+        "Americas"
+        (176 values)
+
+structure 5  ×15 instances
+  part   html > body > div > section > section > div > section > div > div > div > div > div > div > div > div > div > div > div > div > ul > li.container_lead-plus-head…  ×15
+    part   a.container__link.container__link--type-article.container_lead-plus-headlines__link  ×28
+      field  self  ×28
+        "edition.cnn.com/2026/09/23/us/elizabeth-holmes-halfway-house-approved"
+        "edition.cnn.com/2026/09/22/us/venezuelan-man-shot-ice-austin"
+        "edition.cnn.com/2026/09/23/us/5-things-pm-september-23-trnd"
+        (28 values)
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×14
+        "media.cnn.com/api/v1/images/stellar/prod/c-ap25055759712347.jpg?c=16x9&q=h_438,w_780,c_fill"
+        "FILE - Former Theranos CEO Elizabeth Holmes leaves federal court in San Jose, Calif., March 17, 2023."
+        "media.cnn.com/api/v1/images/stellar/prod/c-2026-09-21t004255z-1390447205-rc23nnascpbd-rtrmadp-3-usa-migration-…"
+        (28 values)
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×14
+        "Jeff Chiu/AP/File"
+        "Shahrzad Rasekh/Reuters"
+        "miodrag ignjatovic/E+/Getty Images/File"
+        (14 values)
+      field  div.container__text.container_lead-plus-headlines__text:not(.container__item-media-wrapper):not(.container_lead-plus-headlines__item-media-wrapper) > div.contai…  ×14
+        "ABC: Elizabeth Holmes approved to move to halfway house next year"
+        "A Venezuelan man was shot by ICE in Austin while doing deliveries. Here’s what we know"
+        "Alcohol use, hot garbage, ‘Primetime’: Catch up on the day’s stories"
+        (14 values)
+      part   div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×56
+        field  self  ×56
+          "media.cnn.com/api/v1/images/stellar/prod/c-ap25055759712347.jpg?c=16x9&q=h_438"
+          "edition.cnn.com/w_780"
+          "edition.cnn.com/c_fill/f_webp"
+          (504 values)
+    part   a.container__link.container_lead-plus-headlines__link:not(.container__link--type-article)  ×2
+      field  self  ×2
+        "edition.cnn.com/2026/09/23/us/live-news/caleb-flynn-trial-alleigha-botner"
+      part   div > div > div > div  ×3
+        field  picture > img  ×1
+          "media.cnn.com/api/v1/images/stellar/prod/caleb-flynn-trial-092326-1.jpg?c=2x3&q=h_384,w_256,c_fill"
+          "caleb flynn trial 092326_1.jpg"
+        field  figcaption  ×1
+          "Pool"
+        part   picture > source  ×4
+          field  self  ×4
+            "media.cnn.com/api/v1/images/stellar/prod/caleb-flynn-trial-092326-1.jpg?c=2x3&q=h_384"
+            "edition.cnn.com/w_256"
+            "edition.cnn.com/c_fill/f_webp"
+            (36 values)
+        part   div > span  ×2
+          field  self  ×1
+            "Live Updates"
+          field  span  ×1
+            "•"
+      part   div > div > span  ×2
+        field  self  ×1
+          "Caleb Flynn’s mistress takes the stand to testify in his murder trial"
+        part   span  ×3
+          field  self  ×1
+            "Live Updates"
+          field  span  ×1
+            "1 hr ago"
+
+structure 6  ×28 instances
+  part   html > body > div > section > section > div > section > div > div > div > div > div > div > div > div > div > div > div > div > ul > li.container_lead-plus-head…  ×28
+    field  self  ×28
+      "edition.cnn.com/2026/09/23/us/elizabeth-holmes-halfway-house-approved"
+      "edition.cnn.com/2026/09/22/us/venezuelan-man-shot-ice-austin"
+      "edition.cnn.com/2026/09/23/us/5-things-pm-september-23-trnd"
+      (28 values)
+    field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×14
+      "media.cnn.com/api/v1/images/stellar/prod/c-ap25055759712347.jpg?c=16x9&q=h_438,w_780,c_fill"
+      "FILE - Former Theranos CEO Elizabeth Holmes leaves federal court in San Jose, Calif., March 17, 2023."
+      "media.cnn.com/api/v1/images/stellar/prod/c-2026-09-21t004255z-1390447205-rc23nnascpbd-rtrmadp-3-usa-migration-…"
+      (28 values)
+    field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×14
+      "Jeff Chiu/AP/File"
+      "Shahrzad Rasekh/Reuters"
+      "miodrag ignjatovic/E+/Getty Images/File"
+      (14 values)
+    field  div.container__text.container_lead-plus-headlines__text:not(.container__item-media-wrapper):not(.container_lead-plus-headlines__item-media-wrapper) > div.contai…  ×14
+      "ABC: Elizabeth Holmes approved to move to halfway house next year"
+      "A Venezuelan man was shot by ICE in Austin while doing deliveries. Here’s what we know"
+      "Alcohol use, hot garbage, ‘Primetime’: Catch up on the day’s stories"
+      (14 values)
+    part   div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×56
+      field  self  ×56
+        "media.cnn.com/api/v1/images/stellar/prod/c-ap25055759712347.jpg?c=16x9&q=h_438"
+        "edition.cnn.com/w_780"
+        "edition.cnn.com/c_fill/f_webp"
+        (504 values)
+
+structure 7  ×24 instances
+  part   html > body > div > section > section > div > section > div > div > div > div > div > div > div > div > div > div > div > div > ul > li.container_lead-plus-head…  ×24
+    part   a.container__link.container__link--type-article.container_lead-plus-headlines__link  ×46
+      field  self  ×46
+        "edition.cnn.com/2026/09/23/us/elizabeth-holmes-halfway-house-approved"
+        "edition.cnn.com/2026/09/22/us/venezuelan-man-shot-ice-austin"
+        "edition.cnn.com/2026/09/23/us/5-things-pm-september-23-trnd"
+        (46 values)
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×23
+        "media.cnn.com/api/v1/images/stellar/prod/c-ap25055759712347.jpg?c=16x9&q=h_438,w_780,c_fill"
+        "FILE - Former Theranos CEO Elizabeth Holmes leaves federal court in San Jose, Calif., March 17, 2023."
+        "media.cnn.com/api/v1/images/stellar/prod/c-2026-09-21t004255z-1390447205-rc23nnascpbd-rtrmadp-3-usa-migration-…"
+        (46 values)
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×23
+        "Jeff Chiu/AP/File"
+        "Shahrzad Rasekh/Reuters"
+        "miodrag ignjatovic/E+/Getty Images/File"
+        (23 values)
+      field  div.container__text.container_lead-plus-headlines__text:not(.container__item-media-wrapper):not(.container_lead-plus-headlines__item-media-wrapper) > div.contai…  ×23
+        "ABC: Elizabeth Holmes approved to move to halfway house next year"
+        "A Venezuelan man was shot by ICE in Austin while doing deliveries. Here’s what we know"
+        "Alcohol use, hot garbage, ‘Primetime’: Catch up on the day’s stories"
+        (23 values)
+      part   div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×92
+        field  self  ×92
+          "media.cnn.com/api/v1/images/stellar/prod/c-ap25055759712347.jpg?c=16x9&q=h_438"
+          "edition.cnn.com/w_780"
+          "edition.cnn.com/c_fill/f_webp"
+          (828 values)
+    part   a.container__link.container_lead-plus-headlines__link:not(.container__link--type-article)  ×2
+      field  self  ×2
+        "edition.cnn.com/2026/09/23/us/live-news/caleb-flynn-trial-alleigha-botner"
+      part   div > div > div > div  ×3
+        field  picture > img  ×1
+          "media.cnn.com/api/v1/images/stellar/prod/caleb-flynn-trial-092326-1.jpg?c=2x3&q=h_384,w_256,c_fill"
+          "caleb flynn trial 092326_1.jpg"
+        field  figcaption  ×1
+          "Pool"
+        part   picture > source  ×4
+          field  self  ×4
+            "media.cnn.com/api/v1/images/stellar/prod/caleb-flynn-trial-092326-1.jpg?c=2x3&q=h_384"
+            "edition.cnn.com/w_256"
+            "edition.cnn.com/c_fill/f_webp"
+            (36 values)
+        part   div > span  ×2
+          field  self  ×1
+            "Live Updates"
+          field  span  ×1
+            "•"
+      part   div > div > span  ×2
+        field  self  ×1
+          "Caleb Flynn’s mistress takes the stand to testify in his murder trial"
+        part   span  ×3
+          field  self  ×1
+            "Live Updates"
+          field  span  ×1
+            "1 hr ago"
+
+structure 8  ×2 instances
+  part   html > body > div > section > section > div > section > div > div > div > div > div > div > div > div > div > div > div > div > ul > li.container_vertical-strip…  ×2
+    part   a.container__link.container__link--type-article.container_vertical-strip__link  ×4
+      field  self  ×4
+        "edition.cnn.com/2026/09/22/us/clavicular-charged-rape-cec"
+        "edition.cnn.com/2026/09/22/us/caleb-flynn-trial-grandmother-testifies"
+      field  div.container__item-media-wrapper.container_vertical-strip__item-media-wrapper:not(.container__text):not(.container_vertical-strip__text) > div.container__item-…  ×2
+        "media.cnn.com/api/v1/images/stellar/prod/gettyimages-2282978704.jpg?c=16x9&q=h_438,w_780,c_fill"
+        "PARIS, FRANCE - JUNE 23: (EDITORIAL USE ONLY - For Non-Editorial use please seek approval from Fashion House) …"
+        "media.cnn.com/api/v1/images/stellar/prod/caleb-flynn-092226-2.png?c=16x9&q=h_438,w_780,c_fill"
+        (4 values)
+      field  div.container__item-media-wrapper.container_vertical-strip__item-media-wrapper:not(.container__text):not(.container_vertical-strip__text) > div.container__item-…  ×2
+        "Francois Durand/Getty Images"
+        "Pool"
+      field  div.container__text.container_vertical-strip__text:not(.container__item-media-wrapper):not(.container_vertical-strip__item-media-wrapper) > div.container__headl…  ×2
+        "Looksmaxxing celebrity Clavicular charged with rape in Massachusetts"
+        "Caleb Flynn’s daughters were ‘nervous’ after speaking with him following mother’s death, grandmother testifies"
+      part   div.container__item-media-wrapper.container_vertical-strip__item-media-wrapper:not(.container__text):not(.container_vertical-strip__text) > div.container__item-…  ×8
+        field  self  ×8
+          "media.cnn.com/api/v1/images/stellar/prod/gettyimages-2282978704.jpg?c=16x9&q=h_438"
+          "edition.cnn.com/w_780"
+          "edition.cnn.com/c_fill/f_webp"
+          (72 values)
+
+structure 9  ×4 instances
+  part   html > body > div > section > section > div > section > div > div > div > div > div > div > div > div > div > div > div > div > ul > li > a.container_vertical-s…  ×4
+    field  self  ×4
+      "edition.cnn.com/2026/09/22/us/clavicular-charged-rape-cec"
+      "edition.cnn.com/2026/09/22/us/caleb-flynn-trial-grandmother-testifies"
+    field  div.container__item-media-wrapper.container_vertical-strip__item-media-wrapper:not(.container__text):not(.container_vertical-strip__text) > div.container__item-…  ×2
+      "media.cnn.com/api/v1/images/stellar/prod/gettyimages-2282978704.jpg?c=16x9&q=h_438,w_780,c_fill"
+      "PARIS, FRANCE - JUNE 23: (EDITORIAL USE ONLY - For Non-Editorial use please seek approval from Fashion House) …"
+      "media.cnn.com/api/v1/images/stellar/prod/caleb-flynn-092226-2.png?c=16x9&q=h_438,w_780,c_fill"
+      (4 values)
+    field  div.container__item-media-wrapper.container_vertical-strip__item-media-wrapper:not(.container__text):not(.container_vertical-strip__text) > div.container__item-…  ×2
+      "Francois Durand/Getty Images"
+      "Pool"
+    field  div.container__text.container_vertical-strip__text:not(.container__item-media-wrapper):not(.container_vertical-strip__item-media-wrapper) > div.container__headl…  ×2
+      "Looksmaxxing celebrity Clavicular charged with rape in Massachusetts"
+      "Caleb Flynn’s daughters were ‘nervous’ after speaking with him following mother’s death, grandmother testifies"
+    part   div.container__item-media-wrapper.container_vertical-strip__item-media-wrapper:not(.container__text):not(.container_vertical-strip__text) > div.container__item-…  ×8
+      field  self  ×8
+        "media.cnn.com/api/v1/images/stellar/prod/gettyimages-2282978704.jpg?c=16x9&q=h_438"
+        "edition.cnn.com/w_780"
+        "edition.cnn.com/c_fill/f_webp"
+        (72 values)
+
+structure 10  ×4 instances
+  part   html > body > div > section > section > div > section > div > div > div > div > div > div > div.container_lead-plus-headlines  ×4
+    part   div.container_lead-plus-headlines__cards-wrapper:not(.container__ads):not(.container_lead-plus-headlines__ads):not(.container__kicker):not(.container__kicker--k…  ×2
+      field  self  ×2
+        "edition.cnn.com/2026/09/23/politics/video/pennsylvania-election-midterm-vote-lead-jake-tapper"
+      part   div > div > div > div  ×4
+        field  picture > img  ×1
+          "media.cnn.com/api/v1/images/stellar/prod/buck.jpg?c=16x9&q=h_438,w_780,c_fill"
+          "buck.jpg"
+        field  figcaption  ×1
+          "MS"
+        part   picture > source  ×4
+          field  self  ×4
+            "media.cnn.com/api/v1/images/stellar/prod/buck.jpg?c=16x9&q=h_438"
+            "edition.cnn.com/w_780"
+            "edition.cnn.com/c_fill/f_webp"
+            (36 values)
+        part   div > span  ×6
+          field  self  ×4
+            "Video"
+            "6:54"
+          field  span  ×1
+            "•"
+      part   div > div > span  ×3
+        field  self  ×2
+          "New documentary examines the political and personal divides in swing Pennsylvania county"
+          "6:54"
+        part   span  ×3
+          field  self  ×1
+            "Video"
+    part   div.container_lead-plus-headlines__cards-wrapper:not(.container__ads):not(.container_lead-plus-headlines__ads):not(.container__kicker):not(.container__kicker--k…  ×6
+      field  self  ×6
+        "edition.cnn.com/2026/09/23/us/video/rikers-book-club-digvid"
+        "edition.cnn.com/2026/09/23/us/video/former-white-house-communications-director-on-trumps-media-ban-lead-jake-t…"
+        "edition.cnn.com/2026/09/21/us/video/ice-shooting-texas-venezuelan-wilber-perez-digvid-invs"
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×3
+        "media.cnn.com/api/v1/images/stellar/prod/screenshot-2026-09-23-at-7-15-12-pm-20260923232941069.png?c=16x9&q=h_…"
+        "Screenshot 2026-09-23 at 7.15.12 PM.png"
+        "media.cnn.com/api/v1/images/stellar/prod/thumb-23009262-1054448-2519999999-thumb.jpg?c=16x9&q=h_438,w_780,c_fi…"
+        (6 values)
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×3
+        "Video"
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×3
+        "•"
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×3
+        "4:47"
+        "0:51"
+        "4:13"
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×3
+        "Video"
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×3
+        "4:47"
+        "0:51"
+        "4:13"
+      field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×3
+        "CNN"
+      field  div.container__text.container_lead-plus-headlines__text:not(.container__item-media-wrapper):not(.container_lead-plus-headlines__item-media-wrapper) > div.contai…  ×3
+        "Video"
+      field  div.container__text.container_lead-plus-headlines__text:not(.container__item-media-wrapper):not(.container_lead-plus-headlines__item-media-wrapper) > div.contai…  ×3
+        "Books behind bars: Inside a women’s book club on Rikers Island"
+        "The one person Scaramucci says could’ve stopped Trump’s media ban"
+        "What videos show about the ICE shooting of a Venezuelan man"
+      field  div.container__text.container_lead-plus-headlines__text:not(.container__item-media-wrapper):not(.container_lead-plus-headlines__item-media-wrapper) > div.contai…  ×3
+        "4:47"
+        "0:51"
+        "4:13"
+      part   div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×12
+        field  self  ×12
+          "media.cnn.com/api/v1/images/stellar/prod/screenshot-2026-09-23-at-7-15-12-pm-20260923232941069.png?c=16x9&q=h_…"
+          "edition.cnn.com/w_780"
+          "edition.cnn.com/c_fill/f_webp"
+          (108 values)
+
+structure 11  ×46 instances
+  part   html > body > div > section > section > div > section > div > div > div > div > div > div > div > div > div > div > div > div > ul > li > a.container__link--typ…  ×46
+    field  self  ×46
+      "edition.cnn.com/2026/09/23/us/elizabeth-holmes-halfway-house-approved"
+      "edition.cnn.com/2026/09/22/us/venezuelan-man-shot-ice-austin"
+      "edition.cnn.com/2026/09/23/us/5-things-pm-september-23-trnd"
+      (46 values)
+    field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×23
+      "media.cnn.com/api/v1/images/stellar/prod/c-ap25055759712347.jpg?c=16x9&q=h_438,w_780,c_fill"
+      "FILE - Former Theranos CEO Elizabeth Holmes leaves federal court in San Jose, Calif., March 17, 2023."
+      "media.cnn.com/api/v1/images/stellar/prod/c-2026-09-21t004255z-1390447205-rc23nnascpbd-rtrmadp-3-usa-migration-…"
+      (46 values)
+    field  div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×23
+      "Jeff Chiu/AP/File"
+      "Shahrzad Rasekh/Reuters"
+      "miodrag ignjatovic/E+/Getty Images/File"
+      (23 values)
+    field  div.container__text.container_lead-plus-headlines__text:not(.container__item-media-wrapper):not(.container_lead-plus-headlines__item-media-wrapper) > div.contai…  ×23
+      "ABC: Elizabeth Holmes approved to move to halfway house next year"
+      "A Venezuelan man was shot by ICE in Austin while doing deliveries. Here’s what we know"
+      "Alcohol use, hot garbage, ‘Primetime’: Catch up on the day’s stories"
+      (23 values)
+    part   div.container__item-media-wrapper.container_lead-plus-headlines__item-media-wrapper:not(.container__text):not(.container_lead-plus-headlines__text) > div.contai…  ×92
+      field  self  ×92
+        "media.cnn.com/api/v1/images/stellar/prod/c-ap25055759712347.jpg?c=16x9&q=h_438"
+        "edition.cnn.com/w_780"
+        "edition.cnn.com/c_fill/f_webp"
+        (828 values)
+
+structure 12  ×12 instances
+  part   html > body > div > section > section > div > section > div > div > div > div > div > div > div > div > div > ul > li.container_grid-4__selected  ×12
+    part   a.container__link.container__link--type-video.container_grid-4__link  ×24
+      field  self  ×24
+        "edition.cnn.com/2026/09/23/us/video/california-attorney-general-on-future-of-cnn-after-paramount-merger-lawsui…"
+        "edition.cnn.com/2026/09/23/us/video/cncpm-three-people-seen-exiting-sewer-near-netanyahu-hotel"
+        "edition.cnn.com/2026/09/23/us/video/cncpm-us-citizen-mistakenly-targeted-by-ice"
+        (24 values)
+      field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+        "media.cnn.com/api/v1/images/stellar/prod/thumb-23011466-438041-85000000003-thumb.jpg?c=16x9&q=h_270,w_480,c_fi…"
+        "thumb_23011466_438041.85000000003_thumb.jpg"
+        "media.cnn.com/api/v1/images/stellar/prod/screenshot-2026-09-23-at-3-05-33-pm-20260923190554887.png?c=16x9&q=h_…"
+        (24 values)
+      field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+        "Video"
+      field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+        "•"
+      field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+        "0:48"
+        "2:59"
+        "3:47"
+        (12 values)
+      field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+        "Video"
+      field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+        "0:48"
+        "2:59"
+        "3:47"
+        (12 values)
+      field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+        "CNN"
+        "Getty Images"
+        "Clipped From Video"
+        (12 values)
+      field  div.container__text.container_grid-4__text:not(.container__item-media-wrapper):not(.container_grid-4__item-media-wrapper) > div.container__headline.container_gr…  ×12
+        "Video"
+      field  div.container__text.container_grid-4__text:not(.container__item-media-wrapper):not(.container_grid-4__item-media-wrapper) > div.container__headline.container_gr…  ×12
+        "CA AG on future of CNN after settlement of merger lawsuit he led"
+        "NYPD, Secret Service investigate as three people seen exiting sewer near Netanyahu’s hotel"
+        "US citizen mistakenly targeted by ICE agents"
+        (12 values)
+      field  div.container__text.container_grid-4__text:not(.container__item-media-wrapper):not(.container_grid-4__item-media-wrapper) > div.container__headline.container_gr…  ×12
+        "0:48"
+        "2:59"
+        "3:47"
+        (12 values)
+      part   div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×48
+        field  self  ×48
+          "media.cnn.com/api/v1/images/stellar/prod/thumb-23011466-438041-85000000003-thumb.jpg?c=16x9&q=h_270"
+          "edition.cnn.com/w_480"
+          "edition.cnn.com/c_fill/f_webp"
+          (156 values)
+
+structure 13  ×24 instances
+  part   html > body > div > section > section > div > section > div > div > div > div > div > div > div > div > div > ul > li > a.container_grid-4__link  ×24
+    field  self  ×24
+      "edition.cnn.com/2026/09/23/us/video/california-attorney-general-on-future-of-cnn-after-paramount-merger-lawsui…"
+      "edition.cnn.com/2026/09/23/us/video/cncpm-three-people-seen-exiting-sewer-near-netanyahu-hotel"
+      "edition.cnn.com/2026/09/23/us/video/cncpm-us-citizen-mistakenly-targeted-by-ice"
+      (24 values)
+    field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+      "media.cnn.com/api/v1/images/stellar/prod/thumb-23011466-438041-85000000003-thumb.jpg?c=16x9&q=h_270,w_480,c_fi…"
+      "thumb_23011466_438041.85000000003_thumb.jpg"
+      "media.cnn.com/api/v1/images/stellar/prod/screenshot-2026-09-23-at-3-05-33-pm-20260923190554887.png?c=16x9&q=h_…"
+      (24 values)
+    field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+      "Video"
+    field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+      "•"
+    field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+      "0:48"
+      "2:59"
+      "3:47"
+      (12 values)
+    field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+      "Video"
+    field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+      "0:48"
+      "2:59"
+      "3:47"
+      (12 values)
+    field  div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×12
+      "CNN"
+      "Getty Images"
+      "Clipped From Video"
+      (12 values)
+    field  div.container__text.container_grid-4__text:not(.container__item-media-wrapper):not(.container_grid-4__item-media-wrapper) > div.container__headline.container_gr…  ×12
+      "Video"
+    field  div.container__text.container_grid-4__text:not(.container__item-media-wrapper):not(.container_grid-4__item-media-wrapper) > div.container__headline.container_gr…  ×12
+      "CA AG on future of CNN after settlement of merger lawsuit he led"
+      "NYPD, Secret Service investigate as three people seen exiting sewer near Netanyahu’s hotel"
+      "US citizen mistakenly targeted by ICE agents"
+      (12 values)
+    field  div.container__text.container_grid-4__text:not(.container__item-media-wrapper):not(.container_grid-4__item-media-wrapper) > div.container__headline.container_gr…  ×12
+      "0:48"
+      "2:59"
+      "3:47"
+      (12 values)
+    part   div.container__item-media-wrapper.container_grid-4__item-media-wrapper:not(.container__text):not(.container_grid-4__text) > div.container__item-media.container_…  ×48
+      field  self  ×48
+        "media.cnn.com/api/v1/images/stellar/prod/thumb-23011466-438041-85000000003-thumb.jpg?c=16x9&q=h_270"
+        "edition.cnn.com/w_480"
+        "edition.cnn.com/c_fill/f_webp"
+        (156 values)
+
+structure 14  ×20 instances
+  part   html > body > div > div > div > div > div > footer > div > div > nav > ul > li  ×20
+    field  a.subnav__section-link  ×20
+      "World"
+      "edition.cnn.com/world"
+      "US Politics"
+      (40 values)
+    part   ul.subnav__subsections > li.subnav__subsection  ×88
+      field  a.subnav__subsection-link  ×88
+        "Africa"
+        "edition.cnn.com/world/africa"
+        "Americas"
+        (176 values)
+
+structure 15  ×2 instances
+  part   html > body > div > div > div > div > div > footer > div > div > div.footer__right > div  ×2
+    field  nav > a  ×1
+      "edition.cnn.com/us"
+    part   nav > div  ×3
+      field  div  ×1
+        "My Account"
+      part   button  ×3
+        field  self  ×1
+          "Sign in"
+      part   ul > li  ×4
+        field  a.user-account-nav__menu-link  ×4
+          "Settings"
+          "edition.cnn.com/account/settings"
+          "Newsletters"
+          (8 values)
+      part   span  ×2
+        field  self  ×2
+          "Your CNN account"
+          "Sign in to your CNN account"
+    part   div  ×2
+      field  span  ×2
+        "Follow CNN"
+        "Download the CNN app"
+      part   ul > li  ×6
+        field  a.social-links__link  ×6
+          "facebook.com/CNN"
+          "Visit us on Facebook"
+          "twitter.com/CNN"
+          (12 values)
+      part   div > a  ×2
+        field  self  ×2
+          "cnn.onelink.me/PVpf/q9j1odhf"
+          "cnn.onelink.me/PVpf/43qg6lsp"
+        part   svg > g > g  ×2
+        part   svg > g > path  ×13

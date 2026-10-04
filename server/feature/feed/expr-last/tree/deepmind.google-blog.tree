@@ -1,0 +1,391 @@
+# deepmind.google-blog
+url               https://deepmind.google/blog/
+posts in fixture  25
+structures        9
+recall            0.960, recall+ 0.960
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×5 instances
+  part   html > body > site-nav > header > div > div  ×5
+    part   nav  ×4
+      field  div.flyout__container.grid > div.flyout__intro:not(.flyout__content-desktop) > div:not(.button-group):not(.button-group--compact) > h2.flyout__title  ×4
+        "Explore our next generation AI systems"
+        "Our latest AI breakthroughs and updates from the lab"
+        "Unlocking a new era of discovery with AI"
+        (4 values)
+      field  div.flyout__container.grid > div.flyout__intro:not(.flyout__content-desktop) > div.button-group.button-group--compact > div.button-group__buttons > a.button.but…  ×4
+        "deepmind.google/models"
+        "deepmind.google/research"
+        "deepmind.google/science"
+        (4 values)
+      field  div.flyout__container.grid > div.flyout__intro:not(.flyout__content-desktop) > div.button-group.button-group--compact > div.button-group__buttons > a.button.but…  ×4
+        "Explore models"
+        "Explore research"
+        "Explore science"
+        (4 values)
+      part   div.flyout__container.grid > div.flyout__content-desktop:not(.flyout__intro) > div.flyout__subnav.subnav.subnav--2-column > div.subnav__column  ×10
+        field  div.subnav__content > div.subnav__header:not(.subnav__links) > div.subnav__title  ×9
+          "Gemini"
+          "Specialized models"
+          "World models & physical AI"
+          (9 values)
+        part   div.subnav__content > div.subnav__links:not(.subnav__header) > a.subnav__link.subnav__link--has-icon  ×19
+          field  self  ×19
+            "deepmind.google/models/gemini"
+            "deepmind.google/models/gemini-omni"
+            "deepmind.google/models/gemini-image"
+            (19 values)
+          field  div.subnav__link-image.subnav__link-image--large:not(.subnav__link-text) > div.block-icon.w-block-icon > div.has-default-media.media-image-block.no-dark-mode.no…  ×19
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omn…"
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+            (19 values)
+          field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-label:not(.subnav__link-description)  ×19
+            "Gemini"
+            "Gemini Omni"
+            "Nano Banana"
+            (19 values)
+          field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-description:not(.subnav__link-label)  ×19
+            "Build intelligent agents"
+            "Create anything from anything"
+            "Create and edit detailed images"
+            (19 values)
+        part   div.subnav__content > div.subnav__links:not(.subnav__header) > a.subnav__link:not(.subnav__link--has-icon)  ×15
+          field  self  ×15
+            "deepmind.google/research/evals"
+            "deepmind.google/research/publications"
+            "deepmind.google/responsibility-and-safety"
+            (15 values)
+          field  div.subnav__link-text > div.subnav__link-label:not(.subnav__link-description)  ×15
+            "Evals"
+            "Publications"
+            "Responsibility"
+            (15 values)
+          field  div.subnav__link-text > div.subnav__link-description:not(.subnav__link-label)  ×3
+            "Ensuring AI safety through proactive security, even against evolving threats"
+            "Discover our latest AI breakthroughs, projects, and updates"
+            "We’re looking for people who want to make a real, positive impact on the world"
+    part   div  ×4
+      part   div  ×3
+        field  div > a  ×1
+          "deepmind.google"
+        field  div > a > span  ×1
+          "Google DeepMind"
+        part   div > div > button  ×2
+        part   div > div > div > button  ×2
+        part   div > a > div > img  ×2
+          field  self  ×2
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.heigh…"
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height…"
+        part   a  ×2
+          field  self  ×2
+            "aistudio.google.com/prompts/new_chat?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_conte…"
+            "gemini.google.com?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+          field  span.button__label  ×2
+            "Build with Gemini"
+            "Try Gemini"
+      part   nav > div  ×6
+        field  a.button.button--hover_outline.deepai-text-call-to-action--nav.main-menu__label:not(.site-switcher__link)  ×4
+          "Models"
+          "deepmind.google/models"
+          "Research"
+          (8 values)
+        field  div  ×1
+          "Products and apps"
+        part   a.site-switcher__link:not(.button):not(.button--hover_outline):not(.deepai-text-call-to-action--nav):not(.main-menu__label)  ×7
+          field  self  ×7
+            "ai.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+            "deepmind.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+            "labs.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+            (7 values)
+          field  div.site-switcher__link-title:not(.site-switcher__link-description)  ×7
+            "Google AI"
+            "Google DeepMind"
+            "Google Labs"
+            (7 values)
+          field  div.site-switcher__link-description:not(.site-switcher__link-title)  ×7
+            "Learn about all our AI"
+            "Explore the frontier of AI"
+            "Try our AI experiments"
+            (7 values)
+
+structure 2  ×10 instances
+  part   html > body > site-nav > header > div > div > nav > div > div > div > div.subnav__column  ×10
+    field  div.subnav__content > div.subnav__header:not(.subnav__links) > div.subnav__title  ×9
+      "Gemini"
+      "Specialized models"
+      "World models & physical AI"
+      (9 values)
+    part   div.subnav__content > div.subnav__links:not(.subnav__header) > a.subnav__link.subnav__link--has-icon  ×19
+      field  self  ×19
+        "deepmind.google/models/gemini"
+        "deepmind.google/models/gemini-omni"
+        "deepmind.google/models/gemini-image"
+        (19 values)
+      field  div.subnav__link-image.subnav__link-image--large:not(.subnav__link-text) > div.block-icon.w-block-icon > div.has-default-media.media-image-block.no-dark-mode.no…  ×19
+        "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+        "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omn…"
+        "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+        (19 values)
+      field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-label:not(.subnav__link-description)  ×19
+        "Gemini"
+        "Gemini Omni"
+        "Nano Banana"
+        (19 values)
+      field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-description:not(.subnav__link-label)  ×19
+        "Build intelligent agents"
+        "Create anything from anything"
+        "Create and edit detailed images"
+        (19 values)
+    part   div.subnav__content > div.subnav__links:not(.subnav__header) > a.subnav__link:not(.subnav__link--has-icon)  ×15
+      field  self  ×15
+        "deepmind.google/research/evals"
+        "deepmind.google/research/publications"
+        "deepmind.google/responsibility-and-safety"
+        (15 values)
+      field  div.subnav__link-text > div.subnav__link-label:not(.subnav__link-description)  ×15
+        "Evals"
+        "Publications"
+        "Responsibility"
+        (15 values)
+      field  div.subnav__link-text > div.subnav__link-description:not(.subnav__link-label)  ×3
+        "Ensuring AI safety through proactive security, even against evolving threats"
+        "Discover our latest AI breakthroughs, projects, and updates"
+        "We’re looking for people who want to make a real, positive impact on the world"
+
+structure 3  ×19 instances
+  part   html > body > site-nav > header > div > div > nav > div > div > div > div > div > div > a.subnav__link--has-icon  ×19
+    field  self  ×19
+      "deepmind.google/models/gemini"
+      "deepmind.google/models/gemini-omni"
+      "deepmind.google/models/gemini-image"
+      (19 values)
+    field  div.subnav__link-image.subnav__link-image--large:not(.subnav__link-text) > div.block-icon.w-block-icon > div.has-default-media.media-image-block.no-dark-mode.no…  ×19
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omn…"
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+      (19 values)
+    field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-label:not(.subnav__link-description)  ×19
+      "Gemini"
+      "Gemini Omni"
+      "Nano Banana"
+      (19 values)
+    field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-description:not(.subnav__link-label)  ×19
+      "Build intelligent agents"
+      "Create anything from anything"
+      "Create and edit detailed images"
+      (19 values)
+
+structure 4  ×34 instances
+  part   html > body > site-nav > header > div > div > nav > div > div > div > div > div > div > a  ×34
+    field  self  ×34
+      "deepmind.google/models/gemini"
+      "deepmind.google/models/gemini-omni"
+      "deepmind.google/models/gemini-image"
+      (34 values)
+    field  div.subnav__link-image.subnav__link-image--large:not(.subnav__link-text) > div.block-icon.w-block-icon > div.has-default-media.media-image-block.no-dark-mode.no…  ×19
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omn…"
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+      (19 values)
+    field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-label:not(.subnav__link-description)  ×34
+      "Gemini"
+      "Gemini Omni"
+      "Nano Banana"
+      (34 values)
+    field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-description:not(.subnav__link-label)  ×22
+      "Build intelligent agents"
+      "Create anything from anything"
+      "Create and edit detailed images"
+      (22 values)
+
+structure 5  ×4 instances
+  part   html > body > site-nav > header > div > div > div  ×4
+    part   span  ×5
+    part   div  ×3
+      field  div > a  ×1
+        "deepmind.google"
+      field  div > a > span  ×1
+        "Google DeepMind"
+      part   div > div > button  ×2
+      part   div > div > div > button  ×2
+      part   div > a > div > img  ×2
+        field  self  ×2
+          "storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.heigh…"
+          "storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height…"
+      part   a  ×2
+        field  self  ×2
+          "aistudio.google.com/prompts/new_chat?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_conte…"
+          "gemini.google.com?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+        field  span.button__label  ×2
+          "Build with Gemini"
+          "Try Gemini"
+    part   nav > div  ×6
+      field  a.button.button--hover_outline.deepai-text-call-to-action--nav.main-menu__label:not(.site-switcher__link)  ×4
+        "Models"
+        "deepmind.google/models"
+        "Research"
+        (8 values)
+      field  div  ×1
+        "Products and apps"
+      part   a.site-switcher__link:not(.button):not(.button--hover_outline):not(.deepai-text-call-to-action--nav):not(.main-menu__label)  ×7
+        field  self  ×7
+          "ai.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+          "deepmind.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+          "labs.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+          (7 values)
+        field  div.site-switcher__link-title:not(.site-switcher__link-description)  ×7
+          "Google AI"
+          "Google DeepMind"
+          "Google Labs"
+          (7 values)
+        field  div.site-switcher__link-description:not(.site-switcher__link-title)  ×7
+          "Learn about all our AI"
+          "Explore the frontier of AI"
+          "Try our AI experiments"
+          (7 values)
+
+structure 6  ×7 instances
+  part   html > body > site-nav > header > div > div > div > nav > div > a.site-switcher__link  ×7
+    field  self  ×7
+      "ai.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+      "deepmind.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+      "labs.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+      (7 values)
+    field  div.site-switcher__link-title:not(.site-switcher__link-description)  ×7
+      "Google AI"
+      "Google DeepMind"
+      "Google Labs"
+      (7 values)
+    field  div.site-switcher__link-description:not(.site-switcher__link-title)  ×7
+      "Learn about all our AI"
+      "Explore the frontier of AI"
+      "Try our AI experiments"
+      (7 values)
+
+structure 7  ×12 instances
+  part   html > body > main > section > div > div > div.grid__column--span-4-sm > article  ×12
+    field  div.card__inner > div.card__content:not(.media-content-wrapper) > h3.card__title.heading-6  ×12
+      "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking"
+      "AlphaGenome Atlas: A predictive map of every possible DNA letter change in the human genome"
+      "Introducing WeatherNext 3, our most advanced and accurate global weather AI model"
+      (12 values)
+    field  div.card__inner > div.card__content:not(.media-content-wrapper) > div.meta > span.text-caption:not(.meta__category) > time  ×12
+      "September 2026"
+      "August 2026"
+    field  div.card__inner > div.card__content:not(.media-content-wrapper) > div.meta > span.meta__category.text-caption  ×11
+      "Models"
+      "Science"
+      "Responsibility & Safety"
+      (11 values)
+    field  div.card__inner > div.card__content:not(.media-content-wrapper) > div.meta > div.button-group--micro.meta__cta > a.button.button--text_link.icon-right  ×12
+      "blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-think…"
+      "deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genom…"
+      "blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-weathernext-3"
+      (12 values)
+    field  div.card__inner > div.card__content:not(.media-content-wrapper) > div.meta > div.button-group--micro.meta__cta > a.button.button--text_link.icon-right > div.but…  ×12
+      "Learn more"
+    field  div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-dark-mode-alternative.media-image-block.no-dark-mode-mobile.no-…  ×6
+      "lh3.googleusercontent.com/WLJdKv7tE4868w1-1Ty8mmYBDJw9jL1i3y0JD-Vbzw0nec285oS15KXv8c123-yD0nyNcCeXZTDWYYKf0DtG…"
+      "lh3.googleusercontent.com/WLJdKv7tE4868w1-1Ty8mmYBDJw9jL1i3y0JD-Vbzw0nec285oS15KXv8c123-yD0nyNcCeXZTDWYYKf0DtG…"
+      "lh3.googleusercontent.com/WLJdKv7tE4868w1-1Ty8mmYBDJw9jL1i3y0JD-Vbzw0nec285oS15KXv8c123-yD0nyNcCeXZTDWYYKf0DtG…"
+      (18 values)
+    field  div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-dark-mode-alternative.media-image-block.no-dark-mode-mobile.no-…  ×6
+      "lh3.googleusercontent.com/WLJdKv7tE4868w1-1Ty8mmYBDJw9jL1i3y0JD-Vbzw0nec285oS15KXv8c123-yD0nyNcCeXZTDWYYKf0DtG…"
+      "lh3.googleusercontent.com/N6ojVrsJsW9ZZo-SlMR-DppO8QkWV46sKSUu5kYG3IllcO9uECcnZj_YZ4uP58hEq_um9JPpVLGMr1B7-Od-…"
+      "lh3.googleusercontent.com/6M3Icp_yHwf9ynxQTJOrR4igQahQLmLHUI4O6z-vzfqLGE9snLkCnVFQ4fOn2jR5ApUG3RD8bwnGZDQdXYEN…"
+      (6 values)
+    field  div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-dark-mode-alternative.media-image-block.no-dark-mode-mobile.no-…  ×6
+      "lh3.googleusercontent.com/vw4J3JHyxqLGZ19cgnCZ3Texgz5HtGStTn2aLUbK5gSDOECJL3yV9RmyTeEeGuX2jE5PNm6pPwgNOnbrZenG…"
+      "lh3.googleusercontent.com/vw4J3JHyxqLGZ19cgnCZ3Texgz5HtGStTn2aLUbK5gSDOECJL3yV9RmyTeEeGuX2jE5PNm6pPwgNOnbrZenG…"
+      "lh3.googleusercontent.com/vw4J3JHyxqLGZ19cgnCZ3Texgz5HtGStTn2aLUbK5gSDOECJL3yV9RmyTeEeGuX2jE5PNm6pPwgNOnbrZenG…"
+      (18 values)
+    field  div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-dark-mode-alternative.media-image-block.no-dark-mode-mobile.no-…  ×6
+      "lh3.googleusercontent.com/vw4J3JHyxqLGZ19cgnCZ3Texgz5HtGStTn2aLUbK5gSDOECJL3yV9RmyTeEeGuX2jE5PNm6pPwgNOnbrZenG…"
+      "lh3.googleusercontent.com/xStcpI-ddeH_Pyyq5reFwpUCYXV9FhorJWv6_gr5w9Mz0TyaS5nBHnXkIfOuO97BMI10bRgQ15QsGKstAwl5…"
+      "lh3.googleusercontent.com/D90PMkyOwz4xSOuRSIr1AIPuYL4891y6pbN-1t7MxDu1kXnE6iHfZIrv9YuEq1wrxrMv9j7WJ-fnnetxk0Ag…"
+      (6 values)
+    field  div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-default-media.media-image-block.no-dark-mode.no-dark-mode-mobil…  ×6
+      "lh3.googleusercontent.com/r61wQF26A6pZ6DA35aCMf8n4G_4EDe_VJ-YYtRIDIF9ZBJLtQesAUCk9HBY7hsZX0qh73DwaA1ZI2dT_k4rk…"
+      "lh3.googleusercontent.com/r61wQF26A6pZ6DA35aCMf8n4G_4EDe_VJ-YYtRIDIF9ZBJLtQesAUCk9HBY7hsZX0qh73DwaA1ZI2dT_k4rk…"
+      "lh3.googleusercontent.com/r61wQF26A6pZ6DA35aCMf8n4G_4EDe_VJ-YYtRIDIF9ZBJLtQesAUCk9HBY7hsZX0qh73DwaA1ZI2dT_k4rk…"
+      (18 values)
+    field  div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-default-media.media-image-block.no-dark-mode.no-dark-mode-mobil…  ×6
+      "lh3.googleusercontent.com/r61wQF26A6pZ6DA35aCMf8n4G_4EDe_VJ-YYtRIDIF9ZBJLtQesAUCk9HBY7hsZX0qh73DwaA1ZI2dT_k4rk…"
+      "lh3.googleusercontent.com/Q6olj2qyqGOV7qw7rYXpC-t4qnu5_6_fiChHps4ItjwnDZ5oMlJAVyFifBnK8hRIj6DrdEjC9fus4ip2zxka…"
+      "lh3.googleusercontent.com/fcxozK2vp1FhjLzRwJl_T0YameW0FqWSeBbdMi8tExQClbZHpCOoOT0anIXqUFB0B4m1FGAQki50HSoJWW_g…"
+      (6 values)
+
+structure 8  ×12 instances
+  part   html > body > main > section > div > div > div.grid__column--span-8-sm  ×12
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.card__content:not(.media-content-wrapper) > h3.card__title.heading-6  ×12
+      "Gemini Robotics ER 2: powering robotics with video understanding, task orchestration, and multi-robot collabor…"
+      "Gemini Robotics 2 brings whole body intelligence to robots"
+      "We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative …"
+      (12 values)
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.card__content:not(.media-content-wrapper) > div.meta > span.text-caption:not(.meta__c…  ×12
+      "July 2026"
+      "June 2026"
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.card__content:not(.media-content-wrapper) > div.meta > span.meta__category.text-capti…  ×11
+      "Models"
+      "Responsibility & Safety"
+      "Company"
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.card__content:not(.media-content-wrapper) > div.meta > div.button-group--micro.meta__…  ×12
+      "blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2?utm_source=deepmind.goo…"
+      "deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots"
+      "blog.google/innovation-and-ai/models-and-research/google-labs/lyria-3-5?utm_source=deepmind.google&utm_medium=…"
+      (12 values)
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.card__content:not(.media-content-wrapper) > div.meta > div.button-group--micro.meta__…  ×12
+      "Learn more"
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-dark-mode-…  ×6
+      "lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOc…"
+      "lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOc…"
+      "lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOc…"
+      (18 values)
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-dark-mode-…  ×6
+      "lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOc…"
+      "lh3.googleusercontent.com/4CxjUkuiQGzGGUcfq1B4p4UlrkvWudJYnlSiOy1sMK2DaSh2hsNP8eY8wB4CvTaJyKmGVdkWt_LCNDZVdeKm…"
+      "lh3.googleusercontent.com/_g7qU7yU3Hi8LESp1J4rL2_KrGRKQvSiKYK6vFk1Lc2iHyfrvJIomsFUVnpmCY2kiTVOV2oXrFBO95ZZ72e9…"
+      (6 values)
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-dark-mode-…  ×6
+      "lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOc…"
+      "lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOc…"
+      "lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOc…"
+      (18 values)
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-dark-mode-…  ×6
+      "lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOc…"
+      "lh3.googleusercontent.com/4CxjUkuiQGzGGUcfq1B4p4UlrkvWudJYnlSiOy1sMK2DaSh2hsNP8eY8wB4CvTaJyKmGVdkWt_LCNDZVdeKm…"
+      "lh3.googleusercontent.com/x28A_3AhPNekxlYlCjFPCggCgg5GDeAm_nza2viPXgnyWj2dJail1tojalFrcPZe1HEMI3_k1CKExrCv4mIQ…"
+      (6 values)
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-default-me…  ×5
+      "lh3.googleusercontent.com/zMVCaOJRYtXewrjWCQk_CpryzvT_pDW3e4qVb34EYX6mvmG9zsq5sdLJ-JpPnrF4_ugxXEtYVfiZ8x7U1RLZ…"
+      "lh3.googleusercontent.com/zMVCaOJRYtXewrjWCQk_CpryzvT_pDW3e4qVb34EYX6mvmG9zsq5sdLJ-JpPnrF4_ugxXEtYVfiZ8x7U1RLZ…"
+      "lh3.googleusercontent.com/zMVCaOJRYtXewrjWCQk_CpryzvT_pDW3e4qVb34EYX6mvmG9zsq5sdLJ-JpPnrF4_ugxXEtYVfiZ8x7U1RLZ…"
+      (15 values)
+    field  article.card.card--is-link.card--small_h.card-blog > div.card__inner > div.media-content-wrapper:not(.card__content) > div.media__container > div.has-default-me…  ×5
+      "lh3.googleusercontent.com/zMVCaOJRYtXewrjWCQk_CpryzvT_pDW3e4qVb34EYX6mvmG9zsq5sdLJ-JpPnrF4_ugxXEtYVfiZ8x7U1RLZ…"
+      "lh3.googleusercontent.com/ka3EetvoXUZT51_ccXEYJzDAgOT--neAk5b6tRdoNkMxMl0bcbhzxMlwzDTGffLjerEXw6-HKEiq1nfvOiLx…"
+      "lh3.googleusercontent.com/GgZKtB6hmnwfQ2qzJ28Rh-O4zc1q6EJLp-dp1EkFEcGOPif9-76KWeb0ey-ua7w4HAgOZEGHrDIAYZ4rRfOM…"
+      (5 values)
+
+structure 9  ×29 instances
+  part   html > body > footer > div > div > div > div > div > div > a  ×29
+    field  self  ×29
+      "deepmind.google/models/gemini"
+      "deepmind.google/models/gemini-omni"
+      "deepmind.google/models/gemini-image"
+      (29 values)
+    field  div.button__label:not(.js-media-icon):not(.media-icon):not(.media-icon--contained):not(.media-icon--contained--outline)  ×29
+      "Gemini"
+      "Gemini Omni"
+      "Nano Banana"
+      (29 values)

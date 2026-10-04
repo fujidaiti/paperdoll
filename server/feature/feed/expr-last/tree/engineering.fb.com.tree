@@ -1,0 +1,541 @@
+# engineering.fb.com
+url               https://engineering.fb.com/
+posts in fixture  12
+structures        8
+recall            1.000, recall+ 1.000
+merge             1.76
+distrib           1.83, wrappers 1.75
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×4 instances
+  part   html > body > div  ×4
+    part   div  ×6
+      field  a  ×1
+        "Skip to content"
+        "engineering.fb.com#content"
+      part   nav > div  ×2
+        part   div  ×4
+          field  h1 > a  ×1
+            "engineering.fb.com"
+            "Engineering at Meta"
+          field  h1 > a > img  ×1
+            "engineering.fb.com/wp-content/themes/code-fb-com/img/logo-meta.svg"
+            "Engineering at Meta"
+          field  label  ×1
+            "Search this site"
+          field  button > img  ×1
+            "engineering.fb.com/wp-content/themes/code-fb-com/img/icon-search.svg"
+          field  ul > li > a  ×1
+            "Open Source"
+            "engineering.fb.com"
+          field  ul > li > ul > li > a  ×1
+            "Open Source"
+            "engineering.fb.com/category/open-source"
+      part   div  ×6
+        field  div:not(.row) > button  ×1
+          "Accept"
+        field  button  ×1
+          "Load More"
+        field  p  ×1
+          "To help personalize content, tailor and measure ads and provide a safer experience, we use cookies. By clickin…"
+        field  p > a  ×1
+          "Cookie Policy"
+          "engineering.fb.com/privacy"
+        part   div:not(.row) > main > div  ×2
+          field  div > div > article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-open-source)…  ×2
+            "engineering.fb.com/2026/09/23/security/private-processing-meta-ai-glasses"
+            "engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts"
+          field  div > div > article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-open-source)…  ×2
+            "engineering.fb.com/wp-content/uploads/2026/09/Private-Processing-AI-Glasses-Hero-Option-6.png"
+            "engineering.fb.com/wp-content/uploads/2026/08/Domain-Expert-AI-Hero-1.png?w=580&h=326&crop=1"
+          field  div > div > article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-open-source)…  ×2
+            "Security & Privacy"
+            "engineering.fb.com/category/security"
+            "AI Research"
+            (4 values)
+          field  div > div > article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-open-source)…  ×1
+            "SEP 2, 2026"
+          field  div > div > article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-open-source)…  ×2
+            "Bringing Private Processing to Meta AI Glasses"
+            "engineering.fb.com/2026/09/23/security/private-processing-meta-ai-glasses"
+            "An Organizational Second Brain: Building an AI That Learns From Experts"
+            (4 values)
+          field  div > div > article.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security)…  ×2
+            "engineering.fb.com/2026/09/21/open-source/rebalancer-generic-high-performance-library-assignment-problems"
+            "engineering.fb.com/2026/08/24/networking-traffic/metaroce-rdma-transport-ai-ethernet"
+          field  div > div > article.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security)…  ×2
+            "engineering.fb.com/wp-content/uploads/2026/09/Meta-Rebalancer.webp?w=580&h=326&crop=1"
+            "engineering.fb.com/wp-content/uploads/2026/08/MetaRoCE-HERO-final.png?w=580&h=326&crop=1"
+          field  div > div > article.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security)…  ×2
+            "Open Source"
+            "engineering.fb.com/category/open-source"
+            "Data Center Engineering"
+            (4 values)
+          field  div > div > article.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security)…  ×2
+            "SEP 21, 2026"
+            "AUG 24, 2026"
+          field  div > div > article.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security)…  ×2
+            "Open-Sourcing Rebalancer: A Generic, High-Performance Library for Solving Assignment Problems"
+            "engineering.fb.com/2026/09/21/open-source/rebalancer-generic-high-performance-library-assignment-problems"
+            "MetaRoCE: A New RDMA Transport Built for AI-Scale Ethernet"
+            (4 values)
+          field  div > div > article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.category-open-s…  ×2
+            "engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable"
+            "engineering.fb.com/2026/09/03/core-infra/zgateway-proxy-zippydb-meta"
+          field  div > div > article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.category-open-s…  ×2
+            "engineering.fb.com/wp-content/uploads/2026/09/Announcing-Petal-a-First-of-its-Kind-Transoceanic-Subsea-Cable_H…"
+            "engineering.fb.com/wp-content/uploads/2026/09/ZGateway-Hero.png?w=580&h=326&crop=1"
+          field  div > div > article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.category-open-s…  ×2
+            "Connectivity"
+            "engineering.fb.com/category/connectivity"
+            "Core Infra"
+            (4 values)
+          field  div > div > article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.category-open-s…  ×2
+            "SEP 21, 2026"
+            "SEP 3, 2026"
+          field  div > div > article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.category-open-s…  ×2
+            "Inside Petal: Building the World’s First Petabit-Class Transoceanic Subsea Cable"
+            "engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable"
+            "ZGateway: Learnings from Putting a Proxy in Front of ZippyDB"
+            (4 values)
+          field  div > div > article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.fb_content_type-article):not(.category-…  ×1
+            "engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics"
+          field  div > div > article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.fb_content_type-article):not(.category-…  ×1
+            "engineering.fb.com/wp-content/uploads/2026/08/Meta-MTIA-300-Hero-final.png?w=580&h=326&crop=1"
+            "Meta MTIA 300 - Hero - final"
+          field  div > div > article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.fb_content_type-article):not(.category-…  ×1
+            "Data Infrastructure"
+            "engineering.fb.com/category/data-infrastructure"
+          field  div > div > article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.fb_content_type-article):not(.category-…  ×1
+            "AUG 24, 2026"
+          field  div > div > article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-security):not(.fb_content_type-article):not(.category-…  ×1
+            "MTIA 300: Meta’s First Training Chip with Built-in NICs and Communication-Offloading Engines"
+            "engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics"
+          field  h6  ×1
+            "The Latest"
+        part   div:not(.row) > footer > div > div > div  ×2
+          field  div  ×1
+            "© 2026 Meta"
+          field  ul > li > a  ×1
+            "Terms"
+            "www.facebook.com/policies"
+        part   div.row > div  ×4
+          field  h3.widget-title  ×3
+            "Available Positions"
+            "Technology at Meta"
+            "Open Source"
+          field  ul > li > a  ×1
+            "www.metacareers.com/jobs/998357492128826"
+          field  ul > li > a > div  ×1
+            "Software Engineer, Machine Learning"
+          field  a  ×1
+            "www.metacareers.com"
+          field  a > div  ×1
+            "See All Jobs"
+          field  div.custom-html-widget.textwidget > ul > li > img  ×2
+            "engineering.fb.com/wp-content/themes/code-fb-com/img/meta_logo.png"
+            "footer-fb-engineering"
+            "engineering.fb.com/wp-content/themes/code-fb-com/img/android.png"
+            (4 values)
+          field  div.custom-html-widget.textwidget > ul > li > div  ×1
+            "ANDROID"
+          field  div.custom-html-widget.textwidget > ul > li > div > div  ×1
+            "Engineering at Meta - X"
+          field  div.custom-html-widget.textwidget > ul > li > div > a  ×0
+          field  div.custom-html-widget.textwidget > ul > li > div > a > button  ×1
+            "Follow"
+          field  div.custom-html-widget.textwidget > p  ×1
+            "Meta believes in building community through open source technology. Explore our latest projects in Artificial …"
+          field  div.custom-html-widget.textwidget > button  ×1
+            "Learn More"
+          field  footer > div > div > a  ×1
+            "about.facebook.com"
+          field  footer > div > div > a > img  ×1
+            "engineering.fb.com/wp-content/themes/code-fb-com/img/meta_logo_full.svg"
+            "Meta"
+          field  footer > div > div > div > div > p  ×1
+            "Engineering at Meta is a technical news resource for engineers interested in how we solve large-scale technica…"
+          field  footer > div > div > ul > li > a  ×1
+            "Home"
+            "engineering.fb.com"
+
+structure 2  ×7 instances
+  part   html > body > div > div > nav > div > div > ul > li  ×7
+    field  a.dropdown-toggle.nav-link  ×6
+      "Open Source"
+      "engineering.fb.com"
+      "Platforms"
+      (18 values)
+    field  a.nav-link:not(.dropdown-toggle)  ×1
+      "Watch Videos"
+      "engineering.fb.com/videos"
+    field  ul.dropdown-menu > li.menu-item.menu-item-object-custom.menu-item-type-custom.nav-item:not(.menu-item-object-category):not(.menu-item-type-taxonomy) > a.nav-lin…  ×5
+      "Meta Open Source"
+      "opensource.fb.com"
+      "Research Publications"
+      (15 values)
+    part   ul.dropdown-menu > li.menu-item.menu-item-object-category.menu-item-type-taxonomy.nav-item:not(.menu-item-object-custom):not(.menu-item-type-custom)  ×16
+      field  a.nav-link  ×16
+        "Open Source"
+        "engineering.fb.com/category/open-source"
+        "Android"
+        (48 values)
+
+structure 3  ×2 instances
+  part   html > body > div > div > div > div > main > div > div.inner-container > div  ×2
+    part   article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post  ×3
+      field  a:not(.feat-image)  ×1
+        "engineering.fb.com/2026/09/23/security/private-processing-meta-ai-glasses"
+      field  a:not(.feat-image) > img  ×1
+        "engineering.fb.com/wp-content/uploads/2026/09/Private-Processing-AI-Glasses-Hero-Option-6.png"
+      field  a.feat-image  ×2
+        "engineering.fb.com/2026/09/21/open-source/rebalancer-generic-high-performance-library-assignment-problems"
+        "engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable"
+      field  a.feat-image > img.attachment-thumbnail.size-thumbnail  ×2
+        "engineering.fb.com/wp-content/uploads/2026/09/Meta-Rebalancer.webp?w=580&h=326&crop=1"
+        "engineering.fb.com/wp-content/uploads/2026/09/Announcing-Petal-a-First-of-its-Kind-Transoceanic-Subsea-Cable_H…"
+      field  header.entry-header > div.entry-header__top:not(.entry-title):not(.entry-meta) > span.cat-links:not(.posted-on) > a.category  ×3
+        "Security & Privacy"
+        "engineering.fb.com/category/security"
+        "Open Source"
+        (6 values)
+      field  header.entry-header > div.entry-header__top:not(.entry-title):not(.entry-meta) > span.posted-on:not(.cat-links) > time.entry-date.published  ×2
+        "SEP 21, 2026"
+      field  header.entry-header > div.entry-title:not(.entry-header__top):not(.entry-meta) > div > a  ×3
+        "Bringing Private Processing to Meta AI Glasses"
+        "engineering.fb.com/2026/09/23/security/private-processing-meta-ai-glasses"
+        "Open-Sourcing Rebalancer: A Generic, High-Performance Library for Solving Assignment Problems"
+        (6 values)
+
+structure 4  ×2 instances
+  part   html > body > div > div > div > div > main > div > div > div.top-right-article > article  ×2
+    field  a.feat-image  ×2
+      "engineering.fb.com/2026/09/21/open-source/rebalancer-generic-high-performance-library-assignment-problems"
+      "engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable"
+    field  a.feat-image > img.attachment-thumbnail.size-thumbnail  ×2
+      "engineering.fb.com/wp-content/uploads/2026/09/Meta-Rebalancer.webp?w=580&h=326&crop=1"
+      "engineering.fb.com/wp-content/uploads/2026/09/Announcing-Petal-a-First-of-its-Kind-Transoceanic-Subsea-Cable_H…"
+    field  header.entry-header > div.entry-header__top:not(.entry-title):not(.entry-meta) > span.cat-links:not(.posted-on) > a.category  ×2
+      "Open Source"
+      "engineering.fb.com/category/open-source"
+      "Connectivity"
+      (4 values)
+    field  header.entry-header > div.entry-header__top:not(.entry-title):not(.entry-meta) > span.posted-on:not(.cat-links) > time.entry-date.published  ×2
+      "SEP 21, 2026"
+    field  header.entry-header > div.entry-title:not(.entry-header__top):not(.entry-meta) > div > a  ×2
+      "Open-Sourcing Rebalancer: A Generic, High-Performance Library for Solving Assignment Problems"
+      "engineering.fb.com/2026/09/21/open-source/rebalancer-generic-high-performance-library-assignment-problems"
+      "Inside Petal: Building the World’s First Petabit-Class Transoceanic Subsea Cable"
+      (4 values)
+
+structure 5  ×3 instances
+  part   html > body > div > div > div > div > main > div > div.row  ×3
+    part   div.article-grid.col-md-4.col-sm-12  ×9
+      field  article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.category-ml-applications…  ×1
+        "engineering.fb.com/2026/09/03/core-infra/zgateway-proxy-zippydb-meta"
+      field  article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.category-ml-applications…  ×1
+        "engineering.fb.com/wp-content/uploads/2026/09/ZGateway-Hero.png?w=580&h=326&crop=1"
+      field  article.category-ai-research.category-ml-applications.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.ty…  ×1
+        "engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts"
+      field  article.category-ai-research.category-ml-applications.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.ty…  ×1
+        "engineering.fb.com/wp-content/uploads/2026/08/Domain-Expert-AI-Hero-1.png?w=580&h=326&crop=1"
+      field  article.category-data-infrastructure.category-networking-traffic.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.sta…  ×1
+        "engineering.fb.com/2026/08/24/networking-traffic/metaroce-rdma-transport-ai-ethernet"
+      field  article.category-data-infrastructure.category-networking-traffic.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.sta…  ×1
+        "engineering.fb.com/wp-content/uploads/2026/08/MetaRoCE-HERO-final.png?w=580&h=326&crop=1"
+      field  article.category-data-infrastructure.category-networking-traffic.category-production-engineering.format-standard.has-post-thumbnail.hentry.post.status-publish.t…  ×1
+        "engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics"
+      field  article.category-data-infrastructure.category-networking-traffic.category-production-engineering.format-standard.has-post-thumbnail.hentry.post.status-publish.t…  ×1
+        "engineering.fb.com/wp-content/uploads/2026/08/Meta-MTIA-300-Hero-final.png?w=580&h=326&crop=1"
+        "Meta MTIA 300 - Hero - final"
+      field  article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.catego…  ×1
+        "engineering.fb.com/2026/08/12/security/how-were-building-scam-alert-whatsapp"
+      field  article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.catego…  ×1
+        "engineering.fb.com/wp-content/uploads/2026/07/WhatsApp-Scam-Alert.png?w=580&h=326&crop=1"
+        "WhatsApp Scam Alert"
+      field  article.category-data-infrastructure.category-ml-applications.category-production-engineering.fb_content_type-article.format-standard.has-post-thumbnail.hentry.…  ×1
+        "engineering.fb.com/2026/08/05/ml-applications/from-user-sequences-to-scaling-laws-a-multi-stage-architecture-f…"
+      field  article.category-data-infrastructure.category-ml-applications.category-production-engineering.fb_content_type-article.format-standard.has-post-thumbnail.hentry.…  ×1
+        "engineering.fb.com/wp-content/uploads/2026/05/Meta-Mult-stage-Ads-Ranking.png?w=580&h=326&crop=1"
+      field  article.category-ai-research.category-data-infrastructure.category-ml-applications.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status…  ×1
+        "engineering.fb.com/2026/08/03/ml-applications/training-gem-at-llm-scale-meta-ads-recommendation-foundation-mod…"
+      field  article.category-ai-research.category-data-infrastructure.category-ml-applications.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status…  ×1
+        "engineering.fb.com/wp-content/uploads/2026/07/Training-GEM-at-LLM-Scale-Hero.png?w=580&h=326&crop=1"
+      field  article.category-ai-research.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ml-applications):not(…  ×1
+        "engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-fun…"
+      field  article.category-ai-research.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ml-applications):not(…  ×1
+        "engineering.fb.com/wp-content/uploads/2026/07/image2_6a0f44.jpg?w=580&h=326&crop=1"
+        "image2_6a0f44"
+      field  article.category-ml-applications.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.categ…  ×1
+        "engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-sche…"
+      field  article.category-ml-applications.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.categ…  ×1
+        "engineering.fb.com/wp-content/uploads/2026/07/image3.jpg?w=580&h=326&crop=1"
+        "image3"
+      part   article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.category-ml-applications…  ×3
+        field  div > a  ×1
+          "ZGateway: Learnings from Putting a Proxy in Front of ZippyDB"
+          "engineering.fb.com/2026/09/03/core-infra/zgateway-proxy-zippydb-meta"
+        part   span  ×2
+          field  a  ×1
+            "Core Infra"
+            "engineering.fb.com/category/core-infra"
+          field  time  ×1
+            "SEP 3, 2026"
+      part   article.category-ai-research.category-ml-applications.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.ty…  ×3
+        field  div > a  ×1
+          "An Organizational Second Brain: Building an AI That Learns From Experts"
+          "engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts"
+        part   span  ×2
+          field  a  ×1
+            "AI Research"
+            "engineering.fb.com/category/ai-research"
+          field  time  ×1
+            "SEP 2, 2026"
+      part   article.category-data-infrastructure.category-networking-traffic.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.sta…  ×3
+        field  div > a  ×1
+          "MetaRoCE: A New RDMA Transport Built for AI-Scale Ethernet"
+          "engineering.fb.com/2026/08/24/networking-traffic/metaroce-rdma-transport-ai-ethernet"
+        part   span  ×2
+          field  a  ×1
+            "Data Center Engineering"
+            "engineering.fb.com/category/data-center-engineering"
+          field  time  ×1
+            "AUG 24, 2026"
+      part   article.category-data-infrastructure.category-networking-traffic.category-production-engineering.format-standard.has-post-thumbnail.hentry.post.status-publish.t…  ×3
+        field  div > a  ×1
+          "MTIA 300: Meta’s First Training Chip with Built-in NICs and Communication-Offloading Engines"
+          "engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics"
+        part   span  ×2
+          field  a  ×1
+            "Data Infrastructure"
+            "engineering.fb.com/category/data-infrastructure"
+          field  time  ×1
+            "AUG 24, 2026"
+      part   article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.catego…  ×3
+        field  div > a  ×1
+          "How We’re Building Scam Alert on WhatsApp With End-to-End Encryption and Verifiability Guarantees"
+          "engineering.fb.com/2026/08/12/security/how-were-building-scam-alert-whatsapp"
+        part   span  ×2
+          field  a  ×1
+            "Security & Privacy"
+            "engineering.fb.com/category/security"
+          field  time  ×1
+            "AUG 12, 2026"
+      part   article.category-data-infrastructure.category-ml-applications.category-production-engineering.fb_content_type-article.format-standard.has-post-thumbnail.hentry.…  ×3
+        field  div > a  ×1
+          "From User Sequences to Scaling Laws: A Multi-Stage Architecture for Meta’s Ads Ranking"
+          "engineering.fb.com/2026/08/05/ml-applications/from-user-sequences-to-scaling-laws-a-multi-stage-architecture-f…"
+        part   span  ×2
+          field  a  ×1
+            "Data Infrastructure"
+            "engineering.fb.com/category/data-infrastructure"
+          field  time  ×1
+            "AUG 5, 2026"
+      part   article.category-ai-research.category-data-infrastructure.category-ml-applications.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status…  ×3
+        field  div > a  ×1
+          "GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Foundation Model"
+          "engineering.fb.com/2026/08/03/ml-applications/training-gem-at-llm-scale-meta-ads-recommendation-foundation-mod…"
+        part   span  ×2
+          field  a  ×1
+            "AI Research"
+            "engineering.fb.com/category/ai-research"
+          field  time  ×1
+            "AUG 3, 2026"
+      part   article.category-ai-research.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ml-applications):not(…  ×3
+        field  div > a  ×1
+          "Exploring Hierarchical Interest Representation For Meta Ads Deep Funnel Optimization"
+          "engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-fun…"
+        part   span  ×2
+          field  a  ×1
+            "AI Research"
+            "engineering.fb.com/category/ai-research"
+          field  time  ×1
+            "JUL 15, 2026"
+      part   article.category-ml-applications.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.categ…  ×3
+        field  div > a  ×1
+          "Modernizing the Meta Ads Service With an Open-Source Kernel Scheduler"
+          "engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-sche…"
+        part   span  ×2
+          field  a  ×1
+            "ML Applications"
+            "engineering.fb.com/category/ml-applications"
+          field  time  ×1
+            "JUL 13, 2026"
+
+structure 6  ×9 instances
+  part   html > body > div > div > div > div > main > div > div > div.col-sm-12  ×9
+    field  article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.category-ml-applications…  ×1
+      "engineering.fb.com/2026/09/03/core-infra/zgateway-proxy-zippydb-meta"
+    field  article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.category-ml-applications…  ×1
+      "engineering.fb.com/wp-content/uploads/2026/09/ZGateway-Hero.png?w=580&h=326&crop=1"
+    field  article.category-ai-research.category-ml-applications.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.ty…  ×1
+      "engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts"
+    field  article.category-ai-research.category-ml-applications.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.ty…  ×1
+      "engineering.fb.com/wp-content/uploads/2026/08/Domain-Expert-AI-Hero-1.png?w=580&h=326&crop=1"
+    field  article.category-data-infrastructure.category-networking-traffic.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.sta…  ×1
+      "engineering.fb.com/2026/08/24/networking-traffic/metaroce-rdma-transport-ai-ethernet"
+    field  article.category-data-infrastructure.category-networking-traffic.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.sta…  ×1
+      "engineering.fb.com/wp-content/uploads/2026/08/MetaRoCE-HERO-final.png?w=580&h=326&crop=1"
+    field  article.category-data-infrastructure.category-networking-traffic.category-production-engineering.format-standard.has-post-thumbnail.hentry.post.status-publish.t…  ×1
+      "engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics"
+    field  article.category-data-infrastructure.category-networking-traffic.category-production-engineering.format-standard.has-post-thumbnail.hentry.post.status-publish.t…  ×1
+      "engineering.fb.com/wp-content/uploads/2026/08/Meta-MTIA-300-Hero-final.png?w=580&h=326&crop=1"
+      "Meta MTIA 300 - Hero - final"
+    field  article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.catego…  ×1
+      "engineering.fb.com/2026/08/12/security/how-were-building-scam-alert-whatsapp"
+    field  article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.catego…  ×1
+      "engineering.fb.com/wp-content/uploads/2026/07/WhatsApp-Scam-Alert.png?w=580&h=326&crop=1"
+      "WhatsApp Scam Alert"
+    field  article.category-data-infrastructure.category-ml-applications.category-production-engineering.fb_content_type-article.format-standard.has-post-thumbnail.hentry.…  ×1
+      "engineering.fb.com/2026/08/05/ml-applications/from-user-sequences-to-scaling-laws-a-multi-stage-architecture-f…"
+    field  article.category-data-infrastructure.category-ml-applications.category-production-engineering.fb_content_type-article.format-standard.has-post-thumbnail.hentry.…  ×1
+      "engineering.fb.com/wp-content/uploads/2026/05/Meta-Mult-stage-Ads-Ranking.png?w=580&h=326&crop=1"
+    field  article.category-ai-research.category-data-infrastructure.category-ml-applications.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status…  ×1
+      "engineering.fb.com/2026/08/03/ml-applications/training-gem-at-llm-scale-meta-ads-recommendation-foundation-mod…"
+    field  article.category-ai-research.category-data-infrastructure.category-ml-applications.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status…  ×1
+      "engineering.fb.com/wp-content/uploads/2026/07/Training-GEM-at-LLM-Scale-Hero.png?w=580&h=326&crop=1"
+    field  article.category-ai-research.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ml-applications):not(…  ×1
+      "engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-fun…"
+    field  article.category-ai-research.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ml-applications):not(…  ×1
+      "engineering.fb.com/wp-content/uploads/2026/07/image2_6a0f44.jpg?w=580&h=326&crop=1"
+      "image2_6a0f44"
+    field  article.category-ml-applications.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.categ…  ×1
+      "engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-sche…"
+    field  article.category-ml-applications.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.categ…  ×1
+      "engineering.fb.com/wp-content/uploads/2026/07/image3.jpg?w=580&h=326&crop=1"
+      "image3"
+    part   article.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.category-ml-applications…  ×3
+      field  div > a  ×1
+        "ZGateway: Learnings from Putting a Proxy in Front of ZippyDB"
+        "engineering.fb.com/2026/09/03/core-infra/zgateway-proxy-zippydb-meta"
+      part   span  ×2
+        field  a  ×1
+          "Core Infra"
+          "engineering.fb.com/category/core-infra"
+        field  time  ×1
+          "SEP 3, 2026"
+    part   article.category-ai-research.category-ml-applications.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.ty…  ×3
+      field  div > a  ×1
+        "An Organizational Second Brain: Building an AI That Learns From Experts"
+        "engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts"
+      part   span  ×2
+        field  a  ×1
+          "AI Research"
+          "engineering.fb.com/category/ai-research"
+        field  time  ×1
+          "SEP 2, 2026"
+    part   article.category-data-infrastructure.category-networking-traffic.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.sta…  ×3
+      field  div > a  ×1
+        "MetaRoCE: A New RDMA Transport Built for AI-Scale Ethernet"
+        "engineering.fb.com/2026/08/24/networking-traffic/metaroce-rdma-transport-ai-ethernet"
+      part   span  ×2
+        field  a  ×1
+          "Data Center Engineering"
+          "engineering.fb.com/category/data-center-engineering"
+        field  time  ×1
+          "AUG 24, 2026"
+    part   article.category-data-infrastructure.category-networking-traffic.category-production-engineering.format-standard.has-post-thumbnail.hentry.post.status-publish.t…  ×3
+      field  div > a  ×1
+        "MTIA 300: Meta’s First Training Chip with Built-in NICs and Communication-Offloading Engines"
+        "engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics"
+      part   span  ×2
+        field  a  ×1
+          "Data Infrastructure"
+          "engineering.fb.com/category/data-infrastructure"
+        field  time  ×1
+          "AUG 24, 2026"
+    part   article.category-security.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ai-research):not(.catego…  ×3
+      field  div > a  ×1
+        "How We’re Building Scam Alert on WhatsApp With End-to-End Encryption and Verifiability Guarantees"
+        "engineering.fb.com/2026/08/12/security/how-were-building-scam-alert-whatsapp"
+      part   span  ×2
+        field  a  ×1
+          "Security & Privacy"
+          "engineering.fb.com/category/security"
+        field  time  ×1
+          "AUG 12, 2026"
+    part   article.category-data-infrastructure.category-ml-applications.category-production-engineering.fb_content_type-article.format-standard.has-post-thumbnail.hentry.…  ×3
+      field  div > a  ×1
+        "From User Sequences to Scaling Laws: A Multi-Stage Architecture for Meta’s Ads Ranking"
+        "engineering.fb.com/2026/08/05/ml-applications/from-user-sequences-to-scaling-laws-a-multi-stage-architecture-f…"
+      part   span  ×2
+        field  a  ×1
+          "Data Infrastructure"
+          "engineering.fb.com/category/data-infrastructure"
+        field  time  ×1
+          "AUG 5, 2026"
+    part   article.category-ai-research.category-data-infrastructure.category-ml-applications.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status…  ×3
+      field  div > a  ×1
+        "GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Foundation Model"
+        "engineering.fb.com/2026/08/03/ml-applications/training-gem-at-llm-scale-meta-ads-recommendation-foundation-mod…"
+      part   span  ×2
+        field  a  ×1
+          "AI Research"
+          "engineering.fb.com/category/ai-research"
+        field  time  ×1
+          "AUG 3, 2026"
+    part   article.category-ai-research.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.category-ml-applications):not(…  ×3
+      field  div > a  ×1
+        "Exploring Hierarchical Interest Representation For Meta Ads Deep Funnel Optimization"
+        "engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-fun…"
+      part   span  ×2
+        field  a  ×1
+          "AI Research"
+          "engineering.fb.com/category/ai-research"
+        field  time  ×1
+          "JUL 15, 2026"
+    part   article.category-ml-applications.category-open-source.fb_content_type-article.format-standard.has-post-thumbnail.hentry.post.status-publish.type-post:not(.categ…  ×3
+      field  div > a  ×1
+        "Modernizing the Meta Ads Service With an Open-Source Kernel Scheduler"
+        "engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-sche…"
+      part   span  ×2
+        field  a  ×1
+          "ML Applications"
+          "engineering.fb.com/category/ml-applications"
+        field  time  ×1
+          "JUL 13, 2026"
+
+structure 7  ×5 instances
+  part   html > body > div > div > div > div > div > ul > li  ×5
+    field  a  ×5
+      "www.metacareers.com/jobs/998357492128826"
+    field  a > div.job-description:not(.job-location)  ×5
+      "Software Engineer, Machine Learning"
+    field  a > div.job-location:not(.job-description)  ×5
+      "SUNNYVALE, US"
+      "BELLEVUE, US"
+      "MENLO PARK, US"
+      (5 values)
+
+structure 8  ×6 instances
+  part   html > body > div > div > div > div > div > div > ul > li.stay-connected-item  ×6
+    field  img.footer-fb-engineering.stay-connected-item-left  ×5
+      "engineering.fb.com/wp-content/themes/code-fb-com/img/meta_logo.png"
+      "footer-fb-engineering"
+      "footer-AI"
+      (10 values)
+    field  img.stay-connected-item-left:not(.footer-fb-engineering)  ×1
+      "engineering.fb.com/wp-content/themes/code-fb-com/img/rss.png"
+      "footer-rss"
+    field  div.stay-connected-item-right > div.stay-connected-label  ×6
+      "Engineering at Meta - X"
+      "AI at Meta"
+      "Meta Quest Blog"
+      (6 values)
+    field  div.stay-connected-item-right > a  ×5
+      "ai.meta.com/blog"
+      "www.meta.com/blog/quest"
+      "developers.facebook.com"
+      (5 values)
+    field  div.stay-connected-item-right > a > button.btn.stay-connected-btn  ×6
+      "Follow"
+      "Read"
+      "Learn more"
+      (6 values)

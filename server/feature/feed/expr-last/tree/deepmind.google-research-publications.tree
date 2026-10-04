@@ -1,0 +1,304 @@
+# deepmind.google-research-publications
+url               https://deepmind.google/research/publications/
+posts in fixture  30
+structures        8
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×5 instances
+  part   html > body > site-nav > header > div > div  ×5
+    part   nav  ×4
+      field  div.flyout__container.grid > div.flyout__intro:not(.flyout__content-desktop) > div:not(.button-group):not(.button-group--compact) > h2.flyout__title  ×4
+        "Explore our next generation AI systems"
+        "Our latest AI breakthroughs and updates from the lab"
+        "Unlocking a new era of discovery with AI"
+        (4 values)
+      field  div.flyout__container.grid > div.flyout__intro:not(.flyout__content-desktop) > div.button-group.button-group--compact > div.button-group__buttons > a.button.but…  ×4
+        "deepmind.google/models"
+        "deepmind.google/research"
+        "deepmind.google/science"
+        (4 values)
+      field  div.flyout__container.grid > div.flyout__intro:not(.flyout__content-desktop) > div.button-group.button-group--compact > div.button-group__buttons > a.button.but…  ×4
+        "Explore models"
+        "Explore research"
+        "Explore science"
+        (4 values)
+      part   div.flyout__container.grid > div.flyout__content-desktop:not(.flyout__intro) > div.flyout__subnav.subnav.subnav--2-column > div.subnav__column  ×10
+        field  div.subnav__content > div.subnav__header:not(.subnav__links) > div.subnav__title  ×9
+          "Gemini"
+          "Specialized models"
+          "World models & physical AI"
+          (9 values)
+        part   div.subnav__content > div.subnav__links:not(.subnav__header) > a.subnav__link.subnav__link--has-icon  ×19
+          field  self  ×19
+            "deepmind.google/models/gemini"
+            "deepmind.google/models/gemini-omni"
+            "deepmind.google/models/gemini-image"
+            (19 values)
+          field  div.subnav__link-image.subnav__link-image--large:not(.subnav__link-text) > div.block-icon.w-block-icon > div.has-default-media.media-image-block.no-dark-mode.no…  ×19
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omn…"
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+            (19 values)
+          field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-label:not(.subnav__link-description)  ×19
+            "Gemini"
+            "Gemini Omni"
+            "Nano Banana"
+            (19 values)
+          field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-description:not(.subnav__link-label)  ×19
+            "Build intelligent agents"
+            "Create anything from anything"
+            "Create and edit detailed images"
+            (19 values)
+        part   div.subnav__content > div.subnav__links:not(.subnav__header) > a.subnav__link:not(.subnav__link--has-icon)  ×15
+          field  self  ×15
+            "deepmind.google/research/evals"
+            "deepmind.google/research/publications"
+            "deepmind.google/responsibility-and-safety"
+            (15 values)
+          field  div.subnav__link-text > div.subnav__link-label:not(.subnav__link-description)  ×15
+            "Evals"
+            "Publications"
+            "Responsibility"
+            (15 values)
+          field  div.subnav__link-text > div.subnav__link-description:not(.subnav__link-label)  ×3
+            "Ensuring AI safety through proactive security, even against evolving threats"
+            "Discover our latest AI breakthroughs, projects, and updates"
+            "We’re looking for people who want to make a real, positive impact on the world"
+    part   div  ×4
+      part   div  ×3
+        field  div > a  ×1
+          "deepmind.google"
+        field  div > a > span  ×1
+          "Google DeepMind"
+        part   div > div > button  ×2
+        part   div > div > div > button  ×2
+        part   div > a > div > img  ×2
+          field  self  ×2
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.heigh…"
+            "storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height…"
+        part   a  ×2
+          field  self  ×2
+            "aistudio.google.com/prompts/new_chat?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_conte…"
+            "gemini.google.com?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+          field  span.button__label  ×2
+            "Build with Gemini"
+            "Try Gemini"
+      part   nav > div  ×6
+        field  a.button.button--hover_outline.deepai-text-call-to-action--nav.main-menu__label:not(.site-switcher__link)  ×4
+          "Models"
+          "deepmind.google/models"
+          "Research"
+          (8 values)
+        field  div  ×1
+          "Products and apps"
+        part   a.site-switcher__link:not(.button):not(.button--hover_outline):not(.deepai-text-call-to-action--nav):not(.main-menu__label)  ×7
+          field  self  ×7
+            "ai.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+            "deepmind.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+            "labs.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+            (7 values)
+          field  div.site-switcher__link-title:not(.site-switcher__link-description)  ×7
+            "Google AI"
+            "Google DeepMind"
+            "Google Labs"
+            (7 values)
+          field  div.site-switcher__link-description:not(.site-switcher__link-title)  ×7
+            "Learn about all our AI"
+            "Explore the frontier of AI"
+            "Try our AI experiments"
+            (7 values)
+
+structure 2  ×10 instances
+  part   html > body > site-nav > header > div > div > nav > div > div > div > div.subnav__column  ×10
+    field  div.subnav__content > div.subnav__header:not(.subnav__links) > div.subnav__title  ×9
+      "Gemini"
+      "Specialized models"
+      "World models & physical AI"
+      (9 values)
+    part   div.subnav__content > div.subnav__links:not(.subnav__header) > a.subnav__link.subnav__link--has-icon  ×19
+      field  self  ×19
+        "deepmind.google/models/gemini"
+        "deepmind.google/models/gemini-omni"
+        "deepmind.google/models/gemini-image"
+        (19 values)
+      field  div.subnav__link-image.subnav__link-image--large:not(.subnav__link-text) > div.block-icon.w-block-icon > div.has-default-media.media-image-block.no-dark-mode.no…  ×19
+        "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+        "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omn…"
+        "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+        (19 values)
+      field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-label:not(.subnav__link-description)  ×19
+        "Gemini"
+        "Gemini Omni"
+        "Nano Banana"
+        (19 values)
+      field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-description:not(.subnav__link-label)  ×19
+        "Build intelligent agents"
+        "Create anything from anything"
+        "Create and edit detailed images"
+        (19 values)
+    part   div.subnav__content > div.subnav__links:not(.subnav__header) > a.subnav__link:not(.subnav__link--has-icon)  ×15
+      field  self  ×15
+        "deepmind.google/research/evals"
+        "deepmind.google/research/publications"
+        "deepmind.google/responsibility-and-safety"
+        (15 values)
+      field  div.subnav__link-text > div.subnav__link-label:not(.subnav__link-description)  ×15
+        "Evals"
+        "Publications"
+        "Responsibility"
+        (15 values)
+      field  div.subnav__link-text > div.subnav__link-description:not(.subnav__link-label)  ×3
+        "Ensuring AI safety through proactive security, even against evolving threats"
+        "Discover our latest AI breakthroughs, projects, and updates"
+        "We’re looking for people who want to make a real, positive impact on the world"
+
+structure 3  ×19 instances
+  part   html > body > site-nav > header > div > div > nav > div > div > div > div > div > div > a.subnav__link--has-icon  ×19
+    field  self  ×19
+      "deepmind.google/models/gemini"
+      "deepmind.google/models/gemini-omni"
+      "deepmind.google/models/gemini-image"
+      (19 values)
+    field  div.subnav__link-image.subnav__link-image--large:not(.subnav__link-text) > div.block-icon.w-block-icon > div.has-default-media.media-image-block.no-dark-mode.no…  ×19
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omn…"
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+      (19 values)
+    field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-label:not(.subnav__link-description)  ×19
+      "Gemini"
+      "Gemini Omni"
+      "Nano Banana"
+      (19 values)
+    field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-description:not(.subnav__link-label)  ×19
+      "Build intelligent agents"
+      "Create anything from anything"
+      "Create and edit detailed images"
+      (19 values)
+
+structure 4  ×34 instances
+  part   html > body > site-nav > header > div > div > nav > div > div > div > div > div > div > a  ×34
+    field  self  ×34
+      "deepmind.google/models/gemini"
+      "deepmind.google/models/gemini-omni"
+      "deepmind.google/models/gemini-image"
+      (34 values)
+    field  div.subnav__link-image.subnav__link-image--large:not(.subnav__link-text) > div.block-icon.w-block-icon > div.has-default-media.media-image-block.no-dark-mode.no…  ×19
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omn…"
+      "storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+      (19 values)
+    field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-label:not(.subnav__link-description)  ×34
+      "Gemini"
+      "Gemini Omni"
+      "Nano Banana"
+      (34 values)
+    field  div.subnav__link-text:not(.subnav__link-image):not(.subnav__link-image--large) > div.subnav__link-description:not(.subnav__link-label)  ×22
+      "Build intelligent agents"
+      "Create anything from anything"
+      "Create and edit detailed images"
+      (22 values)
+
+structure 5  ×4 instances
+  part   html > body > site-nav > header > div > div > div  ×4
+    part   span  ×5
+    part   div  ×3
+      field  div > a  ×1
+        "deepmind.google"
+      field  div > a > span  ×1
+        "Google DeepMind"
+      part   div > div > button  ×2
+      part   div > div > div > button  ×2
+      part   div > a > div > img  ×2
+        field  self  ×2
+          "storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.heigh…"
+          "storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height…"
+      part   a  ×2
+        field  self  ×2
+          "aistudio.google.com/prompts/new_chat?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_conte…"
+          "gemini.google.com?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+        field  span.button__label  ×2
+          "Build with Gemini"
+          "Try Gemini"
+    part   nav > div  ×6
+      field  a.button.button--hover_outline.deepai-text-call-to-action--nav.main-menu__label:not(.site-switcher__link)  ×4
+        "Models"
+        "deepmind.google/models"
+        "Research"
+        (8 values)
+      field  div  ×1
+        "Products and apps"
+      part   a.site-switcher__link:not(.button):not(.button--hover_outline):not(.deepai-text-call-to-action--nav):not(.main-menu__label)  ×7
+        field  self  ×7
+          "ai.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+          "deepmind.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+          "labs.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+          (7 values)
+        field  div.site-switcher__link-title:not(.site-switcher__link-description)  ×7
+          "Google AI"
+          "Google DeepMind"
+          "Google Labs"
+          (7 values)
+        field  div.site-switcher__link-description:not(.site-switcher__link-title)  ×7
+          "Learn about all our AI"
+          "Explore the frontier of AI"
+          "Try our AI experiments"
+          (7 values)
+
+structure 6  ×7 instances
+  part   html > body > site-nav > header > div > div > div > nav > div > a.site-switcher__link  ×7
+    field  self  ×7
+      "ai.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+      "deepmind.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+      "labs.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+      (7 values)
+    field  div.site-switcher__link-title:not(.site-switcher__link-description)  ×7
+      "Google AI"
+      "Google DeepMind"
+      "Google Labs"
+      (7 values)
+    field  div.site-switcher__link-description:not(.site-switcher__link-title)  ×7
+      "Learn about all our AI"
+      "Explore the frontier of AI"
+      "Try our AI experiments"
+      (7 values)
+
+structure 7  ×30 instances
+  part   html > body > main > section > div > ul > li  ×30
+    field  a.list-group__link  ×30
+      "deepmind.google/research/publications/265605"
+      "deepmind.google/research/publications/270149"
+      "deepmind.google/research/publications/118955"
+      (30 values)
+    field  a.list-group__link > dl.grid.list-group__content > dd.grid__column--span-2-md.grid__column--span-4-xs.grid__column--span-8-sm:not(.grid__column--span-10-md) > s…  ×30
+      "1 September 2026"
+      "26 August 2026"
+      "5 August 2026"
+      (30 values)
+    field  a.list-group__link > dl.grid.list-group__content > dd.grid__column--span-10-md.grid__column--span-4-xs.grid__column--span-8-sm:not(.grid__column--span-2-md) > s…  ×30
+      "Designing Proactive Thought Partners for Writing"
+      "Visual General Intelligence: A White Paper"
+      "A moral Turing test: How belief and source shape detection of and agreement with LLM judgments"
+      (30 values)
+
+structure 8  ×29 instances
+  part   html > body > footer > div > div > div > div > div > div > a  ×29
+    field  self  ×29
+      "deepmind.google/models/gemini"
+      "deepmind.google/models/gemini-omni"
+      "deepmind.google/models/gemini-image"
+      (29 values)
+    field  div.button__label:not(.js-media-icon):not(.media-icon):not(.media-icon--contained):not(.media-icon--contained--outline)  ×29
+      "Gemini"
+      "Gemini Omni"
+      "Nano Banana"
+      (29 values)

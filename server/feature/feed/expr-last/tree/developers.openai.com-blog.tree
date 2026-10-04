@@ -1,0 +1,110 @@
+# developers.openai.com-blog
+url               https://developers.openai.com/blog
+posts in fixture  29
+structures        4
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           1.00, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×9 instances
+  part   html > body > header > div > nav > div  ×9
+    field  a.flex.gap-1.hover:bg-primary-soft-alpha.hover:text-default.items-center.px-2.5.py-1.rounded-md.text-primary-soft.text-sm  ×8
+      "Home"
+      "developers.openai.com"
+      "API"
+      (16 values)
+    field  a.flex.gap-1.items-center.px-2.5.py-1.rounded-md.text-sm:not(.hover:bg-primary-soft-alpha):not(.hover:text-default):not(.text-primary-soft)  ×1
+      "Resources"
+      "developers.openai.com/learn"
+    part   div.absolute.before:-top-2.before:absolute.before:content-[''].before:h-2.before:left-0.before:right-0.duration-150.group-has-focus-visible:opacity-100.group-ha…  ×11
+      field  self  ×11
+        "learn.chatgpt.com/docs"
+        "learn.chatgpt.com/use-cases"
+        "developers.openai.com/plugins"
+        (11 values)
+      field  div.flex.flex-col.gap-1 > div.font-medium:not(.text-secondary):not(.text-sm)  ×11
+        "Docs"
+        "Use cases"
+        "Plugins"
+        (11 values)
+      field  div.flex.flex-col.gap-1 > div.text-secondary.text-sm:not(.font-medium)  ×11
+        "Guides, concepts, and product docs for Codex"
+        "Example workflows and tasks teams can take on with ChatGPT or Codex"
+        "Extend ChatGPT and Codex"
+        (11 values)
+
+structure 2  ×11 instances
+  part   html > body > header > div > nav > div > div > div > div > a  ×11
+    field  self  ×11
+      "learn.chatgpt.com/docs"
+      "learn.chatgpt.com/use-cases"
+      "developers.openai.com/plugins"
+      (11 values)
+    field  div.flex.flex-col.gap-1 > div.font-medium:not(.text-secondary):not(.text-sm)  ×11
+      "Docs"
+      "Use cases"
+      "Plugins"
+      (11 values)
+    field  div.flex.flex-col.gap-1 > div.text-secondary.text-sm:not(.font-medium)  ×11
+      "Guides, concepts, and product docs for Codex"
+      "Example workflows and tasks teams can take on with ChatGPT or Codex"
+      "Extend ChatGPT and Codex"
+      (11 values)
+
+structure 3  ×12 instances
+  part   html > body > div > div > div > nav > div > ul > li  ×12
+    field  a.block.px-3.py-1.5.rounded-[8px].text-default.transition-colors.w-full:not(.hover:bg-primary-ghost-hover):not(.hover:text-default):not(.pl-5)  ×1
+      "developers.openai.com/blog"
+    field  a.block.px-3.py-1.5.rounded-[8px].text-default.transition-colors.w-full:not(.hover:bg-primary-ghost-hover):not(.hover:text-default):not(.pl-5) > span  ×1
+      "All posts"
+    field  a.block.hover:bg-primary-ghost-hover.hover:text-default.pl-5.px-3.py-1.5.rounded-[8px].text-default.transition-colors.w-full  ×11
+      "developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra"
+      "developers.openai.com/blog/architectural-visualization-with-astra"
+      "developers.openai.com/blog/how-to-build-games-with-astra"
+      (11 values)
+    field  a.block.hover:bg-primary-ghost-hover.hover:text-default.pl-5.px-3.py-1.5.rounded-[8px].text-default.transition-colors.w-full > span.line-clamp-2  ×11
+      "Rethinking skills and prompts for GPT-6 Astra"
+      "Architectural visualization with Astra"
+      "Building games with Astra"
+      (11 values)
+
+structure 4  ×29 instances
+  part   html > body > div > div > main > div > div > div > a  ×29
+    field  self  ×29
+      "developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra"
+      "developers.openai.com/blog/architectural-visualization-with-astra"
+      "developers.openai.com/blog/how-to-build-games-with-astra"
+      (29 values)
+    field  div.min-w-0.relative.shrink:not(.md:px-0):not(.pt-4):not(.px-4):not(.text-secondary):not(.flex):not(.font-medium):not(.gap-1):not(.items-start):not(.pb-2):not(.…  ×29
+      "developers.openai.com/images/blog/rethinking-skills-and-prompts-for-gpt-6-astra/cover.webp"
+      "Rethinking skills and prompts for GPT-6 Astra"
+      "developers.openai.com/images/blog/architectural-visualization-with-astra/cover.webp"
+      (58 values)
+    field  div.md:px-0.pt-4.px-4.text-secondary:not(.min-w-0):not(.relative):not(.shrink):not(.flex):not(.font-medium):not(.gap-1):not(.items-start):not(.pb-2):not(.text-d…  ×29
+      "Sep 11"
+      "Sep 4"
+      "Aug 28"
+      (29 values)
+    field  div.flex.font-medium.gap-1.items-start.md:px-0.pb-2.px-4.text-default.text-xl:not(.min-w-0):not(.relative):not(.shrink):not(.pt-4):not(.text-secondary):not(.pt-…  ×29
+      "Rethinking skills and prompts for GPT-6 Astra"
+      "Architectural visualization with Astra"
+      "Building games with Astra"
+      (29 values)
+    field  div.md:px-0.pt-2.px-4.text-secondary.text-sm:not(.min-w-0):not(.relative):not(.shrink):not(.pt-4):not(.flex):not(.font-medium):not(.gap-1):not(.items-start):not…  ×29
+      "Codex"
+      "Life sciences"
+      "General"
+      (29 values)
+    field  p.line-clamp-3.md:px-0.px-4.text-default  ×28
+      "Revisit skill descriptions, AGENTS.md, and task prompts to avoid bloated context."
+      "How I used Astra to design a house, refine its everyday details, and explore it through Blender camera tours a…"
+      "How I built a procedural space exploration game in Codex, from concept art to planets you can land on."
+      (28 values)

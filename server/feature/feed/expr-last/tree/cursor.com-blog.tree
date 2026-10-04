@@ -1,0 +1,638 @@
+# cursor.com-blog
+url               https://cursor.com/blog
+posts in fixture  28
+structures        9
+recall            1.000, recall+ 0.857
+merge             2.00
+distrib           1.04, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×4 instances
+  part   html > body > main > section  ×4
+    field  div.container > div.grid-cursor > form > div > button > span  ×1
+      "Subscribe"
+      "→"
+    field  div.container > div:not(.grid-cursor) > h2  ×1
+      "Get started with Cursor."
+    part   div.container > div.grid-cursor > div.col-span-full  ×4
+      field  h1  ×1
+        "Blog"
+      part   div  ×5
+        field  article > a  ×1
+          "cursor.com/blog/joining-spacex"
+        field  article > a > header > div > img  ×1
+          "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/upl…"
+          "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/upl…"
+          "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/upl…"
+          (10 values)
+        part   article > a > div > div  ×2
+          field  time  ×1
+            "Aug 14, 2026"
+            "2026-08-14T12:00:00.000Z"
+          field  span  ×0
+          field  div > span  ×1
+            "Cursor Team"
+          field  div > span > span  ×0
+        part   article > a > div > p  ×2
+          field  self  ×2
+            "Cursor is now a part of SpaceX"
+            "Cursor has officially been acquired by SpaceX."
+        part   div.flex:not(.min-w-0):not(.justify-end) > div  ×2
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0  ×2
+            "cursor.com/blog/grok-4-6"
+            "cursor.com/blog/git-at-any-scale"
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > header.overflow-hidden.relative.rounded-t-xs > div.aspect-[40/21].bg-theme-card-03-…  ×1
+            "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/blo…"
+            "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/blo…"
+            "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/blo…"
+            (12 values)
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+            "Aug 12, 2026"
+            "2026-08-12T00:00:00.000Z"
+            "Aug 18, 2026"
+            (4 values)
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×0
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×1
+            "VM"
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+            "Cursor Team"
+            "Vicent Martí"
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+            "3m"
+            "27m"
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+            "3 min read"
+            "27 min read"
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+            "Introducing Grok 4.6"
+            "Git at any scale"
+          field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×1
+            "Built for long-running agents and more ambitious interactive and visual work."
+        part   div.min-w-0:not(.flex):not(.justify-end) > nav > div > a  ×6
+          field  self  ×6
+            "All"
+            "cursor.com/blog"
+            "product"
+            (12 values)
+        part   div:not(.flex):not(.min-w-0):not(.justify-end) > div  ×14
+          field  div > button.cursor-pointer.type-base  ×1
+            "View more ↓"
+          field  div > button.cursor-pointer.type-base > span  ×1
+            "All"
+          field  div > div > div > ul > li > button  ×1
+            "All"
+          field  div > div > div > ul > li > button > span  ×1
+            "✓"
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.px-g1.75:not(.pt-v7/12)  ×1
+            "cursor.com/blog/projects"
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.px-g1.75:not(.pt-v7/12) > article > div  ×0
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.px-g1.75:not(.pt-v7/12) > article > div > time  ×1
+            "Sep 10, 2026"
+            "2026-09-10T12:00:00.000Z"
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.px-g1.75:not(.pt-v7/12) > article > div > span  ×0
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.px-g1.75:not(.pt-v7/12) > article > div > p  ×1
+            "Introducing Projects"
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75  ×11
+            "cursor.com/blog/self-hosted-machines"
+            "cursor.com/blog/git-at-any-scale"
+            "cursor.com/blog/joining-spacex"
+            (11 values)
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+            "Sep 2, 2026"
+            "2026-09-02T12:00:00.000Z"
+            "Aug 18, 2026"
+            (22 values)
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+            "product"
+            "research"
+            "company"
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+            "Run cloud agents on machines you manage"
+            "Git at any scale"
+            "Cursor is now a part of SpaceX"
+            (11 values)
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+            "Jack Pertschuk"
+            "Vicent Martí"
+            "Cursor Team"
+            (11 values)
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+            "6m"
+            "27m"
+            "2m"
+            (11 values)
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+            "Jack Pertschuk"
+            "Vicent Martí"
+            "Cursor Team"
+            (11 values)
+          field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×0
+      part   button > span  ×2
+        field  self  ×2
+          "Subscribe to our newsletter"
+          "Subscribe to our newsletter for blog updates and original content"
+    part   div.container > div:not(.grid-cursor) > div > a  ×2
+      field  self  ×2
+        "Download"
+        "cursor.com/download"
+        "Contact Sales"
+        (4 values)
+    part   div:not(.container) > section  ×5
+      field  div.container > div:not(.-mx-g2):not(.lg:mx-0):not(.lg:overflow-visible):not(.lg:scroll-px-0):not(.lg:snap-none):not(.no-scrollbar):not(.overflow-x-auto):not(.s…  ×1
+        "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monito…"
+      field  div.container > div:not(.-mx-g2):not(.lg:mx-0):not(.lg:overflow-visible):not(.lg:scroll-px-0):not(.lg:snap-none):not(.no-scrollbar):not(.overflow-x-auto):not(.s…  ×1
+        "From “Towards self-driving codebases”"
+      field  div.container > div:not(.-mx-g2):not(.lg:mx-0):not(.lg:overflow-visible):not(.lg:scroll-px-0):not(.lg:snap-none):not(.no-scrollbar):not(.overflow-x-auto):not(.s…  ×1
+        "Read more →"
+        "cursor.com/blog/self-driving-codebases"
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+        "cursor.com/blog/imdex"
+        "youtu.be/IccjZDV93lw?si=f3mepO4Ptiqdg4F8"
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+        "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years"
+        "AI Foundations: Introduction"
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+        "Aug 25, 2026"
+        "2026-08-25T12:00:00.000Z"
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+        "4:03"
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+        "Watch on YouTube ↗"
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+        "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/IccjZDV93lw/maxresdefault.jpg&w=3840&q=80"
+        "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/IccjZDV93lw/maxresdefault.jpg&w=256&q=80"
+        "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/IccjZDV93lw/maxresdefault.jpg&w=384&q=80"
+        (12 values)
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+        "www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html"
+        "cursor.com/changelog/08-19-26"
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+        "Cursor announces major update to AI agents as coding tool battle heats up"
+        "Cloud Agents and Cursor Harness Improvements"
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+        "Feb 24, 2026"
+        "2026-02-24T00:00:00.000Z"
+      field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+        "Aug 19, 2026"
+        "2026-08-19T00:00:00.000Z"
+      field  div.container > h2.mb-v1.text-theme-text.type-md  ×4
+        "Customer stories"
+        "Press"
+        "Videos"
+        (4 values)
+      field  div.container > a.btn-text.inline-flex.mt-v9/12  ×4
+        "View all stories"
+        "→"
+        "cursor.com/blog/topic/customers"
+        (11 values)
+      part   div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×12
+        field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.flex.flex-col.gap-0.grow-1.h-full.items-stretch.pb-g2:not(.card--media):not(.p-0)  ×3
+          "cursor.com/blog/grab"
+          "cursor.com/blog/basis"
+          "cursor.com/blog/nokia"
+        field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.flex.flex-col.gap-0.grow-1.h-full.items-stretch.pb-g2:not(.card--media):not(.p-0) > div.flex.fle…  ×3
+          "How Grab put Cursor in the hands of Design, Ops, and Engineering"
+          "How Basis builds long-horizon accounting agents with Cursor"
+          "Nokia analyzes 50M+ lines of code in two weeks with Cursor"
+        field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.flex.flex-col.gap-0.grow-1.h-full.items-stretch.pb-g2:not(.card--media):not(.p-0) > div.flex.fle…  ×3
+          "Sep 15, 2026"
+          "2026-09-15T12:00:00.000Z"
+          "Sep 4, 2026"
+          (6 values)
+        field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2)  ×3
+          "youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei"
+          "youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY"
+          "youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk"
+        field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > header…  ×3
+          "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/XbZvC4KTH68/maxresdefault.jpg&w=3840&q=80"
+          "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/XbZvC4KTH68/maxresdefault.jpg&w=256&q=80"
+          "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/XbZvC4KTH68/maxresdefault.jpg&w=384&q=80"
+          (36 values)
+        field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > div.ca…  ×3
+          "Cursor now shows you demos, not diffs"
+          "John Schulman on dead ends, scaling RL, and building research institutions"
+          "Our designer built an operating system with Cursor"
+        field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > div.ca…  ×3
+          "1:43"
+          "51:26"
+          "50:15"
+        field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > div.ca…  ×3
+          "Watch on YouTube ↗"
+        field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2  ×6
+          "thenewstack.io/cursor-open-sources-security-agents"
+          "techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding"
+          "www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
+          (6 values)
+        field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > p.text-pretty.text-theme-text.type-base  ×3
+          "Cursor built a fleet of security agents to solve a familiar frustration"
+          "Cursor is rolling out a new kind of agentic coding tool"
+          "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
+        field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > p.text-theme-text.type-base:not(.text-pretty)  ×3
+          "Cursor Projects"
+          "Self-hosted machines"
+          "Start from scratch, without a repo"
+        field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.left-[-1px].mt-v2/12.relative.text-theme-text-mid.type-base:not(.flex):not(.gap-x-…  ×3
+          "Mar 16, 2026"
+          "2026-03-16T00:00:00.000Z"
+          "Mar 5, 2026"
+          (6 values)
+        field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.flex.gap-x-v4/12.items-center.mt-auto.pt-v8/12.text-theme-accent.type-base:not(.le…  ×3
+          "Read on"
+          "The New Stack"
+          "↗"
+          (9 values)
+        field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.flex.gap-x-(--grid-gap).items-center.left-[-1px].relative.text-theme-text-mid:not(…  ×3
+          "Sep 10, 2026"
+          "2026-09-10T00:00:00.000Z"
+          "Sep 2, 2026"
+          (6 values)
+      part   div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+        field  self  ×1
+          "Read on"
+          "CNBC"
+          "↗"
+
+structure 2  ×2 instances
+  part   html > body > main > section > div > div.gap-y-0 > div  ×2
+    field  div > article > a  ×1
+      "cursor.com/blog/joining-spacex"
+    field  div > article > a > header > div > img  ×1
+      "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/upl…"
+      "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/upl…"
+      "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/upl…"
+      (10 values)
+    part   div > article > a > div > div  ×2
+      field  time  ×1
+        "Aug 14, 2026"
+        "2026-08-14T12:00:00.000Z"
+      field  span  ×0
+      part   div  ×2
+        part   span  ×2
+          field  self  ×1
+            "Cursor Team"
+          field  span  ×0
+    part   div > article > a > div > p  ×2
+      field  self  ×2
+        "Cursor is now a part of SpaceX"
+        "Cursor has officially been acquired by SpaceX."
+    part   div > div > div  ×2
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0  ×2
+        "cursor.com/blog/grok-4-6"
+        "cursor.com/blog/git-at-any-scale"
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > header.overflow-hidden.relative.rounded-t-xs > div.aspect-[40/21].bg-theme-card-03-…  ×1
+        "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/blo…"
+        "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/blo…"
+        "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/blo…"
+        (12 values)
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+        "Aug 12, 2026"
+        "2026-08-12T00:00:00.000Z"
+        "Aug 18, 2026"
+        (4 values)
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×0
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×1
+        "VM"
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+        "Cursor Team"
+        "Vicent Martí"
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+        "3m"
+        "27m"
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+        "3 min read"
+        "27 min read"
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+        "Introducing Grok 4.6"
+        "Git at any scale"
+      field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×1
+        "Built for long-running agents and more ambitious interactive and visual work."
+
+structure 3  ×2 instances
+  part   html > body > main > section > div > div > div > div > div > div.lg:shrink  ×2
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0  ×2
+      "cursor.com/blog/grok-4-6"
+      "cursor.com/blog/git-at-any-scale"
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > header.overflow-hidden.relative.rounded-t-xs > div.aspect-[40/21].bg-theme-card-03-…  ×1
+      "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/blo…"
+      "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/blo…"
+      "cursor.com/marketing-static/_next/image?url=https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/blo…"
+      (12 values)
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+      "Aug 12, 2026"
+      "2026-08-12T00:00:00.000Z"
+      "Aug 18, 2026"
+      (4 values)
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×0
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×1
+      "VM"
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+      "Cursor Team"
+      "Vicent Martí"
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+      "3m"
+      "27m"
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+      "3 min read"
+      "27 min read"
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×2
+      "Introducing Grok 4.6"
+      "Git at any scale"
+    field  article.h-full > a.card.card--feature.card--media.flex.flex-col.h-full.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-feature…  ×1
+      "Built for long-running agents and more ambitious interactive and visual work."
+
+structure 4  ×13 instances
+  part   html > body > main > section > div > div > div > div > div > div.blog-directory__item  ×13
+    field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.px-g1.75:not(.pt-v7/12)  ×1
+      "cursor.com/blog/projects"
+    field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75  ×11
+      "cursor.com/blog/self-hosted-machines"
+      "cursor.com/blog/git-at-any-scale"
+      "cursor.com/blog/joining-spacex"
+      (11 values)
+    field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+      "Sep 2, 2026"
+      "2026-09-02T12:00:00.000Z"
+      "Aug 18, 2026"
+      (22 values)
+    field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+      "product"
+      "research"
+      "company"
+    field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+      "Run cloud agents on machines you manage"
+      "Git at any scale"
+      "Cursor is now a part of SpaceX"
+      (11 values)
+    field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+      "Jack Pertschuk"
+      "Vicent Martí"
+      "Cursor Team"
+      (11 values)
+    field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+      "6m"
+      "27m"
+      "2m"
+      (11 values)
+    field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×11
+      "Jack Pertschuk"
+      "Vicent Martí"
+      "Cursor Team"
+      (11 values)
+    field  a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.pt-v7/12.px-g1.75 > article.gap-x-g1.grid.grid-cols-1.items-start.lg:grid-cols-[minmax(0,6fr)_mi…  ×0
+    field  div > button  ×1
+      "View more ↓"
+    part   a.block.blog-directory__row.hover:bg-theme-card-02-hex.pb-v8/12.px-g1.75:not(.pt-v7/12) > article > div  ×5
+      field  self  ×1
+        "5m"
+      field  time  ×1
+        "Sep 10, 2026"
+        "2026-09-10T12:00:00.000Z"
+      field  span:not(.text-theme-text-mid)  ×0
+      field  span.text-theme-text-mid  ×2
+        "Alexi & Fredrika"
+      field  p  ×1
+        "Introducing Projects"
+
+structure 5  ×5 instances
+  part   html > body > main > section > div > section  ×5
+    field  div.container > div:not(.-mx-g2):not(.lg:mx-0):not(.lg:overflow-visible):not(.lg:scroll-px-0):not(.lg:snap-none):not(.no-scrollbar):not(.overflow-x-auto):not(.s…  ×1
+      "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monito…"
+    field  div.container > div:not(.-mx-g2):not(.lg:mx-0):not(.lg:overflow-visible):not(.lg:scroll-px-0):not(.lg:snap-none):not(.no-scrollbar):not(.overflow-x-auto):not(.s…  ×1
+      "From “Towards self-driving codebases”"
+    field  div.container > div:not(.-mx-g2):not(.lg:mx-0):not(.lg:overflow-visible):not(.lg:scroll-px-0):not(.lg:snap-none):not(.no-scrollbar):not(.overflow-x-auto):not(.s…  ×1
+      "Read more →"
+      "cursor.com/blog/self-driving-codebases"
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+      "cursor.com/blog/imdex"
+      "youtu.be/IccjZDV93lw?si=f3mepO4Ptiqdg4F8"
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+      "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years"
+      "AI Foundations: Introduction"
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+      "Aug 25, 2026"
+      "2026-08-25T12:00:00.000Z"
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+      "4:03"
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+      "Watch on YouTube ↗"
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+      "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/IccjZDV93lw/maxresdefault.jpg&w=3840&q=80"
+      "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/IccjZDV93lw/maxresdefault.jpg&w=256&q=80"
+      "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/IccjZDV93lw/maxresdefault.jpg&w=384&q=80"
+      (12 values)
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+      "www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html"
+      "cursor.com/changelog/08-19-26"
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+      "Cursor announces major update to AI agents as coding tool battle heats up"
+      "Cloud Agents and Cursor Harness Improvements"
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+      "Feb 24, 2026"
+      "2026-02-24T00:00:00.000Z"
+    field  div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×1
+      "Aug 19, 2026"
+      "2026-08-19T00:00:00.000Z"
+    field  div.container > h2.mb-v1.text-theme-text.type-md  ×4
+      "Customer stories"
+      "Press"
+      "Videos"
+      (4 values)
+    field  div.container > a.btn-text.inline-flex.mt-v9/12  ×4
+      "View all stories"
+      "→"
+      "cursor.com/blog/topic/customers"
+      (11 values)
+    part   div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×12
+      field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.flex.flex-col.gap-0.grow-1.h-full.items-stretch.pb-g2:not(.card--media):not(.p-0)  ×3
+        "cursor.com/blog/grab"
+        "cursor.com/blog/basis"
+        "cursor.com/blog/nokia"
+      field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.flex.flex-col.gap-0.grow-1.h-full.items-stretch.pb-g2:not(.card--media):not(.p-0) > div.flex.fle…  ×3
+        "How Grab put Cursor in the hands of Design, Ops, and Engineering"
+        "How Basis builds long-horizon accounting agents with Cursor"
+        "Nokia analyzes 50M+ lines of code in two weeks with Cursor"
+      field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.flex.flex-col.gap-0.grow-1.h-full.items-stretch.pb-g2:not(.card--media):not(.p-0) > div.flex.fle…  ×3
+        "Sep 15, 2026"
+        "2026-09-15T12:00:00.000Z"
+        "Sep 4, 2026"
+        (6 values)
+      field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2)  ×3
+        "youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei"
+        "youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY"
+        "youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk"
+      field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > header…  ×3
+        "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/XbZvC4KTH68/maxresdefault.jpg&w=3840&q=80"
+        "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/XbZvC4KTH68/maxresdefault.jpg&w=256&q=80"
+        "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/XbZvC4KTH68/maxresdefault.jpg&w=384&q=80"
+        (36 values)
+      field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > div.ca…  ×3
+        "Cursor now shows you demos, not diffs"
+        "John Schulman on dead ends, scaling RL, and building research institutions"
+        "Our designer built an operating system with Cursor"
+      field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > div.ca…  ×3
+        "1:43"
+        "51:26"
+        "50:15"
+      field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > div.ca…  ×3
+        "Watch on YouTube ↗"
+      field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2  ×6
+        "thenewstack.io/cursor-open-sources-security-agents"
+        "techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding"
+        "www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
+        (6 values)
+      field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > p.text-pretty.text-theme-text.type-base  ×3
+        "Cursor built a fleet of security agents to solve a familiar frustration"
+        "Cursor is rolling out a new kind of agentic coding tool"
+        "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
+      field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > p.text-theme-text.type-base:not(.text-pretty)  ×3
+        "Cursor Projects"
+        "Self-hosted machines"
+        "Start from scratch, without a repo"
+      field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.left-[-1px].mt-v2/12.relative.text-theme-text-mid.type-base:not(.flex):not(.gap-x-…  ×3
+        "Mar 16, 2026"
+        "2026-03-16T00:00:00.000Z"
+        "Mar 5, 2026"
+        (6 values)
+      field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.flex.gap-x-v4/12.items-center.mt-auto.pt-v8/12.text-theme-accent.type-base:not(.le…  ×3
+        "Read on"
+        "The New Stack"
+        "↗"
+        (9 values)
+      field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.flex.gap-x-(--grid-gap).items-center.left-[-1px].relative.text-theme-text-mid:not(…  ×3
+        "Sep 10, 2026"
+        "2026-09-10T00:00:00.000Z"
+        "Sep 2, 2026"
+        (6 values)
+    part   div.container > div.-mx-g2.lg:mx-0.lg:overflow-visible.lg:scroll-px-0.lg:snap-none.no-scrollbar.overflow-x-auto.scroll-px-g2.snap-mandatory.snap-x > div.flex.ga…  ×2
+      field  self  ×1
+        "Read on"
+        "CNBC"
+        "↗"
+
+structure 6  ×16 instances
+  part   html > body > main > section > div > section > div > div > div > div  ×16
+    field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.flex.flex-col.gap-0.grow-1.h-full.items-stretch.pb-g2:not(.card--media):not(.p-0)  ×4
+      "cursor.com/blog/grab"
+      "cursor.com/blog/basis"
+      "cursor.com/blog/nokia"
+      (4 values)
+    field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.flex.flex-col.gap-0.grow-1.h-full.items-stretch.pb-g2:not(.card--media):not(.p-0) > div.flex.fle…  ×4
+      "How Grab put Cursor in the hands of Design, Ops, and Engineering"
+      "How Basis builds long-horizon accounting agents with Cursor"
+      "Nokia analyzes 50M+ lines of code in two weeks with Cursor"
+      (4 values)
+    field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.flex.flex-col.gap-0.grow-1.h-full.items-stretch.pb-g2:not(.card--media):not(.p-0) > div.flex.fle…  ×4
+      "Sep 15, 2026"
+      "2026-09-15T12:00:00.000Z"
+      "Sep 4, 2026"
+      (8 values)
+    field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2)  ×4
+      "youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei"
+      "youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY"
+      "youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk"
+      (4 values)
+    field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > header…  ×4
+      "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/XbZvC4KTH68/maxresdefault.jpg&w=3840&q=80"
+      "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/XbZvC4KTH68/maxresdefault.jpg&w=256&q=80"
+      "cursor.com/marketing-static/_next/image?url=https://i.ytimg.com/vi/XbZvC4KTH68/maxresdefault.jpg&w=384&q=80"
+      (48 values)
+    field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > div.ca…  ×4
+      "Cursor now shows you demos, not diffs"
+      "John Schulman on dead ends, scaling RL, and building research institutions"
+      "Our designer built an operating system with Cursor"
+      (4 values)
+    field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > div.ca…  ×4
+      "1:43"
+      "51:26"
+      "50:15"
+      (4 values)
+    field  article.h-full:not(.flex):not(.flex-col) > a.card.card--feature.card--media.flex.flex-col.grow-1.h-full.p-0:not(.gap-0):not(.items-stretch):not(.pb-g2) > div.ca…  ×4
+      "Watch on YouTube ↗"
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2  ×8
+      "thenewstack.io/cursor-open-sources-security-agents"
+      "techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding"
+      "www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
+      (8 values)
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > p.text-pretty.text-theme-text.type-base  ×4
+      "Cursor built a fleet of security agents to solve a familiar frustration"
+      "Cursor is rolling out a new kind of agentic coding tool"
+      "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
+      (4 values)
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > p.text-theme-text.type-base:not(.text-pretty)  ×4
+      "Cursor Projects"
+      "Self-hosted machines"
+      "Start from scratch, without a repo"
+      (4 values)
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.left-[-1px].mt-v2/12.relative.text-theme-text-mid.type-base:not(.flex):not(.gap-x-…  ×4
+      "Mar 16, 2026"
+      "2026-03-16T00:00:00.000Z"
+      "Mar 5, 2026"
+      (8 values)
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.flex.gap-x-v4/12.items-center.mt-auto.pt-v8/12.text-theme-accent.type-base:not(.le…  ×4
+      "Read on"
+      "The New Stack"
+      "↗"
+      (12 values)
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.flex.gap-x-(--grid-gap).items-center.left-[-1px].relative.text-theme-text-mid:not(…  ×4
+      "Sep 10, 2026"
+      "2026-09-10T00:00:00.000Z"
+      "Sep 2, 2026"
+      (8 values)
+
+structure 7  ×4 instances
+  part   html > body > main > section > div > section > div > div > div > div.lg:h-full  ×4
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2  ×4
+      "thenewstack.io/cursor-open-sources-security-agents"
+      "techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding"
+      "www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
+      (4 values)
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > p.text-pretty.text-theme-text.type-base  ×4
+      "Cursor built a fleet of security agents to solve a familiar frustration"
+      "Cursor is rolling out a new kind of agentic coding tool"
+      "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
+      (4 values)
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.left-[-1px].mt-v2/12.relative.text-theme-text-mid.type-base:not(.flex):not(.gap-x-…  ×4
+      "Mar 16, 2026"
+      "2026-03-16T00:00:00.000Z"
+      "Mar 5, 2026"
+      (8 values)
+    field  article.flex.flex-col.h-full > a.card.flex.flex-col.grow-1.h-full.pb-g2 > div.flex.gap-x-v4/12.items-center.mt-auto.pt-v8/12.text-theme-accent.type-base:not(.le…  ×4
+      "Read on"
+      "The New Stack"
+      "↗"
+      (12 values)
+
+structure 8  ×5 instances
+  part   html > body > footer > div > nav > div > div  ×5
+    field  h3.md:type-sm.pb-v2.5/12.text-theme-text-sec.type-base  ×5
+      "Product"
+      "Resources"
+      "Company"
+      (5 values)
+    part   ul.space-y-0 > li  ×34
+      field  a.footer-link.group.hover:text-theme-text.inline-block.md:type-sm.py-v2.5/12.type-base  ×34
+        "Agents"
+        "cursor.com/en-US/product"
+        "Teams"
+        (68 values)
+      field  a.footer-link.group.hover:text-theme-text.inline-block.md:type-sm.py-v2.5/12.type-base > span.duration-150.group-hover:opacity-100.inline-block.opacity-0.transi…  ×9
+        "↗"
+
+structure 9  ×2 instances
+  part   html > body > footer > div > div > small  ×2
+    field  self  ×2
+      "©"
+      "2026"
+      "🛡"
+    field  a.active:text-theme-text.hover:text-theme-text  ×2
+      "Anysphere, Inc."
+      "anysphere.inc"
+      "SOC 2 | ISO27001 | ISO42001 | AIUC-1 Certified"
+      (4 values)

@@ -1,0 +1,300 @@
+# github.blog-ai-and-ml
+url               https://github.blog/ai-and-ml/
+posts in fixture  19
+structures        8
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           1.89, wrappers 0.32
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×3 instances
+  part   html > body > div  ×3
+    field  header > a  ×1
+      "Skip to content"
+      "github.blog/ai-and-ml#start-of-content"
+    field  footer > h2  ×1
+      "Site-wide Links"
+    part   header > div  ×2
+      field  div > span  ×1
+        "/"
+      part   div > a  ×2
+        field  self  ×2
+          "github.com"
+          "Blog"
+          "github.blog"
+      part   div > nav > ul > li  ×3
+        field  a.Link--secondary.color-fg-default.d-flex.f4.flex-items-center.flex-start.lh-condensed-ultra.no-wrap.position-relative.px-4.py-2.text-medium  ×3
+          "github.blog/changelog"
+          "docs.github.com"
+          "github.com/customer-stories"
+        field  a.Link--secondary.color-fg-default.d-flex.f4.flex-items-center.flex-start.lh-condensed-ultra.no-wrap.position-relative.px-4.py-2.text-medium > span.menu-item-la…  ×3
+          "Changelog"
+          "Docs"
+          "Customer stories"
+      part   div > div  ×2
+        part   button.border-0.color-bg-transparent.color-fg-default.js-toggle.p-2.rounded-3:not(.ml-auto) > svg  ×2
+        part   a  ×2
+          field  self  ×2
+            "github.com/features/ai/github-app"
+            "githubuniverse.com"
+          field  span.Button__text > span.Button--label.Button--label-medium.Text.Text--200.Text--antialiased.Text--weight-semibold  ×2
+            "Try GitHub Copilot app"
+            "Attend GitHub Universe"
+      part   nav > div > ul > li  ×7
+        field  a.d-flex.f4-mktg.flex-items-center.flex-start.js-toggle.no-wrap.position-relative.py-3.text-bold  ×7
+          "AI & ML"
+          "github.blog/ai-and-ml"
+          "Developer skills"
+          (14 values)
+    part   footer > div  ×2
+      field  div > div > a  ×1
+        "github.com"
+      part   div > nav  ×4
+        field  h3.color-text-tertiary.h5.mb-3.text-mono.text-normal  ×4
+          "Product"
+          "Platform"
+          "Support"
+          (4 values)
+        part   ul.f5.list-style-none.text-gray > li.lh-condensed.mb-3  ×21
+          field  a.Link--secondary  ×21
+            "Features"
+            "github.com/features"
+            "Security"
+            (42 values)
+      part   div > ul  ×2
+        field  li:not(.mr-3) > a  ×1
+          "github.com/github"
+        field  li:not(.mr-3) > a > span  ×1
+          "GitHub’s organization on GitHub"
+        part   li.mr-3  ×11
+          field  self  ×1
+            "© 2026 GitHub, Inc."
+          field  a.Link--secondary  ×2
+            "Terms"
+            "docs.github.com/en/github/site-policy/github-terms-of-service"
+            "Privacy"
+            (4 values)
+          field  a:not(.Link--secondary)  ×6
+            "www.linkedin.com/company/github"
+            "www.instagram.com/github"
+            "www.youtube.com/github"
+            (6 values)
+          field  a:not(.Link--secondary) > span.sr-only  ×6
+            "GitHub on LinkedIn"
+            "GitHub on Instagram"
+            "GitHub on YouTube"
+            (6 values)
+          field  button.Link--secondary.btn-link  ×2
+            "Manage Cookies"
+            "Do not share my personal information"
+
+structure 2  ×2 instances
+  part   html > body > div > header > div  ×2
+    field  div > span  ×1
+      "/"
+    part   div > a  ×2
+      field  self  ×2
+        "github.com"
+        "Blog"
+        "github.blog"
+    part   div > nav > ul > li  ×3
+      field  a.Link--secondary.color-fg-default.d-flex.f4.flex-items-center.flex-start.lh-condensed-ultra.no-wrap.position-relative.px-4.py-2.text-medium  ×3
+        "github.blog/changelog"
+        "docs.github.com"
+        "github.com/customer-stories"
+      field  a.Link--secondary.color-fg-default.d-flex.f4.flex-items-center.flex-start.lh-condensed-ultra.no-wrap.position-relative.px-4.py-2.text-medium > span.menu-item-la…  ×3
+        "Changelog"
+        "Docs"
+        "Customer stories"
+    part   div > div  ×2
+      part   button.border-0.color-bg-transparent.color-fg-default.js-toggle.p-2.rounded-3:not(.ml-auto) > svg  ×2
+      part   a  ×2
+        field  self  ×2
+          "github.com/features/ai/github-app"
+          "githubuniverse.com"
+        field  span.Button__text > span.Button--label.Button--label-medium.Text.Text--200.Text--antialiased.Text--weight-semibold  ×2
+          "Try GitHub Copilot app"
+          "Attend GitHub Universe"
+    part   nav > div > ul > li  ×7
+      field  a.d-flex.f4-mktg.flex-items-center.flex-start.js-toggle.no-wrap.position-relative.py-3.text-bold  ×7
+        "AI & ML"
+        "github.blog/ai-and-ml"
+        "Developer skills"
+        (14 values)
+
+structure 3  ×2 instances
+  part   html > body > div > header > div > div > div > a  ×2
+    field  self  ×2
+      "github.com/features/ai/github-app"
+      "githubuniverse.com"
+    field  span.Button__text > span.Button--label.Button--label-medium.Text.Text--200.Text--antialiased.Text--weight-semibold  ×2
+      "Try GitHub Copilot app"
+      "Attend GitHub Universe"
+
+structure 4  ×4 instances
+  part   html > body > main > div > section > div > article  ×4
+    field  div.d-flex.flex-column > div.col-12.d-block.mb-3.overflow-hidden.position-relative.rounded-2.tease-thumbnail > img.cover-image.d-block.tease-thumbnail__img.wp-p…  ×3
+      "github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe.png?resize=400,212"
+      "github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe.png?w=1600"
+      "github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe.png?w=800"
+      (23 values)
+    field  div.d-flex.flex-column > div:not(.col-12):not(.d-block):not(.mb-3):not(.overflow-hidden):not(.position-relative):not(.rounded-2):not(.tease-thumbnail) > h3.h6-m…  ×2
+      "Migrating the GitHub Copilot runtime to Rust, using Copilot"
+      "github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot"
+      "Marketing ops as code: Automating events from planning to follow-up on GitHub"
+      (4 values)
+    field  div.d-flex.flex-column > div:not(.col-12):not(.d-block):not(.mb-3):not(.overflow-hidden):not(.position-relative):not(.rounded-2):not(.tease-thumbnail) > div.col…  ×2
+      "A rewrite this size wasn’t affordable before agents. Here’s what porting the Copilot agent runtime to 800,000 …"
+      "If you can write down how you do your work, you can automate it. Here’s what I did to support GitHub’s APAC ma…"
+    field  div.d-flex.flex-column > div.position-relative:not(.col-12):not(.d-block):not(.mb-3):not(.overflow-hidden):not(.rounded-2):not(.tease-thumbnail) > h3 > a  ×1
+      "GitHub Copilot app for Beginners: Using the diff, terminal, and browser"
+      "github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-using-the-diff-terminal-and-browser"
+    field  div.d-flex.flex-column > div.position-relative:not(.col-12):not(.d-block):not(.mb-3):not(.overflow-hidden):not(.rounded-2):not(.tease-thumbnail) > div > p  ×1
+      "Checking agent-generated code usually means hopping between tabs. Learn how to view diffs, run terminal comman…"
+    field  div.d-flex.flex-column > footer > div.d-flex.flex-items-center.mb-6px > span > span.text-bold:not(.color-fg-muted):not(.mx-1) > a.Link--primary.author.fn.no-wra…  ×3
+      "Stephen Toub"
+      "github.blog/author/stephentoub"
+      "Posts by Stephen Toub"
+      (9 values)
+    field  div.d-flex.flex-column > footer > div.d-flex.flex-items-center.mb-6px > span > span.color-fg-muted.mx-1:not(.text-bold)  ×3
+      "·"
+    field  div.d-flex.flex-column > footer > div.d-flex.flex-items-center.mb-6px > span > time.color-fg-muted.no-wrap.text-mono  ×3
+      "September 16, 2026"
+      "2026-09-16"
+      "September 11, 2026"
+      (6 values)
+    part   div:not(.d-flex):not(.flex-column)  ×2
+      field  div:not(.position-relative) > div > img  ×1
+        "github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?resize=800,425"
+        "github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?w=1600"
+        "github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?w=800"
+        (8 values)
+      field  div.position-relative > h3 > a  ×1
+        "Should you read the code, is RAG dead, and did Skills kill MCP?"
+        "github.blog/ai-and-ml/should-you-read-the-code-is-rag-dead-and-did-skills-kill-mcp"
+      field  div.position-relative > div > p  ×1
+        "We dive into these questions and other AI hot takes on the latest episode of the GitHub Podcast."
+      field  div.position-relative > img  ×1
+        "github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?resize=800,425"
+        "github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?w=1600"
+        "github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?w=800"
+        (8 values)
+      field  footer > div > div > a  ×1
+        "github.blog/author/madebygps"
+      field  footer > div > div > a > img  ×1
+        "avatars.githubusercontent.com/u/6733686?v=4&s=40"
+        "avatars.githubusercontent.com/u/6733686?v=4&s=80"
+        "Posts by GPS"
+      field  footer > div > span > time  ×1
+        "September 18, 2026"
+        "2026-09-18"
+      part   div.position-relative > button > svg > path  ×2
+      part   footer > div > span > span  ×2
+        field  self  ×1
+          "·"
+        field  a  ×1
+          "GPS"
+          "github.blog/author/madebygps"
+          "Posts by GPS"
+    part   div.d-flex.flex-column > div.col-12.d-block.mb-3.overflow-hidden.position-relative.rounded-2.tease-thumbnail > button > svg > path  ×2
+
+structure 5  ×15 instances
+  part   html > body > main > div > div > div > article  ×15
+    field  div.d-flex.flex-column > div.col-12.d-block.mb-3.overflow-hidden.position-relative.rounded-2.tease-thumbnail > img.cover-image.d-block.tease-thumbnail__img.wp-p…  ×15
+      "github.blog/wp-content/uploads/2026/09/OptA_UI.jpg?resize=400,212"
+      "github.blog/wp-content/uploads/2026/09/OptA_UI.jpg?w=300"
+      "github.blog/wp-content/uploads/2026/09/OptA_UI.jpg?w=1600"
+      (115 values)
+    field  div.d-flex.flex-column > div:not(.col-12):not(.d-block):not(.mb-3):not(.overflow-hidden):not(.position-relative):not(.rounded-2):not(.tease-thumbnail) > h3.h6-m…  ×11
+      "Project HydraFusion: Frontier quality via multi-model orchestration"
+      "github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration"
+      "Decoding the new AI lingo: Loops, harnesses, squads, hill climbing… oh my!"
+      (22 values)
+    field  div.d-flex.flex-column > div:not(.col-12):not(.d-block):not(.mb-3):not(.overflow-hidden):not(.position-relative):not(.rounded-2):not(.tease-thumbnail) > div.col…  ×11
+      "In controlled offline evaluations, HydraFusion’s selective coding workflows matched or exceeded the evaluated …"
+      "From loop engineering to harnesses, squads, and open weights, the GitHub Podcast breaks down the AI terms show…"
+      "Why shorter outputs can cost more, and how GitHub Copilot reduces wasted work across the complete coding task."
+      (11 values)
+    field  div.d-flex.flex-column > div.position-relative:not(.col-12):not(.d-block):not(.mb-3):not(.overflow-hidden):not(.rounded-2):not(.tease-thumbnail) > h3.h6-mktg.mb…  ×4
+      "GitHub Copilot app for Beginners: Run several agents at once"
+      "github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-run-several-agents-at-once"
+      "GitHub Copilot app for Beginners: Automate Dependabot pull request triage"
+      (8 values)
+    field  div.d-flex.flex-column > div.position-relative:not(.col-12):not(.d-block):not(.mb-3):not(.overflow-hidden):not(.rounded-2):not(.tease-thumbnail) > div.color-fg-…  ×4
+      "Learn how to run parallel agents in the GitHub Copilot app, and experience the moment it stops feeling scary a…"
+      "Managing library updates can be tedious at times. Learn how the GitHub Copilot app can handle this type of rep…"
+      "If you’re juggling multiple Copilot sessions, use the My work pane to track what’s in flight, what’s done, and…"
+      (4 values)
+    field  div.d-flex.flex-column > footer > div.d-flex.flex-items-center.mb-6px > span > span.text-bold:not(.color-fg-muted):not(.mx-1)  ×2
+      "&"
+    field  div.d-flex.flex-column > footer > div.d-flex.flex-items-center.mb-6px > span > span.color-fg-muted.mx-1:not(.text-bold)  ×15
+      "·"
+    field  div.d-flex.flex-column > footer > div.d-flex.flex-items-center.mb-6px > span > time.color-fg-muted.no-wrap.text-mono  ×15
+      "September 4, 2026"
+      "2026-09-04"
+      "September 3, 2026"
+      (30 values)
+    part   div.d-flex.flex-column > div.col-12.d-block.mb-3.overflow-hidden.position-relative.rounded-2.tease-thumbnail > button.border-0.color-bg-transparent.color-fg-def…  ×8
+    part   div.d-flex.flex-column > footer > div.d-flex.flex-items-center.mb-6px > span > span.text-bold:not(.color-fg-muted):not(.mx-1) > a.Link--primary.author.fn.no-wra…  ×17
+      field  self  ×17
+        "GitHub Staff"
+        "github.blog/author/staff"
+        "Posts by GitHub Staff"
+        (51 values)
+
+structure 6  ×4 instances
+  part   html > body > main > div > section > div > div  ×4
+    field  div.border.color-bg-default.color-border-subtle.color-fg-muted.d-flex.f4-mktg.flex-column.flex-items-start.p-5.rounded-3.width-full > img.d-block.mb-3.width-aut…  ×4
+      "github.blog/wp-content/uploads/2024/07/Icon-Circle.svg"
+      "Docs"
+      "github.blog/wp-content/uploads/2024/07/recirculation-github-icon.svg"
+      (8 values)
+    field  div.border.color-bg-default.color-border-subtle.color-fg-muted.d-flex.f4-mktg.flex-column.flex-items-start.p-5.rounded-3.width-full > h3.color-fg-default.f3-mkt…  ×4
+      "Docs"
+      "GitHub"
+      "Customer stories"
+      (4 values)
+    field  div.border.color-bg-default.color-border-subtle.color-fg-muted.d-flex.f4-mktg.flex-column.flex-items-start.p-5.rounded-3.width-full > div.mb-auto:not(.mt-7) > p  ×4
+      "Everything you need to master GitHub, all in one place."
+      "Build what’s next on GitHub, the place for anyone from anywhere to build anything."
+      "Meet the companies and engineering teams that build with GitHub."
+      (4 values)
+    field  div.border.color-bg-default.color-border-subtle.color-fg-muted.d-flex.f4-mktg.flex-column.flex-items-start.p-5.rounded-3.width-full > div.mt-7:not(.mb-auto) > a…  ×4
+      "Go to Docs"
+      "docs.github.com"
+      "Start building"
+      (8 values)
+
+structure 7  ×4 instances
+  part   html > body > div > footer > div > div > nav  ×4
+    field  h3.color-text-tertiary.h5.mb-3.text-mono.text-normal  ×4
+      "Product"
+      "Platform"
+      "Support"
+      (4 values)
+    part   ul.f5.list-style-none.text-gray > li.lh-condensed.mb-3  ×21
+      field  a.Link--secondary  ×21
+        "Features"
+        "github.com/features"
+        "Security"
+        (42 values)
+
+structure 8  ×7 instances
+  part   html > body > div > footer > div > div > ul > li.focusable-svg  ×7
+    field  a  ×7
+      "www.linkedin.com/company/github"
+      "www.instagram.com/github"
+      "www.youtube.com/github"
+      (7 values)
+    field  a > span.sr-only  ×7
+      "GitHub on LinkedIn"
+      "GitHub on Instagram"
+      "GitHub on YouTube"
+      (7 values)

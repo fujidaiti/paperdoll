@@ -1,0 +1,117 @@
+# flutter.dev-blog
+url               https://flutter.dev/blog
+posts in fixture  284
+structures        3
+recall            1.000, recall+ 1.000
+merge             1.00
+distrib           2.99, wrappers 0.00
+
+A part line is one part: the path its matcher reads, as direct child
+steps from the page for a root part and from the part above it for any
+other, and how many subtrees it matched in the page. A field line is
+one field: the path its matcher reads inside the subtree, self when it
+reads that subtree itself, and in how many subtrees it found a node.
+Under it are up to 3 of the values it read.
+A path longer than 160 characters is cut.
+
+structure 1  ×6 instances
+  part   html > body > header > div > div > nav > ul > li  ×6
+    field  a.btn.top-level  ×6
+      "Development"
+      "flutter.dev/development"
+      "Ecosystem"
+      (12 values)
+    part   div.dd.dd-double:not(.dd-connector) > ul  ×4
+      field  li.mobile-only > a.btn  ×2
+        "Overview"
+        "flutter.dev/development"
+        "docs.flutter.dev"
+      part   li:not(.mobile-only)  ×17
+        field  a.btn  ×17
+          "Mobile"
+          "flutter.dev/development/mobile"
+          "Flutter on iOS"
+          (34 values)
+    part   div.dd:not(.dd-connector):not(.dd-double) > ul > li  ×6
+      field  a.btn  ×6
+        "Overview"
+        "flutter.dev/ecosystem"
+        "Community"
+        (12 values)
+
+structure 2  ×284 instances
+  part   html > body > main > article > div > section > div > div > a.blog-card  ×284
+    field  self  ×284
+      "flutter.dev/blog/decoupling-material-cupertino"
+      "flutter.dev/blog/a2ui-client-side-functions"
+      "flutter.dev/blog/how-flutter-stays-ahead-of-ios-releases"
+      (284 values)
+    field  div.blog-card-image:not(.blog-card-content) > img  ×273
+      "flutter.dev/assets/Flutter_CupertinoMaterial_Jenga_Low.4cd5374ccd82d608d7708f24013c8db8.gif"
+      "Material and Cupertino decoupling are here"
+      "flutter.dev/assets/A2UI.1134fa46b3368e010c0b9c5a752d3e51.gif"
+      (546 values)
+    field  div.blog-card-content:not(.blog-card-image) > h3.blog-card-title  ×284
+      "Material and Cupertino decoupling are here"
+      "Quick, reliable calculations with A2UI's Client-Side Functions"
+      "How Flutter stays ahead of iOS releases"
+      (284 values)
+    field  div.blog-card-content:not(.blog-card-image) > p.blog-card-description  ×284
+      "Why moving Material and Cupertino out of core Flutter accelerates fixes and development of new features"
+      "Learn how client-side functions allow an agent to delegate local operations directly to Dart code running on a…"
+      "Learn how the Flutter team navigates WWDC, beta releases, and proactive engineering to deliver Day 0 iOS suppo…"
+      (284 values)
+    field  div.blog-card-content:not(.blog-card-image) > div.blog-card-meta > div.blog-card-authors > span.author > span.author-separator:not(.author-name)  ×5
+      ","
+    field  div.blog-card-content:not(.blog-card-image) > div.blog-card-meta > div:not(.blog-card-authors) > span.date:not(.separator):not(.reading-time)  ×284
+      "Sep 9, 2026"
+      "Aug 28, 2026"
+      "Aug 25, 2026"
+      (284 values)
+    field  div.blog-card-content:not(.blog-card-image) > div.blog-card-meta > div:not(.blog-card-authors) > span.separator:not(.date):not(.reading-time)  ×284
+      "·"
+    field  div.blog-card-content:not(.blog-card-image) > div.blog-card-meta > div:not(.blog-card-authors) > span.reading-time:not(.date):not(.separator)  ×284
+      "4 min read"
+      "5 min read"
+      "7 min read"
+      (284 values)
+    part   div.blog-card-content:not(.blog-card-image) > div.blog-card-meta > div.blog-card-authors > div.blog-card-avatars > img  ×287
+      field  self  ×287
+        "flutter.dev/assets/craiglabenz.137668a2b0601b4d235d4a8a01e7fff3.jpg"
+        "Craig Labenz"
+        "flutter.dev/assets/redbrogdon.d3bbe04c349cabce8529bf8b471af441.webp"
+        (574 values)
+    part   div.blog-card-content:not(.blog-card-image) > div.blog-card-meta > div.blog-card-authors > span.author > span.author-name:not(.author-separator)  ×289
+      field  self  ×289
+        "Craig Labenz"
+        "Andrew Brogdon"
+        "Louise Hsu"
+        (289 values)
+
+structure 3  ×3 instances
+  part   html > body > footer > div  ×3
+    part   div  ×5
+      field  self  ×1
+        "Except as otherwise noted, this site is licensed under a"
+        "and code samples are licensed under the"
+      part   a  ×10
+        field  self  ×10
+          "flutter.dev"
+          "www.youtube.com/flutterdev"
+          "twitter.com/flutterdev"
+          (13 values)
+        field  img  ×1
+          "flutter.dev/assets/flutter-logo.6ed04a8cd70b7aa540c6ec302a4e936c.svg"
+          "Flutter"
+        part   span  ×2
+      part   ul  ×4
+        part   li  ×19
+          field  self  ×3
+            "About Flutter"
+            "Learn Flutter"
+            "Development"
+          field  a  ×16
+            "Careers"
+            "docs.flutter.dev/jobs"
+            "News"
+            (32 values)
