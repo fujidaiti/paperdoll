@@ -45,6 +45,49 @@ void main() {
     expect(t(AppDebugKey.readerTitle(item.title)), findsOneWidget);
   });
 
+  patrolWidgetTest('Read a web clip without content on the web', (t) async {
+    final item = fixture.readingList.claudeCodeBestPractices;
+    final webClip = fixture.webClips.claudeCodeBestPractices;
+    final server = StubServer.withDefaultResponses()
+      ..stubGet(
+        '/reading-list',
+        body: api.GetReadingList200Response(items: [item]).toJson(),
+      )
+      ..stubGet('/web-clips/${webClip.id}', body: webClip.toJson());
+    await pumpAppWithAuth(t, server);
+
+    await t(AppDebugKey.readingListNavDestination).tap();
+    await t(AppDebugKey.readingListRow(item.title)).tap();
+    expect(t(AppDebugKey.webClipReaderScreen), findsOneWidget);
+    expect(t(AppDebugKey.readerWebPage), findsOneWidget);
+    expect(t(AppDebugKey.readerArticlePage), findsNothing);
+
+    await t(AppDebugKey.readerArticleTab).tap();
+    expect(t(AppDebugKey.readerArticlePage), findsOneWidget);
+    expect(t("This clip's content isn't available."), findsOneWidget);
+  });
+
+  patrolWidgetTest('Read a saved feed entry on the web', (t) async {
+    final item = fixture.readingList.nuclearDeal;
+    final entry = fixture.entries.nuclearDeal;
+    final server = StubServer.withDefaultResponses()
+      ..stubGet(
+        '/reading-list',
+        body: api.GetReadingList200Response(items: [item]).toJson(),
+      )
+      ..stubGet('/feed-entries/${entry.id}', body: entry.toJson());
+    await pumpAppWithAuth(t, server);
+
+    await t(AppDebugKey.readingListNavDestination).tap();
+    await t(AppDebugKey.readingListRow(item.title)).tap();
+    expect(t(AppDebugKey.feedEntryReaderScreen), findsOneWidget);
+    expect(t(AppDebugKey.readerArticlePage), findsOneWidget);
+    expect(t(AppDebugKey.readerWebPage), findsNothing);
+
+    await t(AppDebugKey.readerWebTab).tap();
+    expect(t(AppDebugKey.readerWebPage), findsOneWidget);
+  });
+
   patrolWidgetTest('Archive a reading list item by swiping', (t) async {
     final item = fixture.readingList.buildingEffectiveAgents;
     final server = StubServer.withDefaultResponses()

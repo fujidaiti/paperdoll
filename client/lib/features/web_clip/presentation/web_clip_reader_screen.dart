@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:paperdoll/core/ui/widgets/archived_banner.dart';
 import 'package:paperdoll/core/ui/widgets/async_value_view.dart';
 import 'package:paperdoll/core/ui/widgets/heading_text.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
@@ -25,7 +24,6 @@ class const WebClipReaderScreen({
   Widget build(BuildContext context, WidgetRef ref) {
     final clipAsync = ref.watch(webClipControllerProvider(id: id));
     final clip = clipAsync.asData?.value;
-    final archived = clip?.archived ?? false;
     final title = switch ((clip?.title, initialTitle)) {
       (final title?, _) when title.isNotEmpty => title,
       (_, final title?) when title.isNotEmpty => title,
@@ -49,18 +47,10 @@ class const WebClipReaderScreen({
             ),
         ],
       ),
-      body: Column(
-        children: [
-          if (archived)
-            const ArchivedBanner(key: AppDebugKey.webClipReaderArchivedBanner),
-          Expanded(
-            child: AsyncValueView<WebClip>(
-              value: clipAsync,
-              onRetry: () => ref.invalidate(webClipControllerProvider(id: id)),
-              data: (clip) => WebClipReaderView(clip: clip),
-            ),
-          ),
-        ],
+      body: AsyncValueView<WebClip>(
+        value: clipAsync,
+        onRetry: () => ref.invalidate(webClipControllerProvider(id: id)),
+        data: (clip) => WebClipReaderView(clip: clip),
       ),
     );
   }

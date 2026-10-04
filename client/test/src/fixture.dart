@@ -99,6 +99,13 @@ class _WebClips {
         '<article><p>The most successful implementations use simple, '
         'composable patterns rather than complex frameworks.</p></article>',
   );
+
+  // A clip whose content hasn't been fetched.
+  final claudeCodeBestPractices = api.GetWebClip200Response(
+    id: 8,
+    url: 'https://www.anthropic.com/engineering/claude-code-best-practices',
+    title: 'Claude Code: Best practices for agentic coding',
+  );
 }
 
 final _feedCandidates = _FeedCandidates();
@@ -135,6 +142,14 @@ class _ReadingList {
     kind: api.ReadingListItemKindEnum.webClip,
     title: _webClips.buildingEffectiveAgents.title!,
     savedAt: DateTime.utc(2026, 7, 1),
+  );
+
+  final claudeCodeBestPractices = api.ReadingListItem(
+    id: 2,
+    resourceId: _webClips.claudeCodeBestPractices.id,
+    kind: api.ReadingListItemKindEnum.webClip,
+    title: _webClips.claudeCodeBestPractices.title!,
+    savedAt: DateTime.utc(2026, 7, 2),
   );
 
   final nuclearDeal = api.ReadingListItem(

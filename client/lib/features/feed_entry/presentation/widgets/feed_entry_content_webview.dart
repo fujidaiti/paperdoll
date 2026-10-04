@@ -5,7 +5,8 @@ import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 /// Renders an entry's HTML `content` in a WebView. The controller is built
-/// once in initState (not in createState) so it survives rebuilds.
+/// once in initState (not in createState) so it survives rebuilds, and the
+/// state is kept alive so switching reader tabs does not reload the content.
 class const FeedEntryContentWebView({required final String html, super.key})
     extends StatefulWidget {
   @override
@@ -13,9 +14,13 @@ class const FeedEntryContentWebView({required final String html, super.key})
       _FeedEntryContentWebViewState();
 }
 
-class _FeedEntryContentWebViewState extends State<FeedEntryContentWebView> {
+class _FeedEntryContentWebViewState extends State<FeedEntryContentWebView>
+    with AutomaticKeepAliveClientMixin {
   late final WebViewController _controller;
   var _isLoading = true;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -52,6 +57,7 @@ class _FeedEntryContentWebViewState extends State<FeedEntryContentWebView> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Stack(
       children: [
         WebViewWidget(controller: _controller),
