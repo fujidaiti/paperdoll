@@ -39,6 +39,14 @@ Don't restate directory layout, naming conventions, or added keys if they're obv
 - Bad: "Adds `today_test.dart` and `feeds_test.dart`, a `helpers.dart` with `pumpApp`/`httpMockAdapter`, and `debug_keys.dart` defining `feedRow`, `entryRow`, `storyCard`… (see README for the full key list)."
 - Good: (nothing — let the files and README speak for themselves)
 
+### Omit verification reports
+
+Don't report what you did to verify the change or what you observed while doing so. The description becomes a permanent commit message, and statements about one local run are not useful to future readers; CI and reviewers check correctness independently.
+
+- Bad: "Verified locally that all tests pass with both Flutter 3.41.0 and 3.47.5."
+- Bad: "Ran the app on an iOS simulator and confirmed the list scrolls smoothly."
+- Good: (nothing)
+
 ### Lead with the headline, prefer real outcomes
 
 Open with a one-sentence summary. Describe the *outcome* a change enables, not the mechanism.
@@ -90,6 +98,7 @@ Surface anything a reviewer should consciously sign off on, especially outside t
 - Prose paragraphs, not bullet-dumps of every file touched.
 - No hard-wrapping — GitHub soft-wraps Markdown. One paragraph = one line.
 - Keep it short: a few tight paragraphs beat an exhaustive changelog.
+- Use code spans only for genuine code snippets, such as local variable names, function calls, query parameters, and literal values. Write packages, libraries, tools, and class names as plain text (e.g. "Riverpod", "Dio", "AsyncValue", not `Riverpod`, `Dio`, `AsyncValue`). Overusing code spans makes every name look equally technical and makes the prose harder to read. Exception: use a code span when the plain-text name could be read as an ordinary word, e.g. write `url` when it means Go's standard url package, because "the url package" or "url" alone is ambiguous in prose.
 
 ## Base branch
 
@@ -141,7 +150,7 @@ The four list endpoints — `GET /feeds`, `GET /feeds/{id}/timeline`, `GET /news
 
 The server does keyset pagination with a fixed page size, returning `next_cursor` until the last page (where it's omitted). Cursors are opaque base64-encoded `(sort key, id-tiebreaker)` pairs, so ordering stays stable even when sort values collide. Clients pass the previous response's cursor back via `?after=`.
 
-On the client, a small pagination toolkit under `core/pagination` carries the accumulated list, the next cursor, and the next-page loading/error state through a single `AsyncValue`, keeping first-page load/error separate from next-page load/error. The feeds, feed timeline, today, and reading-list screens wrap their scroll views to fetch the next page as the bottom approaches.
+On the client, a small pagination toolkit under `core/pagination` carries the accumulated list, the next cursor, and the next-page loading/error state through a single AsyncValue, keeping first-page load/error separate from next-page load/error. The feeds, feed timeline, today, and reading-list screens wrap their scroll views to fetch the next page as the bottom approaches.
 
 ## Notes
 
