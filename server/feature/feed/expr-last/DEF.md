@@ -344,6 +344,17 @@ the question is: "is this instance a superset of this fixture?".
   part instances in between that hold no value of the post, because the user
   still passes through them to reach the ones that do.
 
+  A matching value means a value of the post that the instance carries, required
+  or not. A value the instance does not carry is ignored. An instance that
+  carries the link and the title of a post but not its description therefore
+  gives distrib 1, because the description is not a value the user reaches
+  through this instance at all.
+
+  A post can match the instances of several structures. The one measured is the
+  cheapest: the lowest distrib, and the lowest wrappers when two instances give
+  the same distrib. The user reviews the cheapest structure and drops the
+  others, so the others are not a review cost for this post.
+
   1 is best and means one part holds every field of the post, so the user
   reviews it without expanding anything. It goes above 1 when the values of a
   post are spread over several levels of the instance.
@@ -358,15 +369,17 @@ the question is: "is this instance a superset of this fixture?".
   post whose values are spread over several parts costs the user extra rows to
   expand for the same attributes.
 
-- distrib+, the same mean using exact matching.
+- distrib+, the same mean using exact matching. It is taken over the posts that
+  exactly match an instance, and over those instances only. Every value of the
+  post is a matching value there, because an exact match carries them all.
 
 - wrappers, the mean number of parts of an instance that sit outside the
   smallest subtree distrib measured, counted the same way: distinct parts, not
-  part instances. 0 is best. These are parts the user reads or expands without
-  reaching any value of the post, so they are review cost that buys nothing.
-  distrib alone does not report them: an instance of four parts whose values sit
-  in the lower two gives the same distrib as an instance of exactly those two
-  parts.
+  part instances, and read from the same instance distrib measured. 0 is best.
+  These are parts the user reads or expands without reaching any value of the
+  post, so they are review cost that buys nothing. distrib alone does not report
+  them: an instance of four parts whose values sit in the lower two gives the
+  same distrib as an instance of exactly those two parts.
 
 ### Review size metrics
 
