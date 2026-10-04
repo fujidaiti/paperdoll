@@ -11,7 +11,9 @@ steps from the page for a root part and from the part above it for any
 other, and how many subtrees it matched in the page. A field line is
 one field: the path its matcher reads inside the subtree, self when it
 reads that subtree itself, and in how many subtrees it found a node.
-Under it are up to 3 of the values it read.
+Under it are up to 3 of the values it read. A blob line points at the
+appendix at the end of the file instead, because what a blob holds is
+the text of a whole run of nodes rather than a level of the page.
 A path longer than 160 characters is cut.
 
 structure 1  ×3 instances
