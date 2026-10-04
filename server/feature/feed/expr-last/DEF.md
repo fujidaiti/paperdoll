@@ -78,13 +78,15 @@ only one field is valid.
 
 An **instance** is one subtree the root part's matcher found. It stands for one
 post. An instance is a tree as well: inside it, the matcher of each child part
-runs and finds subtrees, and those are the parts of the instance. The root part
-of the instance is the subtree the root part matched.
+runs and finds subtrees, and each subtree found this way is a **part instance**.
+The root of the instance tree is the part instance of the root part.
 
-A structure part may match several subtrees inside one instance, so the instance
+A part instance holds the values that the fields of its part read in that
+subtree, and its children are the part instances of the child parts.
+
+One part may produce several part instances inside one instance, so the instance
 tree is not always a one-to-one copy of the structure tree. A part that stands
-for a tag chip matches one subtree per tag, which gives that instance one part
-per tag.
+for a tag chip gives one part instance per tag.
 
 Instances are derived rather than stored: on a later build the same matchers
 find the instances of that build.
@@ -336,14 +338,20 @@ the question is: "is this instance a superset of this fixture?".
   holds for all 34 fixtures today: no page records the same link twice.
 
 - distrib, the mean number of **parts** a fixture post needs. For one post that
-  matches an instance, it is the number of parts in the smallest subtree of that
-  instance holding every matching value of the post. The smallest subtree is
-  unique and includes the parts in between that hold no value of the post,
-  because the user still passes through them to reach the ones that do.
+  matches an instance, take the smallest subtree of that instance holding every
+  matching value of the post, and count the distinct parts that the part
+  instances in it belong to. The smallest subtree is unique and includes the
+  part instances in between that hold no value of the post, because the user
+  still passes through them to reach the ones that do.
 
   1 is best and means one part holds every field of the post, so the user
   reviews it without expanding anything. It goes above 1 when the values of a
   post are spread over several levels of the instance.
+
+  It counts distinct parts and not part instances, because the review screen
+  shows one row per part however many subtrees that part matches. A post with
+  ten tags therefore scores the same as a post with two tags, which is right:
+  the user ticks the tag part once in both cases.
 
   It counts parts and not fields on purpose. The number of fields grows with the
   number of attributes a post has, which is not a fault of the output, while a
@@ -353,11 +361,12 @@ the question is: "is this instance a superset of this fixture?".
 - distrib+, the same mean using exact matching.
 
 - wrappers, the mean number of parts of an instance that sit outside the
-  smallest subtree distrib measured. 0 is best. These are parts the user reads
-  or expands without reaching any value of the post, so they are review cost
-  that buys nothing. distrib alone does not report them: an instance of four
-  parts whose values sit in the lower two gives the same distrib as an instance
-  of exactly those two parts.
+  smallest subtree distrib measured, counted the same way: distinct parts, not
+  part instances. 0 is best. These are parts the user reads or expands without
+  reaching any value of the post, so they are review cost that buys nothing.
+  distrib alone does not report them: an instance of four parts whose values sit
+  in the lower two gives the same distrib as an instance of exactly those two
+  parts.
 
 ### Review size metrics
 
