@@ -34,15 +34,23 @@ class _FeedEntryContentWebViewState extends State<FeedEntryContentWebView>
               setState(() => _isLoading = false);
             }
           },
+          // iOS may end the web content process while the app is in the
+          // background (e.g. while another app is open),
+          // which leaves the WebView blank. Render the content again.
+          onWebResourceError: (error) {
+            if (error.errorType ==
+                WebResourceErrorType.webContentProcessTerminated) {
+              unawaited(_controller.loadHtmlString(_document(widget.html)));
+            }
+          },
           // Keep the WebView pinned to the rendered content: any link the
-          // user taps opens in an external browser instead of navigating
-          // away inside the WebView, matching the "Open original" /
-          // "Visit site" buttons.
+          // user taps opens in an in-app browser instead of navigating away
+          // inside the WebView.
           onNavigationRequest: (request) {
             final url = request.url;
             if (url.startsWith('http://') || url.startsWith('https://')) {
               if (mounted) {
-                unawaited(openExternalLink(context, url));
+                unawaited(openInAppBrowserLink(context, url));
               }
               return NavigationDecision.prevent;
             }

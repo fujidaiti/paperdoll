@@ -86,6 +86,9 @@ void main() {
 
     await t(AppDebugKey.readerWebTab).tap();
     expect(t(AppDebugKey.readerWebPage), findsOneWidget);
+
+    await t(AppDebugKey.readerWebReloadButton).tap();
+    expect(t(AppDebugKey.readerWebPage), findsOneWidget);
   });
 
   patrolWidgetTest('Archive a reading list item by swiping', (t) async {

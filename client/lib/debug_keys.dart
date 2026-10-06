@@ -36,6 +36,7 @@ abstract final class AppDebugKey {
   static const readerArticleTab = Key('readerArticleTab');
   static const readerWebPage = Key('readerWebPage');
   static const readerWebTab = Key('readerWebTab');
+  static const readerWebReloadButton = Key('readerWebReloadButton');
   static const webClipReaderScreen = Key('webClipReaderScreen');
   static const webClipReaderArchiveButton = Key('webClipReaderArchiveButton');
   static const webClipReaderArchivedBanner = Key('webClipReaderArchivedBanner');
