@@ -14,8 +14,6 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      # Postgres 18+ stores data under /var/lib/postgresql/18/docker,
-      # so the volume must be mounted at the parent directory.
       - postgres-data:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U app -d app"]
