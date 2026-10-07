@@ -39,11 +39,8 @@ class const ReaderTabView({
             child: TabBarView(
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                KeyedSubtree(
-                  key: AppDebugKey.readerArticlePage,
-                  child: article,
-                ),
-                OriginalPageWebView(key: AppDebugKey.readerWebPage, url: url),
+                article,
+                OriginalPageWebView(url: url),
               ],
             ),
           ),

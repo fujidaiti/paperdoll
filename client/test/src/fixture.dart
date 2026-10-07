@@ -131,6 +131,15 @@ class _Stories {
     title: _entries.nuclearDeal.title,
     source_: _feeds.bbcNews.title,
   );
+
+  // A story whose entry has no content.
+  final houthiStrikes = api.Story(
+    id: 2,
+    resourceId: _entries.houthiStrikes.id,
+    kind: api.StoryKindEnum.feedEntry,
+    title: _entries.houthiStrikes.title,
+    source_: _feeds.bbcNews.title,
+  );
 }
 
 final _readingList = _ReadingList();

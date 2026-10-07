@@ -5,7 +5,6 @@ import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
 import 'package:paperdoll/core/ui/widgets/body_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
-import 'package:paperdoll/debug_keys.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 /// Loads the original page at [url] in a WebView: the reader's "Web" tab.
@@ -200,7 +199,6 @@ class _OriginalPageWebViewState extends State<OriginalPageWebView>
           bottom: spacingMd,
           child: SafeArea(
             child: FloatingActionButton(
-              key: AppDebugKey.readerWebReloadButton,
               // Disables the hero animation, which would otherwise move the
               // button between two readers during a route transition.
               heroTag: null,

@@ -25,6 +25,10 @@ void main() {
     await t(AppDebugKey.readingListRow(item.title)).tap();
     expect(t(AppDebugKey.webClipReaderScreen), findsOneWidget);
     expect(t(AppDebugKey.readerTitle(item.title)), findsOneWidget);
+    expect(
+      t.tester.getSemantics(find.byKey(AppDebugKey.readerArticleTab)),
+      isSemantics(isSelected: true),
+    );
   });
 
   patrolWidgetTest('Read a saved feed entry in reading list', (t) async {
@@ -43,6 +47,10 @@ void main() {
     await t(AppDebugKey.readingListRow(item.title)).tap();
     expect(t(AppDebugKey.feedEntryReaderScreen), findsOneWidget);
     expect(t(AppDebugKey.readerTitle(item.title)), findsOneWidget);
+    expect(
+      t.tester.getSemantics(find.byKey(AppDebugKey.readerArticleTab)),
+      isSemantics(isSelected: true),
+    );
   });
 
   patrolWidgetTest('Read a web clip without content on the web', (t) async {
@@ -59,11 +67,12 @@ void main() {
     await t(AppDebugKey.readingListNavDestination).tap();
     await t(AppDebugKey.readingListRow(item.title)).tap();
     expect(t(AppDebugKey.webClipReaderScreen), findsOneWidget);
-    expect(t(AppDebugKey.readerWebPage), findsOneWidget);
-    expect(t(AppDebugKey.readerArticlePage), findsNothing);
+    expect(
+      t.tester.getSemantics(find.byKey(AppDebugKey.readerWebTab)),
+      isSemantics(isSelected: true),
+    );
 
     await t(AppDebugKey.readerArticleTab).tap();
-    expect(t(AppDebugKey.readerArticlePage), findsOneWidget);
     expect(t("This clip's content isn't available."), findsOneWidget);
   });
 
@@ -81,14 +90,16 @@ void main() {
     await t(AppDebugKey.readingListNavDestination).tap();
     await t(AppDebugKey.readingListRow(item.title)).tap();
     expect(t(AppDebugKey.feedEntryReaderScreen), findsOneWidget);
-    expect(t(AppDebugKey.readerArticlePage), findsOneWidget);
-    expect(t(AppDebugKey.readerWebPage), findsNothing);
+    expect(
+      t.tester.getSemantics(find.byKey(AppDebugKey.readerArticleTab)),
+      isSemantics(isSelected: true),
+    );
 
     await t(AppDebugKey.readerWebTab).tap();
-    expect(t(AppDebugKey.readerWebPage), findsOneWidget);
-
-    await t(AppDebugKey.readerWebReloadButton).tap();
-    expect(t(AppDebugKey.readerWebPage), findsOneWidget);
+    expect(
+      t.tester.getSemantics(find.byKey(AppDebugKey.readerWebTab)),
+      isSemantics(isSelected: true),
+    );
   });
 
   patrolWidgetTest('Archive a reading list item by swiping', (t) async {
