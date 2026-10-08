@@ -5,7 +5,8 @@ import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 /// Renders an entry's HTML `content` in a WebView. The controller is built
-/// once in initState (not in createState) so it survives rebuilds.
+/// once in initState (not in createState) so it survives rebuilds, and the
+/// state is kept alive so switching reader tabs does not reload the content.
 class const FeedEntryContentWebView({required final String html, super.key})
     extends StatefulWidget {
   @override
@@ -13,9 +14,13 @@ class const FeedEntryContentWebView({required final String html, super.key})
       _FeedEntryContentWebViewState();
 }
 
-class _FeedEntryContentWebViewState extends State<FeedEntryContentWebView> {
+class _FeedEntryContentWebViewState extends State<FeedEntryContentWebView>
+    with AutomaticKeepAliveClientMixin {
   late final WebViewController _controller;
   var _isLoading = true;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -29,15 +34,23 @@ class _FeedEntryContentWebViewState extends State<FeedEntryContentWebView> {
               setState(() => _isLoading = false);
             }
           },
+          // iOS may end the web content process while the app is in the
+          // background (e.g. while another app is open),
+          // which leaves the WebView blank. Render the content again.
+          onWebResourceError: (error) {
+            if (error.errorType ==
+                WebResourceErrorType.webContentProcessTerminated) {
+              unawaited(_controller.loadHtmlString(_document(widget.html)));
+            }
+          },
           // Keep the WebView pinned to the rendered content: any link the
-          // user taps opens in an external browser instead of navigating
-          // away inside the WebView, matching the "Open original" /
-          // "Visit site" buttons.
+          // user taps opens in an in-app browser instead of navigating away
+          // inside the WebView.
           onNavigationRequest: (request) {
             final url = request.url;
             if (url.startsWith('http://') || url.startsWith('https://')) {
               if (mounted) {
-                unawaited(openExternalLink(context, url));
+                unawaited(openInAppBrowserLink(context, url));
               }
               return NavigationDecision.prevent;
             }
@@ -52,6 +65,7 @@ class _FeedEntryContentWebViewState extends State<FeedEntryContentWebView> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Stack(
       children: [
         WebViewWidget(controller: _controller),

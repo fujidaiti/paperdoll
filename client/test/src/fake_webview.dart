@@ -43,6 +43,9 @@ class _FakeWebViewController extends PlatformWebViewController
 
   @override
   Future<void> loadHtmlString(String html, {String? baseUrl}) async {}
+
+  @override
+  Future<void> loadRequest(LoadRequestParams params) async {}
 }
 
 class _FakeNavigationDelegate extends PlatformNavigationDelegate
