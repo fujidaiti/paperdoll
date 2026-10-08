@@ -1,0 +1,1035 @@
+{
+  "url": "https://engineering.atspotify.com",
+  "title": "Spotify’s official technology blog | Spotify Engineering",
+  "root": {
+    "tag": "body",
+    "cls": ["page-wrapper", "show-notification"],
+    "ch": [
+      {
+        "tag": "div",
+        "cls": ["content-wrapper", "blog"],
+        "ch": [
+          {
+            "tag": "section",
+            "cls": ["banner", "banner__content"],
+            "ch": [
+              { "tag": "h1", "text": "Engineering" },
+              {
+                "tag": "h4",
+                "text": "Read about the magic behind the music \u0026 more. Welcome to our official technology blog."
+              }
+            ]
+          },
+          {
+            "tag": "section",
+            "cls": ["sticky-post", "container"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://engineering.atspotify.com/2026/8/when-can-llms-replace-humans-in-a-b-tests",
+                "ch": [
+                  {
+                    "tag": "img",
+                    "src": "https://images.ctfassets.net/p762jor363g1/2Bz9zncYu2jdd4ZeCYIa0w/dc9a472c7cb372e9be01de06984c0009/Option_1__2_.png",
+                    "alt": "sticky"
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["sticky-post__content"],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["sticky-post__date"],
+                    "text": "Aug 13, 2026"
+                  },
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/8/when-can-llms-replace-humans-in-a-b-tests",
+                    "ch": [
+                      {
+                        "tag": "h4",
+                        "cls": ["sticky-post__title"],
+                        "text": "When Can LLMs Replace Humans in A/B Tests?"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["sticky-post__description"],
+                    "text": "TL;DR: LLM predictions can stand in for human outcomes in A/B tests, but only by assumption, not by design...."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["tag"],
+                    "text": "Data Science",
+                    "href": "https://engineering.atspotify.com/category/data-science"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "section",
+            "cls": ["posts-wrapper", "posts"],
+            "ch": [
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/9/ai-changed-how-spotify-builds-what-we-learned-and-fixed-about-quality-at-higher-velocity",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/6gLL3mDjx3AoPGWca14Xe7/c30c8bdfd06f78383da92f3df819d798/Option_2.1.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content", "top-content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__date"],
+                        "text": "Sep 16, 2026"
+                      },
+                      {
+                        "tag": "a",
+                        "href": "https://engineering.atspotify.com/2026/9/ai-changed-how-spotify-builds-what-we-learned-and-fixed-about-quality-at-higher-velocity",
+                        "ch": [
+                          {
+                            "tag": "h4",
+                            "cls": ["post-card__title"],
+                            "text": "AI Changed How Spotify Builds. What We Learned (and Fixed) About Quality at Higher Velocity"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__description"],
+                        "text": "Quality and reliability have always been a point of pride for Spotify. We run an extraordinarily complex..."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/9/why-spotify-is-not-using-bayesian-a-b-testing",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/7MYEdTbczd11VcDP5GMLrp/755c9f5d9d2bc9362c1b3c5baf6f6df8/image3.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["top-content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__date"],
+                            "text": "Sep 8, 2026"
+                          },
+                          {
+                            "tag": "a",
+                            "href": "https://engineering.atspotify.com/2026/9/why-spotify-is-not-using-bayesian-a-b-testing",
+                            "ch": [
+                              {
+                                "tag": "h4",
+                                "cls": ["post-card__title"],
+                                "text": "Why Spotify Is Not Using Bayesian A/B Testing"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__description"],
+                            "text": "Clearing the confusion about what Bayesian A/B testing is."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__tags"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Data",
+                            "href": "https://engineering.atspotify.com/category/data"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Data Science",
+                            "href": "https://engineering.atspotify.com/category/data-science"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/1qwttjRQJKdNQzJkcnieXv/7da7f74db7afb8fb45d3813a752d3e17/Option_4.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content", "top-content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__date"],
+                        "text": "Sep 3, 2026"
+                      },
+                      {
+                        "tag": "a",
+                        "href": "https://engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90",
+                        "ch": [
+                          {
+                            "tag": "h4",
+                            "cls": ["post-card__title"],
+                            "text": "Portal by Spotify cut my Claude Code token usage by 90%"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__description"],
+                        "text": "Most of what an AI coding agent does for me isn't thinking. It's I/O."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/7/indexing-the-data-lake-for-online-point-queries",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/69pB35ICFY1sL97klnboyf/aed20373e05048d11cdd12de739b4524/image1.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["top-content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__date"],
+                            "text": "Jul 27, 2026"
+                          },
+                          {
+                            "tag": "a",
+                            "href": "https://engineering.atspotify.com/2026/7/indexing-the-data-lake-for-online-point-queries",
+                            "ch": [
+                              {
+                                "tag": "h4",
+                                "cls": ["post-card__title"],
+                                "text": "Indexing the Data Lake for Online Point Queries"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__description"],
+                            "text": "Companies like Spotify need vast quantities of data accessible at low latency for online services and,..."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["tag"],
+                        "text": "Infrastructure",
+                        "href": "https://engineering.atspotify.com/category/infrastructure"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/7/content-ingestion-and-podcast-video-incident-report",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/3AiqgaI6uFPcF6zc7lYX5t/bbed1b145db94423441163d9f149a02e/incident_report.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content", "top-content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__date"],
+                        "text": "Jul 20, 2026"
+                      },
+                      {
+                        "tag": "a",
+                        "href": "https://engineering.atspotify.com/2026/7/content-ingestion-and-podcast-video-incident-report",
+                        "ch": [
+                          {
+                            "tag": "h4",
+                            "cls": ["post-card__title"],
+                            "text": "Content Ingestion \u0026 Podcast Video Incident Report"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__description"],
+                        "text": "Over the past two months, podcast creators have experienced a series of reliability issues on Spotify. This..."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/6/encoding-your-domain-expert-the-context-layer-behind-spotifys-data-assistant",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/7l2eUSuEW1R60JzrWTVCTa/c29b1e8011108d7c79a3b4d4d6f6237f/IMG_5977.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["top-content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__date"],
+                            "text": "Jun 10, 2026"
+                          },
+                          {
+                            "tag": "a",
+                            "href": "https://engineering.atspotify.com/2026/6/encoding-your-domain-expert-the-context-layer-behind-spotifys-data-assistant",
+                            "ch": [
+                              {
+                                "tag": "h4",
+                                "cls": ["post-card__title"],
+                                "text": "Encoding Your Domain Expert: The Context Layer Behind Spotify's Data Assistant"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__description"],
+                            "text": "At Spotify, data problems used to follow a specific pattern. You'd look for the relevant dashboard, there..."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__tags"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Data",
+                            "href": "https://engineering.atspotify.com/category/data"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Platform",
+                            "href": "https://engineering.atspotify.com/category/platform"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/2SQWwDBa8t9F9P8s1IkaeV/645549d40f361b6fe56be1575e78cb5b/cwc01-header-a.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["top-content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__date"],
+                            "text": "Jun 3, 2026"
+                          },
+                          {
+                            "tag": "a",
+                            "href": "https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint",
+                            "ch": [
+                              {
+                                "tag": "h4",
+                                "cls": ["post-card__title"],
+                                "text": "Coding Is No Longer the Constraint: Scaling Developer Experience to Teams and Agents at Spotify"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__description"],
+                            "text": "At Code with Claude, Spotify’s chief architect shared how we make both teams and AI agents more effective."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__tags"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Developer Experience",
+                            "href": "https://engineering.atspotify.com/category/developer-experience"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Platform",
+                            "href": "https://engineering.atspotify.com/category/platform"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Developer Tools",
+                            "href": "https://engineering.atspotify.com/category/developer-tools"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Backstage",
+                            "href": "https://engineering.atspotify.com/category/backstage"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/5/better-experiments-with-llm-evals-a-funnel-not-a-fork",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/1liN9CCW7JU64GI5r03T6N/95c8d19c1287e6209831f31f8dd89158/3__1_.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["top-content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__date"],
+                            "text": "May 18, 2026"
+                          },
+                          {
+                            "tag": "a",
+                            "href": "https://engineering.atspotify.com/2026/5/better-experiments-with-llm-evals-a-funnel-not-a-fork",
+                            "ch": [
+                              {
+                                "tag": "h4",
+                                "cls": ["post-card__title"],
+                                "text": "Better Experiments with LLM Evals — A funnel, not a fork"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__description"],
+                            "text": "TL;DR LLM evals, automated judges that assess relevance, coherence, and quality at scale, are a powerful new..."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__tags"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Platform",
+                            "href": "https://engineering.atspotify.com/category/platform"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Data Science",
+                            "href": "https://engineering.atspotify.com/category/data-science"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Data",
+                            "href": "https://engineering.atspotify.com/category/data"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/5/spotify-ads-api-claude-plugins",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/6VpxcfIxMRS8Ft1PMlxUro/9b7b39abfccec844ebb8586ab5a5122f/spotify-ads-api-claude-plugin__2.2__1.5x.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["top-content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__date"],
+                            "text": "May 1, 2026"
+                          },
+                          {
+                            "tag": "a",
+                            "href": "https://engineering.atspotify.com/2026/5/spotify-ads-api-claude-plugins",
+                            "ch": [
+                              {
+                                "tag": "h4",
+                                "cls": ["post-card__title"],
+                                "text": "Building a Natural Language Interface to the Spotify Ads API with Claude Code Plugins"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__description"],
+                            "text": "Turning OpenAPI spec and Markdown files into a conversational ads management tool — no compiled code required."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__tags"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Developer Tools",
+                            "href": "https://engineering.atspotify.com/category/developer-tools"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Developer Experience",
+                            "href": "https://engineering.atspotify.com/category/developer-experience"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/4/background-coding-agents-dataset-migrations-honk-part-4",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/4FNGZeDCEJ7iKD6K3cf0Cu/816a5e00436ddca4d4a85d5abc0b56c2/honk-pt4.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["top-content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__date"],
+                            "text": "Apr 22, 2026"
+                          },
+                          {
+                            "tag": "a",
+                            "href": "https://engineering.atspotify.com/2026/4/background-coding-agents-dataset-migrations-honk-part-4",
+                            "ch": [
+                              {
+                                "tag": "h4",
+                                "cls": ["post-card__title"],
+                                "text": "Background Coding Agents: Supercharging Downstream Consumer Dataset Migrations (Honk, Part 4)"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__description"],
+                            "text": "How we used Honk, Backstage, and Fleet Management to ease the pain of migrating thousands of datasets."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__tags"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Platform",
+                            "href": "https://engineering.atspotify.com/category/platform"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Data",
+                            "href": "https://engineering.atspotify.com/category/data"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Developer Tools",
+                            "href": "https://engineering.atspotify.com/category/developer-tools"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/4/anthropic-agentic-development",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/2seNuCdUrHGujnFYULE0o2/6af51bd83e0828c7c051624480af2804/2026mar-anthropic-eng-blog-header-lockup.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["top-content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__date"],
+                            "text": "Apr 6, 2026"
+                          },
+                          {
+                            "tag": "a",
+                            "href": "https://engineering.atspotify.com/2026/4/anthropic-agentic-development",
+                            "ch": [
+                              {
+                                "tag": "h4",
+                                "cls": ["post-card__title"],
+                                "text": "Let’s Talk Agentic Development: Spotify x Anthropic Live"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__description"],
+                            "text": "AI agents are transforming the way we build — and even how we think of ourselves as software developers. Both..."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__tags"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Developer Experience",
+                            "href": "https://engineering.atspotify.com/category/developer-experience"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Developer Tools",
+                            "href": "https://engineering.atspotify.com/category/developer-tools"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Infrastructure",
+                            "href": "https://engineering.atspotify.com/category/infrastructure"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["post-card"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/2026/3/inside-the-archive-2025-wrapped",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://images.ctfassets.net/p762jor363g1/5aopwNgblWAOgdoa0wQJtT/277dba4272511720a9ff2e148a88a05e/Inside-The-Archive-featured.png",
+                        "alt": "sticky"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["post-card__content"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["top-content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__date"],
+                            "text": "Mar 12, 2026"
+                          },
+                          {
+                            "tag": "a",
+                            "href": "https://engineering.atspotify.com/2026/3/inside-the-archive-2025-wrapped",
+                            "ch": [
+                              {
+                                "tag": "h4",
+                                "cls": ["post-card__title"],
+                                "text": "Inside the Archive: The Tech Behind Your 2025 Wrapped Highlights"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["post-card__description"],
+                            "text": "What if we could identify interesting listening moments from your year, and tell you a story about them?"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["post-card__tags"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Data",
+                            "href": "https://engineering.atspotify.com/category/data"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["tag"],
+                            "text": "Developer Tools",
+                            "href": "https://engineering.atspotify.com/category/developer-tools"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "footer",
+        "cls": ["footer", "container"],
+        "ch": [
+          {
+            "tag": "section",
+            "cls": ["subscription", "subscription__left"],
+            "ch": [
+              { "tag": "h3", "text": "Want to stay in the loop?" },
+              {
+                "tag": "p",
+                "text": "Subscribe to our newsletter to never miss an update!"
+              },
+              {
+                "tag": "#text",
+                "text": "By clicking sign up you’ll receive occasional emails from Spotify. You always have the choice to adjust your interest settings or unsubscribe."
+              }
+            ]
+          },
+          {
+            "tag": "section",
+            "cls": ["links"],
+            "ch": [
+              {
+                "tag": "div",
+                "cls": ["links__left"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://engineering.atspotify.com/images/footer-logo.svg",
+                        "alt": "feed"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["nav-wrapper", "nav"],
+                    "ch": [
+                      {
+                        "tag": "ul",
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "text": "Spotify.com",
+                            "href": "https://spotify.com/"
+                          },
+                          {
+                            "tag": "a",
+                            "text": "Spotify Jobs",
+                            "href": "https://www.lifeatspotify.com/"
+                          },
+                          {
+                            "tag": "a",
+                            "text": "Newsroom",
+                            "href": "https://newsroom.spotify.com/"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "ul",
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "text": "Spotify R\u0026D Research",
+                            "href": "https://research.atspotify.com/"
+                          },
+                          {
+                            "tag": "a",
+                            "text": "Spotify for Backstage",
+                            "href": "https://backstage.spotify.com/"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["links__right", "social"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "href": "https://www.linkedin.com/showcase/spotify-r\u0026d",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://engineering.atspotify.com/images/linked-in.svg",
+                        "alt": "Linked In"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "href": "https://twitter.com/spotifyeng",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://engineering.atspotify.com/images/x.svg",
+                        "alt": "X"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "href": "https://www.youtube.com/@SpotifyRnD",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://engineering.atspotify.com/images/yt.svg",
+                        "alt": "Youtube"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "href": "http://www.instagram.com/lifeatspotify",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://engineering.atspotify.com/images/insta.svg",
+                        "alt": "Instagram"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "href": "https://www.facebook.com/spotify",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://engineering.atspotify.com/images/f.svg",
+                        "alt": "facebook"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "href": "https://engineering.atspotify.com/feed",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://engineering.atspotify.com/images/feed.svg",
+                        "alt": "feed"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "section",
+            "cls": ["copy"],
+            "ch": [
+              {
+                "tag": "nav",
+                "cls": ["copy__nav"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "text": "Legal",
+                    "href": "https://www.spotify.com/us/legal/end-user-agreement/"
+                  },
+                  {
+                    "tag": "a",
+                    "text": "Privacy",
+                    "href": "https://www.spotify.com/us/legal/privacy-policy/"
+                  },
+                  {
+                    "tag": "a",
+                    "text": "Cookies",
+                    "href": "https://www.spotify.com/legal/cookies-policy/"
+                  },
+                  {
+                    "tag": "a",
+                    "text": "About Ads",
+                    "href": "https://www.spotify.com/us/legal/privacy-policy/"
+                  }
+                ]
+              },
+              { "tag": "#text", "text": "© 2026 Spotify AB" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

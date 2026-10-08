@@ -1,0 +1,3251 @@
+{
+  "url": "https://deepmind.google/research/publications/",
+  "title": "Publications — Google DeepMind",
+  "root": {
+    "tag": "body",
+    "cls": ["template-publication-landing-page"],
+    "ch": [
+      {
+        "tag": "a",
+        "cls": ["button", "button--tonal"],
+        "text": "Skip to main content",
+        "href": "https://deepmind.google/research/publications/#page-content"
+      },
+      {
+        "tag": "site-nav",
+        "cls": [
+          "site-navigation-isolation",
+          "header",
+          "glue-header",
+          "glue-header--no-cta",
+          "deepai-header",
+          "js-header",
+          "js-site-navigation",
+          "header-container"
+        ],
+        "ch": [
+          {
+            "tag": "div",
+            "cls": ["header", "flyout__desktop-container"],
+            "ch": [
+              {
+                "tag": "nav",
+                "cls": [
+                  "header",
+                  "flyout",
+                  "desktop",
+                  "flyout__container",
+                  "grid"
+                ],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["flyout__intro"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["flyout__title"],
+                        "text": "Explore our next generation AI systems"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["button", "button--outlined", "icon-right"],
+                        "href": "https://deepmind.google/models/",
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["button__label"],
+                            "text": "Explore models"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "flyout__content-desktop",
+                      "flyout__subnav",
+                      "subnav",
+                      "subnav--2-column"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["subnav__column", "subnav__content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__header", "subnav__title"],
+                            "text": "Gemini"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__links"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/gemini/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Gemini"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Build intelligent agents"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/gemini-omni/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omni__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Gemini Omni"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Create anything from anything"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/gemini-image/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Nano Banana"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Create and edit detailed images"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/gemini-audio/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-audio__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Gemini Audio"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Talk, create and control audio"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["subnav__column", "subnav__content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__header", "subnav__title"],
+                            "text": "Specialized models"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__links"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/veo/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__veo__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Veo"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Generate cinematic video with audio"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/imagen/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__imagen__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Imagen"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Generate high-quality images from text"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/lyria/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__lyria__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Lyria"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Generate high fidelity music and audio"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["subnav__column", "subnav__content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__header", "subnav__title"],
+                            "text": "World models \u0026 physical AI"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__links"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/genie/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Genie 3"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Generate and explore interactive worlds"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/gemini-robotics/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Gemini Robotics"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Perceive, reason, use tools and interact"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["subnav__column", "subnav__content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__header", "subnav__title"],
+                            "text": "Open models"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["subnav__link", "subnav__link--has-icon"],
+                            "href": "https://deepmind.google/models/gemma/",
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": [
+                                  "image",
+                                  "image--svg",
+                                  "picture__image",
+                                  "media--aspect-1-1"
+                                ],
+                                "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemma__large.svg"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["subnav__link-text"],
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-label"],
+                                    "text": "Gemma"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-description"],
+                                    "text": "Build responsible AI applications at scale"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "nav",
+                "cls": [
+                  "header",
+                  "flyout",
+                  "desktop",
+                  "flyout__container",
+                  "grid"
+                ],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["flyout__intro"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["flyout__title"],
+                        "text": "Our latest AI breakthroughs and updates from the lab"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["button", "button--outlined", "icon-right"],
+                        "href": "https://deepmind.google/research/",
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["button__label"],
+                            "text": "Explore research"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "flyout__content-desktop",
+                      "flyout__subnav",
+                      "subnav",
+                      "subnav--2-column"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["subnav__column", "subnav__content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__header", "subnav__title"],
+                            "text": "Breakthroughs"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__links"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__sima-2__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "SIMA 2"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "An agent that plays, reasons, and learns with you"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/genie/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Genie 3"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Generate and explore interactive worlds"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/research/alphago/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphago__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "AlphaGo"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Mastering the game of Go"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/models/gemini-robotics/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "Gemini Robotics"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Perceive, reason, use tools and interact"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["subnav__column", "subnav__content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__header", "subnav__title"],
+                            "text": "Learn more"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__links"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://deepmind.google/research/evals/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Evals"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://deepmind.google/research/publications/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Publications"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://deepmind.google/responsibility-and-safety/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Responsibility"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://deepmind.google/frontier-safety/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Frontier safety"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "nav",
+                "cls": [
+                  "header",
+                  "flyout",
+                  "desktop",
+                  "flyout__container",
+                  "grid"
+                ],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["flyout__intro"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["flyout__title"],
+                        "text": "Unlocking a new era of discovery with AI"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["button", "button--outlined", "icon-right"],
+                        "href": "https://deepmind.google/science/",
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["button__label"],
+                            "text": "Explore science"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "flyout__content-desktop",
+                      "flyout__subnav",
+                      "subnav",
+                      "subnav--2-column"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["subnav__column", "subnav__content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__header", "subnav__title"],
+                            "text": "Breakthroughs"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__links"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/science/alphafold/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphafold__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "AlphaFold"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Predict protein structures with high accuracy"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/science/alphagenome/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/4tfPUEsyxOPhmrk6/nav__alphagenome_bNSjpuc.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "AlphaGenome"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Using AI to understand the human genome"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/science/weathernext/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__weathernext__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "WeatherNext"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Fast and accurate AI weather forecasting"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/blog/alphaearth-foundations-helps-map-our-planet-in-unprecedented-detail/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphaearth__large.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "AlphaEarth"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Map our planet in unprecedented detail"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": [
+                                  "subnav__link",
+                                  "subnav__link--has-icon"
+                                ],
+                                "href": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "image",
+                                      "image--svg",
+                                      "picture__image",
+                                      "media--aspect-1-1"
+                                    ],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/P2_ApBXR8azw8BBn/nav__dm__alphaevolve__large_YxQUEj6.svg"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-text"],
+                                    "ch": [
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-label"],
+                                        "text": "AlphaEvolve"
+                                      },
+                                      {
+                                        "tag": "div",
+                                        "cls": ["subnav__link-description"],
+                                        "text": "Design advanced algorithms for math and applications in computing"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["subnav__column", "subnav__content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__header", "subnav__title"],
+                            "text": "Learn more"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__links"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://ai.google/gemini-for-science?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Gemini for Science"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://labs.google/science?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Experimental Tools"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://antigravity.google/use-cases/science?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Science Skills"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "nav",
+                "cls": [
+                  "header",
+                  "flyout",
+                  "desktop",
+                  "flyout__container",
+                  "grid"
+                ],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["flyout__intro"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["flyout__title"],
+                        "text": "Our mission is to build AI responsibly to benefit humanity"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["button", "button--outlined", "icon-right"],
+                        "href": "https://deepmind.google/about/",
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["button__label"],
+                            "text": "About Google DeepMind"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "flyout__content-desktop",
+                      "flyout__subnav",
+                      "subnav",
+                      "subnav--2-column"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "subnav__column",
+                          "subnav__content",
+                          "subnav__links"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["subnav__link"],
+                            "href": "https://deepmind.google/responsibility-and-safety/",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["subnav__link-text"],
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-label"],
+                                    "text": "Responsibility"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-description"],
+                                    "text": "Ensuring AI safety through proactive security, even against evolving threats"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["subnav__link"],
+                            "href": "https://deepmind.google/blog/",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["subnav__link-text"],
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-label"],
+                                    "text": "News"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-description"],
+                                    "text": "Discover our latest AI breakthroughs, projects, and updates"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["subnav__link"],
+                            "href": "https://deepmind.google/careers/",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["subnav__link-text"],
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-label"],
+                                    "text": "Careers"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["subnav__link-description"],
+                                    "text": "We’re looking for people who want to make a real, positive impact on the world"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["subnav__column", "subnav__content"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__header", "subnav__title"],
+                            "text": "Learn more"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["subnav__links"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://deepmind.google/education/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Education"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://deepmind.google/national-partnerships-for-ai/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Our National Partnerships for AI"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://deepmind.google/accelerators/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "Accelerator programs"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://deepmind.google/the-podcast/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "The Podcast"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["subnav__link"],
+                                "href": "https://institute.deepmind.com/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "subnav__link-text",
+                                      "subnav__link-label"
+                                    ],
+                                    "text": "DeepMind Institute"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "nav",
+            "cls": [
+              "header",
+              "flyout",
+              "mobile",
+              "flyout__container",
+              "deepai-grid",
+              "flyout__content-mobile",
+              "deepai-grid__column--span-8",
+              "deepai-grid__column--span-4-md",
+              "flyout__accordion__right-ctas"
+            ],
+            "ch": [
+              {
+                "tag": "a",
+                "cls": ["right-menu__cta", "text-call-to-action"],
+                "text": "Build with Gemini",
+                "href": "https://aistudio.google.com/prompts/new_chat?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content="
+              },
+              {
+                "tag": "a",
+                "cls": ["right-menu__cta", "text-call-to-action"],
+                "text": "Try Gemini",
+                "href": "https://gemini.google.com/?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content="
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["header-bar"],
+            "ch": [
+              {
+                "tag": "div",
+                "cls": ["left-menu"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": ["site-switcher__home"],
+                    "href": "https://deepmind.google/",
+                    "ch": [
+                      { "tag": "#text", "text": "Google DeepMind" },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "media-image-block",
+                          "site-switcher__logo-wrapper",
+                          "has-dark-mode-alternative"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "image",
+                              "site-switcher__logo",
+                              "site-switcher__logo--lockup",
+                              "light-mode"
+                            ],
+                            "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.height-25.svg"
+                          },
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "image",
+                              "site-switcher__logo",
+                              "site-switcher__logo--lockup",
+                              "dark-mode-alternative"
+                            ],
+                            "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height-25.svg"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "nav",
+                    "cls": ["site-switcher__nav"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["site-switcher__group"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": ["site-switcher__link"],
+                            "href": "https://ai.google/?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-title"],
+                                "text": "Google AI"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-description"],
+                                "text": "Learn about all our AI"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["site-switcher__link"],
+                            "href": "https://deepmind.google?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-title"],
+                                "text": "Google DeepMind"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-description"],
+                                "text": "Explore the frontier of AI"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["site-switcher__link"],
+                            "href": "https://labs.google/?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-title"],
+                                "text": "Google Labs"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-description"],
+                                "text": "Try our AI experiments"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["site-switcher__link"],
+                            "href": "https://research.google?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-title"],
+                                "text": "Google Research"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-description"],
+                                "text": "Explore our research"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["site-switcher__group"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["site-switcher__group__title"],
+                            "text": "Products and apps"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["site-switcher__link"],
+                            "href": "https://gemini.google.com/?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-title"],
+                                "text": "Gemini app"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-description"],
+                                "text": "Chat with Gemini"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["site-switcher__link"],
+                            "href": "https://aistudio.google.com/prompts/new_chat?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-title"],
+                                "text": "Google AI Studio"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-description"],
+                                "text": "Build with our next-gen AI models"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["site-switcher__link"],
+                            "href": "https://antigravity.google/?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-title"],
+                                "text": "Google Antigravity"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["site-switcher__link-description"],
+                                "text": "Our agentic development platform"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": [
+                  "main-menu",
+                  "main-menu__container",
+                  "button-group",
+                  "button-group--compact"
+                ],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "main-menu__label",
+                      "deepai-text-call-to-action--nav",
+                      "button",
+                      "button--hover_outline"
+                    ],
+                    "text": "Models",
+                    "href": "https://deepmind.google/models/"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "main-menu__label",
+                      "deepai-text-call-to-action--nav",
+                      "button",
+                      "button--hover_outline"
+                    ],
+                    "text": "Research",
+                    "href": "https://deepmind.google/research/"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "main-menu__label",
+                      "deepai-text-call-to-action--nav",
+                      "button",
+                      "button--hover_outline"
+                    ],
+                    "text": "Science",
+                    "href": "https://deepmind.google/science/"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "main-menu__label",
+                      "deepai-text-call-to-action--nav",
+                      "button",
+                      "button--hover_outline"
+                    ],
+                    "text": "About",
+                    "href": "https://deepmind.google/about/"
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": [
+                  "right-menu",
+                  "button-group",
+                  "button-group--compact",
+                  "button-group__buttons"
+                ],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "button",
+                      "button--protected",
+                      "right-menu__button",
+                      "text-call-to-action"
+                    ],
+                    "text": "Build with Gemini",
+                    "href": "https://aistudio.google.com/prompts/new_chat?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content="
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "button",
+                      "button--protected",
+                      "right-menu__button",
+                      "text-call-to-action"
+                    ],
+                    "text": "Try Gemini",
+                    "href": "https://gemini.google.com/?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content="
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "main",
+        "ch": [
+          {
+            "tag": "section",
+            "cls": [
+              "section-default",
+              "section-padding-top",
+              "section-title",
+              "spacer-3xl-padding-bottom",
+              "grid",
+              "grid__column--span-8-xl",
+              "grid__column--span-8-lg",
+              "grid__column--span-8-md",
+              "grid__column--span-8-sm",
+              "grid__column--span-4-xs"
+            ],
+            "ch": [
+              {
+                "tag": "h1",
+                "cls": ["section-title__title", "heading-4"],
+                "text": "Publications"
+              },
+              {
+                "tag": "div",
+                "cls": ["section-title__description", "heading-4"],
+                "text": "Explore a selection of our recent research on some of the most complex and interesting challenges in AI."
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": [
+              "publication-count",
+              "section-default",
+              "publication-count__text"
+            ],
+            "text": "263 publications"
+          },
+          {
+            "tag": "section",
+            "cls": [
+              "list-group-section",
+              "section-default",
+              "grid",
+              "grid__inner",
+              "grid__column--span-4-xs",
+              "grid__column--span-8-sm",
+              "grid__column--span-12-md",
+              "list-group"
+            ],
+            "ch": [
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/265605/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "1 September 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Designing Proactive Thought Partners for Writing"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/270149/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "26 August 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Visual General Intelligence: A White Paper"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/118955/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "5 August 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "A moral Turing test: How belief and source shape detection of and agreement with LLM judgments"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/264392/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "28 July 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Visual prompt engineering for video models"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/225819/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "10 July 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Quantifying the Salience of Geo-Cultural Values for Pluralistic Safety Alignment"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/260960/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "6 July 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "The Case for Globally Beneficial Technology"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/203490/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "2 July 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Towards Structural Understanding of LLM Overthinking"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/224297/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "26 June 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Real-Time Group Dynamics with LLM Facilitation: Evidence from a Charity Allocation Task"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/149262/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "26 June 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Bridging the Scale Gap: Augmenting Human Red-Teaming to Uncover Latent Risks in T2I Models"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/224397/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "25 June 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Going PLACES: Participatory Localized Red Teaming forText-to-Image Safety in the Global South"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/248131/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "15 June 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Artificial Minds, Human Disagreement: The Politics of AI Consciousness"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/239142/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "12 June 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "From AGI to ASI"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/231466/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "4 June 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Solipsistic superintelligence is unlikely to be cooperative"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/253391/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "28 May 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Realistic honeypot evaluations for scheming propensity"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/252981/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "28 May 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Gram: Assessing sabotage propensities via automated alignment auditing"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/239849/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "6 May 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Did US Worker Retraining Reduce Participant Automation Exposure?"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/238239/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "25 April 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "ProEval: Proactive Failure Discovery and Efficient Performance Estimation for Generative AI Evaluation"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/193694/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "23 April 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Dynamic Reflections: Probing Video Representations with Text Alignment"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/240658/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "22 April 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Image Generators are Generalist Vision Learners"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/146950/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "22 March 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Strategic Tradeoffs Between Humans and AI in Multi-Agent Bargaining"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/231971/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "10 March 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "The Abstraction Fallacy: Why AI Can Simulate But Not Instantiate Consciousness"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/225507/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "15 February 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Simplicity and Complexity in Combinatorial Optimization"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/137741/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "12 February 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Decoding Safety Feedback from Diverse Raters: A Data-driven Lens on Responsiveness to Severity"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/94006/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "5 February 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Hybrid neural–cognitive models reveal how memory shapes human reward learning"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/122591/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "9 January 2026"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "TRecViT: A Recurrent Video Transformer"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/141313/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "3 December 2025"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Capturing Human Preferences with Reward Features"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/42697/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "21 November 2025"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "Imitation Learning is Probably Existentially Safe"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/180362/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "4 November 2025"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "To Mask or to Mirror: Human-AI Alignment in Collective Reasoning"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/210560/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "30 October 2025"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "A Pragmatic View of AI Personhood"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["list-group__link"],
+                "href": "https://deepmind.google/research/publications/160567/",
+                "ch": [
+                  {
+                    "tag": "dl",
+                    "cls": ["grid", "list-group__content"],
+                    "ch": [
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-2-md"
+                        ],
+                        "text": "29 September 2025"
+                      },
+                      {
+                        "tag": "dd",
+                        "cls": [
+                          "grid__column--span-4-xs",
+                          "grid__column--span-8-sm",
+                          "grid__column--span-10-md"
+                        ],
+                        "text": "AI-Generated Video Detection via Perceptual Straightening"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["container", "publication-pagination", "pagination"],
+            "ch": [
+              {
+                "tag": "a",
+                "cls": [
+                  "button",
+                  "button--tonal",
+                  "icon-center",
+                  "pagination__arrow",
+                  "pagination__arrow--hidden"
+                ],
+                "href": "https://deepmind.google/research/publications/"
+              },
+              { "tag": "#text", "text": "1" },
+              {
+                "tag": "a",
+                "cls": ["button", "button--outlined", "pagination__page"],
+                "text": "Page 2",
+                "href": "https://deepmind.google/research/publications/page/2/"
+              },
+              {
+                "tag": "a",
+                "cls": ["button", "button--outlined", "pagination__page"],
+                "text": "Page 3",
+                "href": "https://deepmind.google/research/publications/page/3/"
+              },
+              { "tag": "#text", "text": "…" },
+              {
+                "tag": "a",
+                "cls": ["button", "button--outlined", "pagination__page"],
+                "text": "Page 9",
+                "href": "https://deepmind.google/research/publications/page/9/"
+              },
+              {
+                "tag": "a",
+                "cls": [
+                  "button",
+                  "button--tonal",
+                  "icon-center",
+                  "pagination__arrow"
+                ],
+                "href": "https://deepmind.google/research/publications/page/2/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "footer",
+        "cls": ["gweb-footer"],
+        "ch": [
+          {
+            "tag": "div",
+            "cls": ["gweb-footer-wrapper-main"],
+            "ch": [
+              {
+                "tag": "div",
+                "cls": [
+                  "gweb-footer-social_links",
+                  "footer-social-links__wrapper",
+                  "flex-font"
+                ],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["footer-social-links__label"],
+                    "text": "Follow us"
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["footer-social-links__items"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["button", "button--text-link", "icon-center"],
+                        "href": "https://x.com/googledeepmind"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["button", "button--text-link", "icon-center"],
+                        "href": "https://www.instagram.com/googledeepmind"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["button", "button--text-link", "icon-center"],
+                        "href": "https://www.youtube.com/@googledeepmind"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["button", "button--text-link", "icon-center"],
+                        "href": "https://www.linkedin.com/company/googledeepmind/"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["button", "button--text-link", "icon-center"],
+                        "href": "https://github.com/google-deepmind"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["gweb-footer-main_links", "footer-main-links__wrapper"],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["footer-main-links__title-wrapper"],
+                    "text": "Build AI responsibly to benefit humanity"
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["footer-main-links__content-wrapper"],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["footer-main-links__link-group", "align-auto"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "footer-main-links__group-heading-wrapper",
+                              "footer-main-links__group-title",
+                              "heading-9"
+                            ],
+                            "text": "Models"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["footer-main-links__group-links-wrapper"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/models/gemini/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Gemini"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/models/gemini-omni/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Gemini Omni"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/models/gemini-image/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Nano Banana"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/models/gemini-audio/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Gemini Audio"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/models/gemma/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "media-icon",
+                                      "media-icon--contained",
+                                      "media-icon--contained--outline",
+                                      "js-media-icon",
+                                      "media-icon--contained__inner",
+                                      "media-icon__icon-wrapper",
+                                      "media-icon--contained__icon",
+                                      "icon-svg-upload"
+                                    ],
+                                    "ch": [
+                                      {
+                                        "tag": "img",
+                                        "cls": [
+                                          "footer-main-links__svg--light"
+                                        ],
+                                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__light_j46lu5D_ChuL4ZZ.max-24x24.svg",
+                                        "alt": "footer_gemma__light"
+                                      },
+                                      {
+                                        "tag": "img",
+                                        "cls": ["footer-main-links__svg--dark"],
+                                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__dark_NkmSuN7_L3lpSMo.max-24x24.svg",
+                                        "alt": "footer_gemma__dark"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Gemma"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/models/genie/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Genie"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/models/lyria/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Lyria"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/models/veo/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Veo"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["footer-main-links__link-group", "align-auto"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "footer-main-links__group-heading-wrapper",
+                              "footer-main-links__group-title",
+                              "heading-9"
+                            ],
+                            "text": "Research"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["footer-main-links__group-links-wrapper"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/models/gemini-robotics/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Gemini Robotics"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/research/projects/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Breakthroughs"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/research/evals/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Evals"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/research/publications/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Publications"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/frontier-safety/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Frontier safety"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/responsibility-and-safety/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Responsibility"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["footer-main-links__link-group", "align-auto"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "footer-main-links__group-heading-wrapper",
+                              "footer-main-links__group-title",
+                              "heading-9"
+                            ],
+                            "text": "Science"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["footer-main-links__group-links-wrapper"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/science/alphafold/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "AlphaFold"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/science/alphagenome/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "AlphaGenome"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/science/weathernext/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "WeatherNext"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/blog/alphaearth-foundations-helps-map-our-planet-in-unprecedented-detail/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "AlphaEarth"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "AlphaEvolve"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["footer-main-links__link-group", "align-auto"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "footer-main-links__group-heading-wrapper",
+                              "footer-main-links__group-title",
+                              "heading-9"
+                            ],
+                            "text": "Products"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["footer-main-links__group-links-wrapper"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://gemini.google.com/?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Gemini app"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://aistudio.google.com/?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Google AI Studio"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://antigravity.google/?utm_source=deepmind.google\u0026utm_medium=referral\u0026utm_campaign=gdm\u0026utm_content=",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Google Antigravity"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["footer-main-links__link-group", "align-auto"],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "footer-main-links__group-heading-wrapper",
+                              "footer-main-links__group-title",
+                              "heading-9"
+                            ],
+                            "text": "Learn more"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["footer-main-links__group-links-wrapper"],
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/about/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "About"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/blog/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "News"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/careers/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Careers"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/national-partnerships-for-ai/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "National Partnerships for AI"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/accelerators/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "Accelerator programs"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://deepmind.google/the-podcast/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "The Podcast"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["button", "button--text-link"],
+                                "href": "https://institute.deepmind.com/",
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": ["button__label"],
+                                    "text": "DeepMind Institute"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": [
+              "gweb-footer-wrapper-legal",
+              "gweb-footer-google_links",
+              "footer-google-links__wrapper"
+            ],
+            "ch": [
+              {
+                "tag": "a",
+                "cls": ["footer-google-links__brand"],
+                "href": "https://www.google.com/?utm_source=ai.google\u0026utm_medium=referral"
+              },
+              {
+                "tag": "div",
+                "cls": ["footer-google-links__content-wrapper"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link"],
+                    "text": "About Google",
+                    "href": "https://about.google/"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link"],
+                    "text": "Google products",
+                    "href": "https://about.google/products/"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link"],
+                    "text": "Privacy",
+                    "href": "https://policies.google.com/privacy"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link"],
+                    "text": "Terms",
+                    "href": "https://policies.google.com/terms"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

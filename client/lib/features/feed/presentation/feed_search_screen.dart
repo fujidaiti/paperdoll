@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:paperdoll/core/error/domain_error.dart';
+import 'package:paperdoll/core/router/routes.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
 import 'package:paperdoll/core/ui/widgets/app_divider.dart';
 import 'package:paperdoll/core/ui/widgets/async_value_view.dart';
@@ -67,7 +68,16 @@ class _FeedSearchScreenState extends ConsumerState<FeedSearchScreen> {
     final results = ref.watch(feedSearchControllerProvider);
     return Scaffold(
       key: AppDebugKey.feedSearchScreen,
-      appBar: AppBar(title: const Text('Add feed')),
+      appBar: AppBar(
+        title: const Text('Add feed'),
+        actions: [
+          IconButton(
+            tooltip: 'Watch a web page',
+            icon: const Icon(Icons.web),
+            onPressed: () => context.pushNamed(routePageSamplesName),
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Padding(

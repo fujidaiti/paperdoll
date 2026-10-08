@@ -1,0 +1,3957 @@
+{
+  "url": "https://cursor.com/blog",
+  "title": "Blog · Cursor",
+  "root": {
+    "tag": "body",
+    "cls": [
+      "bg-theme-bg",
+      "text-theme-text",
+      "min-h-screen",
+      "pt-[var(--site-header-height)]"
+    ],
+    "ch": [
+      {
+        "tag": "header",
+        "cls": [
+          "bg-theme-bg",
+          "px-g2",
+          "fixed",
+          "top-0",
+          "left-0",
+          "z-50",
+          "w-full",
+          "relative",
+          "z-2",
+          "container",
+          "grid",
+          "h-[var(--site-header-height)]",
+          "grid-cols-[1fr_auto_auto]",
+          "items-center",
+          "lg:grid-cols-[auto_1fr_auto]"
+        ],
+        "ch": [
+          {
+            "tag": "a",
+            "cls": ["skipnav", "btn", "btn--sm"],
+            "text": "Skip to content",
+            "href": "https://cursor.com/blog#main"
+          },
+          {
+            "tag": "a",
+            "cls": [
+              "focus-visible:focus-visible",
+              "relative",
+              "top-[0.2rem]",
+              "left-[-2px]",
+              "inline-flex"
+            ],
+            "text": "Cursor",
+            "href": "https://cursor.com/home"
+          },
+          {
+            "tag": "div",
+            "cls": [
+              "hidden",
+              "lg:block",
+              "absolute",
+              "top-1/2",
+              "left-1/2",
+              "-translate-x-1/2",
+              "-translate-y-1/2",
+              "flex",
+              "items-center",
+              "justify-center"
+            ],
+            "ch": [
+              {
+                "tag": "li",
+                "cls": ["relative"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": ["nav__btn"],
+                    "text": "Models",
+                    "href": "https://cursor.com/grok"
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "nav__sub-nav",
+                      "pt-v3/12",
+                      "absolute",
+                      "top-full",
+                      "left-0",
+                      "card",
+                      "card--sub-nav",
+                      "card--flyout",
+                      "type-sm",
+                      "shadow-[var(--shadow-flyout)]",
+                      "flex",
+                      "flex-col"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Grok",
+                        "href": "https://cursor.com/grok"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Evals",
+                        "href": "https://cursor.com/evals"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "cls": ["relative"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": ["nav__btn"],
+                    "text": "Product",
+                    "href": "https://cursor.com/product"
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "nav__sub-nav",
+                      "pt-v3/12",
+                      "absolute",
+                      "top-full",
+                      "left-0",
+                      "card",
+                      "card--sub-nav",
+                      "card--flyout",
+                      "type-sm",
+                      "shadow-[var(--shadow-flyout)]",
+                      "flex",
+                      "flex-col"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Agents",
+                        "href": "https://cursor.com/product"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Cloud",
+                        "href": "https://cursor.com/cloud"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Grok Bot ↗",
+                        "href": "https://x.ai/bot"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Mobile",
+                        "href": "https://cursor.com/mobile"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Automations",
+                        "href": "https://cursor.com/automate"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "CLI",
+                        "href": "https://cursor.com/cli"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Marketplace ↗",
+                        "href": "https://cursor.com/marketplace"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Review",
+                        "href": "https://cursor.com/bugbot"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": ["nav__link"],
+                "text": "Enterprise",
+                "href": "https://cursor.com/enterprise"
+              },
+              {
+                "tag": "a",
+                "cls": ["nav__link"],
+                "text": "Pricing",
+                "href": "https://cursor.com/pricing"
+              },
+              {
+                "tag": "li",
+                "cls": ["relative"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": ["nav__btn"],
+                    "text": "Resources",
+                    "href": "https://cursor.com/changelog"
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "nav__sub-nav",
+                      "pt-v3/12",
+                      "absolute",
+                      "top-full",
+                      "left-0",
+                      "card",
+                      "card--sub-nav",
+                      "card--flyout",
+                      "type-sm",
+                      "shadow-[var(--shadow-flyout)]",
+                      "gap-x-g1",
+                      "grid",
+                      "grid-cols-[repeat(2,auto)]"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Changelog",
+                        "href": "https://cursor.com/changelog"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Blog",
+                        "href": "https://cursor.com/blog"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Docs",
+                        "href": "https://cursor.com/docs"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Community",
+                        "href": "https://cursor.com/community"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Help ↗",
+                        "href": "https://cursor.com/help"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Workshops",
+                        "href": "https://cursor.com/workshops"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Forum ↗",
+                        "href": "https://forum.cursor.com/"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["nav__sub-nav__link", "py-v2.5/12"],
+                        "text": "Careers",
+                        "href": "https://cursor.com/careers"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": [
+              "block",
+              "lg:hidden",
+              "col-start-4",
+              "col-end-[-1]",
+              "row-start-1",
+              "row-end-2",
+              "flex",
+              "items-center",
+              "justify-center",
+              "bg-theme-bg",
+              "px-g2",
+              "fixed",
+              "inset-0",
+              "z-50",
+              "flex",
+              "flex-col",
+              "overscroll-contain",
+              "transition-opacity",
+              "pointer-events-none",
+              "opacity-0",
+              "min-h-0",
+              "flex-1",
+              "overflow-y-auto",
+              "flex",
+              "flex-col"
+            ],
+            "ch": [
+              {
+                "tag": "a",
+                "cls": [
+                  "type-lg",
+                  "focus-visible:focus-visible",
+                  "py-v3/12",
+                  "block"
+                ],
+                "text": "Enterprise",
+                "href": "https://cursor.com/enterprise"
+              },
+              {
+                "tag": "a",
+                "cls": [
+                  "type-lg",
+                  "focus-visible:focus-visible",
+                  "py-v3/12",
+                  "block"
+                ],
+                "text": "Pricing",
+                "href": "https://cursor.com/pricing"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": [
+              "gap-g0.75",
+              "col-start-2",
+              "col-end-3",
+              "row-start-1",
+              "row-end-2",
+              "flex",
+              "items-center",
+              "justify-self-end",
+              "lg:col-start-3",
+              "lg:col-end-[-1]"
+            ],
+            "ch": [
+              {
+                "tag": "a",
+                "cls": ["btn--quinary"],
+                "text": "Sign in",
+                "href": "https://cursor.com/dashboard"
+              },
+              {
+                "tag": "a",
+                "cls": [
+                  "btn",
+                  "btn--ghost",
+                  "btn--sm",
+                  "hidden",
+                  "lg:inline-flex"
+                ],
+                "text": "ContactContact sales",
+                "href": "https://cursor.com/contact-sales?source=navbar"
+              },
+              {
+                "tag": "a",
+                "cls": ["btn", "btn--primary", "btn--sm", "max-sm:hidden"],
+                "text": "Download",
+                "href": "https://cursor.com/download"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "main",
+        "ch": [
+          {
+            "tag": "section",
+            "cls": [
+              "section",
+              "section--first-child",
+              "section--flush-bottom",
+              "bg-theme-bg",
+              "text-theme-text",
+              "container",
+              "grid-cursor",
+              "gap-y-0"
+            ],
+            "ch": [
+              {
+                "tag": "a",
+                "cls": [
+                  "card",
+                  "card--media",
+                  "card--feature",
+                  "flex",
+                  "h-full",
+                  "flex-col",
+                  "p-0"
+                ],
+                "href": "https://cursor.com/blog/joining-spacex",
+                "ch": [
+                  {
+                    "tag": "img",
+                    "cls": [
+                      "h-full",
+                      "w-full",
+                      "object-cover",
+                      "transition-opacity",
+                      "duration-[220ms]",
+                      "ease-[var(--ease-out-spring)]",
+                      "will-change-[opacity]",
+                      "opacity-0"
+                    ],
+                    "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fuploads%2Fclose-og-image-1-B5D1caLmbVsj0JInrL2qKgXzLPMGoU.png\u0026w=3840\u0026q=70",
+                    "alt": "Cursor is now a part of SpaceX"
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "card--media-content",
+                      "card--media-content-roomy",
+                      "card--media-content-roomy-featured-bottom",
+                      "flex",
+                      "grow",
+                      "flex-col"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "type-base",
+                          "text-theme-text-mid",
+                          "flex",
+                          "flex-wrap",
+                          "items-center",
+                          "gap-x-v2/12",
+                          "gap-y-v1/12"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "text": "Aug 14, 2026",
+                            "dt": "2026-08-14T12:00:00.000Z"
+                          },
+                          { "tag": "#text", "text": "· Company" }
+                        ]
+                      },
+                      {
+                        "tag": "p",
+                        "cls": [
+                          "type-md-lg",
+                          "text-theme-text",
+                          "mt-v2/12",
+                          "text-balance"
+                        ],
+                        "text": "Cursor is now a part of SpaceX"
+                      },
+                      {
+                        "tag": "p",
+                        "cls": [
+                          "type-base",
+                          "text-theme-text-sec",
+                          "mt-v4/12",
+                          "text-pretty"
+                        ],
+                        "text": "Cursor has officially been acquired by SpaceX."
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "mt-auto",
+                          "pt-v8/12",
+                          "@container",
+                          "flex",
+                          "flex-wrap",
+                          "items-center",
+                          "gap-x-v4/12",
+                          "gap-y-v3/12"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "-space-x-v3/12",
+                              "first:ml-0",
+                              "relative",
+                              "rounded-full",
+                              "avatar-border-container",
+                              "bg-theme-card-03-hex",
+                              "relative",
+                              "flex",
+                              "h-6",
+                              "w-6",
+                              "shrink-0",
+                              "items-center",
+                              "justify-center",
+                              "overflow-hidden"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": [
+                                  "h-full",
+                                  "w-full",
+                                  "object-cover",
+                                  "media-light"
+                                ],
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Favatar-circle-2d-dark.png\u0026w=48\u0026q=70"
+                              },
+                              {
+                                "tag": "img",
+                                "cls": [
+                                  "media-dark",
+                                  "absolute",
+                                  "inset-0",
+                                  "h-full",
+                                  "w-full",
+                                  "object-cover"
+                                ],
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Favatar-circle-2d-white.png\u0026w=48\u0026q=70"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "type-base",
+                              "text-theme-text-mid",
+                              "min-w-0"
+                            ],
+                            "text": "Cursor Team · 2m2 min read"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": [
+                  "col-span-full",
+                  "mt-g1",
+                  "lg:col-start-17",
+                  "lg:col-end-25",
+                  "lg:mt-0",
+                  "-mx-g2",
+                  "no-scrollbar",
+                  "snap-x",
+                  "snap-mandatory",
+                  "scroll-px-g2",
+                  "overflow-x-auto",
+                  "lg:mx-0",
+                  "lg:snap-none",
+                  "lg:scroll-px-0",
+                  "lg:overflow-visible",
+                  "flex",
+                  "w-max",
+                  "gap-g1",
+                  "px-g2",
+                  "lg:w-auto",
+                  "lg:px-0",
+                  "lg:flex-col"
+                ],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "card",
+                      "card--media",
+                      "card--feature",
+                      "flex",
+                      "h-full",
+                      "flex-col",
+                      "p-0"
+                    ],
+                    "href": "https://cursor.com/blog/grok-4-6",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "cls": [
+                          "h-full",
+                          "w-full",
+                          "object-cover",
+                          "transition-opacity",
+                          "duration-[220ms]",
+                          "ease-[var(--ease-out-spring)]",
+                          "will-change-[opacity]",
+                          "opacity-0"
+                        ],
+                        "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fopengraph-grok-4.6-hLYenupM05nNDPmiKtjOwjuyZBRvPl.png\u0026w=3840\u0026q=70",
+                        "alt": "Introducing Grok 4.6"
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "card--media-content",
+                          "card--media-content-roomy",
+                          "card--media-content-roomy-featured-bottom",
+                          "flex",
+                          "grow",
+                          "flex-col"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "type-base",
+                              "text-theme-text-mid",
+                              "flex",
+                              "flex-wrap",
+                              "items-center",
+                              "gap-x-v2/12",
+                              "gap-y-v1/12"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "time",
+                                "text": "Aug 12, 2026",
+                                "dt": "2026-08-12T00:00:00.000Z"
+                              },
+                              { "tag": "#text", "text": "· Research" }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": [
+                              "type-md",
+                              "text-theme-text",
+                              "mt-v2/12",
+                              "text-balance"
+                            ],
+                            "text": "Introducing Grok 4.6"
+                          },
+                          {
+                            "tag": "p",
+                            "cls": [
+                              "type-base",
+                              "text-theme-text-sec",
+                              "mt-v4/12",
+                              "text-pretty"
+                            ],
+                            "text": "Built for long-running agents and more ambitious interactive and visual work."
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "mt-auto",
+                              "pt-v8/12",
+                              "@container",
+                              "flex",
+                              "flex-wrap",
+                              "items-center",
+                              "gap-x-v4/12",
+                              "gap-y-v3/12"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "flex",
+                                  "-space-x-v3/12",
+                                  "first:ml-0",
+                                  "relative",
+                                  "rounded-full",
+                                  "avatar-border-container",
+                                  "bg-theme-card-03-hex",
+                                  "relative",
+                                  "flex",
+                                  "h-6",
+                                  "w-6",
+                                  "shrink-0",
+                                  "items-center",
+                                  "justify-center",
+                                  "overflow-hidden"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "h-full",
+                                      "w-full",
+                                      "object-cover",
+                                      "media-light"
+                                    ],
+                                    "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Favatar-circle-2d-dark.png\u0026w=48\u0026q=70"
+                                  },
+                                  {
+                                    "tag": "img",
+                                    "cls": [
+                                      "media-dark",
+                                      "absolute",
+                                      "inset-0",
+                                      "h-full",
+                                      "w-full",
+                                      "object-cover"
+                                    ],
+                                    "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Favatar-circle-2d-white.png\u0026w=48\u0026q=70"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "min-w-0"
+                                ],
+                                "text": "Cursor Team · 3m3 min read"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "card",
+                      "card--media",
+                      "card--feature",
+                      "flex",
+                      "h-full",
+                      "flex-col",
+                      "p-0"
+                    ],
+                    "href": "https://cursor.com/blog/git-at-any-scale",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "card--media-content",
+                          "card--media-content-roomy",
+                          "card--media-content-roomy-featured-bottom",
+                          "flex",
+                          "grow",
+                          "flex-col"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "type-base",
+                              "text-theme-text-mid",
+                              "flex",
+                              "flex-wrap",
+                              "items-center",
+                              "gap-x-v2/12",
+                              "gap-y-v1/12"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "time",
+                                "text": "Aug 18, 2026",
+                                "dt": "2026-08-18T12:00:00.000Z"
+                              },
+                              { "tag": "#text", "text": "· Research" }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": [
+                              "type-md",
+                              "text-theme-text",
+                              "mt-v2/12",
+                              "text-balance"
+                            ],
+                            "text": "Git at any scale"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "mt-auto",
+                              "pt-v3/12",
+                              "@container",
+                              "flex",
+                              "flex-wrap",
+                              "items-center",
+                              "gap-x-v4/12",
+                              "gap-y-v3/12"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "flex",
+                                  "-space-x-v3/12",
+                                  "first:ml-0",
+                                  "relative",
+                                  "rounded-full",
+                                  "avatar-border-container",
+                                  "bg-theme-card-03-hex",
+                                  "relative",
+                                  "flex",
+                                  "h-6",
+                                  "w-6",
+                                  "shrink-0",
+                                  "items-center",
+                                  "justify-center",
+                                  "overflow-hidden"
+                                ],
+                                "text": "VM"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "min-w-0"
+                                ],
+                                "text": "Vicent Martí · 27m27 min read"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "section",
+            "cls": ["section", "section--first-child"],
+            "ch": [
+              {
+                "tag": "div",
+                "cls": ["container", "grid-cursor", "col-span-full"],
+                "ch": [
+                  { "tag": "h1", "cls": ["sr-only"], "text": "Blog" },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "mb-v1",
+                      "hidden",
+                      "md:flex",
+                      "md:items-center",
+                      "md:justify-between",
+                      "md:gap-g1",
+                      "relative",
+                      "min-w-0",
+                      "md:flex-1",
+                      "no-scrollbar",
+                      "min-w-0",
+                      "overflow-x-auto",
+                      "type-base",
+                      "flex",
+                      "min-w-max",
+                      "items-center",
+                      "-mx-g1"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "py-v4/12",
+                          "whitespace-nowrap",
+                          "px-g1",
+                          "text-theme-text"
+                        ],
+                        "text": "All",
+                        "href": "https://cursor.com/blog"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "py-v4/12",
+                          "whitespace-nowrap",
+                          "px-g1",
+                          "capitalize",
+                          "text-theme-text",
+                          "opacity-50",
+                          "hover:opacity-100"
+                        ],
+                        "text": "product",
+                        "href": "https://cursor.com/blog/topic/product"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "py-v4/12",
+                          "whitespace-nowrap",
+                          "px-g1",
+                          "capitalize",
+                          "text-theme-text",
+                          "opacity-50",
+                          "hover:opacity-100"
+                        ],
+                        "text": "research",
+                        "href": "https://cursor.com/blog/topic/research"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "py-v4/12",
+                          "whitespace-nowrap",
+                          "px-g1",
+                          "capitalize",
+                          "text-theme-text",
+                          "opacity-50",
+                          "hover:opacity-100"
+                        ],
+                        "text": "company",
+                        "href": "https://cursor.com/blog/topic/company"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "py-v4/12",
+                          "whitespace-nowrap",
+                          "px-g1",
+                          "capitalize",
+                          "text-theme-text",
+                          "opacity-50",
+                          "hover:opacity-100"
+                        ],
+                        "text": "ideas",
+                        "href": "https://cursor.com/blog/topic/ideas"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "py-v4/12",
+                          "whitespace-nowrap",
+                          "px-g1",
+                          "capitalize",
+                          "text-theme-text",
+                          "opacity-50",
+                          "hover:opacity-100"
+                        ],
+                        "text": "customers",
+                        "href": "https://cursor.com/blog/topic/customers"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "blog-directory",
+                      "card-border",
+                      "bg-theme-card-hex",
+                      "overflow-hidden",
+                      "rounded-xs"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v9/12"
+                        ],
+                        "href": "https://cursor.com/blog/projects",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Sep 10, 2026",
+                                    "dt": "2026-09-10T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· product" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Introducing Projects"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Alexi \u0026 Fredrika"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "5m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Alexi \u0026 Fredrika·5m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/self-hosted-machines",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Sep 2, 2026",
+                                    "dt": "2026-09-02T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· product" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Run cloud agents on machines you manage"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Jack Pertschuk"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "6m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Jack Pertschuk·6m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/git-at-any-scale",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Aug 18, 2026",
+                                    "dt": "2026-08-18T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· research" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Git at any scale"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Vicent Martí"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "27m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Vicent Martí·27m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/joining-spacex",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Aug 14, 2026",
+                                    "dt": "2026-08-14T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· company" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Cursor is now a part of SpaceX"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Cursor Team"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "2m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Cursor Team·2m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/firetiger",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Aug 13, 2026",
+                                    "dt": "2026-08-13T19:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· company" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Firetiger joins Cursor"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Maxime Prades"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "2m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Maxime Prades·2m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/aiuc-1",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Aug 13, 2026",
+                                    "dt": "2026-08-13T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· company" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Cursor earns AIUC-1 certification for agent security and reliability"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Kenneth Moras"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "4m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Kenneth Moras·4m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/builds",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Aug 13, 2026",
+                                    "dt": "2026-08-13T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· product" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Cloud agents start 3x faster with builds"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Cursor Team"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "4m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Cursor Team·4m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/grok-4-6",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Aug 12, 2026",
+                                    "dt": "2026-08-12T00:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· research" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Introducing Grok 4.6"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Cursor Team"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "3m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Cursor Team·3m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/how-cursor-router-works",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Aug 6, 2026",
+                                    "dt": "2026-08-06T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· research" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "How Cursor Router chooses the right model for the task"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Connor \u0026 Yuri"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "6m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Connor \u0026 Yuri·6m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/mixture-of-kittens",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Aug 4, 2026",
+                                    "dt": "2026-08-04T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· research" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Mixture-of-Kittens: our open-source MoE megakernel for NVL72s"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Stuart, Nash, Henry, William \u0026 Federico"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "28m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Stuart, Nash, Henry, William \u0026 Federico·28m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/cloud-agent-environment",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Jul 30, 2026",
+                                    "dt": "2026-07-30T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· research" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "How we set up our cloud agent environment"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Mathew \u0026 Arvind"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "7m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Mathew \u0026 Arvind·7m"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ],
+                        "href": "https://cursor.com/blog/cursor-start-india",
+                        "ch": [
+                          {
+                            "tag": "article",
+                            "cls": [
+                              "grid",
+                              "grid-cols-1",
+                              "items-start",
+                              "gap-x-g1",
+                              "md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)]",
+                              "lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)]",
+                              "xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "xl:col-start-1"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "time",
+                                    "text": "Jul 28, 2026",
+                                    "dt": "2026-07-28T12:00:00.000Z"
+                                  },
+                                  { "tag": "#text", "text": "· product" }
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2",
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Introducing Cursor Start"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-4",
+                                  "xl:block",
+                                  "xl:min-w-0"
+                                ],
+                                "text": "Cursor Team"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-tertiary",
+                                  "hidden",
+                                  "self-start",
+                                  "xl:col-start-5",
+                                  "xl:block",
+                                  "xl:text-right"
+                                ],
+                                "text": "3m"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-pretty",
+                                  "mt-v6/12",
+                                  "flex",
+                                  "flex-wrap",
+                                  "items-start",
+                                  "gap-x-v2/12",
+                                  "gap-y-v1/12",
+                                  "self-start",
+                                  "md:col-start-2",
+                                  "md:mt-0",
+                                  "md:min-w-0",
+                                  "xl:hidden"
+                                ],
+                                "text": "Cursor Team·3m"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": ["mt-v1", "[\u0026\u003e*:last-child]:!mb-0"],
+                "ch": [
+                  {
+                    "tag": "section",
+                    "cls": [
+                      "bg-theme-bg",
+                      "text-theme-text",
+                      "my-v6",
+                      "container",
+                      "mx-auto",
+                      "max-w-[48rem]",
+                      "flex",
+                      "flex-col",
+                      "items-center",
+                      "text-center"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "blockquote",
+                        "cls": ["type-md-lg", "text-balance", "md:type-lg"],
+                        "text": "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”"
+                      },
+                      {
+                        "tag": "figcaption",
+                        "cls": [
+                          "type-base",
+                          "text-theme-text-sec",
+                          "mt-v1",
+                          "flex",
+                          "flex-wrap",
+                          "items-center",
+                          "justify-center",
+                          "gap-y-v1/12",
+                          "text-center"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "#text",
+                            "text": "From “Towards self-driving codebases”"
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "ml-[0.625em]",
+                              "text-theme-accent",
+                              "hover:text-theme-accent/80"
+                            ],
+                            "text": "Read more →",
+                            "href": "https://cursor.com/blog/self-driving-codebases"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "section",
+                    "cls": [
+                      "bg-theme-bg",
+                      "text-theme-text",
+                      "my-v4.5",
+                      "container"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "h2",
+                        "cls": ["type-md", "text-theme-text", "mb-v1"],
+                        "text": "Customer stories"
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "-mx-g2",
+                          "no-scrollbar",
+                          "snap-x",
+                          "snap-mandatory",
+                          "scroll-px-g2",
+                          "overflow-x-auto",
+                          "lg:mx-0",
+                          "lg:snap-none",
+                          "lg:scroll-px-0",
+                          "lg:overflow-visible",
+                          "flex",
+                          "w-max",
+                          "gap-g1",
+                          "px-g2",
+                          "lg:grid",
+                          "lg:w-full",
+                          "lg:grid-cols-3",
+                          "lg:px-0",
+                          "xl:grid-cols-4"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "items-stretch",
+                              "pb-g2",
+                              "flex-col",
+                              "gap-0"
+                            ],
+                            "href": "https://cursor.com/blog/grab",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "flex",
+                                  "min-w-0",
+                                  "flex-1",
+                                  "flex-col"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "p",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text",
+                                      "text-pretty"
+                                    ],
+                                    "text": "How Grab put Cursor in the hands of Design, Ops, and Engineering"
+                                  },
+                                  {
+                                    "tag": "time",
+                                    "cls": ["type-base"],
+                                    "text": "Sep 15, 2026",
+                                    "dt": "2026-09-15T12:00:00.000Z"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "items-stretch",
+                              "pb-g2",
+                              "flex-col",
+                              "gap-0"
+                            ],
+                            "href": "https://cursor.com/blog/basis",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "flex",
+                                  "min-w-0",
+                                  "flex-1",
+                                  "flex-col"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "p",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text",
+                                      "text-pretty"
+                                    ],
+                                    "text": "How Basis builds long-horizon accounting agents with Cursor"
+                                  },
+                                  {
+                                    "tag": "time",
+                                    "cls": ["type-base"],
+                                    "text": "Sep 4, 2026",
+                                    "dt": "2026-09-04T12:00:00.000Z"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "items-stretch",
+                              "pb-g2",
+                              "flex-col",
+                              "gap-0"
+                            ],
+                            "href": "https://cursor.com/blog/nokia",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "flex",
+                                  "min-w-0",
+                                  "flex-1",
+                                  "flex-col"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "p",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text",
+                                      "text-pretty"
+                                    ],
+                                    "text": "Nokia analyzes 50M+ lines of code in two weeks with Cursor"
+                                  },
+                                  {
+                                    "tag": "time",
+                                    "cls": ["type-base"],
+                                    "text": "Sep 2, 2026",
+                                    "dt": "2026-09-02T12:00:00.000Z"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "items-stretch",
+                              "pb-g2",
+                              "flex-col",
+                              "gap-0"
+                            ],
+                            "href": "https://cursor.com/blog/imdex",
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "flex",
+                                  "min-w-0",
+                                  "flex-1",
+                                  "flex-col"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "p",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text",
+                                      "text-pretty"
+                                    ],
+                                    "text": "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years"
+                                  },
+                                  {
+                                    "tag": "time",
+                                    "cls": ["type-base"],
+                                    "text": "Aug 25, 2026",
+                                    "dt": "2026-08-25T12:00:00.000Z"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["btn-text", "mt-v9/12", "inline-flex"],
+                        "text": "View all stories →",
+                        "href": "https://cursor.com/blog/topic/customers"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "section",
+                    "cls": [
+                      "bg-theme-bg",
+                      "text-theme-text",
+                      "my-v4.5",
+                      "container"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "h2",
+                        "cls": ["type-md", "text-theme-text", "mb-v1"],
+                        "text": "Press"
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "-mx-g2",
+                          "no-scrollbar",
+                          "snap-x",
+                          "snap-mandatory",
+                          "scroll-px-g2",
+                          "overflow-x-auto",
+                          "lg:mx-0",
+                          "lg:snap-none",
+                          "lg:scroll-px-0",
+                          "lg:overflow-visible",
+                          "flex",
+                          "w-max",
+                          "gap-g1",
+                          "px-g2",
+                          "lg:grid",
+                          "lg:w-full",
+                          "lg:auto-rows-fr",
+                          "lg:grid-cols-3",
+                          "lg:px-0",
+                          "xl:grid-cols-4"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ],
+                            "href": "https://thenewstack.io/cursor-open-sources-security-agents/",
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Cursor built a fleet of security agents to solve a familiar frustration"
+                              },
+                              {
+                                "tag": "time",
+                                "cls": ["type-base"],
+                                "text": "Mar 16, 2026",
+                                "dt": "2026-03-16T00:00:00.000Z"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-accent",
+                                  "mt-auto",
+                                  "pt-v8/12",
+                                  "flex",
+                                  "items-center",
+                                  "gap-x-v4/12"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": ["object-cover"],
+                                    "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fthenewstack.png\u0026w=3840\u0026q=70"
+                                  },
+                                  {
+                                    "tag": "#text",
+                                    "text": "Read on The New Stack ↗"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ],
+                            "href": "https://techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding/",
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Cursor is rolling out a new kind of agentic coding tool"
+                              },
+                              {
+                                "tag": "time",
+                                "cls": ["type-base"],
+                                "text": "Mar 5, 2026",
+                                "dt": "2026-03-05T00:00:00.000Z"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-accent",
+                                  "mt-auto",
+                                  "pt-v8/12",
+                                  "flex",
+                                  "items-center",
+                                  "gap-x-v4/12"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": ["object-cover"],
+                                    "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Ftechcrunch-2.png\u0026w=3840\u0026q=70"
+                                  },
+                                  {
+                                    "tag": "#text",
+                                    "text": "Read on TechCrunch ↗"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ],
+                            "href": "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion",
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
+                              },
+                              {
+                                "tag": "time",
+                                "cls": ["type-base"],
+                                "text": "Mar 2, 2026",
+                                "dt": "2026-03-02T00:00:00.000Z"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-accent",
+                                  "mt-auto",
+                                  "pt-v8/12",
+                                  "flex",
+                                  "items-center",
+                                  "gap-x-v4/12"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": ["object-cover"],
+                                    "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fbloomberg.png\u0026w=3840\u0026q=70"
+                                  },
+                                  {
+                                    "tag": "#text",
+                                    "text": "Read on Bloomberg ↗"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ],
+                            "href": "https://www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html",
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ],
+                                "text": "Cursor announces major update to AI agents as coding tool battle heats up"
+                              },
+                              {
+                                "tag": "time",
+                                "cls": ["type-base"],
+                                "text": "Feb 24, 2026",
+                                "dt": "2026-02-24T00:00:00.000Z"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-accent",
+                                  "mt-auto",
+                                  "pt-v8/12",
+                                  "flex",
+                                  "items-center",
+                                  "gap-x-v4/12"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": ["object-cover"],
+                                    "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fcnbc.png\u0026w=3840\u0026q=70"
+                                  },
+                                  { "tag": "#text", "text": "Read on CNBC ↗" }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["btn-text", "mt-v9/12", "inline-flex"],
+                        "text": "View all press →",
+                        "href": "https://cursor.com/blog/topic/press"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "section",
+                    "cls": [
+                      "bg-theme-bg",
+                      "text-theme-text",
+                      "my-v4.5",
+                      "container"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "h2",
+                        "cls": ["type-md", "text-theme-text", "mb-v1"],
+                        "text": "Videos"
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "-mx-g2",
+                          "no-scrollbar",
+                          "snap-x",
+                          "snap-mandatory",
+                          "scroll-px-g2",
+                          "overflow-x-auto",
+                          "lg:mx-0",
+                          "lg:snap-none",
+                          "lg:scroll-px-0",
+                          "lg:overflow-visible",
+                          "flex",
+                          "w-max",
+                          "gap-g1",
+                          "px-g2",
+                          "lg:grid",
+                          "lg:w-full",
+                          "lg:grid-cols-3",
+                          "lg:px-0",
+                          "xl:grid-cols-4"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--media",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "p-0"
+                            ],
+                            "href": "https://youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei",
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": ["object-cover"],
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FXbZvC4KTH68%2Fmaxresdefault.jpg\u0026w=3840\u0026q=80",
+                                "alt": "Cursor now shows you demos, not diffs"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "stack-sm",
+                                  "card--media-content",
+                                  "card--media-content-roomy",
+                                  "card--media-content-roomy-tight-top",
+                                  "flex",
+                                  "grow-1",
+                                  "flex-col"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "p",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text",
+                                      "text-pretty"
+                                    ],
+                                    "text": "Cursor now shows you demos, not diffs"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text-mid",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "flex",
+                                      "flex-wrap",
+                                      "items-center",
+                                      "gap-x-v2/12",
+                                      "gap-y-v1/12"
+                                    ],
+                                    "text": "1:43"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-accent",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "mt-auto",
+                                      "pt-v8/12"
+                                    ],
+                                    "text": "Watch on YouTube ↗"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--media",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "p-0"
+                            ],
+                            "href": "https://youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY",
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": ["object-cover"],
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F29BYxvvF1iM%2Fmaxresdefault.jpg\u0026w=3840\u0026q=80",
+                                "alt": "John Schulman on dead ends, scaling RL, and building research institutions"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "stack-sm",
+                                  "card--media-content",
+                                  "card--media-content-roomy",
+                                  "card--media-content-roomy-tight-top",
+                                  "flex",
+                                  "grow-1",
+                                  "flex-col"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "p",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text",
+                                      "text-pretty"
+                                    ],
+                                    "text": "John Schulman on dead ends, scaling RL, and building research institutions"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text-mid",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "flex",
+                                      "flex-wrap",
+                                      "items-center",
+                                      "gap-x-v2/12",
+                                      "gap-y-v1/12"
+                                    ],
+                                    "text": "51:26"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-accent",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "mt-auto",
+                                      "pt-v8/12"
+                                    ],
+                                    "text": "Watch on YouTube ↗"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--media",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "p-0"
+                            ],
+                            "href": "https://youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk",
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": ["object-cover"],
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FTQhv6Wol6Ns%2Fmaxresdefault.jpg\u0026w=3840\u0026q=80",
+                                "alt": "Our designer built an operating system with Cursor"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "stack-sm",
+                                  "card--media-content",
+                                  "card--media-content-roomy",
+                                  "card--media-content-roomy-tight-top",
+                                  "flex",
+                                  "grow-1",
+                                  "flex-col"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "p",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text",
+                                      "text-pretty"
+                                    ],
+                                    "text": "Our designer built an operating system with Cursor"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text-mid",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "flex",
+                                      "flex-wrap",
+                                      "items-center",
+                                      "gap-x-v2/12",
+                                      "gap-y-v1/12"
+                                    ],
+                                    "text": "50:15"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-accent",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "mt-auto",
+                                      "pt-v8/12"
+                                    ],
+                                    "text": "Watch on YouTube ↗"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--media",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "p-0"
+                            ],
+                            "href": "https://youtu.be/IccjZDV93lw?si=f3mepO4Ptiqdg4F8",
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": ["object-cover"],
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FIccjZDV93lw%2Fmaxresdefault.jpg\u0026w=3840\u0026q=80",
+                                "alt": "AI Foundations: Introduction"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "stack-sm",
+                                  "card--media-content",
+                                  "card--media-content-roomy",
+                                  "card--media-content-roomy-tight-top",
+                                  "flex",
+                                  "grow-1",
+                                  "flex-col"
+                                ],
+                                "ch": [
+                                  {
+                                    "tag": "p",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text",
+                                      "text-pretty"
+                                    ],
+                                    "text": "AI Foundations: Introduction"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text-mid",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "flex",
+                                      "flex-wrap",
+                                      "items-center",
+                                      "gap-x-v2/12",
+                                      "gap-y-v1/12"
+                                    ],
+                                    "text": "4:03"
+                                  },
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-accent",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "mt-auto",
+                                      "pt-v8/12"
+                                    ],
+                                    "text": "Watch on YouTube ↗"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["btn-text", "mt-v9/12", "inline-flex"],
+                        "text": "Visit our YouTube channel ↗",
+                        "href": "https://www.youtube.com/@cursor_ai"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "section",
+                    "cls": [
+                      "bg-theme-bg",
+                      "text-theme-text",
+                      "my-v4.5",
+                      "container"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "h2",
+                        "cls": ["text-theme-text", "mb-v1", "type-md"],
+                        "text": "Changelog"
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "-mx-g2",
+                          "no-scrollbar",
+                          "snap-x",
+                          "snap-mandatory",
+                          "scroll-px-g2",
+                          "overflow-x-auto",
+                          "lg:mx-0",
+                          "lg:snap-none",
+                          "lg:scroll-px-0",
+                          "lg:overflow-visible",
+                          "flex",
+                          "w-max",
+                          "gap-g1",
+                          "px-g2",
+                          "lg:grid",
+                          "lg:w-full",
+                          "lg:grid-cols-3",
+                          "lg:px-0",
+                          "xl:grid-cols-4"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ],
+                            "href": "https://cursor.com/changelog/projects",
+                            "ch": [
+                              {
+                                "tag": "time",
+                                "cls": ["type-base"],
+                                "text": "Sep 10, 2026",
+                                "dt": "2026-09-10T00:00:00.000Z"
+                              },
+                              {
+                                "tag": "p",
+                                "cls": ["type-base", "text-theme-text"],
+                                "text": "Cursor Projects"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ],
+                            "href": "https://cursor.com/changelog/self-hosted-machines",
+                            "ch": [
+                              {
+                                "tag": "time",
+                                "cls": ["type-base"],
+                                "text": "Sep 2, 2026",
+                                "dt": "2026-09-02T00:00:00.000Z"
+                              },
+                              {
+                                "tag": "p",
+                                "cls": ["type-base", "text-theme-text"],
+                                "text": "Self-hosted machines"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ],
+                            "href": "https://cursor.com/changelog/start-from-scratch",
+                            "ch": [
+                              {
+                                "tag": "time",
+                                "cls": ["type-base"],
+                                "text": "Aug 27, 2026",
+                                "dt": "2026-08-27T00:00:00.000Z"
+                              },
+                              {
+                                "tag": "p",
+                                "cls": ["type-base", "text-theme-text"],
+                                "text": "Start from scratch, without a repo"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ],
+                            "href": "https://cursor.com/changelog/08-19-26",
+                            "ch": [
+                              {
+                                "tag": "time",
+                                "cls": ["type-base"],
+                                "text": "Aug 19, 2026",
+                                "dt": "2026-08-19T00:00:00.000Z"
+                              },
+                              {
+                                "tag": "p",
+                                "cls": ["type-base", "text-theme-text"],
+                                "text": "Cloud Agents and Cursor Harness Improvements"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": ["btn-text", "mt-v9/12", "inline-flex"],
+                        "text": "See what's new in Cursor →",
+                        "href": "https://cursor.com/changelog"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "section",
+            "cls": [
+              "section",
+              "bg-theme-bg",
+              "text-theme-text",
+              "section--headline",
+              "container",
+              "text-center",
+              "mx-auto",
+              "max-w-prose-medium-wide"
+            ],
+            "ch": [
+              {
+                "tag": "h2",
+                "cls": [
+                  "type-xl",
+                  "sm:type-2xl",
+                  "text-balance",
+                  "mx-auto",
+                  "mb-v1"
+                ],
+                "text": "Get started with Cursor."
+              },
+              {
+                "tag": "div",
+                "cls": ["flex", "justify-center", "gap-x-g1", "items-center"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": ["btn"],
+                    "href": "https://cursor.com/download",
+                    "ch": [
+                      { "tag": "#text", "text": "Download" },
+                      { "tag": "div", "cls": ["btn-icon"], "text": "⤓" }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["btn", "btn--secondary"],
+                    "text": "Contact Sales",
+                    "href": "https://cursor.com/contact-sales?source=blog_footer"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "footer",
+        "cls": [
+          "pt-v3",
+          "pb-v3",
+          "md:pb-g3",
+          "px-g2",
+          "bg-theme-card-hex",
+          "relative"
+        ],
+        "ch": [
+          {
+            "tag": "div",
+            "cls": [
+              "mb-v4.5",
+              "container",
+              "gap-x-g1",
+              "gap-y-v2",
+              "grid",
+              "grid-cols-2",
+              "md:grid-cols-5"
+            ],
+            "ch": [
+              {
+                "tag": "div",
+                "ch": [
+                  {
+                    "tag": "h3",
+                    "cls": [
+                      "type-base",
+                      "md:type-sm",
+                      "text-theme-text-sec",
+                      "pb-v2.5/12"
+                    ],
+                    "text": "Product"
+                  },
+                  {
+                    "tag": "ul",
+                    "cls": ["space-y-0"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Agents",
+                        "href": "https://cursor.com/en-US/product"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Teams",
+                        "href": "https://cursor.com/en-US/business/teams"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Enterprise",
+                        "href": "https://cursor.com/en-US/enterprise"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Pricing",
+                        "href": "https://cursor.com/en-US/pricing"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Code Review",
+                        "href": "https://cursor.com/en-US/bugbot"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "CLI",
+                        "href": "https://cursor.com/en-US/cli"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Cloud Agents",
+                        "href": "https://cursor.com/agents"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Composer",
+                        "href": "https://cursor.com/en-US/composer"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Marketplace ↗",
+                        "href": "https://cursor.com/marketplace"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "ch": [
+                  {
+                    "tag": "h3",
+                    "cls": [
+                      "type-base",
+                      "md:type-sm",
+                      "text-theme-text-sec",
+                      "pb-v2.5/12"
+                    ],
+                    "text": "Resources"
+                  },
+                  {
+                    "tag": "ul",
+                    "cls": ["space-y-0"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Download",
+                        "href": "https://cursor.com/en-US/download"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Changelog",
+                        "href": "https://cursor.com/en-US/changelog"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Docs",
+                        "href": "https://cursor.com/docs"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Learn ↗",
+                        "href": "https://cursor.com/learn"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Value Calculator",
+                        "href": "https://cursor.com/en-US/cost-savings"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Forum ↗",
+                        "href": "https://forum.cursor.com/"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Help ↗",
+                        "href": "https://cursor.com/help"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Workshops",
+                        "href": "https://cursor.com/en-US/workshops"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Status ↗",
+                        "href": "https://status.cursor.com/"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "ch": [
+                  {
+                    "tag": "h3",
+                    "cls": [
+                      "type-base",
+                      "md:type-sm",
+                      "text-theme-text-sec",
+                      "pb-v2.5/12"
+                    ],
+                    "text": "Company"
+                  },
+                  {
+                    "tag": "ul",
+                    "cls": ["space-y-0"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Careers",
+                        "href": "https://cursor.com/en-US/careers"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Blog",
+                        "href": "https://cursor.com/en-US/blog"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Community",
+                        "href": "https://cursor.com/en-US/community"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Students",
+                        "href": "https://cursor.com/en-US/students"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Brand",
+                        "href": "https://cursor.com/en-US/brand"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Future",
+                        "href": "https://cursor.com/en-US/future"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Anysphere ↗",
+                        "href": "https://anysphere.inc/"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "ch": [
+                  {
+                    "tag": "h3",
+                    "cls": [
+                      "type-base",
+                      "md:type-sm",
+                      "text-theme-text-sec",
+                      "pb-v2.5/12"
+                    ],
+                    "text": "Legal"
+                  },
+                  {
+                    "tag": "ul",
+                    "cls": ["space-y-0"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Terms of Service",
+                        "href": "https://cursor.com/en-US/terms-of-service"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Acceptable Use Policy",
+                        "href": "https://cursor.com/en-US/acceptable-use-policy"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Grok Bot Terms",
+                        "href": "https://cursor.com/en-US/terms/grok-bot"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Privacy Policy",
+                        "href": "https://cursor.com/en-US/privacy"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Data Use",
+                        "href": "https://cursor.com/en-US/data-use"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "Security",
+                        "href": "https://cursor.com/en-US/security"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "ch": [
+                  {
+                    "tag": "h3",
+                    "cls": [
+                      "type-base",
+                      "md:type-sm",
+                      "text-theme-text-sec",
+                      "pb-v2.5/12"
+                    ],
+                    "text": "Connect"
+                  },
+                  {
+                    "tag": "ul",
+                    "cls": ["space-y-0"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "X ↗",
+                        "href": "https://x.com/cursor_ai"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "LinkedIn ↗",
+                        "href": "https://www.linkedin.com/company/cursorai"
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "type-base",
+                          "md:type-sm",
+                          "py-v2.5/12",
+                          "footer-link",
+                          "inline-block",
+                          "hover:text-theme-text",
+                          "group"
+                        ],
+                        "text": "YouTube ↗",
+                        "href": "https://www.youtube.com/@cursor_ai"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": [
+              "gap-v2",
+              "container",
+              "flex",
+              "flex-col",
+              "items-start",
+              "justify-between",
+              "md:flex-row",
+              "md:items-center",
+              "text-theme-text-sec",
+              "gap-g1.5",
+              "flex",
+              "items-center"
+            ],
+            "ch": [
+              {
+                "tag": "small",
+                "cls": ["type-base", "md:type-sm"],
+                "ch": [
+                  { "tag": "#text", "text": "© 2026" },
+                  {
+                    "tag": "a",
+                    "cls": ["hover:text-theme-text", "active:text-theme-text"],
+                    "text": "Anysphere, Inc.",
+                    "href": "https://anysphere.inc"
+                  }
+                ]
+              },
+              {
+                "tag": "small",
+                "cls": ["type-base", "md:type-sm"],
+                "ch": [
+                  { "tag": "#text", "text": "🛡" },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "hover:text-theme-text",
+                      "active:text-theme-text",
+                      "inline"
+                    ],
+                    "text": "SOC 2 | ISO27001 | ISO42001 | AIUC-1 Certified",
+                    "href": "https://cursor.com/en-US/security"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
