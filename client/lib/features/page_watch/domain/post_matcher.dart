@@ -100,6 +100,11 @@ class SelectorStep {
 /// are most of its children. Others, such as a sidebar widget or a grid of
 /// several posts, do not reduce the classes. If the shared classes still
 /// match such a sibling, the step keeps all classes of [node].
+///
+/// When [node] has no such siblings but is the only content with text of its
+/// parent, such as a link in a table row next to a spacer image, the parent
+/// is what repeats. In that case, the step of the nearest such ancestor that
+/// has siblings of its shape is generalized instead of the last one.
 List<SelectorStep> buildSelector(
   PageNode ancestor,
   PageNode node, {
@@ -115,11 +120,30 @@ List<SelectorStep> buildSelector(
               2 >=
           max(a.children.length, b.children.length);
 
+  bool hasSameShapeSibling(PageNode n) =>
+      n.parent!.children.any((s) => !identical(s, n) && isSameShape(n, s));
+
+  // The node whose step is generalized.
+  PageNode? general;
+  if (generalize) {
+    general = node;
+    while (!hasSameShapeSibling(general!) &&
+        !identical(general.parent, ancestor) &&
+        general.parent!.children.every(
+          (c) => identical(c, general) || c.textContent.isEmpty,
+        )) {
+      general = general.parent;
+    }
+    if (!hasSameShapeSibling(general)) {
+      general = node;
+    }
+  }
+
   final steps = <SelectorStep>[];
   for (var n = node; !identical(n, ancestor); n = n.parent!) {
-    final isLast = steps.isEmpty;
+    final isGeneral = identical(n, general);
     var step = SelectorStep(tag: n.tag, classes: n.classes);
-    if (isLast && generalize) {
+    if (isGeneral) {
       final siblings = n.parent!.children;
       final shared = SelectorStep(
         tag: n.tag,
@@ -137,7 +161,7 @@ List<SelectorStep> buildSelector(
     }
     final matches = n.parent!.children.where(step.matches).toList();
     steps.add(
-      matches.length > 1 && !(isLast && generalize)
+      matches.length > 1 && !isGeneral
           ? SelectorStep(
               tag: n.tag,
               classes: n.classes,
