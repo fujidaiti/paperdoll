@@ -99,11 +99,9 @@ class const _Annotator({required final PageDocument document})
 class _AnnotatorState extends State<_Annotator> {
   final _groups = <_Group>[];
   var _nextGroupNumber = 1;
-  PageNode? _selected;
 
-  /// The content the user tapped last. The selection can be narrowed back
-  /// down to it after being widened.
-  PageNode? _tapped;
+  /// The element shown on the selection sheet, while the sheet is open.
+  PageNode? _selected;
 
   PageDocument get _document => widget.document;
 
@@ -162,8 +160,6 @@ class _AnnotatorState extends State<_Annotator> {
     setState(() {
       _nextGroupNumber++;
       _groups.add(_Group(number: number, matcher: matcher));
-      _selected = null;
-      _tapped = null;
     });
   }
 
@@ -178,26 +174,35 @@ class _AnnotatorState extends State<_Annotator> {
     }
     setState(() {
       group.matcher = matcher;
-      _selected = null;
-      _tapped = null;
     });
   }
 
   void _removeGroup(_Group group) {
-    setState(() {
-      _groups.remove(group);
-      _selected = null;
-      _tapped = null;
-    });
+    setState(() => _groups.remove(group));
   }
 
-  void _onTapBlock(PageNode node, _Marks marks) {
+  Future<void> _onTapBlock(PageNode node, _Marks marks) async {
     // A tap inside a post selects the post.
     final target = marks.enclosingPost(node) ?? node;
-    setState(() {
-      _selected = identical(_selected, target) ? null : target;
-      _tapped = _selected;
-    });
+    setState(() => _selected = target);
+    await showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      // Keeps the selected area visible above the sheet.
+      barrierColor: Colors.transparent,
+      builder: (context) => _SelectionSheet(
+        tapped: target,
+        marks: marks,
+        rejectionOf: (node) => _postRejection(node, marks),
+        onSelect: (node) => setState(() => _selected = node),
+        onMarkAsPost: (node) => unawaited(_markAsPost(node)),
+        onEditGroup: (group, post) => unawaited(_editGroup(group, post)),
+        onRemoveGroup: _removeGroup,
+      ),
+    );
+    if (mounted) {
+      setState(() => _selected = null);
+    }
   }
 
   void _showPreview() {
@@ -256,7 +261,7 @@ class _AnnotatorState extends State<_Annotator> {
               child: PageBlock(
                 node: _document.root,
                 areas: areas,
-                onTap: (node) => _onTapBlock(node, marks),
+                onTap: (node) => unawaited(_onTapBlock(node, marks)),
                 // A post needs a link and a text for its title, and the whole
                 // page cannot be a post.
                 tappable: (node) =>
@@ -266,76 +271,129 @@ class _AnnotatorState extends State<_Annotator> {
               ),
             ),
           ),
-          if (_selected != null || _groups.isNotEmpty) ...[
-            const AppDivider(),
-            SafeArea(
-              top: false,
-              child: Padding(
-                padding: const EdgeInsets.all(spacingMd),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: _buildPanel(marks),
-                ),
-              ),
-            ),
-          ],
+          _StatusFooter(
+            groupCount: _groups.length,
+            postCount: marks.posts.length,
+          ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildPanel(_Marks marks) {
-    final selected = _selected;
-    if (selected == null) {
-      return CaptionText(
-        '${_groups.length} group(s), ${marks.posts.length} post(s) found.',
-      );
-    }
-    final group = marks.posts[selected.id];
-    final rejection = group == null ? _postRejection(selected, marks) : null;
-    // A post is selected as a whole, and the whole page cannot be a post.
-    final narrower = group == null ? narrowTowards(selected, _tapped) : null;
-    final wider = selected.parent?.parent == null ? null : selected.parent;
+/// How many groups and posts the page has so far.
+class const _StatusFooter({
+  required final int groupCount,
+  required final int postCount,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SelectionHeader(
-          selected: selected,
-          onNarrow: narrower == null
-              ? null
-              : () => setState(() => _selected = narrower),
-          onWiden: wider == null
-              ? null
-              : () => setState(() => _selected = wider),
-        ),
-        const Gap(spacingSm),
-        if (group != null)
-          Row(
-            children: [
-              Expanded(child: BodyText('A post of group ${group.number}.')),
-              TextButton(
-                onPressed: () => _removeGroup(group),
-                child: const Text('Remove group'),
+        const AppDivider(),
+        SafeArea(
+          top: false,
+          child: Padding(
+            padding: const EdgeInsets.all(spacingMd),
+            child: SizedBox(
+              width: double.infinity,
+              child: CaptionText(
+                '$groupCount group(s), $postCount post(s) found.',
               ),
-              const Gap(spacingSm),
-              FilledButton(
-                onPressed: () => unawaited(_editGroup(group, selected)),
-                child: const Text('Edit fields'),
-              ),
-            ],
-          )
-        else if (rejection != null)
-          CaptionText(rejection)
-        else
-          Align(
-            alignment: Alignment.centerRight,
-            child: FilledButton(
-              onPressed: () => unawaited(_markAsPost(selected)),
-              child: const Text('Mark as post'),
             ),
           ),
+        ),
       ],
+    );
+  }
+}
+
+/// What the selected element holds and what can be done with it. The
+/// selection starts at [tapped], and can be widened to the elements around it
+/// and narrowed back down to [tapped].
+class const _SelectionSheet({
+  required final PageNode tapped,
+  required final _Marks marks,
+  required final String? Function(PageNode node) rejectionOf,
+  required final void Function(PageNode node) onSelect,
+  required final void Function(PageNode node) onMarkAsPost,
+  required final void Function(_Group group, PageNode post) onEditGroup,
+  required final void Function(_Group group) onRemoveGroup,
+}) extends StatefulWidget {
+  @override
+  State<_SelectionSheet> createState() => _SelectionSheetState();
+}
+
+class _SelectionSheetState extends State<_SelectionSheet> {
+  late var _selected = widget.tapped;
+
+  void _select(PageNode node) {
+    setState(() => _selected = node);
+    widget.onSelect(node);
+  }
+
+  /// Closes the sheet and then runs [action].
+  void _closeThen(VoidCallback action) {
+    Navigator.pop(context);
+    action();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final selected = _selected;
+    final group = widget.marks.posts[selected.id];
+    final rejection = group == null ? widget.rejectionOf(selected) : null;
+    // A post is selected as a whole, and the whole page cannot be a post.
+    final narrower = group == null
+        ? narrowTowards(selected, widget.tapped)
+        : null;
+    final wider = selected.parent?.parent == null ? null : selected.parent;
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(spacingMd, 0, spacingMd, spacingMd),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SelectionHeader(
+              selected: selected,
+              onNarrow: narrower == null ? null : () => _select(narrower),
+              onWiden: wider == null ? null : () => _select(wider),
+            ),
+            const Gap(spacingSm),
+            if (group != null)
+              Row(
+                children: [
+                  Expanded(child: BodyText('A post of group ${group.number}.')),
+                  TextButton(
+                    onPressed: () =>
+                        _closeThen(() => widget.onRemoveGroup(group)),
+                    child: const Text('Remove group'),
+                  ),
+                  const Gap(spacingSm),
+                  FilledButton(
+                    onPressed: () =>
+                        _closeThen(() => widget.onEditGroup(group, selected)),
+                    child: const Text('Edit fields'),
+                  ),
+                ],
+              )
+            else if (rejection != null)
+              CaptionText(rejection)
+            else
+              Align(
+                alignment: Alignment.centerRight,
+                child: FilledButton(
+                  onPressed: () =>
+                      _closeThen(() => widget.onMarkAsPost(selected)),
+                  child: const Text('Mark as post'),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }
