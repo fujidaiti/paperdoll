@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
 import 'package:paperdoll/core/ui/widgets/app_divider.dart';
+import 'package:paperdoll/core/ui/widgets/body_text.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/features/page_watch/domain/page_document.dart';
@@ -156,15 +157,35 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       final body? when _tapped != null && body.contains(_tapped!) => body,
       _ => _tapped ?? selected,
     };
+    final labels = [
+      for (final field in PostField.values)
+        if (identical(_fieldNode(field), selected)) field,
+    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SelectionSlider(
-          selected: selected,
-          levels: selectionLevels(from, top: _post),
-          onSelect: (node) => setState(() => _selected = node),
-        ),
+        // A labeled element is selected as a whole.
+        if (labels.isEmpty)
+          SelectionSlider(
+            selected: selected,
+            levels: selectionLevels(from, top: _post),
+            onSelect: (node) => setState(() => _selected = node),
+          )
+        else
+          Row(
+            children: [
+              Expanded(child: BodyText(labels.map((f) => f.label).join(', '))),
+              TextButton(
+                onPressed: () => setState(() {
+                  for (final field in labels) {
+                    _matcher = _matcher.withField(field, _post, null);
+                  }
+                }),
+                child: const Text('Remove'),
+              ),
+            ],
+          ),
         const Gap(spacingXs),
         if (PostField.values.where((f) => f.accepts(selected)).isEmpty)
           const CaptionText('This has no value to extract.')
