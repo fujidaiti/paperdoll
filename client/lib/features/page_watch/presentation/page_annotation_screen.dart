@@ -257,8 +257,12 @@ class _AnnotatorState extends State<_Annotator> {
                 node: _document.root,
                 areas: areas,
                 onTap: (node) => _onTapBlock(node, marks),
-                // A post needs a link, and the whole page cannot be a post.
-                tappable: (node) => node.parent != null && _hasLink(node),
+                // A post needs a link and a text for its title, and the whole
+                // page cannot be a post.
+                tappable: (node) =>
+                    node.parent != null &&
+                    _hasLink(node) &&
+                    node.textContent.trim().isNotEmpty,
               ),
             ),
           ),
