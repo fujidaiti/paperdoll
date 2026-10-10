@@ -79,18 +79,26 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     };
     setState(() {
       _selected = identical(_selected, target) ? null : target;
-      _tapped = _selected;
+      _tapped = _selected == null ? null : node;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final selected = _selected;
+    // A link around other content is labeled or selected as a link when the
+    // user taps its own line, so only that line is tinted. Reached by widening
+    // or labeled as the body, it stands for its whole content.
     final areas = <PageArea>[
       for (final field in PostField.values)
         if (_fieldNode(field) case final node?)
-          (node: node, color: fieldColor(field)),
-      if (selected != null) selectionArea(selected),
+          (
+            node: node,
+            color: fieldColor(field),
+            linkOnly: field == PostField.link,
+          ),
+      if (selected != null)
+        selectionArea(selected, linkOnly: identical(selected, _tapped)),
     ];
     final postCount = _matcher.matchPosts(widget.args.document).length;
     final hasLink = _matcher.fields.containsKey(PostField.link);

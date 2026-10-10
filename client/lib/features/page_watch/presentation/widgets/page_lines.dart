@@ -24,11 +24,16 @@ const _inlineTags = {
 /// Splits the content of [nodes] into lines. A line is a node without
 /// children, or a run of such sibling nodes inside mixed content, such as the
 /// text and links of one paragraph.
+///
+/// A link around other content, such as a card, has no text of its own, so
+/// it gets a line that shows its target before its content.
 List<List<PageNode>> layOutLines(Iterable<PageNode> nodes) {
   final lines = <List<PageNode>>[];
   void visit(PageNode node) {
-    if (node.children.isEmpty) {
+    if (node.children.isEmpty || node.href != null) {
       lines.add([node]);
+    }
+    if (node.children.isEmpty) {
       return;
     }
     final isMixed = node.children.any((c) => c.isText);
@@ -53,9 +58,10 @@ List<List<PageNode>> layOutLines(Iterable<PageNode> nodes) {
   return lines;
 }
 
+/// The node of the first line of [node].
 PageNode firstLeaf(PageNode node) {
   var n = node;
-  while (n.children.isNotEmpty) {
+  while (n.children.isNotEmpty && n.href == null) {
     n = n.children.first;
   }
   return n;
@@ -103,7 +109,14 @@ String describeNode(PageNode node) {
 
 /// An annotated area of the page, drawn as a translucent tint of `color`
 /// over its lines.
-typedef PageArea = ({PageNode node, Color color});
+///
+/// When `linkOnly` is true and `node` is a link around other content, only
+/// the line that shows the link's target is tinted, because the area is about
+/// the link rather than its content.
+typedef PageArea = ({PageNode node, Color color, bool linkOnly});
+
+bool _isLinkOnly(PageArea area) =>
+    area.linkOnly && area.node.href != null && area.node.children.isNotEmpty;
 
 PageNode _lastLeaf(PageNode node) {
   var n = node;
@@ -161,7 +174,13 @@ class _PageLineState extends State<PageLine> {
     final first = nodes.first;
     // Outer areas first, so that inner tints are drawn over outer ones.
     final boxes =
-        widget.areas.where((a) => nodes.every(a.node.contains)).toList()
+        widget.areas
+            .where(
+              (a) => _isLinkOnly(a)
+                  ? identical(first, a.node)
+                  : nodes.every(a.node.contains),
+            )
+            .toList()
           ..sort((a, b) => a.node.depth.compareTo(b.node.depth));
 
     Widget content;
@@ -177,7 +196,12 @@ class _PageLineState extends State<PageLine> {
                 node,
                 recognizer: _recognizers[i],
                 highlight: widget.areas
-                    .where((a) => a.node.contains(node) && !boxes.contains(a))
+                    .where(
+                      (a) =>
+                          !_isLinkOnly(a) &&
+                          a.node.contains(node) &&
+                          !boxes.contains(a),
+                    )
                     .map((a) => a.color.withValues(alpha: _tintAlpha))
                     .fold<Color?>(
                       null,
@@ -207,7 +231,9 @@ class _PageLineState extends State<PageLine> {
         for (final area in boxes)
           Positioned.fill(
             top: nodes.contains(firstLeaf(area.node)) ? 2 : 0,
-            bottom: nodes.contains(_lastLeaf(area.node)) ? 2 : 0,
+            bottom: _isLinkOnly(area) || nodes.contains(_lastLeaf(area.node))
+                ? 2
+                : 0,
             child: ColoredBox(color: area.color.withValues(alpha: _tintAlpha)),
           ),
         content,
@@ -405,7 +431,8 @@ Color fieldColor(PostField field) => switch (field) {
 
 /// The tint of the selection. It is gray so that it differs from the colors
 /// of groups and fields.
-PageArea selectionArea(PageNode node) => (node: node, color: colorText);
+PageArea selectionArea(PageNode node, {bool linkOnly = false}) =>
+    (node: node, color: colorText, linkOnly: linkOnly);
 
 /// What the selection holds, with buttons to widen it to the element around
 /// it or narrow it back down. A null callback disables its button.

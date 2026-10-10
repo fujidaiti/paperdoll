@@ -225,7 +225,7 @@ class _AnnotatorState extends State<_Annotator> {
     final selected = _selected;
     final areas = <PageArea>[
       for (final MapEntry(key: id, value: group) in marks.posts.entries)
-        (node: _document.nodes[id], color: group.color),
+        (node: _document.nodes[id], color: group.color, linkOnly: false),
       if (selected != null) selectionArea(selected),
     ];
 
