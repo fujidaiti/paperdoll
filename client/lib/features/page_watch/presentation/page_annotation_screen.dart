@@ -234,13 +234,6 @@ class _AnnotatorState extends State<_Annotator> {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        actions: [
-          IconButton(
-            tooltip: 'Preview posts',
-            icon: const Icon(Icons.visibility_outlined),
-            onPressed: _groups.isNotEmpty ? _showPreview : null,
-          ),
-        ],
       ),
       body: Column(
         children: [
@@ -292,10 +285,11 @@ class _AnnotatorState extends State<_Annotator> {
                 builder: (context) => _buildSheet(selected, marks),
               ),
             )
-          else
+          else if (_groups.isNotEmpty)
             _StatusFooter(
               groupCount: _groups.length,
               postCount: marks.posts.length,
+              onPreview: _showPreview,
             ),
         ],
       ),
@@ -323,10 +317,12 @@ class _AnnotatorState extends State<_Annotator> {
   }
 }
 
-/// How many groups and posts the page has so far.
+/// How many groups and posts the page has so far, with a button to preview
+/// the posts.
 class const _StatusFooter({
   required final int groupCount,
   required final int postCount,
+  required final VoidCallback onPreview,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -337,12 +333,22 @@ class const _StatusFooter({
         SafeArea(
           top: false,
           child: Padding(
-            padding: const EdgeInsets.all(spacingMd),
-            child: SizedBox(
-              width: double.infinity,
-              child: CaptionText(
-                '$groupCount group(s), $postCount post(s) found.',
-              ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: spacingMd,
+              vertical: spacingSm,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: CaptionText(
+                    '$groupCount group(s), $postCount post(s) found.',
+                  ),
+                ),
+                TextButton(
+                  onPressed: onPreview,
+                  child: const Text('Preview posts'),
+                ),
+              ],
             ),
           ),
         ),
