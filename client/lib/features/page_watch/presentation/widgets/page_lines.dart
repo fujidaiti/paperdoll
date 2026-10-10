@@ -217,17 +217,7 @@ class _PageLineState extends State<PageLine> {
         ),
       );
     }
-    // Lines touch each other so that the tint of an area is continuous; the
-    // space between lines is inside the innermost tint.
-    content = Container(
-      constraints: const BoxConstraints(minHeight: kMinInteractiveDimension),
-      alignment: Alignment.centerLeft,
-      padding: EdgeInsets.only(
-        top: _headingLevel(first) != null ? spacingMd : spacingXs,
-        bottom: spacingXs,
-      ),
-      child: content,
-    );
+    content = _frameLine(first, content);
     // The tints are painted behind the content rather than wrapped around
     // it, so that annotating does not change the layout. A tint leaves a thin
     // gap at the ends of its area to keep adjacent areas apart.
@@ -265,6 +255,153 @@ class _PageLineState extends State<PageLine> {
 }
 
 const _tintAlpha = 0.14;
+
+/// [content] laid out as a line that starts with [first].
+///
+/// Lines touch each other so that the tint of an area is continuous; the
+/// space between lines is inside the innermost tint.
+Widget _frameLine(PageNode first, Widget content) => Container(
+  constraints: const BoxConstraints(minHeight: kMinInteractiveDimension),
+  alignment: Alignment.centerLeft,
+  padding: EdgeInsets.only(
+    top: _headingLevel(first) != null ? spacingMd : spacingXs,
+    bottom: spacingXs,
+  ),
+  child: content,
+);
+
+/// A node with children shown as one block: its own lines and, nested in
+/// it, a block for each child with children. A tap anywhere on the block
+/// that is not on a nested block reports [node], so the block is the unit
+/// that is selected. The lines themselves cannot be tapped. A block that is
+/// not [tappable] cannot be tapped either, but its nested blocks can.
+///
+/// Each of [areas] whose node is [node] tints the block, so that nested
+/// areas look darker. A long press on a link opens it in the in-app browser.
+class const PageBlock({
+  required final PageNode node,
+  required final List<PageArea> areas,
+  required final void Function(PageNode node) onTap,
+  final bool tappable = true,
+  super.key,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // The same lines as [layOutLines], without descending into children.
+    final items = <Object>[
+      // A link around other content shows its target first.
+      if (node.href != null) [node],
+    ];
+    final isMixed = node.children.any((c) => c.isText);
+    List<PageNode>? run;
+    for (final child in node.children) {
+      if (child.children.isNotEmpty) {
+        run = null;
+        items.add(child);
+      } else if (isMixed && _inlineTags.contains(child.tag)) {
+        if (run == null) {
+          items.add(run = [child]);
+        } else {
+          run.add(child);
+        }
+      } else {
+        run = null;
+        items.add([child]);
+      }
+    }
+    Widget content = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (final item in items)
+          if (item case final PageNode child)
+            PageBlock(
+              key: ValueKey(child.id),
+              node: child,
+              areas: areas,
+              onTap: onTap,
+            )
+          else if (item case final List<PageNode> line)
+            _BlockLine(key: ValueKey(line.first.id), nodes: line),
+      ],
+    );
+    // A tint leaves a thin gap at the ends of its block to keep adjacent
+    // areas apart.
+    content = Stack(
+      children: [
+        for (final area in areas)
+          if (identical(area.node, node))
+            Positioned.fill(
+              top: 2,
+              bottom: 2,
+              child: ColoredBox(
+                color: area.color.withValues(alpha: _tintAlpha),
+              ),
+            ),
+        content,
+      ],
+    );
+    if (tappable) {
+      content = InkWell(onTap: () => onTap(node), child: content);
+    }
+    return content;
+  }
+}
+
+/// A line inside a [PageBlock]. It does not take taps, so that a tap reaches
+/// the block, but a long press on a link opens it.
+class const _BlockLine({required final List<PageNode> nodes, super.key})
+    extends StatefulWidget {
+  @override
+  State<_BlockLine> createState() => _BlockLineState();
+}
+
+class _BlockLineState extends State<_BlockLine> {
+  /// The long press recognizers of the links of a line with several pieces.
+  /// A quick tap is not a long press, so it still reaches the block.
+  late final _recognizers = [
+    for (final node in widget.nodes)
+      if (widget.nodes.length > 1 && node.href != null)
+        LongPressGestureRecognizer()
+          ..onLongPress = () => unawaited(openInAppLink(context, node.href!))
+      else
+        null,
+  ];
+
+  @override
+  void dispose() {
+    for (final recognizer in _recognizers) {
+      recognizer?.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final nodes = widget.nodes;
+    final first = nodes.first;
+    if (nodes.length > 1) {
+      return _frameLine(
+        first,
+        Text.rich(
+          TextSpan(
+            children: [
+              for (final (i, node) in nodes.indexed) ...[
+                if (i > 0) const TextSpan(text: ' '),
+                _textSpan(node, recognizer: _recognizers[i]),
+              ],
+            ],
+          ),
+        ),
+      );
+    }
+    return GestureDetector(
+      onLongPress: first.href == null
+          ? null
+          : () => unawaited(openInAppLink(context, first.href!)),
+      child: _frameLine(first, _Content(node: first)),
+    );
+  }
+}
 
 /// The level of the heading that [node] belongs to, if any.
 int? _headingLevel(PageNode node) {

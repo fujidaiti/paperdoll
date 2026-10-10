@@ -93,7 +93,6 @@ class const _Annotator({required final PageDocument document})
 }
 
 class _AnnotatorState extends State<_Annotator> {
-  late final _lines = layOutLines(widget.document.root.children);
   final _groups = <_Group>[];
   var _nextGroupNumber = 1;
   PageNode? _selected;
@@ -188,18 +187,8 @@ class _AnnotatorState extends State<_Annotator> {
     });
   }
 
-  void _onTapLine(List<PageNode> line, _Marks marks) {
-    // A post is never a value such as a title, so a tap selects the element
-    // that holds the line. A link around other content holds it already. A
-    // tap inside a post selects the post.
-    final first = line.first;
-    final node = line.length == 1 && first.children.isNotEmpty
-        ? first
-        : first.parent!;
-    // The whole page cannot be a post.
-    if (node.parent == null) {
-      return;
-    }
+  void _onTapBlock(PageNode node, _Marks marks) {
+    // A tap inside a post selects the post.
     final target = marks.enclosingPost(node) ?? node;
     setState(() {
       _selected = identical(_selected, target) ? null : target;
@@ -255,18 +244,19 @@ class _AnnotatorState extends State<_Annotator> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: spacingSm),
-              itemCount: _lines.length,
-              itemBuilder: (context, index) {
-                final line = _lines[index];
-                return PageLine(
-                  key: ValueKey(line.first.id),
-                  nodes: line,
-                  areas: areas,
-                  onTap: (line) => _onTapLine(line, marks),
-                );
-              },
+            // The whole page cannot be a post, so only the blocks inside it
+            // can be tapped.
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: spacingMd,
+                vertical: spacingSm,
+              ),
+              child: PageBlock(
+                node: _document.root,
+                areas: areas,
+                onTap: (node) => _onTapBlock(node, marks),
+                tappable: false,
+              ),
             ),
           ),
           if (_selected != null || _groups.isNotEmpty) ...[
