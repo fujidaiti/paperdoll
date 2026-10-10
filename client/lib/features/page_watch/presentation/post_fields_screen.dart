@@ -117,16 +117,9 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       if (selected != null)
         selectionArea(selected, linkOnly: identical(selected, _tapped)),
     ];
-    final hasLink = _matcher.fields.containsKey(PostField.link);
     return Scaffold(
       appBar: AppBar(
         title: Text('Group ${widget.args.groupNumber}: label the fields'),
-        actions: [
-          TextButton(
-            onPressed: hasLink ? () => context.pop(_matcher) : null,
-            child: const Text('Done'),
-          ),
-        ],
       ),
       body: Column(
         children: [
@@ -148,7 +141,10 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
           if (selected != null)
             SelectionSheet(child: _buildSheet(selected))
           else
-            _StatusFooter(matcher: _matcher),
+            _StatusFooter(
+              matcher: _matcher,
+              onDone: () => context.pop(_matcher),
+            ),
         ],
       ),
     );
@@ -211,11 +207,15 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 }
 
-/// Which fields are labeled so far.
-class const _StatusFooter({required final PostMatcher matcher})
-    extends StatelessWidget {
+/// Which fields are labeled so far, with a button to finish labeling, which
+/// is enabled once the link is labeled.
+class const _StatusFooter({
+  required final PostMatcher matcher,
+  required final VoidCallback onDone,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final hasLink = matcher.fields.containsKey(PostField.link);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -224,28 +224,36 @@ class const _StatusFooter({required final PostMatcher matcher})
           top: false,
           child: Padding(
             padding: const EdgeInsets.all(spacingMd),
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Wrap(
-                    spacing: spacingXs,
-                    runSpacing: spacingXs,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (final field in PostField.values)
-                        _FieldStatus(
-                          field: field,
-                          isSet: matcher.fields.containsKey(field),
-                        ),
+                      Wrap(
+                        spacing: spacingXs,
+                        runSpacing: spacingXs,
+                        children: [
+                          for (final field in PostField.values)
+                            _FieldStatus(
+                              field: field,
+                              isSet: matcher.fields.containsKey(field),
+                            ),
+                        ],
+                      ),
+                      if (!hasLink) ...[
+                        const Gap(spacingXs),
+                        const CaptionText('A link is required.'),
+                      ],
                     ],
                   ),
-                  if (!matcher.fields.containsKey(PostField.link)) ...[
-                    const Gap(spacingXs),
-                    const CaptionText('A link is required.'),
-                  ],
-                ],
-              ),
+                ),
+                const Gap(spacingSm),
+                FilledButton(
+                  onPressed: hasLink ? onDone : null,
+                  child: const Text('Done'),
+                ),
+              ],
             ),
           ),
         ),
