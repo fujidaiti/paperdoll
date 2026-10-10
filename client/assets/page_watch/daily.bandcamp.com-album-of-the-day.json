@@ -498,9 +498,15 @@
                 "tag": "articles-header",
                 "ch": [
                   {
-                    "tag": "a",
-                    "text": "Album of the Day",
-                    "href": "https://daily.bandcamp.com/album-of-the-day"
+                    "tag": "div",
+                    "cls": ["center-text"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "text": "Album of the Day",
+                        "href": "https://daily.bandcamp.com/album-of-the-day"
+                      }
+                    ]
                   },
                   {
                     "tag": "div",

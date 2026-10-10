@@ -1027,9 +1027,15 @@
                     "cls": ["site-footer__list"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "text": "About O'Reilly",
-                        "href": "https://oreilly.com/about/"
+                        "tag": "h2",
+                        "cls": ["site-footer__heading"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "text": "About O'Reilly",
+                            "href": "https://oreilly.com/about/"
+                          }
+                        ]
                       },
                       {
                         "tag": "ul",
@@ -1084,9 +1090,15 @@
                     "cls": ["site-footer__list"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "text": "Support",
-                        "href": "https://oreilly.com/online-learning/support/"
+                        "tag": "h2",
+                        "cls": ["site-footer__heading"],
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "text": "Support",
+                            "href": "https://oreilly.com/online-learning/support/"
+                          }
+                        ]
                       },
                       {
                         "tag": "ul",

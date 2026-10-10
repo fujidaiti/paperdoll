@@ -1061,9 +1061,15 @@
         ],
         "ch": [
           {
-            "tag": "a",
-            "text": "News",
-            "href": "https://developer.apple.com/news/"
+            "tag": "h2",
+            "cls": ["localnav-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "News",
+                "href": "https://developer.apple.com/news/"
+              }
+            ]
           },
           {
             "tag": "div",

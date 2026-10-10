@@ -14,6 +14,7 @@ import 'package:paperdoll/features/feed_entry/presentation/feed_entry_reader_scr
 import 'package:paperdoll/features/newspaper/presentation/today_screen.dart';
 import 'package:paperdoll/features/page_watch/presentation/page_annotation_screen.dart';
 import 'package:paperdoll/features/page_watch/presentation/page_samples_screen.dart';
+import 'package:paperdoll/features/page_watch/presentation/post_fields_screen.dart';
 import 'package:paperdoll/features/reading_list/presentation/archived_reading_list_screen.dart';
 import 'package:paperdoll/features/reading_list/presentation/reading_list_screen.dart';
 import 'package:paperdoll/features/settings/presentation/settings_screen.dart';
@@ -165,6 +166,16 @@ GoRouter goRouter(Ref ref) {
                             builder: (context, state) => PageAnnotationScreen(
                               file: state.pathParameters['file']!,
                             ),
+                            routes: [
+                              GoRoute(
+                                path: routePostFieldsPath,
+                                name: routePostFieldsName,
+                                parentNavigatorKey: _rootNavigatorKey,
+                                builder: (context, state) => PostFieldsScreen(
+                                  args: state.extra! as PostFieldsArgs,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

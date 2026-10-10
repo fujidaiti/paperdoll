@@ -3,7 +3,9 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:paperdoll/core/router/routes.dart';
 import 'package:paperdoll/core/ui/tokens/app_colors.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
 import 'package:paperdoll/core/ui/tokens/app_text_styles.dart';
@@ -15,19 +17,20 @@ import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/core/ui/widgets/heading_text.dart';
 import 'package:paperdoll/features/page_watch/domain/page_document.dart';
 import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
+import 'package:paperdoll/features/page_watch/presentation/post_fields_screen.dart';
 import 'package:paperdoll/features/page_watch/presentation/providers/page_watch_providers.dart';
+import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.dart';
 
 /// Lets the user tell which parts of a web page are posts, so that the page
 /// can be watched like a feed.
 ///
-/// The user digs into the document tree and repeats two steps: mark a node
-/// that holds one post, then label the nodes inside it that hold the post's
-/// fields. Siblings that share the shape of the marked node become posts of
+/// The page is shown as its content, line by line. The user repeats two
+/// steps: select the area that holds one post, then label the content inside
+/// it as the post's fields on [PostFieldsScreen]. An area is selected by
+/// tapping a piece of content and widening the selection to the elements
+/// around it. Areas that share the shape of the selected post become posts of
 /// the same group automatically, with their fields found by the same
 /// selectors. Each group results in one [PostMatcher].
-///
-/// A node labeled as the body of a post is converted as a whole, so the tree
-/// stops there and the nodes inside it cannot be labeled.
 class const PageAnnotationScreen({required final String file, super.key})
     extends ConsumerWidget {
   @override
@@ -47,16 +50,13 @@ class const PageAnnotationScreen({required final String file, super.key})
   }
 }
 
-/// Posts that share one shape, defined by [matcher]. The user labels fields
-/// on [reference], one of the posts, and the field selectors are built
-/// relative to it.
+/// Posts that share one shape, defined by [matcher].
 class _Group {
-  new({required this.number, required this.matcher, required this.reference});
+  new({required this.number, required this.matcher});
 
   /// A stable label that also picks the group's color.
   final int number;
   PostMatcher matcher;
-  PageNode reference;
 
   Color get color => _groupColors[(number - 1) % _groupColors.length];
 }
@@ -70,13 +70,19 @@ const _groupColors = [
   Color(0xFF00838F),
 ];
 
-/// Where the annotations of all groups land in the document, by node id.
+/// The posts of all groups in the document, by node id.
 class _Marks {
   final posts = <int, _Group>{};
-  final fields = <int, List<(_Group, PostField)>>{};
 
-  bool isBody(PageNode node) =>
-      fields[node.id]?.any((m) => m.$2 == PostField.body) ?? false;
+  /// The post that contains [node], if any.
+  PageNode? enclosingPost(PageNode node) {
+    for (PageNode? n = node; n != null; n = n.parent) {
+      if (posts.containsKey(n.id)) {
+        return n;
+      }
+    }
+    return null;
+  }
 }
 
 class const _Annotator({required final PageDocument document})
@@ -86,14 +92,14 @@ class const _Annotator({required final PageDocument document})
 }
 
 class _AnnotatorState extends State<_Annotator> {
-  late final _expanded = {widget.document.root.id};
+  late final _lines = layOutLines(widget.document.root.children);
   final _groups = <_Group>[];
   var _nextGroupNumber = 1;
   PageNode? _selected;
 
-  /// The group whose fields are being labeled. While it is set, only the
-  /// nodes inside its reference post can be selected.
-  _Group? _editing;
+  /// The content the user tapped last. The selection can be narrowed back
+  /// down to it after being widened.
+  PageNode? _tapped;
 
   PageDocument get _document => widget.document;
 
@@ -102,11 +108,6 @@ class _AnnotatorState extends State<_Annotator> {
     for (final group in _groups) {
       for (final post in group.matcher.matchPosts(_document)) {
         marks.posts[post.id] = group;
-        for (final field in PostField.values) {
-          if (group.matcher.matchField(post, field) case final node?) {
-            (marks.fields[node.id] ??= []).add((group, field));
-          }
-        }
       }
     }
     return marks;
@@ -114,11 +115,8 @@ class _AnnotatorState extends State<_Annotator> {
 
   /// Why [node] cannot become a post, or null if it can.
   String? _postRejection(PageNode node, _Marks marks) {
-    if (node.parent == null) {
-      return 'The whole page cannot be a post.';
-    }
     if (node.isText) {
-      return 'A text run cannot be a post. Select an element around it.';
+      return 'A piece of text cannot be a post. Widen the selection.';
     }
     final candidates = PostMatcher.fromNode(
       _document,
@@ -133,98 +131,71 @@ class _AnnotatorState extends State<_Annotator> {
     return null;
   }
 
-  /// Expands [node] and, unless the subtree is large, all of its descendants
-  /// so that the user can see every field candidate at once.
-  void _expandPost(PageNode node) {
-    final containers = <int>[];
-    void visit(PageNode n) {
-      if (n.children.isNotEmpty) {
-        containers.add(n.id);
-        n.children.forEach(visit);
-      }
-    }
+  /// Opens the screen that labels the fields of [post], and returns the
+  /// updated matcher, or null if the user left without finishing.
+  Future<PostMatcher?> _labelFields({
+    required PostMatcher matcher,
+    required PageNode post,
+    required int groupNumber,
+  }) => context.pushNamed<PostMatcher>(
+    routePostFieldsName,
+    pathParameters: GoRouterState.of(context).pathParameters,
+    extra: (
+      document: _document,
+      matcher: matcher,
+      post: post,
+      groupNumber: groupNumber,
+    ),
+  );
 
-    visit(node);
-    _expanded.addAll(containers.length <= 100 ? containers : [node.id]);
-  }
-
-  void _markAsPost(PageNode node) {
-    final group = _Group(
-      number: _nextGroupNumber++,
+  Future<void> _markAsPost(PageNode node) async {
+    final number = _nextGroupNumber;
+    final matcher = await _labelFields(
       matcher: PostMatcher.fromNode(_document, node),
-      reference: node,
+      post: node,
+      groupNumber: number,
     );
+    if (matcher == null || !mounted) {
+      return;
+    }
     setState(() {
-      _groups.add(group);
-      _editing = group;
+      _nextGroupNumber++;
+      _groups.add(_Group(number: number, matcher: matcher));
       _selected = null;
-      _expandPost(node);
+      _tapped = null;
     });
   }
 
-  void _editGroup(_Group group, PageNode post) {
+  Future<void> _editGroup(_Group group, PageNode post) async {
+    final matcher = await _labelFields(
+      matcher: group.matcher,
+      post: post,
+      groupNumber: group.number,
+    );
+    if (matcher == null || !mounted) {
+      return;
+    }
     setState(() {
-      group.reference = post;
-      _editing = group;
+      group.matcher = matcher;
       _selected = null;
-      _expandPost(post);
+      _tapped = null;
     });
   }
 
   void _removeGroup(_Group group) {
     setState(() {
       _groups.remove(group);
-      if (identical(_editing, group)) {
-        _editing = null;
-      }
       _selected = null;
+      _tapped = null;
     });
   }
 
-  /// Why [field] cannot be labeled on [node] in the reference post of
-  /// [group], or null if it can.
-  String? _fieldRejection(_Group group, PostField field, PageNode node) {
-    final matcher = group.matcher;
-    if (field == PostField.body) {
-      for (final other in PostField.values) {
-        if (other == PostField.body) {
-          continue;
-        }
-        if (matcher.matchField(group.reference, other) case final n?
-            when node.contains(n)) {
-          return 'A body cannot contain the ${other.label.toLowerCase()}.';
-        }
-      }
-    } else if (matcher.matchField(group.reference, PostField.body)
-        case final body? when body.contains(node)) {
-      return 'This is part of the body.';
-    }
-    return null;
-  }
-
-  void _toggleField(_Group group, PostField field, PageNode node) {
-    final current = group.matcher.matchField(group.reference, field);
+  void _onTapContent(PageNode node, _Marks marks) {
+    // A tap inside a post selects the whole post.
+    final target = marks.enclosingPost(node) ?? node;
     setState(() {
-      group.matcher = group.matcher.withField(
-        field,
-        group.reference,
-        identical(current, node) ? null : node,
-      );
-    });
-  }
-
-  void _onTapNode(PageNode node) {
-    if (_editing case final group? when !group.reference.contains(node)) {
-      return;
-    }
-    setState(() => _selected = identical(_selected, node) ? null : node);
-  }
-
-  void _toggleExpanded(PageNode node) {
-    setState(() {
-      if (!_expanded.remove(node.id)) {
-        _expanded.add(node.id);
-      }
+      _selected = identical(_selected, target) ? null : target;
+      _tapped = _selected;
     });
   }
 
@@ -251,18 +222,13 @@ class _AnnotatorState extends State<_Annotator> {
   @override
   Widget build(BuildContext context) {
     final marks = _computeMarks();
-    final rows = <PageNode>[];
-    void visit(PageNode node) {
-      rows.add(node);
-      if (_expanded.contains(node.id) && !marks.isBody(node)) {
-        node.children.forEach(visit);
-      }
-    }
+    final selected = _selected;
+    final areas = <PageArea>[
+      for (final MapEntry(key: id, value: group) in marks.posts.entries)
+        (node: _document.nodes[id], color: group.color),
+      if (selected != null) selectionArea(selected),
+    ];
 
-    // The root (body) cannot be a post, so its children are the top rows.
-    _document.root.children.forEach(visit);
-
-    final editing = _editing;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -274,9 +240,7 @@ class _AnnotatorState extends State<_Annotator> {
           IconButton(
             tooltip: 'Preview posts',
             icon: const Icon(Icons.visibility_outlined),
-            onPressed: _groups.isNotEmpty && editing == null
-                ? _showPreview
-                : null,
+            onPressed: _groups.isNotEmpty ? _showPreview : null,
           ),
         ],
       ),
@@ -284,20 +248,15 @@ class _AnnotatorState extends State<_Annotator> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: rows.length,
+              padding: const EdgeInsets.symmetric(vertical: spacingSm),
+              itemCount: _lines.length,
               itemBuilder: (context, index) {
-                final node = rows[index];
-                return _NodeRow(
-                  key: ValueKey(node.id),
-                  node: node,
-                  marks: marks,
-                  isExpanded: _expanded.contains(node.id),
-                  isBody: marks.isBody(node),
-                  isSelected: identical(node, _selected),
-                  isDimmed:
-                      editing != null && !editing.reference.contains(node),
-                  onTap: () => _onTapNode(node),
-                  onToggle: () => _toggleExpanded(node),
+                final line = _lines[index];
+                return PageLine(
+                  key: ValueKey(line.first.id),
+                  nodes: line,
+                  areas: areas,
+                  onTap: (node) => _onTapContent(node, marks),
                 );
               },
             ),
@@ -309,9 +268,7 @@ class _AnnotatorState extends State<_Annotator> {
               padding: const EdgeInsets.all(spacingMd),
               child: SizedBox(
                 width: double.infinity,
-                child: editing == null
-                    ? _buildBrowsePanel(marks)
-                    : _buildEditPanel(editing),
+                child: _buildPanel(marks),
               ),
             ),
           ),
@@ -320,7 +277,7 @@ class _AnnotatorState extends State<_Annotator> {
     );
   }
 
-  Widget _buildBrowsePanel(_Marks marks) {
+  Widget _buildPanel(_Marks marks) {
     final selected = _selected;
     if (selected == null) {
       final postCount = marks.posts.length;
@@ -329,14 +286,14 @@ class _AnnotatorState extends State<_Annotator> {
         mainAxisSize: MainAxisSize.min,
         children: [
           const BodyText(
-            'Expand the tree and select a node that holds exactly one post, '
-            'such as a card or a list item.',
+            'Tap the content of a post, such as its title, then widen the '
+            'selection until it covers exactly one post.',
           ),
           if (_groups.isNotEmpty) ...[
             const Gap(spacingXs),
             CaptionText(
               '${_groups.length} group(s), $postCount post(s) found. '
-              'Select a post to edit its group.',
+              'Tap a post to edit its group.',
             ),
           ],
         ],
@@ -344,15 +301,21 @@ class _AnnotatorState extends State<_Annotator> {
     }
     final group = marks.posts[selected.id];
     final rejection = group == null ? _postRejection(selected, marks) : null;
+    // A post is selected as a whole, and the whole page cannot be a post.
+    final narrower = group == null ? narrowTowards(selected, _tapped) : null;
+    final wider = selected.parent?.parent == null ? null : selected.parent;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          selected.label,
-          style: _tagStyle,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+        SelectionHeader(
+          selected: selected,
+          onNarrow: narrower == null
+              ? null
+              : () => setState(() => _selected = narrower),
+          onWiden: wider == null
+              ? null
+              : () => setState(() => _selected = wider),
         ),
         const Gap(spacingSm),
         if (group != null)
@@ -365,7 +328,7 @@ class _AnnotatorState extends State<_Annotator> {
               ),
               const Gap(spacingSm),
               FilledButton(
-                onPressed: () => _editGroup(group, selected),
+                onPressed: () => unawaited(_editGroup(group, selected)),
                 child: const Text('Edit fields'),
               ),
             ],
@@ -376,332 +339,16 @@ class _AnnotatorState extends State<_Annotator> {
           Align(
             alignment: Alignment.centerRight,
             child: FilledButton(
-              onPressed: () => _markAsPost(selected),
+              onPressed: () => unawaited(_markAsPost(selected)),
               child: const Text('Mark as post'),
             ),
           ),
       ],
     );
   }
-
-  Widget _buildEditPanel(_Group group) {
-    final selected = _selected;
-    final hasLink = group.matcher.fields.containsKey(PostField.link);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          children: [
-            _GroupDot(color: group.color),
-            const Gap(spacingSm),
-            Expanded(
-              child: HeadingText(
-                'Group ${group.number}: label the fields',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-        const Gap(spacingSm),
-        Wrap(
-          spacing: spacingXs,
-          runSpacing: spacingXs,
-          children: [
-            for (final field in PostField.values)
-              _FieldStatus(
-                field: field,
-                isSet: group.matcher.fields.containsKey(field),
-              ),
-          ],
-        ),
-        const Gap(spacingSm),
-        if (selected == null)
-          const CaptionText(
-            'Select a node inside the highlighted post to label it.',
-          )
-        else ...[
-          Text(
-            selected.label,
-            style: _tagStyle,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const Gap(spacingXs),
-          if (PostField.values.where((f) => f.accepts(selected)).isEmpty)
-            const CaptionText('This node has no value to extract.')
-          else ...[
-            Wrap(
-              spacing: spacingXs,
-              runSpacing: spacingXs,
-              children: [
-                for (final field in PostField.values)
-                  if (field.accepts(selected))
-                    FilterChip(
-                      label: Text(field.label),
-                      selected: identical(
-                        group.matcher.matchField(group.reference, field),
-                        selected,
-                      ),
-                      onSelected:
-                          _fieldRejection(group, field, selected) == null
-                          ? (_) => _toggleField(group, field, selected)
-                          : null,
-                    ),
-              ],
-            ),
-            for (final field in PostField.values)
-              if (field.accepts(selected))
-                if (_fieldRejection(group, field, selected)
-                    case final rejection?) ...[
-                  const Gap(spacingXs),
-                  CaptionText(rejection),
-                ],
-          ],
-        ],
-        const Gap(spacingSm),
-        Row(
-          children: [
-            TextButton(
-              onPressed: () => _removeGroup(group),
-              child: const Text('Remove group'),
-            ),
-            Expanded(
-              child: hasLink
-                  ? const SizedBox.shrink()
-                  : const Align(
-                      alignment: Alignment.centerRight,
-                      child: CaptionText('A link is required.'),
-                    ),
-            ),
-            const Gap(spacingSm),
-            FilledButton(
-              onPressed: hasLink
-                  ? () => setState(() {
-                      _editing = null;
-                      _selected = null;
-                    })
-                  : null,
-              child: const Text('Done'),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
 }
 
 final _tagStyle = textCaption.copyWith(fontFamily: 'monospace');
-const double _indent = 14;
-
-/// One node of the document tree, indented by depth. Containers show a
-/// chevron that expands or collapses their children.
-class const _NodeRow({
-  required final PageNode node,
-  required final _Marks marks,
-  required final bool isExpanded,
-  required final bool isBody,
-  required final bool isSelected,
-  required final bool isDimmed,
-  required final VoidCallback onTap,
-  required final VoidCallback onToggle,
-  super.key,
-}) extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final postGroup = marks.posts[node.id];
-    // The nearest post that contains this node tints the row with its color.
-    _Group? enclosingGroup;
-    for (PageNode? n = node; n != null; n = n.parent) {
-      if (marks.posts[n.id] case final group?) {
-        enclosingGroup = group;
-        break;
-      }
-    }
-    final background = switch ((isSelected, postGroup, enclosingGroup)) {
-      (true, _, _) => colorAccent.withValues(alpha: 0.16),
-      (_, final group?, _) => group.color.withValues(alpha: 0.18),
-      (_, _, final group?) => group.color.withValues(alpha: 0.06),
-      _ => colorBackground,
-    };
-    final fields = marks.fields[node.id] ?? const [];
-
-    return Opacity(
-      opacity: isDimmed ? 0.35 : 1,
-      child: Material(
-        color: background,
-        child: InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: EdgeInsets.only(
-              left: (node.depth - 1) * _indent,
-              right: spacingSm,
-              top: spacingXs,
-              bottom: spacingXs,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 36,
-                  child: node.children.isEmpty || isBody
-                      ? null
-                      : IconButton(
-                          visualDensity: VisualDensity.compact,
-                          icon: Icon(
-                            isExpanded
-                                ? Icons.expand_more
-                                : Icons.chevron_right,
-                          ),
-                          onPressed: onToggle,
-                        ),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _NodeContent(
-                        node: node,
-                        isExpanded: isExpanded && !isBody,
-                      ),
-                      if (postGroup != null || fields.isNotEmpty) ...[
-                        const Gap(spacingXs),
-                        Wrap(
-                          spacing: spacingXs,
-                          runSpacing: spacingXs,
-                          children: [
-                            if (postGroup != null)
-                              _Badge(
-                                label: identical(postGroup.reference, node)
-                                    ? 'Post · group ${postGroup.number}'
-                                    : 'Post · group ${postGroup.number} (auto)',
-                                color: postGroup.color,
-                                isFilled: true,
-                              ),
-                            for (final (group, field) in fields)
-                              _Badge(label: field.label, color: group.color),
-                          ],
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// A preview of what a node shows on the page.
-class const _NodeContent({
-  required final PageNode node,
-  required final bool isExpanded,
-}) extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    if (node.isText) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: spacingSm),
-        child: BodyText(
-          node.text ?? '',
-          maxLines: 3,
-          overflow: TextOverflow.ellipsis,
-        ),
-      );
-    }
-    if (node.isImage) {
-      return Row(
-        children: [
-          _Thumbnail(url: node.src!, size: 56),
-          const Gap(spacingSm),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(node.label, style: _tagStyle, maxLines: 1),
-                if (node.alt case final alt? when alt.isNotEmpty)
-                  CaptionText(
-                    alt,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-              ],
-            ),
-          ),
-        ],
-      );
-    }
-    if (node.isEmbed) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: spacingSm),
-        child: Row(
-          children: [
-            const Icon(Icons.smart_display_outlined, color: colorTextMuted),
-            const Gap(spacingSm),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(node.label, style: _tagStyle, maxLines: 1),
-                  CaptionText(
-                    node.src!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-    final text = node.text;
-    final href = node.href;
-    final datetime = node.datetime;
-    final preview = node.children.isNotEmpty && !isExpanded
-        ? node.textContent
-        : '';
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: spacingSm),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            node.children.isEmpty
-                ? node.label
-                : '${node.label}  (${node.children.length})',
-            style: _tagStyle,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          if (text != null)
-            BodyText(text, maxLines: 2, overflow: TextOverflow.ellipsis),
-          if (href != null)
-            Row(
-              children: [
-                const Icon(Icons.link, size: 14, color: colorAccent),
-                const Gap(spacingXs),
-                Expanded(
-                  child: CaptionText(
-                    href,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-          if (datetime != null) CaptionText('datetime: $datetime'),
-          if (preview.isNotEmpty)
-            CaptionText(preview, maxLines: 1, overflow: TextOverflow.ellipsis),
-        ],
-      ),
-    );
-  }
-}
 
 class const _Thumbnail({required final String url, required final double size})
     extends StatelessWidget {
@@ -722,64 +369,6 @@ class const _Thumbnail({required final String url, required final double size})
           child: const Icon(Icons.image_outlined, color: colorTextMuted),
         ),
       ),
-    );
-  }
-}
-
-class const _Badge({
-  required final String label,
-  required final Color color,
-  final bool isFilled = false,
-}) extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: spacingSm, vertical: 2),
-      decoration: BoxDecoration(
-        color: isFilled ? color : null,
-        border: Border.all(color: color),
-        borderRadius: BorderRadius.circular(spacingSm),
-      ),
-      child: Text(
-        label,
-        style: textCaption.copyWith(
-          color: isFilled ? colorBackground : color,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    );
-  }
-}
-
-class const _GroupDot({required final Color color}) extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 12,
-      height: 12,
-      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-    );
-  }
-}
-
-class const _FieldStatus({
-  required final PostField field,
-  required final bool isSet,
-}) extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          isSet ? Icons.check_circle : Icons.radio_button_unchecked,
-          size: 16,
-          color: isSet ? colorAccent : colorTextMuted,
-        ),
-        const Gap(2),
-        CaptionText(field.label),
-        const Gap(spacingSm),
-      ],
     );
   }
 }
@@ -811,7 +400,7 @@ class const _Preview({
           const Gap(spacingMd),
           Row(
             children: [
-              _GroupDot(color: group.color),
+              GroupDot(color: group.color),
               const Gap(spacingSm),
               Expanded(
                 child: HeadingText(

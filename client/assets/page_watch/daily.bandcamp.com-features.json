@@ -502,9 +502,14 @@
                     "cls": ["center-text"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "text": "Features",
-                        "href": "https://daily.bandcamp.com/features"
+                        "tag": "h1",
+                        "ch": [
+                          {
+                            "tag": "a",
+                            "text": "Features",
+                            "href": "https://daily.bandcamp.com/features"
+                          }
+                        ]
                       },
                       {
                         "tag": "div",

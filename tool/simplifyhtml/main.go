@@ -205,6 +205,10 @@ var semanticTags = map[string]bool{
 	"a": true, "img": true, "time": true, "iframe": true,
 }
 
+var headingTags = map[string]bool{
+	"h1": true, "h2": true, "h3": true, "h4": true, "h5": true, "h6": true,
+}
+
 var displayNone = regexp.MustCompile(`display\s*:\s*none`)
 
 // convert returns the simplified node for n, or nil when n has no visible
@@ -290,8 +294,9 @@ func (s *simplifier) convert(n *html.Node) *Node {
 	// A plain wrapper around a single node adds depth without information, so
 	// the two are merged. A semantic child replaces the wrapper; otherwise the
 	// wrapper's tag is kept because list items (li, article) tend to identify
-	// posts better than the generic containers inside them.
-	if len(node.Children) == 1 && !semanticTags[tag] {
+	// posts better than the generic containers inside them. Headings are kept
+	// so that the client can show a post title, often a link, as a heading.
+	if len(node.Children) == 1 && !semanticTags[tag] && !headingTags[tag] {
 		child := node.Children[0]
 		if semanticTags[child.Tag] || child.Tag == "#text" {
 			return child
@@ -359,7 +364,6 @@ func inlineNode(n *html.Node) []*Node {
 func richText(nodes []*Node) []*Node {
 	afterSpace := true // Leading whitespace is dropped.
 	var last *Node     // The last text node, whose trailing space is dropped.
-	formatted := false
 	var normalize func([]*Node) []*Node
 	normalize = func(nodes []*Node) []*Node {
 		var out []*Node
@@ -388,11 +392,9 @@ func richText(nodes []*Node) []*Node {
 					last.Text = strings.TrimRight(last.Text, " ")
 				}
 				afterSpace = true
-				formatted = true
 				out = append(out, n)
 			default:
 				if n.Children = normalize(n.Children); len(n.Children) > 0 {
-					formatted = true
 					out = append(out, n)
 				}
 			}
@@ -403,10 +405,19 @@ func richText(nodes []*Node) []*Node {
 	if last != nil {
 		last.Text = strings.TrimRight(last.Text, " ")
 	}
-	if !formatted {
-		return nil
+	// Line breaks at either end only add empty lines.
+	for len(out) > 0 && out[0].Tag == "br" {
+		out = out[1:]
 	}
-	return out
+	for len(out) > 0 && out[len(out)-1].Tag == "br" {
+		out = out[:len(out)-1]
+	}
+	for _, n := range out {
+		if n.Tag != "#text" {
+			return out
+		}
+	}
+	return nil
 }
 
 // imageSource picks a usable absolute URL for an img, preferring real URLs

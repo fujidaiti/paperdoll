@@ -2910,10 +2910,20 @@
                 ],
                 "ch": [
                   {
-                    "tag": "a",
-                    "cls": ["zone__title-url"],
-                    "text": "Video",
-                    "href": "https://www.cnn.com/videos"
+                    "tag": "h2",
+                    "cls": [
+                      "zone__title",
+                      "zone--title",
+                      "zone__title--full-width-size-l0"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["zone__title-url"],
+                        "text": "Video",
+                        "href": "https://www.cnn.com/videos"
+                      }
+                    ]
                   },
                   {
                     "tag": "div",
