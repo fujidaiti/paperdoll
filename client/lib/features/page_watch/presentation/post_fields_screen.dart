@@ -193,8 +193,9 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
                   ),
             ],
           ),
+          // A body that contains other fields only disables its chip.
           for (final field in PostField.values)
-            if (field.accepts(selected))
+            if (field != PostField.body && field.accepts(selected))
               if (_fieldRejection(field, selected) case final rejection?) ...[
                 const Gap(spacingXs),
                 CaptionText(rejection),
