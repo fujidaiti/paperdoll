@@ -161,7 +161,7 @@ class _AnnotatorState extends State<_Annotator> {
   Future<void> _markAsPost(PageNode node) async {
     final number = _nextGroupNumber;
     final matcher = await _labelFields(
-      matcher: PostMatcher.fromNode(_document, node),
+      matcher: PostMatcher.fromNode(_document, node).withEvidentFields(node),
       post: node,
       groupNumber: number,
     );

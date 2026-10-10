@@ -297,13 +297,16 @@ func (s *simplifier) convert(n *html.Node) *Node {
 	// the two are merged. A semantic child replaces the wrapper; otherwise the
 	// wrapper's tag is kept because list items (li, article) tend to identify
 	// posts better than the generic containers inside them. Headings are kept
-	// so that the client can show a post title, often a link, as a heading.
+	// on both sides so that the client can show a post title, often a link,
+	// as a heading, and find it by its level.
 	if len(node.Children) == 1 && !semanticTags[tag] && !headingTags[tag] {
 		child := node.Children[0]
 		if semanticTags[child.Tag] || child.Tag == "#text" {
 			return child
 		}
-		child.Tag = tag
+		if !headingTags[child.Tag] {
+			child.Tag = tag
+		}
 		child.Classes = append(node.Classes, child.Classes...)
 		return child
 	}

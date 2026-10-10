@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:paperdoll/features/page_watch/domain/body_markup.dart';
 import 'package:paperdoll/features/page_watch/domain/page_document.dart';
 
@@ -188,6 +190,57 @@ class PostMatcher {
       if (valueNode != null) field: buildSelector(postNode, valueNode),
     },
   );
+
+  /// Labels the fields that are evident in [postNode]: the only link, image
+  /// or time, and the only heading of the highest level as the title. A link
+  /// in the title is the link of the post, even when there are other links.
+  ///
+  /// A heading around a single node is shown as that node, so the innermost
+  /// such node is labeled. As a result, a title that is a link is labeled on
+  /// the link, which then has both labels and is selected as one element.
+  PostMatcher withEvidentFields(PageNode postNode) {
+    final nodes = <PageNode>[];
+    void collect(PageNode n) {
+      nodes.add(n);
+      n.children.forEach(collect);
+    }
+
+    collect(postNode);
+    PageNode? only(Iterable<PageNode> matches) =>
+        matches.length == 1 ? matches.first : null;
+    var matcher = this;
+    void label(PostField field, PageNode? node) {
+      if (node != null && field.accepts(node)) {
+        matcher = matcher.withField(field, postNode, node);
+      }
+    }
+
+    label(PostField.link, only(nodes.where((n) => n.href != null)));
+    label(PostField.thumbnail, only(nodes.where((n) => n.isImage)));
+    label(PostField.pubDate, only(nodes.where((n) => n.tag == 'time')));
+    // The level of a heading (1 for h1), or null for other nodes.
+    int? level(PageNode n) => switch (RegExp(r'^h([1-6])$').firstMatch(n.tag)) {
+      final m? => int.parse(m[1]!),
+      null => null,
+    };
+    final headings = nodes.where((n) => level(n) != null).toList();
+    if (headings.isNotEmpty) {
+      final top = headings.map((n) => level(n)!).reduce(min);
+      if (only(headings.where((n) => level(n) == top)) case var title?) {
+        while (title.children.length == 1) {
+          title = title.children.single;
+        }
+        label(PostField.title, title);
+        if (identical(matcher.matchField(postNode, PostField.title), title)) {
+          label(
+            PostField.link,
+            only(nodes.where((n) => n.href != null && title.contains(n))),
+          );
+        }
+      }
+    }
+    return matcher;
+  }
 
   Map<String, Object?> toJson() => {
     'post': [for (final s in post) s.toJson()],
