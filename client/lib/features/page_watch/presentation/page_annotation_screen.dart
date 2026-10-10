@@ -486,8 +486,6 @@ class const _Preview({
               ),
             ],
           ),
-          const Gap(spacingXs),
-          Text(group.matcher.post.join(' > '), style: _tagStyle),
           for (final post in group.matcher.matchPosts(document)) ...[
             const AppDivider(),
             _PreviewPost(matcher: group.matcher, post: post),
