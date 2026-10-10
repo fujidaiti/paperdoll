@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -24,7 +25,8 @@ typedef PostFieldsArgs = ({
 /// other posts of the group get their fields with the same selectors.
 ///
 /// The screen pops with the updated [PostMatcher] when the user is done, or
-/// with nothing when the user leaves without finishing.
+/// with nothing when the user leaves without finishing. Leaving asks first
+/// when there are changes, so that they are not lost by accident.
 ///
 /// A body is converted as a whole, so a tap inside it selects the whole body
 /// and the content inside it cannot be labeled.
@@ -67,14 +69,41 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     return body == null || !body.contains(node);
   }
 
-  void _toggleField(PostField field, PageNode node) {
+  /// Labels [node] as [field] and closes the sheet, which completes the
+  /// selection.
+  void _label(PostField field, PageNode node) {
     setState(() {
-      _matcher = _matcher.withField(
-        field,
-        _post,
-        identical(_fieldNode(field), node) ? null : node,
-      );
+      _matcher = _matcher.withField(field, _post, node);
+      _selected = null;
     });
+  }
+
+  /// Closes the sheet on back, and asks before leaving with changes.
+  Future<void> _onBack() async {
+    if (_selected != null) {
+      setState(() => _selected = null);
+      return;
+    }
+    final discard = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Discard the changes?'),
+        content: const Text('The fields you labeled will be lost.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Keep labeling'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Discard'),
+          ),
+        ],
+      ),
+    );
+    if ((discard ?? false) && mounted) {
+      context.pop();
+    }
   }
 
   Future<void> _onTapLine(List<PageNode> line) async {
@@ -118,35 +147,46 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       if (selected != null)
         selectionArea(selected, linkOnly: identical(selected, _tapped)),
     ];
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Group ${widget.args.groupNumber}: label the fields'),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: spacingSm),
-              itemCount: _lines.length,
-              itemBuilder: (context, index) {
-                final line = _lines[index];
-                return PageLine(
-                  key: ValueKey(line.first.id),
-                  nodes: line,
-                  areas: areas,
-                  onTap: (line) => unawaited(_onTapLine(line)),
-                );
-              },
+    final isChanged =
+        jsonEncode(_matcher.toJson()) !=
+        jsonEncode(widget.args.matcher.toJson());
+    return PopScope(
+      canPop: selected == null && !isChanged,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) {
+          unawaited(_onBack());
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Group ${widget.args.groupNumber}: label the fields'),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: spacingSm),
+                itemCount: _lines.length,
+                itemBuilder: (context, index) {
+                  final line = _lines[index];
+                  return PageLine(
+                    key: ValueKey(line.first.id),
+                    nodes: line,
+                    areas: areas,
+                    onTap: (line) => unawaited(_onTapLine(line)),
+                  );
+                },
+              ),
             ),
-          ),
-          if (selected != null)
-            SelectionSheet(child: _buildSheet(selected))
-          else
-            _StatusFooter(
-              matcher: _matcher,
-              onDone: () => context.pop(_matcher),
-            ),
-        ],
+            if (selected != null)
+              SelectionSheet(child: _buildSheet(selected))
+            else
+              _StatusFooter(
+                matcher: _matcher,
+                onDone: () => context.pop(_matcher),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -161,6 +201,21 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       for (final field in PostField.values)
         if (identical(_fieldNode(field), selected)) field,
     ];
+    // The fields that can be added. One that cannot is left out rather than
+    // disabled, since a disabled chip does not tell why.
+    final fields = [
+      for (final field in PostField.values)
+        if (!labels.contains(field) &&
+            field.accepts(selected) &&
+            _canLabel(field, selected))
+          field,
+    ];
+    // A labeled element from an earlier session can be one that the slider
+    // leaves out.
+    var levels = selectionLevels(from, top: _post);
+    if (!levels.contains(selected)) {
+      levels = selectionLevels(selected, top: _post);
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -169,7 +224,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
         if (labels.isEmpty)
           SelectionSlider(
             selected: selected,
-            levels: selectionLevels(from, top: _post),
+            levels: levels,
             onSelect: (node) => setState(() => _selected = node),
           )
         else
@@ -187,39 +242,34 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
             ],
           ),
         const Gap(spacingXs),
-        if (PostField.values.where((f) => f.accepts(selected)).isEmpty)
-          const CaptionText('This has no value to extract.')
-        else ...[
+        if (fields.isNotEmpty)
           Wrap(
             spacing: spacingXs,
             runSpacing: spacingXs,
             children: [
-              for (final field in PostField.values)
-                if (field.accepts(selected))
-                  FilterChip(
-                    label: Text(field.label),
-                    side: BorderSide(color: fieldColor(field)),
-                    selectedColor: fieldColor(field).withValues(alpha: 0.2),
-                    selected: identical(_fieldNode(field), selected),
-                    onSelected: _canLabel(field, selected)
-                        ? (_) => _toggleField(field, selected)
-                        : null,
-                  ),
+              for (final field in fields)
+                ActionChip(
+                  label: Text(field.label),
+                  side: BorderSide(color: fieldColor(field)),
+                  onPressed: () => _label(field, selected),
+                ),
             ],
-          ),
-        ],
+          )
+        else if (labels.isEmpty)
+          const CaptionText('This cannot be labeled.'),
         const Gap(spacingSm),
         TextButton(
           onPressed: () => setState(() => _selected = null),
-          child: const Text('Cancel'),
+          // A labeled element has nothing waiting to be done.
+          child: Text(labels.isEmpty ? 'Cancel' : 'Close'),
         ),
       ],
     );
   }
 }
 
-/// Which fields are labeled so far, with a button to finish labeling, which
-/// is enabled once the link is labeled.
+/// Which fields are labeled so far and how to label them, with a button to
+/// finish labeling, which is enabled once the link is labeled.
 class const _StatusFooter({
   required final PostMatcher matcher,
   required final VoidCallback onDone,
@@ -252,10 +302,13 @@ class const _StatusFooter({
                             ),
                         ],
                       ),
-                      if (!hasLink) ...[
-                        const Gap(spacingXs),
-                        const CaptionText('A link is required.'),
-                      ],
+                      const Gap(spacingXs),
+                      CaptionText(
+                        hasLink
+                            ? 'Tap the content to label it.'
+                            : 'Tap the content to label it. '
+                                  'A link is required.',
+                      ),
                     ],
                   ),
                 ),

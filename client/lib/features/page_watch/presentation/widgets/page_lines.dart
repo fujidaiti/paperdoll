@@ -155,12 +155,27 @@ class _PageLineState extends State<PageLine> {
       for (final node in widget.nodes)
         TapGestureRecognizer()
           ..onTapDown = ((_) => _pressed = node)
-          ..onTap = () => widget.onTap(widget.nodes),
+          ..onTap = _onTap,
   ];
 
   /// The piece of the line under the finger, or null when the line has
   /// several pieces and the finger is on none of them.
   PageNode? _pressed;
+
+  void _onTap() {
+    widget.onTap(widget.nodes);
+    // A tap can show a sheet below the page, which then covers the line if it
+    // was near the bottom, so the line is scrolled back into view.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        Scrollable.ensureVisible(
+          context,
+          duration: const Duration(milliseconds: 200),
+          alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+        );
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -241,7 +256,7 @@ class _PageLineState extends State<PageLine> {
     return Listener(
       onPointerDown: (_) => _pressed = nodes.length == 1 ? first : null,
       child: InkWell(
-        onTap: () => widget.onTap(nodes),
+        onTap: _onTap,
         onLongPress: nodes.any((n) => n.href != null)
             ? () {
                 if (_pressed?.href case final href?) {
@@ -763,12 +778,18 @@ class _ZoomedLineState extends State<_ZoomedLine> {
 
 /// [from] and the elements around it, from the narrowest to the widest, up
 /// to [top], or up to the outermost element below the root if [top] is null.
+///
+/// An element around a single element, without a link line of its own, looks
+/// the same as that element on the page, so it is left out. Otherwise moving
+/// the slider would change nothing that the user can see.
 List<PageNode> selectionLevels(PageNode from, {PageNode? top}) {
   final levels = [from];
   var n = from;
   while (!identical(n, top) && n.parent?.parent != null) {
     n = n.parent!;
-    levels.add(n);
+    if (n.children.length > 1 || n.href != null) {
+      levels.add(n);
+    }
   }
   return levels;
 }
