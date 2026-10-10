@@ -5,7 +5,6 @@ import 'package:material_ui/material_ui.dart';
 import 'package:paperdoll/core/ui/tokens/app_colors.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
 import 'package:paperdoll/core/ui/tokens/app_text_styles.dart';
-import 'package:paperdoll/core/ui/widgets/body_text.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
@@ -627,10 +626,10 @@ class const SelectionSheet({required final Widget child, super.key})
   }
 }
 
-/// What the selection holds, with a slider that moves the selection
-/// through [levels], the elements from the narrowest to the widest that can
-/// be selected. [selected] is one of [levels].
-class const SelectionHeader({
+/// A slider that moves the selection through [levels], the elements from the
+/// narrowest to the widest that can be selected. [selected] is one of
+/// [levels].
+class const SelectionSlider({
   required final PageNode selected,
   required final List<PageNode> levels,
   required final void Function(PageNode node) onSelect,
@@ -639,31 +638,20 @@ class const SelectionHeader({
   @override
   Widget build(BuildContext context) {
     final canMove = levels.length > 1;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+    return Row(
       children: [
-        BodyText(
-          describeNode(selected),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+        const Icon(Icons.unfold_less, color: colorTextMuted),
+        Expanded(
+          child: Slider(
+            value: canMove ? levels.indexOf(selected).toDouble() : 0,
+            max: canMove ? levels.length - 1 : 1,
+            divisions: canMove ? levels.length - 1 : null,
+            onChanged: canMove
+                ? (value) => onSelect(levels[value.round()])
+                : null,
+          ),
         ),
-        Row(
-          children: [
-            const Icon(Icons.unfold_less, color: colorTextMuted),
-            Expanded(
-              child: Slider(
-                value: canMove ? levels.indexOf(selected).toDouble() : 0,
-                max: canMove ? levels.length - 1 : 1,
-                divisions: canMove ? levels.length - 1 : null,
-                onChanged: canMove
-                    ? (value) => onSelect(levels[value.round()])
-                    : null,
-              ),
-            ),
-            const Icon(Icons.unfold_more, color: colorTextMuted),
-          ],
-        ),
+        const Icon(Icons.unfold_more, color: colorTextMuted),
       ],
     );
   }

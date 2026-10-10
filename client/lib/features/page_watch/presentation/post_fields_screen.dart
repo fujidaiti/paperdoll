@@ -48,22 +48,22 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
 
   PageNode? _fieldNode(PostField field) => _matcher.matchField(_post, field);
 
-  /// Why [field] cannot be labeled on [node], or null if it can.
-  String? _fieldRejection(PostField field, PageNode node) {
+  /// Whether [field] can be labeled on [node]: a body cannot contain other
+  /// fields, and other fields cannot be part of the body.
+  bool _canLabel(PostField field, PageNode node) {
     if (field == PostField.body) {
       for (final other in PostField.values) {
         if (other == PostField.body) {
           continue;
         }
         if (_fieldNode(other) case final n? when node.contains(n)) {
-          return 'A body cannot contain the ${other.label.toLowerCase()}.';
+          return false;
         }
       }
-    } else if (_fieldNode(PostField.body) case final body?
-        when body.contains(node)) {
-      return 'This is part of the body.';
+      return true;
     }
-    return null;
+    final body = _fieldNode(PostField.body);
+    return body == null || !body.contains(node);
   }
 
   void _toggleField(PostField field, PageNode node) {
@@ -160,7 +160,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SelectionHeader(
+        SelectionSlider(
           selected: selected,
           levels: selectionLevels(from, top: _post),
           onSelect: (node) => setState(() => _selected = node),
@@ -180,19 +180,12 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
                     side: BorderSide(color: fieldColor(field)),
                     selectedColor: fieldColor(field).withValues(alpha: 0.2),
                     selected: identical(_fieldNode(field), selected),
-                    onSelected: _fieldRejection(field, selected) == null
+                    onSelected: _canLabel(field, selected)
                         ? (_) => _toggleField(field, selected)
                         : null,
                   ),
             ],
           ),
-          // A body that contains other fields only disables its chip.
-          for (final field in PostField.values)
-            if (field != PostField.body && field.accepts(selected))
-              if (_fieldRejection(field, selected) case final rejection?) ...[
-                const Gap(spacingXs),
-                CaptionText(rejection),
-              ],
         ],
         const Gap(spacingSm),
         TextButton(

@@ -353,7 +353,12 @@ class const _SelectionSheet({
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SelectionHeader(selected: selected, levels: levels, onSelect: onSelect),
+        BodyText(
+          describeNode(selected),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        SelectionSlider(selected: selected, levels: levels, onSelect: onSelect),
         const Gap(spacingSm),
         if (group != null) ...[
           BodyText('A post of group ${group.number}.'),
