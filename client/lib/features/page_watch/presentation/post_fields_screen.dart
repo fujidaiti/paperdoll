@@ -28,8 +28,9 @@ typedef PostFieldsArgs = ({
 /// with nothing when the user leaves without finishing. Leaving asks first
 /// when there are changes, so that they are not lost by accident.
 ///
-/// A body is converted as a whole, so a tap inside it selects the whole body
-/// and the content inside it cannot be labeled.
+/// A labeled element is selected as a whole, so a tap inside it selects the
+/// element rather than the content under the finger. A body is converted as a
+/// whole, so the content inside it cannot be labeled.
 class const PostFieldsScreen({required final PostFieldsArgs args, super.key})
     extends StatefulWidget {
   @override
@@ -110,10 +111,22 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     // A line of several pieces selects the content that holds them, and its
     // pieces, which are too small to tap, are picked from a sheet.
     final node = line.length == 1 ? line.first : line.first.parent!;
-    final target = switch (_fieldNode(PostField.body)) {
-      final body? when line.every(body.contains) => body,
-      _ => node,
-    };
+    // The innermost labeled element that the line is part of. A link around
+    // other content is labeled only on its own line, as it is tinted.
+    PageNode? labeled;
+    for (final field in PostField.values) {
+      final n = _fieldNode(field);
+      if (n == null) {
+        continue;
+      }
+      final covers = field == PostField.link && n.children.isNotEmpty
+          ? identical(line.first, n)
+          : line.every(n.contains);
+      if (covers && (labeled == null || labeled.contains(n))) {
+        labeled = n;
+      }
+    }
+    final target = labeled ?? node;
     setState(() {
       _selected = target;
       _tapped = node;
@@ -192,11 +205,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 
   Widget _buildSheet(PageNode selected) {
-    // The content inside the body cannot be selected.
-    final from = switch (_fieldNode(PostField.body)) {
-      final body? when _tapped != null && body.contains(_tapped!) => body,
-      _ => _tapped ?? selected,
-    };
+    final from = _tapped ?? selected;
     final labels = [
       for (final field in PostField.values)
         if (identical(_fieldNode(field), selected)) field,
