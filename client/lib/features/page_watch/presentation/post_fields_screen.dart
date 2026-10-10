@@ -151,22 +151,19 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 
   Widget _buildSheet(PageNode selected) {
-    final narrower = identical(selected, _fieldNode(PostField.body))
-        ? null
-        : narrowTowards(selected, _tapped);
-    final wider = identical(selected, _post) ? null : selected.parent;
+    // The content inside the body cannot be selected.
+    final from = switch (_fieldNode(PostField.body)) {
+      final body? when _tapped != null && body.contains(_tapped!) => body,
+      _ => _tapped ?? selected,
+    };
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         SelectionHeader(
           selected: selected,
-          onNarrow: narrower == null
-              ? null
-              : () => setState(() => _selected = narrower),
-          onWiden: wider == null
-              ? null
-              : () => setState(() => _selected = wider),
+          levels: selectionLevels(from, top: _post),
+          onSelect: (node) => setState(() => _selected = node),
         ),
         const Gap(spacingXs),
         if (PostField.values.where((f) => f.accepts(selected)).isEmpty)

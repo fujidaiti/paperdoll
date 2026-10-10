@@ -104,7 +104,7 @@ String describeNode(PageNode node) {
     if (images > 0) count(images, 'image'),
     if (embeds > 0) count(embeds, 'embed'),
   ];
-  return 'An area with ${counts.join(', ')}';
+  return counts.join(', ');
 }
 
 /// An annotated area of the page, drawn as a translucent tint of `color`
@@ -627,41 +627,42 @@ class const SelectionSheet({required final Widget child, super.key})
   }
 }
 
-/// What the selection holds, with buttons to widen it to the element around
-/// it or narrow it back down. A null callback disables its button.
+/// What the selection holds, with a slider that moves the selection
+/// through [levels], the elements from the narrowest to the widest that can
+/// be selected. [selected] is one of [levels].
 class const SelectionHeader({
   required final PageNode selected,
-  required final VoidCallback? onNarrow,
-  required final VoidCallback? onWiden,
+  required final List<PageNode> levels,
+  required final void Function(PageNode node) onSelect,
   super.key,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
+    final canMove = levels.length > 1;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BodyText(
-                describeNode(selected),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+        BodyText(
+          describeNode(selected),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        Row(
+          children: [
+            const Icon(Icons.unfold_less, color: colorTextMuted),
+            Expanded(
+              child: Slider(
+                value: canMove ? levels.indexOf(selected).toDouble() : 0,
+                max: canMove ? levels.length - 1 : 1,
+                divisions: canMove ? levels.length - 1 : null,
+                onChanged: canMove
+                    ? (value) => onSelect(levels[value.round()])
+                    : null,
               ),
-              if (selected.textContent case final text when text.isNotEmpty)
-                CaptionText(text, maxLines: 1, overflow: TextOverflow.ellipsis),
-            ],
-          ),
-        ),
-        IconButton(
-          tooltip: 'Narrow the selection',
-          icon: const Icon(Icons.unfold_less),
-          onPressed: onNarrow,
-        ),
-        IconButton(
-          tooltip: 'Widen the selection',
-          icon: const Icon(Icons.unfold_more),
-          onPressed: onWiden,
+            ),
+            const Icon(Icons.unfold_more, color: colorTextMuted),
+          ],
         ),
       ],
     );
@@ -772,17 +773,14 @@ class _ZoomedLineState extends State<_ZoomedLine> {
   }
 }
 
-/// The child of [selected] on the way down to [tapped], if [selected] was
-/// widened from [tapped].
-PageNode? narrowTowards(PageNode selected, PageNode? tapped) {
-  if (tapped == null ||
-      identical(tapped, selected) ||
-      !selected.contains(tapped)) {
-    return null;
-  }
-  var n = tapped;
-  while (!identical(n.parent, selected)) {
+/// [from] and the elements around it, from the narrowest to the widest, up
+/// to [top], or up to the outermost element below the root if [top] is null.
+List<PageNode> selectionLevels(PageNode from, {PageNode? top}) {
+  final levels = [from];
+  var n = from;
+  while (!identical(n, top) && n.parent?.parent != null) {
     n = n.parent!;
+    levels.add(n);
   }
-  return n;
+  return levels;
 }

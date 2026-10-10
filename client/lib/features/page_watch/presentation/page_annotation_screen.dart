@@ -275,15 +275,12 @@ class _AnnotatorState extends State<_Annotator> {
 
   Widget _buildSheet(PageNode selected, _Marks marks) {
     final group = marks.posts[selected.id];
-    // A post is selected as a whole, and the whole page cannot be a post.
-    final narrower = group == null ? narrowTowards(selected, _tapped) : null;
-    final wider = selected.parent?.parent == null ? null : selected.parent;
     return _SelectionSheet(
       selected: selected,
+      levels: selectionLevels(_tapped ?? selected),
+      onSelect: _select,
       group: group,
       rejection: group == null ? _postRejection(selected, marks) : null,
-      onNarrow: narrower == null ? null : () => _select(narrower),
-      onWiden: wider == null ? null : () => _select(wider),
       onCancel: () => _select(null),
       onMarkAsPost: () => unawaited(_markAsPost(selected)),
       onEditGroup: group == null
@@ -341,8 +338,8 @@ class const _SelectionSheet({
   required final PageNode selected,
   required final _Group? group,
   required final String? rejection,
-  required final VoidCallback? onNarrow,
-  required final VoidCallback? onWiden,
+  required final List<PageNode> levels,
+  required final void Function(PageNode node) onSelect,
   required final VoidCallback onCancel,
   required final VoidCallback onMarkAsPost,
   required final VoidCallback? onEditGroup,
@@ -356,11 +353,7 @@ class const _SelectionSheet({
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SelectionHeader(
-          selected: selected,
-          onNarrow: onNarrow,
-          onWiden: onWiden,
-        ),
+        SelectionHeader(selected: selected, levels: levels, onSelect: onSelect),
         const Gap(spacingSm),
         if (group != null) ...[
           BodyText('A post of group ${group.number}.'),
