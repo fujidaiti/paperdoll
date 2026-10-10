@@ -38,6 +38,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 
@@ -168,6 +169,7 @@ func simplify(raw []byte, fallback string) (*Document, error) {
 	if tree == nil {
 		tree = &Node{Tag: "body"}
 	}
+	unwrapTextless(tree)
 	return &Document{URL: base.String(), Title: title, Root: tree}, nil
 }
 
@@ -312,6 +314,27 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		node.Children = nil
 	}
 	return node
+}
+
+// unwrapTextless replaces each container under n that has no text with its
+// children. A post needs a title, and a field is a text, an image or a link,
+// so such a container can be neither and only adds depth. Links are kept
+// because they are values themselves.
+func unwrapTextless(n *Node) {
+	var children []*Node
+	for _, c := range n.Children {
+		unwrapTextless(c)
+		if len(c.Children) > 0 && !semanticTags[c.Tag] && !hasText(c) {
+			children = append(children, c.Children...)
+		} else {
+			children = append(children, c)
+		}
+	}
+	n.Children = children
+}
+
+func hasText(n *Node) bool {
+	return n.Text != "" || slices.ContainsFunc(n.Children, hasText)
 }
 
 // isInlineOnly reports whether n contains nothing but text and inline

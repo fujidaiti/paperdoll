@@ -998,19 +998,14 @@
             "ch": [
               { "tag": "p", "text": "Follow us" },
               {
-                "tag": "ul",
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["site-footer-social-list__link"],
-                    "href": "https://www.linkedin.com/company/oreilly-media"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["site-footer-social-list__link"],
-                    "href": "https://www.youtube.com/user/OreillyMedia"
-                  }
-                ]
+                "tag": "a",
+                "cls": ["site-footer-social-list__link"],
+                "href": "https://www.linkedin.com/company/oreilly-media"
+              },
+              {
+                "tag": "a",
+                "cls": ["site-footer-social-list__link"],
+                "href": "https://www.youtube.com/user/OreillyMedia"
               }
             ]
           },
@@ -1175,35 +1170,26 @@
                     "text": "Take O'Reilly with you and learn anywhere, anytime on your phone and tablet."
                   },
                   {
-                    "tag": "ul",
-                    "cls": [
-                      "site-footer-list__ul",
-                      "site-footer-list__ul--horizontal"
-                    ],
+                    "tag": "a",
+                    "href": "https://itunes.apple.com/us/app/safari-to-go/id881697395",
                     "ch": [
                       {
-                        "tag": "a",
-                        "href": "https://itunes.apple.com/us/app/safari-to-go/id881697395",
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["site-footer__image"],
-                            "src": "https://cdn.oreillystatic.com/oreilly/images/app-store-logo.png",
-                            "alt": "Apple app store"
-                          }
-                        ]
-                      },
+                        "tag": "img",
+                        "cls": ["site-footer__image"],
+                        "src": "https://cdn.oreillystatic.com/oreilly/images/app-store-logo.png",
+                        "alt": "Apple app store"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "href": "https://play.google.com/store/apps/details?id=com.safariflow.queue",
+                    "ch": [
                       {
-                        "tag": "a",
-                        "href": "https://play.google.com/store/apps/details?id=com.safariflow.queue",
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["site-footer__image"],
-                            "src": "https://cdn.oreillystatic.com/oreilly/images/google-play-logo.png",
-                            "alt": "Google play store"
-                          }
-                        ]
+                        "tag": "img",
+                        "cls": ["site-footer__image"],
+                        "src": "https://cdn.oreillystatic.com/oreilly/images/google-play-logo.png",
+                        "alt": "Google play store"
                       }
                     ]
                   }

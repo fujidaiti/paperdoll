@@ -331,96 +331,90 @@
                         "ch": [
                           { "tag": "div", "text": "Get connected" },
                           {
-                            "tag": "div",
-                            "cls": ["Header-socialIcons"],
+                            "tag": "a",
+                            "cls": ["Header-socialIcon"],
+                            "href": "https://groups.google.com/g/golang-nuts",
                             "ch": [
                               {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://groups.google.com/g/golang-nuts",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/google-groups.svg"
-                                  }
-                                ]
-                              },
+                                "tag": "img",
+                                "src": "https://go.dev/images/logos/social/google-groups.svg"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["Header-socialIcon"],
+                            "href": "https://github.com/golang",
+                            "ch": [
                               {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://github.com/golang",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/github.svg"
-                                  }
-                                ]
-                              },
+                                "tag": "img",
+                                "src": "https://go.dev/images/logos/social/github.svg"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["Header-socialIcon"],
+                            "href": "https://bsky.app/profile/golang.org",
+                            "ch": [
                               {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://bsky.app/profile/golang.org",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/bluesky.svg"
-                                  }
-                                ]
-                              },
+                                "tag": "img",
+                                "src": "https://go.dev/images/logos/social/bluesky.svg"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["Header-socialIcon"],
+                            "href": "https://hachyderm.io/@golang",
+                            "ch": [
                               {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://hachyderm.io/@golang",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/mastodon.svg"
-                                  }
-                                ]
-                              },
+                                "tag": "img",
+                                "src": "https://go.dev/images/logos/social/mastodon.svg"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["Header-socialIcon"],
+                            "href": "https://twitter.com/golang",
+                            "ch": [
                               {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://twitter.com/golang",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/twitter.svg"
-                                  }
-                                ]
-                              },
+                                "tag": "img",
+                                "src": "https://go.dev/images/logos/social/twitter.svg"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["Header-socialIcon"],
+                            "href": "https://www.reddit.com/r/golang/",
+                            "ch": [
                               {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://www.reddit.com/r/golang/",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/reddit.svg"
-                                  }
-                                ]
-                              },
+                                "tag": "img",
+                                "src": "https://go.dev/images/logos/social/reddit.svg"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["Header-socialIcon"],
+                            "href": "https://invite.slack.golangbridge.org/",
+                            "ch": [
                               {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://invite.slack.golangbridge.org/",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/slack.svg"
-                                  }
-                                ]
-                              },
+                                "tag": "img",
+                                "src": "https://go.dev/images/logos/social/slack.svg"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": ["Header-socialIcon"],
+                            "href": "https://stackoverflow.com/tags/go",
+                            "ch": [
                               {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://stackoverflow.com/tags/go",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/stack-overflow.svg"
-                                  }
-                                ]
+                                "tag": "img",
+                                "src": "https://go.dev/images/logos/social/stack-overflow.svg"
                               }
                             ]
                           }
@@ -700,96 +694,90 @@
                             "ch": [
                               { "tag": "div", "text": "Get connected" },
                               {
-                                "tag": "div",
-                                "cls": ["Header-socialIcons"],
+                                "tag": "a",
+                                "cls": ["Header-socialIcon"],
+                                "href": "https://groups.google.com/g/golang-nuts",
                                 "ch": [
                                   {
-                                    "tag": "a",
-                                    "cls": ["Header-socialIcon"],
-                                    "href": "https://groups.google.com/g/golang-nuts",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://go.dev/images/logos/social/google-groups.svg"
-                                      }
-                                    ]
-                                  },
+                                    "tag": "img",
+                                    "src": "https://go.dev/images/logos/social/google-groups.svg"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["Header-socialIcon"],
+                                "href": "https://github.com/golang",
+                                "ch": [
                                   {
-                                    "tag": "a",
-                                    "cls": ["Header-socialIcon"],
-                                    "href": "https://github.com/golang",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://go.dev/images/logos/social/github.svg"
-                                      }
-                                    ]
-                                  },
+                                    "tag": "img",
+                                    "src": "https://go.dev/images/logos/social/github.svg"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["Header-socialIcon"],
+                                "href": "https://bsky.app/profile/golang.org",
+                                "ch": [
                                   {
-                                    "tag": "a",
-                                    "cls": ["Header-socialIcon"],
-                                    "href": "https://bsky.app/profile/golang.org",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://go.dev/images/logos/social/bluesky.svg"
-                                      }
-                                    ]
-                                  },
+                                    "tag": "img",
+                                    "src": "https://go.dev/images/logos/social/bluesky.svg"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["Header-socialIcon"],
+                                "href": "https://hachyderm.io/@golang",
+                                "ch": [
                                   {
-                                    "tag": "a",
-                                    "cls": ["Header-socialIcon"],
-                                    "href": "https://hachyderm.io/@golang",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://go.dev/images/logos/social/mastodon.svg"
-                                      }
-                                    ]
-                                  },
+                                    "tag": "img",
+                                    "src": "https://go.dev/images/logos/social/mastodon.svg"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["Header-socialIcon"],
+                                "href": "https://twitter.com/golang",
+                                "ch": [
                                   {
-                                    "tag": "a",
-                                    "cls": ["Header-socialIcon"],
-                                    "href": "https://twitter.com/golang",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://go.dev/images/logos/social/twitter.svg"
-                                      }
-                                    ]
-                                  },
+                                    "tag": "img",
+                                    "src": "https://go.dev/images/logos/social/twitter.svg"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["Header-socialIcon"],
+                                "href": "https://www.reddit.com/r/golang/",
+                                "ch": [
                                   {
-                                    "tag": "a",
-                                    "cls": ["Header-socialIcon"],
-                                    "href": "https://www.reddit.com/r/golang/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://go.dev/images/logos/social/reddit.svg"
-                                      }
-                                    ]
-                                  },
+                                    "tag": "img",
+                                    "src": "https://go.dev/images/logos/social/reddit.svg"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["Header-socialIcon"],
+                                "href": "https://invite.slack.golangbridge.org/",
+                                "ch": [
                                   {
-                                    "tag": "a",
-                                    "cls": ["Header-socialIcon"],
-                                    "href": "https://invite.slack.golangbridge.org/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://go.dev/images/logos/social/slack.svg"
-                                      }
-                                    ]
-                                  },
+                                    "tag": "img",
+                                    "src": "https://go.dev/images/logos/social/slack.svg"
+                                  }
+                                ]
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["Header-socialIcon"],
+                                "href": "https://stackoverflow.com/tags/go",
+                                "ch": [
                                   {
-                                    "tag": "a",
-                                    "cls": ["Header-socialIcon"],
-                                    "href": "https://stackoverflow.com/tags/go",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://go.dev/images/logos/social/stack-overflow.svg"
-                                      }
-                                    ]
+                                    "tag": "img",
+                                    "src": "https://go.dev/images/logos/social/stack-overflow.svg"
                                   }
                                 ]
                               }

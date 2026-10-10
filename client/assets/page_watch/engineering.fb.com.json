@@ -31,20 +31,14 @@
                 "cls": ["navbar", "navbar-expand-std", "nav-container"],
                 "ch": [
                   {
-                    "tag": "div",
-                    "cls": ["nav-top-row", "navbar-brand", "mb-0"],
+                    "tag": "a",
+                    "href": "https://engineering.fb.com/",
                     "ch": [
                       {
-                        "tag": "a",
-                        "href": "https://engineering.fb.com/",
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["navbar-brand-logo"],
-                            "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/logo-meta.svg",
-                            "alt": "Engineering at Meta"
-                          }
-                        ]
+                        "tag": "img",
+                        "cls": ["navbar-brand-logo"],
+                        "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/logo-meta.svg",
+                        "alt": "Engineering at Meta"
                       }
                     ]
                   },

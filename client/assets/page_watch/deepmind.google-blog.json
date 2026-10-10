@@ -1344,34 +1344,24 @@
                     "ch": [
                       { "tag": "#text", "text": "Google DeepMind" },
                       {
-                        "tag": "div",
+                        "tag": "img",
                         "cls": [
-                          "media-image-block",
-                          "site-switcher__logo-wrapper",
-                          "has-dark-mode-alternative"
+                          "image",
+                          "site-switcher__logo",
+                          "site-switcher__logo--lockup",
+                          "light-mode"
                         ],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": [
-                              "image",
-                              "site-switcher__logo",
-                              "site-switcher__logo--lockup",
-                              "light-mode"
-                            ],
-                            "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.height-25.svg"
-                          },
-                          {
-                            "tag": "img",
-                            "cls": [
-                              "image",
-                              "site-switcher__logo",
-                              "site-switcher__logo--lockup",
-                              "dark-mode-alternative"
-                            ],
-                            "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height-25.svg"
-                          }
-                        ]
+                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.height-25.svg"
+                      },
+                      {
+                        "tag": "img",
+                        "cls": [
+                          "image",
+                          "site-switcher__logo",
+                          "site-switcher__logo--lockup",
+                          "dark-mode-alternative"
+                        ],
+                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height-25.svg"
                       }
                     ]
                   },
@@ -1712,27 +1702,14 @@
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": [
-                          "media-content-wrapper",
-                          "media__container",
-                          "media-image-block",
-                          "has-dark-mode-alternative",
-                          "no-light-mode-mobile",
-                          "no-dark-mode-mobile"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/keaZAZ2Y2ae9bUpBxKNlVo6wgyYFHvLv8jsi40tOJAcizgPoN1h7L3J8z_hDr5NWR2AI7HehioDAZVP62nVzCgiuJZMMowjCfV9BogBfcCoZiS2l=w2464-h2464-n-nu"
-                          },
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/xku8U6a5urIGd44qP4LOfAMU37fPQwe_3Bbcofy5jQ3ymMN9aeIUR68n13UdIMHgHcxqUjQruZNvP6MQ83X_fALrGvr6TAAgeHQau4hFYB-Ou46ymg=w2464-h2464-n-nu"
-                          }
-                        ]
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/keaZAZ2Y2ae9bUpBxKNlVo6wgyYFHvLv8jsi40tOJAcizgPoN1h7L3J8z_hDr5NWR2AI7HehioDAZVP62nVzCgiuJZMMowjCfV9BogBfcCoZiS2l=w2464-h2464-n-nu"
+                      },
+                      {
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/xku8U6a5urIGd44qP4LOfAMU37fPQwe_3Bbcofy5jQ3ymMN9aeIUR68n13UdIMHgHcxqUjQruZNvP6MQ83X_fALrGvr6TAAgeHQau4hFYB-Ou46ymg=w2464-h2464-n-nu"
                       }
                     ]
                   },
@@ -1801,27 +1778,14 @@
                             ]
                           },
                           {
-                            "tag": "div",
-                            "cls": [
-                              "media-content-wrapper",
-                              "media__container",
-                              "media-image-block",
-                              "has-dark-mode-alternative",
-                              "no-light-mode-mobile",
-                              "no-dark-mode-mobile"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/WLJdKv7tE4868w1-1Ty8mmYBDJw9jL1i3y0JD-Vbzw0nec285oS15KXv8c123-yD0nyNcCeXZTDWYYKf0DtGB8A5XQAyJncR0-nq0CR0baM2CcYR=w704-h704-n-nu"
-                              },
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/vw4J3JHyxqLGZ19cgnCZ3Texgz5HtGStTn2aLUbK5gSDOECJL3yV9RmyTeEeGuX2jE5PNm6pPwgNOnbrZenGRYZsKpuPhTR0yQiyjUNL6z1R6Rf0bQ=w704-h704-n-nu"
-                              }
-                            ]
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/WLJdKv7tE4868w1-1Ty8mmYBDJw9jL1i3y0JD-Vbzw0nec285oS15KXv8c123-yD0nyNcCeXZTDWYYKf0DtGB8A5XQAyJncR0-nq0CR0baM2CcYR=w704-h704-n-nu"
+                          },
+                          {
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/vw4J3JHyxqLGZ19cgnCZ3Texgz5HtGStTn2aLUbK5gSDOECJL3yV9RmyTeEeGuX2jE5PNm6pPwgNOnbrZenGRYZsKpuPhTR0yQiyjUNL6z1R6Rf0bQ=w704-h704-n-nu"
                           }
                         ]
                       },
@@ -2002,27 +1966,14 @@
                             ]
                           },
                           {
-                            "tag": "div",
-                            "cls": [
-                              "media-content-wrapper",
-                              "media__container",
-                              "media-image-block",
-                              "has-dark-mode-alternative",
-                              "no-light-mode-mobile",
-                              "no-dark-mode-mobile"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/N6ojVrsJsW9ZZo-SlMR-DppO8QkWV46sKSUu5kYG3IllcO9uECcnZj_YZ4uP58hEq_um9JPpVLGMr1B7-Od-8KIteexhZEgo-kV75cXS2rRdh3yZHmY=w704-h704-n-nu"
-                              },
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/xStcpI-ddeH_Pyyq5reFwpUCYXV9FhorJWv6_gr5w9Mz0TyaS5nBHnXkIfOuO97BMI10bRgQ15QsGKstAwl5KUpAsX191KlY-SQLk95kRcVGjwv7pPg=w704-h704-n-nu"
-                              }
-                            ]
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/N6ojVrsJsW9ZZo-SlMR-DppO8QkWV46sKSUu5kYG3IllcO9uECcnZj_YZ4uP58hEq_um9JPpVLGMr1B7-Od-8KIteexhZEgo-kV75cXS2rRdh3yZHmY=w704-h704-n-nu"
+                          },
+                          {
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/xStcpI-ddeH_Pyyq5reFwpUCYXV9FhorJWv6_gr5w9Mz0TyaS5nBHnXkIfOuO97BMI10bRgQ15QsGKstAwl5KUpAsX191KlY-SQLk95kRcVGjwv7pPg=w704-h704-n-nu"
                           }
                         ]
                       },
@@ -2081,27 +2032,14 @@
                             ]
                           },
                           {
-                            "tag": "div",
-                            "cls": [
-                              "media-content-wrapper",
-                              "media__container",
-                              "media-image-block",
-                              "has-dark-mode-alternative",
-                              "no-light-mode-mobile",
-                              "no-dark-mode-mobile"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/6M3Icp_yHwf9ynxQTJOrR4igQahQLmLHUI4O6z-vzfqLGE9snLkCnVFQ4fOn2jR5ApUG3RD8bwnGZDQdXYENh0LE06fN3HPInE1zwkqyH-gcQ9AO=w704-h704-n-nu"
-                              },
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/D90PMkyOwz4xSOuRSIr1AIPuYL4891y6pbN-1t7MxDu1kXnE6iHfZIrv9YuEq1wrxrMv9j7WJ-fnnetxk0Ag6k7ZqRkEmI56yqR2w0Mples6503rgQ=w704-h704-n-nu"
-                              }
-                            ]
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/6M3Icp_yHwf9ynxQTJOrR4igQahQLmLHUI4O6z-vzfqLGE9snLkCnVFQ4fOn2jR5ApUG3RD8bwnGZDQdXYENh0LE06fN3HPInE1zwkqyH-gcQ9AO=w704-h704-n-nu"
+                          },
+                          {
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/D90PMkyOwz4xSOuRSIr1AIPuYL4891y6pbN-1t7MxDu1kXnE6iHfZIrv9YuEq1wrxrMv9j7WJ-fnnetxk0Ag6k7ZqRkEmI56yqR2w0Mples6503rgQ=w704-h704-n-nu"
                           }
                         ]
                       },
@@ -2160,27 +2098,14 @@
                             ]
                           },
                           {
-                            "tag": "div",
-                            "cls": [
-                              "media-content-wrapper",
-                              "media__container",
-                              "media-image-block",
-                              "has-dark-mode-alternative",
-                              "no-light-mode-mobile",
-                              "no-dark-mode-mobile"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/xfwgJekPTaG8z1XX-yeReIoMaEo3DQuemQ2GZMwmL3cr4qx9L34GHhhnDYHd497diNtXx2CY2nwV6Dvlak2ftJIeYwqcyGwcarkm9QtRk368Dnfahw=w704-h704-n-nu"
-                              },
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/buALjGGQqc7ZeBZkIJAdMiWruNLziNRReCFf3blrTD6xRPdt2ixaA5GD9AQbQipZ1ykdp99KFXc0rVLCE-Z1O0pzPOcWJB6LwgKJQ9v65qiC0kMz3A=w704-h704-n-nu"
-                              }
-                            ]
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/xfwgJekPTaG8z1XX-yeReIoMaEo3DQuemQ2GZMwmL3cr4qx9L34GHhhnDYHd497diNtXx2CY2nwV6Dvlak2ftJIeYwqcyGwcarkm9QtRk368Dnfahw=w704-h704-n-nu"
+                          },
+                          {
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/buALjGGQqc7ZeBZkIJAdMiWruNLziNRReCFf3blrTD6xRPdt2ixaA5GD9AQbQipZ1ykdp99KFXc0rVLCE-Z1O0pzPOcWJB6LwgKJQ9v65qiC0kMz3A=w704-h704-n-nu"
                           }
                         ]
                       },
@@ -2302,27 +2227,14 @@
                             ]
                           },
                           {
-                            "tag": "div",
-                            "cls": [
-                              "media-content-wrapper",
-                              "media__container",
-                              "media-image-block",
-                              "has-dark-mode-alternative",
-                              "no-light-mode-mobile",
-                              "no-dark-mode-mobile"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/Xj0KjI12CemvPjyD8jXuWmXc9cr21g1lPGYke6u5Hj-l3G-MZTi_Gj_Ppd_PeQ4MJp4IVrLNqw__cUAkPs27B2KcrRLqsWt6rkyc0kPFFdRvCCE=w704-h704-n-nu"
-                              },
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/2GpuCzcNKfcQahgXgZg_etSH_w5M7pLi4XdJZamQTbm5E82tms0_4N7klU_Yigke0YOGhBLO2VOOcFjaj3NeXmNsIuUdEKodKxq7R6YqnLeM_ncrdw=w704-h704-n-nu"
-                              }
-                            ]
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/Xj0KjI12CemvPjyD8jXuWmXc9cr21g1lPGYke6u5Hj-l3G-MZTi_Gj_Ppd_PeQ4MJp4IVrLNqw__cUAkPs27B2KcrRLqsWt6rkyc0kPFFdRvCCE=w704-h704-n-nu"
+                          },
+                          {
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/2GpuCzcNKfcQahgXgZg_etSH_w5M7pLi4XdJZamQTbm5E82tms0_4N7klU_Yigke0YOGhBLO2VOOcFjaj3NeXmNsIuUdEKodKxq7R6YqnLeM_ncrdw=w704-h704-n-nu"
                           }
                         ]
                       },
@@ -2442,27 +2354,14 @@
                             ]
                           },
                           {
-                            "tag": "div",
-                            "cls": [
-                              "media-content-wrapper",
-                              "media__container",
-                              "media-image-block",
-                              "has-dark-mode-alternative",
-                              "no-light-mode-mobile",
-                              "no-dark-mode-mobile"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/tBI6-ZZLxYH6s9UCPq2btrZlBozjwqcAu9MIJ6HFetPdO423ciDaEAyd_hyk2bYJgQHWsNTxRVCpZsSfC7pbR6l02pUtvT5CYOSnHDN9OmC84fwI=w704-h704-n-nu"
-                              },
-                              {
-                                "tag": "img",
-                                "cls": ["picture__image"],
-                                "src": "https://lh3.googleusercontent.com/EqARHre3gB0y_EX62PvxYYwsLQLF-WpCihZs087eS2fA8zLA5CpafKIeGhSAcaDPiXXysrUH5y0oqljDz6DYak_v8HsHSrd3ry947LkJhQLOq8tk=w704-h704-n-nu"
-                              }
-                            ]
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/tBI6-ZZLxYH6s9UCPq2btrZlBozjwqcAu9MIJ6HFetPdO423ciDaEAyd_hyk2bYJgQHWsNTxRVCpZsSfC7pbR6l02pUtvT5CYOSnHDN9OmC84fwI=w704-h704-n-nu"
+                          },
+                          {
+                            "tag": "img",
+                            "cls": ["picture__image"],
+                            "src": "https://lh3.googleusercontent.com/EqARHre3gB0y_EX62PvxYYwsLQLF-WpCihZs087eS2fA8zLA5CpafKIeGhSAcaDPiXXysrUH5y0oqljDz6DYak_v8HsHSrd3ry947LkJhQLOq8tk=w704-h704-n-nu"
                           }
                         ]
                       },
@@ -2654,27 +2553,14 @@
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": [
-                          "media-content-wrapper",
-                          "media__container",
-                          "media-image-block",
-                          "has-dark-mode-alternative",
-                          "no-light-mode-mobile",
-                          "no-dark-mode-mobile"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOcdUmrhzq8RiCzzWAnxWflo9XeStIM6w=w704-h704-n-nu"
-                          },
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOcdUmrhzq8RiCzzWAnxWflo9XeStIM6w=w704-h704-n-nu"
-                          }
-                        ]
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOcdUmrhzq8RiCzzWAnxWflo9XeStIM6w=w704-h704-n-nu"
+                      },
+                      {
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/rqQt2pJ2zKizyUuFJo7xLJt0-7UPpiefAtFVnTflDRmF0HbqTFZUhVqmyQ_kgZPlJZVRy6xoItAULvSKzHOcdUmrhzq8RiCzzWAnxWflo9XeStIM6w=w704-h704-n-nu"
                       }
                     ]
                   },
@@ -2736,27 +2622,14 @@
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": [
-                          "media-content-wrapper",
-                          "media__container",
-                          "media-image-block",
-                          "has-dark-mode-alternative",
-                          "no-light-mode-mobile",
-                          "no-dark-mode-mobile"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/4CxjUkuiQGzGGUcfq1B4p4UlrkvWudJYnlSiOy1sMK2DaSh2hsNP8eY8wB4CvTaJyKmGVdkWt_LCNDZVdeKm0St80zK7Gdjb8fx5I2LVMhrCC9KuNA=w704-h704-n-nu"
-                          },
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/4CxjUkuiQGzGGUcfq1B4p4UlrkvWudJYnlSiOy1sMK2DaSh2hsNP8eY8wB4CvTaJyKmGVdkWt_LCNDZVdeKm0St80zK7Gdjb8fx5I2LVMhrCC9KuNA=w704-h704-n-nu"
-                          }
-                        ]
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/4CxjUkuiQGzGGUcfq1B4p4UlrkvWudJYnlSiOy1sMK2DaSh2hsNP8eY8wB4CvTaJyKmGVdkWt_LCNDZVdeKm0St80zK7Gdjb8fx5I2LVMhrCC9KuNA=w704-h704-n-nu"
+                      },
+                      {
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/4CxjUkuiQGzGGUcfq1B4p4UlrkvWudJYnlSiOy1sMK2DaSh2hsNP8eY8wB4CvTaJyKmGVdkWt_LCNDZVdeKm0St80zK7Gdjb8fx5I2LVMhrCC9KuNA=w704-h704-n-nu"
                       }
                     ]
                   },
@@ -2818,27 +2691,14 @@
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": [
-                          "media-content-wrapper",
-                          "media__container",
-                          "media-image-block",
-                          "has-dark-mode-alternative",
-                          "no-light-mode-mobile",
-                          "no-dark-mode-mobile"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/_g7qU7yU3Hi8LESp1J4rL2_KrGRKQvSiKYK6vFk1Lc2iHyfrvJIomsFUVnpmCY2kiTVOV2oXrFBO95ZZ72e9g1c_i7Vzh-Q47QKxI0XTUEvsEDgolWk=w704-h704-n-nu"
-                          },
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/x28A_3AhPNekxlYlCjFPCggCgg5GDeAm_nza2viPXgnyWj2dJail1tojalFrcPZe1HEMI3_k1CKExrCv4mIQRICAyyEpIHdXuyTriVagZMKrxDizBg=w704-h704-n-nu"
-                          }
-                        ]
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/_g7qU7yU3Hi8LESp1J4rL2_KrGRKQvSiKYK6vFk1Lc2iHyfrvJIomsFUVnpmCY2kiTVOV2oXrFBO95ZZ72e9g1c_i7Vzh-Q47QKxI0XTUEvsEDgolWk=w704-h704-n-nu"
+                      },
+                      {
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/x28A_3AhPNekxlYlCjFPCggCgg5GDeAm_nza2viPXgnyWj2dJail1tojalFrcPZe1HEMI3_k1CKExrCv4mIQRICAyyEpIHdXuyTriVagZMKrxDizBg=w704-h704-n-nu"
                       }
                     ]
                   },
@@ -2963,27 +2823,14 @@
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": [
-                          "media-content-wrapper",
-                          "media__container",
-                          "media-image-block",
-                          "has-dark-mode-alternative",
-                          "no-light-mode-mobile",
-                          "no-dark-mode-mobile"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/gnU2ZQXzz_YZh2XOencntTFapbweJ1xqKxE4cA-6H1wD44IITkuHq4TJ8Ya6DC36koSCHz4XeNuzBCVpGGF-ujaBg1i9jqWA41yANpI6tPf63QFxRg=w704-h704-n-nu"
-                          },
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/pt6-CKFR5-AZpGNyvI1vll8OZVp0AvcIUxSGTXoWXe6LoH5Mx9xLsCuYu87x6Cgz3F6gThZSW4eXiMJ6tYFxrphlJByVqIL6b3HuOS_tVE6HBrf3qw=w704-h704-n-nu"
-                          }
-                        ]
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/gnU2ZQXzz_YZh2XOencntTFapbweJ1xqKxE4cA-6H1wD44IITkuHq4TJ8Ya6DC36koSCHz4XeNuzBCVpGGF-ujaBg1i9jqWA41yANpI6tPf63QFxRg=w704-h704-n-nu"
+                      },
+                      {
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/pt6-CKFR5-AZpGNyvI1vll8OZVp0AvcIUxSGTXoWXe6LoH5Mx9xLsCuYu87x6Cgz3F6gThZSW4eXiMJ6tYFxrphlJByVqIL6b3HuOS_tVE6HBrf3qw=w704-h704-n-nu"
                       }
                     ]
                   },
@@ -3045,27 +2892,14 @@
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": [
-                          "media-content-wrapper",
-                          "media__container",
-                          "media-image-block",
-                          "has-dark-mode-alternative",
-                          "no-light-mode-mobile",
-                          "no-dark-mode-mobile"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/714xJAXeA-c0aVSNbumxTycJ6qcsQwH2ueWUwNHHVuFoTeY7qJa88Eu5R7DTRqvk5vSO5VLdGgqnE1CKyOYqhx-V6uAjpfh234S9yPUHRwK-xmsL7qQ=w704-h704-n-nu"
-                          },
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/IjUTX_YtFD8WGLhZQ-8MmO42valzCy9BUm2iuZUDEq8PpmMO70s1DTcI0TrSnmjFJ3Arc1rdntmbxqQC7CVs34g3Lkww2_ANZmAK6Fm-eqG4XuWirDk=w704-h704-n-nu"
-                          }
-                        ]
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/714xJAXeA-c0aVSNbumxTycJ6qcsQwH2ueWUwNHHVuFoTeY7qJa88Eu5R7DTRqvk5vSO5VLdGgqnE1CKyOYqhx-V6uAjpfh234S9yPUHRwK-xmsL7qQ=w704-h704-n-nu"
+                      },
+                      {
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/IjUTX_YtFD8WGLhZQ-8MmO42valzCy9BUm2iuZUDEq8PpmMO70s1DTcI0TrSnmjFJ3Arc1rdntmbxqQC7CVs34g3Lkww2_ANZmAK6Fm-eqG4XuWirDk=w704-h704-n-nu"
                       }
                     ]
                   },
@@ -3325,27 +3159,14 @@
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": [
-                          "media-content-wrapper",
-                          "media__container",
-                          "media-image-block",
-                          "has-dark-mode-alternative",
-                          "no-light-mode-mobile",
-                          "no-dark-mode-mobile"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/qjg2j7sdTa6dikufS8_Oc8K6r2lr1cXV_xqJyTw6l2phuLe42Qsin7xqxIuDsrypaBPCAKWSgHljpG38b3EHN8n7MOz4sqcZZ6A35Fd5VG_oXA_OWA=w704-h704-n-nu"
-                          },
-                          {
-                            "tag": "img",
-                            "cls": ["picture__image"],
-                            "src": "https://lh3.googleusercontent.com/F4LJgtgAALsxq0EpPihDpkXY7wpu1PAmhj_evB7G49OuOSl5bBknlZKOSrW0NOnhJc4eIPgIfaIQ3Kly7rRfr0TFZI_sI7L6xZHseyDS_zMKC_Go=w704-h704-n-nu"
-                          }
-                        ]
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/qjg2j7sdTa6dikufS8_Oc8K6r2lr1cXV_xqJyTw6l2phuLe42Qsin7xqxIuDsrypaBPCAKWSgHljpG38b3EHN8n7MOz4sqcZZ6A35Fd5VG_oXA_OWA=w704-h704-n-nu"
+                      },
+                      {
+                        "tag": "img",
+                        "cls": ["picture__image"],
+                        "src": "https://lh3.googleusercontent.com/F4LJgtgAALsxq0EpPihDpkXY7wpu1PAmhj_evB7G49OuOSl5bBknlZKOSrW0NOnhJc4eIPgIfaIQ3Kly7rRfr0TFZI_sI7L6xZHseyDS_zMKC_Go=w704-h704-n-nu"
                       }
                     ]
                   },
@@ -3550,35 +3371,29 @@
                     "text": "Follow us"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["footer-social-links__items"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://x.com/googledeepmind"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://www.instagram.com/googledeepmind"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://www.youtube.com/@googledeepmind"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://www.linkedin.com/company/googledeepmind/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://github.com/google-deepmind"
-                      }
-                    ]
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://x.com/googledeepmind"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://www.instagram.com/googledeepmind"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://www.youtube.com/@googledeepmind"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://www.linkedin.com/company/googledeepmind/"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://github.com/google-deepmind"
                   }
                 ]
               },
@@ -3666,33 +3481,16 @@
                                 "href": "https://deepmind.google/models/gemma/",
                                 "ch": [
                                   {
-                                    "tag": "div",
-                                    "cls": [
-                                      "media-icon",
-                                      "media-icon--contained",
-                                      "media-icon--contained--outline",
-                                      "js-media-icon",
-                                      "media-icon--contained__inner",
-                                      "media-icon__icon-wrapper",
-                                      "media-icon--contained__icon",
-                                      "icon-svg-upload"
-                                    ],
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "footer-main-links__svg--light"
-                                        ],
-                                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__light_j46lu5D_ChuL4ZZ.max-24x24.svg",
-                                        "alt": "footer_gemma__light"
-                                      },
-                                      {
-                                        "tag": "img",
-                                        "cls": ["footer-main-links__svg--dark"],
-                                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__dark_NkmSuN7_L3lpSMo.max-24x24.svg",
-                                        "alt": "footer_gemma__dark"
-                                      }
-                                    ]
+                                    "tag": "img",
+                                    "cls": ["footer-main-links__svg--light"],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__light_j46lu5D_ChuL4ZZ.max-24x24.svg",
+                                    "alt": "footer_gemma__light"
+                                  },
+                                  {
+                                    "tag": "img",
+                                    "cls": ["footer-main-links__svg--dark"],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__dark_NkmSuN7_L3lpSMo.max-24x24.svg",
+                                    "alt": "footer_gemma__dark"
                                   },
                                   {
                                     "tag": "div",

@@ -1344,34 +1344,24 @@
                     "ch": [
                       { "tag": "#text", "text": "Google DeepMind" },
                       {
-                        "tag": "div",
+                        "tag": "img",
                         "cls": [
-                          "media-image-block",
-                          "site-switcher__logo-wrapper",
-                          "has-dark-mode-alternative"
+                          "image",
+                          "site-switcher__logo",
+                          "site-switcher__logo--lockup",
+                          "light-mode"
                         ],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "cls": [
-                              "image",
-                              "site-switcher__logo",
-                              "site-switcher__logo--lockup",
-                              "light-mode"
-                            ],
-                            "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.height-25.svg"
-                          },
-                          {
-                            "tag": "img",
-                            "cls": [
-                              "image",
-                              "site-switcher__logo",
-                              "site-switcher__logo--lockup",
-                              "dark-mode-alternative"
-                            ],
-                            "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height-25.svg"
-                          }
-                        ]
+                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.height-25.svg"
+                      },
+                      {
+                        "tag": "img",
+                        "cls": [
+                          "image",
+                          "site-switcher__logo",
+                          "site-switcher__logo--lockup",
+                          "dark-mode-alternative"
+                        ],
+                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height-25.svg"
                       }
                     ]
                   },
@@ -2666,35 +2656,29 @@
                     "text": "Follow us"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["footer-social-links__items"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://x.com/googledeepmind"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://www.instagram.com/googledeepmind"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://www.youtube.com/@googledeepmind"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://www.linkedin.com/company/googledeepmind/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["button", "button--text-link", "icon-center"],
-                        "href": "https://github.com/google-deepmind"
-                      }
-                    ]
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://x.com/googledeepmind"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://www.instagram.com/googledeepmind"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://www.youtube.com/@googledeepmind"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://www.linkedin.com/company/googledeepmind/"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button", "button--text-link", "icon-center"],
+                    "href": "https://github.com/google-deepmind"
                   }
                 ]
               },
@@ -2782,33 +2766,16 @@
                                 "href": "https://deepmind.google/models/gemma/",
                                 "ch": [
                                   {
-                                    "tag": "div",
-                                    "cls": [
-                                      "media-icon",
-                                      "media-icon--contained",
-                                      "media-icon--contained--outline",
-                                      "js-media-icon",
-                                      "media-icon--contained__inner",
-                                      "media-icon__icon-wrapper",
-                                      "media-icon--contained__icon",
-                                      "icon-svg-upload"
-                                    ],
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "footer-main-links__svg--light"
-                                        ],
-                                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__light_j46lu5D_ChuL4ZZ.max-24x24.svg",
-                                        "alt": "footer_gemma__light"
-                                      },
-                                      {
-                                        "tag": "img",
-                                        "cls": ["footer-main-links__svg--dark"],
-                                        "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__dark_NkmSuN7_L3lpSMo.max-24x24.svg",
-                                        "alt": "footer_gemma__dark"
-                                      }
-                                    ]
+                                    "tag": "img",
+                                    "cls": ["footer-main-links__svg--light"],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__light_j46lu5D_ChuL4ZZ.max-24x24.svg",
+                                    "alt": "footer_gemma__light"
+                                  },
+                                  {
+                                    "tag": "img",
+                                    "cls": ["footer-main-links__svg--dark"],
+                                    "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__dark_NkmSuN7_L3lpSMo.max-24x24.svg",
+                                    "alt": "footer_gemma__dark"
                                   },
                                   {
                                     "tag": "div",
