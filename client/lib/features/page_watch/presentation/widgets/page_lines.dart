@@ -580,6 +580,46 @@ Color fieldColor(PostField field) => switch (field) {
 PageArea selectionArea(PageNode node, {bool linkOnly = false}) =>
     (node: node, color: colorText, linkOnly: linkOnly);
 
+/// A sheet at the bottom of a screen that shows the selection and what can be
+/// done with it.
+///
+/// It is laid out below the page instead of being set as
+/// Scaffold.bottomSheet, so that it does not cover the end of the page, which
+/// can still be scrolled and tapped while the sheet is shown.
+class const SelectionSheet({required final Widget child, super.key})
+    extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Material 3 bottom sheets have no shadow, and an elevation shadow falls
+    // below the sheet, so the shadow is cast upwards here to show the edge of
+    // the sheet against the page.
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        // The corner radius of Material 3 bottom sheets.
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x33000000),
+            blurRadius: 16,
+            offset: Offset(0, -4),
+          ),
+        ],
+      ),
+      child: BottomSheet(
+        enableDrag: false,
+        onClosing: () {},
+        builder: (context) => SafeArea(
+          top: false,
+          child: Padding(
+            padding: const EdgeInsets.all(spacingMd),
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 /// What the selection holds, with buttons to widen it to the element around
 /// it or narrow it back down. A null callback disables its button.
 class const SelectionHeader({

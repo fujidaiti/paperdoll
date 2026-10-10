@@ -260,31 +260,8 @@ class _AnnotatorState extends State<_Annotator> {
               ),
             ),
           ),
-          // The sheet is part of the layout instead of Scaffold.bottomSheet,
-          // so that it does not cover the end of the page, which can still be
-          // scrolled and tapped while the sheet is shown.
           if (selected != null)
-            // Material 3 bottom sheets have no shadow, and an elevation
-            // shadow falls below the sheet, so the shadow is cast upwards
-            // here to show the edge of the sheet against the page.
-            DecoratedBox(
-              decoration: const BoxDecoration(
-                // The corner radius of Material 3 bottom sheets.
-                borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x33000000),
-                    blurRadius: 16,
-                    offset: Offset(0, -4),
-                  ),
-                ],
-              ),
-              child: BottomSheet(
-                enableDrag: false,
-                onClosing: () {},
-                builder: (context) => _buildSheet(selected, marks),
-              ),
-            )
+            SelectionSheet(child: _buildSheet(selected, marks))
           else if (_groups.isNotEmpty)
             _StatusFooter(
               groupCount: _groups.length,
@@ -375,51 +352,45 @@ class const _SelectionSheet({
   Widget build(BuildContext context) {
     final group = this.group;
     final rejection = this.rejection;
-    return SafeArea(
-      top: false,
-      child: Padding(
-        padding: const EdgeInsets.all(spacingMd),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SelectionHeader(
+          selected: selected,
+          onNarrow: onNarrow,
+          onWiden: onWiden,
+        ),
+        const Gap(spacingSm),
+        if (group != null) ...[
+          BodyText('A post of group ${group.number}.'),
+          const Gap(spacingSm),
+        ] else if (rejection != null) ...[
+          CaptionText(rejection),
+          const Gap(spacingSm),
+        ],
+        Row(
           children: [
-            SelectionHeader(
-              selected: selected,
-              onNarrow: onNarrow,
-              onWiden: onWiden,
-            ),
-            const Gap(spacingSm),
+            TextButton(onPressed: onCancel, child: const Text('Cancel')),
+            const Spacer(),
             if (group != null) ...[
-              BodyText('A post of group ${group.number}.'),
+              TextButton(
+                onPressed: onRemoveGroup,
+                child: const Text('Remove group'),
+              ),
               const Gap(spacingSm),
-            ] else if (rejection != null) ...[
-              CaptionText(rejection),
-              const Gap(spacingSm),
-            ],
-            Row(
-              children: [
-                TextButton(onPressed: onCancel, child: const Text('Cancel')),
-                const Spacer(),
-                if (group != null) ...[
-                  TextButton(
-                    onPressed: onRemoveGroup,
-                    child: const Text('Remove group'),
-                  ),
-                  const Gap(spacingSm),
-                  FilledButton(
-                    onPressed: onEditGroup,
-                    child: const Text('Edit fields'),
-                  ),
-                ] else if (rejection == null)
-                  FilledButton(
-                    onPressed: onMarkAsPost,
-                    child: const Text('Mark as post'),
-                  ),
-              ],
-            ),
+              FilledButton(
+                onPressed: onEditGroup,
+                child: const Text('Edit fields'),
+              ),
+            ] else if (rejection == null)
+              FilledButton(
+                onPressed: onMarkAsPost,
+                child: const Text('Mark as post'),
+              ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

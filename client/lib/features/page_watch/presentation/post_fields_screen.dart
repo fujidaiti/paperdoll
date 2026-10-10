@@ -36,6 +36,8 @@ class const PostFieldsScreen({required final PostFieldsArgs args, super.key})
 class _PostFieldsScreenState extends State<PostFieldsScreen> {
   late var _matcher = widget.args.matcher;
   late final _lines = layOutLines([_post]);
+
+  /// The element shown on the selection sheet, while the sheet is shown.
   PageNode? _selected;
 
   /// The content the user tapped last. The selection can be narrowed back
@@ -83,10 +85,10 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       _ => node,
     };
     setState(() {
-      _selected = identical(_selected, target) ? null : target;
-      _tapped = _selected == null ? null : node;
+      _selected = target;
+      _tapped = node;
     });
-    if (line.length == 1 || !identical(_selected, node)) {
+    if (line.length == 1 || !identical(target, node)) {
       return;
     }
     final piece = await pickLinePiece(context, line);
@@ -143,91 +145,109 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
               },
             ),
           ),
-          const AppDivider(),
-          SafeArea(
-            top: false,
-            child: Padding(
-              padding: const EdgeInsets.all(spacingMd),
-              child: SizedBox(
-                width: double.infinity,
-                child: _buildPanel(hasLink: hasLink),
-              ),
-            ),
-          ),
+          if (selected != null)
+            SelectionSheet(child: _buildSheet(selected))
+          else
+            _StatusFooter(matcher: _matcher),
         ],
       ),
     );
   }
 
-  Widget _buildPanel({required bool hasLink}) {
-    final selected = _selected;
-    final narrower = selected == null
-        ? null
-        : identical(selected, _fieldNode(PostField.body))
+  Widget _buildSheet(PageNode selected) {
+    final narrower = identical(selected, _fieldNode(PostField.body))
         ? null
         : narrowTowards(selected, _tapped);
-    final wider = selected != null && !identical(selected, _post)
-        ? selected.parent
-        : null;
+    final wider = identical(selected, _post) ? null : selected.parent;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Wrap(
-          spacing: spacingXs,
-          runSpacing: spacingXs,
-          children: [
-            for (final field in PostField.values)
-              _FieldStatus(
-                field: field,
-                isSet: _matcher.fields.containsKey(field),
-              ),
-          ],
+        SelectionHeader(
+          selected: selected,
+          onNarrow: narrower == null
+              ? null
+              : () => setState(() => _selected = narrower),
+          onWiden: wider == null
+              ? null
+              : () => setState(() => _selected = wider),
         ),
-        if (!hasLink) ...[
-          const Gap(spacingXs),
-          const CaptionText('A link is required.'),
-        ],
-        if (selected != null) ...[
-          const Gap(spacingSm),
-          SelectionHeader(
-            selected: selected,
-            onNarrow: narrower == null
-                ? null
-                : () => setState(() => _selected = narrower),
-            onWiden: wider == null
-                ? null
-                : () => setState(() => _selected = wider),
+        const Gap(spacingXs),
+        if (PostField.values.where((f) => f.accepts(selected)).isEmpty)
+          const CaptionText('This has no value to extract.')
+        else ...[
+          Wrap(
+            spacing: spacingXs,
+            runSpacing: spacingXs,
+            children: [
+              for (final field in PostField.values)
+                if (field.accepts(selected))
+                  FilterChip(
+                    label: Text(field.label),
+                    side: BorderSide(color: fieldColor(field)),
+                    selectedColor: fieldColor(field).withValues(alpha: 0.2),
+                    selected: identical(_fieldNode(field), selected),
+                    onSelected: _fieldRejection(field, selected) == null
+                        ? (_) => _toggleField(field, selected)
+                        : null,
+                  ),
+            ],
           ),
-          const Gap(spacingXs),
-          if (PostField.values.where((f) => f.accepts(selected)).isEmpty)
-            const CaptionText('This has no value to extract.')
-          else ...[
-            Wrap(
-              spacing: spacingXs,
-              runSpacing: spacingXs,
-              children: [
-                for (final field in PostField.values)
-                  if (field.accepts(selected))
-                    FilterChip(
-                      label: Text(field.label),
-                      side: BorderSide(color: fieldColor(field)),
-                      selectedColor: fieldColor(field).withValues(alpha: 0.2),
-                      selected: identical(_fieldNode(field), selected),
-                      onSelected: _fieldRejection(field, selected) == null
-                          ? (_) => _toggleField(field, selected)
-                          : null,
-                    ),
+          for (final field in PostField.values)
+            if (field.accepts(selected))
+              if (_fieldRejection(field, selected) case final rejection?) ...[
+                const Gap(spacingXs),
+                CaptionText(rejection),
               ],
-            ),
-            for (final field in PostField.values)
-              if (field.accepts(selected))
-                if (_fieldRejection(field, selected) case final rejection?) ...[
-                  const Gap(spacingXs),
-                  CaptionText(rejection),
-                ],
-          ],
         ],
+        const Gap(spacingSm),
+        TextButton(
+          onPressed: () => setState(() => _selected = null),
+          child: const Text('Cancel'),
+        ),
+      ],
+    );
+  }
+}
+
+/// Which fields are labeled so far.
+class const _StatusFooter({required final PostMatcher matcher})
+    extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const AppDivider(),
+        SafeArea(
+          top: false,
+          child: Padding(
+            padding: const EdgeInsets.all(spacingMd),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Wrap(
+                    spacing: spacingXs,
+                    runSpacing: spacingXs,
+                    children: [
+                      for (final field in PostField.values)
+                        _FieldStatus(
+                          field: field,
+                          isSet: matcher.fields.containsKey(field),
+                        ),
+                    ],
+                  ),
+                  if (!matcher.fields.containsKey(PostField.link)) ...[
+                    const Gap(spacingXs),
+                    const CaptionText('A link is required.'),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
