@@ -218,20 +218,25 @@ class _PageLineState extends State<PageLine> {
       );
     }
     content = _frameLine(first, content);
-    // The tints are painted behind the content rather than wrapped around
-    // it, so that annotating does not change the layout. A tint leaves a thin
-    // gap at the ends of its area to keep adjacent areas apart.
+    // The tints are painted over the content rather than wrapped around it,
+    // so that annotating does not change the layout, and so that images do
+    // not hide them. A tint leaves a thin gap at the ends of its area to keep
+    // adjacent areas apart.
     content = Stack(
       children: [
+        content,
         for (final area in boxes)
           Positioned.fill(
             top: nodes.contains(firstLeaf(area.node)) ? 2 : 0,
             bottom: _isLinkOnly(area) || nodes.contains(_lastLeaf(area.node))
                 ? 2
                 : 0,
-            child: ColoredBox(color: area.color.withValues(alpha: _tintAlpha)),
+            child: IgnorePointer(
+              child: ColoredBox(
+                color: area.color.withValues(alpha: _tintAlpha),
+              ),
+            ),
           ),
-        content,
       ],
     );
     return Listener(
@@ -326,20 +331,22 @@ class const PageBlock({
             _BlockLine(key: ValueKey(line.first.id), nodes: line),
       ],
     );
-    // A tint leaves a thin gap at the ends of its block to keep adjacent
-    // areas apart.
+    // A tint is painted over the content so that images do not hide it, and
+    // leaves a thin gap at the ends of its block to keep adjacent areas apart.
     content = Stack(
       children: [
+        content,
         for (final area in areas)
           if (identical(area.node, node))
             Positioned.fill(
               top: 2,
               bottom: 2,
-              child: ColoredBox(
-                color: area.color.withValues(alpha: _tintAlpha),
+              child: IgnorePointer(
+                child: ColoredBox(
+                  color: area.color.withValues(alpha: _tintAlpha),
+                ),
               ),
             ),
-        content,
       ],
     );
     if (tappable(node)) {
