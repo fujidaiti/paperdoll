@@ -17,14 +17,33 @@ enum PostField {
 
   final String label;
 
-  /// Whether [node] can provide a value for this field.
-  bool accepts(PageNode node) => switch (this) {
-    title || description => node.textContent.isNotEmpty,
-    body => bodyMarkup(node).isNotEmpty,
-    link => node.href != null,
-    thumbnail => node.isImage,
-    pubDate => node.datetime != null || node.textContent.isNotEmpty,
-  };
+  /// Whether [node] can provide a sensible value for this field.
+  ///
+  /// A title or a description is plain text, so it holds no image, embed
+  /// or date. An image or a date alone is not a body, nor is a link without
+  /// content, but an embed alone is, such as the video of a video post. A
+  /// date in text is a short text with a digit, such as "Oct 1, 2026" or "3
+  /// hours ago".
+  bool accepts(PageNode node) {
+    final text = node.textContent;
+    return switch (this) {
+      title || description =>
+        text.isNotEmpty &&
+            !_anyInside(node, (n) => n.tag == 'time' || n.isImage || n.isEmbed),
+      body =>
+        node.tag != 'time' &&
+            !node.isImage &&
+            !(node.href != null && node.children.isEmpty) &&
+            bodyMarkup(node).isNotEmpty,
+      link => node.href != null,
+      thumbnail => node.isImage,
+      pubDate =>
+        node.datetime != null ||
+            (node.children.isEmpty &&
+                text.length <= 40 &&
+                text.contains(RegExp(r'\d'))),
+    };
+  }
 
   /// The value this field takes when it is mapped to [node].
   String? valueOf(PageNode node) => switch (this) {
@@ -35,6 +54,10 @@ enum PostField {
     pubDate => node.datetime ?? node.textContent,
   };
 }
+
+/// Whether [node] or any node inside it passes [test].
+bool _anyInside(PageNode node, bool Function(PageNode n) test) =>
+    test(node) || node.children.any((c) => _anyInside(c, test));
 
 /// One step of a selector. It matches the child nodes that have [tag] and at
 /// least all of [classes], so that state classes such as "featured" on some
