@@ -271,10 +271,26 @@ class _AnnotatorState extends State<_Annotator> {
           // so that it does not cover the end of the page, which can still be
           // scrolled and tapped while the sheet is shown.
           if (selected != null)
-            BottomSheet(
-              enableDrag: false,
-              onClosing: () {},
-              builder: (context) => _buildSheet(selected, marks),
+            // Material 3 bottom sheets have no shadow, and an elevation
+            // shadow falls below the sheet, so the shadow is cast upwards
+            // here to show the edge of the sheet against the page.
+            DecoratedBox(
+              decoration: const BoxDecoration(
+                // The corner radius of Material 3 bottom sheets.
+                borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x33000000),
+                    blurRadius: 16,
+                    offset: Offset(0, -4),
+                  ),
+                ],
+              ),
+              child: BottomSheet(
+                enableDrag: false,
+                onClosing: () {},
+                builder: (context) => _buildSheet(selected, marks),
+              ),
             )
           else
             _StatusFooter(
