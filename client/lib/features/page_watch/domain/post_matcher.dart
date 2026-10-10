@@ -94,32 +94,47 @@ class SelectorStep {
 /// With [generalize], the last step has no index so that the selector also
 /// matches the siblings that share the shape of [node]. Its classes are only
 /// the ones that those siblings share, since posts often have classes of
-/// their own, such as "post-9850" or "tag-databases". A sibling of the same
-/// tag that shares no class with [node] is of another kind, such as a
-/// sidebar widget, so it does not reduce the classes.
+/// their own, such as "post-9850" or "tag-databases".
+///
+/// A sibling shares the shape of [node] when it is of the same kind and so
+/// are most of its children. Others, such as a sidebar widget or a grid of
+/// several posts, do not reduce the classes. If the shared classes still
+/// match such a sibling, the step keeps all classes of [node].
 List<SelectorStep> buildSelector(
   PageNode ancestor,
   PageNode node, {
   bool generalize = false,
 }) {
+  bool isSameKind(PageNode a, PageNode b) =>
+      a.tag == b.tag &&
+      (a.classes.isEmpty && b.classes.isEmpty ||
+          a.classes.any(b.classes.contains));
+  bool isSameShape(PageNode a, PageNode b) =>
+      isSameKind(a, b) &&
+      a.children.where((c) => b.children.any((d) => isSameKind(c, d))).length *
+              2 >=
+          max(a.children.length, b.children.length);
+
   final steps = <SelectorStep>[];
   for (var n = node; !identical(n, ancestor); n = n.parent!) {
     final isLast = steps.isEmpty;
-    final step = SelectorStep(
-      tag: n.tag,
-      classes: isLast && generalize
-          ? [
-              for (final c in n.classes)
-                if (n.parent!.children
-                    .where(
-                      (s) =>
-                          s.tag == n.tag && s.classes.any(n.classes.contains),
-                    )
-                    .every((s) => s.classes.contains(c)))
-                  c,
-            ]
-          : n.classes,
-    );
+    var step = SelectorStep(tag: n.tag, classes: n.classes);
+    if (isLast && generalize) {
+      final siblings = n.parent!.children;
+      final shared = SelectorStep(
+        tag: n.tag,
+        classes: [
+          for (final c in n.classes)
+            if (siblings
+                .where((s) => isSameShape(n, s))
+                .every((s) => s.classes.contains(c)))
+              c,
+        ],
+      );
+      if (siblings.every((s) => !shared.matches(s) || isSameShape(n, s))) {
+        step = shared;
+      }
+    }
     final matches = n.parent!.children.where(step.matches).toList();
     steps.add(
       matches.length > 1 && !(isLast && generalize)
