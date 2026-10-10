@@ -90,7 +90,11 @@ class SelectorStep {
 /// Builds the path of steps that leads from [ancestor] down to [node]. A step
 /// gets an index only when its tag and classes match more than one sibling.
 /// With [generalize], the last step has no index so that the selector also
-/// matches the siblings that share the shape of [node].
+/// matches the siblings that share the shape of [node]. Its classes are only
+/// the ones that those siblings share, since posts often have classes of
+/// their own, such as "post-9850" or "tag-databases". A sibling of the same
+/// tag that shares no class with [node] is of another kind, such as a
+/// sidebar widget, so it does not reduce the classes.
 List<SelectorStep> buildSelector(
   PageNode ancestor,
   PageNode node, {
@@ -98,8 +102,22 @@ List<SelectorStep> buildSelector(
 }) {
   final steps = <SelectorStep>[];
   for (var n = node; !identical(n, ancestor); n = n.parent!) {
-    final step = SelectorStep(tag: n.tag, classes: n.classes);
     final isLast = steps.isEmpty;
+    final step = SelectorStep(
+      tag: n.tag,
+      classes: isLast && generalize
+          ? [
+              for (final c in n.classes)
+                if (n.parent!.children
+                    .where(
+                      (s) =>
+                          s.tag == n.tag && s.classes.any(n.classes.contains),
+                    )
+                    .every((s) => s.classes.contains(c)))
+                  c,
+            ]
+          : n.classes,
+    );
     final matches = n.parent!.children.where(step.matches).toList();
     steps.add(
       matches.length > 1 && !(isLast && generalize)
