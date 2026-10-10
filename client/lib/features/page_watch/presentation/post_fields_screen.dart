@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
@@ -72,15 +74,28 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     });
   }
 
-  void _onTapContent(PageNode node) {
+  Future<void> _onTapLine(List<PageNode> line) async {
+    // A line of several pieces selects the content that holds them, and its
+    // pieces, which are too small to tap, are picked from a sheet.
+    final node = line.length == 1 ? line.first : line.first.parent!;
     final target = switch (_fieldNode(PostField.body)) {
-      final body? when body.contains(node) => body,
+      final body? when line.every(body.contains) => body,
       _ => node,
     };
     setState(() {
       _selected = identical(_selected, target) ? null : target;
       _tapped = _selected == null ? null : node;
     });
+    if (line.length == 1 || !identical(_selected, node)) {
+      return;
+    }
+    final piece = await pickLinePiece(context, line);
+    if (piece != null && mounted && identical(_selected, node)) {
+      setState(() {
+        _selected = piece;
+        _tapped = piece;
+      });
+    }
   }
 
   @override
@@ -124,7 +139,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
                   key: ValueKey(line.first.id),
                   nodes: line,
                   areas: areas,
-                  onTap: _onTapContent,
+                  onTap: (line) => unawaited(_onTapLine(line)),
                 );
               },
             ),

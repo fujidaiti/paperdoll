@@ -190,8 +190,10 @@ class _AnnotatorState extends State<_Annotator> {
     });
   }
 
-  void _onTapContent(PageNode node, _Marks marks) {
-    // A tap inside a post selects the whole post.
+  void _onTapLine(List<PageNode> line, _Marks marks) {
+    // A post is never a piece of a line, so a line of several pieces selects
+    // the content that holds them. A tap inside a post selects the post.
+    final node = line.length == 1 ? line.first : line.first.parent!;
     final target = marks.enclosingPost(node) ?? node;
     setState(() {
       _selected = identical(_selected, target) ? null : target;
@@ -256,7 +258,7 @@ class _AnnotatorState extends State<_Annotator> {
                   key: ValueKey(line.first.id),
                   nodes: line,
                   areas: areas,
-                  onTap: (node) => _onTapContent(node, marks),
+                  onTap: (line) => _onTapLine(line, marks),
                 );
               },
             ),

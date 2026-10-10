@@ -131,11 +131,13 @@ PageNode _lastLeaf(PageNode node) {
 /// line, such as a link in a paragraph, tints the background of that piece
 /// instead.
 ///
-/// A long press on a link opens it in the in-app browser.
+/// A line is at least as tall as a touch target, and a tap anywhere on it
+/// reports the whole line, because the pieces of a line are too small to tap
+/// one by one. A long press on a link opens it in the in-app browser.
 class const PageLine({
   required final List<PageNode> nodes,
   required final List<PageArea> areas,
-  required final void Function(PageNode node) onTap,
+  required final void Function(List<PageNode> line) onTap,
   super.key,
 }) extends StatefulWidget {
   @override
@@ -143,17 +145,18 @@ class const PageLine({
 }
 
 class _PageLineState extends State<PageLine> {
-  /// Lets each piece of a line with several pieces be tapped on its own.
+  /// Tells which piece of a line with several pieces is under the finger.
   ///
   /// A span takes only one recognizer, so a long press is handled by the
   /// whole line, which needs to know the piece under the finger. The tap
-  /// recognizer reports it on tap down, which comes before a long press.
+  /// recognizer reports it on tap down, which comes before a long press. A
+  /// tap on a piece wins over the line's own tap, so it reports the line too.
   late final _recognizers = [
     if (widget.nodes.length > 1)
       for (final node in widget.nodes)
         TapGestureRecognizer()
           ..onTapDown = ((_) => _pressed = node)
-          ..onTap = () => widget.onTap(node),
+          ..onTap = () => widget.onTap(widget.nodes),
   ];
 
   /// The piece of the line under the finger, or null when the line has
@@ -216,7 +219,9 @@ class _PageLineState extends State<PageLine> {
     }
     // Lines touch each other so that the tint of an area is continuous; the
     // space between lines is inside the innermost tint.
-    content = Padding(
+    content = Container(
+      constraints: const BoxConstraints(minHeight: kMinInteractiveDimension),
+      alignment: Alignment.centerLeft,
       padding: EdgeInsets.only(
         top: _headingLevel(first) != null ? spacingMd : spacingXs,
         bottom: spacingXs,
@@ -242,7 +247,7 @@ class _PageLineState extends State<PageLine> {
     return Listener(
       onPointerDown: (_) => _pressed = nodes.length == 1 ? first : null,
       child: InkWell(
-        onTap: () => widget.onTap(first),
+        onTap: () => widget.onTap(nodes),
         onLongPress: nodes.any((n) => n.href != null)
             ? () {
                 if (_pressed?.href case final href?) {
@@ -282,11 +287,12 @@ bool _isInBlockquote(PageNode node) {
 
 /// The text of [node], styled the way the page would show it. The
 /// [recognizer] is set on every leaf span because a tap only reaches the
-/// span under it.
+/// span under it. A list item starts with a bullet unless [bullet] is false.
 TextSpan _textSpan(
   PageNode node, {
   GestureRecognizer? recognizer,
   Color? highlight,
+  bool bullet = true,
 }) {
   var style = switch (_headingLevel(node)) {
     1 => textTitle.copyWith(fontSize: 26),
@@ -320,9 +326,10 @@ TextSpan _textSpan(
     text ??= href;
   }
   final isListItem =
-      node.tag == 'li' ||
-      (node.parent?.tag == 'li' &&
-          identical(node.parent!.children.first, node));
+      bullet &&
+      (node.tag == 'li' ||
+          (node.parent?.tag == 'li' &&
+              identical(node.parent!.children.first, node)));
 
   TextSpan rich(InlineNode inline) => switch (inline.tag) {
     '#text' => TextSpan(text: inline.text, recognizer: recognizer),
@@ -472,6 +479,110 @@ class const SelectionHeader({
         ),
       ],
     );
+  }
+}
+
+/// Shows the line of [pieces], which are too small to tap on the page,
+/// zoomed in a sheet, and returns the piece the user picks, or null if the
+/// user closes the sheet.
+Future<PageNode?> pickLinePiece(BuildContext context, List<PageNode> pieces) {
+  return showModalBottomSheet<PageNode>(
+    context: context,
+    showDragHandle: true,
+    builder: (context) => SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(spacingMd, 0, spacingMd, spacingMd),
+        child: SizedBox(
+          width: double.infinity,
+          child: _ZoomedLine(
+            pieces: pieces,
+            onPick: (piece) => Navigator.pop(context, piece),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// A line shown larger, in the same flow as on the page, so that each piece
+/// is a touch target: the lines are at least [kMinInteractiveDimension] tall,
+/// and a piece narrower than that is widened.
+class const _ZoomedLine({
+  required final List<PageNode> pieces,
+  required final void Function(PageNode piece) onPick,
+}) extends StatefulWidget {
+  @override
+  State<_ZoomedLine> createState() => _ZoomedLineState();
+}
+
+class _ZoomedLineState extends State<_ZoomedLine> {
+  static const _scaler = TextScaler.linear(1.5);
+
+  late final _recognizers = [
+    for (final piece in widget.pieces)
+      TapGestureRecognizer()..onTap = () => widget.onPick(piece),
+  ];
+
+  @override
+  void dispose() {
+    for (final recognizer in _recognizers) {
+      recognizer.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Each piece has a background so that the user can tell where it ends.
+    final background = colorText.withValues(alpha: 0.06);
+    return Text.rich(
+      TextSpan(
+        children: [
+          for (final (i, piece) in widget.pieces.indexed) ...[
+            if (i > 0) const TextSpan(text: ' '),
+            switch (_textSpan(
+              piece,
+              recognizer: _recognizers[i],
+              highlight: background,
+              bullet: false,
+            )) {
+              final span when _isNarrow(span) => WidgetSpan(
+                alignment: PlaceholderAlignment.middle,
+                // The text scaler scales the widget too, so its size is set
+                // before scaling.
+                child: GestureDetector(
+                  onTap: () => widget.onPick(piece),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints.tight(
+                      Size.square(kMinInteractiveDimension / _scaler.scale(1)),
+                    ),
+                    child: Center(child: Text.rich(span)),
+                  ),
+                ),
+              ),
+              final span => span,
+            },
+          ],
+        ],
+      ),
+      textScaler: _scaler,
+      // The strut is scaled with the text, which makes lines 48 px tall.
+      strutStyle: StrutStyle(
+        fontSize: textBody.fontSize,
+        height: kMinInteractiveDimension / _scaler.scale(textBody.fontSize!),
+      ),
+    );
+  }
+
+  bool _isNarrow(TextSpan span) {
+    final painter = TextPainter(
+      text: span,
+      textScaler: _scaler,
+      textDirection: TextDirection.ltr,
+    )..layout();
+    final width = painter.width;
+    painter.dispose();
+    return width < kMinInteractiveDimension;
   }
 }
 
