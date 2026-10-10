@@ -27,10 +27,11 @@ import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.da
 /// The page is shown as its content, line by line. The user repeats two
 /// steps: select the area that holds one post, then label the content inside
 /// it as the post's fields on [PostFieldsScreen]. An area is selected by
-/// tapping a piece of content and widening the selection to the elements
-/// around it. Areas that share the shape of the selected post become posts of
-/// the same group automatically, with their fields found by the same
-/// selectors. Each group results in one [PostMatcher].
+/// tapping a piece of content, which selects the element around it, and
+/// widening the selection to the elements around that one. Areas that share
+/// the shape of the selected post become posts of the same group
+/// automatically, with their fields found by the same selectors. Each group
+/// results in one [PostMatcher].
 class const PageAnnotationScreen({required final String file, super.key})
     extends ConsumerWidget {
   @override
@@ -115,9 +116,6 @@ class _AnnotatorState extends State<_Annotator> {
 
   /// Why [node] cannot become a post, or null if it can.
   String? _postRejection(PageNode node, _Marks marks) {
-    if (node.isText) {
-      return 'A piece of text cannot be a post. Widen the selection.';
-    }
     final candidates = PostMatcher.fromNode(
       _document,
       node,
@@ -191,9 +189,17 @@ class _AnnotatorState extends State<_Annotator> {
   }
 
   void _onTapLine(List<PageNode> line, _Marks marks) {
-    // A post is never a piece of a line, so a line of several pieces selects
-    // the content that holds them. A tap inside a post selects the post.
-    final node = line.length == 1 ? line.first : line.first.parent!;
+    // A post is never a value such as a title, so a tap selects the element
+    // that holds the line. A link around other content holds it already. A
+    // tap inside a post selects the post.
+    final first = line.first;
+    final node = line.length == 1 && first.children.isNotEmpty
+        ? first
+        : first.parent!;
+    // The whole page cannot be a post.
+    if (node.parent == null) {
+      return;
+    }
     final target = marks.enclosingPost(node) ?? node;
     setState(() {
       _selected = identical(_selected, target) ? null : target;
