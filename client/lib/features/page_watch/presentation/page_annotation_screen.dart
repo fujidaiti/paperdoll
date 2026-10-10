@@ -71,6 +71,10 @@ const _groupColors = [
   Color(0xFF00838F),
 ];
 
+/// Whether [node] or the content inside it has a link.
+bool _hasLink(PageNode node) =>
+    node.href != null || node.children.any(_hasLink);
+
 /// The posts of all groups in the document, by node id.
 class _Marks {
   final posts = <int, _Group>{};
@@ -244,8 +248,6 @@ class _AnnotatorState extends State<_Annotator> {
       body: Column(
         children: [
           Expanded(
-            // The whole page cannot be a post, so only the blocks inside it
-            // can be tapped.
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(
                 horizontal: spacingMd,
@@ -255,7 +257,8 @@ class _AnnotatorState extends State<_Annotator> {
                 node: _document.root,
                 areas: areas,
                 onTap: (node) => _onTapBlock(node, marks),
-                tappable: false,
+                // A post needs a link, and the whole page cannot be a post.
+                tappable: (node) => node.parent != null && _hasLink(node),
               ),
             ),
           ),

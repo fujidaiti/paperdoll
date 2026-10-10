@@ -273,8 +273,9 @@ Widget _frameLine(PageNode first, Widget content) => Container(
 /// A node with children shown as one block: its own lines and, nested in
 /// it, a block for each child with children. A tap anywhere on the block
 /// that is not on a nested block reports [node], so the block is the unit
-/// that is selected. The lines themselves cannot be tapped. A block that is
-/// not [tappable] cannot be tapped either, but its nested blocks can.
+/// that is selected. The lines themselves cannot be tapped. A block whose
+/// node is not [tappable] cannot be tapped either, so a tap on it reaches
+/// the block around it, but its nested blocks can be tapped.
 ///
 /// Each of [areas] whose node is [node] tints the block, so that nested
 /// areas look darker. A long press on a link opens it in the in-app browser.
@@ -282,7 +283,7 @@ class const PageBlock({
   required final PageNode node,
   required final List<PageArea> areas,
   required final void Function(PageNode node) onTap,
-  final bool tappable = true,
+  required final bool Function(PageNode node) tappable,
   super.key,
 }) extends StatelessWidget {
   @override
@@ -319,6 +320,7 @@ class const PageBlock({
               node: child,
               areas: areas,
               onTap: onTap,
+              tappable: tappable,
             )
           else if (item case final List<PageNode> line)
             _BlockLine(key: ValueKey(line.first.id), nodes: line),
@@ -340,7 +342,7 @@ class const PageBlock({
         content,
       ],
     );
-    if (tappable) {
+    if (tappable(node)) {
       content = InkWell(onTap: () => onTap(node), child: content);
     }
     return content;
