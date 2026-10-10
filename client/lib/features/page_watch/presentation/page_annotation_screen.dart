@@ -188,8 +188,6 @@ class _AnnotatorState extends State<_Annotator> {
     await showModalBottomSheet<void>(
       context: context,
       showDragHandle: true,
-      // Keeps the selected area visible above the sheet.
-      barrierColor: Colors.transparent,
       builder: (context) => _SelectionSheet(
         tapped: target,
         marks: marks,
