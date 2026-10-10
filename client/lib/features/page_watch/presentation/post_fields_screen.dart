@@ -268,8 +268,8 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 }
 
-/// Which fields are labeled so far and how to label them, with a button to
-/// finish labeling, which is enabled once the link is labeled.
+/// Which fields are labeled so far, with a button to finish labeling, which
+/// is enabled once the link is labeled.
 class const _StatusFooter({
   required final PostMatcher matcher,
   required final VoidCallback onDone,
@@ -288,27 +288,15 @@ class const _StatusFooter({
             child: Row(
               children: [
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Wrap(
+                    spacing: spacingXs,
+                    runSpacing: spacingXs,
                     children: [
-                      Wrap(
-                        spacing: spacingXs,
-                        runSpacing: spacingXs,
-                        children: [
-                          for (final field in PostField.values)
-                            _FieldStatus(
-                              field: field,
-                              isSet: matcher.fields.containsKey(field),
-                            ),
-                        ],
-                      ),
-                      const Gap(spacingXs),
-                      CaptionText(
-                        hasLink
-                            ? 'Tap the content to label it.'
-                            : 'Tap the content to label it. '
-                                  'A link is required.',
-                      ),
+                      for (final field in PostField.values)
+                        _FieldStatus(
+                          field: field,
+                          isSet: matcher.fields.containsKey(field),
+                        ),
                     ],
                   ),
                 ),
