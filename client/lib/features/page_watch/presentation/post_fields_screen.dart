@@ -115,7 +115,6 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       if (selected != null)
         selectionArea(selected, linkOnly: identical(selected, _tapped)),
     ];
-    final postCount = _matcher.matchPosts(widget.args.document).length;
     final hasLink = _matcher.fields.containsKey(PostField.link);
     return Scaffold(
       appBar: AppBar(
@@ -151,7 +150,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
               padding: const EdgeInsets.all(spacingMd),
               child: SizedBox(
                 width: double.infinity,
-                child: _buildPanel(postCount: postCount, hasLink: hasLink),
+                child: _buildPanel(hasLink: hasLink),
               ),
             ),
           ),
@@ -160,7 +159,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     );
   }
 
-  Widget _buildPanel({required int postCount, required bool hasLink}) {
+  Widget _buildPanel({required bool hasLink}) {
     final selected = _selected;
     final narrower = selected == null
         ? null
@@ -185,16 +184,12 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
               ),
           ],
         ),
-        const Gap(spacingXs),
-        CaptionText(
-          hasLink
-              ? 'The fields apply to all $postCount posts of this group.'
-              : 'A link is required.',
-        ),
-        const Gap(spacingSm),
-        if (selected == null)
-          const CaptionText('Tap the content of the post to label it.')
-        else ...[
+        if (!hasLink) ...[
+          const Gap(spacingXs),
+          const CaptionText('A link is required.'),
+        ],
+        if (selected != null) ...[
+          const Gap(spacingSm),
           SelectionHeader(
             selected: selected,
             onNarrow: narrower == null

@@ -263,17 +263,19 @@ class _AnnotatorState extends State<_Annotator> {
               },
             ),
           ),
-          const AppDivider(),
-          SafeArea(
-            top: false,
-            child: Padding(
-              padding: const EdgeInsets.all(spacingMd),
-              child: SizedBox(
-                width: double.infinity,
-                child: _buildPanel(marks),
+          if (_selected != null || _groups.isNotEmpty) ...[
+            const AppDivider(),
+            SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.all(spacingMd),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: _buildPanel(marks),
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );
@@ -282,23 +284,8 @@ class _AnnotatorState extends State<_Annotator> {
   Widget _buildPanel(_Marks marks) {
     final selected = _selected;
     if (selected == null) {
-      final postCount = marks.posts.length;
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const BodyText(
-            'Tap the content of a post, such as its title, then widen the '
-            'selection until it covers exactly one post.',
-          ),
-          if (_groups.isNotEmpty) ...[
-            const Gap(spacingXs),
-            CaptionText(
-              '${_groups.length} group(s), $postCount post(s) found. '
-              'Tap a post to edit its group.',
-            ),
-          ],
-        ],
+      return CaptionText(
+        '${_groups.length} group(s), ${marks.posts.length} post(s) found.',
       );
     }
     final group = marks.posts[selected.id];
