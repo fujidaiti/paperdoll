@@ -358,7 +358,13 @@ class const _SelectionSheet({
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        SelectionSlider(selected: selected, levels: levels, onSelect: onSelect),
+        // A post is selected as a whole.
+        if (group == null)
+          SelectionSlider(
+            selected: selected,
+            levels: levels,
+            onSelect: onSelect,
+          ),
         const Gap(spacingSm),
         if (rejection != null) ...[
           CaptionText(rejection),
