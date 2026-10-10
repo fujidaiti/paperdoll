@@ -48,6 +48,11 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   /// down to it after being widened.
   PageNode? _tapped;
 
+  /// Whether the user has labeled the selection since it was selected. The
+  /// labels of such a selection can still be changed on the sheet, while a
+  /// selection that was already labeled shows only its labels.
+  var _isLabeling = false;
+
   PageNode get _post => widget.args.post;
 
   PageNode? _fieldNode(PostField field) => _matcher.matchField(_post, field);
@@ -70,12 +75,30 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     return body == null || !body.contains(node);
   }
 
-  /// Labels [node] as [field] and closes the sheet, which completes the
-  /// selection.
-  void _label(PostField field, PageNode node) {
+  /// Whether [field] cannot be added to an element labeled with [labels].
+  /// An element provides at most one text value: a title, a description, a
+  /// body or a date. A link can be added to any of them, such as a title
+  /// that links to the post.
+  bool _conflicts(PostField field, List<PostField> labels) {
+    const texts = {
+      PostField.title,
+      PostField.description,
+      PostField.body,
+      PostField.pubDate,
+    };
+    return texts.contains(field) &&
+        labels.any((label) => label != field && texts.contains(label));
+  }
+
+  /// Labels [node] as [field], or removes the label if [node] has it.
+  void _toggleField(PostField field, PageNode node) {
     setState(() {
-      _matcher = _matcher.withField(field, _post, node);
-      _selected = null;
+      _matcher = _matcher.withField(
+        field,
+        _post,
+        identical(_fieldNode(field), node) ? null : node,
+      );
+      _isLabeling = true;
     });
   }
 
@@ -130,6 +153,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     setState(() {
       _selected = target;
       _tapped = node;
+      _isLabeling = false;
     });
     if (line.length == 1 || !identical(target, node)) {
       return;
@@ -139,6 +163,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       setState(() {
         _selected = piece;
         _tapped = piece;
+        _isLabeling = false;
       });
     }
   }
@@ -210,13 +235,12 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       for (final field in PostField.values)
         if (identical(_fieldNode(field), selected)) field,
     ];
-    // The fields that can be added. One that cannot is left out rather than
-    // disabled, since a disabled chip does not tell why.
+    // The fields that can be labeled. One that cannot is left out rather
+    // than disabled, since a disabled chip does not tell why.
     final fields = [
       for (final field in PostField.values)
-        if (!labels.contains(field) &&
-            field.accepts(selected) &&
-            _canLabel(field, selected))
+        if (labels.contains(field) ||
+            (field.accepts(selected) && _canLabel(field, selected)))
           field,
     ];
     // A labeled element from an earlier session can be one that the slider
@@ -234,7 +258,10 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
           SelectionSlider(
             selected: selected,
             levels: levels,
-            onSelect: (node) => setState(() => _selected = node),
+            onSelect: (node) => setState(() {
+              _selected = node;
+              _isLabeling = false;
+            }),
           )
         else
           Row(
@@ -250,22 +277,28 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
               ),
             ],
           ),
-        const Gap(spacingXs),
-        if (fields.isNotEmpty)
-          Wrap(
-            spacing: spacingXs,
-            runSpacing: spacingXs,
-            children: [
-              for (final field in fields)
-                ActionChip(
-                  label: Text(field.label),
-                  side: BorderSide(color: fieldColor(field)),
-                  onPressed: () => _label(field, selected),
-                ),
-            ],
-          )
-        else if (labels.isEmpty)
-          const CaptionText('This cannot be labeled.'),
+        if (labels.isEmpty || _isLabeling) ...[
+          const Gap(spacingXs),
+          if (fields.isEmpty)
+            const CaptionText('This cannot be labeled.')
+          else
+            Wrap(
+              spacing: spacingXs,
+              runSpacing: spacingXs,
+              children: [
+                for (final field in fields)
+                  FilterChip(
+                    label: Text(field.label),
+                    side: BorderSide(color: fieldColor(field)),
+                    selectedColor: fieldColor(field).withValues(alpha: 0.2),
+                    selected: labels.contains(field),
+                    onSelected: _conflicts(field, labels)
+                        ? null
+                        : (_) => _toggleField(field, selected),
+                  ),
+              ],
+            ),
+        ],
         const Gap(spacingSm),
         TextButton(
           onPressed: () => setState(() => _selected = null),
