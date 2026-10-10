@@ -360,10 +360,7 @@ class const _SelectionSheet({
         ),
         SelectionSlider(selected: selected, levels: levels, onSelect: onSelect),
         const Gap(spacingSm),
-        if (group != null) ...[
-          BodyText('A post of group ${group.number}.'),
-          const Gap(spacingSm),
-        ] else if (rejection != null) ...[
+        if (rejection != null) ...[
           CaptionText(rejection),
           const Gap(spacingSm),
         ],
