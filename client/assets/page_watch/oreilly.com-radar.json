@@ -6,1257 +6,850 @@
     "cls": ["home", "blog", "wp-theme-signal", "multisite-radar"],
     "ch": [
       {
-        "tag": "a",
-        "cls": ["skipToMain"],
-        "text": "Skip to main content",
-        "href": "https://oreilly.com/radar#maincontent"
-      },
-      {
-        "tag": "header",
-        "cls": ["orm-global-site-header--auth"],
+        "tag": "div",
+        "cls": ["textBanner"],
         "ch": [
+          { "tag": "#text", "text": "Join us on" },
           {
-            "tag": "nav",
-            "ch": [
-              {
-                "tag": "a",
-                "cls": ["orm-global-marketing-nav-list-item__link"],
-                "text": "For Enterprise",
-                "href": "https://www.oreilly.com/online-learning/teams.html"
-              },
-              {
-                "tag": "a",
-                "cls": ["orm-global-marketing-nav-list-item__link"],
-                "text": "For Government",
-                "href": "https://www.oreilly.com/online-learning/government.html"
-              },
-              {
-                "tag": "a",
-                "cls": ["orm-global-marketing-nav-list-item__link"],
-                "text": "For Higher Ed",
-                "href": "https://www.oreilly.com/online-learning/academic.html"
-              },
-              {
-                "tag": "a",
-                "cls": ["orm-global-marketing-nav-list-item__link"],
-                "text": "For Individuals",
-                "href": "https://www.oreilly.com/online-learning/individuals.html"
-              },
-              {
-                "tag": "a",
-                "cls": ["orm-global-marketing-nav-list-item__link"],
-                "text": "For Content Marketing",
-                "href": "https://www.oreilly.com/content-marketing-solutions.html"
-              }
-            ]
+            "tag": "a",
+            "text": "Substack",
+            "href": "https://oreillyradar.substack.com/"
           },
-          {
-            "tag": "div",
-            "ch": [
-              {
-                "tag": "div",
-                "cls": ["orm-global-site-banner__block"],
-                "ch": [
-                  { "tag": "a", "href": "https://www.oreilly.com" },
-                  {
-                    "tag": "nav",
-                    "cls": ["orm-global-site-banner__list"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "cls": ["orm-global-site-banner__link"],
-                        "text": "Radar Blog",
-                        "href": "https://oreilly.com/radar/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["orm-global-site-banner__link"],
-                        "text": "Live",
-                        "href": "https://oreilly.com/live/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": [
-                  "orm-global-site-banner__block",
-                  "orm-global-site-banner__list"
-                ],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["orm-global-site-banner__link"],
-                    "text": "Plans",
-                    "href": "https://www.oreilly.com/online-learning/pricing.html"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["orm-global-site-banner__link"],
-                    "text": "Sign In",
-                    "href": "https://www.oreilly.com/member/login/?next=%2Fradar%2F"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": [
-                      "orm-global-site-banner__link",
-                      "orm-global-site--link-as-button"
-                    ],
-                    "text": "Try Now",
-                    "href": "https://www.oreilly.com/online-learning/try-now.html"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": [
-                      "orm-global-site-banner__link",
-                      "orm-global-site--link-as-button"
-                    ],
-                    "text": "O'Reilly Platform",
-                    "href": "https://www.oreilly.com/member/login/"
-                  }
-                ]
-              }
-            ]
-          }
+          { "tag": "#text", "text": "to get Radar by email." }
         ]
       },
       {
-        "tag": "a",
-        "cls": ["hero-radar"],
-        "href": "https://oreilly.com/radar/"
-      },
-      {
-        "tag": "main",
+        "tag": "div",
+        "cls": ["pageLayout"],
         "ch": [
           {
             "tag": "div",
-            "cls": ["textBanner"],
-            "ch": [
-              { "tag": "#text", "text": "Join us on" },
-              {
-                "tag": "a",
-                "text": "Substack",
-                "href": "https://oreillyradar.substack.com/"
-              },
-              { "tag": "#text", "text": "to get Radar by email." }
-            ]
-          },
-          {
-            "tag": "div",
-            "cls": ["pageLayout"],
+            "cls": ["sidebar"],
             "ch": [
               {
                 "tag": "div",
-                "cls": ["sidebar"],
+                "cls": ["module", "open", "topics"],
                 "ch": [
                   {
-                    "tag": "div",
-                    "cls": ["module", "open", "topics"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "cls": ["topicChip"],
-                        "text": "AI \u0026 ML",
-                        "href": "https://oreilly.com/radar/topics/ai-ml/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["topicChip"],
-                        "text": "Business",
-                        "href": "https://oreilly.com/radar/topics/business/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["topicChip"],
-                        "text": "Data",
-                        "href": "https://oreilly.com/radar/topics/data/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["topicChip"],
-                        "text": "Innovation",
-                        "href": "https://oreilly.com/radar/topics/innovation-and-disruption/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["topicChip"],
-                        "text": "Research",
-                        "href": "https://oreilly.com/radar/tag/research/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["topicChip"],
-                        "text": "Security",
-                        "href": "https://oreilly.com/radar/topics/security/"
-                      }
-                    ]
+                    "tag": "a",
+                    "cls": ["topicChip"],
+                    "text": "AI \u0026 ML",
+                    "href": "https://oreilly.com/radar/topics/ai-ml/"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["module", "mobileMove"],
-                    "ch": [
-                      {
-                        "tag": "h2",
-                        "text": "Try the O’Reilly learning platform"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "With the O’Reilly learning platform, you get the resources and guidance to keep your skills sharp and stay ahead. Try it free for up to 14 days."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["ctaLink"],
-                        "text": "Start trial",
-                        "href": "https://www.oreilly.com/start-trial/?type=team"
-                      }
-                    ]
+                    "tag": "a",
+                    "cls": ["topicChip"],
+                    "text": "Business",
+                    "href": "https://oreilly.com/radar/topics/business/"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["module", "mobileMove"],
-                    "ch": [
-                      { "tag": "h2", "text": "Try a course for free" },
-                      {
-                        "tag": "p",
-                        "text": "Join a live online event on the O’Reilly platform to learn from the experts shaping tech."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["ctaLink"],
-                        "text": "See what’s coming soon",
-                        "href": "https://www.oreilly.com/live/free.html"
-                      }
-                    ]
+                    "tag": "a",
+                    "cls": ["topicChip"],
+                    "text": "Data",
+                    "href": "https://oreilly.com/radar/topics/data/"
                   },
                   {
-                    "tag": "h2",
-                    "cls": [
-                      "module",
-                      "mobileMove",
-                      "marketingCloudForm-thankyou",
-                      "hidden"
-                    ],
-                    "text": "Thank you for subscribing to the O’Reilly Radar Trends to Watch newsletter."
+                    "tag": "a",
+                    "cls": ["topicChip"],
+                    "text": "Innovation",
+                    "href": "https://oreilly.com/radar/topics/innovation-and-disruption/"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["topicChip"],
+                    "text": "Research",
+                    "href": "https://oreilly.com/radar/tag/research/"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["topicChip"],
+                    "text": "Security",
+                    "href": "https://oreilly.com/radar/topics/security/"
                   }
                 ]
               },
               {
                 "tag": "div",
-                "cls": ["blogFeed"],
+                "cls": ["module", "mobileMove"],
                 "ch": [
+                  { "tag": "h2", "text": "Try the O’Reilly learning platform" },
                   {
-                    "tag": "div",
-                    "cls": ["stickyPosts"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item", "sticky"],
-                        "href": "https://www.oreilly.com/radar/will-typesafes-jev-change-how-we-build-ai-applications/",
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Will-TypeSafes-Jev-change-how-we-build-AI-applications-1600x1244.jpg"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["inner", "item-text"],
-                            "ch": [
-                              {
-                                "tag": "p",
-                                "cls": ["post-type", "article"],
-                                "text": "article AI \u0026 ML"
-                              },
-                              {
-                                "tag": "h2",
-                                "text": "Will TypeSafe’s Jev Change How We Build AI Applications?"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["metaWrap"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["meta"],
-                                    "text": "By Laurie Voss |"
-                                  },
-                                  {
-                                    "tag": "p",
-                                    "cls": ["meta"],
-                                    "text": "September 23, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item", "sticky"],
-                        "href": "https://www.oreilly.com/radar/mcp-is-not-just-another-api-standard/",
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/MCP-is-not-just-another-API-standard-1600x1244.jpg"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["inner", "item-text"],
-                            "ch": [
-                              {
-                                "tag": "p",
-                                "cls": ["post-type", "article"],
-                                "text": "article AI \u0026 ML"
-                              },
-                              {
-                                "tag": "h2",
-                                "text": "MCP Is Not Just Another API Standard"
-                              },
-                              {
-                                "tag": "p",
-                                "cls": ["dek"],
-                                "text": "What Model Context Protocol actually changes for agentic systems, and what it doesn’t"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["metaWrap"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["meta"],
-                                    "text": "By Balaji Venkatasubramaniyar |"
-                                  },
-                                  {
-                                    "tag": "p",
-                                    "cls": ["meta"],
-                                    "text": "September 23, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item", "sticky"],
-                        "href": "https://www.oreilly.com/radar/the-accelerationist-case-for-frontier-pacing/",
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-accelerationist-case-for-frontier-pacing-1600x1244.jpg"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["inner", "item-text"],
-                            "ch": [
-                              {
-                                "tag": "p",
-                                "cls": ["post-type", "article"],
-                                "text": "article AI \u0026 ML"
-                              },
-                              {
-                                "tag": "h2",
-                                "text": "The Accelerationist Case for Frontier Pacing"
-                              },
-                              {
-                                "tag": "p",
-                                "cls": ["dek"],
-                                "text": "Slow AI is smooth AI, smooth AI is fast AI"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["metaWrap"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["meta"],
-                                    "text": "By Venkatesh Rao |"
-                                  },
-                                  {
-                                    "tag": "p",
-                                    "cls": ["meta"],
-                                    "text": "September 22, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
+                    "tag": "p",
+                    "text": "With the O’Reilly learning platform, you get the resources and guidance to keep your skills sharp and stay ahead. Try it free for up to 14 days."
                   },
                   {
-                    "tag": "div",
-                    "cls": ["combined-blog-feed"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/ai-sovereignty-bargaining-with-big-tech-and-the-promise-of-full-stack-open-source-ai/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/AI-Sovereignty%E2%80%94Bargaining-with-Big-Tech-and-the-Promise-of-Full-Stack-Open-Source-AI-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "AI Sovereignty: Bargaining with Big Tech and the Promise of Full Stack Open Source AI"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Nicole Butterfield | September 22, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/zero-to-agent-in-30-minutes-build-a-sports-concierge-agent-with-chester-ismay/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_zero-to-agent-radar-1600x840-1-160x160.png"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "Zero to Agent in 30 Minutes: Build a Sports Concierge Agent with Chester Ismay"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Michelle Smith | September 21, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/the-post-training-process-openai-used-for-chatgpt/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-post-training-process-OpenAI-used-for-ChatGPT-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "The Post-training Process OpenAI Used for ChatGPT"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Sharon Zhou | September 21, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/how-to-get-from-ai-assisted-to-ai-native/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/AI-as-an-enterprise-operating-system-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "How to Get from AI-Assisted to AI Native"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Tim O’Reilly | September 18, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item", "external"],
-                        "href": "https://www.youtube.com/watch?v=5EcTnkCY5ww",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://i2.ytimg.com/vi/5EcTnkCY5ww/hqdefault.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "video"],
-                                    "text": "video"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "AI as an Enterprise Operating System: How to Get from AI-Assisted to AI Native"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By O'Reilly | September 18, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/software-factories-light-and-dark/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Software-factories-light-and-dark-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "Software Factories, Light and Dark"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Addy Osmani | September 18, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/this-week-in-ai-capability-capital-and-consequences/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_thisweek-ai-radar-1600x840-1-160x160.png"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "This Week in AI: Capability, Capital, and Consequences"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Michelle Smith | September 18, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/navigating-the-modern-data-lexicon-a-working-vocabulary-for-the-semantic-era/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Navigating-the-modern-data-lexicon-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "Navigating the Modern Data Lexicon: A Working Vocabulary for the Semantic Era"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Jeremy Arendt | September 17, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/architecting-for-the-knowledge-you-cant-capture/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Architecting-for-the-knowledge-you-cant-capture-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "Architecting for the Knowledge You Can’t Capture"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Jofia Jose Prakash | September 16, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/what-ai-can-teach-us-about-being-human/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/What-AI-can-teach-us-about-being-human-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "What AI Can Teach Us About Being Human"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Tim O’Reilly | September 16, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item", "external"],
-                        "href": "https://www.youtube.com/watch?v=6mh6lJWTOlo",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://i3.ytimg.com/vi/6mh6lJWTOlo/hqdefault.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "video"],
-                                    "text": "video"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "What's Still Missing? Execution, Taste, and Research Judgment"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By O'Reilly | September 16, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item", "external"],
-                        "href": "https://www.youtube.com/watch?v=_-jrb1-FdX4",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://i4.ytimg.com/vi/_-jrb1-FdX4/hqdefault.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "video"],
-                                    "text": "video"
-                                  },
-                                  { "tag": "h2", "text": "Doing Math" },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By O'Reilly | September 15, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/beyond-navier-stokes-who-controls-scientific-discovery/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Beyond-Navier-Stokes-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "Beyond Navier–Stokes: Who Controls Scientific Discovery?"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Hugo Bowne-Anderson | September 15, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/zero-to-agent-in-30-minutes-build-a-shared-knowledge-base-for-all-your-agents-with-sajal-sharma/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_zero-to-agent-radar-1600x840-1-160x160.png"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "Zero to Agent in 30 Minutes: Build a Shared Knowledge Base for All Your Agents with Sajal Sharma"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Michelle Smith | September 14, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/enterprise-analytics-beyond-dashboards-intelligent-data-orchestration-with-llms/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Enterprise-analytics-beyond-dashboards-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "Enterprise Analytics Beyond Dashboards: Intelligent Data Orchestration with LLMs"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Nitesh Khapekar | September 14, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["feed-item"],
-                        "href": "https://www.oreilly.com/radar/the-interfaces-are-arriving/",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["inner"],
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-interfaces-are-arriving-160x160.jpg"
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["item-text"],
-                                "ch": [
-                                  {
-                                    "tag": "p",
-                                    "cls": ["post-type", "article"],
-                                    "text": "article"
-                                  },
-                                  {
-                                    "tag": "h2",
-                                    "text": "The Interfaces Are Arriving"
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["meta"],
-                                    "text": "By Tommy Tran | September 11, 2026"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tag": "footer",
-        "cls": ["content"],
-        "ch": [
-          {
-            "tag": "section",
-            "cls": ["site-footer__section"],
-            "ch": [
-              { "tag": "p", "text": "Follow us" },
-              {
-                "tag": "a",
-                "cls": ["site-footer-social-list__link"],
-                "href": "https://www.linkedin.com/company/oreilly-media"
-              },
-              {
-                "tag": "a",
-                "cls": ["site-footer-social-list__link"],
-                "href": "https://www.youtube.com/user/OreillyMedia"
-              }
-            ]
-          },
-          {
-            "tag": "section",
-            "cls": ["site-footer__section"],
-            "ch": [
-              {
-                "tag": "div",
-                "cls": ["site-footer-company-info__column"],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": ["site-footer__list"],
-                    "ch": [
-                      {
-                        "tag": "h2",
-                        "cls": ["site-footer__heading"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "About O'Reilly",
-                            "href": "https://oreilly.com/about/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["site-footer-list__ul"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Teach/Write/Train",
-                            "href": "https://oreilly.com/work-with-us.html"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Careers",
-                            "href": "https://oreilly.com/careers/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "O'Reilly News",
-                            "href": "https://oreilly.com/press/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Media Coverage",
-                            "href": "https://oreilly.com/press/media-coverage.html"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Community Partners",
-                            "href": "https://oreilly.com/partner/signup.csp"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Affiliate Program",
-                            "href": "https://oreilly.com/affiliates/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Diversity",
-                            "href": "https://oreilly.com/diversity/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Content Sponsorship",
-                            "href": "https://oreilly.com/content-marketing-solutions.html"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["site-footer__list"],
-                    "ch": [
-                      {
-                        "tag": "h2",
-                        "cls": ["site-footer__heading"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Support",
-                            "href": "https://oreilly.com/online-learning/support/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["site-footer-list__ul"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Contact Us",
-                            "href": "https://oreilly.com/about/contact.html"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Newsletters",
-                            "href": "https://oreilly.com/emails/newsletters/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Privacy Policy",
-                            "href": "https://oreilly.com/privacy.html"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "AI Policy",
-                            "href": "https://oreilly.com/about/oreilly-approach-to-generative-ai.html"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["site-footer__list"],
-                    "ch": [
-                      {
-                        "tag": "h2",
-                        "cls": ["site-footer__heading"],
-                        "text": "International"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["site-footer-list__ul"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Australia \u0026 New Zealand",
-                            "href": "https://oreilly.com/online-learning/anz.html"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Japan",
-                            "href": "https://www.oreilly.co.jp/index.shtml"
-                          }
-                        ]
-                      }
-                    ]
+                    "tag": "a",
+                    "cls": ["ctaLink"],
+                    "text": "Start trial",
+                    "href": "https://www.oreilly.com/start-trial/?type=team"
                   }
                 ]
               },
               {
                 "tag": "div",
+                "cls": ["module", "mobileMove"],
+                "ch": [
+                  { "tag": "h2", "text": "Try a course for free" },
+                  {
+                    "tag": "p",
+                    "text": "Join a live online event on the O’Reilly platform to learn from the experts shaping tech."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["ctaLink"],
+                    "text": "See what’s coming soon",
+                    "href": "https://www.oreilly.com/live/free.html"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
                 "cls": [
-                  "site-footer-company-info__column",
-                  "site-footer__list",
-                  "site-footer-company-info-right-column__item"
+                  "module",
+                  "mobileMove",
+                  "marketingCloudForm-thankyou",
+                  "hidden"
                 ],
-                "ch": [
-                  {
-                    "tag": "h2",
-                    "cls": ["site-footer__heading"],
-                    "text": "Download the O'Reilly App"
-                  },
-                  {
-                    "tag": "p",
-                    "text": "Take O'Reilly with you and learn anywhere, anytime on your phone and tablet."
-                  },
-                  {
-                    "tag": "a",
-                    "href": "https://itunes.apple.com/us/app/safari-to-go/id881697395",
-                    "ch": [
-                      {
-                        "tag": "img",
-                        "cls": ["site-footer__image"],
-                        "src": "https://cdn.oreillystatic.com/oreilly/images/app-store-logo.png",
-                        "alt": "Apple app store"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "href": "https://play.google.com/store/apps/details?id=com.safariflow.queue",
-                    "ch": [
-                      {
-                        "tag": "img",
-                        "cls": ["site-footer__image"],
-                        "src": "https://cdn.oreillystatic.com/oreilly/images/google-play-logo.png",
-                        "alt": "Google play store"
-                      }
-                    ]
-                  }
-                ]
+                "text": "Thank you for subscribing to the O’Reilly Radar Trends to Watch newsletter."
               }
             ]
           },
           {
-            "tag": "section",
-            "cls": ["site-footer__section"],
+            "tag": "div",
+            "cls": ["blogFeed"],
             "ch": [
               {
-                "tag": "a",
-                "cls": ["footer-subfooterLogo"],
-                "href": "https://www.oreilly.com",
+                "tag": "div",
+                "cls": ["stickyPosts"],
                 "ch": [
                   {
-                    "tag": "img",
-                    "src": "https://cdn.oreillystatic.com/images/sitewide-headers/oreilly_logo_mark_red.svg",
-                    "alt": "O'Reilly home"
+                    "tag": "a",
+                    "cls": ["feed-item", "sticky"],
+                    "href": "https://www.oreilly.com/radar/will-typesafes-jev-change-how-we-build-ai-applications/",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Will-TypeSafes-Jev-change-how-we-build-AI-applications-1600x1244.jpg"
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["inner", "item-text"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["post-type", "article"],
+                            "text": "article AI \u0026 ML"
+                          },
+                          {
+                            "tag": "h2",
+                            "text": "Will TypeSafe’s Jev Change How We Build AI Applications?"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["metaWrap"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["meta"],
+                                "text": "By Laurie Voss |"
+                              },
+                              {
+                                "tag": "p",
+                                "cls": ["meta"],
+                                "text": "September 23, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item", "sticky"],
+                    "href": "https://www.oreilly.com/radar/mcp-is-not-just-another-api-standard/",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/MCP-is-not-just-another-API-standard-1600x1244.jpg"
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["inner", "item-text"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["post-type", "article"],
+                            "text": "article AI \u0026 ML"
+                          },
+                          {
+                            "tag": "h2",
+                            "text": "MCP Is Not Just Another API Standard"
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["dek"],
+                            "text": "What Model Context Protocol actually changes for agentic systems, and what it doesn’t"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["metaWrap"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["meta"],
+                                "text": "By Balaji Venkatasubramaniyar |"
+                              },
+                              {
+                                "tag": "p",
+                                "cls": ["meta"],
+                                "text": "September 23, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item", "sticky"],
+                    "href": "https://www.oreilly.com/radar/the-accelerationist-case-for-frontier-pacing/",
+                    "ch": [
+                      {
+                        "tag": "img",
+                        "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-accelerationist-case-for-frontier-pacing-1600x1244.jpg"
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["inner", "item-text"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["post-type", "article"],
+                            "text": "article AI \u0026 ML"
+                          },
+                          {
+                            "tag": "h2",
+                            "text": "The Accelerationist Case for Frontier Pacing"
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["dek"],
+                            "text": "Slow AI is smooth AI, smooth AI is fast AI"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["metaWrap"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["meta"],
+                                "text": "By Venkatesh Rao |"
+                              },
+                              {
+                                "tag": "p",
+                                "cls": ["meta"],
+                                "text": "September 22, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               },
               {
                 "tag": "div",
+                "cls": ["combined-blog-feed"],
                 "ch": [
                   {
                     "tag": "a",
-                    "text": "Do not sell or share my personal information",
-                    "href": "https://www.oreilly.com/privacy.html?donotsell=show"
-                  },
-                  { "tag": "#text", "text": "." }
-                ]
-              },
-              {
-                "tag": "div",
-                "ch": [
-                  {
-                    "tag": "p",
-                    "text": "© 2026, O'Reilly Media, Inc. All trademarks and registered trademarks appearing on oreilly.com are the property of their respective owners."
-                  },
-                  {
-                    "tag": "ul",
-                    "cls": [
-                      "site-footer-list__ul--horizontal",
-                      "site-footer-list__ul--wrap"
-                    ],
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/ai-sovereignty-bargaining-with-big-tech-and-the-promise-of-full-stack-open-source-ai/",
                     "ch": [
                       {
-                        "tag": "a",
-                        "text": "Terms of Service",
-                        "href": "https://www.oreilly.com/terms/"
-                      },
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/AI-Sovereignty%E2%80%94Bargaining-with-Big-Tech-and-the-Promise-of-Full-Stack-Open-Source-AI-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "AI Sovereignty: Bargaining with Big Tech and the Promise of Full Stack Open Source AI"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Nicole Butterfield | September 22, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/zero-to-agent-in-30-minutes-build-a-sports-concierge-agent-with-chester-ismay/",
+                    "ch": [
                       {
-                        "tag": "a",
-                        "text": "Privacy Policy",
-                        "href": "https://oreilly.com/privacy"
-                      },
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_zero-to-agent-radar-1600x840-1-160x160.png"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "Zero to Agent in 30 Minutes: Build a Sports Concierge Agent with Chester Ismay"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Michelle Smith | September 21, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/the-post-training-process-openai-used-for-chatgpt/",
+                    "ch": [
                       {
-                        "tag": "a",
-                        "text": "Editorial Independence",
-                        "href": "https://oreilly.com/about/editorial_independence.html"
-                      },
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-post-training-process-OpenAI-used-for-ChatGPT-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "The Post-training Process OpenAI Used for ChatGPT"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Sharon Zhou | September 21, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/how-to-get-from-ai-assisted-to-ai-native/",
+                    "ch": [
                       {
-                        "tag": "a",
-                        "text": "Modern Slavery Act Statement",
-                        "href": "https://www.oreilly.com/modern-slavery-act-transparency-statement.html"
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/AI-as-an-enterprise-operating-system-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "How to Get from AI-Assisted to AI Native"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Tim O’Reilly | September 18, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item", "external"],
+                    "href": "https://www.youtube.com/watch?v=5EcTnkCY5ww",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://i2.ytimg.com/vi/5EcTnkCY5ww/hqdefault.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "video"],
+                                "text": "video"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "AI as an Enterprise Operating System: How to Get from AI-Assisted to AI Native"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By O'Reilly | September 18, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/software-factories-light-and-dark/",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Software-factories-light-and-dark-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "Software Factories, Light and Dark"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Addy Osmani | September 18, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/this-week-in-ai-capability-capital-and-consequences/",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_thisweek-ai-radar-1600x840-1-160x160.png"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "This Week in AI: Capability, Capital, and Consequences"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Michelle Smith | September 18, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/navigating-the-modern-data-lexicon-a-working-vocabulary-for-the-semantic-era/",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Navigating-the-modern-data-lexicon-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "Navigating the Modern Data Lexicon: A Working Vocabulary for the Semantic Era"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Jeremy Arendt | September 17, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/architecting-for-the-knowledge-you-cant-capture/",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Architecting-for-the-knowledge-you-cant-capture-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "Architecting for the Knowledge You Can’t Capture"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Jofia Jose Prakash | September 16, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/what-ai-can-teach-us-about-being-human/",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/What-AI-can-teach-us-about-being-human-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "What AI Can Teach Us About Being Human"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Tim O’Reilly | September 16, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item", "external"],
+                    "href": "https://www.youtube.com/watch?v=6mh6lJWTOlo",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://i3.ytimg.com/vi/6mh6lJWTOlo/hqdefault.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "video"],
+                                "text": "video"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "What's Still Missing? Execution, Taste, and Research Judgment"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By O'Reilly | September 16, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item", "external"],
+                    "href": "https://www.youtube.com/watch?v=_-jrb1-FdX4",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://i4.ytimg.com/vi/_-jrb1-FdX4/hqdefault.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "video"],
+                                "text": "video"
+                              },
+                              { "tag": "h2", "text": "Doing Math" },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By O'Reilly | September 15, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/beyond-navier-stokes-who-controls-scientific-discovery/",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Beyond-Navier-Stokes-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "Beyond Navier–Stokes: Who Controls Scientific Discovery?"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Hugo Bowne-Anderson | September 15, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/zero-to-agent-in-30-minutes-build-a-shared-knowledge-base-for-all-your-agents-with-sajal-sharma/",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_zero-to-agent-radar-1600x840-1-160x160.png"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "Zero to Agent in 30 Minutes: Build a Shared Knowledge Base for All Your Agents with Sajal Sharma"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Michelle Smith | September 14, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/enterprise-analytics-beyond-dashboards-intelligent-data-orchestration-with-llms/",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Enterprise-analytics-beyond-dashboards-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "Enterprise Analytics Beyond Dashboards: Intelligent Data Orchestration with LLMs"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Nitesh Khapekar | September 14, 2026"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["feed-item"],
+                    "href": "https://www.oreilly.com/radar/the-interfaces-are-arriving/",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": ["inner"],
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-interfaces-are-arriving-160x160.jpg"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["item-text"],
+                            "ch": [
+                              {
+                                "tag": "p",
+                                "cls": ["post-type", "article"],
+                                "text": "article"
+                              },
+                              {
+                                "tag": "h2",
+                                "text": "The Interfaces Are Arriving"
+                              },
+                              {
+                                "tag": "div",
+                                "cls": ["meta"],
+                                "text": "By Tommy Tran | September 11, 2026"
+                              }
+                            ]
+                          }
+                        ]
                       }
                     ]
                   }

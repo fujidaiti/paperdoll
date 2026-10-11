@@ -3,1361 +3,286 @@
   "title": "The Go Blog - The Go Programming Language",
   "root": {
     "tag": "body",
-    "cls": ["Site"],
+    "cls": ["Site", "SiteContent", "SiteContent--default", "Article"],
     "ch": [
+      { "tag": "h1", "text": "The Go Blog" },
       {
-        "tag": "header",
-        "cls": [
-          "Site-header",
-          "js-siteHeader",
-          "Header",
-          "Header--dark",
-          "Header-nav"
-        ],
+        "tag": "div",
+        "cls": ["markdown"],
         "ch": [
           {
-            "tag": "a",
-            "href": "https://go.dev/",
+            "tag": "p",
+            "cls": ["blogtitle"],
             "ch": [
-              {
-                "tag": "img",
-                "cls": ["js-headerLogo", "Header-logo"],
-                "src": "https://go.dev/images/go-logo-white.svg",
-                "alt": "Go"
-              }
-            ]
-          },
-          {
-            "tag": "a",
-            "cls": ["skip-to-content-link"],
-            "text": "Skip to Main Content",
-            "href": "https://go.dev/blog/#main-content"
-          },
-          {
-            "tag": "div",
-            "cls": ["Header-rightContent", "Header-menu"],
-            "ch": [
-              {
-                "tag": "li",
-                "cls": ["Header-menuItem"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["js-desktop-menu-hover"],
-                    "text": "Why Go arrow_drop_down",
-                    "href": "https://go.dev/blog/",
-                    "rich": [
-                      { "tag": "#text", "text": "Why Go " },
-                      {
-                        "tag": "i",
-                        "ch": [{ "tag": "#text", "text": "arrow_drop_down" }]
-                      },
-                      { "tag": "#text" }
-                    ]
-                  },
-                  {
-                    "tag": "ul",
-                    "cls": ["Header-submenu", "js-desktop-submenu-hover"],
-                    "ch": [
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Case Studies",
-                            "href": "https://go.dev/solutions/case-studies"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "Common problems companies solve with Go"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Use Cases",
-                            "href": "https://go.dev/solutions/use-cases"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "Stories about how and why companies use Go"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Security",
-                            "href": "https://go.dev/security/"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "How Go can help keep you secure by default"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              { "tag": "a", "text": "Learn", "href": "https://go.dev/learn/" },
-              {
-                "tag": "li",
-                "cls": ["Header-menuItem"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["js-desktop-menu-hover"],
-                    "text": "Docs arrow_drop_down",
-                    "href": "https://go.dev/blog/",
-                    "rich": [
-                      { "tag": "#text", "text": "Docs " },
-                      {
-                        "tag": "i",
-                        "ch": [{ "tag": "#text", "text": "arrow_drop_down" }]
-                      },
-                      { "tag": "#text" }
-                    ]
-                  },
-                  {
-                    "tag": "ul",
-                    "cls": ["Header-submenu", "js-desktop-submenu-hover"],
-                    "ch": [
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Go Spec",
-                            "href": "https://go.dev/ref/spec"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "The official Go language specification"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Go User Manual",
-                            "href": "https://go.dev/doc"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "A complete introduction to building software with Go"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Standard library",
-                            "href": "https://pkg.go.dev/std"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "Reference documentation for Go's standard library"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Release Notes",
-                            "href": "https://go.dev/doc/devel/release"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "Learn what's new in each Go release"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Effective Go",
-                            "href": "https://go.dev/doc/effective_go"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "Tips for writing clear, performant, and idiomatic Go code"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              { "tag": "a", "text": "Packages", "href": "https://pkg.go.dev" },
-              {
-                "tag": "li",
-                "cls": ["Header-menuItem"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["js-desktop-menu-hover"],
-                    "text": "Community arrow_drop_down",
-                    "href": "https://go.dev/blog/",
-                    "rich": [
-                      { "tag": "#text", "text": "Community " },
-                      {
-                        "tag": "i",
-                        "ch": [{ "tag": "#text", "text": "arrow_drop_down" }]
-                      },
-                      { "tag": "#text" }
-                    ]
-                  },
-                  {
-                    "tag": "ul",
-                    "cls": ["Header-submenu", "js-desktop-submenu-hover"],
-                    "ch": [
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Recorded Talks",
-                            "href": "https://go.dev/talks/"
-                          },
-                          { "tag": "p", "text": "Videos from prior events" }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Meetups open_in_new",
-                            "href": "https://www.meetup.com/pro/go",
-                            "rich": [
-                              { "tag": "#text", "text": "Meetups " },
-                              {
-                                "tag": "i",
-                                "ch": [
-                                  { "tag": "#text", "text": "open_in_new" }
-                                ]
-                              },
-                              { "tag": "#text" }
-                            ]
-                          },
-                          {
-                            "tag": "p",
-                            "text": "Meet other local Go developers"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Conferences open_in_new",
-                            "href": "https://go.dev/wiki/Conferences",
-                            "rich": [
-                              { "tag": "#text", "text": "Conferences " },
-                              {
-                                "tag": "i",
-                                "ch": [
-                                  { "tag": "#text", "text": "open_in_new" }
-                                ]
-                              },
-                              { "tag": "#text" }
-                            ]
-                          },
-                          {
-                            "tag": "p",
-                            "text": "Learn and network with Go developers from around the world"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Go blog",
-                            "href": "https://go.dev/blog"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "The Go project's official blog."
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Go project",
-                            "href": "https://go.dev/help"
-                          },
-                          {
-                            "tag": "p",
-                            "text": "Get help and stay informed from Go"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["Header-submenuItem"],
-                        "ch": [
-                          { "tag": "div", "text": "Get connected" },
-                          {
-                            "tag": "a",
-                            "cls": ["Header-socialIcon"],
-                            "href": "https://groups.google.com/g/golang-nuts",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://go.dev/images/logos/social/google-groups.svg"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["Header-socialIcon"],
-                            "href": "https://github.com/golang",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://go.dev/images/logos/social/github.svg"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["Header-socialIcon"],
-                            "href": "https://bsky.app/profile/golang.org",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://go.dev/images/logos/social/bluesky.svg"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["Header-socialIcon"],
-                            "href": "https://hachyderm.io/@golang",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://go.dev/images/logos/social/mastodon.svg"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["Header-socialIcon"],
-                            "href": "https://twitter.com/golang",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://go.dev/images/logos/social/twitter.svg"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["Header-socialIcon"],
-                            "href": "https://www.reddit.com/r/golang/",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://go.dev/images/logos/social/reddit.svg"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["Header-socialIcon"],
-                            "href": "https://invite.slack.golangbridge.org/",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://go.dev/images/logos/social/slack.svg"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["Header-socialIcon"],
-                            "href": "https://stackoverflow.com/tags/go",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://go.dev/images/logos/social/stack-overflow.svg"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tag": "aside",
-        "cls": ["NavigationDrawer", "js-header", "NavigationDrawer-nav"],
-        "ch": [
-          {
-            "tag": "a",
-            "href": "https://go.dev/",
-            "ch": [
-              {
-                "tag": "img",
-                "cls": ["NavigationDrawer-logo"],
-                "src": "https://go.dev/images/go-logo-blue.svg",
-                "alt": "Go."
-              }
-            ]
-          },
-          {
-            "tag": "ul",
-            "cls": ["NavigationDrawer-list"],
-            "ch": [
-              {
-                "tag": "li",
-                "cls": [
-                  "NavigationDrawer-listItem",
-                  "js-mobile-subnav-trigger",
-                  "NavigationDrawer-hasSubnav"
-                ],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Why Go navigate_next",
-                    "href": "https://go.dev/blog/",
-                    "rich": [
-                      { "tag": "#text", "text": "Why Go" },
-                      { "tag": "#text", "text": " " },
-                      {
-                        "tag": "i",
-                        "ch": [{ "tag": "#text", "text": "navigate_next" }]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "NavigationDrawer",
-                      "NavigationDrawer-submenuItem",
-                      "NavigationDrawer-nav"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "navigate_beforeWhy Go",
-                        "href": "https://go.dev/blog/",
-                        "rich": [
-                          {
-                            "tag": "i",
-                            "ch": [
-                              { "tag": "#text", "text": "navigate_before" }
-                            ]
-                          },
-                          { "tag": "#text", "text": "Why Go" }
-                        ]
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["NavigationDrawer-list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Case Studies",
-                            "href": "https://go.dev/solutions/case-studies"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Use Cases",
-                            "href": "https://go.dev/solutions/use-cases"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Security",
-                            "href": "https://go.dev/security/"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              { "tag": "a", "text": "Learn", "href": "https://go.dev/learn/" },
-              {
-                "tag": "li",
-                "cls": [
-                  "NavigationDrawer-listItem",
-                  "js-mobile-subnav-trigger",
-                  "NavigationDrawer-hasSubnav"
-                ],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Docs navigate_next",
-                    "href": "https://go.dev/blog/",
-                    "rich": [
-                      { "tag": "#text", "text": "Docs" },
-                      { "tag": "#text", "text": " " },
-                      {
-                        "tag": "i",
-                        "ch": [{ "tag": "#text", "text": "navigate_next" }]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "NavigationDrawer",
-                      "NavigationDrawer-submenuItem",
-                      "NavigationDrawer-nav"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "navigate_beforeDocs",
-                        "href": "https://go.dev/blog/",
-                        "rich": [
-                          {
-                            "tag": "i",
-                            "ch": [
-                              { "tag": "#text", "text": "navigate_before" }
-                            ]
-                          },
-                          { "tag": "#text", "text": "Docs" }
-                        ]
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["NavigationDrawer-list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Go Spec",
-                            "href": "https://go.dev/ref/spec"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Go User Manual",
-                            "href": "https://go.dev/doc"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Standard library",
-                            "href": "https://pkg.go.dev/std"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Release Notes",
-                            "href": "https://go.dev/doc/devel/release"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Effective Go",
-                            "href": "https://go.dev/doc/effective_go"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              { "tag": "a", "text": "Packages", "href": "https://pkg.go.dev" },
-              {
-                "tag": "li",
-                "cls": [
-                  "NavigationDrawer-listItem",
-                  "js-mobile-subnav-trigger",
-                  "NavigationDrawer-hasSubnav"
-                ],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Community navigate_next",
-                    "href": "https://go.dev/blog/",
-                    "rich": [
-                      { "tag": "#text", "text": "Community" },
-                      { "tag": "#text", "text": " " },
-                      {
-                        "tag": "i",
-                        "ch": [{ "tag": "#text", "text": "navigate_next" }]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "NavigationDrawer",
-                      "NavigationDrawer-submenuItem",
-                      "NavigationDrawer-nav"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "navigate_beforeCommunity",
-                        "href": "https://go.dev/blog/",
-                        "rich": [
-                          {
-                            "tag": "i",
-                            "ch": [
-                              { "tag": "#text", "text": "navigate_before" }
-                            ]
-                          },
-                          { "tag": "#text", "text": "Community" }
-                        ]
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["NavigationDrawer-list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Recorded Talks",
-                            "href": "https://go.dev/talks/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Meetups open_in_new",
-                            "href": "https://www.meetup.com/pro/go",
-                            "rich": [
-                              { "tag": "#text", "text": "Meetups " },
-                              {
-                                "tag": "i",
-                                "ch": [
-                                  { "tag": "#text", "text": "open_in_new" }
-                                ]
-                              },
-                              { "tag": "#text" }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Conferences open_in_new",
-                            "href": "https://go.dev/wiki/Conferences",
-                            "rich": [
-                              { "tag": "#text", "text": "Conferences " },
-                              {
-                                "tag": "i",
-                                "ch": [
-                                  { "tag": "#text", "text": "open_in_new" }
-                                ]
-                              },
-                              { "tag": "#text" }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Go blog",
-                            "href": "https://go.dev/blog"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Go project",
-                            "href": "https://go.dev/help"
-                          },
-                          {
-                            "tag": "li",
-                            "cls": ["NavigationDrawer-listItem"],
-                            "ch": [
-                              { "tag": "div", "text": "Get connected" },
-                              {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://groups.google.com/g/golang-nuts",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/google-groups.svg"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://github.com/golang",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/github.svg"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://bsky.app/profile/golang.org",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/bluesky.svg"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://hachyderm.io/@golang",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/mastodon.svg"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://twitter.com/golang",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/twitter.svg"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://www.reddit.com/r/golang/",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/reddit.svg"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://invite.slack.golangbridge.org/",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/slack.svg"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["Header-socialIcon"],
-                                "href": "https://stackoverflow.com/tags/go",
-                                "ch": [
-                                  {
-                                    "tag": "img",
-                                    "src": "https://go.dev/images/logos/social/stack-overflow.svg"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tag": "main",
-        "cls": ["SiteContent", "SiteContent--default", "Article"],
-        "ch": [
-          { "tag": "h1", "text": "The Go Blog" },
-          {
-            "tag": "div",
-            "cls": ["markdown"],
-            "ch": [
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Size-Specialized Memory Allocation",
-                    "href": "https://go.dev/blog/size-specialized-allocations"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 16 September 2026 Michael Matloob",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "16 September 2026" },
-                      { "tag": "br" },
-                      { "tag": "#text", "text": "Michael Matloob" }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "Go 1.27 improves performance of small allocations using size-specialized allocation functions."
-              },
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Goroutine Leak Profiles",
-                    "href": "https://go.dev/blog/goroutine-leak-profiles"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 2 September 2026 Vlad Saioc",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "2 September 2026" },
-                      { "tag": "br" },
-                      { "tag": "#text", "text": "Vlad Saioc" }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "Go 1.27 includes new goroutine leak profiles."
-              },
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Generic Methods",
-                    "href": "https://go.dev/blog/generic-methods"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 26 August 2026 Mark Freeman",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "26 August 2026" },
-                      { "tag": "br" },
-                      { "tag": "#text", "text": "Mark Freeman" }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "Go 1.27 adds generic methods—a highly desired language feature."
-              },
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Go 1.27 is released",
-                    "href": "https://go.dev/blog/go1.27"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 19 August 2026 Nicholas Husin, on behalf of the Go team",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "19 August 2026" },
-                      { "tag": "br" },
-                      {
-                        "tag": "#text",
-                        "text": "Nicholas Husin, on behalf of the Go team"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more."
-              },
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Introducing the pkg.go.dev API",
-                    "href": "https://go.dev/blog/pkgsite-api"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 21 May 2026 Ethan Lee, Hana Kim, and Jonathan Amsterdam",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "21 May 2026" },
-                      { "tag": "br" },
-                      {
-                        "tag": "#text",
-                        "text": "Ethan Lee, Hana Kim, and Jonathan Amsterdam"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly."
-              },
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Type Construction and Cycle Detection",
-                    "href": "https://go.dev/blog/type-construction-and-cycle-detection"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 24 March 2026 Mark Freeman",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "24 March 2026" },
-                      { "tag": "br" },
-                      { "tag": "#text", "text": "Mark Freeman" }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types."
-              },
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "//go:fix inline and the source-level inliner",
-                    "href": "https://go.dev/blog/inliner"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 10 March 2026 Alan Donovan",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "10 March 2026" },
-                      { "tag": "br" },
-                      { "tag": "#text", "text": "Alan Donovan" }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations."
-              },
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Allocating on the Stack",
-                    "href": "https://go.dev/blog/allocation-optimizations"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 27 February 2026 Keith Randall",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "27 February 2026" },
-                      { "tag": "br" },
-                      { "tag": "#text", "text": "Keith Randall" }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "A description of some of the recent changes to do allocations on the stack instead of the heap."
-              },
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Using go fix to modernize Go code",
-                    "href": "https://go.dev/blog/gofix"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 17 February 2026 Alan Donovan",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "17 February 2026" },
-                      { "tag": "br" },
-                      { "tag": "#text", "text": "Alan Donovan" }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go."
-              },
-              {
-                "tag": "p",
-                "cls": ["blogtitle"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Go 1.26 is released",
-                    "href": "https://go.dev/blog/go1.26"
-                  },
-                  {
-                    "tag": "#text",
-                    "text": ", 10 February 2026 Carlos Amedee, on behalf of the Go team",
-                    "rich": [
-                      { "tag": "#text", "text": ", " },
-                      { "tag": "#text", "text": "10 February 2026" },
-                      { "tag": "br" },
-                      {
-                        "tag": "#text",
-                        "text": "Carlos Amedee, on behalf of the Go team"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "p",
-                "cls": ["blogsummary"],
-                "text": "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more."
-              },
               {
                 "tag": "a",
-                "text": "More articles...",
-                "href": "https://go.dev/blog/all"
+                "text": "Size-Specialized Memory Allocation",
+                "href": "https://go.dev/blog/size-specialized-allocations"
+              },
+              {
+                "tag": "#text",
+                "text": ", 16 September 2026 Michael Matloob",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "16 September 2026" },
+                  { "tag": "br" },
+                  { "tag": "#text", "text": "Michael Matloob" }
+                ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "tag": "footer",
-        "cls": ["Site-footer"],
-        "ch": [
+          },
           {
-            "tag": "div",
-            "cls": ["Footer", "Container", "Footer-links"],
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "Go 1.27 improves performance of small allocations using size-specialized allocation functions."
+          },
+          {
+            "tag": "p",
+            "cls": ["blogtitle"],
             "ch": [
               {
-                "tag": "div",
-                "cls": ["Footer-linkColumn"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link", "Footer-link--primary"],
-                    "text": "Why Go",
-                    "href": "https://go.dev/solutions/"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Use Cases",
-                    "href": "https://go.dev/solutions/use-cases"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Case Studies",
-                    "href": "https://go.dev/solutions/case-studies"
-                  }
-                ]
+                "tag": "a",
+                "text": "Goroutine Leak Profiles",
+                "href": "https://go.dev/blog/goroutine-leak-profiles"
               },
               {
-                "tag": "div",
-                "cls": ["Footer-linkColumn"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link", "Footer-link--primary"],
-                    "text": "Get Started",
-                    "href": "https://go.dev/learn/"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Playground",
-                    "href": "https://go.dev/play"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Tour",
-                    "href": "https://go.dev/tour/"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Stack Overflow",
-                    "href": "https://stackoverflow.com/questions/tagged/go?tab=Newest"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Help",
-                    "href": "https://go.dev/help/"
-                  }
+                "tag": "#text",
+                "text": ", 2 September 2026 Vlad Saioc",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "2 September 2026" },
+                  { "tag": "br" },
+                  { "tag": "#text", "text": "Vlad Saioc" }
                 ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "Go 1.27 includes new goroutine leak profiles."
+          },
+          {
+            "tag": "p",
+            "cls": ["blogtitle"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Generic Methods",
+                "href": "https://go.dev/blog/generic-methods"
               },
               {
-                "tag": "div",
-                "cls": ["Footer-linkColumn"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link", "Footer-link--primary"],
-                    "text": "Packages",
-                    "href": "https://pkg.go.dev"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Standard Library",
-                    "href": "https://go.dev/pkg/"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "About Go Packages",
-                    "href": "https://pkg.go.dev/about"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "pkg.go.dev API",
-                    "href": "https://pkg.go.dev/api"
-                  }
+                "tag": "#text",
+                "text": ", 26 August 2026 Mark Freeman",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "26 August 2026" },
+                  { "tag": "br" },
+                  { "tag": "#text", "text": "Mark Freeman" }
                 ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "Go 1.27 adds generic methods—a highly desired language feature."
+          },
+          {
+            "tag": "p",
+            "cls": ["blogtitle"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Go 1.27 is released",
+                "href": "https://go.dev/blog/go1.27"
               },
               {
-                "tag": "div",
-                "cls": ["Footer-linkColumn"],
-                "ch": [
+                "tag": "#text",
+                "text": ", 19 August 2026 Nicholas Husin, on behalf of the Go team",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "19 August 2026" },
+                  { "tag": "br" },
                   {
-                    "tag": "a",
-                    "cls": ["Footer-link", "Footer-link--primary"],
-                    "text": "About",
-                    "href": "https://go.dev/project"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Download",
-                    "href": "https://go.dev/dl/"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Blog",
-                    "href": "https://go.dev/blog/"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Issue Tracker",
-                    "href": "https://github.com/golang/go/issues"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Release Notes",
-                    "href": "https://go.dev/doc/devel/release"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Brand Guidelines",
-                    "href": "https://go.dev/brand"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Code of Conduct",
-                    "href": "https://go.dev/conduct"
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["Footer-linkColumn"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link", "Footer-link--primary"],
-                    "text": "Connect",
-                    "href": "https://go.dev/wiki/#the-go-community"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Bluesky",
-                    "href": "https://bsky.app/profile/golang.org"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Mastodon",
-                    "href": "https://hachyderm.io/@golang"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Twitter",
-                    "href": "https://www.twitter.com/golang"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "GitHub",
-                    "href": "https://github.com/golang"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Slack",
-                    "href": "https://invite.slack.golangbridge.org/"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "r/golang",
-                    "href": "https://reddit.com/r/golang"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Meetup",
-                    "href": "https://www.meetup.com/pro/go"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["Footer-link"],
-                    "text": "Golang Weekly",
-                    "href": "https://golangweekly.com/"
+                    "tag": "#text",
+                    "text": "Nicholas Husin, on behalf of the Go team"
                   }
                 ]
               }
             ]
           },
           {
-            "tag": "div",
-            "cls": [
-              "Footer",
-              "Container",
-              "Container--fullBleed",
-              "Footer-bottom"
-            ],
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more."
+          },
+          {
+            "tag": "p",
+            "cls": ["blogtitle"],
             "ch": [
               {
-                "tag": "img",
-                "cls": ["Footer-gopher"],
-                "src": "https://go.dev/images/gophers/pilot-bust.svg",
-                "alt": "The Go Gopher"
-              },
-              {
-                "tag": "ul",
-                "cls": ["Footer-listRow"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Copyright",
-                    "href": "https://go.dev/copyright"
-                  },
-                  {
-                    "tag": "a",
-                    "text": "Terms of Service",
-                    "href": "https://go.dev/tos"
-                  },
-                  {
-                    "tag": "a",
-                    "text": "Privacy Policy",
-                    "href": "http://www.google.com/intl/en/policies/privacy/"
-                  },
-                  {
-                    "tag": "a",
-                    "text": "Report an Issue",
-                    "href": "https://go.dev/s/website-issue"
-                  }
-                ]
-              },
-              {
                 "tag": "a",
-                "cls": ["Footer-googleLogo"],
-                "href": "https://google.com",
-                "ch": [
+                "text": "Introducing the pkg.go.dev API",
+                "href": "https://go.dev/blog/pkgsite-api"
+              },
+              {
+                "tag": "#text",
+                "text": ", 21 May 2026 Ethan Lee, Hana Kim, and Jonathan Amsterdam",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "21 May 2026" },
+                  { "tag": "br" },
                   {
-                    "tag": "img",
-                    "cls": ["Footer-googleLogoImg"],
-                    "src": "https://go.dev/images/google-white.png",
-                    "alt": "Google logo"
+                    "tag": "#text",
+                    "text": "Ethan Lee, Hana Kim, and Jonathan Amsterdam"
                   }
                 ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "tag": "section",
-        "cls": ["Cookie-notice", "js-cookieNotice"],
-        "ch": [
+          },
           {
-            "tag": "#text",
-            "text": "go.dev uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic."
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly."
+          },
+          {
+            "tag": "p",
+            "cls": ["blogtitle"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Type Construction and Cycle Detection",
+                "href": "https://go.dev/blog/type-construction-and-cycle-detection"
+              },
+              {
+                "tag": "#text",
+                "text": ", 24 March 2026 Mark Freeman",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "24 March 2026" },
+                  { "tag": "br" },
+                  { "tag": "#text", "text": "Mark Freeman" }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types."
+          },
+          {
+            "tag": "p",
+            "cls": ["blogtitle"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "//go:fix inline and the source-level inliner",
+                "href": "https://go.dev/blog/inliner"
+              },
+              {
+                "tag": "#text",
+                "text": ", 10 March 2026 Alan Donovan",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "10 March 2026" },
+                  { "tag": "br" },
+                  { "tag": "#text", "text": "Alan Donovan" }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations."
+          },
+          {
+            "tag": "p",
+            "cls": ["blogtitle"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Allocating on the Stack",
+                "href": "https://go.dev/blog/allocation-optimizations"
+              },
+              {
+                "tag": "#text",
+                "text": ", 27 February 2026 Keith Randall",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "27 February 2026" },
+                  { "tag": "br" },
+                  { "tag": "#text", "text": "Keith Randall" }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "A description of some of the recent changes to do allocations on the stack instead of the heap."
+          },
+          {
+            "tag": "p",
+            "cls": ["blogtitle"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Using go fix to modernize Go code",
+                "href": "https://go.dev/blog/gofix"
+              },
+              {
+                "tag": "#text",
+                "text": ", 17 February 2026 Alan Donovan",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "17 February 2026" },
+                  { "tag": "br" },
+                  { "tag": "#text", "text": "Alan Donovan" }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go."
+          },
+          {
+            "tag": "p",
+            "cls": ["blogtitle"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Go 1.26 is released",
+                "href": "https://go.dev/blog/go1.26"
+              },
+              {
+                "tag": "#text",
+                "text": ", 10 February 2026 Carlos Amedee, on behalf of the Go team",
+                "rich": [
+                  { "tag": "#text", "text": ", " },
+                  { "tag": "#text", "text": "10 February 2026" },
+                  { "tag": "br" },
+                  {
+                    "tag": "#text",
+                    "text": "Carlos Amedee, on behalf of the Go team"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "cls": ["blogsummary"],
+            "text": "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more."
           },
           {
             "tag": "a",
-            "text": "Learn more.",
-            "href": "https://policies.google.com/technologies/cookies"
+            "text": "More articles...",
+            "href": "https://go.dev/blog/all"
           }
         ]
       }

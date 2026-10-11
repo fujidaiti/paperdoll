@@ -5,483 +5,333 @@
     "tag": "body",
     "ch": [
       {
-        "tag": "div",
+        "tag": "h1",
         "cls": [
-          "localnav",
-          "theme-dark",
-          "localnav-scrim",
-          "localnav-noborder",
-          "localnav-wrapper",
-          "localnav-noborder",
-          "localnav-content"
+          "blog_blog-hero__UB2EU",
+          "section-content",
+          "blog_blog-hero__heading__7dI9r"
+        ],
+        "text": "Read the latest from Apple Security Research",
+        "rich": [
+          { "tag": "#text", "text": "Read the latest from" },
+          { "tag": "br" },
+          {
+            "tag": "i",
+            "ch": [{ "tag": "#text", "text": "Apple Security Research" }]
+          },
+          { "tag": "#text" }
+        ]
+      },
+      {
+        "tag": "section",
+        "cls": [
+          "blog_main__EYPln",
+          "section-content",
+          "blog-list_blog-list__RksSl"
         ],
         "ch": [
           {
-            "tag": "a",
-            "cls": ["localnav-icon"],
-            "href": "https://security.apple.com/"
+            "tag": "ul",
+            "ch": [
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "September 15, 2026"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "Apple Reference Image: A New Approach for Verified Photography"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "Introducing Apple Reference Image, a new solution for verifiable photography on iPhone. This new, opt-in camera mode lets a photographer create a securely timestamped reference image that accurately depicts what was captured by the iPhone's camera sensor. Apple Reference Image offers a trustworthy, scalable guarantee that a reference image is what it claims to be: a real photograph, captured by a real sensor in an iPhone camera, at a specific period in time."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "June 8, 2026"
+                  },
+                  { "tag": "h2", "text": "Expanding Private Cloud Compute" },
+                  {
+                    "tag": "p",
+                    "text": "Alongside the next generation of Apple Intelligence, today we’re expanding Private Cloud Compute (PCC) beyond Apple’s data centers. When Apple introduced Private Cloud Compute in 2024, we defined a new frontier for private AI inference, extending the security and privacy of Apple devices into the cloud for those AI workloads more complex than on-device models can handle. Now, we are collaborating with Google and NVIDIA to run new Apple Intelligence workloads on Google Cloud Platform, extending our industry-leading PCC privacy commitments to third-party data centers for the first time."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "May 22, 2026"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "A blueprint for formal verification of Apple corecrypto"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "With the latest release of corecrypto, we’re publishing our implementations of quantum-secure ML-KEM and ML-DSA algorithms, along with the mathematical proofs we built to assure they are faithful to the FIPS 203 and FIPS 204 specifications. To advance the state of the art for assuring critical software, we're also publishing the formal verification libraries and tools that we created to achieve the strongest known correctness results for any widely-deployed production implementation of the relevant algorithms."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "October 10, 2025"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "A major evolution of Apple Security Bounty, with the industry's top awards for the most advanced research"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "Today we’re announcing the next major chapter for Apple Security Bounty, featuring the industry’s highest rewards — up to $2 million and a maximum payout in excess of $5 million — expanded research categories, and a flag system for researchers to objectively demonstrate vulnerabilities and obtain accelerated awards."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "September 9, 2025"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "Memory Integrity Enforcement: A complete vision for memory safety in Apple devices"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "Memory Integrity Enforcement (MIE) is the culmination of an unprecedented design and engineering effort spanning half a decade that combines the unique strengths of Apple silicon hardware with our advanced operating system security to provide industry-first, always-on memory safety protection across our devices — without compromising our best-in-class device performance. We believe Memory Integrity Enforcement represents the most significant upgrade to memory safety in the history of consumer operating systems."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "October 24, 2024"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "Security research on Private Cloud Compute"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "Private Cloud Compute (PCC) fulfills computationally intensive requests for Apple Intelligence while providing groundbreaking privacy and security protections — by bringing our industry-leading device security model into the cloud. To build public trust in our system, we’re making it possible for researchers to inspect and verify PCC’s security and privacy guarantees by releasing tools and resources including a comprehensive PCC Security Guide, the software binaries and source code of key PCC components, and — in a first for any Apple platform — a Virtual Research Environment, which allows anyone to install and test the PCC software on a Mac with Apple silicon."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "June 10, 2024"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "Private Cloud Compute: A new frontier for AI privacy in the cloud"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "Secure and private AI processing in the cloud poses a formidable new challenge. To support advanced features of Apple Intelligence with larger foundation models, we created Private Cloud Compute (PCC), a groundbreaking cloud intelligence system designed specifically for private AI processing. Built with custom Apple silicon and a hardened operating system, Private Cloud Compute extends the industry-leading security and privacy of Apple devices into the cloud, making sure that personal user data sent to PCC isn’t accessible to anyone other than the user — not even to Apple. We believe Private Cloud Compute is the most advanced security architecture ever deployed for cloud AI compute at scale."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "February 21, 2024"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "iMessage with PQ3: The new state of the art in quantum-secure messaging at scale"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "We are introducing PQ3, a groundbreaking cryptographic protocol for iMessage that advances the state of the art of end-to-end secure messaging. With compromise-resilient encryption and extensive defenses against even highly sophisticated quantum attacks, PQ3 provides protocol protections that surpass those in all other widely deployed messaging apps."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "October 27, 2023"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "Advancing iMessage security: iMessage Contact Key Verification"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "iMessage broke new ground in 2011 as the first widely available messaging service to provide secure end-to-end encryption by default. Ever since, we’ve been making ongoing improvements to iMessage security to protect our users’ most sensitive communications. This brief technical overview introduces the security model behind iMessage Contact Key Verification, a new feature available in the developer previews of iOS 17.2, macOS 14.2, and watchOS 10.2, that advances the state of the art of key directory security in messaging systems and allows users to verify they’re messaging only with the people they intend."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "August 30, 2023"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "2024 Apple Security Research Device Program now accepting applications"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "Starting today, security researchers are invited to apply for the 2024 Security Research Device Program. Learn about eligibility requirements and how our Security Research Device helps both new and experienced researchers accelerate their work with iOS. We're accepting applications through October 31, 2023."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "May 23, 2023"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "What if we had the SockPuppet vulnerability in iOS 16?"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "The next post in our XNU memory safety series examines how our hardened kernel allocator performs in the real world against a previously patched but powerful UAF software vulnerability. In this detailed analysis, we find out what might happen if SockPuppet were to meet kalloc_type in iOS 16."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "October 27, 2022"
+                  },
+                  { "tag": "h2", "text": "Apple Security Bounty. Upgraded." },
+                  {
+                    "tag": "p",
+                    "text": "Apple’s Security Bounty program has paid nearly $20 million in rewards to security researchers in just two and a half years. Our new site makes it easier than ever for researchers to submit reports on the web, get real-time updates from Apple engineering, and earn recognition for helping to improve security for the users of over 1.8 billion devices worldwide."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["blog-list_blog-date__y06Tq"],
+                    "text": "October 27, 2022"
+                  },
+                  {
+                    "tag": "h2",
+                    "text": "Towards the next generation of XNU memory safety: kalloc_type"
+                  },
+                  {
+                    "tag": "p",
+                    "text": "Improving software memory safety is a key security objective for engineering teams across the industry. Here we begin a journey into the XNU kernel at the core of iOS and explore the intricate work our engineering teams have done to harden the memory allocator and make our software much more difficult to exploit."
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["more", "blog-list_blog-more__link__qJnr7"],
+                    "text": "Read more"
+                  }
+                ]
+              }
+            ]
           },
           {
             "tag": "div",
-            "cls": [
-              "localnav-menu",
-              "localnav-menu-tray",
-              "localnav-menu-items"
-            ],
-            "ch": [
-              {
-                "tag": "a",
-                "cls": ["localnav-menu-link"],
-                "text": "Overview",
-                "href": "https://security.apple.com/"
-              },
-              {
-                "tag": "a",
-                "cls": ["localnav-menu-link"],
-                "text": "Blog",
-                "href": "https://security.apple.com/blog/"
-              },
-              {
-                "tag": "a",
-                "cls": ["localnav-menu-link"],
-                "text": "Bounty",
-                "href": "https://security.apple.com/bounty/"
-              },
-              {
-                "tag": "a",
-                "cls": ["localnav-menu-link"],
-                "text": "Research Device",
-                "href": "https://security.apple.com/research-device/"
-              },
-              {
-                "tag": "a",
-                "cls": ["localnav-button", "button", "button-reduced"],
-                "text": "Submit a Report",
-                "href": "https://security.apple.com/submit/"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tag": "main",
-        "ch": [
-          {
-            "tag": "h1",
-            "cls": [
-              "blog_blog-hero__UB2EU",
-              "section-content",
-              "blog_blog-hero__heading__7dI9r"
-            ],
-            "text": "Read the latest from Apple Security Research",
-            "rich": [
-              { "tag": "#text", "text": "Read the latest from" },
-              { "tag": "br" },
-              {
-                "tag": "i",
-                "ch": [{ "tag": "#text", "text": "Apple Security Research" }]
-              },
-              { "tag": "#text" }
-            ]
-          },
-          {
-            "tag": "section",
-            "cls": [
-              "blog_main__EYPln",
-              "section-content",
-              "blog-list_blog-list__RksSl"
-            ],
-            "ch": [
-              {
-                "tag": "ul",
-                "ch": [
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "September 15, 2026"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "Apple Reference Image: A New Approach for Verified Photography"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "Introducing Apple Reference Image, a new solution for verifiable photography on iPhone. This new, opt-in camera mode lets a photographer create a securely timestamped reference image that accurately depicts what was captured by the iPhone's camera sensor. Apple Reference Image offers a trustworthy, scalable guarantee that a reference image is what it claims to be: a real photograph, captured by a real sensor in an iPhone camera, at a specific period in time."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "June 8, 2026"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "Expanding Private Cloud Compute"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "Alongside the next generation of Apple Intelligence, today we’re expanding Private Cloud Compute (PCC) beyond Apple’s data centers. When Apple introduced Private Cloud Compute in 2024, we defined a new frontier for private AI inference, extending the security and privacy of Apple devices into the cloud for those AI workloads more complex than on-device models can handle. Now, we are collaborating with Google and NVIDIA to run new Apple Intelligence workloads on Google Cloud Platform, extending our industry-leading PCC privacy commitments to third-party data centers for the first time."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "May 22, 2026"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "A blueprint for formal verification of Apple corecrypto"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "With the latest release of corecrypto, we’re publishing our implementations of quantum-secure ML-KEM and ML-DSA algorithms, along with the mathematical proofs we built to assure they are faithful to the FIPS 203 and FIPS 204 specifications. To advance the state of the art for assuring critical software, we're also publishing the formal verification libraries and tools that we created to achieve the strongest known correctness results for any widely-deployed production implementation of the relevant algorithms."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "October 10, 2025"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "A major evolution of Apple Security Bounty, with the industry's top awards for the most advanced research"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "Today we’re announcing the next major chapter for Apple Security Bounty, featuring the industry’s highest rewards — up to $2 million and a maximum payout in excess of $5 million — expanded research categories, and a flag system for researchers to objectively demonstrate vulnerabilities and obtain accelerated awards."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "September 9, 2025"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "Memory Integrity Enforcement: A complete vision for memory safety in Apple devices"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "Memory Integrity Enforcement (MIE) is the culmination of an unprecedented design and engineering effort spanning half a decade that combines the unique strengths of Apple silicon hardware with our advanced operating system security to provide industry-first, always-on memory safety protection across our devices — without compromising our best-in-class device performance. We believe Memory Integrity Enforcement represents the most significant upgrade to memory safety in the history of consumer operating systems."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "October 24, 2024"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "Security research on Private Cloud Compute"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "Private Cloud Compute (PCC) fulfills computationally intensive requests for Apple Intelligence while providing groundbreaking privacy and security protections — by bringing our industry-leading device security model into the cloud. To build public trust in our system, we’re making it possible for researchers to inspect and verify PCC’s security and privacy guarantees by releasing tools and resources including a comprehensive PCC Security Guide, the software binaries and source code of key PCC components, and — in a first for any Apple platform — a Virtual Research Environment, which allows anyone to install and test the PCC software on a Mac with Apple silicon."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "June 10, 2024"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "Private Cloud Compute: A new frontier for AI privacy in the cloud"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "Secure and private AI processing in the cloud poses a formidable new challenge. To support advanced features of Apple Intelligence with larger foundation models, we created Private Cloud Compute (PCC), a groundbreaking cloud intelligence system designed specifically for private AI processing. Built with custom Apple silicon and a hardened operating system, Private Cloud Compute extends the industry-leading security and privacy of Apple devices into the cloud, making sure that personal user data sent to PCC isn’t accessible to anyone other than the user — not even to Apple. We believe Private Cloud Compute is the most advanced security architecture ever deployed for cloud AI compute at scale."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "February 21, 2024"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "iMessage with PQ3: The new state of the art in quantum-secure messaging at scale"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "We are introducing PQ3, a groundbreaking cryptographic protocol for iMessage that advances the state of the art of end-to-end secure messaging. With compromise-resilient encryption and extensive defenses against even highly sophisticated quantum attacks, PQ3 provides protocol protections that surpass those in all other widely deployed messaging apps."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "October 27, 2023"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "Advancing iMessage security: iMessage Contact Key Verification"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "iMessage broke new ground in 2011 as the first widely available messaging service to provide secure end-to-end encryption by default. Ever since, we’ve been making ongoing improvements to iMessage security to protect our users’ most sensitive communications. This brief technical overview introduces the security model behind iMessage Contact Key Verification, a new feature available in the developer previews of iOS 17.2, macOS 14.2, and watchOS 10.2, that advances the state of the art of key directory security in messaging systems and allows users to verify they’re messaging only with the people they intend."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "August 30, 2023"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "2024 Apple Security Research Device Program now accepting applications"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "Starting today, security researchers are invited to apply for the 2024 Security Research Device Program. Learn about eligibility requirements and how our Security Research Device helps both new and experienced researchers accelerate their work with iOS. We're accepting applications through October 31, 2023."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "May 23, 2023"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "What if we had the SockPuppet vulnerability in iOS 16?"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "The next post in our XNU memory safety series examines how our hardened kernel allocator performs in the real world against a previously patched but powerful UAF software vulnerability. In this detailed analysis, we find out what might happen if SockPuppet were to meet kalloc_type in iOS 16."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "October 27, 2022"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "Apple Security Bounty. Upgraded."
-                      },
-                      {
-                        "tag": "p",
-                        "text": "Apple’s Security Bounty program has paid nearly $20 million in rewards to security researchers in just two and a half years. Our new site makes it easier than ever for researchers to submit reports on the web, get real-time updates from Apple engineering, and earn recognition for helping to improve security for the users of over 1.8 billion devices worldwide."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["blog-list_blog-date__y06Tq"],
-                        "text": "October 27, 2022"
-                      },
-                      {
-                        "tag": "h2",
-                        "text": "Towards the next generation of XNU memory safety: kalloc_type"
-                      },
-                      {
-                        "tag": "p",
-                        "text": "Improving software memory safety is a key security objective for engineering teams across the industry. Here we begin a journey into the XNU kernel at the core of iOS and explore the intricate work our engineering teams have done to harden the memory allocator and make our software much more difficult to exploit."
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more", "blog-list_blog-more__link__qJnr7"],
-                        "text": "Read more"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["blog-list_pagination__gTT2w"],
-                "text": "1 of 3"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tag": "footer",
-        "cls": ["footer", "footer-content"],
-        "ch": [
-          { "tag": "h2", "cls": ["footer-label"], "text": "Apple Footer" },
-          {
-            "tag": "nav",
-            "cls": ["footer-breadcrumbs"],
-            "ch": [
-              {
-                "tag": "a",
-                "cls": ["home", "footer-breadcrumbs-home"],
-                "text": "Apple Security Research",
-                "href": "https://security.apple.com/"
-              },
-              {
-                "tag": "div",
-                "cls": [
-                  "footer-breadcrumbs-path",
-                  "footer-breadcrumbs-list",
-                  "footer-breadcrumbs-item"
-                ],
-                "text": "Blog"
-              }
-            ]
-          },
-          {
-            "tag": "section",
-            "cls": ["footer-mini", "footer-mini-legal"],
-            "ch": [
-              {
-                "tag": "div",
-                "cls": [
-                  "footer-mini-legal-copyright",
-                  "footer-mini-legal-copyright--small"
-                ],
-                "text": "Copyright © 2026 Apple Inc. All rights reserved."
-              },
-              {
-                "tag": "div",
-                "cls": ["footer-mini-legal-links"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["footer-mini-legal-link"],
-                    "text": "Support",
-                    "href": "https://support.apple.com/contact"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["footer-mini-legal-link"],
-                    "text": "Apple Platform Security",
-                    "href": "https://support.apple.com/guide/security/welcome/web"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["footer-mini-legal-link"],
-                    "text": "Privacy Policy",
-                    "href": "https://www.apple.com/legal/privacy/"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["footer-mini-legal-link"],
-                    "text": "Legal",
-                    "href": "https://www.apple.com/legal/"
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": [
-                  "footer-mini-legal-copyright",
-                  "footer-mini-legal-copyright--large"
-                ],
-                "text": "Copyright © 2026 Apple Inc. All rights reserved."
-              }
-            ]
+            "cls": ["blog-list_pagination__gTT2w"],
+            "text": "1 of 3"
           }
         ]
       }

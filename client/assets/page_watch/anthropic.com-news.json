@@ -5,74 +5,73 @@
     "tag": "body",
     "ch": [
       {
-        "tag": "header",
-        "cls": ["SiteHeader-module-scss-module__zKj4Ca__header"],
+        "tag": "section",
+        "cls": [
+          "HeroTwoColumn-module-scss-module__pM-nba__landingPageListHeader",
+          "LandingPageSection-module-scss-module__ZSMdoa__root",
+          "bg-default",
+          "page-wrapper",
+          "HeroTwoColumn-module-scss-module__pM-nba__root"
+        ],
         "ch": [
           {
-            "tag": "div",
-            "cls": ["SiteHeader-module-scss-module__zKj4Ca__skipLinks"],
-            "ch": [
-              {
-                "tag": "a",
-                "cls": ["SiteHeader-module-scss-module__zKj4Ca__skipLink"],
-                "text": "Skip to main content",
-                "href": "https://www.anthropic.com/news#main-content"
-              },
-              {
-                "tag": "a",
-                "cls": ["SiteHeader-module-scss-module__zKj4Ca__skipLink"],
-                "text": "Skip to footer",
-                "href": "https://www.anthropic.com/news#footer"
-              }
-            ]
+            "tag": "h1",
+            "cls": [
+              "HeroTwoColumn-module-scss-module__pM-nba__titleSubhead",
+              "headline-1"
+            ],
+            "text": "Newsroom"
           },
           {
             "tag": "div",
             "cls": [
-              "page-wrapper",
-              "SiteHeader-module-scss-module__zKj4Ca__root"
+              "HeroTwoColumn-module-scss-module__pM-nba__bodyCtas",
+              "HeroTwoColumn-module-scss-module__pM-nba__ctaWrapper",
+              "HeroTwoColumn-module-scss-module__pM-nba__ctaList"
             ],
             "ch": [
-              { "tag": "a", "href": "https://www.anthropic.com/" },
               {
-                "tag": "div",
-                "cls": [
-                  "SiteHeader-module-scss-module__zKj4Ca__contentWrapper"
-                ],
+                "tag": "li",
                 "ch": [
-                  {
-                    "tag": "nav",
-                    "cls": [
-                      "SiteHeader-module-scss-module__zKj4Ca__nav",
-                      "SiteHeader-module-scss-module__zKj4Ca__navList"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "SiteHeader-module-scss-module__zKj4Ca__navText"
-                        ],
-                        "text": "Policy",
-                        "href": "https://www.anthropic.com/policy"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "SiteHeader-module-scss-module__zKj4Ca__navText"
-                        ],
-                        "text": "News",
-                        "href": "https://www.anthropic.com/news"
-                      }
-                    ]
-                  },
+                  { "tag": "#text", "text": "Press inquiries" },
                   {
                     "tag": "a",
                     "cls": [
-                      "SiteHeader-module-scss-module__zKj4Ca__claudeCtaButton",
-                      "body-3"
+                      "ButtonTextLink-module-scss-module__q8IAwW__textLink",
+                      "HeroTwoColumn-module-scss-module__pM-nba__listLink"
                     ],
-                    "text": "Try Claude",
-                    "href": "https://claude.ai/"
+                    "text": "press@anthropic.com",
+                    "href": "mailto:press@anthropic.com"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  { "tag": "#text", "text": "Non-media inquiries" },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "ButtonTextLink-module-scss-module__q8IAwW__textLink",
+                      "HeroTwoColumn-module-scss-module__pM-nba__listLink"
+                    ],
+                    "text": "How to get support",
+                    "href": "https://support.claude.com/en/articles/9015913-how-to-get-support"
+                  }
+                ]
+              },
+              {
+                "tag": "li",
+                "ch": [
+                  { "tag": "#text", "text": "Media assets" },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "ButtonTextLink-module-scss-module__q8IAwW__textLink",
+                      "HeroTwoColumn-module-scss-module__pM-nba__listLink"
+                    ],
+                    "text": "Download press kit",
+                    "href": "https://anthropic.com/press-kit"
                   }
                 ]
               }
@@ -81,157 +80,41 @@
         ]
       },
       {
-        "tag": "main",
+        "tag": "section",
+        "cls": [
+          "LandingPageSection-module-scss-module__ZSMdoa__root",
+          "bg-default",
+          "LandingPageSection-module-scss-module__ZSMdoa__flushTop",
+          "page-wrapper",
+          "FeaturedGrid-module-scss-module__W1FydW__root"
+        ],
         "ch": [
           {
-            "tag": "section",
-            "cls": [
-              "HeroTwoColumn-module-scss-module__pM-nba__landingPageListHeader",
-              "LandingPageSection-module-scss-module__ZSMdoa__root",
-              "bg-default",
-              "page-wrapper",
-              "HeroTwoColumn-module-scss-module__pM-nba__root"
-            ],
+            "tag": "a",
+            "cls": ["FeaturedGrid-module-scss-module__W1FydW__content"],
+            "href": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
             "ch": [
               {
-                "tag": "h1",
+                "tag": "h2",
                 "cls": [
-                  "HeroTwoColumn-module-scss-module__pM-nba__titleSubhead",
-                  "headline-1"
+                  "headline-4",
+                  "FeaturedGrid-module-scss-module__W1FydW__featuredTitle"
                 ],
-                "text": "Newsroom"
+                "text": "Introducing Claude Fable 5.1 and Claude Mythos 5.1"
               },
               {
                 "tag": "div",
                 "cls": [
-                  "HeroTwoColumn-module-scss-module__pM-nba__bodyCtas",
-                  "HeroTwoColumn-module-scss-module__pM-nba__ctaWrapper",
-                  "HeroTwoColumn-module-scss-module__pM-nba__ctaList"
+                  "FeaturedGrid-module-scss-module__W1FydW__featuredItemContent",
+                  "FeaturedGrid-module-scss-module__W1FydW__gridItem",
+                  "FeaturedGrid-module-scss-module__W1FydW__featured"
                 ],
                 "ch": [
-                  {
-                    "tag": "li",
-                    "ch": [
-                      { "tag": "#text", "text": "Press inquiries" },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "ButtonTextLink-module-scss-module__q8IAwW__textLink",
-                          "HeroTwoColumn-module-scss-module__pM-nba__listLink"
-                        ],
-                        "text": "press@anthropic.com",
-                        "href": "mailto:press@anthropic.com"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      { "tag": "#text", "text": "Non-media inquiries" },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "ButtonTextLink-module-scss-module__q8IAwW__textLink",
-                          "HeroTwoColumn-module-scss-module__pM-nba__listLink"
-                        ],
-                        "text": "How to get support",
-                        "href": "https://support.claude.com/en/articles/9015913-how-to-get-support"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "ch": [
-                      { "tag": "#text", "text": "Media assets" },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "ButtonTextLink-module-scss-module__q8IAwW__textLink",
-                          "HeroTwoColumn-module-scss-module__pM-nba__listLink"
-                        ],
-                        "text": "Download press kit",
-                        "href": "https://anthropic.com/press-kit"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "tag": "section",
-            "cls": [
-              "LandingPageSection-module-scss-module__ZSMdoa__root",
-              "bg-default",
-              "LandingPageSection-module-scss-module__ZSMdoa__flushTop",
-              "page-wrapper",
-              "FeaturedGrid-module-scss-module__W1FydW__root"
-            ],
-            "ch": [
-              {
-                "tag": "a",
-                "cls": ["FeaturedGrid-module-scss-module__W1FydW__content"],
-                "href": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
-                "ch": [
-                  {
-                    "tag": "h2",
-                    "cls": [
-                      "headline-4",
-                      "FeaturedGrid-module-scss-module__W1FydW__featuredTitle"
-                    ],
-                    "text": "Introducing Claude Fable 5.1 and Claude Mythos 5.1"
-                  },
                   {
                     "tag": "div",
-                    "cls": [
-                      "FeaturedGrid-module-scss-module__W1FydW__featuredItemContent",
-                      "FeaturedGrid-module-scss-module__W1FydW__gridItem",
-                      "FeaturedGrid-module-scss-module__W1FydW__featured"
-                    ],
+                    "cls": ["FeaturedGrid-module-scss-module__W1FydW__meta"],
                     "ch": [
-                      {
-                        "tag": "div",
-                        "cls": [
-                          "FeaturedGrid-module-scss-module__W1FydW__meta"
-                        ],
-                        "ch": [
-                          { "tag": "#text", "text": "Announcements" },
-                          {
-                            "tag": "time",
-                            "cls": [
-                              "FeaturedGrid-module-scss-module__W1FydW__date",
-                              "caption",
-                              "bold"
-                            ],
-                            "text": "Sep 1, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "body-3",
-                          "serif",
-                          "FeaturedGrid-module-scss-module__W1FydW__body"
-                        ],
-                        "text": "Our most advanced models for coding and knowledge work. Their research capabilities also offer an early glimpse of how AI models will contribute to scientific progress."
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["FeaturedGrid-module-scss-module__W1FydW__sideItems"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": [
-                      "FeaturedGrid-module-scss-module__W1FydW__sideLink",
-                      "FeaturedGrid-module-scss-module__W1FydW__gridItem"
-                    ],
-                    "href": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
-                    "ch": [
+                      { "tag": "#text", "text": "Announcements" },
                       {
                         "tag": "time",
                         "cls": [
@@ -239,469 +122,146 @@
                           "caption",
                           "bold"
                         ],
-                        "text": "Sep 17, 2026"
-                      },
-                      {
-                        "tag": "h4",
-                        "cls": [
-                          "headline-6",
-                          "FeaturedGrid-module-scss-module__W1FydW__title"
-                        ],
-                        "text": "Measurements for understanding the pace of AI development inside frontier labs"
-                      },
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "body-3",
-                          "serif",
-                          "FeaturedGrid-module-scss-module__W1FydW__body"
-                        ],
-                        "text": "Today, the world can’t see what’s going on inside AI labs. Anthropic is proposing new metrics that would give the public visibility into frontier AI development."
+                        "text": "Sep 1, 2026"
                       }
                     ]
                   },
                   {
-                    "tag": "a",
+                    "tag": "p",
                     "cls": [
-                      "FeaturedGrid-module-scss-module__W1FydW__sideLink",
-                      "FeaturedGrid-module-scss-module__W1FydW__gridItem"
+                      "body-3",
+                      "serif",
+                      "FeaturedGrid-module-scss-module__W1FydW__body"
                     ],
-                    "href": "https://www.anthropic.com/threat-intelligence-report-september-2026",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": [
-                          "FeaturedGrid-module-scss-module__W1FydW__meta"
-                        ],
-                        "ch": [
-                          { "tag": "#text", "text": "Announcements" },
-                          {
-                            "tag": "time",
-                            "cls": [
-                              "FeaturedGrid-module-scss-module__W1FydW__date",
-                              "caption",
-                              "bold"
-                            ],
-                            "text": "Sep 10, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "h4",
-                        "cls": [
-                          "headline-6",
-                          "FeaturedGrid-module-scss-module__W1FydW__title"
-                        ],
-                        "text": "Detecting and countering misuse of AI: September 2026"
-                      },
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "body-3",
-                          "serif",
-                          "FeaturedGrid-module-scss-module__W1FydW__body"
-                        ],
-                        "text": "Over the past eight months, our Threat Intelligence team identified and disrupted operations in which threat actors tried to use Claude for malicious activity. In this report, we share case studies from those operations and describe how malicious use of Claude has evolved since our previous threat reports in 2025."
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": [
-                      "FeaturedGrid-module-scss-module__W1FydW__sideLink",
-                      "FeaturedGrid-module-scss-module__W1FydW__gridItem"
-                    ],
-                    "href": "https://www.anthropic.com/news/improving-alignment-security-efforts",
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": [
-                          "FeaturedGrid-module-scss-module__W1FydW__meta"
-                        ],
-                        "ch": [
-                          { "tag": "#text", "text": "Announcements" },
-                          {
-                            "tag": "time",
-                            "cls": [
-                              "FeaturedGrid-module-scss-module__W1FydW__date",
-                              "caption",
-                              "bold"
-                            ],
-                            "text": "Aug 31, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "h4",
-                        "cls": [
-                          "headline-6",
-                          "FeaturedGrid-module-scss-module__W1FydW__title"
-                        ],
-                        "text": "Improving our alignment and security efforts"
-                      },
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "body-3",
-                          "serif",
-                          "FeaturedGrid-module-scss-module__W1FydW__body"
-                        ],
-                        "text": "On July 30, we reported three incidents in which Claude models gained unauthorized access to real computer systems. We are conducting an in-depth analysis of both incidents, and planning to work with METR for an independent review. In the meantime, we’re sharing some of the changes we’ve made over the past month."
-                      }
-                    ]
+                    "text": "Our most advanced models for coding and knowledge work. Their research capabilities also offer an early glimpse of how AI models will contribute to scientific progress."
                   }
                 ]
               }
             ]
           },
           {
-            "tag": "section",
-            "cls": [
-              "LandingPageSection-module-scss-module__ZSMdoa__root",
-              "bg-default",
-              "LandingPageSection-module-scss-module__ZSMdoa__flushTop",
-              "page-wrapper"
-            ],
+            "tag": "div",
+            "cls": ["FeaturedGrid-module-scss-module__W1FydW__sideItems"],
             "ch": [
               {
-                "tag": "h2",
+                "tag": "a",
                 "cls": [
-                  "PublicationList-module-scss-module__KxYrHG__header",
-                  "headline-4"
+                  "FeaturedGrid-module-scss-module__W1FydW__sideLink",
+                  "FeaturedGrid-module-scss-module__W1FydW__gridItem"
                 ],
-                "text": "News"
+                "href": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+                "ch": [
+                  {
+                    "tag": "time",
+                    "cls": [
+                      "FeaturedGrid-module-scss-module__W1FydW__date",
+                      "caption",
+                      "bold"
+                    ],
+                    "text": "Sep 17, 2026"
+                  },
+                  {
+                    "tag": "h4",
+                    "cls": [
+                      "headline-6",
+                      "FeaturedGrid-module-scss-module__W1FydW__title"
+                    ],
+                    "text": "Measurements for understanding the pace of AI development inside frontier labs"
+                  },
+                  {
+                    "tag": "p",
+                    "cls": [
+                      "body-3",
+                      "serif",
+                      "FeaturedGrid-module-scss-module__W1FydW__body"
+                    ],
+                    "text": "Today, the world can’t see what’s going on inside AI labs. Anthropic is proposing new metrics that would give the public visibility into frontier AI development."
+                  }
+                ]
               },
               {
-                "tag": "div",
+                "tag": "a",
                 "cls": [
-                  "PublicationList-module-scss-module__KxYrHG__root",
-                  "PublicationList-module-scss-module__KxYrHG__content"
+                  "FeaturedGrid-module-scss-module__W1FydW__sideLink",
+                  "FeaturedGrid-module-scss-module__W1FydW__gridItem"
                 ],
+                "href": "https://www.anthropic.com/threat-intelligence-report-september-2026",
                 "ch": [
                   {
                     "tag": "div",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listHeader"
-                    ],
-                    "text": "DateCategoryTitle"
-                  },
-                  {
-                    "tag": "ul",
-                    "cls": ["PublicationList-module-scss-module__KxYrHG__list"],
+                    "cls": ["FeaturedGrid-module-scss-module__W1FydW__meta"],
                     "ch": [
+                      { "tag": "#text", "text": "Announcements" },
                       {
-                        "tag": "a",
+                        "tag": "time",
                         "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
+                          "FeaturedGrid-module-scss-module__W1FydW__date",
+                          "caption",
+                          "bold"
                         ],
-                        "href": "https://www.anthropic.com/news/accenture-embedded-evaluation",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Sep 18, 2026"
-                              },
-                              { "tag": "#text", "text": "Announcements" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "Partnering with Accenture on embedded evaluation"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
-                        ],
-                        "href": "https://www.anthropic.com/news/life-sciences-verification-program",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Sep 17, 2026"
-                              },
-                              { "tag": "#text", "text": "Announcements" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "Introducing the Life Sciences Verification Program"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
-                        ],
-                        "href": "https://www.anthropic.com/news/enterprise-frontier-safeguards",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Sep 1, 2026"
-                              },
-                              { "tag": "#text", "text": "Announcements" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "Developing Enterprise Frontier Safeguards with our customers"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
-                        ],
-                        "href": "https://www.anthropic.com/news/improving-alignment-security-efforts",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Aug 31, 2026"
-                              },
-                              { "tag": "#text", "text": "Announcements" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "Improving our alignment and security efforts"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
-                        ],
-                        "href": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Aug 27, 2026"
-                              },
-                              { "tag": "#text", "text": "Announcements" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "Previewing the Model Hardware Standard"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
-                        ],
-                        "href": "https://www.anthropic.com/news/expanding-support-for-scientists",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Aug 27, 2026"
-                              },
-                              { "tag": "#text", "text": "Announcements" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "Expanding our support for scientists"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
-                        ],
-                        "href": "https://www.anthropic.com/news/wellbeing-research-grants",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Aug 25, 2026"
-                              },
-                              { "tag": "#text", "text": "Announcements" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "Funding better evaluations of AI’s impact on wellbeing"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
-                        ],
-                        "href": "https://www.anthropic.com/news/claude-text-watermark",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Aug 14, 2026"
-                              },
-                              { "tag": "#text", "text": "Announcements" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "How Claude’s text watermark works"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
-                        ],
-                        "href": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Aug 7, 2026"
-                              },
-                              { "tag": "#text", "text": "Product" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "Improving Fable 5's biology safeguards"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__listItem"
-                        ],
-                        "href": "https://www.anthropic.com/news/tino-cuellar",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__meta"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "time",
-                                "cls": [
-                                  "PublicationList-module-scss-module__KxYrHG__date",
-                                  "body-3"
-                                ],
-                                "text": "Aug 4, 2026"
-                              },
-                              { "tag": "#text", "text": "Announcements" }
-                            ]
-                          },
-                          {
-                            "tag": "#text",
-                            "text": "Mariano-Florentino (Tino) Cuéllar to join Anthropic as Chief Global Affairs Officer"
-                          }
-                        ]
+                        "text": "Sep 10, 2026"
                       }
                     ]
                   },
                   {
-                    "tag": "a",
+                    "tag": "h4",
                     "cls": [
-                      "Button-module-scss-module__f9ZZrG__button",
-                      "Button-module-scss-module__f9ZZrG__large",
-                      "Button-module-scss-module__f9ZZrG__tertiary",
-                      "Button-module-scss-module__f9ZZrG__iconRight",
-                      "PublicationList-module-scss-module__KxYrHG__seeMore"
+                      "headline-6",
+                      "FeaturedGrid-module-scss-module__W1FydW__title"
                     ],
-                    "text": "See more",
-                    "href": "https://www.anthropic.com/news"
+                    "text": "Detecting and countering misuse of AI: September 2026"
+                  },
+                  {
+                    "tag": "p",
+                    "cls": [
+                      "body-3",
+                      "serif",
+                      "FeaturedGrid-module-scss-module__W1FydW__body"
+                    ],
+                    "text": "Over the past eight months, our Threat Intelligence team identified and disrupted operations in which threat actors tried to use Claude for malicious activity. In this report, we share case studies from those operations and describe how malicious use of Claude has evolved since our previous threat reports in 2025."
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "cls": [
+                  "FeaturedGrid-module-scss-module__W1FydW__sideLink",
+                  "FeaturedGrid-module-scss-module__W1FydW__gridItem"
+                ],
+                "href": "https://www.anthropic.com/news/improving-alignment-security-efforts",
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["FeaturedGrid-module-scss-module__W1FydW__meta"],
+                    "ch": [
+                      { "tag": "#text", "text": "Announcements" },
+                      {
+                        "tag": "time",
+                        "cls": [
+                          "FeaturedGrid-module-scss-module__W1FydW__date",
+                          "caption",
+                          "bold"
+                        ],
+                        "text": "Aug 31, 2026"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "h4",
+                    "cls": [
+                      "headline-6",
+                      "FeaturedGrid-module-scss-module__W1FydW__title"
+                    ],
+                    "text": "Improving our alignment and security efforts"
+                  },
+                  {
+                    "tag": "p",
+                    "cls": [
+                      "body-3",
+                      "serif",
+                      "FeaturedGrid-module-scss-module__W1FydW__body"
+                    ],
+                    "text": "On July 30, we reported three incidents in which Claude models gained unauthorized access to real computer systems. We are conducting an in-depth analysis of both incidents, and planning to work with METR for an independent review. In the meantime, we’re sharing some of the changes we’ve made over the past month."
                   }
                 ]
               }
@@ -710,1000 +270,354 @@
         ]
       },
       {
-        "tag": "footer",
+        "tag": "section",
         "cls": [
-          "SiteFooter-module-scss-module__JdOqwq__root",
-          "page-wrapper",
-          "SiteFooter-module-scss-module__JdOqwq__footer"
+          "LandingPageSection-module-scss-module__ZSMdoa__root",
+          "bg-default",
+          "LandingPageSection-module-scss-module__ZSMdoa__flushTop",
+          "page-wrapper"
         ],
         "ch": [
-          { "tag": "a", "href": "https://www.anthropic.com/" },
           {
-            "tag": "nav",
-            "cls": ["SiteFooter-module-scss-module__JdOqwq__linksWrapper"],
-            "ch": [
-              {
-                "tag": "div",
-                "cls": ["SiteFooter-module-scss-module__JdOqwq__columnSection"],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "SiteFooter-module-scss-module__JdOqwq__listSection"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["body-4", "bold"],
-                        "text": "Products"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["SiteFooter-module-scss-module__JdOqwq__list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude",
-                            "href": "https://claude.com/product/overview"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude Code",
-                            "href": "https://claude.com/product/claude-code"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude Code Enterprise",
-                            "href": "https://claude.com/product/claude-code/enterprise"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude Cowork",
-                            "href": "https://claude.com/product/cowork"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "@Claude",
-                            "href": "https://claude.com/product/tag"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude Design",
-                            "href": "https://claude.com/product/design"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude Science",
-                            "href": "https://claude.com/product/claude-science"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude Security",
-                            "href": "https://claude.com/product/claude-security"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude in Chrome",
-                            "href": "https://claude.com/claude-in-chrome"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude for Microsoft 365",
-                            "href": "https://claude.com/claude-for-microsoft-365"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Skills",
-                            "href": "https://www.claude.com/skills"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Download app",
-                            "href": "https://claude.ai/download"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Pricing",
-                            "href": "https://claude.com/pricing"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Log in to Claude",
-                            "href": "https://claude.ai/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "SiteFooter-module-scss-module__JdOqwq__listSection"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["body-4", "bold"],
-                        "text": "Models"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["SiteFooter-module-scss-module__JdOqwq__list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Mythos",
-                            "href": "https://www.anthropic.com/claude/mythos"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Fable",
-                            "href": "https://www.anthropic.com/claude/fable"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Opus",
-                            "href": "https://www.anthropic.com/claude/opus"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Sonnet",
-                            "href": "https://www.anthropic.com/claude/sonnet"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Haiku",
-                            "href": "https://www.anthropic.com/claude/haiku"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["SiteFooter-module-scss-module__JdOqwq__columnSection"],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "SiteFooter-module-scss-module__JdOqwq__listSection"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["body-4", "bold"],
-                        "text": "Solutions"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["SiteFooter-module-scss-module__JdOqwq__list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "AI agents",
-                            "href": "https://claude.com/solutions/agents"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Code modernization",
-                            "href": "https://claude.com/solutions/code-modernization"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Coding",
-                            "href": "https://claude.com/solutions/coding"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Commerce",
-                            "href": "https://claude.com/solutions/commerce"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Customer support",
-                            "href": "https://claude.com/solutions/customer-support"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Cybersecurity",
-                            "href": "https://claude.com/solutions/cybersecurity"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Enterprise",
-                            "href": "https://claude.com/solutions/enterprise"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Financial services",
-                            "href": "https://claude.com/solutions/financial-services"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Government",
-                            "href": "https://claude.com/solutions/government"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Healthcare",
-                            "href": "https://claude.com/solutions/healthcare"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Higher education",
-                            "href": "https://claude.com/solutions/education"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "K-12 teachers",
-                            "href": "https://claude.com/solutions/teachers"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Legal",
-                            "href": "https://claude.com/solutions/legal"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Life sciences",
-                            "href": "https://claude.com/solutions/life-sciences"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Nonprofits",
-                            "href": "https://claude.com/solutions/nonprofits"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Sales",
-                            "href": "https://claude.com/solutions/sales"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Small business",
-                            "href": "https://claude.com/solutions/small-business"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "SiteFooter-module-scss-module__JdOqwq__listSection"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["body-4", "bold"],
-                        "text": "Claude Platform"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["SiteFooter-module-scss-module__JdOqwq__list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Overview",
-                            "href": "https://claude.com/platform/api"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Developer docs",
-                            "href": "https://platform.claude.com/docs"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Pricing",
-                            "href": "https://claude.com/pricing#api"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Ecosystem",
-                            "href": "https://claude.com/ecosystem"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Marketplace",
-                            "href": "https://claude.com/platform/marketplace"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Regional compliance",
-                            "href": "https://claude.com/regional-compliance"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude on AWS",
-                            "href": "https://claude.com/partners/claude-on-aws"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Google Cloud",
-                            "href": "https://claude.com/partners/google-cloud-vertex-ai"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Microsoft Foundry",
-                            "href": "https://claude.com/partners/microsoft-foundry"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Console login",
-                            "href": "https://platform.claude.com/"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["SiteFooter-module-scss-module__JdOqwq__columnSection"],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "SiteFooter-module-scss-module__JdOqwq__listSection"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["body-4", "bold"],
-                        "text": "Resources"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["SiteFooter-module-scss-module__JdOqwq__list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Blog",
-                            "href": "https://claude.com/blog"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude partner network",
-                            "href": "https://claude.com/partners"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Community",
-                            "href": "https://claude.com/community"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Connectors",
-                            "href": "https://claude.com/connectors"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Courses",
-                            "href": "https://academy.claude.com"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Customer stories",
-                            "href": "https://claude.com/customers"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Engineering at Anthropic",
-                            "href": "https://www.anthropic.com/engineering"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Events",
-                            "href": "https://www.anthropic.com/events"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Plugins",
-                            "href": "https://claude.com/plugins"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Powered by Claude",
-                            "href": "https://claude.com/partners/powered-by-claude"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Service partners",
-                            "href": "https://claude.com/partners/services"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Tutorials",
-                            "href": "https://claude.com/resources/tutorials"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Use cases",
-                            "href": "https://claude.com/resources/use-cases"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "SiteFooter-module-scss-module__JdOqwq__listSection"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["body-4", "bold"],
-                        "text": "Programs"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["SiteFooter-module-scss-module__JdOqwq__list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Startups",
-                            "href": "https://claude.com/programs/startups"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Scientists",
-                            "href": "https://claude.com/programs/team-plan-for-scientists"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "SiteFooter-module-scss-module__JdOqwq__listSection"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["body-4", "bold"],
-                        "text": "Help and security"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["SiteFooter-module-scss-module__JdOqwq__list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Availability",
-                            "href": "https://www.anthropic.com/supported-countries"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Status",
-                            "href": "https://status.anthropic.com/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Support center",
-                            "href": "https://support.claude.com/en/"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["SiteFooter-module-scss-module__JdOqwq__columnSection"],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "SiteFooter-module-scss-module__JdOqwq__listSection"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["body-4", "bold"],
-                        "text": "Company"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["SiteFooter-module-scss-module__JdOqwq__list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Anthropic",
-                            "href": "https://www.anthropic.com/company"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Careers",
-                            "href": "https://www.anthropic.com/careers"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Leadership",
-                            "href": "https://www.anthropic.com/company/leadership"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Policy",
-                            "href": "https://www.anthropic.com/policy"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Economic Futures",
-                            "href": "https://www.anthropic.com/economic-futures"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Research",
-                            "href": "https://www.anthropic.com/research"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "News",
-                            "href": "https://www.anthropic.com/news"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude’s Constitution",
-                            "href": "https://www.anthropic.com/constitution"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Claude Corps",
-                            "href": "https://www.anthropic.com/claude-corps"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Keep thinking",
-                            "href": "https://www.anthropic.com/path-to-hope"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Policy on the AI Exponential",
-                            "href": "https://www.anthropic.com/policy-on-the-ai-exponential"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Responsible Scaling Policy",
-                            "href": "https://www.anthropic.com/news/announcing-our-updated-responsible-scaling-policy"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Security and compliance",
-                            "href": "https://trust.anthropic.com/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Transparency",
-                            "href": "https://www.anthropic.com/transparency"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "SiteFooter-module-scss-module__JdOqwq__listSection"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["body-4", "bold"],
-                        "text": "Terms and policies"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["SiteFooter-module-scss-module__JdOqwq__list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Privacy policy",
-                            "href": "https://www.anthropic.com/legal/privacy"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Consumer health data privacy policy",
-                            "href": "https://www.anthropic.com/legal/consumer-health-data-privacy-policy"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Responsible disclosure policy",
-                            "href": "https://www.anthropic.com/responsible-disclosure-policy"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Terms of service: Commercial",
-                            "href": "https://www.anthropic.com/legal/commercial-terms"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Terms of service: Consumer",
-                            "href": "https://www.anthropic.com/legal/consumer-terms"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Terms of Service: US K-12",
-                            "href": "https://anthropic.com/legal/k12-terms"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Data Processing Agreement: US K-12",
-                            "href": "https://anthropic.com/legal/k12-dpa"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "SiteFooter-module-scss-module__JdOqwq__listItem",
-                              "body-4"
-                            ],
-                            "text": "Usage policy",
-                            "href": "https://www.anthropic.com/legal/aup"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
+            "tag": "h2",
+            "cls": [
+              "PublicationList-module-scss-module__KxYrHG__header",
+              "headline-4"
+            ],
+            "text": "News"
           },
           {
             "tag": "div",
-            "cls": ["SiteFooter-module-scss-module__JdOqwq__socialWrapper"],
+            "cls": [
+              "PublicationList-module-scss-module__KxYrHG__root",
+              "PublicationList-module-scss-module__KxYrHG__content"
+            ],
             "ch": [
-              { "tag": "#text", "text": "© 2026 Anthropic PBC" },
+              {
+                "tag": "div",
+                "cls": [
+                  "PublicationList-module-scss-module__KxYrHG__listHeader"
+                ],
+                "text": "DateCategoryTitle"
+              },
+              {
+                "tag": "ul",
+                "cls": ["PublicationList-module-scss-module__KxYrHG__list"],
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/accenture-embedded-evaluation",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Sep 18, 2026"
+                          },
+                          { "tag": "#text", "text": "Announcements" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "Partnering with Accenture on embedded evaluation"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/life-sciences-verification-program",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Sep 17, 2026"
+                          },
+                          { "tag": "#text", "text": "Announcements" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "Introducing the Life Sciences Verification Program"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/enterprise-frontier-safeguards",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Sep 1, 2026"
+                          },
+                          { "tag": "#text", "text": "Announcements" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "Developing Enterprise Frontier Safeguards with our customers"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/improving-alignment-security-efforts",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Aug 31, 2026"
+                          },
+                          { "tag": "#text", "text": "Announcements" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "Improving our alignment and security efforts"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Aug 27, 2026"
+                          },
+                          { "tag": "#text", "text": "Announcements" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "Previewing the Model Hardware Standard"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/expanding-support-for-scientists",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Aug 27, 2026"
+                          },
+                          { "tag": "#text", "text": "Announcements" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "Expanding our support for scientists"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/wellbeing-research-grants",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Aug 25, 2026"
+                          },
+                          { "tag": "#text", "text": "Announcements" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "Funding better evaluations of AI’s impact on wellbeing"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/claude-text-watermark",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Aug 14, 2026"
+                          },
+                          { "tag": "#text", "text": "Announcements" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "How Claude’s text watermark works"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Aug 7, 2026"
+                          },
+                          { "tag": "#text", "text": "Product" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "Improving Fable 5's biology safeguards"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "PublicationList-module-scss-module__KxYrHG__listItem"
+                    ],
+                    "href": "https://www.anthropic.com/news/tino-cuellar",
+                    "ch": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "PublicationList-module-scss-module__KxYrHG__meta"
+                        ],
+                        "ch": [
+                          {
+                            "tag": "time",
+                            "cls": [
+                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "body-3"
+                            ],
+                            "text": "Aug 4, 2026"
+                          },
+                          { "tag": "#text", "text": "Announcements" }
+                        ]
+                      },
+                      {
+                        "tag": "#text",
+                        "text": "Mariano-Florentino (Tino) Cuéllar to join Anthropic as Chief Global Affairs Officer"
+                      }
+                    ]
+                  }
+                ]
+              },
               {
                 "tag": "a",
-                "href": "https://www.linkedin.com/company/anthropicresearch"
-              },
-              { "tag": "a", "href": "https://x.com/AnthropicAI" },
-              { "tag": "a", "href": "https://www.youtube.com/@anthropic-ai" }
+                "cls": [
+                  "Button-module-scss-module__f9ZZrG__button",
+                  "Button-module-scss-module__f9ZZrG__large",
+                  "Button-module-scss-module__f9ZZrG__tertiary",
+                  "Button-module-scss-module__f9ZZrG__iconRight",
+                  "PublicationList-module-scss-module__KxYrHG__seeMore"
+                ],
+                "text": "See more",
+                "href": "https://www.anthropic.com/news"
+              }
             ]
           }
         ]

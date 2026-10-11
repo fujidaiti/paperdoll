@@ -11,2094 +11,1082 @@
       "page-template-template-home-2024-php",
       "page",
       "page-id-30630",
-      "wp-theme-ftr"
+      "wp-theme-ftr",
+      "main",
+      "inner-content"
     ],
     "ch": [
-      {
-        "tag": "nav",
-        "cls": ["skip-links"],
-        "ch": [
-          {
-            "tag": "a",
-            "cls": ["skip-link"],
-            "text": "Skip to main content",
-            "href": "https://newsroom.spotify.com/#main-content"
-          },
-          {
-            "tag": "a",
-            "cls": ["skip-link"],
-            "text": "Skip to footer",
-            "href": "https://newsroom.spotify.com/#site-footer"
-          }
-        ]
-      },
+      { "tag": "h1", "cls": ["screen-reader-text"], "text": "Home V2" },
       {
         "tag": "div",
-        "cls": ["off-canvas-wrapper"],
+        "cls": ["grid-container", "full", "home-v2"],
         "ch": [
           {
-            "tag": "div",
-            "cls": [
-              "off-canvas",
-              "position-top",
-              "vertical",
-              "menu",
-              "accordion-menu"
-            ],
+            "tag": "section",
+            "cls": ["top-banner-v2", "featured-content-slider", "slides"],
             "ch": [
               {
-                "tag": "li",
+                "tag": "a",
+                "href": "https://newsroom.spotify.com/2026-09-23/taste-profile-shape-home-feed/",
                 "ch": [
                   {
-                    "tag": "a",
-                    "text": "News",
-                    "href": "https://newsroom.spotify.com/"
+                    "tag": "img",
+                    "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/Taste-Profile_Blog-header-479583745973495.png",
+                    "alt": "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage"
                   },
                   {
-                    "tag": "ul",
-                    "cls": ["vertical", "menu", "nested", "news"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "News \u0026 Announcements",
-                        "href": "https://newsroom.spotify.com/news/?_filter=news-announcements"
-                      },
-                      {
-                        "tag": "a",
-                        "text": "Artists \u0026 Creators",
-                        "href": "https://newsroom.spotify.com/news/?_filter=creator-stories"
-                      },
-                      {
-                        "tag": "a",
-                        "text": "Culture \u0026 Trends",
-                        "href": "https://newsroom.spotify.com/news/?_filter=trends-data"
-                      },
-                      {
-                        "tag": "a",
-                        "text": "Behind the Business",
-                        "href": "https://newsroom.spotify.com/news/?_filter=behind-business"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["button"],
-                        "text": "View All News",
-                        "href": "https://newsroom.spotify.com/news"
-                      },
-                      {
-                        "tag": "li",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["featured-categories"],
-                            "text": "Featured categories"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["side-links"],
-                            "ch": [
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://newsroom.spotify.com/news",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2025/01/2023_BOB_JEUSETTE_SPOTIFY_SHOT_26_0072_RVB_crop.jpg"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Company News",
-                                    "href": "https://newsroom.spotify.com/news"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://newsroom.spotify.com/books",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/07/books-menu.png",
-                                        "alt": "An image of a cartoon person hanging from a hammock on a bookshelf"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Books on Spotify",
-                                    "href": "https://newsroom.spotify.com/books"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://loudandclear.byspotify.com",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2024/09/loudandclear.png"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Spotify Loud \u0026 Clear",
-                                    "href": "https://loudandclear.byspotify.com"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://newsroom.spotify.com/2025-wrapped/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2025/12/25_1128_audiobook_trends_Header_Horizontal-Light_6-768x432.png"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "2025 Wrapped",
-                                    "href": "https://newsroom.spotify.com/2025-wrapped/"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "li",
-                "ch": [
-                  {
-                    "tag": "a",
-                    "text": "Company",
-                    "href": "https://newsroom.spotify.com/"
-                  },
-                  {
-                    "tag": "ul",
-                    "cls": ["vertical", "menu", "nested", "company-info"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "About Spotify",
-                        "href": "https://newsroom.spotify.com/company-info/"
-                      },
-                      {
-                        "tag": "a",
-                        "text": "Investors",
-                        "href": "https://investors.spotify.com/"
-                      },
-                      {
-                        "tag": "a",
-                        "text": "Press Center",
-                        "href": "https://newsroom.spotify.com/media-kit"
-                      },
-                      {
-                        "tag": "a",
-                        "text": "Life at Spotify",
-                        "href": "https://www.lifeatspotify.com/"
-                      },
-                      {
-                        "tag": "a",
-                        "text": "Safety at Spotify",
-                        "href": "https://newsroom.spotify.com/safety-at-spotify/"
-                      },
-                      {
-                        "tag": "a",
-                        "text": "Impact",
-                        "href": "https://newsroom.spotify.com/impact/"
-                      },
-                      {
-                        "tag": "li",
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["featured-categories"],
-                            "text": "Featured categories"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["side-links"],
-                            "ch": [
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://timetoplayfair.com",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2021/11/thecase-01-768x432.png"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Time to Play Fair",
-                                    "href": "https://timetoplayfair.com"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://loudandclear.byspotify.com",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2021/11/20210317_1731_LC_Spotify_Streaming_Animation-copy1-copy-768x432.jpg"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Spotify Loud \u0026 Clear",
-                                    "href": "https://loudandclear.byspotify.com"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://newsroom.spotify.com/stream-on-2023/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2023/02/stream-on-2023_nav-bar-image.png"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Stream On",
-                                    "href": "https://newsroom.spotify.com/stream-on-2023/"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "tag": "div",
-            "cls": ["off-canvas-content"],
-            "ch": [
-              {
-                "tag": "header",
-                "cls": ["header"],
-                "ch": [
-                  { "tag": "a", "href": "https://newsroom.spotify.com/" },
-                  {
-                    "tag": "div",
+                    "tag": "h2",
                     "cls": [
-                      "dropdown-pane",
-                      "menu-pane",
+                      "slide-content",
                       "grid-container",
                       "wide",
-                      "grid-x",
-                      "grid-padding-x"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": [
-                          "cell",
-                          "small-12",
-                          "large-8",
-                          "main-links",
-                          "large-links",
-                          "menu",
-                          "vertical"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": ["flip-animate"],
-                            "text": "About Spotify",
-                            "href": "https://newsroom.spotify.com/company-info/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["flip-animate"],
-                            "text": "Investors",
-                            "href": "https://investors.spotify.com/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["flip-animate"],
-                            "text": "Press Center",
-                            "href": "https://newsroom.spotify.com/media-kit"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["flip-animate"],
-                            "text": "Life at Spotify",
-                            "href": "https://www.lifeatspotify.com/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["flip-animate"],
-                            "text": "Safety at Spotify",
-                            "href": "https://newsroom.spotify.com/safety-at-spotify/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["flip-animate"],
-                            "text": "Impact",
-                            "href": "https://newsroom.spotify.com/impact/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["cell", "small-12", "large-4"],
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["featured-categories"],
-                            "text": "Featured categories"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["side-links"],
-                            "ch": [
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://timetoplayfair.com",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2021/11/thecase-01-768x432.png"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Time to Play Fair",
-                                    "href": "https://timetoplayfair.com"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://loudandclear.byspotify.com",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2021/11/20210317_1731_LC_Spotify_Streaming_Animation-copy1-copy-768x432.jpg"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Spotify Loud \u0026 Clear",
-                                    "href": "https://loudandclear.byspotify.com"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://newsroom.spotify.com/stream-on-2023/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2023/02/stream-on-2023_nav-bar-image.png"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Stream On",
-                                    "href": "https://newsroom.spotify.com/stream-on-2023/"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "dropdown-pane",
-                      "menu-pane",
-                      "grid-container",
-                      "wide",
-                      "grid-x",
-                      "grid-padding-x"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["cell", "small-12", "large-5", "main-links"],
-                        "ch": [
-                          {
-                            "tag": "ul",
-                            "cls": ["large-links", "menu", "vertical"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["flip-animate"],
-                                "text": "News \u0026 Announcements",
-                                "href": "https://newsroom.spotify.com/news/?_filter=news-announcements"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["flip-animate"],
-                                "text": "Artists \u0026 Creators",
-                                "href": "https://newsroom.spotify.com/news/?_filter=creator-stories"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["flip-animate"],
-                                "text": "Culture \u0026 Trends",
-                                "href": "https://newsroom.spotify.com/news/?_filter=trends-data"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["flip-animate"],
-                                "text": "Behind the Business",
-                                "href": "https://newsroom.spotify.com/news/?_filter=behind-business"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["button"],
-                            "text": "View All News",
-                            "href": "https://newsroom.spotify.com/news"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["cell", "small-12", "large-7"],
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["featured-categories"],
-                            "text": "Featured categories"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["side-links"],
-                            "ch": [
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://newsroom.spotify.com/news",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2025/01/2023_BOB_JEUSETTE_SPOTIFY_SHOT_26_0072_RVB_crop.jpg"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Company News",
-                                    "href": "https://newsroom.spotify.com/news"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://newsroom.spotify.com/books",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/07/books-menu.png",
-                                        "alt": "An image of a cartoon person hanging from a hammock on a bookshelf"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Books on Spotify",
-                                    "href": "https://newsroom.spotify.com/books"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://loudandclear.byspotify.com",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2024/09/loudandclear.png"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "Spotify Loud \u0026 Clear",
-                                    "href": "https://loudandclear.byspotify.com"
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": ["side-link"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["aspect"],
-                                    "href": "https://newsroom.spotify.com/2025-wrapped/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2025/12/25_1128_audiobook_trends_Header_Horizontal-Light_6-768x432.png"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": ["button"],
-                                    "text": "2025 Wrapped",
-                                    "href": "https://newsroom.spotify.com/2025-wrapped/"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "dropdown-pane",
-                      "menu-pane",
-                      "grid-container",
                       "grid-x",
                       "grid-padding-x",
                       "cell",
-                      "small-12"
+                      "small-12",
+                      "text-container"
                     ],
-                    "ch": [
-                      {
-                        "tag": "h4",
-                        "cls": ["suggestions", "hide"],
-                        "text": "Suggestions"
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["topics"],
-                        "ch": [
-                          { "tag": "h4", "text": "Popular Topics" },
-                          {
-                            "tag": "ul",
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "Audiobooks",
-                                "href": "https://newsroom.spotify.com/audiobooks/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "Podcasts",
-                                "href": "https://newsroom.spotify.com/podcasts/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "Wrapped",
-                                "href": "https://newsroom.spotify.com/2024-wrapped/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "daylist",
-                                "href": "https://newsroom.spotify.com/2024-09-04/daylist-new-languages-expanding-worldwide/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "AI DJ",
-                                "href": "https://newsroom.spotify.com/?s=ai+dj"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "Premium",
-                                "href": "https://newsroom.spotify.com/?s=premium"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
+                    "text": "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage"
                   }
                 ]
               },
               {
-                "tag": "main",
-                "cls": ["main", "inner-content"],
+                "tag": "a",
+                "href": "https://newsroom.spotify.com/2026-09-23/jorja-smith-hometown-performance-video/",
                 "ch": [
                   {
-                    "tag": "h1",
-                    "cls": ["screen-reader-text"],
-                    "text": "Home V2"
+                    "tag": "img",
+                    "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/17-1440x960.jpg",
+                    "alt": "Jorja Smith Comes Home to Walsall for Spotify’s First Hometown Concert Film"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["grid-container", "full", "home-v2"],
-                    "ch": [
-                      {
-                        "tag": "section",
-                        "cls": [
-                          "top-banner-v2",
-                          "featured-content-slider",
-                          "slides"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "href": "https://newsroom.spotify.com/2026-09-23/taste-profile-shape-home-feed/",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/Taste-Profile_Blog-header-479583745973495.png",
-                                "alt": "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage"
-                              },
-                              {
-                                "tag": "h2",
-                                "cls": [
-                                  "slide-content",
-                                  "grid-container",
-                                  "wide",
-                                  "grid-x",
-                                  "grid-padding-x",
-                                  "cell",
-                                  "small-12",
-                                  "text-container"
-                                ],
-                                "text": "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "href": "https://newsroom.spotify.com/2026-09-23/jorja-smith-hometown-performance-video/",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/17-1440x960.jpg",
-                                "alt": "Jorja Smith Comes Home to Walsall for Spotify’s First Hometown Concert Film"
-                              },
-                              {
-                                "tag": "h2",
-                                "cls": [
-                                  "slide-content",
-                                  "grid-container",
-                                  "wide",
-                                  "grid-x",
-                                  "grid-padding-x",
-                                  "cell",
-                                  "small-12",
-                                  "text-container"
-                                ],
-                                "text": "Jorja Smith Comes Home to Walsall for Spotify’s First Hometown Concert Film"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "href": "https://newsroom.spotify.com/2026-09-22/gemischtes-hack-felix-lobrecht-tommi-schmitt-interview/",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/Spotify_OBH_GemischtesHack_22092026_byMarieStaggat-4792-scaled-e1790180680120-1440x889.jpg",
-                                "alt": "‘Gemischtes Hack’ Hosts on Dream Guests, Favorite Episodes, and Reaching 1 Billion Streams"
-                              },
-                              {
-                                "tag": "h2",
-                                "cls": [
-                                  "slide-content",
-                                  "grid-container",
-                                  "wide",
-                                  "grid-x",
-                                  "grid-padding-x",
-                                  "cell",
-                                  "small-12",
-                                  "text-container"
-                                ],
-                                "text": "‘Gemischtes Hack’ Hosts on Dream Guests, Favorite Episodes, and Reaching 1 Billion Streams"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "href": "https://newsroom.spotify.com/2026-09-23/nct-johnny-journey-podcast/",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/JOURNEY-with-JOHNNY-Spotyfy-3000_3000_%EB%A1%9C%EA%B3%A0%EC%83%89%EC%88%98%EC%A0%95-27459745987345-1440x1440.png",
-                                "alt": "NCT’s JOHNNY Invites Fans to Explore Korean Culture in ‘Journey with Johnny’"
-                              },
-                              {
-                                "tag": "h2",
-                                "cls": [
-                                  "slide-content",
-                                  "grid-container",
-                                  "wide",
-                                  "grid-x",
-                                  "grid-padding-x",
-                                  "cell",
-                                  "small-12",
-                                  "text-container"
-                                ],
-                                "text": "NCT’s JOHNNY Invites Fans to Explore Korean Culture in ‘Journey with Johnny’"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "href": "https://newsroom.spotify.com/2026-09-21/spotify-house-seoul-seongsu-performances/",
-                            "ch": [
-                              {
-                                "tag": "img",
-                                "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyHouse-Header-134234234-1440x1152.jpg",
-                                "alt": "Spotify House Seoul 2026 Brought Four Days of Music and Discovery to Seongsu"
-                              },
-                              {
-                                "tag": "h2",
-                                "cls": [
-                                  "slide-content",
-                                  "grid-container",
-                                  "wide",
-                                  "grid-x",
-                                  "grid-padding-x",
-                                  "cell",
-                                  "small-12",
-                                  "text-container"
-                                ],
-                                "text": "Spotify House Seoul 2026 Brought Four Days of Music and Discovery to Seongsu"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "section",
-                        "cls": ["home-latest-news"],
-                        "ch": [
-                          {
-                            "tag": "h2",
-                            "cls": [
-                              "grid-container",
-                              "wide",
-                              "tune-in",
-                              "grid-padding-x",
-                              "grid-x",
-                              "cell",
-                              "small-12",
-                              "tune-in-row"
-                            ],
-                            "text": "Tune in to the Latest"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "grid-container",
-                              "wide",
-                              "grid-x",
-                              "grid-padding-x",
-                              "secondary-posts"
-                            ],
-                            "ch": [
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-6",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-column",
-                                  "v2",
-                                  "creator-stories"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["square-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-17/fresh-finds-forward/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-2-FF-larger2309428304-1024x583.png",
-                                        "alt": "\"Fresh Finds Forward\" appearing below a Spotify logo"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "Artists \u0026 Creators"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "Introducing Fresh Finds Forward: Spotify’s New Program to Champion the Next Generation of Independent Artists",
-                                            "href": "https://newsroom.spotify.com/2026-09-17/fresh-finds-forward/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-6",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-column",
-                                  "v2",
-                                  "creator-stories"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["square-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-17/partner-program-expansion-global/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/SPP_FTR-28459084-1024x576.png",
-                                        "alt": "The text \"Spotify Partner Program\" appearing by"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "Artists \u0026 Creators"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "The Spotify Partner Program Expands to More Than 35 New Markets",
-                                            "href": "https://newsroom.spotify.com/2026-09-17/partner-program-expansion-global/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-6",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-column",
-                                  "v2",
-                                  "creator-stories"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["square-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-17/corey-kent-homegrown-live-questionnaire/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/Corey-Kent-1024x683.jpg",
-                                        "alt": "Corey Kent posing in front of a backdrop featuring the Spotify logo and the text \"homegrown\""
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "Artists \u0026 Creators"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "Corey Kent on the Song That Got Him Sent to the Principal’s Office",
-                                            "href": "https://newsroom.spotify.com/2026-09-17/corey-kent-homegrown-live-questionnaire/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-6",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-column",
-                                  "v2",
-                                  "creator-stories"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["square-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-16/taylor-swift-music-videos-catalog-spotify/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/00070_TP_630_F6x.jpg",
-                                        "alt": "An image of Taylor Swift looking at the camera"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "Artists \u0026 Creators"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "All of Taylor Swift’s Official Music Videos Are Now on Spotify",
-                                            "href": "https://newsroom.spotify.com/2026-09-16/taylor-swift-music-videos-catalog-spotify/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-6",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-column",
-                                  "v2",
-                                  "news-announcements"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["square-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-16/coach-tabby-tour-launch/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-Coach-Carousel-819x1024.png",
-                                        "alt": "the text \"Spotify \u0026 Coach are going on tour\" appearing below the Coach and Spotify logos"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "News \u0026 Announcements"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "Spotify and Coach Take Self-Expression on the Road With the Tabby Tour",
-                                            "href": "https://newsroom.spotify.com/2026-09-16/coach-tabby-tour-launch/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-6",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-column",
-                                  "v2",
-                                  "news-announcements"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["square-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-15/exclude-kids-family-music-toggle/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/Spotify_Kids_Toggle_FTR_Header_1440x550px-23987492749274392374972-1024x391.png",
-                                        "alt": "a toggle tool appearing beside album and playlist cover art"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "News \u0026 Announcements"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "Reclaim Your Wrapped: You Can Now Control Whether Kids and Family Music Shapes Your Recommendations",
-                                            "href": "https://newsroom.spotify.com/2026-09-15/exclude-kids-family-music-toggle/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "section",
-                        "cls": [
-                          "grid-container",
-                          "wide",
-                          "grid-x",
-                          "grid-padding-x",
-                          "align-center",
-                          "cell",
-                          "small-12",
-                          "large-11",
-                          "banner",
-                          "news-topics"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "h2",
-                            "text": "Click a topic for more news"
-                          },
-                          {
-                            "tag": "ul",
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "News \u0026 Announcements",
-                                "href": "https://newsroom.spotify.com/news/#news-announcements"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "Artists \u0026 Creators",
-                                "href": "https://newsroom.spotify.com/news/#creator-stories"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "Culture \u0026 Trends",
-                                "href": "https://newsroom.spotify.com/news/#trends-data"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["button"],
-                                "text": "Behind the Business",
-                                "href": "https://newsroom.spotify.com/news/#behind-business"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "section",
-                        "cls": ["spotlight-v2", "inner"],
-                        "ch": [
-                          {
-                            "tag": "h2",
-                            "cls": ["title-row", "title", "screen-reader-text"],
-                            "text": "Discover"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["spotlight-v2-items"],
-                            "ch": [
-                              {
-                                "tag": "article",
-                                "cls": ["spotlight-item"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://newsroom.spotify.com/songs-of-summer-2026/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/05/SoS-LandingPage-FTRHeader-Desktop-1-1440x810.png",
-                                        "alt": "\"Songs of Summer\" text appearing on a photo of palm trees against a cloudy sky backdrop"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["spotlight-text"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["subtitle"],
-                                        "text": "HEATING UP"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "cls": ["clamp"],
-                                            "text": "Songs of Summer 2026",
-                                            "href": "https://newsroom.spotify.com/songs-of-summer-2026/"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "tag": "p",
-                                        "text": "Our Songs of Summer have officially arrived. Take a closer look at the tracks that defined the sound of summer 2026."
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "article",
-                                "cls": ["spotlight-item"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://newsroom.spotify.com/investorday2026/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/05/Spotify-Investor-Day-logo-1440x810.jpeg",
-                                        "alt": "Spotify Bug next to an Investor Day 2026 logo on a light background"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["spotlight-text"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["subtitle"],
-                                        "text": "Announcements"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "cls": ["clamp"],
-                                            "text": "Investor Day 2026",
-                                            "href": "https://newsroom.spotify.com/investorday2026/"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "tag": "p",
-                                        "text": "Hear from our leadership team as they lay out our long-term vision, strategic priorities, and the financial roadmap to get there."
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "article",
-                                "cls": ["spotlight-item"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://newsroom.spotify.com/spotify20/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/04/SPOTIFY-20-HEROHEADER-1-1440x810.png",
-                                        "alt": "Lime-green Spotify logo and number 20 on top of black and white disco ball graphic"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["spotlight-text"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["subtitle"],
-                                        "text": "SPOTIFY 20"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "cls": ["clamp"],
-                                            "text": "How Spotify Reshaped the Way the World Listens, Discovers, and Connects",
-                                            "href": "https://newsroom.spotify.com/spotify20/"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "tag": "p",
-                                        "text": "2026 marks 20 years of Spotify. To commemorate the milestone, we’re taking a look back at the moments that made us and celebrating with the fans, artists, and creators who made it all possible."
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "article",
-                                "cls": ["spotlight-item"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://newsroom.spotify.com/2026-02-24/greatest-pop-songs-streaming-era/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/02/ClassicsPop-SONGS-V4-134792357925-1440x810.png",
-                                        "alt": "CLASSICS appearing on a purple background. Album art appears in a carousel-style visual in front of the text"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["spotlight-text"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["subtitle"],
-                                        "text": "POP CLASSICS"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "cls": ["clamp"],
-                                            "text": "100 Greatest Pop Songs of the Streaming Era",
-                                            "href": "https://newsroom.spotify.com/2026-02-24/greatest-pop-songs-streaming-era/"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "tag": "p",
-                                        "text": "Spotify’s CLASSICS program celebrates influential music from the streaming era across genres. For this edition, our editors selected 100 pop songs that stand out for their cultural impact, musicality, and artistic expression."
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "article",
-                                "cls": ["spotlight-item"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://timetoplayfair.com/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2024/09/ttpf.png",
-                                        "alt": "Fighting for a Fair and Open Internet"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["spotlight-text"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["subtitle"],
-                                        "text": "Time to Play Fair"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "cls": ["clamp"],
-                                            "text": "Fighting for a Fair and Open Internet",
-                                            "href": "https://timetoplayfair.com/"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "tag": "p",
-                                        "text": "We believe companies should be able to compete to the very best of their abilities for the hearts and minds of consumers. And that consumers should have access to all the information they need to make better, more affordable choices for them and their families. Visit Time to Play Fair to learn more."
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "section",
-                        "cls": ["grid-container", "wide"],
-                        "ch": [
-                          {
-                            "tag": "h2",
-                            "cls": ["screen-reader-text"],
-                            "text": "More news"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["grid-x", "grid-padding-x", "more-news"],
-                            "ch": [
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-4",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-row",
-                                  "v2",
-                                  "creator-stories"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-14/el-bogueto-performance-event-photos/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyBogueto2026_0911_211737-6697_-ZL-1024x684.jpg",
-                                        "alt": "El Bogueto performing at Bogueto Pa’ los OG event"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "Artists \u0026 Creators"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "Superfans Chose El Bogueto’s Setlist at Bogueto Pa’ los OG, Hosted by Spotify",
-                                            "href": "https://newsroom.spotify.com/2026-09-14/el-bogueto-performance-event-photos/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-4",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-row",
-                                  "v2",
-                                  "news-announcements"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-11/open-mic-verified-genius-video-series-partnership/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/IMG_6770-1024x576.jpeg",
-                                        "alt": "An episode of Genius' 'Open Mic' video series streaming on Spotify"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "News \u0026 Announcements"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "Spotify and Genius Bring Fans Closer to the Music With New Video Series Partnership",
-                                            "href": "https://newsroom.spotify.com/2026-09-11/open-mic-verified-genius-video-series-partnership/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-4",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-row",
-                                  "v2",
-                                  "news-announcements"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://newsroom.spotify.com/2026-07-15/music-video-debuts/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/07/STILL2-1024x572.png",
-                                        "alt": "Noah Kahan appearing on stage holding a guitar and singing into a microphone"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "News \u0026 Announcements"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "How to Watch Music Videos First on Spotify",
-                                            "href": "https://newsroom.spotify.com/2026-07-15/music-video-debuts/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-4",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-row",
-                                  "v2",
-                                  "news-announcements"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-03/songs-of-summer-reveal/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/SoS-Announcement-FTRHeader-Desktop-2349273498-1024x583.png",
-                                        "alt": "The text \"2026 Songs of Summer Revealed\" stamped on a postcard with beach-themed graphics. The postcard appears in front of a sunset sky"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "News \u0026 Announcements"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "From Country Roads to Football Anthems, These Are Spotify’s 2026 Songs of Summer",
-                                            "href": "https://newsroom.spotify.com/2026-09-03/songs-of-summer-reveal/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "div",
-                                "cls": [
-                                  "cell",
-                                  "small-12",
-                                  "medium-4",
-                                  "large-4",
-                                  "post-box",
-                                  "mobile-row",
-                                  "v2",
-                                  "news-announcements"
-                                ],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["wide-image"],
-                                    "href": "https://newsroom.spotify.com/2026-09-03/soul-train-awards-return/",
-                                    "ch": [
-                                      {
-                                        "tag": "img",
-                                        "cls": [
-                                          "attachment-large",
-                                          "size-large",
-                                          "wp-post-image"
-                                        ],
-                                        "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/08/GenericHeader-FTR_07-1024x583.png",
-                                        "alt": "The Spotify logo on a gradient background"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tag": "div",
-                                    "cls": ["title"],
-                                    "ch": [
-                                      {
-                                        "tag": "p",
-                                        "cls": ["cat"],
-                                        "text": "News \u0026 Announcements"
-                                      },
-                                      {
-                                        "tag": "h3",
-                                        "ch": [
-                                          {
-                                            "tag": "a",
-                                            "text": "The Soul Train Awards Are Coming Back, Presented by Spotify",
-                                            "href": "https://newsroom.spotify.com/2026-09-03/soul-train-awards-return/"
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "a",
-                                "cls": ["inner"],
-                                "text": "View all news",
-                                "href": "https://newsroom.spotify.com/news"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "h2",
-                        "cls": [
-                          "newsletter-animation-wrapper",
-                          "grid-x",
-                          "newsletter-banner",
-                          "v2",
-                          "cell",
-                          "small-12",
-                          "large-5",
-                          "text-wrap"
-                        ],
-                        "text": "Spotify news in your inbox"
-                      }
-                    ]
+                    "tag": "h2",
+                    "cls": [
+                      "slide-content",
+                      "grid-container",
+                      "wide",
+                      "grid-x",
+                      "grid-padding-x",
+                      "cell",
+                      "small-12",
+                      "text-container"
+                    ],
+                    "text": "Jorja Smith Comes Home to Walsall for Spotify’s First Hometown Concert Film"
                   }
                 ]
               },
               {
-                "tag": "footer",
-                "cls": ["footer", "skip-link-target"],
+                "tag": "a",
+                "href": "https://newsroom.spotify.com/2026-09-22/gemischtes-hack-felix-lobrecht-tommi-schmitt-interview/",
+                "ch": [
+                  {
+                    "tag": "img",
+                    "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/Spotify_OBH_GemischtesHack_22092026_byMarieStaggat-4792-scaled-e1790180680120-1440x889.jpg",
+                    "alt": "‘Gemischtes Hack’ Hosts on Dream Guests, Favorite Episodes, and Reaching 1 Billion Streams"
+                  },
+                  {
+                    "tag": "h2",
+                    "cls": [
+                      "slide-content",
+                      "grid-container",
+                      "wide",
+                      "grid-x",
+                      "grid-padding-x",
+                      "cell",
+                      "small-12",
+                      "text-container"
+                    ],
+                    "text": "‘Gemischtes Hack’ Hosts on Dream Guests, Favorite Episodes, and Reaching 1 Billion Streams"
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "href": "https://newsroom.spotify.com/2026-09-23/nct-johnny-journey-podcast/",
+                "ch": [
+                  {
+                    "tag": "img",
+                    "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/JOURNEY-with-JOHNNY-Spotyfy-3000_3000_%EB%A1%9C%EA%B3%A0%EC%83%89%EC%88%98%EC%A0%95-27459745987345-1440x1440.png",
+                    "alt": "NCT’s JOHNNY Invites Fans to Explore Korean Culture in ‘Journey with Johnny’"
+                  },
+                  {
+                    "tag": "h2",
+                    "cls": [
+                      "slide-content",
+                      "grid-container",
+                      "wide",
+                      "grid-x",
+                      "grid-padding-x",
+                      "cell",
+                      "small-12",
+                      "text-container"
+                    ],
+                    "text": "NCT’s JOHNNY Invites Fans to Explore Korean Culture in ‘Journey with Johnny’"
+                  }
+                ]
+              },
+              {
+                "tag": "a",
+                "href": "https://newsroom.spotify.com/2026-09-21/spotify-house-seoul-seongsu-performances/",
+                "ch": [
+                  {
+                    "tag": "img",
+                    "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyHouse-Header-134234234-1440x1152.jpg",
+                    "alt": "Spotify House Seoul 2026 Brought Four Days of Music and Discovery to Seongsu"
+                  },
+                  {
+                    "tag": "h2",
+                    "cls": [
+                      "slide-content",
+                      "grid-container",
+                      "wide",
+                      "grid-x",
+                      "grid-padding-x",
+                      "cell",
+                      "small-12",
+                      "text-container"
+                    ],
+                    "text": "Spotify House Seoul 2026 Brought Four Days of Music and Discovery to Seongsu"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "section",
+            "cls": ["home-latest-news"],
+            "ch": [
+              {
+                "tag": "h2",
+                "cls": [
+                  "grid-container",
+                  "wide",
+                  "tune-in",
+                  "grid-padding-x",
+                  "grid-x",
+                  "cell",
+                  "small-12",
+                  "tune-in-row"
+                ],
+                "text": "Tune in to the Latest"
+              },
+              {
+                "tag": "div",
+                "cls": [
+                  "grid-container",
+                  "wide",
+                  "grid-x",
+                  "grid-padding-x",
+                  "secondary-posts"
+                ],
                 "ch": [
                   {
                     "tag": "div",
                     "cls": [
-                      "grid-container",
-                      "wide",
-                      "grid-x",
-                      "grid-padding-x"
+                      "cell",
+                      "small-12",
+                      "medium-6",
+                      "large-4",
+                      "post-box",
+                      "mobile-column",
+                      "v2",
+                      "creator-stories"
                     ],
                     "ch": [
                       {
                         "tag": "a",
-                        "cls": ["logo"],
-                        "href": "https://www.spotify.com/",
+                        "cls": ["square-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-17/fresh-finds-forward/",
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://newsroom.spotify.com/wp-content/themes/ftr/assets/images/spotify-logo.png",
-                            "alt": "Spotify"
-                          },
-                          { "tag": "#text", "text": "(opens in a new tab)" }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": [
-                          "medium-12",
-                          "large-5",
-                          "small-12",
-                          "cell",
-                          "footer-nav"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "h2",
-                            "cls": ["footer-nav-title"],
-                            "text": "Communities"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["communities"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "text": "For Artists (opens in a new tab)",
-                                "href": "https://artists.spotify.com/"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "For Creators (opens in a new tab)",
-                                "href": "https://podcasters.spotify.com/"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "For Advertisers (opens in a new tab)",
-                                "href": "https://ads.spotify.com/en-US/"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "Life at Spotify (opens in a new tab)",
-                                "href": "https://www.lifeatspotify.com/"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "For Engineering (opens in a new tab)",
-                                "href": "https://engineering.atspotify.com/"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "For Vendors (opens in a new tab)",
-                                "href": "https://spotifyforvendors.com/"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "For Songwriters (opens in a new tab)",
-                                "href": "https://noteable.spotify.com/"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "For Investors (opens in a new tab)",
-                                "href": "https://investors.spotify.com/home/default.aspx"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "For Help, Chat \u0026 Ideas (opens in a new tab)",
-                                "href": "https://community.spotify.com/"
-                              }
-                            ]
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-2-FF-larger2309428304-1024x583.png",
+                            "alt": "\"Fresh Finds Forward\" appearing below a Spotify logo"
                           }
                         ]
                       },
                       {
                         "tag": "div",
-                        "cls": [
-                          "medium-6",
-                          "large-3",
-                          "small-12",
-                          "cell",
-                          "sub-nav"
-                        ],
+                        "cls": ["title"],
                         "ch": [
                           {
-                            "tag": "nav",
-                            "cls": ["footer-nav"],
-                            "ch": [
-                              {
-                                "tag": "h2",
-                                "cls": ["footer-nav-title"],
-                                "text": "Company"
-                              },
-                              {
-                                "tag": "ul",
-                                "cls": ["menu", "vertical"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "text": "About",
-                                    "href": "https://www.spotify.com/us/about-us/contact/"
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "text": "Jobs",
-                                    "href": "https://www.spotifyjobs.com/"
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "text": "Investors",
-                                    "href": "https://investors.spotify.com/"
-                                  }
-                                ]
-                              }
-                            ]
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "Artists \u0026 Creators"
                           },
                           {
-                            "tag": "nav",
-                            "cls": ["footer-nav"],
+                            "tag": "h3",
                             "ch": [
                               {
-                                "tag": "h2",
-                                "cls": ["footer-nav-title"],
-                                "text": "Useful Links"
-                              },
-                              {
-                                "tag": "ul",
-                                "cls": ["menu", "vertical"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "text": "Help",
-                                    "href": "https://support.spotify.com/"
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "text": "Web Player",
-                                    "href": "https://www.spotify.com/us/redirect/webplayerlink/"
-                                  }
-                                ]
+                                "tag": "a",
+                                "text": "Introducing Fresh Finds Forward: Spotify’s New Program to Champion the Next Generation of Independent Artists",
+                                "href": "https://newsroom.spotify.com/2026-09-17/fresh-finds-forward/"
                               }
                             ]
                           }
                         ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": [
-                          "medium-12",
-                          "large-2",
-                          "small-12",
-                          "cell",
-                          "social-wrapper"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "nav",
-                            "cls": ["social"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "text": "(opens in a new tab)",
-                                "href": "https://www.instagram.com/thisisspotify/"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "(opens in a new tab)",
-                                "href": "https://x.com/ThisIsSpotify"
-                              },
-                              {
-                                "tag": "a",
-                                "text": "(opens in a new tab)",
-                                "href": "https://www.tiktok.com/@spotifynews"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["button", "get-spotify"],
-                            "text": "Get Spotify (opens in a new tab)",
-                            "href": "https://www.spotify.com/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": [
-                          "medium-8",
-                          "small-12",
-                          "cell",
-                          "legal",
-                          "menu",
-                          "horizontal"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "text": "Legal",
-                            "href": "https://www.spotify.com/us/legal/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Privacy Center",
-                            "href": "https://www.spotify.com/us/privacy/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Privacy Policy",
-                            "href": "https://www.spotify.com/legal/privacy-policy/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "Cookies",
-                            "href": "https://www.spotify.com/us/legal/cookies-policy/"
-                          },
-                          {
-                            "tag": "a",
-                            "text": "About Ads",
-                            "href": "https://www.spotify.com/us/legal/privacy-policy/#s3"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": [
-                          "medium-4",
-                          "small-12",
-                          "text-right",
-                          "cell",
-                          "source-org",
-                          "copyright"
-                        ],
-                        "text": "© 2026 Spotify AB."
                       }
                     ]
                   },
                   {
                     "tag": "div",
-                    "cls": ["reveal", "full"],
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-6",
+                      "large-4",
+                      "post-box",
+                      "mobile-column",
+                      "v2",
+                      "creator-stories"
+                    ],
                     "ch": [
                       {
-                        "tag": "h2",
-                        "cls": [
-                          "grid-container",
-                          "grid-x",
-                          "grid-padding-x",
-                          "align-middle",
-                          "align-center",
-                          "cell",
-                          "small-12",
-                          "large-750",
-                          "screen-reader-text"
-                        ],
-                        "text": "Podcast player"
+                        "tag": "a",
+                        "cls": ["square-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-17/partner-program-expansion-global/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/SPP_FTR-28459084-1024x576.png",
+                            "alt": "The text \"Spotify Partner Program\" appearing by"
+                          }
+                        ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "Artists \u0026 Creators"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "The Spotify Partner Program Expands to More Than 35 New Markets",
+                                "href": "https://newsroom.spotify.com/2026-09-17/partner-program-expansion-global/"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-6",
+                      "large-4",
+                      "post-box",
+                      "mobile-column",
+                      "v2",
+                      "creator-stories"
+                    ],
+                    "ch": [
+                      {
                         "tag": "a",
-                        "cls": ["button", "listen"],
-                        "text": "Listen on Spotify (opens in a new tab)",
-                        "href": "https://newsroom.spotify.com/"
+                        "cls": ["square-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-17/corey-kent-homegrown-live-questionnaire/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/Corey-Kent-1024x683.jpg",
+                            "alt": "Corey Kent posing in front of a backdrop featuring the Spotify logo and the text \"homegrown\""
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "Artists \u0026 Creators"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "Corey Kent on the Song That Got Him Sent to the Principal’s Office",
+                                "href": "https://newsroom.spotify.com/2026-09-17/corey-kent-homegrown-live-questionnaire/"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-6",
+                      "large-4",
+                      "post-box",
+                      "mobile-column",
+                      "v2",
+                      "creator-stories"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["square-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-16/taylor-swift-music-videos-catalog-spotify/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/00070_TP_630_F6x.jpg",
+                            "alt": "An image of Taylor Swift looking at the camera"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "Artists \u0026 Creators"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "All of Taylor Swift’s Official Music Videos Are Now on Spotify",
+                                "href": "https://newsroom.spotify.com/2026-09-16/taylor-swift-music-videos-catalog-spotify/"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-6",
+                      "large-4",
+                      "post-box",
+                      "mobile-column",
+                      "v2",
+                      "news-announcements"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["square-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-16/coach-tabby-tour-launch/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/1-Coach-Carousel-819x1024.png",
+                            "alt": "the text \"Spotify \u0026 Coach are going on tour\" appearing below the Coach and Spotify logos"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "News \u0026 Announcements"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "Spotify and Coach Take Self-Expression on the Road With the Tabby Tour",
+                                "href": "https://newsroom.spotify.com/2026-09-16/coach-tabby-tour-launch/"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-6",
+                      "large-4",
+                      "post-box",
+                      "mobile-column",
+                      "v2",
+                      "news-announcements"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["square-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-15/exclude-kids-family-music-toggle/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/Spotify_Kids_Toggle_FTR_Header_1440x550px-23987492749274392374972-1024x391.png",
+                            "alt": "a toggle tool appearing beside album and playlist cover art"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "News \u0026 Announcements"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "Reclaim Your Wrapped: You Can Now Control Whether Kids and Family Music Shapes Your Recommendations",
+                                "href": "https://newsroom.spotify.com/2026-09-15/exclude-kids-family-music-toggle/"
+                              }
+                            ]
+                          }
+                        ]
                       }
                     ]
                   }
                 ]
               }
             ]
+          },
+          {
+            "tag": "section",
+            "cls": [
+              "grid-container",
+              "wide",
+              "grid-x",
+              "grid-padding-x",
+              "align-center",
+              "cell",
+              "small-12",
+              "large-11",
+              "banner",
+              "news-topics"
+            ],
+            "ch": [
+              { "tag": "h2", "text": "Click a topic for more news" },
+              {
+                "tag": "ul",
+                "ch": [
+                  {
+                    "tag": "a",
+                    "cls": ["button"],
+                    "text": "News \u0026 Announcements",
+                    "href": "https://newsroom.spotify.com/news/#news-announcements"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button"],
+                    "text": "Artists \u0026 Creators",
+                    "href": "https://newsroom.spotify.com/news/#creator-stories"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button"],
+                    "text": "Culture \u0026 Trends",
+                    "href": "https://newsroom.spotify.com/news/#trends-data"
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["button"],
+                    "text": "Behind the Business",
+                    "href": "https://newsroom.spotify.com/news/#behind-business"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "section",
+            "cls": ["spotlight-v2", "inner"],
+            "ch": [
+              {
+                "tag": "h2",
+                "cls": ["title-row", "title", "screen-reader-text"],
+                "text": "Discover"
+              },
+              {
+                "tag": "div",
+                "cls": ["spotlight-v2-items"],
+                "ch": [
+                  {
+                    "tag": "article",
+                    "cls": ["spotlight-item"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://newsroom.spotify.com/songs-of-summer-2026/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/05/SoS-LandingPage-FTRHeader-Desktop-1-1440x810.png",
+                            "alt": "\"Songs of Summer\" text appearing on a photo of palm trees against a cloudy sky backdrop"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["spotlight-text"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["subtitle"],
+                            "text": "HEATING UP"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["clamp"],
+                                "text": "Songs of Summer 2026",
+                                "href": "https://newsroom.spotify.com/songs-of-summer-2026/"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "text": "Our Songs of Summer have officially arrived. Take a closer look at the tracks that defined the sound of summer 2026."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": ["spotlight-item"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://newsroom.spotify.com/investorday2026/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/05/Spotify-Investor-Day-logo-1440x810.jpeg",
+                            "alt": "Spotify Bug next to an Investor Day 2026 logo on a light background"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["spotlight-text"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["subtitle"],
+                            "text": "Announcements"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["clamp"],
+                                "text": "Investor Day 2026",
+                                "href": "https://newsroom.spotify.com/investorday2026/"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "text": "Hear from our leadership team as they lay out our long-term vision, strategic priorities, and the financial roadmap to get there."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": ["spotlight-item"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://newsroom.spotify.com/spotify20/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/04/SPOTIFY-20-HEROHEADER-1-1440x810.png",
+                            "alt": "Lime-green Spotify logo and number 20 on top of black and white disco ball graphic"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["spotlight-text"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["subtitle"],
+                            "text": "SPOTIFY 20"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["clamp"],
+                                "text": "How Spotify Reshaped the Way the World Listens, Discovers, and Connects",
+                                "href": "https://newsroom.spotify.com/spotify20/"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "text": "2026 marks 20 years of Spotify. To commemorate the milestone, we’re taking a look back at the moments that made us and celebrating with the fans, artists, and creators who made it all possible."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": ["spotlight-item"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://newsroom.spotify.com/2026-02-24/greatest-pop-songs-streaming-era/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/02/ClassicsPop-SONGS-V4-134792357925-1440x810.png",
+                            "alt": "CLASSICS appearing on a purple background. Album art appears in a carousel-style visual in front of the text"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["spotlight-text"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["subtitle"],
+                            "text": "POP CLASSICS"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["clamp"],
+                                "text": "100 Greatest Pop Songs of the Streaming Era",
+                                "href": "https://newsroom.spotify.com/2026-02-24/greatest-pop-songs-streaming-era/"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "text": "Spotify’s CLASSICS program celebrates influential music from the streaming era across genres. For this edition, our editors selected 100 pop songs that stand out for their cultural impact, musicality, and artistic expression."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": ["spotlight-item"],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://timetoplayfair.com/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2024/09/ttpf.png",
+                            "alt": "Fighting for a Fair and Open Internet"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["spotlight-text"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["subtitle"],
+                            "text": "Time to Play Fair"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "cls": ["clamp"],
+                                "text": "Fighting for a Fair and Open Internet",
+                                "href": "https://timetoplayfair.com/"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "text": "We believe companies should be able to compete to the very best of their abilities for the hearts and minds of consumers. And that consumers should have access to all the information they need to make better, more affordable choices for them and their families. Visit Time to Play Fair to learn more."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "section",
+            "cls": ["grid-container", "wide"],
+            "ch": [
+              {
+                "tag": "h2",
+                "cls": ["screen-reader-text"],
+                "text": "More news"
+              },
+              {
+                "tag": "div",
+                "cls": ["grid-x", "grid-padding-x", "more-news"],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-4",
+                      "large-4",
+                      "post-box",
+                      "mobile-row",
+                      "v2",
+                      "creator-stories"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-14/el-bogueto-performance-event-photos/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/SpotifyBogueto2026_0911_211737-6697_-ZL-1024x684.jpg",
+                            "alt": "El Bogueto performing at Bogueto Pa’ los OG event"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "Artists \u0026 Creators"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "Superfans Chose El Bogueto’s Setlist at Bogueto Pa’ los OG, Hosted by Spotify",
+                                "href": "https://newsroom.spotify.com/2026-09-14/el-bogueto-performance-event-photos/"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-4",
+                      "large-4",
+                      "post-box",
+                      "mobile-row",
+                      "v2",
+                      "news-announcements"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-11/open-mic-verified-genius-video-series-partnership/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/IMG_6770-1024x576.jpeg",
+                            "alt": "An episode of Genius' 'Open Mic' video series streaming on Spotify"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "News \u0026 Announcements"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "Spotify and Genius Bring Fans Closer to the Music With New Video Series Partnership",
+                                "href": "https://newsroom.spotify.com/2026-09-11/open-mic-verified-genius-video-series-partnership/"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-4",
+                      "large-4",
+                      "post-box",
+                      "mobile-row",
+                      "v2",
+                      "news-announcements"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://newsroom.spotify.com/2026-07-15/music-video-debuts/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/07/STILL2-1024x572.png",
+                            "alt": "Noah Kahan appearing on stage holding a guitar and singing into a microphone"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "News \u0026 Announcements"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "How to Watch Music Videos First on Spotify",
+                                "href": "https://newsroom.spotify.com/2026-07-15/music-video-debuts/"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-4",
+                      "large-4",
+                      "post-box",
+                      "mobile-row",
+                      "v2",
+                      "news-announcements"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-03/songs-of-summer-reveal/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/09/SoS-Announcement-FTRHeader-Desktop-2349273498-1024x583.png",
+                            "alt": "The text \"2026 Songs of Summer Revealed\" stamped on a postcard with beach-themed graphics. The postcard appears in front of a sunset sky"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "News \u0026 Announcements"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "From Country Roads to Football Anthems, These Are Spotify’s 2026 Songs of Summer",
+                                "href": "https://newsroom.spotify.com/2026-09-03/songs-of-summer-reveal/"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "cell",
+                      "small-12",
+                      "medium-4",
+                      "large-4",
+                      "post-box",
+                      "mobile-row",
+                      "v2",
+                      "news-announcements"
+                    ],
+                    "ch": [
+                      {
+                        "tag": "a",
+                        "cls": ["wide-image"],
+                        "href": "https://newsroom.spotify.com/2026-09-03/soul-train-awards-return/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "src": "https://storage.googleapis.com/pr-newsroom-wp/1/2026/08/GenericHeader-FTR_07-1024x583.png",
+                            "alt": "The Spotify logo on a gradient background"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["title"],
+                        "ch": [
+                          {
+                            "tag": "p",
+                            "cls": ["cat"],
+                            "text": "News \u0026 Announcements"
+                          },
+                          {
+                            "tag": "h3",
+                            "ch": [
+                              {
+                                "tag": "a",
+                                "text": "The Soul Train Awards Are Coming Back, Presented by Spotify",
+                                "href": "https://newsroom.spotify.com/2026-09-03/soul-train-awards-return/"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "a",
+                    "cls": ["inner"],
+                    "text": "View all news",
+                    "href": "https://newsroom.spotify.com/news"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "h2",
+            "cls": [
+              "newsletter-animation-wrapper",
+              "grid-x",
+              "newsletter-banner",
+              "v2",
+              "cell",
+              "small-12",
+              "large-5",
+              "text-wrap"
+            ],
+            "text": "Spotify news in your inbox"
           }
         ]
       }

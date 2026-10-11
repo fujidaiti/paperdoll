@@ -165,6 +165,33 @@ func simplify(raw []byte, fallback string) (*Document, error) {
 	if err != nil {
 		return nil, err
 	}
+	// The main content of a page holds its posts, and the rest is site
+	// navigation, sidebars and footers. A page can have several mains, of
+	// which only one is shown, so all of them are kept. Hidden ones are left
+	// out here, since they are no longer inside their hidden ancestors.
+	var mains []*html.Node
+	var findMains func(n *html.Node)
+	findMains = func(n *html.Node) {
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			if c.Type != html.ElementNode || isDropped(c) {
+				continue
+			}
+			if c.Data == "main" || strings.EqualFold(attr(c, "role"), "main") {
+				mains = append(mains, c)
+			} else {
+				findMains(c)
+			}
+		}
+	}
+	findMains(body)
+	if len(mains) > 0 {
+		body = &html.Node{Type: html.ElementNode, Data: "body", DataAtom: body.DataAtom, Attr: body.Attr}
+		for _, m := range mains {
+			m.Parent.RemoveChild(m)
+			body.AppendChild(m)
+		}
+	}
+
 	s := &simplifier{base: base}
 	tree := s.convert(body)
 	if tree == nil {
@@ -237,6 +264,11 @@ func isSmall(n *html.Node) bool {
 	return w == 1 || h == 1 || w > 0 && w <= 96 && h > 0 && h <= 96
 }
 
+// isDropped reports whether the element n and its content are never shown.
+func isDropped(n *html.Node) bool {
+	return droppedTags[n.Data] || hasAttr(n, "hidden") || displayNone.MatchString(attr(n, "style"))
+}
+
 // convert returns the simplified node for n, or nil when n has no visible
 // content. Text and images are the only content; everything else is
 // structure.
@@ -245,7 +277,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		return nil
 	}
 	tag := n.Data
-	if droppedTags[tag] || hasAttr(n, "hidden") || displayNone.MatchString(attr(n, "style")) {
+	if isDropped(n) {
 		return nil
 	}
 	node := &Node{Tag: tag, Classes: strings.Fields(attr(n, "class"))}

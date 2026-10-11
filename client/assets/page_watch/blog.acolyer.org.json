@@ -14,83 +14,65 @@
       "jetpack-reblog-enabled",
       "categories-hidden",
       "author-hidden",
-      "custom-colors"
+      "custom-colors",
+      "site-main"
     ],
     "ch": [
       {
-        "tag": "div",
-        "cls": ["hfeed", "site"],
+        "tag": "article",
+        "cls": [
+          "post-9919",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-uncategorized"
+        ],
         "ch": [
           {
-            "tag": "a",
-            "cls": ["skip-link", "screen-reader-text"],
-            "text": "Skip to content",
-            "href": "https://blog.acolyer.org#content"
-          },
-          {
-            "tag": "header",
-            "cls": ["site-header"],
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
             "ch": [
               {
-                "tag": "div",
-                "cls": ["site-branding"],
+                "tag": "a",
+                "text": "The ants and the pheromones",
+                "href": "https://blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones/",
                 "ch": [
                   {
-                    "tag": "h1",
-                    "cls": ["site-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "the morning paper",
-                        "href": "https://blog.acolyer.org/"
-                      }
-                    ]
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "February 8, 2021",
+                    "dt": "2021-02-08T14:46:00+00:00"
                   },
                   {
-                    "tag": "p",
-                    "cls": ["site-description"],
-                    "text": "a random walk through Computer Science research, by Adrian Colyer"
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 20, 2025",
+                    "dt": "2025-10-20T14:52:08+01:00"
                   }
                 ]
               },
               {
-                "tag": "nav",
-                "cls": ["main-navigation", "menu"],
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
                 "ch": [
+                  { "tag": "#text", "text": "~" },
                   {
                     "tag": "a",
-                    "text": "About",
-                    "href": "https://blog.acolyer.org/about/"
-                  },
-                  {
-                    "tag": "a",
-                    "text": "Archives",
-                    "href": "https://blog.acolyer.org/archives/"
-                  },
-                  {
-                    "tag": "a",
-                    "text": "InfoQ QR Editions",
-                    "href": "https://blog.acolyer.org/infoq-quarterly-review-editions/"
-                  },
-                  {
-                    "tag": "a",
-                    "text": "Search",
-                    "href": "https://blog.acolyer.org/search/"
-                  },
-                  {
-                    "tag": "a",
-                    "text": "Subscribe",
-                    "href": "https://blog.acolyer.org/email-subs/"
-                  },
-                  {
-                    "tag": "a",
-                    "text": "Tags",
-                    "href": "https://blog.acolyer.org/tags/"
-                  },
-                  {
-                    "tag": "a",
-                    "text": "Privacy",
-                    "href": "https://blog.acolyer.org/privacy/"
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
                   }
                 ]
               }
@@ -98,832 +80,743 @@
           },
           {
             "tag": "div",
-            "cls": ["site-content", "content-area", "site-main"],
+            "cls": ["entry-content"],
             "ch": [
               {
-                "tag": "article",
-                "cls": [
-                  "post-9919",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-uncategorized"
-                ],
+                "tag": "#text",
+                "text": "TLDR; this is the last edition of The Morning Paper for now. Plus: one strand of research you won’t want to miss! I was listening to a BBC Radio 4 podcast recently (More or Less: Behind the Stats – Ants and Algorithms) in which the host Tim Harford is interviewing David Sumpter about his recent …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading The ants and the pheromones",
+                "href": "https://blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "article",
+        "cls": [
+          "post-9903",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-uncategorized",
+          "tag-algorithms-and-data-structures"
+        ],
+        "ch": [
+          {
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "An overview of end-to-end entity resolution for big data",
+                "href": "https://blog.acolyer.org/2020/12/14/entity-resolution/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2020/12/14/entity-resolution/",
                 "ch": [
                   {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "The ants and the pheromones",
-                        "href": "https://blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones/"
-                      }
-                    ]
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "December 14, 2020",
+                    "dt": "2020-12-14T14:37:00+00:00"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "February 8, 2021",
-                            "dt": "2021-02-08T14:46:00+00:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 20, 2025",
-                            "dt": "2025-10-20T14:52:08+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "TLDR; this is the last edition of The Morning Paper for now. Plus: one strand of research you won’t want to miss! I was listening to a BBC Radio 4 podcast recently (More or Less: Behind the Stats – Ants and Algorithms) in which the host Tim Harford is interviewing David Sumpter about his recent …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading The ants and the pheromones",
-                        "href": "https://blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones/"
-                      }
-                    ]
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 20, 2025",
+                    "dt": "2025-10-20T14:45:32+01:00"
                   }
                 ]
               },
               {
-                "tag": "article",
-                "cls": [
-                  "post-9903",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-uncategorized",
-                  "tag-algorithms-and-data-structures"
-                ],
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
                 "ch": [
-                  {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "An overview of end-to-end entity resolution for big data",
-                        "href": "https://blog.acolyer.org/2020/12/14/entity-resolution/"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2020/12/14/entity-resolution/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "December 14, 2020",
-                            "dt": "2020-12-14T14:37:00+00:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 20, 2025",
-                            "dt": "2025-10-20T14:45:32+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "An overview of end-to-end entity resolution for big data, Christophides et al., ACM Computing Surveys, Dec. 2020, Article No. 127 The ACM Computing Surveys are always a great way to get a quick orientation in a new subject area, and hot off the press is this survey on the entity resolution (aka record linking) problem. It’s an …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading An overview of end-to-end entity resolution for big data",
-                        "href": "https://blog.acolyer.org/2020/12/14/entity-resolution/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "article",
-                "cls": [
-                  "post-9892",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-uncategorized"
-                ],
-                "ch": [
-                  {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "Bias in word embeddings",
-                        "href": "https://blog.acolyer.org/2020/12/08/bias-in-word-embeddings/"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2020/12/08/bias-in-word-embeddings/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "December 8, 2020",
-                            "dt": "2020-12-08T14:32:00+00:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 20, 2025",
-                            "dt": "2025-10-20T14:37:03+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "Bias in word embeddings, Papakyriakopoulos et al., FAT*’20 There are no (stochastic) parrots in this paper, but it does examine bias in word embeddings, and how that bias carries forward into models that are trained using them. There are definitely some dangers to be aware of here, but also some cause for hope as we …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading Bias in word embeddings",
-                        "href": "https://blog.acolyer.org/2020/12/08/bias-in-word-embeddings/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "article",
-                "cls": [
-                  "post-9882",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-uncategorized",
-                  "tag-datastores"
-                ],
-                "ch": [
-                  {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "Seeing is believing: a client-centric specification of database isolation",
-                        "href": "https://blog.acolyer.org/2020/11/30/seeing-is-believing/"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2020/11/30/seeing-is-believing/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "November 30, 2020",
-                            "dt": "2020-11-30T14:08:00+00:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 20, 2025",
-                            "dt": "2025-10-20T14:31:47+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "Seeing is believing: a client-centric specification of database isolation, Crooks et al., PODC’17. Last week we looked at Elle, which detects isolation anomalies by setting things up so that the inner workings of the database, in the form of the direct serialization graph (DSG), can be externally recovered. Today’s paper choice, ‘Seeing is believing’ also deals …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading Seeing is believing: a client-centric specification of database isolation",
-                        "href": "https://blog.acolyer.org/2020/11/30/seeing-is-believing/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "article",
-                "cls": [
-                  "post-9874",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-uncategorized"
-                ],
-                "ch": [
-                  {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "Elle: inferring isolation anomalies from experimental observations",
-                        "href": "https://blog.acolyer.org/2020/11/23/elle/"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2020/11/23/elle/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "November 23, 2020",
-                            "dt": "2020-11-23T13:56:00+00:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 20, 2025",
-                            "dt": "2025-10-20T14:07:44+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "Elle: inferring isolation anomalies from experimental observations, Kingsbury \u0026 Alvaro, VLDB’20 Is there anything more terrifying, and at the same time more useful, to a database vendor than Kyle Kingsbury’s Jepsen? As the abstract to today’s paper choice wryly puts it, “experience shows that many databases do not provide the isolation guarantees they claim.” Jepsen captures …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading Elle: inferring isolation anomalies from experimental observations",
-                        "href": "https://blog.acolyer.org/2020/11/23/elle/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "article",
-                "cls": [
-                  "post-9861",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-networking",
-                  "tag-hardware",
-                  "tag-networking"
-                ],
-                "ch": [
-                  {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "Achieving 100Gbps intrusion prevention on a single server",
-                        "href": "https://blog.acolyer.org/2020/11/16/pigasus/"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2020/11/16/pigasus/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "November 16, 2020",
-                            "dt": "2020-11-16T13:42:00+00:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 20, 2025",
-                            "dt": "2025-10-20T13:54:37+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "Achieving 100 Gbps intrusion prevention on a single server, Zhao et al., OSDI’20 Papers-we-love is hosting a mini-event this Wednesday (18th) where I’ll be leading a panel discussion including one of the authors of today’s paper choice: Justine Sherry. Please do join us if you can. We always want more! This stems from a combination of Jevon’s paradox …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading Achieving 100Gbps intrusion prevention on a single server",
-                        "href": "https://blog.acolyer.org/2020/11/16/pigasus/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "article",
-                "cls": [
-                  "post-9850",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-uncategorized",
-                  "tag-distributed-systems"
-                ],
-                "ch": [
-                  {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "Virtual consensus in Delos",
-                        "href": "https://blog.acolyer.org/2020/11/09/delos/"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2020/11/09/delos/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "November 9, 2020",
-                            "dt": "2020-11-09T13:34:00+00:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 20, 2025",
-                            "dt": "2025-10-20T13:41:22+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "Virtual consensus in Delos, Balakrishnan et al. (Facebook, Inc.), OSDI’2020 Before we dive into this paper, if you click on the link above and then download and open up the paper pdf you might notice the familiar red/orange splash of USENIX, and appreciate the fully open access. USENIX is a nonprofit organisation committed to making content and …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading Virtual consensus in Delos",
-                        "href": "https://blog.acolyer.org/2020/11/09/delos/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "article",
-                "cls": [
-                  "post-9841",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-uncategorized"
-                ],
-                "ch": [
-                  {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "Helios: hyperscale indexing for the cloud \u0026 edge (part II)",
-                        "href": "https://blog.acolyer.org/2020/11/02/helios-part-ii/"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2020/11/02/helios-part-ii/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "November 2, 2020",
-                            "dt": "2020-11-02T13:20:00+00:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 20, 2025",
-                            "dt": "2025-10-20T13:33:02+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "Helios: hyperscale indexing for the cloud \u0026 edge, Potharaju et al., PVLDB’20 Last time out we looked at the motivations for a new reference blueprint for large-scale data processing, as embodied by Helios. Today we’re going to dive into the details of Helios itself. As a reminder: Helios is a distributed, highly-scalable system used at Microsoft for …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading Helios: hyperscale indexing for the cloud \u0026 edge (part II)",
-                        "href": "https://blog.acolyer.org/2020/11/02/helios-part-ii/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "article",
-                "cls": [
-                  "post-9832",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-uncategorized",
-                  "tag-datastores"
-                ],
-                "ch": [
-                  {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "Helios: hyperscale indexing for the cloud \u0026 edge – part 1",
-                        "href": "https://blog.acolyer.org/2020/10/26/helios-part-1/"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2020/10/26/helios-part-1/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "October 26, 2020",
-                            "dt": "2020-10-26T20:22:00+00:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 19, 2025",
-                            "dt": "2025-10-19T20:28:41+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "Helios: hyperscale indexing for the cloud \u0026 edge, Potharaju et al., PVLDB’20 On the surface this is a paper about fast data ingestion from high-volume streams, with indexing to support efficient querying. As a production system within Microsoft capturing around a quadrillion events and indexing 16 trillion search keys per day it would be interesting in its own right, …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading Helios: hyperscale indexing for the cloud \u0026 edge – part 1",
-                        "href": "https://blog.acolyer.org/2020/10/26/helios-part-1/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "article",
-                "cls": [
-                  "post-9818",
-                  "post",
-                  "type-post",
-                  "status-publish",
-                  "format-standard",
-                  "hentry",
-                  "category-uncategorized"
-                ],
-                "ch": [
-                  {
-                    "tag": "h1",
-                    "cls": ["entry-header", "entry-title"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "The case for a learned sorting algorithm",
-                        "href": "https://blog.acolyer.org/2020/10/19/the-case-for-a-learned-sorting-algorithm/"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-meta"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "href": "https://blog.acolyer.org/2020/10/19/the-case-for-a-learned-sorting-algorithm/",
-                        "ch": [
-                          {
-                            "tag": "time",
-                            "cls": ["entry-date", "published"],
-                            "text": "October 19, 2020",
-                            "dt": "2020-10-19T20:11:00+01:00"
-                          },
-                          {
-                            "tag": "time",
-                            "cls": ["updated"],
-                            "text": "October 19, 2025",
-                            "dt": "2025-10-19T20:21:59+01:00"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "cls": ["byline", "author", "vcard"],
-                        "ch": [
-                          { "tag": "#text", "text": "~" },
-                          {
-                            "tag": "a",
-                            "cls": ["url", "fn", "n"],
-                            "text": "adriancolyer",
-                            "href": "https://blog.acolyer.org/author/adriancolyer/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["entry-content"],
-                    "ch": [
-                      {
-                        "tag": "#text",
-                        "text": "The case for a learned sorting algorithm, Kristo, Vaidya, et al., SIGMOD’20 We’ve watched machine learning thoroughly pervade the web giants, make serious headway in large consumer companies, and begin its push into the traditional enterprise. ML, then, is rapidly becoming an integral part of how we build applications of all shapes and sizes. But what about systems …"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["more-link"],
-                        "text": "Continue reading The case for a learned sorting algorithm",
-                        "href": "https://blog.acolyer.org/2020/10/19/the-case-for-a-learned-sorting-algorithm/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "nav",
-                "cls": ["navigation", "posts-navigation"],
-                "ch": [
-                  {
-                    "tag": "h2",
-                    "cls": ["screen-reader-text"],
-                    "text": "Posts navigation"
-                  },
+                  { "tag": "#text", "text": "~" },
                   {
                     "tag": "a",
-                    "text": "Older posts",
-                    "href": "https://blog.acolyer.org/page/2/"
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
                   }
                 ]
               }
             ]
           },
           {
-            "tag": "a",
-            "text": "Blog at WordPress.com.",
-            "href": "https://wordpress.com/?ref=footer_blog"
+            "tag": "div",
+            "cls": ["entry-content"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "An overview of end-to-end entity resolution for big data, Christophides et al., ACM Computing Surveys, Dec. 2020, Article No. 127 The ACM Computing Surveys are always a great way to get a quick orientation in a new subject area, and hot off the press is this survey on the entity resolution (aka record linking) problem. It’s an …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading An overview of end-to-end entity resolution for big data",
+                "href": "https://blog.acolyer.org/2020/12/14/entity-resolution/"
+              }
+            ]
           }
         ]
       },
       {
-        "tag": "div",
-        "cls": ["container"],
+        "tag": "article",
+        "cls": [
+          "post-9892",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-uncategorized"
+        ],
         "ch": [
           {
-            "tag": "a",
-            "text": "the morning paper",
-            "href": "https://blog.acolyer.org/"
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Bias in word embeddings",
+                "href": "https://blog.acolyer.org/2020/12/08/bias-in-word-embeddings/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2020/12/08/bias-in-word-embeddings/",
+                "ch": [
+                  {
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "December 8, 2020",
+                    "dt": "2020-12-08T14:32:00+00:00"
+                  },
+                  {
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 20, 2025",
+                    "dt": "2025-10-20T14:37:03+01:00"
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
+                "ch": [
+                  { "tag": "#text", "text": "~" },
+                  {
+                    "tag": "a",
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-content"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "Bias in word embeddings, Papakyriakopoulos et al., FAT*’20 There are no (stochastic) parrots in this paper, but it does examine bias in word embeddings, and how that bias carries forward into models that are trained using them. There are definitely some dangers to be aware of here, but also some cause for hope as we …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading Bias in word embeddings",
+                "href": "https://blog.acolyer.org/2020/12/08/bias-in-word-embeddings/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "article",
+        "cls": [
+          "post-9882",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-uncategorized",
+          "tag-datastores"
+        ],
+        "ch": [
+          {
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Seeing is believing: a client-centric specification of database isolation",
+                "href": "https://blog.acolyer.org/2020/11/30/seeing-is-believing/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2020/11/30/seeing-is-believing/",
+                "ch": [
+                  {
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "November 30, 2020",
+                    "dt": "2020-11-30T14:08:00+00:00"
+                  },
+                  {
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 20, 2025",
+                    "dt": "2025-10-20T14:31:47+01:00"
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
+                "ch": [
+                  { "tag": "#text", "text": "~" },
+                  {
+                    "tag": "a",
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-content"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "Seeing is believing: a client-centric specification of database isolation, Crooks et al., PODC’17. Last week we looked at Elle, which detects isolation anomalies by setting things up so that the inner workings of the database, in the form of the direct serialization graph (DSG), can be externally recovered. Today’s paper choice, ‘Seeing is believing’ also deals …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading Seeing is believing: a client-centric specification of database isolation",
+                "href": "https://blog.acolyer.org/2020/11/30/seeing-is-believing/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "article",
+        "cls": [
+          "post-9874",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-uncategorized"
+        ],
+        "ch": [
+          {
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Elle: inferring isolation anomalies from experimental observations",
+                "href": "https://blog.acolyer.org/2020/11/23/elle/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2020/11/23/elle/",
+                "ch": [
+                  {
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "November 23, 2020",
+                    "dt": "2020-11-23T13:56:00+00:00"
+                  },
+                  {
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 20, 2025",
+                    "dt": "2025-10-20T14:07:44+01:00"
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
+                "ch": [
+                  { "tag": "#text", "text": "~" },
+                  {
+                    "tag": "a",
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-content"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "Elle: inferring isolation anomalies from experimental observations, Kingsbury \u0026 Alvaro, VLDB’20 Is there anything more terrifying, and at the same time more useful, to a database vendor than Kyle Kingsbury’s Jepsen? As the abstract to today’s paper choice wryly puts it, “experience shows that many databases do not provide the isolation guarantees they claim.” Jepsen captures …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading Elle: inferring isolation anomalies from experimental observations",
+                "href": "https://blog.acolyer.org/2020/11/23/elle/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "article",
+        "cls": [
+          "post-9861",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-networking",
+          "tag-hardware",
+          "tag-networking"
+        ],
+        "ch": [
+          {
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Achieving 100Gbps intrusion prevention on a single server",
+                "href": "https://blog.acolyer.org/2020/11/16/pigasus/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2020/11/16/pigasus/",
+                "ch": [
+                  {
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "November 16, 2020",
+                    "dt": "2020-11-16T13:42:00+00:00"
+                  },
+                  {
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 20, 2025",
+                    "dt": "2025-10-20T13:54:37+01:00"
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
+                "ch": [
+                  { "tag": "#text", "text": "~" },
+                  {
+                    "tag": "a",
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-content"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "Achieving 100 Gbps intrusion prevention on a single server, Zhao et al., OSDI’20 Papers-we-love is hosting a mini-event this Wednesday (18th) where I’ll be leading a panel discussion including one of the authors of today’s paper choice: Justine Sherry. Please do join us if you can. We always want more! This stems from a combination of Jevon’s paradox …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading Achieving 100Gbps intrusion prevention on a single server",
+                "href": "https://blog.acolyer.org/2020/11/16/pigasus/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "article",
+        "cls": [
+          "post-9850",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-uncategorized",
+          "tag-distributed-systems"
+        ],
+        "ch": [
+          {
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Virtual consensus in Delos",
+                "href": "https://blog.acolyer.org/2020/11/09/delos/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2020/11/09/delos/",
+                "ch": [
+                  {
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "November 9, 2020",
+                    "dt": "2020-11-09T13:34:00+00:00"
+                  },
+                  {
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 20, 2025",
+                    "dt": "2025-10-20T13:41:22+01:00"
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
+                "ch": [
+                  { "tag": "#text", "text": "~" },
+                  {
+                    "tag": "a",
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-content"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "Virtual consensus in Delos, Balakrishnan et al. (Facebook, Inc.), OSDI’2020 Before we dive into this paper, if you click on the link above and then download and open up the paper pdf you might notice the familiar red/orange splash of USENIX, and appreciate the fully open access. USENIX is a nonprofit organisation committed to making content and …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading Virtual consensus in Delos",
+                "href": "https://blog.acolyer.org/2020/11/09/delos/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "article",
+        "cls": [
+          "post-9841",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-uncategorized"
+        ],
+        "ch": [
+          {
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Helios: hyperscale indexing for the cloud \u0026 edge (part II)",
+                "href": "https://blog.acolyer.org/2020/11/02/helios-part-ii/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2020/11/02/helios-part-ii/",
+                "ch": [
+                  {
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "November 2, 2020",
+                    "dt": "2020-11-02T13:20:00+00:00"
+                  },
+                  {
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 20, 2025",
+                    "dt": "2025-10-20T13:33:02+01:00"
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
+                "ch": [
+                  { "tag": "#text", "text": "~" },
+                  {
+                    "tag": "a",
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-content"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "Helios: hyperscale indexing for the cloud \u0026 edge, Potharaju et al., PVLDB’20 Last time out we looked at the motivations for a new reference blueprint for large-scale data processing, as embodied by Helios. Today we’re going to dive into the details of Helios itself. As a reminder: Helios is a distributed, highly-scalable system used at Microsoft for …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading Helios: hyperscale indexing for the cloud \u0026 edge (part II)",
+                "href": "https://blog.acolyer.org/2020/11/02/helios-part-ii/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "article",
+        "cls": [
+          "post-9832",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-uncategorized",
+          "tag-datastores"
+        ],
+        "ch": [
+          {
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "Helios: hyperscale indexing for the cloud \u0026 edge – part 1",
+                "href": "https://blog.acolyer.org/2020/10/26/helios-part-1/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2020/10/26/helios-part-1/",
+                "ch": [
+                  {
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "October 26, 2020",
+                    "dt": "2020-10-26T20:22:00+00:00"
+                  },
+                  {
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 19, 2025",
+                    "dt": "2025-10-19T20:28:41+01:00"
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
+                "ch": [
+                  { "tag": "#text", "text": "~" },
+                  {
+                    "tag": "a",
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-content"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "Helios: hyperscale indexing for the cloud \u0026 edge, Potharaju et al., PVLDB’20 On the surface this is a paper about fast data ingestion from high-volume streams, with indexing to support efficient querying. As a production system within Microsoft capturing around a quadrillion events and indexing 16 trillion search keys per day it would be interesting in its own right, …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading Helios: hyperscale indexing for the cloud \u0026 edge – part 1",
+                "href": "https://blog.acolyer.org/2020/10/26/helios-part-1/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "article",
+        "cls": [
+          "post-9818",
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry",
+          "category-uncategorized"
+        ],
+        "ch": [
+          {
+            "tag": "h1",
+            "cls": ["entry-header", "entry-title"],
+            "ch": [
+              {
+                "tag": "a",
+                "text": "The case for a learned sorting algorithm",
+                "href": "https://blog.acolyer.org/2020/10/19/the-case-for-a-learned-sorting-algorithm/"
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-meta"],
+            "ch": [
+              {
+                "tag": "a",
+                "href": "https://blog.acolyer.org/2020/10/19/the-case-for-a-learned-sorting-algorithm/",
+                "ch": [
+                  {
+                    "tag": "time",
+                    "cls": ["entry-date", "published"],
+                    "text": "October 19, 2020",
+                    "dt": "2020-10-19T20:11:00+01:00"
+                  },
+                  {
+                    "tag": "time",
+                    "cls": ["updated"],
+                    "text": "October 19, 2025",
+                    "dt": "2025-10-19T20:21:59+01:00"
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "cls": ["byline", "author", "vcard"],
+                "ch": [
+                  { "tag": "#text", "text": "~" },
+                  {
+                    "tag": "a",
+                    "cls": ["url", "fn", "n"],
+                    "text": "adriancolyer",
+                    "href": "https://blog.acolyer.org/author/adriancolyer/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "cls": ["entry-content"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "The case for a learned sorting algorithm, Kristo, Vaidya, et al., SIGMOD’20 We’ve watched machine learning thoroughly pervade the web giants, make serious headway in large consumer companies, and begin its push into the traditional enterprise. ML, then, is rapidly becoming an integral part of how we build applications of all shapes and sizes. But what about systems …"
+              },
+              {
+                "tag": "a",
+                "cls": ["more-link"],
+                "text": "Continue reading The case for a learned sorting algorithm",
+                "href": "https://blog.acolyer.org/2020/10/19/the-case-for-a-learned-sorting-algorithm/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "nav",
+        "cls": ["navigation", "posts-navigation"],
+        "ch": [
+          {
+            "tag": "h2",
+            "cls": ["screen-reader-text"],
+            "text": "Posts navigation"
           },
           {
             "tag": "a",
-            "text": "Blog at WordPress.com.",
-            "href": "https://wordpress.com/?ref=footer_blog"
+            "text": "Older posts",
+            "href": "https://blog.acolyer.org/page/2/"
           }
         ]
       }

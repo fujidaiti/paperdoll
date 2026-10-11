@@ -3,2001 +3,32 @@
   "title": "News from Google | Google Product and Technology News and Stories",
   "root": {
     "tag": "body",
-    "cls": ["template-homepage", "keyword-blog"],
+    "cls": [
+      "template-homepage",
+      "keyword-blog",
+      "site-content",
+      "uni-blog-landing"
+    ],
     "ch": [
       {
-        "tag": "header",
+        "tag": "section",
         "cls": [
-          "uni-nav",
-          "redesign-patch",
-          "uni-page--fullbleed",
           "uni-page",
-          "uni-nav__container"
+          "uni-page-spacer-bottom",
+          "uni-page-spacer-top",
+          "uni-grid",
+          "uni-carousel",
+          "uni-hero-carousel",
+          "uni-hero-carousel__viewport"
         ],
         "ch": [
           {
-            "tag": "div",
-            "cls": [
-              "uni-nav__jump-to-content-wrapper",
-              "uni-nav__jump-to-content"
-            ],
-            "text": "Skip to main content"
-          },
-          {
-            "tag": "a",
-            "cls": ["uni-nav__logo"],
-            "href": "https://blog.google/"
-          },
-          {
-            "tag": "div",
-            "cls": ["uni-nav-mobile__wrapper"],
+            "tag": "uni-hero-carousel-slide",
+            "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
             "ch": [
               {
-                "tag": "nav",
-                "cls": ["uni-nav-mobile", "uni-nav-mobile__container"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": [
-                      "uni-nav-link",
-                      "uni-nav-link--full-width",
-                      "uni-nav-link--main-menu",
-                      "font-body-xl"
-                    ],
-                    "text": "Feed",
-                    "href": "https://blog.google/feed"
-                  },
-                  {
-                    "tag": "section",
-                    "cls": ["uni-nav-mobile__section", "uni-nav__subscribe"],
-                    "text": "Newsletter"
-                  }
-                ]
-              },
-              {
                 "tag": "div",
-                "cls": [
-                  "uni-nav-mobile-subnav",
-                  "uni-nav-mobile-subnav__container"
-                ],
-                "ch": [
-                  {
-                    "tag": "section",
-                    "cls": [
-                      "uni-nav-mobile__section",
-                      "uni-nav-mobile__section--intro"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["uni-nav-mobile__section-title", "font-h3"],
-                        "text": "Innovation \u0026 AI"
-                      },
-                      {
-                        "tag": "uni-cta",
-                        "cls": ["uni-nav-mobile__see-all-cta"],
-                        "text": "See all in Innovation \u0026 AI"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "section",
-                    "cls": [
-                      "uni-nav-mobile__section",
-                      "uni-nav-mobile__link-list"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Google DeepMind",
-                            "href": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Google Research",
-                            "href": "https://blog.google/innovation-and-ai/models-and-research/google-research/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Google Labs",
-                            "href": "https://blog.google/innovation-and-ai/models-and-research/google-labs/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Gemini models",
-                            "href": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Quantum computing",
-                            "href": "https://blog.google/innovation-and-ai/models-and-research/quantum-computing/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/innovation-and-ai/models-and-research/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Developer tools",
-                            "href": "https://blog.google/innovation-and-ai/technology/developers-tools/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Gemini app",
-                            "href": "https://blog.google/innovation-and-ai/products/gemini-app/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Gemini Notebook",
-                            "href": "https://blog.google/innovation-and-ai/products/gemini-notebook/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/innovation-and-ai/products/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Global network",
-                            "href": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Google Cloud",
-                            "href": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Safety \u0026 Security",
-                            "href": "https://blog.google/innovation-and-ai/technology/safety-security/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Health",
-                            "href": "https://blog.google/innovation-and-ai/technology/health/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/innovation-and-ai/technology/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "section",
-                    "cls": ["uni-nav-mobile__section"],
-                    "ch": [
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "font-h6",
-                          "uni-nav-mobile__section-title--small"
-                        ],
-                        "text": "Learn more:"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["uni-nav-mobile__link-list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google DeepMind blog",
-                            "href": "https://deepmind.google/blog/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google Research blog",
-                            "href": "https://research.google/blog/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google Developers blog",
-                            "href": "https://developers.googleblog.com/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google Cloud blog",
-                            "href": "https://cloud.google.com/blog"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": [
-                  "uni-nav-mobile-subnav",
-                  "uni-nav-mobile-subnav__container"
-                ],
-                "ch": [
-                  {
-                    "tag": "section",
-                    "cls": [
-                      "uni-nav-mobile__section",
-                      "uni-nav-mobile__section--intro"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["uni-nav-mobile__section-title", "font-h3"],
-                        "text": "Products \u0026 platforms"
-                      },
-                      {
-                        "tag": "uni-cta",
-                        "cls": ["uni-nav-mobile__see-all-cta"],
-                        "text": "See all in Products \u0026 platforms"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "section",
-                    "cls": [
-                      "uni-nav-mobile__section",
-                      "uni-nav-mobile__link-list"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Search",
-                            "href": "https://blog.google/products-and-platforms/products/search/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Maps",
-                            "href": "https://blog.google/products-and-platforms/products/maps/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Chrome",
-                            "href": "https://blog.google/products-and-platforms/products/chrome/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Google Health",
-                            "href": "https://blog.google/products-and-platforms/products/google-health/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Google Workspace",
-                            "href": "https://blog.google/products-and-platforms/products/workspace/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Learning \u0026 Education",
-                            "href": "https://blog.google/products-and-platforms/products/education/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Shopping",
-                            "href": "https://blog.google/products-and-platforms/products/shopping/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/products-and-platforms/products/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Android",
-                            "href": "https://blog.google/products-and-platforms/platforms/android/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Google Play",
-                            "href": "https://blog.google/products-and-platforms/platforms/google-play/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Wear OS",
-                            "href": "https://blog.google/products-and-platforms/platforms/wear-os/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/products-and-platforms/platforms/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Pixel",
-                            "href": "https://blog.google/products-and-platforms/devices/pixel/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Google Nest",
-                            "href": "https://blog.google/products-and-platforms/devices/google-nest/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Fitbit",
-                            "href": "https://blog.google/products-and-platforms/devices/fitbit/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Chromebook",
-                            "href": "https://blog.google/products-and-platforms/devices/chromebooks/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Googlebook",
-                            "href": "https://blog.google/products-and-platforms/devices/googlebook/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/products-and-platforms/devices/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "section",
-                    "cls": ["uni-nav-mobile__section"],
-                    "ch": [
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "font-h6",
-                          "uni-nav-mobile__section-title--small"
-                        ],
-                        "text": "Learn more:"
-                      },
-                      {
-                        "tag": "ul",
-                        "cls": ["uni-nav-mobile__link-list"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google Ads \u0026 Commerce blog",
-                            "href": "https://blog.google/products/ads-commerce/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Waze blog",
-                            "href": "https://blog.google/waze/"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": [
-                  "uni-nav-mobile-subnav",
-                  "uni-nav-mobile-subnav__container"
-                ],
-                "ch": [
-                  {
-                    "tag": "section",
-                    "cls": [
-                      "uni-nav-mobile__section",
-                      "uni-nav-mobile__section--intro"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["uni-nav-mobile__section-title", "font-h3"],
-                        "text": "Company news"
-                      },
-                      {
-                        "tag": "uni-cta",
-                        "cls": ["uni-nav-mobile__see-all-cta"],
-                        "text": "See all in Company news"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "section",
-                    "cls": [
-                      "uni-nav-mobile__section",
-                      "uni-nav-mobile__link-list"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Creating opportunity",
-                            "href": "https://blog.google/company-news/outreach-and-initiatives/creating-opportunity/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Safety \u0026 security",
-                            "href": "https://blog.google/innovation-and-ai/technology/safety-security/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Google.org",
-                            "href": "https://blog.google/company-news/outreach-and-initiatives/google-org/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Public policy",
-                            "href": "https://blog.google/company-news/outreach-and-initiatives/public-policy/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Sustainability",
-                            "href": "https://blog.google/company-news/outreach-and-initiatives/sustainability/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Health",
-                            "href": "https://blog.google/innovation-and-ai/technology/health/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/company-news/outreach-and-initiatives/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Sundar Pichai, CEO",
-                            "href": "https://blog.google/authors/sundar-pichai/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "More authors",
-                            "href": "https://blog.google/authors/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/authors/"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": [
-                          "uni-nav-mobile__link-list-item",
-                          "has-submenu",
-                          "uni-nav-mobile-subnav__sublist"
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Around the globe",
-                            "href": "https://blog.google/company-news/inside-google/around-the-globe/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--full-width",
-                              "font-body-m"
-                            ],
-                            "text": "Life at Google",
-                            "href": "https://blog.google/company-news/inside-google/life-at-google/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--sublist-mobile",
-                              "uni-nav-link--sublist",
-                              "font-body-m"
-                            ],
-                            "text": "See all",
-                            "href": "https://blog.google/company-news/inside-google/"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "section",
-                    "cls": ["uni-nav-mobile__section"],
-                    "ch": [
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "font-h6",
-                          "uni-nav-mobile__section-title--small"
-                        ],
-                        "text": "Learn more:"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "uni-nav-link",
-                          "uni-nav-link--learn-more",
-                          "font-body-xl"
-                        ],
-                        "text": "Google Security blog",
-                        "href": "https://blog.google/security/"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "tag": "div",
-            "cls": ["uni-nav__primary", "uni-nav__list"],
-            "ch": [
-              {
-                "tag": "li",
-                "cls": [
-                  "uni-nav__item",
-                  "uni-nav-desktop",
-                  "uni-page--fullbleed",
-                  "uni-page",
-                  "uni-nav-desktop__container",
-                  "uni-grid"
-                ],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": ["uni-nav-desktop__header"],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["uni-nav-desktop__title", "font-h3"],
-                        "text": "Innovation \u0026 AI"
-                      },
-                      {
-                        "tag": "uni-cta",
-                        "cls": ["uni-nav-desktop__see-all-cta"],
-                        "text": "See all in Innovation \u0026 AI"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "uni-nav-desktop__content",
-                      "uni-nav-desktop__list"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Models \u0026 Research"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Google DeepMind",
-                                "href": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Google Research",
-                                "href": "https://blog.google/innovation-and-ai/models-and-research/google-research/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Google Labs",
-                                "href": "https://blog.google/innovation-and-ai/models-and-research/google-labs/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Gemini models",
-                                "href": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Quantum computing",
-                                "href": "https://blog.google/innovation-and-ai/models-and-research/quantum-computing/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/innovation-and-ai/models-and-research/"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Products"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Developer tools",
-                                "href": "https://blog.google/innovation-and-ai/technology/developers-tools/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Gemini app",
-                                "href": "https://blog.google/innovation-and-ai/products/gemini-app/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Gemini Notebook",
-                                "href": "https://blog.google/innovation-and-ai/products/gemini-notebook/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/innovation-and-ai/products/"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Infrastructure \u0026 cloud"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Global network",
-                                "href": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Google Cloud",
-                                "href": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Technology"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Safety \u0026 Security",
-                                "href": "https://blog.google/innovation-and-ai/technology/safety-security/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Health",
-                                "href": "https://blog.google/innovation-and-ai/technology/health/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/innovation-and-ai/technology/"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["uni-nav-desktop__footer"],
-                    "ch": [
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "font-h6",
-                          "uni-nav-desktop__list-title--learn-more",
-                          "uni-nav-mobile__section-title--small"
-                        ],
-                        "text": "Learn more:"
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["uni-nav-desktop__learn-more-links"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google DeepMind blog",
-                            "href": "https://deepmind.google/blog/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google Research blog",
-                            "href": "https://research.google/blog/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google Developers blog",
-                            "href": "https://developers.googleblog.com/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google Cloud blog",
-                            "href": "https://cloud.google.com/blog"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "li",
-                "cls": [
-                  "uni-nav__item",
-                  "uni-nav-desktop",
-                  "uni-page--fullbleed",
-                  "uni-page",
-                  "uni-nav-desktop__container",
-                  "uni-grid"
-                ],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": ["uni-nav-desktop__header"],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["uni-nav-desktop__title", "font-h3"],
-                        "text": "Products \u0026 platforms"
-                      },
-                      {
-                        "tag": "uni-cta",
-                        "cls": ["uni-nav-desktop__see-all-cta"],
-                        "text": "See all in Products \u0026 platforms"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "uni-nav-desktop__content",
-                      "uni-nav-desktop__list"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Products"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Search",
-                                "href": "https://blog.google/products-and-platforms/products/search/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Maps",
-                                "href": "https://blog.google/products-and-platforms/products/maps/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Chrome",
-                                "href": "https://blog.google/products-and-platforms/products/chrome/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Google Health",
-                                "href": "https://blog.google/products-and-platforms/products/google-health/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Google Workspace",
-                                "href": "https://blog.google/products-and-platforms/products/workspace/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Learning \u0026 Education",
-                                "href": "https://blog.google/products-and-platforms/products/education/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Shopping",
-                                "href": "https://blog.google/products-and-platforms/products/shopping/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/products-and-platforms/products/"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Platforms"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Android",
-                                "href": "https://blog.google/products-and-platforms/platforms/android/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Google Play",
-                                "href": "https://blog.google/products-and-platforms/platforms/google-play/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Wear OS",
-                                "href": "https://blog.google/products-and-platforms/platforms/wear-os/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/products-and-platforms/platforms/"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Devices"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Pixel",
-                                "href": "https://blog.google/products-and-platforms/devices/pixel/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Google Nest",
-                                "href": "https://blog.google/products-and-platforms/devices/google-nest/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Fitbit",
-                                "href": "https://blog.google/products-and-platforms/devices/fitbit/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Chromebook",
-                                "href": "https://blog.google/products-and-platforms/devices/chromebooks/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Googlebook",
-                                "href": "https://blog.google/products-and-platforms/devices/googlebook/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/products-and-platforms/devices/"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["uni-nav-desktop__footer"],
-                    "ch": [
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "font-h6",
-                          "uni-nav-desktop__list-title--learn-more",
-                          "uni-nav-mobile__section-title--small"
-                        ],
-                        "text": "Learn more:"
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["uni-nav-desktop__learn-more-links"],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Google Ads \u0026 Commerce blog",
-                            "href": "https://blog.google/products/ads-commerce/"
-                          },
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "uni-nav-link",
-                              "uni-nav-link--learn-more",
-                              "font-body-xl"
-                            ],
-                            "text": "Waze blog",
-                            "href": "https://blog.google/waze/"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "li",
-                "cls": [
-                  "uni-nav__item",
-                  "uni-nav-desktop",
-                  "uni-page--fullbleed",
-                  "uni-page",
-                  "uni-nav-desktop__container",
-                  "uni-grid"
-                ],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": ["uni-nav-desktop__header"],
-                    "ch": [
-                      {
-                        "tag": "h3",
-                        "cls": ["uni-nav-desktop__title", "font-h3"],
-                        "text": "Company news"
-                      },
-                      {
-                        "tag": "uni-cta",
-                        "cls": ["uni-nav-desktop__see-all-cta"],
-                        "text": "See all in Company news"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "uni-nav-desktop__content",
-                      "uni-nav-desktop__list"
-                    ],
-                    "ch": [
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Outreach \u0026 initiatives"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Creating opportunity",
-                                "href": "https://blog.google/company-news/outreach-and-initiatives/creating-opportunity/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Safety \u0026 security",
-                                "href": "https://blog.google/innovation-and-ai/technology/safety-security/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Google.org",
-                                "href": "https://blog.google/company-news/outreach-and-initiatives/google-org/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Public policy",
-                                "href": "https://blog.google/company-news/outreach-and-initiatives/public-policy/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Sustainability",
-                                "href": "https://blog.google/company-news/outreach-and-initiatives/sustainability/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Health",
-                                "href": "https://blog.google/innovation-and-ai/technology/health/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/company-news/outreach-and-initiatives/"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Leadership"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Sundar Pichai, CEO",
-                                "href": "https://blog.google/authors/sundar-pichai/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "More authors",
-                                "href": "https://blog.google/authors/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/authors/"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "li",
-                        "cls": ["uni-nav-desktop__item"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "font-h6",
-                              "uni-nav-desktop__list-title",
-                              "uni-nav-mobile__section-title--small"
-                            ],
-                            "text": "Inside Google"
-                          },
-                          {
-                            "tag": "ul",
-                            "cls": ["uni-nav-desktop__sublist"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Around the globe",
-                                "href": "https://blog.google/company-news/inside-google/around-the-globe/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--sublist",
-                                  "uni-nav-link--full-width",
-                                  "font-body-xl"
-                                ],
-                                "text": "Life at Google",
-                                "href": "https://blog.google/company-news/inside-google/life-at-google/"
-                              },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "uni-nav-link",
-                                  "uni-nav-link--see-all",
-                                  "font-body-xl"
-                                ],
-                                "text": "See all",
-                                "href": "https://blog.google/company-news/inside-google/"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["uni-nav-desktop__footer"],
-                    "ch": [
-                      {
-                        "tag": "p",
-                        "cls": [
-                          "font-h6",
-                          "uni-nav-desktop__list-title--learn-more",
-                          "uni-nav-mobile__section-title--small"
-                        ],
-                        "text": "Learn more:"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": [
-                          "uni-nav-link",
-                          "uni-nav-link--learn-more",
-                          "font-body-xl"
-                        ],
-                        "text": "Google Security blog",
-                        "href": "https://blog.google/security/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "a",
-                "cls": ["uni-nav-link", "uni-nav-link--desktop", "font-body-s"],
-                "text": "Feed",
-                "href": "https://blog.google/feed"
-              }
-            ]
-          },
-          {
-            "tag": "div",
-            "cls": ["uni-nav__actions"],
-            "ch": [
-              {
-                "tag": "uni-search-bar",
-                "cls": ["uni-search-bar"],
-                "text": "[]"
-              },
-              {
-                "tag": "div",
-                "cls": [
-                  "uni-nav__item",
-                  "uni-nav__dropdown-menu",
-                  "uni-nav__dropdown-menu-inner"
-                ],
-                "ch": [
-                  { "tag": "#text", "text": "Preferences Links" },
-                  {
-                    "tag": "ul",
-                    "cls": ["uni-nav__dropdown-menu-link-list"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "cls": ["uni-nav__dropdown-menu-link", "font-ctas"],
-                        "text": "Images",
-                        "href": "https://blog.google/image-library/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["uni-nav__dropdown-menu-link", "font-ctas"],
-                        "text": "RSS feed",
-                        "href": "https://blog.google/rss/"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "uni-cta",
-                "cls": ["uni-nav__subscribe"],
-                "text": "Newsletter"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tag": "main",
-        "cls": ["site-content", "uni-blog-landing"],
-        "ch": [
-          {
-            "tag": "section",
-            "cls": [
-              "uni-page",
-              "uni-page-spacer-bottom",
-              "uni-page-spacer-top",
-              "uni-grid",
-              "uni-carousel",
-              "uni-hero-carousel",
-              "uni-hero-carousel__viewport"
-            ],
-            "ch": [
-              {
-                "tag": "uni-hero-carousel-slide",
-                "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": ["uni-hero-carousel__content"],
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["uni-hero-carousel__article-content"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "uni-hero-carousel__eyebrow",
-                              "font-eyebrow"
-                            ],
-                            "text": "Gemini models"
-                          },
-                          {
-                            "tag": "h1",
-                            "cls": ["uni-hero-carousel__title"],
-                            "text": "Our most advanced live dialogue models"
-                          },
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "uni-hero-carousel__description",
-                              "font-body-m"
-                            ],
-                            "text": "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are built for natural conversation."
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["uni-hero-carousel__cta-container"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "img",
-                    "cls": ["uni-hero-carousel__media"],
-                    "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_3-8_live___ke.2e16d0ba.fill-1200x800.format-webp.webp",
-                    "alt": "Text \"Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking\" with the Gemini Spark, all on a light blue background"
-                  }
-                ]
-              },
-              {
-                "tag": "uni-hero-carousel-slide",
-                "cls": [
-                  "uni-hero-carousel__slide",
-                  "uni-hero-carousel__card",
-                  "uni-hero-carousel__content"
-                ],
+                "cls": ["uni-hero-carousel__content"],
                 "ch": [
                   {
                     "tag": "div",
@@ -2006,12 +37,12 @@
                       {
                         "tag": "p",
                         "cls": ["uni-hero-carousel__eyebrow", "font-eyebrow"],
-                        "text": "Gemini App"
+                        "text": "Gemini models"
                       },
                       {
                         "tag": "h1",
                         "cls": ["uni-hero-carousel__title"],
-                        "text": "The Gemini app is now available for Windows"
+                        "text": "Our most advanced live dialogue models"
                       },
                       {
                         "tag": "p",
@@ -2019,7 +50,7 @@
                           "uni-hero-carousel__description",
                           "font-body-m"
                         ],
-                        "text": "We’re launching the Gemini app for Windows, the new desktop app built to work alongside your favorite tools and daily applications."
+                        "text": "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are built for natural conversation."
                       }
                     ]
                   },
@@ -2031,327 +62,332 @@
                 ]
               },
               {
-                "tag": "uni-hero-carousel-slide",
-                "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": ["uni-hero-carousel__content"],
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["uni-hero-carousel__article-content"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "uni-hero-carousel__eyebrow",
-                              "font-eyebrow"
-                            ],
-                            "text": "Company announcements"
-                          },
-                          {
-                            "tag": "h1",
-                            "cls": ["uni-hero-carousel__title"],
-                            "text": "Reimagining Chicago's Thompson Center"
-                          },
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "uni-hero-carousel__description",
-                              "font-body-m"
-                            ],
-                            "text": "Our new Chicago office at Thompson Center brings together art, community and architecture."
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["uni-hero-carousel__cta-container"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "img",
-                    "cls": ["uni-hero-carousel__media"],
-                    "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Thompson_Center_hero.2e16d0ba.fill-1200x800.format-webp.webp",
-                    "alt": "Thompson Center"
-                  }
-                ]
-              },
-              {
-                "tag": "uni-hero-carousel-slide",
-                "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": ["uni-hero-carousel__content"],
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["uni-hero-carousel__article-content"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "uni-hero-carousel__eyebrow",
-                              "font-eyebrow"
-                            ],
-                            "text": "Google DeepMind"
-                          },
-                          {
-                            "tag": "h1",
-                            "cls": ["uni-hero-carousel__title"],
-                            "text": "AlphaGenome Atlas: Human DNA in high resolution"
-                          },
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "uni-hero-carousel__description",
-                              "font-body-m"
-                            ],
-                            "text": "We’re introducing AlphaGenome Atlas, a database predicting the effects of every possible single nucleotide variant in the human genome."
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["uni-hero-carousel__cta-container"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "img",
-                    "cls": ["uni-hero-carousel__media"],
-                    "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AlphaGenome_Atlas_he.2e16d0ba.fill-1200x800.format-webp.webp",
-                    "alt": "Wavy pink and lavender pillars with glowing orange columns in the center."
-                  }
-                ]
-              },
-              {
-                "tag": "uni-hero-carousel-slide",
-                "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
-                "ch": [
-                  {
-                    "tag": "div",
-                    "cls": ["uni-hero-carousel__content"],
-                    "ch": [
-                      {
-                        "tag": "div",
-                        "cls": ["uni-hero-carousel__article-content"],
-                        "ch": [
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "uni-hero-carousel__eyebrow",
-                              "font-eyebrow"
-                            ],
-                            "text": "AI"
-                          },
-                          {
-                            "tag": "h1",
-                            "cls": ["uni-hero-carousel__title"],
-                            "text": "Recreating a 70-year love story frame by frame"
-                          },
-                          {
-                            "tag": "p",
-                            "cls": [
-                              "uni-hero-carousel__description",
-                              "font-body-m"
-                            ],
-                            "text": "Discover how filmmakers and Google DeepMind used AI to recreate a couple's unrecorded past in the short film \"Love, Rendered.\""
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["uni-hero-carousel__cta-container"],
-                        "text": "Read more"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "img",
-                    "cls": ["uni-hero-carousel__media"],
-                    "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/LOVE_RENDERED_HERO_B.2e16d0ba.fill-1200x800.format-webp.webp",
-                    "alt": "An elderly couple sitting in a movie theater. Overlayed are \"Teulluride Film Festival\" and \"Love, Rendered\""
-                  }
-                ]
+                "tag": "img",
+                "cls": ["uni-hero-carousel__media"],
+                "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_3-8_live___ke.2e16d0ba.fill-1200x800.format-webp.webp",
+                "alt": "Text \"Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking\" with the Gemini Spark, all on a light blue background"
               }
             ]
           },
           {
-            "tag": "uni-collection",
+            "tag": "uni-hero-carousel-slide",
             "cls": [
-              "uni-collection",
-              "uni-page-spacer-bottom",
-              "uni-collection--dark-mode",
-              "uni-collection--theme-light-purple",
-              "uni-collection-container",
-              "uni-page",
-              "uni-grid",
-              "uni-collection__content",
-              "uni-grid__col--span-4",
-              "uni-grid__col--span-12-tablet",
-              "uni-grid__col--span-4-desktop"
+              "uni-hero-carousel__slide",
+              "uni-hero-carousel__card",
+              "uni-hero-carousel__content"
             ],
             "ch": [
               {
                 "tag": "div",
-                "cls": ["uni-collection__eyebrow", "font-eyebrow"],
-                "text": "Collection"
-              },
-              {
-                "tag": "div",
-                "cls": ["uni-collection__text-wrapper"],
+                "cls": ["uni-hero-carousel__article-content"],
                 "ch": [
                   {
-                    "tag": "h2",
-                    "cls": ["uni-collection__title", "font-h3"],
-                    "text": "AI for Society"
+                    "tag": "p",
+                    "cls": ["uni-hero-carousel__eyebrow", "font-eyebrow"],
+                    "text": "Gemini App"
                   },
                   {
-                    "tag": "div",
-                    "cls": [
-                      "uni-collection__summary",
-                      "font-body-l",
-                      "rich-text"
-                    ],
-                    "text": "See how experts and local leaders are using AI breakthroughs to ensure everyone can share the opportunity of AI."
+                    "tag": "h1",
+                    "cls": ["uni-hero-carousel__title"],
+                    "text": "The Gemini app is now available for Windows"
+                  },
+                  {
+                    "tag": "p",
+                    "cls": ["uni-hero-carousel__description", "font-body-m"],
+                    "text": "We’re launching the Gemini app for Windows, the new desktop app built to work alongside your favorite tools and daily applications."
                   }
                 ]
               },
-              { "tag": "uni-cta", "text": "View the collection" }
+              {
+                "tag": "div",
+                "cls": ["uni-hero-carousel__cta-container"],
+                "text": "Read more"
+              }
             ]
           },
           {
-            "tag": "h3",
-            "cls": [
-              "uni-nup",
-              "uni-page",
-              "uni-page-spacer-bottom",
-              "redesign-patch",
-              "uni-nup__headline",
-              "font-h3"
-            ],
-            "text": "More updates"
-          },
-          {
-            "tag": "section",
-            "cls": [
-              "uni-landing-newsletter",
-              "uni-landing-newsletter--color",
-              "uni-page",
-              "uni-grid",
-              "uni-landing-newsletter__inner",
-              "uni-landing-newsletter__content",
-              "uni-landing-newsletter__form-group"
-            ],
+            "tag": "uni-hero-carousel-slide",
+            "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
             "ch": [
               {
-                "tag": "h2",
-                "cls": ["uni-landing-newsletter__title", "font-h3"],
-                "text": "Get the latest news from Google in your inbox"
-              },
-              {
-                "tag": "p",
-                "cls": ["uni-landing-newsletter__description", "font-body-m"],
-                "text": "Sign up for our newsletters with product updates, event information, special offers, and more."
-              },
-              {
                 "tag": "div",
-                "cls": ["uni-landing-newsletter-success", "is-hidden"],
+                "cls": ["uni-hero-carousel__content"],
                 "ch": [
                   {
                     "tag": "div",
-                    "cls": [
-                      "uni-landing-newsletter-success__message",
-                      "uni-landing-newsletter-success__text"
-                    ],
+                    "cls": ["uni-hero-carousel__article-content"],
                     "ch": [
                       {
                         "tag": "p",
-                        "cls": ["font-body-s"],
-                        "text": "Done. Just one step more."
+                        "cls": ["uni-hero-carousel__eyebrow", "font-eyebrow"],
+                        "text": "Company announcements"
+                      },
+                      {
+                        "tag": "h1",
+                        "cls": ["uni-hero-carousel__title"],
+                        "text": "Reimagining Chicago's Thompson Center"
                       },
                       {
                         "tag": "p",
                         "cls": [
-                          "uni-landing-newsletter-success__text-confirm",
-                          "font-body-xs"
+                          "uni-hero-carousel__description",
+                          "font-body-m"
                         ],
-                        "text": "Check your inbox to confirm your subscription."
+                        "text": "Our new Chicago office at Thompson Center brings together art, community and architecture."
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__cta-container"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "img",
+                "cls": ["uni-hero-carousel__media"],
+                "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Thompson_Center_hero.2e16d0ba.fill-1200x800.format-webp.webp",
+                "alt": "Thompson Center"
+              }
+            ]
+          },
+          {
+            "tag": "uni-hero-carousel-slide",
+            "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
+            "ch": [
+              {
+                "tag": "div",
+                "cls": ["uni-hero-carousel__content"],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__article-content"],
+                    "ch": [
+                      {
+                        "tag": "p",
+                        "cls": ["uni-hero-carousel__eyebrow", "font-eyebrow"],
+                        "text": "Google DeepMind"
+                      },
+                      {
+                        "tag": "h1",
+                        "cls": ["uni-hero-carousel__title"],
+                        "text": "AlphaGenome Atlas: Human DNA in high resolution"
+                      },
+                      {
+                        "tag": "p",
+                        "cls": [
+                          "uni-hero-carousel__description",
+                          "font-body-m"
+                        ],
+                        "text": "We’re introducing AlphaGenome Atlas, a database predicting the effects of every possible single nucleotide variant in the human genome."
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__cta-container"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "img",
+                "cls": ["uni-hero-carousel__media"],
+                "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AlphaGenome_Atlas_he.2e16d0ba.fill-1200x800.format-webp.webp",
+                "alt": "Wavy pink and lavender pillars with glowing orange columns in the center."
+              }
+            ]
+          },
+          {
+            "tag": "uni-hero-carousel-slide",
+            "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
+            "ch": [
+              {
+                "tag": "div",
+                "cls": ["uni-hero-carousel__content"],
+                "ch": [
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__article-content"],
+                    "ch": [
+                      {
+                        "tag": "p",
+                        "cls": ["uni-hero-carousel__eyebrow", "font-eyebrow"],
+                        "text": "AI"
+                      },
+                      {
+                        "tag": "h1",
+                        "cls": ["uni-hero-carousel__title"],
+                        "text": "Recreating a 70-year love story frame by frame"
+                      },
+                      {
+                        "tag": "p",
+                        "cls": [
+                          "uni-hero-carousel__description",
+                          "font-body-m"
+                        ],
+                        "text": "Discover how filmmakers and Google DeepMind used AI to recreate a couple's unrecorded past in the short film \"Love, Rendered.\""
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__cta-container"],
+                    "text": "Read more"
+                  }
+                ]
+              },
+              {
+                "tag": "img",
+                "cls": ["uni-hero-carousel__media"],
+                "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/LOVE_RENDERED_HERO_B.2e16d0ba.fill-1200x800.format-webp.webp",
+                "alt": "An elderly couple sitting in a movie theater. Overlayed are \"Teulluride Film Festival\" and \"Love, Rendered\""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "uni-collection",
+        "cls": [
+          "uni-collection",
+          "uni-page-spacer-bottom",
+          "uni-collection--dark-mode",
+          "uni-collection--theme-light-purple",
+          "uni-collection-container",
+          "uni-page",
+          "uni-grid",
+          "uni-collection__content",
+          "uni-grid__col--span-4",
+          "uni-grid__col--span-12-tablet",
+          "uni-grid__col--span-4-desktop"
+        ],
+        "ch": [
+          {
+            "tag": "div",
+            "cls": ["uni-collection__eyebrow", "font-eyebrow"],
+            "text": "Collection"
+          },
+          {
+            "tag": "div",
+            "cls": ["uni-collection__text-wrapper"],
+            "ch": [
+              {
+                "tag": "h2",
+                "cls": ["uni-collection__title", "font-h3"],
+                "text": "AI for Society"
+              },
+              {
+                "tag": "div",
+                "cls": ["uni-collection__summary", "font-body-l", "rich-text"],
+                "text": "See how experts and local leaders are using AI breakthroughs to ensure everyone can share the opportunity of AI."
+              }
+            ]
+          },
+          { "tag": "uni-cta", "text": "View the collection" }
+        ]
+      },
+      {
+        "tag": "h3",
+        "cls": [
+          "uni-nup",
+          "uni-page",
+          "uni-page-spacer-bottom",
+          "redesign-patch",
+          "uni-nup__headline",
+          "font-h3"
+        ],
+        "text": "More updates"
+      },
+      {
+        "tag": "section",
+        "cls": [
+          "uni-landing-newsletter",
+          "uni-landing-newsletter--color",
+          "uni-page",
+          "uni-grid",
+          "uni-landing-newsletter__inner",
+          "uni-landing-newsletter__content",
+          "uni-landing-newsletter__form-group"
+        ],
+        "ch": [
+          {
+            "tag": "h2",
+            "cls": ["uni-landing-newsletter__title", "font-h3"],
+            "text": "Get the latest news from Google in your inbox"
+          },
+          {
+            "tag": "p",
+            "cls": ["uni-landing-newsletter__description", "font-body-m"],
+            "text": "Sign up for our newsletters with product updates, event information, special offers, and more."
+          },
+          {
+            "tag": "div",
+            "cls": ["uni-landing-newsletter-success", "is-hidden"],
+            "ch": [
+              {
+                "tag": "div",
+                "cls": [
+                  "uni-landing-newsletter-success__message",
+                  "uni-landing-newsletter-success__text"
+                ],
+                "ch": [
+                  {
+                    "tag": "p",
+                    "cls": ["font-body-s"],
+                    "text": "Done. Just one step more."
+                  },
+                  {
                     "tag": "p",
                     "cls": [
-                      "uni-landing-newsletter-success__final-text",
-                      "font-body-s"
+                      "uni-landing-newsletter-success__text-confirm",
+                      "font-body-xs"
                     ],
-                    "text": "You can also subscribe with a ."
+                    "text": "Check your inbox to confirm your subscription."
                   }
                 ]
               },
               {
                 "tag": "p",
-                "cls": ["uni-landing-newsletter__info", "font-caption"],
-                "ch": [
-                  {
-                    "tag": "#text",
-                    "text": "Your information will be used in accordance with"
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["uni-anchor"],
-                    "text": "Google's privacy policy.",
-                    "href": "https://policies.google.com/privacy"
-                  },
-                  { "tag": "#text", "text": "You may opt out at any time." }
-                ]
+                "cls": [
+                  "uni-landing-newsletter-success__final-text",
+                  "font-body-s"
+                ],
+                "text": "You can also subscribe with a ."
               }
             ]
           },
           {
-            "tag": "h3",
-            "cls": [
-              "uni-nup",
-              "uni-page",
-              "uni-page-spacer-bottom",
-              "redesign-patch",
-              "uni-nup__headline",
-              "font-h3"
-            ],
-            "text": "Tips and tricks"
+            "tag": "p",
+            "cls": ["uni-landing-newsletter__info", "font-caption"],
+            "ch": [
+              {
+                "tag": "#text",
+                "text": "Your information will be used in accordance with"
+              },
+              {
+                "tag": "a",
+                "cls": ["uni-anchor"],
+                "text": "Google's privacy policy.",
+                "href": "https://policies.google.com/privacy"
+              },
+              { "tag": "#text", "text": "You may opt out at any time." }
+            ]
           }
         ]
       },
       {
-        "tag": "footer",
-        "cls": ["uni-footer", "redesign-patch"],
-        "ch": [
-          { "tag": "a", "href": "https://www.google.com" },
-          {
-            "tag": "ul",
-            "cls": ["uni-footer__main-links"],
-            "ch": [
-              {
-                "tag": "li",
-                "cls": ["uni-footer__links-item"],
-                "text": "Privacy"
-              },
-              {
-                "tag": "li",
-                "cls": ["uni-footer__links-item"],
-                "text": "Terms"
-              },
-              { "tag": "li", "cls": ["uni-footer__links-item"], "text": "Help" }
-            ]
-          }
-        ]
+        "tag": "h3",
+        "cls": [
+          "uni-nup",
+          "uni-page",
+          "uni-page-spacer-bottom",
+          "redesign-patch",
+          "uni-nup__headline",
+          "font-h3"
+        ],
+        "text": "Tips and tricks"
       }
     ]
   }
