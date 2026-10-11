@@ -230,9 +230,10 @@ class PostMatcher {
     },
   );
 
-  /// Labels the fields that are evident in [postNode]: the only link, image
-  /// or time, and the only heading of the highest level as the title. A link
-  /// in the title is the link of the post, even when there are other links.
+  /// Labels the fields that are evident in [postNode]: the only link or time,
+  /// the only image at the shallowest level as the thumbnail, and the only
+  /// heading of the highest level as the title. A link in the title is the
+  /// link of the post, even when there are other links.
   ///
   /// A heading around a single node is shown as that node, so the innermost
   /// such node is labeled. As a result, a title that is a link is labeled on
@@ -255,7 +256,11 @@ class PostMatcher {
     }
 
     label(PostField.link, only(nodes.where((n) => n.href != null)));
-    label(PostField.thumbnail, only(nodes.where((n) => n.isImage)));
+    final images = nodes.where((n) => n.isImage).toList();
+    if (images.isNotEmpty) {
+      final top = images.map((n) => n.depth).reduce(min);
+      label(PostField.thumbnail, only(images.where((n) => n.depth == top)));
+    }
     label(PostField.pubDate, only(nodes.where((n) => n.tag == 'time')));
     // The level of a heading (1 for h1), or null for other nodes.
     int? level(PageNode n) => switch (RegExp(r'^h([1-6])$').firstMatch(n.tag)) {
