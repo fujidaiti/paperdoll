@@ -232,10 +232,10 @@ class PostMatcher {
 
   /// Labels the fields that are evident in [postNode]: the only link or time,
   /// the only image at the shallowest level as the thumbnail, and the only
-  /// heading of the highest level as the title. Without headings, the only
-  /// text is the title, such as the text of a post that is a single link. A
-  /// link in the title is the link of the post, even when there are other
-  /// links.
+  /// heading of the highest level as the title. A link in the title is the
+  /// link of the post, even when there are other links. Without headings,
+  /// the title is the only text, such as the text of a post that is a single
+  /// link, or else the text of the labeled link.
   ///
   /// Links to the same URL count as one link, such as the image and the
   /// title of a card. Of those, the one with text is labeled, since it is
@@ -283,19 +283,21 @@ class PostMatcher {
       null => null,
     };
     final headings = nodes.where((n) => level(n) != null).toList();
-    var title = headings.isEmpty
-        ? only(
+    PageNode? title;
+    if (headings.isEmpty) {
+      title =
+          only(
             nodes.where((n) => n.children.isEmpty && n.textContent.isNotEmpty),
-          )
-        : only(
-            headings.where(
-              (n) => level(n) == headings.map((n) => level(n)!).reduce(min),
-            ),
-          );
-    if (title != null) {
-      while (title!.children.length == 1) {
+          ) ??
+          matcher.matchField(postNode, PostField.link);
+    } else {
+      final top = headings.map((n) => level(n)!).reduce(min);
+      title = only(headings.where((n) => level(n) == top));
+      while (title != null && title.children.length == 1) {
         title = title.children.single;
       }
+    }
+    if (title != null) {
       label(PostField.title, title);
       if (identical(matcher.matchField(postNode, PostField.title), title)) {
         label(PostField.link, onlyLink(nodes.where(title.contains)));
