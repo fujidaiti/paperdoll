@@ -72,26 +72,35 @@ bool _anyInside(PageNode node, bool Function(PageNode n) test) =>
 /// least all of [classes], so that state classes such as "featured" on some
 /// posts do not break the match. [index] picks the n-th of those matches
 /// (zero-based); a step without an index keeps all of them.
+///
+/// A step with [has] matches only the nodes with a child that [has] matches,
+/// such as the links around one kind of card when the links of all kinds of
+/// cards have the same classes.
 class SelectorStep {
-  const new({required this.tag, required this.classes, this.index});
+  const new({required this.tag, required this.classes, this.index, this.has});
 
   final String tag;
   final List<String> classes;
   final int? index;
+  final SelectorStep? has;
 
   bool matches(PageNode node) =>
-      node.tag == tag && classes.every(node.classes.contains);
+      node.tag == tag &&
+      classes.every(node.classes.contains) &&
+      (has == null || node.children.any(has!.matches));
 
   Map<String, Object?> toJson() => {
     'tag': tag,
     if (classes.isNotEmpty) 'cls': classes,
     'nth': ?index,
+    'has': ?has?.toJson(),
   };
 
   @override
   String toString() => [
     tag,
     ...classes.map((c) => '.$c'),
+    if (has case final has?) ':has(> $has)',
     if (index case final index?) ':nth($index)',
   ].join();
 }
@@ -106,7 +115,10 @@ class SelectorStep {
 /// A sibling shares the shape of [node] when it is of the same kind and so
 /// are most of its children. Others, such as a sidebar widget or a grid of
 /// several posts, do not reduce the classes. If the shared classes still
-/// match such a sibling, the step keeps all classes of [node].
+/// match such a sibling, the step keeps all classes of [node], or else
+/// requires a child that the siblings of the same shape have and the others
+/// do not. If there is no such child,
+/// the step gets an index and matches [node] only.
 ///
 /// When [node] has no such siblings but is the only content with text of its
 /// parent, such as a link in a table row next to a spacer image, the parent
@@ -142,39 +154,70 @@ List<SelectorStep> buildSelector(
       general = general.parent;
     }
     if (!hasSameShapeSibling(general)) {
-      general = node;
+      general = null;
     }
   }
 
   final steps = <SelectorStep>[];
   for (var n = node; !identical(n, ancestor); n = n.parent!) {
-    final isGeneral = identical(n, general);
-    var step = SelectorStep(tag: n.tag, classes: n.classes);
-    if (isGeneral) {
+    SelectorStep? generalStep;
+    if (identical(n, general)) {
       final siblings = n.parent!.children;
-      final shared = SelectorStep(
-        tag: n.tag,
-        classes: [
-          for (final c in n.classes)
-            if (siblings
-                .where((s) => isSameShape(n, s))
-                .every((s) => s.classes.contains(c)))
-              c,
-        ],
-      );
-      if (siblings.every((s) => !shared.matches(s) || isSameShape(n, s))) {
-        step = shared;
-      }
+      final sameShape = siblings.where((s) => isSameShape(n, s)).toList();
+      final classes = [
+        for (final c in n.classes)
+          if (sameShape.every((s) => s.classes.contains(c))) c,
+      ];
+      // The first step that matches exactly the siblings of the same shape.
+      generalStep =
+          [
+                SelectorStep(tag: n.tag, classes: classes),
+                SelectorStep(tag: n.tag, classes: n.classes),
+                // Only when each of them sees the same siblings of its shape,
+                // or else a child can pick some posts of one kind with some
+                // of another, such as a featured post with one other post.
+                if (sameShape.every(
+                  (s) => siblings
+                      .where((t) => isSameShape(s, t))
+                      .every(sameShape.contains),
+                ))
+                  for (final child in n.children)
+                    SelectorStep(
+                      tag: n.tag,
+                      classes: classes,
+                      has: SelectorStep(
+                        tag: child.tag,
+                        classes: [
+                          for (final c in child.classes)
+                            if (sameShape.every(
+                              (s) => s.children.any(
+                                (d) =>
+                                    d.tag == child.tag && d.classes.contains(c),
+                              ),
+                            ))
+                              c,
+                        ],
+                      ),
+                    ),
+              ]
+              .where(
+                (step) => siblings.every(
+                  (s) => step.matches(s) == sameShape.contains(s),
+                ),
+              )
+              .firstOrNull;
     }
+    final step = SelectorStep(tag: n.tag, classes: n.classes);
     final matches = n.parent!.children.where(step.matches).toList();
     steps.add(
-      matches.length > 1 && !isGeneral
-          ? SelectorStep(
-              tag: n.tag,
-              classes: n.classes,
-              index: matches.indexOf(n),
-            )
-          : step,
+      generalStep ??
+          (matches.length > 1
+              ? SelectorStep(
+                  tag: n.tag,
+                  classes: n.classes,
+                  index: matches.indexOf(n),
+                )
+              : step),
     );
   }
   return steps.reversed.toList();
