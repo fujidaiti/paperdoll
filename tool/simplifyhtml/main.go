@@ -40,6 +40,7 @@ import (
 	"regexp"
 	"slices"
 	"sort"
+	"strconv"
 	"strings"
 
 	"golang.org/x/net/html"
@@ -213,20 +214,27 @@ var headingTags = map[string]bool{
 
 var displayNone = regexp.MustCompile(`display\s*:\s*none`)
 
-// pixelSize matches a CSS width or height of one pixel.
-var pixelSize = regexp.MustCompile(`(^|[;\s])(width|height)\s*:\s*1px`)
+// cssSize matches a CSS width or height in pixels.
+var cssSize = regexp.MustCompile(`(?:^|[;\s])(width|height)\s*:\s*(\d+)px`)
 
-// isPixel reports whether the image n is one pixel wide or high, such as a
-// tracking pixel or a spacer, which shows no content. A size of zero is not
-// a sign of it, since some pages size their images by CSS after setting
-// zero in the attributes.
-func isPixel(n *html.Node) bool {
+// isSmall reports whether the image n shows no content because of its size:
+// it is one pixel wide or high, such as a tracking pixel or a spacer, or it is
+// at most 96 pixels on both sides, such as an icon, a bullet or an avatar. The
+// size comes from the attributes or the inline style. A size of zero counts as
+// unknown, since some pages size their images by CSS after setting zero in the
+// attributes.
+func isSmall(n *html.Node) bool {
+	size := map[string]int{}
 	for _, key := range []string{"width", "height"} {
-		if v := strings.TrimSpace(attr(n, key)); v == "1" || v == "1px" {
-			return true
+		if v, err := strconv.Atoi(strings.TrimSuffix(strings.TrimSpace(attr(n, key)), "px")); err == nil {
+			size[key] = v
 		}
 	}
-	return pixelSize.MatchString(attr(n, "style"))
+	for _, m := range cssSize.FindAllStringSubmatch(attr(n, "style"), -1) {
+		size[m[1]], _ = strconv.Atoi(m[2])
+	}
+	w, h := size["width"], size["height"]
+	return w == 1 || h == 1 || w > 0 && w <= 96 && h > 0 && h <= 96
 }
 
 // convert returns the simplified node for n, or nil when n has no visible
@@ -244,7 +252,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 	switch tag {
 	case "img":
 		node.Src = s.imageSource(n)
-		if node.Src == "" || isPixel(n) {
+		if node.Src == "" || isSmall(n) {
 			return nil
 		}
 		node.Alt = normalizeSpace(attr(n, "alt"))

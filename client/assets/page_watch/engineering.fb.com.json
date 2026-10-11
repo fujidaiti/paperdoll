@@ -1282,165 +1282,73 @@
                 "ch": [
                   {
                     "tag": "li",
-                    "cls": ["stay-connected-item"],
+                    "cls": [
+                      "stay-connected-item",
+                      "stay-connected-item-right",
+                      "stay-connected-label"
+                    ],
+                    "text": "Engineering at Meta - X"
+                  },
+                  {
+                    "tag": "li",
+                    "cls": ["stay-connected-item", "stay-connected-item-right"],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "footer-fb-engineering",
-                          "stay-connected-item-left"
-                        ],
-                        "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/meta_logo.png",
-                        "alt": "footer-fb-engineering"
-                      },
-                      {
                         "tag": "div",
-                        "cls": [
-                          "stay-connected-item-right",
-                          "stay-connected-label"
-                        ],
-                        "text": "Engineering at Meta - X"
-                      }
+                        "cls": ["stay-connected-label"],
+                        "text": "AI at Meta"
+                      },
+                      { "tag": "a", "href": "https://ai.meta.com/blog/" }
                     ]
                   },
                   {
                     "tag": "li",
-                    "cls": ["stay-connected-item"],
+                    "cls": ["stay-connected-item", "stay-connected-item-right"],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "footer-fb-engineering",
-                          "stay-connected-item-left"
-                        ],
-                        "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/meta_logo.png",
-                        "alt": "footer-AI"
-                      },
-                      {
                         "tag": "div",
-                        "cls": ["stay-connected-item-right"],
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["stay-connected-label"],
-                            "text": "AI at Meta"
-                          },
-                          { "tag": "a", "href": "https://ai.meta.com/blog/" }
-                        ]
-                      }
+                        "cls": ["stay-connected-label"],
+                        "text": "Meta Quest Blog"
+                      },
+                      { "tag": "a", "href": "https://www.meta.com/blog/quest/" }
                     ]
                   },
                   {
                     "tag": "li",
-                    "cls": ["stay-connected-item"],
+                    "cls": ["stay-connected-item", "stay-connected-item-right"],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "footer-fb-engineering",
-                          "stay-connected-item-left"
-                        ],
-                        "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/meta_logo.png",
-                        "alt": "footer-developers"
-                      },
-                      {
                         "tag": "div",
-                        "cls": ["stay-connected-item-right"],
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["stay-connected-label"],
-                            "text": "Meta Quest Blog"
-                          },
-                          {
-                            "tag": "a",
-                            "href": "https://www.meta.com/blog/quest/"
-                          }
-                        ]
-                      }
+                        "cls": ["stay-connected-label"],
+                        "text": "Meta for Developers"
+                      },
+                      { "tag": "a", "href": "https://developers.facebook.com/" }
                     ]
                   },
                   {
                     "tag": "li",
-                    "cls": ["stay-connected-item"],
+                    "cls": ["stay-connected-item", "stay-connected-item-right"],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "footer-fb-engineering",
-                          "stay-connected-item-left"
-                        ],
-                        "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/meta_logo.png",
-                        "alt": "footer-developers"
-                      },
-                      {
                         "tag": "div",
-                        "cls": ["stay-connected-item-right"],
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["stay-connected-label"],
-                            "text": "Meta for Developers"
-                          },
-                          {
-                            "tag": "a",
-                            "href": "https://developers.facebook.com/"
-                          }
-                        ]
-                      }
+                        "cls": ["stay-connected-label"],
+                        "text": "Meta Bug Bounty"
+                      },
+                      { "tag": "a", "href": "https://bugbounty.meta.com/" }
                     ]
                   },
                   {
                     "tag": "li",
-                    "cls": ["stay-connected-item"],
+                    "cls": ["stay-connected-item", "stay-connected-item-right"],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "footer-fb-engineering",
-                          "stay-connected-item-left"
-                        ],
-                        "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/meta_logo.png",
-                        "alt": "footer-bug-bounty"
+                        "tag": "div",
+                        "cls": ["stay-connected-label"],
+                        "text": "RSS"
                       },
                       {
-                        "tag": "div",
-                        "cls": ["stay-connected-item-right"],
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["stay-connected-label"],
-                            "text": "Meta Bug Bounty"
-                          },
-                          { "tag": "a", "href": "https://bugbounty.meta.com/" }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "li",
-                    "cls": ["stay-connected-item"],
-                    "ch": [
-                      {
-                        "tag": "img",
-                        "cls": ["stay-connected-item-left"],
-                        "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/rss.png",
-                        "alt": "footer-rss"
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["stay-connected-item-right"],
-                        "ch": [
-                          {
-                            "tag": "div",
-                            "cls": ["stay-connected-label"],
-                            "text": "RSS"
-                          },
-                          {
-                            "tag": "a",
-                            "href": "https://code.facebook.com/posts/rss/"
-                          }
-                        ]
+                        "tag": "a",
+                        "href": "https://code.facebook.com/posts/rss/"
                       }
                     ]
                   }
@@ -1474,83 +1382,28 @@
                     "ch": [
                       {
                         "tag": "li",
-                        "cls": ["opensource-cat"],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/android.png",
-                            "alt": "android"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["opensource-cap"],
-                            "text": "ANDROID"
-                          }
-                        ]
+                        "cls": ["opensource-cat", "opensource-cap"],
+                        "text": "ANDROID"
                       },
                       {
                         "tag": "li",
-                        "cls": ["opensource-cat"],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/ios.png",
-                            "alt": "ios"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["opensource-cap"],
-                            "text": "iOS"
-                          }
-                        ]
+                        "cls": ["opensource-cat", "opensource-cap"],
+                        "text": "iOS"
                       },
                       {
                         "tag": "li",
-                        "cls": ["opensource-cat"],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/web.png",
-                            "alt": "web"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["opensource-cap"],
-                            "text": "WEB"
-                          }
-                        ]
+                        "cls": ["opensource-cat", "opensource-cap"],
+                        "text": "WEB"
                       },
                       {
                         "tag": "li",
-                        "cls": ["opensource-cat"],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/backend.png",
-                            "alt": "backend"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["opensource-cap"],
-                            "text": "BACKEND"
-                          }
-                        ]
+                        "cls": ["opensource-cat", "opensource-cap"],
+                        "text": "BACKEND"
                       },
                       {
                         "tag": "li",
-                        "cls": ["opensource-cat"],
-                        "ch": [
-                          {
-                            "tag": "img",
-                            "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/hardware.png",
-                            "alt": "hardware"
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["opensource-cap"],
-                            "text": "HARDWARE"
-                          }
-                        ]
+                        "cls": ["opensource-cat", "opensource-cap"],
+                        "text": "HARDWARE"
                       }
                     ]
                   }
@@ -1581,17 +1434,7 @@
                 "tag": "div",
                 "cls": ["col-md-5", "meta-logo-container"],
                 "ch": [
-                  {
-                    "tag": "a",
-                    "href": "https://about.facebook.com/",
-                    "ch": [
-                      {
-                        "tag": "img",
-                        "src": "https://engineering.fb.com/wp-content/themes/code-fb-com/img/meta_logo_full.svg",
-                        "alt": "Meta"
-                      }
-                    ]
-                  },
+                  { "tag": "a", "href": "https://about.facebook.com/" },
                   {
                     "tag": "div",
                     "cls": ["widget", "widget_text", "textwidget"],
