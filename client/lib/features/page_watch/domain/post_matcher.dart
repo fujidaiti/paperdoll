@@ -21,15 +21,22 @@ enum PostField {
 
   /// Whether [node] can provide a sensible value for this field.
   ///
-  /// A title or a description is plain text, so it holds no image, embed
-  /// or date. An image or a date alone is not a body, nor is a link without
-  /// content, but an embed alone is, such as the video of a video post. A
-  /// date in text is a short text with a digit, such as "Oct 1, 2026" or "3
-  /// hours ago".
+  /// A title is a single text, so it is an element without children, which
+  /// is shown as one line rather than a card. A description is plain text,
+  /// so it holds no image, embed or date. An image or a date alone is not a
+  /// body, nor is a link without content, but an embed alone is, such as the
+  /// video of a video post. A date in text is a short text with a digit, such
+  /// as "Oct 1, 2026" or "3 hours ago".
   bool accepts(PageNode node) {
     final text = node.textContent;
     return switch (this) {
-      title || description =>
+      title =>
+        node.children.isEmpty &&
+            text.isNotEmpty &&
+            node.tag != 'time' &&
+            !node.isImage &&
+            !node.isEmbed,
+      description =>
         text.isNotEmpty &&
             !_anyInside(node, (n) => n.tag == 'time' || n.isImage || n.isEmbed),
       body =>
@@ -235,7 +242,7 @@ class PostMatcher {
   /// heading of the highest level as the title. A link in the title is the
   /// link of the post, even when there are other links. Without headings,
   /// the title is the only text, such as the text of a post that is a single
-  /// link, or else the text of the labeled link.
+  /// link, or else the text of the labeled link, unless the link is a card.
   ///
   /// Links to the same URL count as one link, such as the image and the
   /// title of a card. Of those, the one with text is labeled, since it is
