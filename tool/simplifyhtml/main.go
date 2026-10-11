@@ -264,6 +264,41 @@ func isSmall(n *html.Node) bool {
 	return w == 1 || h == 1 || w > 0 && w <= 96 && h > 0 && h <= 96
 }
 
+// Class names generated from hashes, which change when a site is rebuilt:
+// "Name-sc-<hash>-N" by styled-components, followed by a class that is only
+// a hash of its styles, such as "hygVWX", and "File-module__<hash>__name" by
+// CSS modules.
+var (
+	styledClass = regexp.MustCompile(`^(.+)-sc-[0-9a-f]+-\d+$`)
+	styleHash   = regexp.MustCompile(`^[A-Za-z]+$`)
+	moduleClass = regexp.MustCompile(`^(.+-module)__[A-Za-z0-9_-]{6}__(.+)$`)
+)
+
+// stableClasses returns the class names of the attribute value class
+// without their generated hashes, so that selectors keep matching a page
+// after its site is rebuilt.
+func stableClasses(class string) []string {
+	var classes []string
+	afterStyled := false
+	for c := range strings.FieldsSeq(class) {
+		if afterStyled && styleHash.MatchString(c) {
+			afterStyled = false
+			continue
+		}
+		afterStyled = false
+		if m := styledClass.FindStringSubmatch(c); m != nil {
+			c = m[1]
+			afterStyled = true
+		} else if m := moduleClass.FindStringSubmatch(c); m != nil {
+			c = m[1] + "__" + m[2]
+		}
+		if !slices.Contains(classes, c) {
+			classes = append(classes, c)
+		}
+	}
+	return classes
+}
+
 // isDropped reports whether the element n and its content are never shown.
 func isDropped(n *html.Node) bool {
 	return droppedTags[n.Data] || hasAttr(n, "hidden") || displayNone.MatchString(attr(n, "style"))
@@ -280,7 +315,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 	if isDropped(n) {
 		return nil
 	}
-	node := &Node{Tag: tag, Classes: strings.Fields(attr(n, "class"))}
+	node := &Node{Tag: tag, Classes: stableClasses(attr(n, "class"))}
 	switch tag {
 	case "img":
 		node.Src = s.imageSource(n)

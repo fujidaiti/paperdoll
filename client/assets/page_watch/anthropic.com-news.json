@@ -7,17 +7,17 @@
       {
         "tag": "section",
         "cls": [
-          "HeroTwoColumn-module-scss-module__pM-nba__landingPageListHeader",
-          "LandingPageSection-module-scss-module__ZSMdoa__root",
+          "HeroTwoColumn-module-scss-module__landingPageListHeader",
+          "LandingPageSection-module-scss-module__root",
           "bg-default",
           "page-wrapper",
-          "HeroTwoColumn-module-scss-module__pM-nba__root"
+          "HeroTwoColumn-module-scss-module__root"
         ],
         "ch": [
           {
             "tag": "h1",
             "cls": [
-              "HeroTwoColumn-module-scss-module__pM-nba__titleSubhead",
+              "HeroTwoColumn-module-scss-module__titleSubhead",
               "headline-1"
             ],
             "text": "Newsroom"
@@ -25,9 +25,9 @@
           {
             "tag": "div",
             "cls": [
-              "HeroTwoColumn-module-scss-module__pM-nba__bodyCtas",
-              "HeroTwoColumn-module-scss-module__pM-nba__ctaWrapper",
-              "HeroTwoColumn-module-scss-module__pM-nba__ctaList"
+              "HeroTwoColumn-module-scss-module__bodyCtas",
+              "HeroTwoColumn-module-scss-module__ctaWrapper",
+              "HeroTwoColumn-module-scss-module__ctaList"
             ],
             "ch": [
               {
@@ -37,8 +37,8 @@
                   {
                     "tag": "a",
                     "cls": [
-                      "ButtonTextLink-module-scss-module__q8IAwW__textLink",
-                      "HeroTwoColumn-module-scss-module__pM-nba__listLink"
+                      "ButtonTextLink-module-scss-module__textLink",
+                      "HeroTwoColumn-module-scss-module__listLink"
                     ],
                     "text": "press@anthropic.com",
                     "href": "mailto:press@anthropic.com"
@@ -52,8 +52,8 @@
                   {
                     "tag": "a",
                     "cls": [
-                      "ButtonTextLink-module-scss-module__q8IAwW__textLink",
-                      "HeroTwoColumn-module-scss-module__pM-nba__listLink"
+                      "ButtonTextLink-module-scss-module__textLink",
+                      "HeroTwoColumn-module-scss-module__listLink"
                     ],
                     "text": "How to get support",
                     "href": "https://support.claude.com/en/articles/9015913-how-to-get-support"
@@ -67,8 +67,8 @@
                   {
                     "tag": "a",
                     "cls": [
-                      "ButtonTextLink-module-scss-module__q8IAwW__textLink",
-                      "HeroTwoColumn-module-scss-module__pM-nba__listLink"
+                      "ButtonTextLink-module-scss-module__textLink",
+                      "HeroTwoColumn-module-scss-module__listLink"
                     ],
                     "text": "Download press kit",
                     "href": "https://anthropic.com/press-kit"
@@ -82,43 +82,43 @@
       {
         "tag": "section",
         "cls": [
-          "LandingPageSection-module-scss-module__ZSMdoa__root",
+          "LandingPageSection-module-scss-module__root",
           "bg-default",
-          "LandingPageSection-module-scss-module__ZSMdoa__flushTop",
+          "LandingPageSection-module-scss-module__flushTop",
           "page-wrapper",
-          "FeaturedGrid-module-scss-module__W1FydW__root"
+          "FeaturedGrid-module-scss-module__root"
         ],
         "ch": [
           {
             "tag": "a",
-            "cls": ["FeaturedGrid-module-scss-module__W1FydW__content"],
+            "cls": ["FeaturedGrid-module-scss-module__content"],
             "href": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
             "ch": [
               {
                 "tag": "h2",
                 "cls": [
                   "headline-4",
-                  "FeaturedGrid-module-scss-module__W1FydW__featuredTitle"
+                  "FeaturedGrid-module-scss-module__featuredTitle"
                 ],
                 "text": "Introducing Claude Fable 5.1 and Claude Mythos 5.1"
               },
               {
                 "tag": "div",
                 "cls": [
-                  "FeaturedGrid-module-scss-module__W1FydW__featuredItemContent",
-                  "FeaturedGrid-module-scss-module__W1FydW__gridItem",
-                  "FeaturedGrid-module-scss-module__W1FydW__featured"
+                  "FeaturedGrid-module-scss-module__featuredItemContent",
+                  "FeaturedGrid-module-scss-module__gridItem",
+                  "FeaturedGrid-module-scss-module__featured"
                 ],
                 "ch": [
                   {
                     "tag": "div",
-                    "cls": ["FeaturedGrid-module-scss-module__W1FydW__meta"],
+                    "cls": ["FeaturedGrid-module-scss-module__meta"],
                     "ch": [
                       { "tag": "#text", "text": "Announcements" },
                       {
                         "tag": "time",
                         "cls": [
-                          "FeaturedGrid-module-scss-module__W1FydW__date",
+                          "FeaturedGrid-module-scss-module__date",
                           "caption",
                           "bold"
                         ],
@@ -131,7 +131,7 @@
                     "cls": [
                       "body-3",
                       "serif",
-                      "FeaturedGrid-module-scss-module__W1FydW__body"
+                      "FeaturedGrid-module-scss-module__body"
                     ],
                     "text": "Our most advanced models for coding and knowledge work. Their research capabilities also offer an early glimpse of how AI models will contribute to scientific progress."
                   }
@@ -141,20 +141,20 @@
           },
           {
             "tag": "div",
-            "cls": ["FeaturedGrid-module-scss-module__W1FydW__sideItems"],
+            "cls": ["FeaturedGrid-module-scss-module__sideItems"],
             "ch": [
               {
                 "tag": "a",
                 "cls": [
-                  "FeaturedGrid-module-scss-module__W1FydW__sideLink",
-                  "FeaturedGrid-module-scss-module__W1FydW__gridItem"
+                  "FeaturedGrid-module-scss-module__sideLink",
+                  "FeaturedGrid-module-scss-module__gridItem"
                 ],
                 "href": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
                 "ch": [
                   {
                     "tag": "time",
                     "cls": [
-                      "FeaturedGrid-module-scss-module__W1FydW__date",
+                      "FeaturedGrid-module-scss-module__date",
                       "caption",
                       "bold"
                     ],
@@ -164,7 +164,7 @@
                     "tag": "h4",
                     "cls": [
                       "headline-6",
-                      "FeaturedGrid-module-scss-module__W1FydW__title"
+                      "FeaturedGrid-module-scss-module__title"
                     ],
                     "text": "Measurements for understanding the pace of AI development inside frontier labs"
                   },
@@ -173,7 +173,7 @@
                     "cls": [
                       "body-3",
                       "serif",
-                      "FeaturedGrid-module-scss-module__W1FydW__body"
+                      "FeaturedGrid-module-scss-module__body"
                     ],
                     "text": "Today, the world can’t see what’s going on inside AI labs. Anthropic is proposing new metrics that would give the public visibility into frontier AI development."
                   }
@@ -182,20 +182,20 @@
               {
                 "tag": "a",
                 "cls": [
-                  "FeaturedGrid-module-scss-module__W1FydW__sideLink",
-                  "FeaturedGrid-module-scss-module__W1FydW__gridItem"
+                  "FeaturedGrid-module-scss-module__sideLink",
+                  "FeaturedGrid-module-scss-module__gridItem"
                 ],
                 "href": "https://www.anthropic.com/threat-intelligence-report-september-2026",
                 "ch": [
                   {
                     "tag": "div",
-                    "cls": ["FeaturedGrid-module-scss-module__W1FydW__meta"],
+                    "cls": ["FeaturedGrid-module-scss-module__meta"],
                     "ch": [
                       { "tag": "#text", "text": "Announcements" },
                       {
                         "tag": "time",
                         "cls": [
-                          "FeaturedGrid-module-scss-module__W1FydW__date",
+                          "FeaturedGrid-module-scss-module__date",
                           "caption",
                           "bold"
                         ],
@@ -207,7 +207,7 @@
                     "tag": "h4",
                     "cls": [
                       "headline-6",
-                      "FeaturedGrid-module-scss-module__W1FydW__title"
+                      "FeaturedGrid-module-scss-module__title"
                     ],
                     "text": "Detecting and countering misuse of AI: September 2026"
                   },
@@ -216,7 +216,7 @@
                     "cls": [
                       "body-3",
                       "serif",
-                      "FeaturedGrid-module-scss-module__W1FydW__body"
+                      "FeaturedGrid-module-scss-module__body"
                     ],
                     "text": "Over the past eight months, our Threat Intelligence team identified and disrupted operations in which threat actors tried to use Claude for malicious activity. In this report, we share case studies from those operations and describe how malicious use of Claude has evolved since our previous threat reports in 2025."
                   }
@@ -225,20 +225,20 @@
               {
                 "tag": "a",
                 "cls": [
-                  "FeaturedGrid-module-scss-module__W1FydW__sideLink",
-                  "FeaturedGrid-module-scss-module__W1FydW__gridItem"
+                  "FeaturedGrid-module-scss-module__sideLink",
+                  "FeaturedGrid-module-scss-module__gridItem"
                 ],
                 "href": "https://www.anthropic.com/news/improving-alignment-security-efforts",
                 "ch": [
                   {
                     "tag": "div",
-                    "cls": ["FeaturedGrid-module-scss-module__W1FydW__meta"],
+                    "cls": ["FeaturedGrid-module-scss-module__meta"],
                     "ch": [
                       { "tag": "#text", "text": "Announcements" },
                       {
                         "tag": "time",
                         "cls": [
-                          "FeaturedGrid-module-scss-module__W1FydW__date",
+                          "FeaturedGrid-module-scss-module__date",
                           "caption",
                           "bold"
                         ],
@@ -250,7 +250,7 @@
                     "tag": "h4",
                     "cls": [
                       "headline-6",
-                      "FeaturedGrid-module-scss-module__W1FydW__title"
+                      "FeaturedGrid-module-scss-module__title"
                     ],
                     "text": "Improving our alignment and security efforts"
                   },
@@ -259,7 +259,7 @@
                     "cls": [
                       "body-3",
                       "serif",
-                      "FeaturedGrid-module-scss-module__W1FydW__body"
+                      "FeaturedGrid-module-scss-module__body"
                     ],
                     "text": "On July 30, we reported three incidents in which Claude models gained unauthorized access to real computer systems. We are conducting an in-depth analysis of both incidents, and planning to work with METR for an independent review. In the meantime, we’re sharing some of the changes we’ve made over the past month."
                   }
@@ -272,55 +272,46 @@
       {
         "tag": "section",
         "cls": [
-          "LandingPageSection-module-scss-module__ZSMdoa__root",
+          "LandingPageSection-module-scss-module__root",
           "bg-default",
-          "LandingPageSection-module-scss-module__ZSMdoa__flushTop",
+          "LandingPageSection-module-scss-module__flushTop",
           "page-wrapper"
         ],
         "ch": [
           {
             "tag": "h2",
-            "cls": [
-              "PublicationList-module-scss-module__KxYrHG__header",
-              "headline-4"
-            ],
+            "cls": ["PublicationList-module-scss-module__header", "headline-4"],
             "text": "News"
           },
           {
             "tag": "div",
             "cls": [
-              "PublicationList-module-scss-module__KxYrHG__root",
-              "PublicationList-module-scss-module__KxYrHG__content"
+              "PublicationList-module-scss-module__root",
+              "PublicationList-module-scss-module__content"
             ],
             "ch": [
               {
                 "tag": "div",
-                "cls": [
-                  "PublicationList-module-scss-module__KxYrHG__listHeader"
-                ],
+                "cls": ["PublicationList-module-scss-module__listHeader"],
                 "text": "DateCategoryTitle"
               },
               {
                 "tag": "ul",
-                "cls": ["PublicationList-module-scss-module__KxYrHG__list"],
+                "cls": ["PublicationList-module-scss-module__list"],
                 "ch": [
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/accenture-embedded-evaluation",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Sep 18, 2026"
@@ -336,21 +327,17 @@
                   },
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/life-sciences-verification-program",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Sep 17, 2026"
@@ -366,21 +353,17 @@
                   },
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/enterprise-frontier-safeguards",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Sep 1, 2026"
@@ -396,21 +379,17 @@
                   },
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/improving-alignment-security-efforts",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Aug 31, 2026"
@@ -426,21 +405,17 @@
                   },
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Aug 27, 2026"
@@ -456,21 +431,17 @@
                   },
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/expanding-support-for-scientists",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Aug 27, 2026"
@@ -486,21 +457,17 @@
                   },
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/wellbeing-research-grants",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Aug 25, 2026"
@@ -516,21 +483,17 @@
                   },
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/claude-text-watermark",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Aug 14, 2026"
@@ -546,21 +509,17 @@
                   },
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Aug 7, 2026"
@@ -576,21 +535,17 @@
                   },
                   {
                     "tag": "a",
-                    "cls": [
-                      "PublicationList-module-scss-module__KxYrHG__listItem"
-                    ],
+                    "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/tino-cuellar",
                     "ch": [
                       {
                         "tag": "div",
-                        "cls": [
-                          "PublicationList-module-scss-module__KxYrHG__meta"
-                        ],
+                        "cls": ["PublicationList-module-scss-module__meta"],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": [
-                              "PublicationList-module-scss-module__KxYrHG__date",
+                              "PublicationList-module-scss-module__date",
                               "body-3"
                             ],
                             "text": "Aug 4, 2026"
@@ -609,11 +564,11 @@
               {
                 "tag": "a",
                 "cls": [
-                  "Button-module-scss-module__f9ZZrG__button",
-                  "Button-module-scss-module__f9ZZrG__large",
-                  "Button-module-scss-module__f9ZZrG__tertiary",
-                  "Button-module-scss-module__f9ZZrG__iconRight",
-                  "PublicationList-module-scss-module__KxYrHG__seeMore"
+                  "Button-module-scss-module__button",
+                  "Button-module-scss-module__large",
+                  "Button-module-scss-module__tertiary",
+                  "Button-module-scss-module__iconRight",
+                  "PublicationList-module-scss-module__seeMore"
                 ],
                 "text": "See more",
                 "href": "https://www.anthropic.com/news"
