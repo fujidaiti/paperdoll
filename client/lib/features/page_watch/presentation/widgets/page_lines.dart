@@ -290,7 +290,8 @@ Widget _frameLine(PageNode first, Widget content) => Container(
 );
 
 /// A node with children shown as one block: its own lines and, nested in
-/// it, a block for each child with children. A tap anywhere on the block
+/// it, a block for each child with children or [tappable] on its own line.
+/// A tap anywhere on the block
 /// that is not on a nested block reports [node], so the block is the unit
 /// that is selected. The lines themselves cannot be tapped. A block whose
 /// node is not [tappable] cannot be tapped either, so a tap on it reaches
@@ -315,10 +316,9 @@ class const PageBlock({
     final isMixed = node.children.any((c) => c.isText);
     List<PageNode>? run;
     for (final child in node.children) {
-      if (child.children.isNotEmpty) {
-        run = null;
-        items.add(child);
-      } else if (isMixed && _inlineTags.contains(child.tag)) {
+      if (child.children.isEmpty &&
+          isMixed &&
+          _inlineTags.contains(child.tag)) {
         if (run == null) {
           items.add(run = [child]);
         } else {
@@ -326,7 +326,9 @@ class const PageBlock({
         }
       } else {
         run = null;
-        items.add([child]);
+        // A tappable line of its own, such as a link in a list of links, is
+        // a block so that it can be selected.
+        items.add(child.children.isEmpty && !tappable(child) ? [child] : child);
       }
     }
     Widget content = Column(
