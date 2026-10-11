@@ -235,6 +235,10 @@ class PostMatcher {
   /// heading of the highest level as the title. A link in the title is the
   /// link of the post, even when there are other links.
   ///
+  /// Links to the same URL count as one link, such as the image and the
+  /// title of a card. Of those, the one with text is labeled, since it is
+  /// usually the title, which can then have both labels.
+  ///
   /// A heading around a single node is shown as that node, so the innermost
   /// such node is labeled. As a result, a title that is a link is labeled on
   /// the link, which then has both labels and is selected as one element.
@@ -255,7 +259,16 @@ class PostMatcher {
       }
     }
 
-    label(PostField.link, only(nodes.where((n) => n.href != null)));
+    PageNode? onlyLink(Iterable<PageNode> nodes) {
+      final links = nodes.where((n) => n.href != null);
+      if (links.map((n) => n.href).toSet().length != 1) {
+        return null;
+      }
+      return links.where((n) => n.textContent.isNotEmpty).firstOrNull ??
+          links.first;
+    }
+
+    label(PostField.link, onlyLink(nodes));
     final images = nodes.where((n) => n.isImage).toList();
     if (images.isNotEmpty) {
       final top = images.map((n) => n.depth).reduce(min);
@@ -276,10 +289,7 @@ class PostMatcher {
         }
         label(PostField.title, title);
         if (identical(matcher.matchField(postNode, PostField.title), title)) {
-          label(
-            PostField.link,
-            only(nodes.where((n) => n.href != null && title.contains(n))),
-          );
+          label(PostField.link, onlyLink(nodes.where(title.contains)));
         }
       }
     }

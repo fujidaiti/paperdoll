@@ -213,6 +213,22 @@ var headingTags = map[string]bool{
 
 var displayNone = regexp.MustCompile(`display\s*:\s*none`)
 
+// pixelSize matches a CSS width or height of one pixel.
+var pixelSize = regexp.MustCompile(`(^|[;\s])(width|height)\s*:\s*1px`)
+
+// isPixel reports whether the image n is one pixel wide or high, such as a
+// tracking pixel or a spacer, which shows no content. A size of zero is not
+// a sign of it, since some pages size their images by CSS after setting
+// zero in the attributes.
+func isPixel(n *html.Node) bool {
+	for _, key := range []string{"width", "height"} {
+		if v := strings.TrimSpace(attr(n, key)); v == "1" || v == "1px" {
+			return true
+		}
+	}
+	return pixelSize.MatchString(attr(n, "style"))
+}
+
 // convert returns the simplified node for n, or nil when n has no visible
 // content. Text and images are the only content; everything else is
 // structure.
@@ -228,7 +244,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 	switch tag {
 	case "img":
 		node.Src = s.imageSource(n)
-		if node.Src == "" {
+		if node.Src == "" || isPixel(n) {
 			return nil
 		}
 		node.Alt = normalizeSpace(attr(n, "alt"))
