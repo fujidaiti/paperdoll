@@ -4,6 +4,13 @@
   "root": {
     "tag": "body",
     "cls": ["home", "blog", "wp-theme-signal", "multisite-radar"],
+    "el": [
+      {
+        "tag": "body",
+        "cls": ["home", "blog", "wp-theme-signal", "multisite-radar"]
+      },
+      { "tag": "main" }
+    ],
     "ch": [
       {
         "tag": "div",
@@ -29,6 +36,10 @@
               {
                 "tag": "div",
                 "cls": ["module", "open", "topics"],
+                "el": [
+                  { "tag": "div", "cls": ["module", "open"] },
+                  { "tag": "div", "cls": ["topics"] }
+                ],
                 "ch": [
                   {
                     "tag": "a",
@@ -110,7 +121,15 @@
                   "marketingCloudForm-thankyou",
                   "hidden"
                 ],
-                "text": "Thank you for subscribing to the O’Reilly Radar Trends to Watch newsletter."
+                "text": "Thank you for subscribing to the O’Reilly Radar Trends to Watch newsletter.",
+                "el": [
+                  { "tag": "div", "cls": ["module", "mobileMove"] },
+                  {
+                    "tag": "div",
+                    "cls": ["marketingCloudForm-thankyou", "hidden"]
+                  },
+                  { "tag": "h2" }
+                ]
               }
             ]
           },
@@ -129,11 +148,19 @@
                     "ch": [
                       {
                         "tag": "img",
-                        "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Will-TypeSafes-Jev-change-how-we-build-AI-applications-1600x1244.jpg"
+                        "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Will-TypeSafes-Jev-change-how-we-build-AI-applications-1600x1244.jpg",
+                        "el": [
+                          { "tag": "figure", "cls": ["article"] },
+                          { "tag": "img" }
+                        ]
                       },
                       {
                         "tag": "div",
                         "cls": ["inner", "item-text"],
+                        "el": [
+                          { "tag": "div", "cls": ["inner"] },
+                          { "tag": "div", "cls": ["item-text"] }
+                        ],
                         "ch": [
                           {
                             "tag": "p",
@@ -171,11 +198,19 @@
                     "ch": [
                       {
                         "tag": "img",
-                        "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/MCP-is-not-just-another-API-standard-1600x1244.jpg"
+                        "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/MCP-is-not-just-another-API-standard-1600x1244.jpg",
+                        "el": [
+                          { "tag": "figure", "cls": ["article"] },
+                          { "tag": "img" }
+                        ]
                       },
                       {
                         "tag": "div",
                         "cls": ["inner", "item-text"],
+                        "el": [
+                          { "tag": "div", "cls": ["inner"] },
+                          { "tag": "div", "cls": ["item-text"] }
+                        ],
                         "ch": [
                           {
                             "tag": "p",
@@ -218,11 +253,19 @@
                     "ch": [
                       {
                         "tag": "img",
-                        "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-accelerationist-case-for-frontier-pacing-1600x1244.jpg"
+                        "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-accelerationist-case-for-frontier-pacing-1600x1244.jpg",
+                        "el": [
+                          { "tag": "figure", "cls": ["article"] },
+                          { "tag": "img" }
+                        ]
                       },
                       {
                         "tag": "div",
                         "cls": ["inner", "item-text"],
+                        "el": [
+                          { "tag": "div", "cls": ["inner"] },
+                          { "tag": "div", "cls": ["item-text"] }
+                        ],
                         "ch": [
                           {
                             "tag": "p",
@@ -275,7 +318,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/AI-Sovereignty%E2%80%94Bargaining-with-Big-Tech-and-the-Promise-of-Full-Stack-Open-Source-AI-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/AI-Sovereignty%E2%80%94Bargaining-with-Big-Tech-and-the-Promise-of-Full-Stack-Open-Source-AI-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -312,7 +356,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_zero-to-agent-radar-1600x840-1-160x160.png"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_zero-to-agent-radar-1600x840-1-160x160.png",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -349,7 +394,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-post-training-process-OpenAI-used-for-ChatGPT-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-post-training-process-OpenAI-used-for-ChatGPT-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -386,7 +432,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/AI-as-an-enterprise-operating-system-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/AI-as-an-enterprise-operating-system-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -423,7 +470,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://i2.ytimg.com/vi/5EcTnkCY5ww/hqdefault.jpg"
+                            "src": "https://i2.ytimg.com/vi/5EcTnkCY5ww/hqdefault.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -460,7 +508,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Software-factories-light-and-dark-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Software-factories-light-and-dark-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -497,7 +546,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_thisweek-ai-radar-1600x840-1-160x160.png"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_thisweek-ai-radar-1600x840-1-160x160.png",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -534,7 +584,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Navigating-the-modern-data-lexicon-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Navigating-the-modern-data-lexicon-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -571,7 +622,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Architecting-for-the-knowledge-you-cant-capture-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Architecting-for-the-knowledge-you-cant-capture-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -608,7 +660,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/What-AI-can-teach-us-about-being-human-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/What-AI-can-teach-us-about-being-human-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -645,7 +698,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://i3.ytimg.com/vi/6mh6lJWTOlo/hqdefault.jpg"
+                            "src": "https://i3.ytimg.com/vi/6mh6lJWTOlo/hqdefault.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -682,7 +736,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://i4.ytimg.com/vi/_-jrb1-FdX4/hqdefault.jpg"
+                            "src": "https://i4.ytimg.com/vi/_-jrb1-FdX4/hqdefault.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -716,7 +771,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Beyond-Navier-Stokes-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Beyond-Navier-Stokes-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -753,7 +809,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_zero-to-agent-radar-1600x840-1-160x160.png"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/08/USE_THIS_zero-to-agent-radar-1600x840-1-160x160.png",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -790,7 +847,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Enterprise-analytics-beyond-dashboards-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/Enterprise-analytics-beyond-dashboards-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",
@@ -827,7 +885,8 @@
                         "ch": [
                           {
                             "tag": "img",
-                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-interfaces-are-arriving-160x160.jpg"
+                            "src": "https://www.oreilly.com/radar/wp-content/uploads/sites/3/2026/09/The-interfaces-are-arriving-160x160.jpg",
+                            "el": [{ "tag": "figure" }, { "tag": "img" }]
                           },
                           {
                             "tag": "div",

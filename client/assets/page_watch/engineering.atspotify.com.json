@@ -4,10 +4,15 @@
   "root": {
     "tag": "body",
     "cls": ["blog"],
+    "el": [{ "tag": "body" }, { "tag": "main", "cls": ["blog"] }],
     "ch": [
       {
         "tag": "section",
         "cls": ["banner", "banner__content"],
+        "el": [
+          { "tag": "section", "cls": ["banner"] },
+          { "tag": "div", "cls": ["banner__content"] }
+        ],
         "ch": [
           { "tag": "h1", "text": "Engineering" },
           {
@@ -24,10 +29,18 @@
       {
         "tag": "section",
         "cls": ["sticky-post", "container"],
+        "el": [
+          { "tag": "section", "cls": ["sticky-post"] },
+          { "tag": "div", "cls": ["container"] }
+        ],
         "ch": [
           {
             "tag": "a",
             "href": "https://engineering.atspotify.com/2026/8/when-can-llms-replace-humans-in-a-b-tests",
+            "el": [
+              { "tag": "div", "cls": ["sticky-post__image"] },
+              { "tag": "a" }
+            ],
             "ch": [
               {
                 "tag": "img",
@@ -65,7 +78,11 @@
                 "tag": "a",
                 "cls": ["tag"],
                 "text": "Data Science",
-                "href": "https://engineering.atspotify.com/category/data-science"
+                "href": "https://engineering.atspotify.com/category/data-science",
+                "el": [
+                  { "tag": "div", "cls": ["sticky-post__tags"] },
+                  { "tag": "a", "cls": ["tag"] }
+                ]
               }
             ]
           }
@@ -74,6 +91,10 @@
       {
         "tag": "section",
         "cls": ["posts-wrapper", "posts"],
+        "el": [
+          { "tag": "section", "cls": ["posts-wrapper"] },
+          { "tag": "section", "cls": ["posts"] }
+        ],
         "ch": [
           {
             "tag": "div",
@@ -82,6 +103,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/9/ai-changed-how-spotify-builds-what-we-learned-and-fixed-about-quality-at-higher-velocity",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -93,6 +118,10 @@
               {
                 "tag": "div",
                 "cls": ["post-card__content", "top-content"],
+                "el": [
+                  { "tag": "div", "cls": ["post-card__content"] },
+                  { "tag": "div", "cls": ["top-content"] }
+                ],
                 "ch": [
                   {
                     "tag": "div",
@@ -126,6 +155,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/9/why-spotify-is-not-using-bayesian-a-b-testing",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -194,6 +227,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -205,6 +242,10 @@
               {
                 "tag": "div",
                 "cls": ["post-card__content", "top-content"],
+                "el": [
+                  { "tag": "div", "cls": ["post-card__content"] },
+                  { "tag": "div", "cls": ["top-content"] }
+                ],
                 "ch": [
                   {
                     "tag": "div",
@@ -238,6 +279,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/7/indexing-the-data-lake-for-online-point-queries",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -281,7 +326,11 @@
                     "tag": "a",
                     "cls": ["tag"],
                     "text": "Infrastructure",
-                    "href": "https://engineering.atspotify.com/category/infrastructure"
+                    "href": "https://engineering.atspotify.com/category/infrastructure",
+                    "el": [
+                      { "tag": "div", "cls": ["post-card__tags"] },
+                      { "tag": "a", "cls": ["tag"] }
+                    ]
                   }
                 ]
               }
@@ -294,6 +343,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/7/content-ingestion-and-podcast-video-incident-report",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -305,6 +358,10 @@
               {
                 "tag": "div",
                 "cls": ["post-card__content", "top-content"],
+                "el": [
+                  { "tag": "div", "cls": ["post-card__content"] },
+                  { "tag": "div", "cls": ["top-content"] }
+                ],
                 "ch": [
                   {
                     "tag": "div",
@@ -338,6 +395,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/6/encoding-your-domain-expert-the-context-layer-behind-spotifys-data-assistant",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -406,6 +467,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -486,6 +551,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/5/better-experiments-with-llm-evals-a-funnel-not-a-fork",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -560,6 +629,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/5/spotify-ads-api-claude-plugins",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -628,6 +701,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/4/background-coding-agents-dataset-migrations-honk-part-4",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -702,6 +779,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/4/anthropic-agentic-development",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -776,6 +857,10 @@
               {
                 "tag": "a",
                 "href": "https://engineering.atspotify.com/2026/3/inside-the-archive-2025-wrapped",
+                "el": [
+                  { "tag": "div", "cls": ["post-card__image"] },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",

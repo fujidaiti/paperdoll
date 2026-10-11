@@ -22,6 +22,8 @@
 //	dt    datetime attribute (time)
 //	rich  the same text as "text", as a list of inline nodes; set only when
 //	      the text has formatting worth keeping (see keptInlineTags)
+//	el    the elements that the node was merged from, outermost first, as
+//	      objects with "tag" and "cls"; set only when there are several
 //	ch    child nodes
 //
 // An inline node in "rich" is {"tag": "#text", "text": "..."}, {"tag": "br"},
@@ -55,7 +57,25 @@ type Node struct {
 	Alt      string   `json:"alt,omitempty"`
 	Datetime string   `json:"dt,omitempty"`
 	Rich     []*Node  `json:"rich,omitempty"`
-	Children []*Node  `json:"ch,omitempty"`
+	// Elements are set only on a node merged from several elements, since
+	// whether elements are merged depends on their content, such as the
+	// number of posts in a grid, and selectors must not.
+	Elements []*Element `json:"el,omitempty"`
+	Children []*Node    `json:"ch,omitempty"`
+}
+
+// Element is an element of the original page that a Node was merged from.
+type Element struct {
+	Tag     string   `json:"tag"`
+	Classes []string `json:"cls,omitempty"`
+}
+
+// elements returns the elements that n was merged from, outermost first.
+func elements(n *Node) []*Element {
+	if n.Elements != nil {
+		return n.Elements
+	}
+	return []*Element{{Tag: n.Tag, Classes: n.Classes}}
 }
 
 type Document struct {
@@ -265,8 +285,9 @@ func isSmall(n *html.Node) bool {
 }
 
 // Class names generated from hashes, which change when a site is rebuilt:
-// "Name-sc-<hash>-N" by styled-components, followed by a class that is only
-// a hash of its styles, such as "hygVWX", and "File-module__<hash>__name" by
+// "Name-sc-<hash>-N" by styled-components, followed by classes that are only
+// hashes of their styles, such as "hygVWX", one for each of the classes before
+// them, and "File-module__<hash>__name" by
 // CSS modules.
 var (
 	styledClass = regexp.MustCompile(`^(.+)-sc-[0-9a-f]+-\d+$`)
@@ -279,18 +300,20 @@ var (
 // after its site is rebuilt.
 func stableClasses(class string) []string {
 	var classes []string
-	afterStyled := false
+	hashes := 0 // The number of hashes expected next.
 	for c := range strings.FieldsSeq(class) {
-		if afterStyled && styleHash.MatchString(c) {
-			afterStyled = false
+		if hashes > 0 && styleHash.MatchString(c) {
+			hashes--
 			continue
 		}
-		afterStyled = false
 		if m := styledClass.FindStringSubmatch(c); m != nil {
 			c = m[1]
-			afterStyled = true
-		} else if m := moduleClass.FindStringSubmatch(c); m != nil {
-			c = m[1] + "__" + m[2]
+			hashes++
+		} else {
+			hashes = 0
+			if m := moduleClass.FindStringSubmatch(c); m != nil {
+				c = m[1] + "__" + m[2]
+			}
 		}
 		if !slices.Contains(classes, c) {
 			classes = append(classes, c)
@@ -392,13 +415,14 @@ func (s *simplifier) convert(n *html.Node) *Node {
 	// as a heading, and find it by its level.
 	if len(node.Children) == 1 && !semanticTags[tag] && !headingTags[tag] {
 		child := node.Children[0]
+		child.Elements = append([]*Element{{Tag: tag, Classes: node.Classes}}, elements(child)...)
 		if semanticTags[child.Tag] || child.Tag == "#text" {
 			return child
 		}
 		if !headingTags[child.Tag] {
 			child.Tag = tag
 		}
-		child.Classes = append(node.Classes, child.Classes...)
+		child.Classes = slices.Concat(node.Classes, child.Classes)
 		return child
 	}
 	// An element whose only content is a run of text holds it directly.

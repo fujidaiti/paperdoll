@@ -15,6 +15,22 @@
       "main",
       "inner-content"
     ],
+    "el": [
+      {
+        "tag": "body",
+        "cls": [
+          "home",
+          "wp-singular",
+          "page-template",
+          "page-template-template-home-2024",
+          "page-template-template-home-2024-php",
+          "page",
+          "page-id-30630",
+          "wp-theme-ftr"
+        ]
+      },
+      { "tag": "main", "cls": ["main", "inner-content"] }
+    ],
     "ch": [
       { "tag": "h1", "cls": ["screen-reader-text"], "text": "Home V2" },
       {
@@ -24,10 +40,22 @@
           {
             "tag": "section",
             "cls": ["top-banner-v2", "featured-content-slider", "slides"],
+            "el": [
+              { "tag": "section", "cls": ["top-banner-v2"] },
+              { "tag": "div", "cls": ["featured-content-slider"] },
+              { "tag": "div", "cls": ["slides"] }
+            ],
             "ch": [
               {
                 "tag": "a",
                 "href": "https://newsroom.spotify.com/2026-09-23/taste-profile-shape-home-feed/",
+                "el": [
+                  {
+                    "tag": "article",
+                    "cls": ["featured-slide", "slick-slide", "white", "half"]
+                  },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -46,13 +74,35 @@
                       "small-12",
                       "text-container"
                     ],
-                    "text": "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage"
+                    "text": "How to Use Our Taste Profile Feature to Shape Your Spotify Homepage",
+                    "el": [
+                      { "tag": "div", "cls": ["slide-content"] },
+                      { "tag": "div", "cls": ["grid-container", "wide"] },
+                      { "tag": "div", "cls": ["grid-x", "grid-padding-x"] },
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "text-container"]
+                      },
+                      { "tag": "h2" }
+                    ]
                   }
                 ]
               },
               {
                 "tag": "a",
                 "href": "https://newsroom.spotify.com/2026-09-23/jorja-smith-hometown-performance-video/",
+                "el": [
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "featured-slide",
+                      "slick-slide",
+                      "white",
+                      "full-width"
+                    ]
+                  },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -71,13 +121,35 @@
                       "small-12",
                       "text-container"
                     ],
-                    "text": "Jorja Smith Comes Home to Walsall for Spotify’s First Hometown Concert Film"
+                    "text": "Jorja Smith Comes Home to Walsall for Spotify’s First Hometown Concert Film",
+                    "el": [
+                      { "tag": "div", "cls": ["slide-content"] },
+                      { "tag": "div", "cls": ["grid-container", "wide"] },
+                      { "tag": "div", "cls": ["grid-x", "grid-padding-x"] },
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "text-container"]
+                      },
+                      { "tag": "h2" }
+                    ]
                   }
                 ]
               },
               {
                 "tag": "a",
                 "href": "https://newsroom.spotify.com/2026-09-22/gemischtes-hack-felix-lobrecht-tommi-schmitt-interview/",
+                "el": [
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "featured-slide",
+                      "slick-slide",
+                      "white",
+                      "full-width"
+                    ]
+                  },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -96,13 +168,30 @@
                       "small-12",
                       "text-container"
                     ],
-                    "text": "‘Gemischtes Hack’ Hosts on Dream Guests, Favorite Episodes, and Reaching 1 Billion Streams"
+                    "text": "‘Gemischtes Hack’ Hosts on Dream Guests, Favorite Episodes, and Reaching 1 Billion Streams",
+                    "el": [
+                      { "tag": "div", "cls": ["slide-content"] },
+                      { "tag": "div", "cls": ["grid-container", "wide"] },
+                      { "tag": "div", "cls": ["grid-x", "grid-padding-x"] },
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "text-container"]
+                      },
+                      { "tag": "h2" }
+                    ]
                   }
                 ]
               },
               {
                 "tag": "a",
                 "href": "https://newsroom.spotify.com/2026-09-23/nct-johnny-journey-podcast/",
+                "el": [
+                  {
+                    "tag": "article",
+                    "cls": ["featured-slide", "slick-slide", "white", "half"]
+                  },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -121,13 +210,35 @@
                       "small-12",
                       "text-container"
                     ],
-                    "text": "NCT’s JOHNNY Invites Fans to Explore Korean Culture in ‘Journey with Johnny’"
+                    "text": "NCT’s JOHNNY Invites Fans to Explore Korean Culture in ‘Journey with Johnny’",
+                    "el": [
+                      { "tag": "div", "cls": ["slide-content"] },
+                      { "tag": "div", "cls": ["grid-container", "wide"] },
+                      { "tag": "div", "cls": ["grid-x", "grid-padding-x"] },
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "text-container"]
+                      },
+                      { "tag": "h2" }
+                    ]
                   }
                 ]
               },
               {
                 "tag": "a",
                 "href": "https://newsroom.spotify.com/2026-09-21/spotify-house-seoul-seongsu-performances/",
+                "el": [
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "featured-slide",
+                      "slick-slide",
+                      "white",
+                      "full-width"
+                    ]
+                  },
+                  { "tag": "a" }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -146,7 +257,17 @@
                       "small-12",
                       "text-container"
                     ],
-                    "text": "Spotify House Seoul 2026 Brought Four Days of Music and Discovery to Seongsu"
+                    "text": "Spotify House Seoul 2026 Brought Four Days of Music and Discovery to Seongsu",
+                    "el": [
+                      { "tag": "div", "cls": ["slide-content"] },
+                      { "tag": "div", "cls": ["grid-container", "wide"] },
+                      { "tag": "div", "cls": ["grid-x", "grid-padding-x"] },
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "text-container"]
+                      },
+                      { "tag": "h2" }
+                    ]
                   }
                 ]
               }
@@ -168,7 +289,17 @@
                   "small-12",
                   "tune-in-row"
                 ],
-                "text": "Tune in to the Latest"
+                "text": "Tune in to the Latest",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["grid-container", "wide", "tune-in"]
+                  },
+                  { "tag": "div", "cls": ["grid-padding-x", "grid-x"] },
+                  { "tag": "div", "cls": ["cell", "small-12"] },
+                  { "tag": "div", "cls": ["tune-in-row"] },
+                  { "tag": "h2" }
+                ]
               },
               {
                 "tag": "div",
@@ -178,6 +309,13 @@
                   "grid-x",
                   "grid-padding-x",
                   "secondary-posts"
+                ],
+                "el": [
+                  { "tag": "div", "cls": ["grid-container", "wide"] },
+                  {
+                    "tag": "div",
+                    "cls": ["grid-x", "grid-padding-x", "secondary-posts"]
+                  }
                 ],
                 "ch": [
                   {
@@ -192,11 +330,30 @@
                       "v2",
                       "creator-stories"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-6", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-column",
+                          "v2",
+                          "creator-stories"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["square-image"],
                         "href": "https://newsroom.spotify.com/2026-09-17/fresh-finds-forward/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["square-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -245,11 +402,30 @@
                       "v2",
                       "creator-stories"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-6", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-column",
+                          "v2",
+                          "creator-stories"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["square-image"],
                         "href": "https://newsroom.spotify.com/2026-09-17/partner-program-expansion-global/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["square-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -298,11 +474,30 @@
                       "v2",
                       "creator-stories"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-6", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-column",
+                          "v2",
+                          "creator-stories"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["square-image"],
                         "href": "https://newsroom.spotify.com/2026-09-17/corey-kent-homegrown-live-questionnaire/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["square-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -351,11 +546,30 @@
                       "v2",
                       "creator-stories"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-6", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-column",
+                          "v2",
+                          "creator-stories"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["square-image"],
                         "href": "https://newsroom.spotify.com/2026-09-16/taylor-swift-music-videos-catalog-spotify/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["square-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -404,11 +618,30 @@
                       "v2",
                       "news-announcements"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-6", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-column",
+                          "v2",
+                          "news-announcements"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["square-image"],
                         "href": "https://newsroom.spotify.com/2026-09-16/coach-tabby-tour-launch/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["square-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -457,11 +690,30 @@
                       "v2",
                       "news-announcements"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-6", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-column",
+                          "v2",
+                          "news-announcements"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["square-image"],
                         "href": "https://newsroom.spotify.com/2026-09-15/exclude-kids-family-music-toggle/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["square-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -516,6 +768,15 @@
               "banner",
               "news-topics"
             ],
+            "el": [
+              { "tag": "section", "cls": ["grid-container", "wide"] },
+              {
+                "tag": "div",
+                "cls": ["grid-x", "grid-padding-x", "align-center"]
+              },
+              { "tag": "div", "cls": ["cell", "small-12", "large-11"] },
+              { "tag": "nav", "cls": ["banner", "news-topics"] }
+            ],
             "ch": [
               { "tag": "h2", "text": "Click a topic for more news" },
               {
@@ -525,25 +786,29 @@
                     "tag": "a",
                     "cls": ["button"],
                     "text": "News \u0026 Announcements",
-                    "href": "https://newsroom.spotify.com/news/#news-announcements"
+                    "href": "https://newsroom.spotify.com/news/#news-announcements",
+                    "el": [{ "tag": "li" }, { "tag": "a", "cls": ["button"] }]
                   },
                   {
                     "tag": "a",
                     "cls": ["button"],
                     "text": "Artists \u0026 Creators",
-                    "href": "https://newsroom.spotify.com/news/#creator-stories"
+                    "href": "https://newsroom.spotify.com/news/#creator-stories",
+                    "el": [{ "tag": "li" }, { "tag": "a", "cls": ["button"] }]
                   },
                   {
                     "tag": "a",
                     "cls": ["button"],
                     "text": "Culture \u0026 Trends",
-                    "href": "https://newsroom.spotify.com/news/#trends-data"
+                    "href": "https://newsroom.spotify.com/news/#trends-data",
+                    "el": [{ "tag": "li" }, { "tag": "a", "cls": ["button"] }]
                   },
                   {
                     "tag": "a",
                     "cls": ["button"],
                     "text": "Behind the Business",
-                    "href": "https://newsroom.spotify.com/news/#behind-business"
+                    "href": "https://newsroom.spotify.com/news/#behind-business",
+                    "el": [{ "tag": "li" }, { "tag": "a", "cls": ["button"] }]
                   }
                 ]
               }
@@ -552,11 +817,20 @@
           {
             "tag": "section",
             "cls": ["spotlight-v2", "inner"],
+            "el": [
+              { "tag": "section", "cls": ["spotlight-v2"] },
+              { "tag": "div", "cls": ["inner"] }
+            ],
             "ch": [
               {
                 "tag": "h2",
                 "cls": ["title-row", "title", "screen-reader-text"],
-                "text": "Discover"
+                "text": "Discover",
+                "el": [
+                  { "tag": "div", "cls": ["title-row"] },
+                  { "tag": "div", "cls": ["title"] },
+                  { "tag": "h2", "cls": ["screen-reader-text"] }
+                ]
               },
               {
                 "tag": "div",
@@ -570,6 +844,11 @@
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://newsroom.spotify.com/songs-of-summer-2026/",
+                        "el": [
+                          { "tag": "div", "cls": ["spotlight-image"] },
+                          { "tag": "div", "cls": ["inner-image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -614,6 +893,11 @@
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://newsroom.spotify.com/investorday2026/",
+                        "el": [
+                          { "tag": "div", "cls": ["spotlight-image"] },
+                          { "tag": "div", "cls": ["inner-image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -658,6 +942,11 @@
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://newsroom.spotify.com/spotify20/",
+                        "el": [
+                          { "tag": "div", "cls": ["spotlight-image"] },
+                          { "tag": "div", "cls": ["inner-image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -702,6 +991,11 @@
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://newsroom.spotify.com/2026-02-24/greatest-pop-songs-streaming-era/",
+                        "el": [
+                          { "tag": "div", "cls": ["spotlight-image"] },
+                          { "tag": "div", "cls": ["inner-image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -746,6 +1040,11 @@
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://timetoplayfair.com/",
+                        "el": [
+                          { "tag": "div", "cls": ["spotlight-image"] },
+                          { "tag": "div", "cls": ["inner-image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -811,11 +1110,30 @@
                       "v2",
                       "creator-stories"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-4", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-row",
+                          "v2",
+                          "creator-stories"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://newsroom.spotify.com/2026-09-14/el-bogueto-performance-event-photos/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -864,11 +1182,30 @@
                       "v2",
                       "news-announcements"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-4", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-row",
+                          "v2",
+                          "news-announcements"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://newsroom.spotify.com/2026-09-11/open-mic-verified-genius-video-series-partnership/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -917,11 +1254,30 @@
                       "v2",
                       "news-announcements"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-4", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-row",
+                          "v2",
+                          "news-announcements"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://newsroom.spotify.com/2026-07-15/music-video-debuts/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -970,11 +1326,30 @@
                       "v2",
                       "news-announcements"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-4", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-row",
+                          "v2",
+                          "news-announcements"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://newsroom.spotify.com/2026-09-03/songs-of-summer-reveal/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -1023,11 +1398,30 @@
                       "v2",
                       "news-announcements"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["cell", "small-12", "medium-4", "large-4"]
+                      },
+                      {
+                        "tag": "article",
+                        "cls": [
+                          "post-box",
+                          "mobile-row",
+                          "v2",
+                          "news-announcements"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
                         "cls": ["wide-image"],
                         "href": "https://newsroom.spotify.com/2026-09-03/soul-train-awards-return/",
+                        "el": [
+                          { "tag": "div", "cls": ["image"] },
+                          { "tag": "a", "cls": ["wide-image"] }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -1068,7 +1462,20 @@
                     "tag": "a",
                     "cls": ["inner"],
                     "text": "View all news",
-                    "href": "https://newsroom.spotify.com/news"
+                    "href": "https://newsroom.spotify.com/news",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "cell",
+                          "small-12",
+                          "medium-4",
+                          "large-4",
+                          "more-news-box"
+                        ]
+                      },
+                      { "tag": "a", "cls": ["inner"] }
+                    ]
                   }
                 ]
               }
@@ -1086,7 +1493,16 @@
               "large-5",
               "text-wrap"
             ],
-            "text": "Spotify news in your inbox"
+            "text": "Spotify news in your inbox",
+            "el": [
+              { "tag": "aside", "cls": ["newsletter-animation-wrapper"] },
+              { "tag": "div", "cls": ["grid-x", "newsletter-banner", "v2"] },
+              {
+                "tag": "div",
+                "cls": ["cell", "small-12", "large-5", "text-wrap"]
+              },
+              { "tag": "h2" }
+            ]
           }
         ]
       }

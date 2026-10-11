@@ -4,11 +4,20 @@
   "root": {
     "tag": "body",
     "cls": ["Site", "SiteContent", "SiteContent--default", "Article"],
+    "el": [
+      { "tag": "body", "cls": ["Site"] },
+      { "tag": "main", "cls": ["SiteContent", "SiteContent--default"] },
+      { "tag": "div" },
+      { "tag": "div" },
+      { "tag": "div" },
+      { "tag": "div", "cls": ["Article"] }
+    ],
     "ch": [
       { "tag": "h1", "text": "The Go Blog" },
       {
         "tag": "div",
         "cls": ["markdown"],
+        "el": [{ "tag": "div", "cls": ["markdown"] }, { "tag": "div" }],
         "ch": [
           {
             "tag": "p",
@@ -282,7 +291,8 @@
           {
             "tag": "a",
             "text": "More articles...",
-            "href": "https://go.dev/blog/all"
+            "href": "https://go.dev/blog/all",
+            "el": [{ "tag": "p", "cls": ["blogtitle"] }, { "tag": "a" }]
           }
         ]
       }

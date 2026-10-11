@@ -3,6 +3,7 @@
   "title": "Blog - Apple Security Research",
   "root": {
     "tag": "body",
+    "el": [{ "tag": "body" }, { "tag": "main" }],
     "ch": [
       {
         "tag": "h1",
@@ -20,6 +21,12 @@
             "ch": [{ "tag": "#text", "text": "Apple Security Research" }]
           },
           { "tag": "#text" }
+        ],
+        "el": [
+          { "tag": "section" },
+          { "tag": "section", "cls": ["blog_blog-hero__UB2EU"] },
+          { "tag": "div", "cls": ["section-content"] },
+          { "tag": "h1", "cls": ["blog_blog-hero__heading__7dI9r"] }
         ]
       },
       {
@@ -29,12 +36,19 @@
           "section-content",
           "blog-list_blog-list__RksSl"
         ],
+        "el": [
+          { "tag": "section", "cls": ["blog_main__EYPln"] },
+          { "tag": "div", "cls": ["section-content"] },
+          { "tag": "div" },
+          { "tag": "div", "cls": ["blog-list_blog-list__RksSl"] }
+        ],
         "ch": [
           {
             "tag": "ul",
             "ch": [
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -58,6 +72,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -78,6 +93,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -101,6 +117,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -124,6 +141,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -147,6 +165,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -170,6 +189,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -193,6 +213,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -216,6 +237,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -239,6 +261,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -262,6 +285,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -285,6 +309,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",
@@ -305,6 +330,7 @@
               },
               {
                 "tag": "li",
+                "el": [{ "tag": "li" }, { "tag": "div" }],
                 "ch": [
                   {
                     "tag": "div",

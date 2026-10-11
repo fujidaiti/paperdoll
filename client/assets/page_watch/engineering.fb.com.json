@@ -12,10 +12,28 @@
       "hfeed",
       "site-main"
     ],
+    "el": [
+      {
+        "tag": "body",
+        "cls": [
+          "home",
+          "blog",
+          "wp-theme-understrap",
+          "wp-child-theme-code-fb-com",
+          "group-blog",
+          "hfeed"
+        ]
+      },
+      { "tag": "main", "cls": ["site-main"] }
+    ],
     "ch": [
       {
         "tag": "div",
         "cls": ["top-articles", "inner-container"],
+        "el": [
+          { "tag": "div", "cls": ["top-articles"] },
+          { "tag": "div", "cls": ["inner-container"] }
+        ],
         "ch": [
           {
             "tag": "div",
@@ -30,6 +48,23 @@
               "hentry",
               "category-security",
               "fb_content_type-article"
+            ],
+            "el": [
+              { "tag": "div", "cls": ["top-left-article"] },
+              {
+                "tag": "article",
+                "cls": [
+                  "post-24499",
+                  "post",
+                  "type-post",
+                  "status-publish",
+                  "format-standard",
+                  "has-post-thumbnail",
+                  "hentry",
+                  "category-security",
+                  "fb_content_type-article"
+                ]
+              }
             ],
             "ch": [
               {
@@ -51,12 +86,22 @@
                     "tag": "a",
                     "cls": ["category"],
                     "text": "Security \u0026 Privacy",
-                    "href": "https://engineering.fb.com/category/security/"
+                    "href": "https://engineering.fb.com/category/security/",
+                    "el": [
+                      { "tag": "div", "cls": ["entry-header__top"] },
+                      { "tag": "span", "cls": ["cat-links"] },
+                      { "tag": "a", "cls": ["category"] }
+                    ]
                   },
                   {
                     "tag": "a",
                     "text": "Bringing Private Processing to Meta AI Glasses",
-                    "href": "https://engineering.fb.com/2026/09/23/security/private-processing-meta-ai-glasses/"
+                    "href": "https://engineering.fb.com/2026/09/23/security/private-processing-meta-ai-glasses/",
+                    "el": [
+                      { "tag": "div", "cls": ["entry-title"] },
+                      { "tag": "div" },
+                      { "tag": "a" }
+                    ]
                   }
                 ]
               }
@@ -104,20 +149,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "Open Source",
-                            "href": "https://engineering.fb.com/category/open-source/"
+                            "href": "https://engineering.fb.com/category/open-source/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "SEP 21, 2026",
-                            "dt": "SEP 21, 2026"
+                            "dt": "SEP 21, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "Open-Sourcing Rebalancer: A Generic, High-Performance Library for Solving Assignment Problems",
-                        "href": "https://engineering.fb.com/2026/09/21/open-source/rebalancer-generic-high-performance-library-assignment-problems/"
+                        "href": "https://engineering.fb.com/2026/09/21/open-source/rebalancer-generic-high-performance-library-assignment-problems/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -161,20 +222,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "Connectivity",
-                            "href": "https://engineering.fb.com/category/connectivity/"
+                            "href": "https://engineering.fb.com/category/connectivity/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "SEP 21, 2026",
-                            "dt": "SEP 21, 2026"
+                            "dt": "SEP 21, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "Inside Petal: Building the World’s First Petabit-Class Transoceanic Subsea Cable",
-                        "href": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/"
+                        "href": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -213,6 +290,26 @@
                   "category-core-infra",
                   "fb_content_type-article"
                 ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["article-grid", "col-md-4", "col-sm-12"]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "post",
+                      "post-24463",
+                      "type-post",
+                      "status-publish",
+                      "format-standard",
+                      "has-post-thumbnail",
+                      "hentry",
+                      "category-core-infra",
+                      "fb_content_type-article"
+                    ]
+                  }
+                ],
                 "ch": [
                   {
                     "tag": "a",
@@ -238,20 +335,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "Core Infra",
-                            "href": "https://engineering.fb.com/category/core-infra/"
+                            "href": "https://engineering.fb.com/category/core-infra/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "SEP 3, 2026",
-                            "dt": "SEP 3, 2026"
+                            "dt": "SEP 3, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "ZGateway: Learnings from Putting a Proxy in Front of ZippyDB",
-                        "href": "https://engineering.fb.com/2026/09/03/core-infra/zgateway-proxy-zippydb-meta/"
+                        "href": "https://engineering.fb.com/2026/09/03/core-infra/zgateway-proxy-zippydb-meta/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -274,6 +387,28 @@
                   "category-ml-applications",
                   "category-security",
                   "fb_content_type-article"
+                ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["article-grid", "col-md-4", "col-sm-12"]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "post",
+                      "post-24419",
+                      "type-post",
+                      "status-publish",
+                      "format-standard",
+                      "has-post-thumbnail",
+                      "hentry",
+                      "category-ai-research",
+                      "category-ml-applications",
+                      "category-security",
+                      "fb_content_type-article"
+                    ]
+                  }
                 ],
                 "ch": [
                   {
@@ -300,20 +435,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "AI Research",
-                            "href": "https://engineering.fb.com/category/ai-research/"
+                            "href": "https://engineering.fb.com/category/ai-research/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "SEP 2, 2026",
-                            "dt": "SEP 2, 2026"
+                            "dt": "SEP 2, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "An Organizational Second Brain: Building an AI That Learns From Experts",
-                        "href": "https://engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts/"
+                        "href": "https://engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -337,6 +488,29 @@
                   "category-networking-traffic",
                   "category-open-source",
                   "fb_content_type-article"
+                ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["article-grid", "col-md-4", "col-sm-12"]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "post",
+                      "post-24399",
+                      "type-post",
+                      "status-publish",
+                      "format-standard",
+                      "has-post-thumbnail",
+                      "hentry",
+                      "category-data-center-engineering",
+                      "category-data-infrastructure",
+                      "category-networking-traffic",
+                      "category-open-source",
+                      "fb_content_type-article"
+                    ]
+                  }
                 ],
                 "ch": [
                   {
@@ -363,20 +537,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "Data Center Engineering",
-                            "href": "https://engineering.fb.com/category/data-center-engineering/"
+                            "href": "https://engineering.fb.com/category/data-center-engineering/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "AUG 24, 2026",
-                            "dt": "AUG 24, 2026"
+                            "dt": "AUG 24, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "MetaRoCE: A New RDMA Transport Built for AI-Scale Ethernet",
-                        "href": "https://engineering.fb.com/2026/08/24/networking-traffic/metaroce-rdma-transport-ai-ethernet/"
+                        "href": "https://engineering.fb.com/2026/08/24/networking-traffic/metaroce-rdma-transport-ai-ethernet/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -406,6 +596,28 @@
                   "category-networking-traffic",
                   "category-production-engineering"
                 ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["article-grid", "col-md-4", "col-sm-12"]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "post",
+                      "post-24394",
+                      "type-post",
+                      "status-publish",
+                      "format-standard",
+                      "has-post-thumbnail",
+                      "hentry",
+                      "category-data-infrastructure",
+                      "category-developer-tools",
+                      "category-networking-traffic",
+                      "category-production-engineering"
+                    ]
+                  }
+                ],
                 "ch": [
                   {
                     "tag": "a",
@@ -431,20 +643,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "Data Infrastructure",
-                            "href": "https://engineering.fb.com/category/data-infrastructure/"
+                            "href": "https://engineering.fb.com/category/data-infrastructure/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "AUG 24, 2026",
-                            "dt": "AUG 24, 2026"
+                            "dt": "AUG 24, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "MTIA 300: Meta’s First Training Chip with Built-in NICs and Communication-Offloading Engines",
-                        "href": "https://engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics/"
+                        "href": "https://engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -466,6 +694,27 @@
                   "category-security",
                   "tag-whatsapp",
                   "fb_content_type-article"
+                ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["article-grid", "col-md-4", "col-sm-12"]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "post",
+                      "post-24092",
+                      "type-post",
+                      "status-publish",
+                      "format-standard",
+                      "has-post-thumbnail",
+                      "hentry",
+                      "category-security",
+                      "tag-whatsapp",
+                      "fb_content_type-article"
+                    ]
+                  }
                 ],
                 "ch": [
                   {
@@ -492,20 +741,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "Security \u0026 Privacy",
-                            "href": "https://engineering.fb.com/category/security/"
+                            "href": "https://engineering.fb.com/category/security/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "AUG 12, 2026",
-                            "dt": "AUG 12, 2026"
+                            "dt": "AUG 12, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "How We’re Building Scam Alert on WhatsApp With End-to-End Encryption and Verifiability Guarantees",
-                        "href": "https://engineering.fb.com/2026/08/12/security/how-were-building-scam-alert-whatsapp/"
+                        "href": "https://engineering.fb.com/2026/08/12/security/how-were-building-scam-alert-whatsapp/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -528,6 +793,28 @@
                   "category-ml-applications",
                   "category-production-engineering",
                   "fb_content_type-article"
+                ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["article-grid", "col-md-4", "col-sm-12"]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "post",
+                      "post-23996",
+                      "type-post",
+                      "status-publish",
+                      "format-standard",
+                      "has-post-thumbnail",
+                      "hentry",
+                      "category-data-infrastructure",
+                      "category-ml-applications",
+                      "category-production-engineering",
+                      "fb_content_type-article"
+                    ]
+                  }
                 ],
                 "ch": [
                   {
@@ -554,20 +841,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "Data Infrastructure",
-                            "href": "https://engineering.fb.com/category/data-infrastructure/"
+                            "href": "https://engineering.fb.com/category/data-infrastructure/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "AUG 5, 2026",
-                            "dt": "AUG 5, 2026"
+                            "dt": "AUG 5, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "From User Sequences to Scaling Laws: A Multi-Stage Architecture for Meta’s Ads Ranking",
-                        "href": "https://engineering.fb.com/2026/08/05/ml-applications/from-user-sequences-to-scaling-laws-a-multi-stage-architecture-for-metas-ads-ranking/"
+                        "href": "https://engineering.fb.com/2026/08/05/ml-applications/from-user-sequences-to-scaling-laws-a-multi-stage-architecture-for-metas-ads-ranking/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -597,6 +900,28 @@
                   "category-ml-applications",
                   "fb_content_type-article"
                 ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["article-grid", "col-md-4", "col-sm-12"]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "post",
+                      "post-24167",
+                      "type-post",
+                      "status-publish",
+                      "format-standard",
+                      "has-post-thumbnail",
+                      "hentry",
+                      "category-ai-research",
+                      "category-data-infrastructure",
+                      "category-ml-applications",
+                      "fb_content_type-article"
+                    ]
+                  }
+                ],
                 "ch": [
                   {
                     "tag": "a",
@@ -622,20 +947,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "AI Research",
-                            "href": "https://engineering.fb.com/category/ai-research/"
+                            "href": "https://engineering.fb.com/category/ai-research/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "AUG 3, 2026",
-                            "dt": "AUG 3, 2026"
+                            "dt": "AUG 3, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Foundation Model",
-                        "href": "https://engineering.fb.com/2026/08/03/ml-applications/training-gem-at-llm-scale-meta-ads-recommendation-foundation-model/"
+                        "href": "https://engineering.fb.com/2026/08/03/ml-applications/training-gem-at-llm-scale-meta-ads-recommendation-foundation-model/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -656,6 +997,26 @@
                   "hentry",
                   "category-ai-research",
                   "fb_content_type-article"
+                ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["article-grid", "col-md-4", "col-sm-12"]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "post",
+                      "post-24251",
+                      "type-post",
+                      "status-publish",
+                      "format-standard",
+                      "has-post-thumbnail",
+                      "hentry",
+                      "category-ai-research",
+                      "fb_content_type-article"
+                    ]
+                  }
                 ],
                 "ch": [
                   {
@@ -682,20 +1043,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "AI Research",
-                            "href": "https://engineering.fb.com/category/ai-research/"
+                            "href": "https://engineering.fb.com/category/ai-research/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "JUL 15, 2026",
-                            "dt": "JUL 15, 2026"
+                            "dt": "JUL 15, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "Exploring Hierarchical Interest Representation For Meta Ads Deep Funnel Optimization",
-                        "href": "https://engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-funnel-optimization/"
+                        "href": "https://engineering.fb.com/2026/07/15/ai-research/exploring-hierarchical-interest-representation-for-meta-ads-deep-funnel-optimization/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }
@@ -717,6 +1094,27 @@
                   "category-ml-applications",
                   "category-open-source",
                   "fb_content_type-article"
+                ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["article-grid", "col-md-4", "col-sm-12"]
+                  },
+                  {
+                    "tag": "article",
+                    "cls": [
+                      "post",
+                      "post-24221",
+                      "type-post",
+                      "status-publish",
+                      "format-standard",
+                      "has-post-thumbnail",
+                      "hentry",
+                      "category-ml-applications",
+                      "category-open-source",
+                      "fb_content_type-article"
+                    ]
+                  }
                 ],
                 "ch": [
                   {
@@ -743,20 +1141,36 @@
                             "tag": "a",
                             "cls": ["category"],
                             "text": "ML Applications",
-                            "href": "https://engineering.fb.com/category/ml-applications/"
+                            "href": "https://engineering.fb.com/category/ml-applications/",
+                            "el": [
+                              { "tag": "span", "cls": ["cat-links"] },
+                              { "tag": "a", "cls": ["category"] }
+                            ]
                           },
                           {
                             "tag": "time",
                             "cls": ["entry-date", "published"],
                             "text": "JUL 13, 2026",
-                            "dt": "JUL 13, 2026"
+                            "dt": "JUL 13, 2026",
+                            "el": [
+                              { "tag": "span", "cls": ["posted-on"] },
+                              {
+                                "tag": "time",
+                                "cls": ["entry-date", "published"]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
                         "tag": "a",
                         "text": "Modernizing the Meta Ads Service With an Open-Source Kernel Scheduler",
-                        "href": "https://engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-scheduler/"
+                        "href": "https://engineering.fb.com/2026/07/13/ml-applications/modernizing-the-meta-ads-service-with-an-open-source-kernel-scheduler/",
+                        "el": [
+                          { "tag": "div", "cls": ["entry-title"] },
+                          { "tag": "div" },
+                          { "tag": "a" }
+                        ]
                       }
                     ]
                   }

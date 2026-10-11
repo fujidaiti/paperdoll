@@ -13,12 +13,23 @@ class PageDocument {
   factory fromJson(Map<String, Object?> json) {
     final nodes = <PageNode>[];
     PageNode parse(Map<String, Object?> json, PageNode? parent, int depth) {
+      PageElement element(Map<String, Object?> json) => PageElement._(
+        tag: json['tag']! as String,
+        classes: [...?(json['cls'] as List<Object?>?)?.cast<String>()],
+      );
+      final self = element(json);
       final node = PageNode._(
         id: nodes.length,
         parent: parent,
         depth: depth,
-        tag: json['tag']! as String,
-        classes: [...?(json['cls'] as List<Object?>?)?.cast<String>()],
+        tag: self.tag,
+        classes: self.classes,
+        elements: switch (json['el']) {
+          final List<Object?> elements => [
+            for (final e in elements) element(e! as Map<String, Object?>),
+          ],
+          _ => [self],
+        },
         text: json['text'] as String?,
         href: json['href'] as String?,
         src: json['src'] as String?,
@@ -64,6 +75,7 @@ class PageNode {
     required this.depth,
     required this.tag,
     required this.classes,
+    required this.elements,
     required this.text,
     required this.href,
     required this.src,
@@ -78,6 +90,13 @@ class PageNode {
   final int depth;
   final String tag;
   final List<String> classes;
+
+  /// The elements of the original page that this node stands for, outermost
+  /// first. The simplifier merges a wrapper with its only child, which then
+  /// has the tag of one and the classes of both, and this keeps the elements
+  /// apart. Selectors match these elements, since whether elements are
+  /// merged depends on the content, such as the number of posts in a grid.
+  final List<PageElement> elements;
 
   /// The text of this node; set only on nodes without child elements.
   final String? text;
@@ -121,6 +140,14 @@ class PageNode {
 
   /// A short CSS-like label such as `div.card.featured`.
   String get label => [tag, ...classes].join('.');
+}
+
+/// An element of the original page (see [PageNode.elements]).
+class PageElement {
+  const new _({required this.tag, required this.classes});
+
+  final String tag;
+  final List<String> classes;
 }
 
 /// A piece of formatted text: a `#text` run, a `br`, or a `b`, `i` or `code`

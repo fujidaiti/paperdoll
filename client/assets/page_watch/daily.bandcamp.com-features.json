@@ -31,6 +31,7 @@
       {
         "tag": "div",
         "cls": ["bc-content"],
+        "el": [{ "tag": "div", "cls": ["bc-content"] }, { "tag": "div" }],
         "ch": [
           {
             "tag": "nav",
@@ -62,7 +63,8 @@
                       {
                         "tag": "a",
                         "text": "lists",
-                        "href": "https://daily.bandcamp.com/lists"
+                        "href": "https://daily.bandcamp.com/lists",
+                        "el": [{ "tag": "span" }, { "tag": "a" }]
                       },
                       {
                         "tag": "span",
@@ -107,7 +109,11 @@
                   {
                     "tag": "h1",
                     "cls": ["top", "header"],
-                    "text": "Bandcamp Daily"
+                    "text": "Bandcamp Daily",
+                    "el": [
+                      { "tag": "section", "cls": ["top"] },
+                      { "tag": "h1", "cls": ["header"] }
+                    ]
                   },
                   {
                     "tag": "section",
@@ -120,57 +126,68 @@
                           {
                             "tag": "a",
                             "text": "Best of 2026",
-                            "href": "https://daily.bandcamp.com/best-of-2026"
+                            "href": "https://daily.bandcamp.com/best-of-2026",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2025",
-                            "href": "https://daily.bandcamp.com/best-of-2025"
+                            "href": "https://daily.bandcamp.com/best-of-2025",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2024",
-                            "href": "https://daily.bandcamp.com/best-of-2024"
+                            "href": "https://daily.bandcamp.com/best-of-2024",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2023",
-                            "href": "https://daily.bandcamp.com/best-of-2023"
+                            "href": "https://daily.bandcamp.com/best-of-2023",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2022",
-                            "href": "https://daily.bandcamp.com/best-of-2022"
+                            "href": "https://daily.bandcamp.com/best-of-2022",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2021",
-                            "href": "https://daily.bandcamp.com/best-of-2021"
+                            "href": "https://daily.bandcamp.com/best-of-2021",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2020",
-                            "href": "https://daily.bandcamp.com/best-of-2020"
+                            "href": "https://daily.bandcamp.com/best-of-2020",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2019",
-                            "href": "https://daily.bandcamp.com/best-of-2019"
+                            "href": "https://daily.bandcamp.com/best-of-2019",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2018",
-                            "href": "https://daily.bandcamp.com/best-of-2018"
+                            "href": "https://daily.bandcamp.com/best-of-2018",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2017",
-                            "href": "https://daily.bandcamp.com/best-of-2017"
+                            "href": "https://daily.bandcamp.com/best-of-2017",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best of 2016",
-                            "href": "https://daily.bandcamp.com/best-of-2016"
+                            "href": "https://daily.bandcamp.com/best-of-2016",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           }
                         ]
                       },
@@ -181,82 +198,98 @@
                           {
                             "tag": "a",
                             "text": "Best Ambient",
-                            "href": "https://daily.bandcamp.com/best-ambient"
+                            "href": "https://daily.bandcamp.com/best-ambient",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Beat Tapes",
-                            "href": "https://daily.bandcamp.com/best-beat-tapes"
+                            "href": "https://daily.bandcamp.com/best-beat-tapes",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Dance 12”s",
-                            "href": "https://daily.bandcamp.com/best-dance-12s"
+                            "href": "https://daily.bandcamp.com/best-dance-12s",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Electronic",
-                            "href": "https://daily.bandcamp.com/best-electronic"
+                            "href": "https://daily.bandcamp.com/best-electronic",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Experimental",
-                            "href": "https://daily.bandcamp.com/best-experimental"
+                            "href": "https://daily.bandcamp.com/best-experimental",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Contemporary Classical",
-                            "href": "https://daily.bandcamp.com/best-contemporary-classical"
+                            "href": "https://daily.bandcamp.com/best-contemporary-classical",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Hip-Hop",
-                            "href": "https://daily.bandcamp.com/best-hip-hop"
+                            "href": "https://daily.bandcamp.com/best-hip-hop",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Jazz",
-                            "href": "https://daily.bandcamp.com/best-jazz"
+                            "href": "https://daily.bandcamp.com/best-jazz",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Metal",
-                            "href": "https://daily.bandcamp.com/best-metal"
+                            "href": "https://daily.bandcamp.com/best-metal",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Punk",
-                            "href": "https://daily.bandcamp.com/best-punk"
+                            "href": "https://daily.bandcamp.com/best-punk",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Reissues",
-                            "href": "https://daily.bandcamp.com/best-reissues"
+                            "href": "https://daily.bandcamp.com/best-reissues",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Soul",
-                            "href": "https://daily.bandcamp.com/best-soul"
+                            "href": "https://daily.bandcamp.com/best-soul",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Folk",
-                            "href": "https://daily.bandcamp.com/best-folk"
+                            "href": "https://daily.bandcamp.com/best-folk",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Field Recordings",
-                            "href": "https://daily.bandcamp.com/best-field-recordings"
+                            "href": "https://daily.bandcamp.com/best-field-recordings",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Club Music",
-                            "href": "https://daily.bandcamp.com/best-club-music"
+                            "href": "https://daily.bandcamp.com/best-club-music",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           },
                           {
                             "tag": "a",
                             "text": "Best Country",
-                            "href": "https://daily.bandcamp.com/best-country"
+                            "href": "https://daily.bandcamp.com/best-country",
+                            "el": [{ "tag": "div" }, { "tag": "a" }]
                           }
                         ]
                       }
@@ -270,87 +303,104 @@
                       {
                         "tag": "a",
                         "text": "Lists",
-                        "href": "https://daily.bandcamp.com/lists"
+                        "href": "https://daily.bandcamp.com/lists",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Features",
-                        "href": "https://daily.bandcamp.com/features"
+                        "href": "https://daily.bandcamp.com/features",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Album of the Day",
-                        "href": "https://daily.bandcamp.com/album-of-the-day"
+                        "href": "https://daily.bandcamp.com/album-of-the-day",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Acid Test",
-                        "href": "https://daily.bandcamp.com/acid-test"
+                        "href": "https://daily.bandcamp.com/acid-test",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Bandcamp Navigator",
-                        "href": "https://daily.bandcamp.com/bandcamp-navigator"
+                        "href": "https://daily.bandcamp.com/bandcamp-navigator",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Big Ups",
-                        "href": "https://daily.bandcamp.com/big-ups"
+                        "href": "https://daily.bandcamp.com/big-ups",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Certified",
-                        "href": "https://daily.bandcamp.com/certified"
+                        "href": "https://daily.bandcamp.com/certified",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Gallery",
-                        "href": "https://daily.bandcamp.com/gallery"
+                        "href": "https://daily.bandcamp.com/gallery",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Hidden Gems",
-                        "href": "https://daily.bandcamp.com/hidden-gems"
+                        "href": "https://daily.bandcamp.com/hidden-gems",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "High Scores",
-                        "href": "https://daily.bandcamp.com/high-scores"
+                        "href": "https://daily.bandcamp.com/high-scores",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Label Profile",
-                        "href": "https://daily.bandcamp.com/label-profile"
+                        "href": "https://daily.bandcamp.com/label-profile",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Lifetime Achievement",
-                        "href": "https://daily.bandcamp.com/lifetime-achievement"
+                        "href": "https://daily.bandcamp.com/lifetime-achievement",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Resonance",
-                        "href": "https://daily.bandcamp.com/resonance"
+                        "href": "https://daily.bandcamp.com/resonance",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Scene Report",
-                        "href": "https://daily.bandcamp.com/scene-report"
+                        "href": "https://daily.bandcamp.com/scene-report",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Essential Releases",
-                        "href": "https://daily.bandcamp.com/essential-releases"
+                        "href": "https://daily.bandcamp.com/essential-releases",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Shortlist",
-                        "href": "https://daily.bandcamp.com/shortlist"
+                        "href": "https://daily.bandcamp.com/shortlist",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "The Merch Table",
-                        "href": "https://daily.bandcamp.com/the-merch-table"
+                        "href": "https://daily.bandcamp.com/the-merch-table",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       }
                     ]
                   },
@@ -362,127 +412,152 @@
                       {
                         "tag": "a",
                         "text": "Alternative",
-                        "href": "https://daily.bandcamp.com/genres/alternative"
+                        "href": "https://daily.bandcamp.com/genres/alternative",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Pop",
-                        "href": "https://daily.bandcamp.com/genres/pop"
+                        "href": "https://daily.bandcamp.com/genres/pop",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "World",
-                        "href": "https://daily.bandcamp.com/genres/world"
+                        "href": "https://daily.bandcamp.com/genres/world",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Folk",
-                        "href": "https://daily.bandcamp.com/genres/folk"
+                        "href": "https://daily.bandcamp.com/genres/folk",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Hip-Hop/Rap",
-                        "href": "https://daily.bandcamp.com/genres/hip-hop-rap"
+                        "href": "https://daily.bandcamp.com/genres/hip-hop-rap",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Classical",
-                        "href": "https://daily.bandcamp.com/genres/classical"
+                        "href": "https://daily.bandcamp.com/genres/classical",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Experimental",
-                        "href": "https://daily.bandcamp.com/genres/experimental"
+                        "href": "https://daily.bandcamp.com/genres/experimental",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Electronic",
-                        "href": "https://daily.bandcamp.com/genres/electronic"
+                        "href": "https://daily.bandcamp.com/genres/electronic",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Rock",
-                        "href": "https://daily.bandcamp.com/genres/rock"
+                        "href": "https://daily.bandcamp.com/genres/rock",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "R\u0026B/Soul",
-                        "href": "https://daily.bandcamp.com/genres/r-b-soul"
+                        "href": "https://daily.bandcamp.com/genres/r-b-soul",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Comedy",
-                        "href": "https://daily.bandcamp.com/genres/comedy"
+                        "href": "https://daily.bandcamp.com/genres/comedy",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Country",
-                        "href": "https://daily.bandcamp.com/genres/country"
+                        "href": "https://daily.bandcamp.com/genres/country",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Soundtrack",
-                        "href": "https://daily.bandcamp.com/genres/soundtrack"
+                        "href": "https://daily.bandcamp.com/genres/soundtrack",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Metal",
-                        "href": "https://daily.bandcamp.com/genres/metal"
+                        "href": "https://daily.bandcamp.com/genres/metal",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Jazz",
-                        "href": "https://daily.bandcamp.com/genres/jazz"
+                        "href": "https://daily.bandcamp.com/genres/jazz",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Punk",
-                        "href": "https://daily.bandcamp.com/genres/punk"
+                        "href": "https://daily.bandcamp.com/genres/punk",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Reggae",
-                        "href": "https://daily.bandcamp.com/genres/reggae"
+                        "href": "https://daily.bandcamp.com/genres/reggae",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Funk",
-                        "href": "https://daily.bandcamp.com/genres/funk"
+                        "href": "https://daily.bandcamp.com/genres/funk",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Ambient",
-                        "href": "https://daily.bandcamp.com/genres/ambient"
+                        "href": "https://daily.bandcamp.com/genres/ambient",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Acoustic",
-                        "href": "https://daily.bandcamp.com/genres/acoustic"
+                        "href": "https://daily.bandcamp.com/genres/acoustic",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Blues",
-                        "href": "https://daily.bandcamp.com/genres/blues"
+                        "href": "https://daily.bandcamp.com/genres/blues",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Latin",
-                        "href": "https://daily.bandcamp.com/genres/latin"
+                        "href": "https://daily.bandcamp.com/genres/latin",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Devotional",
-                        "href": "https://daily.bandcamp.com/genres/devotional"
+                        "href": "https://daily.bandcamp.com/genres/devotional",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Spoken Word",
-                        "href": "https://daily.bandcamp.com/genres/spoken-word"
+                        "href": "https://daily.bandcamp.com/genres/spoken-word",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       },
                       {
                         "tag": "a",
                         "text": "Podcasts",
-                        "href": "https://daily.bandcamp.com/genres/podcasts"
+                        "href": "https://daily.bandcamp.com/genres/podcasts",
+                        "el": [{ "tag": "div" }, { "tag": "a" }]
                       }
                     ]
                   }
@@ -521,7 +596,11 @@
                   {
                     "tag": "div",
                     "cls": ["text-wrapper"],
-                    "text": "1 to 30 of 2678"
+                    "text": "1 to 30 of 2678",
+                    "el": [
+                      { "tag": "div", "cls": ["text-wrapper"] },
+                      { "tag": "div" }
+                    ]
                   }
                 ]
               },
@@ -560,7 +639,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Laurentius the Profit Found Heaven in a Cave",
-                        "href": "https://daily.bandcamp.com/features/laurentius-the-profit-interview"
+                        "href": "https://daily.bandcamp.com/features/laurentius-the-profit-interview",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -596,7 +679,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Perennial Death on DIY, Olympia, and their Current Pop Hot Streak",
-                        "href": "https://daily.bandcamp.com/features/perennial-death-label-profile"
+                        "href": "https://daily.bandcamp.com/features/perennial-death-label-profile",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -632,7 +719,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "How Tony Humphries Brought New Jersey House to the Masses",
-                        "href": "https://daily.bandcamp.com/features/tony-humphries-kiss-fm-zanzibar-years-feature"
+                        "href": "https://daily.bandcamp.com/features/tony-humphries-kiss-fm-zanzibar-years-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -668,7 +759,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Solex Does It Again",
-                        "href": "https://daily.bandcamp.com/features/solex-low-kick-and-hard-bop-album-guide"
+                        "href": "https://daily.bandcamp.com/features/solex-low-kick-and-hard-bop-album-guide",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -704,7 +799,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Kristin Hersh Comes Home",
-                        "href": "https://daily.bandcamp.com/features/kristin-hersh-sugar-on-blackstone-interview"
+                        "href": "https://daily.bandcamp.com/features/kristin-hersh-sugar-on-blackstone-interview",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -740,7 +839,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Jem Finer and John Matthias on the Strange Magic of “Almost Starlight”",
-                        "href": "https://daily.bandcamp.com/features/jem-finer-john-matthias-almost-starlight-interview"
+                        "href": "https://daily.bandcamp.com/features/jem-finer-john-matthias-almost-starlight-interview",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -776,7 +879,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Cicada Hum: No-Neck Blues Band Returns",
-                        "href": "https://daily.bandcamp.com/features/no-neck-blues-band-feature"
+                        "href": "https://daily.bandcamp.com/features/no-neck-blues-band-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -812,7 +919,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "For Shabaam Sahdeeq, Everything Is Art",
-                        "href": "https://daily.bandcamp.com/features/for-shabaam-sahdeeq-everything-is-art"
+                        "href": "https://daily.bandcamp.com/features/for-shabaam-sahdeeq-everything-is-art",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -848,7 +959,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Today is Bandcamp Friday",
-                        "href": "https://daily.bandcamp.com/features/bandcamp-fridays"
+                        "href": "https://daily.bandcamp.com/features/bandcamp-fridays",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -884,7 +999,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Inside “The Will of Tongues,” Sarah Davachi’s Organ Music Masterpiece",
-                        "href": "https://daily.bandcamp.com/features/sarah-davachi-the-will-of-tongues-interview"
+                        "href": "https://daily.bandcamp.com/features/sarah-davachi-the-will-of-tongues-interview",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -920,7 +1039,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Gasba Forever: The Next Phase of Algeria’s Millenia-Old Folk Tradition",
-                        "href": "https://daily.bandcamp.com/features/my-heart-is-dust-before-him-21st-century-gasba-from-algeria-feature"
+                        "href": "https://daily.bandcamp.com/features/my-heart-is-dust-before-him-21st-century-gasba-from-algeria-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -956,7 +1079,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Learning by Doing: Making Music as Melaina Kol",
-                        "href": "https://daily.bandcamp.com/features/melaina-kol-okay-thats-great-because-if-i-do-that-then-feature"
+                        "href": "https://daily.bandcamp.com/features/melaina-kol-okay-thats-great-because-if-i-do-that-then-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -992,7 +1119,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Henry Rollins and The Lost Cramps Album",
-                        "href": "https://daily.bandcamp.com/features/the-cramps-gravest-gravy-feature"
+                        "href": "https://daily.bandcamp.com/features/the-cramps-gravest-gravy-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1028,7 +1159,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Uncovering Obscure Records",
-                        "href": "https://daily.bandcamp.com/features/uncovering-obscure-records"
+                        "href": "https://daily.bandcamp.com/features/uncovering-obscure-records",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1064,7 +1199,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "The Womack Sisters Keep It In the Family",
-                        "href": "https://daily.bandcamp.com/features/the-womack-sisters-feature"
+                        "href": "https://daily.bandcamp.com/features/the-womack-sisters-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1100,7 +1239,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Faire Play: The Modern World of Early Music",
-                        "href": "https://daily.bandcamp.com/features/contemporary-early-music-feature"
+                        "href": "https://daily.bandcamp.com/features/contemporary-early-music-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1136,7 +1279,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Saxophonist Nora Stanley Goes Solo with “Glass”",
-                        "href": "https://daily.bandcamp.com/features/nora-stanley-glass-interview"
+                        "href": "https://daily.bandcamp.com/features/nora-stanley-glass-interview",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1172,7 +1319,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "It Starts with a Question: How Duplex Planet Connects Humanity",
-                        "href": "https://daily.bandcamp.com/features/the-duplex-planet-feature"
+                        "href": "https://daily.bandcamp.com/features/the-duplex-planet-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1208,7 +1359,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "“Kingdom Come, Kingdom Go” Brings Aging Church Organs Back to Life",
-                        "href": "https://daily.bandcamp.com/features/michael-cloud-duguay-kingdom-come-kingdom-go-feature"
+                        "href": "https://daily.bandcamp.com/features/michael-cloud-duguay-kingdom-come-kingdom-go-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1244,7 +1399,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Trust the Music: A Guide to the Big Blood Family",
-                        "href": "https://daily.bandcamp.com/features/big-blood-album-guide"
+                        "href": "https://daily.bandcamp.com/features/big-blood-album-guide",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1280,7 +1439,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Tomo Katsurada and Jonny Nash Make Music for Everyone",
-                        "href": "https://daily.bandcamp.com/features/tomo-katsurada-jonny-nash-at-the-emerald-pool-interview"
+                        "href": "https://daily.bandcamp.com/features/tomo-katsurada-jonny-nash-at-the-emerald-pool-interview",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1316,7 +1479,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "The Shape of Twee to Come",
-                        "href": "https://daily.bandcamp.com/features/twee-pop-feature"
+                        "href": "https://daily.bandcamp.com/features/twee-pop-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1352,7 +1519,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Arc Iris Built An Art-Pop Sanctuary In Their Own Backyard (Literally)",
-                        "href": "https://daily.bandcamp.com/features/arc-iris-itmrw-feature"
+                        "href": "https://daily.bandcamp.com/features/arc-iris-itmrw-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1388,7 +1559,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Parts \u0026 Labor Return to Forever",
-                        "href": "https://daily.bandcamp.com/features/parts-and-labor-set-of-all-sets-feature"
+                        "href": "https://daily.bandcamp.com/features/parts-and-labor-set-of-all-sets-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1424,7 +1599,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Debt Rag Turn Limits Into Limitless Creativity",
-                        "href": "https://daily.bandcamp.com/features/debt-rag-it-is-clear-whats-going-on-feature"
+                        "href": "https://daily.bandcamp.com/features/debt-rag-it-is-clear-whats-going-on-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1460,7 +1639,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "“Between Two Worlds” Comes Alive at Fire In the Mountains Festival",
-                        "href": "https://daily.bandcamp.com/features/i-between-two-worlds-interview"
+                        "href": "https://daily.bandcamp.com/features/i-between-two-worlds-interview",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1496,7 +1679,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Mal Waldron’s Metamorphosis Changed Jazz Piano Forever",
-                        "href": "https://daily.bandcamp.com/features/mal-waldron-album-guide"
+                        "href": "https://daily.bandcamp.com/features/mal-waldron-album-guide",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1532,7 +1719,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Cocanha Celebrate Occitan Culture with Collaboration and Community",
-                        "href": "https://daily.bandcamp.com/features/cocanha-flame-folclore-feature"
+                        "href": "https://daily.bandcamp.com/features/cocanha-flame-folclore-feature",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1568,7 +1759,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "The Endless Orbit of Spacemen 3",
-                        "href": "https://daily.bandcamp.com/features/spacemen-3-influence-album-guide"
+                        "href": "https://daily.bandcamp.com/features/spacemen-3-influence-album-guide",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   },
@@ -1604,7 +1799,11 @@
                         "tag": "a",
                         "cls": ["title"],
                         "text": "Why Power Pop is the Sound of Now",
-                        "href": "https://daily.bandcamp.com/features/power-pop-scene-report"
+                        "href": "https://daily.bandcamp.com/features/power-pop-scene-report",
+                        "el": [
+                          { "tag": "div", "cls": ["title-wrapper"] },
+                          { "tag": "a", "cls": ["title"] }
+                        ]
                       }
                     ]
                   }
@@ -1614,7 +1813,12 @@
                 "tag": "a",
                 "cls": ["pagination-link"],
                 "text": "← Older posts ← Older posts",
-                "href": "https://daily.bandcamp.com/features?page=2"
+                "href": "https://daily.bandcamp.com/features?page=2",
+                "el": [
+                  { "tag": "articles-footer" },
+                  { "tag": "div" },
+                  { "tag": "a", "cls": ["pagination-link"] }
+                ]
               }
             ]
           },
@@ -1654,7 +1858,11 @@
                     "tag": "a",
                     "cls": ["title"],
                     "text": "A Brief History of Atlantic Canada’s Guitar Pop Explosions",
-                    "href": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
+                    "href": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report",
+                    "el": [
+                      { "tag": "div", "cls": ["title-wrapper"] },
+                      { "tag": "a", "cls": ["title"] }
+                    ]
                   }
                 ]
               },
@@ -1690,7 +1898,11 @@
                     "tag": "a",
                     "cls": ["title"],
                     "text": "The Secret Life of the Hardanger Fiddle",
-                    "href": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide"
+                    "href": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide",
+                    "el": [
+                      { "tag": "div", "cls": ["title-wrapper"] },
+                      { "tag": "a", "cls": ["title"] }
+                    ]
                   }
                 ]
               },
@@ -1726,7 +1938,11 @@
                     "tag": "a",
                     "cls": ["title"],
                     "text": "The Sound of Gqom Circa 2026",
-                    "href": "https://daily.bandcamp.com/scene-report/gqom-album-guide"
+                    "href": "https://daily.bandcamp.com/scene-report/gqom-album-guide",
+                    "el": [
+                      { "tag": "div", "cls": ["title-wrapper"] },
+                      { "tag": "a", "cls": ["title"] }
+                    ]
                   }
                 ]
               },
@@ -1774,7 +1990,11 @@
                     "tag": "a",
                     "cls": ["title"],
                     "text": "A Brief History of Atlantic Canada’s Guitar Pop Explosions",
-                    "href": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
+                    "href": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report",
+                    "el": [
+                      { "tag": "div", "cls": ["title-wrapper"] },
+                      { "tag": "a", "cls": ["title"] }
+                    ]
                   }
                 ]
               },
@@ -1810,7 +2030,11 @@
                     "tag": "a",
                     "cls": ["title"],
                     "text": "Laurentius the Profit Found Heaven in a Cave",
-                    "href": "https://daily.bandcamp.com/features/laurentius-the-profit-interview"
+                    "href": "https://daily.bandcamp.com/features/laurentius-the-profit-interview",
+                    "el": [
+                      { "tag": "div", "cls": ["title-wrapper"] },
+                      { "tag": "a", "cls": ["title"] }
+                    ]
                   }
                 ]
               },
@@ -1846,7 +2070,11 @@
                     "tag": "a",
                     "cls": ["title"],
                     "text": "Curly Castro, “Yaphet”",
-                    "href": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review"
+                    "href": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review",
+                    "el": [
+                      { "tag": "div", "cls": ["title-wrapper"] },
+                      { "tag": "a", "cls": ["title"] }
+                    ]
                   }
                 ]
               },
@@ -1882,7 +2110,11 @@
                     "tag": "a",
                     "cls": ["title"],
                     "text": "Sleep’s Two Newest Members Pick Their Bandcamp Favorites",
-                    "href": "https://daily.bandcamp.com/big-ups/sleeps-two-newest-members-pick-their-bandcamp-favorites"
+                    "href": "https://daily.bandcamp.com/big-ups/sleeps-two-newest-members-pick-their-bandcamp-favorites",
+                    "el": [
+                      { "tag": "div", "cls": ["title-wrapper"] },
+                      { "tag": "a", "cls": ["title"] }
+                    ]
                   }
                 ]
               },
@@ -1918,7 +2150,11 @@
                     "tag": "a",
                     "cls": ["title"],
                     "text": "The Secret Life of the Hardanger Fiddle",
-                    "href": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide"
+                    "href": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide",
+                    "el": [
+                      { "tag": "div", "cls": ["title-wrapper"] },
+                      { "tag": "a", "cls": ["title"] }
+                    ]
                   }
                 ]
               },
@@ -1954,7 +2190,11 @@
                     "tag": "a",
                     "cls": ["title"],
                     "text": "Actress, “Radical Frame”",
-                    "href": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review"
+                    "href": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review",
+                    "el": [
+                      { "tag": "div", "cls": ["title-wrapper"] },
+                      { "tag": "a", "cls": ["title"] }
+                    ]
                   }
                 ]
               },

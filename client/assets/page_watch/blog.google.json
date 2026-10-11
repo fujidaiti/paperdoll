@@ -9,6 +9,11 @@
       "site-content",
       "uni-blog-landing"
     ],
+    "el": [
+      { "tag": "body", "cls": ["template-homepage", "keyword-blog"] },
+      { "tag": "main", "cls": ["site-content"] },
+      { "tag": "article", "cls": ["uni-blog-landing"] }
+    ],
     "ch": [
       {
         "tag": "section",
@@ -21,10 +26,37 @@
           "uni-hero-carousel",
           "uni-hero-carousel__viewport"
         ],
+        "el": [
+          { "tag": "section" },
+          {
+            "tag": "section",
+            "cls": [
+              "uni-page",
+              "uni-page-spacer-bottom",
+              "uni-page-spacer-top",
+              "uni-grid"
+            ]
+          },
+          {
+            "tag": "uni-hero-carousel",
+            "cls": ["uni-carousel", "uni-hero-carousel"]
+          },
+          {
+            "tag": "uni-hero-carousel-viewport",
+            "cls": ["uni-hero-carousel__viewport"]
+          }
+        ],
         "ch": [
           {
             "tag": "uni-hero-carousel-slide",
             "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
+            "el": [
+              {
+                "tag": "uni-hero-carousel-slide",
+                "cls": ["uni-hero-carousel__slide"]
+              },
+              { "tag": "div", "cls": ["uni-hero-carousel__card"] }
+            ],
             "ch": [
               {
                 "tag": "div",
@@ -57,7 +89,14 @@
                   {
                     "tag": "div",
                     "cls": ["uni-hero-carousel__cta-container"],
-                    "text": "Read more"
+                    "text": "Read more",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["uni-hero-carousel__cta-container"]
+                      },
+                      { "tag": "uni-cta" }
+                    ]
                   }
                 ]
               },
@@ -65,7 +104,18 @@
                 "tag": "img",
                 "cls": ["uni-hero-carousel__media"],
                 "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_3-8_live___ke.2e16d0ba.fill-1200x800.format-webp.webp",
-                "alt": "Text \"Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking\" with the Gemini Spark, all on a light blue background"
+                "alt": "Text \"Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking\" with the Gemini Spark, all on a light blue background",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__media-container"]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__media-clip-mask"]
+                  },
+                  { "tag": "img", "cls": ["uni-hero-carousel__media"] }
+                ]
               }
             ]
           },
@@ -75,6 +125,14 @@
               "uni-hero-carousel__slide",
               "uni-hero-carousel__card",
               "uni-hero-carousel__content"
+            ],
+            "el": [
+              {
+                "tag": "uni-hero-carousel-slide",
+                "cls": ["uni-hero-carousel__slide"]
+              },
+              { "tag": "div", "cls": ["uni-hero-carousel__card"] },
+              { "tag": "div", "cls": ["uni-hero-carousel__content"] }
             ],
             "ch": [
               {
@@ -101,13 +159,24 @@
               {
                 "tag": "div",
                 "cls": ["uni-hero-carousel__cta-container"],
-                "text": "Read more"
+                "text": "Read more",
+                "el": [
+                  { "tag": "div", "cls": ["uni-hero-carousel__cta-container"] },
+                  { "tag": "uni-cta" }
+                ]
               }
             ]
           },
           {
             "tag": "uni-hero-carousel-slide",
             "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
+            "el": [
+              {
+                "tag": "uni-hero-carousel-slide",
+                "cls": ["uni-hero-carousel__slide"]
+              },
+              { "tag": "div", "cls": ["uni-hero-carousel__card"] }
+            ],
             "ch": [
               {
                 "tag": "div",
@@ -140,7 +209,14 @@
                   {
                     "tag": "div",
                     "cls": ["uni-hero-carousel__cta-container"],
-                    "text": "Read more"
+                    "text": "Read more",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["uni-hero-carousel__cta-container"]
+                      },
+                      { "tag": "uni-cta" }
+                    ]
                   }
                 ]
               },
@@ -148,13 +224,31 @@
                 "tag": "img",
                 "cls": ["uni-hero-carousel__media"],
                 "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Thompson_Center_hero.2e16d0ba.fill-1200x800.format-webp.webp",
-                "alt": "Thompson Center"
+                "alt": "Thompson Center",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__media-container"]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__media-clip-mask"]
+                  },
+                  { "tag": "img", "cls": ["uni-hero-carousel__media"] }
+                ]
               }
             ]
           },
           {
             "tag": "uni-hero-carousel-slide",
             "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
+            "el": [
+              {
+                "tag": "uni-hero-carousel-slide",
+                "cls": ["uni-hero-carousel__slide"]
+              },
+              { "tag": "div", "cls": ["uni-hero-carousel__card"] }
+            ],
             "ch": [
               {
                 "tag": "div",
@@ -187,7 +281,14 @@
                   {
                     "tag": "div",
                     "cls": ["uni-hero-carousel__cta-container"],
-                    "text": "Read more"
+                    "text": "Read more",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["uni-hero-carousel__cta-container"]
+                      },
+                      { "tag": "uni-cta" }
+                    ]
                   }
                 ]
               },
@@ -195,13 +296,31 @@
                 "tag": "img",
                 "cls": ["uni-hero-carousel__media"],
                 "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AlphaGenome_Atlas_he.2e16d0ba.fill-1200x800.format-webp.webp",
-                "alt": "Wavy pink and lavender pillars with glowing orange columns in the center."
+                "alt": "Wavy pink and lavender pillars with glowing orange columns in the center.",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__media-container"]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__media-clip-mask"]
+                  },
+                  { "tag": "img", "cls": ["uni-hero-carousel__media"] }
+                ]
               }
             ]
           },
           {
             "tag": "uni-hero-carousel-slide",
             "cls": ["uni-hero-carousel__slide", "uni-hero-carousel__card"],
+            "el": [
+              {
+                "tag": "uni-hero-carousel-slide",
+                "cls": ["uni-hero-carousel__slide"]
+              },
+              { "tag": "div", "cls": ["uni-hero-carousel__card"] }
+            ],
             "ch": [
               {
                 "tag": "div",
@@ -234,7 +353,14 @@
                   {
                     "tag": "div",
                     "cls": ["uni-hero-carousel__cta-container"],
-                    "text": "Read more"
+                    "text": "Read more",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["uni-hero-carousel__cta-container"]
+                      },
+                      { "tag": "uni-cta" }
+                    ]
                   }
                 ]
               },
@@ -242,7 +368,18 @@
                 "tag": "img",
                 "cls": ["uni-hero-carousel__media"],
                 "src": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/LOVE_RENDERED_HERO_B.2e16d0ba.fill-1200x800.format-webp.webp",
-                "alt": "An elderly couple sitting in a movie theater. Overlayed are \"Teulluride Film Festival\" and \"Love, Rendered\""
+                "alt": "An elderly couple sitting in a movie theater. Overlayed are \"Teulluride Film Festival\" and \"Love, Rendered\"",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__media-container"]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["uni-hero-carousel__media-clip-mask"]
+                  },
+                  { "tag": "img", "cls": ["uni-hero-carousel__media"] }
+                ]
               }
             ]
           }
@@ -263,11 +400,39 @@
           "uni-grid__col--span-12-tablet",
           "uni-grid__col--span-4-desktop"
         ],
+        "el": [
+          {
+            "tag": "uni-collection",
+            "cls": [
+              "uni-collection",
+              "uni-page-spacer-bottom",
+              "uni-collection--dark-mode",
+              "uni-collection--theme-light-purple"
+            ]
+          },
+          { "tag": "div" },
+          { "tag": "div", "cls": ["uni-collection-container"] },
+          { "tag": "div", "cls": ["uni-page"] },
+          { "tag": "div", "cls": ["uni-grid"] },
+          {
+            "tag": "div",
+            "cls": [
+              "uni-collection__content",
+              "uni-grid__col--span-4",
+              "uni-grid__col--span-12-tablet",
+              "uni-grid__col--span-4-desktop"
+            ]
+          }
+        ],
         "ch": [
           {
             "tag": "div",
             "cls": ["uni-collection__eyebrow", "font-eyebrow"],
-            "text": "Collection"
+            "text": "Collection",
+            "el": [
+              { "tag": "div", "cls": ["uni-collection__eyebrow"] },
+              { "tag": "p", "cls": ["font-eyebrow"] }
+            ]
           },
           {
             "tag": "div",
@@ -281,7 +446,14 @@
               {
                 "tag": "div",
                 "cls": ["uni-collection__summary", "font-body-l", "rich-text"],
-                "text": "See how experts and local leaders are using AI breakthroughs to ensure everyone can share the opportunity of AI."
+                "text": "See how experts and local leaders are using AI breakthroughs to ensure everyone can share the opportunity of AI.",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["uni-collection__summary", "font-body-l"]
+                  },
+                  { "tag": "div", "cls": ["rich-text"] }
+                ]
               }
             ]
           },
@@ -298,7 +470,19 @@
           "uni-nup__headline",
           "font-h3"
         ],
-        "text": "More updates"
+        "text": "More updates",
+        "el": [
+          {
+            "tag": "section",
+            "cls": [
+              "uni-nup",
+              "uni-page",
+              "uni-page-spacer-bottom",
+              "redesign-patch"
+            ]
+          },
+          { "tag": "h3", "cls": ["uni-nup__headline", "font-h3"] }
+        ]
       },
       {
         "tag": "section",
@@ -310,6 +494,17 @@
           "uni-landing-newsletter__inner",
           "uni-landing-newsletter__content",
           "uni-landing-newsletter__form-group"
+        ],
+        "el": [
+          {
+            "tag": "section",
+            "cls": ["uni-landing-newsletter", "uni-landing-newsletter--color"]
+          },
+          { "tag": "div", "cls": ["uni-page"] },
+          { "tag": "div", "cls": ["uni-grid"] },
+          { "tag": "div", "cls": ["uni-landing-newsletter__inner"] },
+          { "tag": "div", "cls": ["uni-landing-newsletter__content"] },
+          { "tag": "div", "cls": ["uni-landing-newsletter__form-group"] }
         ],
         "ch": [
           {
@@ -331,6 +526,16 @@
                 "cls": [
                   "uni-landing-newsletter-success__message",
                   "uni-landing-newsletter-success__text"
+                ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": ["uni-landing-newsletter-success__message"]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["uni-landing-newsletter-success__text"]
+                  }
                 ],
                 "ch": [
                   {
@@ -387,7 +592,19 @@
           "uni-nup__headline",
           "font-h3"
         ],
-        "text": "Tips and tricks"
+        "text": "Tips and tricks",
+        "el": [
+          {
+            "tag": "section",
+            "cls": [
+              "uni-nup",
+              "uni-page",
+              "uni-page-spacer-bottom",
+              "redesign-patch"
+            ]
+          },
+          { "tag": "h3", "cls": ["uni-nup__headline", "font-h3"] }
+        ]
       }
     ]
   }

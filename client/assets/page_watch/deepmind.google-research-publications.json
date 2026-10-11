@@ -4,6 +4,10 @@
   "root": {
     "tag": "body",
     "cls": ["template-publication-landing-page"],
+    "el": [
+      { "tag": "body", "cls": ["template-publication-landing-page"] },
+      { "tag": "main" }
+    ],
     "ch": [
       {
         "tag": "section",
@@ -19,6 +23,28 @@
           "grid__column--span-8-sm",
           "grid__column--span-4-xs"
         ],
+        "el": [
+          {
+            "tag": "section",
+            "cls": [
+              "section-default",
+              "section-padding-top",
+              "section-title",
+              "spacer-3xl-padding-bottom"
+            ]
+          },
+          { "tag": "div", "cls": ["grid"] },
+          {
+            "tag": "div",
+            "cls": [
+              "grid__column--span-8-xl",
+              "grid__column--span-8-lg",
+              "grid__column--span-8-md",
+              "grid__column--span-8-sm",
+              "grid__column--span-4-xs"
+            ]
+          }
+        ],
         "ch": [
           {
             "tag": "h1",
@@ -28,7 +54,14 @@
           {
             "tag": "div",
             "cls": ["section-title__description", "heading-4"],
-            "text": "Explore a selection of our recent research on some of the most complex and interesting challenges in AI."
+            "text": "Explore a selection of our recent research on some of the most complex and interesting challenges in AI.",
+            "el": [
+              {
+                "tag": "div",
+                "cls": ["section-title__description", "heading-4"]
+              },
+              { "tag": "p" }
+            ]
           }
         ]
       },
@@ -39,7 +72,11 @@
           "section-default",
           "publication-count__text"
         ],
-        "text": "263 publications"
+        "text": "263 publications",
+        "el": [
+          { "tag": "div", "cls": ["publication-count", "section-default"] },
+          { "tag": "p", "cls": ["publication-count__text"] }
+        ]
       },
       {
         "tag": "section",
@@ -53,11 +90,31 @@
           "grid__column--span-12-md",
           "list-group"
         ],
+        "el": [
+          {
+            "tag": "section",
+            "cls": ["list-group-section", "section-default", "grid"]
+          },
+          {
+            "tag": "div",
+            "cls": [
+              "grid__inner",
+              "grid__column--span-4-xs",
+              "grid__column--span-8-sm",
+              "grid__column--span-12-md"
+            ]
+          },
+          { "tag": "ul", "cls": ["list-group"] }
+        ],
         "ch": [
           {
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/265605/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -89,6 +146,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/270149/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -120,6 +181,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/118955/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -151,6 +216,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/264392/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -182,6 +251,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/225819/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -213,6 +286,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/260960/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -244,6 +321,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/203490/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -275,6 +356,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/224297/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -306,6 +391,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/149262/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -337,6 +426,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/224397/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -368,6 +461,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/248131/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -399,6 +496,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/239142/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -430,6 +531,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/231466/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -461,6 +566,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/253391/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -492,6 +601,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/252981/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -523,6 +636,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/239849/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -554,6 +671,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/238239/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -585,6 +706,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/193694/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -616,6 +741,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/240658/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -647,6 +776,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/146950/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -678,6 +811,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/231971/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -709,6 +846,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/225507/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -740,6 +881,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/137741/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -771,6 +916,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/94006/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -802,6 +951,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/122591/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -833,6 +986,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/141313/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -864,6 +1021,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/42697/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -895,6 +1056,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/180362/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -926,6 +1091,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/210560/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -957,6 +1126,10 @@
             "tag": "a",
             "cls": ["list-group__link"],
             "href": "https://deepmind.google/research/publications/160567/",
+            "el": [
+              { "tag": "li", "cls": ["list-group__item"] },
+              { "tag": "a", "cls": ["list-group__link"] }
+            ],
             "ch": [
               {
                 "tag": "dl",
@@ -989,6 +1162,10 @@
       {
         "tag": "div",
         "cls": ["container", "publication-pagination", "pagination"],
+        "el": [
+          { "tag": "div", "cls": ["container", "publication-pagination"] },
+          { "tag": "div", "cls": ["pagination"] }
+        ],
         "ch": [
           {
             "tag": "a",

@@ -3,6 +3,7 @@
   "title": "Newsroom \\ Anthropic",
   "root": {
     "tag": "body",
+    "el": [{ "tag": "body" }, { "tag": "main" }, { "tag": "article" }],
     "ch": [
       {
         "tag": "section",
@@ -13,6 +14,18 @@
           "page-wrapper",
           "HeroTwoColumn-module-scss-module__root"
         ],
+        "el": [
+          {
+            "tag": "section",
+            "cls": [
+              "HeroTwoColumn-module-scss-module__landingPageListHeader",
+              "LandingPageSection-module-scss-module__root",
+              "bg-default"
+            ]
+          },
+          { "tag": "div", "cls": ["page-wrapper"] },
+          { "tag": "div", "cls": ["HeroTwoColumn-module-scss-module__root"] }
+        ],
         "ch": [
           {
             "tag": "h1",
@@ -20,7 +33,14 @@
               "HeroTwoColumn-module-scss-module__titleSubhead",
               "headline-1"
             ],
-            "text": "Newsroom"
+            "text": "Newsroom",
+            "el": [
+              {
+                "tag": "div",
+                "cls": ["HeroTwoColumn-module-scss-module__titleSubhead"]
+              },
+              { "tag": "h1", "cls": ["headline-1"] }
+            ]
           },
           {
             "tag": "div",
@@ -28,6 +48,20 @@
               "HeroTwoColumn-module-scss-module__bodyCtas",
               "HeroTwoColumn-module-scss-module__ctaWrapper",
               "HeroTwoColumn-module-scss-module__ctaList"
+            ],
+            "el": [
+              {
+                "tag": "div",
+                "cls": ["HeroTwoColumn-module-scss-module__bodyCtas"]
+              },
+              {
+                "tag": "div",
+                "cls": ["HeroTwoColumn-module-scss-module__ctaWrapper"]
+              },
+              {
+                "tag": "ul",
+                "cls": ["HeroTwoColumn-module-scss-module__ctaList"]
+              }
             ],
             "ch": [
               {
@@ -88,11 +122,33 @@
           "page-wrapper",
           "FeaturedGrid-module-scss-module__root"
         ],
+        "el": [
+          {
+            "tag": "section",
+            "cls": [
+              "LandingPageSection-module-scss-module__root",
+              "bg-default",
+              "LandingPageSection-module-scss-module__flushTop"
+            ]
+          },
+          { "tag": "div", "cls": ["page-wrapper"] },
+          { "tag": "div", "cls": ["FeaturedGrid-module-scss-module__root"] }
+        ],
         "ch": [
           {
             "tag": "a",
             "cls": ["FeaturedGrid-module-scss-module__content"],
             "href": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+            "el": [
+              {
+                "tag": "div",
+                "cls": ["FeaturedGrid-module-scss-module__featuredItem"]
+              },
+              {
+                "tag": "a",
+                "cls": ["FeaturedGrid-module-scss-module__content"]
+              }
+            ],
             "ch": [
               {
                 "tag": "h2",
@@ -108,6 +164,21 @@
                   "FeaturedGrid-module-scss-module__featuredItemContent",
                   "FeaturedGrid-module-scss-module__gridItem",
                   "FeaturedGrid-module-scss-module__featured"
+                ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "FeaturedGrid-module-scss-module__featuredItemContent"
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "FeaturedGrid-module-scss-module__gridItem",
+                      "FeaturedGrid-module-scss-module__featured"
+                    ]
+                  }
                 ],
                 "ch": [
                   {
@@ -158,7 +229,21 @@
                       "caption",
                       "bold"
                     ],
-                    "text": "Sep 17, 2026"
+                    "text": "Sep 17, 2026",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["FeaturedGrid-module-scss-module__meta"]
+                      },
+                      {
+                        "tag": "time",
+                        "cls": [
+                          "FeaturedGrid-module-scss-module__date",
+                          "caption",
+                          "bold"
+                        ]
+                      }
+                    ]
                   },
                   {
                     "tag": "h4",
@@ -277,17 +362,45 @@
           "LandingPageSection-module-scss-module__flushTop",
           "page-wrapper"
         ],
+        "el": [
+          {
+            "tag": "section",
+            "cls": [
+              "LandingPageSection-module-scss-module__root",
+              "bg-default",
+              "LandingPageSection-module-scss-module__flushTop"
+            ]
+          },
+          { "tag": "div", "cls": ["page-wrapper"] }
+        ],
         "ch": [
           {
             "tag": "h2",
             "cls": ["PublicationList-module-scss-module__header", "headline-4"],
-            "text": "News"
+            "text": "News",
+            "el": [
+              {
+                "tag": "div",
+                "cls": ["PublicationList-module-scss-module__header"]
+              },
+              { "tag": "h2", "cls": ["headline-4"] }
+            ]
           },
           {
             "tag": "div",
             "cls": [
               "PublicationList-module-scss-module__root",
               "PublicationList-module-scss-module__content"
+            ],
+            "el": [
+              {
+                "tag": "div",
+                "cls": ["PublicationList-module-scss-module__root"]
+              },
+              {
+                "tag": "div",
+                "cls": ["PublicationList-module-scss-module__content"]
+              }
             ],
             "ch": [
               {
@@ -303,6 +416,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/accenture-embedded-evaluation",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -329,6 +449,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/life-sciences-verification-program",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -355,6 +482,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/enterprise-frontier-safeguards",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -381,6 +515,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/improving-alignment-security-efforts",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -407,6 +548,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -433,6 +581,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/expanding-support-for-scientists",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -459,6 +614,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/wellbeing-research-grants",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -485,6 +647,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/claude-text-watermark",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -511,6 +680,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -537,6 +713,13 @@
                     "tag": "a",
                     "cls": ["PublicationList-module-scss-module__listItem"],
                     "href": "https://www.anthropic.com/news/tino-cuellar",
+                    "el": [
+                      { "tag": "li" },
+                      {
+                        "tag": "a",
+                        "cls": ["PublicationList-module-scss-module__listItem"]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "div",

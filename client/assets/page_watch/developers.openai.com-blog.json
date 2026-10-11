@@ -16,6 +16,22 @@
       "flex-col",
       "items-center"
     ],
+    "el": [
+      { "tag": "body", "cls": ["overflow-x-hidden"] },
+      { "tag": "main", "cls": ["min-w-0", "flex-1", "lg:pl-[240px]"] },
+      {
+        "tag": "div",
+        "cls": [
+          "page-container",
+          "md:max-w-6xl",
+          "pb-24",
+          "pt-0",
+          "flex",
+          "flex-col",
+          "items-center"
+        ]
+      }
+    ],
     "ch": [
       {
         "tag": "header",
@@ -39,7 +55,14 @@
               "heading-2xl",
               "md:heading-2xl"
             ],
-            "text": "OpenAI Developer Blog"
+            "text": "OpenAI Developer Blog",
+            "el": [
+              {
+                "tag": "div",
+                "cls": ["flex", "flex-wrap", "items-center", "gap-3"]
+              },
+              { "tag": "h1", "cls": ["heading-2xl", "md:heading-2xl"] }
+            ]
           },
           {
             "tag": "p",
@@ -68,6 +91,21 @@
           "md:w-full",
           "md:mx-0"
         ],
+        "el": [
+          { "tag": "div", "cls": ["pt-20", "w-full"] },
+          {
+            "tag": "div",
+            "cls": [
+              "flex",
+              "flex-col",
+              "gap-10",
+              "w-[calc(100%+4rem)]",
+              "-mx-8",
+              "md:w-full",
+              "md:mx-0"
+            ]
+          }
+        ],
         "ch": [
           {
             "tag": "a",
@@ -91,7 +129,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/rethinking-skills-and-prompts-for-gpt-6-astra/cover.webp",
-                "alt": "Rethinking skills and prompts for GPT-6 Astra"
+                "alt": "Rethinking skills and prompts for GPT-6 Astra",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -113,7 +158,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Rethinking skills and prompts for GPT-6 Astra"
+                "text": "Rethinking skills and prompts for GPT-6 Astra",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -149,7 +211,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/architectural-visualization-with-astra/cover.webp",
-                "alt": "Architectural visualization with Astra"
+                "alt": "Architectural visualization with Astra",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -171,7 +240,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Architectural visualization with Astra"
+                "text": "Architectural visualization with Astra",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -207,7 +293,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://cdn.openai.com/devhub/blog/how-to-build-games/cover-ee7683a4efa3.webp",
-                "alt": "Building games with Astra"
+                "alt": "Building games with Astra",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -229,7 +322,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Building games with Astra"
+                "text": "Building games with Astra",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -265,7 +375,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/rosalind-workbench/cover.webp",
-                "alt": "Meet Rosalind Workbench: Empowering every scientist to be their own research team"
+                "alt": "Meet Rosalind Workbench: Empowering every scientist to be their own research team",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -287,7 +404,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Meet Rosalind Workbench: Empowering every scientist to be their own research team"
+                "text": "Meet Rosalind Workbench: Empowering every scientist to be their own research team",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -323,7 +457,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/automating-repetitive-work-at-openai-with-codex/cover.webp",
-                "alt": "Automating repetitive work at OpenAI with Codex"
+                "alt": "Automating repetitive work at OpenAI with Codex",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -345,7 +486,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Automating repetitive work at OpenAI with Codex"
+                "text": "Automating repetitive work at OpenAI with Codex",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -381,7 +539,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/build-week-winners/cover.webp",
-                "alt": "Meet the winners of OpenAI Build Week"
+                "alt": "Meet the winners of OpenAI Build Week",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -403,7 +568,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Meet the winners of OpenAI Build Week"
+                "text": "Meet the winners of OpenAI Build Week",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -439,7 +621,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/scaling-cyber-defenders-with-daybreak/cover.png",
-                "alt": "Scaling cyber defenders with Daybreak"
+                "alt": "Scaling cyber defenders with Daybreak",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -461,7 +650,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Scaling cyber defenders with Daybreak"
+                "text": "Scaling cyber defenders with Daybreak",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -497,7 +703,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/codex-as-a-platform-cover.webp",
-                "alt": "Codex as a platform: build on the open agent harness"
+                "alt": "Codex as a platform: build on the open agent harness",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -519,7 +732,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Codex as a platform: build on the open agent harness"
+                "text": "Codex as a platform: build on the open agent harness",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -555,7 +785,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/codex-custom-code-review-rules.png",
-                "alt": "Custom Code Review rules for Codex"
+                "alt": "Custom Code Review rules for Codex",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -577,7 +814,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Custom Code Review rules for Codex"
+                "text": "Custom Code Review rules for Codex",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -613,7 +867,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/mastering-codex-remote-for-engineering.png",
-                "alt": "Mastering remote engineering work from your phone"
+                "alt": "Mastering remote engineering work from your phone",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -635,7 +896,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Mastering remote engineering work from your phone"
+                "text": "Mastering remote engineering work from your phone",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -671,7 +949,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/connect-private-mcp-servers-safely.png",
-                "alt": "Making private MCP servers reachable without making them public"
+                "alt": "Making private MCP servers reachable without making them public",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -693,7 +978,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Making private MCP servers reachable without making them public"
+                "text": "Making private MCP servers reachable without making them public",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -729,7 +1031,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/realtime-perplexity-computer.png",
-                "alt": "How Perplexity Brought Voice Search to Millions Using the Realtime API"
+                "alt": "How Perplexity Brought Voice Search to Millions Using the Realtime API",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -751,7 +1060,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "How Perplexity Brought Voice Search to Millions Using the Realtime API"
+                "text": "How Perplexity Brought Voice Search to Millions Using the Realtime API",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -787,7 +1113,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/designing-beautiful-frontends.png",
-                "alt": "Designing delightful frontends with GPT-5.4"
+                "alt": "Designing delightful frontends with GPT-5.4",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -809,7 +1142,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Designing delightful frontends with GPT-5.4"
+                "text": "Designing delightful frontends with GPT-5.4",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -845,7 +1195,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/one-year-responses.png",
-                "alt": "From prompts to products: One year of Responses"
+                "alt": "From prompts to products: One year of Responses",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -867,7 +1224,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "From prompts to products: One year of Responses"
+                "text": "From prompts to products: One year of Responses",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -903,7 +1277,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/skills-agents-sdk.png",
-                "alt": "Using skills to accelerate OSS maintenance"
+                "alt": "Using skills to accelerate OSS maintenance",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -925,7 +1306,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Using skills to accelerate OSS maintenance"
+                "text": "Using skills to accelerate OSS maintenance",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -961,7 +1359,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/building-frontend-uis-with-codex-and-figma.png",
-                "alt": "Building frontend UIs with Codex and Figma"
+                "alt": "Building frontend UIs with Codex and Figma",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -983,7 +1388,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Building frontend UIs with Codex and Figma"
+                "text": "Building frontend UIs with Codex and Figma",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1019,7 +1441,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/run-long-horizon-tasks-with-codex.png",
-                "alt": "Run long horizon tasks with Codex"
+                "alt": "Run long horizon tasks with Codex",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1041,7 +1470,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Run long horizon tasks with Codex"
+                "text": "Run long horizon tasks with Codex",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "div",
@@ -1072,7 +1518,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/skills-shell-tips.png",
-                "alt": "Shell + Skills + Compaction: Tips for long-running agents that do real work"
+                "alt": "Shell + Skills + Compaction: Tips for long-running agents that do real work",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1094,7 +1547,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Shell + Skills + Compaction: Tips for long-running agents that do real work"
+                "text": "Shell + Skills + Compaction: Tips for long-running agents that do real work",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1130,7 +1600,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/15-lessons-chatgpt-apps.png",
-                "alt": "15 lessons learned building ChatGPT Apps"
+                "alt": "15 lessons learned building ChatGPT Apps",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1152,7 +1629,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "15 lessons learned building ChatGPT Apps"
+                "text": "15 lessons learned building ChatGPT Apps",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1188,7 +1682,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/eval-skills.png",
-                "alt": "Testing Agent Skills Systematically with Evals"
+                "alt": "Testing Agent Skills Systematically with Evals",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1210,7 +1711,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Testing Agent Skills Systematically with Evals"
+                "text": "Testing Agent Skills Systematically with Evals",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1246,7 +1764,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/codex-jetbrains.png",
-                "alt": "Supercharging Codex with JetBrains MCP at Skyscanner"
+                "alt": "Supercharging Codex with JetBrains MCP at Skyscanner",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1268,7 +1793,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Supercharging Codex with JetBrains MCP at Skyscanner"
+                "text": "Supercharging Codex with JetBrains MCP at Skyscanner",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1304,7 +1846,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/openai-for-devs-2025.png",
-                "alt": "OpenAI for Developers in 2025"
+                "alt": "OpenAI for Developers in 2025",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1326,7 +1875,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "OpenAI for Developers in 2025"
+                "text": "OpenAI for Developers in 2025",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1362,7 +1928,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/updates-audio-blog.webp",
-                "alt": "Updates for developers building with voice"
+                "alt": "Updates for developers building with voice",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1384,7 +1957,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Updates for developers building with voice"
+                "text": "Updates for developers building with voice",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1420,7 +2010,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/apps-blog-visual.png",
-                "alt": "What makes a great ChatGPT app"
+                "alt": "What makes a great ChatGPT app",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1442,7 +2039,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "What makes a great ChatGPT app"
+                "text": "What makes a great ChatGPT app",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1478,7 +2092,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/codex-for-documentation-dagster.png",
-                "alt": "Using Codex for education at Dagster Labs"
+                "alt": "Using Codex for education at Dagster Labs",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1500,7 +2121,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Using Codex for education at Dagster Labs"
+                "text": "Using Codex for education at Dagster Labs",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1536,7 +2174,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/codex-at-devday.png",
-                "alt": "How Codex ran OpenAI DevDay 2025"
+                "alt": "How Codex ran OpenAI DevDay 2025",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1558,7 +2203,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "How Codex ran OpenAI DevDay 2025"
+                "text": "How Codex ran OpenAI DevDay 2025",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1594,7 +2256,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/responses-api.png",
-                "alt": "Why we built the Responses API"
+                "alt": "Why we built the Responses API",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1616,7 +2285,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Why we built the Responses API"
+                "text": "Why we built the Responses API",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1652,7 +2338,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/agent-online.png",
-                "alt": "Developer notes on the Realtime API"
+                "alt": "Developer notes on the Realtime API",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1674,7 +2367,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Developer notes on the Realtime API"
+                "text": "Developer notes on the Realtime API",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",
@@ -1710,7 +2420,14 @@
                 "tag": "img",
                 "cls": ["block", "w-full", "h-auto", "md:rounded-md"],
                 "src": "https://developers.openai.com/images/blog/hello-world.png",
-                "alt": "Hello, world!"
+                "alt": "Hello, world!",
+                "el": [
+                  { "tag": "div", "cls": ["relative", "min-w-0", "shrink"] },
+                  {
+                    "tag": "img",
+                    "cls": ["block", "w-full", "h-auto", "md:rounded-md"]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -1732,7 +2449,24 @@
                   "flex-1",
                   "line-clamp-2"
                 ],
-                "text": "Hello, world!"
+                "text": "Hello, world!",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "px-4",
+                      "pb-2",
+                      "text-xl",
+                      "flex",
+                      "items-start",
+                      "gap-1",
+                      "font-medium",
+                      "text-default",
+                      "md:px-0"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["flex-1", "line-clamp-2"] }
+                ]
               },
               {
                 "tag": "p",

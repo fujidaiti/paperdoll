@@ -17,6 +17,25 @@
       "custom-colors",
       "site-main"
     ],
+    "el": [
+      {
+        "tag": "body",
+        "cls": [
+          "home",
+          "blog",
+          "custom-background",
+          "wp-embed-responsive",
+          "wp-theme-pubpenscratch-2",
+          "customizer-styles-applied",
+          "no-sidebar",
+          "jetpack-reblog-enabled",
+          "categories-hidden",
+          "author-hidden",
+          "custom-colors"
+        ]
+      },
+      { "tag": "main", "cls": ["site-main"] }
+    ],
     "ch": [
       {
         "tag": "article",
@@ -33,6 +52,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -48,6 +71,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2021/02/08/the-ants-and-the-pheromones/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -66,6 +90,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -81,6 +109,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -112,6 +141,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -127,6 +160,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2020/12/14/entity-resolution/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -145,6 +179,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -160,6 +198,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -190,6 +229,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -205,6 +248,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2020/12/08/bias-in-word-embeddings/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -223,6 +267,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -238,6 +286,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -269,6 +318,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -284,6 +337,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2020/11/30/seeing-is-believing/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -302,6 +356,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -317,6 +375,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -347,6 +406,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -362,6 +425,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2020/11/23/elle/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -380,6 +444,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -395,6 +463,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -427,6 +496,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -442,6 +515,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2020/11/16/pigasus/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -460,6 +534,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -475,6 +553,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -506,6 +585,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -521,6 +604,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2020/11/09/delos/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -539,6 +623,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -554,6 +642,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -584,6 +673,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -599,6 +692,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2020/11/02/helios-part-ii/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -617,6 +711,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -632,6 +730,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -663,6 +762,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -678,6 +781,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2020/10/26/helios-part-1/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -696,6 +800,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -711,6 +819,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -741,6 +850,10 @@
           {
             "tag": "h1",
             "cls": ["entry-header", "entry-title"],
+            "el": [
+              { "tag": "header", "cls": ["entry-header"] },
+              { "tag": "h1", "cls": ["entry-title"] }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -756,6 +869,7 @@
               {
                 "tag": "a",
                 "href": "https://blog.acolyer.org/2020/10/19/the-case-for-a-learned-sorting-algorithm/",
+                "el": [{ "tag": "span", "cls": ["posted-on"] }, { "tag": "a" }],
                 "ch": [
                   {
                     "tag": "time",
@@ -774,6 +888,10 @@
               {
                 "tag": "span",
                 "cls": ["byline", "author", "vcard"],
+                "el": [
+                  { "tag": "span", "cls": ["byline"] },
+                  { "tag": "span", "cls": ["author", "vcard"] }
+                ],
                 "ch": [
                   { "tag": "#text", "text": "~" },
                   {
@@ -789,6 +907,7 @@
           {
             "tag": "div",
             "cls": ["entry-content"],
+            "el": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
             "ch": [
               {
                 "tag": "#text",
@@ -816,7 +935,12 @@
           {
             "tag": "a",
             "text": "Older posts",
-            "href": "https://blog.acolyer.org/page/2/"
+            "href": "https://blog.acolyer.org/page/2/",
+            "el": [
+              { "tag": "div", "cls": ["nav-links"] },
+              { "tag": "div", "cls": ["nav-previous"] },
+              { "tag": "a" }
+            ]
           }
         ]
       }

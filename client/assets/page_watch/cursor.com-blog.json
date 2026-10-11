@@ -9,6 +9,18 @@
       "min-h-screen",
       "pt-[var(--site-header-height)]"
     ],
+    "el": [
+      {
+        "tag": "body",
+        "cls": [
+          "bg-theme-bg",
+          "text-theme-text",
+          "min-h-screen",
+          "pt-[var(--site-header-height)]"
+        ]
+      },
+      { "tag": "main" }
+    ],
     "ch": [
       {
         "tag": "section",
@@ -21,6 +33,20 @@
           "container",
           "grid-cursor",
           "gap-y-0"
+        ],
+        "el": [
+          {
+            "tag": "section",
+            "cls": [
+              "section",
+              "section--first-child",
+              "section--flush-bottom",
+              "bg-theme-bg",
+              "text-theme-text"
+            ]
+          },
+          { "tag": "div", "cls": ["container"] },
+          { "tag": "div", "cls": ["grid-cursor", "gap-y-0"] }
         ],
         "ch": [
           {
@@ -35,6 +61,32 @@
               "p-0"
             ],
             "href": "https://cursor.com/blog/joining-spacex",
+            "el": [
+              {
+                "tag": "div",
+                "cls": ["col-span-full", "lg:col-start-1", "lg:col-end-17"]
+              },
+              {
+                "tag": "div",
+                "cls": [
+                  "lg:sticky",
+                  "lg:top-[calc(var(--site-sticky-top)+var(--spacing-v1))]"
+                ]
+              },
+              { "tag": "article", "cls": ["h-full"] },
+              {
+                "tag": "a",
+                "cls": [
+                  "card",
+                  "card--media",
+                  "card--feature",
+                  "flex",
+                  "h-full",
+                  "flex-col",
+                  "p-0"
+                ]
+              }
+            ],
             "ch": [
               {
                 "tag": "img",
@@ -49,7 +101,35 @@
                   "opacity-0"
                 ],
                 "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fuploads%2Fclose-og-image-1-B5D1caLmbVsj0JInrL2qKgXzLPMGoU.png\u0026w=3840\u0026q=70",
-                "alt": "Cursor is now a part of SpaceX"
+                "alt": "Cursor is now a part of SpaceX",
+                "el": [
+                  {
+                    "tag": "header",
+                    "cls": ["relative", "overflow-hidden", "rounded-t-xs"]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "bg-theme-card-03-hex",
+                      "relative",
+                      "aspect-[40/21]",
+                      "w-full"
+                    ]
+                  },
+                  {
+                    "tag": "img",
+                    "cls": [
+                      "h-full",
+                      "w-full",
+                      "object-cover",
+                      "transition-opacity",
+                      "duration-[220ms]",
+                      "ease-[var(--ease-out-spring)]",
+                      "will-change-[opacity]",
+                      "opacity-0"
+                    ]
+                  }
+                ]
               },
               {
                 "tag": "div",
@@ -117,7 +197,26 @@
                       "text-theme-text-mid",
                       "min-w-0"
                     ],
-                    "text": "Cursor Team · 2m2 min read"
+                    "text": "Cursor Team · 2m2 min read",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "mt-auto",
+                          "pt-v8/12",
+                          "@container",
+                          "flex",
+                          "flex-wrap",
+                          "items-center",
+                          "gap-x-v4/12",
+                          "gap-y-v3/12"
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["type-base", "text-theme-text-mid", "min-w-0"]
+                      }
+                    ]
                   }
                 ]
               }
@@ -149,6 +248,45 @@
               "lg:px-0",
               "lg:flex-col"
             ],
+            "el": [
+              {
+                "tag": "div",
+                "cls": [
+                  "col-span-full",
+                  "mt-g1",
+                  "lg:col-start-17",
+                  "lg:col-end-25",
+                  "lg:mt-0"
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": [
+                  "-mx-g2",
+                  "no-scrollbar",
+                  "snap-x",
+                  "snap-mandatory",
+                  "scroll-px-g2",
+                  "overflow-x-auto",
+                  "lg:mx-0",
+                  "lg:snap-none",
+                  "lg:scroll-px-0",
+                  "lg:overflow-visible"
+                ]
+              },
+              {
+                "tag": "div",
+                "cls": [
+                  "flex",
+                  "w-max",
+                  "gap-g1",
+                  "px-g2",
+                  "lg:w-auto",
+                  "lg:px-0",
+                  "lg:flex-col"
+                ]
+              }
+            ],
             "ch": [
               {
                 "tag": "a",
@@ -162,6 +300,33 @@
                   "p-0"
                 ],
                 "href": "https://cursor.com/blog/grok-4-6",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                      "shrink-0",
+                      "snap-start",
+                      "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                      "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                      "lg:w-auto",
+                      "lg:shrink"
+                    ]
+                  },
+                  { "tag": "article", "cls": ["h-full"] },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "card",
+                      "card--media",
+                      "card--feature",
+                      "flex",
+                      "h-full",
+                      "flex-col",
+                      "p-0"
+                    ]
+                  }
+                ],
                 "ch": [
                   {
                     "tag": "img",
@@ -176,7 +341,35 @@
                       "opacity-0"
                     ],
                     "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fopengraph-grok-4.6-hLYenupM05nNDPmiKtjOwjuyZBRvPl.png\u0026w=3840\u0026q=70",
-                    "alt": "Introducing Grok 4.6"
+                    "alt": "Introducing Grok 4.6",
+                    "el": [
+                      {
+                        "tag": "header",
+                        "cls": ["relative", "overflow-hidden", "rounded-t-xs"]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "bg-theme-card-03-hex",
+                          "relative",
+                          "aspect-[40/21]",
+                          "w-full"
+                        ]
+                      },
+                      {
+                        "tag": "img",
+                        "cls": [
+                          "h-full",
+                          "w-full",
+                          "object-cover",
+                          "transition-opacity",
+                          "duration-[220ms]",
+                          "ease-[var(--ease-out-spring)]",
+                          "will-change-[opacity]",
+                          "opacity-0"
+                        ]
+                      }
+                    ]
                   },
                   {
                     "tag": "div",
@@ -244,7 +437,30 @@
                           "text-theme-text-mid",
                           "min-w-0"
                         ],
-                        "text": "Cursor Team · 3m3 min read"
+                        "text": "Cursor Team · 3m3 min read",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "mt-auto",
+                              "pt-v8/12",
+                              "@container",
+                              "flex",
+                              "flex-wrap",
+                              "items-center",
+                              "gap-x-v4/12",
+                              "gap-y-v3/12"
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "type-base",
+                              "text-theme-text-mid",
+                              "min-w-0"
+                            ]
+                          }
+                        ]
                       }
                     ]
                   }
@@ -262,6 +478,33 @@
                   "p-0"
                 ],
                 "href": "https://cursor.com/blog/git-at-any-scale",
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                      "shrink-0",
+                      "snap-start",
+                      "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                      "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                      "lg:w-auto",
+                      "lg:shrink"
+                    ]
+                  },
+                  { "tag": "article", "cls": ["h-full"] },
+                  {
+                    "tag": "a",
+                    "cls": [
+                      "card",
+                      "card--media",
+                      "card--feature",
+                      "flex",
+                      "h-full",
+                      "flex-col",
+                      "p-0"
+                    ]
+                  }
+                ],
                 "ch": [
                   {
                     "tag": "div",
@@ -336,7 +579,36 @@
                               "justify-center",
                               "overflow-hidden"
                             ],
-                            "text": "VM"
+                            "text": "VM",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex", "-space-x-v3/12"]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "first:ml-0",
+                                  "relative",
+                                  "rounded-full"
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "avatar-border-container",
+                                  "bg-theme-card-03-hex",
+                                  "relative",
+                                  "flex",
+                                  "h-6",
+                                  "w-6",
+                                  "shrink-0",
+                                  "items-center",
+                                  "justify-center",
+                                  "overflow-hidden"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -364,6 +636,11 @@
           {
             "tag": "div",
             "cls": ["container", "grid-cursor", "col-span-full"],
+            "el": [
+              { "tag": "div", "cls": ["container"] },
+              { "tag": "div", "cls": ["grid-cursor"] },
+              { "tag": "div", "cls": ["col-span-full"] }
+            ],
             "ch": [
               { "tag": "h1", "cls": ["sr-only"], "text": "Blog" },
               {
@@ -386,6 +663,34 @@
                   "min-w-max",
                   "items-center",
                   "-mx-g1"
+                ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "mb-v1",
+                      "hidden",
+                      "md:flex",
+                      "md:items-center",
+                      "md:justify-between",
+                      "md:gap-g1"
+                    ]
+                  },
+                  { "tag": "div", "cls": ["relative", "min-w-0", "md:flex-1"] },
+                  {
+                    "tag": "nav",
+                    "cls": ["no-scrollbar", "min-w-0", "overflow-x-auto"]
+                  },
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "type-base",
+                      "flex",
+                      "min-w-max",
+                      "items-center",
+                      "-mx-g1"
+                    ]
+                  }
                 ],
                 "ch": [
                   {
@@ -480,6 +785,19 @@
                   "overflow-hidden",
                   "rounded-xs"
                 ],
+                "el": [
+                  {
+                    "tag": "div",
+                    "cls": [
+                      "blog-directory",
+                      "card-border",
+                      "bg-theme-card-hex",
+                      "overflow-hidden",
+                      "rounded-xs"
+                    ]
+                  },
+                  { "tag": "div" }
+                ],
                 "ch": [
                   {
                     "tag": "a",
@@ -492,6 +810,20 @@
                       "pt-v9/12"
                     ],
                     "href": "https://cursor.com/blog/projects",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v9/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -537,7 +869,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Introducing Projects"
+                            "text": "Introducing Projects",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -598,6 +948,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/self-hosted-machines",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -643,7 +1007,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Run cloud agents on machines you manage"
+                            "text": "Run cloud agents on machines you manage",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -704,6 +1086,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/git-at-any-scale",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -749,7 +1145,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Git at any scale"
+                            "text": "Git at any scale",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -810,6 +1224,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/joining-spacex",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -855,7 +1283,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Cursor is now a part of SpaceX"
+                            "text": "Cursor is now a part of SpaceX",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -916,6 +1362,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/firetiger",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -961,7 +1421,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Firetiger joins Cursor"
+                            "text": "Firetiger joins Cursor",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -1022,6 +1500,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/aiuc-1",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -1067,7 +1559,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Cursor earns AIUC-1 certification for agent security and reliability"
+                            "text": "Cursor earns AIUC-1 certification for agent security and reliability",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -1128,6 +1638,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/builds",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -1173,7 +1697,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Cloud agents start 3x faster with builds"
+                            "text": "Cloud agents start 3x faster with builds",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -1234,6 +1776,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/grok-4-6",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -1279,7 +1835,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Introducing Grok 4.6"
+                            "text": "Introducing Grok 4.6",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -1340,6 +1914,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/how-cursor-router-works",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -1385,7 +1973,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "How Cursor Router chooses the right model for the task"
+                            "text": "How Cursor Router chooses the right model for the task",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -1446,6 +2052,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/mixture-of-kittens",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -1491,7 +2111,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Mixture-of-Kittens: our open-source MoE megakernel for NVL72s"
+                            "text": "Mixture-of-Kittens: our open-source MoE megakernel for NVL72s",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -1552,6 +2190,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/cloud-agent-environment",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -1597,7 +2249,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "How we set up our cloud agent environment"
+                            "text": "How we set up our cloud agent environment",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -1658,6 +2328,20 @@
                       "pt-v7/12"
                     ],
                     "href": "https://cursor.com/blog/cursor-start-india",
+                    "el": [
+                      { "tag": "div", "cls": ["blog-directory__item"] },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "blog-directory__row",
+                          "block",
+                          "px-g1.75",
+                          "pb-v8/12",
+                          "hover:bg-theme-card-02-hex",
+                          "pt-v7/12"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "article",
@@ -1703,7 +2387,25 @@
                               "text-theme-text",
                               "text-pretty"
                             ],
-                            "text": "Introducing Cursor Start"
+                            "text": "Introducing Cursor Start",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "min-w-0",
+                                  "self-start",
+                                  "xl:col-start-2"
+                                ]
+                              },
+                              {
+                                "tag": "p",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text",
+                                  "text-pretty"
+                                ]
+                              }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -1775,11 +2477,30 @@
                   "items-center",
                   "text-center"
                 ],
+                "el": [
+                  {
+                    "tag": "section",
+                    "cls": ["bg-theme-bg", "text-theme-text", "my-v6"]
+                  },
+                  { "tag": "div", "cls": ["container"] },
+                  { "tag": "div", "cls": ["mx-auto", "max-w-[48rem]"] },
+                  {
+                    "tag": "figure",
+                    "cls": ["flex", "flex-col", "items-center", "text-center"]
+                  }
+                ],
                 "ch": [
                   {
                     "tag": "blockquote",
                     "cls": ["type-md-lg", "text-balance", "md:type-lg"],
-                    "text": "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”"
+                    "text": "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”",
+                    "el": [
+                      {
+                        "tag": "blockquote",
+                        "cls": ["type-md-lg", "text-balance", "md:type-lg"]
+                      },
+                      { "tag": "p" }
+                    ]
                   },
                   {
                     "tag": "figcaption",
@@ -1821,6 +2542,13 @@
                   "my-v4.5",
                   "container"
                 ],
+                "el": [
+                  {
+                    "tag": "section",
+                    "cls": ["bg-theme-bg", "text-theme-text", "my-v4.5"]
+                  },
+                  { "tag": "div", "cls": ["container"] }
+                ],
                 "ch": [
                   {
                     "tag": "h2",
@@ -1850,6 +2578,37 @@
                       "lg:px-0",
                       "xl:grid-cols-4"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "-mx-g2",
+                          "no-scrollbar",
+                          "snap-x",
+                          "snap-mandatory",
+                          "scroll-px-g2",
+                          "overflow-x-auto",
+                          "lg:mx-0",
+                          "lg:snap-none",
+                          "lg:scroll-px-0",
+                          "lg:overflow-visible"
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "flex",
+                          "w-max",
+                          "gap-g1",
+                          "px-g2",
+                          "lg:grid",
+                          "lg:w-full",
+                          "lg:grid-cols-3",
+                          "lg:px-0",
+                          "xl:grid-cols-4"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
@@ -1865,6 +2624,35 @@
                           "gap-0"
                         ],
                         "href": "https://cursor.com/blog/grab",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink",
+                              "snap-start"
+                            ]
+                          },
+                          { "tag": "article", "cls": ["h-full"] },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "items-stretch",
+                              "pb-g2",
+                              "flex-col",
+                              "gap-0"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "div",
@@ -1883,7 +2671,20 @@
                                 "tag": "time",
                                 "cls": ["type-base"],
                                 "text": "Sep 15, 2026",
-                                "dt": "2026-09-15T12:00:00.000Z"
+                                "dt": "2026-09-15T12:00:00.000Z",
+                                "el": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text-mid",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "mt-v2/12"
+                                    ]
+                                  },
+                                  { "tag": "time", "cls": ["type-base"] }
+                                ]
                               }
                             ]
                           }
@@ -1903,6 +2704,35 @@
                           "gap-0"
                         ],
                         "href": "https://cursor.com/blog/basis",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink",
+                              "snap-start"
+                            ]
+                          },
+                          { "tag": "article", "cls": ["h-full"] },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "items-stretch",
+                              "pb-g2",
+                              "flex-col",
+                              "gap-0"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "div",
@@ -1921,7 +2751,20 @@
                                 "tag": "time",
                                 "cls": ["type-base"],
                                 "text": "Sep 4, 2026",
-                                "dt": "2026-09-04T12:00:00.000Z"
+                                "dt": "2026-09-04T12:00:00.000Z",
+                                "el": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text-mid",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "mt-v2/12"
+                                    ]
+                                  },
+                                  { "tag": "time", "cls": ["type-base"] }
+                                ]
                               }
                             ]
                           }
@@ -1941,6 +2784,35 @@
                           "gap-0"
                         ],
                         "href": "https://cursor.com/blog/nokia",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink",
+                              "snap-start"
+                            ]
+                          },
+                          { "tag": "article", "cls": ["h-full"] },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "items-stretch",
+                              "pb-g2",
+                              "flex-col",
+                              "gap-0"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "div",
@@ -1959,7 +2831,20 @@
                                 "tag": "time",
                                 "cls": ["type-base"],
                                 "text": "Sep 2, 2026",
-                                "dt": "2026-09-02T12:00:00.000Z"
+                                "dt": "2026-09-02T12:00:00.000Z",
+                                "el": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text-mid",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "mt-v2/12"
+                                    ]
+                                  },
+                                  { "tag": "time", "cls": ["type-base"] }
+                                ]
                               }
                             ]
                           }
@@ -1979,6 +2864,37 @@
                           "gap-0"
                         ],
                         "href": "https://cursor.com/blog/imdex",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink",
+                              "snap-start",
+                              "lg:hidden",
+                              "xl:block"
+                            ]
+                          },
+                          { "tag": "article", "cls": ["h-full"] },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "items-stretch",
+                              "pb-g2",
+                              "flex-col",
+                              "gap-0"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "div",
@@ -1997,7 +2913,20 @@
                                 "tag": "time",
                                 "cls": ["type-base"],
                                 "text": "Aug 25, 2026",
-                                "dt": "2026-08-25T12:00:00.000Z"
+                                "dt": "2026-08-25T12:00:00.000Z",
+                                "el": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "type-base",
+                                      "text-theme-text-mid",
+                                      "relative",
+                                      "left-[-1px]",
+                                      "mt-v2/12"
+                                    ]
+                                  },
+                                  { "tag": "time", "cls": ["type-base"] }
+                                ]
                               }
                             ]
                           }
@@ -2020,6 +2949,13 @@
                   "text-theme-text",
                   "my-v4.5",
                   "container"
+                ],
+                "el": [
+                  {
+                    "tag": "section",
+                    "cls": ["bg-theme-bg", "text-theme-text", "my-v4.5"]
+                  },
+                  { "tag": "div", "cls": ["container"] }
                 ],
                 "ch": [
                   {
@@ -2051,6 +2987,38 @@
                       "lg:px-0",
                       "xl:grid-cols-4"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "-mx-g2",
+                          "no-scrollbar",
+                          "snap-x",
+                          "snap-mandatory",
+                          "scroll-px-g2",
+                          "overflow-x-auto",
+                          "lg:mx-0",
+                          "lg:snap-none",
+                          "lg:scroll-px-0",
+                          "lg:overflow-visible"
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "flex",
+                          "w-max",
+                          "gap-g1",
+                          "px-g2",
+                          "lg:grid",
+                          "lg:w-full",
+                          "lg:auto-rows-fr",
+                          "lg:grid-cols-3",
+                          "lg:px-0",
+                          "xl:grid-cols-4"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
@@ -2063,6 +3031,36 @@
                           "pb-g2"
                         ],
                         "href": "https://thenewstack.io/cursor-open-sources-security-agents/",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:h-full",
+                              "lg:w-auto",
+                              "lg:shrink"
+                            ]
+                          },
+                          {
+                            "tag": "article",
+                            "cls": ["flex", "h-full", "flex-col"]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "p",
@@ -2077,7 +3075,20 @@
                             "tag": "time",
                             "cls": ["type-base"],
                             "text": "Mar 16, 2026",
-                            "dt": "2026-03-16T00:00:00.000Z"
+                            "dt": "2026-03-16T00:00:00.000Z",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "relative",
+                                  "left-[-1px]",
+                                  "mt-v2/12"
+                                ]
+                              },
+                              { "tag": "time", "cls": ["type-base"] }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -2094,7 +3105,24 @@
                               {
                                 "tag": "img",
                                 "cls": ["object-cover"],
-                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fthenewstack.png\u0026w=3840\u0026q=70"
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fthenewstack.png\u0026w=3840\u0026q=70",
+                                "el": [
+                                  {
+                                    "tag": "span",
+                                    "cls": [
+                                      "media-border-container",
+                                      "bg-theme-card-03-hex",
+                                      "relative",
+                                      "flex",
+                                      "h-[16px]",
+                                      "w-[16px]",
+                                      "shrink-0",
+                                      "items-center",
+                                      "justify-center"
+                                    ]
+                                  },
+                                  { "tag": "img", "cls": ["object-cover"] }
+                                ]
                               },
                               {
                                 "tag": "#text",
@@ -2115,6 +3143,36 @@
                           "pb-g2"
                         ],
                         "href": "https://techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding/",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:h-full",
+                              "lg:w-auto",
+                              "lg:shrink"
+                            ]
+                          },
+                          {
+                            "tag": "article",
+                            "cls": ["flex", "h-full", "flex-col"]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "p",
@@ -2129,7 +3187,20 @@
                             "tag": "time",
                             "cls": ["type-base"],
                             "text": "Mar 5, 2026",
-                            "dt": "2026-03-05T00:00:00.000Z"
+                            "dt": "2026-03-05T00:00:00.000Z",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "relative",
+                                  "left-[-1px]",
+                                  "mt-v2/12"
+                                ]
+                              },
+                              { "tag": "time", "cls": ["type-base"] }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -2146,7 +3217,24 @@
                               {
                                 "tag": "img",
                                 "cls": ["object-cover"],
-                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Ftechcrunch-2.png\u0026w=3840\u0026q=70"
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Ftechcrunch-2.png\u0026w=3840\u0026q=70",
+                                "el": [
+                                  {
+                                    "tag": "span",
+                                    "cls": [
+                                      "media-border-container",
+                                      "bg-theme-card-03-hex",
+                                      "relative",
+                                      "flex",
+                                      "h-[16px]",
+                                      "w-[16px]",
+                                      "shrink-0",
+                                      "items-center",
+                                      "justify-center"
+                                    ]
+                                  },
+                                  { "tag": "img", "cls": ["object-cover"] }
+                                ]
                               },
                               { "tag": "#text", "text": "Read on TechCrunch ↗" }
                             ]
@@ -2164,6 +3252,36 @@
                           "pb-g2"
                         ],
                         "href": "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:h-full",
+                              "lg:w-auto",
+                              "lg:shrink"
+                            ]
+                          },
+                          {
+                            "tag": "article",
+                            "cls": ["flex", "h-full", "flex-col"]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "p",
@@ -2178,7 +3296,20 @@
                             "tag": "time",
                             "cls": ["type-base"],
                             "text": "Mar 2, 2026",
-                            "dt": "2026-03-02T00:00:00.000Z"
+                            "dt": "2026-03-02T00:00:00.000Z",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "relative",
+                                  "left-[-1px]",
+                                  "mt-v2/12"
+                                ]
+                              },
+                              { "tag": "time", "cls": ["type-base"] }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -2195,7 +3326,24 @@
                               {
                                 "tag": "img",
                                 "cls": ["object-cover"],
-                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fbloomberg.png\u0026w=3840\u0026q=70"
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fbloomberg.png\u0026w=3840\u0026q=70",
+                                "el": [
+                                  {
+                                    "tag": "span",
+                                    "cls": [
+                                      "media-border-container",
+                                      "bg-theme-card-03-hex",
+                                      "relative",
+                                      "flex",
+                                      "h-[16px]",
+                                      "w-[16px]",
+                                      "shrink-0",
+                                      "items-center",
+                                      "justify-center"
+                                    ]
+                                  },
+                                  { "tag": "img", "cls": ["object-cover"] }
+                                ]
                               },
                               { "tag": "#text", "text": "Read on Bloomberg ↗" }
                             ]
@@ -2213,6 +3361,38 @@
                           "pb-g2"
                         ],
                         "href": "https://www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:h-full",
+                              "lg:w-auto",
+                              "lg:shrink",
+                              "lg:hidden",
+                              "xl:block"
+                            ]
+                          },
+                          {
+                            "tag": "article",
+                            "cls": ["flex", "h-full", "flex-col"]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "p",
@@ -2227,7 +3407,20 @@
                             "tag": "time",
                             "cls": ["type-base"],
                             "text": "Feb 24, 2026",
-                            "dt": "2026-02-24T00:00:00.000Z"
+                            "dt": "2026-02-24T00:00:00.000Z",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "type-base",
+                                  "text-theme-text-mid",
+                                  "relative",
+                                  "left-[-1px]",
+                                  "mt-v2/12"
+                                ]
+                              },
+                              { "tag": "time", "cls": ["type-base"] }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -2244,7 +3437,24 @@
                               {
                                 "tag": "img",
                                 "cls": ["object-cover"],
-                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fcnbc.png\u0026w=3840\u0026q=70"
+                                "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fcnbc.png\u0026w=3840\u0026q=70",
+                                "el": [
+                                  {
+                                    "tag": "span",
+                                    "cls": [
+                                      "media-border-container",
+                                      "bg-theme-card-03-hex",
+                                      "relative",
+                                      "flex",
+                                      "h-[16px]",
+                                      "w-[16px]",
+                                      "shrink-0",
+                                      "items-center",
+                                      "justify-center"
+                                    ]
+                                  },
+                                  { "tag": "img", "cls": ["object-cover"] }
+                                ]
                               },
                               { "tag": "#text", "text": "Read on CNBC ↗" }
                             ]
@@ -2268,6 +3478,13 @@
                   "text-theme-text",
                   "my-v4.5",
                   "container"
+                ],
+                "el": [
+                  {
+                    "tag": "section",
+                    "cls": ["bg-theme-bg", "text-theme-text", "my-v4.5"]
+                  },
+                  { "tag": "div", "cls": ["container"] }
                 ],
                 "ch": [
                   {
@@ -2298,6 +3515,37 @@
                       "lg:px-0",
                       "xl:grid-cols-4"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "-mx-g2",
+                          "no-scrollbar",
+                          "snap-x",
+                          "snap-mandatory",
+                          "scroll-px-g2",
+                          "overflow-x-auto",
+                          "lg:mx-0",
+                          "lg:snap-none",
+                          "lg:scroll-px-0",
+                          "lg:overflow-visible"
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "flex",
+                          "w-max",
+                          "gap-g1",
+                          "px-g2",
+                          "lg:grid",
+                          "lg:w-full",
+                          "lg:grid-cols-3",
+                          "lg:px-0",
+                          "xl:grid-cols-4"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
@@ -2312,12 +3560,63 @@
                           "p-0"
                         ],
                         "href": "https://youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink"
+                            ]
+                          },
+                          { "tag": "article", "cls": ["h-full"] },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--media",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "p-0"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
                             "cls": ["object-cover"],
                             "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FXbZvC4KTH68%2Fmaxresdefault.jpg\u0026w=3840\u0026q=80",
-                            "alt": "Cursor now shows you demos, not diffs"
+                            "alt": "Cursor now shows you demos, not diffs",
+                            "el": [
+                              {
+                                "tag": "header",
+                                "cls": [
+                                  "relative",
+                                  "z-1",
+                                  "overflow-hidden",
+                                  "rounded-t-xs"
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "bg-theme-card-03-hex",
+                                  "relative",
+                                  "aspect-video",
+                                  "h-full",
+                                  "w-full",
+                                  "overflow-hidden"
+                                ]
+                              },
+                              { "tag": "img", "cls": ["object-cover"] }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -2384,12 +3683,63 @@
                           "p-0"
                         ],
                         "href": "https://youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink"
+                            ]
+                          },
+                          { "tag": "article", "cls": ["h-full"] },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--media",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "p-0"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
                             "cls": ["object-cover"],
                             "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F29BYxvvF1iM%2Fmaxresdefault.jpg\u0026w=3840\u0026q=80",
-                            "alt": "John Schulman on dead ends, scaling RL, and building research institutions"
+                            "alt": "John Schulman on dead ends, scaling RL, and building research institutions",
+                            "el": [
+                              {
+                                "tag": "header",
+                                "cls": [
+                                  "relative",
+                                  "z-1",
+                                  "overflow-hidden",
+                                  "rounded-t-xs"
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "bg-theme-card-03-hex",
+                                  "relative",
+                                  "aspect-video",
+                                  "h-full",
+                                  "w-full",
+                                  "overflow-hidden"
+                                ]
+                              },
+                              { "tag": "img", "cls": ["object-cover"] }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -2456,12 +3806,63 @@
                           "p-0"
                         ],
                         "href": "https://youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink"
+                            ]
+                          },
+                          { "tag": "article", "cls": ["h-full"] },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--media",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "p-0"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
                             "cls": ["object-cover"],
                             "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FTQhv6Wol6Ns%2Fmaxresdefault.jpg\u0026w=3840\u0026q=80",
-                            "alt": "Our designer built an operating system with Cursor"
+                            "alt": "Our designer built an operating system with Cursor",
+                            "el": [
+                              {
+                                "tag": "header",
+                                "cls": [
+                                  "relative",
+                                  "z-1",
+                                  "overflow-hidden",
+                                  "rounded-t-xs"
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "bg-theme-card-03-hex",
+                                  "relative",
+                                  "aspect-video",
+                                  "h-full",
+                                  "w-full",
+                                  "overflow-hidden"
+                                ]
+                              },
+                              { "tag": "img", "cls": ["object-cover"] }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -2528,12 +3929,65 @@
                           "p-0"
                         ],
                         "href": "https://youtu.be/IccjZDV93lw?si=f3mepO4Ptiqdg4F8",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink",
+                              "lg:hidden",
+                              "xl:block"
+                            ]
+                          },
+                          { "tag": "article", "cls": ["h-full"] },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "card--media",
+                              "card--feature",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "p-0"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
                             "cls": ["object-cover"],
                             "src": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FIccjZDV93lw%2Fmaxresdefault.jpg\u0026w=3840\u0026q=80",
-                            "alt": "AI Foundations: Introduction"
+                            "alt": "AI Foundations: Introduction",
+                            "el": [
+                              {
+                                "tag": "header",
+                                "cls": [
+                                  "relative",
+                                  "z-1",
+                                  "overflow-hidden",
+                                  "rounded-t-xs"
+                                ]
+                              },
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "bg-theme-card-03-hex",
+                                  "relative",
+                                  "aspect-video",
+                                  "h-full",
+                                  "w-full",
+                                  "overflow-hidden"
+                                ]
+                              },
+                              { "tag": "img", "cls": ["object-cover"] }
+                            ]
                           },
                           {
                             "tag": "div",
@@ -2605,6 +4059,13 @@
                   "my-v4.5",
                   "container"
                 ],
+                "el": [
+                  {
+                    "tag": "section",
+                    "cls": ["bg-theme-bg", "text-theme-text", "my-v4.5"]
+                  },
+                  { "tag": "div", "cls": ["container"] }
+                ],
                 "ch": [
                   {
                     "tag": "h2",
@@ -2634,6 +4095,37 @@
                       "lg:px-0",
                       "xl:grid-cols-4"
                     ],
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "-mx-g2",
+                          "no-scrollbar",
+                          "snap-x",
+                          "snap-mandatory",
+                          "scroll-px-g2",
+                          "overflow-x-auto",
+                          "lg:mx-0",
+                          "lg:snap-none",
+                          "lg:scroll-px-0",
+                          "lg:overflow-visible"
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": [
+                          "flex",
+                          "w-max",
+                          "gap-g1",
+                          "px-g2",
+                          "lg:grid",
+                          "lg:w-full",
+                          "lg:grid-cols-3",
+                          "lg:px-0",
+                          "xl:grid-cols-4"
+                        ]
+                      }
+                    ],
                     "ch": [
                       {
                         "tag": "a",
@@ -2646,12 +4138,55 @@
                           "pb-g2"
                         ],
                         "href": "https://cursor.com/changelog/projects",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink"
+                            ]
+                          },
+                          {
+                            "tag": "article",
+                            "cls": ["flex", "h-full", "flex-col"]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": ["type-base"],
                             "text": "Sep 10, 2026",
-                            "dt": "2026-09-10T00:00:00.000Z"
+                            "dt": "2026-09-10T00:00:00.000Z",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "text-theme-text-mid",
+                                  "relative",
+                                  "left-[-1px]",
+                                  "flex",
+                                  "items-center",
+                                  "gap-x-(--grid-gap)"
+                                ]
+                              },
+                              { "tag": "time", "cls": ["type-base"] }
+                            ]
                           },
                           {
                             "tag": "p",
@@ -2671,12 +4206,55 @@
                           "pb-g2"
                         ],
                         "href": "https://cursor.com/changelog/self-hosted-machines",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink"
+                            ]
+                          },
+                          {
+                            "tag": "article",
+                            "cls": ["flex", "h-full", "flex-col"]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": ["type-base"],
                             "text": "Sep 2, 2026",
-                            "dt": "2026-09-02T00:00:00.000Z"
+                            "dt": "2026-09-02T00:00:00.000Z",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "text-theme-text-mid",
+                                  "relative",
+                                  "left-[-1px]",
+                                  "flex",
+                                  "items-center",
+                                  "gap-x-(--grid-gap)"
+                                ]
+                              },
+                              { "tag": "time", "cls": ["type-base"] }
+                            ]
                           },
                           {
                             "tag": "p",
@@ -2696,12 +4274,55 @@
                           "pb-g2"
                         ],
                         "href": "https://cursor.com/changelog/start-from-scratch",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink"
+                            ]
+                          },
+                          {
+                            "tag": "article",
+                            "cls": ["flex", "h-full", "flex-col"]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": ["type-base"],
                             "text": "Aug 27, 2026",
-                            "dt": "2026-08-27T00:00:00.000Z"
+                            "dt": "2026-08-27T00:00:00.000Z",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "text-theme-text-mid",
+                                  "relative",
+                                  "left-[-1px]",
+                                  "flex",
+                                  "items-center",
+                                  "gap-x-(--grid-gap)"
+                                ]
+                              },
+                              { "tag": "time", "cls": ["type-base"] }
+                            ]
                           },
                           {
                             "tag": "p",
@@ -2721,12 +4342,57 @@
                           "pb-g2"
                         ],
                         "href": "https://cursor.com/changelog/08-19-26",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))]",
+                              "shrink-0",
+                              "snap-start",
+                              "sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))]",
+                              "md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))]",
+                              "lg:w-auto",
+                              "lg:shrink",
+                              "lg:hidden",
+                              "xl:block"
+                            ]
+                          },
+                          {
+                            "tag": "article",
+                            "cls": ["flex", "h-full", "flex-col"]
+                          },
+                          {
+                            "tag": "a",
+                            "cls": [
+                              "card",
+                              "flex",
+                              "h-full",
+                              "grow-1",
+                              "flex-col",
+                              "pb-g2"
+                            ]
+                          }
+                        ],
                         "ch": [
                           {
                             "tag": "time",
                             "cls": ["type-base"],
                             "text": "Aug 19, 2026",
-                            "dt": "2026-08-19T00:00:00.000Z"
+                            "dt": "2026-08-19T00:00:00.000Z",
+                            "el": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "text-theme-text-mid",
+                                  "relative",
+                                  "left-[-1px]",
+                                  "flex",
+                                  "items-center",
+                                  "gap-x-(--grid-gap)"
+                                ]
+                              },
+                              { "tag": "time", "cls": ["type-base"] }
+                            ]
                           },
                           {
                             "tag": "p",
@@ -2760,6 +4426,22 @@
           "text-center",
           "mx-auto",
           "max-w-prose-medium-wide"
+        ],
+        "el": [
+          {
+            "tag": "section",
+            "cls": [
+              "section",
+              "bg-theme-bg",
+              "text-theme-text",
+              "section--headline"
+            ]
+          },
+          { "tag": "div", "cls": ["container"] },
+          {
+            "tag": "div",
+            "cls": ["text-center", "mx-auto", "max-w-prose-medium-wide"]
+          }
         ],
         "ch": [
           {

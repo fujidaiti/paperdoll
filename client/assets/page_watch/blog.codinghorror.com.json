@@ -4,6 +4,13 @@
   "root": {
     "tag": "body",
     "cls": ["home-template", "has-sans-title", "has-sans-body", "gh-main"],
+    "el": [
+      {
+        "tag": "body",
+        "cls": ["home-template", "has-sans-title", "has-sans-body"]
+      },
+      { "tag": "main", "cls": ["gh-main"] }
+    ],
     "ch": [
       {
         "tag": "div",
@@ -35,6 +42,16 @@
                       {
                         "tag": "a",
                         "href": "https://blog.codinghorror.com/author/jeff-atwood/",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "gh-article-author-image",
+                              "instapaper_ignore"
+                            ]
+                          },
+                          { "tag": "a" }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -124,7 +141,11 @@
                   },
                   {
                     "tag": "iframe",
-                    "src": "https://www.youtube.com/embed/j7x0BTwfn_I?feature=oembed"
+                    "src": "https://www.youtube.com/embed/j7x0BTwfn_I?feature=oembed",
+                    "el": [
+                      { "tag": "figure", "cls": ["kg-card", "kg-embed-card"] },
+                      { "tag": "iframe" }
+                    ]
                   },
                   {
                     "tag": "p",
@@ -217,7 +238,11 @@
                   {
                     "tag": "img",
                     "cls": ["kg-image"],
-                    "src": "https://storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/2026/08/af7d7754bae6a65b.jpg"
+                    "src": "https://storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/2026/08/af7d7754bae6a65b.jpg",
+                    "el": [
+                      { "tag": "figure", "cls": ["kg-card", "kg-image-card"] },
+                      { "tag": "img", "cls": ["kg-image"] }
+                    ]
                   },
                   {
                     "tag": "p",
@@ -279,7 +304,11 @@
                   {
                     "tag": "img",
                     "cls": ["kg-image"],
-                    "src": "https://storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/2026/08/berlin-2026-you-cant-vibe-code-love.jpg"
+                    "src": "https://storage.ghost.io/c/eb/aa/ebaa2665-01a8-4415-8825-69d1f0e8fd19/content/images/2026/08/berlin-2026-you-cant-vibe-code-love.jpg",
+                    "el": [
+                      { "tag": "figure", "cls": ["kg-card", "kg-image-card"] },
+                      { "tag": "img", "cls": ["kg-image"] }
+                    ]
                   },
                   { "tag": "p", "text": "You can't \"vibe code\" love." },
                   {
@@ -300,7 +329,11 @@
                   {
                     "tag": "a",
                     "text": "Discussion",
-                    "href": "https://blog.codinghorror.com/you-cant-vibe-code-love/#discourse-comments"
+                    "href": "https://blog.codinghorror.com/you-cant-vibe-code-love/#discourse-comments",
+                    "el": [
+                      { "tag": "div", "cls": ["gh-discussion-meta"] },
+                      { "tag": "a" }
+                    ]
                   }
                 ]
               }
@@ -332,6 +365,16 @@
                       {
                         "tag": "a",
                         "href": "https://blog.codinghorror.com/author/jeff-atwood/",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "gh-article-author-image",
+                              "instapaper_ignore"
+                            ]
+                          },
+                          { "tag": "a" }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -432,6 +475,10 @@
                   {
                     "tag": "a",
                     "href": "https://www.martinfowler.com/bliki/TwoHardThings.html",
+                    "el": [
+                      { "tag": "figure", "cls": ["kg-card", "kg-image-card"] },
+                      { "tag": "a" }
+                    ],
                     "ch": [
                       {
                         "tag": "img",
@@ -461,7 +508,11 @@
                   },
                   {
                     "tag": "iframe",
-                    "src": "https://www.youtube.com/embed/jveUllo7Mjs?feature=oembed"
+                    "src": "https://www.youtube.com/embed/jveUllo7Mjs?feature=oembed",
+                    "el": [
+                      { "tag": "figure", "cls": ["kg-card", "kg-embed-card"] },
+                      { "tag": "iframe" }
+                    ]
                   },
                   {
                     "tag": "p",
@@ -686,7 +737,14 @@
                     "tag": "a",
                     "cls": ["kg-btn", "kg-btn-accent"],
                     "text": "Off By One, Episode #2, 45:47",
-                    "href": "https://youtu.be/jveUllo7Mjs?si=-zx-IWmxldVCPf4w\u0026t=2748"
+                    "href": "https://youtu.be/jveUllo7Mjs?si=-zx-IWmxldVCPf4w\u0026t=2748",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["kg-card", "kg-button-card", "kg-align-left"]
+                      },
+                      { "tag": "a", "cls": ["kg-btn", "kg-btn-accent"] }
+                    ]
                   },
                   {
                     "tag": "blockquote",
@@ -732,7 +790,14 @@
                     "tag": "a",
                     "cls": ["kg-btn", "kg-btn-accent"],
                     "text": "Off by One, Episode #2, 01:05:37",
-                    "href": "https://youtu.be/jveUllo7Mjs?si=NSLiTu3me0Bt37ro\u0026t=3937"
+                    "href": "https://youtu.be/jveUllo7Mjs?si=NSLiTu3me0Bt37ro\u0026t=3937",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["kg-card", "kg-button-card", "kg-align-left"]
+                      },
+                      { "tag": "a", "cls": ["kg-btn", "kg-btn-accent"] }
+                    ]
                   },
                   {
                     "tag": "blockquote",
@@ -766,7 +831,14 @@
                     "tag": "a",
                     "cls": ["kg-btn", "kg-btn-accent"],
                     "text": "Off by One - Episode #2, 01:08:02",
-                    "href": "https://youtu.be/jveUllo7Mjs?si=y507y3c2rzZXy8iA\u0026t=4082"
+                    "href": "https://youtu.be/jveUllo7Mjs?si=y507y3c2rzZXy8iA\u0026t=4082",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["kg-card", "kg-button-card", "kg-align-left"]
+                      },
+                      { "tag": "a", "cls": ["kg-btn", "kg-btn-accent"] }
+                    ]
                   },
                   {
                     "tag": "blockquote",
@@ -869,7 +941,11 @@
                   },
                   {
                     "tag": "iframe",
-                    "src": "https://www.youtube.com/embed/h_DWm6ReuaI?feature=oembed"
+                    "src": "https://www.youtube.com/embed/h_DWm6ReuaI?feature=oembed",
+                    "el": [
+                      { "tag": "figure", "cls": ["kg-card", "kg-embed-card"] },
+                      { "tag": "iframe" }
+                    ]
                   },
                   {
                     "tag": "p",
@@ -879,7 +955,14 @@
                     "tag": "a",
                     "cls": ["kg-btn", "kg-btn-accent"],
                     "text": "Intelligent Machines #859 - What's Behind the Fox? 30:28",
-                    "href": "https://youtu.be/h_DWm6ReuaI\u0026t=1828s"
+                    "href": "https://youtu.be/h_DWm6ReuaI\u0026t=1828s",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["kg-card", "kg-button-card", "kg-align-left"]
+                      },
+                      { "tag": "a", "cls": ["kg-btn", "kg-btn-accent"] }
+                    ]
                   },
                   {
                     "tag": "blockquote",
@@ -911,7 +994,14 @@
                     "tag": "a",
                     "cls": ["kg-btn", "kg-btn-accent"],
                     "text": "Intelligent Machines #859 - What's Behind The Fox? 32:59",
-                    "href": "https://youtu.be/h_DWm6ReuaI?t=1979"
+                    "href": "https://youtu.be/h_DWm6ReuaI?t=1979",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["kg-card", "kg-button-card", "kg-align-left"]
+                      },
+                      { "tag": "a", "cls": ["kg-btn", "kg-btn-accent"] }
+                    ]
                   },
                   {
                     "tag": "blockquote",
@@ -976,7 +1066,14 @@
                     "tag": "a",
                     "cls": ["kg-btn", "kg-btn-accent"],
                     "text": "Intelligent Machines #859 - What's Behind The Fox? 42:10",
-                    "href": "https://youtu.be/h_DWm6ReuaI\u0026t=2530"
+                    "href": "https://youtu.be/h_DWm6ReuaI\u0026t=2530",
+                    "el": [
+                      {
+                        "tag": "div",
+                        "cls": ["kg-card", "kg-button-card", "kg-align-left"]
+                      },
+                      { "tag": "a", "cls": ["kg-btn", "kg-btn-accent"] }
+                    ]
                   },
                   {
                     "tag": "blockquote",
@@ -1037,7 +1134,11 @@
                   },
                   {
                     "tag": "iframe",
-                    "src": "https://www.youtube.com/embed/FHgAXOubLCU?feature=oembed"
+                    "src": "https://www.youtube.com/embed/FHgAXOubLCU?feature=oembed",
+                    "el": [
+                      { "tag": "figure", "cls": ["kg-card", "kg-embed-card"] },
+                      { "tag": "iframe" }
+                    ]
                   },
                   {
                     "tag": "p",
@@ -1060,7 +1161,11 @@
                   {
                     "tag": "a",
                     "text": "Discussion",
-                    "href": "https://blog.codinghorror.com/every-choice-changes-everything-the-show/#discourse-comments"
+                    "href": "https://blog.codinghorror.com/every-choice-changes-everything-the-show/#discourse-comments",
+                    "el": [
+                      { "tag": "div", "cls": ["gh-discussion-meta"] },
+                      { "tag": "a" }
+                    ]
                   }
                 ]
               }
@@ -1092,6 +1197,16 @@
                       {
                         "tag": "a",
                         "href": "https://blog.codinghorror.com/author/jeff-atwood/",
+                        "el": [
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "gh-article-author-image",
+                              "instapaper_ignore"
+                            ]
+                          },
+                          { "tag": "a" }
+                        ],
                         "ch": [
                           {
                             "tag": "img",
@@ -1165,6 +1280,13 @@
                     "tag": "a",
                     "cls": ["kg-bookmark-container"],
                     "href": "https://rgmii.org/why-pledge-to-share-the-american-dream/",
+                    "el": [
+                      {
+                        "tag": "figure",
+                        "cls": ["kg-card", "kg-bookmark-card"]
+                      },
+                      { "tag": "a", "cls": ["kg-bookmark-container"] }
+                    ],
                     "ch": [
                       {
                         "tag": "div",
@@ -1199,7 +1321,11 @@
                       },
                       {
                         "tag": "img",
-                        "src": "https://storage.ghost.io/c/c5/40/c5405d40-5ed6-4e52-8454-abc01f974d22/content/images/size/w1200/2026/01/atwood-burton-jump-2026-midpoint.jpg"
+                        "src": "https://storage.ghost.io/c/c5/40/c5405d40-5ed6-4e52-8454-abc01f974d22/content/images/size/w1200/2026/01/atwood-burton-jump-2026-midpoint.jpg",
+                        "el": [
+                          { "tag": "div", "cls": ["kg-bookmark-thumbnail"] },
+                          { "tag": "img" }
+                        ]
                       }
                     ]
                   },
@@ -1210,6 +1336,10 @@
                   {
                     "tag": "a",
                     "href": "https://bookshop.org/p/books/watchmen-2019-edition-alan-moore/d6070514ef8a64d5",
+                    "el": [
+                      { "tag": "figure", "cls": ["kg-card", "kg-image-card"] },
+                      { "tag": "a" }
+                    ],
                     "ch": [
                       {
                         "tag": "img",
@@ -1293,7 +1423,11 @@
                   },
                   {
                     "tag": "iframe",
-                    "src": "https://www.youtube.com/embed/s8iXW3GHx3w?feature=oembed"
+                    "src": "https://www.youtube.com/embed/s8iXW3GHx3w?feature=oembed",
+                    "el": [
+                      { "tag": "figure", "cls": ["kg-card", "kg-embed-card"] },
+                      { "tag": "iframe" }
+                    ]
                   },
                   {
                     "tag": "p",
@@ -1431,7 +1565,11 @@
                   {
                     "tag": "a",
                     "text": "Discussion",
-                    "href": "https://blog.codinghorror.com/thank-you-for-being-a-friend/#discourse-comments"
+                    "href": "https://blog.codinghorror.com/thank-you-for-being-a-friend/#discourse-comments",
+                    "el": [
+                      { "tag": "div", "cls": ["gh-discussion-meta"] },
+                      { "tag": "a" }
+                    ]
                   }
                 ]
               }
@@ -1448,7 +1586,8 @@
       {
         "tag": "a",
         "text": "See all",
-        "href": "https://blog.codinghorror.com/page/2"
+        "href": "https://blog.codinghorror.com/page/2",
+        "el": [{ "tag": "div", "cls": ["gh-more", "is-title"] }, { "tag": "a" }]
       }
     ]
   }
