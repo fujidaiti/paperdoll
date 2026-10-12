@@ -2,15 +2,10 @@
   "url": "https://www.apple.com/newsroom/",
   "title": "Newsroom - Apple",
   "root": {
-    "sig": "body.page-landing > main.main",
+    "sig": "body",
     "ch": [
       {
-        "sig": "h1.visuallyhidden",
-        "kind": "h1",
-        "val": "Newsroom"
-      },
-      {
-        "sig": "div.webpush-notification-parent > div.webpush-notification__container.display-none > div.webpush-content.webpush__copy",
+        "sig": "body.page-landing > main.main > div.webpush-notification-parent > div.webpush-notification__container.display-none > div.webpush-content.webpush__copy",
         "val": "Stay up to date with the latest articles from Apple Newsroom."
       }
     ]

@@ -40,11 +40,56 @@
             ]
           },
           {
-            "sig": "section.CategoryFeatureCarousel-module-scss-module__carousel",
+            "sig": "section.CategoryFeatureCarousel-module-scss-module__carousel > div.CategoryFeatureCarousel-module-scss-module__shelf > div.CategoryFeatureCarousel-module-scss-module__slot.CategoryFeatureCarousel-module-scss-module__slotActive > div.CategoryFeatureCarousel-module-scss-module__card > a.ResourceCard-module-scss-module__card.ResourceCard-module-scss-module__featured.ResourceCard-module-scss-module__withPlate.CategoryFeatureCarousel-module-scss-module__featureCard",
+            "link": "https://claude.com/resources/articles/dashboards-and-motion",
             "ch": [
               {
-                "sig": "div.CategoryFeatureCarousel-module-scss-module__shelf > div.CategoryFeatureCarousel-module-scss-module__slot.CategoryFeatureCarousel-module-scss-module__slotActive > div.CategoryFeatureCarousel-module-scss-module__card > a.ResourceCard-module-scss-module__card.ResourceCard-module-scss-module__featured.ResourceCard-module-scss-module__withPlate.CategoryFeatureCarousel-module-scss-module__featureCard",
-                "link": "https://claude.com/resources/articles/dashboards-and-motion",
+                "sig": "div.ResourceCard-module-scss-module__header.text-caption",
+                "ch": [
+                  {
+                    "sig": "span.ResourceCard-module-scss-module__type",
+                    "val": "Article"
+                  },
+                  {
+                    "sig": "span.ResourceCard-module-scss-module__meta",
+                    "val": "Oct 8, 2026"
+                  }
+                ]
+              },
+              {
+                "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
+                "ch": [
+                  {
+                    "sig": "h3.ResourceCard-module-scss-module__title.text-headline-4-serif",
+                    "kind": "h3",
+                    "val": "Build live dashboards and animate explainers with Claude"
+                  },
+                  {
+                    "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                    "val": "Claude Dashboards and Claude Motion are now in beta. Docs, Slides, and Design are out of beta and on every Claude plan, including Free."
+                  },
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__products.text-caption",
+                    "ch": [
+                      {
+                        "val": "Claude apps Claude Design"
+                      },
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__productTag.ResourceCard-module-scss-module__moreTag",
+                        "val": "2 more Claude Cowork Claude Code"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sig": "div > div.ResourcesIndex-module-scss-module__grid",
+            "ch": [
+              {
+                "sig": "a.ResourceCard-module-scss-module__card.ResourceCard-module-scss-module__featured.ResourceCard-module-scss-module__withPlate.ResourcesIndex-module-scss-module__featuredCard",
+                "link": "https://claude.dev/blog/building-effective-agent-automations/",
                 "ch": [
                   {
                     "sig": "div.ResourceCard-module-scss-module__header.text-caption",
@@ -65,6 +110,84 @@
                       {
                         "sig": "h3.ResourceCard-module-scss-module__title.text-headline-4-serif",
                         "kind": "h3",
+                        "val": "Building effective agent automations"
+                      },
+                      {
+                        "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                        "val": "A reference implementation walkthrough for a scheduled Claude Managed Agents automation, with the config files and six rules for avoiding common failure modes."
+                      },
+                      {
+                        "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
+                        "val": "Claude Platform"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "span.sr-only",
+                    "val": "(opens in new tab)"
+                  }
+                ]
+              },
+              {
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://claude.com/resources/articles/how-block-orchestrates-claude-fable-across-thousands-of-pull-requests",
+                "ch": [
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
+                    "ch": [
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
+                      },
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 8, 2026"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
+                    "ch": [
+                      {
+                        "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                        "kind": "h3",
+                        "val": "How Block orchestrates Claude Fable across thousands of pull requests"
+                      },
+                      {
+                        "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                        "val": "Bradley Axen, Head of AI Capabilities at Block, on how his team evaluates new large language models, how Claude Fable 5 orchestrates company-wide code migrations, and why safeguards are a critical part of deploying frontier intelligence responsibly, at scale."
+                      },
+                      {
+                        "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
+                        "val": "Claude Enterprise"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://claude.com/resources/articles/dashboards-and-motion",
+                "ch": [
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
+                    "ch": [
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
+                      },
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 8, 2026"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
+                    "ch": [
+                      {
+                        "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                        "kind": "h3",
                         "val": "Build live dashboards and animate explainers with Claude"
                       },
                       {
@@ -79,7 +202,7 @@
                           },
                           {
                             "sig": "span.ResourceCard-module-scss-module__productTag.ResourceCard-module-scss-module__moreTag",
-                            "val": "2 more: Claude Cowork and Claude Code Claude Cowork Claude Code"
+                            "val": "2 more Claude Cowork Claude Code"
                           }
                         ]
                       }
@@ -88,428 +211,287 @@
                 ]
               },
               {
-                "sig": "p.sr-only",
-                "val": "Featured resource 1 of 5: Build live dashboards and animate explainers with Claude"
-              }
-            ]
-          },
-          {
-            "sig": "div",
-            "ch": [
-              {
-                "sig": "p.sr-only",
-                "val": "Showing 11 of 280 resources"
-              },
-              {
-                "sig": "div.ResourcesIndex-module-scss-module__grid",
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://www.anthropic.com/claude-haiku-5-5",
                 "ch": [
                   {
-                    "sig": "a.ResourceCard-module-scss-module__card.ResourceCard-module-scss-module__featured.ResourceCard-module-scss-module__withPlate.ResourcesIndex-module-scss-module__featuredCard",
-                    "link": "https://claude.dev/blog/building-effective-agent-automations/",
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
                     "ch": [
                       {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 8, 2026"
-                          }
-                        ]
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
                       },
                       {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-4-serif",
-                            "kind": "h3",
-                            "val": "Building effective agent automations"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "A reference implementation walkthrough for a scheduled Claude Managed Agents automation, with the config files and six rules for avoiding common failure modes."
-                          },
-                          {
-                            "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
-                            "val": "Claude Platform"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "span.sr-only",
-                        "val": "(opens in new tab)"
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 7, 2026"
                       }
                     ]
                   },
                   {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://claude.com/resources/articles/how-block-orchestrates-claude-fable-across-thousands-of-pull-requests",
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
                     "ch": [
                       {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 8, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
-                            "kind": "h3",
-                            "val": "How Block orchestrates Claude Fable across thousands of pull requests"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "Bradley Axen, Head of AI Capabilities at Block, on how his team evaluates new large language models, how Claude Fable 5 orchestrates company-wide code migrations, and why safeguards are a critical part of deploying frontier intelligence responsibly, at scale."
-                          },
-                          {
-                            "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
-                            "val": "Claude Enterprise"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://claude.com/resources/articles/dashboards-and-motion",
-                    "ch": [
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 8, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
-                            "kind": "h3",
-                            "val": "Build live dashboards and animate explainers with Claude"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "Claude Dashboards and Claude Motion are now in beta. Docs, Slides, and Design are out of beta and on every Claude plan, including Free."
-                          },
-                          {
-                            "sig": "div.ResourceCard-module-scss-module__products.text-caption",
-                            "ch": [
-                              {
-                                "val": "Claude apps Claude Design"
-                              },
-                              {
-                                "sig": "span.ResourceCard-module-scss-module__productTag.ResourceCard-module-scss-module__moreTag",
-                                "val": "2 more: Claude Cowork and Claude Code Claude Cowork Claude Code"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://www.anthropic.com/claude-haiku-5-5",
-                    "ch": [
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 7, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
-                            "kind": "h3",
-                            "val": "Claude Haiku 5.5"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "Introducing Claude Haiku 5.5: the cheapest, fastest, and most capable small model we’ve ever released."
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "span.sr-only",
-                        "val": "(opens in new tab)"
-                      }
-                    ]
-                  },
-                  {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://claude.dev/blog/automating-eval-design-and-hillclimbing/",
-                    "ch": [
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 7, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
-                            "kind": "h3",
-                            "val": "Automating eval design and hillclimbing with Claude"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "Principles for designing evals and hillclimbing against them without fooling yourself, and how the claude-api skill's build-eval and hillclimb commands put them to work."
-                          },
-                          {
-                            "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
-                            "val": "Claude Platform"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "span.sr-only",
-                        "val": "(opens in new tab)"
-                      }
-                    ]
-                  },
-                  {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://claude.com/resources/articles/how-comcast-booz-allen-use-claude-mythos-to-secure-their-codebases",
-                    "ch": [
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 6, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
-                            "kind": "h3",
-                            "val": "How Comcast and Booz Allen use Claude Mythos to find exploit chains and secure their codebases"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "Security teams at Comcast and Booz Allen used Claude Mythos-class models through Project Glasswing to find, validate, and fix vulnerabilities their existing scanners missed."
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides",
-                    "ch": [
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 6, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
-                            "kind": "h3",
-                            "val": "Claude now works with Google Docs, Sheets, and Slides"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "Teams that run on Google Workspace can now bring Claude into their files or work on their files directly from Claude, with our new add-on and Google Docs, Sheets, and Slides connectors (in beta)."
-                          },
-                          {
-                            "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
-                            "val": "Claude Enterprise"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build",
-                    "ch": [
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 6, 2026"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body > h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                        "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
                         "kind": "h3",
-                        "val": "We’re expanding the Claude Startups program to help founders build"
+                        "val": "Claude Haiku 5.5"
+                      },
+                      {
+                        "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                        "val": "Introducing Claude Haiku 5.5: the cheapest, fastest, and most capable small model we’ve ever released."
                       }
                     ]
                   },
                   {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://www.anthropic.com/news/cyber-verification-program",
+                    "sig": "span.sr-only",
+                    "val": "(opens in new tab)"
+                  }
+                ]
+              },
+              {
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://claude.dev/blog/automating-eval-design-and-hillclimbing/",
+                "ch": [
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
                     "ch": [
                       {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 6, 2026"
-                          }
-                        ]
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
                       },
                       {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
-                            "kind": "h3",
-                            "val": "Expanding the Cyber Verification Program"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "We’re launching a new, expanded version of our Cyber Verification Program (CVP), which makes advanced cyber capabilities and reduced blocking classifiers available to qualifying security professionals."
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "span.sr-only",
-                        "val": "(opens in new tab)"
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 7, 2026"
                       }
                     ]
                   },
                   {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://claude.dev/blog/claude-code-in-the-cloud/",
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
                     "ch": [
                       {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 6, 2026"
-                          }
-                        ]
+                        "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                        "kind": "h3",
+                        "val": "Automating eval design and hillclimbing with Claude"
                       },
                       {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
-                            "kind": "h3",
-                            "val": "Claude Code in the cloud: a field guide to cloud sessions"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "What changes when Claude Code runs on its own machine, the workflows where that pays off, and how to connect GitHub on the first try."
-                          },
-                          {
-                            "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
-                            "val": "Claude Code"
-                          }
-                        ]
+                        "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                        "val": "Principles for designing evals and hillclimbing against them without fooling yourself, and how the claude-api skill's build-eval and hillclimb commands put them to work."
                       },
                       {
-                        "sig": "span.sr-only",
-                        "val": "(opens in new tab)"
+                        "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
+                        "val": "Claude Platform"
                       }
                     ]
                   },
                   {
-                    "sig": "a.ResourceCard-module-scss-module__card",
-                    "link": "https://claude.com/resources/articles/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk",
+                    "sig": "span.sr-only",
+                    "val": "(opens in new tab)"
+                  }
+                ]
+              },
+              {
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://claude.com/resources/articles/how-comcast-booz-allen-use-claude-mythos-to-secure-their-codebases",
+                "ch": [
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
                     "ch": [
                       {
-                        "sig": "div.ResourceCard-module-scss-module__header.text-caption",
-                        "ch": [
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__type",
-                            "val": "Article"
-                          },
-                          {
-                            "sig": "span.ResourceCard-module-scss-module__meta",
-                            "val": "Oct 5, 2026"
-                          }
-                        ]
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
                       },
                       {
-                        "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
-                        "ch": [
-                          {
-                            "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
-                            "kind": "h3",
-                            "val": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK"
-                          },
-                          {
-                            "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
-                            "val": "See how Cresta built Conductor, an agent that builds other agents, on the Claude Agent SDK, and how the team evaluates it with every new Claude model."
-                          },
-                          {
-                            "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
-                            "val": "Claude Platform"
-                          }
-                        ]
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 6, 2026"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
+                    "ch": [
+                      {
+                        "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                        "kind": "h3",
+                        "val": "How Comcast and Booz Allen use Claude Mythos to find exploit chains and secure their codebases"
+                      },
+                      {
+                        "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                        "val": "Security teams at Comcast and Booz Allen used Claude Mythos-class models through Project Glasswing to find, validate, and fix vulnerabilities their existing scanners missed."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides",
+                "ch": [
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
+                    "ch": [
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
+                      },
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 6, 2026"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
+                    "ch": [
+                      {
+                        "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                        "kind": "h3",
+                        "val": "Claude now works with Google Docs, Sheets, and Slides"
+                      },
+                      {
+                        "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                        "val": "Teams that run on Google Workspace can now bring Claude into their files or work on their files directly from Claude, with our new add-on and Google Docs, Sheets, and Slides connectors (in beta)."
+                      },
+                      {
+                        "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
+                        "val": "Claude Enterprise"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build",
+                "ch": [
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
+                    "ch": [
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
+                      },
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 6, 2026"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body > h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                    "kind": "h3",
+                    "val": "We’re expanding the Claude Startups program to help founders build"
+                  }
+                ]
+              },
+              {
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://www.anthropic.com/news/cyber-verification-program",
+                "ch": [
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
+                    "ch": [
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
+                      },
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 6, 2026"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
+                    "ch": [
+                      {
+                        "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                        "kind": "h3",
+                        "val": "Expanding the Cyber Verification Program"
+                      },
+                      {
+                        "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                        "val": "We’re launching a new, expanded version of our Cyber Verification Program (CVP), which makes advanced cyber capabilities and reduced blocking classifiers available to qualifying security professionals."
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "span.sr-only",
+                    "val": "(opens in new tab)"
+                  }
+                ]
+              },
+              {
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://claude.dev/blog/claude-code-in-the-cloud/",
+                "ch": [
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
+                    "ch": [
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
+                      },
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 6, 2026"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
+                    "ch": [
+                      {
+                        "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                        "kind": "h3",
+                        "val": "Claude Code in the cloud: a field guide to cloud sessions"
+                      },
+                      {
+                        "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                        "val": "What changes when Claude Code runs on its own machine, the workflows where that pays off, and how to connect GitHub on the first try."
+                      },
+                      {
+                        "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
+                        "val": "Claude Code"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "span.sr-only",
+                    "val": "(opens in new tab)"
+                  }
+                ]
+              },
+              {
+                "sig": "a.ResourceCard-module-scss-module__card",
+                "link": "https://claude.com/resources/articles/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk",
+                "ch": [
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__header.text-caption",
+                    "ch": [
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__type",
+                        "val": "Article"
+                      },
+                      {
+                        "sig": "span.ResourceCard-module-scss-module__meta",
+                        "val": "Oct 5, 2026"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.ResourceCard-module-scss-module__content > div.ResourceCard-module-scss-module__body",
+                    "ch": [
+                      {
+                        "sig": "h3.ResourceCard-module-scss-module__title.text-headline-6-serif",
+                        "kind": "h3",
+                        "val": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK"
+                      },
+                      {
+                        "sig": "p.ResourceCard-module-scss-module__excerpt.text-body-3",
+                        "val": "See how Cresta built Conductor, an agent that builds other agents, on the Claude Agent SDK, and how the team evaluates it with every new Claude model."
+                      },
+                      {
+                        "sig": "div.ResourceCard-module-scss-module__products.text-caption > span.ResourceCard-module-scss-module__productTag",
+                        "val": "Claude Platform"
                       }
                     ]
                   }

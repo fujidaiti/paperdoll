@@ -218,6 +218,12 @@ var headingTags = map[string]bool{
 
 var displayNone = regexp.MustCompile(`display\s*:\s*none`)
 
+// Classes that hide an element visually and leave it only to screen readers.
+var screenReaderClasses = map[string]bool{
+	"screen-reader-text": true, "screen-reader-only": true, "sr-only": true,
+	"m-sr-only": true, "visually-hidden": true, "visuallyhidden": true,
+}
+
 // cssSize matches a CSS width or height in pixels.
 var cssSize = regexp.MustCompile(`(?:^|[;\s])(width|height)\s*:\s*(\d+)px`)
 
@@ -278,8 +284,21 @@ func stableClasses(class string) []string {
 }
 
 // isDropped reports whether the element n and its content are never shown.
+// A "hidden" class counts only without a responsive class such as
+// "xl:block", which shows the element on some screens.
 func isDropped(n *html.Node) bool {
-	return droppedTags[n.Data] || hasAttr(n, "hidden") || displayNone.MatchString(attr(n, "style"))
+	if droppedTags[n.Data] || hasAttr(n, "hidden") || displayNone.MatchString(attr(n, "style")) {
+		return true
+	}
+	classes := strings.Fields(attr(n, "class"))
+	for _, c := range classes {
+		if screenReaderClasses[strings.ToLower(c)] {
+			return true
+		}
+	}
+	return slices.Contains(classes, "hidden") && !slices.ContainsFunc(classes, func(c string) bool {
+		return strings.Contains(c, ":")
+	})
 }
 
 // signature returns the signature of the element n alone, such as
@@ -438,7 +457,7 @@ func onlyChild(n *html.Node) *html.Node {
 		switch {
 		case c.Type == html.TextNode && strings.TrimSpace(c.Data) != "":
 			return nil
-		case c.Type == html.ElementNode && !droppedTags[c.Data] && c.Data != "br" && c.Data != "wbr":
+		case c.Type == html.ElementNode && !isDropped(c) && c.Data != "br" && c.Data != "wbr":
 			if only != nil {
 				return nil
 			}
