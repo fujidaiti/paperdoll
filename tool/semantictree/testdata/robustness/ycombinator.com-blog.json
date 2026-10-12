@@ -5,13 +5,13 @@
     "sig": "body.ycdc2.blog > div",
     "ch": [
       {
-        "sig": "div.no-scroll-behind.sticky.top-0.isolate.z-50.bg-beige-light > div > header.w-full.bg-beige-light.leading-tight > nav.relative.hidden.items-center.justify-center.bg-beige-light.px-5.py-[12px].min-[1200px]:flex",
+        "sig": "div.no-scroll-behind.sticky.top-0.isolate.z-50.bg-beige-light > div > header.w-full.bg-beige-light.leading-tight > nav.relative.hidden.items-center.justify-center.bg-beige-light.px-5",
         "ch": [
           {
-            "sig": "div.flex.w-full.max-w-[1400px].items-center.gap-6.min-[1400px]:gap-10",
+            "sig": "div.flex.w-full.items-center.gap-6",
             "ch": [
               {
-                "sig": "div.flex.flex-1.items-center.justify-end.gap-4.min-[1400px]:gap-8",
+                "sig": "div.flex.flex-1.items-center.justify-end.gap-4",
                 "ch": [
                   {
                     "sig": "div.relative.inline-block > a.nav-link.inline-flex.items-center.gap-1.cursor-pointer",
@@ -31,7 +31,7 @@
                 ]
               },
               {
-                "sig": "div.flex.flex-1.items-center.justify-start.gap-4.min-[1400px]:gap-8",
+                "sig": "div.flex.flex-1.items-center.justify-start.gap-4",
                 "ch": [
                   {
                     "sig": "div.relative.inline-block > a.nav-link.inline-flex.items-center.gap-1.cursor-pointer",
@@ -59,20 +59,20 @@
         ]
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.lg:pt-9.pb-6.lg:pb-9 > div.mx-auto.max-w-ycdc-page.px-4 > div > div.hidden.sm:block > div > nav.-mb-px.flex.space-x-8",
+        "sig": "div.relative.isolate.z-0.pt-6.pb-6 > div.mx-auto.max-w-ycdc-page.px-4 > div > div.hidden > div > nav.flex.space-x-8",
         "val": "All Posts Startup Jobs Startup School"
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.lg:pt-9.pb-6.lg:pb-9 > div.mx-auto.max-w-ycdc-page.px-4 > div.lg:grid.lg:grid-cols-12.lg:gap-8",
+        "sig": "div.relative.isolate.z-0.pt-6.pb-6 > div.mx-auto.max-w-ycdc-page.px-4 > div",
         "ch": [
           {
-            "sig": "div.relative.lg:col-span-6",
+            "sig": "div.relative",
             "ch": [
               {
-                "sig": "div.prose.prose-lg.sm:prose-lg",
+                "sig": "div.prose.prose-lg",
                 "ch": [
                   {
-                    "sig": "a.!text-inherit.!no-underline > h2.!m-0",
+                    "sig": "a > h2",
                     "kind": "h2",
                     "val": "Vivian Midha Shen and Raphael Schaad Join YC as General Partners",
                     "link": "https://ycombinator.com/blog/welcome-vivian-and-raphael"
@@ -84,14 +84,14 @@
                 ]
               },
               {
-                "sig": "p.mt-4.flex.flex-col.space-y-3.pl-3.font-medium.text-linkColor.sm:flex-row.sm:space-y-0 > a.mr-4.inline-flex.flex-nowrap.items-center.text-base > span",
+                "sig": "p.mt-4.flex.flex-col.space-y-3.pl-3.font-medium.text-linkColor > a.mr-4.inline-flex.flex-nowrap.items-center.text-base > span",
                 "val": "Read More",
                 "link": "https://ycombinator.com/blog/welcome-vivian-and-raphael"
               }
             ]
           },
           {
-            "sig": "div.relative.mx-2.mt-4.sm:mx-auto.md:mt-8.lg:mx-0.lg:mt-0.lg:col-span-6.lg:self-start > div.isolate.ml-12.flex.flex-row.flex-nowrap.justify-center > figure > a",
+            "sig": "div.relative.mx-2.mt-4 > div.isolate.ml-12.flex.flex-row.flex-nowrap.justify-center > figure > a",
             "link": "https://ycombinator.com/blog/welcome-vivian-and-raphael",
             "ch": [
               {
@@ -104,7 +104,7 @@
         ]
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.lg:pt-9.pb-6.lg:pb-9 > div.mx-auto.max-w-ycdc-page.px-4",
+        "sig": "div.relative.isolate.z-0.pt-6.pb-6 > div.mx-auto.max-w-ycdc-page.px-4",
         "ch": [
           {
             "sig": "h3.text-xl.font-semibold.uppercase.tracking-wider.text-yellow-600",
@@ -112,7 +112,7 @@
             "val": "Recent Posts"
           },
           {
-            "sig": "div.mx-auto.mt-12.grid.max-w-lg.gap-9.lg:max-w-none.lg:grid-cols-3",
+            "sig": "div.mx-auto.mt-12.grid.max-w-lg.gap-9",
             "ch": [
               {
                 "sig": "div.flex.flex-col.overflow-hidden.rounded.shadow-sm",
@@ -146,7 +146,7 @@
                         ]
                       },
                       {
-                        "sig": "div.mt-2 > p.text-sm.font-medium.text-indigo-600 > a > span.mb-2.mr-4.inline-flex.items-center.rounded.bg-gray-200.px-2.py-0.5.text-xs.font-medium.text-gray-800",
+                        "sig": "div.mt-2 > p.text-sm.font-medium.text-indigo-600 > a > span.mb-2.mr-4.inline-flex.items-center.rounded.bg-gray-200.px-2.text-xs.font-medium.text-gray-800",
                         "val": "YC News",
                         "link": "https://ycombinator.com/blog/tag/yc-news"
                       },
@@ -172,7 +172,7 @@
                             "sig": "div.ml-4",
                             "ch": [
                               {
-                                "sig": "p.text-sm.font-medium.text-gray-800 > a.hover:underline",
+                                "sig": "p.text-sm.font-medium.text-gray-800 > a",
                                 "val": "Garry Tan",
                                 "link": "https://ycombinator.com/blog/author/garry"
                               },
@@ -221,7 +221,7 @@
                         ]
                       },
                       {
-                        "sig": "div.mt-2 > p.text-sm.font-medium.text-indigo-600 > a > span.mb-2.mr-4.inline-flex.items-center.rounded.bg-gray-200.px-2.py-0.5.text-xs.font-medium.text-gray-800",
+                        "sig": "div.mt-2 > p.text-sm.font-medium.text-indigo-600 > a > span.mb-2.mr-4.inline-flex.items-center.rounded.bg-gray-200.px-2.text-xs.font-medium.text-gray-800",
                         "val": "YC News",
                         "link": "https://ycombinator.com/blog/tag/yc-news"
                       },
@@ -247,7 +247,7 @@
                             "sig": "div.ml-4",
                             "ch": [
                               {
-                                "sig": "p.text-sm.font-medium.text-gray-800 > a.hover:underline",
+                                "sig": "p.text-sm.font-medium.text-gray-800 > a",
                                 "val": "Garry Tan",
                                 "link": "https://ycombinator.com/blog/author/garry"
                               },
@@ -296,7 +296,7 @@
                         ]
                       },
                       {
-                        "sig": "div.mt-2 > p.text-sm.font-medium.text-indigo-600 > a > span.mb-2.mr-4.inline-flex.items-center.rounded.bg-gray-200.px-2.py-0.5.text-xs.font-medium.text-gray-800",
+                        "sig": "div.mt-2 > p.text-sm.font-medium.text-indigo-600 > a > span.mb-2.mr-4.inline-flex.items-center.rounded.bg-gray-200.px-2.text-xs.font-medium.text-gray-800",
                         "val": "YC News",
                         "link": "https://ycombinator.com/blog/tag/yc-news"
                       },
@@ -322,7 +322,7 @@
                             "sig": "div.ml-4",
                             "ch": [
                               {
-                                "sig": "p.text-sm.font-medium.text-gray-800 > a.hover:underline",
+                                "sig": "p.text-sm.font-medium.text-gray-800 > a",
                                 "val": "Garry Tan",
                                 "link": "https://ycombinator.com/blog/author/garry"
                               },
@@ -344,7 +344,7 @@
         ]
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.lg:pt-9.pb-6.lg:pb-9 > div.mx-auto.max-w-ycdc-page.px-4 > div.mt-2.grid.max-w-lg.gap-5.lg:max-w-none.lg:grid-cols-3",
+        "sig": "div.relative.isolate.z-0.pt-6.pb-6 > div.mx-auto.max-w-ycdc-page.px-4 > div.mt-2.grid.max-w-lg.gap-5",
         "ch": [
           {
             "sig": "div.col-span-2",
@@ -380,7 +380,7 @@
                     "val": "After hearing feedback from Canadian founders in our network, we are adding Canada back to our list of accepted countries of incorporation."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500.md:text-base",
+                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/adding-canada-back"
                   }
@@ -412,7 +412,7 @@
                     "val": "Today, EquipmentShare (YC W15) goes public. From Missouri to 373 locations nationwide, they've built the operating system construction has been missing—built by contractors, for contractors. Congrats to Jabbok, Willy, and the EquipmentShare team on a huge milestone."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500.md:text-base",
+                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/congratulations-to-equipmentshare"
                   }
@@ -444,7 +444,7 @@
                     "val": "We've partnered with nearly two dozen companies to offer students who attend YC events a suite of over $25,000 in free credits for AI devtools."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500.md:text-base",
+                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/the-yc-ai-student-starter-pack"
                   }
@@ -476,7 +476,7 @@
                     "val": "We’re excited to share the Demo Day dates for 2026 so founders, investors, and our broader community can plan ahead."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500.md:text-base",
+                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/2026-demo-days"
                   }
@@ -508,7 +508,7 @@
                     "val": "Meesho goes public today. From S16 to IPO, they’ve built one of India’s largest e-commerce platforms—empowering millions of small merchants to grow their businesses. Congrats to Vidit and Sanjeev on a decade of relentless building and listening to users!"
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500.md:text-base",
+                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/meesho-goes-public"
                   }
@@ -540,7 +540,7 @@
                     "val": "Today, Groww, India's leading digital investing platform, goes public. Tens of millions use Groww to invest simply and confidently in stocks, mutual funds, and ETFs. As YC's first company to list in India, we couldn't be more proud."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500.md:text-base",
+                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/groww"
                   }
@@ -550,11 +550,11 @@
                 "sig": "nav.flex.items-center.justify-between.border-t.border-gray-200.py-3",
                 "ch": [
                   {
-                    "sig": "div.hidden.sm:block > p.text-sm.text-gray-700",
+                    "sig": "div.hidden > p.text-sm.text-gray-700",
                     "val": "Showing 1 to 10 of 2681 total posts"
                   },
                   {
-                    "sig": "div.flex.flex-1.justify-between.sm:justify-end > a.relative.ml-3.inline-flex.items-center.rounded-md.border.border-gray-300.px-4.py-2.text-sm.font-medium.text-gray-700.hover:cursor-pointer.hover:bg-gray-50",
+                    "sig": "div.flex.flex-1.justify-between > a.relative.ml-3.inline-flex.items-center.rounded-md.border.border-gray-300.px-4.py-2.text-sm.font-medium.text-gray-700",
                     "val": "Next"
                   }
                 ]
@@ -628,38 +628,38 @@
         ]
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.lg:pt-9.pb-6.lg:pb-9.flex.items-center.justify-center > div.mx-auto.max-w-ycdc-page.px-4 > div.w-96 > p.mb-6.font-['Outfit',sans-serif].font-light.text-[18px].leading-[1.7].text-[#16140f].last:mb-0",
+        "sig": "div.relative.isolate.z-0.pt-6.pb-6.flex.items-center.justify-center > div.mx-auto.max-w-ycdc-page.px-4 > div.w-96 > p.mb-6.font-light",
         "val": "Want to sign up for weekly updates from YC? Sign up for the newsletter"
       },
       {
-        "sig": "footer.bg-black.text-beige-light > div.mx-auto.max-w-ycdc-page.px-6.py-12.lg:py-16",
+        "sig": "footer.bg-black.text-beige-light > div.mx-auto.max-w-ycdc-page.px-6.py-12",
         "ch": [
           {
-            "sig": "div.flex.flex-col.space-y-8.md:flex-row.md:items-start.md:justify-between.md:space-y-0",
+            "sig": "div.flex.flex-col.space-y-8",
             "ch": [
               {
-                "sig": "div.flex.flex-col.items-start.md:max-w-xs.md:shrink-0 > div.flex.flex-row.items-center.gap-3",
+                "sig": "div.flex.flex-col.items-start > div.flex.flex-row.items-center.gap-3",
                 "ch": [
                   {
-                    "sig": "a.block.h-[40px].w-[40px].shrink-0 > span.sr-only",
+                    "sig": "a.block.shrink-0 > span.sr-only",
                     "val": "Y Combinator",
                     "link": "https://ycombinator.com/"
                   },
                   {
-                    "sig": "h3.font-['Outfit',sans-serif].font-light.text-base.text-beige-light",
+                    "sig": "h3.font-light.text-base.text-beige-light",
                     "kind": "h3",
                     "val": "Make something people want."
                   }
                 ]
               },
               {
-                "sig": "div.grid.grid-cols-2.items-start.gap-8.sm:grid-cols-3.md:ml-16.md:gap-16.lg:ml-24.lg:gap-20",
+                "sig": "div.grid.grid-cols-2.items-start.gap-8",
                 "ch": [
                   {
                     "sig": "div",
                     "ch": [
                       {
-                        "sig": "h3.font-medium.tracking-wider.text-sm.text-beige-light.font-['Outfit',sans-serif]",
+                        "sig": "h3.font-medium.tracking-wider.text-sm.text-beige-light",
                         "kind": "h3",
                         "val": "Programs"
                       },
@@ -667,22 +667,22 @@
                         "sig": "ul.mt-2.space-y-1",
                         "ch": [
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "YC Program",
                             "link": "https://ycombinator.com/about"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Startup School",
                             "link": "https://startupschool.org"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Work at a Startup",
                             "link": "https://ycombinator.com/jobs"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Co-Founder Matching",
                             "link": "https://ycombinator.com/cofounder-matching"
                           }
@@ -694,7 +694,7 @@
                     "sig": "div",
                     "ch": [
                       {
-                        "sig": "h3.font-medium.tracking-wider.text-sm.text-beige-light.font-['Outfit',sans-serif]",
+                        "sig": "h3.font-medium.tracking-wider.text-sm.text-beige-light",
                         "kind": "h3",
                         "val": "Resources"
                       },
@@ -702,42 +702,42 @@
                         "sig": "ul.mt-2.space-y-1",
                         "ch": [
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Startup Directory",
                             "link": "https://ycombinator.com/companies"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Startup Library",
                             "link": "https://ycombinator.com/library"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Investors",
                             "link": "https://ycombinator.com/investors"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Demo Day",
                             "link": "https://ycombinator.com/demoday"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "SAFE",
                             "link": "https://ycombinator.com/safe"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Hacker News",
                             "link": "https://news.ycombinator.com/"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Launch YC",
                             "link": "https://ycombinator.com/launches"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "YC Deals",
                             "link": "https://deals.ycombinator.com"
                           }
@@ -749,7 +749,7 @@
                     "sig": "div",
                     "ch": [
                       {
-                        "sig": "h3.font-medium.tracking-wider.text-sm.text-beige-light.font-['Outfit',sans-serif]",
+                        "sig": "h3.font-medium.tracking-wider.text-sm.text-beige-light",
                         "kind": "h3",
                         "val": "Company"
                       },
@@ -757,47 +757,47 @@
                         "sig": "ul.mt-2.space-y-1",
                         "ch": [
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "YC Blog",
                             "link": "https://ycombinator.com/blog"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Contact",
                             "link": "https://ycombinator.com/contact"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Press",
                             "link": "https://ycombinator.com/press"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "People",
                             "link": "https://ycombinator.com/people"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Careers",
                             "link": "https://ycombinator.com/software"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Privacy Policy",
                             "link": "https://ycombinator.com/legal#privacy"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Notice at Collection",
                             "link": "https://ycombinator.com/legal#notice-at-collection"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Security",
                             "link": "https://ycombinator.com/security"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.font-['Outfit',sans-serif].transition-colors.hover:text-white",
+                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Terms of Use",
                             "link": "https://ycombinator.com/legal#tou"
                           }
@@ -810,7 +810,7 @@
             ]
           },
           {
-            "sig": "div.mt-8.border-t.border-gray-200.pt-8.md:flex.md:items-center.md:justify-between > p.mt-8.font-['Outfit',sans-serif].font-light.text-sm.text-beige-light.md:order-1.md:mt-0",
+            "sig": "div.mt-8.border-t.border-gray-200.pt-8 > p.mt-8.font-light.text-sm.text-beige-light",
             "val": "© 2026 Y Combinator"
           }
         ]

@@ -253,15 +253,23 @@ func isSmall(n *html.Node) bool {
 // Class names generated from hashes, which change when a site is rebuilt:
 // "Name-sc-<hash>-N" by styled-components, followed by classes that are only
 // hashes of their styles, such as "hygVWX", one for each of the classes before
-// them, and "File-module__<hash>__name" by CSS modules.
+// them, "File-module__<hash>__name" by CSS modules, and other names that end
+// with a hash, such as "card__title--8e57666e…" or "blog-date__y06Tq". A
+// part of at least five letters and digits with a digit in it counts as a
+// hash, which also removes the ids in names such as "post-24394" that differ
+// between posts.
 var (
 	styledClass = regexp.MustCompile(`^(.+)-sc-[0-9a-f]+-\d+$`)
 	styleHash   = regexp.MustCompile(`^[A-Za-z]+$`)
 	moduleClass = regexp.MustCompile(`^(.+-module)__[A-Za-z0-9_-]{6}__(.+)$`)
+	namePart    = regexp.MustCompile(`[A-Za-z0-9]+`)
+	className   = regexp.MustCompile(`^[A-Za-z][A-Za-z0-9_-]*$`)
 )
 
 // stableClasses returns the class names of the attribute value class
-// without their generated hashes.
+// without their generated hashes. Names with other characters, such as
+// "md:grid-cols-2", "w-[72%]" or "px-g1.75", are dropped: they are utility
+// classes that only set styles.
 func stableClasses(class string) []string {
 	var classes []string
 	hashes := 0 // The number of hashes expected next.
@@ -278,6 +286,20 @@ func stableClasses(class string) []string {
 			if m := moduleClass.FindStringSubmatch(c); m != nil {
 				c = m[1] + "__" + m[2]
 			}
+		}
+		// A class whose second part is a hash, such as "astro-73gi4scu", is
+		// generated as a whole.
+		for i, loc := range namePart.FindAllStringIndex(c, -1) {
+			if part := c[loc[0]:loc[1]]; i > 0 && len(part) >= 5 && strings.ContainsAny(part, "0123456789") {
+				c = strings.TrimRight(c[:loc[0]], "-_")
+				if i == 1 {
+					c = ""
+				}
+				break
+			}
+		}
+		if !className.MatchString(c) {
+			continue
 		}
 		if !slices.Contains(classes, c) {
 			classes = append(classes, c)

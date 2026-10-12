@@ -2,17 +2,17 @@
   "url": "https://cursor.com/blog",
   "title": "Blog · Cursor",
   "root": {
-    "sig": "body.bg-theme-bg.text-theme-text.min-h-screen.pt-[var(--site-header-height)] > main",
+    "sig": "body.bg-theme-bg.text-theme-text.min-h-screen > main",
     "ch": [
       {
         "sig": "section.section.section--first-child.section--flush-bottom.bg-theme-bg.text-theme-text > div.container > div.grid-cursor.gap-y-0",
         "ch": [
           {
-            "sig": "div.col-span-full.lg:col-start-1.lg:col-end-17 > div.lg:sticky.lg:top-[calc(var(--site-sticky-top)+var(--spacing-v1))] > article.h-full > a.card.card--media.card--feature.flex.h-full.flex-col.p-0",
+            "sig": "div.col-span-full > div > article.h-full > a.card.card--media.card--feature.flex.h-full.flex-col.p-0",
             "link": "https://cursor.com/blog/joining-spacex",
             "ch": [
               {
-                "sig": "header.relative.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-[40/21].w-full > img.h-full.w-full.object-cover.transition-opacity.duration-[220ms].ease-[var(--ease-out-spring)].will-change-[opacity].opacity-0",
+                "sig": "header.relative.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.w-full > img.h-full.w-full.object-cover.transition-opacity.opacity-0",
                 "kind": "img",
                 "val": "Cursor is now a part of SpaceX",
                 "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fuploads%2Fclose-og-image-1-B5D1caLmbVsj0JInrL2qKgXzLPMGoU.png&w=3840&q=70"
@@ -21,7 +21,7 @@
                 "sig": "div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
                 "ch": [
                   {
-                    "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center.gap-x-v2/12.gap-y-v1/12",
+                    "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center",
                     "ch": [
                       {
                         "sig": "time",
@@ -34,15 +34,15 @@
                     ]
                   },
                   {
-                    "sig": "p.type-md-lg.text-theme-text.mt-v2/12.text-balance",
+                    "sig": "p.type-md-lg.text-theme-text.text-balance",
                     "val": "Cursor is now a part of SpaceX"
                   },
                   {
-                    "sig": "p.type-base.text-theme-text-sec.mt-v4/12.text-pretty",
+                    "sig": "p.type-base.text-theme-text-sec.text-pretty",
                     "val": "Cursor has officially been acquired by SpaceX."
                   },
                   {
-                    "sig": "div.mt-auto.pt-v8/12.@container.flex.flex-wrap.items-center.gap-x-v4/12.gap-y-v3/12 > div.type-base.text-theme-text-mid.min-w-0",
+                    "sig": "div.mt-auto.flex.flex-wrap.items-center > div.type-base.text-theme-text-mid.min-w-0",
                     "val": "Cursor Team · 2m 2 min read"
                   }
                 ]
@@ -50,14 +50,14 @@
             ]
           },
           {
-            "sig": "div.col-span-full.mt-g1.lg:col-start-17.lg:col-end-25.lg:mt-0 > div.-mx-g2.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto.lg:mx-0.lg:snap-none.lg:scroll-px-0.lg:overflow-visible > div.flex.w-max.gap-g1.px-g2.lg:w-auto.lg:px-0.lg:flex-col",
+            "sig": "div.col-span-full.mt-g1 > div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
             "ch": [
               {
-                "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink > article.h-full > a.card.card--media.card--feature.flex.h-full.flex-col.p-0",
+                "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.flex-col.p-0",
                 "link": "https://x.ai/news/grok-4-7",
                 "ch": [
                   {
-                    "sig": "header.relative.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-[40/21].w-full > img.h-full.w-full.object-cover.transition-opacity.duration-[220ms].ease-[var(--ease-out-spring)].will-change-[opacity].opacity-0",
+                    "sig": "header.relative.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.w-full > img.h-full.w-full.object-cover.transition-opacity.opacity-0",
                     "kind": "img",
                     "val": "Introducing Grok 4.7",
                     "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2F4-7-BsuP70hlp9Yla1Dmw8gGbPaz2JwF1R.png&w=3840&q=70"
@@ -66,7 +66,7 @@
                     "sig": "div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center.gap-x-v2/12.gap-y-v1/12",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center",
                         "ch": [
                           {
                             "sig": "time",
@@ -79,15 +79,15 @@
                         ]
                       },
                       {
-                        "sig": "p.type-md.text-theme-text.mt-v2/12.text-balance",
+                        "sig": "p.type-md.text-theme-text.text-balance",
                         "val": "Introducing Grok 4.7"
                       },
                       {
-                        "sig": "p.type-base.text-theme-text-sec.mt-v4/12.text-pretty",
+                        "sig": "p.type-base.text-theme-text-sec.text-pretty",
                         "val": "Our most capable model for long-running coding and knowledge work."
                       },
                       {
-                        "sig": "div.mt-auto.pt-v8/12.@container.flex.flex-wrap.items-center.gap-x-v4/12.gap-y-v3/12 > div.type-base.text-theme-text-mid.min-w-0",
+                        "sig": "div.mt-auto.flex.flex-wrap.items-center > div.type-base.text-theme-text-mid.min-w-0",
                         "val": "Cursor Team · 3m 3 min read"
                       }
                     ]
@@ -95,11 +95,11 @@
                 ]
               },
               {
-                "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink > article.h-full > a.card.card--media.card--feature.flex.h-full.flex-col.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
+                "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.flex-col.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
                 "link": "https://cursor.com/blog/git-at-any-scale",
                 "ch": [
                   {
-                    "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center.gap-x-v2/12.gap-y-v1/12",
+                    "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center",
                     "ch": [
                       {
                         "sig": "time",
@@ -112,14 +112,14 @@
                     ]
                   },
                   {
-                    "sig": "p.type-md.text-theme-text.mt-v2/12.text-balance",
+                    "sig": "p.type-md.text-theme-text.text-balance",
                     "val": "Git at any scale"
                   },
                   {
-                    "sig": "div.mt-auto.pt-v3/12.@container.flex.flex-wrap.items-center.gap-x-v4/12.gap-y-v3/12",
+                    "sig": "div.mt-auto.flex.flex-wrap.items-center",
                     "ch": [
                       {
-                        "sig": "div.flex.-space-x-v3/12 > div.first:ml-0.relative.rounded-full > div.avatar-border-container.bg-theme-card-03-hex.relative.flex.h-6.w-6.shrink-0.items-center.justify-center.overflow-hidden > span.type-sm.text-theme-text-mid.font-medium",
+                        "sig": "div.flex > div.relative.rounded-full > div.avatar-border-container.bg-theme-card-03-hex.relative.flex.h-6.w-6.shrink-0.items-center.justify-center.overflow-hidden > span.type-sm.text-theme-text-mid.font-medium",
                         "val": "VM"
                       },
                       {
@@ -141,18 +141,18 @@
             "sig": "div.container > div.grid-cursor > div.col-span-full",
             "ch": [
               {
-                "sig": "div.mb-v1.hidden.md:flex.md:items-center.md:justify-between.md:gap-g1 > div.relative.min-w-0.md:flex-1 > nav.no-scrollbar.min-w-0.overflow-x-auto > div.type-base.flex.min-w-max.items-center.-mx-g1",
+                "sig": "div.mb-v1.hidden > div.relative.min-w-0 > nav.no-scrollbar.min-w-0.overflow-x-auto > div.type-base.flex.min-w-max.items-center",
                 "val": "All product research company ideas customers"
               },
               {
                 "sig": "div.blog-directory.card-border.bg-theme-card-hex.overflow-hidden.rounded-xs > div",
                 "ch": [
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v9/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/improved-token-efficiency",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -165,29 +165,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Improved token efficiency for longer agent runs"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Jediah, Connor & Calvin"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "7m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Jediah, Connor & Calvin · 7m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/rollouts-and-security-reviewer",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -200,29 +200,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Bots for the last mile: Rollouts, Security Review"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Rustam Lalkaka"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "3m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Rustam Lalkaka · 3m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://x.ai/news/grok-4-7",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -235,29 +235,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Introducing Grok 4.7"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Cursor Team"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "3m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Cursor Team · 3m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/projects",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -270,29 +270,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Introducing Projects"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Alexi & Fredrika"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "5m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Alexi & Fredrika · 5m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/self-hosted-machines",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -305,29 +305,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Run cloud agents on machines you manage"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Jack Pertschuk"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "6m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Jack Pertschuk · 6m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/git-at-any-scale",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -340,29 +340,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Git at any scale"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Vicent Martí"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "27m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Vicent Martí · 27m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/joining-spacex",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -375,29 +375,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Cursor is now a part of SpaceX"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Cursor Team"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "2m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Cursor Team · 2m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/firetiger",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -410,29 +410,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Firetiger joins Cursor"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Maxime Prades"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "2m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Maxime Prades · 2m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/aiuc-1",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -445,29 +445,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Cursor earns AIUC-1 certification for agent security and reliability"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Kenneth Moras"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "4m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Kenneth Moras · 4m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/builds",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -480,29 +480,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Cloud agents start 3x faster with builds"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Cursor Team"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "4m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Cursor Team · 4m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/grok-4-6",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -515,29 +515,29 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "Introducing Grok 4.6"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Cursor Team"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "3m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Cursor Team · 3m"
                       }
                     ]
                   },
                   {
-                    "sig": "div.blog-directory__item > a.blog-directory__row.block.px-g1.75.pb-v8/12.hover:bg-theme-card-02-hex.pt-v7/12 > article.grid.grid-cols-1.items-start.gap-x-g1.md:grid-cols-[minmax(0,7fr)_minmax(0,17fr)].lg:grid-cols-[minmax(0,6fr)_minmax(0,18fr)].xl:grid-cols-[minmax(0,5fr)_minmax(0,12fr)_minmax(0,1fr)_minmax(0,5fr)_minmax(0,1fr)]",
+                    "sig": "div.blog-directory__item > a.blog-directory__row.block > article.grid.grid-cols-1.items-start.gap-x-g1",
                     "link": "https://cursor.com/blog/how-cursor-router-works",
                     "ch": [
                       {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.xl:col-start-1",
+                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-start.self-start",
                         "ch": [
                           {
                             "sig": "time",
@@ -550,19 +550,19 @@
                         ]
                       },
                       {
-                        "sig": "div.min-w-0.self-start.xl:col-start-2 > p.type-base.text-theme-text.text-pretty",
+                        "sig": "div.min-w-0.self-start > p.type-base.text-theme-text.text-pretty",
                         "val": "How Cursor Router chooses the right model for the task"
                       },
                       {
-                        "sig": "div.type-base.hidden.self-start.xl:col-start-4.xl:block.xl:min-w-0 > span.text-theme-text-mid.block.truncate",
+                        "sig": "div.type-base.hidden.self-start > span.text-theme-text-mid.block.truncate",
                         "val": "Connor & Yuri"
                       },
                       {
-                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start.xl:col-start-5.xl:block.xl:text-right",
+                        "sig": "div.type-base.text-theme-text-tertiary.hidden.self-start",
                         "val": "6m"
                       },
                       {
-                        "sig": "div.type-base.text-pretty.mt-v6/12.flex.flex-wrap.items-start.gap-x-v2/12.gap-y-v1/12.self-start.md:col-start-2.md:mt-0.md:min-w-0.xl:hidden",
+                        "sig": "div.type-base.text-pretty.flex.flex-wrap.items-start.self-start",
                         "val": "Connor & Yuri · 6m"
                       }
                     ]
@@ -572,23 +572,23 @@
             ]
           },
           {
-            "sig": "div.mt-v1.[&>*:last-child]:!mb-0",
+            "sig": "div.mt-v1",
             "ch": [
               {
-                "sig": "section.bg-theme-bg.text-theme-text.my-v6 > div.container > div.mx-auto.max-w-[48rem] > figure.flex.flex-col.items-center.text-center",
+                "sig": "section.bg-theme-bg.text-theme-text.my-v6 > div.container > div.mx-auto > figure.flex.flex-col.items-center.text-center",
                 "ch": [
                   {
-                    "sig": "blockquote.type-md-lg.text-balance.md:type-lg > p",
+                    "sig": "blockquote.type-md-lg.text-balance > p",
                     "val": "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”"
                   },
                   {
-                    "sig": "figcaption.type-base.text-theme-text-sec.mt-v1.flex.flex-wrap.items-center.justify-center.gap-y-v1/12.text-center",
+                    "sig": "figcaption.type-base.text-theme-text-sec.mt-v1.flex.flex-wrap.items-center.justify-center.text-center",
                     "val": "From “Towards self-driving codebases” Read more →"
                   }
                 ]
               },
               {
-                "sig": "section.bg-theme-bg.text-theme-text.my-v4.5 > div.container",
+                "sig": "section.bg-theme-bg.text-theme-text > div.container",
                 "ch": [
                   {
                     "sig": "h2.type-md.text-theme-text.mb-v1",
@@ -596,10 +596,10 @@
                     "val": "Customer stories"
                   },
                   {
-                    "sig": "div.-mx-g2.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto.lg:mx-0.lg:snap-none.lg:scroll-px-0.lg:overflow-visible > div.flex.w-max.gap-g1.px-g2.lg:grid.lg:w-full.lg:grid-cols-3.lg:px-0.xl:grid-cols-4",
+                    "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
                     "ch": [
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
+                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
                         "link": "https://cursor.com/blog/grab",
                         "ch": [
                           {
@@ -607,14 +607,14 @@
                             "val": "How Grab put Cursor in the hands of Design, Ops, and Engineering"
                           },
                           {
-                            "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].mt-v2/12 > time.type-base",
+                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
                             "kind": "time",
                             "val": "2026-09-15T12:00:00Z"
                           }
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
+                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
                         "link": "https://cursor.com/blog/basis",
                         "ch": [
                           {
@@ -622,14 +622,14 @@
                             "val": "How Basis builds long-horizon accounting agents with Cursor"
                           },
                           {
-                            "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].mt-v2/12 > time.type-base",
+                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
                             "kind": "time",
                             "val": "2026-09-04T12:00:00Z"
                           }
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
+                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
                         "link": "https://cursor.com/blog/nokia",
                         "ch": [
                           {
@@ -637,14 +637,14 @@
                             "val": "Nokia analyzes 50M+ lines of code in two weeks with Cursor"
                           },
                           {
-                            "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].mt-v2/12 > time.type-base",
+                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
                             "kind": "time",
                             "val": "2026-09-02T12:00:00Z"
                           }
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink.snap-start.lg:hidden.xl:block > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
+                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
                         "link": "https://cursor.com/blog/imdex",
                         "ch": [
                           {
@@ -652,7 +652,7 @@
                             "val": "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years"
                           },
                           {
-                            "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].mt-v2/12 > time.type-base",
+                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
                             "kind": "time",
                             "val": "2026-08-25T12:00:00Z"
                           }
@@ -661,14 +661,14 @@
                     ]
                   },
                   {
-                    "sig": "a.btn-text.mt-v9/12.inline-flex",
+                    "sig": "a.btn-text.inline-flex",
                     "val": "View all stories →",
                     "link": "https://cursor.com/blog/topic/customers"
                   }
                 ]
               },
               {
-                "sig": "section.bg-theme-bg.text-theme-text.my-v4.5 > div.container",
+                "sig": "section.bg-theme-bg.text-theme-text > div.container",
                 "ch": [
                   {
                     "sig": "h2.type-md.text-theme-text.mb-v1",
@@ -676,10 +676,10 @@
                     "val": "Press"
                   },
                   {
-                    "sig": "div.-mx-g2.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto.lg:mx-0.lg:snap-none.lg:scroll-px-0.lg:overflow-visible > div.flex.w-max.gap-g1.px-g2.lg:grid.lg:w-full.lg:auto-rows-fr.lg:grid-cols-3.lg:px-0.xl:grid-cols-4",
+                    "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
                     "ch": [
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:h-full.lg:w-auto.lg:shrink > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
                         "link": "https://thenewstack.io/cursor-open-sources-security-agents/",
                         "ch": [
                           {
@@ -687,15 +687,15 @@
                             "val": "Cursor built a fleet of security agents to solve a familiar frustration"
                           },
                           {
-                            "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].mt-v2/12 > time.type-base",
+                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
                             "kind": "time",
                             "val": "2026-03-16T00:00:00Z"
                           },
                           {
-                            "sig": "div.type-base.text-theme-accent.mt-auto.pt-v8/12.flex.items-center.gap-x-v4/12",
+                            "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
                             "ch": [
                               {
-                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.h-[16px].w-[16px].shrink-0.items-center.justify-center > img.object-cover",
+                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
                                 "kind": "img",
                                 "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fthenewstack.png&w=3840&q=70"
                               },
@@ -708,7 +708,7 @@
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:h-full.lg:w-auto.lg:shrink > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
                         "link": "https://techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding/",
                         "ch": [
                           {
@@ -716,15 +716,15 @@
                             "val": "Cursor is rolling out a new kind of agentic coding tool"
                           },
                           {
-                            "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].mt-v2/12 > time.type-base",
+                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
                             "kind": "time",
                             "val": "2026-03-05T00:00:00Z"
                           },
                           {
-                            "sig": "div.type-base.text-theme-accent.mt-auto.pt-v8/12.flex.items-center.gap-x-v4/12",
+                            "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
                             "ch": [
                               {
-                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.h-[16px].w-[16px].shrink-0.items-center.justify-center > img.object-cover",
+                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
                                 "kind": "img",
                                 "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Ftechcrunch-2.png&w=3840&q=70"
                               },
@@ -737,7 +737,7 @@
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:h-full.lg:w-auto.lg:shrink > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
                         "link": "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion",
                         "ch": [
                           {
@@ -745,15 +745,15 @@
                             "val": "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
                           },
                           {
-                            "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].mt-v2/12 > time.type-base",
+                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
                             "kind": "time",
                             "val": "2026-03-02T00:00:00Z"
                           },
                           {
-                            "sig": "div.type-base.text-theme-accent.mt-auto.pt-v8/12.flex.items-center.gap-x-v4/12",
+                            "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
                             "ch": [
                               {
-                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.h-[16px].w-[16px].shrink-0.items-center.justify-center > img.object-cover",
+                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
                                 "kind": "img",
                                 "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fbloomberg.png&w=3840&q=70"
                               },
@@ -766,7 +766,7 @@
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:h-full.lg:w-auto.lg:shrink.lg:hidden.xl:block > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
                         "link": "https://www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html",
                         "ch": [
                           {
@@ -774,15 +774,15 @@
                             "val": "Cursor announces major update to AI agents as coding tool battle heats up"
                           },
                           {
-                            "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].mt-v2/12 > time.type-base",
+                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
                             "kind": "time",
                             "val": "2026-02-24T00:00:00Z"
                           },
                           {
-                            "sig": "div.type-base.text-theme-accent.mt-auto.pt-v8/12.flex.items-center.gap-x-v4/12",
+                            "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
                             "ch": [
                               {
-                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.h-[16px].w-[16px].shrink-0.items-center.justify-center > img.object-cover",
+                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
                                 "kind": "img",
                                 "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fcnbc.png&w=3840&q=70"
                               },
@@ -797,14 +797,14 @@
                     ]
                   },
                   {
-                    "sig": "a.btn-text.mt-v9/12.inline-flex",
+                    "sig": "a.btn-text.inline-flex",
                     "val": "View all press →",
                     "link": "https://cursor.com/blog/topic/press"
                   }
                 ]
               },
               {
-                "sig": "section.bg-theme-bg.text-theme-text.my-v4.5 > div.container",
+                "sig": "section.bg-theme-bg.text-theme-text > div.container",
                 "ch": [
                   {
                     "sig": "h2.type-md.text-theme-text.mb-v1",
@@ -812,10 +812,10 @@
                     "val": "Videos"
                   },
                   {
-                    "sig": "div.-mx-g2.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto.lg:mx-0.lg:snap-none.lg:scroll-px-0.lg:overflow-visible > div.flex.w-max.gap-g1.px-g2.lg:grid.lg:w-full.lg:grid-cols-3.lg:px-0.xl:grid-cols-4",
+                    "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
                     "ch": [
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
+                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
                         "link": "https://youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei",
                         "ch": [
                           {
@@ -832,11 +832,11 @@
                                 "val": "Cursor now shows you demos, not diffs"
                               },
                               {
-                                "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].flex.flex-wrap.items-center.gap-x-v2/12.gap-y-v1/12 > span",
+                                "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
                                 "val": "1:43"
                               },
                               {
-                                "sig": "div.type-base.text-theme-accent.relative.left-[-1px].mt-auto.pt-v8/12 > span",
+                                "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
                                 "val": "Watch on YouTube ↗"
                               }
                             ]
@@ -844,7 +844,7 @@
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
+                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
                         "link": "https://youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY",
                         "ch": [
                           {
@@ -861,11 +861,11 @@
                                 "val": "John Schulman on dead ends, scaling RL, and building research institutions"
                               },
                               {
-                                "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].flex.flex-wrap.items-center.gap-x-v2/12.gap-y-v1/12 > span",
+                                "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
                                 "val": "51:26"
                               },
                               {
-                                "sig": "div.type-base.text-theme-accent.relative.left-[-1px].mt-auto.pt-v8/12 > span",
+                                "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
                                 "val": "Watch on YouTube ↗"
                               }
                             ]
@@ -873,7 +873,7 @@
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
+                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
                         "link": "https://youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk",
                         "ch": [
                           {
@@ -890,11 +890,11 @@
                                 "val": "Our designer built an operating system with Cursor"
                               },
                               {
-                                "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].flex.flex-wrap.items-center.gap-x-v2/12.gap-y-v1/12 > span",
+                                "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
                                 "val": "50:15"
                               },
                               {
-                                "sig": "div.type-base.text-theme-accent.relative.left-[-1px].mt-auto.pt-v8/12 > span",
+                                "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
                                 "val": "Watch on YouTube ↗"
                               }
                             ]
@@ -902,7 +902,7 @@
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink.lg:hidden.xl:block > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
+                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
                         "link": "https://youtu.be/IccjZDV93lw?si=f3mepO4Ptiqdg4F8",
                         "ch": [
                           {
@@ -919,11 +919,11 @@
                                 "val": "AI Foundations: Introduction"
                               },
                               {
-                                "sig": "div.type-base.text-theme-text-mid.relative.left-[-1px].flex.flex-wrap.items-center.gap-x-v2/12.gap-y-v1/12 > span",
+                                "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
                                 "val": "4:03"
                               },
                               {
-                                "sig": "div.type-base.text-theme-accent.relative.left-[-1px].mt-auto.pt-v8/12 > span",
+                                "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
                                 "val": "Watch on YouTube ↗"
                               }
                             ]
@@ -933,14 +933,14 @@
                     ]
                   },
                   {
-                    "sig": "a.btn-text.mt-v9/12.inline-flex",
+                    "sig": "a.btn-text.inline-flex",
                     "val": "Visit our YouTube channel ↗",
                     "link": "https://www.youtube.com/@cursor_ai"
                   }
                 ]
               },
               {
-                "sig": "section.bg-theme-bg.text-theme-text.my-v4.5 > div.container",
+                "sig": "section.bg-theme-bg.text-theme-text > div.container",
                 "ch": [
                   {
                     "sig": "h2.text-theme-text.mb-v1.type-md",
@@ -948,14 +948,14 @@
                     "val": "Changelog"
                   },
                   {
-                    "sig": "div.-mx-g2.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto.lg:mx-0.lg:snap-none.lg:scroll-px-0.lg:overflow-visible > div.flex.w-max.gap-g1.px-g2.lg:grid.lg:w-full.lg:grid-cols-3.lg:px-0.xl:grid-cols-4",
+                    "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
                     "ch": [
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
                         "link": "https://cursor.com/changelog/remote-control-local-agents",
                         "ch": [
                           {
-                            "sig": "div.text-theme-text-mid.relative.left-[-1px].flex.items-center.gap-x-(--grid-gap) > time.type-base",
+                            "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
                             "kind": "time",
                             "val": "2026-10-06T00:00:00Z"
                           },
@@ -966,11 +966,11 @@
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
                         "link": "https://cursor.com/changelog/rollouts-and-security-reviewer",
                         "ch": [
                           {
-                            "sig": "div.text-theme-text-mid.relative.left-[-1px].flex.items-center.gap-x-(--grid-gap) > time.type-base",
+                            "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
                             "kind": "time",
                             "val": "2026-09-23T00:00:00Z"
                           },
@@ -981,11 +981,11 @@
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
                         "link": "https://cursor.com/changelog/projects",
                         "ch": [
                           {
-                            "sig": "div.text-theme-text-mid.relative.left-[-1px].flex.items-center.gap-x-(--grid-gap) > time.type-base",
+                            "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
                             "kind": "time",
                             "val": "2026-09-10T00:00:00Z"
                           },
@@ -996,11 +996,11 @@
                         ]
                       },
                       {
-                        "sig": "div.w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*18+(17*var(--spacing-g1)))].shrink-0.snap-start.sm:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*16+(15*var(--spacing-g1)))].md:w-[calc((((100vw-(2*var(--spacing-g2)))-(23*var(--spacing-g1)))/24)*14+(13*var(--spacing-g1)))].lg:w-auto.lg:shrink.lg:hidden.xl:block > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
                         "link": "https://cursor.com/changelog/self-hosted-machines",
                         "ch": [
                           {
-                            "sig": "div.text-theme-text-mid.relative.left-[-1px].flex.items-center.gap-x-(--grid-gap) > time.type-base",
+                            "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
                             "kind": "time",
                             "val": "2026-09-02T00:00:00Z"
                           },
@@ -1013,7 +1013,7 @@
                     ]
                   },
                   {
-                    "sig": "a.btn-text.mt-v9/12.inline-flex",
+                    "sig": "a.btn-text.inline-flex",
                     "val": "See what's new in Cursor →",
                     "link": "https://cursor.com/changelog"
                   }
@@ -1027,7 +1027,7 @@
         "sig": "section.section.bg-theme-bg.text-theme-text.section--headline > div.container > div.text-center.mx-auto.max-w-prose-medium-wide",
         "ch": [
           {
-            "sig": "h2.type-xl.sm:type-2xl.text-balance.mx-auto.mb-v1",
+            "sig": "h2.type-xl.text-balance.mx-auto.mb-v1",
             "kind": "h2",
             "val": "Get started with Cursor."
           },
