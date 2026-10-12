@@ -16,13 +16,13 @@
 //
 // A Node is either a value or a container:
 //
-//	value      {"sig", "kind"?, "val", "link"?}
+//	value      {"sig", "kind"?, "val"?, "link"?}
 //	container  {"sig", "link"?, "ch"}
 //
 //	sig   the elements the node was made from, outermost first, such as
 //	      "h2.title > a"; empty for text between elements
 //	kind  "h1".."h6" for a heading, "img" for an image
-//	val   plain text; the alt text for an image
+//	val   plain text; the alt text for an image, which may be missing
 //	link  link target, or the image URL for an image
 //	ch    child nodes
 //
@@ -49,16 +49,15 @@ import (
 )
 
 type Node struct {
-	Sig  string `json:"sig,omitempty"`
-	Kind string `json:"kind,omitempty"`
-	// Val is set on values only, and may be empty for an image without alt
-	// text.
-	Val      *string `json:"val,omitempty"`
+	Sig      string  `json:"sig,omitempty"`
+	Kind     string  `json:"kind,omitempty"`
+	Val      string  `json:"val,omitempty"`
 	Link     string  `json:"link,omitempty"`
 	Children []*Node `json:"ch,omitempty"`
 }
 
-func (n *Node) isValue() bool { return n.Val != nil }
+// isValue reports whether n is a value, since a container always has children.
+func (n *Node) isValue() bool { return len(n.Children) == 0 }
 
 type Document struct {
 	URL   string `json:"url"`
@@ -310,14 +309,14 @@ func (s *simplifier) convert(n *html.Node) *Node {
 			return nil
 		}
 		alt := normalizeSpace(attr(n, "alt"))
-		return &Node{Sig: signature(n), Kind: "img", Val: &alt, Link: src}
+		return &Node{Sig: signature(n), Kind: "img", Val: alt, Link: src}
 	case "pre":
 		// Preformatted text keeps its line breaks and indentation.
 		text := strings.Trim(textContent(n), "\n")
 		if strings.TrimSpace(text) == "" {
 			return nil
 		}
-		return &Node{Sig: signature(n), Val: &text}
+		return &Node{Sig: signature(n), Val: text}
 	}
 	if isTextOnly(n) {
 		return s.textValue(n)
@@ -355,7 +354,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 				}
 			}
 			if t := normalizeSpace(text.String()); t != "" {
-				children = append(children, &Node{Val: &t})
+				children = append(children, &Node{Val: t})
 			}
 		}
 		run = nil
@@ -414,7 +413,7 @@ func (s *simplifier) textValue(n *html.Node) *Node {
 	if text == "" {
 		return nil
 	}
-	v := &Node{Val: &text}
+	v := &Node{Val: text}
 	var sigs []string
 	for e := n; e != nil; e = onlyChild(e) {
 		sigs = append(sigs, signature(e))
@@ -465,7 +464,7 @@ func unwrapTextless(n *Node) {
 
 func hasText(n *Node) bool {
 	if n.isValue() {
-		return n.Kind != "img" && *n.Val != ""
+		return n.Kind != "img" && n.Val != ""
 	}
 	return slices.ContainsFunc(n.Children, hasText)
 }
