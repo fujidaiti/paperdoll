@@ -1,0 +1,104 @@
+{
+  "url": "https://go.dev/blog/",
+  "title": "The Go Blog - The Go Programming Language",
+  "root": {
+    "sig": "body.Site > main.SiteContent.SiteContent--default > div > div > div > div.Article",
+    "ch": [
+      {
+        "sig": "h1",
+        "kind": "h1",
+        "val": "The Go Blog"
+      },
+      {
+        "sig": "div.markdown > div",
+        "ch": [
+          {
+            "sig": "p.blogtitle",
+            "val": "Arch-specific SIMD in Go, 2 October 2026 Junyang Shao and David Chase"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "Go 1.27 introduces experimental arch-specific SIMD vector APIs"
+          },
+          {
+            "sig": "p.blogtitle",
+            "val": "Platform-independent SIMD in Go, 24 September 2026 David Chase and Junyang Shao"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "Go 1.27 adds an experimental platform-agnostic SIMD API"
+          },
+          {
+            "sig": "p.blogtitle",
+            "val": "Size-Specialized Memory Allocation, 16 September 2026 Michael Matloob"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "Go 1.27 improves performance of small allocations using size-specialized allocation functions."
+          },
+          {
+            "sig": "p.blogtitle",
+            "val": "Goroutine Leak Profiles, 2 September 2026 Vlad Saioc"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "Go 1.27 includes new goroutine leak profiles."
+          },
+          {
+            "sig": "p.blogtitle",
+            "val": "Generic Methods, 26 August 2026 Mark Freeman"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "Go 1.27 adds generic methods—a highly desired language feature."
+          },
+          {
+            "sig": "p.blogtitle",
+            "val": "Go 1.27 is released, 19 August 2026 Nicholas Husin, on behalf of the Go team"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more."
+          },
+          {
+            "sig": "p.blogtitle",
+            "val": "Introducing the pkg.go.dev API, 21 May 2026 Ethan Lee, Hana Kim, and Jonathan Amsterdam"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly."
+          },
+          {
+            "sig": "p.blogtitle",
+            "val": "Type Construction and Cycle Detection, 24 March 2026 Mark Freeman"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types."
+          },
+          {
+            "sig": "p.blogtitle",
+            "val": "//go:fix inline and the source-level inliner, 10 March 2026 Alan Donovan"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations."
+          },
+          {
+            "sig": "p.blogtitle",
+            "val": "Allocating on the Stack, 27 February 2026 Keith Randall"
+          },
+          {
+            "sig": "p.blogsummary",
+            "val": "A description of some of the recent changes to do allocations on the stack instead of the heap."
+          },
+          {
+            "sig": "p.blogtitle > a",
+            "val": "More articles...",
+            "link": "https://go.dev/blog/all"
+          }
+        ]
+      }
+    ]
+  }
+}

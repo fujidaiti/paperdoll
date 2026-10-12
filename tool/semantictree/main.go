@@ -5,6 +5,11 @@
 //
 //	go run ./tool/semantictree -out DIR [-in server/feature/feed/testdata/source]
 //
+// The trees of the sample pages are in testdata, written by:
+//
+//	go run ./tool/semantictree -out tool/semantictree/testdata/source
+//	go run ./tool/semantictree -in server/feature/feed/testdata/robustness -out tool/semantictree/testdata/robustness
+//
 // Output format: one JSON file per page.
 //
 //	{"url": "...", "title": "...", "root": Node}

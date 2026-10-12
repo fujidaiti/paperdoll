@@ -1,0 +1,2438 @@
+{
+  "url": "https://devblogs.microsoft.com/",
+  "title": "Microsoft Dev Blogs: Code, News, and Insights for Developers",
+  "root": {
+    "sig": "body.home.wp-singular.page-template.page-template-devblogs-evo-landing.page-template-devblogs-evo-landing-php.page.page-id-3155.wp-theme-devblogs-evo > main.devblogs-main",
+    "ch": [
+      {
+        "sig": "div.alert-banner.wrapper.py-8 > div.d-flex.container-evo.justify-content-between.rounded.gap-40.border-r-8.py-8 > div.banner-container.d-flex.flex-column.flex-md-row.gap-16",
+        "ch": [
+          {
+            "sig": "div.banner-header.d-flex.align-items-center.fs-14.fw-600 > span",
+            "val": "On Demand"
+          },
+          {
+            "sig": "div.banner-body.d-flex.flex-column.gap-16.flex-md-row.fs-14",
+            "ch": [
+              {
+                "sig": "p",
+                "val": "Missed .NET Day on Agentic Modernization? Watch the coding demos and agentic workflow sessions on demand."
+              },
+              {
+                "sig": "div.cta-wrapper.d-flex.flex-column.gap-16.flex-sm-row > a.banner-button.read-more.d-flex > div.d-flex.align-items-center.fw-600 > span.white-space-nowrap",
+                "val": "Watch now",
+                "link": "https://aka.ms/dotnetday/playlist"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sig": "div.wrapper.clr-hero-bg > div.container-evo.img-hero-bg",
+        "ch": [
+          {
+            "sig": "div.hero-body",
+            "ch": [
+              {
+                "sig": "h1.fs-68",
+                "kind": "h1",
+                "val": "Microsoft Developer Blogs"
+              },
+              {
+                "sig": "p.fs-20.fw-bold",
+                "val": "Get the latest information, insights, and news from Microsoft."
+              }
+            ]
+          },
+          {
+            "sig": "section",
+            "ch": [
+              {
+                "sig": "h2.fs-24.fw-600.mb-40.border-bottom.pb-16",
+                "kind": "h2",
+                "val": "Highlights"
+              },
+              {
+                "sig": "div.highlights-section",
+                "ch": [
+                  {
+                    "sig": "div.highlights-card",
+                    "ch": [
+                      {
+                        "sig": "div.highlights-image > img",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/2026/10/github-copilot-app-for-beginners.webp"
+                      },
+                      {
+                        "sig": "div.netsposts-screen > div.featured-body > div.card-body > div.card-top",
+                        "ch": [
+                          {
+                            "sig": "h3.fs-28.mt-16.mb-12 > a.netsposts-posttitle-link.single-click.excerpt-title",
+                            "kind": "h3",
+                            "val": "Get started with the GitHub Copilot app: a free, hands-on course",
+                            "link": "https://devblogs.microsoft.com/blog/github-copilot-app-for-beginners/"
+                          },
+                          {
+                            "sig": "div.fs-16.mb-16.postexcerpt",
+                            "val": "Learn to direct AI coding agents, review their work, and build reliable development workflows with this free GitHub Copilot app course."
+                          },
+                          {
+                            "sig": "a.read-more",
+                            "val": "Read moreClick to read more about this post",
+                            "link": "https://devblogs.microsoft.com/blog/github-copilot-app-for-beginners/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.highlights-summaries",
+                    "ch": [
+                      {
+                        "sig": "div.highlights-summary.border-bottom.pb-24 > div.card-body > div.card-top",
+                        "ch": [
+                          {
+                            "sig": "h3.fs-24.mb-16 > a.netsposts-posttitle-link.single-click.excerpt-title",
+                            "kind": "h3",
+                            "val": "WSLC Architecture deep dive",
+                            "link": "https://devblogs.microsoft.com/commandline/wslc-architecture-deep-dive/"
+                          },
+                          {
+                            "sig": "div.fs-16.mb-16.postexcerpt",
+                            "val": "WSL containers is now generally available! Check out this blog post to learn more about this overall feature enabling seamless access to Linux containers on Windows via the new “wslc.exe” command. This new Linux container platform comes with multiple architectures changes compared to..."
+                          },
+                          {
+                            "sig": "a.read-more",
+                            "val": "Read moreClick to read more about this post",
+                            "link": "https://devblogs.microsoft.com/commandline/wslc-architecture-deep-dive/"
+                          }
+                        ]
+                      },
+                      {
+                        "sig": "div.highlights-summary.border-bottom.pb-24 > div.card-body > div.card-top",
+                        "ch": [
+                          {
+                            "sig": "h3.fs-24.mb-16 > a.netsposts-posttitle-link.single-click.excerpt-title",
+                            "kind": "h3",
+                            "val": "Bring your plugin to Microsoft Copilot with Work IQ Developer Tools",
+                            "link": "https://devblogs.microsoft.com/microsoft365dev/bring-your-plugin-to-microsoft-copilot-with-wiqd/"
+                          },
+                          {
+                            "sig": "div.fs-16.mb-16.postexcerpt",
+                            "val": "Bring an existing agent plugin into Work IQ Developer Tools (WIQD) and the plugin registry or create a new plugin to utilize the full Microsoft Copilot packaging workflow. A plugin gives Microsoft Copilot new ways to get work done. It packages one or more capabilities, such as skills,..."
+                          },
+                          {
+                            "sig": "a.read-more",
+                            "val": "Read moreClick to read more about this post",
+                            "link": "https://devblogs.microsoft.com/microsoft365dev/bring-your-plugin-to-microsoft-copilot-with-wiqd/"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sig": "div.wrapper > div.container-evo.mt-100 > div.container-sidebar-home",
+        "ch": [
+          {
+            "sig": "section.mb-40",
+            "ch": [
+              {
+                "sig": "div.d-flex.justify-content-between.border-bottom.mb-40 > h2.fs-24.fw-600.mb-16",
+                "kind": "h2",
+                "val": "Latest posts"
+              },
+              {
+                "sig": "div.landing.archive-posts.masonry-container.gap-20.mb-40.grid-view",
+                "ch": [
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-433.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/80/2025/11/MSFT-BANNER-CONF42GOLANG2022.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 9, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Go 1.27.2-1 and 1.26.9-1 Microsoft builds now available",
+                                "link": "https://devblogs.microsoft.com/go/go-1-27-2-1-and-1-26-9-1-microsoft-builds-now-available/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Davis Goodin"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "A new release of the Microsoft build of Go including security fixes is now available for download."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Microsoft for Go Developers",
+                            "link": "https://devblogs.microsoft.com/go/go-1-27-2-1-and-1-26-9-1-microsoft-builds-now-available/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-22514.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/2026/10/The-AX-Practitioner-Playbook.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 9, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Introducing the Agent Experience (AX) Practitioner Playbook",
+                                "link": "https://devblogs.microsoft.com/blog/introducing-the-agent-experience-ax-practitioner-playbook/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Waldek Mastykarz"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "AI coding agents now pick the SDK, the version, and the pattern for your developers. The AX Practitioner Playbook is our method for finding out whether they get your technology right, and for fixing the sources they rely on when they don't."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Microsoft for Developers",
+                            "link": "https://devblogs.microsoft.com/blog/introducing-the-agent-experience-ax-practitioner-playbook/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-12851.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/52/2026/08/feature-native-confluent-cosmos.png"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 9, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Introducing the Native Confluent Cloud Connector Experience in Azure Cosmos DB!",
+                                "link": "https://devblogs.microsoft.com/cosmosdb/introducing-the-native-confluent-cloud-connector-experience-in-azure-cosmos-db/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Theo van Kraay"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Co-authored with Praveen Raja P Azure Cosmos DB already includes a powerful event foundation: change feed provides a durable, ordered record of item changes within each logical partition. It is ideal for reacting to operational data as it changes, building projections, and driving workflows directly from the database. Confluent Cloud adds a complementary event layer rather than replacing change feed. Kafka topics can carry database changes alongside explicit business events from many systems, retain them independently from the operational database, and let multiple consumer groups process and replay each s..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure Cosmos DB Blog",
+                            "link": "https://devblogs.microsoft.com/cosmosdb/introducing-the-native-confluent-cloud-connector-experience-in-azure-cosmos-db/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-4053.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/58/2026/10/10-13-dynamic-workflows-azure-functions-eye-catch.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 8, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 1"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Dynamic Workflows in Azure Functions Hosted Skills: Durable, AI-Led Work for Event-Driven Apps",
+                                "link": "https://devblogs.microsoft.com/azure-sdk/dynamic-workflows-azure-functions-hosted-skills/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Tsuyoshi Ushio"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Azure Functions is the event-driven application platform, and Hosted Skills adds AI reasoning to your app. Dynamic Workflows give the app a durable way to carry out AI-led, multi-step work after the triggering invocation is finished. The model writes a plan (a DAG) one time, and Durable Functions runs it. In our benchmark, token use decreased by 56-93% and end-to-end latency decreased by 77-95%, with the same output quality."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure SDK Blog",
+                            "link": "https://devblogs.microsoft.com/azure-sdk/dynamic-workflows-azure-functions-hosted-skills/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-559.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/90/2026/10/aspire-dashboard-persistence-data-flow.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 8, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Adding persistence to the Aspire dashboard",
+                                "link": "https://devblogs.microsoft.com/aspire/aspire-dashboard-persistence/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "James Newton-King"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Aspire 13.6 adds dashboard persistence and run history. Revisit telemetry after a restart, retain more data, and explore the SQLite and Dapper implementation behind it."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Aspire Blog",
+                            "link": "https://devblogs.microsoft.com/aspire/aspire-dashboard-persistence/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-111744.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/38/2025/10/banner-oldnewthing-blue.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 8, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 7"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 3"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "If one anti-malware software is good, does that make two better?",
+                                "link": "https://devblogs.microsoft.com/oldnewthing/20261008-00/?p=112762/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Raymond Chen"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Not always."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "The Old New Thing",
+                            "link": "https://devblogs.microsoft.com/oldnewthing/20261008-00/?p=112762/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-73453.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/6/2026/09/new-wiki-editor-preview.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 8, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 2"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "New Wiki Editor Experience",
+                                "link": "https://devblogs.microsoft.com/devops/new-wiki-editor-experience/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Dan Hellem"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "We are excited to announce a new editing experience for Wiki pages. We are replacing the existing editor with a new editor built on Monaco Editor, the same editor technology that powers Visual Studio Code. Monaco brings many of the editing capabilities familiar to Visual Studio Code to Wiki pages, while preserving the functionality of the existing Wiki editor. New features The new Monaco based editor includes: If you are already familiar with Visual Studio Code, the new editor should feel familiar and provide a better experience for creating and editing Wiki content. Enable the Public Preview To e..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure DevOps Blog",
+                            "link": "https://devblogs.microsoft.com/devops/new-wiki-editor-experience/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-26240.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/73/2026/10/pre-autho-token-entra-blog-post.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 8, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 1"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Pre-authenticated (tempauth) URLs are retiring: move to Microsoft Entra ID tokens before April 1, 2027",
+                                "link": "https://devblogs.microsoft.com/microsoft365dev/pre-authenticated-tempauth-urls-are-retiring-move-to-microsoft-entra-id-tokens-before-april-1-2027/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "SharePoint team"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Starting April 1, 2027, affected Microsoft Graph file APIs will no longer return pre-authenticated URLs. Applications using these APIs must authenticate requests with Microsoft Entra ID access tokens."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Microsoft 365 Developer Blog",
+                            "link": "https://devblogs.microsoft.com/microsoft365dev/pre-authenticated-tempauth-urls-are-retiring-move-to-microsoft-entra-id-tokens-before-april-1-2027/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-227205.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/51/2019/11/trexduke-blackwhite-cropped-half.png"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 8, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 2"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Faster by Design: Performance engineering in the Microsoft JDBC Driver for SQL Server",
+                                "link": "https://devblogs.microsoft.com/java/faster-by-design-performance-engineering-in-the-microsoft-jdbc-driver-for-sql-server/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Ananya Garg"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "A database driver sits on the critical path of many applications. When a frequently executed path performs unnecessary work, even a small amount of overhead can compound across millions of operations. Over the past several releases, we have systematically profiled frequently executed paths across the Microsoft JDBC Driver for SQL Server, identifying opportunities to improve efficiency without changing application behavior. What began with ResultSet processing expanded into bulk copy operations, parameter metadata, Always Encrypted, and authentication. The work followed a consistent principle: measure where the ..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Microsoft for Java Developers",
+                            "link": "https://devblogs.microsoft.com/java/faster-by-design-performance-engineering-in-the-microsoft-jdbc-driver-for-sql-server/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-2941.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/89/2026/09/foundry_document_ai_header_v7-1-scaled.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 7, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 1"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Azure Document Intelligence and Azure Content Understanding: a practical guide",
+                                "link": "https://devblogs.microsoft.com/foundry/choosing-azure-document-intelligence-and-content-understanding/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Chu Lahlou"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Compare Azure Document Intelligence and Azure Content Understanding across extraction architectures, workload fit, Layout capabilities, deployment options, and practical evaluation criteria."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Microsoft Foundry Blog",
+                            "link": "https://devblogs.microsoft.com/foundry/choosing-azure-document-intelligence-and-content-understanding/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-53.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/94/2026/10/WinML_Oct_6_Thumbnail.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 7, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 4"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "AI Development on Windows: from PyTorch and llama.cpp to Windows ML",
+                                "link": "https://devblogs.microsoft.com/foundry-on-windows/build-on-winml-oct-7-26/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > div.d-flex.gap-6",
+                                "ch": [
+                                  {
+                                    "sig": "div.d-flex.fs-14",
+                                    "val": "Anastasiya,"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.fs-14",
+                                    "val": "Michael,"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.fs-14",
+                                    "val": "Tucker"
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Today we are highlighting improvements across a few key open-source projects many of you already use, as well as updates to Windows ML. To empower developers, we must support the broad range of tools for experimentation and exploration across inference and training, in addition to our production grade native inference stack. Available today, Windows adds experimental llama.cpp support to Windows ML so you can run GGUF models locally through new task-specific APIs. Windows ML is the unified, high-performance local AI inferencing framework for Windows. Our experimental Windows-native Runtime API is now in preview ..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Microsoft Foundry on Windows Blog",
+                            "link": "https://devblogs.microsoft.com/foundry-on-windows/build-on-winml-oct-7-26/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-22497.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/2026/10/Dev-Blog-Article-logo.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 7, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 1"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "From Spec-First to Enterprise-Ready: Extending GitHub Spec Kit",
+                                "link": "https://devblogs.microsoft.com/blog/from-spec-first-to-enterprise-ready-extending-github-spec-kit/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Apoorv Gupta"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "How presets, extensions, bundles, workflows, and governed catalogs make Spec-Driven Development adaptable at scale This article continues Spec-Driven Development: A Spec-First Approach to AI-Native Engineering, which introduced the principles and lifecycle of SDD. Here, we focus on the next challenge: adapting that workflow to the standards, domains, tools, and governance needs of a large engineering organization. When a good workflow meets organizational reality Spec-Driven Development (SDD) gives teams a durable source of truth: structured specs that carry intent through requirements, design, implementatio..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Microsoft for Developers",
+                            "link": "https://devblogs.microsoft.com/blog/from-spec-first-to-enterprise-ready-extending-github-spec-kit/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-111744.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/38/2025/10/banner-oldnewthing-blue.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 7, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 2"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 2"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "How can undefined opcodes ud0 and ud1 have parameters? How undefined were they?",
+                                "link": "https://devblogs.microsoft.com/oldnewthing/20261007-00/?p=112759/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Raymond Chen"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "They weren't defined, not even as undefined."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "The Old New Thing",
+                            "link": "https://devblogs.microsoft.com/oldnewthing/20261007-00/?p=112759/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-7773.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/56/2026/10/pool-v2-thumbnail.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 3"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 4"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Try SqlClient’s new connection pool for faster parallel connections",
+                                "link": "https://devblogs.microsoft.com/azure-sql/try-sqlclients-new-connection-pool-for-faster-parallel-connections/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Malcolm Daigle"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "You told us that applications using can take too long to establish the database connections they need. When many requests need connections at the same time, waiting for the connection pool to grow can delay application readiness and increase latency. This can happen even in common situations like querying several pieces of metadata during startup or receiving a burst of traffic after a quiet period. ’s new connection pool (Pool V2) is designed to address this problem by establishing new connections concurrently, allowing the pool to respond more quickly when multiple requests need new connections at the same tim..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure SQL Dev Corner",
+                            "link": "https://devblogs.microsoft.com/azure-sql/try-sqlclients-new-connection-pool-for-faster-parallel-connections/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-7799.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/56/2026/10/SQL-Calendar-Events-Icon.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Upcoming SQL and AI Events to Put on Your Calendar",
+                                "link": "https://devblogs.microsoft.com/azure-sql/sql-calendar-2027q4/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Jerry Nixon"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Developers, database administrators, data professionals, architects and technology decision makers have several opportunities to connect, learn and gain hands-on experience this fall. 2027 Q4 SQL Events Get hands-on with SQL and AI The Friday workshops are led by the SQL product group! They provide a full day of practical learning before the community conferences begin. This AI workshop is designed for SQL developers, database administrators, application developers, architects and other data professionals who want to build AI-powered applications without abandoning the SQL tools and security model they alr..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure SQL Dev Corner",
+                            "link": "https://devblogs.microsoft.com/azure-sql/sql-calendar-2027q4/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-22487.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/2026/10/canvas_authoring-scaled.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 1"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 1"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Build Azure canvases with the Canvas authoring plugin",
+                                "link": "https://devblogs.microsoft.com/blog/build-azure-canvases-with-canvas-authoring/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Alex Weininger"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Learn how the Canvas authoring plugin helps you build Azure canvases with Microsoft Canvas Toolkit, from a read-only starter to a working app you can inspect, test, and adapt."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Microsoft for Developers",
+                            "link": "https://devblogs.microsoft.com/blog/build-azure-canvases-with-canvas-authoring/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-76.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/64/2020/09/windows-performance-toolkit.png"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 3"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 5"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Introducing WinDbg MCP: Debug with natural language, grounded in evidence",
+                                "link": "https://devblogs.microsoft.com/performance-diagnostics/introducing-windbg-mcp-debug-with-natural-language-grounded-in-evidence/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Shanthi Rajan"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Debugging rarely starts with a clear answer. An app crashes, a service hangs, a driver fails, or a kernel dump offers few clues. Whether you’re working with a live target, crash dump, or Time Travel Debugging (TTD) trace, the first question is the same: Where do I start, and what should I investigate next? Today we’re introducing WinDbg MCP, a natural-language interface for WinDbg built on Model Context Protocol (MCP). It connects AI clients such as GitHub Copilot CLI and Visual Studio Code to an active WinDbg session, so you can investigate user-mode and kernel-mode crashes and hangs in plain language, groun..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Performance and Diagnostics",
+                            "link": "https://devblogs.microsoft.com/performance-diagnostics/introducing-windbg-mcp-debug-with-natural-language-grounded-in-evidence/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-60984.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/10/2026/10/faster-lighter-csharp-dev-kit.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 3"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 13"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "A faster, lighter C# Dev Kit",
+                                "link": "https://devblogs.microsoft.com/dotnet/faster-lighter-csharp-dev-kit/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Drew Noakes"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "C# Dev Kit has been rebuilt to open solutions in about a second and run on a fraction of the memory, and this post walks through what changed for you."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": ".NET Blog",
+                            "link": "https://devblogs.microsoft.com/dotnet/faster-lighter-csharp-dev-kit/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-551.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/90/2026/10/aspire-dashboard-native-aot-featured.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 1"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 2"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Bringing Native AOT to the Aspire dashboard",
+                                "link": "https://devblogs.microsoft.com/aspire/aspire-dashboard-native-aot/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "James Newton-King"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Aspire 13.6 brings Native AOT to the dashboard. Explore the startup and deployment benefits, plus the Blazor, Fluent UI, JSON, and Dapper changes that made it possible."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Aspire Blog",
+                            "link": "https://devblogs.microsoft.com/aspire/aspire-dashboard-native-aot/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-7761.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/56/2026/10/database-connections-feature.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 2"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 1"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "PostgreSQL to SQL Field Notes: Connections",
+                                "link": "https://devblogs.microsoft.com/azure-sql/pg-to-sql-connections/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Jerry Nixon"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Welcome to SQL First, welcome to SQL! You’re going to like this. Upgrading from PostgreSQL is real work, and depending on your old database, this process will vary widely in complexity. I am confident that you’re going to love the mindful and modern features of SQL. Take your time, make the most of the resources built to help you in Microsoft Learn, and know there is a huge community of SQL developers ready to help along the way. This blog is for the PG developer Good news! The SQL standard is shared across both engines; that should help you get up to speed quickly. However, there are differences, and t..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure SQL Dev Corner",
+                            "link": "https://devblogs.microsoft.com/azure-sql/pg-to-sql-connections/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-101.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/92/2026/05/DevEdit_teal.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 1"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Is it MSIX? Part 2: Finding Package Identity with APIs",
+                                "link": "https://devblogs.microsoft.com/insidemsix/find-package-identity-with-apis/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Howard Kapustein"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "We previously determined how to tell if a process is packaged or unpackaged using Task Manager. Now let's find its package and application identity in code. Windows provides APIs to retrieve package and application identity for a process: If you prefer WinRT: Kernel mode What about kernel mode? Nearly all MSIX APIs require a user-mode caller. The Windows Driver Kit (WDK) provides RtlQueryPackageIdentity() and RtlQueryPackageIdentityEx() for querying package identity from a token. Tools? What about tools to do the same? Onward to Part 3... 1 returns but provides only the Package-Relative Application..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Inside MSIX",
+                            "link": "https://devblogs.microsoft.com/insidemsix/find-package-identity-with-apis/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-4039.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/58/2026/10/azfunc-py-agent-blog.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Bring agentic reasoning to Python function apps with Azure Functions Agent bindings (preview)",
+                                "link": "https://devblogs.microsoft.com/azure-sdk/azure-functions-agent-binding/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Victoria Hall"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Add bounded AI reasoning to Python function apps with Azure Functions Agent bindings, while keeping deterministic application code in control."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure SDK Blog",
+                            "link": "https://devblogs.microsoft.com/azure-sdk/azure-functions-agent-binding/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-257399.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/4/2026/10/Azure-Credits_blog-tile-scaled.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "What Would You Build in Azure If You Didn’t Have to Ask for a Budget First?",
+                                "link": "https://devblogs.microsoft.com/visualstudio/what-would-you-build-in-azure-if-you-didnt-have-to-ask-for-a-budget-first/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "James Rempt"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Maybe you’d deploy that .NET application you’ve been working on. Try a serverless architecture. Experiment with containers. Build a proof of concept. Or spend some time exploring an Azure service you haven’t used yet. If you’re an eligible Visual Studio subscriber, you may already have a personal Azure sandbox waiting for you. Many Visual Studio Subscriptions include Azure credits, giving developers a simple way to explore Azure, build skills, develop applications, and experiment with cloud services without first needing a separate Azure budget. If you haven’t activated yours yet, it’s a Visual St..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Visual Studio Blog",
+                            "link": "https://devblogs.microsoft.com/visualstudio/what-would-you-build-in-azure-if-you-didnt-have-to-ask-for-a-budget-first/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-111744.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/38/2025/10/banner-oldnewthing-blue.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 2"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 4"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Why does the compiler sometimes use ud2 and sometimes int 3 for code that shouldn’t execute?",
+                                "link": "https://devblogs.microsoft.com/oldnewthing/20261006-00/?p=112757/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Raymond Chen"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "It shouldn't execute, but for different reasons."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "The Old New Thing",
+                            "link": "https://devblogs.microsoft.com/oldnewthing/20261006-00/?p=112757/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-22482.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/2026/10/Agent-Experience_-AI-Meets-Technology.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 6, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 1"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "What is Agent Experience (AX)?",
+                                "link": "https://devblogs.microsoft.com/blog/what-is-agent-experience-ax/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Waldek Mastykarz"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Your agent says it's done, and the code compiles, but did it pick your technology? Did it use it correctly? Learn what Agent Experience (AX) is, how to measure it, and why the obvious fix isn't always the right one."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Microsoft for Developers",
+                            "link": "https://devblogs.microsoft.com/blog/what-is-agent-experience-ax/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-4036.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/58/2026/10/azfunc-managed-connector-blog.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 5, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Connect Azure Functions to more services with managed connectors",
+                                "link": "https://devblogs.microsoft.com/azure-sdk/connect-azure-functions-to-more-services-with-managed-connectors/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Lily Ma"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Learn how Azure Functions managed connectors provide access to 1,700 services, with triggers and typed clients available for supported service connectors, and walk through a sample that automates RFP intake across SharePoint, Azure Content Understanding, and Teams."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure SDK Blog",
+                            "link": "https://devblogs.microsoft.com/azure-sdk/connect-azure-functions-to-more-services-with-managed-connectors/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-60968.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/10/2026/10/test-uwp-and-winui-3-apps.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 5, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 2"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 3"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "UWP and WinUI 3 apps: UI testing with MSTest",
+                                "link": "https://devblogs.microsoft.com/dotnet/testing-uwp-and-winui-3-apps-with-mstest/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Amaury Levé"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Learn how to test UWP and WinUI 3 apps with MSTest and Microsoft.Testing.Platform across packaged, unpackaged, and AppContainer hosts."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": ".NET Blog",
+                            "link": "https://devblogs.microsoft.com/dotnet/testing-uwp-and-winui-3-apps-with-mstest/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-13053.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/52/2026/10/ChatGPT-Image-Oct-5-2026-10_06_47-AM.png"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 5, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 1"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "From an Empty Folder to an AI Agent: Meet create-cosmos-agent",
+                                "link": "https://devblogs.microsoft.com/cosmosdb/from-an-empty-folder-to-an-ai-agent-meet-create-cosmos-agent/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Sajeetharan Sinnathurai"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "The first few minutes of a new AI project often feel productive. Create a chat endpoint, connect a model, send a prompt, and display the answer. Then the real questions arrive. Where should the agent store memory? How do we keep one customer's data away from another? How do we trace the source of an answer? What happens when an action requires approval? How do we test the application locally before creating cloud resources? And how do we move to Azure without rebuilding the project? Those questions inspired me to build create-cosmos-agent, an open-source CLI for creating production-oriented TypeScript AI..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure Cosmos DB Blog",
+                            "link": "https://devblogs.microsoft.com/cosmosdb/from-an-empty-folder-to-an-ai-agent-meet-create-cosmos-agent/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-111744.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/38/2025/10/banner-oldnewthing-blue.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 5, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 5"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 5"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "If somebody tries to hot-patch an already-hot-patched function, how do they avoid conflicts?",
+                                "link": "https://devblogs.microsoft.com/oldnewthing/20261005-00/?p=112755/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Raymond Chen"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Hot-patching is for Windows, not for you."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "The Old New Thing",
+                            "link": "https://devblogs.microsoft.com/oldnewthing/20261005-00/?p=112755/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-13037.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/52/2026/10/Blog-8-1.jpg"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 5, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "I’m the Only Developer on This Project. Do I Really Need RBAC?",
+                                "link": "https://devblogs.microsoft.com/cosmosdb/im-the-only-developer-on-this-project-do-i-really-need-rbac/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > div.d-flex.gap-6",
+                                "ch": [
+                                  {
+                                    "sig": "div.d-flex.fs-14",
+                                    "val": "Sudhanshu,"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.fs-14",
+                                    "val": "Iria"
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "You own the account, wrote the application, and would be the one fixing it if something broke. So role-based access control (RBAC) can sound like an answer to a problem you do not have: managing other people. You do not need RBAC for your app to function; account keys still work while key-based authentication is enabled. But for a live Azure Cosmos DB for NoSQL project you intend to keep, identity-based access is the better default, even if you remain its only developer. The reason is not team size. It is reducing the secrets you maintain and giving your code only the access it needs. Neither benefit requir..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure Cosmos DB Blog",
+                            "link": "https://devblogs.microsoft.com/cosmosdb/im-the-only-developer-on-this-project-do-i-really-need-rbac/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-111744.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/38/2025/10/banner-oldnewthing-blue.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 2, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 2"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Why is there no Windows hot-patching support for other architectures like 32-bit ARM and MIPS?",
+                                "link": "https://devblogs.microsoft.com/oldnewthing/20261002-00/?p=112753/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Raymond Chen"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "They either predate hot-patching or never needed it."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "The Old New Thing",
+                            "link": "https://devblogs.microsoft.com/oldnewthing/20261002-00/?p=112753/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-13017.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/52/2026/09/blog3_thumbnail.png"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 2, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 1"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Translating an Elasticsearch Search Request to Azure Cosmos DB",
+                                "link": "https://devblogs.microsoft.com/cosmosdb/translating-an-elasticsearch-search-request-to-azure-cosmos-db/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Madeline Egan"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "This tutorial shows how common Elasticsearch search requests can be expressed using Azure Cosmos DB query patterns. Some Elasticsearch capabilities map directly to Cosmos DB full-text search functions, while others require separate queries or application-layer handling. Each step shows the closest Cosmos DB pattern and explains what changes in the process. In Elasticsearch, one search request can return hits, highlights, and aggregation buckets together. In Azure Cosmos DB, it is clearer to separate those concerns: one query retrieves ranked results, separate aggregate queries calculate facets, and the applicat..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure Cosmos DB Blog",
+                            "link": "https://devblogs.microsoft.com/cosmosdb/translating-an-elasticsearch-search-request-to-azure-cosmos-db/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-81.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/56/2020/04/sql-database-3-560.png"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 1, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Data API builder 2.1.5: JSON and Vector Data Type Support, and More",
+                                "link": "https://devblogs.microsoft.com/azure-sql/data-api-builder-2-1-5-json-and-vector-data-type-support-and-more/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > div.d-flex.gap-6",
+                                "ch": [
+                                  {
+                                    "sig": "div.d-flex.fs-14",
+                                    "val": "Carlos,"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.fs-14",
+                                    "val": "Aniruddh,"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.fs-14",
+                                    "val": "Matt"
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Data API builder (DAB) 2.1.5 is now available as a stable release, and it is about meeting modern data where it lives: documents next to rows, embeddings next to both. This release brings native support for the SQL and data types to the REST and GraphQL endpoints, so the same entities that serve your CRUD traffic can now store and expose document-shaped data and embeddings without custom code. It also introduces DAB as an embeddable NuGet library, hardens the MCP endpoint, moves the engine to .NET 10, and ships a set of security and reliability improvements. Try it today and tell us what you think. What's n..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure SQL Dev Corner",
+                            "link": "https://devblogs.microsoft.com/azure-sql/data-api-builder-2-1-5-json-and-vector-data-type-support-and-more/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-534.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/90/2026/10/noderepl-scaled.webp"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 1, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 5"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 3"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Bringing rich terminal experiences to Aspire",
+                                "link": "https://devblogs.microsoft.com/aspire/aspire-terminal-support/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Mitch Denny"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "Aspire 13.5 introduced WithTerminal() for interactive terminal sessions on app resources. Aspire 13.6 builds on it with richer terminal emulation and docked terminals for REPLs. See how to enable, attach to, and automate terminal experiences in your app."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Aspire Blog",
+                            "link": "https://devblogs.microsoft.com/aspire/aspire-terminal-support/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-13011.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/52/2026/09/Social-card-Genspark.png"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 1, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Genspark protects live agent sessions with Azure Cosmos DB Global Secondary Indexes",
+                                "link": "https://devblogs.microsoft.com/cosmosdb/genspark-protects-live-agent-sessions-with-azure-cosmos-db-global-secondary-indexes/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Azure Cosmos DB Team"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "This article was authored by Justin Liu, co-founder and chief architect, Genspark. The work does not end when the prompt does A user comes to Genspark with a goal: research a market, build a presentation, produce a report, analyze a dataset, or complete another complex assignment. Our agents take it from there, working across tools, sources, and multiple steps until the user has a finished result. The request may fit in a sentence; the actual work of the request, though, rarely does. One assignment can involve repeated searches, decisions, tool calls, and revisions. Throughout the process, the agent relie..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure Cosmos DB Blog",
+                            "link": "https://devblogs.microsoft.com/cosmosdb/genspark-protects-live-agent-sessions-with-azure-cosmos-db-global-secondary-indexes/"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "div.masonry-card.box.bg-white.d-flex.justify-content-between.flex-column.p-16.rounded.shadow.position-relative.border-1.post-card",
+                    "ch": [
+                      {
+                        "sig": "div.masonry-thumbnail > img.post-thumbnail.wp-image-13025.lazyload",
+                        "kind": "img",
+                        "val": "",
+                        "link": "https://devblogs.microsoft.com/wp-content/uploads/sites/52/2026/10/Generated-image-1.png"
+                      },
+                      {
+                        "sig": "div.card-body",
+                        "ch": [
+                          {
+                            "sig": "div.card-top",
+                            "ch": [
+                              {
+                                "sig": "div.d-flex.align-items-center.justify-content-between.gap-12.mt-16.mb-16",
+                                "ch": [
+                                  {
+                                    "sig": "div",
+                                    "val": "Oct 1, 2026"
+                                  },
+                                  {
+                                    "sig": "div.d-flex.gap-12",
+                                    "ch": [
+                                      {
+                                        "sig": "div.d-flex.gap-4.clr-grey-61 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post comments count 0"
+                                      },
+                                      {
+                                        "sig": "div.d-flex.gap-4 > div.d-flex.align-items-center.clr-grey-61",
+                                        "val": "Post likes count 0"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "h3.fs-24.fw-600.mb-16 > a.single-click.excerpt-title",
+                                "kind": "h3",
+                                "val": "Azure Cosmos DB Shell is now available in the Azure portal",
+                                "link": "https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-shell-is-now-available-in-the-azure-portal/"
+                              },
+                              {
+                                "sig": "div.d-flex.gap-6.align-items-center > span.fs-14",
+                                "val": "Sajeetharan Sinnathurai"
+                              },
+                              {
+                                "sig": "p.excerpt-body.mt-16.mb-24",
+                                "val": "You can now open Azure Cosmos DB Shell directly from Data Explorer in the Azure portal. The shell gives you a terminal-style way to work with Azure Cosmos DB. You can move through databases and containers as you would through folders, run NoSQL queries, inspect resources, and update data. When you launch it from Data Explorer, it is already connected to the account you are viewing. Open a shell from Data Explorer Open an Azure Cosmos DB for NoSQL account in the portal, go to Data Explorer, and select Open Cosmos DB Shell from the toolbar. The shell opens in a new tab and connects to the selec..."
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.netsposts-blogname.card-source-blog.pt-16.border-top-light.clr-grey-61.fs-14 > a.netsposts-blogname-link",
+                            "val": "Azure Cosmos DB Blog",
+                            "link": "https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-shell-is-now-available-in-the-azure-portal/"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "sig": "div.fs-16.d-flex.justify-content-center.mt-40 > a.read-more.btn-secondary",
+                "val": "Load more posts"
+              }
+            ]
+          },
+          {
+            "sig": "aside > div.rssfeed-section.pt-6 > a.rssfeed-link > span",
+            "val": "RSS Feed",
+            "link": "https://devblogs.microsoft.com/landing"
+          }
+        ]
+      }
+    ]
+  }
+}
