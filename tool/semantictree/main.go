@@ -322,7 +322,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		return &Node{Sig: signature(n), Kind: "time", Val: val}
 	case "pre":
 		// Preformatted text keeps its line breaks and indentation.
-		text := strings.Trim(textContent(n), "\n")
+		text := strings.Trim(joinText(slices.Collect(n.ChildNodes()), false), "\n")
 		if strings.TrimSpace(text) == "" {
 			return nil
 		}
@@ -355,15 +355,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 				children = append(children, v)
 			}
 		} else {
-			text.Reset()
-			for _, c := range run {
-				if c.Type == html.TextNode {
-					text.WriteString(c.Data)
-				} else {
-					text.WriteString(" " + textContent(c) + " ")
-				}
-			}
-			if t := normalizeSpace(text.String()); t != "" {
+			if t := normalizeSpace(joinText(run, true)); t != "" {
 				children = append(children, &Node{Val: t})
 			}
 		}
@@ -534,22 +526,60 @@ func (s *simplifier) resolve(ref string) string {
 
 // textContent concatenates the text under n, skipping dropped elements.
 func textContent(n *html.Node) string {
+	return joinText(slices.Collect(n.ChildNodes()), true)
+}
+
+// Elements that format part of a text, which can be part of a word, such as
+// "un<b>believ</b>able". Other elements, such as spans, are often laid out
+// apart from the text next to them, with no space between them in the HTML.
+var formattingTags = map[string]bool{
+	"b": true, "i": true, "em": true, "strong": true,
+	"small": true, "code": true, "mark": true, "sup": true, "sub": true,
+	"u": true, "s": true, "abbr": true, "cite": true, "q": true, "kbd": true,
+	"font": true, "bdi": true, "bdo": true, "wbr": true,
+}
+
+// Spaces added around an element are written as gaps first, and dropped
+// before closing punctuation and after opening brackets, as in
+// "<span>Tools</span>, <span>Kiro</span>".
+const gap = "\x00"
+
+var (
+	gapBeforePunct  = regexp.MustCompile(gap + `+([,.;:!?)\]’'])`)
+	gapAfterBracket = regexp.MustCompile(`([(\[])` + gap + `+`)
+)
+
+// joinText concatenates the text of nodes and their descendants, skipping
+// dropped elements. When spaced is true, the text of each element other than
+// formatting is set apart by spaces.
+func joinText(nodes []*html.Node, spaced bool) string {
 	var b strings.Builder
 	var walk func(*html.Node)
 	walk = func(n *html.Node) {
-		for c := n.FirstChild; c != nil; c = c.NextSibling {
-			switch {
-			case c.Type == html.TextNode:
-				b.WriteString(c.Data)
-			case c.Type == html.ElementNode && c.Data == "br":
-				b.WriteString(" ")
-			case c.Type == html.ElementNode && !isDropped(c):
+		switch {
+		case n.Type == html.TextNode:
+			b.WriteString(n.Data)
+		case n.Type == html.ElementNode && n.Data == "br":
+			b.WriteString(" ")
+		case n.Type == html.ElementNode && !isDropped(n):
+			apart := spaced && !formattingTags[n.Data]
+			if apart {
+				b.WriteString(gap)
+			}
+			for c := range n.ChildNodes() {
 				walk(c)
+			}
+			if apart {
+				b.WriteString(gap)
 			}
 		}
 	}
-	walk(n)
-	return b.String()
+	for _, n := range nodes {
+		walk(n)
+	}
+	text := gapBeforePunct.ReplaceAllString(b.String(), "$1")
+	text = gapAfterBracket.ReplaceAllString(text, "$1")
+	return strings.ReplaceAll(text, gap, " ")
 }
 
 func normalizeSpace(s string) string {
