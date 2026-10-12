@@ -21,8 +21,9 @@
 //
 //	sig   the elements the node was made from, outermost first, such as
 //	      "h2.title > a"; empty for text between elements
-//	kind  "h1".."h6" for a heading, "img" for an image
-//	val   plain text; the alt text for an image, which may be missing
+//	kind  "h1".."h6" for a heading, "img" for an image, "time" for a time
+//	val   plain text; the alt text for an image, which may be missing; the
+//	      datetime attribute for a time, or its text if it has none
 //	link  link target, or the image URL for an image
 //	ch    child nodes
 //
@@ -208,7 +209,6 @@ var inlineTags = map[string]bool{
 	"small": true, "code": true, "mark": true, "sup": true, "sub": true,
 	"u": true, "s": true, "abbr": true, "cite": true, "q": true, "kbd": true,
 	"br": true, "wbr": true, "font": true, "bdi": true, "bdo": true,
-	"time": true,
 }
 
 var headingTags = map[string]bool{
@@ -310,6 +310,16 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		}
 		alt := normalizeSpace(attr(n, "alt"))
 		return &Node{Sig: signature(n), Kind: "img", Val: alt, Link: src}
+	case "time":
+		// A machine-readable timestamp is preferred over the displayed text.
+		val := strings.TrimSpace(attr(n, "datetime"))
+		if val == "" {
+			val = normalizeSpace(textContent(n))
+		}
+		if val == "" {
+			return nil
+		}
+		return &Node{Sig: signature(n), Kind: "time", Val: val}
 	case "pre":
 		// Preformatted text keeps its line breaks and indentation.
 		text := strings.Trim(textContent(n), "\n")
