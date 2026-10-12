@@ -178,6 +178,7 @@
                               },
                               {
                                 "sig": "div.flex.space-x-1.text-sm.text-gray-500 > span",
+                                "kind": "time",
                                 "val": "6/11/2026"
                               }
                             ]
@@ -252,6 +253,7 @@
                               },
                               {
                                 "sig": "div.flex.space-x-1.text-sm.text-gray-500 > span",
+                                "kind": "time",
                                 "val": "4/6/2026"
                               }
                             ]
@@ -326,6 +328,7 @@
                               },
                               {
                                 "sig": "div.flex.space-x-1.text-sm.text-gray-500 > span",
+                                "kind": "time",
                                 "val": "2/5/2026"
                               }
                             ]
@@ -361,7 +364,16 @@
                   },
                   {
                     "sig": "p.text-md.py-2.text-gray-500",
-                    "val": "by Garry Tan 1/23/2026"
+                    "ch": [
+                      {
+                        "val": "by Garry Tan"
+                      },
+                      {
+                        "sig": "span.ml-4.text-sm.font-normal",
+                        "kind": "time",
+                        "val": "1/23/2026"
+                      }
+                    ]
                   },
                   {
                     "sig": "p.mt-3.text-base.text-gray-800",
@@ -384,7 +396,16 @@
                   },
                   {
                     "sig": "p.text-md.py-2.text-gray-500",
-                    "val": "by Ankit Gupta 1/16/2026"
+                    "ch": [
+                      {
+                        "val": "by Ankit Gupta"
+                      },
+                      {
+                        "sig": "span.ml-4.text-sm.font-normal",
+                        "kind": "time",
+                        "val": "1/16/2026"
+                      }
+                    ]
                   },
                   {
                     "sig": "p.mt-3.text-base.text-gray-800",
@@ -407,7 +428,16 @@
                   },
                   {
                     "sig": "p.text-md.py-2.text-gray-500",
-                    "val": "by Y Combinator 12/18/2025"
+                    "ch": [
+                      {
+                        "val": "by Y Combinator"
+                      },
+                      {
+                        "sig": "span.ml-4.text-sm.font-normal",
+                        "kind": "time",
+                        "val": "12/18/2025"
+                      }
+                    ]
                   },
                   {
                     "sig": "p.mt-3.text-base.text-gray-800",
@@ -430,7 +460,16 @@
                   },
                   {
                     "sig": "p.text-md.py-2.text-gray-500",
-                    "val": "by Tim Brady 12/10/2025"
+                    "ch": [
+                      {
+                        "val": "by Tim Brady"
+                      },
+                      {
+                        "sig": "span.ml-4.text-sm.font-normal",
+                        "kind": "time",
+                        "val": "12/10/2025"
+                      }
+                    ]
                   },
                   {
                     "sig": "p.mt-3.text-base.text-gray-800",
@@ -453,7 +492,16 @@
                   },
                   {
                     "sig": "p.text-md.py-2.text-gray-500",
-                    "val": "by Jon Levy 11/12/2025"
+                    "ch": [
+                      {
+                        "val": "by Jon Levy"
+                      },
+                      {
+                        "sig": "span.ml-4.text-sm.font-normal",
+                        "kind": "time",
+                        "val": "11/12/2025"
+                      }
+                    ]
                   },
                   {
                     "sig": "p.mt-3.text-base.text-gray-800",
@@ -476,7 +524,16 @@
                   },
                   {
                     "sig": "p.text-md.py-2.text-gray-500",
-                    "val": "by Jared Friedman 11/6/2025"
+                    "ch": [
+                      {
+                        "val": "by Jared Friedman"
+                      },
+                      {
+                        "sig": "span.ml-4.text-sm.font-normal",
+                        "kind": "time",
+                        "val": "11/6/2025"
+                      }
+                    ]
                   },
                   {
                     "sig": "p.mt-3.text-base.text-gray-800",

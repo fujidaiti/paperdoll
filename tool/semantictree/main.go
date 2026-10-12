@@ -22,8 +22,9 @@
 //	sig   the elements the node was made from, outermost first, such as
 //	      "h2.title > a"; empty for text between elements
 //	kind  "h1".."h6" for a heading, "img" for an image, "time" for a time
+//	      element or a text that is only a date
 //	val   plain text; the alt text for an image, which may be missing; the
-//	      datetime attribute for a time, or its text if it has none
+//	      datetime attribute for a time element, or its text if it has none
 //	link  link target, or the image URL for an image
 //	ch    child nodes
 //
@@ -46,6 +47,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"golang.org/x/net/html"
 )
@@ -341,7 +343,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		}
 		return &Node{Sig: signature(n), Kind: "time", Val: val}
 	}
-	if isTextOnly(n) {
+	if isTextOnly(n) && !hasDateText(n) {
 		return s.textValue(n)
 	}
 
@@ -376,6 +378,9 @@ func (s *simplifier) convert(n *html.Node) *Node {
 	}
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
 		switch {
+		case c.Type == html.TextNode && isDate(c.Data):
+			flush()
+			children = append(children, &Node{Kind: "time", Val: normalizeSpace(c.Data)})
 		case c.Type == html.TextNode:
 			run = append(run, c)
 		case c.Type == html.ElementNode && (c.Data == "br" || c.Data == "wbr"):
@@ -384,7 +389,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 			if c.Data == "br" {
 				run = append(run, &html.Node{Type: html.TextNode, Data: " "})
 			}
-		case c.Type == html.ElementNode && inlineTags[c.Data] && isTextOnly(c):
+		case c.Type == html.ElementNode && inlineTags[c.Data] && isTextOnly(c) && !hasDateText(c):
 			run = append(run, c)
 		case c.Type == html.ElementNode:
 			if child := s.convert(c); child != nil {
@@ -447,6 +452,38 @@ func (s *simplifier) textValue(n *html.Node) *Node {
 	}
 	v.Sig = strings.Join(sigs, " > ")
 	return v
+}
+
+// Date formats of texts, with the month name in any letter case.
+var dateLayouts = []string{
+	"January 2, 2006", "Jan 2, 2006", "2 January 2006", "2 Jan 2006",
+	"1/2/2006", "2006/1/2", "2006-01-02", "2006年1月2日", time.RFC3339,
+}
+
+// isDate reports whether the text s is only a date with a year, a month and a
+// day, such as "Sep 25, 2026", and not a text that contains a date.
+func isDate(s string) bool {
+	s = normalizeSpace(s)
+	for _, layout := range dateLayouts {
+		if _, err := time.Parse(layout, s); err == nil {
+			return true
+		}
+	}
+	return false
+}
+
+// hasDateText reports whether a text under n, apart from those under dropped
+// elements, is a date. Such texts become values of their own.
+func hasDateText(n *html.Node) bool {
+	for c := range n.ChildNodes() {
+		switch {
+		case c.Type == html.TextNode && isDate(c.Data):
+			return true
+		case c.Type == html.ElementNode && !isDropped(c) && hasDateText(c):
+			return true
+		}
+	}
+	return false
 }
 
 // onlyChild returns the only child element of n, or nil when n has other
