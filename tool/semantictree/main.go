@@ -24,8 +24,8 @@
 //	kind  "h1".."h6" for a heading, "img" for an image, "time" for a time
 //	      element or a text that is only a date
 //	val   plain text; the alt text for an image, which may be missing; the
-//	      date of a time as "2006-01-02", or as a timestamp in RFC 3339 when
-//	      the page gives one
+//	      timestamp of a time in RFC 3339 and UTC, at 00:00:00 when the page
+//	      gives only a date
 //	link  link target, or the image URL for an image
 //	ch    child nodes
 //
@@ -462,9 +462,9 @@ var dateLayouts = []string{
 	"1/2/2006", "2006/1/2", "2006-01-02", "2006年1月2日", time.RFC3339,
 }
 
-// parseDate returns the date of the text s as "2006-01-02", or the text
-// itself when it is a timestamp in RFC 3339. It fails unless s is only a date
-// with a year, a month and a day, such as "Sep 25, 2026", and not a text that
+// parseDate returns the timestamp of the text s in RFC 3339 and UTC, with
+// the time 00:00:00 when s has none. It fails unless s is only a date with a
+// year, a month and a day, such as "Sep 25, 2026", and not a text that
 // contains a date.
 func parseDate(s string) (string, bool) {
 	s = normalizeSpace(s)
@@ -473,10 +473,7 @@ func parseDate(s string) (string, bool) {
 		if err != nil {
 			continue
 		}
-		if layout == time.RFC3339 {
-			return s, true
-		}
-		return t.Format(time.DateOnly), true
+		return t.UTC().Format(time.RFC3339), true
 	}
 	return "", false
 }
