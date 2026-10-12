@@ -1,0 +1,1987 @@
+{
+  "url": "https://chsmc.org/2/",
+  "title": "Chase McCoy",
+  "root": {
+    "sig": "body.home > main.Wrapper__main > div.Content",
+    "ch": [
+      {
+        "sig": "section.Blog.Blog--default",
+        "ch": [
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2024-06-29"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "Figma AI",
+                    "link": "https://chsmc.org/2024/06/figma-ai/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Figma announced a host of new AI-powered features this week at their annual conference, and they have been received by designers with both cheer and dismay."
+              },
+              {
+                "sig": "p",
+                "val": "Tools like the ones that were announced are showing up across the industry, but as the most popular tool for modern product design, Figma will make them commonplace, and we’ll soon be taking them for granted just like any other advancement in design tools over the past several decades."
+              },
+              {
+                "sig": "p",
+                "val": "Some folks are panicked, some are excited, and some are indifferent. I’m somewhere in the middle, but I do have concerns that are exacerbated by these new tools and capabilities."
+              },
+              {
+                "sig": "p",
+                "val": "To explain those concerns, I’ll draw a distinction between two types of AI-powered features that Figma announced this week:"
+              },
+              {
+                "sig": "ol",
+                "ch": [
+                  {
+                    "sig": "li",
+                    "val": "Using AI to eliminate or reduce the time spent on constructing designs and prototypes in Figma."
+                  },
+                  {
+                    "sig": "li",
+                    "val": "Generating UI designs from scratch, based on a text prompt, using models trained on common product interfaces (and, in the future, the work created by Figma users, unless they opt out)."
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "I’m excited for and have very few concerns about type #1, because the job of product designers is not to create Figma mockups—it’s to solve problems and ship software."
+              },
+              {
+                "sig": "p",
+                "val": "To the degree that new features allow us to spend less time creating ephemeral artifacts that are merely a stop on the way to a final destination, I’m sold."
+              },
+              {
+                "sig": "p",
+                "val": "Those features involve things like automatically wiring up prototypes, filling in a mockup with fake data, translating strings into other languages, automatic layer naming, generating placeholder images, etc. These are all good and helpful, and are geared towards saving designers time to spend on things that they are uniquely positioned poised to do."
+              },
+              {
+                "sig": "p",
+                "val": "But what about type #2, the feature that Figma labels in its UI as “Make designs”? This allows anyone to enter a prompt and have Figma create a mockup from scratch. In the future, the company plans to train their models on designs created by users."
+              },
+              {
+                "sig": "p",
+                "val": "Some are concerned that this type of feature might take jobs away from product designers, and some see it as simply another way to automate away the tedious parts of a designer’s job in order to give them more time to do what they do best."
+              },
+              {
+                "sig": "p",
+                "val": "I think it’s both, and/but I don’t think it’s because of AI."
+              },
+              {
+                "sig": "p",
+                "val": "There are many companies, and the number seems to be increasing, that are more than happy to turn the jobs of designers over to folks who are able to wield tools to produce a facsimile of what a designer is actually capable of."
+              },
+              {
+                "sig": "p",
+                "val": "For those that see the primary value of designers as producing interface mockups, the advent of new AI tools in the vein of Figma’s “make designs” button will absolutely seem like a viable replacement for the work of a designer. And this isn’t limited to AI—as design tools become more accessible and approachable to everyone (which I consider a net positive on the whole), the barrier to creating something that looks, on the surface, like the work of a designer is lowered."
+              },
+              {
+                "sig": "p",
+                "val": "Canva is an excellent example of how this is not strictly because of AI, but might certainly be accelerated by it. The commodification of design as a practice began long before the widespread availability of generative AI."
+              },
+              {
+                "sig": "p",
+                "val": "Product managers, engineers, and others are now able to produce designerly artifacts easier than ever before, and too many companies are willing to accept the sub-par solutions that result in order to cut costs and move faster."
+              },
+              {
+                "sig": "p",
+                "val": "Machines will not make our jobs obsolete, but corporations will, and they’ll use smarter and smarter machines as an excuse to do so."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2024-06-24"
+              },
+              {
+                "sig": "p",
+                "val": "Here’s a thing I never would have imagined possible: an LLM embedded into a font."
+              },
+              {
+                "sig": "p",
+                "val": "Many applications (including Chrome and Firefox) use a font rendering engine called HarfBuzz, and HarfBuzz recently added support for running arbitrary WebAssemply code in order to “shape” the pixels that are drawn onscreen when rendering a font."
+              },
+              {
+                "sig": "p",
+                "val": "You can see the font, llama.ttf, in action in this video."
+              },
+              {
+                "sig": "p",
+                "val": "Over the past several decades we’ve seen computers be embedded into more and more contexts. Today, computers are everywhere, from our cars to the locks on our doors. Computers have even been built and embedded into the digital worlds of video games."
+              },
+              {
+                "sig": "p",
+                "val": "I wonder if, in the years to come, it might be LLMs that get embedded into all the things."
+              },
+              {
+                "sig": "p",
+                "val": "A smart refrigerator that can reason about what’s inside and maintain a grocery list for you? A font that completes your sentences? A doorbell that answers in your voice and tone when you’re not at home? In-flight entertainment that generate content based on your preferences?"
+              },
+              {
+                "sig": "p",
+                "val": "Strange times ahead."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2024-06-20"
+              },
+              {
+                "sig": "p",
+                "val": "One of my favorite forms of online content is when someone finds an interesting, obscure story from the past and manages to extract a lesson that’s widely applicable today."
+              },
+              {
+                "sig": "p",
+                "val": "I like to think of it as something like fan fiction: we, as individuals, retcon and re-tell stories from the past to help us make sense of the present."
+              },
+              {
+                "sig": "p",
+                "val": "Elan Ullendorff published a great example of this recently in a piece called Should this be a map or 500 maps?"
+              },
+              {
+                "sig": "p",
+                "val": "It features the story of a king in 18th century Spain who ordered a geographer to create a map. The geographer attempted to delegate this work by asking the priests of towns across the country to create maps of their own provinces."
+              },
+              {
+                "sig": "p",
+                "val": "The idea was to put all of the maps together in the end, but because there was no standardization, all of the maps were created in entirely different forms. Those forms are beautiful! But ultimately not useful as an actual map."
+              },
+              {
+                "sig": "p",
+                "val": "Rather than seeing this as a failure, Elan asks us to consider the things we might be losing when we impose structure, standardization, and process. We might have gained a useful map, but we would have lost the creative perspective that each of the pieces represents."
+              },
+              {
+                "sig": "blockquote > p",
+                "val": "I’m obsessed with this story because it gets at a dynamic embedded within everything designed that we rarely think about. Once you notice it, it is present in almost every conversation, at every aperture and zoom level: modularity is inversely correlated to expressiveness."
+              },
+              {
+                "sig": "p",
+                "val": "This hit me like a rock, in no small part because of my career focus of choice: design systems."
+              },
+              {
+                "sig": "p",
+                "val": "Fortunately, Elan goes on to reassure me:"
+              },
+              {
+                "sig": "blockquote > p",
+                "val": "I am someone that preaches expressiveness to a fault, but the truth is that I make decisions to scale all the time. I don’t necessarily see this as a compromise of values. There is beauty in trying to express something specific; there is beauty too in finding compromises to create something epic and collective."
+              },
+              {
+                "sig": "p",
+                "val": "Hear hear."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2024-06-14"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "A visual language for music and time",
+                    "link": "https://chsmc.org/2024/06/css-music-time/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "I’ve remarked before on my gratefulness for CSS as the ubiquitous and expressive visual language of our times, a sort of design Esperanto (that is actually widely spoken)."
+              },
+              {
+                "sig": "p",
+                "val": "One would struggle to find a more perfect example of this than Scribe, by Stephen Band. Scribe is a custom element (<scribe-music>) which renders responsive music notation in HTML and CSS grid."
+              },
+              {
+                "sig": "p",
+                "val": "Here’s an example, rendered inline via Scribe:"
+              },
+              {
+                "sig": "scribe-music",
+                "val": "0 meter 4 1 0 chord D maj 4 0 note F#5 0.2 2 1 note A4 0.2 1 4 note D4 0.2 1"
+              },
+              {
+                "sig": "p",
+                "val": "To really understand the magic happening here, you must read Stephen’s excellent blog post about how it all works."
+              },
+              {
+                "sig": "p",
+                "val": "It’s remarkable that this is possible using CSS, and even more remarkable that the language itself morphs to become a syntax not for describing elements on a web page, but to describe pitch over time. CSS as interface for the natural world."
+              },
+              {
+                "sig": "p",
+                "val": "Under the hood, Scribe uses markup like this to represent music in time:"
+              },
+              {
+                "sig": "pre.language-html > code.language-html",
+                "val": "< div class = \" stave bar \" > < svg class = \" clef \" data-pitch = \" B4 \" > … </ svg > < svg class = \" flat \" data-beat = \" 1 \" data-pitch = \" Bb4 \" > … </ svg > < svg class = \" head \" data-beat = \" 1 \" data-pitch = \" Bb4 \" > … </ svg > < svg class = \" head \" data-beat = \" 2 \" data-pitch = \" D4 \" > … </ svg > < svg class = \" head \" data-beat = \" 3 \" data-pitch = \" G5 \" > … </ svg > < svg class = \" rest \" data-beat = \" 4 \" data-pitch = \" B4 \" > … </ svg > </ div >"
+              },
+              {
+                "sig": "p",
+                "val": "Elegant, useful, and thanks to the hard-won stability of the web platform: durable for generations to come."
+              },
+              {
+                "sig": "p",
+                "val": "One might wonder, what other natural or mathematical systems might we be able to represent in CSS? Another example that crossed my feeds recently is time-based CSS animations by Yuan Chuan."
+              },
+              {
+                "sig": "p",
+                "val": "Yuan creates a variable in CSS representing time, and uses keyframe animations to increment the value of the variable by 1 every millisecond. Suddenly CSS has a timer, something powerful for generative art and animation where time itself is used as an input variable."
+              },
+              {
+                "sig": "p",
+                "val": "Need to adjust the frame rate? Easy:"
+              },
+              {
+                "sig": "pre.language-css > code.language-css",
+                "val": "/* 8 fps */ animation-timing-function: step (calc (86400000 / (1000 / 8)));"
+              },
+              {
+                "sig": "p",
+                "val": "Yuan has some great examples of how this can be combined with functions in CSS like min(), round(), and newly added trigonometric functioned like sin(), cos(), etc. to create all sorts of useful effects. My favorite example is using all of this to create a clock with a perfectly ticking second hand."
+              },
+              {
+                "sig": "p",
+                "val": "In terms of representing natural systems in CSS, this reminds me of how often I’ve wanted to be able to generate and use random numbers in CSS at runtime. To my delight, it looks like that’s in the works."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2024-05-25"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "New magic for animations in CSS",
+                    "link": "https://chsmc.org/2024/05/css-animations/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "There are two new features coming to CSS that will make it much easier to further avoid JavaScript when implementing animations:"
+              },
+              {
+                "sig": "ol",
+                "ch": [
+                  {
+                    "sig": "li",
+                    "val": "Animating to and from display: none; for the sake of enter/exit animations."
+                  },
+                  {
+                    "sig": "li",
+                    "val": "Animating to and from the intrinsic size of an element (such as height: auto;)."
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Traditionally, animating something into or out of the screen (as opposed to just hiding it visually) required JavaScript to remove the element from the page after waiting for the animation or transition to complete. No longer!"
+              },
+              {
+                "sig": "p",
+                "val": "When these new features land in browsers, you’ll be able to animate to display: none like any other property using a keyframe animation:"
+              },
+              {
+                "sig": "pre.language-css > code.language-css",
+                "val": ".item { animation: fade-out 0.5s forwards; } @keyframes fade-out { 100% { opacity: 0; display: none; } }"
+              },
+              {
+                "sig": "p",
+                "val": "Neat!"
+              },
+              {
+                "sig": "p",
+                "val": "You can also do the same thing with a CSS transition, but you’ll need to set the new transition-behavior property to allow-discrete for that to work. I can see something like * {transition-behavior: allow-discrete} becoming a part of my CSS reset in the future to enable this behavior by default."
+              },
+              {
+                "sig": "p",
+                "val": "But what about the opposite case? You have an element that’s currently not displayed and you want to animate it as it appears. Again, we typically use JavaScript for this today to ensure the initial styles are set properly and our element doesn’t display visually on the page before it has animated."
+              },
+              {
+                "sig": "p",
+                "val": "Now, we can specify the starting style like this:"
+              },
+              {
+                "sig": "pre.language-css > code.language-css",
+                "val": ".item { @starting-style { opacity: 0; } opacity: 1; transition: opacity 0.5s; }"
+              },
+              {
+                "sig": "p",
+                "val": "Elegant and useful. If you want to learn more about these new powers, I recommend checking out this post on the Chrome for Developers blog."
+              },
+              {
+                "sig": "p",
+                "val": "The second new feature coming to CSS is the ability to animate to and from an element’s intrinsic size. The most common use case for this is collapsible areas: we want them to be height: 0px when closed, and when opened their height should be automatic based on the contents."
+              },
+              {
+                "sig": "p",
+                "val": "Because CSS has historically not allowed for animating to height: auto;, we’ve had to use JavaScript to measure the height of the contents and animate to that pixel value."
+              },
+              {
+                "sig": "p",
+                "val": "When this feature lands in browsers, we’ll instead be able achieve this like so:"
+              },
+              {
+                "sig": "pre.language-css > code.language-css",
+                "val": ".item { height: 0; } .item.open { height: calc-size (auto); }"
+              },
+              {
+                "sig": "p",
+                "val": "The magic comes from the calc-size function, which is a curious API choice—why not just use the existing calc() function? Here’s a comment on the CSS working group’s draft for this feature that explains why."
+              },
+              {
+                "sig": "p",
+                "val": "These features are just a few of the many ways that CSS is growing and becoming more powerful and expressive. To learn about all of the other great new things coming, check out this excellent video by Una Kravets from Google I/O."
+              },
+              {
+                "sig": "p",
+                "val": "Una says that we’re in the golden era for web UI, and I couldn’t agree more."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2024-05-05"
+              },
+              {
+                "sig": "p",
+                "val": "I really appreciated this write up from Jeremy Keith about his personal approach and best practices for HTML web components."
+              },
+              {
+                "sig": "p",
+                "val": "Judging by the discourse, web components seem to be gaining in popularity lately, and I’m very here for it."
+              },
+              {
+                "sig": "p",
+                "val": "Trying to build on the web using a component model was what led me (and others I’m sure) into the arms of React many years ago. While I’m grateful for that journey, and still believe React is the right choice for many projects, it gives me a lot of comfort to know there’s a native tool I can reach for."
+              },
+              {
+                "sig": "p",
+                "val": "The tricky thing with web components, like the web platform in general, is the flexibility. What makes it so powerful can also make it hard to learn, and even harder to know if what you’re learning is the right or recommended path. It takes time for best practices to form and percolate."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2024-05-04"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "The moon trees of Mississippi",
+                    "link": "https://chsmc.org/2024/05/moon-trees/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Many of my online acquaintances know that I live in Chicago, but I suspect they might not know that I’m from a small university town in Mississippi called Starkville."
+              },
+              {
+                "sig": "p",
+                "val": "Starkville is home to Mississippi State University, where I attended college and studied Computer Science. In 2017 I graduated and moved to Chicago to start my career."
+              },
+              {
+                "sig": "p",
+                "val": "At the time I was excited to escape the place where I spent so many of my formative years, a place which was the symbol of mundanity for me and my youthful ambitions."
+              },
+              {
+                "sig": "p",
+                "val": "Seven years later and I’m having coffee and catching up on my inbox when I happened to find the latest issue of Claire Evans’ newsletter: a delightful story about moon trees—that is, trees grown from seeds that traveled to space and around the moon 34 times during the Apollo 14 mission."
+              },
+              {
+                "sig": "p",
+                "val": "Claire traces the history of the seeds, which were germinated into seedlings and given out to foresters across the country before being largely forgotten about and then eventually rediscovered and catalogued by NASA."
+              },
+              {
+                "sig": "p",
+                "val": "(By the way, don’t miss out on the wonderful website created to track the trees by a NASA archivist.)"
+              },
+              {
+                "sig": "p",
+                "val": "Today less than 100 moon trees remain, but as Claire goes on to describe, there is a second generation of moon trees (so called “half-moons”) grown from the seeds of original trees that remain today."
+              },
+              {
+                "sig": "p",
+                "val": "The location of one of these mother-trees, though, is what caught my attention: it’s on the campus of Mississippi State University, my campus. All the times I walked past this humble tree I had no idea it had been to space."
+              },
+              {
+                "sig": "p",
+                "val": "It’s such a pleasant surprise to have this story appear in my inbox and show me something new about a place where I spent so much time."
+              },
+              {
+                "sig": "p",
+                "val": "While I lived there, I often felt suffocated by the mundanity of my home town. This has reminded me that there are things to appreciate and interesting stories (of perhaps cosmic proportion!) to discover in even the most mundane of places. We just have to keep our eyes open and remember not to take anything for granted."
+              },
+              {
+                "sig": "p",
+                "val": "If you’d like, you can buy a seedling Sycamore moon tree online descended from the one on the MSU campus."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2024-04-22"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "The Cascade",
+                    "link": "https://chsmc.org/2024/04/csscade/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Hearty congrats to Robin Rendle who has turned his wonderful CSS-focused newsletter into a good, old fashioned blog. The Cascade is beautiful, and is already full of great content for CSS nerds like me."
+              },
+              {
+                "sig": "p",
+                "val": "The site is, generously, free to read, but member supported for $10/year. Subscribing, for me, was an absolute no brainer."
+              },
+              {
+                "sig": "p",
+                "val": "I liked this bit from an issue of Robin’s personal newsletter that he sent after the launch:"
+              },
+              {
+                "sig": "blockquote > p",
+                "val": "There’s not enough words in the English language to describe how cool it is to build a little publishing machine. That rare, lightning-in-a-bottle feeling of throwing a few services together and building something greater than the sum of its parts."
+              },
+              {
+                "sig": "p",
+                "val": "It’s never been easier to create a website (a publishing machine!) for yourself or your interests. The feeling of ownership you’ll have compared to publishing on someone else’s platform is a powerful force in and of itself."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2024-03-24"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "Boku no Natsuyasumi",
+                    "link": "https://chsmc.org/2024/03/inaka-summer/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Several months ago, in an issue of Spencer Chang’s newsletter, I discovered the 6 hour video review of a game called Boku no Natsuyasumi by Tim Rogers (known as Action Button)."
+              },
+              {
+                "sig": "p",
+                "val": "To call this a review is surely stretching the limits of the word’s meaning as we know it."
+              },
+              {
+                "sig": "p",
+                "val": "Boku no Natsuyasumi, henceforth shortened as Bokunatsu, is a game for the original PlayStation released 24 years ago in Japan. And only in Japan. It centers on a young boy, Boku, spending a month of his summer vacation with his aunt, uncle, and their family in the countryside of Japan in August of 1975."
+              },
+              {
+                "sig": "p",
+                "val": "Players can explore the countryside as Boku, collect bugs, fish, fly kites, and other low-stakes activities you might expect from a child on summer break."
+              },
+              {
+                "sig": "p",
+                "val": "Slowly, you learn about the people around you and their stories."
+              },
+              {
+                "sig": "p",
+                "val": "Sounds simple, but watch Tim’s review and you’ll see that the game is a subtle masterclass in storytelling, menu design, cinematography, typography, skeuomorphism, Japanese culture, sound design, memory, and even mortality."
+              },
+              {
+                "sig": "p",
+                "val": "I became determined to experience the game myself, which is easier said than done given that it was never released outside of Japan. I managed to find an English patch, translated by a fan, for the game’s sequel Boku no Natsuyasumi 2: Umi no Bouken-hen (My Summer Vacation 2: Sea Adventure Chapter). The sequel, released two years after the original, also follows a boy named Boku vacationing in the countryside in August of 1975."
+              },
+              {
+                "sig": "p",
+                "val": "Armed with the patch file, I needed 3 more items to complete my quest: a PS2 emulator, a PS2 BIOS (the software pre-installed on the console’s chipset), and a copy of Boku no Natsuyasumi 2."
+              },
+              {
+                "sig": "p",
+                "val": "Luckily, the emulator is easy to come by. I downloaded the excellent PCSX2, which is an open source PS2 emulator that works quite well on my MacBook Air."
+              },
+              {
+                "sig": "p",
+                "val": "Unfortunately, for Legal Reasons™ I cannot provide a link to the PS2 BIOS or the the game itself, but a cursory Google search should turn up the files you need without too much trouble."
+              },
+              {
+                "sig": "p",
+                "val": "With these 4 talismans in hand I was able to perform the necessary ritual of resurrection: apply the English patch to the game, boot up the PS2 emulator, load the game."
+              },
+              {
+                "sig": "p",
+                "val": "After a few clicks… paydirt."
+              },
+              {
+                "sig": "p > img",
+                "kind": "img",
+                "val": "A screenshot of the start screen of Boku no Natsuyasumi 2",
+                "link": "https://chsmc.org/_astro/start.5pKpb04I_Z25bk1p.webp"
+              },
+              {
+                "sig": "p",
+                "val": "An experienced gamer might find this process mundane, but to me it feels like the internet equivalent of breaking open an ancient, hidden tomb. At this point I could only imagine what treasures may lie within."
+              },
+              {
+                "sig": "p",
+                "val": "What I discovered is undoubtedly a work of art, made clear by my time playing this iteration and from Tim’s review of the original. The games also happen to be an example of the billions of bytes of lost media that are just waiting to be rediscovered by someone who will appreciate them."
+              },
+              {
+                "sig": "p",
+                "val": "Here is a game, published 22 years ago, that has managed to evoke feelings of nostalgia and wistfulness in me today, in 2024. This must be the closest thing to time travel I’ll ever experience."
+              },
+              {
+                "sig": "p",
+                "val": "I knew lots about the game before playing due to Tim’s review (which, again, is a 6 hour masterpiece), but there are two aspects I couldn’t fully appreciate until playing: the game’s backgrounds and soundscapes."
+              },
+              {
+                "sig": "p",
+                "val": "First, the backgrounds. Bokunatsu makes use of a fixed perspective, where the camera only changes angles when the character moves to another scene. Each area that the user can move through is set upon a gorgeous hand-painted background. If you’ve ever seen a Miyazaki film you have a sense for the feelings that these backdrops create. A 3D modeled scene would never have evoked such a strong sense of place, time, and character, and the creative decision to use hand drawn backgrounds makes all the difference."
+              },
+              {
+                "sig": "p",
+                "val": "There’s a narrative purpose to the backgrounds as well, signaling the time of day as they change throughout between different paintings for day, afternoon, and night."
+              },
+              {
+                "sig": "p",
+                "val": "The backgrounds were done by artists at an animation studio called Kusanagi. Here are the backgrounds they made for Bokunatsu 2, but I heartily encourage you to browse through all of the art on their site."
+              },
+              {
+                "sig": "p",
+                "val": "Kazuo Oga is a famous background painter and the person responsible for many of the backgrounds in your favorite Miyazaki films. Animation Obsessive had this to say about him:"
+              },
+              {
+                "sig": "blockquote > p",
+                "val": "That’s really the heart of it. Oga notices things — little things. He gets a feel for them. When he sits down to work, he brings with him all the unimportant details that matter the most. Then, with his paint, he creates an artwork that centers those details, elevates them. It’s more a way of seeing and feeling than it is a technique."
+              },
+              {
+                "sig": "p",
+                "val": "All the unimportant details that matter the most—paying attention to these details are precisely what make Bokunatsu, from its backgrounds to the narrative itself, so plainly striking."
+              },
+              {
+                "sig": "p",
+                "val": "The backgrounds are complimented by the soundscapes. These are, in my opinion, the best part of the game."
+              },
+              {
+                "sig": "p",
+                "val": "Of all the characteristics of summer, it may be the sounds which I most associate with the season. I grew up in the rural south, and Bokunatsu manages to capture the droning sounds of summer in a way I’ve never experienced before in media."
+              },
+              {
+                "sig": "p",
+                "val": "At times, I’ve let the game run in the background just to listen to the soundscapes."
+              },
+              {
+                "sig": "p",
+                "val": "According to an interview with the creator and director Bokunatsu, Kaz Ayabe, Sony sent a team into the mountains to capture sounds for the game."
+              },
+              {
+                "sig": "p",
+                "val": "Dear reader, I’m here to tell you that the effort paid off."
+              },
+              {
+                "sig": "p",
+                "val": "The game’s environment is alive with the sounds of insects chirping, the wind blowing through a nearby chime, the trickling of a nearby stream. As Boku explores the countryside time advances and, like the background art, the sounds change to evoke the feeling of morning, afternoon, and night."
+              },
+              {
+                "sig": "p",
+                "val": "Animal Crossing, which debuted the year after the original Boku no Natsuyasumi game, is held up as the shining example of cozy, relaxing video games. I am a true fan of the Animal Crossing franchise, but with its gameplay literally focused on grinding in order to pay your landlord they stand in stark comparison to a game like Bokunatsu. Animal Crossing rewards completionism, and in doing so makes the game about grinding instead of actually relaxing."
+              },
+              {
+                "sig": "p",
+                "val": "In comparison, the only thing you’ll get for collecting all of the bugs or catching all of the fish in Boku is a diary entry written by the boy at night before bed. And, like in real life, maybe that’s enough?"
+              },
+              {
+                "sig": "p",
+                "val": "Discovering and playing Bokunatsu (and watching Tim’s 6 hour magnum opus of a review) has given me a deep appreciation for the timelessness of art and media."
+              },
+              {
+                "sig": "p",
+                "val": "A game from 24 years ago, deeply steeped in a culture that isn’t my own, has managed to create in me a sense of warm nostalgia. Its soundscapes remind me of home, but also make me long for a place I’ve never been."
+              },
+              {
+                "sig": "p",
+                "val": "It’s also worth appreciating the meta aspect of the journey I went on to discover and experience this game, all because of a link in a newsletter. This is why the web is so special, and it’s what an AI will never do: unearth a lost gem."
+              },
+              {
+                "sig": "p",
+                "val": "When writing in his diary at the end of each in-game day, Boku reflects on “the most wonderful day in which nothing happened.” Let this be a reminder that there is magic waiting to be found in the mundane."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2024-03-09"
+              },
+              {
+                "sig": "p",
+                "val": "Here’s something unexpected: Keanu Reeves and China Miéville (one of my favorite science fiction authors) are writing a book together that’s dropping in July. The Book of Elsewhere is described as a “genre-bending epic of ancient powers, modern war, and an outcast who cannot die.” Sign me up."
+              },
+              {
+                "sig": "p",
+                "val": "Speaking of books being released this year, Robin Sloan’s new novel Moonbound will land in June. Preorder a copy and let Robin know to receive a limited edition zine."
+              },
+              {
+                "sig": "p",
+                "val": "Summer beckons!"
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2024-03-05"
+              },
+              {
+                "sig": "p",
+                "val": "A small programming note—I’ve updated my homepage to include highlights from articles and books I’ve read in addition to blog posts. The highlights are synced from my Readwise account."
+              },
+              {
+                "sig": "p",
+                "val": "If you haven’t used Readwise Reader, I highly recommend it. It’s my modern replacement for Instapaper, and has a wonderful browser extension which allows for in-place highlighting of passages (including comments!) I am a very happy subscriber in part because of their excellent API."
+              },
+              {
+                "sig": "p",
+                "val": "The Readwise API combined with Eleventy’s fetch API made it a breeze to implement this new feature ✨"
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2023-12-28"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "Poets of the mundane",
+                    "link": "https://chsmc.org/2023/12/poets-of-the-mundane/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Paul has always been my favorite Beatle."
+              },
+              {
+                "sig": "p",
+                "val": "I was in junior high school when I got hooked—during that time there’s a good chance that if you found me listening to music on my iPod nano, it was The Beatles."
+              },
+              {
+                "sig": "p",
+                "val": "Perhaps it was Paul’s youthfulness and humor that made him approachable to me at that age in a way that John wasn’t. Paul was someone you might have known in real life, but John and George seemed otherworldly."
+              },
+              {
+                "sig": "p",
+                "val": "That otherworldliness is a part of why John in particular is regarded as the driving creative genius of the group."
+              },
+              {
+                "sig": "p",
+                "val": "But this has never sat right with my love for Paul, so I was delighted to discover Ian Leslie’s 64 Reasons To Celebrate Paul McCartney which makes a very strong case for the boyish Beatle."
+              },
+              {
+                "sig": "p",
+                "val": "It’s a long list full of excellent reasons to rethink your choice of favorite Beatle. There was one aspect in particular that stood out to me."
+              },
+              {
+                "sig": "blockquote > p",
+                "val": "For McCartney, the domestic isn’t opposed to the world of the imagination; it is a portal to it. He is a poet of the mundane; a writer who will start off writing about his dog, or fixing a hole, and see where it takes him."
+              },
+              {
+                "sig": "p",
+                "val": "I think this is the one that sums up the whole thing, and is what a large part of makes Paul appealing. His work offers me reassurance that inspiration can and does come from the most unassuming of places."
+              },
+              {
+                "sig": "p",
+                "val": "The need to find or manufacture deeper meaning in our work by tracing its inspirations can be paralyzing—Paul is a good reminder for me to not ignore ideas sparked from humble circumstances."
+              },
+              {
+                "sig": "p",
+                "val": "It’s clear that being a “poet of the mundane” extends beyond creative work and into the way we choose to live our lives:"
+              },
+              {
+                "sig": "blockquote > p",
+                "val": "His unashamed “normality” was an act of inverted rebellion, as transgressive, in its way, as Lennon and Yoko posing naked. But neither fans nor critics saw it that way, and to this day it is Lennon who best fits our Romantic idea of a great man; tortured, difficult and deep. Long before it became commonplace for male public figures to hymn the joys of parenting, Paul McCartney was showing us a different way to be a man, and we have never quite forgiven him for it."
+              },
+              {
+                "sig": "p",
+                "val": "This echoes the timeless advice from Stephen King: “Life isn’t a support-system for art. It’s the other way around.”"
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2023-12-21"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "Apps and the Age of AI",
+                    "link": "https://chsmc.org/2023/12/ai-apps/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "For how much software has evolved and matured I find it strange how many tasks remain unaddressed by niche, purpose-built software. I’m always excited to see how novel ideas can come about from focusing in on a narrow domain."
+              },
+              {
+                "sig": "p",
+                "val": "Ink and Switch’s latest research prototype Embark focuses on one specific task: making travel plans."
+              },
+              {
+                "sig": "p",
+                "val": "Embark uses a humble text-based document as its interface, which it then enriches with additional data and views as needed. There is something thrilling to me in the notion that, of all the options explored, plain text won (and often wins) the day."
+              },
+              {
+                "sig": "p",
+                "val": "As a designer I find it both deeply distressing and blissfully serene that improvements upon plain text as way of viewing, creating, and manipulating data are so rare."
+              },
+              {
+                "sig": "p",
+                "val": "Perhaps more importantly than the medium, Embark brings the features of multiple apps into a single workspace:"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "Although apps give us access to all kinds of information, they provide only limited mechanisms for bringing it together in useful ways. Whenever a complex task requires multiple apps, we are forced to juggle information across apps, resulting in tedious and error-prone coordination work."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "Embark: Dynamic documents for making plans",
+                    "link": "https://www.inkandswitch.com/embark/#:~:text=Although%20apps%20give%20us%20access%20to%20all%20kinds%20of%20information%2C%20they%20provide%20only%20limited%20mechanisms%20for%20bringing%20it%20together%20in%20useful%20ways.%20Whenever%20a%20complex%20task%20requires%20multiple%20apps%2C%20we%20are%20forced%20to%20juggle%20information%20across%20apps%2C%20resulting%20in%20tedious%20and%20error%2Dprone%20coordination%20work."
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Ink and Switch’s research identified 3 core problems with the typical model where tasks are completed using a series of individual apps:"
+              },
+              {
+                "sig": "ol",
+                "ch": [
+                  {
+                    "sig": "li",
+                    "val": "Context is not shared across apps"
+                  },
+                  {
+                    "sig": "li",
+                    "val": "Views are siloed"
+                  },
+                  {
+                    "sig": "li",
+                    "val": "Apps produce ephemeral output"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "One of the most exciting aspects of AI for me is its potential to address these challenges. AI actors operating on our behalf, paired with the right platform primitives and protocols, have the potential to form a new model of computing which reduced the coordination cost of managing many apps and interfaces."
+              },
+              {
+                "sig": "p",
+                "val": "I feel optimistic about a future with technology shaped by catalysts like LLMs, federated social protocols, and now Embark. Each offer new avenues for addressing the challenges with a computing model centered around siloed apps."
+              },
+              {
+                "sig": "p",
+                "val": "If the past decade of human computer interaction has been centered around apps, perhaps the next decade will knock those walls down and put users back in control of their data and the ways it is manipulated."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2023-11-05"
+              },
+              {
+                "sig": "p",
+                "val": "Wherever I can I prefer to work in the browser vs. tools like Figma. As the web platform grows (we seem to be in a sort of golden age at the moment) it becomes easier and easier to do my job with only the raw materials of the web."
+              },
+              {
+                "sig": "p",
+                "val": "Recently I’ve been working on a project at the day job that requires the use of something akin to layout grids in Figma. I was curious how difficult it would be to recreate this on the web."
+              },
+              {
+                "sig": "p",
+                "val": "It took longer than I’d like to admit to figure out the math, but with a single repeating-linear-gradient we can overlay a representation of our grid onto the page. I whipped up a class for this with support for specifying your own number of columns and gutter width."
+              },
+              {
+                "sig": "p",
+                "val": "In the spirit of blogging the things I want to remember:"
+              },
+              {
+                "sig": "pre.language-css > code.language-css",
+                "val": ".grid-overlay { --n: var (--columns, 12); --g: var (--gap, 16px); --c: var (--overlay-color, rgb (255 0 0 / 0.08)); --column-width: calc (((100% + var (--g)) / var (--n)) - var (--g)); position: relative; &:before { content: \"\"; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: repeating-linear-gradient ( to right, var (--c), var (--c) var (--column-width), transparent var (--column-width), transparent calc (var (--column-width) + var (--g)) ); } }"
+              },
+              {
+                "sig": "p",
+                "val": "Slap that class onto your grid container and presto, you’ve got some rails in place to keep everything lined up nice and neat."
+              },
+              {
+                "sig": "figure",
+                "ch": [
+                  {
+                    "sig": "img",
+                    "kind": "img",
+                    "val": "A screenshot of a webpage showing a 12 column grid.",
+                    "link": "https://chsmc.org/_astro/grid.DuYzj9zT_ZAAhj4.webp"
+                  },
+                  {
+                    "sig": "figcaption",
+                    "val": "repeating-linear-gradient invokes strange powers"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Once again I’m left marveling at the humble power of CSS, and feeling grateful that we live during times when such an expressive yet simple visual language is spoken so ubiquitously."
+              },
+              {
+                "sig": "p",
+                "val": "Check out the demo on Codepen."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2023-10-30"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "Conjurings of the harvest moon",
+                    "link": "https://chsmc.org/2023/10/conjurings/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Autumn is my favorite time of the year. The trees outside my apartment here in Oak Park are shining gold, and the air is starting to feel crisp and cold. Sweater weather, if you will."
+              },
+              {
+                "sig": "figure",
+                "ch": [
+                  {
+                    "sig": "img",
+                    "kind": "img",
+                    "val": "A towering castle set against a blue sky and surrounded by trees with golden leaves.",
+                    "link": "https://chsmc.org/_astro/autumn.CkkjXBrp_Z2tct57.webp"
+                  },
+                  {
+                    "sig": "figcaption > a",
+                    "val": "Hashimoto Okiie, Autumn at Himeji Castle, 1949",
+                    "link": "https://harvardartmuseums.org/collections/object/199224s"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Besides the weather and foliage, the best part of the season may just be its rituals. One of my favorites is an annual rewatching of Over the Garden Wall, which is the coziest, most endearing television series I’ve ever seen."
+              },
+              {
+                "sig": "p",
+                "val": "If the show is to teach us anything, it’s that things are not always what they seem."
+              },
+              {
+                "sig": "p",
+                "val": "I’d be remiss if I didn’t link to this wonderful exploration of vintage postcards that share a vibe with OtGW from the blog Weird Christmas (which is written by, get this, Craig Kringle). The entire site is dedicated to vintage Victorian Christmas cards, which Craig collects and shares online."
+              },
+              {
+                "sig": "figure",
+                "ch": [
+                  {
+                    "sig": "img",
+                    "kind": "img",
+                    "val": "A vintage postcard showing figures with pumpkins instead of heads sitting around in a field. A sign in the center of the frame reads \"Heaven and how to get there\".",
+                    "link": "https://chsmc.org/_astro/postcard.BxpiqHIj_1Mggk3.webp"
+                  },
+                  {
+                    "sig": "figcaption > a",
+                    "val": "Weird Christmas",
+                    "link": "https://weirdchristmas.com/2017/10/03/over-the-garden-wall-and-vintage-postcards"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "A few of the show’s scenes appear to take almost direct inspiration from some of the postcards in Craig’s collection. There is truly nothing new under the sun."
+              },
+              {
+                "sig": "p",
+                "val": "I recently discovered that a new animated series on HBO Max, Scavenger’s Reign, is based upon an animated short which appeared online 4 years ago by Joe Bennett and Charles Huettner."
+              },
+              {
+                "sig": "p",
+                "val": "The short caught my attention when it originally released for being a beautiful and wholly original bit of science fiction. Sometimes the internet, like the world, is full of serendipity, and you might rediscover something familiar just like you might stumble into an old friend at a crowded place."
+              },
+              {
+                "sig": "p",
+                "val": "The first six episodes have already premiered, and I’m hooked already. The style is something like a cross between Fantastic Planet, Sable, and Nausicaä of the Valley of the Wind."
+              },
+              {
+                "sig": "p > img",
+                "kind": "img",
+                "val": "A still image from the HBO Max series Scavenger's Reign depicting a vibrant and verdant alien planet with a metallic robot standing in the center of the frame.",
+                "link": "https://chsmc.org/_astro/scavengers-reign.UObZGvpe_Ze7tGm.webp"
+              },
+              {
+                "sig": "p",
+                "val": "I am such a sucker for any media that takes world building seriously, and the world of Scavenger’s Reign is overflowing with details—flora, fauna, and environments as alien as you’ve ever seen. The ecology of Vesta Minor, the planet on which the show takes place, is just as much a character as the humans stranded there."
+              },
+              {
+                "sig": "p",
+                "val": "Since there seems to be an animation theme going here, I’ll briefly mention how excited I am for the upcoming animated Scott Pilgrim series on Netflix: Scott Pilgrim Takes Off. I have a love for both the graphic novels and the 2010 film, whose cast will be returning to voice the characters in the new series."
+              },
+              {
+                "sig": "p",
+                "val": "Robin Sloan recommended the book Ghosts and Demons of India in his latest newsletter, and I picked up a copy of my own just in time for Halloween."
+              },
+              {
+                "sig": "p",
+                "val": "I love books that can be imbibed in small sips like a hot cup of coffee. Ghosts reads like an encyclopedia of creatures and spirits from the Indian subcontinent, and each entry conjures up the most vivid images. I have no idea the pantheon of ghost stories in India was so vast!"
+              },
+              {
+                "sig": "p",
+                "val": "Allow me to recommend one of my favorite blogs of late, which excites me every time it appears in my RSS reader. It is the wonderful Going Medieval by Dr. Eleanor Janega, who specializes in “late medieval sexuality, apocalyptic thought, propaganda, and the urban experience in general.” How cool is that??"
+              },
+              {
+                "sig": "p",
+                "val": "Dr. Janega uses their expertise to make comparisons and critiques between modern internet culture and that of medieval societies. One of their latest posts was sparked by the recent national test of the Integrated Public Alert and Warning System (IPAWS) on October 4 in the United States, which caused everyone’s smartphones to scream in unison. If you’re like me, you found it surprising and terrifying despite the numerous warnings online in the weeks leading up to the test."
+              },
+              {
+                "sig": "p",
+                "val": "Some folks found it more than surprising, though, and used it as the basis for conspiracy theories related to 5G, vaccines, viruses, and the like."
+              },
+              {
+                "sig": "p",
+                "val": "We often like to think of medieval European societies as unenlightened, unintelligent, and superstitious, but Dr. Janega reminds us that we’re not much better ourselves. Many bogus explanations were offered for the Black Death, and the parallels with how people respond to public health emergencies today are eery."
+              },
+              {
+                "sig": "p",
+                "val": "Definitely go read the whole piece, it’s full of gems like this:"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "I have repeatedly heard people now refer to the fact that “medieval streets were full of shit” to explain the spread of the Black Death. This is interesting because it is 1) not true – most medieval cities tightly regulated the disposal of human waste very strenuously and 2) would be irrelevant anyway even if it were true (it’s not) because that’s not how yersinia pestis travels."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "On sickness and conspiracy",
+                    "link": "https://going-medieval.com/2023/10/05/on-sickness-and-conspiracy"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "While I was writing this up, Dr. Janega posted another banger just in time for Halloween: You are not, in fact, the granddaughter of the witches they couldn’t burn."
+              },
+              {
+                "sig": "p",
+                "val": "Robin Rendle recently shared how he views the browser as a printing press:"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "So I’ve never seen myself as a designer or engineer or writer, but as a third thing. It’s sort of pompous and silly to call myself this word though, so I avoid it, but deep down it’s what I’m always thinking whenever someone asks what I do. But here, in this secret society of the newsletter, I will admit to you:"
+                  },
+                  {
+                    "sig": "ol",
+                    "ch": [
+                      {
+                        "sig": "li",
+                        "val": "I’ve always seen the browser as a printing press."
+                      },
+                      {
+                        "sig": "li",
+                        "val": "Because of that, I’ve always seen myself as a publisher first and then everything else second."
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "Robin Rendle, The Browser is a Printing Press",
+                    "link": "https://buttondown.email/robinrendle/archive/the-browser-is-a-printing-press/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "I couldn’t agree more. The power of the browser is not that it gave us the ability to write or create art or build programs, but that it allowed anyone to publish those things to the entire world."
+              },
+              {
+                "sig": "p",
+                "val": "The application of the web—design, engineering, writing—are all interests of mine, but for me they’re inevitably second to the printing press itself."
+              },
+              {
+                "sig": "p",
+                "val": "Speaking of Robin, be sure to check out his latest newsletter, The Cascade which focuses on the past, present, and future of CSS. Robin has been exploring new color features in CSS in the latest issues and it’s been a delight to follow along with."
+              },
+              {
+                "sig": "p",
+                "val": "In the spirit of publishing, I’ve been working on a little side project that is an ode to the written word."
+              },
+              {
+                "sig": "p",
+                "val": "While I appreciate the convenience of ebooks and audio books, I have always preferred to own and read physical copies. As a result, I’ve accumulated quite a few books that are becoming increasingly difficult to store and move around. I know at some point I’ll need to slim down my collection, but I wanted to preserve it in its current form."
+              },
+              {
+                "sig": "p",
+                "val": "To that end, I decided the place to start would be creating a database of all the books in my physical collection. I spent a few weeks inputting titles, authors, dates, ISBN numbers, page counts, and more metadata about the titles on my shelves. I still have a few boxes of books to go through and log, but most of my collection is now captured digitally."
+              },
+              {
+                "sig": "p",
+                "val": "I decided to use Airtable for this job, partly because it has such an easy to use API. I wanted to display my collection in a way that was more pleasant to browse than a spreadsheet, so I built my own little frontend for the database."
+              },
+              {
+                "sig": "p",
+                "val": "It’s still very much a WIP, and not as performant as I’d like it to be just yet, but you can take a peek at books.chasem.co"
+              },
+              {
+                "sig": "figure",
+                "ch": [
+                  {
+                    "sig": "img",
+                    "kind": "img",
+                    "val": "A screenshot of a website displaying Chase McCoy's collection of physical books in a grid layout.",
+                    "link": "https://chsmc.org/_astro/books.BvqIyRfz_ZskiiK.webp"
+                  },
+                  {
+                    "sig": "figcaption",
+                    "val": "A website can be a bookshelf"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Now I feel much more comfortable donating some of my books knowing that I’ll always be able to look back over my collection."
+              },
+              {
+                "sig": "p",
+                "val": "I hope this season find you well. With reverence to the Great Pumpkin,"
+              },
+              {
+                "sig": "p",
+                "val": "Chase"
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2023-07-07"
+              },
+              {
+                "sig": "p",
+                "val": "We’re seeing a surge of platforms self-sabotaging and choosing to suddenly restrict access to their content. These are all blatant attempts to trap users by digging a moat around the communities that they’ve created."
+              },
+              {
+                "sig": "p",
+                "val": "I can think of 3 obvious reasons why this might all be happening now as opposed to any time over the past decade:"
+              },
+              {
+                "sig": "ol",
+                "ch": [
+                  {
+                    "sig": "li",
+                    "val": "The content on social media platforms is valuable for AI training, and platforms want to capitalize on or keep that value for themselves."
+                  },
+                  {
+                    "sig": "li",
+                    "val": "The recent, high-interest-rate environment has companies cutting costs in ways they might not before, and subsidizing API access for third party developers is no longer a bill they’re willing to foot."
+                  },
+                  {
+                    "sig": "li",
+                    "val": "The bad behavior of platforms is creating a more competitive environment as new challengers spring up (Bluesky, Posts, Mastodon, and Threads all come to mind)."
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Those seem obvious, but are they really the cause? Is it one more than the other? Or something else entirely?"
+              },
+              {
+                "sig": "p",
+                "val": "I wonder how much of this trend is really just a domino effect of CEOs realizing that they can get away with screwing over their users because they saw Elon Musk (or some other robber baron) get away with it."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2023-07-03"
+              },
+              {
+                "sig": "p",
+                "val": "Humane (the mysterious company founded by ex-Apple executives) has finally revealed the name of the product they’re hoping to ship this year: the Humane Ai Pin."
+              },
+              {
+                "sig": "p",
+                "val": "I’m as skeptical as the next person about AI and wearables and really anything with as much hypebeast marketing as this product has received. But if I put my skepticism aside for a moment I’m able to appreciate this for what it is—a group of people trying to create a new kind of computer and computing paradigm."
+              },
+              {
+                "sig": "p",
+                "val": "There’s a bit of footage out there of the device in action, but regardless of the specifics I think it’s essential that we never stop asking ourselves what a computer could or should be."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2023-04-16"
+              },
+              {
+                "sig": "p",
+                "val": "In the new book Make Something Wonderful: Steve Jobs in His Own Words, Steve talks about his love for books and also their shortcomings:"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "The problem was, you can’t ask Aristotle a question. And I think, as we look towards the next fifty to one hundred years, if we really can come up with these machines that can capture an underlying spirit, or an underlying set of principles, or an underlying way of looking at the world, then, when the next Aristotle comes around, maybe if he carries around one of these machines with him his whole life—his or her whole life—and types in all this stuff, then maybe someday, after this person’s dead and gone, we can ask this machine, “Hey, what would Aristotle have said? What about this?” And maybe we won’t get the right answer, but maybe we will. And that’s really exciting to me. And that’s one of the reasons I’m doing what I’m doing."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "Steve Jobs’ speech at the International Design Conference in Aspen, Colorado on June 15, 1983",
+                    "link": "https://book.stevejobsarchive.com"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "For all the work we’ve put into creating ways to capture our lives digitally, it doesn’t feel like the ritual of passing that information down to future generations is considered much."
+              },
+              {
+                "sig": "p",
+                "val": "I wonder if this might be a common use case for conversational AIs in the future. You can imagine a ChatGPT trained on the works of Aristotle, waiting to answer new and novel questions. Like Steve says, we won’t always get the right answer, but maybe we will."
+              },
+              {
+                "sig": "p",
+                "val": "The digital book is lovely and full of wisdom—definitely a recommended read."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2023-03-26"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "The eyes and ears of AI",
+                    "link": "https://chsmc.org/2023/03/eyes-and-ears/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "It’s hard to keep up with the progress of AI. It seems as though every week there’s a new breakthrough or advancement that seemingly changes the game. Each step forward brings both a sense of wonder and a feeling of dread."
+              },
+              {
+                "sig": "p",
+                "val": "This past week, OpenAI introduced ChatGPT plugins which “help ChatGPT access up-to-date information, run computations, or use third-party services.”"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "Though not a perfect analogy, plugins can be “eyes and ears” for language models, giving them access to information that is too recent, too personal, or too specific to be included in the training data."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "OpenAI",
+                    "link": "https://openai.com/blog/chatgpt-plugins#code-interpreter:~:text=Though%20not%20a%20perfect%20analogy%2C%20plugins%20can%20be%20%E2%80%9Ceyes%20and%20ears%E2%80%9D%20for%20language%20models%2C%20giving%20them%20access%20to%20information%20that%20is%20too%20recent%2C%20too%20personal%2C%20or%20too%20specific%20to%20be%20included%20in%20the%20training%20data."
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "OpenAI themselves have published two plugins:"
+              },
+              {
+                "sig": "ul",
+                "ch": [
+                  {
+                    "sig": "li",
+                    "val": "A web browser plugin which allows the AI gather information from the internet that was not originally part of its training corpus by searching the web, clicking on links, and reading the contents of webpages."
+                  },
+                  {
+                    "sig": "li",
+                    "val": "A code interpreter plugin which gives ChatGPT access to a sandboxed Python environment that can execute code as well as handle file uploads and downloads."
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Both of these plugins are pretty astonishing in their own right, and unlock even more potential for AI to be a helpful tool (or a dangerous actor)."
+              },
+              {
+                "sig": "p",
+                "val": "But what caught my eye the most from OpenAI’s announcement is the ability for developers to create their own ChatGPT plugins which interact with your own APIs, and more specifically the way in which they’re created."
+              },
+              {
+                "sig": "p",
+                "val": "Here’s how you create a third party plugin:"
+              },
+              {
+                "sig": "ul",
+                "ch": [
+                  {
+                    "sig": "li",
+                    "val": "You create a JSON manifest on your website at /.well-known/ai-plugin.json which includes some basic information about your plugin including a natural language description of how it works. As an example, here’s the manifest for the Wolfram Alpha plugin."
+                  },
+                  {
+                    "sig": "li",
+                    "val": "You host an OpenAPI specification for your API and point to it in your plugin manifest."
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "That’s it! ChatGPT uses your natural language description and the OpenAPI spec to understand how to use your API to perform tasks and answer questions on behalf of a user. The AI figures out how to handle auth, chain subsequent calls, process the resulting data, and format it for display in a human-friendly way."
+              },
+              {
+                "sig": "p",
+                "val": "And just like that, APIs are accessible to anyone with access to an AI."
+              },
+              {
+                "sig": "p",
+                "val": "Importantly, that AI is not only regurgitating information based on a static set of training data, but is an actor in and of itself. It’s browsing the web, executing code, and making API requests on behalf of users (hopefully)."
+              },
+              {
+                "sig": "p",
+                "val": "The implications of this are hard to fathom, and much will be discussed, prototyped, and explored in the coming months as people get early access to the plugin feature. But what excites me the most about this model is how easily it will allow for digital bricoleurs to plug artificial intelligence into their homemade tools for personal use."
+              },
+              {
+                "sig": "p",
+                "val": "Have a simple API? You now have the ability to engage with it conversationally. The hardest part is generating an OpenAPI spec (which is not very hard to do, it’s just a .yaml file describing your API), and you can even get ChatGPT to generate that bit for you. Here’s an example of someone successfully generating a spec for the Twilio API using ChatGPT."
+              },
+              {
+                "sig": "p",
+                "val": "It seems to me that this will greatly incentivize companies and products to create interfaces and APIs that are AI-friendly. Consumers will grow to expect AI tools to be able to interface with the other digital products and services they use in the same way that early iPhone users expected their favorite websites to have apps in the App Store."
+              },
+              {
+                "sig": "p",
+                "val": "There are certainly many negative and hard-to-predict consequences of opening up APIs to AI actors, but I am excited about the positives that might come from it, such as software products becoming more malleable via end-user programming and automation."
+              },
+              {
+                "sig": "p",
+                "val": "Don’t want to futz around with complex video editing software? Just ask your AI to extract the first 5 seconds of an MP4 and download the result with a single click. This type of abstraction of code, software, and interface will become ubiquitous."
+              },
+              {
+                "sig": "p",
+                "val": "Of course, I don’t think graphical interfaces are in trouble just yet. Geoffrey Litt points out that trimming video is actually much more intuitive via direct manipulation than via chat."
+              },
+              {
+                "sig": "p",
+                "val": "But when you consider that ChatGPT can write code to build GUIs and can even interact with them programmatically on a user’s behalf, the implications become clear. Everyone will benefit in some way from their own personal interface assistant."
+              },
+              {
+                "sig": "p",
+                "val": "I wonder also how many future products will be APIs only with the expectation that AIs are how users will interact with them?"
+              },
+              {
+                "sig": "p",
+                "val": "Simon Willison wrote a great blog post demonstrating this. He wired up a ChatGPT plugin to query data via SQL, and the results, though technically returned as JSON, get displayed in a rich format much more friendly for human consumption."
+              },
+              {
+                "sig": "p",
+                "val": "I wonder if future “social networks” might operate simply as a backend with a set of exposed APIs. Instead of checking an app you might simply ask your AI “what’s up with my friend Leslie?” Or you could instruct your AI to put together a GUI for a social app that’s exactly to your specification."
+              },
+              {
+                "sig": "p",
+                "val": "This will certainly lead to entirely new ways of relating to one another online."
+              },
+              {
+                "sig": "p",
+                "val": "It would be interesting to try this today with good old RSS, which could be easily wired up as a ChatGPT plugin via a JSON feed. Alas, I don’t yet have access to the plugins feature, but I’ve joined the waitlist."
+              },
+              {
+                "sig": "p",
+                "val": "I’m both excited and nervous to see what happens when we combine AI with a medium like the web."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose",
+            "ch": [
+              {
+                "sig": "time",
+                "kind": "time",
+                "val": "2023-03-24"
+              },
+              {
+                "sig": "p",
+                "val": "I’m finally getting around to playing Ghost of Tsushima which is impressive all around. But the thing that has impressed me most is… wind??"
+              },
+              {
+                "sig": "p",
+                "val": "The game rejects the normal interface of a minimap to guide players, and instead uses the wind and the environment to show the way forward."
+              },
+              {
+                "sig": "p",
+                "val": "When The Guiding Wind blows in Tsushima, the entire game world responds. The trees bend over, pointing you onward. The pampas grass ripples like the surface of water. Leaves and petals swirl around the scene. The controller emits the sound of gusting wind, and the player can swipe the touch pad to blow the winds and set the environment in motion."
+              },
+              {
+                "sig": "p",
+                "val": "Such a simple mechanic is so unexpected and beautiful and calming in a world of cutting edge graphics and 4K 60FPS VR madness. Video games (and everything else) today are so over the top, but in the end it’s something simple like the wind that gets you."
+              },
+              {
+                "sig": "p",
+                "val": "🍃 Let the guiding wind blow 🍃"
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2023-03-20"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "Every day is science fiction",
+                    "link": "https://chsmc.org/2023/03/science-fiction/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Science fiction is one of my favorite genres because of its power to make the strange familiar and the familiar strange."
+              },
+              {
+                "sig": "p",
+                "val": "Kim Stanley Robinson wrote an anti-dystopian essay in which he discusses how science fiction works:"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "For a while now I’ve been saying that science fiction works by a kind of double action, like the glasses people wear when watching 3D movies. One lens of science fiction’s aesthetic machinery portrays some future that might actually come to pass; it’s a kind of proleptic realism. The other lens presents a metaphorical vision of our current moment, like a symbol in a poem. Together the two views combine and pop into a vision of History, extending magically into the future."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "Dystopias Now",
+                    "link": "https://communemag.com/dystopias-now"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "I read that and then, a day later, stumbled upon a thought experiment published on the wonderfully quirky website of Ville-Matias Heikkilä."
+              },
+              {
+                "sig": "p",
+                "val": "The thought experiment, titled “Inverted computer culture”, asks the reader to image a world where computing is seen “as practice of an ancient and unchanging tradition.”"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "It is considered essential to be in a properly alert and rested state of mind when using a computer. Even to seasoned users, every session is special, and the purpose of the session must be clear in mind before sitting down. The outer world is often hurried and flashy, but computers provide a “sacred space” for relaxing, slowing down and concentrating on a specific idea without distractions."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "Inverted computer culture",
+                    "link": "http://viznut.fi/texts-en/inverted_computer_culture.html"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "What a dream. I encourage you to read the piece which is quite short. It struck me as being exemplary of the aforementioned double action of science fiction—both a vision of the future and a metaphor for the current moment. You can imagine how a fictional immune response to our current culture might drive us toward a world of computing and technology like the one imagined here."
+              },
+              {
+                "sig": "p",
+                "val": "To push it a bit further, I prompted ChatGPT to write a story based on the thought experiment and threw the result into a gist. You can read the story it came up with here."
+              },
+              {
+                "sig": "p",
+                "val": "The story’s alright, but the last paragraph is something else. It captures so many of the feelings I have about computing and the web:"
+              },
+              {
+                "sig": "blockquote > p",
+                "val": "As she sat there, lost in her work, she knew that she would never leave this place, this sacred space where the computers whispered secrets to those who knew how to listen. She would be here always, she thought, a part of this ancient tradition, a keeper of the flame of knowledge. And in that moment, she knew that she had found her true home."
+              },
+              {
+                "sig": "p",
+                "val": "Here’s to all those who know how to listen."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2023-03-15"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "How blogs shaped the web",
+                    "link": "https://chsmc.org/2023/03/weblogs-as-a-form/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "I have a lot of nostalgia for the era of blogging that I grew up with during the first decade or so of the 2000s."
+              },
+              {
+                "sig": "p",
+                "val": "Of course there was a ton of great content about technology and internet culture, but more importantly to me it was a time of great commentary and experimentation on the form of blogging and publishing."
+              },
+              {
+                "sig": "p",
+                "val": "As social media and smartphones were weaving their ways into our lives, there was a group of bloggers constructing their own worlds. Before Twitter apps and podcast clients became the UI playgrounds of most designers, it was personal sites and weblogs that were pioneering the medium."
+              },
+              {
+                "sig": "p",
+                "val": "Looking back, this is probably where my meta-fascination with the web came from. For me the most interesting part has always been the part analyzing and discussing itself."
+              },
+              {
+                "sig": "p",
+                "val": "Robin Sloan puts it well (as he is wont to do):"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "Back in the 2000s, a lot of blogs were about blogs, about blogging. If that sounds exhaustingly meta, well, yes — but it was also SUPER generative. When the thing can describe itself, when it becomes the natural place to discuss and debate itself, I am telling you: some flywheel gets spinning, and powerful things start to happen."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "Robin Sloan, A year of new avenues",
+                    "link": "https://www.robinsloan.com/lab/new-avenues/#meta"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Design, programming, and writing started for me on the web. I can recall the progression from a plain text editor to the Tumblr theme editor to learning self-hosted WordPress."
+              },
+              {
+                "sig": "p",
+                "val": "All of that was driven by the desire to tinker and experiment with the web’s form. How many ways could you design a simple weblog? What different formats were possible that no one had imagined before?"
+              },
+              {
+                "sig": "p",
+                "val": "Earlier this week I listened to Jason Kottke’s recent appearance on John Gruber’s podcast and was delighted to hear them discuss this very topic. Jason is one of the original innovators of the blog form, and I’ve been following his blog, kottke.org, since I was old enough to care about random shit on the internet."
+              },
+              {
+                "sig": "p",
+                "val": "Kottke.org turned 25 years old this week, and Jason has been publishing online for even longer than that. All along the way, he has experimented with the form of content on the web. He’s not alone in that—many bloggers like him have helped to mold the internet into what it is today. The ones that influenced me besides kottke.org are Daring Fireball, Waxy.org, Jim Coudal and Coudal Partners, Shawn Blanc, Rands in Repose, Dave Winer, and more that I’m certainly forgetting."
+              },
+              {
+                "sig": "figure",
+                "ch": [
+                  {
+                    "sig": "img",
+                    "kind": "img",
+                    "link": "https://chsmc.org/_astro/kottke.7zUNCsm1_ZLpKov.webp"
+                  },
+                  {
+                    "sig": "figcaption",
+                    "val": "A screenshot of kottke.org from October 12, 1999, and my personal favorite design of the site over the years"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Jason and John have an interesting conversation during the podcast (starting around 25 minutes in) about how the first few generations of bloggers on the web defined its shape. Moving from print to digital mediums afforded a labyrinth of new avenues to explore."
+              },
+              {
+                "sig": "p",
+                "val": "It’s always important to remind ourselves that many of the things we take for granted today on the web and in digital design had to be invented by someone."
+              },
+              {
+                "sig": "p",
+                "val": "Early weblogs did not immediately arrive at the conclusion of chronological streams—some broke content up into “issues”, some simply changed the content of their homepages entirely."
+              },
+              {
+                "sig": "p",
+                "val": "It wasn’t until later that the reverse-chronological, paginated-or-endless scrolling list of entries was introduced and eventually became the de-facto presentation of content on the web. That standard lives on today in the design of Twitter, Instagram, etc., and it’s fascinating to see that tradition fading away as more sites embrace algorithmic feeds."
+              },
+              {
+                "sig": "p",
+                "val": "By the way, I’d be remiss here if I didn’t mention Amy Hoy’s amazing piece How the blog broke the web. Comparing the title of her piece with the title of this one, it’s clear that not everyone sees this shift in form as a positive one, but she does a great job in outlining the history and the role that blogs played in shaping the form of the web. Her particular focus on early content management systems like Movable Type is fascinating."
+              },
+              {
+                "sig": "p",
+                "val": "Another great example that Jason and John discuss on the podcast is the idea of titling blog posts."
+              },
+              {
+                "sig": "p",
+                "val": "They point out that many early sites didn’t use titles for blog posts, a pattern which resembles the future form of Tweets, Facebook posts, text messages, and more. But the rise of RSS readers, many of which made the assumption that entries have titles and design their UIs around that, forced many bloggers to add titles to their posts to work well in the environment so popular with their readers."
+              },
+              {
+                "sig": "p",
+                "val": "Jason mentions that this was one of the driving factor for kottke.org to start adding titles to posts!"
+              },
+              {
+                "sig": "p",
+                "val": "This is an incredible example of the medium shaping the message, where the UI design of RSS readers heavily influenced the form of content being published. When optimizing for the web, those early bloggers and the social networks of today both arrived at the same conclusion—titles are unnecessary and add an undue burden to publishing content."
+              },
+              {
+                "sig": "p",
+                "val": "This difference is the very reason why sending an email feels heavier than sending a tweet. Bloggers not using titles on their blog posts figured out tweeting long before Twitter did."
+              },
+              {
+                "sig": "p",
+                "val": "When referring to the early bloggers at suck.com, Jason said something that I think describes this entire revolution pretty well."
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "[…]there was in information to be gotten from not only what they linked to, but how they linked to it, which word they decided to make the hyperlink."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "Jason Kottke on The Talk Show episode 370 (35:40)",
+                    "link": "https://daringfireball.net/thetalkshow/2023/03/11/ep-370"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "It’s not often that you have an entirely new stylistic primitive added to your writing toolbox. For decades you could bold, italicize, underline, uppercase, footnote, etc. and all of a sudden something entirely new—the hyperlink."
+              },
+              {
+                "sig": "p",
+                "val": "With linking out to other sites being such a core part of blogging, it’s no surprise that the interaction design of linking was largely discussed and experimented with. Here’s a post from Shawn Blanc discussing all the ways that various blogs of the time handled posts primary geared towards linking to and commenting on other sites."
+              },
+              {
+                "sig": "p",
+                "val": "Another similar example is URL slugs—the short string of text at the end of a web address identifying a single post. For many of my favorite bloggers, the URL slug is a small but subtle way to convey a message that may or may not be the same as the message of the post itself. One other stylistic primitive unique to the web."
+              },
+              {
+                "sig": "p",
+                "val": "The different ways in which bloggers designed their site or linked to words became a part of their unique style, and it gave their each of them an entirely new way to express themselves."
+              },
+              {
+                "sig": "p",
+                "val": "It’s hard to communicate how grateful I feel for this era of experimentation on the web, and specifically for Jason Kottke’s influence on me as a designer. The past 25 years have been a special time to experience the internet."
+              },
+              {
+                "sig": "p",
+                "val": "There was a time when I thought my career might be curved towards blogging full-time and running my own version of something like kottke.org. Through exploring that I found my way to what I really loved—design and software. My work continues to benefit from what I learned studying bloggers and publishers online."
+              },
+              {
+                "sig": "p",
+                "val": "Whether you care much about writing or not, I encourage you to have a blog. Write about what interests you, take great care of how you present it to the world, and you might be surprised where it takes you. There are new forms around every corner."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2023-03-12"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "Ambient internet",
+                    "link": "https://chsmc.org/2023/03/ambient-internet/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "The recent fad of the metaverse is all about digitizing the physical world and moving our shared experiences (even more so) onto the internet."
+              },
+              {
+                "sig": "p",
+                "val": "I wonder what an opposite approach might look like—one where, instead of making the physical digital, we instead attempt to bring the online world into our physical spaces (and no, I don’t remotely mean AR or VR)."
+              },
+              {
+                "sig": "p",
+                "val": "The first thing that comes to mind for me is Berg’s now-defunct Little Printer project from back in 2012 or so. Little Printer was a web-connected thermal printer that lived in your home and allowed you to receive print-outs of digital publications, your daily agenda, messages from friends, etc."
+              },
+              {
+                "sig": "p",
+                "val": "Little Printer was an attempt at bridging the physical and digital, essentially creating a social network manifested as a physical object in the home and consumed via paper and ink."
+              },
+              {
+                "sig": "p",
+                "val": "Personal websites are the digital homesteads for many. Those sites live somewhere on a web server, quietly humming away in a warehouse meant to keep them online and secure. For each of us those servers represent empty rooms waiting to be decorated with our thoughts, feelings, interests, and personalities. We then invite strangers from all over the world to step inside and have a look."
+              },
+              {
+                "sig": "p",
+                "val": "Like the Little Printer, I wish that my web server could exist in my home as a physical object that could be touched, observed, and interacted with."
+              },
+              {
+                "sig": "figure",
+                "ch": [
+                  {
+                    "sig": "img",
+                    "kind": "img",
+                    "link": "https://chsmc.org/_astro/portal.CJBFt6EC_fmiNs.webp"
+                  },
+                  {
+                    "sig": "figcaption",
+                    "val": "[source]"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Hosting a web server yourself is surprisingly difficult today given the advances we’ve made in consumer technology over the last few decades. Hosting content on someone else’s server has become as simple as dragging and dropping a folder onto your web browser. There are countless business that will happily rent out online space to for very cheap (or even free, with the hopes that eventually you’ll upgrade and give them money)."
+              },
+              {
+                "sig": "p",
+                "val": "We’re all tenants of a digital shopping mall, sharing space controlled by corporate entities who may not share our values or interests."
+              },
+              {
+                "sig": "p",
+                "val": "When someone visits my website, I wish it could feel more like inviting them into my home. What if my website lived in my home with me?"
+              },
+              {
+                "sig": "p",
+                "val": "Imagine if having a web server in the home was as common as any other appliance such as a refridgerator. You might look over and see your friend (or a welcome stranger!) browsing your website. You could see what they’re browsing—look at photos with them, listen to a song together, whatever—and start a conversation about any of it."
+              },
+              {
+                "sig": "p",
+                "val": "I’m certainly not the only one who has imagined this. A while ago I stumbled upon a project by a student named Jeeyoon Hyun called “Personal Pet Pages” which is a small, personal web server with a fiendly screen displaying what’s going on inside the server."
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "Ever since we’ve decided that servers are something heavy, enigmatic, gigantic black boxes belonging to corporations - not individuals - we have slowly lost agency towards our own small space on the Internet. But actually, servers are just computers. Just as your favorite cassette player or portable game console, they are something that you can possess and understand and enjoy."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "Personal Pet Pages, ITP Thesis Archives 2022",
+                    "link": "https://itp.nyu.edu/thesis2022/?jeeyoon-hyun"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Jeeyoon’s idea combines turns a web server into a sort of virtual pet, one that you can move around and interact with."
+              },
+              {
+                "sig": "p > a",
+                "val": "Matt Webb has also considered the idea:",
+                "link": "https://interconnected.org/home/2022/10/10/servers"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "It is boundary-violating, to have a website in the corner of your bedroom. Websites are meant to be in the cloud. Eternal, somehow, transcendent, like the voice of code floating down from the sky. But no, there it is. It is real! I can kick it! Argumentum ad lapidem."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "I wish my web server were in the corner of my room",
+                    "link": "https://interconnected.org/home/2022/10/10/servers"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Those fixated with the idea of the metaverse might are interested in bringing real-world objects into the cloud. I wonder instead how we might try to bring objects from the cloud into the real world and into our homes. How would we design webpages differently if our materials included the servers that they’re hosted on?"
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2023-02-04"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "Where it all began",
+                    "link": "https://chsmc.org/2023/02/where-it-all-began/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "I remember the first time I saw a Mac in person. I was in middle school, but on the campus of the nearby college because my dad had a gig as a stand-in drummer for a local band."
+              },
+              {
+                "sig": "p",
+                "val": "While hanging out backstage—something I often had the privilege of doing from a young age as the son of a drummer—I saw a girl, sitting on the ground, typing away on a brand new MacBook Air."
+              },
+              {
+                "sig": "p",
+                "val": "The Air had just been introduced to the world, and I remember rewatching the announcement video online. Steve Jobs talked about the computer at Macworld only to reveal that it had been on stage with him the entire time inside a manilla envelope. He opened it and pulled out the thinnest computer in the world. I had no idea a computer could even look like that."
+              },
+              {
+                "sig": "p",
+                "val": "After my dad’s show I immediately pointed out the girl and her computer, and I remember him sharing my excitement so much that he asked the girl if we could look at it a bit closer. She was kind and happy to show it off and even let me hold it. From then on, I was hooked. I knew that’s the computer I’d own one day, and sure enough I’d get my first Mac, a MacBook Air, a few years later in high school."
+              },
+              {
+                "sig": "p",
+                "val": "And now Apple has introduced a MacBook Air thinner than the original iPhone. I wonder what middle school me, who coveted but did not own an iPhone at the time, would think about that."
+              },
+              {
+                "sig": "p",
+                "val": "I received the new M2 MacBook Air (in Midnight) a few months ago and I’ve been smitten with it. It is a cool, dark slab of silent compute, and it feels dense and book-ish in the most satisfying way."
+              },
+              {
+                "sig": "p",
+                "val": "The battery life deserves its own mention, and feels like a leap ahead for personal computers in its own right."
+              },
+              {
+                "sig": "p",
+                "val": "In all honesty I thought the time had come when a computer could not longer really excite me in the way that original MacBook Air did. But, this new one takes me right back there. It reminds me how lucky we all are to carry around devices that can conjure up all sorts of magic. And it takes me back to my beginnings in software when people wrote about the design of new iOS and Mac apps like they were art critics."
+              },
+              {
+                "sig": "p",
+                "val": "My life and friends and relationships and career are all in there, wound up with the electrons."
+              },
+              {
+                "sig": "p",
+                "val": "In setting up and using this new computer for the first time, however, I’ve realized how much devices today are like shells. The real computers, the ones that store our data and perform tasks on our behalf, are behemoths sitting in data centers. Setting up a new computer today is mostly a task of signing into various web applications to access your data, not transferring data onto the machine itself."
+              },
+              {
+                "sig": "p",
+                "val": "Our computers have become internet computers. And that might mean that the physical devices we own will trend towards nothingness—their goal is no longer to impress or inspire, but to be so small and light as to fall away entirely."
+              },
+              {
+                "sig": "p",
+                "val": "There’s something about that which makes me feel a bit melancholy. It feels like the days of computing devices being objects with personality and conviviality are fading. The computer is no longer a centerpiece, it’s an accessory, a thin client for some other machine or machines which are hidden away from us."
+              }
+            ]
+          },
+          {
+            "sig": "article.Article.prose.Blog__article--longForm",
+            "ch": [
+              {
+                "sig": "header",
+                "ch": [
+                  {
+                    "sig": "div.Breadcrumbs > div > time",
+                    "kind": "time",
+                    "val": "2023-01-04"
+                  },
+                  {
+                    "sig": "h1.font-header > a.unstyled",
+                    "kind": "h1",
+                    "val": "Footprints in the Martian sand",
+                    "link": "https://chsmc.org/2023/01/footprints-on-mars/"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Since I was a kid the space program has been an object of my fascination, and even as an adult I’ve been captured by the heroics of NASA and other organizations launching probes and telescopes into the far reaches of space."
+              },
+              {
+                "sig": "p",
+                "val": "But something has never sat quite right with me about the recently renewed interest in human space travel, especially from CEOs of private companies like Musk and Bezos."
+              },
+              {
+                "sig": "p",
+                "val": "I think it’s always been a combination of two things:"
+              },
+              {
+                "sig": "ol",
+                "ch": [
+                  {
+                    "sig": "li",
+                    "val": "There are so many problems here on Earth, many of which could be solved with the resources being invested into sending humans to another world."
+                  },
+                  {
+                    "sig": "li",
+                    "val": "Colonizing another planet is… still colonization."
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "I’d really never given it too much thought until this week when Maciej Cegłowski made his blogging return for the first time since 2020:"
+              },
+              {
+                "sig": "blockquote",
+                "ch": [
+                  {
+                    "sig": "p",
+                    "val": "Wherever you stand on the matter, whether you’re a Musk fanboy, an unaligned Mars obsessive, or just biplanetary/curious, I invite you to come imagine with me what it would take, and what it would really mean, for people to go put their footprints in the Martian sand."
+                  },
+                  {
+                    "sig": "p > cite > a",
+                    "val": "Idle Words: Why Not Mars",
+                    "link": "https://idlewords.com/2023/1/why_not_mars.htm"
+                  }
+                ]
+              },
+              {
+                "sig": "p",
+                "val": "Maciej does a great job explaining just how bad and nonsensical of an idea it is to send humans to Mars."
+              },
+              {
+                "sig": "p",
+                "val": "As much as I love media about humans traveling to the red planet (The Martian and For All Mankind come to mind), perhaps it’s best that fantasy lives on solely as part of our imagination for now."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sig": "nav.Pagination > ul.unstyled",
+        "ch": [
+          {
+            "sig": "li.Pagination__previous > a.unstyled > span",
+            "val": "Older",
+            "link": "https://chsmc.org/3/"
+          },
+          {
+            "sig": "li.Pagination__next > a.unstyled > span",
+            "val": "Newer",
+            "link": "https://chsmc.org/"
+          }
+        ]
+      }
+    ]
+  }
+}
