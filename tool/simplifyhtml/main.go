@@ -1,11 +1,11 @@
 // Command simplifyhtml converts the sample web pages in
-// server/feature/feed/testdata into simplified document trees (JSON) that the
-// client's page annotation screen loads as assets. It prototypes the cleanup
-// the server will do before handing a page to the client.
+// server/feature/feed/testdata/source into simplified document trees (JSON)
+// that the client's page annotation screen loads as assets. It prototypes the
+// cleanup the server will do before handing a page to the client.
 //
 // Usage (from the repository root):
 //
-//	go run ./tool/simplifyhtml [-in server/feature/feed/testdata] [-out client/assets/page_watch]
+//	go run ./tool/simplifyhtml [-in server/feature/feed/testdata/source] [-out client/assets/page_watch]
 //
 // Output format: one JSON file per page, plus index.json listing them.
 //
@@ -91,7 +91,7 @@ type IndexEntry struct {
 }
 
 func main() {
-	in := flag.String("in", "server/feature/feed/testdata", "directory of sample HTML files")
+	in := flag.String("in", "server/feature/feed/testdata/source", "directory of sample HTML files")
 	out := flag.String("out", "client/assets/page_watch", "output directory")
 	flag.Parse()
 
