@@ -24,7 +24,8 @@
 //	kind  "h1".."h6" for a heading, "img" for an image, "time" for a time
 //	      element or a text that is only a date
 //	val   plain text; the alt text for an image, which may be missing; the
-//	      datetime attribute for a time element, or its text if it has none
+//	      date of a time as "2006-01-02", or as a timestamp in RFC 3339 when
+//	      the page gives one
 //	link  link target, or the image URL for an image
 //	ch    child nodes
 //
@@ -333,15 +334,15 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		alt := normalizeSpace(attr(n, "alt"))
 		return &Node{Sig: signature(n), Kind: "img", Val: alt, Link: src}
 	case "time":
-		// A machine-readable timestamp is preferred over the displayed text.
-		val := strings.TrimSpace(attr(n, "datetime"))
-		if val == "" {
-			val = normalizeSpace(textContent(n))
+		// The datetime attribute is preferred over the displayed text, but some
+		// pages put a displayed text in it, such as "SEP 23, 2026". A time
+		// element without a full date is handled as any other element.
+		if val, ok := parseDate(attr(n, "datetime")); ok {
+			return &Node{Sig: signature(n), Kind: "time", Val: val}
 		}
-		if val == "" {
-			return nil
+		if val, ok := parseDate(textContent(n)); ok {
+			return &Node{Sig: signature(n), Kind: "time", Val: val}
 		}
-		return &Node{Sig: signature(n), Kind: "time", Val: val}
 	}
 	if isTextOnly(n) && !hasDateText(n) {
 		return s.textValue(n)
@@ -380,7 +381,8 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		switch {
 		case c.Type == html.TextNode && isDate(c.Data):
 			flush()
-			children = append(children, &Node{Kind: "time", Val: normalizeSpace(c.Data)})
+			val, _ := parseDate(c.Data)
+			children = append(children, &Node{Kind: "time", Val: val})
 		case c.Type == html.TextNode:
 			run = append(run, c)
 		case c.Type == html.ElementNode && (c.Data == "br" || c.Data == "wbr"):
@@ -460,16 +462,28 @@ var dateLayouts = []string{
 	"1/2/2006", "2006/1/2", "2006-01-02", "2006年1月2日", time.RFC3339,
 }
 
-// isDate reports whether the text s is only a date with a year, a month and a
-// day, such as "Sep 25, 2026", and not a text that contains a date.
-func isDate(s string) bool {
+// parseDate returns the date of the text s as "2006-01-02", or the text
+// itself when it is a timestamp in RFC 3339. It fails unless s is only a date
+// with a year, a month and a day, such as "Sep 25, 2026", and not a text that
+// contains a date.
+func parseDate(s string) (string, bool) {
 	s = normalizeSpace(s)
 	for _, layout := range dateLayouts {
-		if _, err := time.Parse(layout, s); err == nil {
-			return true
+		t, err := time.Parse(layout, s)
+		if err != nil {
+			continue
 		}
+		if layout == time.RFC3339 {
+			return s, true
+		}
+		return t.Format(time.DateOnly), true
 	}
-	return false
+	return "", false
+}
+
+func isDate(s string) bool {
+	_, ok := parseDate(s)
+	return ok
 }
 
 // hasDateText reports whether a text under n, apart from those under dropped
