@@ -27,8 +27,9 @@
 //	link  link target, or the image URL for an image
 //	ch    child nodes
 //
-// Text formatting and links inside text are dropped: a value is plain text,
-// and keeps a link only when the link covers the whole text.
+// Text formatting, line breaks and links inside text are dropped: a value is
+// plain text on one line, and keeps a link only when the link covers the
+// whole text.
 package main
 
 import (
@@ -320,13 +321,6 @@ func (s *simplifier) convert(n *html.Node) *Node {
 			return nil
 		}
 		return &Node{Sig: signature(n), Kind: "time", Val: val}
-	case "pre":
-		// Preformatted text keeps its line breaks and indentation.
-		text := strings.Trim(joinText(slices.Collect(n.ChildNodes()), false), "\n")
-		if strings.TrimSpace(text) == "" {
-			return nil
-		}
-		return &Node{Sig: signature(n), Val: text}
 	}
 	if isTextOnly(n) {
 		return s.textValue(n)
@@ -355,7 +349,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 				children = append(children, v)
 			}
 		} else {
-			if t := normalizeSpace(joinText(run, true)); t != "" {
+			if t := normalizeSpace(joinText(run)); t != "" {
 				children = append(children, &Node{Val: t})
 			}
 		}
@@ -365,6 +359,12 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		switch {
 		case c.Type == html.TextNode:
 			run = append(run, c)
+		case c.Type == html.ElementNode && (c.Data == "br" || c.Data == "wbr"):
+			// A line break only separates words, so that a link followed by
+			// a break is still a value of its own.
+			if c.Data == "br" {
+				run = append(run, &html.Node{Type: html.TextNode, Data: " "})
+			}
 		case c.Type == html.ElementNode && inlineTags[c.Data] && isTextOnly(c):
 			run = append(run, c)
 		case c.Type == html.ElementNode:
@@ -526,7 +526,7 @@ func (s *simplifier) resolve(ref string) string {
 
 // textContent concatenates the text under n, skipping dropped elements.
 func textContent(n *html.Node) string {
-	return joinText(slices.Collect(n.ChildNodes()), true)
+	return joinText(slices.Collect(n.ChildNodes()))
 }
 
 // Elements that format part of a text, which can be part of a word, such as
@@ -550,9 +550,9 @@ var (
 )
 
 // joinText concatenates the text of nodes and their descendants, skipping
-// dropped elements. When spaced is true, the text of each element other than
-// formatting is set apart by spaces.
-func joinText(nodes []*html.Node, spaced bool) string {
+// dropped elements. The text of each element other than formatting is set
+// apart by spaces, and line breaks become spaces.
+func joinText(nodes []*html.Node) string {
 	var b strings.Builder
 	var walk func(*html.Node)
 	walk = func(n *html.Node) {
@@ -562,7 +562,7 @@ func joinText(nodes []*html.Node, spaced bool) string {
 		case n.Type == html.ElementNode && n.Data == "br":
 			b.WriteString(" ")
 		case n.Type == html.ElementNode && !isDropped(n):
-			apart := spaced && !formattingTags[n.Data]
+			apart := !formattingTags[n.Data]
 			if apart {
 				b.WriteString(gap)
 			}
