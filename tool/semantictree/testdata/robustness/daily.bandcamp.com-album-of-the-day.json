@@ -15,9 +15,14 @@
             "sig": "div",
             "ch": [
               {
-                "sig": "section.top > h1.header",
-                "kind": "h1",
-                "val": "Bandcamp Daily"
+                "sig": "section.top",
+                "ch": [
+                  {
+                    "sig": "h1.header",
+                    "kind": "h1",
+                    "val": "Bandcamp Daily"
+                  }
+                ]
               },
               {
                 "sig": "section.featured",

@@ -182,7 +182,24 @@ func simplify(raw []byte, fallbackURL string) (*Document, error) {
 		}
 	}
 
-	s := &simplifier{base: base}
+	// An image that appears many times in the page, such as a placeholder of a
+	// lazy-loaded image, a default thumbnail or an icon, shows nothing specific
+	// to a post. An image that appears twice can still be a post thumbnail,
+	// such as a picture for light and dark modes or a post listed twice.
+	s := &simplifier{base: base, repeatedImages: map[string]bool{}}
+	count := map[string]int{}
+	for n := range body.Descendants() {
+		if n.Type == html.ElementNode && n.Data == "img" {
+			if src := s.imageSource(n); src != "" {
+				count[src]++
+			}
+		}
+	}
+	for src, c := range count {
+		if c >= 3 {
+			s.repeatedImages[src] = true
+		}
+	}
 	tree := s.convert(body)
 	if tree == nil || tree.isValue() {
 		tree = &Node{Sig: "body", Children: slices.DeleteFunc([]*Node{tree}, func(n *Node) bool { return n == nil })}
@@ -192,7 +209,8 @@ func simplify(raw []byte, fallbackURL string) (*Document, error) {
 }
 
 type simplifier struct {
-	base *url.URL
+	base           *url.URL
+	repeatedImages map[string]bool
 }
 
 // Elements that never carry post content.
@@ -213,6 +231,13 @@ var inlineTags = map[string]bool{
 	"small": true, "code": true, "mark": true, "sup": true, "sub": true,
 	"u": true, "s": true, "abbr": true, "cite": true, "q": true, "kbd": true,
 	"br": true, "wbr": true, "font": true, "bdi": true, "bdo": true,
+}
+
+// Elements that group the parts of one field, such as the paragraphs of a
+// body or the links of a tag list. They stay containers even with a single
+// child, so that a field is the same node whether it has one part or many.
+var groupTags = map[string]bool{
+	"section": true, "article": true, "blockquote": true, "ul": true, "ol": true,
 }
 
 var headingTags = map[string]bool{
@@ -350,7 +375,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 	switch n.Data {
 	case "img":
 		src := s.imageSource(n)
-		if src == "" || isSmall(n) {
+		if src == "" || isSmall(n) || s.repeatedImages[src] {
 			return nil
 		}
 		alt := normalizeSpace(attr(n, "alt"))
@@ -436,8 +461,9 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		kind = n.Data
 	}
 	// A wrapper around a single node is merged into it, unless both have a
-	// link or a kind, since a node holds only one of each.
-	if len(children) == 1 {
+	// link or a kind, since a node holds only one of each, or the wrapper
+	// groups the parts of a field.
+	if len(children) == 1 && !groupTags[n.Data] {
 		c := children[0]
 		conflict := link != "" && c.Link != "" || kind != "" && (c.Kind != "" || !c.isValue())
 		if !conflict {

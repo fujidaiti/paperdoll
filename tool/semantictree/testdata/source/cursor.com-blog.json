@@ -5,126 +5,146 @@
     "sig": "body.bg-theme-bg.text-theme-text.min-h-screen > main",
     "ch": [
       {
-        "sig": "section.section.section--first-child.section--flush-bottom.bg-theme-bg.text-theme-text > div.container > div.grid-cursor.gap-y-0",
+        "sig": "section.section.section--first-child.section--flush-bottom.bg-theme-bg.text-theme-text",
         "ch": [
           {
-            "sig": "div.col-span-full > div > article.h-full > a.card.card--media.card--feature.flex.h-full.flex-col.p-0",
-            "link": "https://cursor.com/blog/joining-spacex",
+            "sig": "div.container > div.grid-cursor.gap-y-0",
             "ch": [
               {
-                "sig": "header.relative.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.w-full > img.h-full.w-full.object-cover.transition-opacity.opacity-0",
-                "kind": "img",
-                "val": "Cursor is now a part of SpaceX",
-                "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fuploads%2Fclose-og-image-1-B5D1caLmbVsj0JInrL2qKgXzLPMGoU.png&w=3840&q=70"
-              },
-              {
-                "sig": "div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
+                "sig": "div.col-span-full > div > article.h-full",
                 "ch": [
                   {
-                    "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center",
+                    "sig": "a.card.card--media.card--feature.flex.h-full.flex-col.p-0",
+                    "link": "https://cursor.com/blog/joining-spacex",
                     "ch": [
                       {
-                        "sig": "time",
-                        "kind": "time",
-                        "val": "2026-08-14T12:00:00Z"
+                        "sig": "header.relative.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.w-full > img.h-full.w-full.object-cover.transition-opacity.opacity-0",
+                        "kind": "img",
+                        "val": "Cursor is now a part of SpaceX",
+                        "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fuploads%2Fclose-og-image-1-B5D1caLmbVsj0JInrL2qKgXzLPMGoU.png&w=3840&q=70"
                       },
                       {
-                        "val": "· Company"
-                      }
-                    ]
-                  },
-                  {
-                    "sig": "p.type-md-lg.text-theme-text.text-balance",
-                    "val": "Cursor is now a part of SpaceX"
-                  },
-                  {
-                    "sig": "p.type-base.text-theme-text-sec.text-pretty",
-                    "val": "Cursor has officially been acquired by SpaceX."
-                  },
-                  {
-                    "sig": "div.mt-auto.flex.flex-wrap.items-center > div.type-base.text-theme-text-mid.min-w-0",
-                    "val": "Cursor Team · 2m 2 min read"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "sig": "div.col-span-full.mt-g1 > div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
-            "ch": [
-              {
-                "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.flex-col.p-0",
-                "link": "https://cursor.com/blog/grok-4-6",
-                "ch": [
-                  {
-                    "sig": "header.relative.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.w-full > img.h-full.w-full.object-cover.transition-opacity.opacity-0",
-                    "kind": "img",
-                    "val": "Introducing Grok 4.6",
-                    "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fopengraph-grok-4.6-hLYenupM05nNDPmiKtjOwjuyZBRvPl.png&w=3840&q=70"
-                  },
-                  {
-                    "sig": "div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
-                    "ch": [
-                      {
-                        "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center",
+                        "sig": "div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
                         "ch": [
                           {
-                            "sig": "time",
-                            "kind": "time",
-                            "val": "2026-08-12T00:00:00Z"
+                            "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center",
+                            "ch": [
+                              {
+                                "sig": "time",
+                                "kind": "time",
+                                "val": "2026-08-14T12:00:00Z"
+                              },
+                              {
+                                "val": "· Company"
+                              }
+                            ]
                           },
                           {
-                            "val": "· Research"
+                            "sig": "p.type-md-lg.text-theme-text.text-balance",
+                            "val": "Cursor is now a part of SpaceX"
+                          },
+                          {
+                            "sig": "p.type-base.text-theme-text-sec.text-pretty",
+                            "val": "Cursor has officially been acquired by SpaceX."
+                          },
+                          {
+                            "sig": "div.mt-auto.flex.flex-wrap.items-center > div.type-base.text-theme-text-mid.min-w-0",
+                            "val": "Cursor Team · 2m 2 min read"
                           }
                         ]
-                      },
-                      {
-                        "sig": "p.type-md.text-theme-text.text-balance",
-                        "val": "Introducing Grok 4.6"
-                      },
-                      {
-                        "sig": "p.type-base.text-theme-text-sec.text-pretty",
-                        "val": "Built for long-running agents and more ambitious interactive and visual work."
-                      },
-                      {
-                        "sig": "div.mt-auto.flex.flex-wrap.items-center > div.type-base.text-theme-text-mid.min-w-0",
-                        "val": "Cursor Team · 3m 3 min read"
                       }
                     ]
                   }
                 ]
               },
               {
-                "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.flex-col.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
-                "link": "https://cursor.com/blog/git-at-any-scale",
+                "sig": "div.col-span-full.mt-g1 > div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
                 "ch": [
                   {
-                    "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center",
+                    "sig": "div.shrink-0.snap-start > article.h-full",
                     "ch": [
                       {
-                        "sig": "time",
-                        "kind": "time",
-                        "val": "2026-08-18T12:00:00Z"
-                      },
-                      {
-                        "val": "· Research"
+                        "sig": "a.card.card--media.card--feature.flex.h-full.flex-col.p-0",
+                        "link": "https://cursor.com/blog/grok-4-6",
+                        "ch": [
+                          {
+                            "sig": "header.relative.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.w-full > img.h-full.w-full.object-cover.transition-opacity.opacity-0",
+                            "kind": "img",
+                            "val": "Introducing Grok 4.6",
+                            "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fopengraph-grok-4.6-hLYenupM05nNDPmiKtjOwjuyZBRvPl.png&w=3840&q=70"
+                          },
+                          {
+                            "sig": "div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
+                            "ch": [
+                              {
+                                "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center",
+                                "ch": [
+                                  {
+                                    "sig": "time",
+                                    "kind": "time",
+                                    "val": "2026-08-12T00:00:00Z"
+                                  },
+                                  {
+                                    "val": "· Research"
+                                  }
+                                ]
+                              },
+                              {
+                                "sig": "p.type-md.text-theme-text.text-balance",
+                                "val": "Introducing Grok 4.6"
+                              },
+                              {
+                                "sig": "p.type-base.text-theme-text-sec.text-pretty",
+                                "val": "Built for long-running agents and more ambitious interactive and visual work."
+                              },
+                              {
+                                "sig": "div.mt-auto.flex.flex-wrap.items-center > div.type-base.text-theme-text-mid.min-w-0",
+                                "val": "Cursor Team · 3m 3 min read"
+                              }
+                            ]
+                          }
+                        ]
                       }
                     ]
                   },
                   {
-                    "sig": "p.type-md.text-theme-text.text-balance",
-                    "val": "Git at any scale"
-                  },
-                  {
-                    "sig": "div.mt-auto.flex.flex-wrap.items-center",
+                    "sig": "div.shrink-0.snap-start > article.h-full",
                     "ch": [
                       {
-                        "sig": "div.flex > div.relative.rounded-full > div.avatar-border-container.bg-theme-card-03-hex.relative.flex.h-6.w-6.shrink-0.items-center.justify-center.overflow-hidden > span.type-sm.text-theme-text-mid.font-medium",
-                        "val": "VM"
-                      },
-                      {
-                        "sig": "div.type-base.text-theme-text-mid.min-w-0",
-                        "val": "Vicent Martí · 27m 27 min read"
+                        "sig": "a.card.card--media.card--feature.flex.h-full.flex-col.p-0 > div.card--media-content.card--media-content-roomy.card--media-content-roomy-featured-bottom.flex.grow.flex-col",
+                        "link": "https://cursor.com/blog/git-at-any-scale",
+                        "ch": [
+                          {
+                            "sig": "div.type-base.text-theme-text-mid.flex.flex-wrap.items-center",
+                            "ch": [
+                              {
+                                "sig": "time",
+                                "kind": "time",
+                                "val": "2026-08-18T12:00:00Z"
+                              },
+                              {
+                                "val": "· Research"
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "p.type-md.text-theme-text.text-balance",
+                            "val": "Git at any scale"
+                          },
+                          {
+                            "sig": "div.mt-auto.flex.flex-wrap.items-center",
+                            "ch": [
+                              {
+                                "sig": "div.flex > div.relative.rounded-full > div.avatar-border-container.bg-theme-card-03-hex.relative.flex.h-6.w-6.shrink-0.items-center.justify-center.overflow-hidden > span.type-sm.text-theme-text-mid.font-medium",
+                                "val": "VM"
+                              },
+                              {
+                                "sig": "div.type-base.text-theme-text-mid.min-w-0",
+                                "val": "Vicent Martí · 27m 27 min read"
+                              }
+                            ]
+                          }
+                        ]
                       }
                     ]
                   }
@@ -575,447 +595,557 @@
             "sig": "div.mt-v1",
             "ch": [
               {
-                "sig": "section.bg-theme-bg.text-theme-text.my-v6 > div.container > div.mx-auto > figure.flex.flex-col.items-center.text-center",
+                "sig": "section.bg-theme-bg.text-theme-text.my-v6",
                 "ch": [
                   {
-                    "sig": "blockquote.type-md-lg.text-balance > p",
-                    "val": "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”"
-                  },
-                  {
-                    "sig": "figcaption.type-base.text-theme-text-sec.mt-v1.flex.flex-wrap.items-center.justify-center.text-center",
-                    "val": "From “Towards self-driving codebases” Read more →"
+                    "sig": "div.container > div.mx-auto > figure.flex.flex-col.items-center.text-center",
+                    "ch": [
+                      {
+                        "sig": "blockquote.type-md-lg.text-balance",
+                        "ch": [
+                          {
+                            "sig": "p",
+                            "val": "“We’re building toward a future of self-driving codebases, where agents merge PRs, manage rollouts, and monitor production.”"
+                          }
+                        ]
+                      },
+                      {
+                        "sig": "figcaption.type-base.text-theme-text-sec.mt-v1.flex.flex-wrap.items-center.justify-center.text-center",
+                        "val": "From “Towards self-driving codebases” Read more →"
+                      }
+                    ]
                   }
                 ]
               },
               {
-                "sig": "section.bg-theme-bg.text-theme-text > div.container",
+                "sig": "section.bg-theme-bg.text-theme-text",
                 "ch": [
                   {
-                    "sig": "h2.type-md.text-theme-text.mb-v1",
-                    "kind": "h2",
-                    "val": "Customer stories"
-                  },
-                  {
-                    "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
+                    "sig": "div.container",
                     "ch": [
                       {
-                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
-                        "link": "https://cursor.com/blog/grab",
+                        "sig": "h2.type-md.text-theme-text.mb-v1",
+                        "kind": "h2",
+                        "val": "Customer stories"
+                      },
+                      {
+                        "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
                         "ch": [
                           {
-                            "sig": "p.type-base.text-theme-text.text-pretty",
-                            "val": "How Grab put Cursor in the hands of Design, Ops, and Engineering"
+                            "sig": "div.shrink-0.snap-start > article.h-full",
+                            "ch": [
+                              {
+                                "sig": "a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
+                                "link": "https://cursor.com/blog/grab",
+                                "ch": [
+                                  {
+                                    "sig": "p.type-base.text-theme-text.text-pretty",
+                                    "val": "How Grab put Cursor in the hands of Design, Ops, and Engineering"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-09-15T12:00:00Z"
+                                  }
+                                ]
+                              }
+                            ]
                           },
                           {
-                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
-                            "kind": "time",
-                            "val": "2026-09-15T12:00:00Z"
+                            "sig": "div.shrink-0.snap-start > article.h-full",
+                            "ch": [
+                              {
+                                "sig": "a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
+                                "link": "https://cursor.com/blog/basis",
+                                "ch": [
+                                  {
+                                    "sig": "p.type-base.text-theme-text.text-pretty",
+                                    "val": "How Basis builds long-horizon accounting agents with Cursor"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-09-04T12:00:00Z"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.h-full",
+                            "ch": [
+                              {
+                                "sig": "a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
+                                "link": "https://cursor.com/blog/nokia",
+                                "ch": [
+                                  {
+                                    "sig": "p.type-base.text-theme-text.text-pretty",
+                                    "val": "Nokia analyzes 50M+ lines of code in two weeks with Cursor"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-09-02T12:00:00Z"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.h-full",
+                            "ch": [
+                              {
+                                "sig": "a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
+                                "link": "https://cursor.com/blog/imdex",
+                                "ch": [
+                                  {
+                                    "sig": "p.type-base.text-theme-text.text-pretty",
+                                    "val": "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-08-25T12:00:00Z"
+                                  }
+                                ]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
-                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
-                        "link": "https://cursor.com/blog/basis",
-                        "ch": [
-                          {
-                            "sig": "p.type-base.text-theme-text.text-pretty",
-                            "val": "How Basis builds long-horizon accounting agents with Cursor"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
-                            "kind": "time",
-                            "val": "2026-09-04T12:00:00Z"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
-                        "link": "https://cursor.com/blog/nokia",
-                        "ch": [
-                          {
-                            "sig": "p.type-base.text-theme-text.text-pretty",
-                            "val": "Nokia analyzes 50M+ lines of code in two weeks with Cursor"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
-                            "kind": "time",
-                            "val": "2026-09-02T12:00:00Z"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--feature.flex.h-full.grow-1.items-stretch.pb-g2.flex-col.gap-0 > div.flex.min-w-0.flex-1.flex-col",
-                        "link": "https://cursor.com/blog/imdex",
-                        "ch": [
-                          {
-                            "sig": "p.type-base.text-theme-text.text-pretty",
-                            "val": "IMDEX uses Cursor to build integrated subsurface data and analytics platform in months, not years"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
-                            "kind": "time",
-                            "val": "2026-08-25T12:00:00Z"
-                          }
-                        ]
+                        "sig": "a.btn-text.inline-flex",
+                        "val": "View all stories →",
+                        "link": "https://cursor.com/blog/topic/customers"
                       }
                     ]
-                  },
-                  {
-                    "sig": "a.btn-text.inline-flex",
-                    "val": "View all stories →",
-                    "link": "https://cursor.com/blog/topic/customers"
                   }
                 ]
               },
               {
-                "sig": "section.bg-theme-bg.text-theme-text > div.container",
+                "sig": "section.bg-theme-bg.text-theme-text",
                 "ch": [
                   {
-                    "sig": "h2.type-md.text-theme-text.mb-v1",
-                    "kind": "h2",
-                    "val": "Press"
-                  },
-                  {
-                    "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
+                    "sig": "div.container",
                     "ch": [
                       {
-                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
-                        "link": "https://thenewstack.io/cursor-open-sources-security-agents/",
+                        "sig": "h2.type-md.text-theme-text.mb-v1",
+                        "kind": "h2",
+                        "val": "Press"
+                      },
+                      {
+                        "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
                         "ch": [
                           {
-                            "sig": "p.type-base.text-theme-text.text-pretty",
-                            "val": "Cursor built a fleet of security agents to solve a familiar frustration"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
-                            "kind": "time",
-                            "val": "2026-03-16T00:00:00Z"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
+                            "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col",
                             "ch": [
                               {
-                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
-                                "kind": "img",
-                                "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fthenewstack.png&w=3840&q=70"
-                              },
+                                "sig": "a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                                "link": "https://thenewstack.io/cursor-open-sources-security-agents/",
+                                "ch": [
+                                  {
+                                    "sig": "p.type-base.text-theme-text.text-pretty",
+                                    "val": "Cursor built a fleet of security agents to solve a familiar frustration"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-03-16T00:00:00Z"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
+                                    "ch": [
+                                      {
+                                        "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
+                                        "kind": "img",
+                                        "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fthenewstack.png&w=3840&q=70"
+                                      },
+                                      {
+                                        "sig": "span",
+                                        "val": "Read on The New Stack ↗"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col",
+                            "ch": [
                               {
-                                "sig": "span",
-                                "val": "Read on The New Stack ↗"
+                                "sig": "a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                                "link": "https://techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding/",
+                                "ch": [
+                                  {
+                                    "sig": "p.type-base.text-theme-text.text-pretty",
+                                    "val": "Cursor is rolling out a new kind of agentic coding tool"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-03-05T00:00:00Z"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
+                                    "ch": [
+                                      {
+                                        "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
+                                        "kind": "img",
+                                        "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Ftechcrunch-2.png&w=3840&q=70"
+                                      },
+                                      {
+                                        "sig": "span",
+                                        "val": "Read on TechCrunch ↗"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col",
+                            "ch": [
+                              {
+                                "sig": "a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                                "link": "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion",
+                                "ch": [
+                                  {
+                                    "sig": "p.type-base.text-theme-text.text-pretty",
+                                    "val": "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-03-02T00:00:00Z"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
+                                    "ch": [
+                                      {
+                                        "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
+                                        "kind": "img",
+                                        "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fbloomberg.png&w=3840&q=70"
+                                      },
+                                      {
+                                        "sig": "span",
+                                        "val": "Read on Bloomberg ↗"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col",
+                            "ch": [
+                              {
+                                "sig": "a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                                "link": "https://www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html",
+                                "ch": [
+                                  {
+                                    "sig": "p.type-base.text-theme-text.text-pretty",
+                                    "val": "Cursor announces major update to AI agents as coding tool battle heats up"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-02-24T00:00:00Z"
+                                  },
+                                  {
+                                    "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
+                                    "ch": [
+                                      {
+                                        "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
+                                        "kind": "img",
+                                        "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fcnbc.png&w=3840&q=70"
+                                      },
+                                      {
+                                        "sig": "span",
+                                        "val": "Read on CNBC ↗"
+                                      }
+                                    ]
+                                  }
+                                ]
                               }
                             ]
                           }
                         ]
                       },
                       {
-                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
-                        "link": "https://techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding/",
-                        "ch": [
-                          {
-                            "sig": "p.type-base.text-theme-text.text-pretty",
-                            "val": "Cursor is rolling out a new kind of agentic coding tool"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
-                            "kind": "time",
-                            "val": "2026-03-05T00:00:00Z"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
-                            "ch": [
-                              {
-                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
-                                "kind": "img",
-                                "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Ftechcrunch-2.png&w=3840&q=70"
-                              },
-                              {
-                                "sig": "span",
-                                "val": "Read on TechCrunch ↗"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
-                        "link": "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion",
-                        "ch": [
-                          {
-                            "sig": "p.type-base.text-theme-text.text-pretty",
-                            "val": "Cursor Recurring Revenue Doubles in Three Months to $2 Billion"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
-                            "kind": "time",
-                            "val": "2026-03-02T00:00:00Z"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
-                            "ch": [
-                              {
-                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
-                                "kind": "img",
-                                "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fbloomberg.png&w=3840&q=70"
-                              },
-                              {
-                                "sig": "span",
-                                "val": "Read on Bloomberg ↗"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
-                        "link": "https://www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html",
-                        "ch": [
-                          {
-                            "sig": "p.type-base.text-theme-text.text-pretty",
-                            "val": "Cursor announces major update to AI agents as coding tool battle heats up"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-text-mid.relative > time.type-base",
-                            "kind": "time",
-                            "val": "2026-02-24T00:00:00Z"
-                          },
-                          {
-                            "sig": "div.type-base.text-theme-accent.mt-auto.flex.items-center",
-                            "ch": [
-                              {
-                                "sig": "span.media-border-container.bg-theme-card-03-hex.relative.flex.shrink-0.items-center.justify-center > img.object-cover",
-                                "kind": "img",
-                                "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Favatars%2Fcnbc.png&w=3840&q=70"
-                              },
-                              {
-                                "sig": "span",
-                                "val": "Read on CNBC ↗"
-                              }
-                            ]
-                          }
-                        ]
+                        "sig": "a.btn-text.inline-flex",
+                        "val": "View all press →",
+                        "link": "https://cursor.com/blog/topic/press"
                       }
                     ]
-                  },
-                  {
-                    "sig": "a.btn-text.inline-flex",
-                    "val": "View all press →",
-                    "link": "https://cursor.com/blog/topic/press"
                   }
                 ]
               },
               {
-                "sig": "section.bg-theme-bg.text-theme-text > div.container",
+                "sig": "section.bg-theme-bg.text-theme-text",
                 "ch": [
                   {
-                    "sig": "h2.type-md.text-theme-text.mb-v1",
-                    "kind": "h2",
-                    "val": "Videos"
-                  },
-                  {
-                    "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
+                    "sig": "div.container",
                     "ch": [
                       {
-                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
-                        "link": "https://youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei",
+                        "sig": "h2.type-md.text-theme-text.mb-v1",
+                        "kind": "h2",
+                        "val": "Videos"
+                      },
+                      {
+                        "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
                         "ch": [
                           {
-                            "sig": "header.relative.z-1.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-video.h-full.w-full.overflow-hidden > img.object-cover",
-                            "kind": "img",
-                            "val": "Cursor now shows you demos, not diffs",
-                            "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FXbZvC4KTH68%2Fmaxresdefault.jpg&w=3840&q=80"
-                          },
-                          {
-                            "sig": "div.stack-sm.card--media-content.card--media-content-roomy.card--media-content-roomy-tight-top.flex.grow-1.flex-col",
+                            "sig": "div.shrink-0.snap-start > article.h-full",
                             "ch": [
                               {
-                                "sig": "p.type-base.text-theme-text.text-pretty",
-                                "val": "Cursor now shows you demos, not diffs"
-                              },
+                                "sig": "a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
+                                "link": "https://youtu.be/XbZvC4KTH68?si=sEDqt3JtV0PoqLei",
+                                "ch": [
+                                  {
+                                    "sig": "header.relative.z-1.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-video.h-full.w-full.overflow-hidden > img.object-cover",
+                                    "kind": "img",
+                                    "val": "Cursor now shows you demos, not diffs",
+                                    "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FXbZvC4KTH68%2Fmaxresdefault.jpg&w=3840&q=80"
+                                  },
+                                  {
+                                    "sig": "div.stack-sm.card--media-content.card--media-content-roomy.card--media-content-roomy-tight-top.flex.grow-1.flex-col",
+                                    "ch": [
+                                      {
+                                        "sig": "p.type-base.text-theme-text.text-pretty",
+                                        "val": "Cursor now shows you demos, not diffs"
+                                      },
+                                      {
+                                        "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
+                                        "val": "1:43"
+                                      },
+                                      {
+                                        "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
+                                        "val": "Watch on YouTube ↗"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.h-full",
+                            "ch": [
                               {
-                                "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
-                                "val": "1:43"
-                              },
+                                "sig": "a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
+                                "link": "https://youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY",
+                                "ch": [
+                                  {
+                                    "sig": "header.relative.z-1.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-video.h-full.w-full.overflow-hidden > img.object-cover",
+                                    "kind": "img",
+                                    "val": "John Schulman on dead ends, scaling RL, and building research institutions",
+                                    "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F29BYxvvF1iM%2Fmaxresdefault.jpg&w=3840&q=80"
+                                  },
+                                  {
+                                    "sig": "div.stack-sm.card--media-content.card--media-content-roomy.card--media-content-roomy-tight-top.flex.grow-1.flex-col",
+                                    "ch": [
+                                      {
+                                        "sig": "p.type-base.text-theme-text.text-pretty",
+                                        "val": "John Schulman on dead ends, scaling RL, and building research institutions"
+                                      },
+                                      {
+                                        "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
+                                        "val": "51:26"
+                                      },
+                                      {
+                                        "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
+                                        "val": "Watch on YouTube ↗"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.h-full",
+                            "ch": [
                               {
-                                "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
-                                "val": "Watch on YouTube ↗"
+                                "sig": "a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
+                                "link": "https://youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk",
+                                "ch": [
+                                  {
+                                    "sig": "header.relative.z-1.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-video.h-full.w-full.overflow-hidden > img.object-cover",
+                                    "kind": "img",
+                                    "val": "Our designer built an operating system with Cursor",
+                                    "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FTQhv6Wol6Ns%2Fmaxresdefault.jpg&w=3840&q=80"
+                                  },
+                                  {
+                                    "sig": "div.stack-sm.card--media-content.card--media-content-roomy.card--media-content-roomy-tight-top.flex.grow-1.flex-col",
+                                    "ch": [
+                                      {
+                                        "sig": "p.type-base.text-theme-text.text-pretty",
+                                        "val": "Our designer built an operating system with Cursor"
+                                      },
+                                      {
+                                        "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
+                                        "val": "50:15"
+                                      },
+                                      {
+                                        "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
+                                        "val": "Watch on YouTube ↗"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.h-full",
+                            "ch": [
+                              {
+                                "sig": "a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
+                                "link": "https://youtu.be/IccjZDV93lw?si=f3mepO4Ptiqdg4F8",
+                                "ch": [
+                                  {
+                                    "sig": "header.relative.z-1.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-video.h-full.w-full.overflow-hidden > img.object-cover",
+                                    "kind": "img",
+                                    "val": "AI Foundations: Introduction",
+                                    "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FIccjZDV93lw%2Fmaxresdefault.jpg&w=3840&q=80"
+                                  },
+                                  {
+                                    "sig": "div.stack-sm.card--media-content.card--media-content-roomy.card--media-content-roomy-tight-top.flex.grow-1.flex-col",
+                                    "ch": [
+                                      {
+                                        "sig": "p.type-base.text-theme-text.text-pretty",
+                                        "val": "AI Foundations: Introduction"
+                                      },
+                                      {
+                                        "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
+                                        "val": "4:03"
+                                      },
+                                      {
+                                        "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
+                                        "val": "Watch on YouTube ↗"
+                                      }
+                                    ]
+                                  }
+                                ]
                               }
                             ]
                           }
                         ]
                       },
                       {
-                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
-                        "link": "https://youtu.be/29BYxvvF1iM?si=LRmoeWAwilHKmjGY",
-                        "ch": [
-                          {
-                            "sig": "header.relative.z-1.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-video.h-full.w-full.overflow-hidden > img.object-cover",
-                            "kind": "img",
-                            "val": "John Schulman on dead ends, scaling RL, and building research institutions",
-                            "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F29BYxvvF1iM%2Fmaxresdefault.jpg&w=3840&q=80"
-                          },
-                          {
-                            "sig": "div.stack-sm.card--media-content.card--media-content-roomy.card--media-content-roomy-tight-top.flex.grow-1.flex-col",
-                            "ch": [
-                              {
-                                "sig": "p.type-base.text-theme-text.text-pretty",
-                                "val": "John Schulman on dead ends, scaling RL, and building research institutions"
-                              },
-                              {
-                                "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
-                                "val": "51:26"
-                              },
-                              {
-                                "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
-                                "val": "Watch on YouTube ↗"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
-                        "link": "https://youtu.be/TQhv6Wol6Ns?si=bb8_Jr5u7Kb8n6jk",
-                        "ch": [
-                          {
-                            "sig": "header.relative.z-1.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-video.h-full.w-full.overflow-hidden > img.object-cover",
-                            "kind": "img",
-                            "val": "Our designer built an operating system with Cursor",
-                            "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FTQhv6Wol6Ns%2Fmaxresdefault.jpg&w=3840&q=80"
-                          },
-                          {
-                            "sig": "div.stack-sm.card--media-content.card--media-content-roomy.card--media-content-roomy-tight-top.flex.grow-1.flex-col",
-                            "ch": [
-                              {
-                                "sig": "p.type-base.text-theme-text.text-pretty",
-                                "val": "Our designer built an operating system with Cursor"
-                              },
-                              {
-                                "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
-                                "val": "50:15"
-                              },
-                              {
-                                "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
-                                "val": "Watch on YouTube ↗"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.shrink-0.snap-start > article.h-full > a.card.card--media.card--feature.flex.h-full.grow-1.flex-col.p-0",
-                        "link": "https://youtu.be/IccjZDV93lw?si=f3mepO4Ptiqdg4F8",
-                        "ch": [
-                          {
-                            "sig": "header.relative.z-1.overflow-hidden.rounded-t-xs > div.bg-theme-card-03-hex.relative.aspect-video.h-full.w-full.overflow-hidden > img.object-cover",
-                            "kind": "img",
-                            "val": "AI Foundations: Introduction",
-                            "link": "https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FIccjZDV93lw%2Fmaxresdefault.jpg&w=3840&q=80"
-                          },
-                          {
-                            "sig": "div.stack-sm.card--media-content.card--media-content-roomy.card--media-content-roomy-tight-top.flex.grow-1.flex-col",
-                            "ch": [
-                              {
-                                "sig": "p.type-base.text-theme-text.text-pretty",
-                                "val": "AI Foundations: Introduction"
-                              },
-                              {
-                                "sig": "div.type-base.text-theme-text-mid.relative.flex.flex-wrap.items-center > span",
-                                "val": "4:03"
-                              },
-                              {
-                                "sig": "div.type-base.text-theme-accent.relative.mt-auto > span",
-                                "val": "Watch on YouTube ↗"
-                              }
-                            ]
-                          }
-                        ]
+                        "sig": "a.btn-text.inline-flex",
+                        "val": "Visit our YouTube channel ↗",
+                        "link": "https://www.youtube.com/@cursor_ai"
                       }
                     ]
-                  },
-                  {
-                    "sig": "a.btn-text.inline-flex",
-                    "val": "Visit our YouTube channel ↗",
-                    "link": "https://www.youtube.com/@cursor_ai"
                   }
                 ]
               },
               {
-                "sig": "section.bg-theme-bg.text-theme-text > div.container",
+                "sig": "section.bg-theme-bg.text-theme-text",
                 "ch": [
                   {
-                    "sig": "h2.text-theme-text.mb-v1.type-md",
-                    "kind": "h2",
-                    "val": "Changelog"
-                  },
-                  {
-                    "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
+                    "sig": "div.container",
                     "ch": [
                       {
-                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
-                        "link": "https://cursor.com/changelog/projects",
+                        "sig": "h2.text-theme-text.mb-v1.type-md",
+                        "kind": "h2",
+                        "val": "Changelog"
+                      },
+                      {
+                        "sig": "div.no-scrollbar.snap-x.snap-mandatory.scroll-px-g2.overflow-x-auto > div.flex.w-max.gap-g1.px-g2",
                         "ch": [
                           {
-                            "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
-                            "kind": "time",
-                            "val": "2026-09-10T00:00:00Z"
+                            "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col",
+                            "ch": [
+                              {
+                                "sig": "a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                                "link": "https://cursor.com/changelog/projects",
+                                "ch": [
+                                  {
+                                    "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-09-10T00:00:00Z"
+                                  },
+                                  {
+                                    "sig": "p.type-base.text-theme-text",
+                                    "val": "Cursor Projects"
+                                  }
+                                ]
+                              }
+                            ]
                           },
                           {
-                            "sig": "p.type-base.text-theme-text",
-                            "val": "Cursor Projects"
+                            "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col",
+                            "ch": [
+                              {
+                                "sig": "a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                                "link": "https://cursor.com/changelog/self-hosted-machines",
+                                "ch": [
+                                  {
+                                    "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-09-02T00:00:00Z"
+                                  },
+                                  {
+                                    "sig": "p.type-base.text-theme-text",
+                                    "val": "Self-hosted machines"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col",
+                            "ch": [
+                              {
+                                "sig": "a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                                "link": "https://cursor.com/changelog/start-from-scratch",
+                                "ch": [
+                                  {
+                                    "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-08-27T00:00:00Z"
+                                  },
+                                  {
+                                    "sig": "p.type-base.text-theme-text",
+                                    "val": "Start from scratch, without a repo"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col",
+                            "ch": [
+                              {
+                                "sig": "a.card.flex.h-full.grow-1.flex-col.pb-g2",
+                                "link": "https://cursor.com/changelog/08-19-26",
+                                "ch": [
+                                  {
+                                    "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
+                                    "kind": "time",
+                                    "val": "2026-08-19T00:00:00Z"
+                                  },
+                                  {
+                                    "sig": "p.type-base.text-theme-text",
+                                    "val": "Cloud Agents and Cursor Harness Improvements"
+                                  }
+                                ]
+                              }
+                            ]
                           }
                         ]
                       },
                       {
-                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
-                        "link": "https://cursor.com/changelog/self-hosted-machines",
-                        "ch": [
-                          {
-                            "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
-                            "kind": "time",
-                            "val": "2026-09-02T00:00:00Z"
-                          },
-                          {
-                            "sig": "p.type-base.text-theme-text",
-                            "val": "Self-hosted machines"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
-                        "link": "https://cursor.com/changelog/start-from-scratch",
-                        "ch": [
-                          {
-                            "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
-                            "kind": "time",
-                            "val": "2026-08-27T00:00:00Z"
-                          },
-                          {
-                            "sig": "p.type-base.text-theme-text",
-                            "val": "Start from scratch, without a repo"
-                          }
-                        ]
-                      },
-                      {
-                        "sig": "div.shrink-0.snap-start > article.flex.h-full.flex-col > a.card.flex.h-full.grow-1.flex-col.pb-g2",
-                        "link": "https://cursor.com/changelog/08-19-26",
-                        "ch": [
-                          {
-                            "sig": "div.text-theme-text-mid.relative.flex.items-center > time.type-base",
-                            "kind": "time",
-                            "val": "2026-08-19T00:00:00Z"
-                          },
-                          {
-                            "sig": "p.type-base.text-theme-text",
-                            "val": "Cloud Agents and Cursor Harness Improvements"
-                          }
-                        ]
+                        "sig": "a.btn-text.inline-flex",
+                        "val": "See what's new in Cursor →",
+                        "link": "https://cursor.com/changelog"
                       }
                     ]
-                  },
-                  {
-                    "sig": "a.btn-text.inline-flex",
-                    "val": "See what's new in Cursor →",
-                    "link": "https://cursor.com/changelog"
                   }
                 ]
               }
@@ -1024,33 +1154,38 @@
         ]
       },
       {
-        "sig": "section.section.bg-theme-bg.text-theme-text.section--headline > div.container > div.text-center.mx-auto.max-w-prose-medium-wide",
+        "sig": "section.section.bg-theme-bg.text-theme-text.section--headline",
         "ch": [
           {
-            "sig": "h2.type-xl.text-balance.mx-auto.mb-v1",
-            "kind": "h2",
-            "val": "Get started with Cursor."
-          },
-          {
-            "sig": "div.flex.justify-center.gap-x-g1.items-center",
+            "sig": "div.container > div.text-center.mx-auto.max-w-prose-medium-wide",
             "ch": [
               {
-                "sig": "a.btn",
-                "link": "https://cursor.com/download",
-                "ch": [
-                  {
-                    "val": "Download"
-                  },
-                  {
-                    "sig": "div.btn-icon > span.icon-glyph-08",
-                    "val": "⤓"
-                  }
-                ]
+                "sig": "h2.type-xl.text-balance.mx-auto.mb-v1",
+                "kind": "h2",
+                "val": "Get started with Cursor."
               },
               {
-                "sig": "a.btn.btn--secondary",
-                "val": "Contact Sales",
-                "link": "https://cursor.com/contact-sales?source=blog_footer"
+                "sig": "div.flex.justify-center.gap-x-g1.items-center",
+                "ch": [
+                  {
+                    "sig": "a.btn",
+                    "link": "https://cursor.com/download",
+                    "ch": [
+                      {
+                        "val": "Download"
+                      },
+                      {
+                        "sig": "div.btn-icon > span.icon-glyph-08",
+                        "val": "⤓"
+                      }
+                    ]
+                  },
+                  {
+                    "sig": "a.btn.btn--secondary",
+                    "val": "Contact Sales",
+                    "link": "https://cursor.com/contact-sales?source=blog_footer"
+                  }
+                ]
               }
             ]
           }

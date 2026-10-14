@@ -1781,9 +1781,14 @@
                 "sig": "footer",
                 "ch": [
                   {
-                    "sig": "ul > li > a",
-                    "val": "AWS",
-                    "link": "https://qiita.com/tags/aws"
+                    "sig": "ul",
+                    "ch": [
+                      {
+                        "sig": "li > a",
+                        "val": "AWS",
+                        "link": "https://qiita.com/tags/aws"
+                      }
+                    ]
                   },
                   {
                     "sig": "div > div",
