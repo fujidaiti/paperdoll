@@ -233,11 +233,20 @@ var inlineTags = map[string]bool{
 	"br": true, "wbr": true, "font": true, "bdi": true, "bdo": true,
 }
 
-// Elements that group the parts of one field, such as the paragraphs of a
-// body or the links of a tag list. They stay containers even with a single
-// child, so that a field is the same node whether it has one part or many.
-var groupTags = map[string]bool{
-	"section": true, "article": true, "blockquote": true, "ul": true, "ol": true,
+// groups reports whether n, an element with the single child only, groups
+// the parts of one field, such as the paragraphs of a body or the links of a
+// tag list. Such an element stays a container, so that a field is the same
+// node whether it has one part or many. Sections and articles also wrap whole
+// pages and posts, so they stay only around a value: merged into a container,
+// they still leave a container.
+func groups(n *html.Node, only *Node) bool {
+	switch n.Data {
+	case "blockquote", "ul", "ol":
+		return true
+	case "section", "article":
+		return only.isValue()
+	}
+	return false
 }
 
 var headingTags = map[string]bool{
@@ -463,7 +472,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 	// A wrapper around a single node is merged into it, unless both have a
 	// link or a kind, since a node holds only one of each, or the wrapper
 	// groups the parts of a field.
-	if len(children) == 1 && !groupTags[n.Data] {
+	if len(children) == 1 && !groups(n, children[0]) {
 		c := children[0]
 		conflict := link != "" && c.Link != "" || kind != "" && (c.Kind != "" || !c.isValue())
 		if !conflict {

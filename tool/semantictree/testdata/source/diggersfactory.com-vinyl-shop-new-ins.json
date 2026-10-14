@@ -38,22 +38,17 @@
         "sig": "div > div.page.projects",
         "ch": [
           {
-            "sig": "section.top.dark",
+            "sig": "section.top.dark > div.title.top",
             "ch": [
               {
-                "sig": "div.title.top",
-                "ch": [
-                  {
-                    "sig": "h1.t1",
-                    "kind": "h1",
-                    "val": "New-ins"
-                  },
-                  {
-                    "sig": "h2.t2",
-                    "kind": "h2",
-                    "val": "Discover our latest releases"
-                  }
-                ]
+                "sig": "h1.t1",
+                "kind": "h1",
+                "val": "New-ins"
+              },
+              {
+                "sig": "h2.t2",
+                "kind": "h2",
+                "val": "Discover our latest releases"
               }
             ]
           },
@@ -471,45 +466,40 @@
         "sig": "section.footer",
         "ch": [
           {
-            "sig": "div.mobile > section",
+            "sig": "div.mobile > section > div.container.flex.flex-col.gap-3 > div",
             "ch": [
               {
-                "sig": "div.container.flex.flex-col.gap-3 > div",
+                "sig": "ul.flex.flex-col.gap-2.items-center.justify-center.uppercase.font-bold",
                 "ch": [
                   {
-                    "sig": "ul.flex.flex-col.gap-2.items-center.justify-center.uppercase.font-bold",
-                    "ch": [
-                      {
-                        "sig": "li > a.footer_contact",
-                        "val": "Contact us",
-                        "link": "https://www.diggersfactory.com/contact"
-                      },
-                      {
-                        "sig": "li > a.footer_terms",
-                        "val": "Terms of use",
-                        "link": "https://www.diggersfactory.com/terms"
-                      },
-                      {
-                        "sig": "li > a.footer_privacy",
-                        "val": "Privacy Policy",
-                        "link": "https://www.diggersfactory.com/privacy"
-                      },
-                      {
-                        "sig": "li > a.footer_refund",
-                        "val": "Return and Refund Policy",
-                        "link": "https://www.diggersfactory.com/return-and-refund-policy"
-                      }
-                    ]
+                    "sig": "li > a.footer_contact",
+                    "val": "Contact us",
+                    "link": "https://www.diggersfactory.com/contact"
                   },
                   {
-                    "sig": "ul.flex.flex-col.gap-2.items-center.justify-center.uppercase.font-bold.mt-10",
-                    "ch": [
-                      {
-                        "sig": "li > a.footer_refund",
-                        "val": "Powered by Diggers Factory",
-                        "link": "https://www.diggersfactory.com"
-                      }
-                    ]
+                    "sig": "li > a.footer_terms",
+                    "val": "Terms of use",
+                    "link": "https://www.diggersfactory.com/terms"
+                  },
+                  {
+                    "sig": "li > a.footer_privacy",
+                    "val": "Privacy Policy",
+                    "link": "https://www.diggersfactory.com/privacy"
+                  },
+                  {
+                    "sig": "li > a.footer_refund",
+                    "val": "Return and Refund Policy",
+                    "link": "https://www.diggersfactory.com/return-and-refund-policy"
+                  }
+                ]
+              },
+              {
+                "sig": "ul.flex.flex-col.gap-2.items-center.justify-center.uppercase.font-bold.mt-10",
+                "ch": [
+                  {
+                    "sig": "li > a.footer_refund",
+                    "val": "Powered by Diggers Factory",
+                    "link": "https://www.diggersfactory.com"
                   }
                 ]
               }
