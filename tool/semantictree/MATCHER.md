@@ -8,7 +8,7 @@ produced by `tool/semantictree`. It replaces the selector-based matcher in
 
 The user annotates a page in the page watch screen. They select one post, label
 its fields, and the client generates a matcher that finds the other posts of the
-same pattern. The server runs the matchers on each fetch and turns the extracted
+same shape. The server runs the matchers on each fetch and turns the extracted
 posts into feed entries.
 
 The current matcher selects elements by tags, classes and indices. Classes are
@@ -18,8 +18,8 @@ page.
 
 ## Goal
 
-- A matcher finds the posts of one pattern from a semantic tree and extracts
-  their fields.
+- A matcher finds the posts of one shape from a semantic tree and extracts their
+  fields.
 - A matcher depends only on the shapes of the nodes and their positions, not on
   tags or classes.
 - A post that a matcher finds but that is not a post, such as a promotion card,
@@ -41,13 +41,12 @@ page.
 
 | Term      | Meaning                                                                               |
 | --------- | ------------------------------------------------------------------------------------- |
-| value     | A node of the tree without children (`{"sig","kind"?,"val"?,"link"?}`).               |
-| container | A node of the tree with children (`{"sig","link"?,"ch"}`).                            |
+| value     | A node of the tree without children (`{"kind"?,"val"?,"link"?}`).                     |
+| container | A node of the tree with children (`{"link"?,"ch"}`).                                  |
 | shape     | The shape of one node, defined below.                                                 |
 | post node | The node that holds the values of one post. It can be a container or a value.         |
 | field     | One of `title`, `link`, `body`, `thumbnail`, `pubDate`.                               |
-| pattern   | The shape of the post nodes that one annotated post represents.                       |
-| group     | The posts that the user annotated as one kind, with one matcher and one exclude list. |
+| group     | The posts found by one matcher, built from one annotated post, with one exclude list. |
 
 There is no description field. A description and a body are both plain text that
 summarizes the post, so `body` covers both.
@@ -146,18 +145,17 @@ another shape does not move a field. For example, a deepmind post without a
 category still has its date at `txt` 0 and its "Learn more" link at
 `txt+link` 0. A missing value of the same shape does move the values after it.
 
-One matcher covers one pattern. A post of the same kind whose shape path
-differs, such as a deepmind post without any image (the simplifier merges its
-single-child wrapper, so the title is one level higher), is a separate pattern.
-The user annotates one post of each pattern.
+Each group has one matcher. A post of the same kind whose shape path differs,
+such as a deepmind post without any image (the simplifier merges its
+single-child wrapper, so the title is one level higher), is not found by the
+matcher. The user annotates such a post as another group.
 
 ## Possible extensions
 
 If shapes and positions cannot tell posts or fields apart, a step can also
-require tags and classes of the node. They would be taken from the `sig` of the
-node; for the sig `div.TitleWrapper > h2.CardHeadline`, the tags are `div`, `h2`
-and the classes are `TitleWrapper`, `CardHeadline`. Hash classes and utility
-classes are already removed by the simplifier.
+require tags and classes of the node. The semantic tree would then need to carry
+the tags and classes of the elements each node was made from, without hash
+classes and utility classes.
 
 ## Exclude list
 
@@ -259,11 +257,7 @@ such as `https://www.bbc.com/news/articles/c34gdjk1ne8yo`:
 
 ## Open questions
 
-- The tree format: the matcher reads only `kind`, `val`, `link` and `ch`.
-  Whether `sig` stays, or values get separate `tags` and `cls`, depends on
-  whether the extensions above become necessary.
-- Whether a group can hold several patterns, so that the user can add a second
-  pattern of the same kind (such as the deepmind post without an image) to an
-  existing group, or whether each pattern is a separate group.
-- Dates in plain text, such as "September 2026" or "3 hrs ago", are `txt`
-  values. The format of `pubDate` taken from such a text is not defined.
+- The simplifier marks a text as `time` only when the whole text is a date with
+  a year, a month and a day. Other dates stay `txt`, such as "September 2026",
+  "Sep 11" (no year), "3 hrs ago Europe" (a relative date with a category) and
+  "By Nicole Butterfield | September 22, 2026" (a date inside other text).
