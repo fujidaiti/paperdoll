@@ -16,11 +16,9 @@
 //
 // A Node is either a value or a container:
 //
-//	value      {"sig", "kind"?, "val"?, "link"?}
-//	container  {"sig", "link"?, "ch"}
+//	value      {"kind"?, "val"?, "link"?}
+//	container  {"link"?, "ch"}
 //
-//	sig   the elements the node was made from, outermost first, such as
-//	      "h2.title > a"; empty for text between elements
 //	kind  "h1".."h6" for a heading, "img" for an image, "time" for a time
 //	      element or a text that is only a date
 //	val   plain text; the alt text for an image, which may be missing; the
@@ -54,7 +52,6 @@ import (
 )
 
 type Node struct {
-	Sig      string  `json:"sig,omitempty"`
 	Kind     string  `json:"kind,omitempty"`
 	Val      string  `json:"val,omitempty"`
 	Link     string  `json:"link,omitempty"`
@@ -202,7 +199,7 @@ func simplify(raw []byte, fallbackURL string) (*Document, error) {
 	}
 	tree := s.convert(body)
 	if tree == nil || tree.isValue() {
-		tree = &Node{Sig: "body", Children: slices.DeleteFunc([]*Node{tree}, func(n *Node) bool { return n == nil })}
+		tree = &Node{Children: slices.DeleteFunc([]*Node{tree}, func(n *Node) bool { return n == nil })}
 	}
 	unwrapTextless(tree)
 	return &Document{URL: base.String(), Title: title, Root: tree}, nil
@@ -284,64 +281,6 @@ func isSmall(n *html.Node) bool {
 	return w == 1 || h == 1 || w > 0 && w <= 96 && h > 0 && h <= 96
 }
 
-// Class names generated from hashes, which change when a site is rebuilt:
-// "Name-sc-<hash>-N" by styled-components, followed by classes that are only
-// hashes of their styles, such as "hygVWX", one for each of the classes before
-// them, "File-module__<hash>__name" by CSS modules, and other names that end
-// with a hash, such as "card__title--8e57666e…" or "blog-date__y06Tq". A
-// part of at least five letters and digits with a digit in it counts as a
-// hash, which also removes the ids in names such as "post-24394" that differ
-// between posts.
-var (
-	styledClass = regexp.MustCompile(`^(.+)-sc-[0-9a-f]+-\d+$`)
-	styleHash   = regexp.MustCompile(`^[A-Za-z]+$`)
-	moduleClass = regexp.MustCompile(`^(.+-module)__[A-Za-z0-9_-]{6}__(.+)$`)
-	namePart    = regexp.MustCompile(`[A-Za-z0-9]+`)
-	className   = regexp.MustCompile(`^[A-Za-z][A-Za-z0-9_-]*$`)
-)
-
-// stableClasses returns the class names of the attribute value class
-// without their generated hashes. Names with other characters, such as
-// "md:grid-cols-2", "w-[72%]" or "px-g1.75", are dropped: they are utility
-// classes that only set styles.
-func stableClasses(class string) []string {
-	var classes []string
-	hashes := 0 // The number of hashes expected next.
-	for c := range strings.FieldsSeq(class) {
-		if hashes > 0 && styleHash.MatchString(c) {
-			hashes--
-			continue
-		}
-		if m := styledClass.FindStringSubmatch(c); m != nil {
-			c = m[1]
-			hashes++
-		} else {
-			hashes = 0
-			if m := moduleClass.FindStringSubmatch(c); m != nil {
-				c = m[1] + "__" + m[2]
-			}
-		}
-		// A class whose second part is a hash, such as "astro-73gi4scu", is
-		// generated as a whole.
-		for i, loc := range namePart.FindAllStringIndex(c, -1) {
-			if part := c[loc[0]:loc[1]]; i > 0 && len(part) >= 5 && strings.ContainsAny(part, "0123456789") {
-				c = strings.TrimRight(c[:loc[0]], "-_")
-				if i == 1 {
-					c = ""
-				}
-				break
-			}
-		}
-		if !className.MatchString(c) {
-			continue
-		}
-		if !slices.Contains(classes, c) {
-			classes = append(classes, c)
-		}
-	}
-	return classes
-}
-
 // isDropped reports whether the element n and its content are never shown.
 // A "hidden" class counts only without a responsive class such as
 // "xl:block", which shows the element on some screens.
@@ -360,21 +299,6 @@ func isDropped(n *html.Node) bool {
 	})
 }
 
-// signature returns the signature of the element n alone, such as
-// "div.card.large".
-func signature(n *html.Node) string {
-	return strings.Join(append([]string{n.Data}, stableClasses(attr(n, "class"))...), ".")
-}
-
-// joinSig returns the signature of a node made from an outer element with
-// signature outer and the node inner.
-func joinSig(outer, inner string) string {
-	if inner == "" {
-		return outer
-	}
-	return outer + " > " + inner
-}
-
 // convert returns the node for the element n, or nil when n has no visible
 // content.
 func (s *simplifier) convert(n *html.Node) *Node {
@@ -388,16 +312,16 @@ func (s *simplifier) convert(n *html.Node) *Node {
 			return nil
 		}
 		alt := normalizeSpace(attr(n, "alt"))
-		return &Node{Sig: signature(n), Kind: "img", Val: alt, Link: src}
+		return &Node{Kind: "img", Val: alt, Link: src}
 	case "time":
 		// The datetime attribute is preferred over the displayed text, but some
 		// pages put a displayed text in it, such as "SEP 23, 2026". A time
 		// element without a full date is handled as any other element.
 		if val, ok := parseDate(attr(n, "datetime")); ok {
-			return &Node{Sig: signature(n), Kind: "time", Val: val}
+			return &Node{Kind: "time", Val: val}
 		}
 		if val, ok := parseDate(textContent(n)); ok {
-			return &Node{Sig: signature(n), Kind: "time", Val: val}
+			return &Node{Kind: "time", Val: val}
 		}
 	}
 	if isTextOnly(n) && !hasDateText(n) {
@@ -476,7 +400,6 @@ func (s *simplifier) convert(n *html.Node) *Node {
 		c := children[0]
 		conflict := link != "" && c.Link != "" || kind != "" && (c.Kind != "" || !c.isValue())
 		if !conflict {
-			c.Sig = joinSig(signature(n), c.Sig)
 			if c.Link == "" {
 				c.Link = link
 			}
@@ -486,7 +409,7 @@ func (s *simplifier) convert(n *html.Node) *Node {
 			return c
 		}
 	}
-	return &Node{Sig: signature(n), Link: link, Children: children}
+	return &Node{Link: link, Children: children}
 }
 
 // textValue returns the value for the text-only element n, or nil when it
@@ -499,9 +422,7 @@ func (s *simplifier) textValue(n *html.Node) *Node {
 		return nil
 	}
 	v := &Node{Val: text}
-	var sigs []string
 	for e := n; e != nil; e = onlyChild(e) {
-		sigs = append(sigs, signature(e))
 		if e.Data == "a" && v.Link == "" {
 			v.Link = s.resolve(attr(e, "href"))
 		}
@@ -509,7 +430,6 @@ func (s *simplifier) textValue(n *html.Node) *Node {
 			v.Kind = e.Data
 		}
 	}
-	v.Sig = strings.Join(sigs, " > ")
 	return v
 }
 

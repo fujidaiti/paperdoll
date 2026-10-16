@@ -2,228 +2,184 @@
   "url": "https://go.dev/blog/",
   "title": "The Go Blog - The Go Programming Language",
   "root": {
-    "sig": "body.Site > main.SiteContent.SiteContent--default > div > div > div > div.Article",
     "ch": [
       {
-        "sig": "h1",
         "kind": "h1",
         "val": "The Go Blog"
       },
       {
-        "sig": "div.markdown > div",
         "ch": [
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "Arch-specific SIMD in Go,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-10-02T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "Junyang Shao and David Chase"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "Go 1.27 introduces experimental arch-specific SIMD vector APIs"
           },
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "Platform-independent SIMD in Go,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-09-24T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "David Chase and Junyang Shao"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "Go 1.27 adds an experimental platform-agnostic SIMD API"
           },
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "Size-Specialized Memory Allocation,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-09-16T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "Michael Matloob"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "Go 1.27 improves performance of small allocations using size-specialized allocation functions."
           },
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "Goroutine Leak Profiles,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-09-02T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "Vlad Saioc"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "Go 1.27 includes new goroutine leak profiles."
           },
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "Generic Methods,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-08-26T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "Mark Freeman"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "Go 1.27 adds generic methods—a highly desired language feature."
           },
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "Go 1.27 is released,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-08-19T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "Nicholas Husin, on behalf of the Go team"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more."
           },
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "Introducing the pkg.go.dev API,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-05-21T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "Ethan Lee, Hana Kim, and Jonathan Amsterdam"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly."
           },
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "Type Construction and Cycle Detection,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-03-24T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "Mark Freeman"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types."
           },
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "//go:fix inline and the source-level inliner,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-03-10T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "Alan Donovan"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations."
           },
           {
-            "sig": "p.blogtitle",
             "ch": [
               {
                 "val": "Allocating on the Stack,"
               },
               {
-                "sig": "span.date",
                 "kind": "time",
                 "val": "2026-02-27T00:00:00Z"
               },
               {
-                "sig": "span.author",
                 "val": "Keith Randall"
               }
             ]
           },
           {
-            "sig": "p.blogsummary",
             "val": "A description of some of the recent changes to do allocations on the stack instead of the heap."
           },
           {
-            "sig": "p.blogtitle > a",
             "val": "More articles...",
             "link": "https://go.dev/blog/all"
           }

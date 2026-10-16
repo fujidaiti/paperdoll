@@ -2,49 +2,38 @@
   "url": "https://ycombinator.com/blog",
   "title": "Y Combinator",
   "root": {
-    "sig": "body.ycdc2.blog > div",
     "ch": [
       {
-        "sig": "div.no-scroll-behind.sticky.top-0.isolate.z-50.bg-beige-light > div > header.w-full.bg-beige-light.leading-tight > nav.relative.hidden.items-center.justify-center.bg-beige-light.px-5",
         "ch": [
           {
-            "sig": "div.flex.w-full.items-center.gap-6",
             "ch": [
               {
-                "sig": "div.flex.flex-1.items-center.justify-end.gap-4",
                 "ch": [
                   {
-                    "sig": "div.relative.inline-block > a.nav-link.inline-flex.items-center.gap-1.cursor-pointer",
                     "val": "About",
                     "link": "https://ycombinator.com/about"
                   },
                   {
-                    "sig": "div.relative.inline-block > a.nav-link.inline-flex.items-center.gap-1.cursor-pointer",
                     "val": "Companies",
                     "link": "https://ycombinator.com/companies"
                   },
                   {
-                    "sig": "div.relative.inline-block > a.nav-link.inline-flex.items-center.gap-1.cursor-pointer",
                     "val": "Library",
                     "link": "https://ycombinator.com/library"
                   }
                 ]
               },
               {
-                "sig": "div.flex.flex-1.items-center.justify-start.gap-4",
                 "ch": [
                   {
-                    "sig": "div.relative.inline-block > a.nav-link.inline-flex.items-center.gap-1.cursor-pointer",
                     "val": "Partners",
                     "link": "https://ycombinator.com/partners"
                   },
                   {
-                    "sig": "div.relative.inline-block > a.nav-link.inline-flex.items-center.gap-1.cursor-pointer",
                     "val": "Resources",
                     "link": "https://ycombinator.com/library"
                   },
                   {
-                    "sig": "div.relative.inline-block > a.nav-link.inline-flex.items-center.gap-1.cursor-pointer",
                     "val": "Startup Jobs",
                     "link": "https://ycombinator.com/jobs"
                   }
@@ -53,49 +42,39 @@
             ]
           },
           {
-            "sig": "div.absolute.right-5.flex.items-center.gap-4",
             "val": "Log in Apply"
           }
         ]
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.pb-6 > div.mx-auto.max-w-ycdc-page.px-4 > div > div.hidden > div > nav.flex.space-x-8",
         "val": "All Posts Startup Jobs Startup School"
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.pb-6 > div.mx-auto.max-w-ycdc-page.px-4 > div",
         "ch": [
           {
-            "sig": "div.relative",
             "ch": [
               {
-                "sig": "div.prose.prose-lg",
                 "ch": [
                   {
-                    "sig": "a > h2",
                     "kind": "h2",
                     "val": "Christopher Golda and Grey Baker Join YC as General Partners",
                     "link": "https://ycombinator.com/blog/chris-golda-and-grey-baker-general-partners"
                   },
                   {
-                    "sig": "p",
                     "val": "We're excited to announce that Christopher Golda and Grey Baker are joining YC as General Partners."
                   }
                 ]
               },
               {
-                "sig": "p.mt-4.flex.flex-col.space-y-3.pl-3.font-medium.text-linkColor > a.mr-4.inline-flex.flex-nowrap.items-center.text-base > span",
                 "val": "Read More",
                 "link": "https://ycombinator.com/blog/chris-golda-and-grey-baker-general-partners"
               }
             ]
           },
           {
-            "sig": "div.relative.mx-2.mt-4 > div.isolate.ml-12.flex.flex-row.flex-nowrap.justify-center > figure > a",
             "link": "https://ycombinator.com/blog/chris-golda-and-grey-baker-general-partners",
             "ch": [
               {
-                "sig": "img.w-full.rounded-2xl.shadow-lg",
                 "kind": "img",
                 "link": "https://ycombinator.com/blog/content/images/2026/06/BlogTwitter-Image-Template.jpg"
               }
@@ -104,70 +83,54 @@
         ]
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.pb-6 > div.mx-auto.max-w-ycdc-page.px-4",
         "ch": [
           {
-            "sig": "h3.text-xl.font-semibold.uppercase.tracking-wider.text-yellow-600",
             "kind": "h3",
             "val": "Recent Posts"
           },
           {
-            "sig": "div.mx-auto.mt-12.grid.max-w-lg.gap-9",
             "ch": [
               {
-                "sig": "div.flex.flex-col.overflow-hidden.rounded.shadow-sm",
                 "ch": [
                   {
-                    "sig": "div.shrink-0 > a",
                     "link": "https://ycombinator.com/blog/diana-hu-managing-partner",
                     "ch": [
                       {
-                        "sig": "img.h-48.w-full.object-cover",
                         "kind": "img",
                         "link": "https://ycombinator.com/blog/content/images/2026/06/S25-Kick-Off-Day-1_128.jpg"
                       }
                     ]
                   },
                   {
-                    "sig": "div.flex.flex-1.flex-col.justify-between.bg-white.p-6",
                     "ch": [
                       {
-                        "sig": "div.flex-1 > a.mt-2.block",
                         "link": "https://ycombinator.com/blog/diana-hu-managing-partner",
                         "ch": [
                           {
-                            "sig": "p.text-xl.font-semibold.text-gray-900",
                             "val": "Diana Hu Is YC's Newest Managing Partner"
                           },
                           {
-                            "sig": "p.mt-3.text-base.text-gray-700",
                             "val": "We're thrilled to announce that Diana Hu has been promoted to Managing Partner at Y Combinator. Few people have built a startup from zero and also shipped tech to 100 million people. Diana has done both."
                           }
                         ]
                       },
                       {
-                        "sig": "div.mt-2 > p.text-sm.font-medium.text-indigo-600 > a > span.mb-2.mr-4.inline-flex.items-center.rounded.bg-gray-200.px-2.text-xs.font-medium.text-gray-800",
                         "val": "YC News",
                         "link": "https://ycombinator.com/blog/tag/yc-news"
                       },
                       {
-                        "sig": "div.mt-6.flex.items-center",
                         "ch": [
                           {
-                            "sig": "div.shrink-0 > a > span.sr-only",
                             "val": "Garry Tan",
                             "link": "https://ycombinator.com/blog/author/garry"
                           },
                           {
-                            "sig": "div.ml-4",
                             "ch": [
                               {
-                                "sig": "p.text-sm.font-medium.text-gray-800 > a",
                                 "val": "Garry Tan",
                                 "link": "https://ycombinator.com/blog/author/garry"
                               },
                               {
-                                "sig": "div.flex.space-x-1.text-sm.text-gray-500 > span",
                                 "kind": "time",
                                 "val": "2026-06-11T00:00:00Z"
                               }
@@ -180,59 +143,46 @@
                 ]
               },
               {
-                "sig": "div.flex.flex-col.overflow-hidden.rounded.shadow-sm",
                 "ch": [
                   {
-                    "sig": "div.shrink-0 > a",
                     "link": "https://ycombinator.com/blog/welcome-harshita",
                     "ch": [
                       {
-                        "sig": "img.h-48.w-full.object-cover",
                         "kind": "img",
                         "link": "https://ycombinator.com/blog/content/images/2026/04/2025-YC-Intern-Happy-Hour-0708_013.jpg"
                       }
                     ]
                   },
                   {
-                    "sig": "div.flex.flex-1.flex-col.justify-between.bg-white.p-6",
                     "ch": [
                       {
-                        "sig": "div.flex-1 > a.mt-2.block",
                         "link": "https://ycombinator.com/blog/welcome-harshita",
                         "ch": [
                           {
-                            "sig": "p.text-xl.font-semibold.text-gray-900",
                             "val": "Harshita Arora Joins YC as General Partner"
                           },
                           {
-                            "sig": "p.mt-3.text-base.text-gray-700",
                             "val": "We're thrilled to announce that Harshita Arora is joining Y Combinator as a General Partner. She brings deep fintech and infrastructure experience, a founder's instinct for product, and the perspective of someone who's been building companies since she was a teenager."
                           }
                         ]
                       },
                       {
-                        "sig": "div.mt-2 > p.text-sm.font-medium.text-indigo-600 > a > span.mb-2.mr-4.inline-flex.items-center.rounded.bg-gray-200.px-2.text-xs.font-medium.text-gray-800",
                         "val": "YC News",
                         "link": "https://ycombinator.com/blog/tag/yc-news"
                       },
                       {
-                        "sig": "div.mt-6.flex.items-center",
                         "ch": [
                           {
-                            "sig": "div.shrink-0 > a > span.sr-only",
                             "val": "Garry Tan",
                             "link": "https://ycombinator.com/blog/author/garry"
                           },
                           {
-                            "sig": "div.ml-4",
                             "ch": [
                               {
-                                "sig": "p.text-sm.font-medium.text-gray-800 > a",
                                 "val": "Garry Tan",
                                 "link": "https://ycombinator.com/blog/author/garry"
                               },
                               {
-                                "sig": "div.flex.space-x-1.text-sm.text-gray-500 > span",
                                 "kind": "time",
                                 "val": "2026-04-06T00:00:00Z"
                               }
@@ -245,59 +195,46 @@
                 ]
               },
               {
-                "sig": "div.flex.flex-col.overflow-hidden.rounded.shadow-sm",
                 "ch": [
                   {
-                    "sig": "div.shrink-0 > a",
                     "link": "https://ycombinator.com/blog/adding-canada-back",
                     "ch": [
                       {
-                        "sig": "img.h-48.w-full.object-cover",
                         "kind": "img",
                         "link": "https://ycombinator.com/vite/assets/yc-blog-placeholder-Cx3N3yop.png"
                       }
                     ]
                   },
                   {
-                    "sig": "div.flex.flex-1.flex-col.justify-between.bg-white.p-6",
                     "ch": [
                       {
-                        "sig": "div.flex-1 > a.mt-2.block",
                         "link": "https://ycombinator.com/blog/adding-canada-back",
                         "ch": [
                           {
-                            "sig": "p.text-xl.font-semibold.text-gray-900",
                             "val": "Adding Canada Back to Our List of Accepted Countries of Incorporation"
                           },
                           {
-                            "sig": "p.mt-3.text-base.text-gray-700",
                             "val": "After hearing feedback from Canadian founders in our network, we are adding Canada back to our list of accepted countries of incorporation."
                           }
                         ]
                       },
                       {
-                        "sig": "div.mt-2 > p.text-sm.font-medium.text-indigo-600 > a > span.mb-2.mr-4.inline-flex.items-center.rounded.bg-gray-200.px-2.text-xs.font-medium.text-gray-800",
                         "val": "YC News",
                         "link": "https://ycombinator.com/blog/tag/yc-news"
                       },
                       {
-                        "sig": "div.mt-6.flex.items-center",
                         "ch": [
                           {
-                            "sig": "div.shrink-0 > a > span.sr-only",
                             "val": "Garry Tan",
                             "link": "https://ycombinator.com/blog/author/garry"
                           },
                           {
-                            "sig": "div.ml-4",
                             "ch": [
                               {
-                                "sig": "p.text-sm.font-medium.text-gray-800 > a",
                                 "val": "Garry Tan",
                                 "link": "https://ycombinator.com/blog/author/garry"
                               },
                               {
-                                "sig": "div.flex.space-x-1.text-sm.text-gray-500 > span",
                                 "kind": "time",
                                 "val": "2026-02-05T00:00:00Z"
                               }
@@ -314,217 +251,175 @@
         ]
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.pb-6 > div.mx-auto.max-w-ycdc-page.px-4 > div.mt-2.grid.max-w-lg.gap-5",
         "ch": [
           {
-            "sig": "div.col-span-2",
             "ch": [
               {
-                "sig": "h3.text-xl.font-semibold.uppercase.tracking-wider.text-yellow-600",
                 "kind": "h3",
                 "val": "All Posts"
               },
               {
-                "sig": "div.flex.flex-col.overflow-hidden.rounded-lg > div.mb-6.mr-6.flex.flex-1.flex-col.justify-between > div.flex-1",
                 "ch": [
                   {
-                    "sig": "a.mt-2.block > p.text-3xl.font-semibold.text-gray-900",
                     "val": "Congratulations to EquipmentShare on Going Public",
                     "link": "https://ycombinator.com/blog/congratulations-to-equipmentshare"
                   },
                   {
-                    "sig": "p.text-md.py-2.text-gray-500",
                     "ch": [
                       {
                         "val": "by Garry Tan"
                       },
                       {
-                        "sig": "span.ml-4.text-sm.font-normal",
                         "kind": "time",
                         "val": "2026-01-23T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "sig": "p.mt-3.text-base.text-gray-800",
                     "val": "Today, EquipmentShare (YC W15) goes public. From Missouri to 373 locations nationwide, they've built the operating system construction has been missing—built by contractors, for contractors. Congrats to Jabbok, Willy, and the EquipmentShare team on a huge milestone."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/congratulations-to-equipmentshare"
                   }
                 ]
               },
               {
-                "sig": "div.flex.flex-col.overflow-hidden.rounded-lg > div.mb-6.mr-6.flex.flex-1.flex-col.justify-between > div.flex-1",
                 "ch": [
                   {
-                    "sig": "a.mt-2.block > p.text-3xl.font-semibold.text-gray-900",
                     "val": "Announcing the YC AI Stack",
                     "link": "https://ycombinator.com/blog/the-yc-ai-student-starter-pack"
                   },
                   {
-                    "sig": "p.text-md.py-2.text-gray-500",
                     "ch": [
                       {
                         "val": "by Ankit Gupta"
                       },
                       {
-                        "sig": "span.ml-4.text-sm.font-normal",
                         "kind": "time",
                         "val": "2026-01-16T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "sig": "p.mt-3.text-base.text-gray-800",
                     "val": "We've partnered with nearly two dozen companies to offer students who attend YC events a suite of over $25,000 in free credits for AI devtools."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/the-yc-ai-student-starter-pack"
                   }
                 ]
               },
               {
-                "sig": "div.flex.flex-col.overflow-hidden.rounded-lg > div.mb-6.mr-6.flex.flex-1.flex-col.justify-between > div.flex-1",
                 "ch": [
                   {
-                    "sig": "a.mt-2.block > p.text-3xl.font-semibold.text-gray-900",
                     "val": "2026 Demo Day Dates",
                     "link": "https://ycombinator.com/blog/2026-demo-days"
                   },
                   {
-                    "sig": "p.text-md.py-2.text-gray-500",
                     "ch": [
                       {
                         "val": "by Y Combinator"
                       },
                       {
-                        "sig": "span.ml-4.text-sm.font-normal",
                         "kind": "time",
                         "val": "2025-12-18T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "sig": "p.mt-3.text-base.text-gray-800",
                     "val": "We’re excited to share the Demo Day dates for 2026 so founders, investors, and our broader community can plan ahead."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/2026-demo-days"
                   }
                 ]
               },
               {
-                "sig": "div.flex.flex-col.overflow-hidden.rounded-lg > div.mb-6.mr-6.flex.flex-1.flex-col.justify-between > div.flex-1",
                 "ch": [
                   {
-                    "sig": "a.mt-2.block > p.text-3xl.font-semibold.text-gray-900",
                     "val": "Meesho Goes Public",
                     "link": "https://ycombinator.com/blog/meesho-goes-public"
                   },
                   {
-                    "sig": "p.text-md.py-2.text-gray-500",
                     "ch": [
                       {
                         "val": "by Tim Brady"
                       },
                       {
-                        "sig": "span.ml-4.text-sm.font-normal",
                         "kind": "time",
                         "val": "2025-12-10T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "sig": "p.mt-3.text-base.text-gray-800",
                     "val": "Meesho goes public today. From S16 to IPO, they’ve built one of India’s largest e-commerce platforms—empowering millions of small merchants to grow their businesses. Congrats to Vidit and Sanjeev on a decade of relentless building and listening to users!"
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/meesho-goes-public"
                   }
                 ]
               },
               {
-                "sig": "div.flex.flex-col.overflow-hidden.rounded-lg > div.mb-6.mr-6.flex.flex-1.flex-col.justify-between > div.flex-1",
                 "ch": [
                   {
-                    "sig": "a.mt-2.block > p.text-3xl.font-semibold.text-gray-900",
                     "val": "Congratulations to Groww",
                     "link": "https://ycombinator.com/blog/groww"
                   },
                   {
-                    "sig": "p.text-md.py-2.text-gray-500",
                     "ch": [
                       {
                         "val": "by Jon Levy"
                       },
                       {
-                        "sig": "span.ml-4.text-sm.font-normal",
                         "kind": "time",
                         "val": "2025-11-12T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "sig": "p.mt-3.text-base.text-gray-800",
                     "val": "Today, Groww, India's leading digital investing platform, goes public. Tens of millions use Groww to invest simply and confidently in stocks, mutual funds, and ETFs. As YC's first company to list in India, we couldn't be more proud."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/groww"
                   }
                 ]
               },
               {
-                "sig": "div.flex.flex-col.overflow-hidden.rounded-lg > div.mb-6.mr-6.flex.flex-1.flex-col.justify-between > div.flex-1",
                 "ch": [
                   {
-                    "sig": "a.mt-2.block > p.text-3xl.font-semibold.text-gray-900",
                     "val": "BillionToOne Goes Public — The Startup That Made Genetic Testing Universal",
                     "link": "https://ycombinator.com/blog/billiontoone"
                   },
                   {
-                    "sig": "p.text-md.py-2.text-gray-500",
                     "ch": [
                       {
                         "val": "by Jared Friedman"
                       },
                       {
-                        "sig": "span.ml-4.text-sm.font-normal",
                         "kind": "time",
                         "val": "2025-11-06T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "sig": "p.mt-3.text-base.text-gray-800",
                     "val": "Today, BillionToOne goes public, becoming YC's fourth publicly traded biotech company. More importantly, they have built one of the most important genetic tests in the U.S. Today, 1 in 11 babies born in the US are tested with BillionToOne's fetal genetic test."
                   },
                   {
-                    "sig": "div.mt-4 > a.inline-flex.text-sm.font-medium.text-blue-500",
                     "val": "Read More",
                     "link": "https://ycombinator.com/blog/billiontoone"
                   }
                 ]
               },
               {
-                "sig": "nav.flex.items-center.justify-between.border-t.border-gray-200.py-3",
                 "ch": [
                   {
-                    "sig": "div.hidden > p.text-sm.text-gray-700",
                     "val": "Showing 1 to 10 of 2681 total posts"
                   },
                   {
-                    "sig": "div.flex.flex-1.justify-between > a.relative.ml-3.inline-flex.items-center.rounded-md.border.border-gray-300.px-4.py-2.text-sm.font-medium.text-gray-700",
                     "val": "Next"
                   }
                 ]
@@ -532,64 +427,51 @@
             ]
           },
           {
-            "sig": "div.ml-20 > div.mb-4",
             "ch": [
               {
-                "sig": "p.text-xl.font-semibold.tracking-wider.text-gray-800.uppercase.mb-2",
                 "val": "Categories"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Admissions",
                 "link": "https://ycombinator.com/blog/tag/admissions"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Advice",
                 "link": "https://ycombinator.com/blog/tag/advice"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Biotech",
                 "link": "https://ycombinator.com/blog/tag/biotech"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Blockchain",
                 "link": "https://ycombinator.com/blog/tag/blockchain"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Essay",
                 "link": "https://ycombinator.com/blog/tag/essay"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Female Founders",
                 "link": "https://ycombinator.com/blog/tag/female-founders"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Founder Stories",
                 "link": "https://ycombinator.com/blog/tag/founder-stories"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Interviews",
                 "link": "https://ycombinator.com/blog/tag/interview"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Startup School",
                 "link": "https://ycombinator.com/blog/tag/startup-school"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "Work at a Startup",
                 "link": "https://ycombinator.com/blog/tag/work-at-a-startup"
               },
               {
-                "sig": "a.flex > div.text-md.mb-3.rounded.bg-beige-medium.px-2.py-1.font-medium.text-gray-800",
                 "val": "YC Events",
                 "link": "https://ycombinator.com/blog/tag/yc-events"
               }
@@ -598,61 +480,47 @@
         ]
       },
       {
-        "sig": "div.relative.isolate.z-0.pt-6.pb-6.flex.items-center.justify-center > div.mx-auto.max-w-ycdc-page.px-4 > div.w-96 > p.mb-6.font-light",
         "val": "Want to sign up for weekly updates from YC? Sign up for the newsletter"
       },
       {
-        "sig": "footer.bg-black.text-beige-light > div.mx-auto.max-w-ycdc-page.px-6.py-12",
         "ch": [
           {
-            "sig": "div.flex.flex-col.space-y-8",
             "ch": [
               {
-                "sig": "div.flex.flex-col.items-start > div.flex.flex-row.items-center.gap-3",
                 "ch": [
                   {
-                    "sig": "a.block.shrink-0 > span.sr-only",
                     "val": "Y Combinator",
                     "link": "https://ycombinator.com/"
                   },
                   {
-                    "sig": "h3.font-light.text-base.text-beige-light",
                     "kind": "h3",
                     "val": "Make something people want."
                   }
                 ]
               },
               {
-                "sig": "div.grid.grid-cols-2.items-start.gap-8",
                 "ch": [
                   {
-                    "sig": "div",
                     "ch": [
                       {
-                        "sig": "h3.font-medium.tracking-wider.text-sm.text-beige-light",
                         "kind": "h3",
                         "val": "Programs"
                       },
                       {
-                        "sig": "ul.mt-2.space-y-1",
                         "ch": [
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "YC Program",
                             "link": "https://ycombinator.com/about"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Startup School",
                             "link": "https://startupschool.org"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Work at a Startup",
                             "link": "https://ycombinator.com/jobs"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Co-Founder Matching",
                             "link": "https://ycombinator.com/cofounder-matching"
                           }
@@ -661,53 +529,42 @@
                     ]
                   },
                   {
-                    "sig": "div",
                     "ch": [
                       {
-                        "sig": "h3.font-medium.tracking-wider.text-sm.text-beige-light",
                         "kind": "h3",
                         "val": "Resources"
                       },
                       {
-                        "sig": "ul.mt-2.space-y-1",
                         "ch": [
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Startup Directory",
                             "link": "https://ycombinator.com/companies"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Startup Library",
                             "link": "https://ycombinator.com/library"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Investors",
                             "link": "https://ycombinator.com/investors"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Demo Day",
                             "link": "https://ycombinator.com/demoday"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "SAFE",
                             "link": "https://ycombinator.com/safe"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Hacker News",
                             "link": "https://news.ycombinator.com/"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Launch YC",
                             "link": "https://ycombinator.com/launches"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "YC Deals",
                             "link": "https://deals.ycombinator.com"
                           }
@@ -716,58 +573,46 @@
                     ]
                   },
                   {
-                    "sig": "div",
                     "ch": [
                       {
-                        "sig": "h3.font-medium.tracking-wider.text-sm.text-beige-light",
                         "kind": "h3",
                         "val": "Company"
                       },
                       {
-                        "sig": "ul.mt-2.space-y-1",
                         "ch": [
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "YC Blog",
                             "link": "https://ycombinator.com/blog"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Contact",
                             "link": "https://ycombinator.com/contact"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Press",
                             "link": "https://ycombinator.com/press"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "People",
                             "link": "https://ycombinator.com/people"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Careers",
                             "link": "https://ycombinator.com/software"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Privacy Policy",
                             "link": "https://ycombinator.com/legal#privacy"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Notice at Collection",
                             "link": "https://ycombinator.com/legal#notice-at-collection"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Security",
                             "link": "https://ycombinator.com/security"
                           },
                           {
-                            "sig": "li > a.font-light.text-sm.text-beige-light.transition-colors",
                             "val": "Terms of Use",
                             "link": "https://ycombinator.com/legal#tou"
                           }
@@ -780,7 +625,6 @@
             ]
           },
           {
-            "sig": "div.mt-8.border-t.border-gray-200.pt-8 > p.mt-8.font-light.text-sm.text-beige-light",
             "val": "© 2026 Y Combinator"
           }
         ]
