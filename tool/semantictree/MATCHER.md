@@ -11,17 +11,17 @@ its fields, and the client generates a matcher that finds the other posts of the
 same pattern. The server runs the matchers on each fetch and turns the extracted
 posts into feed entries.
 
-The current matcher selects elements by tags, classes and indices. Container
-classes are fragile: they include layout, state and hash classes, and the
-simplifier merges wrappers, so the same post can have different container
-classes in different parts of a page.
+The current matcher selects elements by tags, classes and indices. Classes are
+fragile: they include layout, state and hash classes, and the simplifier merges
+wrappers, so the same post can have different classes in different parts of a
+page.
 
 ## Goal
 
 - A matcher finds the posts of one pattern from a semantic tree and extracts
   their fields.
-- A matcher depends on the shape of the tree. Classes are used only to tell
-  values apart inside a post.
+- A matcher depends only on the shapes of the nodes and their positions, not on
+  tags or classes.
 - A post that a matcher finds but that is not a post, such as a promotion card,
   can be removed by the user with an exclude list.
 - The format of the matcher is JSON, stored with the page watch group.
@@ -30,10 +30,9 @@ classes in different parts of a page.
 
 - The position of the post node is a path of shapes from the root of the tree.
   The depth of every node is therefore fixed.
-- Each field is a path of shapes relative to the post node. The last step, which
-  is a value, may also have a leaf condition (tags and classes).
-- A node at the post path is a post only when all required fields (title and
-  link) are found.
+- Each field is a path of steps from the post node. A step is a shape and an
+  index among the siblings of that shape.
+- A node at the post path is a post only when all labeled fields are found.
 - Each group has an exclude list of link patterns. Posts whose link matches a
   pattern are removed from the group's output.
 - Posts from all groups are merged by link.
@@ -46,9 +45,12 @@ classes in different parts of a page.
 | container | A node of the tree with children (`{"sig","link"?,"ch"}`).                            |
 | shape     | The shape of one node, defined below.                                                 |
 | post node | The node that holds the values of one post. It can be a container or a value.         |
-| field     | One of `title`, `link`, `description`, `body`, `thumbnail`, `pubDate`.                |
+| field     | One of `title`, `link`, `body`, `thumbnail`, `pubDate`.                               |
 | pattern   | The shape of the post nodes that one annotated post represents.                       |
 | group     | The posts that the user annotated as one kind, with one matcher and one exclude list. |
+
+There is no description field. A description and a body are both plain text that
+summarizes the post, so `body` covers both.
 
 ### Shape
 
@@ -62,26 +64,21 @@ The shape of a node is a string:
 The shape path of a node joins the shapes of the root, its ancestors and the
 node itself with `>`, such as `box > box > box > card > box > h2`.
 
-### Tags and classes of a value
-
-The tags and classes of a value are those of all elements the value was made
-from, as listed in its `sig`. For the sig `div.TitleWrapper > h2.CardHeadline`,
-the tags are `div`, `h2` and the classes are `TitleWrapper`, `CardHeadline`.
-
-Hash classes and utility classes are already removed by the simplifier.
-
 ## Matcher format
 
 ```json
 {
   "post": ["box", "box", "box", "card"],
   "fields": {
-    "title": [{ "shape": "box" }, { "shape": "h2", "cls": ["CardHeadline"] }],
+    "title": [
+      { "shape": "box", "nth": 0 },
+      { "shape": "h2", "nth": 0 }
+    ],
     "link": [],
-    "thumbnail": [{ "shape": "img+link" }],
-    "description": [
-      { "shape": "box" },
-      { "shape": "txt", "cls": ["Description"], "nth": 0 }
+    "thumbnail": [{ "shape": "img+link", "nth": 0 }],
+    "body": [
+      { "shape": "box", "nth": 0 },
+      { "shape": "txt", "nth": 0 }
     ]
   },
   "exclude": ["*://www.bbc.com/newsletters", "*://www.bbc.com/*/*"]
@@ -94,37 +91,38 @@ Hash classes and utility classes are already removed by the simplifier.
   An empty list means the post node itself, such as the link of a `card` post
   node, or the title and link of a post node that is a single `h2+link` value.
 - A step:
-  - `shape` (required): the shape of the child node.
-  - `tags`, `cls` (optional, last step only): the tags and classes that the
-    value must have. The value may have more.
-  - `nth` (optional): the zero-based index among the children that match
-    `shape`, `tags` and `cls`. It is used only when the other conditions cannot
-    tell the field from its siblings (see "Building a matcher").
+  - `shape`: the shape of the child node.
+  - `nth`: the zero-based index of the child among the children with the same
+    shape. For example, the title, author and reading time of a cursor card are
+    `txt` values with `nth` 0, 1 and 2.
 - `exclude`: the exclude list of the group (see "Exclude list").
 
-`title` and `link` are required in every matcher. The other fields are optional.
+The user must label `title` and `link` in every matcher. The other fields are
+optional to label.
+
+> Note: a matcher with only a few labeled fields may find too many items that
+> are not posts. If this condition appears too lax, we will change matchers to
+> require posts to have all fields.
 
 ## Extraction
 
 For each group:
 
-1. Find the candidate post nodes: start from the root, and at each step keep the
+1. Find the candidate post nodes: start from the root, and at each step keep all
    children whose shape equals the next item of `post`. The root must match the
    first item.
 2. For each candidate, resolve each field: start from the post node and, at each
-   step, keep the children that match the step. A step with `nth` keeps only the
-   n-th match. If several nodes remain at the end, the first one in document
-   order is the value.
-3. Keep only the candidates where `title` and `link` both resolve. A candidate
-   where an optional field does not resolve is still a post, without that field.
+   step, take the child at index `nth` among the children with the step's shape.
+   If there is no such child, the field does not resolve.
+3. Keep only the candidates where every labeled field resolves.
 4. Read the field values:
-   - `title`, `description`: `val` of the value.
+   - `title`: `val` of the value.
    - `link`: `link` of the node.
    - `thumbnail`: `link` of the `img` value.
    - `pubDate`: `val` of a `time` value, which is an RFC 3339 timestamp, or else
      the text `val`.
-   - `body`: the values inside the node (format to be defined with the body
-     markup).
+   - `body`: `val` of a value, or the values inside a container (format to be
+     defined with the body markup).
 5. Remove the posts whose link matches a pattern in `exclude`.
 
 Then, for all groups together:
@@ -139,32 +137,35 @@ Then, for all groups together:
 The client builds the matcher when the user labels the fields of a post.
 
 1. `post` is the shape path of the selected post node.
-2. For each labeled field, the steps are the shapes from the post node to the
-   labeled node, without leaf conditions.
-3. The candidate posts are the nodes found by extraction steps 1–3 with these
-   steps (shapes only).
-4. Leaf condition of each field: the tags and classes of the labeled value that
-   the corresponding value of every candidate post also has. The corresponding
-   value of a candidate is the one at the same position among the children with
-   the same shape as in the labeled post. When the candidates share no class,
-   the step has no `cls`.
-5. If the labeled value still has siblings that match its last step, such as the
-   title, author and reading time of a cursor card (all `card > txt`), the last
-   step gets `nth`: the index of the labeled value among those matches. This is
-   the only case where an index is used.
+2. For each labeled field, there is one step for each node from the post node
+   down to the labeled node, excluding the post node. The step has the shape of
+   the node and its index among its siblings of the same shape.
+
+Since the index counts only siblings of the same shape, a missing value of
+another shape does not move a field. For example, a deepmind post without a
+category still has its date at `txt` 0 and its "Learn more" link at
+`txt+link` 0. A missing value of the same shape does move the values after it.
 
 One matcher covers one pattern. A post of the same kind whose shape path
-differs, such as a deepmind post without an image (the simplifier merges its
+differs, such as a deepmind post without any image (the simplifier merges its
 single-child wrapper, so the title is one level higher), is a separate pattern.
 The user annotates one post of each pattern.
 
+## Possible extensions
+
+If shapes and positions cannot tell posts or fields apart, a step can also
+require tags and classes of the node. They would be taken from the `sig` of the
+node; for the sig `div.TitleWrapper > h2.CardHeadline`, the tags are `div`, `h2`
+and the classes are `TitleWrapper`, `CardHeadline`. Hash classes and utility
+classes are already removed by the simplifier.
+
 ## Exclude list
 
-The matcher of a group can find nodes that have the same shape path and leaf
-conditions as the posts but are not posts. For example, the "Discover more from
-the BBC" promotion cards have the same shape and the same title class
-(`h2.IndexCardHeading-styles__CardHeadlineStyled`) as the news cards. The
-exclude list removes such items.
+The matcher of a group can find nodes that have the same shapes and positions as
+the posts but are not posts. For example, the "Discover more from the BBC"
+promotion cards have the same shape as the news cards, and even the same title
+class (`h2.IndexCardHeading-styles__CardHeadlineStyled`), so classes would not
+tell them apart either. The exclude list removes such items.
 
 ### User flow
 
@@ -247,9 +248,9 @@ such as `https://www.bbc.com/news/articles/c34gdjk1ne8yo`:
 
 ## Known limitations
 
-- An item that is not a post can share the shape path and leaf conditions of
-  real posts. The exclude list removes it after the user sees it. Until then, it
-  appears as one feed entry, since entries are identified by their link.
+- An item that is not a post can share the shapes and positions of real posts.
+  The exclude list removes it after the user sees it. Until then, it appears as
+  one feed entry, since entries are identified by their link.
 - A glob is checked only against the posts of the page when the user creates it.
   A later post can match it and be removed. The user can fix this by editing the
   exclude list.
@@ -258,8 +259,9 @@ such as `https://www.bbc.com/news/articles/c34gdjk1ne8yo`:
 
 ## Open questions
 
-- The tree format: whether values get separate `tags` and `cls` instead of
-  `sig`, and whether containers keep their tags (such as `section`).
+- The tree format: the matcher reads only `kind`, `val`, `link` and `ch`.
+  Whether `sig` stays, or values get separate `tags` and `cls`, depends on
+  whether the extensions above become necessary.
 - Whether a group can hold several patterns, so that the user can add a second
   pattern of the same kind (such as the deepmind post without an image) to an
   existing group, or whether each pattern is a separate group.
