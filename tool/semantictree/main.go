@@ -26,7 +26,7 @@
 //	val   plain text; the alt text for an image, which may be missing; the
 //	      timestamp of a time in RFC 3339 and UTC, at 00:00:00 when the page
 //	      gives only a date
-//	link  link target, or the image URL for an image
+//	link  link target, or the image URL for an image; http and https only
 //	ch    child nodes
 //
 // Text formatting, line breaks and links inside text are dropped: a value is
@@ -636,13 +636,15 @@ func firstSrcset(v string) string {
 	return fields[0]
 }
 
+// resolve returns the absolute URL of ref, or "" unless it is a web page or
+// file, since a post links to one, unlike links such as mailto: or feed:.
 func (s *simplifier) resolve(ref string) string {
 	ref = strings.TrimSpace(ref)
-	if ref == "" || strings.HasPrefix(ref, "javascript:") {
+	if ref == "" {
 		return ""
 	}
 	u, err := s.base.Parse(ref)
-	if err != nil {
+	if err != nil || u.Scheme != "http" && u.Scheme != "https" {
 		return ""
 	}
 	return u.String()
