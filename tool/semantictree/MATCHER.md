@@ -118,8 +118,10 @@ For each group:
    - `title`: `val` of the value.
    - `link`: `link` of the node.
    - `thumbnail`: `link` of the `img` value.
-   - `pubDate`: `val` of a `time` value, which is an RFC 3339 timestamp, or else
-     the text `val`.
+   - `pubDate`: `val` of a `time` value, which is an RFC 3339 timestamp. Only a
+     `time` value can be labeled as `pubDate`. The simplifier makes a `time`
+     value only from a date with a year, a month and a day, so a text such as
+     "September 2026" or "3 hrs ago" stays `txt` and cannot be a `pubDate`.
    - `body`: `val` of a value, or the values inside a container (format to be
      defined with the body markup).
 5. Remove the posts whose link matches a pattern in `exclude`.
@@ -254,10 +256,3 @@ such as `https://www.bbc.com/news/articles/c34gdjk1ne8yo`:
   exclude list.
 - If a site changes the depth of its posts, for example by adding a wrapper, the
   matcher finds no posts until the user annotates the page again.
-
-## Open questions
-
-- The simplifier marks a text as `time` only when the whole text is a date with
-  a year, a month and a day. Other dates stay `txt`, such as "September 2026",
-  "Sep 11" (no year), "3 hrs ago Europe" (a relative date with a category) and
-  "By Nicole Butterfield | September 22, 2026" (a date inside other text).
