@@ -219,6 +219,8 @@ class PostMatcher {
   /// the only image at the shallowest level as the thumbnail, and the only
   /// heading of the highest level as the title. Without headings, the title
   /// is the only text, such as the text of a post that is a single link.
+  /// Without such a heading or text, a text labeled as the link is also the
+  /// title, such as the title link of a card with other texts.
   ///
   /// Nodes that link to the same URL count as one link, such as a card and a
   /// title in it. Of those, the post node itself is labeled, or else the one
@@ -257,7 +259,7 @@ class PostMatcher {
     }
     label(PostField.pubDate, only(nodes.where((n) => n.isTime)));
     final headings = nodes.where((n) => n.headingLevel != null).toList();
-    final PageNode? title;
+    PageNode? title;
     if (headings.isEmpty) {
       title = only(nodes.where(PostField.title.accepts));
     } else {
@@ -266,6 +268,7 @@ class PostMatcher {
           .reduce((a, b) => a < b ? a : b);
       title = only(headings.where((n) => n.headingLevel == top));
     }
+    title ??= matcher.matchField(postNode, PostField.link);
     label(PostField.title, title);
     if (title?.pageLink case final link?
         when matcher.matchField(postNode, PostField.link)?.link != link) {
