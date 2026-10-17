@@ -222,6 +222,11 @@ class PostMatcher {
   /// Without such a heading or text, a text labeled as the link is also the
   /// title, such as the title link of a card with other texts.
   ///
+  /// The body is the only paragraph, which is a plain text long enough not to
+  /// be a title or metadata such as an author. A container with two or more
+  /// paragraphs stands for them, unless it is the post node or holds other
+  /// fields, since a body cannot contain other fields.
+  ///
   /// Nodes that link to the same URL count as one link, such as a card and a
   /// title in it. Of those, the post node itself is labeled, or else the one
   /// with text. A title with a link of its own provides the link of the post,
@@ -274,6 +279,34 @@ class PostMatcher {
         when matcher.matchField(postNode, PostField.link)?.link != link) {
       label(PostField.link, title);
     }
+
+    final labeled = [
+      for (final field in matcher.fields.keys)
+        ?matcher.matchField(postNode, field),
+    ];
+    final paragraphs = nodes.where(
+      (n) =>
+          n.isValue &&
+          n.kind == null &&
+          n.link == null &&
+          (n.val?.length ?? 0) >= 80 &&
+          !labeled.any((l) => identical(l, n)),
+    );
+    final containers = {
+      for (final p in paragraphs)
+        if (!identical(p.parent, postNode) &&
+            paragraphs.where((q) => identical(q.parent, p.parent)).length >=
+                2 &&
+            !labeled.any(p.parent!.contains))
+          p.parent!,
+    };
+    label(
+      PostField.body,
+      only([
+        ...containers,
+        ...paragraphs.where((p) => !containers.contains(p.parent)),
+      ]),
+    );
     return matcher;
   }
 
