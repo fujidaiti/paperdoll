@@ -80,7 +80,7 @@ node itself with `>`, such as `box > box > box > card > box > h2`.
       { "shape": "txt", "nth": 0 }
     ]
   },
-  "exclude": ["*://www.bbc.com/newsletters", "*://www.bbc.com/*/*"]
+  "exclude": ["www.bbc.com/newsletters", "www.bbc.com/*/*"]
 }
 ```
 
@@ -179,28 +179,24 @@ back.
 
 ### Patterns
 
-A pattern is a glob that matches the whole link, which is compared after the
-same normalization that identifies feed entries. In a glob:
+A pattern is a file glob that matches the host and path of a link, such as
+`www.bbc.com/newsletters`. The scheme, the query and the fragment of a link are
+never matched: the simplifier keeps only http and https links, and query
+parameters are always ignored. In a pattern:
 
-- `*` matches any characters except `/` and `?`.
-- `**` matches any characters.
+- `*` matches any characters except `/`.
+- `**` matches any characters, including `/`.
+- `?` matches one character except `/`.
 - Every other character matches itself.
-- A glob without `?` matches the link without its query, so it ignores query
-  parameters.
 
-For example, `*://www.bbc.com/newsletters` matches
+For example, a pattern `www.bbc.com/newsletters` matches
 `http://www.bbc.com/newsletters?RoyalWatch&at_medium=onsite`.
 
 Patterns can be any globs, so that users can write their own in a future
-version. The client generates only patterns of the following form, which ignore
-the scheme and the query:
-
-```text
-*://<host>/<segment>/<segment>/...
-```
-
-Each segment is either the text of the link's segment or `*`. Merging (below)
-applies only to patterns of this form, and leaves other patterns unchanged.
+version. The client generates only patterns whose first segment is a host and
+whose other segments are either the text of a path segment or `*`, such as
+`www.bbc.com/*/docs`. Merging (below) applies only to patterns of this form, and
+leaves other patterns unchanged.
 
 ### Excluding a link
 
@@ -210,27 +206,25 @@ group's matcher finds in the current page, except the excluded ones, not only
 the labeled posts. A candidate is accepted only when it matches none of them.
 
 1. For each generated pattern `P` in the list, in order, build the merge of `P`
-   and `L`:
-   - The merge fails if the hosts differ, or if the numbers of path segments
-     differ.
-   - Otherwise, each segment that is equal in `P` and `L` is kept, and each
-     segment that differs becomes `*`.
+   and the host and path of `L`:
+   - The merge fails if the hosts differ, or if the numbers of segments differ.
+   - Otherwise, each segment that is equal in both is kept, and each segment
+     that differs becomes `*`.
 
    The first accepted merge replaces `P`.
 
-2. If no merge is accepted, add `*://<host>/<path>` of `L`, if it is accepted.
-3. Otherwise, add `L` itself, with its scheme and query. This happens on sites
-   where the query identifies the post, such as `/item?id=123`, and the excluded
-   item has the same path as a post.
+2. If no merge is accepted, add the host and path of `L`, if it is accepted.
+3. Otherwise, `L` cannot be excluded, because a post has the same host and path.
+   The client tells the user so.
 
 Example with the BBC promotions, where the group's posts link to news articles
 such as `https://www.bbc.com/news/articles/c34gdjk1ne8yo`:
 
-| Excluded link                                                | Exclude list after the step                                                 |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| `http://www.bbc.com/newsletters?RoyalWatch&at_medium=onsite` | `*://www.bbc.com/newsletters`                                               |
-| `https://www.bbc.com/pages/download-the-bbc-app`             | `*://www.bbc.com/newsletters`, `*://www.bbc.com/pages/download-the-bbc-app` |
-| `https://www.bbc.com/video/docs`                             | `*://www.bbc.com/newsletters`, `*://www.bbc.com/*/*`                        |
+| Excluded link                                                | Exclude list after the step                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------------- |
+| `http://www.bbc.com/newsletters?RoyalWatch&at_medium=onsite` | `www.bbc.com/newsletters`                                           |
+| `https://www.bbc.com/pages/download-the-bbc-app`             | `www.bbc.com/newsletters`, `www.bbc.com/pages/download-the-bbc-app` |
+| `https://www.bbc.com/video/docs`                             | `www.bbc.com/newsletters`, `www.bbc.com/*/*`                        |
 
 - The first pattern already removes the other newsletter promotions, such as
   `https://www.bbc.com/newsletters?howtosleepbetter&at_medium=onsite`, so the
@@ -240,13 +234,15 @@ such as `https://www.bbc.com/news/articles/c34gdjk1ne8yo`:
 - The third link merges into the second pattern. If a post of the group linked
   to a path with two segments, such as
   `https://www.bbc.com/travel/worlds-table`, the merge would be rejected, and
-  `*://www.bbc.com/video/docs` would be added instead.
+  `www.bbc.com/video/docs` would be added instead.
 
 ## Known limitations
 
 - An item that is not a post can share the shapes and positions of real posts.
   The exclude list removes it after the user sees it. Until then, it appears as
   one feed entry, since entries are identified by their link.
+- An item that has the same host and path as a post, and differs only in its
+  query, such as `/item?id=123`, cannot be excluded.
 - A glob is checked only against the posts of the page when the user creates it.
   A later post can match it and be removed. The user can fix this by editing the
   exclude list.
