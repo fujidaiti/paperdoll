@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Size-Specialized Memory Allocation",
+    "body": "Go 1.27 improves performance of small allocations using size-specialized allocation functions.",
+    "link": "https://go.dev/blog/size-specialized-allocations",
+    "pubDate": "2026-09-16T00:00:00Z"
+  },
+  {
+    "title": "Goroutine Leak Profiles",
+    "body": "Go 1.27 includes new goroutine leak profiles.",
+    "link": "https://go.dev/blog/goroutine-leak-profiles",
+    "pubDate": "2026-09-02T00:00:00Z"
+  },
+  {
+    "title": "Generic Methods",
+    "body": "Go 1.27 adds generic methods—a highly desired language feature.",
+    "link": "https://go.dev/blog/generic-methods",
+    "pubDate": "2026-08-26T00:00:00Z"
+  },
+  {
+    "title": "Go 1.27 is released",
+    "body": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more.",
+    "link": "https://go.dev/blog/go1.27",
+    "pubDate": "2026-08-19T00:00:00Z"
+  },
+  {
+    "title": "Introducing the pkg.go.dev API",
+    "body": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly.",
+    "link": "https://go.dev/blog/pkgsite-api",
+    "pubDate": "2026-05-21T00:00:00Z"
+  },
+  {
+    "title": "Type Construction and Cycle Detection",
+    "body": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types.",
+    "link": "https://go.dev/blog/type-construction-and-cycle-detection",
+    "pubDate": "2026-03-24T00:00:00Z"
+  },
+  {
+    "title": "//go:fix inline and the source-level inliner",
+    "body": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations.",
+    "link": "https://go.dev/blog/inliner",
+    "pubDate": "2026-03-10T00:00:00Z"
+  },
+  {
+    "title": "Allocating on the Stack",
+    "body": "A description of some of the recent changes to do allocations on the stack instead of the heap.",
+    "link": "https://go.dev/blog/allocation-optimizations",
+    "pubDate": "2026-02-27T00:00:00Z"
+  },
+  {
+    "title": "Using go fix to modernize Go code",
+    "body": "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go.",
+    "link": "https://go.dev/blog/gofix",
+    "pubDate": "2026-02-17T00:00:00Z"
+  },
+  {
+    "title": "Go 1.26 is released",
+    "body": "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more.",
+    "link": "https://go.dev/blog/go1.26",
+    "pubDate": "2026-02-10T00:00:00Z"
+  }
+]
