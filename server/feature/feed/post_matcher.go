@@ -12,7 +12,7 @@ type PostField string
 
 const (
 	PostTitle PostField = "title"
-	// PostBody is the content of a post as marked-up text (see bodyMarkup).
+	// PostBody is the text of a post as one line (see bodyText).
 	PostBody      PostField = "body"
 	PostLink      PostField = "link"
 	PostThumbnail PostField = "thumbnail"
@@ -24,7 +24,8 @@ const (
 func (f PostField) valueOf(n *PageNode) (string, bool) {
 	switch f {
 	case PostBody:
-		return bodyMarkup(n), true
+		t := bodyText(n)
+		return t, t != ""
 	case PostLink, PostThumbnail:
 		return n.Link, n.Link != ""
 	case PostTitle, PostPubDate:
@@ -239,42 +240,21 @@ func ExtractPosts(doc *PageDocument, matchers []PostMatcher) []ExtractedPost {
 	return result
 }
 
-// bodyMarkup converts the values in the subtree of n into the marked-up text
-// of a post body, one block per value, separated by a blank line:
-//
-//   - "# heading" (one "#" per level, h1 to h6)
-//   - "![alt](url)" for an image
-//   - "[text](url)" for a text with a link
-//   - the plain text of other values
-func bodyMarkup(n *PageNode) string {
-	var blocks []string
+// bodyText returns the text of the values in the subtree of n, joined with
+// spaces. Images and times are left out, and links keep only their text. A
+// body is a short summary shown below the title of a post, so its structure
+// does not matter.
+func bodyText(n *PageNode) string {
+	var texts []string
 	var visit func(n *PageNode)
 	visit = func(n *PageNode) {
-		if !n.isValue() {
-			for _, c := range n.Children {
-				visit(c)
-			}
-			return
+		if n.Kind != "img" && n.Kind != "time" {
+			texts = append(texts, n.Val)
 		}
-		if n.Kind == "img" {
-			blocks = append(blocks, "!["+n.Val+"]("+n.Link+")")
-			return
+		for _, c := range n.Children {
+			visit(c)
 		}
-		text := n.Val
-		if n.Link != "" {
-			if text == "" {
-				text = n.Link
-			}
-			text = "[" + text + "](" + n.Link + ")"
-		}
-		if text == "" {
-			return
-		}
-		if headingTags[n.Kind] {
-			text = strings.Repeat("#", int(n.Kind[1]-'0')) + " " + text
-		}
-		blocks = append(blocks, text)
 	}
 	visit(n)
-	return strings.Join(blocks, "\n\n")
+	return normalizeSpace(strings.Join(texts, " "))
 }

@@ -43,9 +43,10 @@ func (n *PageNode) isValue() bool { return len(n.Children) == 0 }
 //	link  link target, or the image URL for an image; http and https only
 //	ch    child nodes
 //
-// Text formatting, line breaks and links inside text are dropped: a value is
-// plain text on one line, and keeps a link only when the link covers the
-// whole text.
+// Text formatting and line breaks are dropped: a value is plain text on one
+// line. A value keeps a link when the link covers the whole text. A link that
+// covers only part of a text splits it into values: the text before the link,
+// the link, and the text after it.
 type PageDocument struct {
 	URL   string    `json:"url"`
 	Title string    `json:"title"`
@@ -162,29 +163,14 @@ var droppedTags = map[string]bool{
 }
 
 // Elements that only format text, so that their content is part of the
-// surrounding text. Links are included, since a link inside text is dropped.
+// surrounding text. Links are included, but a link splits the text around it
+// (see hasInnerLink).
 var inlineTags = map[string]bool{
 	"a":    true,
 	"span": true, "b": true, "i": true, "em": true, "strong": true,
 	"small": true, "code": true, "mark": true, "sup": true, "sub": true,
 	"u": true, "s": true, "abbr": true, "cite": true, "q": true, "kbd": true,
 	"br": true, "wbr": true, "font": true, "bdi": true, "bdo": true,
-}
-
-// groups reports whether n, an element with the single child only, groups
-// the parts of one field, such as the paragraphs of a body or the links of a
-// tag list. Such an element stays a container, so that a field is the same
-// node whether it has one part or many. Sections and articles also wrap whole
-// pages and posts, so they stay only around a value: merged into a container,
-// they still leave a container.
-func groups(n *html.Node, only *PageNode) bool {
-	switch n.Data {
-	case "blockquote", "ul", "ol":
-		return true
-	case "section", "article":
-		return only.isValue()
-	}
-	return false
 }
 
 var headingTags = map[string]bool{
@@ -265,7 +251,7 @@ func (s *simplifier) convert(n *html.Node) *PageNode {
 			return &PageNode{Kind: "time", Val: val}
 		}
 	}
-	if isTextOnly(n) && !hasDateText(n) {
+	if isTextOnly(n) && !hasDateText(n) && !s.hasInnerLink(n) {
 		return s.textValue(n)
 	}
 
@@ -286,7 +272,7 @@ func (s *simplifier) convert(n *html.Node) *PageNode {
 				text.WriteString(c.Data)
 			}
 		}
-		// A run of a single element, such as a link, is a value of its own.
+		// A run of a single element, such as a span, is a value of its own.
 		if len(elems) == 1 && strings.TrimSpace(text.String()) == "" {
 			if v := s.textValue(elems[0]); v != nil {
 				children = append(children, v)
@@ -307,12 +293,12 @@ func (s *simplifier) convert(n *html.Node) *PageNode {
 		case c.Type == html.TextNode:
 			run = append(run, c)
 		case c.Type == html.ElementNode && (c.Data == "br" || c.Data == "wbr"):
-			// A line break only separates words, so that a link followed by
-			// a break is still a value of its own.
+			// A line break only separates words, so that an element followed
+			// by a break is still a value of its own.
 			if c.Data == "br" {
 				run = append(run, &html.Node{Type: html.TextNode, Data: " "})
 			}
-		case c.Type == html.ElementNode && inlineTags[c.Data] && isTextOnly(c) && !hasDateText(c):
+		case c.Type == html.ElementNode && inlineTags[c.Data] && isTextOnly(c) && !hasDateText(c) && !s.hasLink(c):
 			run = append(run, c)
 		case c.Type == html.ElementNode:
 			if child := s.convert(c); child != nil {
@@ -334,21 +320,12 @@ func (s *simplifier) convert(n *html.Node) *PageNode {
 	if headingTags[n.Data] {
 		kind = n.Data
 	}
-	// A wrapper around a single node is merged into it, unless both have a
-	// link or a kind, since a node holds only one of each, or the wrapper
-	// groups the parts of a field.
-	if len(children) == 1 && !groups(n, children[0]) {
-		c := children[0]
-		conflict := link != "" && c.Link != "" || kind != "" && (c.Kind != "" || !c.isValue())
-		if !conflict {
-			if c.Link == "" {
-				c.Link = link
-			}
-			if c.Kind == "" {
-				c.Kind = kind
-			}
-			return c
-		}
+	// Wrappers stay containers even around a single node, so that a post keeps
+	// its depth when it lacks some of its values. A heading is not a wrapper:
+	// it gives its level to the text inside it.
+	if kind != "" && len(children) == 1 && children[0].isValue() && children[0].Kind == "" {
+		children[0].Kind = kind
+		return children[0]
 	}
 	return &PageNode{Link: link, Children: children}
 }
@@ -409,6 +386,37 @@ func hasDateText(n *html.Node) bool {
 		case c.Type == html.TextNode && isDate(c.Data):
 			return true
 		case c.Type == html.ElementNode && !isDropped(c) && hasDateText(c):
+			return true
+		}
+	}
+	return false
+}
+
+// hasInnerLink reports whether a link under n covers only part of its text,
+// such as a link in a sentence, or a title link followed by ", date". The
+// link then becomes a value of its own, so that it can be a field of a post.
+func (s *simplifier) hasInnerLink(n *html.Node) bool {
+	e := n
+	for {
+		if e.Data == "a" && s.resolve(attr(e, "href")) != "" {
+			return false
+		}
+		next := onlyChild(e)
+		if next == nil {
+			return s.hasLink(e)
+		}
+		e = next
+	}
+}
+
+// hasLink reports whether n or an element under it, apart from dropped
+// elements, is a link.
+func (s *simplifier) hasLink(n *html.Node) bool {
+	if n.Data == "a" && s.resolve(attr(n, "href")) != "" {
+		return true
+	}
+	for c := range n.ChildNodes() {
+		if c.Type == html.ElementNode && !isDropped(c) && s.hasLink(c) {
 			return true
 		}
 	}
