@@ -28,10 +28,11 @@ import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.da
 /// steps: select the area that holds one post, then label the content inside
 /// it as the post's fields on [PostFieldsScreen]. An area is selected by
 /// tapping a piece of content, which selects the element around it, and
-/// widening the selection to the elements around that one. Areas that share
-/// the shape of the selected post become posts of the same group
-/// automatically, with their fields found by the same selectors. Each group
-/// results in one [PostMatcher].
+/// widening the selection to the elements around that one. Areas at the same
+/// shape path as the selected post become posts of the same group
+/// automatically, with their fields found at the same positions. Each group
+/// results in one [PostMatcher]. A post of a group that is not a post, such as
+/// a promotion, can be excluded by its link.
 class const PageAnnotationScreen({required final String file, super.key})
     extends ConsumerWidget {
   @override
@@ -71,18 +72,20 @@ const _groupColors = [
   Color(0xFF00838F),
 ];
 
-/// Whether [node] or the content inside it has a link.
+/// Whether [node] or the content inside it has a link to a page.
 bool _hasLink(PageNode node) =>
-    node.href != null || node.children.any(_hasLink);
+    node.pageLink != null || node.children.any(_hasLink);
 
-/// The posts of all groups in the document, by node id.
+/// The posts of all groups in the document, and the excluded ones with the
+/// pattern that excludes them, by node id.
 class _Marks {
   final posts = <int, _Group>{};
+  final excluded = <int, ({_Group group, String pattern})>{};
 
-  /// The post that contains [node], if any.
+  /// The post or excluded post that contains [node], if any.
   PageNode? enclosingPost(PageNode node) {
     for (PageNode? n = node; n != null; n = n.parent) {
-      if (posts.containsKey(n.id)) {
+      if (posts.containsKey(n.id) || excluded.containsKey(n.id)) {
         return n;
       }
     }
@@ -122,16 +125,19 @@ class _AnnotatorState extends State<_Annotator> {
       for (final post in group.matcher.matchPosts(_document)) {
         marks.posts[post.id] = group;
       }
+      for (final post in group.matcher.matchExcluded(_document)) {
+        marks.excluded[post.id] = (
+          group: group,
+          pattern: group.matcher.excludedBy(post)!,
+        );
+      }
     }
     return marks;
   }
 
   /// Why [node] cannot become a post, or null if it can.
   String? _postRejection(PageNode node, _Marks marks) {
-    final candidates = PostMatcher.fromNode(
-      _document,
-      node,
-    ).matchPosts(_document);
+    final candidates = PostMatcher.fromNode(node).matchPosts(_document);
     for (final MapEntry(key: id, value: group) in marks.posts.entries) {
       final post = _document.nodes[id];
       if (candidates.any(post.overlaps)) {
@@ -161,7 +167,7 @@ class _AnnotatorState extends State<_Annotator> {
   Future<void> _markAsPost(PageNode node) async {
     final number = _nextGroupNumber;
     final matcher = await _labelFields(
-      matcher: PostMatcher.fromNode(_document, node).withEvidentFields(node),
+      matcher: PostMatcher.fromNode(node).withEvidentFields(node),
       post: node,
       groupNumber: number,
     );
@@ -186,6 +192,35 @@ class _AnnotatorState extends State<_Annotator> {
     }
     setState(() {
       group.matcher = matcher;
+      _selected = null;
+    });
+  }
+
+  /// Excludes the link of [post] from [group], or tells the user why it
+  /// cannot be excluded.
+  void _exclude(_Group group, PageNode post) {
+    final link = group.matcher.matchField(post, PostField.link)!.link!;
+    final matcher = group.matcher.withExcluded(_document, link);
+    if (matcher == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'This cannot be excluded, because a post of the group has a link '
+            'with the same host and path.',
+          ),
+        ),
+      );
+      return;
+    }
+    setState(() {
+      group.matcher = matcher;
+      _selected = null;
+    });
+  }
+
+  void _restore(_Group group, String pattern) {
+    setState(() {
+      group.matcher = group.matcher.withoutExcluded(pattern);
       _selected = null;
     });
   }
@@ -224,6 +259,8 @@ class _AnnotatorState extends State<_Annotator> {
     final areas = <PageArea>[
       for (final MapEntry(key: id, value: group) in marks.posts.entries)
         (node: _document.nodes[id], color: group.color, linkOnly: false),
+      for (final id in marks.excluded.keys)
+        (node: _document.nodes[id], color: colorTextMuted, linkOnly: false),
       if (selected != null) selectionArea(selected),
     ];
 
@@ -275,17 +312,25 @@ class _AnnotatorState extends State<_Annotator> {
 
   Widget _buildSheet(PageNode selected, _Marks marks) {
     final group = marks.posts[selected.id];
+    final excluded = marks.excluded[selected.id];
     return _SelectionSheet(
       selected: selected,
       levels: selectionLevels(_tapped ?? selected),
       onSelect: _select,
       group: group,
-      rejection: group == null ? _postRejection(selected, marks) : null,
+      excluded: excluded,
+      rejection: group == null && excluded == null
+          ? _postRejection(selected, marks)
+          : null,
       onCancel: () => _select(null),
       onMarkAsPost: () => unawaited(_markAsPost(selected)),
       onEditGroup: group == null
           ? null
           : () => unawaited(_editGroup(group, selected)),
+      onExclude: group == null ? null : () => _exclude(group, selected),
+      onRestore: excluded == null
+          ? null
+          : () => _restore(excluded.group, excluded.pattern),
       onRemoveGroup: group == null ? null : () => _removeGroup(group),
     );
   }
@@ -332,22 +377,27 @@ class const _StatusFooter({
 }
 
 /// What the selected element holds and what can be done with it. The
-/// element is a post of [group] if it is not null, and cannot become a post
-/// for the reason in [rejection] if it is not null.
+/// element is a post of [group] if it is not null, a post excluded from a
+/// group if [excluded] is not null, and cannot become a post for the reason
+/// in [rejection] if it is not null.
 class const _SelectionSheet({
   required final PageNode selected,
   required final _Group? group,
+  required final ({_Group group, String pattern})? excluded,
   required final String? rejection,
   required final List<PageNode> levels,
   required final void Function(PageNode node) onSelect,
   required final VoidCallback onCancel,
   required final VoidCallback onMarkAsPost,
   required final VoidCallback? onEditGroup,
+  required final VoidCallback? onExclude,
+  required final VoidCallback? onRestore,
   required final VoidCallback? onRemoveGroup,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final group = this.group;
+    final excluded = this.excluded;
     final rejection = this.rejection;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -359,7 +409,7 @@ class const _SelectionSheet({
           overflow: TextOverflow.ellipsis,
         ),
         // A post is selected as a whole.
-        if (group == null)
+        if (group == null && excluded == null)
           SelectionSlider(
             selected: selected,
             levels: levels,
@@ -368,6 +418,13 @@ class const _SelectionSheet({
         const Gap(spacingSm),
         if (rejection != null) ...[
           CaptionText(rejection),
+          const Gap(spacingSm),
+        ],
+        if (excluded != null) ...[
+          CaptionText(
+            'Excluded from group ${excluded.group.number} by '
+            '${excluded.pattern}.',
+          ),
           const Gap(spacingSm),
         ],
         Row(
@@ -379,12 +436,15 @@ class const _SelectionSheet({
                 onPressed: onRemoveGroup,
                 child: const Text('Remove group'),
               ),
+              TextButton(onPressed: onExclude, child: const Text('Exclude')),
               const Gap(spacingSm),
               FilledButton(
                 onPressed: onEditGroup,
                 child: const Text('Edit fields'),
               ),
-            ] else if (rejection == null)
+            ] else if (excluded != null)
+              FilledButton(onPressed: onRestore, child: const Text('Restore'))
+            else if (rejection == null)
               FilledButton(
                 onPressed: onMarkAsPost,
                 child: const Text('Mark as post'),
@@ -421,8 +481,8 @@ class const _Thumbnail({required final String url, required final double size})
   }
 }
 
-/// The posts extracted with the current matchers, and the matchers as they
-/// would be sent to the server.
+/// The posts extracted with the current matchers, merged by link, and the
+/// matchers as they would be sent to the server.
 class const _Preview({
   required final PageDocument document,
   required final List<_Group> groups,
@@ -430,13 +490,14 @@ class const _Preview({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final posts = extractPosts(document, [for (final g in groups) g.matcher]);
     return ListView(
       controller: scrollController,
       padding: const EdgeInsets.all(spacingMd),
       children: [
         Row(
           children: [
-            const Expanded(child: HeadingText('Extracted posts')),
+            Expanded(child: HeadingText('${posts.length} post(s)')),
             TextButton.icon(
               icon: const Icon(Icons.copy, size: 18),
               label: const Text('Copy matchers'),
@@ -444,24 +505,23 @@ class const _Preview({
             ),
           ],
         ),
-        for (final group in groups) ...[
-          const Gap(spacingMd),
-          Row(
-            children: [
-              GroupDot(color: group.color),
-              const Gap(spacingSm),
-              Expanded(
-                child: HeadingText(
-                  'Group ${group.number} · '
-                  '${group.matcher.matchPosts(document).length} post(s)',
+        for (final group in groups)
+          if (group.matcher.exclude.isNotEmpty)
+            Row(
+              children: [
+                GroupDot(color: group.color),
+                const Gap(spacingSm),
+                Expanded(
+                  child: CaptionText(
+                    'Group ${group.number} excludes '
+                    '${group.matcher.exclude.join(', ')}',
+                  ),
                 ),
-              ),
-            ],
-          ),
-          for (final post in group.matcher.matchPosts(document)) ...[
-            const AppDivider(),
-            _PreviewPost(matcher: group.matcher, post: post),
-          ],
+              ],
+            ),
+        for (final post in posts) ...[
+          const AppDivider(),
+          _PreviewPost(group: groups[post.matcher], values: post.values),
         ],
       ],
     );
@@ -482,25 +542,26 @@ class const _Preview({
   }
 }
 
+/// One extracted post, with a dot of the color of the [group] that found it.
 class const _PreviewPost({
-  required final PostMatcher matcher,
-  required final PageNode post,
+  required final _Group group,
+  required final Map<PostField, String> values,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String? value(PostField field) => switch (matcher.matchField(post, field)) {
-      final node? => field.valueOf(node),
-      null => null,
-    };
-    final thumbnail = value(PostField.thumbnail);
-    final description = value(PostField.description);
-    final body = value(PostField.body);
-    final pubDate = value(PostField.pubDate);
+    final thumbnail = values[PostField.thumbnail];
+    final body = values[PostField.body];
+    final pubDate = values[PostField.pubDate];
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: spacingSm),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Padding(
+            padding: const EdgeInsets.only(top: spacingXs),
+            child: GroupDot(color: group.color),
+          ),
+          const Gap(spacingSm),
           if (thumbnail != null) ...[
             _Thumbnail(url: thumbnail, size: 64),
             const Gap(spacingSm),
@@ -510,17 +571,11 @@ class const _PreviewPost({
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HeadingText(
-                  value(PostField.title) ?? '(no title)',
+                  values[PostField.title] ?? '(no title)',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 if (pubDate != null) CaptionText(pubDate),
-                if (description != null)
-                  BodyText(
-                    description,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                  ),
                 if (body != null) ...[
                   const Gap(spacingXs),
                   Container(
@@ -537,7 +592,7 @@ class const _PreviewPost({
                   const Gap(spacingXs),
                 ],
                 CaptionText(
-                  value(PostField.link) ?? '(no link)',
+                  values[PostField.link] ?? '(no link)',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

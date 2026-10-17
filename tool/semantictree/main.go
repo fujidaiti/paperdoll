@@ -1,16 +1,19 @@
 // Command semantictree converts sample web pages into semantic trees (JSON),
-// a prototype of the page format that post matchers will run on.
+// which post matchers run on (see MATCHER.md). It prototypes the cleanup the
+// server will do before handing a page to the client, and the client's page
+// annotation screen loads the trees as assets.
 //
 // Usage (from the repository root):
 //
-//	go run ./tool/semantictree -out DIR [-in server/feature/feed/testdata/source]
+//	go run ./tool/semantictree [-in server/feature/feed/testdata/source] [-out client/assets/page_watch]
 //
-// The trees of the sample pages are in testdata, written by:
+// The trees of the sample pages are also in testdata, written by:
 //
 //	go run ./tool/semantictree -out tool/semantictree/testdata/source
 //	go run ./tool/semantictree -in server/feature/feed/testdata/robustness -out tool/semantictree/testdata/robustness
 //
-// Output format: one JSON file per page.
+// Output format: one JSON file per page, plus index.json listing them as
+// [{"file": "...", "url": "...", "title": "..."}].
 //
 //	{"url": "...", "title": "...", "root": Node}
 //
@@ -69,11 +72,8 @@ type Document struct {
 
 func main() {
 	in := flag.String("in", "server/feature/feed/testdata/source", "directory of sample HTML files")
-	out := flag.String("out", "", "output directory")
+	out := flag.String("out", "client/assets/page_watch", "output directory")
 	flag.Parse()
-	if *out == "" {
-		log.Fatal("-out is required")
-	}
 
 	files, err := filepath.Glob(filepath.Join(*in, "*.html"))
 	if err != nil {
@@ -83,6 +83,12 @@ func main() {
 	if err := os.MkdirAll(*out, 0o755); err != nil {
 		log.Fatal(err)
 	}
+	type IndexEntry struct {
+		File  string `json:"file"`
+		URL   string `json:"url"`
+		Title string `json:"title"`
+	}
+	var index []IndexEntry
 	for _, f := range files {
 		name := strings.TrimSuffix(filepath.Base(f), ".html")
 		raw, err := os.ReadFile(f)
@@ -109,7 +115,15 @@ func main() {
 		if err := os.WriteFile(filepath.Join(*out, name+".json"), data, 0o644); err != nil {
 			log.Fatal(err)
 		}
+		index = append(index, IndexEntry{File: name + ".json", URL: doc.URL, Title: doc.Title})
 		fmt.Printf("%-50s %8d -> %8d bytes\n", filepath.Base(f), len(raw), len(data))
+	}
+	data, err := json.MarshalIndent(index, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(*out, "index.json"), data, 0o644); err != nil {
+		log.Fatal(err)
 	}
 }
 

@@ -22,7 +22,7 @@ typedef PostFieldsArgs = ({
 });
 
 /// Lets the user label the content of one post as the post's fields. The
-/// other posts of the group get their fields with the same selectors.
+/// other posts of the group get their fields at the same positions.
 ///
 /// The screen pops with the updated [PostMatcher] when the user is done, or
 /// with nothing when the user leaves without finishing. Leaving asks first
@@ -76,16 +76,11 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 
   /// Whether [field] cannot be added to an element labeled with [labels].
-  /// An element provides at most one text value: a title, a description, a
-  /// body or a date. A link can be added to any of them, such as a title
-  /// that links to the post.
+  /// An element provides at most one text value: a title, a body or a date.
+  /// A link can be added to any of them, such as a title that links to the
+  /// post.
   bool _conflicts(PostField field, List<PostField> labels) {
-    const texts = {
-      PostField.title,
-      PostField.description,
-      PostField.body,
-      PostField.pubDate,
-    };
+    const texts = {PostField.title, PostField.body, PostField.pubDate};
     return texts.contains(field) &&
         labels.any((label) => label != field && texts.contains(label));
   }
@@ -130,42 +125,27 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     }
   }
 
-  Future<void> _onTapLine(List<PageNode> line) async {
-    // A line of several pieces selects the content that holds them, and its
-    // pieces, which are too small to tap, are picked from a sheet.
-    final node = line.length == 1 ? line.first : line.first.parent!;
-    // The innermost labeled element that the line is part of. A link around
-    // other content is labeled only on its own line, as it is tinted.
+  void _onTapLine(PageNode line) {
+    // The innermost labeled element that the line is part of. A container
+    // labeled as the link is labeled only on its own line, as it is tinted.
     PageNode? labeled;
     for (final field in PostField.values) {
       final n = _fieldNode(field);
       if (n == null) {
         continue;
       }
-      final covers = field == PostField.link && n.children.isNotEmpty
-          ? identical(line.first, n)
-          : line.every(n.contains);
+      final covers = field == PostField.link && !n.isValue
+          ? identical(line, n)
+          : n.contains(line);
       if (covers && (labeled == null || labeled.contains(n))) {
         labeled = n;
       }
     }
-    final target = labeled ?? node;
     setState(() {
-      _selected = target;
-      _tapped = node;
+      _selected = labeled ?? line;
+      _tapped = line;
       _isLabeling = false;
     });
-    if (line.length == 1 || !identical(target, node)) {
-      return;
-    }
-    final piece = await pickLinePiece(context, line);
-    if (piece != null && mounted && identical(_selected, node)) {
-      setState(() {
-        _selected = piece;
-        _tapped = piece;
-        _isLabeling = false;
-      });
-    }
   }
 
   @override
@@ -208,10 +188,10 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
                 itemBuilder: (context, index) {
                   final line = _lines[index];
                   return PageLine(
-                    key: ValueKey(line.first.id),
-                    nodes: line,
+                    key: ValueKey(line.id),
+                    node: line,
                     areas: areas,
-                    onTap: (line) => unawaited(_onTapLine(line)),
+                    onTap: _onTapLine,
                   );
                 },
               ),
@@ -311,14 +291,16 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
 }
 
 /// Which fields are labeled so far, with a button to finish labeling, which
-/// is enabled once the link is labeled.
+/// is enabled once the title and the link are labeled.
 class const _StatusFooter({
   required final PostMatcher matcher,
   required final VoidCallback onDone,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final hasLink = matcher.fields.containsKey(PostField.link);
+    final canFinish =
+        matcher.fields.containsKey(PostField.title) &&
+        matcher.fields.containsKey(PostField.link);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -344,7 +326,7 @@ class const _StatusFooter({
                 ),
                 const Gap(spacingSm),
                 FilledButton(
-                  onPressed: hasLink ? onDone : null,
+                  onPressed: canFinish ? onDone : null,
                   child: const Text('Done'),
                 ),
               ],

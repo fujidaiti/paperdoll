@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/gestures.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:paperdoll/core/ui/tokens/app_colors.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
@@ -14,43 +13,16 @@ import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
 // Widgets that show a page as its content, shared by the screen that selects
 // posts and the screen that labels the fields of a post.
 
-/// Elements that flow within a line of text rather than starting a new one.
-const _inlineTags = {
-  '#text', 'a', 'time', 'span', 'b', 'strong', 'i', 'em', 'code', 'small', //
-  'abbr', 'cite', 'q', 'mark', 'sup', 'sub', 'u', 's',
-};
-
-/// Splits the content of [nodes] into lines. A line is a node without
-/// children, or a run of such sibling nodes inside mixed content, such as the
-/// text and links of one paragraph.
-///
-/// A link around other content, such as a card, has no text of its own, so
-/// it gets a line that shows its target before its content.
-List<List<PageNode>> layOutLines(Iterable<PageNode> nodes) {
-  final lines = <List<PageNode>>[];
+/// Splits the content of [nodes] into lines: one line for each value, and
+/// one for each container with a link, such as a card, which shows its target
+/// before its content.
+List<PageNode> layOutLines(Iterable<PageNode> nodes) {
+  final lines = <PageNode>[];
   void visit(PageNode node) {
-    if (node.children.isEmpty || node.href != null) {
-      lines.add([node]);
+    if (node.isValue || node.link != null) {
+      lines.add(node);
     }
-    if (node.children.isEmpty) {
-      return;
-    }
-    final isMixed = node.children.any((c) => c.isText);
-    List<PageNode>? run;
-    for (final child in node.children) {
-      if (isMixed &&
-          child.children.isEmpty &&
-          _inlineTags.contains(child.tag)) {
-        if (run == null) {
-          lines.add(run = [child]);
-        } else {
-          run.add(child);
-        }
-      } else {
-        run = null;
-        visit(child);
-      }
-    }
+    node.children.forEach(visit);
   }
 
   nodes.forEach(visit);
@@ -60,36 +32,30 @@ List<List<PageNode>> layOutLines(Iterable<PageNode> nodes) {
 /// The node of the first line of [node].
 PageNode firstLeaf(PageNode node) {
   var n = node;
-  while (n.children.isNotEmpty && n.href == null) {
+  while (n.children.isNotEmpty && n.link == null) {
     n = n.children.first;
   }
   return n;
 }
 
-/// A short description of what [node] holds, without tag names.
+/// A short description of what [node] holds.
 String describeNode(PageNode node) {
   if (node.isImage) {
     return 'An image';
   }
-  if (node.isEmbed) {
-    return 'Embedded content';
-  }
-  if (node.children.isEmpty) {
-    return node.href != null ? 'A link' : 'A text';
+  if (node.isValue) {
+    return node.link != null ? 'A link' : 'A text';
   }
   var texts = 0;
   var links = 0;
   var images = 0;
-  var embeds = 0;
   void visit(PageNode n) {
-    if (n.href != null) {
+    if (n.pageLink != null) {
       links++;
     }
     if (n.isImage) {
       images++;
-    } else if (n.isEmbed) {
-      embeds++;
-    } else if (n.children.isEmpty) {
+    } else if (n.isValue) {
       texts++;
     }
     n.children.forEach(visit);
@@ -101,7 +67,6 @@ String describeNode(PageNode node) {
     if (texts > 0) count(texts, 'text'),
     if (links > 0) count(links, 'link'),
     if (images > 0) count(images, 'image'),
-    if (embeds > 0) count(embeds, 'embed'),
   ];
   return counts.join(', ');
 }
@@ -115,7 +80,7 @@ String describeNode(PageNode node) {
 typedef PageArea = ({PageNode node, Color color, bool linkOnly});
 
 bool _isLinkOnly(PageArea area) =>
-    area.linkOnly && area.node.href != null && area.node.children.isNotEmpty;
+    area.linkOnly && area.node.link != null && !area.node.isValue;
 
 PageNode _lastLeaf(PageNode node) {
   var n = node;
@@ -126,123 +91,39 @@ PageNode _lastLeaf(PageNode node) {
 }
 
 /// One line of the page. Each of [areas] that covers the line tints it, so
-/// that nested areas look darker. An area that covers only a piece of the
-/// line, such as a link in a paragraph, tints the background of that piece
-/// instead.
+/// that nested areas look darker.
 ///
-/// A line is at least as tall as a touch target, and a tap anywhere on it
-/// reports the whole line, because the pieces of a line are too small to tap
-/// one by one. A long press on a link opens it in the in-app browser.
+/// A line is at least as tall as a touch target. A long press on a link opens
+/// it in the in-app browser.
 class const PageLine({
-  required final List<PageNode> nodes,
+  required final PageNode node,
   required final List<PageArea> areas,
-  required final void Function(List<PageNode> line) onTap,
+  required final void Function(PageNode node) onTap,
   super.key,
-}) extends StatefulWidget {
-  @override
-  State<PageLine> createState() => _PageLineState();
-}
-
-class _PageLineState extends State<PageLine> {
-  /// Tells which piece of a line with several pieces is under the finger.
-  ///
-  /// A span takes only one recognizer, so a long press is handled by the
-  /// whole line, which needs to know the piece under the finger. The tap
-  /// recognizer reports it on tap down, which comes before a long press. A
-  /// tap on a piece wins over the line's own tap, so it reports the line too.
-  late final _recognizers = [
-    if (widget.nodes.length > 1)
-      for (final node in widget.nodes)
-        TapGestureRecognizer()
-          ..onTapDown = ((_) => _pressed = node)
-          ..onTap = _onTap,
-  ];
-
-  /// The piece of the line under the finger, or null when the line has
-  /// several pieces and the finger is on none of them.
-  PageNode? _pressed;
-
-  void _onTap() {
-    widget.onTap(widget.nodes);
-    // A tap can show a sheet below the page, which then covers the line if it
-    // was near the bottom, so the line is scrolled back into view.
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        Scrollable.ensureVisible(
-          context,
-          duration: const Duration(milliseconds: 200),
-          alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
-        );
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    for (final recognizer in _recognizers) {
-      recognizer.dispose();
-    }
-    super.dispose();
-  }
-
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final nodes = widget.nodes;
-    final first = nodes.first;
     // Outer areas first, so that inner tints are drawn over outer ones.
     final boxes =
-        widget.areas
+        areas
             .where(
               (a) => _isLinkOnly(a)
-                  ? identical(first, a.node)
-                  : nodes.every(a.node.contains),
+                  ? identical(node, a.node)
+                  : a.node.contains(node),
             )
             .toList()
           ..sort((a, b) => a.node.depth.compareTo(b.node.depth));
-
-    Widget content;
-    if (nodes.length == 1) {
-      content = _Content(node: first);
-    } else {
-      content = Text.rich(
-        TextSpan(
-          children: [
-            for (final (i, node) in nodes.indexed) ...[
-              if (i > 0) const TextSpan(text: ' '),
-              _textSpan(
-                node,
-                recognizer: _recognizers[i],
-                highlight: widget.areas
-                    .where(
-                      (a) =>
-                          !_isLinkOnly(a) &&
-                          a.node.contains(node) &&
-                          !boxes.contains(a),
-                    )
-                    .map((a) => a.color.withValues(alpha: _tintAlpha))
-                    .fold<Color?>(
-                      null,
-                      (below, tint) =>
-                          below == null ? tint : Color.alphaBlend(tint, below),
-                    ),
-              ),
-            ],
-          ],
-        ),
-      );
-    }
-    content = _frameLine(first, content);
     // The tints are painted over the content rather than wrapped around it,
     // so that annotating does not change the layout, and so that images do
     // not hide them. A tint leaves a thin gap at the ends of its area to keep
     // adjacent areas apart.
-    content = Stack(
+    final content = Stack(
       children: [
-        content,
+        _frameLine(node, _Content(node: node)),
         for (final area in boxes)
           Positioned.fill(
-            top: nodes.contains(firstLeaf(area.node)) ? 2 : 0,
-            bottom: _isLinkOnly(area) || nodes.contains(_lastLeaf(area.node))
+            top: identical(firstLeaf(area.node), node) ? 2 : 0,
+            bottom: _isLinkOnly(area) || identical(_lastLeaf(area.node), node)
                 ? 2
                 : 0,
             child: IgnorePointer(
@@ -253,21 +134,28 @@ class _PageLineState extends State<PageLine> {
           ),
       ],
     );
-    return Listener(
-      onPointerDown: (_) => _pressed = nodes.length == 1 ? first : null,
-      child: InkWell(
-        onTap: _onTap,
-        onLongPress: nodes.any((n) => n.href != null)
-            ? () {
-                if (_pressed?.href case final href?) {
-                  unawaited(openInAppLink(context, href));
-                }
-              }
-            : null,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: spacingMd),
-          child: content,
-        ),
+    return InkWell(
+      onTap: () {
+        onTap(node);
+        // A tap can show a sheet below the page, which then covers the line
+        // if it was near the bottom, so the line is scrolled back into view.
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (context.mounted) {
+            Scrollable.ensureVisible(
+              context,
+              duration: const Duration(milliseconds: 200),
+              alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+            );
+          }
+        });
+      },
+      onLongPress: switch (node.pageLink) {
+        final link? => () => unawaited(openInAppLink(context, link)),
+        null => null,
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: spacingMd),
+        child: content,
       ),
     );
   }
@@ -283,7 +171,7 @@ Widget _frameLine(PageNode first, Widget content) => Container(
   constraints: const BoxConstraints(minHeight: kMinInteractiveDimension),
   alignment: Alignment.centerLeft,
   padding: EdgeInsets.only(
-    top: _headingLevel(first) != null ? spacingMd : spacingXs,
+    top: first.headingLevel != null ? spacingMd : spacingXs,
     bottom: spacingXs,
   ),
   child: content,
@@ -308,43 +196,29 @@ class const PageBlock({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // The same lines as [layOutLines], without descending into children.
-    final items = <Object>[
-      // A link around other content shows its target first.
-      if (node.href != null) [node],
+    // The same lines as [layOutLines], without descending into containers.
+    final items = <(PageNode, {bool isLine})>[
+      // A container with a link shows its target first.
+      if (node.link != null) (node, isLine: true),
+      for (final child in node.children)
+        // A tappable value, such as a link in a list of links, is a block so
+        // that it can be selected.
+        (child, isLine: child.isValue && !tappable(child)),
     ];
-    final isMixed = node.children.any((c) => c.isText);
-    List<PageNode>? run;
-    for (final child in node.children) {
-      if (child.children.isEmpty &&
-          isMixed &&
-          _inlineTags.contains(child.tag)) {
-        if (run == null) {
-          items.add(run = [child]);
-        } else {
-          run.add(child);
-        }
-      } else {
-        run = null;
-        // A tappable line of its own, such as a link in a list of links, is
-        // a block so that it can be selected.
-        items.add(child.children.isEmpty && !tappable(child) ? [child] : child);
-      }
-    }
     Widget content = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        for (final item in items)
-          if (item case final PageNode child)
+        for (final (child, :isLine) in items)
+          if (isLine)
+            _BlockLine(key: ValueKey(child.id), node: child)
+          else
             PageBlock(
               key: ValueKey(child.id),
               node: child,
               areas: areas,
               onTap: onTap,
               tappable: tappable,
-            )
-          else if (item case final List<PageNode> line)
-            _BlockLine(key: ValueKey(line.first.id), nodes: line),
+            ),
       ],
     );
     // A tint is painted over the content so that images do not hide it, and
@@ -374,152 +248,40 @@ class const PageBlock({
 
 /// A line inside a [PageBlock]. It does not take taps, so that a tap reaches
 /// the block, but a long press on a link opens it.
-class const _BlockLine({required final List<PageNode> nodes, super.key})
-    extends StatefulWidget {
-  @override
-  State<_BlockLine> createState() => _BlockLineState();
-}
-
-class _BlockLineState extends State<_BlockLine> {
-  /// The long press recognizers of the links of a line with several pieces.
-  /// A quick tap is not a long press, so it still reaches the block.
-  late final _recognizers = [
-    for (final node in widget.nodes)
-      if (widget.nodes.length > 1 && node.href != null)
-        LongPressGestureRecognizer()
-          ..onLongPress = () => unawaited(openInAppLink(context, node.href!))
-      else
-        null,
-  ];
-
-  @override
-  void dispose() {
-    for (final recognizer in _recognizers) {
-      recognizer?.dispose();
-    }
-    super.dispose();
-  }
-
+class const _BlockLine({required final PageNode node, super.key})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final nodes = widget.nodes;
-    final first = nodes.first;
-    if (nodes.length > 1) {
-      return _frameLine(
-        first,
-        Text.rich(
-          TextSpan(
-            children: [
-              for (final (i, node) in nodes.indexed) ...[
-                if (i > 0) const TextSpan(text: ' '),
-                _textSpan(node, recognizer: _recognizers[i]),
-              ],
-            ],
-          ),
-        ),
-      );
-    }
     return GestureDetector(
-      onLongPress: first.href == null
-          ? null
-          : () => unawaited(openInAppLink(context, first.href!)),
-      child: _frameLine(first, _Content(node: first)),
+      onLongPress: switch (node.pageLink) {
+        final link? => () => unawaited(openInAppLink(context, link)),
+        null => null,
+      },
+      child: _frameLine(node, _Content(node: node)),
     );
   }
 }
 
-/// The level of the heading that [node] belongs to, if any.
-int? _headingLevel(PageNode node) {
-  for (PageNode? n = node; n != null; n = n.parent) {
-    if (n.tag case 'h1' || 'h2' || 'h3' || 'h4' || 'h5' || 'h6') {
-      return int.parse(n.tag[1]);
-    }
-  }
-  return null;
-}
-
-bool _isInBlockquote(PageNode node) {
-  for (PageNode? n = node; n != null; n = n.parent) {
-    if (n.tag == 'blockquote') {
-      return true;
-    }
-  }
-  return false;
-}
-
-/// The text of [node], styled the way the page would show it. The
-/// [recognizer] is set on every leaf span because a tap only reaches the
-/// span under it. A list item starts with a bullet unless [bullet] is false.
-TextSpan _textSpan(
-  PageNode node, {
-  GestureRecognizer? recognizer,
-  Color? highlight,
-  bool bullet = true,
-}) {
-  var style = switch (_headingLevel(node)) {
+/// The text of [node], styled the way the page would show it. The text of a
+/// link without text, such as a card, is its target.
+TextSpan _textSpan(PageNode node) {
+  var style = switch (node.headingLevel) {
     1 => textTitle.copyWith(fontSize: 26),
     2 => textTitle,
     3 => textHeading.copyWith(fontWeight: FontWeight.bold),
     final _? => textBody.copyWith(fontWeight: FontWeight.bold),
-    null => textBody,
+    null => node.isTime ? textCaption : textBody,
   };
-  if (node.tag == 'time' || node.tag == 'small') {
-    style = textCaption;
-  }
-  if (node.tag case 'b' || 'strong') {
-    style = style.copyWith(fontWeight: FontWeight.bold);
-  }
-  if (node.tag case 'i' || 'em' || 'cite' || 'q') {
-    style = style.copyWith(fontStyle: FontStyle.italic);
-  }
-  if (_isInBlockquote(node)) {
-    style = style.copyWith(fontStyle: FontStyle.italic, color: colorTextMuted);
-  }
-  if (node.tag case 'pre' || 'code') {
-    style = style.copyWith(fontFamily: 'monospace');
-  }
-  if (highlight != null) {
-    style = style.copyWith(backgroundColor: highlight);
-  }
-  // The text of a link without text is its target.
-  var text = node.text;
-  if (node.href case final href?) {
+  var text = node.isValue ? node.val : null;
+  if (node.link case final link?) {
     style = style.copyWith(decoration: TextDecoration.underline);
-    text ??= href;
+    text ??= link;
   }
-  final isListItem =
-      bullet &&
-      (node.tag == 'li' ||
-          (node.parent?.tag == 'li' &&
-              identical(node.parent!.children.first, node)));
-
-  TextSpan rich(InlineNode inline) => switch (inline.tag) {
-    '#text' => TextSpan(text: inline.text, recognizer: recognizer),
-    'br' => TextSpan(text: '\n', recognizer: recognizer),
-    final tag => TextSpan(
-      style: switch (tag) {
-        'b' => const TextStyle(fontWeight: FontWeight.bold),
-        'i' => const TextStyle(fontStyle: FontStyle.italic),
-        'code' => const TextStyle(fontFamily: 'monospace'),
-        _ => null,
-      },
-      children: [for (final child in inline.children) rich(child)],
-    ),
-  };
-
-  return TextSpan(
-    style: style,
-    children: [
-      if (isListItem) TextSpan(text: '•  ', recognizer: recognizer),
-      if (node.rich case final inlines?)
-        for (final inline in inlines) rich(inline)
-      else
-        TextSpan(text: text ?? '', recognizer: recognizer),
-    ],
-  );
+  return TextSpan(text: text ?? '', style: style);
 }
 
-/// A node without children shown as it would appear on the page.
+/// A value, or the link line of a container, shown as it would appear on the
+/// page.
 class const _Content({required final PageNode node}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -527,7 +289,7 @@ class const _Content({required final PageNode node}) extends StatelessWidget {
       return ConstrainedBox(
         constraints: const BoxConstraints(maxHeight: 200),
         child: Image.network(
-          node.src!,
+          node.link!,
           fit: BoxFit.contain,
           alignment: Alignment.centerLeft,
           // Some images, such as SVG icons, cannot be decoded.
@@ -535,41 +297,13 @@ class const _Content({required final PageNode node}) extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Icon(Icons.image_outlined, color: colorTextMuted),
-              if (node.alt case final alt? when alt.isNotEmpty) ...[
+              if (node.val case final alt? when alt.isNotEmpty) ...[
                 const Gap(spacingXs),
                 Flexible(child: CaptionText(alt)),
               ],
             ],
           ),
         ),
-      );
-    }
-    if (node.isEmbed) {
-      return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(spacingMd),
-        color: colorSurface,
-        child: Row(
-          children: [
-            const Icon(Icons.smart_display_outlined, color: colorTextMuted),
-            const Gap(spacingSm),
-            Expanded(
-              child: CaptionText(
-                Uri.tryParse(node.src!)?.host ?? node.src!,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-    if (node.tag == 'pre') {
-      return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(spacingSm),
-        color: colorSurface,
-        child: Text.rich(_textSpan(node)),
       );
     }
     return Text.rich(_textSpan(node));
@@ -591,7 +325,6 @@ class const GroupDot({required final Color color, super.key})
 /// The color of the tint over the content labeled as [field].
 Color fieldColor(PostField field) => switch (field) {
   PostField.title => const Color(0xFF1565C0),
-  PostField.description => const Color(0xFF00897B),
   PostField.body => const Color(0xFF6A1B9A),
   PostField.link => const Color(0xFFEF6C00),
   PostField.thumbnail => const Color(0xFFD81B60),
@@ -674,110 +407,6 @@ class const SelectionSlider({
   }
 }
 
-/// Shows the line of [pieces], which are too small to tap on the page,
-/// zoomed in a sheet, and returns the piece the user picks, or null if the
-/// user closes the sheet.
-Future<PageNode?> pickLinePiece(BuildContext context, List<PageNode> pieces) {
-  return showModalBottomSheet<PageNode>(
-    context: context,
-    showDragHandle: true,
-    builder: (context) => SafeArea(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(spacingMd, 0, spacingMd, spacingMd),
-        child: SizedBox(
-          width: double.infinity,
-          child: _ZoomedLine(
-            pieces: pieces,
-            onPick: (piece) => Navigator.pop(context, piece),
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-/// A line shown larger, in the same flow as on the page, so that each piece
-/// is a touch target: the lines are at least [kMinInteractiveDimension] tall,
-/// and a piece narrower than that is widened.
-class const _ZoomedLine({
-  required final List<PageNode> pieces,
-  required final void Function(PageNode piece) onPick,
-}) extends StatefulWidget {
-  @override
-  State<_ZoomedLine> createState() => _ZoomedLineState();
-}
-
-class _ZoomedLineState extends State<_ZoomedLine> {
-  static const _scaler = TextScaler.linear(1.5);
-
-  late final _recognizers = [
-    for (final piece in widget.pieces)
-      TapGestureRecognizer()..onTap = () => widget.onPick(piece),
-  ];
-
-  @override
-  void dispose() {
-    for (final recognizer in _recognizers) {
-      recognizer.dispose();
-    }
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // Each piece has a background so that the user can tell where it ends.
-    final background = colorText.withValues(alpha: 0.06);
-    return Text.rich(
-      TextSpan(
-        children: [
-          for (final (i, piece) in widget.pieces.indexed) ...[
-            if (i > 0) const TextSpan(text: ' '),
-            switch (_textSpan(
-              piece,
-              recognizer: _recognizers[i],
-              highlight: background,
-              bullet: false,
-            )) {
-              final span when _isNarrow(span) => WidgetSpan(
-                alignment: PlaceholderAlignment.middle,
-                // The text scaler scales the widget too, so its size is set
-                // before scaling.
-                child: GestureDetector(
-                  onTap: () => widget.onPick(piece),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints.tight(
-                      Size.square(kMinInteractiveDimension / _scaler.scale(1)),
-                    ),
-                    child: Center(child: Text.rich(span)),
-                  ),
-                ),
-              ),
-              final span => span,
-            },
-          ],
-        ],
-      ),
-      textScaler: _scaler,
-      // The strut is scaled with the text, which makes lines 48 px tall.
-      strutStyle: StrutStyle(
-        fontSize: textBody.fontSize,
-        height: kMinInteractiveDimension / _scaler.scale(textBody.fontSize!),
-      ),
-    );
-  }
-
-  bool _isNarrow(TextSpan span) {
-    final painter = TextPainter(
-      text: span,
-      textScaler: _scaler,
-      textDirection: TextDirection.ltr,
-    )..layout();
-    final width = painter.width;
-    painter.dispose();
-    return width < kMinInteractiveDimension;
-  }
-}
-
 /// [from] and the elements around it, from the narrowest to the widest, up
 /// to [top], or up to the outermost element below the root if [top] is null.
 ///
@@ -789,7 +418,7 @@ List<PageNode> selectionLevels(PageNode from, {PageNode? top}) {
   var n = from;
   while (!identical(n, top) && n.parent?.parent != null) {
     n = n.parent!;
-    if (n.children.length > 1 || n.href != null) {
+    if (n.children.length > 1 || n.link != null) {
       levels.add(n);
     }
   }

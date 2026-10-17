@@ -1,728 +1,159 @@
 {
   "url": "https://github.blog/ai-and-ml/",
-  "title": "The latest on AI \u0026 ML - The GitHub Blog",
+  "title": "The latest on AI & ML - The GitHub Blog",
   "root": {
-    "tag": "body",
-    "cls": [
-      "archive",
-      "category",
-      "category-ai-and-ml",
-      "category-3293",
-      "wp-embed-responsive",
-      "wp-theme-github-2021",
-      "wp-child-theme-github-2021-child",
-      "font-mktg",
-      "hfeed",
-      "no-sidebar"
-    ],
-    "el": [
-      {
-        "tag": "body",
-        "cls": [
-          "archive",
-          "category",
-          "category-ai-and-ml",
-          "category-3293",
-          "wp-embed-responsive",
-          "wp-theme-github-2021",
-          "wp-child-theme-github-2021-child",
-          "font-mktg",
-          "hfeed",
-          "no-sidebar"
-        ]
-      },
-      { "tag": "main" }
-    ],
     "ch": [
       {
-        "tag": "div",
-        "cls": [
-          "mb-6",
-          "mb-lg-8",
-          "archive-header",
-          "container-xl",
-          "mx-auto",
-          "p-responsive-blog",
-          "col-md-7",
-          "py-5",
-          "pb-md-8",
-          "pt-md-6"
-        ],
-        "el": [
-          { "tag": "div", "cls": ["mb-6", "mb-lg-8"] },
-          { "tag": "header", "cls": ["archive-header"] },
-          {
-            "tag": "div",
-            "cls": ["container-xl", "mx-auto", "p-responsive-blog"]
-          },
-          { "tag": "div", "cls": ["col-md-7"] },
-          { "tag": "div", "cls": ["py-5", "pb-md-8", "pt-md-6"] }
-        ],
         "ch": [
           {
-            "tag": "div",
-            "cls": ["f5", "mb-5", "mb-md-8"],
-            "el": [
-              { "tag": "div", "cls": ["f5", "mb-5", "mb-md-8"] },
-              { "tag": "span" }
-            ],
-            "ch": [
-              {
-                "tag": "a",
-                "cls": ["Link--primary"],
-                "text": "Home",
-                "href": "https://github.blog/",
-                "el": [
-                  { "tag": "span" },
-                  { "tag": "a", "cls": ["Link--primary"] }
-                ]
-              },
-              { "tag": "#text", "text": "/ AI \u0026 ML" }
-            ]
+            "val": "Home / AI & ML"
           },
           {
-            "tag": "h1",
-            "cls": ["h3-mktg", "lh-condensed", "color-fg-default"],
-            "text": "AI \u0026 ML"
+            "kind": "h1",
+            "val": "AI & ML"
           },
           {
-            "tag": "div",
-            "cls": ["mt-3", "text-semibold"],
-            "el": [
-              { "tag": "div", "cls": ["mt-3", "text-semibold"] },
-              { "tag": "p" }
-            ],
-            "ch": [
-              {
-                "tag": "#text",
-                "text": "GitHub engineers and industry thought leaders offer tips, best practices, and practical explainers about various aspects of AI and ML, ranging from fundamental concepts to advanced techniques and real-world applications. For more detailed documentation and practical guides on GitHub’s own AI coding tool, GitHub Copilot, check out"
-              },
-              {
-                "tag": "a",
-                "text": "GitHub’s official documentation",
-                "href": "https://docs.github.com/en/copilot"
-              },
-              { "tag": "#text", "text": "." }
-            ]
+            "val": "GitHub engineers and industry thought leaders offer tips, best practices, and practical explainers about various aspects of AI and ML, ranging from fundamental concepts to advanced techniques and real-world applications. For more detailed documentation and practical guides on GitHub’s own AI coding tool, GitHub Copilot, check out GitHub’s official documentation."
           }
         ]
       },
       {
-        "tag": "div",
-        "cls": ["container-xl", "mx-auto", "p-responsive-blog"],
         "ch": [
           {
-            "tag": "section",
             "ch": [
               {
-                "tag": "h2",
-                "cls": [
-                  "h5-mktg",
-                  "mb-4",
-                  "mb-lg-7",
-                  "pb-3",
-                  "border-bottom",
-                  "color-border-subtle"
-                ],
-                "text": "Featured"
+                "kind": "h2",
+                "val": "Featured"
               },
               {
-                "tag": "div",
-                "cls": ["post-columns", "post-columns--1-1-3-3"],
                 "ch": [
                   {
-                    "tag": "article",
-                    "cls": [
-                      "d-flex",
-                      "flex-wrap",
-                      "gutter-spacious",
-                      "color-border-muted",
-                      "post-card"
-                    ],
                     "ch": [
                       {
-                        "tag": "div",
-                        "cls": ["col-12", "col-lg-5"],
                         "ch": [
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "tease-thumbnail__img",
-                              "cover-image",
-                              "wp-post-image"
-                            ],
-                            "src": "https://github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?resize=800%2C425",
-                            "alt": "Video thumbnail that reads 'AI jargon explained' with photos of GPS, Marlene Mhangami, and Cassidy Williams.",
-                            "el": [
-                              { "tag": "div", "cls": ["d-lg-none", "mb-3"] },
+                            "kind": "img",
+                            "val": "Video thumbnail that reads 'AI jargon explained' with photos of GPS, Marlene Mhangami, and Cassidy Williams.",
+                            "link": "https://github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?resize=800%2C425"
+                          },
+                          {
+                            "ch": [
                               {
-                                "tag": "div",
-                                "cls": [
-                                  "d-block",
-                                  "position-relative",
-                                  "rounded-2",
-                                  "overflow-hidden",
-                                  "tease-thumbnail"
-                                ]
+                                "kind": "h3",
+                                "val": "Should you read the code, is RAG dead, and did Skills kill MCP?",
+                                "link": "https://github.blog/ai-and-ml/should-you-read-the-code-is-rag-dead-and-did-skills-kill-mcp/"
                               },
                               {
-                                "tag": "img",
-                                "cls": [
-                                  "d-block",
-                                  "tease-thumbnail__img",
-                                  "cover-image",
-                                  "wp-post-image"
-                                ]
+                                "val": "We dive into these questions and other AI hot takes on the latest episode of the GitHub Podcast."
                               }
                             ]
                           },
                           {
-                            "tag": "div",
-                            "cls": ["position-relative"],
                             "ch": [
                               {
-                                "tag": "h3",
-                                "cls": ["h4-mktg", "mb-3"],
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": ["Link--primary", "post-card__link"],
-                                    "text": "Should you read the code, is RAG dead, and did Skills kill MCP?",
-                                    "href": "https://github.blog/ai-and-ml/should-you-read-the-code-is-rag-dead-and-did-skills-kill-mcp/"
-                                  }
-                                ]
+                                "val": "GPS ·"
                               },
                               {
-                                "tag": "div",
-                                "cls": ["mb-2", "f4-mktg", "color-fg-muted"],
-                                "text": "We dive into these questions and other AI hot takes on the latest episode of the GitHub Podcast.",
-                                "el": [
-                                  {
-                                    "tag": "div",
-                                    "cls": ["mb-2", "f4-mktg", "color-fg-muted"]
-                                  },
-                                  { "tag": "p" }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "footer",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                            "el": [
-                              { "tag": "footer" },
-                              {
-                                "tag": "div",
-                                "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                              }
-                            ],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "d-block",
-                                  "post-author-avatar",
-                                  "position-relative",
-                                  "z-2"
-                                ],
-                                "href": "https://github.blog/author/madebygps/",
-                                "el": [
-                                  {
-                                    "tag": "div",
-                                    "cls": [
-                                      "d-flex",
-                                      "flex-items-center",
-                                      "mr-3"
-                                    ]
-                                  },
-                                  {
-                                    "tag": "a",
-                                    "cls": [
-                                      "d-block",
-                                      "post-author-avatar",
-                                      "position-relative",
-                                      "z-2"
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tag": "span",
-                                "ch": [
-                                  {
-                                    "tag": "a",
-                                    "cls": [
-                                      "author",
-                                      "url",
-                                      "fn",
-                                      "Link--primary",
-                                      "no-wrap",
-                                      "position-relative",
-                                      "z-2"
-                                    ],
-                                    "text": "GPS",
-                                    "href": "https://github.blog/author/madebygps/",
-                                    "el": [
-                                      { "tag": "span", "cls": ["text-bold"] },
-                                      {
-                                        "tag": "a",
-                                        "cls": [
-                                          "author",
-                                          "url",
-                                          "fn",
-                                          "Link--primary",
-                                          "no-wrap",
-                                          "position-relative",
-                                          "z-2"
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  { "tag": "#text", "text": "·" },
-                                  {
-                                    "tag": "time",
-                                    "cls": [
-                                      "text-mono",
-                                      "color-fg-muted",
-                                      "no-wrap"
-                                    ],
-                                    "text": "September 18, 2026",
-                                    "dt": "2026-09-18"
-                                  }
-                                ]
+                                "kind": "time",
+                                "val": "2026-09-18T00:00:00Z"
                               }
                             ]
                           }
                         ]
                       },
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "tease-thumbnail__img",
-                          "cover-image",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?resize=800%2C425",
-                        "alt": "Video thumbnail that reads 'AI jargon explained' with photos of GPS, Marlene Mhangami, and Cassidy Williams.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Video thumbnail that reads 'AI jargon explained' with photos of GPS, Marlene Mhangami, and Cassidy Williams.",
+                        "link": "https://github.blog/wp-content/uploads/2026/09/GIT_THUMB_PODCAST_S2_EP2_B2-1.png?resize=800%2C425"
+                      }
+                    ]
+                  },
+                  {
+                    "ch": [
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": ["d-none", "d-lg-block", "col-lg-7"]
+                            "kind": "h3",
+                            "val": "Migrating the GitHub Copilot runtime to Rust, using Copilot",
+                            "link": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"
                           },
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "position-relative",
-                              "rounded-2",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "val": "A rewrite this size wasn’t affordable before agents. Here’s what porting the Copilot agent runtime to 800,000 lines of production Rust actually took."
+                          }
+                        ]
+                      },
+                      {
+                        "ch": [
+                          {
+                            "val": "Stephen Toub ·"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "tease-thumbnail__img",
-                              "cover-image",
-                              "wp-post-image"
-                            ]
+                            "kind": "time",
+                            "val": "2026-09-16T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe.png?resize=400%2C212",
-                        "alt": "Copilot appears against a decorative background with scattered green squares.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Decorative background featuring two Copilot figures moving among abstract green and translucent blocks.",
+                        "link": "https://github.blog/wp-content/uploads/2026/01/generic-mona-copilot-logo.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "Marketing ops as code: Automating events from planning to follow-up on GitHub",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/marketing-ops-as-code-automating-events-from-planning-to-follow-up-on-github/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "If you can write down how you do your work, you can automate it. Here’s what I did to support GitHub’s APAC marketing team."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "Migrating the GitHub Copilot runtime to Rust, using Copilot",
-                                "href": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/"
-                              }
-                            ]
+                            "val": "Tomoko Tanaka ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "A rewrite this size wasn’t affordable before agents. Here’s what porting the Copilot agent runtime to 800,000 lines of production Rust actually took.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Stephen Toub",
-                            "href": "https://github.blog/author/stephentoub/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "September 16, 2026",
-                            "dt": "2026-09-16"
+                            "kind": "time",
+                            "val": "2026-09-11T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/generic-mona-copilot-logo.png?resize=400%2C212",
-                        "alt": "Decorative background featuring two Copilot figures moving among abstract green and translucent blocks.",
-                        "el": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
-                          },
-                          {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
-                          }
-                        ]
+                        "kind": "img",
+                        "val": "GitHub Copilot app for Beginners: Stop switching tabs",
+                        "link": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-09-at-3.23.34-PM.png?resize=400%2C212"
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "Marketing ops as code: Automating events from planning to follow-up on GitHub",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/marketing-ops-as-code-automating-events-from-planning-to-follow-up-on-github/"
-                              }
-                            ]
+                            "kind": "h3",
+                            "val": "GitHub Copilot app for Beginners: Using the diff, terminal, and browser",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-using-the-diff-terminal-and-browser/"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "If you can write down how you do your work, you can automate it. Here’s what I did to support GitHub’s APAC marketing team.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
+                            "val": "Checking agent-generated code usually means hopping between tabs. Learn how to view diffs, run terminal commands, and preview web apps side by side in the GitHub Copilot app."
                           }
                         ]
                       },
                       {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Tomoko Tanaka",
-                            "href": "https://github.blog/author/tomokota/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "September 11, 2026",
-                            "dt": "2026-09-11"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
-                    "ch": [
-                      {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-09-at-3.23.34-PM.png?resize=400%2C212",
-                        "alt": "GitHub Copilot app for Beginners: Stop switching tabs",
-                        "el": [
-                          {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "val": "Kayla Cinnamon ·"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "div",
-                        "cls": ["position-relative"],
-                        "ch": [
-                          {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "GitHub Copilot app for Beginners: Using the diff, terminal, and browser",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-using-the-diff-terminal-and-browser/"
-                              }
-                            ]
-                          },
-                          {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Checking agent-generated code usually means hopping between tabs. Learn how to view diffs, run terminal commands, and preview web apps side by side in the GitHub Copilot app.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Kayla Cinnamon",
-                            "href": "https://github.blog/author/cinnamonmsft/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "September 10, 2026",
-                            "dt": "2026-09-10"
+                            "kind": "time",
+                            "val": "2026-09-10T00:00:00Z"
                           }
                         ]
                       }
@@ -733,2000 +164,477 @@
             ]
           },
           {
-            "tag": "div",
-            "cls": ["mb-8", "mb-lg-10"],
             "ch": [
               {
-                "tag": "h2",
-                "cls": [
-                  "h5-mktg",
-                  "mb-4",
-                  "mb-lg-7",
-                  "pb-3",
-                  "border-bottom",
-                  "color-border-subtle"
-                ],
-                "text": "Latest"
+                "kind": "h2",
+                "val": "Latest"
               },
               {
-                "tag": "div",
-                "cls": ["post-columns", "post-columns--3-3"],
                 "ch": [
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/09/OptA_UI.jpg?resize=400%2C212",
-                        "alt": "Research preview: HydraFusion. Advanced runtime model orchestration in GitHub Copilot.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Research preview: HydraFusion. Advanced runtime model orchestration in GitHub Copilot.",
+                        "link": "https://github.blog/wp-content/uploads/2026/09/OptA_UI.jpg?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "Project HydraFusion: Frontier quality via multi-model orchestration",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "In controlled offline evaluations, HydraFusion’s selective coding workflows matched or exceeded the evaluated Opus 5 baseline while reducing estimated workflow cost. Now available as a research preview in GitHub Copilot."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "Project HydraFusion: Frontier quality via multi-model orchestration",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/"
-                              }
-                            ]
+                            "val": "GitHub Staff ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "In controlled offline evaluations, HydraFusion’s selective coding workflows matched or exceeded the evaluated Opus 5 baseline while reducing estimated workflow cost. Now available as a research preview in GitHub Copilot.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "GitHub Staff",
-                            "href": "https://github.blog/author/staff/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "September 4, 2026",
-                            "dt": "2026-09-04"
+                            "kind": "time",
+                            "val": "2026-09-04T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-02-at-12.28.34-PM.png?resize=400%2C212",
-                        "alt": "GitHub Copilot app for Beginners: Run multiple agents safely",
-                        "el": [
+                        "kind": "img",
+                        "val": "GitHub Copilot app for Beginners: Run multiple agents safely",
+                        "link": "https://github.blog/wp-content/uploads/2026/09/Screenshot-2026-09-02-at-12.28.34-PM.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "GitHub Copilot app for Beginners: Run several agents at once",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-run-several-agents-at-once/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "Learn how to run parallel agents in the GitHub Copilot app, and experience the moment it stops feeling scary and starts feeling powerful."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["position-relative"],
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "GitHub Copilot app for Beginners: Run several agents at once",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-run-several-agents-at-once/"
-                              }
-                            ]
+                            "val": "Kayla Cinnamon ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Learn how to run parallel agents in the GitHub Copilot app, and experience the moment it stops feeling scary and starts feeling powerful.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Kayla Cinnamon",
-                            "href": "https://github.blog/author/cinnamonmsft/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "September 3, 2026",
-                            "dt": "2026-09-03"
+                            "kind": "time",
+                            "val": "2026-09-03T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2025/07/LinkedIn-Light-Mode-16x9-1.png?resize=400%2C212",
-                        "alt": "GitHub Podcast imagery",
-                        "el": [
+                        "kind": "img",
+                        "val": "GitHub Podcast imagery",
+                        "link": "https://github.blog/wp-content/uploads/2025/07/LinkedIn-Light-Mode-16x9-1.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "Decoding the new AI lingo: Loops, harnesses, squads, hill climbing… oh my!",
+                            "link": "https://github.blog/ai-and-ml/decoding-the-new-ai-lingo-loops-harnesses-squads-hill-climbing-oh-my/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "From loop engineering to harnesses, squads, and open weights, the GitHub Podcast breaks down the AI terms showing up in developer conversations."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "Decoding the new AI lingo: Loops, harnesses, squads, hill climbing… oh my!",
-                                "href": "https://github.blog/ai-and-ml/decoding-the-new-ai-lingo-loops-harnesses-squads-hill-climbing-oh-my/"
-                              }
-                            ]
+                            "val": "Cassidy Williams ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "From loop engineering to harnesses, squads, and open weights, the GitHub Podcast breaks down the AI terms showing up in developer conversations.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Cassidy Williams",
-                            "href": "https://github.blog/author/cassidoo/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "September 2, 2026",
-                            "dt": "2026-09-02"
+                            "kind": "time",
+                            "val": "2026-09-02T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-commit-logo.png?resize=400%2C212",
-                        "alt": "Copilot hovering above a mosaic of green squares in a decorative scene.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Copilot hovering above a mosaic of green squares in a decorative scene.",
+                        "link": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-commit-logo.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "How we make AI coding more cost efficient without sacrificing task quality",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "Why shorter outputs can cost more, and how GitHub Copilot reduces wasted work across the complete coding task."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "How we make AI coding more cost efficient without sacrificing task quality",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality/"
-                              }
-                            ]
+                            "val": "Erik Kristensen & Napalys Klicius ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Why shorter outputs can cost more, and how GitHub Copilot reduces wasted work across the complete coding task.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "span",
-                            "cls": ["text-bold"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ],
-                                "text": "Erik Kristensen",
-                                "href": "https://github.blog/author/erikkrogh/"
-                              },
-                              { "tag": "#text", "text": "\u0026" },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ],
-                                "text": "Napalys Klicius",
-                                "href": "https://github.blog/author/napalys/"
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "September 2, 2026",
-                            "dt": "2026-09-02"
+                            "kind": "time",
+                            "val": "2026-09-02T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/08/Screenshot-2026-08-26-at-12.57.57-PM.png?resize=400%2C212",
-                        "alt": "GitHub Copilot app for Beginners: Work that runs itself.",
-                        "el": [
+                        "kind": "img",
+                        "val": "GitHub Copilot app for Beginners: Work that runs itself.",
+                        "link": "https://github.blog/wp-content/uploads/2026/08/Screenshot-2026-08-26-at-12.57.57-PM.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "GitHub Copilot app for Beginners: Automate Dependabot pull request triage",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-automate-dependabot-pull-request-triage/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "Managing library updates can be tedious at times. Learn how the GitHub Copilot app can handle this type of repetitive task."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["position-relative"],
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "GitHub Copilot app for Beginners: Automate Dependabot pull request triage",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-automate-dependabot-pull-request-triage/"
-                              }
-                            ]
+                            "val": "Christopher Harrison ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Managing library updates can be tedious at times. Learn how the GitHub Copilot app can handle this type of repetitive task.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Christopher Harrison",
-                            "href": "https://github.blog/author/geektrainer/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "August 26, 2026",
-                            "dt": "2026-08-26"
+                            "kind": "time",
+                            "val": "2026-08-26T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/4ba0cd42388a255e04c78e5143548f22e577d68e0f15f68e6a3c76c18b927981-1920x1080-1.png?resize=400%2C212",
-                        "alt": "Decorative background featuring floating green cubes, including one with the GitHub invertocat logo.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Decorative background featuring floating green cubes, including one with the GitHub invertocat logo.",
+                        "link": "https://github.blog/wp-content/uploads/2026/01/4ba0cd42388a255e04c78e5143548f22e577d68e0f15f68e6a3c76c18b927981-1920x1080-1.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "How to evaluate LLMs before production",
+                            "link": "https://github.blog/ai-and-ml/llms/how-to-evaluate-llms-before-production/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "These are the lessons we learned evaluating LLMs for real-world secret scanning."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "How to evaluate LLMs before production",
-                                "href": "https://github.blog/ai-and-ml/llms/how-to-evaluate-llms-before-production/"
-                              }
-                            ]
+                            "val": "Mariko Wakabayashi & Zixiao Chen ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "These are the lessons we learned evaluating LLMs for real-world secret scanning.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "span",
-                            "cls": ["text-bold"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ],
-                                "text": "Mariko Wakabayashi",
-                                "href": "https://github.blog/author/mwakaba2/"
-                              },
-                              { "tag": "#text", "text": "\u0026" },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ],
-                                "text": "Zixiao Chen",
-                                "href": "https://github.blog/author/zixiaochen/"
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "August 25, 2026",
-                            "dt": "2026-08-25"
+                            "kind": "time",
+                            "val": "2026-08-25T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/08/Screenshot-2026-08-17-at-5.41.11-PM.png?resize=400%2C212",
-                        "alt": "GitHub Copilot app for Beginners: Manage all your work",
-                        "el": [
+                        "kind": "img",
+                        "val": "GitHub Copilot app for Beginners: Manage all your work",
+                        "link": "https://github.blog/wp-content/uploads/2026/08/Screenshot-2026-08-17-at-5.41.11-PM.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "GitHub Copilot app for Beginners: Managing your work",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-managing-your-work/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "If you’re juggling multiple Copilot sessions, use the My work pane to track what’s in flight, what’s done, and what’s next."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["position-relative"],
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "GitHub Copilot app for Beginners: Managing your work",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-managing-your-work/"
-                              }
-                            ]
+                            "val": "Christopher Harrison ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "If you’re juggling multiple Copilot sessions, use the My work pane to track what’s in flight, what’s done, and what’s next.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Christopher Harrison",
-                            "href": "https://github.blog/author/geektrainer/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "August 19, 2026",
-                            "dt": "2026-08-19"
+                            "kind": "time",
+                            "val": "2026-08-19T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe.png?resize=400%2C212",
-                        "alt": "Copilot appears against a decorative background with scattered green squares.",
-                        "el": [
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "How canvases make agentic workflows visible, steerable, and cost-efficient",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/how-canvases-make-agentic-workflows-visible-steerable-and-cost-efficient/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "Chat is great for intent, but agent work gets lost in the scroll. Here is how I use canvases with my agentic workflows—and why your workflow also deserves a canvas."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "How canvases make agentic workflows visible, steerable, and cost-efficient",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/how-canvases-make-agentic-workflows-visible-steerable-and-cost-efficient/"
-                              }
-                            ]
+                            "val": "Ayan Gupta ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Chat is great for intent, but agent work gets lost in the scroll. Here is how I use canvases with my agentic workflows—and why your workflow also deserves a canvas.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Ayan Gupta",
-                            "href": "https://github.blog/author/ayangupt/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "August 17, 2026",
-                            "dt": "2026-08-17"
+                            "kind": "time",
+                            "val": "2026-08-17T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/generic-copilot-logo-github.png?resize=400%2C212",
-                        "alt": "Copilot hovering beside a cluster of geometric cubes in a decorative scene.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Copilot hovering beside a cluster of geometric cubes in a decorative scene.",
+                        "link": "https://github.blog/wp-content/uploads/2026/01/generic-copilot-logo-github.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "How to bring your software delivery workflow into GitHub with agent apps",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/how-to-bring-your-software-delivery-workflow-into-github-with-agent-apps/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "See how four GitHub agent apps can help you scope, secure, roll out, and ship a feature across the SDLC–all without leaving GitHub."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "How to bring your software delivery workflow into GitHub with agent apps",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/how-to-bring-your-software-delivery-workflow-into-github-with-agent-apps/"
-                              }
-                            ]
+                            "val": "Sam Zhang ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "See how four GitHub agent apps can help you scope, secure, roll out, and ship a feature across the SDLC–all without leaving GitHub.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Sam Zhang",
-                            "href": "https://github.blog/author/imsamz/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "August 14, 2026",
-                            "dt": "2026-08-14"
+                            "kind": "time",
+                            "val": "2026-08-14T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/08/Screenshot-2026-08-11-at-6.38.49-PM.png?resize=400%2C212",
-                        "el": [
+                        "kind": "img",
+                        "link": "https://github.blog/wp-content/uploads/2026/08/Screenshot-2026-08-11-at-6.38.49-PM.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "GitHub Copilot app for Beginners: Write your first prompt",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/write-your-first-prompt-with-the-github-copilot-app/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "Learn how to write your first prompt in the GitHub Copilot app, choose the right context and model, and start your first task with confidence."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["position-relative"],
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "GitHub Copilot app for Beginners: Write your first prompt",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/write-your-first-prompt-with-the-github-copilot-app/"
-                              }
-                            ]
+                            "val": "Kayla Cinnamon ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Learn how to write your first prompt in the GitHub Copilot app, choose the right context and model, and start your first task with confidence.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Kayla Cinnamon",
-                            "href": "https://github.blog/author/cinnamonmsft/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "August 12, 2026",
-                            "dt": "2026-08-12"
+                            "kind": "time",
+                            "val": "2026-08-12T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/generic-copilot-flying-invertocat-logo-github.png?resize=400%2C212",
-                        "alt": "Copilot hovering above geometric blocks featuring the GitHub invertocat logo in a decorative scene.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Copilot hovering above geometric blocks featuring the GitHub invertocat logo in a decorative scene.",
+                        "link": "https://github.blog/wp-content/uploads/2026/01/generic-copilot-flying-invertocat-logo-github.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "Using the GitHub Copilot SDK for Java",
+                            "link": "https://github.blog/engineering/using-the-github-copilot-sdk-for-java/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "Enterprise Java developers have a new superpower—drive GitHub Copilot from idiomatic Java code with annotations, virtual threads, and more."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "Using the GitHub Copilot SDK for Java",
-                                "href": "https://github.blog/engineering/using-the-github-copilot-sdk-for-java/"
-                              }
-                            ]
+                            "val": "Edward Burns ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Enterprise Java developers have a new superpower—drive GitHub Copilot from idiomatic Java code with annotations, virtual threads, and more.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Edward Burns",
-                            "href": "https://github.blog/author/edburns/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "August 10, 2026",
-                            "dt": "2026-08-10"
+                            "kind": "time",
+                            "val": "2026-08-10T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/06/MSFTBuild_Blog_Header_01.jpg?resize=400%2C212",
-                        "alt": "Decorative image showing the GitHub Copilot App logo.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Decorative image showing the GitHub Copilot App logo.",
+                        "link": "https://github.blog/wp-content/uploads/2026/06/MSFTBuild_Blog_Header_01.jpg?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "A guide to slash commands in the GitHub Copilot app",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/a-guide-to-slash-commands-in-the-github-copilot-app/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "Go beyond chat in the GitHub Copilot app with these slash commands. They’ll help you plan, collaborate, automate, and customize your dev workflow."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "A guide to slash commands in the GitHub Copilot app",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/a-guide-to-slash-commands-in-the-github-copilot-app/"
-                              }
-                            ]
+                            "val": "Jacklyn Carroll ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Go beyond chat in the GitHub Copilot app with these slash commands. They’ll help you plan, collaborate, automate, and customize your dev workflow.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Jacklyn Carroll",
-                            "href": "https://github.blog/author/jacklynlee31/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "August 6, 2026",
-                            "dt": "2026-08-06"
+                            "kind": "time",
+                            "val": "2026-08-06T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-smiling-flying-logo.png?resize=400%2C212",
-                        "alt": "Copilot moves toward floating green cubes displaying GitHub-related icons in a decorative tech-themed scene.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Copilot moves toward floating green cubes displaying GitHub-related icons in a decorative tech-themed scene.",
+                        "link": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-smiling-flying-logo.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "How the GitHub legal team used Copilot CLI to streamline their workflows",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/how-the-github-legal-team-used-copilot-cli-to-streamline-their-workflows/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "Learn how to build tools to simplify how you work—without writing a single line of code."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "How the GitHub legal team used Copilot CLI to streamline their workflows",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/how-the-github-legal-team-used-copilot-cli-to-streamline-their-workflows/"
-                              }
-                            ]
+                            "val": "Bria Ford ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Learn how to build tools to simplify how you work—without writing a single line of code.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Bria Ford",
-                            "href": "https://github.blog/author/breejayyy/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "August 4, 2026",
-                            "dt": "2026-08-04"
+                            "kind": "time",
+                            "val": "2026-08-04T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-logo-stripe.png?resize=400%2C212",
-                        "alt": "Copilot appears against a decorative background with scattered green squares.",
-                        "el": [
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "Stacked sessions and pull requests in the GitHub Copilot app",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/stacked-sessions-and-pull-requests-in-the-github-copilot-app/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "Learn how I modernized an old codebase of mine using stacked sessions and pull requests in the GitHub Copilot app."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "Stacked sessions and pull requests in the GitHub Copilot app",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/stacked-sessions-and-pull-requests-in-the-github-copilot-app/"
-                              }
-                            ]
+                            "val": "Cassidy Williams ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "Learn how I modernized an old codebase of mine using stacked sessions and pull requests in the GitHub Copilot app.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Cassidy Williams",
-                            "href": "https://github.blog/author/cassidoo/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "July 30, 2026",
-                            "dt": "2026-07-30"
+                            "kind": "time",
+                            "val": "2026-07-30T00:00:00Z"
                           }
                         ]
                       }
                     ]
                   },
                   {
-                    "tag": "article",
-                    "cls": [
-                      "color-border-muted",
-                      "post-card",
-                      "d-flex",
-                      "flex-column"
-                    ],
-                    "el": [
-                      {
-                        "tag": "article",
-                        "cls": ["color-border-muted", "post-card"]
-                      },
-                      { "tag": "div", "cls": ["d-flex", "flex-column"] }
-                    ],
                     "ch": [
                       {
-                        "tag": "img",
-                        "cls": [
-                          "d-block",
-                          "cover-image",
-                          "tease-thumbnail__img",
-                          "wp-post-image"
-                        ],
-                        "src": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-commit-logo.png?resize=400%2C212",
-                        "alt": "Copilot hovering above a mosaic of green squares in a decorative scene.",
-                        "el": [
+                        "kind": "img",
+                        "val": "Copilot hovering above a mosaic of green squares in a decorative scene.",
+                        "link": "https://github.blog/wp-content/uploads/2026/01/generic-github-copilot-commit-logo.png?resize=400%2C212"
+                      },
+                      {
+                        "ch": [
                           {
-                            "tag": "div",
-                            "cls": [
-                              "d-block",
-                              "col-12",
-                              "position-relative",
-                              "rounded-2",
-                              "mb-3",
-                              "overflow-hidden",
-                              "tease-thumbnail"
-                            ]
+                            "kind": "h3",
+                            "val": "The harness is all you need (mostly)",
+                            "link": "https://github.blog/ai-and-ml/github-copilot/the-harness-is-all-you-need-mostly/"
                           },
                           {
-                            "tag": "img",
-                            "cls": [
-                              "d-block",
-                              "cover-image",
-                              "tease-thumbnail__img",
-                              "wp-post-image"
-                            ]
+                            "val": "A practical GitHub Copilot workflow for prototyping, planning, implementing, and reviewing software without chasing every new AI tool."
                           }
                         ]
                       },
                       {
-                        "tag": "div",
                         "ch": [
                           {
-                            "tag": "h3",
-                            "cls": ["h6-mktg", "mb-2"],
-                            "ch": [
-                              {
-                                "tag": "a",
-                                "cls": ["Link--primary", "post-card__link"],
-                                "text": "The harness is all you need (mostly)",
-                                "href": "https://github.blog/ai-and-ml/github-copilot/the-harness-is-all-you-need-mostly/"
-                              }
-                            ]
+                            "val": "Burke Holland ·"
                           },
                           {
-                            "tag": "div",
-                            "cls": ["f4-mktg", "color-fg-muted"],
-                            "text": "A practical GitHub Copilot workflow for prototyping, planning, implementing, and reviewing software without chasing every new AI tool.",
-                            "el": [
-                              {
-                                "tag": "div",
-                                "cls": ["f4-mktg", "color-fg-muted"]
-                              },
-                              { "tag": "p" }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "footer",
-                        "cls": ["d-flex", "flex-items-center", "mb-6px"],
-                        "el": [
-                          { "tag": "footer" },
-                          {
-                            "tag": "div",
-                            "cls": ["d-flex", "flex-items-center", "mb-6px"]
-                          },
-                          { "tag": "span" }
-                        ],
-                        "ch": [
-                          {
-                            "tag": "a",
-                            "cls": [
-                              "author",
-                              "url",
-                              "fn",
-                              "Link--primary",
-                              "no-wrap",
-                              "position-relative",
-                              "z-2"
-                            ],
-                            "text": "Burke Holland",
-                            "href": "https://github.blog/author/burkeholland/",
-                            "el": [
-                              { "tag": "span", "cls": ["text-bold"] },
-                              {
-                                "tag": "a",
-                                "cls": [
-                                  "author",
-                                  "url",
-                                  "fn",
-                                  "Link--primary",
-                                  "no-wrap",
-                                  "position-relative",
-                                  "z-2"
-                                ]
-                              }
-                            ]
-                          },
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "time",
-                            "cls": ["text-mono", "color-fg-muted", "no-wrap"],
-                            "text": "July 27, 2026",
-                            "dt": "2026-07-27"
+                            "kind": "time",
+                            "val": "2026-07-27T00:00:00Z"
                           }
                         ]
                       }
@@ -2735,431 +643,77 @@
                 ]
               },
               {
-                "tag": "div",
-                "cls": [
-                  "d-flex",
-                  "flex-justify-center",
-                  "flex-items-center",
-                  "flex-wrap",
-                  "paginate-container",
-                  "mt-6",
-                  "mb-0",
-                  "pt-5",
-                  "border-top",
-                  "color-border-muted",
-                  "text-bold",
-                  "navigation",
-                  "pagination"
-                ],
-                "el": [
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "d-flex",
-                      "flex-justify-center",
-                      "flex-items-center",
-                      "flex-wrap",
-                      "paginate-container",
-                      "mt-6",
-                      "mb-0",
-                      "pt-5",
-                      "border-top",
-                      "color-border-muted",
-                      "text-bold"
-                    ]
-                  },
-                  { "tag": "nav", "cls": ["navigation", "pagination"] }
-                ],
-                "ch": [
-                  {
-                    "tag": "h2",
-                    "cls": ["screen-reader-text"],
-                    "text": "Posts pagination"
-                  },
-                  {
-                    "tag": "div",
-                    "cls": ["nav-links"],
-                    "ch": [
-                      { "tag": "#text", "text": "Page 1" },
-                      {
-                        "tag": "a",
-                        "cls": ["page-numbers"],
-                        "text": "Page 2",
-                        "href": "https://github.blog/ai-and-ml/page/2/"
-                      },
-                      { "tag": "#text", "text": "…" },
-                      {
-                        "tag": "a",
-                        "cls": ["page-numbers"],
-                        "text": "Page 13",
-                        "href": "https://github.blog/ai-and-ml/page/13/"
-                      },
-                      {
-                        "tag": "a",
-                        "cls": ["next_page", "page-numbers"],
-                        "text": "Next",
-                        "href": "https://github.blog/ai-and-ml/page/2/"
-                      }
-                    ]
-                  }
-                ]
+                "val": "1 2 … 13 Next"
               }
             ]
           }
         ]
       },
       {
-        "tag": "div",
-        "cls": [
-          "color-bg-subtle",
-          "container-xl",
-          "py-7",
-          "py-md-9",
-          "mx-auto",
-          "p-responsive-blog"
-        ],
-        "el": [
-          { "tag": "div", "cls": ["color-bg-subtle"] },
-          {
-            "tag": "section",
-            "cls": [
-              "container-xl",
-              "py-7",
-              "py-md-9",
-              "mx-auto",
-              "p-responsive-blog"
-            ]
-          }
-        ],
         "ch": [
           {
-            "tag": "h2",
-            "cls": [
-              "h3-mktg",
-              "mb-2",
-              "mb-md-4",
-              "text-center",
-              "color-fg-default"
-            ],
-            "text": "The world's largest developer platform"
+            "kind": "h2",
+            "val": "The world's largest developer platform"
           },
           {
-            "tag": "div",
-            "cls": ["d-flex", "flex-wrap", "ml-md-n4"],
             "ch": [
               {
-                "tag": "div",
-                "cls": [
-                  "col-12",
-                  "col-md-6",
-                  "col-lg-3",
-                  "d-flex",
-                  "mt-4",
-                  "mt-lg-6",
-                  "pl-md-4",
-                  "border",
-                  "rounded-3",
-                  "color-border-subtle",
-                  "color-bg-default",
-                  "d-flex",
-                  "flex-column",
-                  "flex-items-start",
-                  "width-full",
-                  "p-5",
-                  "f4-mktg",
-                  "color-fg-muted"
-                ],
-                "el": [
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "col-12",
-                      "col-md-6",
-                      "col-lg-3",
-                      "d-flex",
-                      "mt-4",
-                      "mt-lg-6",
-                      "pl-md-4"
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "border",
-                      "rounded-3",
-                      "color-border-subtle",
-                      "color-bg-default",
-                      "d-flex",
-                      "flex-column",
-                      "flex-items-start",
-                      "width-full",
-                      "p-5",
-                      "f4-mktg",
-                      "color-fg-muted"
-                    ]
-                  }
-                ],
                 "ch": [
                   {
-                    "tag": "h3",
-                    "cls": ["f3-mktg", "text-bold", "color-fg-default", "mb-3"],
-                    "text": "Docs"
+                    "kind": "h3",
+                    "val": "Docs"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["mb-auto"],
-                    "text": "Everything you need to master GitHub, all in one place.",
-                    "el": [{ "tag": "div", "cls": ["mb-auto"] }, { "tag": "p" }]
+                    "val": "Everything you need to master GitHub, all in one place."
                   },
                   {
-                    "tag": "a",
-                    "cls": ["text-semibold", "arrow-target-mktg"],
-                    "text": "Go to Docs",
-                    "href": "https://docs.github.com/",
-                    "el": [
-                      { "tag": "div", "cls": ["mt-7"] },
-                      {
-                        "tag": "a",
-                        "cls": ["text-semibold", "arrow-target-mktg"]
-                      }
-                    ]
+                    "val": "Go to Docs",
+                    "link": "https://docs.github.com/"
                   }
                 ]
               },
               {
-                "tag": "div",
-                "cls": [
-                  "col-12",
-                  "col-md-6",
-                  "col-lg-3",
-                  "d-flex",
-                  "mt-4",
-                  "mt-lg-6",
-                  "pl-md-4",
-                  "border",
-                  "rounded-3",
-                  "color-border-subtle",
-                  "color-bg-default",
-                  "d-flex",
-                  "flex-column",
-                  "flex-items-start",
-                  "width-full",
-                  "p-5",
-                  "f4-mktg",
-                  "color-fg-muted"
-                ],
-                "el": [
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "col-12",
-                      "col-md-6",
-                      "col-lg-3",
-                      "d-flex",
-                      "mt-4",
-                      "mt-lg-6",
-                      "pl-md-4"
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "border",
-                      "rounded-3",
-                      "color-border-subtle",
-                      "color-bg-default",
-                      "d-flex",
-                      "flex-column",
-                      "flex-items-start",
-                      "width-full",
-                      "p-5",
-                      "f4-mktg",
-                      "color-fg-muted"
-                    ]
-                  }
-                ],
                 "ch": [
                   {
-                    "tag": "h3",
-                    "cls": ["f3-mktg", "text-bold", "color-fg-default", "mb-3"],
-                    "text": "GitHub"
+                    "kind": "h3",
+                    "val": "GitHub"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["mb-auto"],
-                    "text": "Build what’s next on GitHub, the place for anyone from anywhere to build anything.",
-                    "el": [{ "tag": "div", "cls": ["mb-auto"] }, { "tag": "p" }]
+                    "val": "Build what’s next on GitHub, the place for anyone from anywhere to build anything."
                   },
                   {
-                    "tag": "a",
-                    "cls": ["text-semibold", "arrow-target-mktg"],
-                    "text": "Start building",
-                    "href": "https://github.com/",
-                    "el": [
-                      { "tag": "div", "cls": ["mt-7"] },
-                      {
-                        "tag": "a",
-                        "cls": ["text-semibold", "arrow-target-mktg"]
-                      }
-                    ]
+                    "val": "Start building",
+                    "link": "https://github.com/"
                   }
                 ]
               },
               {
-                "tag": "div",
-                "cls": [
-                  "col-12",
-                  "col-md-6",
-                  "col-lg-3",
-                  "d-flex",
-                  "mt-4",
-                  "mt-lg-6",
-                  "pl-md-4",
-                  "border",
-                  "rounded-3",
-                  "color-border-subtle",
-                  "color-bg-default",
-                  "d-flex",
-                  "flex-column",
-                  "flex-items-start",
-                  "width-full",
-                  "p-5",
-                  "f4-mktg",
-                  "color-fg-muted"
-                ],
-                "el": [
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "col-12",
-                      "col-md-6",
-                      "col-lg-3",
-                      "d-flex",
-                      "mt-4",
-                      "mt-lg-6",
-                      "pl-md-4"
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "border",
-                      "rounded-3",
-                      "color-border-subtle",
-                      "color-bg-default",
-                      "d-flex",
-                      "flex-column",
-                      "flex-items-start",
-                      "width-full",
-                      "p-5",
-                      "f4-mktg",
-                      "color-fg-muted"
-                    ]
-                  }
-                ],
                 "ch": [
                   {
-                    "tag": "h3",
-                    "cls": ["f3-mktg", "text-bold", "color-fg-default", "mb-3"],
-                    "text": "Customer stories"
+                    "kind": "h3",
+                    "val": "Customer stories"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["mb-auto"],
-                    "text": "Meet the companies and engineering teams that build with GitHub.",
-                    "el": [{ "tag": "div", "cls": ["mb-auto"] }, { "tag": "p" }]
+                    "val": "Meet the companies and engineering teams that build with GitHub."
                   },
                   {
-                    "tag": "a",
-                    "cls": ["text-semibold", "arrow-target-mktg"],
-                    "text": "Learn more",
-                    "href": "https://github.com/customer-stories",
-                    "el": [
-                      { "tag": "div", "cls": ["mt-7"] },
-                      {
-                        "tag": "a",
-                        "cls": ["text-semibold", "arrow-target-mktg"]
-                      }
-                    ]
+                    "val": "Learn more",
+                    "link": "https://github.com/customer-stories"
                   }
                 ]
               },
               {
-                "tag": "div",
-                "cls": [
-                  "col-12",
-                  "col-md-6",
-                  "col-lg-3",
-                  "d-flex",
-                  "mt-4",
-                  "mt-lg-6",
-                  "pl-md-4",
-                  "border",
-                  "rounded-3",
-                  "color-border-subtle",
-                  "color-bg-default",
-                  "d-flex",
-                  "flex-column",
-                  "flex-items-start",
-                  "width-full",
-                  "p-5",
-                  "f4-mktg",
-                  "color-fg-muted"
-                ],
-                "el": [
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "col-12",
-                      "col-md-6",
-                      "col-lg-3",
-                      "d-flex",
-                      "mt-4",
-                      "mt-lg-6",
-                      "pl-md-4"
-                    ]
-                  },
-                  {
-                    "tag": "div",
-                    "cls": [
-                      "border",
-                      "rounded-3",
-                      "color-border-subtle",
-                      "color-bg-default",
-                      "d-flex",
-                      "flex-column",
-                      "flex-items-start",
-                      "width-full",
-                      "p-5",
-                      "f4-mktg",
-                      "color-fg-muted"
-                    ]
-                  }
-                ],
                 "ch": [
                   {
-                    "tag": "h3",
-                    "cls": ["f3-mktg", "text-bold", "color-fg-default", "mb-3"],
-                    "text": "GitHub Universe 2026"
+                    "kind": "h3",
+                    "val": "GitHub Universe 2026"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["mb-auto"],
-                    "text": "Join us October 28-29 in San Francisco or online for GitHub Universe, our flagship developer event uniting people, agents, and the world’s code.",
-                    "el": [{ "tag": "div", "cls": ["mb-auto"] }, { "tag": "p" }]
+                    "val": "Join us October 28-29 in San Francisco or online for GitHub Universe, our flagship developer event uniting people, agents, and the world’s code."
                   },
                   {
-                    "tag": "a",
-                    "cls": ["text-semibold", "arrow-target-mktg"],
-                    "text": "Register now",
-                    "href": "https://githubuniverse.com/?utm_source=Blog\u0026utm_medium=GitHub\u0026utm_campaign=module_uni_26",
-                    "el": [
-                      { "tag": "div", "cls": ["mt-7"] },
-                      {
-                        "tag": "a",
-                        "cls": ["text-semibold", "arrow-target-mktg"]
-                      }
-                    ]
+                    "val": "Register now",
+                    "link": "https://githubuniverse.com/?utm_source=Blog&utm_medium=GitHub&utm_campaign=module_uni_26"
                   }
                 ]
               }

@@ -2,2674 +2,971 @@
   "url": "https://paulgraham.com/articles",
   "title": "Essays",
   "root": {
-    "tag": "body",
-    "el": [
-      { "tag": "body" },
-      { "tag": "table" },
-      { "tag": "tbody" },
-      { "tag": "tr" }
-    ],
     "ch": [
       {
-        "tag": "img",
-        "src": "https://s.turbifycdn.com/aah/paulgraham/bel-7.gif",
-        "el": [{ "tag": "td" }, { "tag": "img" }]
+        "kind": "img",
+        "link": "https://s.turbifycdn.com/aah/paulgraham/bel-7.gif"
       },
       {
-        "tag": "td",
         "ch": [
           {
-            "tag": "a",
-            "href": "https://paulgraham.com/index.html",
+            "link": "https://paulgraham.com/index.html",
             "ch": [
               {
-                "tag": "img",
-                "src": "https://s.turbifycdn.com/aah/paulgraham/bel-8.gif"
+                "kind": "img",
+                "link": "https://s.turbifycdn.com/aah/paulgraham/bel-8.gif"
               }
             ]
           },
           {
-            "tag": "table",
-            "el": [
-              { "tag": "table" },
-              { "tag": "tbody" },
-              { "tag": "tr" },
-              { "tag": "td" },
-              { "tag": "font" }
-            ],
-            "ch": [
-              {
-                "tag": "#text",
-                "text": "If you're not sure which to read, try"
-              },
-              {
-                "tag": "a",
-                "text": "How to Do Great Work",
-                "href": "https://paulgraham.com/greatwork.html"
-              },
-              { "tag": "#text", "text": "," },
-              {
-                "tag": "a",
-                "text": "Having Kids",
-                "href": "https://paulgraham.com/kids.html"
-              },
-              { "tag": "#text", "text": ", or" },
-              {
-                "tag": "a",
-                "text": "How to Lose Time and Money",
-                "href": "https://paulgraham.com/selfindulgence.html"
-              },
-              { "tag": "#text", "text": "." }
-            ]
+            "val": "If you're not sure which to read, try How to Do Great Work, Having Kids, or How to Lose Time and Money."
           },
           {
-            "tag": "table",
-            "el": [{ "tag": "table" }, { "tag": "tbody" }],
             "ch": [
               {
-                "tag": "a",
-                "text": "Making Startups Powerful",
-                "href": "https://paulgraham.com/powerful.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How Universities Should Prepare Founders",
-                "href": "https://paulgraham.com/prepare.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Earn a Billion Dollars",
-                "href": "https://paulgraham.com/earn.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Convert Between Wealth and Income Tax",
-                "href": "https://paulgraham.com/winc.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Brand Age",
-                "href": "https://paulgraham.com/brandage.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Shape of the Essay Field",
-                "href": "https://paulgraham.com/field.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Good Writing",
-                "href": "https://paulgraham.com/goodwriting.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What to Do",
-                "href": "https://paulgraham.com/do.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Origins of Wokeness",
-                "href": "https://paulgraham.com/woke.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Writes and Write-Nots",
-                "href": "https://paulgraham.com/writes.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "When To Do What You Love",
-                "href": "https://paulgraham.com/when.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Founder Mode",
-                "href": "https://paulgraham.com/foundermode.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Right Kind of Stubborn",
-                "href": "https://paulgraham.com/persistence.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Reddits",
-                "href": "https://paulgraham.com/reddits.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Start Google",
-                "href": "https://paulgraham.com/google.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Best Essay",
-                "href": "https://paulgraham.com/best.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Superlinear Returns",
-                "href": "https://paulgraham.com/superlinear.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Do Great Work",
-                "href": "https://paulgraham.com/greatwork.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Get New Ideas",
-                "href": "https://paulgraham.com/getideas.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Need to Read",
-                "href": "https://paulgraham.com/read.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What You (Want to)* Want",
-                "href": "https://paulgraham.com/want.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Alien Truth",
-                "href": "https://paulgraham.com/alien.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What I've Learned from Users",
-                "href": "https://paulgraham.com/users.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Heresy",
-                "href": "https://paulgraham.com/heresy.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Putting Ideas into Words",
-                "href": "https://paulgraham.com/words.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Is There Such a Thing as Good Taste?",
-                "href": "https://paulgraham.com/goodtaste.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Beyond Smart",
-                "href": "https://paulgraham.com/smart.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Weird Languages",
-                "href": "https://paulgraham.com/weird.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Work Hard",
-                "href": "https://paulgraham.com/hwh.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A Project of One's Own",
-                "href": "https://paulgraham.com/own.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Fierce Nerds",
-                "href": "https://paulgraham.com/fn.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Crazy New Ideas",
-                "href": "https://paulgraham.com/newideas.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "An NFT That Saves Lives",
-                "href": "https://paulgraham.com/nft.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Real Reason to End the Death Penalty",
-                "href": "https://paulgraham.com/real.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How People Get Rich Now",
-                "href": "https://paulgraham.com/richnow.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Write Simply",
-                "href": "https://paulgraham.com/simply.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Donate Unrestricted",
-                "href": "https://paulgraham.com/donate.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What I Worked On",
-                "href": "https://paulgraham.com/worked.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Earnestness",
-                "href": "https://paulgraham.com/earnest.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Billionaires Build",
-                "href": "https://paulgraham.com/ace.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Airbnbs",
-                "href": "https://paulgraham.com/airbnbs.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Think for Yourself",
-                "href": "https://paulgraham.com/think.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Early Work",
-                "href": "https://paulgraham.com/early.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Modeling a Wealth Tax",
-                "href": "https://paulgraham.com/wtax.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Four Quadrants of Conformism",
-                "href": "https://paulgraham.com/conformism.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Orthodox Privilege",
-                "href": "https://paulgraham.com/orth.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Coronavirus and Credibility",
-                "href": "https://paulgraham.com/cred.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Write Usefully",
-                "href": "https://paulgraham.com/useful.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Being a Noob",
-                "href": "https://paulgraham.com/noob.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Haters",
-                "href": "https://paulgraham.com/fh.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Two Kinds of Moderate",
-                "href": "https://paulgraham.com/mod.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Fashionable Problems",
-                "href": "https://paulgraham.com/fp.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Having Kids",
-                "href": "https://paulgraham.com/kids.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Lesson to Unlearn",
-                "href": "https://paulgraham.com/lesson.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Novelty and Heresy",
-                "href": "https://paulgraham.com/nov.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Bus Ticket Theory of Genius",
-                "href": "https://paulgraham.com/genius.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "General and Surprising",
-                "href": "https://paulgraham.com/sun.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Charisma / Power",
-                "href": "https://paulgraham.com/pow.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Risk of Discovery",
-                "href": "https://paulgraham.com/disc.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Make Pittsburgh a Startup Hub",
-                "href": "https://paulgraham.com/pgh.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Life is Short",
-                "href": "https://paulgraham.com/vb.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Economic Inequality",
-                "href": "https://paulgraham.com/ineq.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Refragmentation",
-                "href": "https://paulgraham.com/re.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Jessica Livingston",
-                "href": "https://paulgraham.com/jessica.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A Way to Detect Bias",
-                "href": "https://paulgraham.com/bias.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Write Like You Talk",
-                "href": "https://paulgraham.com/talk.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Default Alive or Default Dead?",
-                "href": "https://paulgraham.com/aord.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why It's Safe for Founders to Be Nice",
-                "href": "https://paulgraham.com/safe.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Change Your Name",
-                "href": "https://paulgraham.com/name.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What Microsoft Is this the Altair Basic of?",
-                "href": "https://paulgraham.com/altair.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Ronco Principle",
-                "href": "https://paulgraham.com/ronco.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What Doesn't Seem Like Work?",
-                "href": "https://paulgraham.com/work.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Don't Talk to Corp Dev",
-                "href": "https://paulgraham.com/corpdev.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Let the Other 95% of Great Programmers In",
-                "href": "https://paulgraham.com/95.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Be an Expert in a Changing World",
-                "href": "https://paulgraham.com/ecw.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How You Know",
-                "href": "https://paulgraham.com/know.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Fatal Pinch",
-                "href": "https://paulgraham.com/pinch.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Mean People Fail",
-                "href": "https://paulgraham.com/mean.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Before the Startup",
-                "href": "https://paulgraham.com/before.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Raise Money",
-                "href": "https://paulgraham.com/fr.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Investor Herd Dynamics",
-                "href": "https://paulgraham.com/herd.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Convince Investors",
-                "href": "https://paulgraham.com/convince.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Do Things that Don't Scale",
-                "href": "https://paulgraham.com/ds.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Startup Investing Trends",
-                "href": "https://paulgraham.com/invtrend.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Get Startup Ideas",
-                "href": "https://paulgraham.com/startupideas.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Hardware Renaissance",
-                "href": "https://paulgraham.com/hw.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Startup = Growth",
-                "href": "https://paulgraham.com/growth.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Black Swan Farming",
-                "href": "https://paulgraham.com/swan.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Top of My Todo List",
-                "href": "https://paulgraham.com/todo.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Writing and Speaking",
-                "href": "https://paulgraham.com/speak.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How Y Combinator Started",
-                "href": "https://paulgraham.com/ycstart.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Defining Property",
-                "href": "https://paulgraham.com/property.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Frighteningly Ambitious Startup Ideas",
-                "href": "https://paulgraham.com/ambitious.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A Word to the Resourceful",
-                "href": "https://paulgraham.com/word.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Schlep Blindness",
-                "href": "https://paulgraham.com/schlep.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Snapshot: Viaweb, June 1998",
-                "href": "https://paulgraham.com/vw.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why Startup Hubs Work",
-                "href": "https://paulgraham.com/hubs.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Patent Pledge",
-                "href": "https://paulgraham.com/patentpledge.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Subject: Airbnb",
-                "href": "https://paulgraham.com/airbnb.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Founder Control",
-                "href": "https://paulgraham.com/control.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Tablets",
-                "href": "https://paulgraham.com/tablets.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What We Look for in Founders",
-                "href": "https://paulgraham.com/founders.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The New Funding Landscape",
-                "href": "https://paulgraham.com/superangels.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Where to See Silicon Valley",
-                "href": "https://paulgraham.com/seesv.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "High Resolution Fundraising",
-                "href": "https://paulgraham.com/hiresfund.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What Happened to Yahoo",
-                "href": "https://paulgraham.com/yahoo.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Future of Startup Funding",
-                "href": "https://paulgraham.com/future.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Acceleration of Addictiveness",
-                "href": "https://paulgraham.com/addiction.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Top Idea in Your Mind",
-                "href": "https://paulgraham.com/top.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Lose Time and Money",
-                "href": "https://paulgraham.com/selfindulgence.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Organic Startup Ideas",
-                "href": "https://paulgraham.com/organic.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Apple's Mistake",
-                "href": "https://paulgraham.com/apple.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What Startups Are Really Like",
-                "href": "https://paulgraham.com/really.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Persuade xor Discover",
-                "href": "https://paulgraham.com/discover.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Post-Medium Publishing",
-                "href": "https://paulgraham.com/publishing.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The List of N Things",
-                "href": "https://paulgraham.com/nthings.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Anatomy of Determination",
-                "href": "https://paulgraham.com/determination.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What Kate Saw in Silicon Valley",
-                "href": "https://paulgraham.com/kate.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Trouble with the Segway",
-                "href": "https://paulgraham.com/segway.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Ramen Profitable",
-                "href": "https://paulgraham.com/ramenprofitable.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Maker's Schedule, Manager's Schedule",
-                "href": "https://paulgraham.com/makersschedule.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A Local Revolution?",
-                "href": "https://paulgraham.com/revolution.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why Twitter is a Big Deal",
-                "href": "https://paulgraham.com/twitter.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Founder Visa",
-                "href": "https://paulgraham.com/foundervisa.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Five Founders",
-                "href": "https://paulgraham.com/5founders.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Relentlessly Resourceful",
-                "href": "https://paulgraham.com/relres.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Be an Angel Investor",
-                "href": "https://paulgraham.com/angelinvesting.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why TV Lost",
-                "href": "https://paulgraham.com/convergence.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Can You Buy a Silicon Valley? Maybe.",
-                "href": "https://paulgraham.com/maybe.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What I've Learned from Hacker News",
-                "href": "https://paulgraham.com/hackernews.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Startups in 13 Sentences",
-                "href": "https://paulgraham.com/13sentences.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Keep Your Identity Small",
-                "href": "https://paulgraham.com/identity.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "After Credentials",
-                "href": "https://paulgraham.com/credentials.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Could VC be a Casualty of the Recession?",
-                "href": "https://paulgraham.com/divergence.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The High-Res Society",
-                "href": "https://paulgraham.com/highres.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Other Half of \"Artists Ship\"",
-                "href": "https://paulgraham.com/artistsship.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why to Start a Startup in a Bad Economy",
-                "href": "https://paulgraham.com/badeconomy.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A Fundraising Survival Guide",
-                "href": "https://paulgraham.com/fundraising.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Pooled-Risk Company Management Company",
-                "href": "https://paulgraham.com/prcmc.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Cities and Ambition",
-                "href": "https://paulgraham.com/cities.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Disconnecting Distraction",
-                "href": "https://paulgraham.com/distraction.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Lies We Tell Kids",
-                "href": "https://paulgraham.com/lies.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Be Good",
-                "href": "https://paulgraham.com/good.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why There Aren't More Googles",
-                "href": "https://paulgraham.com/googles.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Some Heroes",
-                "href": "https://paulgraham.com/heroes.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Disagree",
-                "href": "https://paulgraham.com/disagree.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "You Weren't Meant to Have a Boss",
-                "href": "https://paulgraham.com/boss.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A New Venture Animal",
-                "href": "https://paulgraham.com/ycombinator.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Trolls",
-                "href": "https://paulgraham.com/trolls.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Six Principles for Making New Things",
-                "href": "https://paulgraham.com/newthings.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why to Move to a Startup Hub",
-                "href": "https://paulgraham.com/startuphubs.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Future of Web Startups",
-                "href": "https://paulgraham.com/webstartups.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Do Philosophy",
-                "href": "https://paulgraham.com/philosophy.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "News from the Front",
-                "href": "https://paulgraham.com/colleges.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How Not to Die",
-                "href": "https://paulgraham.com/die.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Holding a Program in One's Head",
-                "href": "https://paulgraham.com/head.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Stuff",
-                "href": "https://paulgraham.com/stuff.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Equity Equation",
-                "href": "https://paulgraham.com/equity.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "An Alternative Theory of Unions",
-                "href": "https://paulgraham.com/unions.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Hacker's Guide to Investors",
-                "href": "https://paulgraham.com/guidetoinvestors.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Two Kinds of Judgement",
-                "href": "https://paulgraham.com/judgement.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Microsoft is Dead",
-                "href": "https://paulgraham.com/microsoft.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why to Not Not Start a Startup",
-                "href": "https://paulgraham.com/notnot.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Is It Worth Being Wise?",
-                "href": "https://paulgraham.com/wisdom.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Learning from Founders",
-                "href": "https://paulgraham.com/foundersatwork.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How Art Can Be Good",
-                "href": "https://paulgraham.com/goodart.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The 18 Mistakes That Kill Startups",
-                "href": "https://paulgraham.com/startupmistakes.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A Student's Guide to Startups",
-                "href": "https://paulgraham.com/mit.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Present to Investors",
-                "href": "https://paulgraham.com/investors.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Copy What You Like",
-                "href": "https://paulgraham.com/copy.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Island Test",
-                "href": "https://paulgraham.com/island.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Power of the Marginal",
-                "href": "https://paulgraham.com/marginal.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why Startups Condense in America",
-                "href": "https://paulgraham.com/america.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Be Silicon Valley",
-                "href": "https://paulgraham.com/siliconvalley.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Hardest Lessons for Startups to Learn",
-                "href": "https://paulgraham.com/startuplessons.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "See Randomness",
-                "href": "https://paulgraham.com/randomness.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Are Software Patents Evil?",
-                "href": "https://paulgraham.com/softwarepatents.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "6,631,372",
-                "href": "https://paulgraham.com/6631327.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why YC",
-                "href": "https://paulgraham.com/whyyc.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Do What You Love",
-                "href": "https://paulgraham.com/love.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Good and Bad Procrastination",
-                "href": "https://paulgraham.com/procrastination.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Web 2.0",
-                "href": "https://paulgraham.com/web20.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Fund a Startup",
-                "href": "https://paulgraham.com/startupfunding.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Venture Capital Squeeze",
-                "href": "https://paulgraham.com/vcsqueeze.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Ideas for Startups",
-                "href": "https://paulgraham.com/ideas.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What I Did this Summer",
-                "href": "https://paulgraham.com/sfp.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Inequality and Risk",
-                "href": "https://paulgraham.com/inequality.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "After the Ladder",
-                "href": "https://paulgraham.com/ladder.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What Business Can Learn from Open Source",
-                "href": "https://paulgraham.com/opensource.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Hiring is Obsolete",
-                "href": "https://paulgraham.com/hiring.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Submarine",
-                "href": "https://paulgraham.com/submarine.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why Smart People Have Bad Ideas",
-                "href": "https://paulgraham.com/bronze.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Return of the Mac",
-                "href": "https://paulgraham.com/mac.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Writing, Briefly",
-                "href": "https://paulgraham.com/writing44.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Undergraduation",
-                "href": "https://paulgraham.com/college.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A Unified Theory of VC Suckage",
-                "href": "https://paulgraham.com/venturecapital.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Start a Startup",
-                "href": "https://paulgraham.com/start.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What You'll Wish You'd Known",
-                "href": "https://paulgraham.com/hs.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Made in USA",
-                "href": "https://paulgraham.com/usa.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "It's Charisma, Stupid",
-                "href": "https://paulgraham.com/charisma.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Bradley's Ghost",
-                "href": "https://paulgraham.com/polls.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A Version 1.0",
-                "href": "https://paulgraham.com/laundry.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What the Bubble Got Right",
-                "href": "https://paulgraham.com/bubble.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Age of the Essay",
-                "href": "https://paulgraham.com/essay.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Python Paradox",
-                "href": "https://paulgraham.com/pypar.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Great Hackers",
-                "href": "https://paulgraham.com/gh.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Mind the Gap",
-                "href": "https://paulgraham.com/gap.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "How to Make Wealth",
-                "href": "https://paulgraham.com/wealth.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Word \"Hacker\"",
-                "href": "https://paulgraham.com/gba.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What You Can't Say",
-                "href": "https://paulgraham.com/say.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Filters that Fight Back",
-                "href": "https://paulgraham.com/ffb.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Hackers and Painters",
-                "href": "https://paulgraham.com/hp.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "If Lisp is So Great",
-                "href": "https://paulgraham.com/iflisp.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Hundred-Year Language",
-                "href": "https://paulgraham.com/hundred.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why Nerds are Unpopular",
-                "href": "https://paulgraham.com/nerds.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Better Bayesian Filtering",
-                "href": "https://paulgraham.com/better.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Design and Research",
-                "href": "https://paulgraham.com/desres.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "A Plan for Spam",
-                "href": "https://paulgraham.com/spam.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Revenge of the Nerds",
-                "href": "https://paulgraham.com/icad.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Succinctness is Power",
-                "href": "https://paulgraham.com/power.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What Languages Fix",
-                "href": "https://paulgraham.com/fix.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Taste for Makers",
-                "href": "https://paulgraham.com/taste.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Why Arc Isn't Especially Object-Oriented",
-                "href": "https://paulgraham.com/noop.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "What Made Lisp Different",
-                "href": "https://paulgraham.com/diff.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Other Road Ahead",
-                "href": "https://paulgraham.com/road.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "The Roots of Lisp",
-                "href": "https://paulgraham.com/rootsoflisp.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Five Questions about Language Design",
-                "href": "https://paulgraham.com/langdes.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Being Popular",
-                "href": "https://paulgraham.com/popular.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Java's Cover",
-                "href": "https://paulgraham.com/javacover.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Beating the Averages",
-                "href": "https://paulgraham.com/avg.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Lisp for Web-Based Applications",
-                "href": "https://paulgraham.com/lwba.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Chapter 1 of Ansi Common Lisp",
-                "href": "https://sep.turbifycdn.com/ty/cdn/paulgraham/acl1.txt?t=1789396309\u0026",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Chapter 2 of Ansi Common Lisp",
-                "href": "https://sep.turbifycdn.com/ty/cdn/paulgraham/acl2.txt?t=1789396309\u0026",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "Programming Bottom-Up",
-                "href": "https://paulgraham.com/progbot.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
-              },
-              {
-                "tag": "a",
-                "text": "This Year We Can End the Death Penalty in California",
-                "href": "https://paulgraham.com/prop62.html",
-                "el": [
-                  { "tag": "tr" },
-                  { "tag": "td" },
-                  { "tag": "font" },
-                  { "tag": "a" }
-                ]
+                "val": "Making Startups Powerful",
+                "link": "https://paulgraham.com/powerful.html"
+              },
+              {
+                "val": "How Universities Should Prepare Founders",
+                "link": "https://paulgraham.com/prepare.html"
+              },
+              {
+                "val": "How to Earn a Billion Dollars",
+                "link": "https://paulgraham.com/earn.html"
+              },
+              {
+                "val": "How to Convert Between Wealth and Income Tax",
+                "link": "https://paulgraham.com/winc.html"
+              },
+              {
+                "val": "The Brand Age",
+                "link": "https://paulgraham.com/brandage.html"
+              },
+              {
+                "val": "The Shape of the Essay Field",
+                "link": "https://paulgraham.com/field.html"
+              },
+              {
+                "val": "Good Writing",
+                "link": "https://paulgraham.com/goodwriting.html"
+              },
+              {
+                "val": "What to Do",
+                "link": "https://paulgraham.com/do.html"
+              },
+              {
+                "val": "The Origins of Wokeness",
+                "link": "https://paulgraham.com/woke.html"
+              },
+              {
+                "val": "Writes and Write-Nots",
+                "link": "https://paulgraham.com/writes.html"
+              },
+              {
+                "val": "When To Do What You Love",
+                "link": "https://paulgraham.com/when.html"
+              },
+              {
+                "val": "Founder Mode",
+                "link": "https://paulgraham.com/foundermode.html"
+              },
+              {
+                "val": "The Right Kind of Stubborn",
+                "link": "https://paulgraham.com/persistence.html"
+              },
+              {
+                "val": "The Reddits",
+                "link": "https://paulgraham.com/reddits.html"
+              },
+              {
+                "val": "How to Start Google",
+                "link": "https://paulgraham.com/google.html"
+              },
+              {
+                "val": "The Best Essay",
+                "link": "https://paulgraham.com/best.html"
+              },
+              {
+                "val": "Superlinear Returns",
+                "link": "https://paulgraham.com/superlinear.html"
+              },
+              {
+                "val": "How to Do Great Work",
+                "link": "https://paulgraham.com/greatwork.html"
+              },
+              {
+                "val": "How to Get New Ideas",
+                "link": "https://paulgraham.com/getideas.html"
+              },
+              {
+                "val": "The Need to Read",
+                "link": "https://paulgraham.com/read.html"
+              },
+              {
+                "val": "What You (Want to)* Want",
+                "link": "https://paulgraham.com/want.html"
+              },
+              {
+                "val": "Alien Truth",
+                "link": "https://paulgraham.com/alien.html"
+              },
+              {
+                "val": "What I've Learned from Users",
+                "link": "https://paulgraham.com/users.html"
+              },
+              {
+                "val": "Heresy",
+                "link": "https://paulgraham.com/heresy.html"
+              },
+              {
+                "val": "Putting Ideas into Words",
+                "link": "https://paulgraham.com/words.html"
+              },
+              {
+                "val": "Is There Such a Thing as Good Taste?",
+                "link": "https://paulgraham.com/goodtaste.html"
+              },
+              {
+                "val": "Beyond Smart",
+                "link": "https://paulgraham.com/smart.html"
+              },
+              {
+                "val": "Weird Languages",
+                "link": "https://paulgraham.com/weird.html"
+              },
+              {
+                "val": "How to Work Hard",
+                "link": "https://paulgraham.com/hwh.html"
+              },
+              {
+                "val": "A Project of One's Own",
+                "link": "https://paulgraham.com/own.html"
+              },
+              {
+                "val": "Fierce Nerds",
+                "link": "https://paulgraham.com/fn.html"
+              },
+              {
+                "val": "Crazy New Ideas",
+                "link": "https://paulgraham.com/newideas.html"
+              },
+              {
+                "val": "An NFT That Saves Lives",
+                "link": "https://paulgraham.com/nft.html"
+              },
+              {
+                "val": "The Real Reason to End the Death Penalty",
+                "link": "https://paulgraham.com/real.html"
+              },
+              {
+                "val": "How People Get Rich Now",
+                "link": "https://paulgraham.com/richnow.html"
+              },
+              {
+                "val": "Write Simply",
+                "link": "https://paulgraham.com/simply.html"
+              },
+              {
+                "val": "Donate Unrestricted",
+                "link": "https://paulgraham.com/donate.html"
+              },
+              {
+                "val": "What I Worked On",
+                "link": "https://paulgraham.com/worked.html"
+              },
+              {
+                "val": "Earnestness",
+                "link": "https://paulgraham.com/earnest.html"
+              },
+              {
+                "val": "Billionaires Build",
+                "link": "https://paulgraham.com/ace.html"
+              },
+              {
+                "val": "The Airbnbs",
+                "link": "https://paulgraham.com/airbnbs.html"
+              },
+              {
+                "val": "How to Think for Yourself",
+                "link": "https://paulgraham.com/think.html"
+              },
+              {
+                "val": "Early Work",
+                "link": "https://paulgraham.com/early.html"
+              },
+              {
+                "val": "Modeling a Wealth Tax",
+                "link": "https://paulgraham.com/wtax.html"
+              },
+              {
+                "val": "The Four Quadrants of Conformism",
+                "link": "https://paulgraham.com/conformism.html"
+              },
+              {
+                "val": "Orthodox Privilege",
+                "link": "https://paulgraham.com/orth.html"
+              },
+              {
+                "val": "Coronavirus and Credibility",
+                "link": "https://paulgraham.com/cred.html"
+              },
+              {
+                "val": "How to Write Usefully",
+                "link": "https://paulgraham.com/useful.html"
+              },
+              {
+                "val": "Being a Noob",
+                "link": "https://paulgraham.com/noob.html"
+              },
+              {
+                "val": "Haters",
+                "link": "https://paulgraham.com/fh.html"
+              },
+              {
+                "val": "The Two Kinds of Moderate",
+                "link": "https://paulgraham.com/mod.html"
+              },
+              {
+                "val": "Fashionable Problems",
+                "link": "https://paulgraham.com/fp.html"
+              },
+              {
+                "val": "Having Kids",
+                "link": "https://paulgraham.com/kids.html"
+              },
+              {
+                "val": "The Lesson to Unlearn",
+                "link": "https://paulgraham.com/lesson.html"
+              },
+              {
+                "val": "Novelty and Heresy",
+                "link": "https://paulgraham.com/nov.html"
+              },
+              {
+                "val": "The Bus Ticket Theory of Genius",
+                "link": "https://paulgraham.com/genius.html"
+              },
+              {
+                "val": "General and Surprising",
+                "link": "https://paulgraham.com/sun.html"
+              },
+              {
+                "val": "Charisma / Power",
+                "link": "https://paulgraham.com/pow.html"
+              },
+              {
+                "val": "The Risk of Discovery",
+                "link": "https://paulgraham.com/disc.html"
+              },
+              {
+                "val": "How to Make Pittsburgh a Startup Hub",
+                "link": "https://paulgraham.com/pgh.html"
+              },
+              {
+                "val": "Life is Short",
+                "link": "https://paulgraham.com/vb.html"
+              },
+              {
+                "val": "Economic Inequality",
+                "link": "https://paulgraham.com/ineq.html"
+              },
+              {
+                "val": "The Refragmentation",
+                "link": "https://paulgraham.com/re.html"
+              },
+              {
+                "val": "Jessica Livingston",
+                "link": "https://paulgraham.com/jessica.html"
+              },
+              {
+                "val": "A Way to Detect Bias",
+                "link": "https://paulgraham.com/bias.html"
+              },
+              {
+                "val": "Write Like You Talk",
+                "link": "https://paulgraham.com/talk.html"
+              },
+              {
+                "val": "Default Alive or Default Dead?",
+                "link": "https://paulgraham.com/aord.html"
+              },
+              {
+                "val": "Why It's Safe for Founders to Be Nice",
+                "link": "https://paulgraham.com/safe.html"
+              },
+              {
+                "val": "Change Your Name",
+                "link": "https://paulgraham.com/name.html"
+              },
+              {
+                "val": "What Microsoft Is this the Altair Basic of?",
+                "link": "https://paulgraham.com/altair.html"
+              },
+              {
+                "val": "The Ronco Principle",
+                "link": "https://paulgraham.com/ronco.html"
+              },
+              {
+                "val": "What Doesn't Seem Like Work?",
+                "link": "https://paulgraham.com/work.html"
+              },
+              {
+                "val": "Don't Talk to Corp Dev",
+                "link": "https://paulgraham.com/corpdev.html"
+              },
+              {
+                "val": "Let the Other 95% of Great Programmers In",
+                "link": "https://paulgraham.com/95.html"
+              },
+              {
+                "val": "How to Be an Expert in a Changing World",
+                "link": "https://paulgraham.com/ecw.html"
+              },
+              {
+                "val": "How You Know",
+                "link": "https://paulgraham.com/know.html"
+              },
+              {
+                "val": "The Fatal Pinch",
+                "link": "https://paulgraham.com/pinch.html"
+              },
+              {
+                "val": "Mean People Fail",
+                "link": "https://paulgraham.com/mean.html"
+              },
+              {
+                "val": "Before the Startup",
+                "link": "https://paulgraham.com/before.html"
+              },
+              {
+                "val": "How to Raise Money",
+                "link": "https://paulgraham.com/fr.html"
+              },
+              {
+                "val": "Investor Herd Dynamics",
+                "link": "https://paulgraham.com/herd.html"
+              },
+              {
+                "val": "How to Convince Investors",
+                "link": "https://paulgraham.com/convince.html"
+              },
+              {
+                "val": "Do Things that Don't Scale",
+                "link": "https://paulgraham.com/ds.html"
+              },
+              {
+                "val": "Startup Investing Trends",
+                "link": "https://paulgraham.com/invtrend.html"
+              },
+              {
+                "val": "How to Get Startup Ideas",
+                "link": "https://paulgraham.com/startupideas.html"
+              },
+              {
+                "val": "The Hardware Renaissance",
+                "link": "https://paulgraham.com/hw.html"
+              },
+              {
+                "val": "Startup = Growth",
+                "link": "https://paulgraham.com/growth.html"
+              },
+              {
+                "val": "Black Swan Farming",
+                "link": "https://paulgraham.com/swan.html"
+              },
+              {
+                "val": "The Top of My Todo List",
+                "link": "https://paulgraham.com/todo.html"
+              },
+              {
+                "val": "Writing and Speaking",
+                "link": "https://paulgraham.com/speak.html"
+              },
+              {
+                "val": "How Y Combinator Started",
+                "link": "https://paulgraham.com/ycstart.html"
+              },
+              {
+                "val": "Defining Property",
+                "link": "https://paulgraham.com/property.html"
+              },
+              {
+                "val": "Frighteningly Ambitious Startup Ideas",
+                "link": "https://paulgraham.com/ambitious.html"
+              },
+              {
+                "val": "A Word to the Resourceful",
+                "link": "https://paulgraham.com/word.html"
+              },
+              {
+                "val": "Schlep Blindness",
+                "link": "https://paulgraham.com/schlep.html"
+              },
+              {
+                "val": "Snapshot: Viaweb, June 1998",
+                "link": "https://paulgraham.com/vw.html"
+              },
+              {
+                "val": "Why Startup Hubs Work",
+                "link": "https://paulgraham.com/hubs.html"
+              },
+              {
+                "val": "The Patent Pledge",
+                "link": "https://paulgraham.com/patentpledge.html"
+              },
+              {
+                "val": "Subject: Airbnb",
+                "link": "https://paulgraham.com/airbnb.html"
+              },
+              {
+                "val": "Founder Control",
+                "link": "https://paulgraham.com/control.html"
+              },
+              {
+                "val": "Tablets",
+                "link": "https://paulgraham.com/tablets.html"
+              },
+              {
+                "val": "What We Look for in Founders",
+                "link": "https://paulgraham.com/founders.html"
+              },
+              {
+                "val": "The New Funding Landscape",
+                "link": "https://paulgraham.com/superangels.html"
+              },
+              {
+                "val": "Where to See Silicon Valley",
+                "link": "https://paulgraham.com/seesv.html"
+              },
+              {
+                "val": "High Resolution Fundraising",
+                "link": "https://paulgraham.com/hiresfund.html"
+              },
+              {
+                "val": "What Happened to Yahoo",
+                "link": "https://paulgraham.com/yahoo.html"
+              },
+              {
+                "val": "The Future of Startup Funding",
+                "link": "https://paulgraham.com/future.html"
+              },
+              {
+                "val": "The Acceleration of Addictiveness",
+                "link": "https://paulgraham.com/addiction.html"
+              },
+              {
+                "val": "The Top Idea in Your Mind",
+                "link": "https://paulgraham.com/top.html"
+              },
+              {
+                "val": "How to Lose Time and Money",
+                "link": "https://paulgraham.com/selfindulgence.html"
+              },
+              {
+                "val": "Organic Startup Ideas",
+                "link": "https://paulgraham.com/organic.html"
+              },
+              {
+                "val": "Apple's Mistake",
+                "link": "https://paulgraham.com/apple.html"
+              },
+              {
+                "val": "What Startups Are Really Like",
+                "link": "https://paulgraham.com/really.html"
+              },
+              {
+                "val": "Persuade xor Discover",
+                "link": "https://paulgraham.com/discover.html"
+              },
+              {
+                "val": "Post-Medium Publishing",
+                "link": "https://paulgraham.com/publishing.html"
+              },
+              {
+                "val": "The List of N Things",
+                "link": "https://paulgraham.com/nthings.html"
+              },
+              {
+                "val": "The Anatomy of Determination",
+                "link": "https://paulgraham.com/determination.html"
+              },
+              {
+                "val": "What Kate Saw in Silicon Valley",
+                "link": "https://paulgraham.com/kate.html"
+              },
+              {
+                "val": "The Trouble with the Segway",
+                "link": "https://paulgraham.com/segway.html"
+              },
+              {
+                "val": "Ramen Profitable",
+                "link": "https://paulgraham.com/ramenprofitable.html"
+              },
+              {
+                "val": "Maker's Schedule, Manager's Schedule",
+                "link": "https://paulgraham.com/makersschedule.html"
+              },
+              {
+                "val": "A Local Revolution?",
+                "link": "https://paulgraham.com/revolution.html"
+              },
+              {
+                "val": "Why Twitter is a Big Deal",
+                "link": "https://paulgraham.com/twitter.html"
+              },
+              {
+                "val": "The Founder Visa",
+                "link": "https://paulgraham.com/foundervisa.html"
+              },
+              {
+                "val": "Five Founders",
+                "link": "https://paulgraham.com/5founders.html"
+              },
+              {
+                "val": "Relentlessly Resourceful",
+                "link": "https://paulgraham.com/relres.html"
+              },
+              {
+                "val": "How to Be an Angel Investor",
+                "link": "https://paulgraham.com/angelinvesting.html"
+              },
+              {
+                "val": "Why TV Lost",
+                "link": "https://paulgraham.com/convergence.html"
+              },
+              {
+                "val": "Can You Buy a Silicon Valley? Maybe.",
+                "link": "https://paulgraham.com/maybe.html"
+              },
+              {
+                "val": "What I've Learned from Hacker News",
+                "link": "https://paulgraham.com/hackernews.html"
+              },
+              {
+                "val": "Startups in 13 Sentences",
+                "link": "https://paulgraham.com/13sentences.html"
+              },
+              {
+                "val": "Keep Your Identity Small",
+                "link": "https://paulgraham.com/identity.html"
+              },
+              {
+                "val": "After Credentials",
+                "link": "https://paulgraham.com/credentials.html"
+              },
+              {
+                "val": "Could VC be a Casualty of the Recession?",
+                "link": "https://paulgraham.com/divergence.html"
+              },
+              {
+                "val": "The High-Res Society",
+                "link": "https://paulgraham.com/highres.html"
+              },
+              {
+                "val": "The Other Half of \"Artists Ship\"",
+                "link": "https://paulgraham.com/artistsship.html"
+              },
+              {
+                "val": "Why to Start a Startup in a Bad Economy",
+                "link": "https://paulgraham.com/badeconomy.html"
+              },
+              {
+                "val": "A Fundraising Survival Guide",
+                "link": "https://paulgraham.com/fundraising.html"
+              },
+              {
+                "val": "The Pooled-Risk Company Management Company",
+                "link": "https://paulgraham.com/prcmc.html"
+              },
+              {
+                "val": "Cities and Ambition",
+                "link": "https://paulgraham.com/cities.html"
+              },
+              {
+                "val": "Disconnecting Distraction",
+                "link": "https://paulgraham.com/distraction.html"
+              },
+              {
+                "val": "Lies We Tell Kids",
+                "link": "https://paulgraham.com/lies.html"
+              },
+              {
+                "val": "Be Good",
+                "link": "https://paulgraham.com/good.html"
+              },
+              {
+                "val": "Why There Aren't More Googles",
+                "link": "https://paulgraham.com/googles.html"
+              },
+              {
+                "val": "Some Heroes",
+                "link": "https://paulgraham.com/heroes.html"
+              },
+              {
+                "val": "How to Disagree",
+                "link": "https://paulgraham.com/disagree.html"
+              },
+              {
+                "val": "You Weren't Meant to Have a Boss",
+                "link": "https://paulgraham.com/boss.html"
+              },
+              {
+                "val": "A New Venture Animal",
+                "link": "https://paulgraham.com/ycombinator.html"
+              },
+              {
+                "val": "Trolls",
+                "link": "https://paulgraham.com/trolls.html"
+              },
+              {
+                "val": "Six Principles for Making New Things",
+                "link": "https://paulgraham.com/newthings.html"
+              },
+              {
+                "val": "Why to Move to a Startup Hub",
+                "link": "https://paulgraham.com/startuphubs.html"
+              },
+              {
+                "val": "The Future of Web Startups",
+                "link": "https://paulgraham.com/webstartups.html"
+              },
+              {
+                "val": "How to Do Philosophy",
+                "link": "https://paulgraham.com/philosophy.html"
+              },
+              {
+                "val": "News from the Front",
+                "link": "https://paulgraham.com/colleges.html"
+              },
+              {
+                "val": "How Not to Die",
+                "link": "https://paulgraham.com/die.html"
+              },
+              {
+                "val": "Holding a Program in One's Head",
+                "link": "https://paulgraham.com/head.html"
+              },
+              {
+                "val": "Stuff",
+                "link": "https://paulgraham.com/stuff.html"
+              },
+              {
+                "val": "The Equity Equation",
+                "link": "https://paulgraham.com/equity.html"
+              },
+              {
+                "val": "An Alternative Theory of Unions",
+                "link": "https://paulgraham.com/unions.html"
+              },
+              {
+                "val": "The Hacker's Guide to Investors",
+                "link": "https://paulgraham.com/guidetoinvestors.html"
+              },
+              {
+                "val": "Two Kinds of Judgement",
+                "link": "https://paulgraham.com/judgement.html"
+              },
+              {
+                "val": "Microsoft is Dead",
+                "link": "https://paulgraham.com/microsoft.html"
+              },
+              {
+                "val": "Why to Not Not Start a Startup",
+                "link": "https://paulgraham.com/notnot.html"
+              },
+              {
+                "val": "Is It Worth Being Wise?",
+                "link": "https://paulgraham.com/wisdom.html"
+              },
+              {
+                "val": "Learning from Founders",
+                "link": "https://paulgraham.com/foundersatwork.html"
+              },
+              {
+                "val": "How Art Can Be Good",
+                "link": "https://paulgraham.com/goodart.html"
+              },
+              {
+                "val": "The 18 Mistakes That Kill Startups",
+                "link": "https://paulgraham.com/startupmistakes.html"
+              },
+              {
+                "val": "A Student's Guide to Startups",
+                "link": "https://paulgraham.com/mit.html"
+              },
+              {
+                "val": "How to Present to Investors",
+                "link": "https://paulgraham.com/investors.html"
+              },
+              {
+                "val": "Copy What You Like",
+                "link": "https://paulgraham.com/copy.html"
+              },
+              {
+                "val": "The Island Test",
+                "link": "https://paulgraham.com/island.html"
+              },
+              {
+                "val": "The Power of the Marginal",
+                "link": "https://paulgraham.com/marginal.html"
+              },
+              {
+                "val": "Why Startups Condense in America",
+                "link": "https://paulgraham.com/america.html"
+              },
+              {
+                "val": "How to Be Silicon Valley",
+                "link": "https://paulgraham.com/siliconvalley.html"
+              },
+              {
+                "val": "The Hardest Lessons for Startups to Learn",
+                "link": "https://paulgraham.com/startuplessons.html"
+              },
+              {
+                "val": "See Randomness",
+                "link": "https://paulgraham.com/randomness.html"
+              },
+              {
+                "val": "Are Software Patents Evil?",
+                "link": "https://paulgraham.com/softwarepatents.html"
+              },
+              {
+                "val": "6,631,372",
+                "link": "https://paulgraham.com/6631327.html"
+              },
+              {
+                "val": "Why YC",
+                "link": "https://paulgraham.com/whyyc.html"
+              },
+              {
+                "val": "How to Do What You Love",
+                "link": "https://paulgraham.com/love.html"
+              },
+              {
+                "val": "Good and Bad Procrastination",
+                "link": "https://paulgraham.com/procrastination.html"
+              },
+              {
+                "val": "Web 2.0",
+                "link": "https://paulgraham.com/web20.html"
+              },
+              {
+                "val": "How to Fund a Startup",
+                "link": "https://paulgraham.com/startupfunding.html"
+              },
+              {
+                "val": "The Venture Capital Squeeze",
+                "link": "https://paulgraham.com/vcsqueeze.html"
+              },
+              {
+                "val": "Ideas for Startups",
+                "link": "https://paulgraham.com/ideas.html"
+              },
+              {
+                "val": "What I Did this Summer",
+                "link": "https://paulgraham.com/sfp.html"
+              },
+              {
+                "val": "Inequality and Risk",
+                "link": "https://paulgraham.com/inequality.html"
+              },
+              {
+                "val": "After the Ladder",
+                "link": "https://paulgraham.com/ladder.html"
+              },
+              {
+                "val": "What Business Can Learn from Open Source",
+                "link": "https://paulgraham.com/opensource.html"
+              },
+              {
+                "val": "Hiring is Obsolete",
+                "link": "https://paulgraham.com/hiring.html"
+              },
+              {
+                "val": "The Submarine",
+                "link": "https://paulgraham.com/submarine.html"
+              },
+              {
+                "val": "Why Smart People Have Bad Ideas",
+                "link": "https://paulgraham.com/bronze.html"
+              },
+              {
+                "val": "Return of the Mac",
+                "link": "https://paulgraham.com/mac.html"
+              },
+              {
+                "val": "Writing, Briefly",
+                "link": "https://paulgraham.com/writing44.html"
+              },
+              {
+                "val": "Undergraduation",
+                "link": "https://paulgraham.com/college.html"
+              },
+              {
+                "val": "A Unified Theory of VC Suckage",
+                "link": "https://paulgraham.com/venturecapital.html"
+              },
+              {
+                "val": "How to Start a Startup",
+                "link": "https://paulgraham.com/start.html"
+              },
+              {
+                "val": "What You'll Wish You'd Known",
+                "link": "https://paulgraham.com/hs.html"
+              },
+              {
+                "val": "Made in USA",
+                "link": "https://paulgraham.com/usa.html"
+              },
+              {
+                "val": "It's Charisma, Stupid",
+                "link": "https://paulgraham.com/charisma.html"
+              },
+              {
+                "val": "Bradley's Ghost",
+                "link": "https://paulgraham.com/polls.html"
+              },
+              {
+                "val": "A Version 1.0",
+                "link": "https://paulgraham.com/laundry.html"
+              },
+              {
+                "val": "What the Bubble Got Right",
+                "link": "https://paulgraham.com/bubble.html"
+              },
+              {
+                "val": "The Age of the Essay",
+                "link": "https://paulgraham.com/essay.html"
+              },
+              {
+                "val": "The Python Paradox",
+                "link": "https://paulgraham.com/pypar.html"
+              },
+              {
+                "val": "Great Hackers",
+                "link": "https://paulgraham.com/gh.html"
+              },
+              {
+                "val": "Mind the Gap",
+                "link": "https://paulgraham.com/gap.html"
+              },
+              {
+                "val": "How to Make Wealth",
+                "link": "https://paulgraham.com/wealth.html"
+              },
+              {
+                "val": "The Word \"Hacker\"",
+                "link": "https://paulgraham.com/gba.html"
+              },
+              {
+                "val": "What You Can't Say",
+                "link": "https://paulgraham.com/say.html"
+              },
+              {
+                "val": "Filters that Fight Back",
+                "link": "https://paulgraham.com/ffb.html"
+              },
+              {
+                "val": "Hackers and Painters",
+                "link": "https://paulgraham.com/hp.html"
+              },
+              {
+                "val": "If Lisp is So Great",
+                "link": "https://paulgraham.com/iflisp.html"
+              },
+              {
+                "val": "The Hundred-Year Language",
+                "link": "https://paulgraham.com/hundred.html"
+              },
+              {
+                "val": "Why Nerds are Unpopular",
+                "link": "https://paulgraham.com/nerds.html"
+              },
+              {
+                "val": "Better Bayesian Filtering",
+                "link": "https://paulgraham.com/better.html"
+              },
+              {
+                "val": "Design and Research",
+                "link": "https://paulgraham.com/desres.html"
+              },
+              {
+                "val": "A Plan for Spam",
+                "link": "https://paulgraham.com/spam.html"
+              },
+              {
+                "val": "Revenge of the Nerds",
+                "link": "https://paulgraham.com/icad.html"
+              },
+              {
+                "val": "Succinctness is Power",
+                "link": "https://paulgraham.com/power.html"
+              },
+              {
+                "val": "What Languages Fix",
+                "link": "https://paulgraham.com/fix.html"
+              },
+              {
+                "val": "Taste for Makers",
+                "link": "https://paulgraham.com/taste.html"
+              },
+              {
+                "val": "Why Arc Isn't Especially Object-Oriented",
+                "link": "https://paulgraham.com/noop.html"
+              },
+              {
+                "val": "What Made Lisp Different",
+                "link": "https://paulgraham.com/diff.html"
+              },
+              {
+                "val": "The Other Road Ahead",
+                "link": "https://paulgraham.com/road.html"
+              },
+              {
+                "val": "The Roots of Lisp",
+                "link": "https://paulgraham.com/rootsoflisp.html"
+              },
+              {
+                "val": "Five Questions about Language Design",
+                "link": "https://paulgraham.com/langdes.html"
+              },
+              {
+                "val": "Being Popular",
+                "link": "https://paulgraham.com/popular.html"
+              },
+              {
+                "val": "Java's Cover",
+                "link": "https://paulgraham.com/javacover.html"
+              },
+              {
+                "val": "Beating the Averages",
+                "link": "https://paulgraham.com/avg.html"
+              },
+              {
+                "val": "Lisp for Web-Based Applications",
+                "link": "https://paulgraham.com/lwba.html"
+              },
+              {
+                "val": "Chapter 1 of Ansi Common Lisp",
+                "link": "https://sep.turbifycdn.com/ty/cdn/paulgraham/acl1.txt?t=1789396309&"
+              },
+              {
+                "val": "Chapter 2 of Ansi Common Lisp",
+                "link": "https://sep.turbifycdn.com/ty/cdn/paulgraham/acl2.txt?t=1789396309&"
+              },
+              {
+                "val": "Programming Bottom-Up",
+                "link": "https://paulgraham.com/progbot.html"
+              },
+              {
+                "val": "This Year We Can End the Death Penalty in California",
+                "link": "https://paulgraham.com/prop62.html"
               }
             ]
           },
           {
-            "tag": "table",
-            "el": [
-              { "tag": "table" },
-              { "tag": "tbody" },
-              { "tag": "tr" },
-              { "tag": "td" },
-              { "tag": "font" }
-            ],
-            "ch": [
-              {
-                "tag": "a",
-                "text": "RSS",
-                "href": "https://paulgraham.com/rss.html"
-              },
-              { "tag": "#text", "text": "feed" }
-            ]
+            "val": "RSS feed"
           }
         ]
       }

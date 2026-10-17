@@ -1,5 +1,5 @@
-/// A web page simplified by the server into a tree of content nodes, which the
-/// user annotates to tell which parts of the page are posts.
+/// A web page simplified by the server into a semantic tree, which the user
+/// annotates to tell which parts of the page are posts.
 class PageDocument {
   new _({
     required this.url,
@@ -9,36 +9,17 @@ class PageDocument {
   });
 
   /// Parses the JSON produced by the page simplifier (see
-  /// tool/simplifyhtml/main.go for the format).
+  /// tool/semantictree/main.go for the format).
   factory fromJson(Map<String, Object?> json) {
     final nodes = <PageNode>[];
     PageNode parse(Map<String, Object?> json, PageNode? parent, int depth) {
-      PageElement element(Map<String, Object?> json) => PageElement._(
-        tag: json['tag']! as String,
-        classes: [...?(json['cls'] as List<Object?>?)?.cast<String>()],
-      );
-      final self = element(json);
       final node = PageNode._(
         id: nodes.length,
         parent: parent,
         depth: depth,
-        tag: self.tag,
-        classes: self.classes,
-        elements: switch (json['el']) {
-          final List<Object?> elements => [
-            for (final e in elements) element(e! as Map<String, Object?>),
-          ],
-          _ => [self],
-        },
-        text: json['text'] as String?,
-        href: json['href'] as String?,
-        src: json['src'] as String?,
-        alt: json['alt'] as String?,
-        datetime: json['dt'] as String?,
-        rich: switch (json['rich']) {
-          final List<Object?> rich => InlineNode._parseAll(rich),
-          _ => null,
-        },
+        kind: json['kind'] as String?,
+        val: json['val'] as String?,
+        link: json['link'] as String?,
       );
       nodes.add(node);
       for (final child in (json['ch'] as List<Object?>?) ?? const []) {
@@ -66,58 +47,59 @@ class PageDocument {
   final List<PageNode> nodes;
 }
 
-/// An element of a [PageDocument]. Runs of text inside mixed content are
-/// nodes with the tag `#text`.
+/// A node of a [PageDocument]: a value without children, or a container.
 class PageNode {
   new _({
     required this.id,
     required this.parent,
     required this.depth,
-    required this.tag,
-    required this.classes,
-    required this.elements,
-    required this.text,
-    required this.href,
-    required this.src,
-    required this.alt,
-    required this.datetime,
-    required this.rich,
+    required this.kind,
+    required this.val,
+    required this.link,
   });
 
   /// The position of this node in document order.
   final int id;
   final PageNode? parent;
   final int depth;
-  final String tag;
-  final List<String> classes;
 
-  /// The elements of the original page that this node stands for, outermost
-  /// first. The simplifier merges a wrapper with its only child, which then
-  /// has the tag of one and the classes of both, and this keeps the elements
-  /// apart. Selectors match these elements, since whether elements are
-  /// merged depends on the content, such as the number of posts in a grid.
-  final List<PageElement> elements;
+  /// `h1`..`h6`, `img` or `time` for such a value, or null for a plain text
+  /// and for a container.
+  final String? kind;
 
-  /// The text of this node; set only on nodes without child elements.
-  final String? text;
-  final String? href;
-  final String? src;
-  final String? alt;
-  final String? datetime;
+  /// The plain text of a value: the alt text of an image, or the RFC 3339
+  /// timestamp of a time.
+  final String? val;
 
-  /// The same text as [text] with inline formatting; null when there is no
-  /// formatting.
-  final List<InlineNode>? rich;
+  /// The link target, or the image URL of an image.
+  final String? link;
   final List<PageNode> children = [];
 
-  bool get isText => tag == '#text';
-  bool get isImage => tag == 'img';
-  bool get isEmbed => tag == 'iframe';
+  bool get isValue => children.isEmpty;
+  bool get isImage => kind == 'img';
+  bool get isTime => kind == 'time';
 
-  /// All text in this subtree, joined with spaces.
+  /// The level of a heading (1 for h1), or null for other nodes.
+  int? get headingLevel => switch (kind) {
+    'h1' || 'h2' || 'h3' || 'h4' || 'h5' || 'h6' => int.parse(kind![1]),
+    _ => null,
+  };
+
+  /// The link of the page that this node points to: [link], except for an
+  /// image, whose link is the image itself.
+  String? get pageLink => isImage ? null : link;
+
+  /// The shape of this node, such as `card`, `h2` or `txt+link` (see
+  /// tool/semantictree/MATCHER.md).
+  String get shape => isValue
+      ? '${kind ?? 'txt'}${link != null ? '+link' : ''}'
+      : (link != null ? 'card' : 'box');
+
+  /// All text in this subtree without the alt texts of images, joined with
+  /// spaces.
   String get textContent {
-    if (text case final text?) {
-      return text;
+    if (isValue) {
+      return isImage ? '' : val ?? '';
     }
     return children
         .map((c) => c.textContent)
@@ -137,34 +119,4 @@ class PageNode {
 
   /// Whether one of the two nodes contains the other.
   bool overlaps(PageNode other) => contains(other) || other.contains(this);
-
-  /// A short CSS-like label such as `div.card.featured`.
-  String get label => [tag, ...classes].join('.');
-}
-
-/// An element of the original page (see [PageNode.elements]).
-class PageElement {
-  const new _({required this.tag, required this.classes});
-
-  final String tag;
-  final List<String> classes;
-}
-
-/// A piece of formatted text: a `#text` run, a `br`, or a `b`, `i` or `code`
-/// element around other inline nodes.
-class InlineNode {
-  const new _({required this.tag, this.text, this.children = const []});
-
-  static List<InlineNode> _parseAll(List<Object?> json) => [
-    for (final node in json.cast<Map<String, Object?>>())
-      InlineNode._(
-        tag: node['tag']! as String,
-        text: node['text'] as String?,
-        children: _parseAll((node['ch'] as List<Object?>?) ?? const []),
-      ),
-  ];
-
-  final String tag;
-  final String? text;
-  final List<InlineNode> children;
 }

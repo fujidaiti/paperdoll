@@ -2,32 +2,9 @@
   "url": "https://www.apple.com/newsroom/",
   "title": "Newsroom - Apple",
   "root": {
-    "tag": "body",
-    "cls": ["page-landing", "main"],
-    "el": [
-      { "tag": "body", "cls": ["page-landing"] },
-      { "tag": "main", "cls": ["main"] }
-    ],
     "ch": [
-      { "tag": "h1", "cls": ["visuallyhidden"], "text": "Newsroom" },
       {
-        "tag": "div",
-        "cls": [
-          "webpush-notification-parent",
-          "webpush-notification__container",
-          "display-none",
-          "webpush-content",
-          "webpush__copy"
-        ],
-        "text": "Stay up to date with the latest articles from Apple Newsroom.",
-        "el": [
-          { "tag": "div", "cls": ["webpush-notification-parent"] },
-          {
-            "tag": "div",
-            "cls": ["webpush-notification__container", "display-none"]
-          },
-          { "tag": "div", "cls": ["webpush-content", "webpush__copy"] }
-        ]
+        "val": "Stay up to date with the latest articles from Apple Newsroom."
       }
     ]
   }

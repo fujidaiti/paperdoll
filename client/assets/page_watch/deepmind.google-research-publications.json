@@ -2,1213 +2,387 @@
   "url": "https://deepmind.google/research/publications/",
   "title": "Publications — Google DeepMind",
   "root": {
-    "tag": "body",
-    "cls": ["template-publication-landing-page"],
-    "el": [
-      { "tag": "body", "cls": ["template-publication-landing-page"] },
-      { "tag": "main" }
-    ],
     "ch": [
       {
-        "tag": "section",
-        "cls": [
-          "section-default",
-          "section-padding-top",
-          "section-title",
-          "spacer-3xl-padding-bottom",
-          "grid",
-          "grid__column--span-8-xl",
-          "grid__column--span-8-lg",
-          "grid__column--span-8-md",
-          "grid__column--span-8-sm",
-          "grid__column--span-4-xs"
-        ],
-        "el": [
-          {
-            "tag": "section",
-            "cls": [
-              "section-default",
-              "section-padding-top",
-              "section-title",
-              "spacer-3xl-padding-bottom"
-            ]
-          },
-          { "tag": "div", "cls": ["grid"] },
-          {
-            "tag": "div",
-            "cls": [
-              "grid__column--span-8-xl",
-              "grid__column--span-8-lg",
-              "grid__column--span-8-md",
-              "grid__column--span-8-sm",
-              "grid__column--span-4-xs"
-            ]
-          }
-        ],
         "ch": [
           {
-            "tag": "h1",
-            "cls": ["section-title__title", "heading-4"],
-            "text": "Publications"
+            "kind": "h1",
+            "val": "Publications"
           },
           {
-            "tag": "div",
-            "cls": ["section-title__description", "heading-4"],
-            "text": "Explore a selection of our recent research on some of the most complex and interesting challenges in AI.",
-            "el": [
+            "val": "Explore a selection of our recent research on some of the most complex and interesting challenges in AI."
+          }
+        ]
+      },
+      {
+        "val": "263 publications"
+      },
+      {
+        "ch": [
+          {
+            "link": "https://deepmind.google/research/publications/265605/",
+            "ch": [
               {
-                "tag": "div",
-                "cls": ["section-title__description", "heading-4"]
+                "kind": "time",
+                "val": "2026-09-01T00:00:00Z"
               },
-              { "tag": "p" }
-            ]
-          }
-        ]
-      },
-      {
-        "tag": "div",
-        "cls": [
-          "publication-count",
-          "section-default",
-          "publication-count__text"
-        ],
-        "text": "263 publications",
-        "el": [
-          { "tag": "div", "cls": ["publication-count", "section-default"] },
-          { "tag": "p", "cls": ["publication-count__text"] }
-        ]
-      },
-      {
-        "tag": "section",
-        "cls": [
-          "list-group-section",
-          "section-default",
-          "grid",
-          "grid__inner",
-          "grid__column--span-4-xs",
-          "grid__column--span-8-sm",
-          "grid__column--span-12-md",
-          "list-group"
-        ],
-        "el": [
-          {
-            "tag": "section",
-            "cls": ["list-group-section", "section-default", "grid"]
-          },
-          {
-            "tag": "div",
-            "cls": [
-              "grid__inner",
-              "grid__column--span-4-xs",
-              "grid__column--span-8-sm",
-              "grid__column--span-12-md"
-            ]
-          },
-          { "tag": "ul", "cls": ["list-group"] }
-        ],
-        "ch": [
-          {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/265605/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
-            "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "1 September 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Designing Proactive Thought Partners for Writing"
-                  }
-                ]
+                "val": "Designing Proactive Thought Partners for Writing"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/270149/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/270149/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "26 August 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Visual General Intelligence: A White Paper"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-08-26T00:00:00Z"
+              },
+              {
+                "val": "Visual General Intelligence: A White Paper"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/118955/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/118955/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "5 August 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "A moral Turing test: How belief and source shape detection of and agreement with LLM judgments"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-08-05T00:00:00Z"
+              },
+              {
+                "val": "A moral Turing test: How belief and source shape detection of and agreement with LLM judgments"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/264392/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/264392/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "28 July 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Visual prompt engineering for video models"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-07-28T00:00:00Z"
+              },
+              {
+                "val": "Visual prompt engineering for video models"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/225819/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/225819/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "10 July 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Quantifying the Salience of Geo-Cultural Values for Pluralistic Safety Alignment"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-07-10T00:00:00Z"
+              },
+              {
+                "val": "Quantifying the Salience of Geo-Cultural Values for Pluralistic Safety Alignment"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/260960/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/260960/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "6 July 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "The Case for Globally Beneficial Technology"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-07-06T00:00:00Z"
+              },
+              {
+                "val": "The Case for Globally Beneficial Technology"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/203490/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/203490/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "2 July 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Towards Structural Understanding of LLM Overthinking"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-07-02T00:00:00Z"
+              },
+              {
+                "val": "Towards Structural Understanding of LLM Overthinking"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/224297/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/224297/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "26 June 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Real-Time Group Dynamics with LLM Facilitation: Evidence from a Charity Allocation Task"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-06-26T00:00:00Z"
+              },
+              {
+                "val": "Real-Time Group Dynamics with LLM Facilitation: Evidence from a Charity Allocation Task"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/149262/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/149262/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "26 June 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Bridging the Scale Gap: Augmenting Human Red-Teaming to Uncover Latent Risks in T2I Models"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-06-26T00:00:00Z"
+              },
+              {
+                "val": "Bridging the Scale Gap: Augmenting Human Red-Teaming to Uncover Latent Risks in T2I Models"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/224397/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/224397/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "25 June 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Going PLACES: Participatory Localized Red Teaming forText-to-Image Safety in the Global South"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-06-25T00:00:00Z"
+              },
+              {
+                "val": "Going PLACES: Participatory Localized Red Teaming forText-to-Image Safety in the Global South"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/248131/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/248131/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "15 June 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Artificial Minds, Human Disagreement: The Politics of AI Consciousness"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-06-15T00:00:00Z"
+              },
+              {
+                "val": "Artificial Minds, Human Disagreement: The Politics of AI Consciousness"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/239142/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/239142/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "12 June 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "From AGI to ASI"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-06-12T00:00:00Z"
+              },
+              {
+                "val": "From AGI to ASI"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/231466/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/231466/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "4 June 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Solipsistic superintelligence is unlikely to be cooperative"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-06-04T00:00:00Z"
+              },
+              {
+                "val": "Solipsistic superintelligence is unlikely to be cooperative"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/253391/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/253391/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "28 May 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Realistic honeypot evaluations for scheming propensity"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-05-28T00:00:00Z"
+              },
+              {
+                "val": "Realistic honeypot evaluations for scheming propensity"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/252981/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/252981/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "28 May 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Gram: Assessing sabotage propensities via automated alignment auditing"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-05-28T00:00:00Z"
+              },
+              {
+                "val": "Gram: Assessing sabotage propensities via automated alignment auditing"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/239849/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/239849/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "6 May 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Did US Worker Retraining Reduce Participant Automation Exposure?"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-05-06T00:00:00Z"
+              },
+              {
+                "val": "Did US Worker Retraining Reduce Participant Automation Exposure?"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/238239/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/238239/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "25 April 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "ProEval: Proactive Failure Discovery and Efficient Performance Estimation for Generative AI Evaluation"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-04-25T00:00:00Z"
+              },
+              {
+                "val": "ProEval: Proactive Failure Discovery and Efficient Performance Estimation for Generative AI Evaluation"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/193694/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/193694/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "23 April 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Dynamic Reflections: Probing Video Representations with Text Alignment"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-04-23T00:00:00Z"
+              },
+              {
+                "val": "Dynamic Reflections: Probing Video Representations with Text Alignment"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/240658/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/240658/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "22 April 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Image Generators are Generalist Vision Learners"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-04-22T00:00:00Z"
+              },
+              {
+                "val": "Image Generators are Generalist Vision Learners"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/146950/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/146950/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "22 March 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Strategic Tradeoffs Between Humans and AI in Multi-Agent Bargaining"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-03-22T00:00:00Z"
+              },
+              {
+                "val": "Strategic Tradeoffs Between Humans and AI in Multi-Agent Bargaining"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/231971/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/231971/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "10 March 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "The Abstraction Fallacy: Why AI Can Simulate But Not Instantiate Consciousness"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-03-10T00:00:00Z"
+              },
+              {
+                "val": "The Abstraction Fallacy: Why AI Can Simulate But Not Instantiate Consciousness"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/225507/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/225507/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "15 February 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Simplicity and Complexity in Combinatorial Optimization"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-02-15T00:00:00Z"
+              },
+              {
+                "val": "Simplicity and Complexity in Combinatorial Optimization"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/137741/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/137741/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "12 February 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Decoding Safety Feedback from Diverse Raters: A Data-driven Lens on Responsiveness to Severity"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-02-12T00:00:00Z"
+              },
+              {
+                "val": "Decoding Safety Feedback from Diverse Raters: A Data-driven Lens on Responsiveness to Severity"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/94006/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/94006/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "5 February 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Hybrid neural–cognitive models reveal how memory shapes human reward learning"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-02-05T00:00:00Z"
+              },
+              {
+                "val": "Hybrid neural–cognitive models reveal how memory shapes human reward learning"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/122591/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/122591/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "9 January 2026"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "TRecViT: A Recurrent Video Transformer"
-                  }
-                ]
+                "kind": "time",
+                "val": "2026-01-09T00:00:00Z"
+              },
+              {
+                "val": "TRecViT: A Recurrent Video Transformer"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/141313/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/141313/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "3 December 2025"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Capturing Human Preferences with Reward Features"
-                  }
-                ]
+                "kind": "time",
+                "val": "2025-12-03T00:00:00Z"
+              },
+              {
+                "val": "Capturing Human Preferences with Reward Features"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/42697/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/42697/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "21 November 2025"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "Imitation Learning is Probably Existentially Safe"
-                  }
-                ]
+                "kind": "time",
+                "val": "2025-11-21T00:00:00Z"
+              },
+              {
+                "val": "Imitation Learning is Probably Existentially Safe"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/180362/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/180362/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "4 November 2025"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "To Mask or to Mirror: Human-AI Alignment in Collective Reasoning"
-                  }
-                ]
+                "kind": "time",
+                "val": "2025-11-04T00:00:00Z"
+              },
+              {
+                "val": "To Mask or to Mirror: Human-AI Alignment in Collective Reasoning"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/210560/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/210560/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "30 October 2025"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "A Pragmatic View of AI Personhood"
-                  }
-                ]
+                "kind": "time",
+                "val": "2025-10-30T00:00:00Z"
+              },
+              {
+                "val": "A Pragmatic View of AI Personhood"
               }
             ]
           },
           {
-            "tag": "a",
-            "cls": ["list-group__link"],
-            "href": "https://deepmind.google/research/publications/160567/",
-            "el": [
-              { "tag": "li", "cls": ["list-group__item"] },
-              { "tag": "a", "cls": ["list-group__link"] }
-            ],
+            "link": "https://deepmind.google/research/publications/160567/",
             "ch": [
               {
-                "tag": "dl",
-                "cls": ["grid", "list-group__content"],
-                "ch": [
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-2-md"
-                    ],
-                    "text": "29 September 2025"
-                  },
-                  {
-                    "tag": "dd",
-                    "cls": [
-                      "grid__column--span-4-xs",
-                      "grid__column--span-8-sm",
-                      "grid__column--span-10-md"
-                    ],
-                    "text": "AI-Generated Video Detection via Perceptual Straightening"
-                  }
-                ]
+                "kind": "time",
+                "val": "2025-09-29T00:00:00Z"
+              },
+              {
+                "val": "AI-Generated Video Detection via Perceptual Straightening"
               }
             ]
           }
         ]
       },
       {
-        "tag": "div",
-        "cls": ["container", "publication-pagination", "pagination"],
-        "el": [
-          { "tag": "div", "cls": ["container", "publication-pagination"] },
-          { "tag": "div", "cls": ["pagination"] }
-        ],
-        "ch": [
-          {
-            "tag": "a",
-            "cls": [
-              "button",
-              "button--tonal",
-              "icon-center",
-              "pagination__arrow",
-              "pagination__arrow--hidden"
-            ],
-            "href": "https://deepmind.google/research/publications/"
-          },
-          { "tag": "#text", "text": "1" },
-          {
-            "tag": "a",
-            "cls": ["button", "button--outlined", "pagination__page"],
-            "text": "Page 2",
-            "href": "https://deepmind.google/research/publications/page/2/"
-          },
-          {
-            "tag": "a",
-            "cls": ["button", "button--outlined", "pagination__page"],
-            "text": "Page 3",
-            "href": "https://deepmind.google/research/publications/page/3/"
-          },
-          { "tag": "#text", "text": "…" },
-          {
-            "tag": "a",
-            "cls": ["button", "button--outlined", "pagination__page"],
-            "text": "Page 9",
-            "href": "https://deepmind.google/research/publications/page/9/"
-          },
-          {
-            "tag": "a",
-            "cls": [
-              "button",
-              "button--tonal",
-              "icon-center",
-              "pagination__arrow"
-            ],
-            "href": "https://deepmind.google/research/publications/page/2/"
-          }
-        ]
+        "val": "1 2 3 … 9"
       }
     ]
   }

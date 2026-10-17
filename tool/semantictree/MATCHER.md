@@ -1,7 +1,7 @@
 # Post matcher on semantic trees (draft)
 
 This document specifies the post matcher that runs on the semantic trees
-produced by `tool/semantictree`. It replaces the selector-based matcher in
+produced by `tool/semantictree`. The client implements it in
 `client/lib/features/page_watch/domain/post_matcher.dart`.
 
 ## Context
@@ -118,8 +118,8 @@ For each group:
      `time` value can be labeled as `pubDate`. The simplifier makes a `time`
      value only from a date with a year, a month and a day, so a text such as
      "September 2026" or "3 hrs ago" stays `txt` and cannot be a `pubDate`.
-   - `body`: `val` of a value, or the values inside a container (format to be
-     defined with the body markup).
+   - `body`: the values of the node and inside it, as marked-up text (see
+     `client/lib/features/page_watch/domain/body_markup.dart`).
 5. Remove the posts whose link matches a pattern in `exclude`.
 
 Then, for all groups together:

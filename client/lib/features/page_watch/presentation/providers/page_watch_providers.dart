@@ -7,7 +7,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'page_watch_providers.g.dart';
 
 // The server does not simplify pages yet, so the documents are generated from
-// sample pages by tool/simplifyhtml and bundled as assets.
+// sample pages by tool/semantictree and bundled as assets.
 const _assetDir = 'assets/page_watch';
 
 /// A bundled sample page that can be annotated.

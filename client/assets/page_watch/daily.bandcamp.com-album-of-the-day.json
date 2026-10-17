@@ -2,562 +2,329 @@
   "url": "https://daily.bandcamp.com/album/of/the/day",
   "title": "Album of the Day | Bandcamp Daily",
   "root": {
-    "tag": "body",
-    "cls": ["webkit", "mac", "enable-cookie-control", "bc-body"],
     "ch": [
       {
-        "tag": "h4",
-        "ch": [
-          {
-            "tag": "#text",
-            "text": "Sorry, Bandcamp no longer supports the version of Chrome that you're using (1.0). Please",
-            "rich": [
-              {
-                "tag": "#text",
-                "text": "Sorry, Bandcamp no longer supports the version of Chrome that you're using (1.0)."
-              },
-              { "tag": "br" },
-              { "tag": "#text", "text": "Please" }
-            ]
-          },
-          {
-            "tag": "a",
-            "text": "upgrade your browser",
-            "href": "http://www.google.com/chrome"
-          },
-          { "tag": "#text", "text": "to the latest version and try again." }
-        ]
+        "kind": "h4",
+        "val": "Sorry, Bandcamp no longer supports the version of Chrome that you're using (1.0). Please upgrade your browser to the latest version and try again."
       },
       {
-        "tag": "div",
-        "cls": ["bc-content"],
-        "el": [{ "tag": "div", "cls": ["bc-content"] }, { "tag": "div" }],
         "ch": [
           {
-            "tag": "nav",
             "ch": [
               {
-                "tag": "div",
-                "cls": ["nav-wrapper"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["home"],
-                    "text": "Bandcamp DailyThe Daily",
-                    "href": "https://daily.bandcamp.com/",
-                    "rich": [
-                      {
-                        "tag": "b",
-                        "ch": [{ "tag": "#text", "text": "Bandcamp Daily" }]
-                      },
-                      {
-                        "tag": "b",
-                        "ch": [{ "tag": "#text", "text": "The Daily" }]
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "span",
-                    "cls": ["links"],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "lists",
-                        "href": "https://daily.bandcamp.com/lists",
-                        "el": [{ "tag": "span" }, { "tag": "a" }]
-                      },
-                      {
-                        "tag": "span",
-                        "ch": [
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "a",
-                            "text": "features",
-                            "href": "https://daily.bandcamp.com/features"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "ch": [
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "a",
-                            "text": "album of the day",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
-                          }
-                        ]
-                      },
-                      {
-                        "tag": "span",
-                        "ch": [
-                          { "tag": "#text", "text": "·" },
-                          {
-                            "tag": "a",
-                            "text": "view all",
-                            "href": "https://daily.bandcamp.com/album/of/the/day?all-nav"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
+                "val": "Bandcamp DailyThe Daily lists · features · album of the day · view all"
               },
               {
-                "tag": "div",
                 "ch": [
                   {
-                    "tag": "h1",
-                    "cls": ["top", "header"],
-                    "text": "Bandcamp Daily",
-                    "el": [
-                      { "tag": "section", "cls": ["top"] },
-                      { "tag": "h1", "cls": ["header"] }
+                    "ch": [
+                      {
+                        "kind": "h1",
+                        "val": "Bandcamp Daily"
+                      }
                     ]
                   },
                   {
-                    "tag": "section",
-                    "cls": ["featured"],
                     "ch": [
                       {
-                        "tag": "section",
-                        "cls": ["best-of-year"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "text": "Best of 2026",
-                            "href": "https://daily.bandcamp.com/best-of-2026",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2026",
+                            "link": "https://daily.bandcamp.com/best-of-2026"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2025",
-                            "href": "https://daily.bandcamp.com/best-of-2025",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2025",
+                            "link": "https://daily.bandcamp.com/best-of-2025"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2024",
-                            "href": "https://daily.bandcamp.com/best-of-2024",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2024",
+                            "link": "https://daily.bandcamp.com/best-of-2024"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2023",
-                            "href": "https://daily.bandcamp.com/best-of-2023",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2023",
+                            "link": "https://daily.bandcamp.com/best-of-2023"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2022",
-                            "href": "https://daily.bandcamp.com/best-of-2022",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2022",
+                            "link": "https://daily.bandcamp.com/best-of-2022"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2021",
-                            "href": "https://daily.bandcamp.com/best-of-2021",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2021",
+                            "link": "https://daily.bandcamp.com/best-of-2021"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2020",
-                            "href": "https://daily.bandcamp.com/best-of-2020",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2020",
+                            "link": "https://daily.bandcamp.com/best-of-2020"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2019",
-                            "href": "https://daily.bandcamp.com/best-of-2019",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2019",
+                            "link": "https://daily.bandcamp.com/best-of-2019"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2018",
-                            "href": "https://daily.bandcamp.com/best-of-2018",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2018",
+                            "link": "https://daily.bandcamp.com/best-of-2018"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2017",
-                            "href": "https://daily.bandcamp.com/best-of-2017",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2017",
+                            "link": "https://daily.bandcamp.com/best-of-2017"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best of 2016",
-                            "href": "https://daily.bandcamp.com/best-of-2016",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best of 2016",
+                            "link": "https://daily.bandcamp.com/best-of-2016"
                           }
                         ]
                       },
                       {
-                        "tag": "section",
-                        "cls": ["best-of"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "text": "Best Ambient",
-                            "href": "https://daily.bandcamp.com/best-ambient",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Ambient",
+                            "link": "https://daily.bandcamp.com/best-ambient"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Beat Tapes",
-                            "href": "https://daily.bandcamp.com/best-beat-tapes",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Beat Tapes",
+                            "link": "https://daily.bandcamp.com/best-beat-tapes"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Dance 12”s",
-                            "href": "https://daily.bandcamp.com/best-dance-12s",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Dance 12”s",
+                            "link": "https://daily.bandcamp.com/best-dance-12s"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Electronic",
-                            "href": "https://daily.bandcamp.com/best-electronic",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Electronic",
+                            "link": "https://daily.bandcamp.com/best-electronic"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Experimental",
-                            "href": "https://daily.bandcamp.com/best-experimental",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Experimental",
+                            "link": "https://daily.bandcamp.com/best-experimental"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Contemporary Classical",
-                            "href": "https://daily.bandcamp.com/best-contemporary-classical",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Contemporary Classical",
+                            "link": "https://daily.bandcamp.com/best-contemporary-classical"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Hip-Hop",
-                            "href": "https://daily.bandcamp.com/best-hip-hop",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Hip-Hop",
+                            "link": "https://daily.bandcamp.com/best-hip-hop"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Jazz",
-                            "href": "https://daily.bandcamp.com/best-jazz",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Jazz",
+                            "link": "https://daily.bandcamp.com/best-jazz"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Metal",
-                            "href": "https://daily.bandcamp.com/best-metal",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Metal",
+                            "link": "https://daily.bandcamp.com/best-metal"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Punk",
-                            "href": "https://daily.bandcamp.com/best-punk",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Punk",
+                            "link": "https://daily.bandcamp.com/best-punk"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Reissues",
-                            "href": "https://daily.bandcamp.com/best-reissues",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Reissues",
+                            "link": "https://daily.bandcamp.com/best-reissues"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Soul",
-                            "href": "https://daily.bandcamp.com/best-soul",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Soul",
+                            "link": "https://daily.bandcamp.com/best-soul"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Folk",
-                            "href": "https://daily.bandcamp.com/best-folk",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Folk",
+                            "link": "https://daily.bandcamp.com/best-folk"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Field Recordings",
-                            "href": "https://daily.bandcamp.com/best-field-recordings",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Field Recordings",
+                            "link": "https://daily.bandcamp.com/best-field-recordings"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Club Music",
-                            "href": "https://daily.bandcamp.com/best-club-music",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Club Music",
+                            "link": "https://daily.bandcamp.com/best-club-music"
                           },
                           {
-                            "tag": "a",
-                            "text": "Best Country",
-                            "href": "https://daily.bandcamp.com/best-country",
-                            "el": [{ "tag": "div" }, { "tag": "a" }]
+                            "val": "Best Country",
+                            "link": "https://daily.bandcamp.com/best-country"
                           }
                         ]
                       }
                     ]
                   },
-                  { "tag": "h2", "text": "Franchises" },
                   {
-                    "tag": "section",
-                    "cls": ["franchises"],
+                    "kind": "h2",
+                    "val": "Franchises"
+                  },
+                  {
                     "ch": [
                       {
-                        "tag": "a",
-                        "text": "Lists",
-                        "href": "https://daily.bandcamp.com/lists",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Lists",
+                        "link": "https://daily.bandcamp.com/lists"
                       },
                       {
-                        "tag": "a",
-                        "text": "Features",
-                        "href": "https://daily.bandcamp.com/features",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Features",
+                        "link": "https://daily.bandcamp.com/features"
                       },
                       {
-                        "tag": "a",
-                        "text": "Album of the Day",
-                        "href": "https://daily.bandcamp.com/album-of-the-day",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Album of the Day",
+                        "link": "https://daily.bandcamp.com/album-of-the-day"
                       },
                       {
-                        "tag": "a",
-                        "text": "Acid Test",
-                        "href": "https://daily.bandcamp.com/acid-test",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Acid Test",
+                        "link": "https://daily.bandcamp.com/acid-test"
                       },
                       {
-                        "tag": "a",
-                        "text": "Bandcamp Navigator",
-                        "href": "https://daily.bandcamp.com/bandcamp-navigator",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Bandcamp Navigator",
+                        "link": "https://daily.bandcamp.com/bandcamp-navigator"
                       },
                       {
-                        "tag": "a",
-                        "text": "Big Ups",
-                        "href": "https://daily.bandcamp.com/big-ups",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Big Ups",
+                        "link": "https://daily.bandcamp.com/big-ups"
                       },
                       {
-                        "tag": "a",
-                        "text": "Certified",
-                        "href": "https://daily.bandcamp.com/certified",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Certified",
+                        "link": "https://daily.bandcamp.com/certified"
                       },
                       {
-                        "tag": "a",
-                        "text": "Gallery",
-                        "href": "https://daily.bandcamp.com/gallery",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Gallery",
+                        "link": "https://daily.bandcamp.com/gallery"
                       },
                       {
-                        "tag": "a",
-                        "text": "Hidden Gems",
-                        "href": "https://daily.bandcamp.com/hidden-gems",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Hidden Gems",
+                        "link": "https://daily.bandcamp.com/hidden-gems"
                       },
                       {
-                        "tag": "a",
-                        "text": "High Scores",
-                        "href": "https://daily.bandcamp.com/high-scores",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "High Scores",
+                        "link": "https://daily.bandcamp.com/high-scores"
                       },
                       {
-                        "tag": "a",
-                        "text": "Label Profile",
-                        "href": "https://daily.bandcamp.com/label-profile",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Label Profile",
+                        "link": "https://daily.bandcamp.com/label-profile"
                       },
                       {
-                        "tag": "a",
-                        "text": "Lifetime Achievement",
-                        "href": "https://daily.bandcamp.com/lifetime-achievement",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Lifetime Achievement",
+                        "link": "https://daily.bandcamp.com/lifetime-achievement"
                       },
                       {
-                        "tag": "a",
-                        "text": "Resonance",
-                        "href": "https://daily.bandcamp.com/resonance",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Resonance",
+                        "link": "https://daily.bandcamp.com/resonance"
                       },
                       {
-                        "tag": "a",
-                        "text": "Scene Report",
-                        "href": "https://daily.bandcamp.com/scene-report",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Scene Report",
+                        "link": "https://daily.bandcamp.com/scene-report"
                       },
                       {
-                        "tag": "a",
-                        "text": "Essential Releases",
-                        "href": "https://daily.bandcamp.com/essential-releases",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Essential Releases",
+                        "link": "https://daily.bandcamp.com/essential-releases"
                       },
                       {
-                        "tag": "a",
-                        "text": "Shortlist",
-                        "href": "https://daily.bandcamp.com/shortlist",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Shortlist",
+                        "link": "https://daily.bandcamp.com/shortlist"
                       },
                       {
-                        "tag": "a",
-                        "text": "The Merch Table",
-                        "href": "https://daily.bandcamp.com/the-merch-table",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "The Merch Table",
+                        "link": "https://daily.bandcamp.com/the-merch-table"
                       }
                     ]
                   },
-                  { "tag": "h2", "text": "Genres" },
                   {
-                    "tag": "section",
-                    "cls": ["genres"],
+                    "kind": "h2",
+                    "val": "Genres"
+                  },
+                  {
                     "ch": [
                       {
-                        "tag": "a",
-                        "text": "Alternative",
-                        "href": "https://daily.bandcamp.com/genres/alternative",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Alternative",
+                        "link": "https://daily.bandcamp.com/genres/alternative"
                       },
                       {
-                        "tag": "a",
-                        "text": "Pop",
-                        "href": "https://daily.bandcamp.com/genres/pop",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Pop",
+                        "link": "https://daily.bandcamp.com/genres/pop"
                       },
                       {
-                        "tag": "a",
-                        "text": "World",
-                        "href": "https://daily.bandcamp.com/genres/world",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "World",
+                        "link": "https://daily.bandcamp.com/genres/world"
                       },
                       {
-                        "tag": "a",
-                        "text": "Folk",
-                        "href": "https://daily.bandcamp.com/genres/folk",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Folk",
+                        "link": "https://daily.bandcamp.com/genres/folk"
                       },
                       {
-                        "tag": "a",
-                        "text": "Hip-Hop/Rap",
-                        "href": "https://daily.bandcamp.com/genres/hip-hop-rap",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Hip-Hop/Rap",
+                        "link": "https://daily.bandcamp.com/genres/hip-hop-rap"
                       },
                       {
-                        "tag": "a",
-                        "text": "Classical",
-                        "href": "https://daily.bandcamp.com/genres/classical",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Classical",
+                        "link": "https://daily.bandcamp.com/genres/classical"
                       },
                       {
-                        "tag": "a",
-                        "text": "Experimental",
-                        "href": "https://daily.bandcamp.com/genres/experimental",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Experimental",
+                        "link": "https://daily.bandcamp.com/genres/experimental"
                       },
                       {
-                        "tag": "a",
-                        "text": "Electronic",
-                        "href": "https://daily.bandcamp.com/genres/electronic",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Electronic",
+                        "link": "https://daily.bandcamp.com/genres/electronic"
                       },
                       {
-                        "tag": "a",
-                        "text": "Rock",
-                        "href": "https://daily.bandcamp.com/genres/rock",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Rock",
+                        "link": "https://daily.bandcamp.com/genres/rock"
                       },
                       {
-                        "tag": "a",
-                        "text": "R\u0026B/Soul",
-                        "href": "https://daily.bandcamp.com/genres/r-b-soul",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "R&B/Soul",
+                        "link": "https://daily.bandcamp.com/genres/r-b-soul"
                       },
                       {
-                        "tag": "a",
-                        "text": "Comedy",
-                        "href": "https://daily.bandcamp.com/genres/comedy",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Comedy",
+                        "link": "https://daily.bandcamp.com/genres/comedy"
                       },
                       {
-                        "tag": "a",
-                        "text": "Country",
-                        "href": "https://daily.bandcamp.com/genres/country",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Country",
+                        "link": "https://daily.bandcamp.com/genres/country"
                       },
                       {
-                        "tag": "a",
-                        "text": "Soundtrack",
-                        "href": "https://daily.bandcamp.com/genres/soundtrack",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Soundtrack",
+                        "link": "https://daily.bandcamp.com/genres/soundtrack"
                       },
                       {
-                        "tag": "a",
-                        "text": "Metal",
-                        "href": "https://daily.bandcamp.com/genres/metal",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Metal",
+                        "link": "https://daily.bandcamp.com/genres/metal"
                       },
                       {
-                        "tag": "a",
-                        "text": "Jazz",
-                        "href": "https://daily.bandcamp.com/genres/jazz",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Jazz",
+                        "link": "https://daily.bandcamp.com/genres/jazz"
                       },
                       {
-                        "tag": "a",
-                        "text": "Punk",
-                        "href": "https://daily.bandcamp.com/genres/punk",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Punk",
+                        "link": "https://daily.bandcamp.com/genres/punk"
                       },
                       {
-                        "tag": "a",
-                        "text": "Reggae",
-                        "href": "https://daily.bandcamp.com/genres/reggae",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Reggae",
+                        "link": "https://daily.bandcamp.com/genres/reggae"
                       },
                       {
-                        "tag": "a",
-                        "text": "Funk",
-                        "href": "https://daily.bandcamp.com/genres/funk",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Funk",
+                        "link": "https://daily.bandcamp.com/genres/funk"
                       },
                       {
-                        "tag": "a",
-                        "text": "Ambient",
-                        "href": "https://daily.bandcamp.com/genres/ambient",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Ambient",
+                        "link": "https://daily.bandcamp.com/genres/ambient"
                       },
                       {
-                        "tag": "a",
-                        "text": "Acoustic",
-                        "href": "https://daily.bandcamp.com/genres/acoustic",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Acoustic",
+                        "link": "https://daily.bandcamp.com/genres/acoustic"
                       },
                       {
-                        "tag": "a",
-                        "text": "Blues",
-                        "href": "https://daily.bandcamp.com/genres/blues",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Blues",
+                        "link": "https://daily.bandcamp.com/genres/blues"
                       },
                       {
-                        "tag": "a",
-                        "text": "Latin",
-                        "href": "https://daily.bandcamp.com/genres/latin",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Latin",
+                        "link": "https://daily.bandcamp.com/genres/latin"
                       },
                       {
-                        "tag": "a",
-                        "text": "Devotional",
-                        "href": "https://daily.bandcamp.com/genres/devotional",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Devotional",
+                        "link": "https://daily.bandcamp.com/genres/devotional"
                       },
                       {
-                        "tag": "a",
-                        "text": "Spoken Word",
-                        "href": "https://daily.bandcamp.com/genres/spoken-word",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Spoken Word",
+                        "link": "https://daily.bandcamp.com/genres/spoken-word"
                       },
                       {
-                        "tag": "a",
-                        "text": "Podcasts",
-                        "href": "https://daily.bandcamp.com/genres/podcasts",
-                        "el": [{ "tag": "div" }, { "tag": "a" }]
+                        "val": "Podcasts",
+                        "link": "https://daily.bandcamp.com/genres/podcasts"
                       }
                     ]
                   }
@@ -566,1677 +333,1150 @@
             ]
           },
           {
-            "tag": "div",
-            "cls": ["album-of-the-day"],
             "ch": [
               {
-                "tag": "articles-header",
                 "ch": [
                   {
-                    "tag": "h1",
-                    "cls": ["center-text"],
-                    "el": [
-                      { "tag": "div", "cls": ["center-text"] },
-                      { "tag": "h1" }
-                    ],
-                    "ch": [
-                      {
-                        "tag": "a",
-                        "text": "Album of the Day",
-                        "href": "https://daily.bandcamp.com/album-of-the-day"
-                      }
-                    ]
+                    "kind": "h1",
+                    "val": "Album of the Day",
+                    "link": "https://daily.bandcamp.com/album-of-the-day"
                   },
                   {
-                    "tag": "div",
-                    "cls": ["text-wrapper"],
-                    "text": "1 to 30 of 2375",
-                    "el": [
-                      { "tag": "div", "cls": ["text-wrapper"] },
-                      { "tag": "div" }
-                    ]
+                    "val": "1 to 30 of 2375"
                   }
                 ]
               },
               {
-                "tag": "articles-list",
                 "ch": [
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047422564_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047422564_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 18, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-18T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Curly Castro, “Yaphet”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Curly Castro, “Yaphet”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047292430_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047292430_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 17, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-17T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Actress, “Radical Frame”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Actress, “Radical Frame”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/green-lung-necropolitan-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/green-lung-necropolitan-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047291455_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047291455_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 16, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-16T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Green Lung, “Necropolitan”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/green-lung-necropolitan-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Green Lung, “Necropolitan”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/green-lung-necropolitan-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/perennial-modernism-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/perennial-modernism-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047270853_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047270853_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 15, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-15T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Perennial, “Modernism”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/perennial-modernism-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Perennial, “Modernism”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/perennial-modernism-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/haruomi-hosono-yours-sincerely-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/haruomi-hosono-yours-sincerely-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047292017_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047292017_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 14, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-14T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Haruomi Hosono, “Yours Sincerely”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/haruomi-hosono-yours-sincerely-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Haruomi Hosono, “Yours Sincerely”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/haruomi-hosono-yours-sincerely-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/angela-autumn-believer-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/angela-autumn-believer-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047129063_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047129063_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 11, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-11T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Angela Autumn, “Believer”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/angela-autumn-believer-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Angela Autumn, “Believer”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/angela-autumn-believer-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/nate-mercereau-fantastic-thoughts-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/nate-mercereau-fantastic-thoughts-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047128054_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047128054_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 10, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-10T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Nate Mercereau, “Fantastic Thoughts”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/nate-mercereau-fantastic-thoughts-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Nate Mercereau, “Fantastic Thoughts”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/nate-mercereau-fantastic-thoughts-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/vanishing-twin-archives-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/vanishing-twin-archives-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047179662_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047179662_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 09, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-09T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Vanishing Twin, “Archives”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/vanishing-twin-archives-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Vanishing Twin, “Archives”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/vanishing-twin-archives-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/doseone-wino-willy-zetroc-sighting-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/doseone-wino-willy-zetroc-sighting-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047134709_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047134709_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 08, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-08T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "doseone, Wino Willy \u0026 Zetroc, “sighting”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/doseone-wino-willy-zetroc-sighting-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "doseone, Wino Willy & Zetroc, “sighting”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/doseone-wino-willy-zetroc-sighting-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/various-artists-cant-stop-it-ii-australian-post-punk-1979-84-2026-deluxe-edition-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/various-artists-cant-stop-it-ii-australian-post-punk-1979-84-2026-deluxe-edition-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047074241_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047074241_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 04, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-04T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Various Artists, “Can’t Stop It! II: Australian Post Punk 1979–84” (2026 Deluxe Edition)",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/various-artists-cant-stop-it-ii-australian-post-punk-1979-84-2026-deluxe-edition-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Various Artists, “Can’t Stop It! II: Australian Post Punk 1979–84” (2026 Deluxe Edition)",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/various-artists-cant-stop-it-ii-australian-post-punk-1979-84-2026-deluxe-edition-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/cyst-ee-ee-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/cyst-ee-ee-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0047125606_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0047125606_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 03, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-03T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Cyst, “ᲘᲘ”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/cyst-ee-ee-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Cyst, “ᲘᲘ”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/cyst-ee-ee-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/rap-navigator-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/rap-navigator-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046991867_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046991867_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· September 02, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-09-02T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "RAP, “Navigator”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/rap-navigator-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "RAP, “Navigator”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/rap-navigator-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/blind-yeo-the-lemoine-point-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/blind-yeo-the-lemoine-point-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046938065_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046938065_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 31, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-31T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Blind Yeo, “The Lemoine Point”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/blind-yeo-the-lemoine-point-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Blind Yeo, “The Lemoine Point”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/blind-yeo-the-lemoine-point-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/marci-mask-lady-and-late-night-girl-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/marci-mask-lady-and-late-night-girl-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046976680_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046976680_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 28, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-28T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Marci, “Mask Lady and Late Night Girl”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/marci-mask-lady-and-late-night-girl-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Marci, “Mask Lady and Late Night Girl”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/marci-mask-lady-and-late-night-girl-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/henry-threadgill-vijay-iyer-dafnis-prieto-fifteen-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/henry-threadgill-vijay-iyer-dafnis-prieto-fifteen-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046938257_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046938257_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 27, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-27T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Henry Threadgill, Vijay Iyer \u0026 Dafnis Prieto, “Fifteen”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/henry-threadgill-vijay-iyer-dafnis-prieto-fifteen-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Henry Threadgill, Vijay Iyer & Dafnis Prieto, “Fifteen”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/henry-threadgill-vijay-iyer-dafnis-prieto-fifteen-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/scrambled-eggs-happier-together-filthier-than-ever-the-best-of-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/scrambled-eggs-happier-together-filthier-than-ever-the-best-of-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046799780_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046799780_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 26, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-26T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Scrambled Eggs, “Happier Together, Filthier Than Ever: The Best Of”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/scrambled-eggs-happier-together-filthier-than-ever-the-best-of-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Scrambled Eggs, “Happier Together, Filthier Than Ever: The Best Of”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/scrambled-eggs-happier-together-filthier-than-ever-the-best-of-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/lusine-melting-days-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/lusine-melting-days-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046862858_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046862858_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 25, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-25T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Lusine, “Melting Days”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/lusine-melting-days-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Lusine, “Melting Days”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/lusine-melting-days-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/frances-chang-been-thinking-bout-confession-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/frances-chang-been-thinking-bout-confession-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046878932_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046878932_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 24, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-24T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "frances chang, “been thinking bout confession”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/frances-chang-been-thinking-bout-confession-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "frances chang, “been thinking bout confession”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/frances-chang-been-thinking-bout-confession-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/ok-cowgirl-rhinestone-cowgirl-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/ok-cowgirl-rhinestone-cowgirl-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046838996_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046838996_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 21, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-21T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Ok Cowgirl, “Rhinestone Cowgirl”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/ok-cowgirl-rhinestone-cowgirl-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Ok Cowgirl, “Rhinestone Cowgirl”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/ok-cowgirl-rhinestone-cowgirl-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/tyondai-braxton-splayed-werks-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/tyondai-braxton-splayed-werks-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046838556_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046838556_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 20, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-20T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Tyondai Braxton, “Splayed Werks”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/tyondai-braxton-splayed-werks-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Tyondai Braxton, “Splayed Werks”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/tyondai-braxton-splayed-werks-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/open-mike-eagle-kenny-segal-doomed-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/open-mike-eagle-kenny-segal-doomed-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046800042_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046800042_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 19, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-19T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Open Mike Eagle \u0026 Kenny Segal, “DOOMED!”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/open-mike-eagle-kenny-segal-doomed-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Open Mike Eagle & Kenny Segal, “DOOMED!”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/open-mike-eagle-kenny-segal-doomed-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/michael-christmas-chris-crack-girl-talk-dont-come-to-my-house-sharing-your-location-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/michael-christmas-chris-crack-girl-talk-dont-come-to-my-house-sharing-your-location-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046798542_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046798542_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 18, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-18T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Michael Christmas, Chris Crack \u0026 Girl Talk, “Don’t Come To My House Sharing Your Location”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/michael-christmas-chris-crack-girl-talk-dont-come-to-my-house-sharing-your-location-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Michael Christmas, Chris Crack & Girl Talk, “Don’t Come To My House Sharing Your Location”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/michael-christmas-chris-crack-girl-talk-dont-come-to-my-house-sharing-your-location-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/lrain-fata-morgana-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/lrain-fata-morgana-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046719784_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046719784_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 17, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-17T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "L’Rain, “fata morgana”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/lrain-fata-morgana-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "L’Rain, “fata morgana”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/lrain-fata-morgana-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/kiwi-jr-blowin-up-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/kiwi-jr-blowin-up-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046725790_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046725790_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 14, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-14T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Kiwi Jr, “Blowin Up”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/kiwi-jr-blowin-up-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Kiwi Jr, “Blowin Up”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/kiwi-jr-blowin-up-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/andre-cymone-the-resurrection-of-funk-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/andre-cymone-the-resurrection-of-funk-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046662832_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046662832_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 13, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-13T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "André Cymone, “The Resurrection of Funk”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/andre-cymone-the-resurrection-of-funk-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "André Cymone, “The Resurrection of Funk”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/andre-cymone-the-resurrection-of-funk-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/maya-ongaku-nothing-space-music-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/maya-ongaku-nothing-space-music-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046682245_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046682245_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 12, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-12T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Maya Ongaku, “Nothing Space Music”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/maya-ongaku-nothing-space-music-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Maya Ongaku, “Nothing Space Music”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/maya-ongaku-nothing-space-music-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/alfonso-soliano-tiga-trombone-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/alfonso-soliano-tiga-trombone-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046661138_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046661138_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 11, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-11T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Alfonso Soliano, “Tiga Trombone”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/alfonso-soliano-tiga-trombone-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Alfonso Soliano, “Tiga Trombone”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/alfonso-soliano-tiga-trombone-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/hulder-verbolgen-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/hulder-verbolgen-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046494932_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046494932_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 10, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-10T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "HULDER, “Verbolgen”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/hulder-verbolgen-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "HULDER, “Verbolgen”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/hulder-verbolgen-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/papangu-celestial-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/papangu-celestial-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046515999_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046515999_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 07, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-07T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "Papangu, “Celestial”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/papangu-celestial-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "Papangu, “Celestial”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/papangu-celestial-review"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["list-article", "aotd"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["thumb", "aotd-image"],
-                        "href": "https://daily.bandcamp.com/album-of-the-day/abracadabra-peel-away-review",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/abracadabra-peel-away-review",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://f4.bcbits.com/img/0046495176_2.jpg"
+                            "kind": "img",
+                            "link": "https://f4.bcbits.com/img/0046495176_2.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["article-info-text"],
                         "ch": [
                           {
-                            "tag": "a",
-                            "cls": ["franchise"],
-                            "text": "ALBUM OF THE DAY",
-                            "href": "https://daily.bandcamp.com/album-of-the-day"
+                            "val": "ALBUM OF THE DAY ·"
                           },
-                          { "tag": "#text", "text": "· August 06, 2026" }
+                          {
+                            "kind": "time",
+                            "val": "2026-08-06T00:00:00Z"
+                          }
                         ]
                       },
                       {
-                        "tag": "a",
-                        "cls": ["title"],
-                        "text": "abracadabra, “peel away”",
-                        "href": "https://daily.bandcamp.com/album-of-the-day/abracadabra-peel-away-review",
-                        "el": [
-                          { "tag": "div", "cls": ["title-wrapper"] },
-                          { "tag": "a", "cls": ["title"] }
-                        ]
+                        "val": "abracadabra, “peel away”",
+                        "link": "https://daily.bandcamp.com/album-of-the-day/abracadabra-peel-away-review"
                       }
                     ]
                   }
                 ]
               },
               {
-                "tag": "a",
-                "cls": ["pagination-link"],
-                "text": "← Older posts ← Older posts",
-                "href": "https://daily.bandcamp.com/album-of-the-day?page=2",
-                "el": [
-                  { "tag": "articles-footer" },
-                  { "tag": "div" },
-                  { "tag": "a", "cls": ["pagination-link"] }
-                ]
+                "val": "← Older posts ← Older posts",
+                "link": "https://daily.bandcamp.com/album-of-the-day?page=2"
               }
             ]
           },
           {
-            "tag": "dailyfooter",
             "ch": [
-              { "tag": "h2", "cls": ["top-stories"], "text": "Top Stories" },
               {
-                "tag": "div",
-                "cls": ["list-article"],
+                "kind": "h2",
+                "val": "Top Stories"
+              },
+              {
                 "ch": [
                   {
-                    "tag": "a",
-                    "cls": ["thumb"],
-                    "href": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report",
+                    "link": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report",
                     "ch": [
                       {
-                        "tag": "img",
-                        "src": "https://f4.bcbits.com/img/0047405347_150.jpg"
+                        "kind": "img",
+                        "link": "https://f4.bcbits.com/img/0047405347_150.jpg"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["article-info-text"],
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["franchise"],
-                        "text": "LISTS",
-                        "href": "https://daily.bandcamp.com/lists"
+                        "val": "LISTS ·"
                       },
-                      { "tag": "#text", "text": "· September 18, 2026" }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["title"],
-                    "text": "A Brief History of Atlantic Canada’s Guitar Pop Explosions",
-                    "href": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report",
-                    "el": [
-                      { "tag": "div", "cls": ["title-wrapper"] },
-                      { "tag": "a", "cls": ["title"] }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["list-article"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["thumb"],
-                    "href": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide",
-                    "ch": [
                       {
-                        "tag": "img",
-                        "src": "https://f4.bcbits.com/img/0047404866_150.jpg"
+                        "kind": "time",
+                        "val": "2026-09-18T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["article-info-text"],
+                    "val": "A Brief History of Atlantic Canada’s Guitar Pop Explosions",
+                    "link": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
+                  }
+                ]
+              },
+              {
+                "ch": [
+                  {
+                    "link": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide",
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["franchise"],
-                        "text": "LISTS",
-                        "href": "https://daily.bandcamp.com/lists"
+                        "kind": "img",
+                        "link": "https://f4.bcbits.com/img/0047404866_150.jpg"
+                      }
+                    ]
+                  },
+                  {
+                    "ch": [
+                      {
+                        "val": "LISTS ·"
                       },
-                      { "tag": "#text", "text": "· September 17, 2026" }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["title"],
-                    "text": "The Secret Life of the Hardanger Fiddle",
-                    "href": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide",
-                    "el": [
-                      { "tag": "div", "cls": ["title-wrapper"] },
-                      { "tag": "a", "cls": ["title"] }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["list-article"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["thumb"],
-                    "href": "https://daily.bandcamp.com/scene-report/gqom-album-guide",
-                    "ch": [
                       {
-                        "tag": "img",
-                        "src": "https://f4.bcbits.com/img/0047382746_150.jpg"
+                        "kind": "time",
+                        "val": "2026-09-17T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["article-info-text"],
+                    "val": "The Secret Life of the Hardanger Fiddle",
+                    "link": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide"
+                  }
+                ]
+              },
+              {
+                "ch": [
+                  {
+                    "link": "https://daily.bandcamp.com/scene-report/gqom-album-guide",
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["franchise"],
-                        "text": "SCENE REPORT",
-                        "href": "https://daily.bandcamp.com/scene-report"
+                        "kind": "img",
+                        "link": "https://f4.bcbits.com/img/0047382746_150.jpg"
+                      }
+                    ]
+                  },
+                  {
+                    "ch": [
+                      {
+                        "val": "SCENE REPORT ·"
                       },
-                      { "tag": "#text", "text": "· September 15, 2026" }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["title"],
-                    "text": "The Sound of Gqom Circa 2026",
-                    "href": "https://daily.bandcamp.com/scene-report/gqom-album-guide",
-                    "el": [
-                      { "tag": "div", "cls": ["title-wrapper"] },
-                      { "tag": "a", "cls": ["title"] }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "h2",
-                "ch": [
-                  { "tag": "#text", "text": "Latest" },
-                  {
-                    "tag": "a",
-                    "cls": ["secondary"],
-                    "text": "see all stories",
-                    "href": "https://daily.bandcamp.com/latest"
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["list-article", "ft-latest-article"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["thumb"],
-                    "href": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report",
-                    "ch": [
                       {
-                        "tag": "img",
-                        "src": "https://f4.bcbits.com/img/0047405347_150.jpg"
+                        "kind": "time",
+                        "val": "2026-09-15T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["article-info-text"],
+                    "val": "The Sound of Gqom Circa 2026",
+                    "link": "https://daily.bandcamp.com/scene-report/gqom-album-guide"
+                  }
+                ]
+              },
+              {
+                "kind": "h2",
+                "val": "Latest see all stories"
+              },
+              {
+                "ch": [
+                  {
+                    "link": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report",
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["franchise"],
-                        "text": "LISTS",
-                        "href": "https://daily.bandcamp.com/lists"
+                        "kind": "img",
+                        "link": "https://f4.bcbits.com/img/0047405347_150.jpg"
+                      }
+                    ]
+                  },
+                  {
+                    "ch": [
+                      {
+                        "val": "LISTS ·"
                       },
-                      { "tag": "#text", "text": "· September 18, 2026" }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["title"],
-                    "text": "A Brief History of Atlantic Canada’s Guitar Pop Explosions",
-                    "href": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report",
-                    "el": [
-                      { "tag": "div", "cls": ["title-wrapper"] },
-                      { "tag": "a", "cls": ["title"] }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["list-article", "ft-latest-article"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["thumb"],
-                    "href": "https://daily.bandcamp.com/features/laurentius-the-profit-interview",
-                    "ch": [
                       {
-                        "tag": "img",
-                        "src": "https://f4.bcbits.com/img/0047383984_150.jpg"
+                        "kind": "time",
+                        "val": "2026-09-18T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["article-info-text"],
+                    "val": "A Brief History of Atlantic Canada’s Guitar Pop Explosions",
+                    "link": "https://daily.bandcamp.com/lists/atlantic-canadas-guitar-pop-scene-report"
+                  }
+                ]
+              },
+              {
+                "ch": [
+                  {
+                    "link": "https://daily.bandcamp.com/features/laurentius-the-profit-interview",
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["franchise"],
-                        "text": "FEATURES",
-                        "href": "https://daily.bandcamp.com/features"
+                        "kind": "img",
+                        "link": "https://f4.bcbits.com/img/0047383984_150.jpg"
+                      }
+                    ]
+                  },
+                  {
+                    "ch": [
+                      {
+                        "val": "FEATURES ·"
                       },
-                      { "tag": "#text", "text": "· September 18, 2026" }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["title"],
-                    "text": "Laurentius the Profit Found Heaven in a Cave",
-                    "href": "https://daily.bandcamp.com/features/laurentius-the-profit-interview",
-                    "el": [
-                      { "tag": "div", "cls": ["title-wrapper"] },
-                      { "tag": "a", "cls": ["title"] }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["list-article", "ft-latest-article", "aotd"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["thumb", "aotd-image"],
-                    "href": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review",
-                    "ch": [
                       {
-                        "tag": "img",
-                        "src": "https://f4.bcbits.com/img/0047422564_2.jpg"
+                        "kind": "time",
+                        "val": "2026-09-18T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["article-info-text"],
+                    "val": "Laurentius the Profit Found Heaven in a Cave",
+                    "link": "https://daily.bandcamp.com/features/laurentius-the-profit-interview"
+                  }
+                ]
+              },
+              {
+                "ch": [
+                  {
+                    "link": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review",
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["franchise"],
-                        "text": "ALBUM OF THE DAY",
-                        "href": "https://daily.bandcamp.com/album-of-the-day"
+                        "kind": "img",
+                        "link": "https://f4.bcbits.com/img/0047422564_2.jpg"
+                      }
+                    ]
+                  },
+                  {
+                    "ch": [
+                      {
+                        "val": "ALBUM OF THE DAY ·"
                       },
-                      { "tag": "#text", "text": "· September 18, 2026" }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["title"],
-                    "text": "Curly Castro, “Yaphet”",
-                    "href": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review",
-                    "el": [
-                      { "tag": "div", "cls": ["title-wrapper"] },
-                      { "tag": "a", "cls": ["title"] }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["list-article", "ft-latest-article"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["thumb"],
-                    "href": "https://daily.bandcamp.com/big-ups/sleeps-two-newest-members-pick-their-bandcamp-favorites",
-                    "ch": [
                       {
-                        "tag": "img",
-                        "src": "https://f4.bcbits.com/img/0047426285_150.jpg"
+                        "kind": "time",
+                        "val": "2026-09-18T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["article-info-text"],
+                    "val": "Curly Castro, “Yaphet”",
+                    "link": "https://daily.bandcamp.com/album-of-the-day/curly-castro-yaphet-review"
+                  }
+                ]
+              },
+              {
+                "ch": [
+                  {
+                    "link": "https://daily.bandcamp.com/big-ups/sleeps-two-newest-members-pick-their-bandcamp-favorites",
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["franchise"],
-                        "text": "BIG UPS",
-                        "href": "https://daily.bandcamp.com/big-ups"
+                        "kind": "img",
+                        "link": "https://f4.bcbits.com/img/0047426285_150.jpg"
+                      }
+                    ]
+                  },
+                  {
+                    "ch": [
+                      {
+                        "val": "BIG UPS ·"
                       },
-                      { "tag": "#text", "text": "· September 17, 2026" }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["title"],
-                    "text": "Sleep’s Two Newest Members Pick Their Bandcamp Favorites",
-                    "href": "https://daily.bandcamp.com/big-ups/sleeps-two-newest-members-pick-their-bandcamp-favorites",
-                    "el": [
-                      { "tag": "div", "cls": ["title-wrapper"] },
-                      { "tag": "a", "cls": ["title"] }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["list-article", "ft-latest-article"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["thumb"],
-                    "href": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide",
-                    "ch": [
                       {
-                        "tag": "img",
-                        "src": "https://f4.bcbits.com/img/0047404866_150.jpg"
+                        "kind": "time",
+                        "val": "2026-09-17T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["article-info-text"],
+                    "val": "Sleep’s Two Newest Members Pick Their Bandcamp Favorites",
+                    "link": "https://daily.bandcamp.com/big-ups/sleeps-two-newest-members-pick-their-bandcamp-favorites"
+                  }
+                ]
+              },
+              {
+                "ch": [
+                  {
+                    "link": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide",
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["franchise"],
-                        "text": "LISTS",
-                        "href": "https://daily.bandcamp.com/lists"
+                        "kind": "img",
+                        "link": "https://f4.bcbits.com/img/0047404866_150.jpg"
+                      }
+                    ]
+                  },
+                  {
+                    "ch": [
+                      {
+                        "val": "LISTS ·"
                       },
-                      { "tag": "#text", "text": "· September 17, 2026" }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["title"],
-                    "text": "The Secret Life of the Hardanger Fiddle",
-                    "href": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide",
-                    "el": [
-                      { "tag": "div", "cls": ["title-wrapper"] },
-                      { "tag": "a", "cls": ["title"] }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["list-article", "ft-latest-article", "aotd"],
-                "ch": [
-                  {
-                    "tag": "a",
-                    "cls": ["thumb", "aotd-image"],
-                    "href": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review",
-                    "ch": [
                       {
-                        "tag": "img",
-                        "src": "https://f4.bcbits.com/img/0047292430_2.jpg"
+                        "kind": "time",
+                        "val": "2026-09-17T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["article-info-text"],
+                    "val": "The Secret Life of the Hardanger Fiddle",
+                    "link": "https://daily.bandcamp.com/lists/hardanger-fiddle-album-guide"
+                  }
+                ]
+              },
+              {
+                "ch": [
+                  {
+                    "link": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review",
                     "ch": [
                       {
-                        "tag": "a",
-                        "cls": ["franchise"],
-                        "text": "ALBUM OF THE DAY",
-                        "href": "https://daily.bandcamp.com/album-of-the-day"
+                        "kind": "img",
+                        "link": "https://f4.bcbits.com/img/0047292430_2.jpg"
+                      }
+                    ]
+                  },
+                  {
+                    "ch": [
+                      {
+                        "val": "ALBUM OF THE DAY ·"
                       },
-                      { "tag": "#text", "text": "· September 17, 2026" }
-                    ]
-                  },
-                  {
-                    "tag": "a",
-                    "cls": ["title"],
-                    "text": "Actress, “Radical Frame”",
-                    "href": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review",
-                    "el": [
-                      { "tag": "div", "cls": ["title-wrapper"] },
-                      { "tag": "a", "cls": ["title"] }
-                    ]
-                  }
-                ]
-              },
-              {
-                "tag": "div",
-                "cls": ["bc-radio"],
-                "ch": [
-                  {
-                    "tag": "h2",
-                    "ch": [
-                      { "tag": "#text", "text": "On Bandcamp Radio" },
                       {
-                        "tag": "a",
-                        "cls": ["secondary"],
-                        "text": "see all",
-                        "href": "https://bandcamp.com/?show_archive=1"
+                        "kind": "time",
+                        "val": "2026-09-17T00:00:00Z"
                       }
                     ]
                   },
                   {
-                    "tag": "div",
-                    "cls": ["card"],
+                    "val": "Actress, “Radical Frame”",
+                    "link": "https://daily.bandcamp.com/album-of-the-day/actress-radical-frame-review"
+                  }
+                ]
+              },
+              {
+                "ch": [
+                  {
+                    "kind": "h2",
+                    "val": "On Bandcamp Radio see all"
+                  },
+                  {
                     "ch": [
                       {
-                        "tag": "a",
-                        "href": "https://bandcamp.com/?play=1",
+                        "link": "https://bandcamp.com/?play=1",
                         "ch": [
                           {
-                            "tag": "img",
-                            "src": "https://bandcamp.com/bcweekly_full.jpg"
+                            "kind": "img",
+                            "link": "https://bandcamp.com/bcweekly_full.jpg"
                           }
                         ]
                       },
                       {
-                        "tag": "div",
-                        "cls": ["text"],
-                        "ch": [
-                          {
-                            "tag": "#text",
-                            "text": "Listen to the latest episode of Bandcamp Radio."
-                          },
-                          {
-                            "tag": "a",
-                            "cls": ["listen"],
-                            "text": "Listen now →",
-                            "href": "https://bandcamp.com/?play=1"
-                          }
-                        ]
+                        "val": "Listen to the latest episode of Bandcamp Radio. Listen now →"
                       }
                     ]
                   }
