@@ -136,11 +136,13 @@ class _AnnotatorState extends State<_Annotator> {
   }
 
   /// Why [node] cannot become a post, or null if it can.
+  ///
+  /// Only [node] itself is checked. Other nodes at its shape path can be posts
+  /// of another group, since the labeled fields decide which of them are
+  /// posts, such as cards whose date is at a different position.
   String? _postRejection(PageNode node, _Marks marks) {
-    final candidates = PostMatcher.fromNode(node).matchPosts(_document);
     for (final MapEntry(key: id, value: group) in marks.posts.entries) {
-      final post = _document.nodes[id];
-      if (candidates.any(post.overlaps)) {
+      if (_document.nodes[id].overlaps(node)) {
         return 'This overlaps with the posts of group ${group.number}.';
       }
     }
