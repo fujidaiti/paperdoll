@@ -412,21 +412,6 @@ class const _SelectionSheet({
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            // Actions that are used rarely are kept out of the button row,
-            // which is too narrow for all of them.
-            if (group != null)
-              PopupMenuButton<VoidCallback>(
-                icon: const Icon(Icons.more_vert),
-                tooltip: 'More',
-                onSelected: (action) => action(),
-                itemBuilder: (context) => [
-                  if (onRemoveGroup case final onRemoveGroup?)
-                    PopupMenuItem(
-                      value: onRemoveGroup,
-                      child: const Text('Remove group'),
-                    ),
-                ],
-              ),
             IconButton(
               icon: const Icon(Icons.close),
               tooltip: 'Cancel',
@@ -457,6 +442,20 @@ class const _SelectionSheet({
           children: [
             const Spacer(),
             if (group != null) ...[
+              // Actions that are used rarely are kept in a menu, since the
+              // row is too narrow for all of them.
+              PopupMenuButton<VoidCallback>(
+                icon: const Icon(Icons.more_vert),
+                tooltip: 'More',
+                onSelected: (action) => action(),
+                itemBuilder: (context) => [
+                  if (onRemoveGroup case final onRemoveGroup?)
+                    PopupMenuItem(
+                      value: onRemoveGroup,
+                      child: const Text('Remove group'),
+                    ),
+                ],
+              ),
               TextButton(onPressed: onExclude, child: const Text('Exclude')),
               const Gap(spacingSm),
               FilledButton(
