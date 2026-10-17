@@ -4,248 +4,184 @@
   "root": {
     "ch": [
       {
+        "kind": "h1",
+        "val": "The Go Blog"
+      },
+      {
         "ch": [
           {
             "ch": [
               {
-                "ch": [
-                  {
-                    "ch": [
-                      {
-                        "ch": [
-                          {
-                            "kind": "h1",
-                            "val": "The Go Blog"
-                          },
-                          {
-                            "ch": [
-                              {
-                                "ch": [
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "Size-Specialized Memory Allocation,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-09-16T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Michael Matloob"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "Go 1.27 improves performance of small allocations using size-specialized allocation functions."
-                                  },
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "Goroutine Leak Profiles,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-09-02T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Vlad Saioc"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "Go 1.27 includes new goroutine leak profiles."
-                                  },
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "Generic Methods,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-08-26T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Mark Freeman"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "Go 1.27 adds generic methods—a highly desired language feature."
-                                  },
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "Go 1.27 is released,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-08-19T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Nicholas Husin, on behalf of the Go team"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more."
-                                  },
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "Introducing the pkg.go.dev API,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-05-21T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Ethan Lee, Hana Kim, and Jonathan Amsterdam"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly."
-                                  },
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "Type Construction and Cycle Detection,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-03-24T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Mark Freeman"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types."
-                                  },
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "//go:fix inline and the source-level inliner,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-03-10T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Alan Donovan"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations."
-                                  },
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "Allocating on the Stack,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-02-27T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Keith Randall"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "A description of some of the recent changes to do allocations on the stack instead of the heap."
-                                  },
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "Using go fix to modernize Go code,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-02-17T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Alan Donovan"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go."
-                                  },
-                                  {
-                                    "ch": [
-                                      {
-                                        "val": "Go 1.26 is released,"
-                                      },
-                                      {
-                                        "ch": [
-                                          {
-                                            "kind": "time",
-                                            "val": "2026-02-10T00:00:00Z"
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "val": "Carlos Amedee, on behalf of the Go team"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "val": "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more."
-                                  },
-                                  {
-                                    "val": "More articles...",
-                                    "link": "https://go.dev/blog/all"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
+                "val": "Size-Specialized Memory Allocation,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-09-16T00:00:00Z"
+              },
+              {
+                "val": "Michael Matloob"
               }
             ]
+          },
+          {
+            "val": "Go 1.27 improves performance of small allocations using size-specialized allocation functions."
+          },
+          {
+            "ch": [
+              {
+                "val": "Goroutine Leak Profiles,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-09-02T00:00:00Z"
+              },
+              {
+                "val": "Vlad Saioc"
+              }
+            ]
+          },
+          {
+            "val": "Go 1.27 includes new goroutine leak profiles."
+          },
+          {
+            "ch": [
+              {
+                "val": "Generic Methods,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-08-26T00:00:00Z"
+              },
+              {
+                "val": "Mark Freeman"
+              }
+            ]
+          },
+          {
+            "val": "Go 1.27 adds generic methods—a highly desired language feature."
+          },
+          {
+            "ch": [
+              {
+                "val": "Go 1.27 is released,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-08-19T00:00:00Z"
+              },
+              {
+                "val": "Nicholas Husin, on behalf of the Go team"
+              }
+            ]
+          },
+          {
+            "val": "Go 1.27 adds generic methods, encoding/json/v2 package, uuid package, faster memory allocation, goroutine leak profiles, and more."
+          },
+          {
+            "ch": [
+              {
+                "val": "Introducing the pkg.go.dev API,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-05-21T00:00:00Z"
+              },
+              {
+                "val": "Ethan Lee, Hana Kim, and Jonathan Amsterdam"
+              }
+            ]
+          },
+          {
+            "val": "Introducing the new programmatic API for pkg.go.dev, allowing developers to fetch package and module data directly."
+          },
+          {
+            "ch": [
+              {
+                "val": "Type Construction and Cycle Detection,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-03-24T00:00:00Z"
+              },
+              {
+                "val": "Mark Freeman"
+              }
+            ]
+          },
+          {
+            "val": "Go 1.26 simplifies type construction and enhances cycle detection for certain kinds of recursive types."
+          },
+          {
+            "ch": [
+              {
+                "val": "//go:fix inline and the source-level inliner,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-03-10T00:00:00Z"
+              },
+              {
+                "val": "Alan Donovan"
+              }
+            ]
+          },
+          {
+            "val": "How Go 1.26's source-level inliner works, and how it can help you with self-service API migrations."
+          },
+          {
+            "ch": [
+              {
+                "val": "Allocating on the Stack,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-02-27T00:00:00Z"
+              },
+              {
+                "val": "Keith Randall"
+              }
+            ]
+          },
+          {
+            "val": "A description of some of the recent changes to do allocations on the stack instead of the heap."
+          },
+          {
+            "ch": [
+              {
+                "val": "Using go fix to modernize Go code,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-02-17T00:00:00Z"
+              },
+              {
+                "val": "Alan Donovan"
+              }
+            ]
+          },
+          {
+            "val": "Go 1.26 includes a new implementation of go fix that can help you use more modern features of Go."
+          },
+          {
+            "ch": [
+              {
+                "val": "Go 1.26 is released,"
+              },
+              {
+                "kind": "time",
+                "val": "2026-02-10T00:00:00Z"
+              },
+              {
+                "val": "Carlos Amedee, on behalf of the Go team"
+              }
+            ]
+          },
+          {
+            "val": "Go 1.26 adds a new garbage collector, cgo overhead reduction, experimental simd/archsimd package, experimental runtime/secret package, and more."
+          },
+          {
+            "val": "More articles...",
+            "link": "https://go.dev/blog/all"
           }
         ]
       }

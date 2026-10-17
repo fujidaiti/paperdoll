@@ -12,8 +12,9 @@ same shape. The server runs the matchers on each fetch and turns the extracted
 posts into feed entries.
 
 The current matcher selects elements by tags, classes and indices. Classes are
-fragile: they include layout, state and hash classes, so the same post can have
-different classes in different parts of a page.
+fragile: they include layout, state and hash classes, and the simplifier merges
+wrappers, so the same post can have different classes in different parts of a
+page.
 
 ## Goal
 
@@ -139,14 +140,13 @@ The client builds the matcher when the user labels the fields of a post.
 
 Since the index counts only siblings of the same shape, a missing value of
 another shape does not move a field. For example, a deepmind post without a
-category, which is a `txt`, still has its date at `box` 0 and its "Learn more"
-link at `box` 1. A missing value of the same shape does move the values after
-it.
+category still has its date at `txt` 0 and its "Learn more" link at
+`txt+link` 0. A missing value of the same shape does move the values after it.
 
 Each group has one matcher. A post of the same kind whose shape path differs,
-such as a deepmind post in the first section of the page, which is two levels
-deeper than the posts in the next section, is not found by the matcher. The user
-annotates such a post as another group.
+such as a deepmind post without any image (the simplifier merges its
+single-child wrapper, so the title is one level higher), is not found by the
+matcher. The user annotates such a post as another group.
 
 ## Possible extensions
 
