@@ -403,10 +403,36 @@ class const _SelectionSheet({
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        BodyText(
-          describeNode(selected),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+        Row(
+          children: [
+            Expanded(
+              child: BodyText(
+                describeNode(selected),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            // Actions that are used rarely are kept out of the button row,
+            // which is too narrow for all of them.
+            if (group != null)
+              PopupMenuButton<VoidCallback>(
+                icon: const Icon(Icons.more_vert),
+                tooltip: 'More',
+                onSelected: (action) => action(),
+                itemBuilder: (context) => [
+                  if (onRemoveGroup case final onRemoveGroup?)
+                    PopupMenuItem(
+                      value: onRemoveGroup,
+                      child: const Text('Remove group'),
+                    ),
+                ],
+              ),
+            IconButton(
+              icon: const Icon(Icons.close),
+              tooltip: 'Cancel',
+              onPressed: onCancel,
+            ),
+          ],
         ),
         // A post is selected as a whole.
         if (group == null && excluded == null)
@@ -429,13 +455,8 @@ class const _SelectionSheet({
         ],
         Row(
           children: [
-            TextButton(onPressed: onCancel, child: const Text('Cancel')),
             const Spacer(),
             if (group != null) ...[
-              TextButton(
-                onPressed: onRemoveGroup,
-                child: const Text('Remove group'),
-              ),
               TextButton(onPressed: onExclude, child: const Text('Exclude')),
               const Gap(spacingSm),
               FilledButton(
