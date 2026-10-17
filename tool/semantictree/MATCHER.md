@@ -99,11 +99,6 @@ node itself with `>`, such as `box > box > box > card > box > h2`.
 The user must label `title` and `link` in every matcher. The other fields are
 optional to label.
 
-> Note: a post must have every labeled field (see "Extraction"), but a matcher
-> with only a few labeled fields may still find too many items that are not
-> posts. If this appears too lax, we will require the user to label all fields,
-> so that every post must have all of them.
-
 ## Extraction
 
 For each group:
