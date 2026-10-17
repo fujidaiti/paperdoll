@@ -27,7 +27,8 @@ import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.da
 /// The page is shown as its content, line by line. The user repeats two
 /// steps: select the area that holds one post, then label the content inside
 /// it as the post's fields on [PostFieldsScreen]. An area is selected by
-/// tapping a piece of content, which selects the element around it, and
+/// tapping a line, which selects the narrowest element around it that can be
+/// a post, and
 /// widening the selection to the elements around that one. Areas at the same
 /// shape path as the selected post become posts of the same group
 /// automatically, with their fields found at the same positions. Each group
@@ -118,6 +119,22 @@ class _AnnotatorState extends State<_Annotator> {
   }
 
   PageDocument get _document => widget.document;
+
+  /// The lines of the whole page. They are built lazily by a list, since a
+  /// page can have thousands of them.
+  late final _lines = layOutLines([_document.root]);
+
+  /// [line] or the narrowest element around it that can be a post, if any.
+  /// A post needs a link and a text for its title, and the whole page cannot
+  /// be a post.
+  PageNode? _selectableElement(PageNode line) {
+    for (var n = line; n.parent != null; n = n.parent!) {
+      if (_hasLink(n) && n.textContent.trim().isNotEmpty) {
+        return n;
+      }
+    }
+    return null;
+  }
 
   _Marks _computeMarks() {
     final marks = _Marks();
@@ -277,26 +294,26 @@ class _AnnotatorState extends State<_Annotator> {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: spacingMd,
-                vertical: spacingSm,
-              ),
-              child: PageBlock(
-                node: _document.root,
-                areas: areas,
-                // A tap inside a post selects the post.
-                onTap: (node) {
-                  final target = marks.enclosingPost(node) ?? node;
-                  _select(target, tapped: target);
-                },
-                // A post needs a link and a text for its title, and the whole
-                // page cannot be a post.
-                tappable: (node) =>
-                    node.parent != null &&
-                    _hasLink(node) &&
-                    node.textContent.trim().isNotEmpty,
-              ),
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: spacingSm),
+              itemCount: _lines.length,
+              itemBuilder: (context, index) {
+                final line = _lines[index];
+                return PageLine(
+                  key: ValueKey(line.id),
+                  node: line,
+                  areas: areas,
+                  onTap: (line) {
+                    // A tap on a line selects the narrowest element around it
+                    // that can be a post, or the post that contains it.
+                    final element = _selectableElement(line);
+                    if (element != null) {
+                      final target = marks.enclosingPost(element) ?? element;
+                      _select(target, tapped: target);
+                    }
+                  },
+                );
+              },
             ),
           ),
           if (selected != null)

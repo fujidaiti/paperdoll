@@ -177,91 +177,6 @@ Widget _frameLine(PageNode first, Widget content) => Container(
   child: content,
 );
 
-/// A node with children shown as one block: its own lines and, nested in
-/// it, a block for each child with children or [tappable] on its own line.
-/// A tap anywhere on the block
-/// that is not on a nested block reports [node], so the block is the unit
-/// that is selected. The lines themselves cannot be tapped. A block whose
-/// node is not [tappable] cannot be tapped either, so a tap on it reaches
-/// the block around it, but its nested blocks can be tapped.
-///
-/// Each of [areas] whose node is [node] tints the block, so that nested
-/// areas look darker. A long press on a link opens it in the in-app browser.
-class const PageBlock({
-  required final PageNode node,
-  required final List<PageArea> areas,
-  required final void Function(PageNode node) onTap,
-  required final bool Function(PageNode node) tappable,
-  super.key,
-}) extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // The same lines as [layOutLines], without descending into containers.
-    final items = <(PageNode, {bool isLine})>[
-      // A container with a link shows its target first.
-      if (node.link != null) (node, isLine: true),
-      for (final child in node.children)
-        // A tappable value, such as a link in a list of links, is a block so
-        // that it can be selected.
-        (child, isLine: child.isValue && !tappable(child)),
-    ];
-    Widget content = Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        for (final (child, :isLine) in items)
-          if (isLine)
-            _BlockLine(key: ValueKey(child.id), node: child)
-          else
-            PageBlock(
-              key: ValueKey(child.id),
-              node: child,
-              areas: areas,
-              onTap: onTap,
-              tappable: tappable,
-            ),
-      ],
-    );
-    // A tint is painted over the content so that images do not hide it, and
-    // leaves a thin gap at the ends of its block to keep adjacent areas apart.
-    content = Stack(
-      children: [
-        content,
-        for (final area in areas)
-          if (identical(area.node, node))
-            Positioned.fill(
-              top: 2,
-              bottom: 2,
-              child: IgnorePointer(
-                child: ColoredBox(
-                  color: area.color.withValues(alpha: _tintAlpha),
-                ),
-              ),
-            ),
-      ],
-    );
-    if (tappable(node)) {
-      content = InkWell(onTap: () => onTap(node), child: content);
-    }
-    return content;
-  }
-}
-
-/// A line inside a [PageBlock]. It does not take taps, so that a tap reaches
-/// the block, but a long press on a link opens it.
-class const _BlockLine({required final PageNode node, super.key})
-    extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onLongPress: switch (node.pageLink) {
-        final link? => () => unawaited(openInAppLink(context, link)),
-        null => null,
-      },
-      child: _frameLine(node, _Content(node: node)),
-    );
-  }
-}
-
 /// The text of [node], styled the way the page would show it. The text of a
 /// link without text, such as a card, is its target.
 TextSpan _textSpan(PageNode node) {
@@ -286,10 +201,19 @@ class const _Content({required final PageNode node}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (node.isImage) {
+      const maxHeight = 200.0;
+      // The image is decoded at the size it is shown rather than at its full
+      // size, which saves memory on pages with many large images.
+      final ratio = MediaQuery.devicePixelRatioOf(context);
       return ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 200),
-        child: Image.network(
-          node.link!,
+        constraints: const BoxConstraints(maxHeight: maxHeight),
+        child: Image(
+          image: ResizeImage(
+            NetworkImage(node.link!),
+            width: (MediaQuery.sizeOf(context).width * ratio).round(),
+            height: (maxHeight * ratio).round(),
+            policy: ResizeImagePolicy.fit,
+          ),
           fit: BoxFit.contain,
           alignment: Alignment.centerLeft,
           // Some images, such as SVG icons, cannot be decoded.
