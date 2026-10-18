@@ -141,7 +141,9 @@ func BuildSemanticTree(raw []byte, fallbackURL string) (*SemanticTree, error) {
 	}
 	tree := s.convert(body)
 	if tree == nil || tree.isValue() {
-		tree = &SemanticTreeNode{Children: slices.DeleteFunc([]*SemanticTreeNode{tree}, func(n *SemanticTreeNode) bool { return n == nil })}
+		tree = &SemanticTreeNode{
+			Children: slices.DeleteFunc([]*SemanticTreeNode{tree}, func(n *SemanticTreeNode) bool { return n == nil }),
+		}
 	}
 	unwrapTextless(tree)
 	return &SemanticTree{URL: base.String(), Title: title, Root: tree}, nil
