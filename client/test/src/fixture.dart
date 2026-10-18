@@ -226,6 +226,28 @@ class _Pages {
     },
   };
 
+  /// [exampleBlog] with two newsletter cards of the same shape as the posts,
+  /// whose links differ only in the query.
+  final exampleBlogWithNewsletters = <String, Object?>{
+    'url': 'https://blog.example.com/',
+    'title': 'Example Blog',
+    'root': {
+      'ch': [
+        for (final (title, link) in [
+          ('First post', 'https://blog.example.com/first'),
+          ('Weekly digest', 'https://blog.example.com/newsletters?weekly'),
+          ('Monthly digest', 'https://blog.example.com/newsletters?monthly'),
+        ])
+          {
+            'ch': [
+              {'kind': 'h2', 'val': title, 'link': link},
+              {'val': 'Read $title.'},
+            ],
+          },
+      ],
+    },
+  };
+
   /// A matcher of the posts in [exampleBlog].
   final exampleBlogMatcher = <String, Object?>{
     'post': ['box', 'box'],

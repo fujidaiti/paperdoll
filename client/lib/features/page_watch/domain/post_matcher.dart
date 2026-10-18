@@ -327,30 +327,27 @@ class PostMatcher {
     return matcher;
   }
 
-  /// Adds a pattern that excludes [link] (see "Excluding a link" in
-  /// MATCHER.md), or returns null when every pattern would also exclude a
-  /// post of [document] with another link.
-  PostMatcher? withExcluded(PageDocument document, String link) {
+  /// Adds a pattern that excludes [link]. [link] is merged into a pattern in
+  /// [exclude] when the merged pattern excludes no post of [document] with
+  /// another link. Otherwise the host and path of [link] are added, which
+  /// also exclude the posts whose links differ from [link] only in the query
+  /// or the fragment.
+  PostMatcher withExcluded(PageDocument document, String link) {
     final hostPath = _hostPath(link);
     final kept = [
       for (final p in matchPosts(document))
         if (_linkOf(p) case final l? when l != link) _hostPath(l),
     ];
-    bool isAccepted(String pattern) =>
-        !kept.any((l) => _globMatches(pattern, l));
     PostMatcher withExclude(List<String> exclude) =>
         PostMatcher(post: post, fields: fields, exclude: exclude);
 
     for (final (i, pattern) in exclude.indexed) {
       if (_mergePattern(pattern, hostPath) case final merged?
-          when isAccepted(merged)) {
+          when !kept.any((l) => _globMatches(merged, l))) {
         return withExclude([...exclude]..[i] = merged);
       }
     }
-    if (isAccepted(hostPath)) {
-      return withExclude([...exclude, hostPath]);
-    }
-    return null;
+    return withExclude([...exclude, hostPath]);
   }
 
   /// Removes [pattern] from [exclude], so the posts it excluded come back.

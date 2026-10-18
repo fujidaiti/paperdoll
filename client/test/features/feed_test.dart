@@ -243,6 +243,36 @@ void main() {
     await t('Edit fields').waitUntilVisible();
   });
 
+  patrolWidgetTest('Exclude posts whose links differ only in the query', (
+    t,
+  ) async {
+    final blog = fixture.feeds.exampleBlog;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubGet(
+        '/feeds/${blog.id}/matcher',
+        body: {
+          'page': fixture.pages.exampleBlogWithNewsletters,
+          'matchers': [fixture.pages.exampleBlogMatcher],
+        },
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editMatchersButton).tap();
+    await t('1 group(s), 3 post(s) found.').waitUntilVisible();
+
+    // The pattern of a newsletter link also excludes the other newsletter,
+    // so the app asks first.
+    await t('Weekly digest').tap();
+    await t('Exclude').tap();
+    await t('Exclude 1 more post(s)?').waitUntilVisible();
+    await t(AlertDialog).$('Exclude').tap();
+    await t('1 group(s), 1 post(s) found.').waitUntilVisible();
+  });
+
   patrolWidgetTest('Edit a web feed', (t) async {
     final nasa = fixture.feeds.nasa;
     final server = _stubFeedSubscription(

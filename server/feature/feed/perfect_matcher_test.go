@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/url"
+	"slices"
 	"strings"
 )
 
@@ -167,36 +168,32 @@ func mergePattern(pattern, hostPath string) string {
 	return strings.Join(merged, "/")
 }
 
-// withExcluded adds a pattern to m that excludes link, or returns false when
-// every pattern would also exclude a post of m with another link. It follows
-// PostMatcher.withExcluded of the client.
-func withExcluded(m *PostMatcher, doc *PageDocument, link string) bool {
+// withExcluded returns m with a pattern that excludes link. link is merged
+// into a pattern of m when the merged pattern excludes no post of m with
+// another link. Otherwise the host and path of link are added, which also
+// exclude the posts whose links differ from link only in the query or the
+// fragment. It follows PostMatcher.withExcluded of the client.
+func withExcluded(m PostMatcher, doc *PageDocument, link string) PostMatcher {
 	hp := hostPath(link)
 	var kept []string
 	for _, p := range m.matchPosts(doc) {
-		if l := values(m, p)[PostLink]; l != "" && l != link {
+		if l := values(&m, p)[PostLink]; l != "" && l != link {
 			kept = append(kept, hostPath(l))
 		}
 	}
-	isAccepted := func(pattern string) bool {
-		for _, l := range kept {
-			if globMatches(pattern, l) {
-				return false
-			}
-		}
-		return true
-	}
+	m.Exclude = slices.Clone(m.Exclude)
 	for i, pattern := range m.Exclude {
-		if merged := mergePattern(pattern, hp); merged != "" && isAccepted(merged) {
+		if merged := mergePattern(
+			pattern,
+			hp,
+		); merged != "" &&
+			!slices.ContainsFunc(kept, func(l string) bool { return globMatches(merged, l) }) {
 			m.Exclude[i] = merged
-			return true
+			return m
 		}
 	}
-	if isAccepted(hp) {
-		m.Exclude = append(m.Exclude, hp)
-		return true
-	}
-	return false
+	m.Exclude = append(m.Exclude, hp)
+	return m
 }
 
 func equalPosts(a, b ExtractedPost) bool {
@@ -255,9 +252,23 @@ func perfectMatchers(doc *PageDocument, posts []ExtractedPost) ([]PostMatcher, e
 			m := &matchers[i]
 			for _, n := range m.matchPosts(doc) {
 				v := values(m, n)
-				if isWrong(v) && !withExcluded(m, doc, v[PostLink]) {
-					return nil, fmt.Errorf("group %d gets %s wrong, but it cannot be excluded: %v", i+1, v[PostLink], v)
+				if m.isExcluded(n) || !isWrong(v) {
+					continue
 				}
+				// The client asks before excluding other posts of the group
+				// too, and the user agrees only when they are also wrong.
+				excluded := withExcluded(*m, doc, v[PostLink])
+				for _, p := range m.matchPosts(doc) {
+					if p != n && excluded.isExcluded(p) && !isWrong(values(m, p)) {
+						return nil, fmt.Errorf(
+							"group %d gets %s wrong, but excluding it also excludes %s",
+							i+1,
+							v[PostLink],
+							values(m, p)[PostLink],
+						)
+					}
+				}
+				*m = excluded
 			}
 		}
 
@@ -321,7 +332,13 @@ func perfectMatchers(doc *PageDocument, posts []ExtractedPost) ([]PostMatcher, e
 				case p == post:
 					m = &matchers[i]
 				case t.contains(p, post) || t.contains(post, p):
-					return nil, fmt.Errorf("post %s overlaps with the posts of group %d", link, i+1)
+					return nil, fmt.Errorf(
+						"post %s overlaps with the post %s of group %d: %v",
+						link,
+						values(&matchers[i], p)[PostLink],
+						i+1,
+						matchers[i],
+					)
 				}
 			}
 		}

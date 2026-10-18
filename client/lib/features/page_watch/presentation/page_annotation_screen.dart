@@ -243,21 +243,44 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     });
   }
 
-  /// Excludes the link of [post] from [group], or tells the user why it
-  /// cannot be excluded.
-  void _exclude(_Group group, PageNode post) {
+  /// Excludes the link of [post] from [group]. The user confirms it first
+  /// when it also excludes other posts of the group, whose links have the
+  /// same host and path.
+  Future<void> _exclude(_Group group, PageNode post) async {
     final link = group.matcher.matchField(post, PostField.link)!.link!;
     final matcher = group.matcher.withExcluded(_document, link);
-    if (matcher == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+    final others = group.matcher
+        .matchPosts(_document)
+        .where(
+          (p) =>
+              matcher.excludedBy(p) != null &&
+              group.matcher.matchField(p, PostField.link)!.link != link,
+        )
+        .length;
+    if (others > 0) {
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Exclude $others more post(s)?'),
           content: Text(
-            'This cannot be excluded, because a post of the group has a link '
-            'with the same host and path.',
+            'The links of $others other post(s) of group ${group.number} '
+            'have the same host and path, so they are excluded too.',
           ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Exclude'),
+            ),
+          ],
         ),
       );
-      return;
+      if (!(confirmed ?? false) || !mounted) {
+        return;
+      }
     }
     setState(() {
       group.matcher = matcher;
@@ -432,7 +455,9 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       onEditGroup: group == null
           ? null
           : () => unawaited(_editGroup(group, selected)),
-      onExclude: group == null ? null : () => _exclude(group, selected),
+      onExclude: group == null
+          ? null
+          : () => unawaited(_exclude(group, selected)),
       onRestore: excluded == null
           ? null
           : () => _restore(excluded.group, excluded.pattern),
