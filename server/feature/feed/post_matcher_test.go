@@ -10,17 +10,19 @@ import (
 
 var postFields = []PostField{PostTitle, PostBody, PostLink, PostThumbnail, PostPubDate}
 
-// fixturePage is a test page in testdata/source with its fixture: the posts
-// that a correct matcher finds on it (see testdata/README.md).
+// fixturePage is a test page with its fixture: the posts that a correct
+// matcher finds on it (see testdata/README.md).
 type fixturePage struct {
 	name  string
 	tree  *SemanticTree
 	posts []ExtractedPost
 }
 
-func loadFixturePages(t *testing.T) []fixturePage {
+// loadFixturePages loads the pages in sourceDir that have a fixture in
+// fixtureDir.
+func loadFixturePages(t *testing.T, sourceDir, fixtureDir string) []fixturePage {
 	t.Helper()
-	files, err := filepath.Glob("testdata/fixture/*.fixture.json")
+	files, err := filepath.Glob(filepath.Join(fixtureDir, "*.fixture.json"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -38,7 +40,7 @@ func loadFixturePages(t *testing.T) []fixturePage {
 		if err := json.Unmarshal(data, &posts); err != nil {
 			t.Fatalf("%s: %v", f, err)
 		}
-		raw, err := os.ReadFile(filepath.Join("testdata/source", name+".html"))
+		raw, err := os.ReadFile(filepath.Join(sourceDir, name+".html"))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -55,7 +57,7 @@ func loadFixturePages(t *testing.T) []fixturePage {
 // each test page keeps every value of the posts in its fixture, so that a
 // matcher can find them in the tree.
 func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
-	for _, page := range loadFixturePages(t) {
+	for _, page := range loadFixturePages(t, "testdata/source", "testdata/fixture") {
 		t.Run(page.name, func(t *testing.T) {
 			// The values that a matcher can take from the nodes, by field. A
 			// field is mapped only to nodes that it accepts, as the client's
@@ -107,7 +109,21 @@ func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 // TestExtractPostsFindsFixturePosts checks that the matchers of each test page
 // (testdata/matcher) extract exactly the posts in its fixture.
 func TestExtractPostsFindsFixturePosts(t *testing.T) {
-	for _, page := range loadFixturePages(t) {
+	checkExtractedPosts(t, loadFixturePages(t, "testdata/source", "testdata/fixture"))
+}
+
+// TestExtractPostsFindsRobustnessFixturePosts checks that the matchers of each
+// test page, which are built on testdata/source, still extract exactly the
+// posts of the later version of the page in testdata/robustness.
+func TestExtractPostsFindsRobustnessFixturePosts(t *testing.T) {
+	checkExtractedPosts(t, loadFixturePages(t, "testdata/robustness", "testdata/fixture/robustness"))
+}
+
+// checkExtractedPosts checks that the matchers in testdata/matcher extract
+// exactly the fixture posts from each of pages.
+func checkExtractedPosts(t *testing.T, pages []fixturePage) {
+	t.Helper()
+	for _, page := range pages {
 		t.Run(page.name, func(t *testing.T) {
 			var matchers []PostMatcher
 			readJSON(t, filepath.Join("testdata/matcher", page.name+".json"), &matchers)
