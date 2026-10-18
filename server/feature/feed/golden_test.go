@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
 
 var update = flag.Bool("update", false, "update the golden files in testdata/tree and testdata/matcher")
@@ -32,14 +34,14 @@ func checkGolden(t *testing.T, path string, got any) {
 	}
 	raw, err := os.ReadFile(path)
 	if err != nil {
-		t.Fatalf("%v (run the test with -update to create it)", err)
+		t.Fatalf("%v", err)
 	}
 	var want bytes.Buffer
 	if err := json.Compact(&want, raw); err != nil {
 		t.Fatalf("%s: %v", path, err)
 	}
-	if !bytes.Equal(data, want.Bytes()) {
-		t.Errorf("%s is out of date (run the test with -update to update it)", path)
+	if diff := cmp.Diff(data, want.Bytes(), nil); diff != "" {
+		t.Errorf("generated JSON differs from golden:\n%s", diff)
 	}
 }
 
