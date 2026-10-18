@@ -7,7 +7,6 @@ import 'package:paperdoll/core/error/domain_error.dart';
 import 'package:paperdoll/core/router/routes.dart';
 import 'package:paperdoll/core/ui/tokens/app_colors.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
-import 'package:paperdoll/core/ui/tokens/app_text_styles.dart';
 import 'package:paperdoll/core/ui/widgets/app_divider.dart';
 import 'package:paperdoll/core/ui/widgets/async_value_view.dart';
 import 'package:paperdoll/core/ui/widgets/body_text.dart';
@@ -375,7 +374,12 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
                 if (marks.posts[line.id] case final group?) {
                   return _PostCard(
                     key: ValueKey(line.id),
-                    post: line,
+                    values: {
+                      for (final field in PostField.values)
+                        if (group.matcher.matchField(line, field)
+                            case final node?)
+                          field: ?field.valueOf(node),
+                    },
                     group: group,
                     isSelected: selected?.contains(line) ?? false,
                     onTap: () => _select(line, tapped: line),
@@ -577,34 +581,32 @@ class const _SelectionSheet({
   }
 }
 
-/// A post of [group], shown as a card of the values that the group's matcher
-/// extracts from it, so that the user can check them without reading the
-/// content of the post. The fields that the matcher does not extract are
-/// listed at the bottom.
+/// A post found by [group], shown as a card of the field [values] extracted
+/// from it, so that the user can check them without reading the content of
+/// the post. The fields without a value are listed at the bottom.
 ///
 /// A long press opens the link of the post in the in-app browser.
 class const _PostCard({
-  required final PageNode post,
+  required final Map<PostField, String> values,
   required final _Group group,
-  required final bool isSelected,
-  required final VoidCallback onTap,
+  final bool isSelected = false,
+  final VoidCallback? onTap,
   super.key,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final nodes = {
-      for (final field in PostField.values)
-        if (group.matcher.matchField(post, field) case final node?
-            when field.valueOf(node)?.isNotEmpty ?? false)
-          field: node,
+    String? value(PostField field) => switch (values[field]) {
+      final v? when v.isNotEmpty => v,
+      _ => null,
     };
     final missing = [
       for (final field in PostField.values)
-        if (!nodes.containsKey(field)) field.label,
+        if (value(field) == null) field.label,
     ];
-    final thumbnail = nodes[PostField.thumbnail]?.link;
-    final link = nodes[PostField.link]?.link;
-    final pubDate = nodes[PostField.pubDate]?.val;
+    final thumbnail = value(PostField.thumbnail);
+    final link = value(PostField.link);
+    final pubDate = value(PostField.pubDate);
+    final body = value(PostField.body);
     final date = pubDate == null ? null : DateTime.tryParse(pubDate);
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -624,21 +626,23 @@ class const _PostCard({
         ),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          onTap: () {
-            onTap();
-            // The sheet shown below the page can cover the card, so the card
-            // is scrolled back into view, as a line is.
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (context.mounted) {
-                Scrollable.ensureVisible(
-                  context,
-                  duration: const Duration(milliseconds: 200),
-                  alignmentPolicy:
-                      ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
-                );
-              }
-            });
-          },
+          onTap: onTap == null
+              ? null
+              : () {
+                  onTap!();
+                  // The sheet shown below the page can cover the card, so
+                  // the card is scrolled back into view, as a line is.
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    if (context.mounted) {
+                      Scrollable.ensureVisible(
+                        context,
+                        duration: const Duration(milliseconds: 200),
+                        alignmentPolicy:
+                            ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+                      );
+                    }
+                  });
+                },
           onLongPress: link == null
               ? null
               : () => unawaited(openInAppLink(context, link)),
@@ -659,7 +663,7 @@ class const _PostCard({
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           HeadingText(
-                            nodes[PostField.title]?.val ?? '(no title)',
+                            value(PostField.title) ?? '(no title)',
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -672,10 +676,10 @@ class const _PostCard({
                     ),
                   ],
                 ),
-                if (nodes[PostField.body] case final body?) ...[
+                if (body != null) ...[
                   const Gap(spacingXs),
                   BodyText(
-                    body.textContent,
+                    _plainText(body),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -712,7 +716,15 @@ class const _PostCard({
   }
 }
 
-final _tagStyle = textCaption.copyWith(fontFamily: 'monospace');
+/// The text of the body [markup] (see `bodyMarkup`) without the markup:
+/// the images are left out, and the headings and links become their text.
+String _plainText(String markup) => markup
+    .replaceAll(RegExp(r'!\[[^\]]*\]\([^)]*\)'), '')
+    .replaceAllMapped(RegExp(r'\[([^\]]*)\]\([^)]*\)'), (m) => m[1]!)
+    .replaceAll(RegExp('^#+ ', multiLine: true), '')
+    .split('\n')
+    .where((line) => line.trim().isNotEmpty)
+    .join('\n');
 
 class const _Thumbnail({required final String url, required final double size})
     extends StatelessWidget {
@@ -765,74 +777,10 @@ class const _Preview({
                 ),
               ],
             ),
-        for (final post in posts) ...[
-          const AppDivider(),
-          _PreviewPost(group: groups[post.matcher], values: post.values),
-        ],
+        const Gap(spacingSm),
+        for (final post in posts)
+          _PostCard(values: post.values, group: groups[post.matcher]),
       ],
-    );
-  }
-}
-
-/// One extracted post, with a dot of the color of the [group] that found it.
-class const _PreviewPost({
-  required final _Group group,
-  required final Map<PostField, String> values,
-}) extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final thumbnail = values[PostField.thumbnail];
-    final body = values[PostField.body];
-    final pubDate = values[PostField.pubDate];
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: spacingSm),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: spacingXs),
-            child: GroupDot(color: group.color),
-          ),
-          const Gap(spacingSm),
-          if (thumbnail != null) ...[
-            _Thumbnail(url: thumbnail, size: 64),
-            const Gap(spacingSm),
-          ],
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HeadingText(
-                  values[PostField.title] ?? '(no title)',
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                if (pubDate != null) CaptionText(pubDate),
-                if (body != null) ...[
-                  const Gap(spacingXs),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(spacingSm),
-                    color: colorSurface,
-                    child: Text(
-                      body,
-                      style: _tagStyle,
-                      maxLines: 12,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  const Gap(spacingXs),
-                ],
-                CaptionText(
-                  values[PostField.link] ?? '(no link)',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

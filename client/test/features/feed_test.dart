@@ -229,6 +229,16 @@ void main() {
     );
     expect(t('The first post.'), findsNothing);
 
+    // The preview shows the same cards, one for each post that is saved.
+    await t('Preview posts').tap();
+    await t('2 post(s)').waitUntilVisible();
+    expect(
+      t('Group 1 · Not extracted: Body, Thumbnail, Pub date'),
+      findsNWidgets(4),
+    );
+    await t.tester.tapAt(const Offset(10, 10));
+    await t.pumpAndSettle();
+
     // A card selects its post.
     await t('First post').tap();
     await t('Edit fields').waitUntilVisible();
