@@ -760,23 +760,32 @@ class const _Preview({
     final posts = extractPosts(document, [for (final g in groups) g.matcher]);
     return ListView(
       controller: scrollController,
-      padding: const EdgeInsets.all(spacingMd),
+      // The cards have their own side padding.
+      padding: const EdgeInsets.symmetric(vertical: spacingMd),
       children: [
-        HeadingText('${posts.length} post(s)'),
-        for (final group in groups)
-          if (group.matcher.exclude.isNotEmpty)
-            Row(
-              children: [
-                GroupDot(color: group.color),
-                const Gap(spacingSm),
-                Expanded(
-                  child: CaptionText(
-                    'Group ${group.number} excludes '
-                    '${group.matcher.exclude.join(', ')}',
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: spacingMd),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HeadingText('${posts.length} post(s)'),
+              for (final group in groups)
+                if (group.matcher.exclude.isNotEmpty)
+                  Row(
+                    children: [
+                      GroupDot(color: group.color),
+                      const Gap(spacingSm),
+                      Expanded(
+                        child: CaptionText(
+                          'Group ${group.number} excludes '
+                          '${group.matcher.exclude.join(', ')}',
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
+            ],
+          ),
+        ),
         const Gap(spacingSm),
         for (final post in posts)
           _PostCard(values: post.values, group: groups[post.matcher]),
