@@ -116,7 +116,8 @@ func (s *Service) SearchFeeds(ctx context.Context, query string) ([]FeedAttrs, e
 
 // discover returns the feed at u. When u is an HTML page, the feed is the
 // first RSS, Atom or JSON feed that the page links as an alternate in its
-// head, or the page itself as an unstructured feed if it links none.
+// head, or else the first feed that the page links from its body at one of
+// rootFeedPaths, or else the page itself as an unstructured feed.
 func (s *Service) discover(ctx context.Context, u url.URL) (FeedAttrs, error) {
 	raw, pageURL, err := s.fetch(ctx, u)
 	if err != nil {
@@ -173,11 +174,41 @@ func (s *Service) discover(ctx context.Context, u url.URL) (FeedAttrs, error) {
 		}
 		return feedAttrs(*alternate, f), nil
 	}
+	// Some pages link their feed only from the body, such as a feed icon in
+	// the footer. Only a link to one of the usual feed paths at the root of
+	// the same host is taken, so that a feed of another site or a comment
+	// feed is not taken for the page's feed.
+	seen := map[string]bool{}
+	for n := range root.Descendants() {
+		if n.Type != html.ElementNode || n.Data != "a" {
+			continue
+		}
+		h, err := pageURL.Parse(attr(n, "href"))
+		if err != nil || h.Host != pageURL.Host ||
+			!slices.Contains(rootFeedPaths, strings.TrimSuffix(h.Path, "/")) ||
+			seen[h.String()] {
+			continue
+		}
+		seen[h.String()] = true
+		raw, _, err := s.fetch(ctx, *h)
+		if err != nil {
+			continue
+		}
+		if f, err := gofeed.NewParser().Parse(bytes.NewReader(raw)); err == nil {
+			return feedAttrs(*h, f), nil
+		}
+	}
 	if title == "" {
 		title = pageURL.Host
 	}
 	site := *pageURL
 	return FeedAttrs{URL: *pageURL, SiteURL: &site, Title: title}, nil
+}
+
+// rootFeedPaths are the paths at which sites commonly serve their feed, such
+// as /feed of WordPress, /rss of Ghost and /index.xml of Hugo.
+var rootFeedPaths = []string{
+	"/feed", "/rss", "/atom", "/feed.xml", "/rss.xml", "/atom.xml", "/index.xml",
 }
 
 // fetch returns the body of the resource at u and its URL after redirects.

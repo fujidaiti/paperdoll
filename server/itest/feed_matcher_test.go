@@ -20,6 +20,10 @@ func TestFeed_SearchFeeds_Page(t *testing.T) {
 	testenv.StubHTTP("www.nasa.gov", "/news", "./testdata/feed/page_with_feed.html")
 	testenv.StubHTTP("www.nasa.gov", "/news-release/feed/", "./testdata/feed/nasa_news_release.xml")
 	testenv.StubHTTP("blog.example.com", "/", "./testdata/feed/page_without_feed.html")
+	testenv.StubHTTP("engineering.example.com", "/", "./testdata/feed/page_with_body_feed.html")
+	testenv.StubHTTP("engineering.example.com", "/feed", "./testdata/feed/engineering_feed.xml")
+	testenv.StubHTTP("other.example.com", "/feed", "./testdata/feed/nasa_news_release.xml")
+	testenv.StubHTTP("engineering.example.com", "/posts/first/feed", "./testdata/feed/nasa_news_release.xml")
 
 	tests := []struct {
 		name, query string
@@ -33,6 +37,16 @@ func TestFeed_SearchFeeds_Page(t *testing.T) {
 				SiteURL:     "https://www.nasa.gov",
 				Title:       "NASA",
 				Description: "Official National Aeronautics and Space Administration Website",
+			},
+		},
+		{
+			name:  "page linking a feed from its body",
+			query: "http://engineering.example.com/",
+			want: feedValue{
+				URL:         "http://engineering.example.com/feed",
+				SiteURL:     "https://engineering.example.com/",
+				Title:       "Example Engineering",
+				Description: "Posts of Example Engineering",
 			},
 		},
 		{
