@@ -1,19 +1,30 @@
 package feed
 
 import (
+	"bytes"
 	"context"
 	"database/sql"
+	"encoding/json"
+	"errors"
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
+	"slices"
+	"strings"
 
 	"github.com/fujidaiti/paperdoll/server/feature/user"
 	"github.com/mmcdole/gofeed"
+	"golang.org/x/net/html"
 )
 
 type Feed struct {
 	ID int
 	FeedAttrs
+	// HasMatchers reports whether the post matchers of an unstructured feed,
+	// a web page without an RSS feed whose URL and site URL are the page's URL,
+	// have been saved.
+	HasMatchers bool
 }
 
 type FeedAttrs struct {
@@ -24,15 +35,16 @@ type FeedAttrs struct {
 	Description *string
 }
 
-// Subscribe creates a new subscription to a web feed for the user, from its URL.
-// Feeds are identified by the URL and this operation is idempotent; subscribing
-// to the same feed (URL) twice has no additional effect.
+// Subscribe creates a new subscription to a web feed for the user, from its URL
+// or the URL of a page (see discover). Feeds are identified by the URL and this
+// operation is idempotent; subscribing to the same feed (URL) twice has no
+// additional effect.
 func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (Feed, error) {
 	// TODO: Check if the f already exists first to avoid making an unnecessary request
 	// TODO: Validate and cleanup the url (check schema, remove tracking params, etc.)
 	// TODO: Save fetched entries to DB
 	var f Feed
-	if a, err := s.fetchFeed(ctx, fu); err != nil {
+	if a, err := s.discover(ctx, fu); err != nil {
 		fmt.Println(err)
 		return Feed{}, err
 	} else {
@@ -53,8 +65,8 @@ func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (F
 		INSERT INTO feeds (url, site_url, icon_url, title, description)
 		VALUES ($1, $2, $3, $4, $5)
 		ON CONFLICT (url) DO UPDATE SET url = EXCLUDED.url
-		RETURNING id;
-	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID)
+		RETURNING id, matchers IS NOT NULL;
+	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID, &f.HasMatchers)
 	if err != nil {
 		return Feed{}, err
 	}
@@ -95,17 +107,84 @@ func (s *Service) SearchFeeds(ctx context.Context, query string) ([]FeedAttrs, e
 	if err != nil {
 		return []FeedAttrs{}, nil
 	}
-	a, err := s.fetchFeed(ctx, *u)
+	a, err := s.discover(ctx, *u)
 	if err != nil {
 		return nil, err
 	}
 	return []FeedAttrs{a}, nil
 }
 
-func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) {
-	res, err := s.scraper.Fetch(ctx, fu)
+// discover returns the feed at u. When u is an HTML page, the feed is the
+// first RSS, Atom or JSON feed that the page links as an alternate in its
+// head, or the page itself as an unstructured feed if it links none.
+func (s *Service) discover(ctx context.Context, u url.URL) (FeedAttrs, error) {
+	raw, pageURL, err := s.fetch(ctx, u)
 	if err != nil {
 		return FeedAttrs{}, err
+	}
+	if f, err := gofeed.NewParser().Parse(bytes.NewReader(raw)); err == nil {
+		return feedAttrs(u, f), nil
+	}
+	root, err := html.Parse(bytes.NewReader(raw))
+	if err != nil {
+		return FeedAttrs{}, err
+	}
+	var head *html.Node
+	for n := range root.Descendants() {
+		if n.Type == html.ElementNode && n.Data == "head" {
+			head = n
+			break
+		}
+	}
+	var title string
+	var alternate *url.URL
+	if head != nil {
+		for n := range head.Descendants() {
+			if n.Type != html.ElementNode {
+				continue
+			}
+			switch n.Data {
+			case "title":
+				if title == "" && n.FirstChild != nil {
+					title = normalizeSpace(n.FirstChild.Data)
+				}
+			case "link":
+				rels := strings.Fields(strings.ToLower(attr(n, "rel")))
+				if alternate != nil || !slices.Contains(rels, "alternate") {
+					continue
+				}
+				switch strings.ToLower(attr(n, "type")) {
+				case "application/rss+xml", "application/atom+xml", "application/feed+json":
+					if h, err := pageURL.Parse(attr(n, "href")); err == nil {
+						alternate = h
+					}
+				}
+			}
+		}
+	}
+	if alternate != nil {
+		raw, _, err := s.fetch(ctx, *alternate)
+		if err != nil {
+			return FeedAttrs{}, err
+		}
+		f, err := gofeed.NewParser().Parse(bytes.NewReader(raw))
+		if err != nil {
+			return FeedAttrs{}, err
+		}
+		return feedAttrs(*alternate, f), nil
+	}
+	if title == "" {
+		title = pageURL.Host
+	}
+	site := *pageURL
+	return FeedAttrs{URL: *pageURL, SiteURL: &site, Title: title}, nil
+}
+
+// fetch returns the body of the resource at u and its URL after redirects.
+func (s *Service) fetch(ctx context.Context, u url.URL) ([]byte, *url.URL, error) {
+	res, err := s.scraper.Fetch(ctx, u)
+	if err != nil {
+		return nil, nil, err
 	}
 	defer func() {
 		if err := res.Body.Close(); err != nil {
@@ -113,18 +192,23 @@ func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) 
 		}
 	}()
 	if res.StatusCode != http.StatusOK {
-		return FeedAttrs{}, fmt.Errorf("failed to fetch feed: %s", fu.String())
+		return nil, nil, fmt.Errorf("failed to fetch %s: %s", u.String(), res.Status)
 	}
 	// TODO: Limit body size
-	raw, err := gofeed.NewParser().Parse(res.Body)
+	raw, err := io.ReadAll(res.Body)
 	if err != nil {
-		return FeedAttrs{}, err
+		return nil, nil, err
 	}
+	return raw, res.Request.URL, nil
+}
 
-	a := FeedAttrs{URL: fu, Title: raw.Title}
-	if raw.Link != "" {
-		if u, err := url.Parse(raw.Link); err == nil {
-			a.SiteURL = u
+func feedAttrs(u url.URL, raw *gofeed.Feed) FeedAttrs {
+	a := FeedAttrs{URL: u, Title: raw.Title}
+	// A feed whose site link is the feed itself is given no site URL, since a
+	// site URL equal to the URL marks an unstructured feed.
+	if raw.Link != "" && raw.Link != u.String() {
+		if su, err := url.Parse(raw.Link); err == nil {
+			a.SiteURL = su
 		}
 	}
 	if raw.Image != nil && raw.Image.URL != "" {
@@ -135,5 +219,79 @@ func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) 
 	if raw.Description != "" {
 		a.Description = &raw.Description
 	}
-	return a, nil
+	return a
+}
+
+var (
+	ErrFeedNotFound    = errors.New("feed not found")
+	ErrNotUnstructured = errors.New("feed is not unstructured")
+	ErrInvalidMatchers = errors.New("invalid matchers")
+)
+
+// Matchers returns the page of the unstructured feed id, simplified for
+// editing its post matchers, and the matchers saved for it, which are empty
+// when none are saved.
+func (s *Service) Matchers(ctx context.Context, id int) (*PageDocument, string, error) {
+	var fu string
+	var matchers sql.NullString
+	var unstructured bool
+	err := s.DB.QueryRowContext(ctx, `
+		SELECT url, matchers, (url = site_url) IS TRUE FROM feeds WHERE id = $1;
+	`, id).Scan(&fu, &matchers, &unstructured)
+	if errors.Is(err, sql.ErrNoRows) {
+		return nil, "", ErrFeedNotFound
+	} else if err != nil {
+		return nil, "", err
+	}
+	if !unstructured {
+		return nil, "", ErrNotUnstructured
+	}
+	u, err := url.Parse(fu)
+	if err != nil {
+		return nil, "", err
+	}
+	raw, _, err := s.fetch(ctx, *u)
+	if err != nil {
+		return nil, "", err
+	}
+	doc, err := SimplifyPage(raw, fu)
+	if err != nil {
+		return nil, "", err
+	}
+	return doc, matchers.String, nil
+}
+
+// SaveMatchers replaces the post matchers of the unstructured feed id with
+// raw, a JSON array of PostMatcher. The matchers are shared by all
+// subscribers, as the feed is, so any user can replace them.
+func (s *Service) SaveMatchers(ctx context.Context, id int, raw string) error {
+	var ms []PostMatcher
+	if err := json.Unmarshal([]byte(raw), &ms); err != nil || len(ms) == 0 {
+		return ErrInvalidMatchers
+	}
+	for _, m := range ms {
+		if len(m.Post) == 0 {
+			return ErrInvalidMatchers
+		}
+	}
+	res, err := s.DB.ExecContext(ctx, `
+		UPDATE feeds SET matchers = $1 WHERE id = $2 AND url = site_url;
+	`, raw, id)
+	if err != nil {
+		return err
+	}
+	if n, err := res.RowsAffected(); err != nil {
+		return err
+	} else if n > 0 {
+		return nil
+	}
+	var exists bool
+	err = s.DB.QueryRowContext(ctx, `SELECT EXISTS (SELECT 1 FROM feeds WHERE id = $1);`, id).Scan(&exists)
+	if err != nil {
+		return err
+	}
+	if !exists {
+		return ErrFeedNotFound
+	}
+	return ErrNotUnstructured
 }

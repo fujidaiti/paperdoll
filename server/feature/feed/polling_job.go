@@ -70,6 +70,8 @@ func (j *Job) Do(ctx context.Context) error {
 		}
 	}()
 
+	// TODO: For an unstructured feed, extract the entries from the page with
+	//       its matchers instead of parsing it as a feed (see CollectJobs).
 	fp := gofeed.NewParser()
 	raw, err := fp.Parse(res.Body)
 	if err != nil {
@@ -178,9 +180,13 @@ func CollectJobs(
 		// Fail-soft: we don't exit here.
 	}
 	// TODO: Create an index for next_poll_at column
+	// TODO: Poll unstructured feeds (url = site_url) that have matchers: fetch
+	//       the page, run SimplifyPage and ExtractPosts, and save the posts as
+	//       entries. They are skipped for now, as their pages are not feeds.
 	rows, err := db.QueryContext(ctx, `
 		SELECT id, url, title
-		FROM feeds;
+		FROM feeds
+		WHERE site_url IS DISTINCT FROM url;
 	`)
 	if err != nil {
 		return nil, err
