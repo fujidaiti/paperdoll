@@ -69,10 +69,11 @@ func TestSemanticTreeGolden(t *testing.T) {
 	}
 }
 
-// TestPerfectMatchersGolden checks that matchers built on the semantic tree
-// of each test page find exactly the posts in its fixture, and that they are
-// the matchers in testdata/matcher. A matcher file has the JSON that the
-// database stores for the page.
+// TestPerfectMatchersGolden checks that the matchers built on the semantic
+// tree of each test page find exactly the posts in its fixture, and that they
+// are the matchers in testdata/matcher. A matcher file has the JSON that the
+// database stores for the page, and is written only for matchers that find
+// exactly the fixture posts.
 func TestPerfectMatchersGolden(t *testing.T) {
 	files, err := filepath.Glob("testdata/fixture/*.fixture.json")
 	if err != nil {
@@ -88,6 +89,29 @@ func TestPerfectMatchersGolden(t *testing.T) {
 			matchers, err := perfectMatchers(&doc, posts)
 			if err != nil {
 				t.Fatal(err)
+			}
+			// The posts are compared by link, since a fixture does not
+			// always list them in the order of the page.
+			want := map[string]ExtractedPost{}
+			for _, p := range posts {
+				want[p[PostLink]] = p
+			}
+			got := map[string]ExtractedPost{}
+			for _, p := range ExtractPosts(&doc, matchers) {
+				got[p[PostLink]] = p
+				if w, ok := want[p[PostLink]]; !ok {
+					t.Errorf("extra post: %v", p)
+				} else if !equalPosts(p, w) {
+					t.Errorf("post is %v, want %v", p, w)
+				}
+			}
+			for _, p := range posts {
+				if _, ok := got[p[PostLink]]; !ok {
+					t.Errorf("missing post: %v", p)
+				}
+			}
+			if t.Failed() {
+				t.FailNow()
 			}
 			checkGolden(t, filepath.Join("testdata/matcher", name+".json"), matchers)
 		})

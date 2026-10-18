@@ -354,9 +354,5 @@ func perfectMatchers(doc *PageDocument, posts []ExtractedPost) ([]PostMatcher, e
 			m.Fields[f] = t.steps(post, t.fieldNode(post, f, v))
 		}
 	}
-
-	if got := ExtractPosts(doc, matchers); len(got) != len(posts) {
-		return nil, fmt.Errorf("%d posts are extracted, want %d", len(got), len(posts))
-	}
 	return matchers, nil
 }
