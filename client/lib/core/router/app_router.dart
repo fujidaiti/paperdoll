@@ -8,10 +8,13 @@ import 'package:paperdoll/features/auth/presentation/sign_up_screen.dart';
 import 'package:paperdoll/features/auth/presentation/splash_screen.dart';
 import 'package:paperdoll/features/auth/presentation/verify_email_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_detail_screen.dart';
+import 'package:paperdoll/features/feed/presentation/feed_edit_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_search_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feeds_screen.dart';
 import 'package:paperdoll/features/feed_entry/presentation/feed_entry_reader_screen.dart';
 import 'package:paperdoll/features/newspaper/presentation/today_screen.dart';
+import 'package:paperdoll/features/page_watch/presentation/page_annotation_screen.dart';
+import 'package:paperdoll/features/page_watch/presentation/post_fields_screen.dart';
 import 'package:paperdoll/features/reading_list/presentation/archived_reading_list_screen.dart';
 import 'package:paperdoll/features/reading_list/presentation/reading_list_screen.dart';
 import 'package:paperdoll/features/settings/presentation/settings_screen.dart';
@@ -164,6 +167,30 @@ GoRouter goRouter(Ref ref) {
                         builder: (context, state) => FeedEntryReaderScreen(
                           id: _idParam(state, 'feedEntryId'),
                         ),
+                      ),
+                      GoRoute(
+                        path: routeFeedEditPath,
+                        name: routeFeedEditName,
+                        parentNavigatorKey: _rootNavigatorKey,
+                        builder: (context, state) =>
+                            FeedEditScreen(id: _idParam(state, 'id')),
+                      ),
+                      GoRoute(
+                        path: routePageAnnotationPath,
+                        name: routePageAnnotationName,
+                        parentNavigatorKey: _rootNavigatorKey,
+                        builder: (context, state) =>
+                            PageAnnotationScreen(feedId: _idParam(state, 'id')),
+                        routes: [
+                          GoRoute(
+                            path: routePostFieldsPath,
+                            name: routePostFieldsName,
+                            parentNavigatorKey: _rootNavigatorKey,
+                            builder: (context, state) => PostFieldsScreen(
+                              args: state.extra! as PostFieldsArgs,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

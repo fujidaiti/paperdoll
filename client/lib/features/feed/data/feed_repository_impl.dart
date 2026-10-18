@@ -108,5 +108,6 @@ class const FeedRepositoryImpl(final Dio _dio) implements FeedRepository {
     iconUrl: f.iconUrl,
     description: f.description,
     subscribed: f.subscribed,
+    hasMatchers: f.hasMatchers,
   );
 }

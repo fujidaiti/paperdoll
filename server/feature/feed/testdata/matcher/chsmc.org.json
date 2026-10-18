@@ -1,0 +1,85 @@
+[
+  {
+    "post": ["box", "box", "box", "box", "box"],
+    "fields": {
+      "body": [{ "shape": "txt", "nth": 0 }],
+      "link": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "h1+link", "nth": 0 }
+      ],
+      "pubDate": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "time", "nth": 0 }
+      ],
+      "title": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "h1+link", "nth": 0 }
+      ]
+    },
+    "exclude": [
+      "chsmc.org/2025/10/fuck-ice/",
+      "chsmc.org/2025/10/claude-code/",
+      "chsmc.org/2025/07/antibuildings/",
+      "chsmc.org/2025/07/olo/",
+      "chsmc.org/2025/02/mcp/",
+      "chsmc.org/2024/11/era/",
+      "chsmc.org/2024/08/new-domain/"
+    ]
+  },
+  {
+    "post": ["box", "box", "box", "box", "box"],
+    "fields": {
+      "body": [
+        { "shape": "box", "nth": 1 },
+        { "shape": "box", "nth": 0 }
+      ],
+      "link": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "h1+link", "nth": 0 }
+      ],
+      "pubDate": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "time", "nth": 0 }
+      ],
+      "title": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "h1+link", "nth": 0 }
+      ]
+    },
+    "exclude": []
+  },
+  {
+    "post": ["box", "box", "box", "box", "box"],
+    "fields": {
+      "body": [{ "shape": "box", "nth": 1 }],
+      "link": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "h1+link", "nth": 0 }
+      ],
+      "pubDate": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "time", "nth": 0 }
+      ],
+      "title": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "h1+link", "nth": 0 }
+      ]
+    },
+    "exclude": [
+      "chsmc.org/*/01/*/",
+      "chsmc.org/2025/11/*/",
+      "chsmc.org/2025/10/serve-yourself/",
+      "chsmc.org/2025/07/reanimating-a-ghost/",
+      "chsmc.org/2025/01/archivists/",
+      "chsmc.org/2024/10/unusual-brightness/",
+      "chsmc.org/2024/08/unfolding/",
+      "chsmc.org/2024/08/prowl-and-defiance/"
+    ]
+  }
+]

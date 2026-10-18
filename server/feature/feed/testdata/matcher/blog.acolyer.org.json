@@ -1,0 +1,26 @@
+[
+  {
+    "post": ["box", "box", "box"],
+    "fields": {
+      "body": [
+        { "shape": "box", "nth": 2 },
+        { "shape": "box", "nth": 0 }
+      ],
+      "link": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "h1+link", "nth": 0 }
+      ],
+      "pubDate": [
+        { "shape": "box", "nth": 1 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "card", "nth": 0 },
+        { "shape": "time", "nth": 1 }
+      ],
+      "title": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "h1+link", "nth": 0 }
+      ]
+    },
+    "exclude": []
+  }
+]

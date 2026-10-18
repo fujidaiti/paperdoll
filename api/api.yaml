@@ -28,6 +28,8 @@ paths:
     $ref: "./paths/feeds.yaml#/item"
   /feeds/{id}/timeline:
     $ref: "./paths/feeds.yaml#/timeline"
+  /feeds/{id}/matcher:
+    $ref: "./paths/feeds.yaml#/matcher"
   /feed-entries/{id}:
     $ref: "./paths/feed-entries.yaml"
   /web-clips/{id}:

@@ -8,7 +8,10 @@ abstract final class AppDebugKey {
   static const archivedButton = Key('archivedButton');
   static const archivedReadingListScreen = Key('archivedReadingListScreen');
   static const unarchiveSuccessSnackBar = Key('unarchiveSuccessSnackBar');
+  static const editFeedMenuItem = Key('editFeedMenuItem');
+  static const editMatchersButton = Key('editMatchersButton');
   static const feedDetailScreen = Key('feedDetailScreen');
+  static const feedEditScreen = Key('feedEditScreen');
   static const feedDetailMenuButton = Key('feedDetailMenuButton');
   static const subscribeMenuItem = Key('subscribeMenuItem');
   static const unsubscribeMenuItem = Key('unsubscribeMenuItem');
@@ -30,6 +33,7 @@ abstract final class AppDebugKey {
   static const feedSearchTextField = Key('feedSearchTextField');
   static const feedsNavDestination = Key('feedsNavDestination');
   static const feedsScreen = Key('feedsScreen');
+  static const pageAnnotationScreen = Key('pageAnnotationScreen');
   static const readingListNavDestination = Key('readingListNavDestination');
   static const readingListScreen = Key('readingListScreen');
   static const readerArticleTab = Key('readerArticleTab');
@@ -47,6 +51,8 @@ abstract final class AppDebugKey {
   static const saveToReadingListSuccessSnackBar = Key(
     'saveToReadingListSuccessSnackBar',
   );
+  static const saveMatchersButton = Key('saveMatchersButton');
+  static const saveMatchersSuccessSnackBar = Key('saveMatchersSuccessSnackBar');
   static const settingsButton = Key('settingsButton');
   static const settingsScreen = Key('settingsScreen');
   static const signOutButton = Key('signOutButton');

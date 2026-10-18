@@ -15,7 +15,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Feed {
 
- int get id; String get url; String get title; bool get subscribed; String? get siteUrl; String? get iconUrl; String? get description;
+ int get id; String get url; String get title; bool get subscribed;/// Whether post matchers are saved for this feed, which only an
+/// unstructured feed can have.
+ bool get hasMatchers; String? get siteUrl; String? get iconUrl; String? get description;
 /// Create a copy of Feed
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +28,16 @@ $FeedCopyWith<Feed> get copyWith => _$FeedCopyWithImpl<Feed>(this as Feed, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Feed&&(identical(other.id, id) || other.id == id)&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.subscribed, subscribed) || other.subscribed == subscribed)&&(identical(other.siteUrl, siteUrl) || other.siteUrl == siteUrl)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Feed&&(identical(other.id, id) || other.id == id)&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.subscribed, subscribed) || other.subscribed == subscribed)&&(identical(other.hasMatchers, hasMatchers) || other.hasMatchers == hasMatchers)&&(identical(other.siteUrl, siteUrl) || other.siteUrl == siteUrl)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.description, description) || other.description == description));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,url,title,subscribed,siteUrl,iconUrl,description);
+int get hashCode => Object.hash(runtimeType,id,url,title,subscribed,hasMatchers,siteUrl,iconUrl,description);
 
 @override
 String toString() {
-  return 'Feed(id: $id, url: $url, title: $title, subscribed: $subscribed, siteUrl: $siteUrl, iconUrl: $iconUrl, description: $description)';
+  return 'Feed(id: $id, url: $url, title: $title, subscribed: $subscribed, hasMatchers: $hasMatchers, siteUrl: $siteUrl, iconUrl: $iconUrl, description: $description)';
 }
 
 
@@ -46,7 +48,7 @@ abstract mixin class $FeedCopyWith<$Res>  {
   factory $FeedCopyWith(Feed value, $Res Function(Feed) _then) = _$FeedCopyWithImpl;
 @useResult
 $Res call({
- int id, String url, String title, bool subscribed, String? siteUrl, String? iconUrl, String? description
+ int id, String url, String title, bool subscribed, bool hasMatchers, String? siteUrl, String? iconUrl, String? description
 });
 
 
@@ -63,12 +65,13 @@ class _$FeedCopyWithImpl<$Res>
 
 /// Create a copy of Feed
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? url = null,Object? title = null,Object? subscribed = null,Object? siteUrl = freezed,Object? iconUrl = freezed,Object? description = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? url = null,Object? title = null,Object? subscribed = null,Object? hasMatchers = null,Object? siteUrl = freezed,Object? iconUrl = freezed,Object? description = freezed,}) {
   return _then(Feed(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,subscribed: null == subscribed ? _self.subscribed : subscribed // ignore: cast_nullable_to_non_nullable
+as bool,hasMatchers: null == hasMatchers ? _self.hasMatchers : hasMatchers // ignore: cast_nullable_to_non_nullable
 as bool,siteUrl: freezed == siteUrl ? _self.siteUrl : siteUrl // ignore: cast_nullable_to_non_nullable
 as String?,iconUrl: freezed == iconUrl ? _self.iconUrl : iconUrl // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
@@ -157,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String url,  String title,  bool subscribed,  String? siteUrl,  String? iconUrl,  String? description)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String url,  String title,  bool subscribed,  bool hasMatchers,  String? siteUrl,  String? iconUrl,  String? description)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Feed() when $default != null:
-return $default(_that.id,_that.url,_that.title,_that.subscribed,_that.siteUrl,_that.iconUrl,_that.description);case _:
+return $default(_that.id,_that.url,_that.title,_that.subscribed,_that.hasMatchers,_that.siteUrl,_that.iconUrl,_that.description);case _:
   return orElse();
 
 }
@@ -178,10 +181,10 @@ return $default(_that.id,_that.url,_that.title,_that.subscribed,_that.siteUrl,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String url,  String title,  bool subscribed,  String? siteUrl,  String? iconUrl,  String? description)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String url,  String title,  bool subscribed,  bool hasMatchers,  String? siteUrl,  String? iconUrl,  String? description)  $default,) {final _that = this;
 switch (_that) {
 case _Feed():
-return $default(_that.id,_that.url,_that.title,_that.subscribed,_that.siteUrl,_that.iconUrl,_that.description);case _:
+return $default(_that.id,_that.url,_that.title,_that.subscribed,_that.hasMatchers,_that.siteUrl,_that.iconUrl,_that.description);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +201,10 @@ return $default(_that.id,_that.url,_that.title,_that.subscribed,_that.siteUrl,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String url,  String title,  bool subscribed,  String? siteUrl,  String? iconUrl,  String? description)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String url,  String title,  bool subscribed,  bool hasMatchers,  String? siteUrl,  String? iconUrl,  String? description)?  $default,) {final _that = this;
 switch (_that) {
 case _Feed() when $default != null:
-return $default(_that.id,_that.url,_that.title,_that.subscribed,_that.siteUrl,_that.iconUrl,_that.description);case _:
+return $default(_that.id,_that.url,_that.title,_that.subscribed,_that.hasMatchers,_that.siteUrl,_that.iconUrl,_that.description);case _:
   return null;
 
 }
@@ -213,13 +216,16 @@ return $default(_that.id,_that.url,_that.title,_that.subscribed,_that.siteUrl,_t
 
 
 class _Feed implements Feed {
-  const _Feed({required this.id, required this.url, required this.title, required this.subscribed, this.siteUrl, this.iconUrl, this.description});
+  const _Feed({required this.id, required this.url, required this.title, required this.subscribed, required this.hasMatchers, this.siteUrl, this.iconUrl, this.description});
   
 
 @override final  int id;
 @override final  String url;
 @override final  String title;
 @override final  bool subscribed;
+/// Whether post matchers are saved for this feed, which only an
+/// unstructured feed can have.
+@override final  bool hasMatchers;
 @override final  String? siteUrl;
 @override final  String? iconUrl;
 @override final  String? description;
@@ -234,16 +240,16 @@ _$FeedCopyWith<_Feed> get copyWith => __$FeedCopyWithImpl<_Feed>(this, _$identit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Feed&&(identical(other.id, id) || other.id == id)&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.subscribed, subscribed) || other.subscribed == subscribed)&&(identical(other.siteUrl, siteUrl) || other.siteUrl == siteUrl)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Feed&&(identical(other.id, id) || other.id == id)&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.subscribed, subscribed) || other.subscribed == subscribed)&&(identical(other.hasMatchers, hasMatchers) || other.hasMatchers == hasMatchers)&&(identical(other.siteUrl, siteUrl) || other.siteUrl == siteUrl)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.description, description) || other.description == description));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,url,title,subscribed,siteUrl,iconUrl,description);
+int get hashCode => Object.hash(runtimeType,id,url,title,subscribed,hasMatchers,siteUrl,iconUrl,description);
 
 @override
 String toString() {
-  return 'Feed(id: $id, url: $url, title: $title, subscribed: $subscribed, siteUrl: $siteUrl, iconUrl: $iconUrl, description: $description)';
+  return 'Feed(id: $id, url: $url, title: $title, subscribed: $subscribed, hasMatchers: $hasMatchers, siteUrl: $siteUrl, iconUrl: $iconUrl, description: $description)';
 }
 
 
@@ -254,7 +260,7 @@ abstract mixin class _$FeedCopyWith<$Res> implements $FeedCopyWith<$Res> {
   factory _$FeedCopyWith(_Feed value, $Res Function(_Feed) _then) = __$FeedCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String url, String title, bool subscribed, String? siteUrl, String? iconUrl, String? description
+ int id, String url, String title, bool subscribed, bool hasMatchers, String? siteUrl, String? iconUrl, String? description
 });
 
 
@@ -271,12 +277,13 @@ class __$FeedCopyWithImpl<$Res>
 
 /// Create a copy of Feed
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? url = null,Object? title = null,Object? subscribed = null,Object? siteUrl = freezed,Object? iconUrl = freezed,Object? description = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? url = null,Object? title = null,Object? subscribed = null,Object? hasMatchers = null,Object? siteUrl = freezed,Object? iconUrl = freezed,Object? description = freezed,}) {
   return _then(_Feed(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,subscribed: null == subscribed ? _self.subscribed : subscribed // ignore: cast_nullable_to_non_nullable
+as bool,hasMatchers: null == hasMatchers ? _self.hasMatchers : hasMatchers // ignore: cast_nullable_to_non_nullable
 as bool,siteUrl: freezed == siteUrl ? _self.siteUrl : siteUrl // ignore: cast_nullable_to_non_nullable
 as String?,iconUrl: freezed == iconUrl ? _self.iconUrl : iconUrl // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable

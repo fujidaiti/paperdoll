@@ -1,6 +1,10 @@
 Feed:
+  description:
+    A web feed, or an unstructured feed, which is a web page without a feed
+    whose posts are extracted with post matchers. The `url` and `site_url` of an
+    unstructured feed are both the page's URL.
   type: object
-  required: [id, url, title, subscribed]
+  required: [id, url, title, subscribed, has_matchers]
   properties:
     id:
       type: integer
@@ -19,6 +23,11 @@ Feed:
       type: string
     subscribed:
       description: Whether the calling user is subscribed to this feed.
+      type: boolean
+    has_matchers:
+      description:
+        Whether post matchers are saved for this feed. Only an unstructured feed
+        can have them.
       type: boolean
 
 FeedCandidate:
@@ -167,3 +176,91 @@ SignUpTicket:
         mailed for. Send it back to verify the address or to request another
         code. Valid for 10 minutes.
       type: string
+
+PageDocument:
+  description:
+    A web page simplified into a semantic tree, on which post matchers run. See
+    `tool/semantictree/MATCHER.md` for the format.
+  type: object
+  required: [url, title, root]
+  properties:
+    url:
+      type: string
+      format: uri
+    title:
+      type: string
+    root:
+      $ref: "#/PageNode"
+
+PageNode:
+  description:
+    A value, which has no children, or a container, which has children.
+  type: object
+  properties:
+    kind:
+      description:
+        "`h1`..`h6` for a heading, `img` for an image, `time` for a time."
+      type: string
+    val:
+      description:
+        Plain text, the alt text of an image, or the RFC 3339 timestamp of a
+        time.
+      type: string
+    link:
+      description: The link target, or the URL of an image.
+      type: string
+    ch:
+      type: array
+      items:
+        $ref: "#/PageNode"
+
+PostMatcher:
+  description:
+    A rule that finds the posts of one shape in a page and extracts their
+    fields. See `tool/semantictree/MATCHER.md`.
+  type: object
+  required: [post, fields, exclude]
+  properties:
+    post:
+      description: The shape path of the post nodes from the root.
+      type: array
+      items:
+        type: string
+    fields:
+      description: The path from a post node to each labeled field.
+      type: object
+      properties:
+        title:
+          type: array
+          items:
+            $ref: "#/FieldStep"
+        body:
+          type: array
+          items:
+            $ref: "#/FieldStep"
+        link:
+          type: array
+          items:
+            $ref: "#/FieldStep"
+        thumbnail:
+          type: array
+          items:
+            $ref: "#/FieldStep"
+        pubDate:
+          type: array
+          items:
+            $ref: "#/FieldStep"
+    exclude:
+      description: Glob patterns of the links of nodes that are not posts.
+      type: array
+      items:
+        type: string
+
+FieldStep:
+  type: object
+  required: [shape, nth]
+  properties:
+    shape:
+      type: string
+    nth:
+      type: integer

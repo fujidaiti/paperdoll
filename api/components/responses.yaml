@@ -51,3 +51,12 @@ TooManyRequests:
         $ref: "./schemas.yaml#/Error"
       example:
         message: "Too many verification emails sent to this address"
+
+BadGateway:
+  description: The server failed to fetch a resource from another server
+  content:
+    application/json:
+      schema:
+        $ref: "./schemas.yaml#/Error"
+      example:
+        message: "Failed to fetch the page"

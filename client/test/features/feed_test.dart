@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:openapi/api.dart' as api;
 import 'package:paperdoll/debug_keys.dart';
 import 'package:patrol_finders/patrol_finders.dart';
@@ -131,6 +132,131 @@ void main() {
     await t(AppDebugKey.feedCandidateTile(candidate.title)).tap();
     await t(AppDebugKey.subscribeSuccessSnackBar).waitUntilVisible();
     await t(AppDebugKey.feedRow(nasa.title)).waitUntilVisible();
+  });
+
+  patrolWidgetTest('Subscribe to a web page without a feed', (t) async {
+    final candidate = fixture.feedCandidates.exampleBlog;
+    final blog = fixture.feeds.exampleBlog;
+    final server = StubServer.withDefaultResponses()
+      ..stubPut('/feeds', body: blog.toJson())
+      ..stubGet(
+        '/feeds/search',
+        body: api.SearchFeeds200Response(feeds: [candidate]).toJson(),
+      )
+      ..stubGet(
+        '/feeds/${blog.id}/matcher',
+        body: {'page': fixture.pages.exampleBlog},
+      );
+
+    await pumpAppWithAuth(t, server);
+    await t(AppDebugKey.feedsNavDestination).tap();
+    await t(AppDebugKey.addFeedButton).tap();
+    await t(AppDebugKey.feedSearchTextField).enterText(blog.url);
+    await t(AppDebugKey.feedSearchButton).tap();
+    await t(AppDebugKey.feedCandidateTile(candidate.title)).tap();
+
+    // The page has no matchers yet, so the app asks for them.
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t('First post').waitUntilVisible();
+    expect(
+      t.tester.widget<TextButton>(t(AppDebugKey.saveMatchersButton)).onPressed,
+      isNull,
+    );
+  });
+
+  patrolWidgetTest('Save the post matchers of a web page', (t) async {
+    final candidate = fixture.feedCandidates.exampleBlog;
+    final blog = fixture.feeds.exampleBlog;
+    final matcher = fixture.pages.exampleBlogMatcher;
+    final server = StubServer.withDefaultResponses()
+      ..stubPut('/feeds', body: blog.toJson())
+      ..stubGet(
+        '/feeds/search',
+        body: api.SearchFeeds200Response(feeds: [candidate]).toJson(),
+      )
+      // Another user saved matchers after this user subscribed, so the
+      // editor starts with them.
+      ..stubGet(
+        '/feeds/${blog.id}/matcher',
+        body: {
+          'page': fixture.pages.exampleBlog,
+          'matchers': [matcher],
+        },
+      )
+      ..stubPut(
+        '/feeds/${blog.id}/matcher',
+        status: 204,
+        bodyMatcher: {
+          'matchers': [matcher],
+        },
+      );
+
+    await pumpAppWithAuth(t, server);
+    await t(AppDebugKey.feedsNavDestination).tap();
+    await t(AppDebugKey.addFeedButton).tap();
+    await t(AppDebugKey.feedSearchTextField).enterText(blog.url);
+    await t(AppDebugKey.feedSearchButton).tap();
+    await t(AppDebugKey.feedCandidateTile(candidate.title)).tap();
+
+    await t(AppDebugKey.saveMatchersButton).tap();
+    await t(AppDebugKey.saveMatchersSuccessSnackBar).waitUntilVisible();
+    await t(AppDebugKey.feedsScreen).waitUntilVisible();
+  });
+
+  patrolWidgetTest('Edit the post matchers of a web page', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubGet(
+        '/feeds/${blog.id}/matcher',
+        body: {
+          'page': fixture.pages.exampleBlog,
+          'matchers': [fixture.pages.exampleBlogMatcher],
+        },
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.feedEditScreen).waitUntilVisible();
+    expect(t(blog.url), findsOneWidget);
+
+    await t(AppDebugKey.editMatchersButton).tap();
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    // The posts are shown as cards of their extracted values, without the
+    // content that is not extracted, such as the summaries.
+    await t('First post').waitUntilVisible();
+    expect(t('https://blog.example.com/second'), findsOneWidget);
+    expect(t('The first post.'), findsNothing);
+
+    // The preview shows the same cards, one for each post that is saved.
+    await t('Preview posts').tap();
+    await t('2 post(s)').waitUntilVisible();
+    // The screen behind the sheet has the cards too.
+    expect(t('https://blog.example.com/second'), findsNWidgets(2));
+    await t.tester.tapAt(const Offset(10, 10));
+    await t.pumpAndSettle();
+
+    // A card selects its post.
+    await t('First post').tap();
+    await t('Edit fields').waitUntilVisible();
+  });
+
+  patrolWidgetTest('Edit a web feed', (t) async {
+    final nasa = fixture.feeds.nasa;
+    final server = _stubFeedSubscription(
+      nasa,
+    )..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [nasa]).toJson());
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, nasa);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.feedEditScreen).waitUntilVisible();
+    expect(t(nasa.url), findsOneWidget);
+    // The matchers are only for pages without a feed.
+    expect(t(AppDebugKey.editMatchersButton), findsNothing);
   });
 }
 

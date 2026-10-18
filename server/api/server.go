@@ -100,6 +100,8 @@ func NewServer(db *sql.DB, httpProxy *url.URL, emailSender infra.EmailSender) *h
 	authorized.HandleFunc("GET /feeds/{id}", h.getFeed)
 	authorized.HandleFunc("DELETE /feeds/{id}", h.unsubscribeFromFeed)
 	authorized.HandleFunc("GET /feeds/{id}/timeline", h.getFeedTimeline)
+	authorized.HandleFunc("GET /feeds/{id}/matcher", h.getFeedMatchers)
+	authorized.HandleFunc("PUT /feeds/{id}/matcher", h.saveFeedMatchers)
 	authorized.HandleFunc("GET /feed-entries/{id}", h.getFeedEntry)
 	authorized.HandleFunc("GET /web-clips/{id}", h.getWebClip)
 	authorized.HandleFunc("POST /reading-list", h.saveToReadingList)
@@ -372,6 +374,9 @@ type feedSchema struct {
 	// Subscribed reports whether the calling user is subscribed to this feed.
 	// The feeds row itself is shared across all users.
 	Subscribed bool `json:"subscribed"`
+	// HasMatchers reports whether post matchers are saved for the feed, which
+	// only an unstructured feed can have.
+	HasMatchers bool `json:"has_matchers"`
 }
 
 type getFeedsResBody struct {
@@ -410,7 +415,8 @@ func (h *Handler) getFeeds(w http.ResponseWriter, r *http.Request) {
 	rows, err := h.DB.QueryContext(ctx, fmt.Sprintf(`
 		SELECT *
 		FROM (
-			SELECT f.id, f.url, f.site_url, f.icon_url, f.title, f.description, LEFT(title, %d) AS sort_key
+			SELECT f.id, f.url, f.site_url, f.icon_url, f.title, f.description, f.matchers IS NOT NULL,
+				LEFT(title, %d) AS sort_key
 			FROM feed_subscriptions s JOIN feeds f
 			ON s.user_id = $1 AND s.feed_id = f.id
 		)
@@ -431,7 +437,7 @@ func (h *Handler) getFeeds(w http.ResponseWriter, r *http.Request) {
 	for rows.Next() {
 		var f feedSchema
 		var su, iu, desc sql.NullString
-		err := rows.Scan(&f.ID, &f.URL, &su, &iu, &f.Title, &desc, new(string))
+		err := rows.Scan(&f.ID, &f.URL, &su, &iu, &f.Title, &desc, &f.HasMatchers, new(string))
 		if err != nil {
 			fmt.Print(err)
 			serverError(w, http.StatusInternalServerError, "Failed to fetch feeds")
@@ -508,14 +514,14 @@ func (h *Handler) getFeed(w http.ResponseWriter, r *http.Request) {
 	var su, iu, desc sql.NullString
 	err = h.DB.QueryRowContext(ctx, `
 		SELECT
-			id, url, site_url, icon_url, title, description,
+			id, url, site_url, icon_url, title, description, matchers IS NOT NULL,
 			EXISTS (
 				SELECT 1 FROM feed_subscriptions
 				WHERE user_id = $2 AND feed_id = feeds.id
 			)
 		FROM feeds
 		WHERE id = $1;
-	`, id, uid).Scan(&res.ID, &res.URL, &su, &iu, &res.Title, &desc, &res.Subscribed)
+	`, id, uid).Scan(&res.ID, &res.URL, &su, &iu, &res.Title, &desc, &res.HasMatchers, &res.Subscribed)
 	if errors.Is(err, sql.ErrNoRows) {
 		fmt.Print(err)
 		serverError(w, http.StatusNotFound, "No feed found")
@@ -753,6 +759,7 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 	uid, ok := UserIDFromContext(ctx)
 	if !ok {
 		serverError(w, http.StatusUnauthorized, "unauthorized")
+		return
 	}
 
 	fd, err := h.FeedService.Subscribe(ctx, uid, *u)
@@ -763,10 +770,11 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res := subscribeToFeedResBody{
-		ID:         fd.ID,
-		URL:        fd.URL.String(),
-		Title:      fd.Title,
-		Subscribed: true,
+		ID:          fd.ID,
+		URL:         fd.URL.String(),
+		Title:       fd.Title,
+		Subscribed:  true,
+		HasMatchers: fd.HasMatchers,
 	}
 	if u := fd.SiteURL; u != nil {
 		res.SiteURL = u.String()
@@ -785,6 +793,87 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	_, _ = w.Write(jres)
+}
+
+type getFeedMatchersResBody struct {
+	Page *feed.PageDocument `json:"page"`
+	// Matchers is the JSON array of feed.PostMatcher as it was saved, and is
+	// omitted when none are saved.
+	Matchers json.RawMessage `json:"matchers,omitempty"`
+}
+
+// getFeedMatchers returns what the client needs to edit the post matchers of
+// an unstructured feed: its page as a semantic tree and the saved matchers.
+func (h *Handler) getFeedMatchers(w http.ResponseWriter, r *http.Request) {
+	id, err := strconv.Atoi(r.PathValue("id"))
+	if err != nil {
+		fmt.Print(err)
+		serverError(w, http.StatusBadRequest, "Invalid feed id")
+		return
+	}
+	doc, matchers, err := h.FeedService.Matchers(r.Context(), id)
+	switch {
+	case errors.Is(err, feed.ErrFeedNotFound):
+		serverError(w, http.StatusNotFound, "No feed found")
+		return
+	case errors.Is(err, feed.ErrNotUnstructured):
+		serverError(w, http.StatusConflict, "The feed is not an unstructured feed")
+		return
+	case err != nil:
+		fmt.Println(err)
+		serverError(w, http.StatusBadGateway, "Failed to fetch the page")
+		return
+	}
+	res := getFeedMatchersResBody{Page: doc}
+	if matchers != "" {
+		res.Matchers = json.RawMessage(matchers)
+	}
+	jres, err := json.Marshal(res)
+	if err != nil {
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to construct JSON")
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	_, _ = w.Write(jres)
+}
+
+type saveFeedMatchersReqBody struct {
+	Matchers json.RawMessage `json:"matchers"`
+}
+
+// saveFeedMatchers replaces the post matchers of an unstructured feed.
+func (h *Handler) saveFeedMatchers(w http.ResponseWriter, r *http.Request) {
+	id, err := strconv.Atoi(r.PathValue("id"))
+	if err != nil {
+		fmt.Print(err)
+		serverError(w, http.StatusBadRequest, "Invalid feed id")
+		return
+	}
+	var b saveFeedMatchersReqBody
+	// TODO: Limit request body size (http.MaxBytesReader)
+	if err := json.NewDecoder(r.Body).Decode(&b); err != nil {
+		fmt.Print(err)
+		serverError(w, http.StatusBadRequest, "Failed to parse request body")
+		return
+	}
+	err = h.FeedService.SaveMatchers(r.Context(), id, string(b.Matchers))
+	switch {
+	case errors.Is(err, feed.ErrInvalidMatchers):
+		serverError(w, http.StatusBadRequest, "Invalid matchers")
+		return
+	case errors.Is(err, feed.ErrFeedNotFound):
+		serverError(w, http.StatusNotFound, "No feed found")
+		return
+	case errors.Is(err, feed.ErrNotUnstructured):
+		serverError(w, http.StatusConflict, "The feed is not an unstructured feed")
+		return
+	case err != nil:
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to save matchers")
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
 }
 
 type saveToReadingListReqBody struct {
