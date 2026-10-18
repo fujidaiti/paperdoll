@@ -60,11 +60,11 @@ func TestSemanticTreeGolden(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			doc, err := BuildSemanticTree(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
+			tree, err := BuildSemanticTree(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
 			if err != nil {
 				t.Fatal(err)
 			}
-			checkGolden(t, filepath.Join("testdata/tree", name+".json"), doc)
+			checkGolden(t, filepath.Join("testdata/tree", name+".json"), tree)
 		})
 	}
 }
@@ -83,9 +83,9 @@ func TestPerfectMatchersGolden(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			var posts []ExtractedPost
 			readJSON(t, f, &posts)
-			var doc SemanticTree
-			readJSON(t, filepath.Join("testdata/tree", name+".json"), &doc)
-			matchers, err := perfectMatchers(&doc, posts)
+			var tree SemanticTree
+			readJSON(t, filepath.Join("testdata/tree", name+".json"), &tree)
+			matchers, err := perfectMatchers(&tree, posts)
 			if err != nil {
 				t.Fatal(err)
 			}

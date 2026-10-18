@@ -811,7 +811,7 @@ func (h *Handler) getFeedMatchers(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusBadRequest, "Invalid feed id")
 		return
 	}
-	doc, matchers, err := h.FeedService.Matchers(r.Context(), id)
+	tree, matchers, err := h.FeedService.Matchers(r.Context(), id)
 	switch {
 	case errors.Is(err, feed.ErrFeedNotFound):
 		serverError(w, http.StatusNotFound, "No feed found")
@@ -824,7 +824,7 @@ func (h *Handler) getFeedMatchers(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusBadGateway, "Failed to fetch the page")
 		return
 	}
-	res := getFeedMatchersResBody{SemanticTree: doc}
+	res := getFeedMatchersResBody{SemanticTree: tree}
 	if matchers != "" {
 		res.Matchers = json.RawMessage(matchers)
 	}

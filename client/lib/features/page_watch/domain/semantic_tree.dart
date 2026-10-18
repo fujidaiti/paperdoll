@@ -93,8 +93,8 @@ class SemanticTreeNode {
   /// image, whose link is the image itself.
   String? get pageLink => isImage ? null : link;
 
-  /// The shape of this node, such as `card`, `h2` or `txt+link` (see
-  /// tool/semantictree/MATCHER.md).
+  /// The shape of this node, such as `card`, `h2` or `txt+link` (see shape in
+  /// server/feature/feed/post_matcher.go).
   String get shape => isValue
       ? '${kind ?? 'txt'}${link != null ? '+link' : ''}'
       : (link != null ? 'card' : 'box');

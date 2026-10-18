@@ -180,7 +180,7 @@ SignUpTicket:
 SemanticTree:
   description:
     A web page simplified into a semantic tree, on which post matchers run. See
-    `tool/semantictree/MATCHER.md` for the format.
+    SemanticTree in `server/feature/feed/semantic_tree.go` for the format.
   type: object
   required: [url, title, root]
   properties:
@@ -217,7 +217,7 @@ SemanticTreeNode:
 PostMatcher:
   description:
     A rule that finds the posts of one shape in a page and extracts their
-    fields. See `tool/semantictree/MATCHER.md`.
+    fields. See PostMatcher in `server/feature/feed/post_matcher.go`.
   type: object
   required: [post, fields, exclude]
   properties:

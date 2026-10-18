@@ -16,13 +16,13 @@ import (
 // treeIndex is a SemanticTree with the parent of each node, which the
 // client's SemanticTreeNode has.
 type treeIndex struct {
-	doc    *SemanticTree
+	tree   *SemanticTree
 	nodes  []*SemanticTreeNode // in document order
 	parent map[*SemanticTreeNode]*SemanticTreeNode
 }
 
-func newTreeIndex(doc *SemanticTree) *treeIndex {
-	t := &treeIndex{doc: doc, parent: map[*SemanticTreeNode]*SemanticTreeNode{}}
+func newTreeIndex(tree *SemanticTree) *treeIndex {
+	t := &treeIndex{tree: tree, parent: map[*SemanticTreeNode]*SemanticTreeNode{}}
 	var visit func(n *SemanticTreeNode)
 	visit = func(n *SemanticTreeNode) {
 		t.nodes = append(t.nodes, n)
@@ -31,7 +31,7 @@ func newTreeIndex(doc *SemanticTree) *treeIndex {
 			visit(c)
 		}
 	}
-	visit(doc.Root)
+	visit(tree.Root)
 	return t
 }
 
@@ -173,10 +173,10 @@ func mergePattern(pattern, hostPath string) string {
 // another link. Otherwise the host and path of link are added, which also
 // exclude the posts whose links differ from link only in the query or the
 // fragment. It follows PostMatcher.withExcluded of the client.
-func withExcluded(m PostMatcher, doc *SemanticTree, link string) PostMatcher {
+func withExcluded(m PostMatcher, tree *SemanticTree, link string) PostMatcher {
 	hp := hostPath(link)
 	var kept []string
-	for _, p := range m.matchPosts(doc) {
+	for _, p := range m.matchPosts(tree) {
 		if l := values(&m, p)[PostLink]; l != "" && l != link {
 			kept = append(kept, hostPath(l))
 		}
@@ -208,7 +208,7 @@ func equalPosts(a, b ExtractedPost) bool {
 	return true
 }
 
-// perfectMatchers returns matchers that extract exactly posts from doc, built
+// perfectMatchers returns matchers that extract exactly posts from tree, built
 // as a user of the client would build them. Until every post is extracted
 // with its values, the user:
 //
@@ -224,8 +224,8 @@ func equalPosts(a, b ExtractedPost) bool {
 //
 // It fails when a step cannot be done, or when the steps come back to the
 // same matchers.
-func perfectMatchers(doc *SemanticTree, posts []ExtractedPost) ([]PostMatcher, error) {
-	t := newTreeIndex(doc)
+func perfectMatchers(tree *SemanticTree, posts []ExtractedPost) ([]PostMatcher, error) {
+	t := newTreeIndex(tree)
 	want := map[string]ExtractedPost{}
 	for _, p := range posts {
 		want[p[PostLink]] = p
@@ -250,15 +250,15 @@ func perfectMatchers(doc *SemanticTree, posts []ExtractedPost) ([]PostMatcher, e
 	for {
 		for i := range matchers {
 			m := &matchers[i]
-			for _, n := range m.matchPosts(doc) {
+			for _, n := range m.matchPosts(tree) {
 				v := values(m, n)
 				if m.isExcluded(n) || !isWrong(v) {
 					continue
 				}
 				// The client asks before excluding other posts of the group
 				// too, and the user agrees only when they are also wrong.
-				excluded := withExcluded(*m, doc, v[PostLink])
-				for _, p := range m.matchPosts(doc) {
+				excluded := withExcluded(*m, tree, v[PostLink])
+				for _, p := range m.matchPosts(tree) {
 					if p != n && excluded.isExcluded(p) && !isWrong(values(m, p)) {
 						return nil, fmt.Errorf(
 							"group %d gets %s wrong, but excluding it also excludes %s",
@@ -273,7 +273,7 @@ func perfectMatchers(doc *SemanticTree, posts []ExtractedPost) ([]PostMatcher, e
 		}
 
 		got := map[string]ExtractedPost{}
-		for _, p := range ExtractPosts(doc, matchers) {
+		for _, p := range ExtractPosts(tree, matchers) {
 			got[p[PostLink]] = p
 		}
 		var target ExtractedPost
@@ -327,7 +327,7 @@ func perfectMatchers(doc *SemanticTree, posts []ExtractedPost) ([]PostMatcher, e
 		// a new post overlap a post of a group.
 		var m *PostMatcher
 		for i := range matchers {
-			for _, p := range matchers[i].matchPosts(doc) {
+			for _, p := range matchers[i].matchPosts(tree) {
 				switch {
 				case p == post:
 					m = &matchers[i]

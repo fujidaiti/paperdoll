@@ -42,9 +42,8 @@ type FieldStep struct {
 }
 
 // PostMatcher is a rule that finds the posts of one shape in a page and
-// extracts their fields (see tool/semantictree/MATCHER.md). The client builds
-// matchers when the user annotates a page, and the server runs them on each
-// fetch of the page.
+// extracts their fields. The client builds matchers when the user annotates
+// a page, and the server runs them on each fetch of the page.
 //
 // Post is the shape path of the post nodes from the root, and each field is
 // the path of steps from a post node to its value. A node at Post is a post
@@ -74,12 +73,12 @@ func shape(n *SemanticTreeNode) string {
 	return s
 }
 
-// matchPosts returns the post nodes that m finds in doc.
-func (m *PostMatcher) matchPosts(doc *SemanticTree) []*SemanticTreeNode {
-	if len(m.Post) == 0 || shape(doc.Root) != m.Post[0] {
+// matchPosts returns the post nodes that m finds in tree.
+func (m *PostMatcher) matchPosts(tree *SemanticTree) []*SemanticTreeNode {
+	if len(m.Post) == 0 || shape(tree.Root) != m.Post[0] {
 		return nil
 	}
-	nodes := []*SemanticTreeNode{doc.Root}
+	nodes := []*SemanticTreeNode{tree.Root}
 	for _, s := range m.Post[1:] {
 		var next []*SemanticTreeNode
 		for _, n := range nodes {
@@ -182,12 +181,12 @@ func globMatches(pattern, hostPath string) bool {
 // values.
 type ExtractedPost map[PostField]string
 
-// ExtractPosts returns the posts that matchers find in doc, in document order.
+// ExtractPosts returns the posts that matchers find in tree, in document order.
 // Posts with the same link are merged into the first one, which takes the
 // fields that it does not have from the later ones, since some pages split a
 // post into sibling cards with the same link, such as one with the image and
 // one with the title. Posts without a link are dropped.
-func ExtractPosts(doc *SemanticTree, matchers []PostMatcher) []ExtractedPost {
+func ExtractPosts(tree *SemanticTree, matchers []PostMatcher) []ExtractedPost {
 	order := map[*SemanticTreeNode]int{}
 	var number func(n *SemanticTreeNode)
 	number = func(n *SemanticTreeNode) {
@@ -196,7 +195,7 @@ func ExtractPosts(doc *SemanticTree, matchers []PostMatcher) []ExtractedPost {
 			number(c)
 		}
 	}
-	number(doc.Root)
+	number(tree.Root)
 
 	type found struct {
 		node   *SemanticTreeNode
@@ -204,7 +203,7 @@ func ExtractPosts(doc *SemanticTree, matchers []PostMatcher) []ExtractedPost {
 	}
 	var posts []found
 	for _, m := range matchers {
-		for _, n := range m.matchPosts(doc) {
+		for _, n := range m.matchPosts(tree) {
 			values := ExtractedPost{}
 			for field, steps := range m.Fields {
 				if v := resolve(n, steps); v != nil {

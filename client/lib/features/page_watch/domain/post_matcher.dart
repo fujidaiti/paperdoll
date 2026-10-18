@@ -104,7 +104,7 @@ String? _mergePattern(String pattern, String hostPath) {
 }
 
 /// A rule that finds the posts of one shape in a page and extracts their
-/// fields (see tool/semantictree/MATCHER.md).
+/// fields (see PostMatcher in server/feature/feed/post_matcher.go).
 ///
 /// [post] is the shape path of the post nodes from the root, and each field
 /// is the path of steps from a post node to its value. A node at [post] is
@@ -144,8 +144,8 @@ class PostMatcher {
 
   /// The nodes at [post] that have all labeled fields, including the
   /// excluded ones.
-  List<SemanticTreeNode> _candidates(SemanticTree document) {
-    var nodes = [if (document.root.shape == post.first) document.root];
+  List<SemanticTreeNode> _candidates(SemanticTree tree) {
+    var nodes = [if (tree.root.shape == post.first) tree.root];
     for (final shape in post.skip(1)) {
       nodes = [
         for (final n in nodes) ...n.children.where((c) => c.shape == shape),
@@ -157,14 +157,14 @@ class PostMatcher {
     ];
   }
 
-  List<SemanticTreeNode> matchPosts(SemanticTree document) => [
-    for (final n in _candidates(document))
+  List<SemanticTreeNode> matchPosts(SemanticTree tree) => [
+    for (final n in _candidates(tree))
       if (excludedBy(n) == null) n,
   ];
 
   /// The nodes that would be posts if their links were not excluded.
-  List<SemanticTreeNode> matchExcluded(SemanticTree document) => [
-    for (final n in _candidates(document))
+  List<SemanticTreeNode> matchExcluded(SemanticTree tree) => [
+    for (final n in _candidates(tree))
       if (excludedBy(n) != null) n,
   ];
 
@@ -332,14 +332,14 @@ class PostMatcher {
   }
 
   /// Adds a pattern that excludes [link]. [link] is merged into a pattern in
-  /// [exclude] when the merged pattern excludes no post of [document] with
+  /// [exclude] when the merged pattern excludes no post of [tree] with
   /// another link. Otherwise the host and path of [link] are added, which
   /// also exclude the posts whose links differ from [link] only in the query
   /// or the fragment.
-  PostMatcher withExcluded(SemanticTree document, String link) {
+  PostMatcher withExcluded(SemanticTree tree, String link) {
     final hostPath = _hostPath(link);
     final kept = [
-      for (final p in matchPosts(document))
+      for (final p in matchPosts(tree))
         if (_linkOf(p) case final l? when l != link) _hostPath(l),
     ];
     PostMatcher withExclude(List<String> exclude) =>
@@ -382,18 +382,18 @@ typedef ExtractedPost = ({
   Map<PostField, String> values,
 });
 
-/// The posts that [matchers] find in [document], in document order. Posts
+/// The posts that [matchers] find in [tree], in document order. Posts
 /// with the same link are merged into the first one, which takes the fields
 /// that it does not have from the later ones, since some pages split a post
 /// into sibling cards with the same link, such as one with the image and one
 /// with the title.
 List<ExtractedPost> extractPosts(
-  SemanticTree document,
+  SemanticTree tree,
   List<PostMatcher> matchers,
 ) {
   final found = <ExtractedPost>[
     for (final (i, matcher) in matchers.indexed)
-      for (final node in matcher.matchPosts(document))
+      for (final node in matcher.matchPosts(tree))
         (
           node: node,
           matcher: i,

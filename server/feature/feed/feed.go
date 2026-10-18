@@ -285,11 +285,11 @@ func (s *Service) Matchers(ctx context.Context, id int) (*SemanticTree, string, 
 	if err != nil {
 		return nil, "", err
 	}
-	doc, err := BuildSemanticTree(raw, fu)
+	tree, err := BuildSemanticTree(raw, fu)
 	if err != nil {
 		return nil, "", err
 	}
-	return doc, matchers.String, nil
+	return tree, matchers.String, nil
 }
 
 // SaveMatchers replaces the post matchers of the unstructured feed id with

@@ -24,7 +24,7 @@ type SemanticTreeNode struct {
 func (n *SemanticTreeNode) isValue() bool { return len(n.Children) == 0 }
 
 // SemanticTree is a web page simplified into a semantic tree, which post
-// matchers run on (see tool/semantictree/MATCHER.md).
+// matchers run on (see PostMatcher).
 //
 // A tree is serialized as JSON:
 //

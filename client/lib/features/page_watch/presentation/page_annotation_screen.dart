@@ -49,7 +49,7 @@ class const PageAnnotationScreen({required final int feedId, super.key})
     if (matchers case AsyncData(:final value)) {
       return _Annotator(
         feedId: feedId,
-        document: value.tree,
+        tree: value.tree,
         matchers: value.matchers,
       );
     }
@@ -88,7 +88,7 @@ const _groupColors = [
 bool _hasLink(SemanticTreeNode node) =>
     node.pageLink != null || node.children.any(_hasLink);
 
-/// The posts of all groups in the document, and the excluded ones with the
+/// The posts of all groups in the tree, and the excluded ones with the
 /// pattern that excludes them, by node id.
 class _Marks {
   final posts = <int, _Group>{};
@@ -117,7 +117,7 @@ class _Marks {
 
 class const _Annotator({
   required final int feedId,
-  required final SemanticTree document,
+  required final SemanticTree tree,
   required final List<PostMatcher> matchers,
 }) extends ConsumerStatefulWidget {
   @override
@@ -146,11 +146,11 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     });
   }
 
-  SemanticTree get _document => widget.document;
+  SemanticTree get _tree => widget.tree;
 
   /// The lines of the whole page. They are built lazily by a list, since a
   /// page can have thousands of them.
-  late final _lines = layOutLines([_document.root]);
+  late final _lines = layOutLines([_tree.root]);
 
   /// [line] or the narrowest element around it that can be a post, if any.
   /// A post needs a link and a text for its title, and the whole page cannot
@@ -167,10 +167,10 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   _Marks _computeMarks() {
     final marks = _Marks();
     for (final group in _groups) {
-      for (final post in group.matcher.matchPosts(_document)) {
+      for (final post in group.matcher.matchPosts(_tree)) {
         marks.posts[post.id] = group;
       }
-      for (final post in group.matcher.matchExcluded(_document)) {
+      for (final post in group.matcher.matchExcluded(_tree)) {
         marks.excluded[post.id] = (
           group: group,
           pattern: group.matcher.excludedBy(post)!,
@@ -187,7 +187,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// posts, such as cards whose date is at a different position.
   String? _postRejection(SemanticTreeNode node, _Marks marks) {
     for (final MapEntry(key: id, value: group) in marks.posts.entries) {
-      if (_document.nodes[id].overlaps(node)) {
+      if (_tree.nodes[id].overlaps(node)) {
         return 'This overlaps with the posts of group ${group.number}.';
       }
     }
@@ -204,7 +204,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     routePostFieldsName,
     pathParameters: GoRouterState.of(context).pathParameters,
     extra: (
-      document: _document,
+      tree: _tree,
       matcher: matcher,
       post: post,
       groupNumber: groupNumber,
@@ -248,9 +248,9 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// same host and path.
   Future<void> _exclude(_Group group, SemanticTreeNode post) async {
     final link = group.matcher.matchField(post, PostField.link)!.link!;
-    final matcher = group.matcher.withExcluded(_document, link);
+    final matcher = group.matcher.withExcluded(_tree, link);
     final others = group.matcher
-        .matchPosts(_document)
+        .matchPosts(_tree)
         .where(
           (p) =>
               matcher.excludedBy(p) != null &&
@@ -338,7 +338,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
           initialChildSize: 0.8,
           maxChildSize: 0.95,
           builder: (context, controller) => _Preview(
-            document: _document,
+            tree: _tree,
             groups: _groups,
             scrollController: controller,
           ),
@@ -364,7 +364,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     }
     final areas = <PageArea>[
       for (final id in marks.excluded.keys)
-        (node: _document.nodes[id], color: colorTextMuted, linkOnly: false),
+        (node: _tree.nodes[id], color: colorTextMuted, linkOnly: false),
       if (selected != null) selectionArea(selected),
     ];
 
@@ -372,7 +372,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       key: AppDebugKey.pageAnnotationScreen,
       appBar: AppBar(
         title: Text(
-          _document.title.isEmpty ? _document.url : _document.title,
+          _tree.title.isEmpty ? _tree.url : _tree.title,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -758,13 +758,13 @@ class const _Thumbnail({required final String url, required final double size})
 
 /// The posts extracted with the current matchers, merged by link.
 class const _Preview({
-  required final SemanticTree document,
+  required final SemanticTree tree,
   required final List<_Group> groups,
   required final ScrollController scrollController,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final posts = extractPosts(document, [for (final g in groups) g.matcher]);
+    final posts = extractPosts(tree, [for (final g in groups) g.matcher]);
     return ListView(
       controller: scrollController,
       // The cards have their own side padding.

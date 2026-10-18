@@ -101,12 +101,12 @@ func TestFeed_Matchers(t *testing.T) {
 		t.Errorf("subscribing again registered feed %d, want %d", again.ID, page.ID)
 	}
 
-	doc, matchers, err := s.Matchers(t.Context(), page.ID)
+	tree, matchers, err := s.Matchers(t.Context(), page.ID)
 	if err != nil {
 		t.Fatalf("Matchers: %v", err)
 	}
-	if doc.Title != "Example Blog" || doc.Root == nil {
-		t.Errorf("page = %+v, want the simplified page", doc)
+	if tree.Title != "Example Blog" || tree.Root == nil {
+		t.Errorf("page = %+v, want the semantic tree", tree)
 	}
 	if matchers != "" {
 		t.Errorf("matchers = %q, want none", matchers)

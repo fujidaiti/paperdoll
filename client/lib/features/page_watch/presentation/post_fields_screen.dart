@@ -15,7 +15,7 @@ import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.da
 /// The arguments of [PostFieldsScreen]: the group of posts to label, and the
 /// post of the group whose content is shown.
 typedef PostFieldsArgs = ({
-  SemanticTree document,
+  SemanticTree tree,
   PostMatcher matcher,
   SemanticTreeNode post,
   int groupNumber,

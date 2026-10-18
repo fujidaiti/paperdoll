@@ -14,7 +14,7 @@ var postFields = []PostField{PostTitle, PostBody, PostLink, PostThumbnail, PostP
 // that a correct matcher finds on it (see testdata/README.md).
 type fixturePage struct {
 	name  string
-	doc   *SemanticTree
+	tree  *SemanticTree
 	posts []ExtractedPost
 }
 
@@ -42,11 +42,11 @@ func loadFixturePages(t *testing.T) []fixturePage {
 		if err != nil {
 			t.Fatal(err)
 		}
-		doc, err := BuildSemanticTree(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
+		tree, err := BuildSemanticTree(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
 		if err != nil {
 			t.Fatalf("%s: %v", name, err)
 		}
-		pages = append(pages, fixturePage{name, doc, posts})
+		pages = append(pages, fixturePage{name, tree, posts})
 	}
 	return pages
 }
@@ -87,7 +87,7 @@ func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 					visit(c)
 				}
 			}
-			visit(page.doc.Root)
+			visit(page.tree.Root)
 			for i, post := range page.posts {
 				for f := range post {
 					if values[f] == nil {
@@ -118,7 +118,7 @@ func TestExtractPostsFindsFixturePosts(t *testing.T) {
 				want[p[PostLink]] = p
 			}
 			got := map[string]ExtractedPost{}
-			for _, p := range ExtractPosts(page.doc, matchers) {
+			for _, p := range ExtractPosts(page.tree, matchers) {
 				got[p[PostLink]] = p
 				if w, ok := want[p[PostLink]]; !ok {
 					t.Errorf("extra post: %v", p)
