@@ -1,0 +1,31 @@
+[
+  {
+    "post": ["box", "box", "box", "box", "box", "card"],
+    "fields": {
+      "body": [
+        {
+          "shape": "txt",
+          "nth": 1
+        }
+      ],
+      "link": [],
+      "thumbnail": [
+        {
+          "shape": "img+link",
+          "nth": 0
+        }
+      ],
+      "title": [
+        {
+          "shape": "box",
+          "nth": 0
+        },
+        {
+          "shape": "txt",
+          "nth": 0
+        }
+      ]
+    },
+    "exclude": []
+  }
+]
