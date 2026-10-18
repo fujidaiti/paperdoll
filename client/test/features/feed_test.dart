@@ -220,6 +220,18 @@ void main() {
 
     await t(AppDebugKey.editMatchersButton).tap();
     await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    // The posts are shown as cards of their extracted values, without the
+    // content that is not extracted, such as the summaries.
+    await t('First post').waitUntilVisible();
+    expect(
+      t('Group 1 · Not extracted: Body, Thumbnail, Pub date'),
+      findsNWidgets(2),
+    );
+    expect(t('The first post.'), findsNothing);
+
+    // A card selects its post.
+    await t('First post').tap();
+    await t('Edit fields').waitUntilVisible();
   });
 
   patrolWidgetTest('Edit a web feed', (t) async {

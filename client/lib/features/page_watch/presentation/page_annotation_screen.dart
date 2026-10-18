@@ -16,6 +16,8 @@ import 'package:paperdoll/core/ui/widgets/body_text.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/core/ui/widgets/heading_text.dart';
+import 'package:paperdoll/core/util/date_format.dart';
+import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:paperdoll/debug_keys.dart';
 import 'package:paperdoll/features/page_watch/data/matcher_repository.dart';
 import 'package:paperdoll/features/page_watch/domain/page_document.dart';
@@ -27,7 +29,9 @@ import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.da
 /// Lets the user tell which parts of a web page are posts, so that the page
 /// can be watched like a feed.
 ///
-/// The page is shown as its content, line by line. The user repeats two
+/// The page is shown as its content, line by line, except that each post
+/// found so far is shown as a card of the values extracted from it. The user
+/// repeats two
 /// steps: select the area that holds one post, then label the content inside
 /// it as the post's fields on [PostFieldsScreen]. An area is selected by
 /// tapping a line, which selects the narrowest element around it that can be
@@ -92,6 +96,16 @@ bool _hasLink(PageNode node) =>
 class _Marks {
   final posts = <int, _Group>{};
   final excluded = <int, ({_Group group, String pattern})>{};
+
+  /// The post of a group that contains [node], if any.
+  PageNode? postOf(PageNode node) {
+    for (PageNode? n = node; n != null; n = n.parent) {
+      if (posts.containsKey(n.id)) {
+        return n;
+      }
+    }
+    return null;
+  }
 
   /// The post or excluded post that contains [node], if any.
   PageNode? enclosingPost(PageNode node) {
@@ -317,9 +331,18 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   Widget build(BuildContext context) {
     final marks = _computeMarks();
     final selected = _selected;
+    // The lines of a post are replaced by its card. They are next to each
+    // other, since the lines are in document order.
+    final items = <PageNode>[];
+    for (final line in _lines) {
+      final post = marks.postOf(line);
+      if (post == null) {
+        items.add(line);
+      } else if (items.isEmpty || !identical(items.last, post)) {
+        items.add(post);
+      }
+    }
     final areas = <PageArea>[
-      for (final MapEntry(key: id, value: group) in marks.posts.entries)
-        (node: _document.nodes[id], color: group.color, linkOnly: false),
       for (final id in marks.excluded.keys)
         (node: _document.nodes[id], color: colorTextMuted, linkOnly: false),
       if (selected != null) selectionArea(selected),
@@ -348,9 +371,18 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(vertical: spacingSm),
-              itemCount: _lines.length,
+              itemCount: items.length,
               itemBuilder: (context, index) {
-                final line = _lines[index];
+                final line = items[index];
+                if (marks.posts[line.id] case final group?) {
+                  return _PostCard(
+                    key: ValueKey(line.id),
+                    post: line,
+                    group: group,
+                    isSelected: selected?.contains(line) ?? false,
+                    onTap: () => _select(line, tapped: line),
+                  );
+                }
                 return PageLine(
                   key: ValueKey(line.id),
                   node: line,
@@ -543,6 +575,141 @@ class const _SelectionSheet({
           ],
         ),
       ],
+    );
+  }
+}
+
+/// A post of [group], shown as a card of the values that the group's matcher
+/// extracts from it, so that the user can check them without reading the
+/// content of the post. The fields that the matcher does not extract are
+/// listed at the bottom.
+///
+/// A long press opens the link of the post in the in-app browser.
+class const _PostCard({
+  required final PageNode post,
+  required final _Group group,
+  required final bool isSelected,
+  required final VoidCallback onTap,
+  super.key,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final nodes = {
+      for (final field in PostField.values)
+        if (group.matcher.matchField(post, field) case final node?
+            when field.valueOf(node)?.isNotEmpty ?? false)
+          field: node,
+    };
+    final missing = [
+      for (final field in PostField.values)
+        if (!nodes.containsKey(field)) field.label,
+    ];
+    final thumbnail = nodes[PostField.thumbnail]?.link;
+    final link = nodes[PostField.link]?.link;
+    final pubDate = nodes[PostField.pubDate]?.val;
+    final date = pubDate == null ? null : DateTime.tryParse(pubDate);
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: spacingMd,
+        vertical: spacingXs,
+      ),
+      child: Material(
+        color: isSelected
+            ? colorText.withValues(alpha: 0.08)
+            : group.color.withValues(alpha: 0.06),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(spacingSm),
+          side: BorderSide(
+            color: isSelected ? colorText : group.color,
+            width: isSelected ? 2 : 1,
+          ),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () {
+            onTap();
+            // The sheet shown below the page can cover the card, so the card
+            // is scrolled back into view, as a line is.
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (context.mounted) {
+                Scrollable.ensureVisible(
+                  context,
+                  duration: const Duration(milliseconds: 200),
+                  alignmentPolicy:
+                      ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+                );
+              }
+            });
+          },
+          onLongPress: link == null
+              ? null
+              : () => unawaited(openInAppLink(context, link)),
+          child: Padding(
+            padding: const EdgeInsets.all(spacingSm),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (thumbnail != null) ...[
+                      _Thumbnail(url: thumbnail, size: 64),
+                      const Gap(spacingSm),
+                    ],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          HeadingText(
+                            nodes[PostField.title]?.val ?? '(no title)',
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          if (pubDate != null)
+                            CaptionText(
+                              date == null ? pubDate : formatDate(date),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                if (nodes[PostField.body] case final body?) ...[
+                  const Gap(spacingXs),
+                  BodyText(
+                    body.textContent,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+                if (link != null) ...[
+                  const Gap(spacingXs),
+                  CaptionText(
+                    link,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+                const Gap(spacingXs),
+                Row(
+                  children: [
+                    GroupDot(color: group.color),
+                    const Gap(spacingXs),
+                    Expanded(
+                      child: CaptionText(
+                        missing.isEmpty
+                            ? 'Group ${group.number}'
+                            : 'Group ${group.number} · '
+                                  'Not extracted: ${missing.join(', ')}',
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
