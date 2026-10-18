@@ -796,7 +796,7 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 }
 
 type getFeedMatchersResBody struct {
-	Page *feed.SemanticTree `json:"page"`
+	SemanticTree *feed.SemanticTree `json:"semantic_tree"`
 	// Matchers is the JSON array of feed.PostMatcher as it was saved, and is
 	// omitted when none are saved.
 	Matchers json.RawMessage `json:"matchers,omitempty"`
@@ -824,7 +824,7 @@ func (h *Handler) getFeedMatchers(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusBadGateway, "Failed to fetch the page")
 		return
 	}
-	res := getFeedMatchersResBody{Page: doc}
+	res := getFeedMatchersResBody{SemanticTree: doc}
 	if matchers != "" {
 		res.Matchers = json.RawMessage(matchers)
 	}

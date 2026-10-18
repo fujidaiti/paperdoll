@@ -272,7 +272,7 @@ timeline:
 
 matcher:
   get:
-    summary: Get the page and post matchers of an unstructured feed
+    summary: Get the semantic tree and post matchers of an unstructured feed
     description:
       Fetches the page of the feed and returns it as a semantic tree, together
       with the saved post matchers. This is the entry point for editing the
@@ -292,17 +292,17 @@ matcher:
           application/json:
             schema:
               type: object
-              required: [page]
+              required: [semantic_tree]
               properties:
-                page:
-                  $ref: "../components/schemas.yaml#/PageDocument"
+                semantic_tree:
+                  $ref: "../components/schemas.yaml#/SemanticTree"
                 matchers:
                   description: Absent when no matchers are saved.
                   type: array
                   items:
                     $ref: "../components/schemas.yaml#/PostMatcher"
             example:
-              page:
+              semantic_tree:
                 url: "https://example.com/blog"
                 title: "Example Blog"
                 root:

@@ -17,8 +17,8 @@ import 'package:paperdoll/core/util/date_format.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:paperdoll/debug_keys.dart';
 import 'package:paperdoll/features/page_watch/data/matcher_repository.dart';
-import 'package:paperdoll/features/page_watch/domain/page_document.dart';
 import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
+import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
 import 'package:paperdoll/features/page_watch/presentation/post_fields_screen.dart';
 import 'package:paperdoll/features/page_watch/presentation/providers/page_watch_providers.dart';
 import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.dart';
@@ -49,7 +49,7 @@ class const PageAnnotationScreen({required final int feedId, super.key})
     if (matchers case AsyncData(:final value)) {
       return _Annotator(
         feedId: feedId,
-        document: value.page,
+        document: value.tree,
         matchers: value.matchers,
       );
     }
@@ -85,7 +85,7 @@ const _groupColors = [
 ];
 
 /// Whether [node] or the content inside it has a link to a page.
-bool _hasLink(PageNode node) =>
+bool _hasLink(SemanticTreeNode node) =>
     node.pageLink != null || node.children.any(_hasLink);
 
 /// The posts of all groups in the document, and the excluded ones with the
@@ -95,8 +95,8 @@ class _Marks {
   final excluded = <int, ({_Group group, String pattern})>{};
 
   /// The post of a group that contains [node], if any.
-  PageNode? postOf(PageNode node) {
-    for (PageNode? n = node; n != null; n = n.parent) {
+  SemanticTreeNode? postOf(SemanticTreeNode node) {
+    for (SemanticTreeNode? n = node; n != null; n = n.parent) {
       if (posts.containsKey(n.id)) {
         return n;
       }
@@ -105,8 +105,8 @@ class _Marks {
   }
 
   /// The post or excluded post that contains [node], if any.
-  PageNode? enclosingPost(PageNode node) {
-    for (PageNode? n = node; n != null; n = n.parent) {
+  SemanticTreeNode? enclosingPost(SemanticTreeNode node) {
+    for (SemanticTreeNode? n = node; n != null; n = n.parent) {
       if (posts.containsKey(n.id) || excluded.containsKey(n.id)) {
         return n;
       }
@@ -117,7 +117,7 @@ class _Marks {
 
 class const _Annotator({
   required final int feedId,
-  required final PageDocument document,
+  required final SemanticTree document,
   required final List<PostMatcher> matchers,
 }) extends ConsumerStatefulWidget {
   @override
@@ -133,20 +133,20 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   var _saving = false;
 
   /// The element shown on the selection sheet, while the sheet is open.
-  PageNode? _selected;
+  SemanticTreeNode? _selected;
 
   /// The content the user tapped last. The selection can be narrowed back
   /// down to it after being widened.
-  PageNode? _tapped;
+  SemanticTreeNode? _tapped;
 
-  void _select(PageNode? node, {PageNode? tapped}) {
+  void _select(SemanticTreeNode? node, {SemanticTreeNode? tapped}) {
     setState(() {
       _selected = node;
       _tapped = tapped ?? _tapped;
     });
   }
 
-  PageDocument get _document => widget.document;
+  SemanticTree get _document => widget.document;
 
   /// The lines of the whole page. They are built lazily by a list, since a
   /// page can have thousands of them.
@@ -155,7 +155,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// [line] or the narrowest element around it that can be a post, if any.
   /// A post needs a link and a text for its title, and the whole page cannot
   /// be a post.
-  PageNode? _selectableElement(PageNode line) {
+  SemanticTreeNode? _selectableElement(SemanticTreeNode line) {
     for (var n = line; n.parent != null; n = n.parent!) {
       if (_hasLink(n) && n.textContent.trim().isNotEmpty) {
         return n;
@@ -185,7 +185,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// Only [node] itself is checked. Other nodes at its shape path can be posts
   /// of another group, since the labeled fields decide which of them are
   /// posts, such as cards whose date is at a different position.
-  String? _postRejection(PageNode node, _Marks marks) {
+  String? _postRejection(SemanticTreeNode node, _Marks marks) {
     for (final MapEntry(key: id, value: group) in marks.posts.entries) {
       if (_document.nodes[id].overlaps(node)) {
         return 'This overlaps with the posts of group ${group.number}.';
@@ -198,7 +198,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// updated matcher, or null if the user left without finishing.
   Future<PostMatcher?> _labelFields({
     required PostMatcher matcher,
-    required PageNode post,
+    required SemanticTreeNode post,
     required int groupNumber,
   }) => context.pushNamed<PostMatcher>(
     routePostFieldsName,
@@ -211,7 +211,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     ),
   );
 
-  Future<void> _markAsPost(PageNode node) async {
+  Future<void> _markAsPost(SemanticTreeNode node) async {
     final number = _nextGroupNumber;
     final matcher = await _labelFields(
       matcher: PostMatcher.fromNode(node).withEvidentFields(node),
@@ -228,7 +228,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     });
   }
 
-  Future<void> _editGroup(_Group group, PageNode post) async {
+  Future<void> _editGroup(_Group group, SemanticTreeNode post) async {
     final matcher = await _labelFields(
       matcher: group.matcher,
       post: post,
@@ -246,7 +246,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// Excludes the link of [post] from [group]. The user confirms it first
   /// when it also excludes other posts of the group, whose links have the
   /// same host and path.
-  Future<void> _exclude(_Group group, PageNode post) async {
+  Future<void> _exclude(_Group group, SemanticTreeNode post) async {
     final link = group.matcher.matchField(post, PostField.link)!.link!;
     final matcher = group.matcher.withExcluded(_document, link);
     final others = group.matcher
@@ -353,7 +353,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     final selected = _selected;
     // The lines of a post are replaced by its card. They are next to each
     // other, since the lines are in document order.
-    final items = <PageNode>[];
+    final items = <SemanticTreeNode>[];
     for (final line in _lines) {
       final post = marks.postOf(line);
       if (post == null) {
@@ -438,7 +438,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     );
   }
 
-  Widget _buildSheet(PageNode selected, _Marks marks) {
+  Widget _buildSheet(SemanticTreeNode selected, _Marks marks) {
     final group = marks.posts[selected.id];
     final excluded = marks.excluded[selected.id];
     return _SelectionSheet(
@@ -511,12 +511,12 @@ class const _StatusFooter({
 /// group if [excluded] is not null, and cannot become a post for the reason
 /// in [rejection] if it is not null.
 class const _SelectionSheet({
-  required final PageNode selected,
+  required final SemanticTreeNode selected,
   required final _Group? group,
   required final ({_Group group, String pattern})? excluded,
   required final String? rejection,
-  required final List<PageNode> levels,
-  required final void Function(PageNode node) onSelect,
+  required final List<SemanticTreeNode> levels,
+  required final void Function(SemanticTreeNode node) onSelect,
   required final VoidCallback onCancel,
   required final VoidCallback onMarkAsPost,
   required final VoidCallback? onEditGroup,
@@ -758,7 +758,7 @@ class const _Thumbnail({required final String url, required final double size})
 
 /// The posts extracted with the current matchers, merged by link.
 class const _Preview({
-  required final PageDocument document,
+  required final SemanticTree document,
   required final List<_Group> groups,
   required final ScrollController scrollController,
 }) extends StatelessWidget {

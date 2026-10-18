@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PageNode {
-  /// Returns a new [PageNode] instance.
-  PageNode({
+class SemanticTreeNode {
+  /// Returns a new [SemanticTreeNode] instance.
+  SemanticTreeNode({
     this.kind,
     this.val,
     this.link,
@@ -46,12 +46,12 @@ class PageNode {
   ///
   String? link;
 
-  List<PageNode> ch;
+  List<SemanticTreeNode> ch;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PageNode &&
+      other is SemanticTreeNode &&
           other.kind == kind &&
           other.val == val &&
           other.link == link &&
@@ -66,7 +66,8 @@ class PageNode {
       (ch.hashCode);
 
   @override
-  String toString() => 'PageNode[kind=$kind, val=$val, link=$link, ch=$ch]';
+  String toString() =>
+      'SemanticTreeNode[kind=$kind, val=$val, link=$link, ch=$ch]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -89,10 +90,10 @@ class PageNode {
     return json;
   }
 
-  /// Returns a new [PageNode] instance and imports its values from
+  /// Returns a new [SemanticTreeNode] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageNode? fromJson(dynamic value) {
+  static SemanticTreeNode? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -103,24 +104,24 @@ class PageNode {
         return true;
       }());
 
-      return PageNode(
+      return SemanticTreeNode(
         kind: mapValueOfType<String>(json, r'kind'),
         val: mapValueOfType<String>(json, r'val'),
         link: mapValueOfType<String>(json, r'link'),
-        ch: PageNode.listFromJson(json[r'ch']),
+        ch: SemanticTreeNode.listFromJson(json[r'ch']),
       );
     }
     return null;
   }
 
-  static List<PageNode> listFromJson(
+  static List<SemanticTreeNode> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <PageNode>[];
+    final result = <SemanticTreeNode>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageNode.fromJson(row);
+        final value = SemanticTreeNode.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -129,12 +130,12 @@ class PageNode {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageNode> mapFromJson(dynamic json) {
-    final map = <String, PageNode>{};
+  static Map<String, SemanticTreeNode> mapFromJson(dynamic json) {
+    final map = <String, SemanticTreeNode>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageNode.fromJson(entry.value);
+        final value = SemanticTreeNode.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -143,17 +144,17 @@ class PageNode {
     return map;
   }
 
-  // maps a json object with a list of PageNode-objects as value to a dart map
-  static Map<String, List<PageNode>> mapListFromJson(
+  // maps a json object with a list of SemanticTreeNode-objects as value to a dart map
+  static Map<String, List<SemanticTreeNode>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<PageNode>>{};
+    final map = <String, List<SemanticTreeNode>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageNode.listFromJson(
+        map[entry.key] = SemanticTreeNode.listFromJson(
           entry.value,
           growable: growable,
         );

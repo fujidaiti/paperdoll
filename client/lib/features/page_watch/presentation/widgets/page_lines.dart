@@ -7,8 +7,8 @@ import 'package:paperdoll/core/ui/tokens/app_text_styles.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
-import 'package:paperdoll/features/page_watch/domain/page_document.dart';
 import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
+import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
 
 // Widgets that show a page as its content, shared by the screen that selects
 // posts and the screen that labels the fields of a post.
@@ -16,9 +16,9 @@ import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
 /// Splits the content of [nodes] into lines: one line for each value, and
 /// one for each container with a link, such as a card, which shows its target
 /// before its content.
-List<PageNode> layOutLines(Iterable<PageNode> nodes) {
-  final lines = <PageNode>[];
-  void visit(PageNode node) {
+List<SemanticTreeNode> layOutLines(Iterable<SemanticTreeNode> nodes) {
+  final lines = <SemanticTreeNode>[];
+  void visit(SemanticTreeNode node) {
     if (node.isValue || node.link != null) {
       lines.add(node);
     }
@@ -30,7 +30,7 @@ List<PageNode> layOutLines(Iterable<PageNode> nodes) {
 }
 
 /// The node of the first line of [node].
-PageNode firstLeaf(PageNode node) {
+SemanticTreeNode firstLeaf(SemanticTreeNode node) {
   var n = node;
   while (n.children.isNotEmpty && n.link == null) {
     n = n.children.first;
@@ -39,7 +39,7 @@ PageNode firstLeaf(PageNode node) {
 }
 
 /// A short description of what [node] holds.
-String describeNode(PageNode node) {
+String describeNode(SemanticTreeNode node) {
   if (node.isImage) {
     return 'An image';
   }
@@ -49,7 +49,7 @@ String describeNode(PageNode node) {
   var texts = 0;
   var links = 0;
   var images = 0;
-  void visit(PageNode n) {
+  void visit(SemanticTreeNode n) {
     if (n.pageLink != null) {
       links++;
     }
@@ -77,12 +77,12 @@ String describeNode(PageNode node) {
 /// When `linkOnly` is true and `node` is a link around other content, only
 /// the line that shows the link's target is tinted, because the area is about
 /// the link rather than its content.
-typedef PageArea = ({PageNode node, Color color, bool linkOnly});
+typedef PageArea = ({SemanticTreeNode node, Color color, bool linkOnly});
 
 bool _isLinkOnly(PageArea area) =>
     area.linkOnly && area.node.link != null && !area.node.isValue;
 
-PageNode _lastLeaf(PageNode node) {
+SemanticTreeNode _lastLeaf(SemanticTreeNode node) {
   var n = node;
   while (n.children.isNotEmpty) {
     n = n.children.last;
@@ -96,9 +96,9 @@ PageNode _lastLeaf(PageNode node) {
 /// A line is at least as tall as a touch target. A long press on a link opens
 /// it in the in-app browser.
 class const PageLine({
-  required final PageNode node,
+  required final SemanticTreeNode node,
   required final List<PageArea> areas,
-  required final void Function(PageNode node) onTap,
+  required final void Function(SemanticTreeNode node) onTap,
   super.key,
 }) extends StatelessWidget {
   @override
@@ -167,7 +167,7 @@ const _tintAlpha = 0.14;
 ///
 /// Lines touch each other so that the tint of an area is continuous; the
 /// space between lines is inside the innermost tint.
-Widget _frameLine(PageNode first, Widget content) => Container(
+Widget _frameLine(SemanticTreeNode first, Widget content) => Container(
   constraints: const BoxConstraints(minHeight: kMinInteractiveDimension),
   alignment: Alignment.centerLeft,
   padding: EdgeInsets.only(
@@ -179,7 +179,7 @@ Widget _frameLine(PageNode first, Widget content) => Container(
 
 /// The text of [node], styled the way the page would show it. The text of a
 /// link without text, such as a card, is its target.
-TextSpan _textSpan(PageNode node) {
+TextSpan _textSpan(SemanticTreeNode node) {
   var style = switch (node.headingLevel) {
     1 => textTitle.copyWith(fontSize: 26),
     2 => textTitle,
@@ -197,7 +197,8 @@ TextSpan _textSpan(PageNode node) {
 
 /// A value, or the link line of a container, shown as it would appear on the
 /// page.
-class const _Content({required final PageNode node}) extends StatelessWidget {
+class const _Content({required final SemanticTreeNode node})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (node.isImage) {
@@ -257,7 +258,7 @@ Color fieldColor(PostField field) => switch (field) {
 
 /// The tint of the selection. It is gray so that it differs from the colors
 /// of groups and fields.
-PageArea selectionArea(PageNode node, {bool linkOnly = false}) =>
+PageArea selectionArea(SemanticTreeNode node, {bool linkOnly = false}) =>
     (node: node, color: colorText, linkOnly: linkOnly);
 
 /// A sheet at the bottom of a screen that shows the selection and what can be
@@ -304,9 +305,9 @@ class const SelectionSheet({required final Widget child, super.key})
 /// narrowest to the widest that can be selected. [selected] is one of
 /// [levels].
 class const SelectionSlider({
-  required final PageNode selected,
-  required final List<PageNode> levels,
-  required final void Function(PageNode node) onSelect,
+  required final SemanticTreeNode selected,
+  required final List<SemanticTreeNode> levels,
+  required final void Function(SemanticTreeNode node) onSelect,
   super.key,
 }) extends StatelessWidget {
   @override
@@ -337,7 +338,10 @@ class const SelectionSlider({
 /// An element around a single element, without a link line of its own, looks
 /// the same as that element on the page, so it is left out. Otherwise moving
 /// the slider would change nothing that the user can see.
-List<PageNode> selectionLevels(PageNode from, {PageNode? top}) {
+List<SemanticTreeNode> selectionLevels(
+  SemanticTreeNode from, {
+  SemanticTreeNode? top,
+}) {
   final levels = [from];
   var n = from;
   while (!identical(n, top) && n.parent?.parent != null) {

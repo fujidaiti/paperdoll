@@ -1,5 +1,5 @@
 import 'package:paperdoll/features/page_watch/domain/body_markup.dart';
-import 'package:paperdoll/features/page_watch/domain/page_document.dart';
+import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
 
 /// The attributes of a post that the user can map to nodes of a page.
 enum PostField {
@@ -21,7 +21,7 @@ enum PostField {
   /// A title is a text value. An image or a time alone is not a body. A pub
   /// date is a time value, since the simplifier makes one from every text
   /// that is a full date.
-  bool accepts(PageNode node) => switch (this) {
+  bool accepts(SemanticTreeNode node) => switch (this) {
     title =>
       node.isValue &&
           !node.isImage &&
@@ -34,7 +34,7 @@ enum PostField {
   };
 
   /// The value this field takes when it is mapped to [node].
-  String? valueOf(PageNode node) => switch (this) {
+  String? valueOf(SemanticTreeNode node) => switch (this) {
     title || pubDate => node.val,
     body => bodyMarkup(node),
     link || thumbnail => node.link,
@@ -132,8 +132,9 @@ class PostMatcher {
   );
 
   /// A matcher whose posts are at the shape path of [node].
-  factory fromNode(PageNode node) => PostMatcher(
-    post: [for (PageNode? n = node; n != null; n = n.parent) n.shape].reversed
+  factory fromNode(SemanticTreeNode node) => PostMatcher(
+    post: [for (SemanticTreeNode? n = node; n != null; n = n.parent) n.shape]
+        .reversed
         .toList(),
   );
 
@@ -143,7 +144,7 @@ class PostMatcher {
 
   /// The nodes at [post] that have all labeled fields, including the
   /// excluded ones.
-  List<PageNode> _candidates(PageDocument document) {
+  List<SemanticTreeNode> _candidates(SemanticTree document) {
     var nodes = [if (document.root.shape == post.first) document.root];
     for (final shape in post.skip(1)) {
       nodes = [
@@ -156,19 +157,19 @@ class PostMatcher {
     ];
   }
 
-  List<PageNode> matchPosts(PageDocument document) => [
+  List<SemanticTreeNode> matchPosts(SemanticTree document) => [
     for (final n in _candidates(document))
       if (excludedBy(n) == null) n,
   ];
 
   /// The nodes that would be posts if their links were not excluded.
-  List<PageNode> matchExcluded(PageDocument document) => [
+  List<SemanticTreeNode> matchExcluded(SemanticTree document) => [
     for (final n in _candidates(document))
       if (excludedBy(n) != null) n,
   ];
 
   /// The first pattern in [exclude] that matches the link of [postNode].
-  String? excludedBy(PageNode postNode) {
+  String? excludedBy(SemanticTreeNode postNode) {
     final link = _linkOf(postNode);
     if (link == null) {
       return null;
@@ -182,10 +183,13 @@ class PostMatcher {
     return null;
   }
 
-  String? _linkOf(PageNode postNode) =>
+  String? _linkOf(SemanticTreeNode postNode) =>
       matchField(postNode, PostField.link)?.link;
 
-  static PageNode? _resolve(PageNode from, List<FieldStep> steps) {
+  static SemanticTreeNode? _resolve(
+    SemanticTreeNode from,
+    List<FieldStep> steps,
+  ) {
     var node = from;
     for (final step in steps) {
       final matches = node.children.where((c) => c.shape == step.shape);
@@ -198,7 +202,7 @@ class PostMatcher {
   }
 
   /// The node that provides [field] in [postNode], if any.
-  PageNode? matchField(PageNode postNode, PostField field) =>
+  SemanticTreeNode? matchField(SemanticTreeNode postNode, PostField field) =>
       switch (fields[field]) {
         final steps? => _resolve(postNode, steps),
         null => null,
@@ -208,10 +212,10 @@ class PostMatcher {
   /// when [valueNode] is null.
   PostMatcher withField(
     PostField field,
-    PageNode postNode,
-    PageNode? valueNode,
+    SemanticTreeNode postNode,
+    SemanticTreeNode? valueNode,
   ) {
-    List<FieldStep> steps(PageNode node) => [
+    List<FieldStep> steps(SemanticTreeNode node) => [
       for (var n = node; !identical(n, postNode); n = n.parent!)
         FieldStep(
           shape: n.shape,
@@ -248,18 +252,18 @@ class PostMatcher {
   /// title in it. Of those, the post node itself is labeled, or else the one
   /// with text. A title with a link of its own provides the link of the post,
   /// even when there are other links.
-  PostMatcher withEvidentFields(PageNode postNode) {
-    final nodes = <PageNode>[];
-    void collect(PageNode n) {
+  PostMatcher withEvidentFields(SemanticTreeNode postNode) {
+    final nodes = <SemanticTreeNode>[];
+    void collect(SemanticTreeNode n) {
       nodes.add(n);
       n.children.forEach(collect);
     }
 
     collect(postNode);
-    PageNode? only(Iterable<PageNode> matches) =>
+    SemanticTreeNode? only(Iterable<SemanticTreeNode> matches) =>
         matches.length == 1 ? matches.first : null;
     var matcher = this;
-    void label(PostField field, PageNode? node) {
+    void label(PostField field, SemanticTreeNode? node) {
       if (node != null && field.accepts(node)) {
         matcher = matcher.withField(field, postNode, node);
       }
@@ -281,7 +285,7 @@ class PostMatcher {
     }
     label(PostField.pubDate, only(nodes.where((n) => n.isTime)));
     final headings = nodes.where((n) => n.headingLevel != null).toList();
-    PageNode? title;
+    SemanticTreeNode? title;
     if (headings.isEmpty) {
       title = only(nodes.where(PostField.title.accepts));
     } else {
@@ -332,7 +336,7 @@ class PostMatcher {
   /// another link. Otherwise the host and path of [link] are added, which
   /// also exclude the posts whose links differ from [link] only in the query
   /// or the fragment.
-  PostMatcher withExcluded(PageDocument document, String link) {
+  PostMatcher withExcluded(SemanticTree document, String link) {
     final hostPath = _hostPath(link);
     final kept = [
       for (final p in matchPosts(document))
@@ -373,7 +377,7 @@ class PostMatcher {
 /// A post extracted from a page: its node, the index of the matcher that
 /// found it, and its field values.
 typedef ExtractedPost = ({
-  PageNode node,
+  SemanticTreeNode node,
   int matcher,
   Map<PostField, String> values,
 });
@@ -384,7 +388,7 @@ typedef ExtractedPost = ({
 /// into sibling cards with the same link, such as one with the image and one
 /// with the title.
 List<ExtractedPost> extractPosts(
-  PageDocument document,
+  SemanticTree document,
   List<PostMatcher> matchers,
 ) {
   final found = <ExtractedPost>[

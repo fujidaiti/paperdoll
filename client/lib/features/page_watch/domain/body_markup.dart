@@ -1,4 +1,4 @@
-import 'package:paperdoll/features/page_watch/domain/page_document.dart';
+import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
 
 /// Converts the values in the subtree of [node] into the marked-up text of a
 /// post body, one block per value, separated by a blank line:
@@ -7,9 +7,9 @@ import 'package:paperdoll/features/page_watch/domain/page_document.dart';
 /// - `![alt](url)` for an image
 /// - `[text](url)` for a text with a link
 /// - the plain text of other values
-String bodyMarkup(PageNode node) => _blocks(node).join('\n\n');
+String bodyMarkup(SemanticTreeNode node) => _blocks(node).join('\n\n');
 
-List<String> _blocks(PageNode node) {
+List<String> _blocks(SemanticTreeNode node) {
   if (!node.isValue) {
     return [for (final child in node.children) ..._blocks(child)];
   }

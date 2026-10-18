@@ -14,7 +14,7 @@ import (
 // step follows is named in its comment.
 
 // treeIndex is a SemanticTree with the parent of each node, which the
-// client's PageNode has.
+// client's SemanticTreeNode has.
 type treeIndex struct {
 	doc    *SemanticTree
 	nodes  []*SemanticTreeNode // in document order

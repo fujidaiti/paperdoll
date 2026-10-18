@@ -145,7 +145,7 @@ void main() {
       )
       ..stubGet(
         '/feeds/${blog.id}/matcher',
-        body: {'page': fixture.pages.exampleBlog},
+        body: {'semantic_tree': fixture.pages.exampleBlog},
       );
 
     await pumpAppWithAuth(t, server);
@@ -179,7 +179,7 @@ void main() {
       ..stubGet(
         '/feeds/${blog.id}/matcher',
         body: {
-          'page': fixture.pages.exampleBlog,
+          'semantic_tree': fixture.pages.exampleBlog,
           'matchers': [matcher],
         },
       )
@@ -210,7 +210,7 @@ void main() {
       ..stubGet(
         '/feeds/${blog.id}/matcher',
         body: {
-          'page': fixture.pages.exampleBlog,
+          'semantic_tree': fixture.pages.exampleBlog,
           'matchers': [fixture.pages.exampleBlogMatcher],
         },
       );
@@ -252,7 +252,7 @@ void main() {
       ..stubGet(
         '/feeds/${blog.id}/matcher',
         body: {
-          'page': fixture.pages.exampleBlogWithNewsletters,
+          'semantic_tree': fixture.pages.exampleBlogWithNewsletters,
           'matchers': [fixture.pages.exampleBlogMatcher],
         },
       );

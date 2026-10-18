@@ -13,11 +13,11 @@ part of openapi.api;
 class GetFeedMatchers200Response {
   /// Returns a new [GetFeedMatchers200Response] instance.
   GetFeedMatchers200Response({
-    required this.page,
+    required this.semanticTree,
     this.matchers = const [],
   });
 
-  PageDocument page;
+  SemanticTree semanticTree;
 
   /// Absent when no matchers are saved.
   List<PostMatcher> matchers;
@@ -26,21 +26,21 @@ class GetFeedMatchers200Response {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is GetFeedMatchers200Response &&
-          other.page == page &&
+          other.semanticTree == semanticTree &&
           _deepEquality.equals(other.matchers, matchers);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (page.hashCode) + (matchers.hashCode);
+      (semanticTree.hashCode) + (matchers.hashCode);
 
   @override
   String toString() =>
-      'GetFeedMatchers200Response[page=$page, matchers=$matchers]';
+      'GetFeedMatchers200Response[semanticTree=$semanticTree, matchers=$matchers]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'page'] = this.page;
+    json[r'semantic_tree'] = this.semanticTree;
     json[r'matchers'] = this.matchers;
     return json;
   }
@@ -56,15 +56,15 @@ class GetFeedMatchers200Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        assert(json.containsKey(r'page'),
-            'Required key "GetFeedMatchers200Response[page]" is missing from JSON.');
-        assert(json[r'page'] != null,
-            'Required key "GetFeedMatchers200Response[page]" has a null value in JSON.');
+        assert(json.containsKey(r'semantic_tree'),
+            'Required key "GetFeedMatchers200Response[semantic_tree]" is missing from JSON.');
+        assert(json[r'semantic_tree'] != null,
+            'Required key "GetFeedMatchers200Response[semantic_tree]" has a null value in JSON.');
         return true;
       }());
 
       return GetFeedMatchers200Response(
-        page: PageDocument.fromJson(json[r'page'])!,
+        semanticTree: SemanticTree.fromJson(json[r'semantic_tree'])!,
         matchers: PostMatcher.listFromJson(json[r'matchers']),
       );
     }
@@ -122,6 +122,6 @@ class GetFeedMatchers200Response {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'page',
+    'semantic_tree',
   };
 }

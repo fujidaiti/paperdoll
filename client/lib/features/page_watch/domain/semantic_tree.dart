@@ -1,6 +1,6 @@
 /// A web page simplified by the server into a semantic tree, which the user
 /// annotates to tell which parts of the page are posts.
-class PageDocument {
+class SemanticTree {
   new _({
     required this.url,
     required this.title,
@@ -8,12 +8,16 @@ class PageDocument {
     required this.nodes,
   });
 
-  /// Parses the JSON produced by the page simplifier (see PageDocument in
-  /// server/feature/feed/page.go for the format).
+  /// Parses the JSON built by the server (see SemanticTree in
+  /// server/feature/feed/semantic_tree.go for the format).
   factory fromJson(Map<String, Object?> json) {
-    final nodes = <PageNode>[];
-    PageNode parse(Map<String, Object?> json, PageNode? parent, int depth) {
-      final node = PageNode._(
+    final nodes = <SemanticTreeNode>[];
+    SemanticTreeNode parse(
+      Map<String, Object?> json,
+      SemanticTreeNode? parent,
+      int depth,
+    ) {
+      final node = SemanticTreeNode._(
         id: nodes.length,
         parent: parent,
         depth: depth,
@@ -31,7 +35,7 @@ class PageDocument {
     }
 
     final root = parse(json['root']! as Map<String, Object?>, null, 0);
-    return PageDocument._(
+    return SemanticTree._(
       url: json['url']! as String,
       title: json['title'] as String? ?? '',
       root: root,
@@ -41,14 +45,14 @@ class PageDocument {
 
   final String url;
   final String title;
-  final PageNode root;
+  final SemanticTreeNode root;
 
-  /// All nodes in document order, indexed by [PageNode.id].
-  final List<PageNode> nodes;
+  /// All nodes in document order, indexed by [SemanticTreeNode.id].
+  final List<SemanticTreeNode> nodes;
 }
 
-/// A node of a [PageDocument]: a value without children, or a container.
-class PageNode {
+/// A node of a [SemanticTree]: a value without children, or a container.
+class SemanticTreeNode {
   new _({
     required this.id,
     required this.parent,
@@ -60,7 +64,7 @@ class PageNode {
 
   /// The position of this node in document order.
   final int id;
-  final PageNode? parent;
+  final SemanticTreeNode? parent;
   final int depth;
 
   /// `h1`..`h6`, `img` or `time` for such a value, or null for a plain text
@@ -73,7 +77,7 @@ class PageNode {
 
   /// The link target, or the image URL of an image.
   final String? link;
-  final List<PageNode> children = [];
+  final List<SemanticTreeNode> children = [];
 
   bool get isValue => children.isEmpty;
   bool get isImage => kind == 'img';
@@ -108,8 +112,8 @@ class PageNode {
   }
 
   /// Whether [other] is this node or one of its descendants.
-  bool contains(PageNode other) {
-    for (PageNode? n = other; n != null; n = n.parent) {
+  bool contains(SemanticTreeNode other) {
+    for (SemanticTreeNode? n = other; n != null; n = n.parent) {
       if (identical(n, this)) {
         return true;
       }
@@ -118,5 +122,6 @@ class PageNode {
   }
 
   /// Whether one of the two nodes contains the other.
-  bool overlaps(PageNode other) => contains(other) || other.contains(this);
+  bool overlaps(SemanticTreeNode other) =>
+      contains(other) || other.contains(this);
 }

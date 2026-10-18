@@ -177,7 +177,7 @@ SignUpTicket:
         code. Valid for 10 minutes.
       type: string
 
-PageDocument:
+SemanticTree:
   description:
     A web page simplified into a semantic tree, on which post matchers run. See
     `tool/semantictree/MATCHER.md` for the format.
@@ -190,9 +190,9 @@ PageDocument:
     title:
       type: string
     root:
-      $ref: "#/PageNode"
+      $ref: "#/SemanticTreeNode"
 
-PageNode:
+SemanticTreeNode:
   description:
     A value, which has no children, or a container, which has children.
   type: object
@@ -212,7 +212,7 @@ PageNode:
     ch:
       type: array
       items:
-        $ref: "#/PageNode"
+        $ref: "#/SemanticTreeNode"
 
 PostMatcher:
   description:

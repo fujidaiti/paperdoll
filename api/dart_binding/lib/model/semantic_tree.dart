@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PageDocument {
-  /// Returns a new [PageDocument] instance.
-  PageDocument({
+class SemanticTree {
+  /// Returns a new [SemanticTree] instance.
+  SemanticTree({
     required this.url,
     required this.title,
     required this.root,
@@ -22,12 +22,12 @@ class PageDocument {
 
   String title;
 
-  PageNode root;
+  SemanticTreeNode root;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PageDocument &&
+      other is SemanticTree &&
           other.url == url &&
           other.title == title &&
           other.root == root;
@@ -38,7 +38,7 @@ class PageDocument {
       (url.hashCode) + (title.hashCode) + (root.hashCode);
 
   @override
-  String toString() => 'PageDocument[url=$url, title=$title, root=$root]';
+  String toString() => 'SemanticTree[url=$url, title=$title, root=$root]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -48,10 +48,10 @@ class PageDocument {
     return json;
   }
 
-  /// Returns a new [PageDocument] instance and imports its values from
+  /// Returns a new [SemanticTree] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PageDocument? fromJson(dynamic value) {
+  static SemanticTree? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -60,37 +60,37 @@ class PageDocument {
       // Note 2: this code is stripped in release mode!
       assert(() {
         assert(json.containsKey(r'url'),
-            'Required key "PageDocument[url]" is missing from JSON.');
+            'Required key "SemanticTree[url]" is missing from JSON.');
         assert(json[r'url'] != null,
-            'Required key "PageDocument[url]" has a null value in JSON.');
+            'Required key "SemanticTree[url]" has a null value in JSON.');
         assert(json.containsKey(r'title'),
-            'Required key "PageDocument[title]" is missing from JSON.');
+            'Required key "SemanticTree[title]" is missing from JSON.');
         assert(json[r'title'] != null,
-            'Required key "PageDocument[title]" has a null value in JSON.');
+            'Required key "SemanticTree[title]" has a null value in JSON.');
         assert(json.containsKey(r'root'),
-            'Required key "PageDocument[root]" is missing from JSON.');
+            'Required key "SemanticTree[root]" is missing from JSON.');
         assert(json[r'root'] != null,
-            'Required key "PageDocument[root]" has a null value in JSON.');
+            'Required key "SemanticTree[root]" has a null value in JSON.');
         return true;
       }());
 
-      return PageDocument(
+      return SemanticTree(
         url: mapValueOfType<String>(json, r'url')!,
         title: mapValueOfType<String>(json, r'title')!,
-        root: PageNode.fromJson(json[r'root'])!,
+        root: SemanticTreeNode.fromJson(json[r'root'])!,
       );
     }
     return null;
   }
 
-  static List<PageDocument> listFromJson(
+  static List<SemanticTree> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <PageDocument>[];
+    final result = <SemanticTree>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PageDocument.fromJson(row);
+        final value = SemanticTree.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -99,12 +99,12 @@ class PageDocument {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PageDocument> mapFromJson(dynamic json) {
-    final map = <String, PageDocument>{};
+  static Map<String, SemanticTree> mapFromJson(dynamic json) {
+    final map = <String, SemanticTree>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PageDocument.fromJson(entry.value);
+        final value = SemanticTree.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -113,17 +113,17 @@ class PageDocument {
     return map;
   }
 
-  // maps a json object with a list of PageDocument-objects as value to a dart map
-  static Map<String, List<PageDocument>> mapListFromJson(
+  // maps a json object with a list of SemanticTree-objects as value to a dart map
+  static Map<String, List<SemanticTree>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<PageDocument>>{};
+    final map = <String, List<SemanticTree>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PageDocument.listFromJson(
+        map[entry.key] = SemanticTree.listFromJson(
           entry.value,
           growable: growable,
         );

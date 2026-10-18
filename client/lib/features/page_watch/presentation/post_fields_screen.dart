@@ -8,16 +8,16 @@ import 'package:paperdoll/core/ui/widgets/app_divider.dart';
 import 'package:paperdoll/core/ui/widgets/body_text.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
-import 'package:paperdoll/features/page_watch/domain/page_document.dart';
 import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
+import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
 import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.dart';
 
 /// The arguments of [PostFieldsScreen]: the group of posts to label, and the
 /// post of the group whose content is shown.
 typedef PostFieldsArgs = ({
-  PageDocument document,
+  SemanticTree document,
   PostMatcher matcher,
-  PageNode post,
+  SemanticTreeNode post,
   int groupNumber,
 });
 
@@ -42,24 +42,25 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   late final _lines = layOutLines([_post]);
 
   /// The element shown on the selection sheet, while the sheet is shown.
-  PageNode? _selected;
+  SemanticTreeNode? _selected;
 
   /// The content the user tapped last. The selection can be narrowed back
   /// down to it after being widened.
-  PageNode? _tapped;
+  SemanticTreeNode? _tapped;
 
   /// Whether the user has labeled the selection since it was selected. The
   /// labels of such a selection can still be changed on the sheet, while a
   /// selection that was already labeled shows only its labels.
   var _isLabeling = false;
 
-  PageNode get _post => widget.args.post;
+  SemanticTreeNode get _post => widget.args.post;
 
-  PageNode? _fieldNode(PostField field) => _matcher.matchField(_post, field);
+  SemanticTreeNode? _fieldNode(PostField field) =>
+      _matcher.matchField(_post, field);
 
   /// Whether [field] can be labeled on [node]: a body cannot contain other
   /// fields, and other fields cannot be part of the body.
-  bool _canLabel(PostField field, PageNode node) {
+  bool _canLabel(PostField field, SemanticTreeNode node) {
     if (field == PostField.body) {
       for (final other in PostField.values) {
         if (other == PostField.body) {
@@ -86,7 +87,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 
   /// Labels [node] as [field], or removes the label if [node] has it.
-  void _toggleField(PostField field, PageNode node) {
+  void _toggleField(PostField field, SemanticTreeNode node) {
     setState(() {
       _matcher = _matcher.withField(
         field,
@@ -125,10 +126,10 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     }
   }
 
-  void _onTapLine(PageNode line) {
+  void _onTapLine(SemanticTreeNode line) {
     // The innermost labeled element that the line is part of. A container
     // labeled as the link is labeled only on its own line, as it is tinted.
-    PageNode? labeled;
+    SemanticTreeNode? labeled;
     for (final field in PostField.values) {
       final n = _fieldNode(field);
       if (n == null) {
@@ -209,7 +210,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     );
   }
 
-  Widget _buildSheet(PageNode selected) {
+  Widget _buildSheet(SemanticTreeNode selected) {
     final from = _tapped ?? selected;
     final labels = [
       for (final field in PostField.values)
