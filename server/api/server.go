@@ -796,7 +796,7 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 }
 
 type getFeedMatchersResBody struct {
-	Page *feed.PageDocument `json:"page"`
+	Page *feed.SemanticTree `json:"page"`
 	// Matchers is the JSON array of feed.PostMatcher as it was saved, and is
 	// omitted when none are saved.
 	Matchers json.RawMessage `json:"matchers,omitempty"`

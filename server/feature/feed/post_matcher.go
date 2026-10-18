@@ -21,7 +21,7 @@ const (
 
 // valueOf returns the value that f takes when it is mapped to n, or false
 // when n has none, such as an image without alt text mapped to a title.
-func (f PostField) valueOf(n *PageNode) (string, bool) {
+func (f PostField) valueOf(n *SemanticTreeNode) (string, bool) {
 	switch f {
 	case PostBody:
 		t := bodyText(n)
@@ -57,7 +57,7 @@ type PostMatcher struct {
 }
 
 // shape returns the shape of n, such as "card", "h2" or "txt+link".
-func shape(n *PageNode) string {
+func shape(n *SemanticTreeNode) string {
 	if !n.isValue() {
 		if n.Link != "" {
 			return "card"
@@ -75,13 +75,13 @@ func shape(n *PageNode) string {
 }
 
 // matchPosts returns the post nodes that m finds in doc.
-func (m *PostMatcher) matchPosts(doc *PageDocument) []*PageNode {
+func (m *PostMatcher) matchPosts(doc *SemanticTree) []*SemanticTreeNode {
 	if len(m.Post) == 0 || shape(doc.Root) != m.Post[0] {
 		return nil
 	}
-	nodes := []*PageNode{doc.Root}
+	nodes := []*SemanticTreeNode{doc.Root}
 	for _, s := range m.Post[1:] {
-		var next []*PageNode
+		var next []*SemanticTreeNode
 		for _, n := range nodes {
 			for _, c := range n.Children {
 				if shape(c) == s {
@@ -91,7 +91,7 @@ func (m *PostMatcher) matchPosts(doc *PageDocument) []*PageNode {
 		}
 		nodes = next
 	}
-	var posts []*PageNode
+	var posts []*SemanticTreeNode
 	for _, n := range nodes {
 		if m.hasFields(n) && !m.isExcluded(n) {
 			posts = append(posts, n)
@@ -100,7 +100,7 @@ func (m *PostMatcher) matchPosts(doc *PageDocument) []*PageNode {
 	return posts
 }
 
-func (m *PostMatcher) hasFields(post *PageNode) bool {
+func (m *PostMatcher) hasFields(post *SemanticTreeNode) bool {
 	for _, steps := range m.Fields {
 		if resolve(post, steps) == nil {
 			return false
@@ -110,7 +110,7 @@ func (m *PostMatcher) hasFields(post *PageNode) bool {
 }
 
 // isExcluded reports whether the link of post matches a pattern in Exclude.
-func (m *PostMatcher) isExcluded(post *PageNode) bool {
+func (m *PostMatcher) isExcluded(post *SemanticTreeNode) bool {
 	steps, ok := m.Fields[PostLink]
 	if !ok {
 		return false
@@ -133,9 +133,9 @@ func (m *PostMatcher) isExcluded(post *PageNode) bool {
 }
 
 // resolve returns the node at steps from n, or nil when there is none.
-func resolve(n *PageNode, steps []FieldStep) *PageNode {
+func resolve(n *SemanticTreeNode, steps []FieldStep) *SemanticTreeNode {
 	for _, step := range steps {
-		var match *PageNode
+		var match *SemanticTreeNode
 		i := 0
 		for _, c := range n.Children {
 			if shape(c) != step.Shape {
@@ -187,10 +187,10 @@ type ExtractedPost map[PostField]string
 // fields that it does not have from the later ones, since some pages split a
 // post into sibling cards with the same link, such as one with the image and
 // one with the title. Posts without a link are dropped.
-func ExtractPosts(doc *PageDocument, matchers []PostMatcher) []ExtractedPost {
-	order := map[*PageNode]int{}
-	var number func(n *PageNode)
-	number = func(n *PageNode) {
+func ExtractPosts(doc *SemanticTree, matchers []PostMatcher) []ExtractedPost {
+	order := map[*SemanticTreeNode]int{}
+	var number func(n *SemanticTreeNode)
+	number = func(n *SemanticTreeNode) {
 		order[n] = len(order)
 		for _, c := range n.Children {
 			number(c)
@@ -199,7 +199,7 @@ func ExtractPosts(doc *PageDocument, matchers []PostMatcher) []ExtractedPost {
 	number(doc.Root)
 
 	type found struct {
-		node   *PageNode
+		node   *SemanticTreeNode
 		values ExtractedPost
 	}
 	var posts []found
@@ -244,10 +244,10 @@ func ExtractPosts(doc *PageDocument, matchers []PostMatcher) []ExtractedPost {
 // spaces. Images and times are left out, and links keep only their text. A
 // body is a short summary shown below the title of a post, so its structure
 // does not matter.
-func bodyText(n *PageNode) string {
+func bodyText(n *SemanticTreeNode) string {
 	var texts []string
-	var visit func(n *PageNode)
-	visit = func(n *PageNode) {
+	var visit func(n *SemanticTreeNode)
+	visit = func(n *SemanticTreeNode) {
 		if n.Kind != "img" && n.Kind != "time" {
 			texts = append(texts, n.Val)
 		}

@@ -13,24 +13,24 @@ import (
 	"golang.org/x/net/html"
 )
 
-type PageNode struct {
-	Kind     string      `json:"kind,omitempty"`
-	Val      string      `json:"val,omitempty"`
-	Link     string      `json:"link,omitempty"`
-	Children []*PageNode `json:"ch,omitempty"`
+type SemanticTreeNode struct {
+	Kind     string              `json:"kind,omitempty"`
+	Val      string              `json:"val,omitempty"`
+	Link     string              `json:"link,omitempty"`
+	Children []*SemanticTreeNode `json:"ch,omitempty"`
 }
 
 // isValue reports whether n is a value, since a container always has children.
-func (n *PageNode) isValue() bool { return len(n.Children) == 0 }
+func (n *SemanticTreeNode) isValue() bool { return len(n.Children) == 0 }
 
-// PageDocument is a web page simplified into a semantic tree, which post
+// SemanticTree is a web page simplified into a semantic tree, which post
 // matchers run on (see tool/semantictree/MATCHER.md).
 //
 // A tree is serialized as JSON:
 //
-//	{"url": "...", "title": "...", "root": PageNode}
+//	{"url": "...", "title": "...", "root": SemanticTreeNode}
 //
-// A PageNode is either a value or a container:
+// A SemanticTreeNode is either a value or a container:
 //
 //	value      {"kind"?, "val"?, "link"?}
 //	container  {"link"?, "ch"}
@@ -47,15 +47,15 @@ func (n *PageNode) isValue() bool { return len(n.Children) == 0 }
 // line. A value keeps a link when the link covers the whole text. A link that
 // covers only part of a text splits it into values: the text before the link,
 // the link, and the text after it.
-type PageDocument struct {
-	URL   string    `json:"url"`
-	Title string    `json:"title"`
-	Root  *PageNode `json:"root"`
+type SemanticTree struct {
+	URL   string            `json:"url"`
+	Title string            `json:"title"`
+	Root  *SemanticTreeNode `json:"root"`
 }
 
-// SimplifyPage converts the HTML page raw into a semantic tree. fallbackURL is
-// the URL of the page when it has no canonical link.
-func SimplifyPage(raw []byte, fallbackURL string) (*PageDocument, error) {
+// BuildSemanticTree converts the HTML page raw into a semantic tree.
+// fallbackURL is the URL of the page when it has no canonical link.
+func BuildSemanticTree(raw []byte, fallbackURL string) (*SemanticTree, error) {
 	root, err := html.Parse(bytes.NewReader(raw))
 	if err != nil {
 		return nil, err
@@ -125,7 +125,7 @@ func SimplifyPage(raw []byte, fallbackURL string) (*PageDocument, error) {
 	// lazy-loaded image, a default thumbnail or an icon, shows nothing specific
 	// to a post. An image that appears twice can still be a post thumbnail,
 	// such as a picture for light and dark modes or a post listed twice.
-	s := &simplifier{base: base, repeatedImages: map[string]bool{}}
+	s := &treeBuilder{base: base, repeatedImages: map[string]bool{}}
 	count := map[string]int{}
 	for n := range body.Descendants() {
 		if n.Type == html.ElementNode && n.Data == "img" {
@@ -141,13 +141,13 @@ func SimplifyPage(raw []byte, fallbackURL string) (*PageDocument, error) {
 	}
 	tree := s.convert(body)
 	if tree == nil || tree.isValue() {
-		tree = &PageNode{Children: slices.DeleteFunc([]*PageNode{tree}, func(n *PageNode) bool { return n == nil })}
+		tree = &SemanticTreeNode{Children: slices.DeleteFunc([]*SemanticTreeNode{tree}, func(n *SemanticTreeNode) bool { return n == nil })}
 	}
 	unwrapTextless(tree)
-	return &PageDocument{URL: base.String(), Title: title, Root: tree}, nil
+	return &SemanticTree{URL: base.String(), Title: title, Root: tree}, nil
 }
 
-type simplifier struct {
+type treeBuilder struct {
 	base           *url.URL
 	repeatedImages map[string]bool
 }
@@ -228,7 +228,7 @@ func isDropped(n *html.Node) bool {
 
 // convert returns the node for the element n, or nil when n has no visible
 // content.
-func (s *simplifier) convert(n *html.Node) *PageNode {
+func (s *treeBuilder) convert(n *html.Node) *SemanticTreeNode {
 	if n.Type != html.ElementNode || isDropped(n) {
 		return nil
 	}
@@ -239,16 +239,16 @@ func (s *simplifier) convert(n *html.Node) *PageNode {
 			return nil
 		}
 		alt := normalizeSpace(attr(n, "alt"))
-		return &PageNode{Kind: "img", Val: alt, Link: src}
+		return &SemanticTreeNode{Kind: "img", Val: alt, Link: src}
 	case "time":
 		// The datetime attribute is preferred over the displayed text, but some
 		// pages put a displayed text in it, such as "SEP 23, 2026". A time
 		// element without a full date is handled as any other element.
 		if val, ok := parseDate(attr(n, "datetime")); ok {
-			return &PageNode{Kind: "time", Val: val}
+			return &SemanticTreeNode{Kind: "time", Val: val}
 		}
 		if val, ok := parseDate(textContent(n)); ok {
-			return &PageNode{Kind: "time", Val: val}
+			return &SemanticTreeNode{Kind: "time", Val: val}
 		}
 	}
 	if isTextOnly(n) && !hasDateText(n) && !s.hasInnerLink(n) {
@@ -257,7 +257,7 @@ func (s *simplifier) convert(n *html.Node) *PageNode {
 
 	// Mixed content: element children are converted recursively, and runs of
 	// text and inline elements between them become values.
-	var children []*PageNode
+	var children []*SemanticTreeNode
 	var run []*html.Node
 	flush := func() {
 		var elems []*html.Node
@@ -279,7 +279,7 @@ func (s *simplifier) convert(n *html.Node) *PageNode {
 			}
 		} else {
 			if t := normalizeSpace(joinText(run)); t != "" {
-				children = append(children, &PageNode{Val: t})
+				children = append(children, &SemanticTreeNode{Val: t})
 			}
 		}
 		run = nil
@@ -289,7 +289,7 @@ func (s *simplifier) convert(n *html.Node) *PageNode {
 		case c.Type == html.TextNode && isDate(c.Data):
 			flush()
 			val, _ := parseDate(c.Data)
-			children = append(children, &PageNode{Kind: "time", Val: val})
+			children = append(children, &SemanticTreeNode{Kind: "time", Val: val})
 		case c.Type == html.TextNode:
 			run = append(run, c)
 		case c.Type == html.ElementNode && (c.Data == "br" || c.Data == "wbr"):
@@ -327,19 +327,19 @@ func (s *simplifier) convert(n *html.Node) *PageNode {
 		children[0].Kind = kind
 		return children[0]
 	}
-	return &PageNode{Link: link, Children: children}
+	return &SemanticTreeNode{Link: link, Children: children}
 }
 
 // textValue returns the value for the text-only element n, or nil when it
 // has no text. Elements that are the only content of their parent are merged
 // into one value, which takes a link or a heading level from any of them, so
 // that "<h2><a>Title</a></h2>" becomes one heading with a link.
-func (s *simplifier) textValue(n *html.Node) *PageNode {
+func (s *treeBuilder) textValue(n *html.Node) *SemanticTreeNode {
 	text := normalizeSpace(textContent(n))
 	if text == "" {
 		return nil
 	}
-	v := &PageNode{Val: text}
+	v := &SemanticTreeNode{Val: text}
 	for e := n; e != nil; e = onlyChild(e) {
 		if e.Data == "a" && v.Link == "" {
 			v.Link = s.resolve(attr(e, "href"))
@@ -395,7 +395,7 @@ func hasDateText(n *html.Node) bool {
 // hasInnerLink reports whether a link under n covers only part of its text,
 // such as a link in a sentence, or a title link followed by ", date". The
 // link then becomes a value of its own, so that it can be a field of a post.
-func (s *simplifier) hasInnerLink(n *html.Node) bool {
+func (s *treeBuilder) hasInnerLink(n *html.Node) bool {
 	e := n
 	for {
 		if e.Data == "a" && s.resolve(attr(e, "href")) != "" {
@@ -411,7 +411,7 @@ func (s *simplifier) hasInnerLink(n *html.Node) bool {
 
 // hasLink reports whether n or an element under it, apart from dropped
 // elements, is a link.
-func (s *simplifier) hasLink(n *html.Node) bool {
+func (s *treeBuilder) hasLink(n *html.Node) bool {
 	if n.Data == "a" && s.resolve(attr(n, "href")) != "" {
 		return true
 	}
@@ -444,8 +444,8 @@ func onlyChild(n *html.Node) *html.Node {
 // unwrapTextless replaces each container under n that has no text and no
 // link with its children. A post needs a title, and a field is a text, an
 // image or a link, so such a container can be neither and only adds depth.
-func unwrapTextless(n *PageNode) {
-	var children []*PageNode
+func unwrapTextless(n *SemanticTreeNode) {
+	var children []*SemanticTreeNode
 	for _, c := range n.Children {
 		unwrapTextless(c)
 		if !c.isValue() && c.Link == "" && !hasText(c) {
@@ -457,7 +457,7 @@ func unwrapTextless(n *PageNode) {
 	n.Children = children
 }
 
-func hasText(n *PageNode) bool {
+func hasText(n *SemanticTreeNode) bool {
 	if n.isValue() {
 		return n.Kind != "img" && n.Val != ""
 	}
@@ -480,7 +480,7 @@ func isTextOnly(n *html.Node) bool {
 
 // imageSource picks a usable absolute URL for an img, preferring real URLs
 // over inline data placeholders used by lazy loading.
-func (s *simplifier) imageSource(n *html.Node) string {
+func (s *treeBuilder) imageSource(n *html.Node) string {
 	candidates := []string{
 		attr(n, "src"),
 		attr(n, "data-src"),
@@ -507,7 +507,7 @@ func firstSrcset(v string) string {
 
 // resolve returns the absolute URL of ref, or "" unless it is a web page or
 // file, since a post links to one, unlike links such as mailto: or feed:.
-func (s *simplifier) resolve(ref string) string {
+func (s *treeBuilder) resolve(ref string) string {
 	ref = strings.TrimSpace(ref)
 	if ref == "" {
 		return ""

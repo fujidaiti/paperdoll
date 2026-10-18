@@ -45,8 +45,8 @@ func checkGolden(t *testing.T, path string, got any) {
 	}
 }
 
-// TestSemanticTreeGolden checks that simplifying each test page in
-// testdata/source gives its semantic tree in testdata/tree. It runs before
+// TestSemanticTreeGolden checks that the semantic tree built from each test
+// page in testdata/source is the tree in testdata/tree. It runs before
 // TestPerfectMatchersGolden, which reads the trees.
 func TestSemanticTreeGolden(t *testing.T) {
 	files, err := filepath.Glob("testdata/source/*.html")
@@ -60,7 +60,7 @@ func TestSemanticTreeGolden(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			doc, err := SimplifyPage(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
+			doc, err := BuildSemanticTree(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -83,7 +83,7 @@ func TestPerfectMatchersGolden(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			var posts []ExtractedPost
 			readJSON(t, f, &posts)
-			var doc PageDocument
+			var doc SemanticTree
 			readJSON(t, filepath.Join("testdata/tree", name+".json"), &doc)
 			matchers, err := perfectMatchers(&doc, posts)
 			if err != nil {

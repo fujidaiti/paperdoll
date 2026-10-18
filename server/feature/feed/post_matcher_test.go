@@ -14,7 +14,7 @@ var postFields = []PostField{PostTitle, PostBody, PostLink, PostThumbnail, PostP
 // that a correct matcher finds on it (see testdata/README.md).
 type fixturePage struct {
 	name  string
-	doc   *PageDocument
+	doc   *SemanticTree
 	posts []ExtractedPost
 }
 
@@ -42,7 +42,7 @@ func loadFixturePages(t *testing.T) []fixturePage {
 		if err != nil {
 			t.Fatal(err)
 		}
-		doc, err := SimplifyPage(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
+		doc, err := BuildSemanticTree(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
 		if err != nil {
 			t.Fatalf("%s: %v", name, err)
 		}
@@ -51,10 +51,10 @@ func loadFixturePages(t *testing.T) []fixturePage {
 	return pages
 }
 
-// TestSimplifyPageKeepsFixtureValues checks that simplifying each test page
-// keeps every value of the posts in its fixture, so that a matcher can find
-// them in the tree.
-func TestSimplifyPageKeepsFixtureValues(t *testing.T) {
+// TestBuildSemanticTreeKeepsFixtureValues checks that the semantic tree of
+// each test page keeps every value of the posts in its fixture, so that a
+// matcher can find them in the tree.
+func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 	for _, page := range loadFixturePages(t) {
 		t.Run(page.name, func(t *testing.T) {
 			// The values that a matcher can take from the nodes, by field. A
@@ -64,13 +64,13 @@ func TestSimplifyPageKeepsFixtureValues(t *testing.T) {
 			for _, f := range postFields {
 				values[f] = map[string]bool{}
 			}
-			add := func(f PostField, n *PageNode) {
+			add := func(f PostField, n *SemanticTreeNode) {
 				if v, ok := f.valueOf(n); ok {
 					values[f][v] = true
 				}
 			}
-			var visit func(n *PageNode)
-			visit = func(n *PageNode) {
+			var visit func(n *SemanticTreeNode)
+			visit = func(n *SemanticTreeNode) {
 				switch n.Kind {
 				case "img":
 					add(PostThumbnail, n)

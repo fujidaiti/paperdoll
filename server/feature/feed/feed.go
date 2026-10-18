@@ -259,10 +259,10 @@ var (
 	ErrInvalidMatchers = errors.New("invalid matchers")
 )
 
-// Matchers returns the page of the unstructured feed id, simplified for
-// editing its post matchers, and the matchers saved for it, which are empty
-// when none are saved.
-func (s *Service) Matchers(ctx context.Context, id int) (*PageDocument, string, error) {
+// Matchers returns the semantic tree of the page of the unstructured feed id,
+// on which its post matchers are edited, and the matchers saved for it, which
+// are empty when none are saved.
+func (s *Service) Matchers(ctx context.Context, id int) (*SemanticTree, string, error) {
 	var fu string
 	var matchers sql.NullString
 	var unstructured bool
@@ -285,7 +285,7 @@ func (s *Service) Matchers(ctx context.Context, id int) (*PageDocument, string, 
 	if err != nil {
 		return nil, "", err
 	}
-	doc, err := SimplifyPage(raw, fu)
+	doc, err := BuildSemanticTree(raw, fu)
 	if err != nil {
 		return nil, "", err
 	}

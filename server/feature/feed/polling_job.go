@@ -181,7 +181,7 @@ func CollectJobs(
 	}
 	// TODO: Create an index for next_poll_at column
 	// TODO: Poll unstructured feeds (url = site_url) that have matchers: fetch
-	//       the page, run SimplifyPage and ExtractPosts, and save the posts as
+	//       the page, run BuildSemanticTree and ExtractPosts, and save the posts as
 	//       entries. They are skipped for now, as their pages are not feeds.
 	rows, err := db.QueryContext(ctx, `
 		SELECT id, url, title

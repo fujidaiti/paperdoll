@@ -13,18 +13,18 @@ import (
 // and excludes the posts that a group gets wrong. The client's code that each
 // step follows is named in its comment.
 
-// pageTree is a PageDocument with the parent of each node, which the client's
-// PageNode has.
-type pageTree struct {
-	doc    *PageDocument
-	nodes  []*PageNode // in document order
-	parent map[*PageNode]*PageNode
+// treeIndex is a SemanticTree with the parent of each node, which the
+// client's PageNode has.
+type treeIndex struct {
+	doc    *SemanticTree
+	nodes  []*SemanticTreeNode // in document order
+	parent map[*SemanticTreeNode]*SemanticTreeNode
 }
 
-func newPageTree(doc *PageDocument) *pageTree {
-	t := &pageTree{doc: doc, parent: map[*PageNode]*PageNode{}}
-	var visit func(n *PageNode)
-	visit = func(n *PageNode) {
+func newTreeIndex(doc *SemanticTree) *treeIndex {
+	t := &treeIndex{doc: doc, parent: map[*SemanticTreeNode]*SemanticTreeNode{}}
+	var visit func(n *SemanticTreeNode)
+	visit = func(n *SemanticTreeNode) {
 		t.nodes = append(t.nodes, n)
 		for _, c := range n.Children {
 			t.parent[c] = n
@@ -36,7 +36,7 @@ func newPageTree(doc *PageDocument) *pageTree {
 }
 
 // contains reports whether n is a or one of its descendants.
-func (t *pageTree) contains(a, n *PageNode) bool {
+func (t *treeIndex) contains(a, n *SemanticTreeNode) bool {
 	for ; n != nil; n = t.parent[n] {
 		if n == a {
 			return true
@@ -50,8 +50,8 @@ func (t *pageTree) contains(a, n *PageNode) bool {
 // nil. A node around a single node without a link of its own is left out. It
 // follows selectionLevels of the client, by which the user widens a
 // selection.
-func (t *pageTree) selectionLevels(from, top *PageNode) []*PageNode {
-	levels := []*PageNode{from}
+func (t *treeIndex) selectionLevels(from, top *SemanticTreeNode) []*SemanticTreeNode {
+	levels := []*SemanticTreeNode{from}
 	for n := from; n != top && t.parent[t.parent[n]] != nil; {
 		n = t.parent[n]
 		if len(n.Children) > 1 || n.Link != "" {
@@ -63,7 +63,7 @@ func (t *pageTree) selectionLevels(from, top *PageNode) []*PageNode {
 
 // accepts reports whether n can provide a sensible value for f, as
 // PostField.accepts of the client tells.
-func accepts(f PostField, n *PageNode) bool {
+func accepts(f PostField, n *SemanticTreeNode) bool {
 	img, time := n.Kind == "img", n.Kind == "time"
 	switch f {
 	case PostTitle:
@@ -86,7 +86,7 @@ func accepts(f PostField, n *PageNode) bool {
 // itself, or for a body, a line of its text. A line that is not part of the
 // value, such as the date above a body, would reach a wider node with the
 // same text.
-func (t *pageTree) fieldNode(post *PageNode, f PostField, want string) *PageNode {
+func (t *treeIndex) fieldNode(post *SemanticTreeNode, f PostField, want string) *SemanticTreeNode {
 	for _, line := range t.nodes {
 		if !t.contains(post, line) {
 			continue
@@ -109,7 +109,7 @@ func (t *pageTree) fieldNode(post *PageNode, f PostField, want string) *PageNode
 
 // steps returns the path from post to n, as PostMatcher.withField of the
 // client makes it.
-func (t *pageTree) steps(post, n *PageNode) []FieldStep {
+func (t *treeIndex) steps(post, n *SemanticTreeNode) []FieldStep {
 	steps := []FieldStep{}
 	for ; n != post; n = t.parent[n] {
 		nth := 0
@@ -127,7 +127,7 @@ func (t *pageTree) steps(post, n *PageNode) []FieldStep {
 }
 
 // values returns the field values that m extracts from post.
-func values(m *PostMatcher, post *PageNode) ExtractedPost {
+func values(m *PostMatcher, post *SemanticTreeNode) ExtractedPost {
 	values := ExtractedPost{}
 	for f, steps := range m.Fields {
 		if n := resolve(post, steps); n != nil {
@@ -173,7 +173,7 @@ func mergePattern(pattern, hostPath string) string {
 // another link. Otherwise the host and path of link are added, which also
 // exclude the posts whose links differ from link only in the query or the
 // fragment. It follows PostMatcher.withExcluded of the client.
-func withExcluded(m PostMatcher, doc *PageDocument, link string) PostMatcher {
+func withExcluded(m PostMatcher, doc *SemanticTree, link string) PostMatcher {
 	hp := hostPath(link)
 	var kept []string
 	for _, p := range m.matchPosts(doc) {
@@ -224,8 +224,8 @@ func equalPosts(a, b ExtractedPost) bool {
 //
 // It fails when a step cannot be done, or when the steps come back to the
 // same matchers.
-func perfectMatchers(doc *PageDocument, posts []ExtractedPost) ([]PostMatcher, error) {
-	t := newPageTree(doc)
+func perfectMatchers(doc *SemanticTree, posts []ExtractedPost) ([]PostMatcher, error) {
+	t := newTreeIndex(doc)
 	want := map[string]ExtractedPost{}
 	for _, p := range posts {
 		want[p[PostLink]] = p
@@ -296,7 +296,7 @@ func perfectMatchers(doc *PageDocument, posts []ExtractedPost) ([]PostMatcher, e
 		}
 		seen[string(state)] = true
 
-		var start *PageNode
+		var start *SemanticTreeNode
 		for _, n := range t.nodes {
 			if accepts(PostLink, n) && n.Link == link {
 				start = n
@@ -306,7 +306,7 @@ func perfectMatchers(doc *PageDocument, posts []ExtractedPost) ([]PostMatcher, e
 		if start == nil {
 			return nil, fmt.Errorf("post %s: no node has the link", link)
 		}
-		var post *PageNode
+		var post *SemanticTreeNode
 		for _, n := range t.selectionLevels(start, nil) {
 			holds := true
 			for f, v := range target {
