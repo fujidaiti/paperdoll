@@ -8,8 +8,8 @@ class PageDocument {
     required this.nodes,
   });
 
-  /// Parses the JSON produced by the page simplifier (see
-  /// tool/semantictree/main.go for the format).
+  /// Parses the JSON produced by the page simplifier (see PageDocument in
+  /// server/feature/feed/page.go for the format).
   factory fromJson(Map<String, Object?> json) {
     final nodes = <PageNode>[];
     PageNode parse(Map<String, Object?> json, PageNode? parent, int depth) {

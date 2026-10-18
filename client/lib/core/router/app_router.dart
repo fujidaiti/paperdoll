@@ -13,7 +13,6 @@ import 'package:paperdoll/features/feed/presentation/feeds_screen.dart';
 import 'package:paperdoll/features/feed_entry/presentation/feed_entry_reader_screen.dart';
 import 'package:paperdoll/features/newspaper/presentation/today_screen.dart';
 import 'package:paperdoll/features/page_watch/presentation/page_annotation_screen.dart';
-import 'package:paperdoll/features/page_watch/presentation/page_samples_screen.dart';
 import 'package:paperdoll/features/page_watch/presentation/post_fields_screen.dart';
 import 'package:paperdoll/features/reading_list/presentation/archived_reading_list_screen.dart';
 import 'package:paperdoll/features/reading_list/presentation/reading_list_screen.dart';
@@ -153,33 +152,6 @@ GoRouter goRouter(Ref ref) {
                     path: routeFeedSearchPath,
                     name: routeFeedSearchName,
                     builder: (context, state) => const FeedSearchScreen(),
-                    routes: [
-                      GoRoute(
-                        path: routePageSamplesPath,
-                        name: routePageSamplesName,
-                        builder: (context, state) => const PageSamplesScreen(),
-                        routes: [
-                          GoRoute(
-                            path: routePageAnnotationPath,
-                            name: routePageAnnotationName,
-                            parentNavigatorKey: _rootNavigatorKey,
-                            builder: (context, state) => PageAnnotationScreen(
-                              file: state.pathParameters['file']!,
-                            ),
-                            routes: [
-                              GoRoute(
-                                path: routePostFieldsPath,
-                                name: routePostFieldsName,
-                                parentNavigatorKey: _rootNavigatorKey,
-                                builder: (context, state) => PostFieldsScreen(
-                                  args: state.extra! as PostFieldsArgs,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
                   ),
                   GoRoute(
                     path: routeFeedDetailPath,
@@ -194,6 +166,23 @@ GoRouter goRouter(Ref ref) {
                         builder: (context, state) => FeedEntryReaderScreen(
                           id: _idParam(state, 'feedEntryId'),
                         ),
+                      ),
+                      GoRoute(
+                        path: routePageAnnotationPath,
+                        name: routePageAnnotationName,
+                        parentNavigatorKey: _rootNavigatorKey,
+                        builder: (context, state) =>
+                            PageAnnotationScreen(feedId: _idParam(state, 'id')),
+                        routes: [
+                          GoRoute(
+                            path: routePostFieldsPath,
+                            name: routePostFieldsName,
+                            parentNavigatorKey: _rootNavigatorKey,
+                            builder: (context, state) => PostFieldsScreen(
+                              args: state.extra! as PostFieldsArgs,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

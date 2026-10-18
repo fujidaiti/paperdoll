@@ -44,7 +44,7 @@ class _FeedSearchScreenState extends ConsumerState<FeedSearchScreen> {
     final router = GoRouter.of(context);
     setState(() => _subscribingIndex = index);
     try {
-      await ref
+      final feed = await ref
           .read(feedSearchControllerProvider.notifier)
           .subscribe(candidate.url);
       messenger.showSnackBar(
@@ -54,6 +54,16 @@ class _FeedSearchScreenState extends ConsumerState<FeedSearchScreen> {
         ),
       );
       router.pop();
+      // The posts of a page without an RSS feed cannot be extracted until
+      // the user builds its post matchers.
+      if (feed.url == feed.siteUrl && !feed.hasMatchers) {
+        unawaited(
+          router.pushNamed(
+            routePageAnnotationName,
+            pathParameters: {'id': '${feed.id}'},
+          ),
+        );
+      }
     } on DomainError catch (error) {
       messenger.showSnackBar(SnackBar(content: Text(describeError(error))));
     } finally {
@@ -68,16 +78,7 @@ class _FeedSearchScreenState extends ConsumerState<FeedSearchScreen> {
     final results = ref.watch(feedSearchControllerProvider);
     return Scaffold(
       key: AppDebugKey.feedSearchScreen,
-      appBar: AppBar(
-        title: const Text('Add feed'),
-        actions: [
-          IconButton(
-            tooltip: 'Watch a web page',
-            icon: const Icon(Icons.web),
-            onPressed: () => context.pushNamed(routePageSamplesName),
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('Add feed')),
       body: Column(
         children: [
           Padding(
@@ -90,7 +91,7 @@ class _FeedSearchScreenState extends ConsumerState<FeedSearchScreen> {
                     controller: _queryController,
                     keyboardType: TextInputType.url,
                     decoration: const InputDecoration(
-                      labelText: 'Feed URL',
+                      labelText: 'Feed or page URL',
                       border: OutlineInputBorder(),
                     ),
                     onSubmitted: (_) => unawaited(_search()),
@@ -119,7 +120,9 @@ class _FeedSearchScreenState extends ConsumerState<FeedSearchScreen> {
 
   Widget _buildResults(List<FeedCandidate> candidates) {
     if (candidates.isEmpty) {
-      return const EmptyPlaceholder(message: 'Search for a feed by its URL.');
+      return const EmptyPlaceholder(
+        message: 'Search for a feed by its URL or the URL of a web page.',
+      );
     }
     return ListView.separated(
       itemCount: candidates.length,

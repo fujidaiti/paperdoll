@@ -1,11 +1,10 @@
 // Command semantictree converts sample web pages into semantic trees (JSON),
 // which post matchers run on (see MATCHER.md), with the page simplifier of
-// the server (feed.SimplifyPage; feed.PageDocument describes the format). The client's
-// page annotation screen loads the trees as assets.
+// the server (feed.SimplifyPage; feed.PageDocument describes the format).
 //
 // Usage (from the repository root):
 //
-//	go run ./tool/semantictree [-in server/feature/feed/testdata/source] [-out client/assets/page_watch]
+//	go run ./tool/semantictree [-in server/feature/feed/testdata/source] -out DIR
 //
 // The trees of the sample pages are also in testdata, written by:
 //
@@ -32,8 +31,11 @@ import (
 
 func main() {
 	in := flag.String("in", "server/feature/feed/testdata/source", "directory of sample HTML files")
-	out := flag.String("out", "client/assets/page_watch", "output directory")
+	out := flag.String("out", "", "output directory (required)")
 	flag.Parse()
+	if *out == "" {
+		log.Fatal("-out is required")
+	}
 
 	files, err := filepath.Glob(filepath.Join(*in, "*.html"))
 	if err != nil {

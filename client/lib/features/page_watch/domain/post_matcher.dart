@@ -46,6 +46,9 @@ enum PostField {
 class FieldStep {
   const new({required this.shape, required this.nth});
 
+  factory fromJson(Map<String, Object?> json) =>
+      FieldStep(shape: json['shape']! as String, nth: json['nth']! as int);
+
   final String shape;
   final int nth;
 
@@ -113,6 +116,20 @@ class PostMatcher {
     this.fields = const {},
     this.exclude = const [],
   });
+
+  /// Parses the JSON produced by [toJson].
+  factory fromJson(Map<String, Object?> json) => PostMatcher(
+    post: (json['post']! as List<Object?>).cast<String>(),
+    fields: {
+      for (final MapEntry(:key, :value)
+          in (json['fields']! as Map<String, Object?>).entries)
+        PostField.values.byName(key): [
+          for (final s in value! as List<Object?>)
+            FieldStep.fromJson(s! as Map<String, Object?>),
+        ],
+    },
+    exclude: (json['exclude'] as List<Object?>? ?? const []).cast<String>(),
+  );
 
   /// A matcher whose posts are at the shape path of [node].
   factory fromNode(PageNode node) => PostMatcher(

@@ -10,6 +10,7 @@ class _Fixture {
   final feedCandidates = _feedCandidates;
   final stories = _stories;
   final readingList = _readingList;
+  final pages = _pages;
 }
 
 final _feeds = _Feeds();
@@ -23,6 +24,7 @@ class _Feeds {
     title: 'BBC News',
     description: 'BBC News - News Front Page',
     subscribed: true,
+    hasMatchers: false,
   );
 
   final nasa = api.Feed(
@@ -33,6 +35,7 @@ class _Feeds {
     description:
         'Official National Aeronautics and Space Administration Website',
     subscribed: true,
+    hasMatchers: false,
   );
 
   final stackOverflow = api.Feed(
@@ -42,6 +45,7 @@ class _Feeds {
     title: 'Recent Questions - Stack Overflow',
     description: 'most recent 30 from stackoverflow.com',
     subscribed: true,
+    hasMatchers: false,
   );
 
   final wikipedia = api.Feed(
@@ -51,6 +55,17 @@ class _Feeds {
     title: 'Wikipedia  - Recent changes [en]',
     description: 'Track the most recent changes to the wiki in this feed.',
     subscribed: true,
+    hasMatchers: false,
+  );
+
+  // A web page without an RSS feed, whose URL and site URL are the page's.
+  final exampleBlog = api.Feed(
+    id: 5,
+    url: 'https://blog.example.com/',
+    siteUrl: 'https://blog.example.com/',
+    title: 'Example Blog',
+    subscribed: true,
+    hasMatchers: false,
   );
 }
 
@@ -112,6 +127,12 @@ class _FeedCandidates {
     title: _feeds.nasa.title,
     description: _feeds.nasa.description,
   );
+
+  final exampleBlog = api.FeedCandidate(
+    url: _feeds.exampleBlog.url,
+    siteUrl: _feeds.exampleBlog.siteUrl,
+    title: _feeds.exampleBlog.title,
+  );
 }
 
 final _stories = _Stories();
@@ -144,4 +165,54 @@ class _ReadingList {
     title: _entries.nuclearDeal.title,
     savedAt: DateTime.utc(2026, 7, 1),
   );
+}
+
+final _pages = _Pages();
+
+/// Raw responses of `GET /feeds/{id}/matcher`. They are written as JSON, since
+/// the generated models write an empty list for each field that is not
+/// labeled, which would label it at the post node.
+class _Pages {
+  final exampleBlog = <String, Object?>{
+    'url': 'https://blog.example.com/',
+    'title': 'Example Blog',
+    'root': {
+      'ch': [
+        {
+          'ch': [
+            {
+              'kind': 'h2',
+              'val': 'First post',
+              'link': 'https://blog.example.com/first',
+            },
+            {'val': 'The first post.'},
+          ],
+        },
+        {
+          'ch': [
+            {
+              'kind': 'h2',
+              'val': 'Second post',
+              'link': 'https://blog.example.com/second',
+            },
+            {'val': 'The second post.'},
+          ],
+        },
+      ],
+    },
+  };
+
+  /// A matcher of the posts in [exampleBlog].
+  final exampleBlogMatcher = <String, Object?>{
+    'post': ['box', 'box'],
+    'fields': {
+      'title': [
+        {'shape': 'h2+link', 'nth': 0},
+      ],
+      'link': [
+        {'shape': 'h2+link', 'nth': 0},
+      ],
+    },
+    'exclude': <String>[],
+  };
 }

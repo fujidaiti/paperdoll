@@ -30,6 +30,7 @@ abstract final class AppDebugKey {
   static const feedSearchTextField = Key('feedSearchTextField');
   static const feedsNavDestination = Key('feedsNavDestination');
   static const feedsScreen = Key('feedsScreen');
+  static const pageAnnotationScreen = Key('pageAnnotationScreen');
   static const readingListNavDestination = Key('readingListNavDestination');
   static const readingListScreen = Key('readingListScreen');
   static const webClipReaderScreen = Key('webClipReaderScreen');
@@ -45,6 +46,8 @@ abstract final class AppDebugKey {
   static const saveToReadingListSuccessSnackBar = Key(
     'saveToReadingListSuccessSnackBar',
   );
+  static const saveMatchersButton = Key('saveMatchersButton');
+  static const saveMatchersSuccessSnackBar = Key('saveMatchersSuccessSnackBar');
   static const settingsButton = Key('settingsButton');
   static const settingsScreen = Key('settingsScreen');
   static const signOutButton = Key('signOutButton');

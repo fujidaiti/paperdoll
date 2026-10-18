@@ -9,92 +9,100 @@ part of 'page_watch_providers.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(pageSamples)
-final pageSamplesProvider = PageSamplesProvider._();
+@ProviderFor(matcherRepository)
+final matcherRepositoryProvider = MatcherRepositoryProvider._();
 
-final class PageSamplesProvider
+final class MatcherRepositoryProvider
     extends
         $FunctionalProvider<
-          AsyncValue<List<PageSample>>,
-          List<PageSample>,
-          FutureOr<List<PageSample>>
+          MatcherRepository,
+          MatcherRepository,
+          MatcherRepository
         >
-    with $FutureModifier<List<PageSample>>, $FutureProvider<List<PageSample>> {
-  PageSamplesProvider._()
+    with $Provider<MatcherRepository> {
+  MatcherRepositoryProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'pageSamplesProvider',
+        name: r'matcherRepositoryProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$pageSamplesHash();
+  String debugGetCreateSourceHash() => _$matcherRepositoryHash();
 
   @$internal
   @override
-  $FutureProviderElement<List<PageSample>> $createElement(
+  $ProviderElement<MatcherRepository> $createElement(
     $ProviderPointer pointer,
-  ) => $FutureProviderElement(pointer);
+  ) => $ProviderElement(pointer);
 
   @override
-  FutureOr<List<PageSample>> create(Ref ref) {
-    return pageSamples(ref);
+  MatcherRepository create(Ref ref) {
+    return matcherRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(MatcherRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<MatcherRepository>(value),
+    );
   }
 }
 
-String _$pageSamplesHash() => r'5e8a2a95c5e764a1d2e236a47c980db3c0268069';
+String _$matcherRepositoryHash() => r'7217383836b0f5afd6183b33ff93b5e0f9ac3ee8';
 
-@ProviderFor(pageDocument)
-final pageDocumentProvider = PageDocumentFamily._();
+@ProviderFor(feedMatchers)
+final feedMatchersProvider = FeedMatchersFamily._();
 
-final class PageDocumentProvider
+final class FeedMatchersProvider
     extends
         $FunctionalProvider<
-          AsyncValue<PageDocument>,
-          PageDocument,
-          FutureOr<PageDocument>
+          AsyncValue<FeedMatchers>,
+          FeedMatchers,
+          FutureOr<FeedMatchers>
         >
-    with $FutureModifier<PageDocument>, $FutureProvider<PageDocument> {
-  PageDocumentProvider._({
-    required PageDocumentFamily super.from,
-    required String super.argument,
+    with $FutureModifier<FeedMatchers>, $FutureProvider<FeedMatchers> {
+  FeedMatchersProvider._({
+    required FeedMatchersFamily super.from,
+    required int super.argument,
   }) : super(
          retry: null,
-         name: r'pageDocumentProvider',
+         name: r'feedMatchersProvider',
          isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
 
   @override
-  String debugGetCreateSourceHash() => _$pageDocumentHash();
+  String debugGetCreateSourceHash() => _$feedMatchersHash();
 
   @override
   String toString() {
-    return r'pageDocumentProvider'
+    return r'feedMatchersProvider'
         ''
         '($argument)';
   }
 
   @$internal
   @override
-  $FutureProviderElement<PageDocument> $createElement(
+  $FutureProviderElement<FeedMatchers> $createElement(
     $ProviderPointer pointer,
   ) => $FutureProviderElement(pointer);
 
   @override
-  FutureOr<PageDocument> create(Ref ref) {
-    final argument = this.argument as String;
-    return pageDocument(ref, argument);
+  FutureOr<FeedMatchers> create(Ref ref) {
+    final argument = this.argument as int;
+    return feedMatchers(ref, argument);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is PageDocumentProvider && other.argument == argument;
+    return other is FeedMatchersProvider && other.argument == argument;
   }
 
   @override
@@ -103,22 +111,22 @@ final class PageDocumentProvider
   }
 }
 
-String _$pageDocumentHash() => r'653659ffd9b05be50b612f0067e846cbb28ef87c';
+String _$feedMatchersHash() => r'3b0222b87b2ba3c6b22fb85b5cbeca85ae6412d8';
 
-final class PageDocumentFamily extends $Family
-    with $FunctionalFamilyOverride<FutureOr<PageDocument>, String> {
-  PageDocumentFamily._()
+final class FeedMatchersFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<FeedMatchers>, int> {
+  FeedMatchersFamily._()
     : super(
         retry: null,
-        name: r'pageDocumentProvider',
+        name: r'feedMatchersProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
         isAutoDispose: true,
       );
 
-  PageDocumentProvider call(String file) =>
-      PageDocumentProvider._(argument: file, from: this);
+  FeedMatchersProvider call(int feedId) =>
+      FeedMatchersProvider._(argument: feedId, from: this);
 
   @override
-  String toString() => r'pageDocumentProvider';
+  String toString() => r'feedMatchersProvider';
 }

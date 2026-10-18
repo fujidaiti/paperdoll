@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:openapi/api.dart' as api;
 import 'package:paperdoll/debug_keys.dart';
 import 'package:patrol_finders/patrol_finders.dart';
@@ -127,6 +128,75 @@ void main() {
     await t(AppDebugKey.feedCandidateTile(candidate.title)).tap();
     await t(AppDebugKey.subscribeSuccessSnackBar).waitUntilVisible();
     await t(AppDebugKey.feedRow(nasa.title)).waitUntilVisible();
+  });
+
+  patrolWidgetTest('Subscribe to a web page without a feed', (t) async {
+    final candidate = fixture.feedCandidates.exampleBlog;
+    final blog = fixture.feeds.exampleBlog;
+    final server = StubServer.withDefaultResponses()
+      ..stubPut('/feeds', body: blog.toJson())
+      ..stubGet(
+        '/feeds/search',
+        body: api.SearchFeeds200Response(feeds: [candidate]).toJson(),
+      )
+      ..stubGet(
+        '/feeds/${blog.id}/matcher',
+        body: {'page': fixture.pages.exampleBlog},
+      );
+
+    await pumpAppWithAuth(t, server);
+    await t(AppDebugKey.feedsNavDestination).tap();
+    await t(AppDebugKey.addFeedButton).tap();
+    await t(AppDebugKey.feedSearchTextField).enterText(blog.url);
+    await t(AppDebugKey.feedSearchButton).tap();
+    await t(AppDebugKey.feedCandidateTile(candidate.title)).tap();
+
+    // The page has no matchers yet, so the app asks for them.
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t('First post').waitUntilVisible();
+    expect(
+      t.tester.widget<TextButton>(t(AppDebugKey.saveMatchersButton)).onPressed,
+      isNull,
+    );
+  });
+
+  patrolWidgetTest('Save the post matchers of a web page', (t) async {
+    final candidate = fixture.feedCandidates.exampleBlog;
+    final blog = fixture.feeds.exampleBlog;
+    final matcher = fixture.pages.exampleBlogMatcher;
+    final server = StubServer.withDefaultResponses()
+      ..stubPut('/feeds', body: blog.toJson())
+      ..stubGet(
+        '/feeds/search',
+        body: api.SearchFeeds200Response(feeds: [candidate]).toJson(),
+      )
+      // Another user saved matchers after this user subscribed, so the
+      // editor starts with them.
+      ..stubGet(
+        '/feeds/${blog.id}/matcher',
+        body: {
+          'page': fixture.pages.exampleBlog,
+          'matchers': [matcher],
+        },
+      )
+      ..stubPut(
+        '/feeds/${blog.id}/matcher',
+        status: 204,
+        bodyMatcher: {
+          'matchers': [matcher],
+        },
+      );
+
+    await pumpAppWithAuth(t, server);
+    await t(AppDebugKey.feedsNavDestination).tap();
+    await t(AppDebugKey.addFeedButton).tap();
+    await t(AppDebugKey.feedSearchTextField).enterText(blog.url);
+    await t(AppDebugKey.feedSearchButton).tap();
+    await t(AppDebugKey.feedCandidateTile(candidate.title)).tap();
+
+    await t(AppDebugKey.saveMatchersButton).tap();
+    await t(AppDebugKey.saveMatchersSuccessSnackBar).waitUntilVisible();
+    await t(AppDebugKey.feedsScreen).waitUntilVisible();
   });
 }
 

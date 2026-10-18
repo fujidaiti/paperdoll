@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:paperdoll/core/error/domain_error.dart';
 import 'package:paperdoll/core/router/routes.dart';
 import 'package:paperdoll/core/ui/tokens/app_colors.dart';
 import 'package:paperdoll/core/ui/tokens/app_spacing.dart';
@@ -15,6 +16,8 @@ import 'package:paperdoll/core/ui/widgets/body_text.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/core/ui/widgets/heading_text.dart';
+import 'package:paperdoll/debug_keys.dart';
+import 'package:paperdoll/features/page_watch/data/matcher_repository.dart';
 import 'package:paperdoll/features/page_watch/domain/page_document.dart';
 import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
 import 'package:paperdoll/features/page_watch/presentation/post_fields_screen.dart';
@@ -34,19 +37,26 @@ import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.da
 /// automatically, with their fields found at the same positions. Each group
 /// results in one [PostMatcher]. A post of a group that is not a post, such as
 /// a promotion, can be excluded by its link.
-class const PageAnnotationScreen({required final String file, super.key})
+///
+/// The page is the one of the unstructured feed [feedId], and the matchers
+/// saved for the feed are shown as the initial groups. Saving replaces them.
+class const PageAnnotationScreen({required final int feedId, super.key})
     extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final document = ref.watch(pageDocumentProvider(file));
-    if (document case AsyncData(:final value)) {
-      return _Annotator(document: value);
+    final matchers = ref.watch(feedMatchersProvider(feedId));
+    if (matchers case AsyncData(:final value)) {
+      return _Annotator(
+        feedId: feedId,
+        document: value.page,
+        matchers: value.matchers,
+      );
     }
     return Scaffold(
       appBar: AppBar(),
-      body: AsyncValueView<PageDocument>(
-        value: document,
-        onRetry: () => ref.invalidate(pageDocumentProvider(file)),
+      body: AsyncValueView<FeedMatchers>(
+        value: matchers,
+        onRetry: () => ref.invalidate(feedMatchersProvider(feedId)),
         data: (_) => const SizedBox.shrink(),
       ),
     );
@@ -94,15 +104,22 @@ class _Marks {
   }
 }
 
-class const _Annotator({required final PageDocument document})
-    extends StatefulWidget {
+class const _Annotator({
+  required final int feedId,
+  required final PageDocument document,
+  required final List<PostMatcher> matchers,
+}) extends ConsumerStatefulWidget {
   @override
-  State<_Annotator> createState() => _AnnotatorState();
+  ConsumerState<_Annotator> createState() => _AnnotatorState();
 }
 
-class _AnnotatorState extends State<_Annotator> {
-  final _groups = <_Group>[];
-  var _nextGroupNumber = 1;
+class _AnnotatorState extends ConsumerState<_Annotator> {
+  late final _groups = [
+    for (final (i, matcher) in widget.matchers.indexed)
+      _Group(number: i + 1, matcher: matcher),
+  ];
+  late var _nextGroupNumber = _groups.length + 1;
+  var _saving = false;
 
   /// The element shown on the selection sheet, while the sheet is open.
   PageNode? _selected;
@@ -251,6 +268,31 @@ class _AnnotatorState extends State<_Annotator> {
     });
   }
 
+  Future<void> _save() async {
+    final messenger = ScaffoldMessenger.of(context);
+    final router = GoRouter.of(context);
+    setState(() => _saving = true);
+    try {
+      await ref.read(matcherRepositoryProvider).save(widget.feedId, [
+        for (final g in _groups) g.matcher,
+      ]);
+      ref.invalidate(feedMatchersProvider(widget.feedId));
+      messenger.showSnackBar(
+        const SnackBar(
+          key: AppDebugKey.saveMatchersSuccessSnackBar,
+          content: Text('Saved the posts of the page.'),
+        ),
+      );
+      router.pop();
+    } on DomainError catch (error) {
+      messenger.showSnackBar(SnackBar(content: Text(describeError(error))));
+    } finally {
+      if (mounted) {
+        setState(() => _saving = false);
+      }
+    }
+  }
+
   void _showPreview() {
     unawaited(
       showModalBottomSheet<void>(
@@ -284,12 +326,22 @@ class _AnnotatorState extends State<_Annotator> {
     ];
 
     return Scaffold(
+      key: AppDebugKey.pageAnnotationScreen,
       appBar: AppBar(
         title: Text(
           _document.title.isEmpty ? _document.url : _document.title,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
+        actions: [
+          TextButton(
+            key: AppDebugKey.saveMatchersButton,
+            onPressed: _groups.isEmpty || _saving
+                ? null
+                : () => unawaited(_save()),
+            child: const Text('Save'),
+          ),
+        ],
       ),
       body: Column(
         children: [
