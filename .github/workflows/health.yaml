@@ -56,6 +56,11 @@ jobs:
       - name: Validate API spec
         run: npx redocly lint api/api.yaml
 
+      - name: Verify generated API docs
+        run: |
+          make -C api gen-docs
+          git diff --exit-code
+
   client_test:
     name: Client Test
     runs-on: ubuntu-latest
