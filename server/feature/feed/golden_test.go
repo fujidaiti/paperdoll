@@ -13,14 +13,14 @@ import (
 var update = flag.Bool("update", false, "update the golden files in testdata/tree and testdata/matcher")
 
 // checkGolden compares got with the golden file at path, or writes got to it
-// with -update.
+// with -update. The file is written without formatting, which Prettier does
+// on commit, and is compared without the whitespace between JSON tokens.
 func checkGolden(t *testing.T, path string, got any) {
 	t.Helper()
-	data, err := json.MarshalIndent(got, "", "  ")
+	data, err := json.Marshal(got)
 	if err != nil {
 		t.Fatal(err)
 	}
-	data = append(data, '\n')
 	if *update {
 		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 			t.Fatal(err)
@@ -30,11 +30,15 @@ func checkGolden(t *testing.T, path string, got any) {
 		}
 		return
 	}
-	want, err := os.ReadFile(path)
+	raw, err := os.ReadFile(path)
 	if err != nil {
 		t.Fatalf("%v (run the test with -update to create it)", err)
 	}
-	if !bytes.Equal(data, want) {
+	var want bytes.Buffer
+	if err := json.Compact(&want, raw); err != nil {
+		t.Fatalf("%s: %v", path, err)
+	}
+	if !bytes.Equal(data, want.Bytes()) {
 		t.Errorf("%s is out of date (run the test with -update to update it)", path)
 	}
 }

@@ -11,9 +11,7 @@
                 "ch": [
                   {
                     "ch": [
-                      {
-                        "val": "On Demand"
-                      },
+                      { "val": "On Demand" },
                       {
                         "ch": [
                           {
@@ -23,11 +21,7 @@
                             "ch": [
                               {
                                 "link": "https://aka.ms/dotnetday/playlist",
-                                "ch": [
-                                  {
-                                    "val": "Watch now"
-                                  }
-                                ]
+                                "ch": [{ "val": "Watch now" }]
                               }
                             ]
                           }
@@ -45,10 +39,7 @@
                 "ch": [
                   {
                     "ch": [
-                      {
-                        "kind": "h1",
-                        "val": "Microsoft Developer Blogs"
-                      },
+                      { "kind": "h1", "val": "Microsoft Developer Blogs" },
                       {
                         "val": "Get the latest information, insights, and news from Microsoft."
                       }
@@ -56,10 +47,7 @@
                   },
                   {
                     "ch": [
-                      {
-                        "kind": "h2",
-                        "val": "Highlights"
-                      },
+                      { "kind": "h2", "val": "Highlights" },
                       {
                         "ch": [
                           {
@@ -167,14 +155,7 @@
                     "ch": [
                       {
                         "ch": [
-                          {
-                            "ch": [
-                              {
-                                "kind": "h2",
-                                "val": "Latest posts"
-                              }
-                            ]
-                          },
+                          { "ch": [{ "kind": "h2", "val": "Latest posts" }] },
                           {
                             "ch": [
                               {
@@ -199,20 +180,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -223,11 +192,7 @@
                                             "link": "https://devblogs.microsoft.com/dotnet/microsoft-author-signing-certificate-update-2026/"
                                           },
                                           {
-                                            "ch": [
-                                              {
-                                                "val": "The NuGet Team"
-                                              }
-                                            ]
+                                            "ch": [{ "val": "The NuGet Team" }]
                                           },
                                           {
                                             "val": "Starting September 23, 2026, Microsoft is updating the author-signing certificate used for NuGet packages. Customers using trusted signer policies or certificate fingerprint verification should add the new certificate as soon as possible."
@@ -264,20 +229,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -288,11 +241,7 @@
                                             "link": "https://devblogs.microsoft.com/microsoft365dev/join-the-copilot-dev-camp-summit-fall-edition-on-september-30/"
                                           },
                                           {
-                                            "ch": [
-                                              {
-                                                "val": "Paolo Pialorsi"
-                                              }
-                                            ]
+                                            "ch": [{ "val": "Paolo Pialorsi" }]
                                           },
                                           {
                                             "val": "The very first Copilot Dev Camp Summit will take place on September 30, 2026, at 8:00 AM Pacific Time, launching a new quarterly event for the Copilot Extensibility community. This free, quarterly online event brings together developers, makers, product experts, and the broader technical community to explore the evolving capabilities of Microsoft 365 Copilot, Cowork, GitHub Copilot, Microsoft IQ, and their extensibility ecosystems. Whether you build Copilot experiences, create agents, or simply want to learn what is coming next, the Summit offers an excellent opportunity to hear directly from experts, ask..."
@@ -329,20 +278,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "2" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -352,13 +289,7 @@
                                             "val": "Faster C++ code intelligence for Copilot CLI with Whole Codebase Indexing",
                                             "link": "https://devblogs.microsoft.com/cppblog/faster-c-code-intelligence-for-copilot-cli-with-whole-codebase-indexing/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Sinem Akinci"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Sinem Akinci" }] },
                                           {
                                             "val": "C++ repositories can contain millions of lines of code spread across deeply connected source files and headers. Without a reusable index, navigating to definitions, finding references, or searching for symbols may require portions of that information to be analyzed again as you move through the repository. C++ code intelligence in GitHub Copilot CLI is now faster with support for Whole Codebase Indexing (WCI). Powered by the Microsoft C++ Language Server, WCI uses your project’s compilation information to maintain a persistent index of symbols and relationships across source files and headers, allowing Copilot..."
                                           }
@@ -394,20 +325,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -417,13 +336,7 @@
                                             "val": "Today I will… debug a production crash",
                                             "link": "https://devblogs.microsoft.com/visualstudio/today-i-will-debug-a-production-crash/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Aaron Powell"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Aaron Powell" }] },
                                           {
                                             "val": "We've all experienced this, the desktop application is hanging, the window is greyed out, and we're just waiting for it to start to respond. Or we're on a website and are sure that it was going to load faster than this, but we're just waiting the loading icon spin around and around. These sorts of problems, when they happen in production, can be difficult to diagnose since you often need to replicate them, from machine specifications to traffic loads. Today we're going to look at one of the possible problems, having too many active threads running in a C# application, and how we can debug the crash after the fac..."
                                           }
@@ -459,20 +372,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "8"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "8" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -482,13 +383,7 @@
                                             "val": "Creating a memory dump in C#",
                                             "link": "https://devblogs.microsoft.com/dotnet/creating-a-memory-dump-in-csharp/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Aaron Powell"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Aaron Powell" }] },
                                           {
                                             "val": "Learn how to create a memory dump in C# to capture the state of your application for debugging purposes."
                                           }
@@ -524,20 +419,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -549,9 +432,7 @@
                                           },
                                           {
                                             "ch": [
-                                              {
-                                                "val": "Howard Kapustein"
-                                              }
+                                              { "val": "Howard Kapustein" }
                                             ]
                                           },
                                           {
@@ -589,20 +470,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -614,9 +483,7 @@
                                           },
                                           {
                                             "ch": [
-                                              {
-                                                "val": "Vishnu Charan TJ"
-                                              }
+                                              { "val": "Vishnu Charan TJ" }
                                             ]
                                           },
                                           {
@@ -650,20 +517,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "7"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "7" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -673,13 +528,7 @@
                                             "val": "A brief history of Windows scroll bar shortcuts",
                                             "link": "https://devblogs.microsoft.com/oldnewthing/20260922-00/?p=112719/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Raymond Chen"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Raymond Chen" }] },
                                           {
                                             "val": "Right-clicking and shift-clicking."
                                           }
@@ -715,20 +564,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -742,12 +579,8 @@
                                             "ch": [
                                               {
                                                 "ch": [
-                                                  {
-                                                    "val": "Roger,"
-                                                  },
-                                                  {
-                                                    "val": "Tao"
-                                                  }
+                                                  { "val": "Roger," },
+                                                  { "val": "Tao" }
                                                 ]
                                               }
                                             ]
@@ -787,20 +620,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -810,13 +631,7 @@
                                             "val": "PostgreSQL to SQL Field Notes: Date \u0026 Time",
                                             "link": "https://devblogs.microsoft.com/azure-sql/pg-to-sql-date-time/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Jerry Nixon"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Jerry Nixon" }] },
                                           {
                                             "val": "Moving from PostgreSQL to SQL Server? Learn the key differences between timestamp, timestamptz, datetime2, and datetimeoffset, including precision, time zones, offsets, and storage."
                                           }
@@ -848,20 +663,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "7"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "7" }] },
+                                                  { "ch": [{ "val": "2" }] }
                                                 ]
                                               }
                                             ]
@@ -871,13 +674,7 @@
                                             "val": "What’s the highest legal FILETIME? Is it safe to use?",
                                             "link": "https://devblogs.microsoft.com/oldnewthing/20260921-00/?p=112711/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Raymond Chen"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Raymond Chen" }] },
                                           {
                                             "val": "Being wary of how people use it and how it interacts with other types."
                                           }
@@ -913,20 +710,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "2" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -938,9 +723,7 @@
                                           },
                                           {
                                             "ch": [
-                                              {
-                                                "val": "Waldek Mastykarz"
-                                              }
+                                              { "val": "Waldek Mastykarz" }
                                             ]
                                           },
                                           {
@@ -978,20 +761,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -1002,11 +773,7 @@
                                             "link": "https://devblogs.microsoft.com/cosmosdb/spec-driven-development-comes-to-azure-cosmos-db-the-first-database-extension-for-github-spec-kit/"
                                           },
                                           {
-                                            "ch": [
-                                              {
-                                                "val": "Theo van Kraay"
-                                              }
-                                            ]
+                                            "ch": [{ "val": "Theo van Kraay" }]
                                           },
                                           {
                                             "val": "AI coding agents can write much of an application's code, but developers still need to review the decisions behind it. For a Cosmos DB application, that includes choosing partition keys, modeling access patterns, and configuring the client. Those decisions affect cost, performance, and reliability long after the code compiles. We've written before about how Azure Cosmos DB supports agents at query time, with tools and guidance for exploring and querying data. Today we're announcing the public preview of the Azure Cosmos DB extension for GitHub Spec Kit, the first database extension in its ecosystem. It brings Co..."
@@ -1039,20 +806,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "7"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "7" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -1062,13 +817,7 @@
                                             "val": "Comparing exception behavior of magic statics, std::call_once, and std::async",
                                             "link": "https://devblogs.microsoft.com/oldnewthing/20260918-00/?p=112709/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Raymond Chen"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Raymond Chen" }] },
                                           {
                                             "val": "Do you try again or give up?"
                                           }
@@ -1104,20 +853,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "3"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "3" }] }
                                                 ]
                                               }
                                             ]
@@ -1127,13 +864,7 @@
                                             "val": "Power Platform CLI ❤️ Power Platform API",
                                             "link": "https://devblogs.microsoft.com/powerplatform/power-platform-cli-%e2%9d%a4%ef%b8%8f-power-platform-api/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Lane Swenka"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Lane Swenka" }] },
                                           {
                                             "val": "Historically, Power Platform administrators and developers have automated management tasks through a mix of tools. A capability might exist in the admin center, use a different name in PowerShell, have a custom shape in a connector, or not yet be available in the command line. Each tool could be valuable, but moving between them often meant relearning commands, payloads, authentication patterns, and coverage. Last year, we shared how Power Platform is moving from a UX-first model to an API-first ecosystem. Today, we're bringing one of the clearest results of that strategy directly to the terminal: auto-generated..."
                                           }
@@ -1165,20 +896,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "2" }] },
+                                                  { "ch": [{ "val": "2" }] }
                                                 ]
                                               }
                                             ]
@@ -1188,13 +907,7 @@
                                             "val": "std::call_once vs. std::async",
                                             "link": "https://devblogs.microsoft.com/oldnewthing/20260917-00/?p=112706/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Raymond Chen"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Raymond Chen" }] },
                                           {
                                             "val": "Simple vs complex machinery."
                                           }
@@ -1230,20 +943,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -1254,11 +955,7 @@
                                             "link": "https://devblogs.microsoft.com/powershell/announcing-dsc-v3-3-0/"
                                           },
                                           {
-                                            "ch": [
-                                              {
-                                                "val": "Jason Helmick"
-                                              }
-                                            ]
+                                            "ch": [{ "val": "Jason Helmick" }]
                                           },
                                           {
                                             "val": "This post announces the General Availability of Microsoft Desired State Configuration (DSC) v3.3.0, with new Windows resources, a registry adapter, server mode improvements, expression function updates, expanded what-if support, and experimental export filtering."
@@ -1295,20 +992,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "9"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "1" }] },
+                                                  { "ch": [{ "val": "9" }] }
                                                 ]
                                               }
                                             ]
@@ -1322,15 +1007,9 @@
                                             "ch": [
                                               {
                                                 "ch": [
-                                                  {
-                                                    "val": "Cody,"
-                                                  },
-                                                  {
-                                                    "val": "Tue,"
-                                                  },
-                                                  {
-                                                    "val": "Michael"
-                                                  }
+                                                  { "val": "Cody," },
+                                                  { "val": "Tue," },
+                                                  { "val": "Michael" }
                                                 ]
                                               }
                                             ]
@@ -1370,20 +1049,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "7"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "7"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "7" }] },
+                                                  { "ch": [{ "val": "7" }] }
                                                 ]
                                               }
                                             ]
@@ -1394,11 +1061,7 @@
                                             "link": "https://devblogs.microsoft.com/directx/autosr-on-intel/"
                                           },
                                           {
-                                            "ch": [
-                                              {
-                                                "val": "Stefan Bojanic"
-                                              }
-                                            ]
+                                            "ch": [{ "val": "Stefan Bojanic" }]
                                           },
                                           {
                                             "val": "Today, we’re excited to announce we’re expanding the availability of Auto SR to Intel Core Ultra Series 3-based Copilot+ PCs. This builds off our previous expansion of Automatic Super Resolution (Auto SR) to support more gaming devices allowing more players to leverage Auto SR as a tool in their toolkit to better optimize games for improved experience. Download the Auto Super Resolution Package - Microsoft Apps to get started. Auto SR is designed to help games that struggle to hit playable frame rates at higher resolutions by allowing the game to render at a lower resolution, then using NPU-based upscaling ..."
@@ -1435,20 +1098,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "5"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "5" }] }
                                                 ]
                                               }
                                             ]
@@ -1459,11 +1110,7 @@
                                             "link": "https://devblogs.microsoft.com/dotnet/build-your-own-ai-agent-harness-in-csharp-the-maf-claw-live-series/"
                                           },
                                           {
-                                            "ch": [
-                                              {
-                                                "val": "Bruno Capuano"
-                                              }
-                                            ]
+                                            "ch": [{ "val": "Bruno Capuano" }]
                                           },
                                           {
                                             "val": "I am building a complete C# agent live, from a single call around an IChatClient to a production-ready, observable, governed agent, using the Microsoft Agent Framework harness in a 4-part Microsoft Reactor series."
@@ -1500,20 +1147,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "2" }] }
                                                 ]
                                               }
                                             ]
@@ -1524,11 +1159,7 @@
                                             "link": "https://devblogs.microsoft.com/agent-framework/from-specialist-agents-to-distributed-skills-over-mcp/"
                                           },
                                           {
-                                            "ch": [
-                                              {
-                                                "val": "Tommaso Stocchi"
-                                              }
-                                            ]
+                                            "ch": [{ "val": "Tommaso Stocchi" }]
                                           },
                                           {
                                             "val": "Keep your domain services distributed. Move the specialist's instructions, not another model, into the orchestrator. A multi-agent system often starts with a straightforward design: one agent understands the user's request, delegates to specialist agents, and combines their answers. That was the starting point for my ski resort demo. A resort advisor calls specialists for weather, safety, ski coaching, and lift traffic. Each specialist owns its instructions and tools, and the advisor invokes it through Agent-to-Agent (A2A). It works. But it also raises a useful question: Does every specialist need its..."
@@ -1565,20 +1196,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "12"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "12" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -1592,15 +1211,9 @@
                                             "ch": [
                                               {
                                                 "ch": [
-                                                  {
-                                                    "val": "Microsoft,"
-                                                  },
-                                                  {
-                                                    "val": "Barry,"
-                                                  },
-                                                  {
-                                                    "val": "Gavin"
-                                                  }
+                                                  { "val": "Microsoft," },
+                                                  { "val": "Barry," },
+                                                  { "val": "Gavin" }
                                                 ]
                                               }
                                             ]
@@ -1640,20 +1253,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "3"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "1" }] },
+                                                  { "ch": [{ "val": "3" }] }
                                                 ]
                                               }
                                             ]
@@ -1663,13 +1264,7 @@
                                             "val": "AI Is Changing How We Code. It’s Also Changing How We Learn.",
                                             "link": "https://devblogs.microsoft.com/visualstudio/ai-is-changing-how-we-code-its-also-changing-how-we-learn/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "James Rempt"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "James Rempt" }] },
                                           {
                                             "val": "AI is changing software development at a pace no one can ignore. Developers now have powerful AI tools that can help us write code, understand unfamiliar codebases, troubleshoot problems, learn new frameworks, and get answers in seconds. That is an incredible opportunity. But as these tools become more capable, I believe something else is becoming more valuable too: learning directly from other developers. That’s one of the reasons I continue to believe so strongly in events like VSLive!. Learn from people who have done the work One of the things I value most about VSLive! is its focus on practica..."
                                           }
@@ -1701,20 +1296,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "1" }] },
+                                                  { "ch": [{ "val": "2" }] }
                                                 ]
                                               }
                                             ]
@@ -1724,13 +1307,7 @@
                                             "val": "Magic statics vs. std::call_once",
                                             "link": "https://devblogs.microsoft.com/oldnewthing/20260916-00/?p=112703/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Raymond Chen"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Raymond Chen" }] },
                                           {
                                             "val": "They sort of do the same thing, but differently."
                                           }
@@ -1766,20 +1343,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -1791,9 +1356,7 @@
                                           },
                                           {
                                             "ch": [
-                                              {
-                                                "val": "Waldek Mastykarz"
-                                              }
+                                              { "val": "Waldek Mastykarz" }
                                             ]
                                           },
                                           {
@@ -1831,20 +1394,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -1854,13 +1405,7 @@
                                             "val": "Important updates: GitHub Copilot support ending for JetBrains 2025.1.x",
                                             "link": "https://devblogs.microsoft.com/java/github-copilot-support-ending-for-jetbrains-2025-1-x/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Nick Zhu"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Nick Zhu" }] },
                                           {
                                             "val": "To deliver new features faster and continue improving stability and performance, the GitHub Copilot plugin will end support for JetBrains IDEs version 2025.1.x (JetBrains platform build 251). Focusing on newer IDE versions helps us bring you new capabilities more quickly and maintain a high-quality experience. Our recommendation: The minimum supported JetBrains IDE version will be 2025.2.x, but we recommend upgrading to version 2026.1 or later and update your GitHub Copilot plugin to continue receiving the latest improvements. Timeline of deprecation The GitHub Copilot plugin will discontinue support for Jet..."
                                           }
@@ -1892,20 +1437,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "1" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -1915,13 +1448,7 @@
                                             "val": "Introducing Foundry Dev Pack: One Command to Start Building",
                                             "link": "https://devblogs.microsoft.com/foundry/foundry-devpack-announcement/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "sharonxu"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "sharonxu" }] },
                                           {
                                             "val": "Foundry Dev Pack prepares your machine for Microsoft Foundry development with an all-in-one installer for the tools you need across the terminal, VS Code, and coding agents."
                                           }
@@ -1957,20 +1484,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -1981,11 +1496,7 @@
                                             "link": "https://devblogs.microsoft.com/powerplatform/azure-managed-redis-migration/"
                                           },
                                           {
-                                            "ch": [
-                                              {
-                                                "val": "Sanket Achari"
-                                              }
-                                            ]
+                                            "ch": [{ "val": "Sanket Achari" }]
                                           },
                                           {
                                             "val": "Lessons from an Azure Managed Redis migration for Copilot Studio agent flows: cache efficiency, client reliability, staged rollout, and lower costs."
@@ -2022,20 +1533,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "2" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -2047,9 +1546,7 @@
                                           },
                                           {
                                             "ch": [
-                                              {
-                                                "val": "Howard Kapustein"
-                                              }
+                                              { "val": "Howard Kapustein" }
                                             ]
                                           },
                                           {
@@ -2087,20 +1584,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -2110,13 +1595,7 @@
                                             "val": "Today I will… improve test coverage",
                                             "link": "https://devblogs.microsoft.com/visualstudio/today-i-will-improve-test-coverage/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Aaron Powell"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Aaron Powell" }] },
                                           {
                                             "val": "Today I want to look at how we can improve on the test coverage that we have in the Interview Coach application. This application has some unit tests in it already, but I'm sure there is room for improvement. Defining our baseline Before we start writing tests, it's a good idea to have a baseline of what our coverage is so that we can find out where the gaps are, rather than just writing tests \"for the sake of writing tests\". We can do this using the Analyze Code Coverage for All Tests, from either the Command Palette (CTRL + SHIFT + P) or the Tests menu. Running the analyzer, we can see where our coverage ..."
                                           }
@@ -2152,20 +1631,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "1" }] }
                                                 ]
                                               }
                                             ]
@@ -2175,13 +1642,7 @@
                                             "val": "Build an interview coach app with the GitHub Copilot SDK",
                                             "link": "https://devblogs.microsoft.com/blog/build-an-interview-coach-app-with-the-github-copilot-sdk/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Justin Yoo"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Justin Yoo" }] },
                                           {
                                             "val": "An interview coach has to do more than ask questions. It needs to read a resume, follow up on an incomplete answer, and save enough context to give useful feedback at the end. Some of that work is conversation. Some of it requires calling an application service. The GitHub Copilot SDK lets you use the runtime behind Copilot CLI for that work inside your own application. You provide instructions and callable tools. Copilot handles the model interaction and resulting tool calls, while your application owns the interface and business workflow. For a developer building a personal assistant or an internal workflow, ..."
                                           }
@@ -2213,20 +1674,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "9"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "3"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "9" }] },
+                                                  { "ch": [{ "val": "3" }] }
                                                 ]
                                               }
                                             ]
@@ -2236,13 +1685,7 @@
                                             "val": "Why do Microsoft job levels start in the high 50’s instead of starting at a sane number like 1?",
                                             "link": "https://devblogs.microsoft.com/oldnewthing/20260915-00/?p=112700/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Raymond Chen"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Raymond Chen" }] },
                                           {
                                             "val": "It used to start at 1, but that was the old system."
                                           }
@@ -2278,20 +1721,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "2" }] },
+                                                  { "ch": [{ "val": "2" }] }
                                                 ]
                                               }
                                             ]
@@ -2301,13 +1732,7 @@
                                             "val": "Coding agents are picking Azure SQL Database",
                                             "link": "https://devblogs.microsoft.com/azure-sql/coding-agents-are-picking-azure-sql-database/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Anna Hoffman"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Anna Hoffman" }] },
                                           {
                                             "val": "I went looking for Azure SQL Database in a recent coding agent benchmark, honestly unsure whether Microsoft SQL would show up. Armature ran a study where real coding agent CLIs (Claude Code, Codex, Cursor) were dropped into six synthetic-but-realistic repositories and asked to pick a database, then actually build with it. 356 runs were completed across three personas: vibe coder, junior developer, senior engineer. Every session is published, so you can replay the prompts, the searches, the commands, and the code. Azure SQL Database came in second! Not second behind AWS. Second behind Neon, and ahead of Amazon..."
                                           }
@@ -2343,20 +1768,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "18"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "39"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "18" }] },
+                                                  { "ch": [{ "val": "39" }] }
                                                 ]
                                               }
                                             ]
@@ -2368,9 +1781,7 @@
                                           },
                                           {
                                             "ch": [
-                                              {
-                                                "val": "Stephen Toub - MSFT"
-                                              }
+                                              { "val": "Stephen Toub - MSFT" }
                                             ]
                                           },
                                           {
@@ -2404,20 +1815,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "0"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "0" }] },
+                                                  { "ch": [{ "val": "0" }] }
                                                 ]
                                               }
                                             ]
@@ -2428,11 +1827,7 @@
                                             "link": "https://devblogs.microsoft.com/cppblog/c-in-the-age-of-ai-visual-studio-at-cppcon-2026/"
                                           },
                                           {
-                                            "ch": [
-                                              {
-                                                "val": "Augustin Popa"
-                                              }
-                                            ]
+                                            "ch": [{ "val": "Augustin Popa" }]
                                           },
                                           {
                                             "val": "At CppCon 2026, we shared how Visual Studio is evolving to help you work more effectively with large C++ codebases, improve build and runtime performance, adopt the latest language features, and incorporate AI into your existing workflows. This post is a companion reading guide for our session, C++ in the Age of AI: How Visual Studio Is Evolving, with links to learn more about the features and improvements we discussed. We will update this post with the YouTube video once the recording of the talk is available. What's new in Visual Studio 2026 These two release roundups provide the most complete overview of ..."
@@ -2469,20 +1864,8 @@
                                               },
                                               {
                                                 "ch": [
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "1"
-                                                      }
-                                                    ]
-                                                  },
-                                                  {
-                                                    "ch": [
-                                                      {
-                                                        "val": "2"
-                                                      }
-                                                    ]
-                                                  }
+                                                  { "ch": [{ "val": "1" }] },
+                                                  { "ch": [{ "val": "2" }] }
                                                 ]
                                               }
                                             ]
@@ -2492,13 +1875,7 @@
                                             "val": "Intelligent Terminal 0.2.2572: Faster, Smoother, and More Reliable",
                                             "link": "https://devblogs.microsoft.com/commandline/intelligent-terminal-0-2-25-performance-reliability/"
                                           },
-                                          {
-                                            "ch": [
-                                              {
-                                                "val": "Hamza Usmani"
-                                              }
-                                            ]
-                                          },
+                                          { "ch": [{ "val": "Hamza Usmani" }] },
                                           {
                                             "val": "We're back with Intelligent Terminal v0.2.2572, and this one is all about making things faster, easier to use, more reliable, and more polished. This release lands over 60 fixes and improvements as well as API key support for local models, automatic approval for supported agents, and native slash commands your agent brings with it. You can grab the update from the Microsoft Store, via , or by heading to the release page on GitHub. Let's dive in! Faster, lighter, snappier We went after the parts of the product you feel every day: API key support for local models Plenty of endpoints need an API key, and ..."
                                           }
@@ -2514,9 +1891,7 @@
                               }
                             ]
                           },
-                          {
-                            "val": "Load more posts"
-                          }
+                          { "val": "Load more posts" }
                         ]
                       },
                       {

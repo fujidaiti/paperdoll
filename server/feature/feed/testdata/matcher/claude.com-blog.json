@@ -1,44 +1,16 @@
 [
   {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
-    ],
+    "post": ["box", "box", "box", "box", "box", "box", "box"],
     "fields": {
-      "link": [
-        {
-          "shape": "txt+link",
-          "nth": 0
-        }
-      ],
+      "link": [{ "shape": "txt+link", "nth": 0 }],
       "pubDate": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "time",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "time", "nth": 0 }
       ],
       "title": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "h2",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "h2", "nth": 0 }
       ]
     },
     "exclude": []
@@ -59,46 +31,19 @@
     ],
     "fields": {
       "link": [
-        {
-          "shape": "box",
-          "nth": 2
-        },
-        {
-          "shape": "txt+link",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 2 },
+        { "shape": "txt+link", "nth": 0 }
       ],
       "pubDate": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "time",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "time", "nth": 0 }
       ],
       "title": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "txt",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "txt", "nth": 0 }
       ]
     },
     "exclude": []

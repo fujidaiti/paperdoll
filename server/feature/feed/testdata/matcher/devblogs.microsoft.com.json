@@ -1,171 +1,57 @@
 [
   {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
-    ],
+    "post": ["box", "box", "box", "box", "box", "box", "box"],
     "fields": {
       "body": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "txt",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "txt", "nth": 0 }
       ],
       "link": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "h3+link",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "h3+link", "nth": 0 }
       ],
-      "thumbnail": [
-        {
-          "shape": "img+link",
-          "nth": 0
-        }
-      ],
+      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
       "title": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "h3+link",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "h3+link", "nth": 0 }
       ]
     },
     "exclude": []
   },
   {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
-    ],
+    "post": ["box", "box", "box", "box", "box", "box", "box", "box"],
     "fields": {
       "body": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "txt",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "txt", "nth": 0 }
       ],
       "link": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "h3+link",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "h3+link", "nth": 0 }
       ],
       "pubDate": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "time",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "time", "nth": 0 }
       ],
-      "thumbnail": [
-        {
-          "shape": "img+link",
-          "nth": 0
-        }
-      ],
+      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
       "title": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "h3+link",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "h3+link", "nth": 0 }
       ]
     },
     "exclude": [
@@ -188,38 +74,14 @@
       "box"
     ],
     "fields": {
-      "body": [
-        {
-          "shape": "txt",
-          "nth": 0
-        }
-      ],
-      "link": [
-        {
-          "shape": "h3+link",
-          "nth": 0
-        }
-      ],
+      "body": [{ "shape": "txt", "nth": 0 }],
+      "link": [{ "shape": "h3+link", "nth": 0 }],
       "pubDate": [
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "box",
-          "nth": 0
-        },
-        {
-          "shape": "time",
-          "nth": 0
-        }
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "time", "nth": 0 }
       ],
-      "title": [
-        {
-          "shape": "h3+link",
-          "nth": 0
-        }
-      ]
+      "title": [{ "shape": "h3+link", "nth": 0 }]
     },
     "exclude": []
   }
