@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -739,8 +737,7 @@ class const _Thumbnail({required final String url, required final double size})
   }
 }
 
-/// The posts extracted with the current matchers, merged by link, and the
-/// matchers as they would be sent to the server.
+/// The posts extracted with the current matchers, merged by link.
 class const _Preview({
   required final PageDocument document,
   required final List<_Group> groups,
@@ -753,16 +750,7 @@ class const _Preview({
       controller: scrollController,
       padding: const EdgeInsets.all(spacingMd),
       children: [
-        Row(
-          children: [
-            Expanded(child: HeadingText('${posts.length} post(s)')),
-            TextButton.icon(
-              icon: const Icon(Icons.copy, size: 18),
-              label: const Text('Copy matchers'),
-              onPressed: () => unawaited(_copyMatchers(context)),
-            ),
-          ],
-        ),
+        HeadingText('${posts.length} post(s)'),
         for (final group in groups)
           if (group.matcher.exclude.isNotEmpty)
             Row(
@@ -782,20 +770,6 @@ class const _Preview({
           _PreviewPost(group: groups[post.matcher], values: post.values),
         ],
       ],
-    );
-  }
-
-  Future<void> _copyMatchers(BuildContext context) async {
-    final messenger = ScaffoldMessenger.of(context);
-    final payload = {
-      'url': document.url,
-      'matchers': [for (final group in groups) group.matcher.toJson()],
-    };
-    await Clipboard.setData(
-      ClipboardData(text: const JsonEncoder.withIndent('  ').convert(payload)),
-    );
-    messenger.showSnackBar(
-      const SnackBar(content: Text('Copied the matchers as JSON.')),
     );
   }
 }
