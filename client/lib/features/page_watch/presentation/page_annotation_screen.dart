@@ -583,7 +583,8 @@ class const _SelectionSheet({
 
 /// A post found by [group], shown as a card of the field [values] extracted
 /// from it, so that the user can check them without reading the content of
-/// the post. The fields without a value are listed at the bottom.
+/// the post. The fields without a value are left out, and the card has the
+/// color of the group.
 ///
 /// A long press opens the link of the post in the in-app browser.
 class const _PostCard({
@@ -599,10 +600,6 @@ class const _PostCard({
       final v? when v.isNotEmpty => v,
       _ => null,
     };
-    final missing = [
-      for (final field in PostField.values)
-        if (value(field) == null) field.label,
-    ];
     final thumbnail = value(PostField.thumbnail);
     final link = value(PostField.link);
     final pubDate = value(PostField.pubDate);
@@ -692,21 +689,6 @@ class const _PostCard({
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
-                const Gap(spacingXs),
-                Row(
-                  children: [
-                    GroupDot(color: group.color),
-                    const Gap(spacingXs),
-                    Expanded(
-                      child: CaptionText(
-                        missing.isEmpty
-                            ? 'Group ${group.number}'
-                            : 'Group ${group.number} · '
-                                  'Not extracted: ${missing.join(', ')}',
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),

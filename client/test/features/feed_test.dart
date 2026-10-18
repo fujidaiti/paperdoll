@@ -223,19 +223,14 @@ void main() {
     // The posts are shown as cards of their extracted values, without the
     // content that is not extracted, such as the summaries.
     await t('First post').waitUntilVisible();
-    expect(
-      t('Group 1 · Not extracted: Body, Thumbnail, Pub date'),
-      findsNWidgets(2),
-    );
+    expect(t('https://blog.example.com/second'), findsOneWidget);
     expect(t('The first post.'), findsNothing);
 
     // The preview shows the same cards, one for each post that is saved.
     await t('Preview posts').tap();
     await t('2 post(s)').waitUntilVisible();
-    expect(
-      t('Group 1 · Not extracted: Body, Thumbnail, Pub date'),
-      findsNWidgets(4),
-    );
+    // The screen behind the sheet has the cards too.
+    expect(t('https://blog.example.com/second'), findsNWidgets(2));
     await t.tester.tapAt(const Offset(10, 10));
     await t.pumpAndSettle();
 
