@@ -14,6 +14,7 @@ const routeFeedSearchName = 'feedSearch';
 const routePageAnnotationName = 'pageAnnotation';
 const routePostFieldsName = 'postFields';
 const routeFeedDetailName = 'feedDetail';
+const routeFeedEditName = 'feedEdit';
 const routeFeedEntryReaderName = 'feedEntryReader';
 const routeSettingsName = 'settings';
 
@@ -33,5 +34,6 @@ const routeFeedSearchPath = 'search';
 const routePageAnnotationPath = 'matcher';
 const routePostFieldsPath = 'fields';
 const routeFeedDetailPath = ':id';
+const routeFeedEditPath = 'edit';
 const routeFeedEntryReaderPath = 'feed-entries/:feedEntryId';
 const routeSettingsPath = '/settings';

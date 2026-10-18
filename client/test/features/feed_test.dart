@@ -198,6 +198,45 @@ void main() {
     await t(AppDebugKey.saveMatchersSuccessSnackBar).waitUntilVisible();
     await t(AppDebugKey.feedsScreen).waitUntilVisible();
   });
+
+  patrolWidgetTest('Edit the post matchers of a web page', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubGet(
+        '/feeds/${blog.id}/matcher',
+        body: {
+          'page': fixture.pages.exampleBlog,
+          'matchers': [fixture.pages.exampleBlogMatcher],
+        },
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.feedEditScreen).waitUntilVisible();
+    expect(t(blog.url), findsOneWidget);
+
+    await t(AppDebugKey.editMatchersButton).tap();
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+  });
+
+  patrolWidgetTest('Edit a web feed', (t) async {
+    final nasa = fixture.feeds.nasa;
+    final server = _stubFeedSubscription(
+      nasa,
+    )..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [nasa]).toJson());
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, nasa);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.feedEditScreen).waitUntilVisible();
+    expect(t(nasa.url), findsOneWidget);
+    // The matchers are only for pages without a feed.
+    expect(t(AppDebugKey.editMatchersButton), findsNothing);
+  });
 }
 
 /// Stubs [feed]'s header, its timeline, and the two subscription routes, with

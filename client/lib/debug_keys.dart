@@ -8,7 +8,10 @@ abstract final class AppDebugKey {
   static const archivedButton = Key('archivedButton');
   static const archivedReadingListScreen = Key('archivedReadingListScreen');
   static const unarchiveSuccessSnackBar = Key('unarchiveSuccessSnackBar');
+  static const editFeedMenuItem = Key('editFeedMenuItem');
+  static const editMatchersButton = Key('editMatchersButton');
   static const feedDetailScreen = Key('feedDetailScreen');
+  static const feedEditScreen = Key('feedEditScreen');
   static const feedDetailMenuButton = Key('feedDetailMenuButton');
   static const subscribeMenuItem = Key('subscribeMenuItem');
   static const unsubscribeMenuItem = Key('unsubscribeMenuItem');

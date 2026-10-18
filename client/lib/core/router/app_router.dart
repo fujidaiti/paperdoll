@@ -8,6 +8,7 @@ import 'package:paperdoll/features/auth/presentation/sign_up_screen.dart';
 import 'package:paperdoll/features/auth/presentation/splash_screen.dart';
 import 'package:paperdoll/features/auth/presentation/verify_email_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_detail_screen.dart';
+import 'package:paperdoll/features/feed/presentation/feed_edit_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_search_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feeds_screen.dart';
 import 'package:paperdoll/features/feed_entry/presentation/feed_entry_reader_screen.dart';
@@ -166,6 +167,13 @@ GoRouter goRouter(Ref ref) {
                         builder: (context, state) => FeedEntryReaderScreen(
                           id: _idParam(state, 'feedEntryId'),
                         ),
+                      ),
+                      GoRoute(
+                        path: routeFeedEditPath,
+                        name: routeFeedEditName,
+                        parentNavigatorKey: _rootNavigatorKey,
+                        builder: (context, state) =>
+                            FeedEditScreen(id: _idParam(state, 'id')),
                       ),
                       GoRoute(
                         path: routePageAnnotationPath,
