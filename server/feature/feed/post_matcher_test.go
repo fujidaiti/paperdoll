@@ -103,3 +103,34 @@ func TestSimplifyPageKeepsFixtureValues(t *testing.T) {
 		})
 	}
 }
+
+// TestExtractPostsFindsFixturePosts checks that the matchers of each test page
+// (testdata/matcher) extract exactly the posts in its fixture.
+func TestExtractPostsFindsFixturePosts(t *testing.T) {
+	for _, page := range loadFixturePages(t) {
+		t.Run(page.name, func(t *testing.T) {
+			var matchers []PostMatcher
+			readJSON(t, filepath.Join("testdata/matcher", page.name+".json"), &matchers)
+			// The posts are compared by link, since a fixture does not always
+			// list them in the order of the page.
+			want := map[string]ExtractedPost{}
+			for _, p := range page.posts {
+				want[p[PostLink]] = p
+			}
+			got := map[string]ExtractedPost{}
+			for _, p := range ExtractPosts(page.doc, matchers) {
+				got[p[PostLink]] = p
+				if w, ok := want[p[PostLink]]; !ok {
+					t.Errorf("extra post: %v", p)
+				} else if !equalPosts(p, w) {
+					t.Errorf("post is %v, want %v", p, w)
+				}
+			}
+			for _, p := range page.posts {
+				if _, ok := got[p[PostLink]]; !ok {
+					t.Errorf("missing post: %v", p)
+				}
+			}
+		})
+	}
+}
