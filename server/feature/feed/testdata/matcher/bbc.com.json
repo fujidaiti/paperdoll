@@ -131,6 +131,28 @@
     ]
   },
   {
+    "post": [
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "card"
+    ],
+    "fields": {
+      "body": [{ "shape": "h2", "nth": 0 }],
+      "link": [],
+      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
+      "title": [{ "shape": "h3", "nth": 0 }]
+    },
+    "exclude": []
+  },
+  {
     "post": ["box", "box", "box", "box", "box", "box", "box", "box", "box"],
     "fields": {
       "body": [
@@ -179,6 +201,36 @@
         { "shape": "box", "nth": 0 },
         { "shape": "txt", "nth": 0 }
       ],
+      "link": [],
+      "thumbnail": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "img+link", "nth": 0 }
+      ],
+      "title": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "box", "nth": 0 },
+        { "shape": "h2", "nth": 0 }
+      ]
+    },
+    "exclude": ["www.bbc.com/sport/videos/ckqxvp07rrnvo"]
+  },
+  {
+    "post": [
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "card"
+    ],
+    "fields": {
       "link": [],
       "thumbnail": [
         { "shape": "box", "nth": 0 },
