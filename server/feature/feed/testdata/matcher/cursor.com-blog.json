@@ -79,12 +79,7 @@
         { "shape": "txt", "nth": 0 }
       ]
     },
-    "exclude": [
-      "cursor.com/blog/grab",
-      "cursor.com/blog/basis",
-      "cursor.com/blog/nokia",
-      "cursor.com/blog/imdex"
-    ]
+    "exclude": []
   },
   {
     "post": [
@@ -130,11 +125,63 @@
     ],
     "fields": {
       "link": [],
+      "pubDate": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "time", "nth": 0 }
+      ],
+      "thumbnail": [
+        { "shape": "box", "nth": 1 },
+        { "shape": "img+link", "nth": 0 }
+      ],
+      "title": [{ "shape": "txt", "nth": 0 }]
+    },
+    "exclude": []
+  },
+  {
+    "post": [
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "card"
+    ],
+    "fields": {
+      "link": [],
       "thumbnail": [{ "shape": "img+link", "nth": 0 }],
       "title": [
         { "shape": "box", "nth": 0 },
         { "shape": "txt", "nth": 0 }
       ]
+    },
+    "exclude": []
+  },
+  {
+    "post": [
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "box",
+      "card"
+    ],
+    "fields": {
+      "link": [],
+      "pubDate": [
+        { "shape": "box", "nth": 0 },
+        { "shape": "time", "nth": 0 }
+      ],
+      "title": [{ "shape": "txt", "nth": 0 }]
     },
     "exclude": []
   }

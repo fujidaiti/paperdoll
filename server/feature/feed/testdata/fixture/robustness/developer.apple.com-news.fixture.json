@@ -15,6 +15,7 @@
     "title": "Updates to Full Disk Access in macOS",
     "body": "We give developers powerful APIs to build incredible capabilities into their apps for Apple products, backed by a set of controls designed to protect users’ private data. Full Disk Access largely sidesteps these controls in order to allow backup apps to function properly on the Mac. Some developers are using Full Disk Access in ways that could put users at risk, exposing everything on their systems—including files, mail, messages, and even browsing history—without users’ full knowledge and understanding. For communication apps, this can also compromise the privacy of the people users are communicating with. Going forward, we will introduce additional controls to ensure that users who genuinely wish to grant an app this extraordinary level of access can only do so with very explicit user action. Addressing this is critical. As AI agents become increasingly capable and autonomous, the risks associated with this level of access will grow substantially. We are committed to ensuring users clearly understand these risks before granting such access, so they can make informed decisions about their own data and privacy.",
     "link": "https://developer.apple.com/news/?id=p6zjojqw",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/full-disk-access/full-disk-access-256x256_2x.png",
     "pubDate": "2026-10-02T00:00:00Z"
   },
   {
@@ -33,6 +34,7 @@
     "title": "Get ready with the latest beta releases",
     "body": "The beta versions of iOS 27.2, iPadOS 27.2, macOS 27.2, tvOS 27.2, visionOS 27.2, and watchOS 27.2 are now available. Get your apps ready by confirming they work as expected on these releases. And make sure to build and test with Xcode 27.2 to take advantage of the advancements in the latest SDKs. Note about iOS 27.1 and iPhone Duo When iPhone Duo becomes available on October 23, it will run iOS 27.1. This version builds on the foundation of iOS 27 and introduces features that were purpose-built for the new foldable design. Xcode 27.1 will add development support for iPhone Duo. This includes updated SDKs and a simulator that supports the all-new poses and orientations of iPhone Duo. A beta version will be available later this month. View downloads and release notes Learn about testing a beta OS Learn about sending feedback",
     "link": "https://developer.apple.com/news/?id=rfb1rooi",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/sdk-27/sdk-27-256x256_2x.png",
     "pubDate": "2026-09-16T00:00:00Z"
   },
   {
@@ -63,6 +65,7 @@
     "title": "Upcoming changes to Rosetta support for Intel-based macOS apps",
     "body": "In 2020, we introduced Apple silicon for Mac computers, providing Rosetta as a translation layer during the transition period. As announced at WWDC last year , we’re now concluding this transition. What this means for developers who have macOS apps: macOS 26.4 or later: Users may receive a system notification when launching apps that rely on Rosetta, alerting them to update to an Apple silicon native version. macOS 27: Final release to support Rosetta — Intel-only apps will no longer run on Mac computers with Apple silicon after this update. Please note that Rosetta functionality for older, unmaintained gaming titles that rely on Intel-based frameworks will continue to be supported. What you need to do: To ensure your apps remain available and your users aren't interrupted by system notifications, add Apple silicon support to your apps now. If you haven’t updated your app yet: Begin the transition immediately. Build and distribute your app as a universal binary, which runs natively on both Apple silicon and Intel-based Mac computers. Optimize your app for Apple silicon Port your macOS apps to Apple silicon Visit the Apple Developer Forums If you already offer an Apple silicon version: Reach out to your users directly. Encourage them to download and install your latest native version to avoid the notifications on macOS 26.4 or later and ensure the app runs when macOS 27 ships this fall.",
     "link": "https://developer.apple.com/news/?id=w5ngl9k2",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/ios-27-round/ios-27-round-128x128_2x.png",
     "pubDate": "2026-09-01T00:00:00Z"
   },
   {
@@ -81,6 +84,7 @@
     "title": "Update: New domain for Sign in with Apple",
     "body": "Starting later this year, new Sign in with Apple addresses, previously issued on privaterelay.appleid.com, will be issued on private.icloud.com. Existing addresses on privaterelay.appleid.com will continue to work and forward mail to users without interruption. After further consideration and reviewing community feedback, iCloud+ Hide My Email addresses will remain on icloud.com. What you need to do Developers with apps or websites that use Sign in with Apple should ensure that their account systems, email validation logic, and allowlists accept addresses on the new private.icloud.com domain in addition to the existing privaterelay.appleid.com domain. Learn more about Sign in with Apple Communicating using the Private Email Relay Service",
     "link": "https://developer.apple.com/news/?id=1ptvdtcm",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/icloud/icloud-128x128_2x.png",
     "pubDate": "2026-08-24T00:00:00Z"
   },
   {
@@ -129,12 +133,14 @@
     "title": "Changes to iOS in Brazil",
     "body": "As part of a recent agreement with Brazil’s competition regulator CADE (Conselho Administrativo de Defesa Econômica), Apple is introducing changes to iOS that create new options for developers' apps in Brazil. Beginning with iOS 26.5, developers can distribute apps on alternative app marketplaces, operate alternative app marketplaces, process app payments for digital goods and services outside of Apple In-App Purchase in iOS, and more.",
     "link": "https://developer.apple.com/news/?id=dhwadr2x",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/ios-26/ios-26-128x128_2x.png",
     "pubDate": "2026-06-18T00:00:00Z"
   },
   {
     "title": "New domain for Sign in with Apple and iCloud+ Hide My Email",
     "body": "Later this summer, Apple will unify the email domains used by Sign in with Apple and iCloud+ Hide My Email under a single, shared domain: private.icloud.com.",
     "link": "https://developer.apple.com/news/?id=sus6t6ab",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/icloud/icloud-128x128_2x.png",
     "pubDate": "2026-06-15T00:00:00Z"
   },
   {
@@ -279,6 +285,7 @@
     "title": "Adjustments to the China storefront of the App Store on iOS and iPadOS",
     "body": "Apple is making changes to the App Store in China following discussions with the Chinese regulator. As of March 15, 2026, changes will be made to the commission rates that apply to the China mainland storefront of the App Store on iOS and iPadOS. The commission rate for standard Apple In-App Purchase and paid app transactions will be 25%. Currently, the rate is 30%. The commission rate for qualifying Apple In-App Purchase transactions under the App Store Small Business Program and Mini Apps Partner Program, and for auto-renewals of Apple In-App Purchase subscriptions after the first year, will be 12%. Currently, the rate is 15%. Signing the updated terms by March 15 is not required to receive the benefit of these commission rate changes starting that date. We strive for iOS and iPadOS to be the best app ecosystem and a great business opportunity for developers in China. We are committed to terms that remain fair and transparent to all developers, and to always offering competitive App Store rates to developers distributing apps in China that are no higher than overall rates in other markets. The Apple Developer Program License Agreement has been revised to support updated policies. You can sign in to your account to accept the updated terms. Translations of the updated agreement will be available on Apple Developer website within one month.",
     "link": "https://developer.apple.com/news/?id=dadukodv",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/app-store-s/app-store-s-256x256_2x.png",
     "pubDate": "2026-03-12T00:00:00Z"
   },
   {
@@ -309,6 +316,7 @@
     "title": "Upcoming SDK minimum requirements",
     "body": "Starting April 28, 2026, apps and games uploaded to App Store Connect need to meet the following minimum requirements: iOS and iPadOS apps must be built with the iOS 26 & iPadOS 26 SDK or later tvOS apps must be built with the tvOS 26 SDK or later visionOS apps must be built with the visionOS 26 SDK or later watchOS apps must be built with the watchOS 26 SDK or later Learn more about submitting",
     "link": "https://developer.apple.com/news/?id=ueeok6yw",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/ios-ipados-26/ios-ipados-26-96x96_2x.png",
     "pubDate": "2026-02-03T00:00:00Z"
   },
   {
@@ -327,6 +335,7 @@
     "title": "Changes to iOS in Japan",
     "body": "To comply with the Mobile Software Competition Act (MSCA), Apple is introducing changes to iOS that create new options for developers' apps in Japan. Beginning with iOS 26.2, developers can distribute apps on alternative app marketplaces, operate alternative app marketplaces, process app payments for digital goods and services outside of Apple In-App Purchase in iOS, and more. The new options for downloading apps from alternative app marketplaces and making app payments open new avenues for malware, fraud, scams, and privacy and security risks. Apple has worked with Japanese regulators to introduce protections from these new threats — with a special emphasis on the safety of younger users. Those protections include Notarization for iOS apps, an authorization process for app marketplaces, and requirements that help protect children from inappropriate content and scams. By March 17, 2026, all current members of the Apple Developer Program will need to agree to the latest update to the Apple Developer Program License Agreement, which includes new terms that allow for these options in Japan. Learn more about the updates You can also request a 30-minute online appointment to ask questions about these changes.",
     "link": "https://developer.apple.com/news/?id=074b3wzz",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/ios-26/ios-26-128x128_2x.png",
     "pubDate": "2025-12-17T00:00:00Z"
   },
   {
@@ -393,6 +402,7 @@
     "title": "New requirement for apps using Sign in with Apple for account creation",
     "body": "Starting January 1, 2026, developers based in the Republic of Korea must provide a server‑to‑server notification endpoint when registering a new Services ID, or updating an existing Services ID, to associate their website with an app using Sign in with Apple . As a reminder, registering a notification endpoint allows Apple to send you important updates about the people who use your app and their account status, including: Changes in email forwarding preferences. Account deletions in your app. Permanent Apple Account deletions. To learn more about server-to-server notifications, see WWDC20 session 10173: Get the most out of Sign in with Apple . When you receive these notifications, you should immediately update any data associated with the account change in the app, as well as any necessary server infrastructure, to give people more control of the personal data they’ve shared. For more information, see Processing changes for Sign in with Apple accounts . Before submitting a new app to the App Store, or updating an existing app configuration to register a new Services ID or modify an existing Services ID, please read the guidance below. Account change guidance Account changes are directly related to privacy and control for the user and their personal data, and confirming account changes should be straightforward and transparent. For account email forwarding changes: Ensure any displayed user data affected by the account change matches the change event in the notification payload. Typically, this data is displayed in the app’s account settings or user profile. If people need to visit a website to finish changing or verifying their email address, include a link directly to the page on your website where they can complete the process. Keep users informed. If the email forwarding change affects other services you offer, let them know. If your app supports In-App Purchases, help people understand how billing, order tracking, and cancellations will be handled with the new email address. For account deletions: See TN3194: Handling account deletions and revoking tokens for Sign in with Apple . Note: Always follow applicable legal requirements for storing and retaining user account information and for handling account changes and deletions. This includes complying with local laws where your apps are available. If you have questions regarding your legal obligations, check with your legal counsel. Resources App Review Guidelines Human Interface Guidelines: Managing accounts",
     "link": "https://developer.apple.com/news/?id=j9zukcr6",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/sign-in-with-apple-dark/sign-in-with-apple-dark-256x256_2x.png",
     "pubDate": "2025-10-09T00:00:00Z"
   },
   {
@@ -441,12 +451,14 @@
     "title": "Updated age ratings in App Store Connect",
     "body": "The App Store is designed to be a safe and trusted place for all ages, including children. The age rating system for apps and games has been updated in order to provide people with more granular age ratings. We’ve also introduced new age rating questions to help identify sensitive content in your app and added the ability to set a higher rating to reflect your app’s minimum age requirement. Ratings for all apps and games on the App Store have been automatically updated to align with this new system and will be reflected on Apple devices running beta versions of iOS 26, iPadOS 26, macOS Tahoe 26, tvOS 26, visionOS 26, and watchOS 26. The updated age rating system adds 13+, 16+, and 18+ to the existing 4+ and 9+ ratings. Age ratings are assigned to each country or region and may vary based on region-specific suitability standards. We’ve introduced a new set of required questions to the ratings questionnaire for all apps. These new questions cover: In-app controls. Capabilities. Medical or wellness topics. Violent themes in your app or game. Your answers to these questions will help Apple better calculate a rating and help you deliver an age-appropriate experience. If your app has a policy requiring a higher minimum user age than the rating assigned by Apple, you can set a higher age rating after you respond to the age ratings questions. You can view the age rating for each of your apps under the updated system and respond to the new questions for each app in the App Information section in App Store Connect . As a reminder, you must consider how all app features, including AI assistants and chatbot functionality, impact the frequency of sensitive content appearing within your app to make sure it receives the appropriate rating. All apps are subject to the App Review Guidelines , such as the safety guidelines regarding objectionable content or user generated content, and must abide by all applicable local laws and regulations, like the Children’s Online Privacy Protection Act (“COPPA”), and the European Union’s General Data Protection Regulation (“GDPR”). Please provide responses to the updated age rating questions for each of your apps by January 31, 2026, to avoid an interruption when submitting your app updates in App Store Connect. Learn more about age ratings values and definitions Learn how to set your app rating",
     "link": "https://developer.apple.com/news/?id=ks775ehf",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/app-store-s/app-store-s-256x256_2x.png",
     "pubDate": "2025-07-24T00:00:00Z"
   },
   {
     "title": "New 64-bit requirement for watchOS apps",
     "body": "Beginning April 2026, watchOS apps uploaded to App Store Connect must also include 64-bit support and be built with the watchOS 26 SDK. To enable 64-bit support in your project, we recommend using the default Xcode build setting of “Standard architectures” to build a single binary with 64-bit code. You can test ARM64 compatibility for your apps in the Xcode Simulator, and on Apple Watch Series 9 or 10, or Apple Watch Ultra 2 running watchOS 26 beta. Learn more about the SDKs included in Xcode",
     "link": "https://developer.apple.com/news/?id=zt8rydnt",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/watchos-26/watchos-26-128x128_2x.png",
     "pubDate": "2025-07-22T00:00:00Z"
   },
   {
@@ -567,12 +579,14 @@
     "title": "Reminder: Upcoming Changes to the App Store Receipt Signing Intermediate Certificate",
     "body": "As part of ongoing efforts to improve security and privacy on Apple platforms, the App Store receipt signing intermediate certificate is being updated to use the SHA-256 cryptographic algorithm. This certificate is used to sign App Store receipts, which are the proof of purchase for apps and In-App Purchases. This update is being completed in multiple phases and some existing apps on the App Store may be impacted by the next update, depending on how they verify receipts. Starting , if your app performs on-device receipt validation and doesn’t support the SHA-256 algorithm, your app will fail to validate the receipt. If your app prevents customers from accessing the app or premium content when receipt validation fails, your customers may lose access to their content. If your app performs on-device receipt validation, update your app to support certificates that use the SHA-256 algorithm; alternatively, use the AppTransaction and Transaction APIs to verify App Store transactions. For more details, view TN3138: Handling App Store receipt signing certificate changes .",
     "link": "https://developer.apple.com/news/?id=rzloycgp",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/mac-app-store-11/mac-app-store-11-256x256_2x.png",
     "pubDate": "2025-01-16T00:00:00Z"
   },
   {
     "title": "Algorithm changes to server connections for Apple Pay on the Web",
     "body": "Starting next month, Apple will change the supported algorithms that secure server connections for Apple Pay on the Web. In order to maintain uninterrupted service, you’ll need to ensure that your production servers support one or more of the designated six ciphers before February 4, 2025. These algorithm changes will affect any secure connection you’ve established as part of your Apple Pay integration, including the following touchpoints: Requesting an Apple Pay payment session (Apple Pay on the Web only) Renewing your domain verification (Apple Pay on the Web only) Receiving and handling merchant token notifications for recurring, deferred, and automatic-reload transactions (Apple Pay on the Web and in app) Creating and updating Wallet Orders (Apple Pay on the Web and in app) Managing merchant onboarding via the Apple Pay Web Merchant Registration API (payment service provider (PSP) and e-commerce platforms only)",
     "link": "https://developer.apple.com/news/?id=2x8awlvm",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/apple-pay/apple-pay-256x256_2x.png",
     "pubDate": "2025-01-09T00:00:00Z"
   },
   {
@@ -627,6 +641,7 @@
     "title": "Upcoming changes to the App Store Receipt Signing Intermediate Certificate",
     "body": "As part of ongoing efforts to improve security and privacy on Apple platforms, the App Store receipt signing intermediate certificate is being updated to use the SHA-256 cryptographic algorithm. This certificate is used to sign App Store receipts, which are the proof of purchase for apps and In-App Purchases. This update is being completed in multiple phases and some existing apps on the App Store may be impacted by the next update, depending on how they verify receipts. Starting , if your app performs on-device receipt validation and doesn't support a SHA-256 algorithm, your app will fail to validate the receipt. If your app prevents customers from accessing the app or premium content when receipt validation fails, your customers may lose access to their content. If your app performs on-device receipt validation, update your app to support certificates that use the SHA-256 algorithm; alternatively, use the AppTransaction and Transaction APIs to verify App Store transactions. For more details, view TN3138: Handling App Store receipt signing certificate change .",
     "link": "https://developer.apple.com/news/?id=b6tejt6f",
+    "thumbnail": "https://developer.apple.com/assets/elements/icons/mac-app-store-11/mac-app-store-11-96x96_2x.png",
     "pubDate": "2024-10-31T00:00:00Z"
   },
   {
