@@ -57,7 +57,21 @@ func loadFixturePages(t *testing.T, sourceDir, fixtureDir string) []fixturePage 
 // each test page keeps every value of the posts in its fixture, so that a
 // matcher can find them in the tree.
 func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
-	for _, page := range loadFixturePages(t, "testdata/source", "testdata/fixture") {
+	checkFixtureValues(t, loadFixturePages(t, "testdata/source", "testdata/fixture"))
+}
+
+// TestBuildSemanticTreeKeepsRobustnessFixtureValues is
+// TestBuildSemanticTreeKeepsFixtureValues for the later version of each test
+// page in testdata/robustness.
+func TestBuildSemanticTreeKeepsRobustnessFixtureValues(t *testing.T) {
+	checkFixtureValues(t, loadFixturePages(t, "testdata/robustness", "testdata/fixture/robustness"))
+}
+
+// checkFixtureValues checks that the semantic tree of each of pages keeps
+// every value of the posts in its fixture.
+func checkFixtureValues(t *testing.T, pages []fixturePage) {
+	t.Helper()
+	for _, page := range pages {
 		t.Run(page.name, func(t *testing.T) {
 			// The values that a matcher can take from the nodes, by field. A
 			// field is mapped only to nodes that it accepts, as the client's
