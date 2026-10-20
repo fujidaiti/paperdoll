@@ -33,6 +33,14 @@ func TestExtract(t *testing.T) {
 			wantContent:     "",
 		},
 		{
+			// See https://github.com/fujidaiti/paperdoll/issues/212.
+			name:            "JSON-LD is ignored",
+			fixture:         "testdata/json_ld.html",
+			wantTitle:       "JSON-LD Article | Example Site",
+			wantDescription: "The description from og:description.",
+			wantContent:     "",
+		},
+		{
 			// The description only comes from metadata, not from the first
 			// paragraph.
 			name:            "article without description metadata",

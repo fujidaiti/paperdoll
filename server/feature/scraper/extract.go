@@ -38,7 +38,13 @@ func Extract(r io.Reader, pageURL url.URL) (Page, error) {
 	// Parse the raw page rather than a sanitized one: sanitizing first would
 	// strip the <meta> tags the metadata is read from. The extracted content
 	// is sanitized below instead.
-	article, err := readability.FromReader(r, baseUrl)
+	parser := readability.NewParser()
+	// Readability ranks JSON-LD metadata above og:title, <title>, and
+	// og:description, but some sites put unsuitable data there, e.g. the whole
+	// article as the description.
+	// TODO: Use JSON-LD metadata with sanity checks (#212).
+	parser.DisableJSONLD = true
+	article, err := parser.Parse(r, baseUrl)
 	if err != nil {
 		return Page{}, err
 	}
