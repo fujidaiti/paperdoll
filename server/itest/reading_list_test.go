@@ -226,6 +226,73 @@ func TestReadingList_SaveWebClip(t *testing.T) {
 	}
 }
 
+// SaveWebClip still fills in the clip's title and description from the page's
+// metadata when the page has no readable content.
+func TestReadingList_SaveWebClip_NoContent(t *testing.T) {
+	t.Cleanup(testenv.TearDown)
+	now := mustTimeUTC("2026-07-15 10:00:00")
+	uid := provisionDefaultTestAccount(t, now)
+
+	clipURL := must(url.Parse("http://clip.test/head-only"))
+	testenv.StubHTTP(clipURL.Host, clipURL.Path, "./testdata/reading_list/web_clip_head_only.html")
+
+	s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
+	item, err := s.SaveWebClip(t.Context(), uid, *clipURL, "Placeholder Title")
+	if err != nil {
+		t.Fatalf("SaveWebClip returned an unexpected error: %v", err)
+	}
+
+	// TODO: make this better
+	// Wait for the background fetch, as in TestReadingList_SaveWebClip.
+	var status string
+	deadline := time.Now().Add(15 * time.Second)
+	for time.Now().Before(deadline) {
+		status = scanValOrFatal[string](t, `SELECT fetch_status FROM web_clips WHERE id = $1`, item.ResourceID)
+		if status != "pending" {
+			break
+		}
+		time.Sleep(50 * time.Millisecond)
+	}
+	if status != "failed" {
+		t.Fatalf("got fetch_status %q, want %q for a page without readable content", status, "failed")
+	}
+
+	const (
+		wantTitle       = "Head Only Clip"
+		wantDescription = "A clip whose content is rendered by JavaScript."
+	)
+	var (
+		clipTitle       string
+		clipDescription string
+		clipContent     *string
+	)
+	scanRowOrFatal(t, `
+		SELECT title, description, content FROM web_clips WHERE id = $1
+	`, []any{item.ResourceID}, &clipTitle, &clipDescription, &clipContent)
+	if clipTitle != wantTitle {
+		t.Errorf("got clip title %q, want og:title %q", clipTitle, wantTitle)
+	}
+	if clipDescription != wantDescription {
+		t.Errorf("got clip description %q, want og:description %q", clipDescription, wantDescription)
+	}
+	if clipContent != nil {
+		t.Errorf("got clip content %q, want NULL for a failed fetch", *clipContent)
+	}
+	var (
+		itemTitle       string
+		itemDescription string
+	)
+	scanRowOrFatal(t, `
+		SELECT title, description FROM reading_list_items WHERE id = $1
+	`, []any{item.ID}, &itemTitle, &itemDescription)
+	if itemTitle != wantTitle {
+		t.Errorf("got item title %q, want og:title %q", itemTitle, wantTitle)
+	}
+	if itemDescription != wantDescription {
+		t.Errorf("got item description %q, want og:description %q", itemDescription, wantDescription)
+	}
+}
+
 // SaveWebClipByID copies an existing clip's metadata into a new reading list
 // item owned by the calling user.
 func TestReadingList_SaveWebClipByID(t *testing.T) {

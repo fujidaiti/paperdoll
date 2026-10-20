@@ -10,12 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"codeberg.org/readeck/go-readability/v2"
 	"github.com/fujidaiti/paperdoll/server/feature/newspaper"
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
 	_ "github.com/jackc/pgx/v5/stdlib"
-	"github.com/microcosm-cc/bluemonday"
 	"github.com/mmcdole/gofeed"
 )
 
@@ -303,18 +301,6 @@ func writeStoriesForUser(
 	return svc.SubmitStories(ctx, ss)
 }
 
-const contentTemplate = `
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-%s
-</body>
-</html>
-`
-
 func fetchContent(ctx context.Context, scrp *scraper.Service, entry entryRecord, db *sql.DB) error {
 	entryUrl, err := url.Parse(entry.url)
 	if err != nil {
@@ -334,39 +320,21 @@ func fetchContent(ctx context.Context, scrp *scraper.Service, entry entryRecord,
 		}
 	}()
 
-	buf := bluemonday.UGCPolicy().SanitizeReader(res.Body)
-	if buf.Len() == 0 {
-		return fmt.Errorf("the body is empty")
-	}
-
-	baseUrl := new(*entryUrl)
-	baseUrl.Path = ""
-	baseUrl.RawPath = ""
-	baseUrl.Fragment = ""
-	baseUrl.RawFragment = ""
-	baseUrl.RawQuery = ""
-	baseUrl.User = nil
-
-	article, err := readability.FromReader(buf, baseUrl)
+	// The entry's title and description come from the feed, so the page's
+	// metadata is ignored.
+	page, err := scraper.Extract(res.Body, *entryUrl)
 	if err != nil {
 		return err
 	}
-
-	buf.Reset()
-	err = article.RenderHTML(buf)
-	if err != nil {
-		return err
-	}
-	if buf.Len() == 0 {
+	if page.Content == "" {
 		return fmt.Errorf("failed to extract content")
 	}
-	content := fmt.Sprintf(contentTemplate, buf)
 
 	_, err = db.ExecContext(ctx, `
 		UPDATE feed_entries
 		SET content = $1, snapshot_at = $2
 		WHERE id = $3;
-	`, content, time.Now(), entry.id)
+	`, page.Content, time.Now(), entry.id)
 	if err != nil {
 		return fmt.Errorf("failed to fetch content")
 	}
