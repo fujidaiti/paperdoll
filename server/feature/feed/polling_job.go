@@ -81,7 +81,7 @@ func (j *Job) Do(ctx context.Context) error {
 
 	fmt.Printf("Got %d entries from %s\n", len(raw.Items), feed.URL)
 
-	// TODO: Batch insertions if the feed is too large
+	// TODO(#128): Batch insertions if the feed is too large
 	ncols := 7
 	vals := make([]string, 0, len(raw.Items))
 	args := make([]any, 0, len(raw.Items)*ncols)
@@ -126,7 +126,7 @@ func (j *Job) Do(ctx context.Context) error {
 			&e.publishedAt,
 		)
 		if err != nil {
-			// TODO: Make this case fail-soft instead of exiting.
+			// TODO(#127): Make this case fail-soft instead of exiting.
 			return err
 		}
 		newEntries = append(newEntries, e)
@@ -140,7 +140,7 @@ func (j *Job) Do(ctx context.Context) error {
 	}
 
 	var entriesToBeStories []entryRecord
-	// TODO: Mark the entry as queued in DB to avoid duplicate jobs for the same entry
+	// TODO(#129): Mark the entry as queued in DB to avoid duplicate jobs for the same entry
 	for _, e := range newEntries {
 		if e.publishedAt.Valid && j.Interval.Contains(e.publishedAt.Time) {
 			entriesToBeStories = append(entriesToBeStories, e)
@@ -150,7 +150,7 @@ func (j *Job) Do(ctx context.Context) error {
 			if err != nil {
 				fmt.Print(err)
 			}
-			// TODO: Respect Crawl-delay in robot.txt
+			// TODO(#13): Respect Crawl-delay in robot.txt
 			if dt := time.Since(st); dt < time.Second {
 				time.Sleep(time.Second - dt)
 			}
@@ -177,7 +177,7 @@ func CollectJobs(
 		fmt.Print(err)
 		// Fail-soft: we don't exit here.
 	}
-	// TODO: Create an index for next_poll_at column
+	// TODO(#110): Create an index for next_poll_at column
 	rows, err := db.QueryContext(ctx, `
 		SELECT id, url, title
 		FROM feeds;
@@ -210,12 +210,12 @@ func CollectJobs(
 func normalizeEntry(entry *gofeed.Item, feedId int) entryRecord {
 	e := entryRecord{
 		feedId: feedId,
-		// TODO: Cleanup the link
+		// TODO(#126): Cleanup the link
 		url:   entry.Link,
 		title: entry.Title,
 	}
 
-	// TODO: Sanitize the description
+	// TODO(#126): Sanitize the description
 	if desc := entry.Description; len(desc) > 0 {
 		e.description.String = desc
 		e.description.Valid = true
@@ -227,7 +227,7 @@ func normalizeEntry(entry *gofeed.Item, feedId int) entryRecord {
 	if guid := entry.GUID; len(guid) > 0 {
 		e.dedupKey = guid
 	} else {
-		// TODO: Synthesize a guid for this entry
+		// TODO(#126): Synthesize a guid for this entry
 		e.dedupKey = entry.Link
 	}
 
@@ -279,7 +279,7 @@ func writeStoriesForUser(
 	f FeedRecord,
 	es []entryRecord,
 ) error {
-	// TODO: apply user-defined filters to feed entries
+	// TODO(#131): apply user-defined filters to feed entries
 	var ss []newspaper.Story
 	for _, e := range es {
 		var pubDate time.Time

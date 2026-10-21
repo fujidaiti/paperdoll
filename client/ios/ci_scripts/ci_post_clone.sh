@@ -82,7 +82,7 @@ fi
 cd "$FLUTTER_PROJECT_DIR"
 # See https://docs.flutter.dev/deployment/cd#xcode-cloud
 flutter precache --ios
-# TODO: upload the symbol file to Firebase crashlytics.
+# TODO(#161): upload the symbol file to Firebase crashlytics.
 flutter build ios \
     --release \
     --config-only \

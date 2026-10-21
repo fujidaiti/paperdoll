@@ -56,6 +56,9 @@ jobs:
       - name: Validate API spec
         run: npx redocly lint api/api.yaml
 
+      - name: Lint TODO comments
+        run: tool/lint-todos.sh --strict
+
   client_test:
     name: Client Test
     runs-on: ubuntu-latest
