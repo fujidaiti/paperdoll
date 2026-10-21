@@ -174,7 +174,7 @@ var cssSize = regexp.MustCompile(`(?:^|[;\s])(width|height)\s*:\s*(\d+)px`)
 
 // isSmall reports whether the image n shows no content because of its size:
 // it is one pixel wide or high, such as a tracking pixel or a spacer, or it is
-// at most 96 pixels on both sides, such as an icon, a bullet or an avatar. The
+// at most 92 pixels on both sides, such as an icon, a bullet or an avatar. The
 // size comes from the attributes or the inline style. A size of zero counts as
 // unknown, since some pages size their images by CSS after setting zero in the
 // attributes.
@@ -189,7 +189,7 @@ func isSmall(n *html.Node) bool {
 		size[m[1]], _ = strconv.Atoi(m[2])
 	}
 	w, h := size["width"], size["height"]
-	return w == 1 || h == 1 || w > 0 && w <= 96 && h > 0 && h <= 96
+	return w == 1 || h == 1 || w > 0 && w <= 92 && h > 0 && h <= 92
 }
 
 // isDropped reports whether the element n and its content are never shown.
