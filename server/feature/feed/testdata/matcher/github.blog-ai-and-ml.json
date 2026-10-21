@@ -24,30 +24,5 @@
       ]
     },
     "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box"],
-    "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
-      ],
-      "pubDate": [
-        { "shape": "box", "nth": 1 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
-      ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
-      ]
-    },
-    "exclude": []
   }
 ]

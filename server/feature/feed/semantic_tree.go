@@ -121,24 +121,7 @@ func BuildSemanticTree(raw []byte, fallbackURL string) (*SemanticTree, error) {
 		}
 	}
 
-	// An image that appears many times in the page, such as a placeholder of a
-	// lazy-loaded image, a default thumbnail or an icon, shows nothing specific
-	// to a post. An image that appears twice can still be a post thumbnail,
-	// such as a picture for light and dark modes or a post listed twice.
-	s := &treeBuilder{base: base, repeatedImages: map[string]bool{}}
-	count := map[string]int{}
-	for n := range body.Descendants() {
-		if n.Type == html.ElementNode && n.Data == "img" {
-			if src := s.imageSource(n); src != "" {
-				count[src]++
-			}
-		}
-	}
-	for src, c := range count {
-		if c >= 3 {
-			s.repeatedImages[src] = true
-		}
-	}
+	s := &treeBuilder{base: base}
 	tree := s.convert(body)
 	if tree == nil || tree.isValue() {
 		tree = &SemanticTreeNode{
@@ -150,8 +133,7 @@ func BuildSemanticTree(raw []byte, fallbackURL string) (*SemanticTree, error) {
 }
 
 type treeBuilder struct {
-	base           *url.URL
-	repeatedImages map[string]bool
+	base *url.URL
 }
 
 // Elements that never carry post content.
@@ -237,7 +219,7 @@ func (s *treeBuilder) convert(n *html.Node) *SemanticTreeNode {
 	switch n.Data {
 	case "img":
 		src := s.imageSource(n)
-		if src == "" || isSmall(n) || s.repeatedImages[src] {
+		if src == "" || isSmall(n) {
 			return nil
 		}
 		alt := normalizeSpace(attr(n, "alt"))
