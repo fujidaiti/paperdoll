@@ -77,21 +77,56 @@
                                 "ch": [
                                   { "val": "Genre" },
                                   {
-                                    "val": "Electronic Soundtrack Country Blues Folk Funk Hip hop Jazz Pop RnB Soul Rock World Variety Reggae Classic Other Disco Metal"
+                                    "ch": [
+                                      { "val": "Electronic" },
+                                      { "val": "Soundtrack" },
+                                      { "val": "Country" },
+                                      { "val": "Blues" },
+                                      { "val": "Folk" },
+                                      { "val": "Funk" },
+                                      { "val": "Hip hop" },
+                                      { "val": "Jazz" },
+                                      { "val": "Pop" },
+                                      { "val": "RnB" },
+                                      { "val": "Soul" },
+                                      { "val": "Rock" },
+                                      { "val": "World" },
+                                      { "val": "Variety" },
+                                      { "val": "Reggae" },
+                                      { "val": "Classic" },
+                                      { "val": "Other" },
+                                      { "val": "Disco" },
+                                      { "val": "Metal" }
+                                    ]
                                   }
                                 ]
                               },
                               {
                                 "ch": [
                                   { "val": "Availability" },
-                                  { "val": "Pre-order Immediate delivery" }
+                                  {
+                                    "ch": [
+                                      { "val": "Pre-order" },
+                                      { "val": "Immediate delivery" }
+                                    ]
+                                  }
                                 ]
                               },
                               {
                                 "ch": [
                                   { "val": "Categories" },
                                   {
-                                    "val": "Jaÿ-Z30 Anniversary Collection Reggae - Our must-haves Essentials Hidden Gems New-ins Soundtracks Top Diggers"
+                                    "ch": [
+                                      {
+                                        "val": "Jaÿ-Z30 Anniversary Collection"
+                                      },
+                                      { "val": "Reggae - Our must-haves" },
+                                      { "val": "Essentials" },
+                                      { "val": "Hidden Gems" },
+                                      { "val": "New-ins" },
+                                      { "val": "Soundtracks" },
+                                      { "val": "Top Diggers" }
+                                    ]
                                   }
                                 ]
                               },
@@ -99,7 +134,12 @@
                                 "ch": [
                                   { "val": "Sort by" },
                                   {
-                                    "val": "Popularity Added date Alphabetical Random"
+                                    "ch": [
+                                      { "val": "Popularity" },
+                                      { "val": "Added date" },
+                                      { "val": "Alphabetical" },
+                                      { "val": "Random" }
+                                    ]
                                   }
                                 ]
                               }

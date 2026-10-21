@@ -240,7 +240,8 @@ func ExtractPosts(tree *SemanticTree, matchers []PostMatcher) []ExtractedPost {
 }
 
 // bodyText returns the text of the values in the subtree of n, joined with
-// spaces. Images and times are left out, and links keep only their text. A
+// spaces as in the page, such as "Review’s" from the values "Review" and
+// "’s". Images and times are left out, and links keep only their text. A
 // body is a short summary shown below the title of a post, so its structure
 // does not matter.
 func bodyText(n *SemanticTreeNode) string {
@@ -255,5 +256,5 @@ func bodyText(n *SemanticTreeNode) string {
 		}
 	}
 	visit(n)
-	return normalizeSpace(strings.Join(texts, " "))
+	return normalizeSpace(closeGaps(strings.Join(texts, gap)))
 }

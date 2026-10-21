@@ -235,7 +235,13 @@ func (s *treeBuilder) convert(n *html.Node) *SemanticTreeNode {
 			return &SemanticTreeNode{Kind: "time", Val: val}
 		}
 	}
-	if isTextOnly(n) && !hasDateText(n) && !s.hasInnerLink(n) {
+	// Separate items laid out side by side, such as "<span>Video</span>
+	// <span>Title</span> <span>0:48</span>", are split into values, so that
+	// each can be a field of a post. A heading or a link stays one value,
+	// since it is one title.
+	split := !headingTags[n.Data] && n.Data != "a"
+	separate := split && countApart(slices.Collect(n.ChildNodes())) >= 2
+	if isTextOnly(n) && !hasDateText(n) && !s.hasInnerLink(n) && !separate {
 		return s.textValue(n)
 	}
 
@@ -244,6 +250,28 @@ func (s *treeBuilder) convert(n *html.Node) *SemanticTreeNode {
 	var children []*SemanticTreeNode
 	var run []*html.Node
 	flush := func() {
+		if split && countApart(run) >= 2 {
+			var part []*html.Node
+			flushPart := func() {
+				if t := normalizeSpace(joinText(part)); t != "" {
+					children = append(children, &SemanticTreeNode{Val: t})
+				}
+				part = nil
+			}
+			for _, c := range run {
+				if c.Type == html.ElementNode && !formattingTags[c.Data] {
+					flushPart()
+					if v := s.textValue(c); v != nil {
+						children = append(children, v)
+					}
+				} else {
+					part = append(part, c)
+				}
+			}
+			flushPart()
+			run = nil
+			return
+		}
 		var elems []*html.Node
 		for _, c := range run {
 			if c.Type == html.ElementNode {
@@ -448,6 +476,20 @@ func hasText(n *SemanticTreeNode) bool {
 	return slices.ContainsFunc(n.Children, hasText)
 }
 
+// countApart returns the number of elements in nodes that are laid out apart
+// from the text next to them, which are those other than formatting, and
+// that have text.
+func countApart(nodes []*html.Node) int {
+	count := 0
+	for _, n := range nodes {
+		if n.Type == html.ElementNode && !isDropped(n) && !formattingTags[n.Data] && n.Data != "br" &&
+			strings.TrimSpace(textContent(n)) != "" {
+			count++
+		}
+	}
+	return count
+}
+
 // isTextOnly reports whether n contains nothing but text and inline
 // elements.
 func isTextOnly(n *html.Node) bool {
@@ -556,7 +598,13 @@ func joinText(nodes []*html.Node) string {
 	for _, n := range nodes {
 		walk(n)
 	}
-	text := gapBeforePunct.ReplaceAllString(b.String(), "$1")
+	return closeGaps(b.String())
+}
+
+// closeGaps replaces the gaps in text with spaces, except before closing
+// punctuation and after opening brackets.
+func closeGaps(text string) string {
+	text = gapBeforePunct.ReplaceAllString(text, "$1")
 	text = gapAfterBracket.ReplaceAllString(text, "$1")
 	return strings.ReplaceAll(text, gap, " ")
 }

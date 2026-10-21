@@ -21,7 +21,10 @@
                                   {
                                     "ch": [
                                       {
-                                        "val": "Press inquiries press@anthropic.com"
+                                        "ch": [
+                                          { "val": "Press inquiries" },
+                                          { "val": "press@anthropic.com" }
+                                        ]
                                       },
                                       {
                                         "ch": [
@@ -173,7 +176,13 @@
                         "ch": [
                           {
                             "ch": [
-                              { "val": "Date Category Title" },
+                              {
+                                "ch": [
+                                  { "val": "Date" },
+                                  { "val": "Category" },
+                                  { "val": "Title" }
+                                ]
+                              },
                               {
                                 "ch": [
                                   {
