@@ -21,6 +21,13 @@ type fixturePage struct {
 	posts []ExtractedPost
 }
 
+// fixtureSets are the sets of test pages with their fixtures: the pages that
+// the matchers are built on, and the later versions of them.
+var fixtureSets = []struct{ name, source, fixture string }{
+	{"source", "testdata/source", "testdata/fixture"},
+	{"robustness", "testdata/robustness", "testdata/fixture/robustness"},
+}
+
 // loadFixturePages loads the pages in sourceDir that have a fixture in
 // fixtureDir.
 func loadFixturePages(t *testing.T, sourceDir, fixtureDir string) []fixturePage {
@@ -64,10 +71,7 @@ func loadFixturePages(t *testing.T, sourceDir, fixtureDir string) []fixturePage 
 // nodes. The later versions of the pages in testdata/robustness are checked
 // too.
 func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
-	for _, set := range []struct{ name, source, fixture string }{
-		{"source", "testdata/source", "testdata/fixture"},
-		{"robustness", "testdata/robustness", "testdata/fixture/robustness"},
-	} {
+	for _, set := range fixtureSets {
 		t.Run(set.name, func(t *testing.T) {
 			for _, page := range loadFixturePages(t, set.source, set.fixture) {
 				t.Run(page.name, func(t *testing.T) {
@@ -194,45 +198,37 @@ func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 }
 
 // TestExtractPostsFindsFixturePosts checks that the matchers of each test page
-// (testdata/matcher) extract exactly the posts in its fixture.
+// (testdata/matcher) extract exactly the posts in its fixture. The matchers
+// are built on testdata/source, and must still extract exactly the posts of
+// the later version of each page in testdata/robustness.
 func TestExtractPostsFindsFixturePosts(t *testing.T) {
-	checkExtractedPosts(t, loadFixturePages(t, "testdata/source", "testdata/fixture"))
-}
-
-// TestExtractPostsFindsRobustnessFixturePosts checks that the matchers of each
-// test page, which are built on testdata/source, still extract exactly the
-// posts of the later version of the page in testdata/robustness.
-func TestExtractPostsFindsRobustnessFixturePosts(t *testing.T) {
-	checkExtractedPosts(t, loadFixturePages(t, "testdata/robustness", "testdata/fixture/robustness"))
-}
-
-// checkExtractedPosts checks that the matchers in testdata/matcher extract
-// exactly the fixture posts from each of pages.
-func checkExtractedPosts(t *testing.T, pages []fixturePage) {
-	t.Helper()
-	for _, page := range pages {
-		t.Run(page.name, func(t *testing.T) {
-			var matchers []PostMatcher
-			readJSON(t, filepath.Join("testdata/matcher", page.name+".json"), &matchers)
-			// The posts are compared by link, since a fixture does not always
-			// list them in the order of the page.
-			want := map[string]ExtractedPost{}
-			for _, p := range page.posts {
-				want[p[PostLink]] = p
-			}
-			got := map[string]ExtractedPost{}
-			for _, p := range ExtractPosts(page.tree, matchers) {
-				got[p[PostLink]] = p
-				if w, ok := want[p[PostLink]]; !ok {
-					t.Errorf("extra post: %v", p)
-				} else if !equalPosts(p, w) {
-					t.Errorf("post is %v, want %v", p, w)
-				}
-			}
-			for _, p := range page.posts {
-				if _, ok := got[p[PostLink]]; !ok {
-					t.Errorf("missing post: %v", p)
-				}
+	for _, set := range fixtureSets {
+		t.Run(set.name, func(t *testing.T) {
+			for _, page := range loadFixturePages(t, set.source, set.fixture) {
+				t.Run(page.name, func(t *testing.T) {
+					var matchers []PostMatcher
+					readJSON(t, filepath.Join("testdata/matcher", page.name+".json"), &matchers)
+					// The posts are compared by link, since a fixture does not always
+					// list them in the order of the page.
+					want := map[string]ExtractedPost{}
+					for _, p := range page.posts {
+						want[p[PostLink]] = p
+					}
+					got := map[string]ExtractedPost{}
+					for _, p := range ExtractPosts(page.tree, matchers) {
+						got[p[PostLink]] = p
+						if w, ok := want[p[PostLink]]; !ok {
+							t.Errorf("extra post: %v", p)
+						} else if !equalPosts(p, w) {
+							t.Errorf("post is %v, want %v", p, w)
+						}
+					}
+					for _, p := range page.posts {
+						if _, ok := got[p[PostLink]]; !ok {
+							t.Errorf("missing post: %v", p)
+						}
+					}
+				})
 			}
 		})
 	}
