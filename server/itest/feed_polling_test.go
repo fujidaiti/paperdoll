@@ -97,7 +97,7 @@ func TestCollectJobs_IntervalFromSchedule(t *testing.T) {
 	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
 	seedFeed(t, uid, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
 	// Seed schedules
-	// TODO: add a domain function for adding a publishing schedule and
+	// TODO(#155): add a domain function for adding a publishing schedule and
 	// refactor this test to use it instead of inserting into newspaper_schedules directly.
 	now := time.Date(2026, 7, 15, 10, 0, 0, 0, time.Local)
 	before := now.Add(-5 * time.Minute)
@@ -329,7 +329,7 @@ func TestFeedPolling_NoSubscribers(t *testing.T) {
 	// Inserted directly rather than via feed.Subscribe (bypassing business
 	// logic here on purpose).
 	//
-	// TODO: replace with a real seed path once a domain function exists for
+	// TODO(#155): replace with a real seed path once a domain function exists for
 	// unsubscribing. feed.Subscribe is currently the only way to create a
 	// feeds row and it always attaches a subscriber, so a zero-subscriber
 	// feed can't be reached through business logic today.

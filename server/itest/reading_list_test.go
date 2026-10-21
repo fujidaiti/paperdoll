@@ -190,7 +190,7 @@ func TestReadingList_SaveWebClip(t *testing.T) {
 		t.Errorf("got stored user_id %d, want alice's id %d", gotUID, uid)
 	}
 
-	// TODO: make this better
+	// TODO(#157): make this better
 	// The asynchronous part. Waiting here is not optional: the background fetch
 	// runs on context.Background(), so returning before it finishes would let it
 	// write to the DB while testenv.TearDown is restoring the snapshot.

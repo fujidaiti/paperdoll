@@ -62,9 +62,9 @@ CREATE TABLE web_clips (
 CREATE TABLE reading_list_items (
   id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   kind          text NOT NULL CHECK (kind IN ('feed_entry', 'web_clip')),
-  web_clip_id bigint REFERENCES web_clips (id), -- TODO: Make this unique
-  feed_entry_id bigint REFERENCES feed_entries (id), -- TODO: Make this unique
-  title         text NOT NULL, -- TODO: Make this nullable
+  web_clip_id bigint REFERENCES web_clips (id), -- TODO(#106): Make this unique
+  feed_entry_id bigint REFERENCES feed_entries (id), -- TODO(#106): Make this unique
+  title         text NOT NULL, -- TODO(#108): Make this nullable
   description   text,
   archived      boolean NOT NULL DEFAULT false,
   saved_at      timestamptz NOT NULL DEFAULT now(),
