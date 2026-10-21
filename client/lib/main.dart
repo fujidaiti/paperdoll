@@ -4,7 +4,6 @@ import 'package:paperdoll/app.dart';
 import 'package:paperdoll/core/logging/app_logger.dart';
 import 'package:paperdoll/core/logging/logging_provider_observer.dart';
 
-// todo: refine this function
 void main() {
   configureLogging();
   final container = createPaperdollContainer(
