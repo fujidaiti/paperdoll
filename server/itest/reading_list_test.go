@@ -13,6 +13,7 @@ import (
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
 	"github.com/fujidaiti/paperdoll/server/itest/testenv"
+	"github.com/google/go-cmp/cmp"
 )
 
 // seedFeedEntry inserts a minimal feed and feed entry, returning the entry ID.
@@ -118,183 +119,165 @@ func TestReadingList_SaveFeedEntry(t *testing.T) {
 // SaveWebClip returns a placeholder item immediately, then fills in the clip's
 // real metadata from the fetched page in the background.
 func TestReadingList_SaveWebClip(t *testing.T) {
-	t.Cleanup(testenv.TearDown)
-	now := mustTimeUTC("2026-07-15 10:00:00")
-	uid := provisionDefaultTestAccount(t, now)
-
-	clipURL := must(url.Parse("http://clip.test/article"))
-	testenv.StubHTTP(clipURL.Host, clipURL.Path, "./testdata/reading_list/web_clip.html")
-
-	s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
-	item, err := s.SaveWebClip(t.Context(), uid, *clipURL, "Placeholder Title")
-	if err != nil {
-		t.Fatalf("SaveWebClip returned an unexpected error: %v", err)
+	tests := []struct {
+		name            string
+		path            string
+		fixture         string
+		wantStatus      string
+		wantTitle       string
+		wantDescription *string
+		// wantContent reports whether the content must be filled in. If false,
+		// it must be NULL.
+		wantContent bool
+	}{
+		{
+			name:            "article",
+			path:            "/article",
+			fixture:         "./testdata/reading_list/web_clip.html",
+			wantStatus:      "done",
+			wantTitle:       "Reading List Test Clip",
+			wantDescription: nil,
+			wantContent:     true,
+		},
+		{
+			// The metadata is saved even though the content can't be extracted.
+			name:            "page without readable content",
+			path:            "/head-only",
+			fixture:         "./testdata/reading_list/web_clip_head_only.html",
+			wantStatus:      "failed",
+			wantTitle:       "Head Only Clip",
+			wantDescription: new("A clip whose content is rendered by JavaScript."),
+			wantContent:     false,
+		},
 	}
 
-	// The synchronous part: a placeholder item and a not-yet-fetched clip.
-	if item.ID == 0 {
-		t.Error("item ID must be assigned, got 0")
-	}
-	if item.Kind != "web_clip" {
-		t.Errorf("got kind %q, want %q", item.Kind, "web_clip")
-	}
-	if item.Title != "Placeholder Title" {
-		t.Errorf("got title %q, want the caller-supplied placeholder %q", item.Title, "Placeholder Title")
-	}
-	gotURL := scanValOrFatal[string](t, `SELECT url FROM web_clips WHERE id = $1`, item.ResourceID)
-	if gotURL != clipURL.String() {
-		t.Errorf("got clip URL %q, want %q", gotURL, clipURL.String())
-	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Cleanup(testenv.TearDown)
+			now := mustTimeUTC("2026-07-15 10:00:00")
+			uid := provisionDefaultTestAccount(t, now)
 
-	// The saved row itself. Its title is deliberately left out here: the
-	// background fetch may already have replaced the placeholder, so the title
-	// is only asserted once the fetch is known to be finished, below.
-	if n := scanValOrFatal[int](t, `SELECT count(*) FROM reading_list_items`); n != 1 {
-		t.Fatalf("got %d reading list items, want exactly 1", n)
-	}
-	var (
-		gotKind        string
-		gotWebClipID   int
-		gotFeedEntryID *int
-		gotDescription *string
-		gotArchived    bool
-		gotSavedAt     time.Time
-		gotUID         user.UserID
-	)
-	scanRowOrFatal(t, `
-		SELECT kind, web_clip_id, feed_entry_id, description, archived, saved_at, user_id
-		FROM reading_list_items WHERE id = $1
-	`, []any{item.ID},
-		&gotKind, &gotWebClipID, &gotFeedEntryID,
-		&gotDescription, &gotArchived, &gotSavedAt, &gotUID,
-	)
-	if gotKind != "web_clip" {
-		t.Errorf("got stored kind %q, want %q", gotKind, "web_clip")
-	}
-	if gotWebClipID != item.ResourceID {
-		t.Errorf("got stored web_clip_id %d, want the returned resource ID %d", gotWebClipID, item.ResourceID)
-	}
-	if gotFeedEntryID != nil {
-		t.Errorf("got stored feed_entry_id %d, want NULL for a web clip item", *gotFeedEntryID)
-	}
-	if gotDescription != nil {
-		t.Errorf("got stored description %q, want NULL (the clip isn't fetched yet)", *gotDescription)
-	}
-	if gotArchived {
-		t.Error("a newly saved item must not be archived")
-	}
-	if !gotSavedAt.Equal(item.SavedAt) {
-		t.Errorf("got stored saved_at %v, want the returned %v", gotSavedAt, item.SavedAt)
-	}
-	if gotUID != uid {
-		t.Errorf("got stored user_id %d, want alice's id %d", gotUID, uid)
-	}
+			clipURL := must(url.Parse("http://clip.test" + tt.path))
+			testenv.StubHTTP(clipURL.Host, clipURL.Path, tt.fixture)
 
-	// TODO(#157): make this better
-	// The asynchronous part. Waiting here is not optional: the background fetch
-	// runs on context.Background(), so returning before it finishes would let it
-	// write to the DB while testenv.TearDown is restoring the snapshot.
-	var status string
-	deadline := time.Now().Add(15 * time.Second)
-	for time.Now().Before(deadline) {
-		status = scanValOrFatal[string](t, `SELECT fetch_status FROM web_clips WHERE id = $1`, item.ResourceID)
-		if status != "pending" {
-			break
-		}
-		time.Sleep(50 * time.Millisecond)
-	}
-	if status != "done" {
-		t.Fatalf("got fetch_status %q, want %q after the background fetch", status, "done")
-	}
+			s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
+			item, err := s.SaveWebClip(t.Context(), uid, *clipURL, "Placeholder Title")
+			if err != nil {
+				t.Fatalf("SaveWebClip returned an unexpected error: %v", err)
+			}
 
-	const wantTitle = "Reading List Test Clip"
-	var clipTitle string
-	var clipContent string
-	scanRowOrFatal(t, `
-		SELECT title, content FROM web_clips WHERE id = $1
-	`, []any{item.ResourceID}, &clipTitle, &clipContent)
-	if clipTitle != wantTitle {
-		t.Errorf("got clip title %q, want the fetched title %q", clipTitle, wantTitle)
-	}
-	if clipContent == "" {
-		t.Error("clip content must be filled in by the background fetch, got an empty string")
-	}
-	// The placeholder title is replaced once the real one is known.
-	itemTitle := scanValOrFatal[string](t, `SELECT title FROM reading_list_items WHERE id = $1`, item.ID)
-	if itemTitle != wantTitle {
-		t.Errorf("got item title %q, want the fetched title %q", itemTitle, wantTitle)
+			// The synchronous part: a placeholder item and a not-yet-fetched clip.
+			if item.ID == 0 {
+				t.Error("item ID must be assigned, got 0")
+			}
+			if item.Kind != "web_clip" {
+				t.Errorf("got kind %q, want %q", item.Kind, "web_clip")
+			}
+			if item.Title != "Placeholder Title" {
+				t.Errorf("got title %q, want the caller-supplied placeholder %q", item.Title, "Placeholder Title")
+			}
+			gotURL := scanValOrFatal[string](t, `SELECT url FROM web_clips WHERE id = $1`, item.ResourceID)
+			if gotURL != clipURL.String() {
+				t.Errorf("got clip URL %q, want %q", gotURL, clipURL.String())
+			}
+
+			// The saved row itself. Its title and description are deliberately
+			// left out here: the background fetch may already have replaced
+			// them, so they are only asserted once the fetch is known to be
+			// finished, below.
+			if n := scanValOrFatal[int](t, `SELECT count(*) FROM reading_list_items`); n != 1 {
+				t.Fatalf("got %d reading list items, want exactly 1", n)
+			}
+			var (
+				gotKind        string
+				gotWebClipID   int
+				gotFeedEntryID *int
+				gotArchived    bool
+				gotSavedAt     time.Time
+				gotUID         user.UserID
+			)
+			scanRowOrFatal(t, `
+				SELECT kind, web_clip_id, feed_entry_id, archived, saved_at, user_id
+				FROM reading_list_items WHERE id = $1
+			`, []any{item.ID},
+				&gotKind, &gotWebClipID, &gotFeedEntryID,
+				&gotArchived, &gotSavedAt, &gotUID,
+			)
+			if gotKind != "web_clip" {
+				t.Errorf("got stored kind %q, want %q", gotKind, "web_clip")
+			}
+			if gotWebClipID != item.ResourceID {
+				t.Errorf("got stored web_clip_id %d, want the returned resource ID %d", gotWebClipID, item.ResourceID)
+			}
+			if gotFeedEntryID != nil {
+				t.Errorf("got stored feed_entry_id %d, want NULL for a web clip item", *gotFeedEntryID)
+			}
+			if gotArchived {
+				t.Error("a newly saved item must not be archived")
+			}
+			if !gotSavedAt.Equal(item.SavedAt) {
+				t.Errorf("got stored saved_at %v, want the returned %v", gotSavedAt, item.SavedAt)
+			}
+			if gotUID != uid {
+				t.Errorf("got stored user_id %d, want alice's id %d", gotUID, uid)
+			}
+
+			// TODO(#157): make this better
+			// The asynchronous part. Waiting here is not optional: the background
+			// fetch runs on context.Background(), so returning before it finishes
+			// would let it write to the DB while testenv.TearDown is restoring the
+			// snapshot.
+			var status string
+			deadline := time.Now().Add(15 * time.Second)
+			for time.Now().Before(deadline) {
+				status = scanValOrFatal[string](t, `SELECT fetch_status FROM web_clips WHERE id = $1`, item.ResourceID)
+				if status != "pending" {
+					break
+				}
+				time.Sleep(50 * time.Millisecond)
+			}
+			if status != tt.wantStatus {
+				t.Fatalf("got fetch_status %q, want %q after the background fetch", status, tt.wantStatus)
+			}
+
+			var (
+				clipTitle       string
+				clipDescription *string
+				clipContent     *string
+			)
+			scanRowOrFatal(t, `
+				SELECT title, description, content FROM web_clips WHERE id = $1
+			`, []any{item.ResourceID}, &clipTitle, &clipDescription, &clipContent)
+			if clipTitle != tt.wantTitle {
+				t.Errorf("got clip title %q, want the fetched title %q", clipTitle, tt.wantTitle)
+			}
+			if d := cmp.Diff(tt.wantDescription, clipDescription); d != "" {
+				t.Errorf("clip description mismatch (-want +got):\n%s", d)
+			}
+			if tt.wantContent && (clipContent == nil || *clipContent == "") {
+				t.Error("clip content must be filled in by the background fetch, got none")
+			}
+			if !tt.wantContent && clipContent != nil {
+				t.Errorf("got clip content %q, want NULL for a failed fetch", *clipContent)
+			}
+			// The placeholder title is replaced once the real one is known.
+			var (
+				itemTitle       string
+				itemDescription *string
+			)
+			scanRowOrFatal(t, `
+				SELECT title, description FROM reading_list_items WHERE id = $1
+			`, []any{item.ID}, &itemTitle, &itemDescription)
+			if itemTitle != tt.wantTitle {
+				t.Errorf("got item title %q, want the fetched title %q", itemTitle, tt.wantTitle)
+			}
+			if d := cmp.Diff(tt.wantDescription, itemDescription); d != "" {
+				t.Errorf("item description mismatch (-want +got):\n%s", d)
+			}
+		})
 	}
 }
 
-// SaveWebClip still fills in the clip's title and description from the page's
-// metadata when the page has no readable content.
-func TestReadingList_SaveWebClip_NoContent(t *testing.T) {
-	t.Cleanup(testenv.TearDown)
-	now := mustTimeUTC("2026-07-15 10:00:00")
-	uid := provisionDefaultTestAccount(t, now)
-
-	clipURL := must(url.Parse("http://clip.test/head-only"))
-	testenv.StubHTTP(clipURL.Host, clipURL.Path, "./testdata/reading_list/web_clip_head_only.html")
-
-	s := readinglist.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
-	item, err := s.SaveWebClip(t.Context(), uid, *clipURL, "Placeholder Title")
-	if err != nil {
-		t.Fatalf("SaveWebClip returned an unexpected error: %v", err)
-	}
-
-	// TODO(#157): make this better
-	// Wait for the background fetch, as in TestReadingList_SaveWebClip.
-	var status string
-	deadline := time.Now().Add(15 * time.Second)
-	for time.Now().Before(deadline) {
-		status = scanValOrFatal[string](t, `SELECT fetch_status FROM web_clips WHERE id = $1`, item.ResourceID)
-		if status != "pending" {
-			break
-		}
-		time.Sleep(50 * time.Millisecond)
-	}
-	if status != "failed" {
-		t.Fatalf("got fetch_status %q, want %q for a page without readable content", status, "failed")
-	}
-
-	const (
-		wantTitle       = "Head Only Clip"
-		wantDescription = "A clip whose content is rendered by JavaScript."
-	)
-	var (
-		clipTitle       string
-		clipDescription string
-		clipContent     *string
-	)
-	scanRowOrFatal(t, `
-		SELECT title, description, content FROM web_clips WHERE id = $1
-	`, []any{item.ResourceID}, &clipTitle, &clipDescription, &clipContent)
-	if clipTitle != wantTitle {
-		t.Errorf("got clip title %q, want og:title %q", clipTitle, wantTitle)
-	}
-	if clipDescription != wantDescription {
-		t.Errorf("got clip description %q, want og:description %q", clipDescription, wantDescription)
-	}
-	if clipContent != nil {
-		t.Errorf("got clip content %q, want NULL for a failed fetch", *clipContent)
-	}
-	var (
-		itemTitle       string
-		itemDescription string
-	)
-	scanRowOrFatal(t, `
-		SELECT title, description FROM reading_list_items WHERE id = $1
-	`, []any{item.ID}, &itemTitle, &itemDescription)
-	if itemTitle != wantTitle {
-		t.Errorf("got item title %q, want og:title %q", itemTitle, wantTitle)
-	}
-	if itemDescription != wantDescription {
-		t.Errorf("got item description %q, want og:description %q", itemDescription, wantDescription)
-	}
-}
-
-// SaveWebClipByID copies an existing clip's metadata into a new reading list
-// item owned by the calling user.
 func TestReadingList_SaveWebClipByID(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := mustTimeUTC("2026-07-15 10:00:00")
