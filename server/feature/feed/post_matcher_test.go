@@ -57,134 +57,137 @@ func loadFixturePages(t *testing.T, sourceDir, fixtureDir string) []fixturePage 
 }
 
 // TestBuildSemanticTreeKeepsFixtureValues checks that the semantic tree of
-// each test page keeps every value of the posts in its fixture, with each
-// post in its own subtree, so that a matcher can find them in the tree.
+// each test page keeps every value of the posts in its fixture, and that each
+// post has its own subtree: every smallest node that holds all values of a
+// post must neither be nor contain nor be inside such a node of another post,
+// since posts do not nest in a page. A matcher can only find posts as such
+// nodes. The later versions of the pages in testdata/robustness are checked
+// too.
 func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
-	checkFixtureValues(t, loadFixturePages(t, "testdata/source", "testdata/fixture"))
-}
-
-// TestBuildSemanticTreeKeepsRobustnessFixtureValues is
-// TestBuildSemanticTreeKeepsFixtureValues for the later version of each test
-// page in testdata/robustness.
-func TestBuildSemanticTreeKeepsRobustnessFixtureValues(t *testing.T) {
-	checkFixtureValues(t, loadFixturePages(t, "testdata/robustness", "testdata/fixture/robustness"))
-}
-
-// checkFixtureValues checks that the semantic tree of each of pages keeps
-// every value of the posts in its fixture, and that each post has its own
-// subtree: every smallest node that holds all values of a post must neither
-// be nor contain nor be inside such a node of another post, since posts do
-// not nest in a page. A matcher can only find posts as such nodes.
-func checkFixtureValues(t *testing.T, pages []fixturePage) {
-	t.Helper()
-	for _, page := range pages {
-		t.Run(page.name, func(t *testing.T) {
-			// The nodes that hold each value that a matcher can take from
-			// them, by field. A field is mapped only to nodes that it
-			// accepts, as the client's PostField.accepts tells.
-			holders := map[PostField]map[string][]*SemanticTreeNode{}
-			for _, f := range postFields {
-				holders[f] = map[string][]*SemanticTreeNode{}
-			}
-			parent := map[*SemanticTreeNode]*SemanticTreeNode{}
-			add := func(f PostField, n *SemanticTreeNode) {
-				if v, ok := f.valueOf(n); ok {
-					holders[f][v] = append(holders[f][v], n)
-				}
-			}
-			var visit func(n *SemanticTreeNode)
-			visit = func(n *SemanticTreeNode) {
-				switch n.Kind {
-				case "img":
-					add(PostThumbnail, n)
-				case "time":
-					add(PostPubDate, n)
-				default:
-					if n.isValue() {
-						add(PostTitle, n)
+	for _, set := range []struct{ name, source, fixture string }{
+		{"source", "testdata/source", "testdata/fixture"},
+		{"robustness", "testdata/robustness", "testdata/fixture/robustness"},
+	} {
+		t.Run(set.name, func(t *testing.T) {
+			for _, page := range loadFixturePages(t, set.source, set.fixture) {
+				t.Run(page.name, func(t *testing.T) {
+					// The nodes that hold each value that a matcher can take from
+					// them, by field. A field is mapped only to nodes that it
+					// accepts, as the client's PostField.accepts tells.
+					holders := map[PostField]map[string][]*SemanticTreeNode{}
+					for _, f := range postFields {
+						holders[f] = map[string][]*SemanticTreeNode{}
 					}
-					add(PostBody, n)
-					add(PostLink, n)
-				}
-				for _, c := range n.Children {
-					parent[c] = n
-					visit(c)
-				}
-			}
-			visit(page.tree.Root)
-
-			// The smallest nodes that hold all values of each post: the nodes
-			// whose subtree holds every value, without a child that does.
-			smallest := make([][]*SemanticTreeNode, len(page.posts))
-			for i, post := range page.posts {
-				for f := range post {
-					if holders[f] == nil {
-						t.Errorf("post %d: unknown field %q", i, f)
-					}
-				}
-				var count map[*SemanticTreeNode]int
-				fields := 0
-				for _, f := range postFields {
-					want, ok := post[f]
-					if !ok {
-						continue
-					}
-					if len(holders[f][want]) == 0 {
-						t.Errorf("post %d: %s %q is missing", i, f, want)
-					}
-					// Each node is counted once per field, however many of
-					// its descendants hold the value.
-					marked := map[*SemanticTreeNode]bool{}
-					for _, n := range holders[f][want] {
-						for ; n != nil && !marked[n]; n = parent[n] {
-							marked[n] = true
+					parent := map[*SemanticTreeNode]*SemanticTreeNode{}
+					add := func(f PostField, n *SemanticTreeNode) {
+						if v, ok := f.valueOf(n); ok {
+							holders[f][v] = append(holders[f][v], n)
 						}
 					}
-					if count == nil {
-						count = map[*SemanticTreeNode]int{}
+					var visit func(n *SemanticTreeNode)
+					visit = func(n *SemanticTreeNode) {
+						switch n.Kind {
+						case "img":
+							add(PostThumbnail, n)
+						case "time":
+							add(PostPubDate, n)
+						default:
+							if n.isValue() {
+								add(PostTitle, n)
+							}
+							add(PostBody, n)
+							add(PostLink, n)
+						}
+						for _, c := range n.Children {
+							parent[c] = n
+							visit(c)
+						}
 					}
-					for n := range marked {
-						count[n]++
-					}
-					fields++
-				}
-				for n, c := range count {
-					if c != fields {
-						continue
-					}
-					if !slices.ContainsFunc(n.Children, func(c *SemanticTreeNode) bool { return count[c] == fields }) {
-						smallest[i] = append(smallest[i], n)
-					}
-				}
-			}
+					visit(page.tree.Root)
 
-			// The posts whose smallest nodes are at each node.
-			owners := map[*SemanticTreeNode][]int{}
-			for i, nodes := range smallest {
-				for _, n := range nodes {
-					owners[n] = append(owners[n], i)
-				}
-			}
-			// Walking up from each smallest node finds every smallest node
-			// that is it or contains it, so the pairs where one contains the
-			// other are found from the inner one.
-			overlaps := map[[2]int]bool{}
-			for i, nodes := range smallest {
-				for _, n := range nodes {
-					for a := n; a != nil; a = parent[a] {
-						for _, j := range owners[a] {
-							if j != i {
-								overlaps[[2]int{min(i, j), max(i, j)}] = true
+					// The smallest nodes that hold all values of each post: the nodes
+					// whose subtree holds every value, without a child that does.
+					smallest := make([][]*SemanticTreeNode, len(page.posts))
+					for i, post := range page.posts {
+						for f := range post {
+							if holders[f] == nil {
+								t.Errorf("post %d: unknown field %q", i, f)
+							}
+						}
+						var count map[*SemanticTreeNode]int
+						fields := 0
+						for _, f := range postFields {
+							want, ok := post[f]
+							if !ok {
+								continue
+							}
+							if len(holders[f][want]) == 0 {
+								t.Errorf("post %d: %s %q is missing", i, f, want)
+							}
+							// Each node is counted once per field, however many of
+							// its descendants hold the value.
+							marked := map[*SemanticTreeNode]bool{}
+							for _, n := range holders[f][want] {
+								for ; n != nil && !marked[n]; n = parent[n] {
+									marked[n] = true
+								}
+							}
+							if count == nil {
+								count = map[*SemanticTreeNode]int{}
+							}
+							for n := range marked {
+								count[n]++
+							}
+							fields++
+						}
+						for n, c := range count {
+							if c != fields {
+								continue
+							}
+							if !slices.ContainsFunc(
+								n.Children,
+								func(c *SemanticTreeNode) bool { return count[c] == fields },
+							) {
+								smallest[i] = append(smallest[i], n)
 							}
 						}
 					}
-				}
-			}
-			for _, pair := range slices.SortedFunc(maps.Keys(overlaps), func(a, b [2]int) int {
-				return cmp.Or(cmp.Compare(a[0], b[0]), cmp.Compare(a[1], b[1]))
-			}) {
-				i, j := pair[0], pair[1]
-				t.Errorf("posts %d (%s) and %d (%s) overlap", i, page.posts[i][PostLink], j, page.posts[j][PostLink])
+
+					// The posts whose smallest nodes are at each node.
+					owners := map[*SemanticTreeNode][]int{}
+					for i, nodes := range smallest {
+						for _, n := range nodes {
+							owners[n] = append(owners[n], i)
+						}
+					}
+					// Walking up from each smallest node finds every smallest node
+					// that is it or contains it, so the pairs where one contains the
+					// other are found from the inner one.
+					overlaps := map[[2]int]bool{}
+					for i, nodes := range smallest {
+						for _, n := range nodes {
+							for a := n; a != nil; a = parent[a] {
+								for _, j := range owners[a] {
+									if j != i {
+										overlaps[[2]int{min(i, j), max(i, j)}] = true
+									}
+								}
+							}
+						}
+					}
+					for _, pair := range slices.SortedFunc(maps.Keys(overlaps), func(a, b [2]int) int {
+						return cmp.Or(cmp.Compare(a[0], b[0]), cmp.Compare(a[1], b[1]))
+					}) {
+						i, j := pair[0], pair[1]
+						t.Errorf(
+							"posts %d (%s) and %d (%s) overlap",
+							i,
+							page.posts[i][PostLink],
+							j,
+							page.posts[j][PostLink],
+						)
+					}
+				})
 			}
 		})
 	}
