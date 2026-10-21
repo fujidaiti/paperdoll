@@ -61,6 +61,9 @@ jobs:
           make -C api gen-docs
           git diff --exit-code
 
+      - name: Lint TODO comments
+        run: tool/lint-todos.sh --strict
+
   client_test:
     name: Client Test
     runs-on: ubuntu-latest

@@ -109,7 +109,7 @@ func provisionTestAccount(
 		Now: func() time.Time { return createdAt },
 	}
 	token := must(s.VerifySignUpEmailAddress(t.Context(), ticket.Encode(), string(code), device))
-	// TODO: Stop using strings.ToLower when CannonicalEmail is refactored to be a named type.
+	// TODO(#119): Stop using strings.ToLower when CannonicalEmail is refactored to be a named type.
 	// SignUp stores the canonicalized (lower-cased) address.
 	uid := scanValOrFatal[user.UserID](t,
 		`SELECT id FROM users WHERE email = $1`, strings.ToLower(email))

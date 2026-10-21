@@ -20,7 +20,7 @@ var ErrItemNotFound = errors.New("item not found")
 // DeleteItem removes an item from the list.
 // Reports false with no error if the id does not exist, true otherwise.
 //
-// TODO: Garbage-collect orphaned web clips in the background. Deleting the
+// TODO(#139): Garbage-collect orphaned web clips in the background. Deleting the
 // join row here leaves the backing web_clips row unreachable (it can only be
 // reached via a reading_list_items row), so a background job should periodically
 // delete web_clips that have no referencing reading_list_items.
@@ -83,7 +83,7 @@ func (s *Service) SaveFeedEntry(ctx context.Context, uid user.UserID, id int) (S
 		WHERE id = $1
 		RETURNING id, feed_entry_id, kind, title, description, saved_at;
 	`, id, uid).Scan(&it.ID, &it.ResourceID, &it.Kind, &it.Title, &it.Description, &it.SavedAt)
-	// TODO: Return a dedicated error for the case where the id doesn't exist
+	// TODO(#114): Return a dedicated error for the case where the id doesn't exist
 	return it, err
 }
 
@@ -98,7 +98,7 @@ func (s *Service) SaveWebClipByID(ctx context.Context, uid user.UserID, id int) 
 		WHERE id = $1
 		RETURNING id, web_clip_id, kind, title, description, saved_at;
 	`, id, uid).Scan(&it.ID, &it.ResourceID, &it.Kind, &it.Title, &it.Description, &it.SavedAt)
-	// TODO: Return a dedicated error for the case where the id doesn't exist
+	// TODO(#114): Return a dedicated error for the case where the id doesn't exist
 	return it, err
 }
 
@@ -109,8 +109,8 @@ func (s *Service) SaveWebClipByID(ctx context.Context, uid user.UserID, id int) 
 // It then tries fetching the clip itself asynchronously, and fills the
 // placeholders with actual metadata.
 func (s *Service) SaveWebClip(ctx context.Context, uid user.UserID, ln url.URL, title string) (SavedItem, error) {
-	// TODO: Cleanup URL
-	// TODO: Validate URL (schema, host)
+	// TODO(#115): Cleanup URL
+	// TODO(#115): Validate URL (schema, host)
 	var it SavedItem
 	tx, err := s.DB.BeginTx(ctx, nil)
 	if err != nil {
@@ -142,7 +142,7 @@ func (s *Service) SaveWebClip(ctx context.Context, uid user.UserID, ln url.URL, 
 		return it, err
 	}
 	go func() {
-		// TODO: Recover from panic
+		// TODO(#136): Recover from panic
 		err := s.tryFetchWebClip(it.ID, clipID, ln)
 		if err != nil {
 			fmt.Println(err)
@@ -173,6 +173,8 @@ func (s *Service) tryFetchWebClip(rID, clipID int, ln url.URL) error {
 // fetchWebClip fills in the clip's metadata and content from the page.
 // The metadata is saved even if the content can't be extracted, in which
 // case an error is reported.
+//
+// TODO(#132): DRY scraping logic
 func (s *Service) fetchWebClip(rID, clipID int, ln url.URL) error {
 	fmt.Printf("Fetching reading list clip from %s\n", ln.String())
 	res, err := s.scraper.Fetch(context.Background(), ln)

@@ -125,7 +125,7 @@ func NewServer(db *sql.DB, httpProxy *url.URL, emailSender infra.EmailSender) *h
 	}
 }
 
-// TODO: rename to handler (lowercase)
+// TODO(#153): rename to handler (lowercase)
 type Handler struct {
 	DB                 *sql.DB
 	UserService        *user.Service
@@ -176,7 +176,7 @@ type stories struct {
 }
 
 func (h *Handler) getTodaysNewspaper(w http.ResponseWriter, r *http.Request) {
-	// TODO: Design a better cursor (e.g. priority)
+	// TODO(#112): Design a better cursor (e.g. priority)
 	var cursor int
 	if c := r.URL.Query().Get("after"); c != "" {
 		var err error
@@ -210,7 +210,7 @@ func (h *Handler) getTodaysNewspaper(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: Replace the correlated subquery with a LEFT JOIN on
+	// TODO(#107): Replace the correlated subquery with a LEFT JOIN on
 	// reading_list_items once reading_list_items.feed_entry_id is unique. The
 	// subquery + LIMIT 1 is a workaround for the currently non-unique column.
 	rows, err := h.DB.QueryContext(ctx, `
@@ -460,7 +460,7 @@ func (h *Handler) getFeeds(w http.ResponseWriter, r *http.Request) {
 		res.Feeds = res.Feeds[:paginationSize]
 		last := res.Feeds[len(res.Feeds)-1]
 		var sortKey string
-		// TODO: Use a better sort key
+		// TODO(#111): Use a better sort key
 		if t := last.Title; len(t) < getFeedsSortKeyLen {
 			sortKey = t
 		} else {
@@ -611,9 +611,9 @@ func (h *Handler) getFeedTimeline(w http.ResponseWriter, r *http.Request) {
 		where = "AND (COALESCE(published_at, snapshot_at), id) < ($3, $4)"
 		args = append(args, cursor.Key, cursor.Tiebreaker)
 	}
-	// TODO: Replace this correlated subquery with a LEFT JOIN once
+	// TODO(#107): Replace this correlated subquery with a LEFT JOIN once
 	//       a UNIQUE (feed_entry_id) constraint exists on reading_list_items.
-	// TODO: Store sort keys in DB and create an index
+	// TODO(#111): Store sort keys in DB and create an index
 	rows, err := h.DB.QueryContext(ctx, fmt.Sprintf(`
 		SELECT id, feed_id, url, title, description, published_at, snapshot_at,
 			(SELECT id FROM reading_list_items
@@ -736,7 +736,7 @@ type subscribeToFeedResBody struct {
 
 func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 	var b subscribeToFeedReqBody
-	// TODO: Limit request body size (http.MaxBytesReader)
+	// TODO(#113): Limit request body size (http.MaxBytesReader)
 	err := json.NewDecoder(r.Body).Decode(&b)
 	if err != nil {
 		fmt.Print(err)
@@ -800,7 +800,7 @@ type saveToReadingListReqBody struct {
 
 func (h *Handler) saveToReadingList(w http.ResponseWriter, r *http.Request) {
 	var b saveToReadingListReqBody
-	// TODO: Limit request body size (http.MaxBytesReader)
+	// TODO(#113): Limit request body size (http.MaxBytesReader)
 	err := json.NewDecoder(r.Body).Decode(&b)
 	if err != nil {
 		fmt.Println(err)
@@ -832,13 +832,13 @@ func (h *Handler) saveToReadingList(w http.ResponseWriter, r *http.Request) {
 	var saved readinglist.SavedItem
 	switch {
 	case b.URL != nil:
-		// TODO: Validate URL (schema and host)
+		// TODO(#115): Validate URL (schema and host)
 		u, err := url.Parse(*b.URL)
 		if err != nil || *b.URL == "" {
 			serverError(w, http.StatusBadRequest, "Invalid URL")
 			return
 		}
-		// TODO: trim and length-cap the client-supplied title
+		// TODO(#116): trim and length-cap the client-supplied title
 		var title string
 		if b.Title != nil {
 			title = *b.Title
@@ -851,7 +851,7 @@ func (h *Handler) saveToReadingList(w http.ResponseWriter, r *http.Request) {
 		}
 
 	case b.FeedEntryID != nil:
-		// TODO: Return 404 instead of 500 when the given ID doesn't exist
+		// TODO(#114): Return 404 instead of 500 when the given ID doesn't exist
 		var err error
 		saved, err = h.ReadingListService.SaveFeedEntry(ctx, uid, *b.FeedEntryID)
 		if err != nil {
@@ -861,7 +861,7 @@ func (h *Handler) saveToReadingList(w http.ResponseWriter, r *http.Request) {
 		}
 
 	case b.WebClipID != nil:
-		// TODO: Return 404 instead of 500 when the given ID doesn't exist
+		// TODO(#114): Return 404 instead of 500 when the given ID doesn't exist
 		var err error
 		saved, err = h.ReadingListService.SaveWebClipByID(ctx, uid, *b.WebClipID)
 		if err != nil {
@@ -1108,7 +1108,7 @@ func (h *Handler) deleteReadingListItem(w http.ResponseWriter, r *http.Request) 
 		serverError(w, http.StatusNotFound, "Item not found")
 		return
 	}
-	// TODO: DRY JSON response creation
+	// TODO(#117): DRY JSON response creation
 	jres, err := json.Marshal(map[string]string{})
 	if err != nil {
 		serverError(w, http.StatusInternalServerError, "Failed to construct JSON response")
@@ -1153,7 +1153,7 @@ func (h *Handler) setReadingListItemArchivedStatus(w http.ResponseWriter, r *htt
 		serverError(w, http.StatusInternalServerError, "Something went wrong")
 		return
 	}
-	// TODO: DRY JSON response creation
+	// TODO(#117): DRY JSON response creation
 	jres, _ := json.Marshal(map[string]string{})
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusNoContent)
@@ -1211,7 +1211,7 @@ func (h *Handler) signUp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: DRY JSON response creation
+	// TODO(#117): DRY JSON response creation
 	jres, err := json.Marshal(signUpResBody{Ticket: ticket.Encode()})
 	if err != nil {
 		serverError(w, http.StatusInternalServerError, "Failed to construct a JSON response")
@@ -1271,7 +1271,7 @@ func (h *Handler) verifySignUpEmail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: DRY JSON response creation
+	// TODO(#117): DRY JSON response creation
 	jres, err := json.Marshal(verifySignUpEmailResBody{Token: token.Encode()})
 	if err != nil {
 		serverError(w, http.StatusInternalServerError, "Failed to construct a JSON response")
@@ -1311,7 +1311,7 @@ func (h *Handler) resendSignUpVerification(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	// TODO: DRY JSON response creation
+	// TODO(#117): DRY JSON response creation
 	jres, err := json.Marshal(signUpResBody{Ticket: ticket.Encode()})
 	if err != nil {
 		serverError(w, http.StatusInternalServerError, "Failed to construct a JSON response")
@@ -1361,7 +1361,7 @@ func (h *Handler) signIn(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: DRY JSON response creation
+	// TODO(#117): DRY JSON response creation
 	jres, err := json.Marshal(signInResBody{Token: token.Encode()})
 	if err != nil {
 		serverError(w, http.StatusInternalServerError, "Failed to construct a JSON response")
@@ -1375,7 +1375,7 @@ func (h *Handler) signIn(w http.ResponseWriter, r *http.Request) {
 func (h *Handler) signOut(w http.ResponseWriter, r *http.Request) {
 	token, ok := strings.CutPrefix(r.Header.Get("Authorization"), "Bearer ")
 	if !ok {
-		// TODO: DRY JSON response creation
+		// TODO(#117): DRY JSON response creation
 		jres, _ := json.Marshal(map[string]string{})
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
@@ -1386,7 +1386,7 @@ func (h *Handler) signOut(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusInternalServerError, "Failed to sign out")
 		return
 	}
-	// TODO: DRY JSON response creation
+	// TODO(#117): DRY JSON response creation
 	jres, _ := json.Marshal(map[string]string{})
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
