@@ -8,6 +8,8 @@ import (
 	"testing"
 )
 
+// TODO(#218): Cover every title and description source and their priority, so
+// that the parser can be replaced without changing the behavior.
 func TestExtract(t *testing.T) {
 	tests := []struct {
 		name            string
