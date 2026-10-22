@@ -9,9 +9,8 @@ import (
 	"net/url"
 	"time"
 
-	"codeberg.org/readeck/go-readability/v2"
+	"github.com/fujidaiti/paperdoll/server/feature/scraper"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
-	"github.com/microcosm-cc/bluemonday"
 )
 
 // ErrItemNotFound is returned when the item doesn't exist or doesn't belong
@@ -171,6 +170,10 @@ func (s *Service) tryFetchWebClip(rID, clipID int, ln url.URL) error {
 	return err
 }
 
+// fetchWebClip fills in the clip's metadata and content from the page.
+// The metadata is saved even if the content can't be extracted, in which
+// case an error is reported.
+//
 // TODO(#132): DRY scraping logic
 func (s *Service) fetchWebClip(rID, clipID int, ln url.URL) error {
 	fmt.Printf("Fetching reading list clip from %s\n", ln.String())
@@ -187,33 +190,10 @@ func (s *Service) fetchWebClip(rID, clipID int, ln url.URL) error {
 		return fmt.Errorf("HTTP GET failed with status code %d", res.StatusCode)
 	}
 
-	buf := bluemonday.UGCPolicy().AllowElements("head", "title").SanitizeReader(res.Body)
-	if buf.Len() == 0 {
-		return fmt.Errorf("the body is empty")
-	}
-
-	baseUrl := new(ln)
-	baseUrl.Path = ""
-	baseUrl.RawPath = ""
-	baseUrl.Fragment = ""
-	baseUrl.RawFragment = ""
-	baseUrl.RawQuery = ""
-	baseUrl.User = nil
-
-	article, err := readability.FromReader(buf, baseUrl)
+	page, err := scraper.Extract(res.Body, ln)
 	if err != nil {
 		return err
 	}
-
-	buf.Reset()
-	err = article.RenderHTML(buf)
-	if err != nil {
-		return err
-	}
-	if buf.Len() == 0 {
-		return fmt.Errorf("failed to extract content")
-	}
-	content := fmt.Sprintf(contentTemplate, buf)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
@@ -226,50 +206,41 @@ func (s *Service) fetchWebClip(rID, clipID int, ln url.URL) error {
 			fmt.Println(err)
 		}
 	}()
-	// Only overwrite the title when the fetch actually extracted one; otherwise
-	// keep the existing (placeholder) title rather than clobbering it with ''.
-	if t := article.Title(); t != "" {
-		_, err = tx.ExecContext(ctx, `
-			UPDATE reading_list_items
-			SET title = $1
-			WHERE id = $2;
-		`, t, rID)
-		if err != nil {
-			return err
-		}
-		_, err = tx.ExecContext(ctx, `
-			UPDATE web_clips
-			SET title = $1, content = $2, fetch_status = 'done'
-			WHERE id = $3;
-		`, t, content, clipID)
-		if err != nil {
-			return err
-		}
-	} else {
-		_, err = tx.ExecContext(ctx, `
-			UPDATE web_clips
-			SET content = $1, fetch_status = 'done'
-			WHERE id = $2;
-		`, content, clipID)
-		if err != nil {
-			return err
-		}
-	}
-	if err := tx.Commit(); err != nil {
+	// Only overwrite the title and description when the page actually has
+	// them; otherwise keep the existing (placeholder) values rather than
+	// clobbering them with ''.
+	_, err = tx.ExecContext(ctx, `
+		UPDATE reading_list_items
+		SET title = COALESCE(NULLIF($1, ''), title),
+			description = COALESCE(NULLIF($2, ''), description)
+		WHERE id = $3;
+	`, page.Title, page.Description, rID)
+	if err != nil {
 		return err
 	}
-
-	return nil
+	_, err = tx.ExecContext(ctx, `
+		UPDATE web_clips
+		SET title = COALESCE(NULLIF($1, ''), title),
+			description = COALESCE(NULLIF($2, ''), description)
+		WHERE id = $3;
+	`, page.Title, page.Description, clipID)
+	if err != nil {
+		return err
+	}
+	if page.Content == "" {
+		// Save the metadata anyway; tryFetchWebClip marks the clip as failed.
+		if err := tx.Commit(); err != nil {
+			return err
+		}
+		return fmt.Errorf("failed to extract content")
+	}
+	_, err = tx.ExecContext(ctx, `
+		UPDATE web_clips
+		SET content = $1, fetch_status = 'done'
+		WHERE id = $2;
+	`, page.Content, clipID)
+	if err != nil {
+		return err
+	}
+	return tx.Commit()
 }
-
-const contentTemplate = `
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-%s
-</body>
-</html>
-`
