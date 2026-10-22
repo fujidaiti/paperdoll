@@ -41,13 +41,27 @@ func TestExtract(t *testing.T) {
 			wantContent:     "",
 		},
 		{
-			// The description only comes from metadata, not from the first
-			// paragraph.
-			name:            "article without description metadata",
-			fixture:         "testdata/article.html",
-			wantTitle:       "Regular Article",
-			wantDescription: "",
+			name:      "description falls back to the first paragraph",
+			fixture:   "testdata/no_description.html",
+			wantTitle: "No Description Article",
+			wantDescription: "This is the first paragraph of a test article used by the scraper tests. " +
+				"It contains several sentences so the readability extractor considers the page substantial enough to extract.",
+			wantContent: "This is the second paragraph",
+		},
+		{
+			// The sanitization itself is checked below for every case.
+			name:            "unsafe markup",
+			fixture:         "testdata/unsafe_markup.html",
+			wantTitle:       "Unsafe Markup Article",
+			wantDescription: "An article with unsafe markup.",
 			wantContent:     "This is the first paragraph",
+		},
+		{
+			name:            "no title, description, or content",
+			fixture:         "testdata/no_context.html",
+			wantTitle:       "",
+			wantDescription: "",
+			wantContent:     "",
 		},
 	}
 

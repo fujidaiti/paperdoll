@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <!--
-  A regular article without description metadata. Its body contains markup
-  that must not survive sanitization.
+  An article whose body contains markup that must not survive sanitization.
 -->
 <html>
   <head>
-    <title>Regular Article</title>
+    <title>Unsafe Markup Article</title>
+    <meta name="description" content="An article with unsafe markup.">
   </head>
   <body>
     <article>
-      <h1>Regular Article</h1>
+      <h1>Unsafe Markup Article</h1>
       <p onclick="alert('first')">This is the first paragraph of a test article used by the scraper tests. It contains several sentences so the readability extractor considers the page substantial enough to extract.</p>
       <p>This is the second paragraph. It continues discussing the same placeholder topic in more detail, adding more sentences to increase the overall text density of the article body relative to the rest of the page.</p>
       <p>A third paragraph rounds things out, ensuring the extracted content is non-trivial and gives confidence that the fixture works reliably without flaking due to extraction heuristics. <a href="javascript:alert('link')">A link</a>.</p>

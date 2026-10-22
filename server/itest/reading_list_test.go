@@ -131,13 +131,18 @@ func TestReadingList_SaveWebClip(t *testing.T) {
 		wantContent bool
 	}{
 		{
-			name:            "article",
-			path:            "/article",
-			fixture:         "./testdata/reading_list/web_clip.html",
-			wantStatus:      "done",
-			wantTitle:       "Reading List Test Clip",
-			wantDescription: nil,
-			wantContent:     true,
+			// The page has no description metadata, so the description falls
+			// back to the first paragraph.
+			name:       "article",
+			path:       "/article",
+			fixture:    "./testdata/reading_list/web_clip.html",
+			wantStatus: "done",
+			wantTitle:  "Reading List Test Clip",
+			wantDescription: new(
+				"This is the first paragraph of a test article used by the reading list integration tests. " +
+					"It contains several sentences so the readability extractor considers the page substantial enough to extract.",
+			),
+			wantContent: true,
 		},
 		{
 			// The metadata is saved even though the content can't be extracted.

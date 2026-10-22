@@ -14,9 +14,12 @@ import (
 
 // Page is what Extract finds in a fetched web page.
 type Page struct {
-	// Title and Description come from the page's metadata (e.g. og:title,
-	// <title>, og:description). Empty if the page has none.
-	Title       string
+	// Title comes from the page's metadata (e.g. og:title, <title>). Empty if
+	// the page has none.
+	Title string
+	// Description comes from the page's metadata (e.g. og:description), or
+	// from the first paragraph of its content if the page has none. Empty if
+	// neither exists.
 	Description string
 	// Content is a sanitized HTML document holding the page's readable
 	// content. Empty if none could be extracted, e.g. for a page whose body
@@ -49,18 +52,18 @@ func Extract(r io.Reader, pageURL url.URL) (Page, error) {
 		return Page{}, err
 	}
 
-	// Article.Excerpt falls back to the content's first paragraph when the
-	// page has no description metadata, and panics if there's no content.
-	// Call it on a copy with empty content to get the metadata only.
-	meta := article
-	meta.Node = &html.Node{Type: html.DocumentNode}
-	page := Page{
-		Title:       strings.TrimSpace(article.Title()),
-		Description: meta.Excerpt(),
-	}
+	page := Page{Title: strings.TrimSpace(article.Title())}
 	if article.Node == nil {
+		// Article.Excerpt panics if there's no content. Call it on a copy with
+		// empty content to get the description from the metadata only.
+		meta := article
+		meta.Node = &html.Node{Type: html.DocumentNode}
+		page.Description = meta.Excerpt()
 		return page, nil
 	}
+	// Falls back to the content's first paragraph if the page has no
+	// description metadata.
+	page.Description = article.Excerpt()
 
 	var buf bytes.Buffer
 	if err := article.RenderHTML(&buf); err != nil {
