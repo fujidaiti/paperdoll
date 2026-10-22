@@ -57,6 +57,19 @@ func TestExtract(t *testing.T) {
 			wantContent:     "This is the first paragraph",
 		},
 		{
+			// Truncated to 300 characters, the last of which is the ellipsis.
+			name:      "long description",
+			fixture:   "testdata/long_description.html",
+			wantTitle: "Long Description Page",
+			wantDescription: "あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
+				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
+				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
+				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
+				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
+				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえ…",
+			wantContent: "",
+		},
+		{
 			name:            "no title, description, or content",
 			fixture:         "testdata/no_context.html",
 			wantTitle:       "",

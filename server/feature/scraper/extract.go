@@ -19,7 +19,7 @@ type Page struct {
 	Title string
 	// Description comes from the page's metadata (e.g. og:description), or
 	// from the first paragraph of its content if the page has none. Empty if
-	// neither exists.
+	// neither exists. Truncated to maxDescriptionLen characters.
 	Description string
 	// Content is a sanitized HTML document holding the page's readable
 	// content. Empty if none could be extracted, e.g. for a page whose body
@@ -58,12 +58,12 @@ func Extract(r io.Reader, pageURL url.URL) (Page, error) {
 		// empty content to get the description from the metadata only.
 		meta := article
 		meta.Node = &html.Node{Type: html.DocumentNode}
-		page.Description = meta.Excerpt()
+		page.Description = truncate(meta.Excerpt(), maxDescriptionLen)
 		return page, nil
 	}
 	// Falls back to the content's first paragraph if the page has no
 	// description metadata.
-	page.Description = article.Excerpt()
+	page.Description = truncate(article.Excerpt(), maxDescriptionLen)
 
 	var buf bytes.Buffer
 	if err := article.RenderHTML(&buf); err != nil {
@@ -74,6 +74,22 @@ func Extract(r io.Reader, pageURL url.URL) (Page, error) {
 		page.Content = fmt.Sprintf(contentTemplate, content)
 	}
 	return page, nil
+}
+
+// maxDescriptionLen is the maximum number of characters in Page.Description.
+// Descriptions are only shown as short previews, and some pages put the whole
+// article in them.
+const maxDescriptionLen = 300
+
+// truncate shortens s to at most n characters, replacing the last one with an
+// ellipsis if s is longer. Characters are counted as Unicode code points, not
+// words, so that it works for languages without spaces between words.
+func truncate(s string, n int) string {
+	r := []rune(s)
+	if len(r) <= n {
+		return s
+	}
+	return string(r[:n-1]) + "…"
 }
 
 const contentTemplate = `
