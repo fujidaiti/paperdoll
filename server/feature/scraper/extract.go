@@ -19,7 +19,7 @@ type Page struct {
 	Title string
 	// Description comes from the page's metadata (e.g. og:description), or
 	// from the first paragraph of its content if the page has none. Empty if
-	// neither exists. Truncated to maxDescriptionLen characters.
+	// neither exists. Truncated to 500 characters.
 	Description string
 	// Content is a sanitized HTML document holding the page's readable
 	// content. Empty if none could be extracted, e.g. for a page whose body
@@ -54,16 +54,18 @@ func Extract(r io.Reader, pageURL url.URL) (Page, error) {
 
 	page := Page{Title: strings.TrimSpace(article.Title())}
 	if article.Node == nil {
-		// Article.Excerpt panics if there's no content. Call it on a copy with
-		// empty content to get the description from the metadata only.
+		// If the page has no description metadata, Article.Excerpt looks for
+		// the first paragraph in Article.Node, which panics with a nil pointer
+		// dereference if there's no content. Call it on a copy with empty
+		// content instead to get the description from the metadata only.
 		meta := article
 		meta.Node = &html.Node{Type: html.DocumentNode}
-		page.Description = truncate(meta.Excerpt(), maxDescriptionLen)
+		page.Description = truncate(meta.Excerpt())
 		return page, nil
 	}
 	// Falls back to the content's first paragraph if the page has no
 	// description metadata.
-	page.Description = truncate(article.Excerpt(), maxDescriptionLen)
+	page.Description = truncate(article.Excerpt())
 
 	var buf bytes.Buffer
 	if err := article.RenderHTML(&buf); err != nil {
@@ -76,20 +78,18 @@ func Extract(r io.Reader, pageURL url.URL) (Page, error) {
 	return page, nil
 }
 
-// maxDescriptionLen is the maximum number of characters in Page.Description.
-// Descriptions are only shown as short previews, and some pages put the whole
-// article in them.
-const maxDescriptionLen = 300
-
-// truncate shortens s to at most n characters, replacing the last one with an
-// ellipsis if s is longer. Characters are counted as Unicode code points, not
-// words, so that it works for languages without spaces between words.
-func truncate(s string, n int) string {
+// truncate shortens a description to at most 500 characters, replacing the
+// last one with an ellipsis if it's longer. Descriptions are only shown as
+// short previews, and some pages put the whole article in them. Characters are
+// counted as Unicode code points, not words, so that it works for languages
+// without spaces between words.
+func truncate(s string) string {
+	const maxLen = 500
 	r := []rune(s)
-	if len(r) <= n {
+	if len(r) <= maxLen {
 		return s
 	}
-	return string(r[:n-1]) + "…"
+	return string(r[:maxLen-1]) + "…"
 }
 
 const contentTemplate = `

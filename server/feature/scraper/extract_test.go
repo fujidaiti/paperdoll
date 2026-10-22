@@ -57,16 +57,19 @@ func TestExtract(t *testing.T) {
 			wantContent:     "This is the first paragraph",
 		},
 		{
-			// Truncated to 300 characters, the last of which is the ellipsis.
+			// Truncated to 500 characters, the last of which is the ellipsis.
 			name:      "long description",
 			fixture:   "testdata/long_description.html",
 			wantTitle: "Long Description Page",
-			wantDescription: "あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
-				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
-				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
-				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
-				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" +
-				"あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえ…",
+			wantDescription: "毎朝の通勤時間を使って、ニュースやブログ記事をまとめて読む習慣を続けている人は多いでしょう。" +
+				"しかし、気になった記事をブラウザのタブに開いたままにしておくと、いつの間にか数十個のタブが溜まり、どれが重要だったのか分からなくなってしまいます。" +
+				"この記事では、後で読みたい記事を一か所に集め、空いた時間に落ち着いて読むための仕組みづくりについて紹介します。" +
+				"まず大切なのは、記事を見つけた瞬間に迷わず保存できることです。" +
+				"共有メニューから一度タップするだけで保存できれば、読むかどうかの判断を後回しにでき、目の前の作業に集中できます。" +
+				"次に、保存した記事を読むときには、広告やポップアップに邪魔されない読みやすい表示が欠かせません。" +
+				"本文だけを抜き出して表示すれば、小さな画面でも文章に集中できます。" +
+				"さらに、読み終えた記事をアーカイブしておけば、リストは常に未読の記事だけになり、次に何を読むべきかがすぐに分かります。" +
+				"最後に、こうした習慣を長く続けるためのコツとして、保存する記事の数を一日に数本までに絞ること、週末にまとめて読み返す時間を設けること、そして読む価値がないと感じた記事は迷わず削除することを挙げてお…",
 			wantContent: "",
 		},
 		{
@@ -102,7 +105,7 @@ func TestExtract(t *testing.T) {
 			} else if !strings.Contains(page.Content, tt.wantContent) {
 				t.Errorf("got content %q, want it to contain %q", page.Content, tt.wantContent)
 			}
-			for _, unsafe := range []string{"onclick", "javascript:"} {
+			for _, unsafe := range []string{"<script", "alert(", "onclick", "javascript:"} {
 				if strings.Contains(page.Content, unsafe) {
 					t.Errorf("got content %q, want %q to be sanitized away", page.Content, unsafe)
 				}
