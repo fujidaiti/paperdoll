@@ -1,0 +1,30 @@
+# Runs the API server. Database migrations run before every start, so a deploy
+# or a rollback always starts against the schema its binary expects.
+[Unit]
+Description=Paperdoll API server
+PartOf=paperdoll.target
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=paperdoll
+Group=paperdoll
+EnvironmentFile=/etc/paperdoll/env
+ExecStartPre=/opt/paperdoll/current/app migrate up
+ExecStart=/opt/paperdoll/current/app serve
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=paperdoll.target

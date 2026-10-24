@@ -20,4 +20,4 @@ dev-server:
 
 .PHONY: build-server-linux-amd64
 build-server-linux-amd64:
-	GOOS=linux GOARCH=amd64 go build -o build/paperdoll-server-linux-amd64 ./server/cmd/app/main.go
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -o build/paperdoll-server-linux-amd64 ./server/cmd/app/main.go
