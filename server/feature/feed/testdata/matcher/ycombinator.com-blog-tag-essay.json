@@ -1,48 +1,46 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "box"],
+    "post": [
+      {
+        "tag": "div",
+        "cls": ["flex", "flex-col", "overflow-hidden", "rounded", "shadow-sm"]
+      }
+    ],
     "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "txt", "nth": 1 }
-      ],
-      "link": [{ "shape": "card", "nth": 0 }],
+      "body": [[{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-700"] }]],
+      "link": [[{ "tag": "div", "cls": ["shrink-0"] }, { "tag": "a" }]],
       "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 2 },
-        { "shape": "box", "nth": 1 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
+        [
+          {
+            "tag": "div",
+            "cls": ["flex", "space-x-1", "text-sm", "text-gray-500"]
+          },
+          { "tag": "span" },
+          { "tag": "time" }
+        ]
       ],
       "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
+        [{ "tag": "img", "cls": ["h-48", "w-full", "object-cover"] }]
       ],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
+        [{ "tag": "p", "cls": ["text-xl", "font-semibold", "text-gray-900"] }]
       ]
     },
     "exclude": []
   },
   {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box", "box"],
+    "post": [{ "tag": "div", "cls": ["flex-1"] }],
     "fields": {
-      "body": [{ "shape": "txt", "nth": 0 }],
-      "link": [{ "shape": "card", "nth": 0 }],
+      "body": [[{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-800"] }]],
+      "link": [[{ "tag": "a", "cls": ["mt-2", "block"] }]],
       "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
+        [
+          { "tag": "span", "cls": ["ml-4", "text-sm", "font-normal"] },
+          { "tag": "time" }
+        ]
       ],
       "title": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
+        [{ "tag": "p", "cls": ["text-3xl", "font-semibold", "text-gray-900"] }]
       ]
     },
     "exclude": []

@@ -1,56 +1,63 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "card"],
+    "post": [
+      { "tag": "div", "cls": ["page-wrapper"] },
+      { "tag": "div" },
+      { "tag": "div" },
+      { "tag": "a" }
+    ],
     "fields": {
       "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
+        [
+          {
+            "tag": "p",
+            "cls": ["body-3", "serif", "FeaturedGrid-module-scss-module__body"]
+          }
+        ]
       ],
-      "link": [],
+      "link": [[]],
       "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
+        [
+          {
+            "tag": "time",
+            "cls": ["FeaturedGrid-module-scss-module__date", "caption", "bold"]
+          }
+        ]
       ],
-      "title": [{ "shape": "h2", "nth": 0 }]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "card"],
-    "fields": {
-      "body": [{ "shape": "txt", "nth": 0 }],
-      "link": [],
-      "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
-      ],
-      "title": [{ "shape": "h4", "nth": 0 }]
+      "title": [
+        [{ "tag": "h2", "cls": ["headline-4"] }],
+        [
+          {
+            "tag": "h4",
+            "cls": ["headline-6", "FeaturedGrid-module-scss-module__title"]
+          }
+        ]
+      ]
     },
     "exclude": []
   },
   {
     "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "card"
+      { "tag": "a", "cls": ["PublicationList-module-scss-module__listItem"] }
     ],
     "fields": {
-      "link": [],
+      "link": [[]],
       "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
+        [
+          {
+            "tag": "time",
+            "cls": ["PublicationList-module-scss-module__date", "body-3"]
+          }
+        ]
       ],
-      "title": [{ "shape": "txt", "nth": 0 }]
+      "title": [
+        [
+          {
+            "tag": "span",
+            "cls": ["PublicationList-module-scss-module__title", "body-3"]
+          }
+        ]
+      ]
     },
     "exclude": []
   }

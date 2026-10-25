@@ -2,43 +2,123 @@
   "url": "https://www.anthropic.com/news",
   "title": "Newsroom \\ Anthropic",
   "root": {
+    "tag": "body",
     "ch": [
       {
+        "tag": "main",
         "ch": [
           {
+            "tag": "article",
             "ch": [
               {
+                "tag": "section",
+                "cls": [
+                  "HeroTwoColumn-module-scss-module__pM-nba__landingPageListHeader",
+                  "LandingPageSection-module-scss-module__root",
+                  "bg-default"
+                ],
                 "ch": [
                   {
+                    "tag": "div",
+                    "cls": ["page-wrapper"],
                     "ch": [
                       {
+                        "tag": "div",
+                        "cls": [
+                          "HeroTwoColumn-module-scss-module__pM-nba__root"
+                        ],
                         "ch": [
-                          { "ch": [{ "kind": "h1", "val": "Newsroom" }] },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "HeroTwoColumn-module-scss-module__pM-nba__titleSubhead"
+                            ],
                             "ch": [
                               {
+                                "tag": "h1",
+                                "cls": ["headline-1"],
+                                "val": "Newsroom"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "HeroTwoColumn-module-scss-module__pM-nba__bodyCtas"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "HeroTwoColumn-module-scss-module__pM-nba__ctaWrapper"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "ul",
+                                    "cls": [
+                                      "HeroTwoColumn-module-scss-module__pM-nba__ctaList"
+                                    ],
                                     "ch": [
                                       {
+                                        "tag": "li",
                                         "ch": [
-                                          { "val": "Press inquiries" },
-                                          { "val": "press@anthropic.com" }
+                                          {
+                                            "tag": "span",
+                                            "cls": [
+                                              "HeroTwoColumn-module-scss-module__pM-nba__listLabel",
+                                              "body-3"
+                                            ],
+                                            "val": "Press inquiries"
+                                          },
+                                          {
+                                            "tag": "a",
+                                            "cls": [
+                                              "ButtonTextLink-module-scss-module__textLink",
+                                              "HeroTwoColumn-module-scss-module__pM-nba__listLink"
+                                            ],
+                                            "val": "press@anthropic.com"
+                                          }
                                         ]
                                       },
                                       {
+                                        "tag": "li",
                                         "ch": [
-                                          { "val": "Non-media inquiries" },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "HeroTwoColumn-module-scss-module__pM-nba__listLabel",
+                                              "body-3"
+                                            ],
+                                            "val": "Non-media inquiries"
+                                          },
+                                          {
+                                            "tag": "a",
+                                            "cls": [
+                                              "ButtonTextLink-module-scss-module__textLink",
+                                              "HeroTwoColumn-module-scss-module__pM-nba__listLink"
+                                            ],
                                             "val": "How to get support",
                                             "link": "https://support.claude.com/en/articles/9015913-how-to-get-support"
                                           }
                                         ]
                                       },
                                       {
+                                        "tag": "li",
                                         "ch": [
-                                          { "val": "Media assets" },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "HeroTwoColumn-module-scss-module__pM-nba__listLabel",
+                                              "body-3"
+                                            ],
+                                            "val": "Media assets"
+                                          },
+                                          {
+                                            "tag": "a",
+                                            "cls": [
+                                              "ButtonTextLink-module-scss-module__textLink",
+                                              "HeroTwoColumn-module-scss-module__pM-nba__listLink"
+                                            ],
                                             "val": "Download press kit",
                                             "link": "https://anthropic.com/press-kit"
                                           }
@@ -57,34 +137,84 @@
                 ]
               },
               {
+                "tag": "section",
+                "cls": [
+                  "LandingPageSection-module-scss-module__root",
+                  "bg-default",
+                  "LandingPageSection-module-scss-module__flushTop"
+                ],
                 "ch": [
                   {
+                    "tag": "div",
+                    "cls": ["page-wrapper"],
                     "ch": [
                       {
+                        "tag": "div",
+                        "cls": ["FeaturedGrid-module-scss-module__root"],
                         "ch": [
                           {
+                            "tag": "div",
+                            "cls": [
+                              "FeaturedGrid-module-scss-module__featuredItem"
+                            ],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": [
+                                  "FeaturedGrid-module-scss-module__content"
+                                ],
                                 "link": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
                                 "ch": [
                                   {
-                                    "kind": "h2",
+                                    "tag": "h2",
+                                    "cls": [
+                                      "headline-4",
+                                      "FeaturedGrid-module-scss-module__featuredTitle"
+                                    ],
                                     "val": "Introducing Claude Fable 5.1 and Claude Mythos 5.1"
                                   },
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "FeaturedGrid-module-scss-module__featuredItemContent"
+                                    ],
                                     "ch": [
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "FeaturedGrid-module-scss-module__gridItem",
+                                          "FeaturedGrid-module-scss-module__featured"
+                                        ],
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "FeaturedGrid-module-scss-module__meta"
+                                            ],
                                             "ch": [
-                                              { "val": "Announcements" },
                                               {
-                                                "kind": "time",
+                                                "tag": "span",
+                                                "cls": ["caption", "bold"],
+                                                "val": "Announcements"
+                                              },
+                                              {
+                                                "tag": "time",
+                                                "cls": [
+                                                  "FeaturedGrid-module-scss-module__date",
+                                                  "caption",
+                                                  "bold"
+                                                ],
                                                 "val": "2026-09-01T00:00:00Z"
                                               }
                                             ]
                                           },
                                           {
+                                            "tag": "p",
+                                            "cls": [
+                                              "body-3",
+                                              "serif",
+                                              "FeaturedGrid-module-scss-module__body"
+                                            ],
                                             "val": "Our most advanced models for coding and knowledge work. Their research capabilities also offer an early glimpse of how AI models will contribute to scientific progress."
                                           }
                                         ]
@@ -96,65 +226,149 @@
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "FeaturedGrid-module-scss-module__sideItems"
+                            ],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": [
+                                  "FeaturedGrid-module-scss-module__sideLink",
+                                  "FeaturedGrid-module-scss-module__gridItem"
+                                ],
                                 "link": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "FeaturedGrid-module-scss-module__meta"
+                                    ],
                                     "ch": [
                                       {
-                                        "kind": "time",
+                                        "tag": "time",
+                                        "cls": [
+                                          "FeaturedGrid-module-scss-module__date",
+                                          "caption",
+                                          "bold"
+                                        ],
                                         "val": "2026-09-17T00:00:00Z"
                                       }
                                     ]
                                   },
                                   {
-                                    "kind": "h4",
+                                    "tag": "h4",
+                                    "cls": [
+                                      "headline-6",
+                                      "FeaturedGrid-module-scss-module__title"
+                                    ],
                                     "val": "Measurements for understanding the pace of AI development inside frontier labs"
                                   },
                                   {
+                                    "tag": "p",
+                                    "cls": [
+                                      "body-3",
+                                      "serif",
+                                      "FeaturedGrid-module-scss-module__body"
+                                    ],
                                     "val": "Today, the world can’t see what’s going on inside AI labs. Anthropic is proposing new metrics that would give the public visibility into frontier AI development."
                                   }
                                 ]
                               },
                               {
+                                "tag": "a",
+                                "cls": [
+                                  "FeaturedGrid-module-scss-module__sideLink",
+                                  "FeaturedGrid-module-scss-module__gridItem"
+                                ],
                                 "link": "https://www.anthropic.com/threat-intelligence-report-september-2026",
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "FeaturedGrid-module-scss-module__meta"
+                                    ],
                                     "ch": [
-                                      { "val": "Announcements" },
                                       {
-                                        "kind": "time",
+                                        "tag": "span",
+                                        "cls": ["caption", "bold"],
+                                        "val": "Announcements"
+                                      },
+                                      {
+                                        "tag": "time",
+                                        "cls": [
+                                          "FeaturedGrid-module-scss-module__date",
+                                          "caption",
+                                          "bold"
+                                        ],
                                         "val": "2026-09-10T00:00:00Z"
                                       }
                                     ]
                                   },
                                   {
-                                    "kind": "h4",
+                                    "tag": "h4",
+                                    "cls": [
+                                      "headline-6",
+                                      "FeaturedGrid-module-scss-module__title"
+                                    ],
                                     "val": "Detecting and countering misuse of AI: September 2026"
                                   },
                                   {
+                                    "tag": "p",
+                                    "cls": [
+                                      "body-3",
+                                      "serif",
+                                      "FeaturedGrid-module-scss-module__body"
+                                    ],
                                     "val": "Over the past eight months, our Threat Intelligence team identified and disrupted operations in which threat actors tried to use Claude for malicious activity. In this report, we share case studies from those operations and describe how malicious use of Claude has evolved since our previous threat reports in 2025."
                                   }
                                 ]
                               },
                               {
+                                "tag": "a",
+                                "cls": [
+                                  "FeaturedGrid-module-scss-module__sideLink",
+                                  "FeaturedGrid-module-scss-module__gridItem"
+                                ],
                                 "link": "https://www.anthropic.com/news/improving-alignment-security-efforts",
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "FeaturedGrid-module-scss-module__meta"
+                                    ],
                                     "ch": [
-                                      { "val": "Announcements" },
                                       {
-                                        "kind": "time",
+                                        "tag": "span",
+                                        "cls": ["caption", "bold"],
+                                        "val": "Announcements"
+                                      },
+                                      {
+                                        "tag": "time",
+                                        "cls": [
+                                          "FeaturedGrid-module-scss-module__date",
+                                          "caption",
+                                          "bold"
+                                        ],
                                         "val": "2026-08-31T00:00:00Z"
                                       }
                                     ]
                                   },
                                   {
-                                    "kind": "h4",
+                                    "tag": "h4",
+                                    "cls": [
+                                      "headline-6",
+                                      "FeaturedGrid-module-scss-module__title"
+                                    ],
                                     "val": "Improving our alignment and security efforts"
                                   },
                                   {
+                                    "tag": "p",
+                                    "cls": [
+                                      "body-3",
+                                      "serif",
+                                      "FeaturedGrid-module-scss-module__body"
+                                    ],
                                     "val": "On July 30, we reported three incidents in which Claude models gained unauthorized access to real computer systems. We are conducting an in-depth analysis of both incidents, and planning to work with METR for an independent review. In the meantime, we’re sharing some of the changes we’ve made over the past month."
                                   }
                                 ]
@@ -168,38 +382,112 @@
                 ]
               },
               {
+                "tag": "section",
+                "cls": [
+                  "LandingPageSection-module-scss-module__root",
+                  "bg-default",
+                  "LandingPageSection-module-scss-module__flushTop"
+                ],
                 "ch": [
                   {
+                    "tag": "div",
+                    "cls": ["page-wrapper"],
                     "ch": [
-                      { "ch": [{ "kind": "h2", "val": "News" }] },
                       {
+                        "tag": "div",
+                        "cls": ["PublicationList-module-scss-module__header"],
+                        "ch": [
+                          { "tag": "h2", "cls": ["headline-4"], "val": "News" }
+                        ]
+                      },
+                      {
+                        "tag": "div",
+                        "cls": ["PublicationList-module-scss-module__root"],
                         "ch": [
                           {
+                            "tag": "div",
+                            "cls": [
+                              "PublicationList-module-scss-module__content"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "PublicationList-module-scss-module__listHeader"
+                                ],
                                 "ch": [
-                                  { "val": "Date" },
-                                  { "val": "Category" },
-                                  { "val": "Title" }
+                                  {
+                                    "tag": "span",
+                                    "cls": [
+                                      "PublicationList-module-scss-module__headerDate",
+                                      "caption"
+                                    ],
+                                    "val": "Date"
+                                  },
+                                  {
+                                    "tag": "span",
+                                    "cls": [
+                                      "PublicationList-module-scss-module__headerCategory",
+                                      "caption"
+                                    ],
+                                    "val": "Category"
+                                  },
+                                  {
+                                    "tag": "span",
+                                    "cls": [
+                                      "PublicationList-module-scss-module__headerTitle",
+                                      "caption"
+                                    ],
+                                    "val": "Title"
+                                  }
                                 ]
                               },
                               {
+                                "tag": "ul",
+                                "cls": [
+                                  "PublicationList-module-scss-module__list"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/accenture-embedded-evaluation",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-09-18T00:00:00Z"
                                               },
-                                              { "val": "Announcements" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Announcements"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "Partnering with Accenture on embedded evaluation"
                                           }
                                         ]
@@ -207,20 +495,45 @@
                                     ]
                                   },
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/life-sciences-verification-program",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-09-17T00:00:00Z"
                                               },
-                                              { "val": "Announcements" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Announcements"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "Introducing the Life Sciences Verification Program"
                                           }
                                         ]
@@ -228,20 +541,45 @@
                                     ]
                                   },
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/enterprise-frontier-safeguards",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-09-01T00:00:00Z"
                                               },
-                                              { "val": "Announcements" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Announcements"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "Developing Enterprise Frontier Safeguards with our customers"
                                           }
                                         ]
@@ -249,20 +587,45 @@
                                     ]
                                   },
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/improving-alignment-security-efforts",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-08-31T00:00:00Z"
                                               },
-                                              { "val": "Announcements" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Announcements"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "Improving our alignment and security efforts"
                                           }
                                         ]
@@ -270,20 +633,45 @@
                                     ]
                                   },
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-08-27T00:00:00Z"
                                               },
-                                              { "val": "Announcements" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Announcements"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "Previewing the Model Hardware Standard"
                                           }
                                         ]
@@ -291,20 +679,45 @@
                                     ]
                                   },
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/expanding-support-for-scientists",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-08-27T00:00:00Z"
                                               },
-                                              { "val": "Announcements" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Announcements"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "Expanding our support for scientists"
                                           }
                                         ]
@@ -312,20 +725,45 @@
                                     ]
                                   },
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/wellbeing-research-grants",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-08-25T00:00:00Z"
                                               },
-                                              { "val": "Announcements" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Announcements"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "Funding better evaluations of AI’s impact on wellbeing"
                                           }
                                         ]
@@ -333,20 +771,45 @@
                                     ]
                                   },
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/claude-text-watermark",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-08-14T00:00:00Z"
                                               },
-                                              { "val": "Announcements" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Announcements"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "How Claude’s text watermark works"
                                           }
                                         ]
@@ -354,20 +817,45 @@
                                     ]
                                   },
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-08-07T00:00:00Z"
                                               },
-                                              { "val": "Product" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Product"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "Improving Fable 5's biology safeguards"
                                           }
                                         ]
@@ -375,20 +863,45 @@
                                     ]
                                   },
                                   {
+                                    "tag": "li",
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "PublicationList-module-scss-module__listItem"
+                                        ],
                                         "link": "https://www.anthropic.com/news/tino-cuellar",
                                         "ch": [
                                           {
+                                            "tag": "div",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__meta"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__date",
+                                                  "body-3"
+                                                ],
                                                 "val": "2026-08-04T00:00:00Z"
                                               },
-                                              { "val": "Announcements" }
+                                              {
+                                                "tag": "span",
+                                                "cls": [
+                                                  "PublicationList-module-scss-module__subject",
+                                                  "body-3"
+                                                ],
+                                                "val": "Announcements"
+                                              }
                                             ]
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "PublicationList-module-scss-module__title",
+                                              "body-3"
+                                            ],
                                             "val": "Mariano-Florentino (Tino) Cuéllar to join Anthropic as Chief Global Affairs Officer"
                                           }
                                         ]
@@ -398,6 +911,14 @@
                                 ]
                               },
                               {
+                                "tag": "a",
+                                "cls": [
+                                  "Button-module-scss-module__button",
+                                  "Button-module-scss-module__large",
+                                  "Button-module-scss-module__tertiary",
+                                  "Button-module-scss-module__iconRight",
+                                  "PublicationList-module-scss-module__seeMore"
+                                ],
                                 "val": "See more",
                                 "link": "https://www.anthropic.com/news"
                               }

@@ -9,12 +9,14 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"unicode"
 
 	"golang.org/x/net/html"
 )
 
 type SemanticTreeNode struct {
-	Kind     string              `json:"kind,omitempty"`
+	Tag      string              `json:"tag,omitempty"`
+	Cls      []string            `json:"cls,omitempty"`
 	Val      string              `json:"val,omitempty"`
 	Link     string              `json:"link,omitempty"`
 	Children []*SemanticTreeNode `json:"ch,omitempty"`
@@ -32,15 +34,19 @@ func (n *SemanticTreeNode) isValue() bool { return len(n.Children) == 0 }
 //
 // A SemanticTreeNode is either a value or a container:
 //
-//	value      {"kind"?, "val"?, "link"?}
-//	container  {"link"?, "ch"}
+//	value      {"tag"?, "cls"?, "val"?, "link"?}
+//	container  {"tag", "cls"?, "link"?, "ch"}
 //
-//	kind  "h1".."h6" for a heading, "img" for an image, "time" for a time
-//	      element or a text that is only a date
-//	val   plain text; the alt text for an image, which may be missing; the
-//	      timestamp of a time in RFC 3339 and UTC, at 00:00:00 when the page
+//	tag   the tag name of the element that the node comes from; for a value
+//	      merged from nested elements, the tag of the outermost one; "time"
+//	      for a time element or a text that is only a date; missing for a
+//	      plain text that does not come from one element
+//	cls   the classes of that element, or of all the merged elements from the
+//	      outermost, cleaned by cleanClasses
+//	val   plain text; the alt text of an "img", which may be missing; the
+//	      timestamp of a "time" in RFC 3339 and UTC, at 00:00:00 when the page
 //	      gives only a date
-//	link  link target, or the image URL for an image; http and https only
+//	link  link target, or the image URL of an "img"; http and https only
 //	ch    child nodes
 //
 // Text formatting and line breaks are dropped: a value is plain text on one
@@ -125,10 +131,10 @@ func BuildSemanticTree(raw []byte, fallbackURL string) (*SemanticTree, error) {
 	tree := s.convert(body)
 	if tree == nil || tree.isValue() {
 		tree = &SemanticTreeNode{
+			Tag:      "body",
 			Children: slices.DeleteFunc([]*SemanticTreeNode{tree}, func(n *SemanticTreeNode) bool { return n == nil }),
 		}
 	}
-	unwrapTextless(tree)
 	return &SemanticTree{URL: base.String(), Title: title, Root: tree}, nil
 }
 
@@ -212,7 +218,7 @@ func isDropped(n *html.Node) bool {
 
 // convert returns the node for the element n, or nil when n has no visible
 // content.
-func (s *treeBuilder) convert(n *html.Node) *SemanticTreeNode {
+func (s *treeBuilder) convert(n *html.Node) (node *SemanticTreeNode) {
 	if n.Type != html.ElementNode || isDropped(n) {
 		return nil
 	}
@@ -223,17 +229,24 @@ func (s *treeBuilder) convert(n *html.Node) *SemanticTreeNode {
 			return nil
 		}
 		alt := normalizeSpace(attr(n, "alt"))
-		return &SemanticTreeNode{Kind: "img", Val: alt, Link: src}
+		return &SemanticTreeNode{Tag: "img", Cls: cleanClasses(n), Val: alt, Link: src}
 	case "time":
 		// The datetime attribute is preferred over the displayed text, but some
 		// pages put a displayed text in it, such as "SEP 23, 2026". A time
-		// element without a full date is handled as any other element.
+		// element without a full date, such as "September 2026", is handled as
+		// any other element, but as a plain text without its tag and classes,
+		// so that a node with the tag "time" always has a timestamp.
 		if val, ok := parseDate(attr(n, "datetime")); ok {
-			return &SemanticTreeNode{Kind: "time", Val: val}
+			return &SemanticTreeNode{Tag: "time", Cls: cleanClasses(n), Val: val}
 		}
 		if val, ok := parseDate(textContent(n)); ok {
-			return &SemanticTreeNode{Kind: "time", Val: val}
+			return &SemanticTreeNode{Tag: "time", Cls: cleanClasses(n), Val: val}
 		}
+		defer func() {
+			if node != nil && node.Tag == "time" {
+				node.Tag, node.Cls = "", nil
+			}
+		}()
 	}
 	// Separate items laid out side by side, such as "<span>Video</span>
 	// <span>Title</span> <span>0:48</span>", are split into values, so that
@@ -301,7 +314,7 @@ func (s *treeBuilder) convert(n *html.Node) *SemanticTreeNode {
 		case c.Type == html.TextNode && isDate(c.Data):
 			flush()
 			val, _ := parseDate(c.Data)
-			children = append(children, &SemanticTreeNode{Kind: "time", Val: val})
+			children = append(children, &SemanticTreeNode{Tag: "time", Val: val})
 		case c.Type == html.TextNode:
 			run = append(run, c)
 		case c.Type == html.ElementNode && (c.Data == "br" || c.Data == "wbr"):
@@ -328,36 +341,33 @@ func (s *treeBuilder) convert(n *html.Node) *SemanticTreeNode {
 	if n.Data == "a" {
 		link = s.resolve(attr(n, "href"))
 	}
-	kind := ""
-	if headingTags[n.Data] {
-		kind = n.Data
-	}
 	// Wrappers stay containers even around a single node, so that a post keeps
 	// its depth when it lacks some of its values. A heading is not a wrapper:
-	// it gives its level to the text inside it.
-	if kind != "" && len(children) == 1 && children[0].isValue() && children[0].Kind == "" {
-		children[0].Kind = kind
-		return children[0]
+	// it gives its tag and its classes to the text inside it.
+	if headingTags[n.Data] && len(children) == 1 && children[0].isValue() &&
+		children[0].Tag != "img" && children[0].Tag != "time" {
+		v := children[0]
+		v.Tag = n.Data
+		v.Cls = appendClasses(cleanClasses(n), v.Cls)
+		return v
 	}
-	return &SemanticTreeNode{Link: link, Children: children}
+	return &SemanticTreeNode{Tag: n.Data, Cls: cleanClasses(n), Link: link, Children: children}
 }
 
 // textValue returns the value for the text-only element n, or nil when it
 // has no text. Elements that are the only content of their parent are merged
-// into one value, which takes a link or a heading level from any of them, so
-// that "<h2><a>Title</a></h2>" becomes one heading with a link.
+// into one value, which takes a link from any of them, so that
+// "<span><a>Title</a></span>" becomes one value with a link.
 func (s *treeBuilder) textValue(n *html.Node) *SemanticTreeNode {
 	text := normalizeSpace(textContent(n))
 	if text == "" {
 		return nil
 	}
-	v := &SemanticTreeNode{Val: text}
+	v := &SemanticTreeNode{Tag: n.Data, Val: text}
 	for e := n; e != nil; e = onlyChild(e) {
+		v.Cls = appendClasses(v.Cls, cleanClasses(e))
 		if e.Data == "a" && v.Link == "" {
 			v.Link = s.resolve(attr(e, "href"))
-		}
-		if headingTags[e.Data] && v.Kind == "" {
-			v.Kind = e.Data
 		}
 	}
 	return v
@@ -451,29 +461,6 @@ func onlyChild(n *html.Node) *html.Node {
 		}
 	}
 	return only
-}
-
-// unwrapTextless replaces each container under n that has no text and no
-// link with its children. A post needs a title, and a field is a text, an
-// image or a link, so such a container can be neither and only adds depth.
-func unwrapTextless(n *SemanticTreeNode) {
-	var children []*SemanticTreeNode
-	for _, c := range n.Children {
-		unwrapTextless(c)
-		if !c.isValue() && c.Link == "" && !hasText(c) {
-			children = append(children, c.Children...)
-		} else {
-			children = append(children, c)
-		}
-	}
-	n.Children = children
-}
-
-func hasText(n *SemanticTreeNode) bool {
-	if n.isValue() {
-		return n.Kind != "img" && n.Val != ""
-	}
-	return slices.ContainsFunc(n.Children, hasText)
 }
 
 // countApart returns the number of elements in nodes that are laid out apart
@@ -629,4 +616,66 @@ func hasAttr(n *html.Node, key string) bool {
 		}
 	}
 	return false
+}
+
+var (
+	plainClass      = regexp.MustCompile(`^[A-Za-z0-9_-]+$`)
+	classSeparators = regexp.MustCompile(`[-_]+`)
+	// Mixes of letter cases that words do not have, such as "KxYrHG".
+	hashCase = regexp.MustCompile(`[a-z][A-Z].*[A-Z]|[A-Z]{2}[a-z]|[a-z]{2}[A-Z]{2}`)
+)
+
+// cleanClasses returns the classes of n without the parts that change while
+// the role of n stays the same, so that a matcher does not depend on them:
+//
+//   - Classes with characters other than letters, digits, "-" and "_" are
+//     dropped. These are utility classes with a variant or an arbitrary
+//     value, such as "max-[1199px]:flex", which change with the design.
+//   - Hash-like segments that build tools generate are removed from the
+//     other classes with the separator before them, such as "KxYrHG" in
+//     "List-module-scss-module__KxYrHG__item" or "24499" in "post-24499". A
+//     class with nothing left is dropped.
+func cleanClasses(n *html.Node) []string {
+	var classes []string
+	for c := range strings.FieldsSeq(attr(n, "class")) {
+		if !plainClass.MatchString(c) {
+			continue
+		}
+		segments := classSeparators.Split(c, -1)
+		separators := classSeparators.FindAllString(c, -1)
+		var b strings.Builder
+		for i, seg := range segments {
+			if isHashLike(seg) {
+				continue
+			}
+			if b.Len() > 0 {
+				b.WriteString(separators[i-1])
+			}
+			b.WriteString(seg)
+		}
+		if b.Len() > 0 {
+			classes = appendClasses(classes, []string{b.String()})
+		}
+	}
+	return classes
+}
+
+// isHashLike reports whether a segment of a class looks generated: at least
+// 5 characters with a digit, or at most 8 letters in a mix of cases.
+func isHashLike(seg string) bool {
+	if len(seg) < 5 {
+		return false
+	}
+	digits := strings.IndexFunc(seg, unicode.IsDigit) >= 0
+	return digits || len(seg) <= 8 && hashCase.MatchString(seg)
+}
+
+// appendClasses appends the classes in b that a does not have to a.
+func appendClasses(a, b []string) []string {
+	for _, c := range b {
+		if !slices.Contains(a, c) {
+			a = append(a, c)
+		}
+	}
+	return a
 }

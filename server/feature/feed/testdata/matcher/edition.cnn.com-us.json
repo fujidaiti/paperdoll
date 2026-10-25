@@ -1,110 +1,94 @@
 [
   {
     "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
+      {
+        "tag": "li",
+        "cls": [
+          "card",
+          "container__item",
+          "container__item--type-media-image",
+          "container__item--type-section"
+        ]
+      }
     ],
     "fields": {
-      "link": [{ "shape": "card", "nth": 0 }],
+      "link": [
+        [
+          {
+            "tag": "a",
+            "cls": [
+              "container__link",
+              "container__link--type-article",
+              "container_lead-plus-headlines__link"
+            ]
+          }
+        ],
+        [
+          {
+            "tag": "a",
+            "cls": [
+              "container__link",
+              "container__link--type-live-story",
+              "container_lead-plus-headlines__link"
+            ]
+          }
+        ],
+        [
+          {
+            "tag": "a",
+            "cls": [
+              "container__link",
+              "container__link--type-article",
+              "container_vertical-strip__link"
+            ]
+          }
+        ],
+        [
+          {
+            "tag": "a",
+            "cls": [
+              "container__link",
+              "container__link--type-video",
+              "container_lead-plus-headlines__link"
+            ]
+          }
+        ],
+        [
+          {
+            "tag": "a",
+            "cls": [
+              "container__link",
+              "container__link--type-video",
+              "container_grid-4__link"
+            ]
+          }
+        ]
+      ],
       "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
+        [{ "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }]
       ],
       "title": [
-        { "shape": "card", "nth": 1 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
-    ],
-    "fields": {
-      "link": [{ "shape": "card", "nth": 0 }],
-      "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
-      ],
-      "title": [
-        { "shape": "card", "nth": 1 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 1 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
-    ],
-    "fields": {
-      "link": [{ "shape": "card", "nth": 0 }],
-      "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
-      ],
-      "title": [
-        { "shape": "card", "nth": 1 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 1 }
+        [
+          {
+            "tag": "div",
+            "cls": [
+              "container__headline",
+              "container_lead-plus-headlines__headline",
+              "container__headline-text"
+            ]
+          }
+        ],
+        [{ "tag": "span", "cls": ["container__headline-text"] }],
+        [
+          {
+            "tag": "div",
+            "cls": [
+              "container__headline",
+              "container_vertical-strip__headline",
+              "container__headline-text"
+            ]
+          }
+        ]
       ]
     },
     "exclude": []

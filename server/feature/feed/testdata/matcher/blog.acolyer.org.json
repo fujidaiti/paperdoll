@@ -1,25 +1,22 @@
 [
   {
-    "post": ["box", "box", "box"],
+    "post": [
+      {
+        "tag": "article",
+        "cls": [
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "hentry"
+        ]
+      }
+    ],
     "fields": {
-      "body": [
-        { "shape": "box", "nth": 2 },
-        { "shape": "box", "nth": 0 }
-      ],
-      "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h1+link", "nth": 0 }
-      ],
-      "pubDate": [
-        { "shape": "box", "nth": 1 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "time", "nth": 1 }
-      ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h1+link", "nth": 0 }
-      ]
+      "body": [[{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }]],
+      "link": [[{ "tag": "h1", "cls": ["entry-title"] }]],
+      "pubDate": [[{ "tag": "time", "cls": ["updated"] }]],
+      "title": [[{ "tag": "h1", "cls": ["entry-title"] }]]
     },
     "exclude": []
   }

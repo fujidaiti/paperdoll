@@ -1,62 +1,19 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "card"],
+    "post": [{ "tag": "a", "cls": ["feed-item"] }],
     "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [],
-      "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 1 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
-      ],
-      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "card"],
-    "fields": {
-      "link": [],
-      "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 1 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
-      ],
-      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "card"],
-    "fields": {
-      "link": [],
+      "body": [[{ "tag": "p", "cls": ["dek"] }]],
+      "link": [[]],
+      "pubDate": [[{ "tag": "p", "cls": ["meta"] }, { "tag": "time" }]],
       "thumbnail": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
+        [{ "tag": "figure", "cls": ["article"] }, { "tag": "img" }],
+        [
+          { "tag": "div", "cls": ["inner"] },
+          { "tag": "figure" },
+          { "tag": "img" }
+        ]
       ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
-      ]
+      "title": [[{ "tag": "div", "cls": ["item-text"] }, { "tag": "h2" }]]
     },
     "exclude": []
   }

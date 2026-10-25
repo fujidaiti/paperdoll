@@ -1,223 +1,72 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box", "box"],
-    "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 1 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
-      ],
-      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
     "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
+      {
+        "tag": "article",
+        "cls": [
+          "storyCard__storyCard",
+          "storyCard__unpadded",
+          "storyCard__linked"
+        ]
+      }
     ],
     "fields": {
       "body": [
-        { "shape": "box", "nth": 1 },
-        { "shape": "txt", "nth": 0 }
+        [{ "tag": "div", "cls": ["storyCard__description"] }, { "tag": "p" }]
       ],
-      "link": [{ "shape": "h3+link", "nth": 0 }],
-      "title": [{ "shape": "h3+link", "nth": 0 }]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box", "box"],
-    "fields": {
       "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
+        [{ "tag": "h3", "cls": ["storyCard__title", "storyCard__titleLink"] }]
       ],
-      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
+      "thumbnail": [[{ "tag": "img", "cls": ["image__img"] }]],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
+        [{ "tag": "h3", "cls": ["storyCard__title", "storyCard__titleLink"] }]
       ]
     },
     "exclude": []
   },
   {
     "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
+      { "tag": "main" },
+      { "tag": "section" },
+      { "tag": "div" },
+      { "tag": "section" },
+      { "tag": "div" },
+      { "tag": "div" },
+      { "tag": "div" },
+      { "tag": "aside" },
+      { "tag": "div" },
+      { "tag": "div" }
     ],
     "fields": {
-      "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2+link", "nth": 0 }
-      ],
-      "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
-      ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2+link", "nth": 0 }
-      ]
+      "link": [[{ "tag": "h2" }]],
+      "thumbnail": [[{ "tag": "img", "cls": ["image__img"] }]],
+      "title": [[{ "tag": "h2" }]]
     },
     "exclude": []
   },
   {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "h3+link"
-    ],
-    "fields": { "link": [], "title": [] },
+    "post": [{ "tag": "h3", "cls": ["spotlightRail__storyTitle"] }],
+    "fields": { "link": [[]], "title": [[]] },
     "exclude": [
       "www.technologyreview.com/2026/09/21/1144166/border-towers-surveillance-investigation/"
     ]
   },
   {
     "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
+      { "tag": "div", "cls": ["homepageStoryCard__cardContent"] },
+      { "tag": "div" }
     ],
     "fields": {
       "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
+        [{ "tag": "div", "cls": ["homepageStoryCard__dek"] }, { "tag": "p" }],
+        [{ "tag": "div", "cls": ["homepageStoryCard__dek"] }]
       ],
-      "link": [{ "shape": "card", "nth": 0 }],
-      "title": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "h3", "nth": 0 }
-      ]
+      "link": [[{ "tag": "a" }]],
+      "title": [[{ "tag": "h3", "cls": ["homepageStoryCard__hed"] }]]
     },
-    "exclude": []
-  },
-  {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
-    ],
-    "fields": {
-      "body": [{ "shape": "txt", "nth": 0 }],
-      "link": [{ "shape": "card", "nth": 0 }],
-      "title": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "h3", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
-    ],
-    "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [{ "shape": "card", "nth": 0 }],
-      "title": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "h3", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
-    ],
-    "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 }
-      ],
-      "link": [{ "shape": "card", "nth": 0 }],
-      "title": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "h3", "nth": 0 }
-      ]
-    },
-    "exclude": []
+    "exclude": [
+      "www.technologyreview.com/magazines/a-home-for-responsible-optimists/",
+      "www.technologyreview.com/2026/08/12/1141032/scaling-ai-agents-with-trustworthy-data/"
+    ]
   }
 ]

@@ -1,13 +1,10 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box", "box"],
+    "post": [{ "tag": "p", "cls": ["blogtitle"] }],
     "fields": {
-      "link": [{ "shape": "txt+link", "nth": 0 }],
-      "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
-      ],
-      "title": [{ "shape": "txt+link", "nth": 0 }]
+      "link": [[{ "tag": "a" }]],
+      "pubDate": [[{ "tag": "span", "cls": ["date"] }, { "tag": "time" }]],
+      "title": [[{ "tag": "a" }]]
     },
     "exclude": []
   }

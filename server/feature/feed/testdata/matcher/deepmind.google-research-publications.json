@@ -1,17 +1,23 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "box", "card"],
+    "post": [{ "tag": "a", "cls": ["list-group__link"] }],
     "fields": {
-      "link": [],
+      "link": [[]],
       "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
+        [{ "tag": "span", "cls": ["list-group__date"] }, { "tag": "time" }]
       ],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
+        [
+          {
+            "tag": "dd",
+            "cls": [
+              "grid__column--span-4-xs",
+              "grid__column--span-8-sm",
+              "grid__column--span-10-md",
+              "list-group__description"
+            ]
+          }
+        ]
       ]
     },
     "exclude": []

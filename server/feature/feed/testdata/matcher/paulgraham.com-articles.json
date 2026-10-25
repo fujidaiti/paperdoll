@@ -1,19 +1,18 @@
 [
   {
     "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "txt+link"
+      { "tag": "table" },
+      { "tag": "tbody" },
+      { "tag": "tr" },
+      { "tag": "td" },
+      { "tag": "table" },
+      { "tag": "tbody" },
+      { "tag": "tr" },
+      { "tag": "td" },
+      { "tag": "font" },
+      { "tag": "a" }
     ],
-    "fields": { "link": [], "title": [] },
+    "fields": { "link": [[]], "title": [[]] },
     "exclude": ["paulgraham.com/rss.html"]
   }
 ]

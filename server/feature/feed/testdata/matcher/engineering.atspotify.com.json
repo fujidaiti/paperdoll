@@ -1,54 +1,31 @@
 [
   {
-    "post": ["box", "box", "box", "box"],
+    "post": [{ "tag": "main" }, { "tag": "section" }, { "tag": "div" }],
     "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [{ "shape": "card", "nth": 0 }],
-      "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
-      ],
-      "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
-      ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "h4", "nth": 0 }
-      ]
+      "body": [[{ "tag": "div" }, { "tag": "div" }]],
+      "link": [[{ "tag": "a" }]],
+      "pubDate": [[{ "tag": "time" }]],
+      "thumbnail": [[{ "tag": "img" }]],
+      "title": [[{ "tag": "h4" }]]
     },
     "exclude": []
   },
   {
-    "post": ["box", "box", "box", "box", "box"],
+    "post": [{ "tag": "div", "cls": ["post-card"] }],
     "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [{ "shape": "card", "nth": 0 }],
+      "body": [[{ "tag": "div", "cls": ["post-card__description"] }]],
+      "link": [[{ "tag": "div", "cls": ["post-card__image"] }, { "tag": "a" }]],
       "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
+        [{ "tag": "div", "cls": ["post-card__date"] }, { "tag": "time" }]
       ],
       "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
+        [
+          { "tag": "div", "cls": ["post-card__image"] },
+          { "tag": "a" },
+          { "tag": "img" }
+        ]
       ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "h4", "nth": 0 }
-      ]
+      "title": [[{ "tag": "h4", "cls": ["post-card__title"] }]]
     },
     "exclude": []
   }

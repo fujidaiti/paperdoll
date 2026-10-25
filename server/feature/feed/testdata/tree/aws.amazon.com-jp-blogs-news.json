@@ -2,63 +2,107 @@
   "url": "https://aws.amazon.com/jp/blogs/news/",
   "title": "Amazon Web Services ブログ",
   "root": {
+    "tag": "body",
+    "cls": [
+      "awsm",
+      "page",
+      "basicpage",
+      "aws-blogs-page",
+      "aws-blogs-page-standard"
+    ],
     "ch": [
       {
+        "tag": "main",
+        "cls": ["lb-col", "lb-tiny-24"],
         "ch": [
-          { "kind": "h1", "val": "Amazon Web Services ブログ" },
           {
+            "tag": "h1",
+            "cls": ["lb-h2", "blog-title"],
+            "val": "Amazon Web Services ブログ"
+          },
+          {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/software-factory-1000-prs/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/software-factory-1000-prs-1024x538.jpg"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/software-factory-1000-prs/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/software-factory-1000-prs-1024x538.jpg"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "Kiro Crew でソフトウェアファクトリーを構築し、1 週間で 1000 件の PR をマージした方法",
                         "link": "https://aws.amazon.com/jp/blogs/news/software-factory-1000-prs/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "by" },
                               {
+                                "tag": "span",
                                 "val": "稲田大陸",
                                 "link": "https://aws.amazon.com/jp/blogs/news/author/inariku/"
                               }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-19T11:19:07Z" }
+                              { "tag": "time", "val": "2026-09-19T11:19:07Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Q Developer",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/amazon-q/amazon-q-developer/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Developer Tools",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/developer-tools/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Kiro",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/kiro/"
                                   }
@@ -67,21 +111,27 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/software-factory-1000-prs/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "先週、Kiro Crew をフルタイムで開発している私たち3人は、7日間で 1,000 件の pull request をマージしました。1日あたり 120 件を超え、そのすべてが CI とレビューを通っています。Kiro Crew は、このフルタイムのエンジニア3人を中心に、500 人近い熱心なコミュニティコントリビューターとともに開発されています。"
                           },
                           {
+                            "tag": "p",
                             "val": "この数字を狙っていたわけではありません。並行して開発を進めるやり方が次々に限界にぶつかり、それを越えるたびに少しずつ到達した結果です。ボトルネックにぶつかるたびに、1人がより多くのセッションを回せる新しい進め方が生まれました。振り返ると、その変化は5つの段階に整理できます。最新の段階が、私たちが Crew Mode と呼んでいるものです。コーディングエージェントを使っているなら、あなたもこの梯子のどこかにいます。そして今いる段階が、次に壊れるものを教えてくれます。"
                           }
                         ]
@@ -93,71 +143,103 @@
             ]
           },
           {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/monthly-manufacturing-202609/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "val": "AWS製造9月号タイトル",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/AWS_Seizou_9gatsu_op.gif"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/monthly-manufacturing-202609/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "val": "AWS製造9月号タイトル",
+                            "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/19/AWS_Seizou_9gatsu_op.gif"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "月刊 AWS 製造 2026 年 9 月号",
                         "link": "https://aws.amazon.com/jp/blogs/news/monthly-manufacturing-202609/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
-                          { "val": "by 大前 遼" },
+                          { "tag": "span", "val": "by 大前 遼" },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-19T06:17:23Z" }
+                              { "tag": "time", "val": "2026-09-19T06:17:23Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Bedrock AgentCore",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/amazon-bedrock-agentcore/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Amazon SageMaker",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/sagemaker/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Analytics",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/analytics/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Generative AI",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/generative-ai-2/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "High Performance Computing",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/high-performance-computing/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Internet of Things",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/internet-of-things/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Manufacturing",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/industries/manufacturing/"
                                   }
@@ -166,18 +248,23 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/monthly-manufacturing-202609/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "今月は「エージェントに現場を任せるとき、境界線をどこに引くか」をピックアップトピックとしてお届けしつつ、8 月に公開された製造業向けのブログとサービスアップデートをご紹介します。"
                           }
                         ]
@@ -189,63 +276,94 @@
             ]
           },
           {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/converting-an-rds-for-sql-server-instance-from-license-included-to-bring-your-own-media-byom/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/16/DB5675-1024x512-1.png"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/converting-an-rds-for-sql-server-instance-from-license-included-to-bring-your-own-media-byom/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/16/DB5675-1024x512-1.png"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "RDS for SQL Server インスタンスを License Included から Bring Your Own Media (BYOM) へ変換",
                         "link": "https://aws.amazon.com/jp/blogs/news/converting-an-rds-for-sql-server-instance-from-license-included-to-bring-your-own-media-byom/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "by" },
                               {
+                                "tag": "span",
                                 "val": "Yoshinori Sawada",
                                 "link": "https://aws.amazon.com/jp/blogs/news/author/yosawad/"
                               }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-18T03:00:53Z" }
+                              { "tag": "time", "val": "2026-09-18T03:00:53Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Simple Storage Service (S3)",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/storage/amazon-simple-storage-services-s3/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Intermediate (200)",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/learning-levels/intermediate-200/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "RDS for SQL Server",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/database/amazon-rds/rds-for-sql-server/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Technical How-to",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/post-types/technical-how-to/"
                                   }
@@ -254,18 +372,23 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/converting-an-rds-for-sql-server-instance-from-license-included-to-bring-your-own-media-byom/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "本記事では、RDS for SQL Server インスタンスを License Included から Bring Your Own Media (BYOM) へ変換するためのインストールメディアの準備、BYOM エンジンバージョンの作成、インプレースでのライセンスモデル変更というエンドツーエンドの変換プロセスを説明します。"
                           }
                         ]
@@ -277,58 +400,88 @@
             ]
           },
           {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/unlock-license-mobility-with-bring-your-own-media-on-fully-managed-amazon-rds-for-sql-server/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/16/5650.png"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/unlock-license-mobility-with-bring-your-own-media-on-fully-managed-amazon-rds-for-sql-server/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/16/5650.png"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "フルマネージドの Amazon RDS for SQL Server で Bring Your Own Media によるライセンスモビリティの実現",
                         "link": "https://aws.amazon.com/jp/blogs/news/unlock-license-mobility-with-bring-your-own-media-on-fully-managed-amazon-rds-for-sql-server/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "by" },
                               {
+                                "tag": "span",
                                 "val": "Yoshinori Sawada",
                                 "link": "https://aws.amazon.com/jp/blogs/news/author/yosawad/"
                               }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-18T02:59:44Z" }
+                              { "tag": "time", "val": "2026-09-18T02:59:44Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Announcements",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/post-types/announcements/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Intermediate (200)",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/learning-levels/intermediate-200/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "RDS for SQL Server",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/database/amazon-rds/rds-for-sql-server/"
                                   }
@@ -337,18 +490,23 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/unlock-license-mobility-with-bring-your-own-media-on-fully-managed-amazon-rds-for-sql-server/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "Amazon RDS for SQL Server の Bring Your Own Media (BYOM) は、既存の SQL Server インストールメディアと、すでに投資済みのライセンスを持ち込み、フルマネージドデータベースサービスである RDS for SQL Server 上で追加のライセンス費用なしに利用できます。本記事では、SQL Server のインストールメディアを Amazon Simple Storage Service (Amazon S3) にアップロードし、BYOM インスタンスを起動する方法を説明します。"
                           }
                         ]
@@ -360,58 +518,84 @@
             ]
           },
           {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/integrating-sap-commerce-cloud-with-sap-cloud-erp-private-on-aws-a-practical-and-proven-approach/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/integrating-sap-commerce-cloud-with-sap-cloud-erp-private-on-aws-a-practical-and-proven-approach/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": ["wp-post-image"],
+                            "link": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "SAP Commerce Cloud と SAP Cloud ERP Private on AWS の統合 – 実践的で実証済みのアプローチ",
                         "link": "https://aws.amazon.com/jp/blogs/news/integrating-sap-commerce-cloud-with-sap-cloud-erp-private-on-aws-a-practical-and-proven-approach/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "by" },
                               {
+                                "tag": "span",
                                 "val": "Koshi Matsumoto",
                                 "link": "https://aws.amazon.com/jp/blogs/news/author/mkoshi/"
                               }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-18T02:12:55Z" }
+                              { "tag": "time", "val": "2026-09-18T02:12:55Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Best Practices",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/post-types/best-practices/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "SAP on AWS",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/sap/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Technical How-to",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/post-types/technical-how-to/"
                                   }
@@ -420,18 +604,23 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/integrating-sap-commerce-cloud-with-sap-cloud-erp-private-on-aws-a-practical-and-proven-approach/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "SAP Commerce（SAP Hybris）2205 のメインストリームメンテナンス終了を控え、多くの企業が SAP Commerce Cloud SaaS と AWS 上の SAP Cloud ERP Private の統合によるモダナイゼーションを進めています。本記事では、リージョン選択、レイテンシー最適化（Amazon CloudFront・SAP BTP Integration Suite の活用）、ネットワーキング（AWS Global Accelerator・Amazon Route 53）、セキュリティの 4 つの観点から、実証済みのアーキテクチャベストプラクティスを解説します。さらに、Buy with Prime や Amazon Multi-Channel Fulfillment（MCF）との統合による e コマース業務の拡張についても紹介します。"
                           }
                         ]
@@ -443,98 +632,132 @@
             ]
           },
           {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/aws-agentic-standard-operating-procedures-sops-for-erp-automation/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/aws-agentic-standard-operating-procedures-sops-for-erp-automation/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": ["wp-post-image"],
+                            "link": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "ERP例外処理をAWSエージェント型標準作業手順書（SOP）で自動化",
                         "link": "https://aws.amazon.com/jp/blogs/news/aws-agentic-standard-operating-procedures-sops-for-erp-automation/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "by" },
                               {
+                                "tag": "span",
                                 "val": "Koshi Matsumoto",
                                 "link": "https://aws.amazon.com/jp/blogs/news/author/mkoshi/"
                               }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-18T02:08:13Z" }
+                              { "tag": "time", "val": "2026-09-18T02:08:13Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Bedrock",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Bedrock AgentCore",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/amazon-bedrock-agentcore/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Bedrock Knowledge Bases",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/amazon-bedrock-knowledge-bases/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Amazon CloudWatch",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/management-tools/amazon-cloudwatch/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Cognito",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/security-identity-compliance/amazon-cognito/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Amazon DynamoDB",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/database/amazon-dynamodb/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Amazon EventBridge",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/application-integration/amazon-eventbridge/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "AWS Lambda",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/compute/aws-lambda/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Best Practices",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/post-types/best-practices/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "SAP on AWS",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/sap/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Technical How-to",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/post-types/technical-how-to/"
                                   }
@@ -543,18 +766,23 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/aws-agentic-standard-operating-procedures-sops-for-erp-automation/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "エンタープライズ ERP の例外対応は、SAP のスリーウェイマッチや RPA、従来型 ML でも解決しきれず、手作業に依存してきました。本稿では、Amazon Bedrock AgentCore と Strands を基盤に、ナレッジベースの SOP を実行時に解釈して SAP／非 SAP システム横断で例外を自律解決する「エージェント型 SOP」フレームワークを紹介します。EventBridge・Lambda・DynamoDB・Bedrock Knowledge Bases・SES を組み合わせ、ヒューマン・イン・ザ・ループと監査水準の証跡を備えたリファレンスアーキテクチャと技術的ベストプラクティスを解説します。あるグローバル製造業では 30 日超を要した PO 引当計上が数分に短縮されました。"
                           }
                         ]
@@ -566,65 +794,92 @@
             ]
           },
           {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/restar-ai-platform/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/restar-ai-platform/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": ["wp-post-image"],
+                            "link": "https://d2908q01vomqb2.cloudfront.net/827bfc458708f0b442009c9c9836f7e4b65557fb/2020/06/03/Blog-Post_thumbnail.png"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "【寄稿】株式会社レスター、Amazon Bedrock で顧客課題とグループの解決力をつなぐ情報プラットフォームを構築",
                         "link": "https://aws.amazon.com/jp/blogs/news/restar-ai-platform/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
-                          { "val": "by Shota Nakamoto" },
+                          { "tag": "span", "val": "by Shota Nakamoto" },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-18T00:56:28Z" }
+                              { "tag": "time", "val": "2026-09-18T00:56:28Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Bedrock",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Bedrock AgentCore",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/amazon-bedrock-agentcore/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Bedrock Knowledge Bases",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/amazon-machine-learning/amazon-bedrock/amazon-bedrock-knowledge-bases/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "General",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/general/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Generative AI",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/generative-ai-2/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Industries",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/industries/"
                                   }
@@ -633,18 +888,23 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/restar-ai-platform/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "はじめに 本記事は、株式会社レスター（以下、レスター）の加瀬 友基 氏による寄稿記事です。 レスターでは、各社 […]"
                           }
                         ]
@@ -656,60 +916,90 @@
             ]
           },
           {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-2/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/08/25/thumb_H_arm30__shadow_web-1024x683.png"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-2/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/08/25/thumb_H_arm30__shadow_web-1024x683.png"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "NTTドコモ モバイルイノベーションテック部における AI-DLC 実践（第2回）：2チーム並行開発の実験結果と知見",
                         "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-2/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
-                          { "val": "by Takaaki Kikuchi" },
+                          { "tag": "span", "val": "by Takaaki Kikuchi" },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-18T00:02:27Z" }
+                              { "tag": "time", "val": "2026-09-18T00:02:27Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Artificial Intelligence",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Case Study",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/case-study/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Developer Tools",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/developer-tools/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "General",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/general/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Kiro",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/kiro/"
                                   }
@@ -718,18 +1008,23 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-2/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "※ この投稿はお客様に寄稿いただいた記事です。 本稿は、NTTドコモ モバイルイノベーションテック部（以下、M […]"
                           }
                         ]
@@ -741,60 +1036,90 @@
             ]
           },
           {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-1/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/08/25/thumb_H_arm30__shadow_web-1024x683.png"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-1/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/08/25/thumb_H_arm30__shadow_web-1024x683.png"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "NTTドコモ モバイルイノベーションテック部における AI-DLC 実践（第1回）：フィジカルAI領域でのML開発への適用",
                         "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-1/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
-                          { "val": "by Takaaki Kikuchi" },
+                          { "tag": "span", "val": "by Takaaki Kikuchi" },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-18T00:02:16Z" }
+                              { "tag": "time", "val": "2026-09-18T00:02:16Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Artificial Intelligence",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Case Study",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/case-study/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Developer Tools",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/developer-tools/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "General",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/general/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Kiro",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/kiro/"
                                   }
@@ -803,18 +1128,23 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/nttdocomo-ai-dlc-physical-ai-1/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "※ この投稿はお客様に寄稿いただいた記事です。 本稿では、株式会社NTTドコモ（以下、ドコモ）モバイルイノベー […]"
                           }
                         ]
@@ -826,58 +1156,88 @@
             ]
           },
           {
+            "tag": "article",
+            "cls": ["blog-post"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-row", "lb-snap"],
                 "ch": [
                   {
-                    "link": "https://aws.amazon.com/jp/blogs/news/fable-5-1/",
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "img",
-                        "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/17/kiro-fable-5-1-1024x538.jpg"
+                        "tag": "a",
+                        "link": "https://aws.amazon.com/jp/blogs/news/fable-5-1/",
+                        "ch": [
+                          {
+                            "tag": "img",
+                            "cls": [
+                              "attachment-large",
+                              "size-large",
+                              "wp-post-image"
+                            ],
+                            "link": "https://d2908q01vomqb2.cloudfront.net/b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f/2026/09/17/kiro-fable-5-1-1024x538.jpg"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
+                    "tag": "div",
+                    "cls": ["lb-col", "lb-mid-18", "lb-tiny-24"],
                     "ch": [
                       {
-                        "kind": "h2",
+                        "tag": "h2",
+                        "cls": ["lb-bold", "blog-post-title"],
                         "val": "Claude Fable 5.1 が Kiro で利用可能になりました",
                         "link": "https://aws.amazon.com/jp/blogs/news/fable-5-1/"
                       },
                       {
+                        "tag": "footer",
+                        "cls": ["blog-post-meta"],
                         "ch": [
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "by" },
                               {
+                                "tag": "span",
                                 "val": "稲田大陸",
                                 "link": "https://aws.amazon.com/jp/blogs/news/author/inariku/"
                               }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "on" },
-                              { "kind": "time", "val": "2026-09-17T19:45:31Z" }
+                              { "tag": "time", "val": "2026-09-17T19:45:31Z" }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "in" },
                               {
+                                "tag": "span",
+                                "cls": ["blog-post-categories"],
                                 "ch": [
                                   {
+                                    "tag": "a",
                                     "val": "Amazon Q Developer",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/amazon-q/amazon-q-developer/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Developer Tools",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/developer-tools/"
                                   },
                                   { "val": "," },
                                   {
+                                    "tag": "a",
                                     "val": "Kiro",
                                     "link": "https://aws.amazon.com/jp/blogs/news/category/artificial-intelligence/kiro/"
                                   }
@@ -886,18 +1246,23 @@
                             ]
                           },
                           {
+                            "tag": "span",
                             "val": "Permalink",
                             "link": "https://aws.amazon.com/jp/blogs/news/fable-5-1/"
                           },
                           {
+                            "tag": "span",
                             "val": "Share",
                             "link": "https://aws.amazon.com/jp/blogs/news/"
                           }
                         ]
                       },
                       {
+                        "tag": "section",
+                        "cls": ["blog-post-excerpt", "lb-rtxt"],
                         "ch": [
                           {
+                            "tag": "p",
                             "val": "Claude Fable 5.1 が本日より Kiro のエンタープライズ顧客向けに利用可能になりました。長時間にわたるコンテキスト量の多いエージェントセッションにおいて、Fable 5.1 は新しい基準を打ち立てます。症状を並べるのではなくコードの根本原因まで問題を追跡し、複雑なタスクの全体を通してコンテキストと意図を保持します。"
                           }
                         ]
@@ -909,8 +1274,12 @@
             ]
           },
           {
+            "tag": "div",
+            "cls": ["blog-pagination"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["lb-btn", "lb-btn-p"],
                 "val": "← Older posts",
                 "link": "https://aws.amazon.com/jp/blogs/news/page/2/"
               }

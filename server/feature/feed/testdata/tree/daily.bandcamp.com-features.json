@@ -2,47 +2,66 @@
   "url": "https://daily.bandcamp.com/features",
   "title": "Features | Bandcamp Daily",
   "root": {
+    "tag": "body",
+    "cls": ["enable-cookie-control", "bc-body"],
     "ch": [
       {
+        "tag": "div",
+        "cls": ["bc-content"],
         "ch": [
           {
+            "tag": "div",
             "ch": [
               {
+                "tag": "nav",
                 "ch": [
                   {
+                    "tag": "div",
+                    "cls": ["nav-wrapper"],
                     "ch": [
                       {
+                        "tag": "a",
+                        "cls": ["home"],
                         "val": "Bandcamp DailyThe Daily",
                         "link": "https://daily.bandcamp.com/"
                       },
                       {
+                        "tag": "span",
+                        "cls": ["links"],
                         "ch": [
                           {
+                            "tag": "span",
                             "val": "lists",
                             "link": "https://daily.bandcamp.com/lists"
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "·" },
                               {
+                                "tag": "a",
                                 "val": "features",
                                 "link": "https://daily.bandcamp.com/features"
                               }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "·" },
                               {
+                                "tag": "a",
                                 "val": "album of the day",
                                 "link": "https://daily.bandcamp.com/album-of-the-day"
                               }
                             ]
                           },
                           {
+                            "tag": "span",
                             "ch": [
                               { "val": "·" },
                               {
+                                "tag": "a",
                                 "val": "view all",
                                 "link": "https://daily.bandcamp.com/features?all-nav"
                               }
@@ -53,121 +72,165 @@
                     ]
                   },
                   {
+                    "tag": "div",
                     "ch": [
-                      { "ch": [{ "kind": "h1", "val": "Bandcamp Daily" }] },
                       {
+                        "tag": "section",
+                        "cls": ["top"],
                         "ch": [
                           {
+                            "tag": "h1",
+                            "cls": ["header"],
+                            "val": "Bandcamp Daily"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "section",
+                        "cls": ["featured"],
+                        "ch": [
+                          {
+                            "tag": "section",
+                            "cls": ["best-of-year"],
                             "ch": [
                               {
+                                "tag": "div",
                                 "val": "Best of 2026",
                                 "link": "https://daily.bandcamp.com/best-of-2026"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2025",
                                 "link": "https://daily.bandcamp.com/best-of-2025"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2024",
                                 "link": "https://daily.bandcamp.com/best-of-2024"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2023",
                                 "link": "https://daily.bandcamp.com/best-of-2023"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2022",
                                 "link": "https://daily.bandcamp.com/best-of-2022"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2021",
                                 "link": "https://daily.bandcamp.com/best-of-2021"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2020",
                                 "link": "https://daily.bandcamp.com/best-of-2020"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2019",
                                 "link": "https://daily.bandcamp.com/best-of-2019"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2018",
                                 "link": "https://daily.bandcamp.com/best-of-2018"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2017",
                                 "link": "https://daily.bandcamp.com/best-of-2017"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best of 2016",
                                 "link": "https://daily.bandcamp.com/best-of-2016"
                               }
                             ]
                           },
                           {
+                            "tag": "section",
+                            "cls": ["best-of"],
                             "ch": [
                               {
+                                "tag": "div",
                                 "val": "Best Ambient",
                                 "link": "https://daily.bandcamp.com/best-ambient"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Beat Tapes",
                                 "link": "https://daily.bandcamp.com/best-beat-tapes"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Dance 12”s",
                                 "link": "https://daily.bandcamp.com/best-dance-12s"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Electronic",
                                 "link": "https://daily.bandcamp.com/best-electronic"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Experimental",
                                 "link": "https://daily.bandcamp.com/best-experimental"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Contemporary Classical",
                                 "link": "https://daily.bandcamp.com/best-contemporary-classical"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Hip-Hop",
                                 "link": "https://daily.bandcamp.com/best-hip-hop"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Jazz",
                                 "link": "https://daily.bandcamp.com/best-jazz"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Metal",
                                 "link": "https://daily.bandcamp.com/best-metal"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Punk",
                                 "link": "https://daily.bandcamp.com/best-punk"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Reissues",
                                 "link": "https://daily.bandcamp.com/best-reissues"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Soul",
                                 "link": "https://daily.bandcamp.com/best-soul"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Folk",
                                 "link": "https://daily.bandcamp.com/best-folk"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Field Recordings",
                                 "link": "https://daily.bandcamp.com/best-field-recordings"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Club Music",
                                 "link": "https://daily.bandcamp.com/best-club-music"
                               },
                               {
+                                "tag": "div",
                                 "val": "Best Country",
                                 "link": "https://daily.bandcamp.com/best-country"
                               }
@@ -175,179 +238,225 @@
                           }
                         ]
                       },
-                      { "kind": "h2", "val": "Franchises" },
+                      { "tag": "h2", "val": "Franchises" },
                       {
+                        "tag": "section",
+                        "cls": ["franchises"],
                         "ch": [
                           {
+                            "tag": "div",
                             "val": "Lists",
                             "link": "https://daily.bandcamp.com/lists"
                           },
                           {
+                            "tag": "div",
                             "val": "Features",
                             "link": "https://daily.bandcamp.com/features"
                           },
                           {
+                            "tag": "div",
                             "val": "Album of the Day",
                             "link": "https://daily.bandcamp.com/album-of-the-day"
                           },
                           {
+                            "tag": "div",
                             "val": "Acid Test",
                             "link": "https://daily.bandcamp.com/acid-test"
                           },
                           {
+                            "tag": "div",
                             "val": "Bandcamp Navigator",
                             "link": "https://daily.bandcamp.com/bandcamp-navigator"
                           },
                           {
+                            "tag": "div",
                             "val": "Big Ups",
                             "link": "https://daily.bandcamp.com/big-ups"
                           },
                           {
+                            "tag": "div",
                             "val": "Certified",
                             "link": "https://daily.bandcamp.com/certified"
                           },
                           {
+                            "tag": "div",
                             "val": "Gallery",
                             "link": "https://daily.bandcamp.com/gallery"
                           },
                           {
+                            "tag": "div",
                             "val": "Hidden Gems",
                             "link": "https://daily.bandcamp.com/hidden-gems"
                           },
                           {
+                            "tag": "div",
                             "val": "High Scores",
                             "link": "https://daily.bandcamp.com/high-scores"
                           },
                           {
+                            "tag": "div",
                             "val": "Label Profile",
                             "link": "https://daily.bandcamp.com/label-profile"
                           },
                           {
+                            "tag": "div",
                             "val": "Lifetime Achievement",
                             "link": "https://daily.bandcamp.com/lifetime-achievement"
                           },
                           {
+                            "tag": "div",
                             "val": "Resonance",
                             "link": "https://daily.bandcamp.com/resonance"
                           },
                           {
+                            "tag": "div",
                             "val": "Scene Report",
                             "link": "https://daily.bandcamp.com/scene-report"
                           },
                           {
+                            "tag": "div",
                             "val": "Essential Releases",
                             "link": "https://daily.bandcamp.com/essential-releases"
                           },
                           {
+                            "tag": "div",
                             "val": "Shortlist",
                             "link": "https://daily.bandcamp.com/shortlist"
                           },
                           {
+                            "tag": "div",
                             "val": "The Merch Table",
                             "link": "https://daily.bandcamp.com/the-merch-table"
                           }
                         ]
                       },
-                      { "kind": "h2", "val": "Genres" },
+                      { "tag": "h2", "val": "Genres" },
                       {
+                        "tag": "section",
+                        "cls": ["genres"],
                         "ch": [
                           {
+                            "tag": "div",
                             "val": "Alternative",
                             "link": "https://daily.bandcamp.com/genres/alternative"
                           },
                           {
+                            "tag": "div",
                             "val": "Pop",
                             "link": "https://daily.bandcamp.com/genres/pop"
                           },
                           {
+                            "tag": "div",
                             "val": "World",
                             "link": "https://daily.bandcamp.com/genres/world"
                           },
                           {
+                            "tag": "div",
                             "val": "Folk",
                             "link": "https://daily.bandcamp.com/genres/folk"
                           },
                           {
+                            "tag": "div",
                             "val": "Hip-Hop/Rap",
                             "link": "https://daily.bandcamp.com/genres/hip-hop-rap"
                           },
                           {
+                            "tag": "div",
                             "val": "Classical",
                             "link": "https://daily.bandcamp.com/genres/classical"
                           },
                           {
+                            "tag": "div",
                             "val": "Experimental",
                             "link": "https://daily.bandcamp.com/genres/experimental"
                           },
                           {
+                            "tag": "div",
                             "val": "Electronic",
                             "link": "https://daily.bandcamp.com/genres/electronic"
                           },
                           {
+                            "tag": "div",
                             "val": "Rock",
                             "link": "https://daily.bandcamp.com/genres/rock"
                           },
                           {
+                            "tag": "div",
                             "val": "R\u0026B/Soul",
                             "link": "https://daily.bandcamp.com/genres/r-b-soul"
                           },
                           {
+                            "tag": "div",
                             "val": "Comedy",
                             "link": "https://daily.bandcamp.com/genres/comedy"
                           },
                           {
+                            "tag": "div",
                             "val": "Country",
                             "link": "https://daily.bandcamp.com/genres/country"
                           },
                           {
+                            "tag": "div",
                             "val": "Soundtrack",
                             "link": "https://daily.bandcamp.com/genres/soundtrack"
                           },
                           {
+                            "tag": "div",
                             "val": "Metal",
                             "link": "https://daily.bandcamp.com/genres/metal"
                           },
                           {
+                            "tag": "div",
                             "val": "Jazz",
                             "link": "https://daily.bandcamp.com/genres/jazz"
                           },
                           {
+                            "tag": "div",
                             "val": "Punk",
                             "link": "https://daily.bandcamp.com/genres/punk"
                           },
                           {
+                            "tag": "div",
                             "val": "Reggae",
                             "link": "https://daily.bandcamp.com/genres/reggae"
                           },
                           {
+                            "tag": "div",
                             "val": "Funk",
                             "link": "https://daily.bandcamp.com/genres/funk"
                           },
                           {
+                            "tag": "div",
                             "val": "Ambient",
                             "link": "https://daily.bandcamp.com/genres/ambient"
                           },
                           {
+                            "tag": "div",
                             "val": "Acoustic",
                             "link": "https://daily.bandcamp.com/genres/acoustic"
                           },
                           {
+                            "tag": "div",
                             "val": "Blues",
                             "link": "https://daily.bandcamp.com/genres/blues"
                           },
                           {
+                            "tag": "div",
                             "val": "Latin",
                             "link": "https://daily.bandcamp.com/genres/latin"
                           },
                           {
+                            "tag": "div",
                             "val": "Devotional",
                             "link": "https://daily.bandcamp.com/genres/devotional"
                           },
                           {
+                            "tag": "div",
                             "val": "Spoken Word",
                             "link": "https://daily.bandcamp.com/genres/spoken-word"
                           },
                           {
+                            "tag": "div",
                             "val": "Podcasts",
                             "link": "https://daily.bandcamp.com/genres/podcasts"
                           }
@@ -358,829 +467,1143 @@
                 ]
               },
               {
+                "tag": "div",
+                "cls": ["features"],
                 "ch": [
                   {
+                    "tag": "articles-header",
                     "ch": [
                       {
+                        "tag": "div",
+                        "cls": ["center-text"],
                         "ch": [
                           {
-                            "kind": "h1",
+                            "tag": "h1",
                             "val": "Features",
                             "link": "https://daily.bandcamp.com/features"
                           },
-                          { "val": "Get to know your next favorite artist." }
+                          {
+                            "tag": "div",
+                            "cls": ["franchise-description"],
+                            "val": "Get to know your next favorite artist."
+                          }
                         ]
                       },
-                      { "ch": [{ "val": "1 to 30 of 2689" }] }
+                      {
+                        "tag": "div",
+                        "cls": ["text-wrapper"],
+                        "ch": [{ "tag": "div", "val": "1 to 30 of 2689" }]
+                      }
                     ]
                   },
                   {
+                    "tag": "articles-list",
                     "ch": [
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/mali-obomsawin-automatic-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047962141_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-10-15T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-10-15T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Bassist and Composer Mali Obomsawin Builds a Bridge Across Time",
                             "link": "https://daily.bandcamp.com/features/mali-obomsawin-automatic-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/instant-self-titled-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047655551_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-10-12T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-10-12T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "The French Prog Classic That Barely Escaped Oblivion",
                             "link": "https://daily.bandcamp.com/features/instant-self-titled-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/marc-ribots-book-of-guitar",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047856897_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-10-12T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-10-12T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Marc Ribot’s Book of Guitar",
                             "link": "https://daily.bandcamp.com/features/marc-ribots-book-of-guitar"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/pitchblende-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047827528_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-10-08T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-10-08T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Particle Acceleration: Pitchblende Reclaim Their Legacy",
                             "link": "https://daily.bandcamp.com/features/pitchblende-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/dave-holland-interview",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047670931_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-10-08T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-10-08T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Still Modern: Dave Holland at 80",
                             "link": "https://daily.bandcamp.com/features/dave-holland-interview"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/chyna-baejing-interview",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047671330_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-10-06T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-10-06T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Chyna Baejing Contains Multitudes",
                             "link": "https://daily.bandcamp.com/features/chyna-baejing-interview"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/matkovia-1982-1986-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047788412_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-10-05T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-10-05T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Behind The Iron Curtain, Maťkovia Staged A Post-Punk Revolution",
                             "link": "https://daily.bandcamp.com/features/matkovia-1982-1986-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/the-yummy-fur-everybody-talks-about-the-weather-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047788374_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-10-05T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-10-05T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Head Phone Home: The Yummy Fur Rings Again",
                             "link": "https://daily.bandcamp.com/features/the-yummy-fur-everybody-talks-about-the-weather-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/bandcamp-fridays",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047631843_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-26T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-26T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Today is Bandcamp Friday",
                             "link": "https://daily.bandcamp.com/features/bandcamp-fridays"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/stones-throw-label-profile",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047539821_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-24T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-24T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Stones Throw At 30: Artists Share Stories About the Label’s Rich History",
                             "link": "https://daily.bandcamp.com/features/stones-throw-label-profile"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/faust-interview",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047524606_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-23T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-23T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Faust Reunite Without Reuniting",
                             "link": "https://daily.bandcamp.com/features/faust-interview"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/ghetto-house-juke-album-guide",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047561794_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-21T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-21T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "A Journey Through Ghetto House and Juke",
                             "link": "https://daily.bandcamp.com/features/ghetto-house-juke-album-guide"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/laurentius-the-profit-interview",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047383984_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-18T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-18T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Laurentius the Profit Found Heaven in a Cave",
                             "link": "https://daily.bandcamp.com/features/laurentius-the-profit-interview"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/perennial-death-label-profile",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047403106_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-16T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-16T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Perennial Death on DIY, Olympia, and their Current Pop Hot Streak",
                             "link": "https://daily.bandcamp.com/features/perennial-death-label-profile"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/tony-humphries-kiss-fm-zanzibar-years-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047366237_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-15T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-15T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "How Tony Humphries Brought New Jersey House to the Masses",
                             "link": "https://daily.bandcamp.com/features/tony-humphries-kiss-fm-zanzibar-years-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/solex-low-kick-and-hard-bop-album-guide",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047251833_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-10T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-10T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Solex Does It Again",
                             "link": "https://daily.bandcamp.com/features/solex-low-kick-and-hard-bop-album-guide"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/kristin-hersh-sugar-on-blackstone-interview",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047112140_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-10T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-10T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Kristin Hersh Comes Home",
                             "link": "https://daily.bandcamp.com/features/kristin-hersh-sugar-on-blackstone-interview"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/jem-finer-john-matthias-almost-starlight-interview",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047132198_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-09T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-09T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Jem Finer and John Matthias on the Strange Magic of “Almost Starlight”",
                             "link": "https://daily.bandcamp.com/features/jem-finer-john-matthias-almost-starlight-interview"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/no-neck-blues-band-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0047132237_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-09-08T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-09-08T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Cicada Hum: No-Neck Blues Band Returns",
                             "link": "https://daily.bandcamp.com/features/no-neck-blues-band-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/for-shabaam-sahdeeq-everything-is-art",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046990451_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-08-28T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-08-28T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "For Shabaam Sahdeeq, Everything Is Art",
                             "link": "https://daily.bandcamp.com/features/for-shabaam-sahdeeq-everything-is-art"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/sarah-davachi-the-will-of-tongues-interview",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046914655_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-08-25T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-08-25T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Inside “The Will of Tongues,” Sarah Davachi’s Organ Music Masterpiece",
                             "link": "https://daily.bandcamp.com/features/sarah-davachi-the-will-of-tongues-interview"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/my-heart-is-dust-before-him-21st-century-gasba-from-algeria-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046677460_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-08-21T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-08-21T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Gasba Forever: The Next Phase of Algeria’s Millenia-Old Folk Tradition",
                             "link": "https://daily.bandcamp.com/features/my-heart-is-dust-before-him-21st-century-gasba-from-algeria-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/melaina-kol-okay-thats-great-because-if-i-do-that-then-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046849370_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-08-20T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-08-20T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Learning by Doing: Making Music as Melaina Kol",
                             "link": "https://daily.bandcamp.com/features/melaina-kol-okay-thats-great-because-if-i-do-that-then-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/the-cramps-gravest-gravy-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046699338_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-08-17T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-08-17T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Henry Rollins and The Lost Cramps Album",
                             "link": "https://daily.bandcamp.com/features/the-cramps-gravest-gravy-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/uncovering-obscure-records",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046681263_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-08-14T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-08-14T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Uncovering Obscure Records",
                             "link": "https://daily.bandcamp.com/features/uncovering-obscure-records"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/the-womack-sisters-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046591813_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-08-11T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-08-11T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "The Womack Sisters Keep It In the Family",
                             "link": "https://daily.bandcamp.com/features/the-womack-sisters-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/contemporary-early-music-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046495604_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-08-04T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-08-04T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Faire Play: The Modern World of Early Music",
                             "link": "https://daily.bandcamp.com/features/contemporary-early-music-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/nora-stanley-glass-interview",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046221461_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-07-30T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-07-30T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "Saxophonist Nora Stanley Goes Solo with “Glass”",
                             "link": "https://daily.bandcamp.com/features/nora-stanley-glass-interview"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/the-duplex-planet-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046277630_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-07-27T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-07-27T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "It Starts with a Question: How Duplex Planet Connects Humanity",
                             "link": "https://daily.bandcamp.com/features/the-duplex-planet-feature"
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["list-article"],
                         "ch": [
                           {
+                            "tag": "a",
+                            "cls": ["thumb"],
                             "link": "https://daily.bandcamp.com/features/michael-cloud-duguay-kingdom-come-kingdom-go-feature",
                             "ch": [
                               {
-                                "kind": "img",
+                                "tag": "img",
                                 "link": "https://f4.bcbits.com/img/0046140878_150.jpg"
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["article-info-text"],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["franchise"],
                                 "val": "FEATURES",
                                 "link": "https://daily.bandcamp.com/features"
                               },
-                              { "val": "·" },
-                              { "kind": "time", "val": "2026-07-24T00:00:00Z" }
+                              { "tag": "span", "cls": ["middot"], "val": "·" },
+                              { "tag": "time", "val": "2026-07-24T00:00:00Z" }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["title-wrapper", "title"],
                             "val": "“Kingdom Come, Kingdom Go” Brings Aging Church Organs Back to Life",
                             "link": "https://daily.bandcamp.com/features/michael-cloud-duguay-kingdom-come-kingdom-go-feature"
                           }
@@ -1189,8 +1612,11 @@
                     ]
                   },
                   {
+                    "tag": "articles-footer",
                     "ch": [
                       {
+                        "tag": "div",
+                        "cls": ["pagination-link"],
                         "val": "← Older posts ← Older posts",
                         "link": "https://daily.bandcamp.com/features?page=2"
                       }

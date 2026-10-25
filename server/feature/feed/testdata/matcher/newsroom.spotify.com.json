@@ -1,64 +1,46 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "card"],
+    "post": [
+      { "tag": "article", "cls": ["featured-slide", "slick-slide", "white"] },
+      { "tag": "a" }
+    ],
     "fields": {
-      "link": [],
-      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
+      "link": [[]],
+      "thumbnail": [[{ "tag": "img" }]],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
+        [
+          { "tag": "div", "cls": ["cell", "small-12", "text-container"] },
+          { "tag": "h2" }
+        ]
       ]
     },
     "exclude": []
   },
   {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box"],
-    "fields": {
-      "link": [{ "shape": "card", "nth": 0 }],
-      "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
-      ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box"],
+    "post": [{ "tag": "article" }],
     "fields": {
       "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 1 }
+        [
+          { "tag": "div", "cls": ["spotlight-text"] },
+          { "tag": "p", "nth": 1 }
+        ]
       ],
-      "link": [{ "shape": "card", "nth": 0 }],
+      "link": [
+        [{ "tag": "a", "cls": ["square-image"] }],
+        [{ "tag": "a", "cls": ["wide-image"] }]
+      ],
       "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
+        [
+          {
+            "tag": "img",
+            "cls": ["attachment-large", "size-large", "wp-post-image"]
+          }
+        ],
+        [{ "tag": "a", "cls": ["wide-image"] }, { "tag": "img" }]
       ],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box"],
-    "fields": {
-      "link": [{ "shape": "card", "nth": 0 }],
-      "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
-      ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
+        [{ "tag": "div", "cls": ["title"] }, { "tag": "h3" }],
+        [{ "tag": "h3", "cls": ["clamp"] }]
       ]
     },
     "exclude": []

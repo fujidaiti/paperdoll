@@ -1,22 +1,22 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box", "card"],
+    "post": [
+      { "tag": "a", "cls": ["reference-item", "no-underline", "group"] }
+    ],
     "fields": {
       "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 1 }
+        [
+          {
+            "tag": "div",
+            "cls": ["artist", "mb-2", "uppercase", "opacity-50", "font-bold"]
+          }
+        ]
       ],
-      "link": [],
+      "link": [[]],
       "thumbnail": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
+        [{ "tag": "img", "cls": ["jsx", "w-full", "h-full", "aspect-square"] }]
       ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ]
+      "title": [[{ "tag": "div", "cls": ["title", "mb-1", "font-bold"] }]]
     },
     "exclude": []
   }

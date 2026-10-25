@@ -1,14 +1,29 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "card"],
+    "post": [
+      {
+        "tag": "a",
+        "cls": [
+          "resource-item",
+          "not-prose",
+          "cursor-pointer",
+          "overflow-hidden",
+          "flex",
+          "w-full",
+          "flex-col",
+          "text-inherit",
+          "no-underline"
+        ]
+      }
+    ],
     "fields": {
-      "body": [{ "shape": "txt", "nth": 1 }],
-      "link": [],
-      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ]
+      "body": [
+        [{ "tag": "p", "cls": ["px-4", "text-default", "line-clamp-3"] }],
+        [{ "tag": "div", "cls": ["px-4", "pt-2", "text-sm", "text-secondary"] }]
+      ],
+      "link": [[]],
+      "thumbnail": [[{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }]],
+      "title": [[{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }]]
     },
     "exclude": []
   }

@@ -2,616 +2,2062 @@
   "url": "https://developers.openai.com/blog",
   "title": "Blog | OpenAI Developers",
   "root": {
+    "tag": "body",
+    "cls": ["overflow-x-hidden"],
     "ch": [
       {
+        "tag": "main",
+        "cls": ["min-w-0", "flex-1"],
         "ch": [
           {
+            "tag": "div",
+            "cls": [
+              "page-container",
+              "pb-24",
+              "pt-0",
+              "flex",
+              "flex-col",
+              "items-center"
+            ],
             "ch": [
               {
+                "tag": "header",
+                "cls": [
+                  "flex",
+                  "flex-col",
+                  "not-prose",
+                  "gap-1",
+                  "pt-20",
+                  "items-center",
+                  "text-center"
+                ],
                 "ch": [
-                  { "ch": [{ "kind": "h1", "val": "OpenAI Developer Blog" }] },
-                  { "val": "Insights for developers building with OpenAI" }
+                  {
+                    "tag": "div",
+                    "cls": ["flex", "flex-wrap", "items-center", "gap-3"],
+                    "ch": [
+                      {
+                        "tag": "h1",
+                        "cls": ["heading-2xl"],
+                        "val": "OpenAI Developer Blog"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "cls": [
+                      "mx-auto",
+                      "max-w-xl",
+                      "text-md",
+                      "text-secondary",
+                      "leading-relaxed"
+                    ],
+                    "val": "Insights for developers building with OpenAI"
+                  }
                 ]
               },
               {
+                "tag": "div",
+                "cls": ["pt-20", "w-full"],
                 "ch": [
                   {
+                    "tag": "div",
+                    "cls": ["flex", "flex-col", "gap-10", "mx-8"],
                     "ch": [
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Rethinking skills and prompts for GPT-6 Astra",
-                            "link": "https://developers.openai.com/images/blog/rethinking-skills-and-prompts-for-gpt-6-astra/cover.webp"
-                          },
-                          { "val": "Sep 11" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Rethinking skills and prompts for GPT-6 Astra",
+                                "link": "https://developers.openai.com/images/blog/rethinking-skills-and-prompts-for-gpt-6-astra/cover.webp"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Sep 11"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Rethinking skills and prompts for GPT-6 Astra"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Revisit skill descriptions, AGENTS.md, and task prompts to avoid bloated context."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/architectural-visualization-with-astra",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Architectural visualization with Astra",
-                            "link": "https://developers.openai.com/images/blog/architectural-visualization-with-astra/cover.webp"
-                          },
-                          { "val": "Sep 4" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Architectural visualization with Astra",
+                                "link": "https://developers.openai.com/images/blog/architectural-visualization-with-astra/cover.webp"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Sep 4"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Architectural visualization with Astra"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "How I used Astra to design a house, refine its everyday details, and explore it through Blender camera tours and an Unreal Engine 5 walkthrough."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/how-to-build-games-with-astra",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Building games with Astra",
-                            "link": "https://cdn.openai.com/devhub/blog/how-to-build-games/cover-ee7683a4efa3.webp"
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Building games with Astra",
+                                "link": "https://cdn.openai.com/devhub/blog/how-to-build-games/cover-ee7683a4efa3.webp"
+                              }
+                            ]
                           },
-                          { "val": "Sep 4" },
-                          { "ch": [{ "val": "Building games with Astra" }] },
                           {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Sep 4"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "Building games with Astra"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "How I built a procedural space exploration game in Codex, from concept art to planets you can land on."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/rosalind-workbench",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Meet Rosalind Workbench: Empowering every scientist to be their own research team",
-                            "link": "https://developers.openai.com/images/blog/rosalind-workbench/cover.webp"
-                          },
-                          { "val": "Aug 28" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Meet Rosalind Workbench: Empowering every scientist to be their own research team",
+                                "link": "https://developers.openai.com/images/blog/rosalind-workbench/cover.webp"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Aug 28"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Meet Rosalind Workbench: Empowering every scientist to be their own research team"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "How guided tasks, scientific viewers, and sequencing analysis help researchers follow a question from data to evidence."
                           },
-                          { "val": "Life sciences" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Life sciences"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Automating repetitive work at OpenAI with Codex",
-                            "link": "https://developers.openai.com/images/blog/automating-repetitive-work-at-openai-with-codex/cover.webp"
-                          },
-                          { "val": "Aug 25" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Automating repetitive work at OpenAI with Codex",
+                                "link": "https://developers.openai.com/images/blog/automating-repetitive-work-at-openai-with-codex/cover.webp"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Aug 25"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Automating repetitive work at OpenAI with Codex"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "How Runme and WebMCP turn recurring engineering tasks into reviewable, reusable workflows."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/build-week-winners",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Meet the winners of OpenAI Build Week",
-                            "link": "https://developers.openai.com/images/blog/build-week-winners/cover.webp"
-                          },
-                          { "val": "Aug 25" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
-                              { "val": "Meet the winners of OpenAI Build Week" }
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Meet the winners of OpenAI Build Week",
+                                "link": "https://developers.openai.com/images/blog/build-week-winners/cover.webp"
+                              }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Aug 25"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "Meet the winners of OpenAI Build Week"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "From a short-staffed veterinary clinic to speech accessibility, spatial audio, and ancient machines, the winning projects started with problems their builders knew well."
                           },
-                          { "val": "General" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "General"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/scaling-cyber-defenders-with-daybreak",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Scaling cyber defenders with Daybreak",
-                            "link": "https://developers.openai.com/images/blog/scaling-cyber-defenders-with-daybreak/cover.png"
-                          },
-                          { "val": "Aug 21" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
-                              { "val": "Scaling cyber defenders with Daybreak" }
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Scaling cyber defenders with Daybreak",
+                                "link": "https://developers.openai.com/images/blog/scaling-cyber-defenders-with-daybreak/cover.png"
+                              }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Aug 21"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "Scaling cyber defenders with Daybreak"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Use ChatGPT, Codex Security, and open-source tools to investigate threats, validate vulnerabilities, and move from findings to reviewed, verified fixes."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/codex-as-a-platform",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Codex as a platform: build on the open agent harness",
-                            "link": "https://developers.openai.com/images/blog/codex-as-a-platform-cover.webp"
-                          },
-                          { "val": "Aug 19" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Codex as a platform: build on the open agent harness",
+                                "link": "https://developers.openai.com/images/blog/codex-as-a-platform-cover.webp"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Aug 19"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Codex as a platform: build on the open agent harness"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Build Codex into the products and workflows your users already know."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/custom-code-review-rules-for-codex",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Custom Code Review rules for Codex",
-                            "link": "https://developers.openai.com/images/blog/codex-custom-code-review-rules.png"
-                          },
-                          { "val": "Jul 20" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
-                              { "val": "Custom Code Review rules for Codex" }
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Custom Code Review rules for Codex",
+                                "link": "https://developers.openai.com/images/blog/codex-custom-code-review-rules.png"
+                              }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Jul 20"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "Custom Code Review rules for Codex"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Provide more detailed rules for Codex to spot issues and better adhere your conventions during code review."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/mastering-codex-remote-for-engineering",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Mastering remote engineering work from your phone",
-                            "link": "https://developers.openai.com/images/blog/mastering-codex-remote-for-engineering.png"
-                          },
-                          { "val": "Jun 23" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Mastering remote engineering work from your phone",
+                                "link": "https://developers.openai.com/images/blog/mastering-codex-remote-for-engineering.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Jun 23"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Mastering remote engineering work from your phone"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Use Remote in the ChatGPT mobile app to start, steer, review, and organize engineering work."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/connect-private-mcp-servers-to-openai-products",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Making private MCP servers reachable without making them public",
-                            "link": "https://developers.openai.com/images/blog/connect-private-mcp-servers-safely.png"
-                          },
-                          { "val": "Jun 26" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Making private MCP servers reachable without making them public",
+                                "link": "https://developers.openai.com/images/blog/connect-private-mcp-servers-safely.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Jun 26"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Making private MCP servers reachable without making them public"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "How we preserved private network boundaries while supporting MCP streaming, authentication, and an inspectable client."
                           },
-                          { "val": "General" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "General"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/realtime-perplexity-computer",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "How Perplexity Brought Voice Search to Millions Using the Realtime API",
-                            "link": "https://developers.openai.com/images/blog/realtime-perplexity-computer.png"
-                          },
-                          { "val": "Mar 25" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "How Perplexity Brought Voice Search to Millions Using the Realtime API",
+                                "link": "https://developers.openai.com/images/blog/realtime-perplexity-computer.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Mar 25"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "How Perplexity Brought Voice Search to Millions Using the Realtime API"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Lessons from how Perplexity Computer's voice agent was built with the Realtime API."
                           },
-                          { "val": "Audio" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Audio"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/designing-delightful-frontends-with-gpt-5-4",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Designing delightful frontends with GPT-5.4",
-                            "link": "https://developers.openai.com/images/blog/designing-beautiful-frontends.png"
-                          },
-                          { "val": "Mar 20" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Designing delightful frontends with GPT-5.4",
+                                "link": "https://developers.openai.com/images/blog/designing-beautiful-frontends.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Mar 20"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Designing delightful frontends with GPT-5.4"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Practical techniques for steering GPT-5.4 toward polished, production-ready frontend designs."
                           },
-                          { "val": "General" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "General"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/one-year-of-responses",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "From prompts to products: One year of Responses",
-                            "link": "https://developers.openai.com/images/blog/one-year-responses.png"
-                          },
-                          { "val": "Mar 11" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "From prompts to products: One year of Responses",
+                                "link": "https://developers.openai.com/images/blog/one-year-responses.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Mar 11"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "From prompts to products: One year of Responses"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Five stories from developers building agentic products with the Responses API in its first year."
                           },
-                          { "val": "API" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "API"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/skills-agents-sdk",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Using skills to accelerate OSS maintenance",
-                            "link": "https://developers.openai.com/images/blog/skills-agents-sdk.png"
-                          },
-                          { "val": "Mar 9" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Using skills to accelerate OSS maintenance",
+                                "link": "https://developers.openai.com/images/blog/skills-agents-sdk.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Mar 9"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Using skills to accelerate OSS maintenance"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Using skills and GitHub Actions to optimize Codex workflows in the OpenAI Agents SDK repos."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Building frontend UIs with Codex and Figma",
-                            "link": "https://developers.openai.com/images/blog/building-frontend-uis-with-codex-and-figma.png"
-                          },
-                          { "val": "Feb 26" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Building frontend UIs with Codex and Figma",
+                                "link": "https://developers.openai.com/images/blog/building-frontend-uis-with-codex-and-figma.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Feb 26"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Building frontend UIs with Codex and Figma"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Use Codex and Figma to bring real, running interfaces into Figma, refine them, and bring changes back to Codex."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Run long horizon tasks with Codex",
-                            "link": "https://developers.openai.com/images/blog/run-long-horizon-tasks-with-codex.png"
-                          },
-                          { "val": "Feb 23" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
-                              { "val": "Run long horizon tasks with Codex" }
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Run long horizon tasks with Codex",
+                                "link": "https://developers.openai.com/images/blog/run-long-horizon-tasks-with-codex.png"
+                              }
                             ]
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Feb 23"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "Run long horizon tasks with Codex"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/skills-shell-tips",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Shell + Skills + Compaction: Tips for long-running agents that do real work",
-                            "link": "https://developers.openai.com/images/blog/skills-shell-tips.png"
-                          },
-                          { "val": "Feb 11" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Shell + Skills + Compaction: Tips for long-running agents that do real work",
+                                "link": "https://developers.openai.com/images/blog/skills-shell-tips.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Feb 11"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Shell + Skills + Compaction: Tips for long-running agents that do real work"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Practical patterns for building with skills, hosted shell, and server-side compaction in the Responses API."
                           },
-                          { "val": "API" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "API"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/15-lessons-building-chatgpt-apps",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "15 lessons learned building ChatGPT Apps",
-                            "link": "https://developers.openai.com/images/blog/15-lessons-chatgpt-apps.png"
-                          },
-                          { "val": "Feb 4" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "15 lessons learned building ChatGPT Apps",
+                                "link": "https://developers.openai.com/images/blog/15-lessons-chatgpt-apps.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Feb 4"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "15 lessons learned building ChatGPT Apps"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "And how we incorporated them into a Codex Skill to help you build ChatGPT Apps 10x faster."
                           },
-                          { "val": "Apps SDK" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Apps SDK"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/eval-skills",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Testing Agent Skills Systematically with Evals",
-                            "link": "https://developers.openai.com/images/blog/eval-skills.png"
-                          },
-                          { "val": "Jan 22" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Testing Agent Skills Systematically with Evals",
+                                "link": "https://developers.openai.com/images/blog/eval-skills.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Jan 22"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Testing Agent Skills Systematically with Evals"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "A practical guide to turning agent skills into something you can test, score, and improve over time."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Supercharging Codex with JetBrains MCP at Skyscanner",
-                            "link": "https://developers.openai.com/images/blog/codex-jetbrains.png"
-                          },
-                          { "val": "Jan 11" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Supercharging Codex with JetBrains MCP at Skyscanner",
+                                "link": "https://developers.openai.com/images/blog/codex-jetbrains.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Jan 11"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Supercharging Codex with JetBrains MCP at Skyscanner"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "How Skyscanner integrated Codex CLI with JetBrains IDEs to speed up debugging, testing, and development workflows."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/openai-for-developers-2025",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "OpenAI for Developers in 2025",
-                            "link": "https://developers.openai.com/images/blog/openai-for-devs-2025.png"
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "OpenAI for Developers in 2025",
+                                "link": "https://developers.openai.com/images/blog/openai-for-devs-2025.png"
+                              }
+                            ]
                           },
-                          { "val": "Dec 30" },
                           {
-                            "ch": [{ "val": "OpenAI for Developers in 2025" }]
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Dec 30"
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "OpenAI for Developers in 2025"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "A year-end roundup of the biggest model, API, and platform shifts for building production-grade agents."
                           },
-                          { "val": "General" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "General"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/updates-audio-models",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Updates for developers building with voice",
-                            "link": "https://developers.openai.com/images/blog/updates-audio-blog.webp"
-                          },
-                          { "val": "Dec 22" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Updates for developers building with voice",
+                                "link": "https://developers.openai.com/images/blog/updates-audio-blog.webp"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Dec 22"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Updates for developers building with voice"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "New audio model snapshots and broader access to Custom Voices for production voice apps."
                           },
-                          { "val": "Audio" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Audio"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/what-makes-a-great-chatgpt-app",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "What makes a great ChatGPT app",
-                            "link": "https://developers.openai.com/images/blog/apps-blog-visual.png"
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "What makes a great ChatGPT app",
+                                "link": "https://developers.openai.com/images/blog/apps-blog-visual.png"
+                              }
+                            ]
                           },
-                          { "val": "Nov 24" },
                           {
-                            "ch": [{ "val": "What makes a great ChatGPT app" }]
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Nov 24"
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "What makes a great ChatGPT app"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "How to build capabilities that make conversations better."
                           },
-                          { "val": "Apps SDK" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Apps SDK"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/codex-for-documentation-dagster",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Using Codex for education at Dagster Labs",
-                            "link": "https://developers.openai.com/images/blog/codex-for-documentation-dagster.png"
-                          },
-                          { "val": "Oct 27" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
                               {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Using Codex for education at Dagster Labs",
+                                "link": "https://developers.openai.com/images/blog/codex-for-documentation-dagster.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Oct 27"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
                                 "val": "Using Codex for education at Dagster Labs"
                               }
                             ]
                           },
                           {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Learn how Dagster uses Codex in their open-source projects to accelerate documentation, translate content across mediums, and even measure how complete their docs are."
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/codex-at-devday",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "How Codex ran OpenAI DevDay 2025",
-                            "link": "https://developers.openai.com/images/blog/codex-at-devday.png"
-                          },
-                          { "val": "Oct 10" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
-                              { "val": "How Codex ran OpenAI DevDay 2025" }
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "How Codex ran OpenAI DevDay 2025",
+                                "link": "https://developers.openai.com/images/blog/codex-at-devday.png"
+                              }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Oct 10"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "How Codex ran OpenAI DevDay 2025"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
                             "val": "Learn how Codex helped us build experiences, demos, products, and more"
                           },
-                          { "val": "Codex" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Codex"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/responses-api",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Why we built the Responses API",
-                            "link": "https://developers.openai.com/images/blog/responses-api.png"
-                          },
-                          { "val": "Sep 22" },
-                          {
-                            "ch": [{ "val": "Why we built the Responses API" }]
-                          },
-                          {
-                            "val": "How the Responses API unlocks persistent reasoning, hosted tools, and multimodal workflows for GPT-5."
-                          },
-                          { "val": "API" }
-                        ]
-                      },
-                      {
-                        "link": "https://developers.openai.com/blog/realtime-api",
-                        "ch": [
-                          {
-                            "kind": "img",
-                            "val": "Developer notes on the Realtime API",
-                            "link": "https://developers.openai.com/images/blog/agent-online.png"
-                          },
-                          { "val": "Sep 12" },
-                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
                             "ch": [
-                              { "val": "Developer notes on the Realtime API" }
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Why we built the Responses API",
+                                "link": "https://developers.openai.com/images/blog/responses-api.png"
+                              }
                             ]
                           },
                           {
-                            "val": "Details worth noticing in recent realtime speech-to-speech updates"
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Sep 22"
                           },
-                          { "val": "Audio" }
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "Why we built the Responses API"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
+                            "val": "How the Responses API unlocks persistent reasoning, hosted tools, and multimodal workflows for GPT-5."
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "API"
+                          }
                         ]
                       },
                       {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
+                        "link": "https://developers.openai.com/blog/realtime-api",
+                        "ch": [
+                          {
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Developer notes on the Realtime API",
+                                "link": "https://developers.openai.com/images/blog/agent-online.png"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Sep 12"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "Developer notes on the Realtime API"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
+                            "val": "Details worth noticing in recent realtime speech-to-speech updates"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "Audio"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "a",
+                        "cls": [
+                          "resource-item",
+                          "not-prose",
+                          "cursor-pointer",
+                          "overflow-hidden",
+                          "flex",
+                          "w-full",
+                          "flex-col",
+                          "text-inherit",
+                          "no-underline"
+                        ],
                         "link": "https://developers.openai.com/blog/intro",
                         "ch": [
                           {
-                            "kind": "img",
-                            "val": "Hello, world!",
-                            "link": "https://developers.openai.com/images/blog/hello-world.png"
+                            "tag": "div",
+                            "cls": ["relative", "min-w-0", "shrink"],
+                            "ch": [
+                              {
+                                "tag": "img",
+                                "cls": ["block", "w-full", "h-auto"],
+                                "val": "Hello, world!",
+                                "link": "https://developers.openai.com/images/blog/hello-world.png"
+                              }
+                            ]
                           },
-                          { "val": "Sep 11" },
-                          { "ch": [{ "val": "Hello, world!" }] },
-                          { "val": "Introducing our developer blog" },
-                          { "val": "General" }
+                          {
+                            "tag": "div",
+                            "cls": ["px-4", "pt-4", "text-secondary"],
+                            "val": "Sep 11"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pb-2",
+                              "text-xl",
+                              "flex",
+                              "items-start",
+                              "gap-1",
+                              "font-medium",
+                              "text-default"
+                            ],
+                            "ch": [
+                              {
+                                "tag": "div",
+                                "cls": ["flex-1", "line-clamp-2"],
+                                "val": "Hello, world!"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "p",
+                            "cls": ["px-4", "text-default", "line-clamp-3"],
+                            "val": "Introducing our developer blog"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "px-4",
+                              "pt-2",
+                              "text-sm",
+                              "text-secondary"
+                            ],
+                            "val": "General"
+                          }
                         ]
                       }
                     ]

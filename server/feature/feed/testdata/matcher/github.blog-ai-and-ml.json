@@ -1,26 +1,75 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "box", "box"],
+    "post": [{ "tag": "div", "cls": ["col-12"] }],
     "fields": {
       "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
+        [
+          { "tag": "div", "cls": ["mb-2", "f4-mktg", "color-fg-muted"] },
+          { "tag": "p" }
+        ]
       ],
       "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
+        [{ "tag": "h3", "cls": ["mb-3", "Link--primary", "post-card__link"] }]
       ],
       "pubDate": [
-        { "shape": "box", "nth": 1 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
+        [{ "tag": "time", "cls": ["text-mono", "color-fg-muted", "no-wrap"] }]
       ],
-      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
+      "thumbnail": [
+        [
+          {
+            "tag": "img",
+            "cls": [
+              "d-block",
+              "tease-thumbnail__img",
+              "cover-image",
+              "wp-post-image"
+            ]
+          }
+        ]
+      ],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3+link", "nth": 0 }
+        [{ "tag": "h3", "cls": ["mb-3", "Link--primary", "post-card__link"] }]
+      ]
+    },
+    "exclude": []
+  },
+  {
+    "post": [{ "tag": "div", "cls": ["d-flex", "flex-column"] }],
+    "fields": {
+      "body": [
+        [{ "tag": "div", "cls": ["f4-mktg", "color-fg-muted"] }, { "tag": "p" }]
+      ],
+      "link": [
+        [
+          {
+            "tag": "h3",
+            "cls": ["h6-mktg", "mb-2", "Link--primary", "post-card__link"]
+          }
+        ]
+      ],
+      "pubDate": [
+        [{ "tag": "time", "cls": ["text-mono", "color-fg-muted", "no-wrap"] }]
+      ],
+      "thumbnail": [
+        [
+          {
+            "tag": "img",
+            "cls": [
+              "d-block",
+              "cover-image",
+              "tease-thumbnail__img",
+              "wp-post-image"
+            ]
+          }
+        ]
+      ],
+      "title": [
+        [
+          {
+            "tag": "h3",
+            "cls": ["h6-mktg", "mb-2", "Link--primary", "post-card__link"]
+          }
+        ]
       ]
     },
     "exclude": []

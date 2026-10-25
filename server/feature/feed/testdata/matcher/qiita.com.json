@@ -1,29 +1,10 @@
 [
   {
-    "post": ["box", "box", "box", "box"],
+    "post": [{ "tag": "article", "cls": ["style"] }],
     "fields": {
-      "link": [{ "shape": "h2+link", "nth": 0 }],
-      "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
-      ],
-      "title": [{ "shape": "h2+link", "nth": 0 }]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box"],
-    "fields": {
-      "link": [{ "shape": "h2+link", "nth": 0 }],
-      "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 1 },
-        { "shape": "time", "nth": 0 }
-      ],
-      "title": [{ "shape": "h2+link", "nth": 0 }]
+      "link": [[{ "tag": "h2", "cls": ["style"] }]],
+      "pubDate": [[{ "tag": "span", "cls": ["style"] }, { "tag": "time" }]],
+      "title": [[{ "tag": "h2", "cls": ["style"] }]]
     },
     "exclude": []
   }

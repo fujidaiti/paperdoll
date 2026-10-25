@@ -2,46 +2,148 @@
   "url": "https://ycombinator.com/blog/tag/essay",
   "title": "Y Combinator",
   "root": {
+    "tag": "body",
+    "cls": ["blog", "posts_by_tag"],
     "ch": [
       {
+        "tag": "div",
         "ch": [
           {
+            "tag": "div",
+            "cls": [
+              "no-scroll-behind",
+              "sticky",
+              "top-0",
+              "isolate",
+              "z-50",
+              "bg-beige-light"
+            ],
             "ch": [
               {
+                "tag": "div",
                 "ch": [
                   {
+                    "tag": "header",
+                    "cls": ["w-full", "bg-beige-light", "leading-tight"],
                     "ch": [
                       {
+                        "tag": "nav",
+                        "cls": [
+                          "relative",
+                          "hidden",
+                          "items-center",
+                          "justify-center",
+                          "bg-beige-light",
+                          "px-5"
+                        ],
                         "ch": [
                           {
+                            "tag": "div",
+                            "cls": ["flex", "w-full", "items-center", "gap-6"],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "flex",
+                                  "flex-1",
+                                  "items-center",
+                                  "justify-end",
+                                  "gap-4"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "relative",
+                                      "inline-block",
+                                      "nav-link",
+                                      "inline-flex",
+                                      "items-center",
+                                      "gap-1",
+                                      "cursor-pointer"
+                                    ],
                                     "val": "About",
                                     "link": "https://ycombinator.com/about"
                                   },
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "relative",
+                                      "inline-block",
+                                      "nav-link",
+                                      "inline-flex",
+                                      "items-center",
+                                      "gap-1",
+                                      "cursor-pointer"
+                                    ],
                                     "val": "Companies",
                                     "link": "https://ycombinator.com/companies"
                                   },
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "relative",
+                                      "inline-block",
+                                      "nav-link",
+                                      "inline-flex",
+                                      "items-center",
+                                      "gap-1",
+                                      "cursor-pointer"
+                                    ],
                                     "val": "Library",
                                     "link": "https://ycombinator.com/library"
                                   }
                                 ]
                               },
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "flex",
+                                  "flex-1",
+                                  "items-center",
+                                  "justify-start",
+                                  "gap-4"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "relative",
+                                      "inline-block",
+                                      "nav-link",
+                                      "inline-flex",
+                                      "items-center",
+                                      "gap-1",
+                                      "cursor-pointer"
+                                    ],
                                     "val": "Partners",
                                     "link": "https://ycombinator.com/partners"
                                   },
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "relative",
+                                      "inline-block",
+                                      "nav-link",
+                                      "inline-flex",
+                                      "items-center",
+                                      "gap-1",
+                                      "cursor-pointer"
+                                    ],
                                     "val": "Resources",
                                     "link": "https://ycombinator.com/library"
                                   },
                                   {
+                                    "tag": "div",
+                                    "cls": [
+                                      "relative",
+                                      "inline-block",
+                                      "nav-link",
+                                      "inline-flex",
+                                      "items-center",
+                                      "gap-1",
+                                      "cursor-pointer"
+                                    ],
                                     "val": "Startup Jobs",
                                     "link": "https://ycombinator.com/jobs"
                                   }
@@ -50,12 +152,37 @@
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "absolute",
+                              "right-5",
+                              "flex",
+                              "items-center",
+                              "gap-4"
+                            ],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["text-sm", "transition-opacity"],
                                 "val": "Log in",
                                 "link": "https://account.ycombinator.com/?continue=https://www.ycombinator.com/blog/tag/essay"
                               },
                               {
+                                "tag": "a",
+                                "cls": [
+                                  "flex",
+                                  "h-10",
+                                  "items-center",
+                                  "justify-center",
+                                  "rounded-full",
+                                  "bg-black",
+                                  "px-5",
+                                  "text-sm",
+                                  "font-normal",
+                                  "italic",
+                                  "text-white",
+                                  "transition-opacity"
+                                ],
                                 "val": "Apply",
                                 "link": "https://ycombinator.com/apply"
                               }
@@ -70,26 +197,69 @@
             ]
           },
           {
+            "tag": "div",
+            "cls": ["relative", "isolate", "z-0", "pt-6", "pb-6"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["mx-auto", "max-w-ycdc-page", "px-4"],
                 "ch": [
                   {
+                    "tag": "div",
                     "ch": [
                       {
+                        "tag": "div",
+                        "cls": ["hidden"],
                         "ch": [
                           {
+                            "tag": "div",
                             "ch": [
                               {
+                                "tag": "nav",
+                                "cls": ["mb-px", "flex", "space-x-8"],
                                 "ch": [
                                   {
+                                    "tag": "a",
+                                    "cls": [
+                                      "border-transparent",
+                                      "text-gray-500",
+                                      "whitespace-nowrap",
+                                      "border-b-2",
+                                      "px-1",
+                                      "py-2",
+                                      "text-sm",
+                                      "font-medium"
+                                    ],
                                     "val": "All Posts",
                                     "link": "https://ycombinator.com/blog"
                                   },
                                   {
+                                    "tag": "a",
+                                    "cls": [
+                                      "border-transparent",
+                                      "text-gray-500",
+                                      "whitespace-nowrap",
+                                      "border-b-2",
+                                      "px-1",
+                                      "py-2",
+                                      "text-sm",
+                                      "font-medium"
+                                    ],
                                     "val": "Startup Jobs",
                                     "link": "https://ycombinator.com/blog/jobs"
                                   },
                                   {
+                                    "tag": "a",
+                                    "cls": [
+                                      "border-transparent",
+                                      "text-gray-500",
+                                      "whitespace-nowrap",
+                                      "border-b-2",
+                                      "px-1",
+                                      "py-2",
+                                      "text-sm",
+                                      "font-medium"
+                                    ],
                                     "val": "Startup School",
                                     "link": "https://ycombinator.com/blog/startup-school"
                                   }
@@ -106,34 +276,91 @@
             ]
           },
           {
+            "tag": "div",
+            "cls": ["relative", "isolate", "z-0", "pt-6", "pb-6"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["mx-auto", "max-w-ycdc-page", "px-4"],
                 "ch": [
-                  { "kind": "h3", "val": "Recent Posts (Essay)" },
                   {
+                    "tag": "h3",
+                    "cls": [
+                      "text-xl",
+                      "font-semibold",
+                      "uppercase",
+                      "tracking-wider",
+                      "text-yellow-600"
+                    ],
+                    "val": "Recent Posts (Essay)"
+                  },
+                  {
+                    "tag": "div",
+                    "cls": ["mx-auto", "mt-12", "grid", "max-w-lg", "gap-9"],
                     "ch": [
                       {
+                        "tag": "div",
+                        "cls": [
+                          "flex",
+                          "flex-col",
+                          "overflow-hidden",
+                          "rounded",
+                          "shadow-sm"
+                        ],
                         "ch": [
                           {
-                            "link": "https://ycombinator.com/blog/why-would-you-work-at-a-startup-in-an-economic-downturn",
+                            "tag": "div",
+                            "cls": ["shrink-0"],
                             "ch": [
                               {
-                                "kind": "img",
-                                "link": "https://ycombinator.com/blog/content/images/2023/02/BlogTwitter-Image-Template--5-.png"
+                                "tag": "a",
+                                "link": "https://ycombinator.com/blog/why-would-you-work-at-a-startup-in-an-economic-downturn",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": ["h-48", "w-full", "object-cover"],
+                                    "link": "https://ycombinator.com/blog/content/images/2023/02/BlogTwitter-Image-Template--5-.png"
+                                  }
+                                ]
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-1",
+                              "flex-col",
+                              "justify-between",
+                              "bg-white",
+                              "p-6"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": ["flex-1"],
                                 "ch": [
                                   {
+                                    "tag": "a",
+                                    "cls": ["mt-2", "block"],
                                     "link": "https://ycombinator.com/blog/why-would-you-work-at-a-startup-in-an-economic-downturn",
                                     "ch": [
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-xl",
+                                          "font-semibold",
+                                          "text-gray-900"
+                                        ],
                                         "val": "Why would you work at a startup in an economic downturn?"
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-700"
+                                        ],
                                         "val": "Now is as good a time as any to start a startup – especially if you get into YC. But what about joining a startup in this economy? We’re obviously biased, but we think it’s a great time to join a startup too. Here are three reasons to consider."
                                       }
                                     ]
@@ -141,18 +368,65 @@
                                 ]
                               },
                               {
+                                "tag": "div",
+                                "cls": ["mt-2"],
                                 "ch": [
                                   {
+                                    "tag": "p",
+                                    "cls": [
+                                      "text-sm",
+                                      "font-medium",
+                                      "text-indigo-600"
+                                    ],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Jobs",
                                         "link": "https://ycombinator.com/blog/tag/jobs"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Essay",
                                         "link": "https://ycombinator.com/blog/tag/essay"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "YC News",
                                         "link": "https://ycombinator.com/blog/tag/yc-news"
                                       }
@@ -161,15 +435,29 @@
                                 ]
                               },
                               {
+                                "tag": "div",
+                                "cls": ["mt-6", "flex", "items-center"],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["shrink-0"],
                                     "ch": [
                                       {
+                                        "tag": "a",
                                         "link": "https://ycombinator.com/blog/author/rchoi",
                                         "ch": [
-                                          { "val": "Ryan Choi" },
                                           {
-                                            "kind": "img",
+                                            "tag": "span",
+                                            "cls": ["sr-only"],
+                                            "val": "Ryan Choi"
+                                          },
+                                          {
+                                            "tag": "img",
+                                            "cls": [
+                                              "h-10",
+                                              "w-10",
+                                              "rounded-full"
+                                            ],
                                             "link": "https://www.gravatar.com/avatar/36ba914c5f191f813e96db0296154469?s=250\u0026d=mm\u0026r=x"
                                           }
                                         ]
@@ -177,17 +465,33 @@
                                     ]
                                   },
                                   {
+                                    "tag": "div",
+                                    "cls": ["ml-4"],
                                     "ch": [
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Ryan Choi",
                                         "link": "https://ycombinator.com/blog/author/rchoi"
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "flex",
+                                          "space-x-1",
+                                          "text-sm",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           {
+                                            "tag": "span",
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2023-02-23T00:00:00Z"
                                               }
                                             ]
@@ -203,27 +507,68 @@
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": [
+                          "flex",
+                          "flex-col",
+                          "overflow-hidden",
+                          "rounded",
+                          "shadow-sm"
+                        ],
                         "ch": [
                           {
-                            "link": "https://ycombinator.com/blog/why-would-you-start-a-startup-in-an-economic-downturn",
+                            "tag": "div",
+                            "cls": ["shrink-0"],
                             "ch": [
                               {
-                                "kind": "img",
-                                "link": "https://ycombinator.com/blog/content/images/2023/02/stephblog.png"
+                                "tag": "a",
+                                "link": "https://ycombinator.com/blog/why-would-you-start-a-startup-in-an-economic-downturn",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": ["h-48", "w-full", "object-cover"],
+                                    "link": "https://ycombinator.com/blog/content/images/2023/02/stephblog.png"
+                                  }
+                                ]
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-1",
+                              "flex-col",
+                              "justify-between",
+                              "bg-white",
+                              "p-6"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": ["flex-1"],
                                 "ch": [
                                   {
+                                    "tag": "a",
+                                    "cls": ["mt-2", "block"],
                                     "link": "https://ycombinator.com/blog/why-would-you-start-a-startup-in-an-economic-downturn",
                                     "ch": [
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-xl",
+                                          "font-semibold",
+                                          "text-gray-900"
+                                        ],
                                         "val": "Why would you start a startup in an economic downturn?"
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-700"
+                                        ],
                                         "val": "In an economic downturn, there are obvious downsides of starting a startup — but there are also powerful upsides; because to survive, you have to *actually* build something people want."
                                       }
                                     ]
@@ -231,18 +576,65 @@
                                 ]
                               },
                               {
+                                "tag": "div",
+                                "cls": ["mt-2"],
                                 "ch": [
                                   {
+                                    "tag": "p",
+                                    "cls": [
+                                      "text-sm",
+                                      "font-medium",
+                                      "text-indigo-600"
+                                    ],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "YC News",
                                         "link": "https://ycombinator.com/blog/tag/yc-news"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Essay",
                                         "link": "https://ycombinator.com/blog/tag/essay"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Admissions",
                                         "link": "https://ycombinator.com/blog/tag/admissions"
                                       }
@@ -251,15 +643,29 @@
                                 ]
                               },
                               {
+                                "tag": "div",
+                                "cls": ["mt-6", "flex", "items-center"],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["shrink-0"],
                                     "ch": [
                                       {
+                                        "tag": "a",
                                         "link": "https://ycombinator.com/blog/author/stephanie",
                                         "ch": [
-                                          { "val": "Stephanie Simon" },
                                           {
-                                            "kind": "img",
+                                            "tag": "span",
+                                            "cls": ["sr-only"],
+                                            "val": "Stephanie Simon"
+                                          },
+                                          {
+                                            "tag": "img",
+                                            "cls": [
+                                              "h-10",
+                                              "w-10",
+                                              "rounded-full"
+                                            ],
                                             "link": "https://ycombinator.com/blog/content/images/2022/02/steph-af6b11e61b7a3c55b099c780fe0a359236ceaab496850b530d178aedb8cefb2c.jpg"
                                           }
                                         ]
@@ -267,17 +673,33 @@
                                     ]
                                   },
                                   {
+                                    "tag": "div",
+                                    "cls": ["ml-4"],
                                     "ch": [
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Stephanie Simon",
                                         "link": "https://ycombinator.com/blog/author/stephanie"
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "flex",
+                                          "space-x-1",
+                                          "text-sm",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           {
+                                            "tag": "span",
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2023-02-21T00:00:00Z"
                                               }
                                             ]
@@ -293,27 +715,68 @@
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": [
+                          "flex",
+                          "flex-col",
+                          "overflow-hidden",
+                          "rounded",
+                          "shadow-sm"
+                        ],
                         "ch": [
                           {
-                            "link": "https://ycombinator.com/blog/how-to-maintain-engineering-velocity-as-you-scale",
+                            "tag": "div",
+                            "cls": ["shrink-0"],
                             "ch": [
                               {
-                                "kind": "img",
-                                "link": "https://ycombinator.com/blog/content/images/2022/10/BlogTwitter-Image-Template-2.jpeg"
+                                "tag": "a",
+                                "link": "https://ycombinator.com/blog/how-to-maintain-engineering-velocity-as-you-scale",
+                                "ch": [
+                                  {
+                                    "tag": "img",
+                                    "cls": ["h-48", "w-full", "object-cover"],
+                                    "link": "https://ycombinator.com/blog/content/images/2022/10/BlogTwitter-Image-Template-2.jpeg"
+                                  }
+                                ]
                               }
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-1",
+                              "flex-col",
+                              "justify-between",
+                              "bg-white",
+                              "p-6"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": ["flex-1"],
                                 "ch": [
                                   {
+                                    "tag": "a",
+                                    "cls": ["mt-2", "block"],
                                     "link": "https://ycombinator.com/blog/how-to-maintain-engineering-velocity-as-you-scale",
                                     "ch": [
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-xl",
+                                          "font-semibold",
+                                          "text-gray-900"
+                                        ],
                                         "val": "How to maintain engineering velocity as you scale"
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-700"
+                                        ],
                                         "val": "Faire’s engineering team grew from five to over 100 engineers in three years. Throughout this growth, we were able to sustain our pace of engineering execution by adhering to four guiding principles."
                                       }
                                     ]
@@ -321,34 +784,133 @@
                                 ]
                               },
                               {
+                                "tag": "div",
+                                "cls": ["mt-2"],
                                 "ch": [
                                   {
+                                    "tag": "p",
+                                    "cls": [
+                                      "text-sm",
+                                      "font-medium",
+                                      "text-indigo-600"
+                                    ],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Essay",
                                         "link": "https://ycombinator.com/blog/tag/essay"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "YC Continuity",
                                         "link": "https://ycombinator.com/blog/tag/yc-continuity"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Technical",
                                         "link": "https://ycombinator.com/blog/tag/technical"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Startups",
                                         "link": "https://ycombinator.com/blog/tag/startups"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Leadership",
                                         "link": "https://ycombinator.com/blog/tag/leadership"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Company Building",
                                         "link": "https://ycombinator.com/blog/tag/company-building"
                                       },
                                       {
+                                        "tag": "a",
+                                        "cls": [
+                                          "mb-2",
+                                          "mr-4",
+                                          "inline-flex",
+                                          "items-center",
+                                          "rounded",
+                                          "bg-gray-200",
+                                          "px-2",
+                                          "text-xs",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Growth",
                                         "link": "https://ycombinator.com/blog/tag/growth"
                                       }
@@ -357,15 +919,29 @@
                                 ]
                               },
                               {
+                                "tag": "div",
+                                "cls": ["mt-6", "flex", "items-center"],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["shrink-0"],
                                     "ch": [
                                       {
+                                        "tag": "a",
                                         "link": "https://ycombinator.com/blog/author/marcelo-cortes",
                                         "ch": [
-                                          { "val": "Marcelo Cortes" },
                                           {
-                                            "kind": "img",
+                                            "tag": "span",
+                                            "cls": ["sr-only"],
+                                            "val": "Marcelo Cortes"
+                                          },
+                                          {
+                                            "tag": "img",
+                                            "cls": [
+                                              "h-10",
+                                              "w-10",
+                                              "rounded-full"
+                                            ],
                                             "link": "https://ycombinator.com/blog/content/images/2022/10/Instagram-Image-Template--Square---7-.jpg"
                                           }
                                         ]
@@ -373,17 +949,33 @@
                                     ]
                                   },
                                   {
+                                    "tag": "div",
+                                    "cls": ["ml-4"],
                                     "ch": [
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Marcelo Cortes",
                                         "link": "https://ycombinator.com/blog/author/marcelo-cortes"
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "flex",
+                                          "space-x-1",
+                                          "text-sm",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           {
+                                            "tag": "span",
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2022-10-25T00:00:00Z"
                                               }
                                             ]
@@ -405,37 +997,97 @@
             ]
           },
           {
+            "tag": "div",
+            "cls": ["relative", "isolate", "z-0", "pt-6", "pb-6"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["mx-auto", "max-w-ycdc-page", "px-4"],
                 "ch": [
                   {
+                    "tag": "div",
+                    "cls": ["mt-2", "grid", "max-w-lg", "gap-5"],
                     "ch": [
                       {
+                        "tag": "div",
+                        "cls": ["col-span-2"],
                         "ch": [
-                          { "kind": "h3", "val": "All Posts" },
                           {
+                            "tag": "h3",
+                            "cls": [
+                              "text-xl",
+                              "font-semibold",
+                              "uppercase",
+                              "tracking-wider",
+                              "text-yellow-600"
+                            ],
+                            "val": "All Posts"
+                          },
+                          {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-col",
+                              "overflow-hidden",
+                              "rounded-lg"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "mb-6",
+                                  "mr-6",
+                                  "flex",
+                                  "flex-1",
+                                  "flex-col",
+                                  "justify-between"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["flex-1"],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": ["mt-2", "block"],
                                         "link": "https://ycombinator.com/blog/2021-yc-year-in-review",
                                         "ch": [
-                                          { "val": "2021 — YC Year in Review" }
+                                          {
+                                            "tag": "p",
+                                            "cls": [
+                                              "text-3xl",
+                                              "font-semibold",
+                                              "text-gray-900"
+                                            ],
+                                            "val": "2021 — YC Year in Review"
+                                          }
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-md",
+                                          "py-2",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           { "val": "by" },
                                           {
+                                            "tag": "a",
+                                            "cls": ["text-blue-500"],
                                             "val": "Geoff Ralston",
                                             "link": "https://ycombinator.com/blog/author/geoff-ralston"
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "ml-4",
+                                              "text-sm",
+                                              "font-normal"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2022-01-19T00:00:00Z"
                                               }
                                             ]
@@ -443,9 +1095,23 @@
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-800"
+                                        ],
                                         "val": "In 2021, many YC founders led their companies to achieve outstanding results, and we are honored to be part of these companies’ history."
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "mt-4",
+                                          "inline-flex",
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-blue-500"
+                                        ],
                                         "val": "Read More",
                                         "link": "https://ycombinator.com/blog/2021-yc-year-in-review"
                                       }
@@ -456,30 +1122,70 @@
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-col",
+                              "overflow-hidden",
+                              "rounded-lg"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "mb-6",
+                                  "mr-6",
+                                  "flex",
+                                  "flex-1",
+                                  "flex-col",
+                                  "justify-between"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["flex-1"],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": ["mt-2", "block"],
                                         "link": "https://ycombinator.com/blog/venture-debt-101-basics-and-approach",
                                         "ch": [
                                           {
+                                            "tag": "p",
+                                            "cls": [
+                                              "text-3xl",
+                                              "font-semibold",
+                                              "text-gray-900"
+                                            ],
                                             "val": "Venture Debt 101: Basics and Approach"
                                           }
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-md",
+                                          "py-2",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           { "val": "by" },
                                           {
+                                            "tag": "a",
+                                            "cls": ["text-blue-500"],
                                             "val": "Jon Levy",
                                             "link": "https://ycombinator.com/blog/author/jon-levy"
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "ml-4",
+                                              "text-sm",
+                                              "font-normal"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2021-08-26T00:00:00Z"
                                               }
                                             ]
@@ -487,9 +1193,23 @@
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-800"
+                                        ],
                                         "val": "In this guide, YC Managing Director Jon Levy talks about venture debt. He covers what it is, walks through some of its benefits and risks, and gives advice on how to approach the process of taking on venture debt."
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "mt-4",
+                                          "inline-flex",
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-blue-500"
+                                        ],
                                         "val": "Read More",
                                         "link": "https://ycombinator.com/blog/venture-debt-101-basics-and-approach"
                                       }
@@ -500,28 +1220,70 @@
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-col",
+                              "overflow-hidden",
+                              "rounded-lg"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "mb-6",
+                                  "mr-6",
+                                  "flex",
+                                  "flex-1",
+                                  "flex-col",
+                                  "justify-between"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["flex-1"],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": ["mt-2", "block"],
                                         "link": "https://ycombinator.com/blog/2020-year-in-review",
                                         "ch": [
-                                          { "val": "2020 — Year in Review" }
+                                          {
+                                            "tag": "p",
+                                            "cls": [
+                                              "text-3xl",
+                                              "font-semibold",
+                                              "text-gray-900"
+                                            ],
+                                            "val": "2020 — Year in Review"
+                                          }
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-md",
+                                          "py-2",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           { "val": "by" },
                                           {
+                                            "tag": "a",
+                                            "cls": ["text-blue-500"],
                                             "val": "Geoff Ralston",
                                             "link": "https://ycombinator.com/blog/author/geoff-ralston"
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "ml-4",
+                                              "text-sm",
+                                              "font-normal"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2020-12-22T00:00:00Z"
                                               }
                                             ]
@@ -529,9 +1291,23 @@
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-800"
+                                        ],
                                         "val": "In early 2020 the entire world underwent a transformation. The planet was consumed by a pandemic that altered life as we knew it. Most of our normal routines changed immediately. At YC, like most businesses, we closed our offices. We were forced to rethink the end of our Winter 2020 batch and transformed its demo day to an online-only event."
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "mt-4",
+                                          "inline-flex",
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-blue-500"
+                                        ],
                                         "val": "Read More",
                                         "link": "https://ycombinator.com/blog/2020-year-in-review"
                                       }
@@ -542,30 +1318,70 @@
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-col",
+                              "overflow-hidden",
+                              "rounded-lg"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "mb-6",
+                                  "mr-6",
+                                  "flex",
+                                  "flex-1",
+                                  "flex-col",
+                                  "justify-between"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["flex-1"],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": ["mt-2", "block"],
                                         "link": "https://ycombinator.com/blog/how-biotech-startup-funding-will-change-in-the-next-10-years",
                                         "ch": [
                                           {
+                                            "tag": "p",
+                                            "cls": [
+                                              "text-3xl",
+                                              "font-semibold",
+                                              "text-gray-900"
+                                            ],
                                             "val": "How Biotech Startup Funding Will Change in the Next 10 Years"
                                           }
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-md",
+                                          "py-2",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           { "val": "by" },
                                           {
+                                            "tag": "a",
+                                            "cls": ["text-blue-500"],
                                             "val": "Jared Friedman",
                                             "link": "https://ycombinator.com/blog/author/jared-friedman"
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "ml-4",
+                                              "text-sm",
+                                              "font-normal"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2019-08-05T00:00:00Z"
                                               }
                                             ]
@@ -573,9 +1389,23 @@
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-800"
+                                        ],
                                         "val": "Back when YC was getting started about 10 years ago, Paul Graham wrote some essays that predicted the way startup fundraising would change in the next decade – accurately, it turns out. Paul Graham predicted that there would be way more startups, that they’d be cheaper to start, that new kinds of investors would fund them, that founders would be more technical, and that founders would keep control of their companies. All of those seem to have come true."
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "mt-4",
+                                          "inline-flex",
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-blue-500"
+                                        ],
                                         "val": "Read More",
                                         "link": "https://ycombinator.com/blog/how-biotech-startup-funding-will-change-in-the-next-10-years"
                                       }
@@ -586,26 +1416,70 @@
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-col",
+                              "overflow-hidden",
+                              "rounded-lg"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "mb-6",
+                                  "mr-6",
+                                  "flex",
+                                  "flex-1",
+                                  "flex-col",
+                                  "justify-between"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["flex-1"],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": ["mt-2", "block"],
                                         "link": "https://ycombinator.com/blog/yc-has-changed",
-                                        "ch": [{ "val": "YC Has Changed" }]
+                                        "ch": [
+                                          {
+                                            "tag": "p",
+                                            "cls": [
+                                              "text-3xl",
+                                              "font-semibold",
+                                              "text-gray-900"
+                                            ],
+                                            "val": "YC Has Changed"
+                                          }
+                                        ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-md",
+                                          "py-2",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           { "val": "by" },
                                           {
+                                            "tag": "a",
+                                            "cls": ["text-blue-500"],
                                             "val": "Michael Seibel",
                                             "link": "https://ycombinator.com/blog/author/michael-seibel-2"
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "ml-4",
+                                              "text-sm",
+                                              "font-normal"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2018-09-28T00:00:00Z"
                                               }
                                             ]
@@ -613,9 +1487,23 @@
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-800"
+                                        ],
                                         "val": "As YC grows, founders are wondering how it’s improved over time. This is a valid line of questioning – clearly much has changed about YC over 13 years. We have new leadership, much larger batch sizes, we invest more money, we have a growth fund, a series A program, a massive MOOC, and an internal social network for YC founders named Bookface."
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "mt-4",
+                                          "inline-flex",
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-blue-500"
+                                        ],
                                         "val": "Read More",
                                         "link": "https://ycombinator.com/blog/yc-has-changed"
                                       }
@@ -626,30 +1514,70 @@
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-col",
+                              "overflow-hidden",
+                              "rounded-lg"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "mb-6",
+                                  "mr-6",
+                                  "flex",
+                                  "flex-1",
+                                  "flex-col",
+                                  "justify-between"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["flex-1"],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": ["mt-2", "block"],
                                         "link": "https://ycombinator.com/blog/why-does-your-company-deserve-more-money",
                                         "ch": [
                                           {
+                                            "tag": "p",
+                                            "cls": [
+                                              "text-3xl",
+                                              "font-semibold",
+                                              "text-gray-900"
+                                            ],
                                             "val": "Why Does Your Company Deserve More Money?"
                                           }
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-md",
+                                          "py-2",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           { "val": "by" },
                                           {
+                                            "tag": "a",
+                                            "cls": ["text-blue-500"],
                                             "val": "Michael Seibel",
                                             "link": "https://ycombinator.com/blog/author/michael-seibel"
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "ml-4",
+                                              "text-sm",
+                                              "font-normal"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2018-07-09T00:00:00Z"
                                               }
                                             ]
@@ -657,9 +1585,23 @@
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-800"
+                                        ],
                                         "val": "The hardest conversation I have to have with a founder is when they’ve spent their 1-2 million dollar angel round but haven’t found product market fit. Unfortunately, I have to ask them a very unforgiving question: why does your company deserve more money?"
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "mt-4",
+                                          "inline-flex",
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-blue-500"
+                                        ],
                                         "val": "Read More",
                                         "link": "https://ycombinator.com/blog/why-does-your-company-deserve-more-money"
                                       }
@@ -670,30 +1612,70 @@
                             ]
                           },
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-col",
+                              "overflow-hidden",
+                              "rounded-lg"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": [
+                                  "mb-6",
+                                  "mr-6",
+                                  "flex",
+                                  "flex-1",
+                                  "flex-col",
+                                  "justify-between"
+                                ],
                                 "ch": [
                                   {
+                                    "tag": "div",
+                                    "cls": ["flex-1"],
                                     "ch": [
                                       {
+                                        "tag": "a",
+                                        "cls": ["mt-2", "block"],
                                         "link": "https://ycombinator.com/blog/one-order-of-operations-for-starting-a-startup",
                                         "ch": [
                                           {
+                                            "tag": "p",
+                                            "cls": [
+                                              "text-3xl",
+                                              "font-semibold",
+                                              "text-gray-900"
+                                            ],
                                             "val": "One Order of Operations for Starting a Startup"
                                           }
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "text-md",
+                                          "py-2",
+                                          "text-gray-500"
+                                        ],
                                         "ch": [
                                           { "val": "by" },
                                           {
+                                            "tag": "a",
+                                            "cls": ["text-blue-500"],
                                             "val": "Michael Seibel",
                                             "link": "https://ycombinator.com/blog/author/michael-seibel"
                                           },
                                           {
+                                            "tag": "span",
+                                            "cls": [
+                                              "ml-4",
+                                              "text-sm",
+                                              "font-normal"
+                                            ],
                                             "ch": [
                                               {
-                                                "kind": "time",
+                                                "tag": "time",
                                                 "val": "2018-03-20T00:00:00Z"
                                               }
                                             ]
@@ -701,9 +1683,23 @@
                                         ]
                                       },
                                       {
+                                        "tag": "p",
+                                        "cls": [
+                                          "mt-3",
+                                          "text-base",
+                                          "text-gray-800"
+                                        ],
                                         "val": "More often than not, when I talk to a talented technical person who’s thinking about becoming a founder, their number one blocker is that they don’t have an idea. At some point during their formative years they learned that every great startup started with a great idea and if the idea isn’t amazing (usually as judged by peers, parents, or other people with little startup experience), the startup will fail."
                                       },
                                       {
+                                        "tag": "div",
+                                        "cls": [
+                                          "mt-4",
+                                          "inline-flex",
+                                          "text-sm",
+                                          "font-medium",
+                                          "text-blue-500"
+                                        ],
                                         "val": "Read More",
                                         "link": "https://ycombinator.com/blog/one-order-of-operations-for-starting-a-startup"
                                       }
@@ -714,75 +1710,322 @@
                             ]
                           },
                           {
+                            "tag": "nav",
+                            "cls": [
+                              "flex",
+                              "items-center",
+                              "justify-between",
+                              "border-t",
+                              "border-gray-200",
+                              "py-3"
+                            ],
                             "ch": [
                               {
+                                "tag": "div",
+                                "cls": ["hidden"],
                                 "ch": [
                                   {
+                                    "tag": "p",
+                                    "cls": ["text-sm", "text-gray-700"],
                                     "ch": [
                                       { "val": "Showing" },
-                                      { "val": "1" },
+                                      {
+                                        "tag": "span",
+                                        "cls": ["font-medium"],
+                                        "val": "1"
+                                      },
                                       { "val": "to" },
-                                      { "val": "10" },
+                                      {
+                                        "tag": "span",
+                                        "cls": ["font-medium"],
+                                        "val": "10"
+                                      },
                                       { "val": "of" },
-                                      { "val": "37" },
+                                      {
+                                        "tag": "span",
+                                        "cls": ["font-medium"],
+                                        "val": "37"
+                                      },
                                       { "val": "total posts" }
                                     ]
                                   }
                                 ]
                               },
-                              { "val": "Next" }
+                              {
+                                "tag": "div",
+                                "cls": [
+                                  "flex",
+                                  "flex-1",
+                                  "justify-between",
+                                  "relative",
+                                  "ml-3",
+                                  "inline-flex",
+                                  "items-center",
+                                  "rounded-md",
+                                  "border",
+                                  "border-gray-300",
+                                  "px-4",
+                                  "py-2",
+                                  "text-sm",
+                                  "font-medium",
+                                  "text-gray-700"
+                                ],
+                                "val": "Next"
+                              }
                             ]
                           }
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["ml-20"],
                         "ch": [
                           {
+                            "tag": "div",
+                            "cls": ["mb-4"],
                             "ch": [
-                              { "val": "Categories" },
                               {
+                                "tag": "p",
+                                "cls": [
+                                  "text-xl",
+                                  "font-semibold",
+                                  "tracking-wider",
+                                  "text-gray-800",
+                                  "uppercase",
+                                  "mb-2"
+                                ],
+                                "val": "Categories"
+                              },
+                              {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/admissions",
-                                "ch": [{ "val": "Admissions" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Admissions"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/advice",
-                                "ch": [{ "val": "Advice" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Advice"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/biotech",
-                                "ch": [{ "val": "Biotech" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Biotech"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/blockchain",
-                                "ch": [{ "val": "Blockchain" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Blockchain"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/essay",
-                                "ch": [{ "val": "Essay" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Essay"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/female-founders",
-                                "ch": [{ "val": "Female Founders" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Female Founders"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/founder-stories",
-                                "ch": [{ "val": "Founder Stories" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Founder Stories"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/interview",
-                                "ch": [{ "val": "Interviews" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Interviews"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/startup-school",
-                                "ch": [{ "val": "Startup School" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Startup School"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/work-at-a-startup",
-                                "ch": [{ "val": "Work at a Startup" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "Work at a Startup"
+                                  }
+                                ]
                               },
                               {
+                                "tag": "a",
+                                "cls": ["flex"],
                                 "link": "https://ycombinator.com/blog/tag/yc-events",
-                                "ch": [{ "val": "YC Events" }]
+                                "ch": [
+                                  {
+                                    "tag": "div",
+                                    "cls": [
+                                      "text-md",
+                                      "mb-3",
+                                      "rounded",
+                                      "bg-beige-medium",
+                                      "px-2",
+                                      "py-1",
+                                      "font-medium",
+                                      "text-gray-800"
+                                    ],
+                                    "val": "YC Events"
+                                  }
+                                ]
                               }
                             ]
                           }
@@ -795,17 +2038,42 @@
             ]
           },
           {
+            "tag": "div",
+            "cls": [
+              "relative",
+              "isolate",
+              "z-0",
+              "pt-6",
+              "pb-6",
+              "flex",
+              "items-center",
+              "justify-center"
+            ],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["mx-auto", "max-w-ycdc-page", "px-4"],
                 "ch": [
                   {
+                    "tag": "div",
+                    "cls": ["w-96"],
                     "ch": [
                       {
+                        "tag": "p",
+                        "cls": ["mb-6", "font-light"],
                         "ch": [
                           {
                             "val": "Want to sign up for weekly updates from YC?"
                           },
                           {
+                            "tag": "a",
+                            "cls": [
+                              "text-link",
+                              "underline",
+                              "decoration-gray-500",
+                              "underline-offset-2",
+                              "transition-all"
+                            ],
                             "val": "Sign up for the newsletter",
                             "link": "https://ycombinator.com/newsletter/subscribe?signup_source=ycdc_blog"
                           }
@@ -818,21 +2086,49 @@
             ]
           },
           {
+            "tag": "footer",
+            "cls": ["bg-black", "text-beige-light"],
             "ch": [
               {
+                "tag": "div",
+                "cls": ["mx-auto", "max-w-ycdc-page", "px-6", "py-12"],
                 "ch": [
                   {
+                    "tag": "div",
+                    "cls": ["flex", "flex-col", "space-y-8"],
                     "ch": [
                       {
+                        "tag": "div",
+                        "cls": ["flex", "flex-col", "items-start"],
                         "ch": [
                           {
+                            "tag": "div",
+                            "cls": [
+                              "flex",
+                              "flex-row",
+                              "items-center",
+                              "gap-3"
+                            ],
                             "ch": [
                               {
+                                "tag": "a",
+                                "cls": ["block", "shrink-0"],
                                 "link": "https://ycombinator.com/",
-                                "ch": [{ "val": "Y Combinator" }]
+                                "ch": [
+                                  {
+                                    "tag": "span",
+                                    "cls": ["sr-only"],
+                                    "val": "Y Combinator"
+                                  }
+                                ]
                               },
                               {
-                                "kind": "h3",
+                                "tag": "h3",
+                                "cls": [
+                                  "font-light",
+                                  "text-base",
+                                  "text-beige-light"
+                                ],
                                 "val": "Make something people want."
                               }
                             ]
@@ -840,25 +2136,67 @@
                         ]
                       },
                       {
+                        "tag": "div",
+                        "cls": ["grid", "grid-cols-2", "items-start", "gap-8"],
                         "ch": [
                           {
+                            "tag": "div",
                             "ch": [
-                              { "kind": "h3", "val": "Programs" },
                               {
+                                "tag": "h3",
+                                "cls": [
+                                  "font-medium",
+                                  "tracking-wider",
+                                  "text-sm",
+                                  "text-beige-light"
+                                ],
+                                "val": "Programs"
+                              },
+                              {
+                                "tag": "ul",
+                                "cls": ["mt-2", "space-y-1"],
                                 "ch": [
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "YC Program",
                                     "link": "https://ycombinator.com/about"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Startup School",
                                     "link": "https://startupschool.org"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Work at a Startup",
                                     "link": "https://ycombinator.com/jobs"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Co-Founder Matching",
                                     "link": "https://ycombinator.com/cofounder-matching"
                                   }
@@ -867,39 +2205,107 @@
                             ]
                           },
                           {
+                            "tag": "div",
                             "ch": [
-                              { "kind": "h3", "val": "Resources" },
                               {
+                                "tag": "h3",
+                                "cls": [
+                                  "font-medium",
+                                  "tracking-wider",
+                                  "text-sm",
+                                  "text-beige-light"
+                                ],
+                                "val": "Resources"
+                              },
+                              {
+                                "tag": "ul",
+                                "cls": ["mt-2", "space-y-1"],
                                 "ch": [
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Startup Directory",
                                     "link": "https://ycombinator.com/companies"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Startup Library",
                                     "link": "https://ycombinator.com/library"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Investors",
                                     "link": "https://ycombinator.com/investors"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Demo Day",
                                     "link": "https://ycombinator.com/demoday"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "SAFE",
                                     "link": "https://ycombinator.com/safe"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Hacker News",
                                     "link": "https://news.ycombinator.com/"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Launch YC",
                                     "link": "https://ycombinator.com/launches"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "YC Deals",
                                     "link": "https://deals.ycombinator.com"
                                   }
@@ -908,43 +2314,118 @@
                             ]
                           },
                           {
+                            "tag": "div",
                             "ch": [
-                              { "kind": "h3", "val": "Company" },
                               {
+                                "tag": "h3",
+                                "cls": [
+                                  "font-medium",
+                                  "tracking-wider",
+                                  "text-sm",
+                                  "text-beige-light"
+                                ],
+                                "val": "Company"
+                              },
+                              {
+                                "tag": "ul",
+                                "cls": ["mt-2", "space-y-1"],
                                 "ch": [
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "YC Blog",
                                     "link": "https://ycombinator.com/blog"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Contact",
                                     "link": "https://ycombinator.com/contact"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Press",
                                     "link": "https://ycombinator.com/press"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "People",
                                     "link": "https://ycombinator.com/people"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Careers",
                                     "link": "https://ycombinator.com/software"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Privacy Policy",
                                     "link": "https://ycombinator.com/legal#privacy"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Notice at Collection",
                                     "link": "https://ycombinator.com/legal#notice-at-collection"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Security",
                                     "link": "https://ycombinator.com/security"
                                   },
                                   {
+                                    "tag": "li",
+                                    "cls": [
+                                      "font-light",
+                                      "text-sm",
+                                      "text-beige-light",
+                                      "transition-colors"
+                                    ],
                                     "val": "Terms of Use",
                                     "link": "https://ycombinator.com/legal#tou"
                                   }
@@ -956,7 +2437,22 @@
                       }
                     ]
                   },
-                  { "ch": [{ "val": "© 2026 Y Combinator" }] }
+                  {
+                    "tag": "div",
+                    "cls": ["mt-8", "border-t", "border-gray-200", "pt-8"],
+                    "ch": [
+                      {
+                        "tag": "p",
+                        "cls": [
+                          "mt-8",
+                          "font-light",
+                          "text-sm",
+                          "text-beige-light"
+                        ],
+                        "val": "© 2026 Y Combinator"
+                      }
+                    ]
+                  }
                 ]
               }
             ]

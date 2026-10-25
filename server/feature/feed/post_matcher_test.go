@@ -78,7 +78,7 @@ func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 					// The nodes that hold each value that a matcher can take from
 					// them, by field. A field is mapped only to nodes that it
 					// accepts, as the client's PostField.accepts tells.
-					holders := map[PostField]map[string][]*SemanticTreeNode{}
+					holders := make(map[PostField]map[string][]*SemanticTreeNode)
 					for _, f := range postFields {
 						holders[f] = map[string][]*SemanticTreeNode{}
 					}
@@ -90,7 +90,7 @@ func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 					}
 					var visit func(n *SemanticTreeNode)
 					visit = func(n *SemanticTreeNode) {
-						switch n.Kind {
+						switch n.Tag {
 						case "img":
 							add(PostThumbnail, n)
 						case "time":

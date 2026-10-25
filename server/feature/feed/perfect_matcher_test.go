@@ -3,6 +3,7 @@ package feed
 import (
 	"encoding/json"
 	"fmt"
+	"maps"
 	"net/url"
 	"slices"
 	"strings"
@@ -14,18 +15,22 @@ import (
 // step follows is named in its comment.
 
 // treeIndex is a SemanticTree with the parent of each node, which the
-// client's SemanticTreeNode has.
+// client's SemanticTreeNode has, and the number of nodes with each class.
 type treeIndex struct {
-	tree   *SemanticTree
-	nodes  []*SemanticTreeNode // in document order
-	parent map[*SemanticTreeNode]*SemanticTreeNode
+	tree    *SemanticTree
+	nodes   []*SemanticTreeNode // in document order
+	parent  map[*SemanticTreeNode]*SemanticTreeNode
+	classes map[string]int
 }
 
 func newTreeIndex(tree *SemanticTree) *treeIndex {
-	t := &treeIndex{tree: tree, parent: map[*SemanticTreeNode]*SemanticTreeNode{}}
+	t := &treeIndex{tree: tree, parent: map[*SemanticTreeNode]*SemanticTreeNode{}, classes: map[string]int{}}
 	var visit func(n *SemanticTreeNode)
 	visit = func(n *SemanticTreeNode) {
 		t.nodes = append(t.nodes, n)
+		for _, c := range n.Cls {
+			t.classes[c]++
+		}
 		for _, c := range n.Children {
 			t.parent[c] = n
 			visit(c)
@@ -61,25 +66,6 @@ func (t *treeIndex) selectionLevels(from, top *SemanticTreeNode) []*SemanticTree
 	return levels
 }
 
-// accepts reports whether n can provide a sensible value for f, as
-// PostField.accepts of the client tells.
-func accepts(f PostField, n *SemanticTreeNode) bool {
-	img, time := n.Kind == "img", n.Kind == "time"
-	switch f {
-	case PostTitle:
-		return n.isValue() && !img && !time && n.Val != ""
-	case PostBody:
-		return !img && !time && bodyText(n) != ""
-	case PostLink:
-		return !img && n.Link != ""
-	case PostThumbnail:
-		return img
-	case PostPubDate:
-		return time
-	}
-	return false
-}
-
 // fieldNode returns the node in post that the user labels as f to get the
 // value want, or nil when there is none. The user taps a line of the value
 // and widens the selection until it shows the value: a line with the value
@@ -92,14 +78,14 @@ func (t *treeIndex) fieldNode(post *SemanticTreeNode, f PostField, want string) 
 			continue
 		}
 		if f == PostBody {
-			if !line.isValue() || line.Kind == "img" || line.Kind == "time" {
+			if !line.isValue() || line.Tag == "img" || line.Tag == "time" {
 				continue
 			}
-		} else if v, ok := f.valueOf(line); !ok || v != want || !accepts(f, line) {
+		} else if v, ok := f.valueOf(line); !ok || v != want || !f.accepts(line) {
 			continue
 		}
 		for _, n := range t.selectionLevels(line, post) {
-			if v, ok := f.valueOf(n); ok && v == want && accepts(f, n) {
+			if v, ok := f.valueOf(n); ok && v == want && f.accepts(n) {
 				return n
 			}
 		}
@@ -107,30 +93,135 @@ func (t *treeIndex) fieldNode(post *SemanticTreeNode, f PostField, want string) 
 	return nil
 }
 
-// steps returns the path from post to n, as PostMatcher.withField of the
-// client makes it.
-func (t *treeIndex) steps(post, n *SemanticTreeNode) []FieldStep {
-	steps := []FieldStep{}
-	for ; n != post; n = t.parent[n] {
-		nth := 0
-		for _, c := range t.parent[n].Children {
-			if c == n {
-				break
-			}
-			if shape(c) == shape(n) {
-				nth++
-			}
+// step returns the step of n: its tag and the classes that other nodes have
+// too. A class of n alone, such as an ID, cannot be shared by two posts.
+func (t *treeIndex) step(n *SemanticTreeNode) Step {
+	s := Step{Tag: n.Tag}
+	for _, c := range n.Cls {
+		if t.classes[c] >= 2 {
+			s.Cls = append(s.Cls, c)
 		}
-		steps = append([]FieldStep{{Shape: shape(n), Nth: nth}}, steps...)
 	}
-	return steps
+	return s
+}
+
+// postChain returns the chain that selects post from the root: the step of
+// post when it has classes, or else the steps of the nodes from its nearest
+// ancestor with classes, or from the top of the tree below the root, down to
+// post.
+func (t *treeIndex) postChain(post *SemanticTreeNode) []Step {
+	chain := []Step{t.step(post)}
+	for n := post; len(chain[0].Cls) == 0 && t.parent[t.parent[n]] != nil; {
+		n = t.parent[n]
+		chain = append([]Step{t.step(n)}, chain...)
+	}
+	return chain
+}
+
+// fieldChain returns the chain that resolves f from post to n: the shortest
+// tail of the steps of the nodes from post to n that does, and that has a
+// step with classes when any of the nodes has classes. It falls back to all
+// the steps, with Nth on the last one. It returns nil when no chain resolves
+// to n.
+func (t *treeIndex) fieldChain(post *SemanticTreeNode, f PostField, n *SemanticTreeNode) []Step {
+	var path []Step
+	for a := n; a != post; a = t.parent[a] {
+		path = append([]Step{t.step(a)}, path...)
+	}
+	hasCls := func(chain []Step) bool {
+		return slices.ContainsFunc(chain, func(s Step) bool { return len(s.Cls) > 0 })
+	}
+	for i := len(path); i >= 0; i-- {
+		chain := append([]Step{}, path[i:]...)
+		if (i == len(path) && len(path) > 0) || hasCls(path) && !hasCls(chain) {
+			continue
+		}
+		if resolveChain(post, f, chain) == n {
+			return chain
+		}
+	}
+	if len(path) == 0 {
+		return nil
+	}
+	for nth := 0; nth < len(t.nodes); nth++ {
+		chain := slices.Clone(path)
+		chain[len(chain)-1].Nth = &nth
+		got := selectNodes(post, chain, false)
+		if len(got) == 0 {
+			return nil
+		}
+		if resolveChain(post, f, chain) == n {
+			return chain
+		}
+	}
+	return nil
+}
+
+// withExample returns m widened to find post too, as a user of the client
+// makes it by tapping a post that m does not find: each step keeps only the
+// classes that it shares with post, or with the ancestor of post at its
+// level. It returns nil when post or such an ancestor has another tag.
+func (t *treeIndex) withExample(m PostMatcher, post *SemanticTreeNode) *PostMatcher {
+	chain := slices.Clone(m.Post)
+	n := post
+	for i := len(chain) - 1; i >= 0; i-- {
+		if i < len(chain)-1 {
+			n = t.parent[n]
+		}
+		if n == nil || n.Tag != chain[i].Tag {
+			return nil
+		}
+		s := t.step(n)
+		chain[i].Cls = slices.DeleteFunc(
+			slices.Clone(chain[i].Cls),
+			func(c string) bool { return !slices.Contains(s.Cls, c) },
+		)
+	}
+	m.Post = chain
+	return &m
+}
+
+// withFields returns m with the chains that resolve the fields of post to the
+// nodes that the user labels for the values in target, or nil when post does
+// not have a labeled title or link of m, or a value of target. A chain is added after
+// the others when no chain resolves the field in post, and before them when
+// one resolves it to another node.
+func (t *treeIndex) withFields(m PostMatcher, post *SemanticTreeNode, target ExtractedPost) *PostMatcher {
+	fields := make(map[PostField][][]Step)
+	for f, chains := range m.Fields {
+		if _, ok := target[f]; !ok && (f == PostTitle || f == PostLink) {
+			return nil
+		}
+		fields[f] = chains
+	}
+	m.Fields = fields
+	for f, v := range target {
+		n := t.fieldNode(post, f, v)
+		if n == nil {
+			return nil
+		}
+		got := m.resolveField(post, f)
+		if got == n {
+			continue
+		}
+		chain := t.fieldChain(post, f, n)
+		if chain == nil {
+			return nil
+		}
+		if got == nil {
+			m.Fields[f] = append(slices.Clone(m.Fields[f]), chain)
+		} else {
+			m.Fields[f] = append([][]Step{chain}, m.Fields[f]...)
+		}
+	}
+	return &m
 }
 
 // values returns the field values that m extracts from post.
 func values(m *PostMatcher, post *SemanticTreeNode) ExtractedPost {
-	values := ExtractedPost{}
-	for f, steps := range m.Fields {
-		if n := resolve(post, steps); n != nil {
+	values := make(ExtractedPost)
+	for f := range m.Fields {
+		if n := m.resolveField(post, f); n != nil {
 			if v, ok := f.valueOf(n); ok {
 				values[f] = v
 			}
@@ -214,10 +305,11 @@ func equalPosts(a, b ExtractedPost) bool {
 //
 //  1. takes the first post that is not extracted with its values,
 //  2. taps the line of its link and widens the selection until it holds all
-//     values of the post, and marks it as a post of a new group, or edits
-//     the group that it is a post of,
-//  3. labels each field of the post (see fieldNode), and removes the labels
-//     of the fields that the post does not have,
+//     values of the post, and edits the group that it is a post of, or adds
+//     it as an example to a group (see withExample), or marks it as a post
+//     of a new group,
+//  3. labels each field of the post that the group does not resolve to the
+//     node of its value (see withFields),
 //  4. excludes the link of each post that a group gets wrong: a post that is
 //     not in posts, or that has a value that differs from the one in posts.
 //     Another group extracts the post with the right values.
@@ -298,7 +390,7 @@ func perfectMatchers(tree *SemanticTree, posts []ExtractedPost) ([]PostMatcher, 
 
 		var start *SemanticTreeNode
 		for _, n := range t.nodes {
-			if accepts(PostLink, n) && n.Link == link {
+			if PostLink.accepts(n) && n.Link == link {
 				start = n
 				break
 			}
@@ -342,16 +434,54 @@ func perfectMatchers(tree *SemanticTree, posts []ExtractedPost) ([]PostMatcher, 
 				}
 			}
 		}
-		if m == nil {
-			matchers = append(matchers, PostMatcher{Exclude: []string{}})
-			m = &matchers[len(matchers)-1]
-			for n := post; n != nil; n = t.parent[n] {
-				m.Post = append([]string{shape(n)}, m.Post...)
+		if m != nil {
+			edited := t.withFields(*m, post, target)
+			if edited == nil {
+				return nil, fmt.Errorf("post %s: cannot label its fields in its group: %v", link, target)
 			}
+			*m = *edited
+			continue
 		}
-		m.Fields = map[PostField][]FieldStep{}
-		for f, v := range target {
-			m.Fields[f] = t.steps(post, t.fieldNode(post, f, v))
+		// The user adds the post as an example to the first group that then
+		// extracts it with its values, and gets no other post wrong that it
+		// did not get wrong before.
+		score := func(ms []PostMatcher) (right map[string]bool, wrong int) {
+			right = map[string]bool{}
+			for _, p := range ExtractPosts(tree, ms) {
+				if isWrong(p) {
+					wrong++
+				} else {
+					right[p[PostLink]] = true
+				}
+			}
+			return right, wrong
+		}
+		right, wrong := score(matchers)
+		for i := range matchers {
+			widened := t.withExample(matchers[i], post)
+			if widened == nil {
+				continue
+			}
+			if widened = t.withFields(*widened, post, target); widened == nil {
+				continue
+			}
+			trial := slices.Clone(matchers)
+			trial[i] = *widened
+			r, w := score(trial)
+			if w > wrong || !r[link] ||
+				slices.ContainsFunc(slices.Collect(maps.Keys(right)), func(l string) bool { return !r[l] }) {
+				continue
+			}
+			m = &matchers[i]
+			*m = *widened
+			break
+		}
+		if m == nil {
+			created := t.withFields(PostMatcher{Post: t.postChain(post), Exclude: []string{}}, post, target)
+			if created == nil {
+				return nil, fmt.Errorf("post %s: cannot label its fields: %v", link, target)
+			}
+			matchers = append(matchers, *created)
 		}
 	}
 	return matchers, nil

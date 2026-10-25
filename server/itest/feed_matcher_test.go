@@ -112,7 +112,7 @@ func TestFeed_Matchers(t *testing.T) {
 		t.Errorf("matchers = %q, want none", matchers)
 	}
 
-	raw := `[{"post":["box","box"],"fields":{"title":[{"shape":"h2+link","nth":0}]},"exclude":[]}]`
+	raw := `[{"post":[{"tag":"article","cls":["post"]}],"fields":{"title":[[{"tag":"h2"}]]},"exclude":[]}]`
 	if err := s.SaveMatchers(t.Context(), page.ID, raw); err != nil {
 		t.Fatalf("SaveMatchers: %v", err)
 	}
@@ -133,7 +133,13 @@ func TestFeed_Matchers(t *testing.T) {
 		t.Error("HasMatchers = false after saving, want true")
 	}
 
-	for _, invalid := range []string{`[]`, `{}`, `[{"post":[]}]`, `not json`} {
+	for _, invalid := range []string{
+		`[]`,
+		`{}`,
+		`[{"post":[]}]`,
+		`not json`,
+		`[{"post":["box","box"],"fields":{"title":[{"shape":"h2+link","nth":0}]},"exclude":[]}]`,
+	} {
 		if err := s.SaveMatchers(t.Context(), page.ID, invalid); !errors.Is(err, feed.ErrInvalidMatchers) {
 			t.Errorf("SaveMatchers(%s) = %v, want ErrInvalidMatchers", invalid, err)
 		}

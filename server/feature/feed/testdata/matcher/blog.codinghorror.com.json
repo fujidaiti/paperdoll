@@ -1,23 +1,13 @@
 [
   {
-    "post": ["box", "box", "box", "box"],
+    "post": [{ "tag": "article", "cls": ["gh-article", "post"] }],
     "fields": {
-      "body": [{ "shape": "box", "nth": 1 }],
-      "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h1+link", "nth": 0 }
+      "body": [
+        [{ "tag": "section", "cls": ["gh-content", "gh-canvas", "is-body"] }]
       ],
-      "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
-      ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h1+link", "nth": 0 }
-      ]
+      "link": [[{ "tag": "h1", "cls": ["gh-article-title", "is-title"] }]],
+      "pubDate": [[{ "tag": "time", "cls": ["gh-article-meta-date"] }]],
+      "title": [[{ "tag": "h1", "cls": ["gh-article-title", "is-title"] }]]
     },
     "exclude": []
   }

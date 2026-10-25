@@ -1,126 +1,92 @@
 [
   {
     "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
+      { "tag": "div", "cls": ["IndexCard-styles__IndexCardStyled-sc-0"] },
+      { "tag": "div" },
+      { "tag": "div" }
     ],
     "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 }
-      ],
-      "thumbnail": [{ "shape": "img+link", "nth": 1 }],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "card"
-    ],
-    "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [],
+      "body": [[{ "tag": "p" }]],
+      "link": [[{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }]],
       "thumbnail": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "img+link", "nth": 1 }
+        [
+          { "tag": "div" },
+          { "tag": "div" },
+          {
+            "tag": "div",
+            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+          },
+          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
+        ]
       ],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
+        [
+          {
+            "tag": "h2",
+            "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3"]
+          }
+        ]
       ]
     },
     "exclude": []
   },
   {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "card"
-    ],
+    "post": [{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }],
     "fields": {
       "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
+        [{ "tag": "p", "cls": ["Dundee-styles__DescriptionStyled-sc-0"] }],
+        [{ "tag": "p", "cls": ["Manchester-styles__DescriptionStyled-sc-0"] }],
+        [{ "tag": "p", "cls": ["Edinburgh-styles__DescriptionStyled-sc-4"] }],
+        [{ "tag": "h2", "cls": ["Ipswich-styles__BrandNameStyled-sc-1"] }]
       ],
-      "link": [],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box", "card"],
-    "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [],
+      "link": [[]],
       "thumbnail": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "img+link", "nth": 1 }
+        [
+          { "tag": "div", "cls": ["Dundee-styles__CardStyled-sc-1"] },
+          { "tag": "div", "cls": ["Dundee-styles__ImageWrapperStyled-sc-3"] },
+          {
+            "tag": "div",
+            "cls": ["Dundee-styles__CardMediaStyled-sc-4", "gZwtmn"]
+          },
+          {
+            "tag": "div",
+            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+          },
+          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
+        ],
+        [
+          { "tag": "div", "cls": ["Edinburgh-styles__CardStyled-sc-0"] },
+          {
+            "tag": "div",
+            "cls": ["Edinburgh-styles__MediaWrapperStyled-sc-1"]
+          },
+          { "tag": "div", "cls": ["Edinburgh-styles__MediaStyled-sc-2"] },
+          {
+            "tag": "div",
+            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+          },
+          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
+        ],
+        [
+          {
+            "tag": "div",
+            "cls": ["Ipswich-styles__ImageContainerStyled-sc-0"]
+          },
+          {
+            "tag": "div",
+            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+          },
+          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
+        ]
       ],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
+        [
+          {
+            "tag": "h2",
+            "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3"]
+          }
+        ],
+        [{ "tag": "h3", "cls": ["Ipswich-styles__EpisodeNameStyled-sc-2"] }]
       ]
     },
     "exclude": [
@@ -131,173 +97,68 @@
     ]
   },
   {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "card"
-    ],
-    "fields": {
-      "body": [{ "shape": "h2", "nth": 0 }],
-      "link": [],
-      "thumbnail": [{ "shape": "img+link", "nth": 1 }],
-      "title": [{ "shape": "h3", "nth": 0 }]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box", "box"],
+    "post": [{ "tag": "div", "cls": ["Grid-styles__GridStyled-sc-0"] }],
     "fields": {
       "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
+        [{ "tag": "p", "cls": ["London-styles__LondonDescriptionStyled-sc-5"] }]
       ],
-      "link": [{ "shape": "card", "nth": 0 }],
+      "link": [
+        [{ "tag": "a", "cls": ["London-styles__LondonMediaAnchorStyled-sc-4"] }]
+      ],
       "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 1 }
+        [
+          { "tag": "div", "cls": ["GridItem-styles__GridItemStyled-sc-0"] },
+          { "tag": "div", "cls": ["London-styles__LondonMediaStyled-sc-3"] },
+          { "tag": "div" },
+          {
+            "tag": "a",
+            "cls": ["London-styles__LondonMediaAnchorStyled-sc-4"]
+          },
+          {
+            "tag": "div",
+            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+          },
+          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
+        ]
       ],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
+        [
+          {
+            "tag": "h2",
+            "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3", "GrFgy"]
+          }
+        ]
       ]
     },
     "exclude": []
   },
   {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "card"
-    ],
+    "post": [{ "tag": "div", "cls": ["Grid-styles__GridStyled-sc-0"] }],
     "fields": {
       "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
+        [{ "tag": "div", "cls": ["Windsor-styles__DescriptionStyled-sc-0"] }]
       ],
-      "link": [],
+      "link": [[{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }]],
       "thumbnail": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "img+link", "nth": 1 }
+        [
+          { "tag": "div", "cls": ["GridItem-styles__GridItemStyled-sc-0"] },
+          { "tag": "div", "cls": ["Windsor-styles__MediaStyled-sc-1"] },
+          { "tag": "div" },
+          { "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] },
+          {
+            "tag": "div",
+            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+          },
+          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
+        ]
       ],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
-      ]
-    },
-    "exclude": ["www.bbc.com/sport/videos/ckqxvp07rrnvo"]
-  },
-  {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "card"
-    ],
-    "fields": {
-      "link": [],
-      "thumbnail": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "img+link", "nth": 1 }
-      ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "card"
-    ],
-    "fields": {
-      "link": [],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box", "box"],
-    "fields": {
-      "body": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "txt", "nth": 0 }
-      ],
-      "link": [{ "shape": "card", "nth": 0 }],
-      "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 1 }
-      ],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "card", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "h2", "nth": 0 }
+        [
+          {
+            "tag": "h2",
+            "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3"]
+          }
+        ]
       ]
     },
     "exclude": ["www.bbc.com/newsletters"]

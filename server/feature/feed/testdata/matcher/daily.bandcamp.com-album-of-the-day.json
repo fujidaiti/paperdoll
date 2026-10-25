@@ -1,17 +1,15 @@
 [
   {
-    "post": ["box", "box", "box", "box", "box", "box"],
+    "post": [{ "tag": "div", "cls": ["list-article", "aotd"] }],
     "fields": {
-      "link": [{ "shape": "card", "nth": 0 }],
+      "link": [[{ "tag": "a", "cls": ["thumb", "aotd-image"] }]],
       "pubDate": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "time", "nth": 0 }
+        [{ "tag": "div", "cls": ["article-info-text"] }, { "tag": "time" }]
       ],
       "thumbnail": [
-        { "shape": "card", "nth": 0 },
-        { "shape": "img+link", "nth": 0 }
+        [{ "tag": "a", "cls": ["thumb", "aotd-image"] }, { "tag": "img" }]
       ],
-      "title": [{ "shape": "txt+link", "nth": 0 }]
+      "title": [[{ "tag": "div", "cls": ["title-wrapper", "title"] }]]
     },
     "exclude": []
   }

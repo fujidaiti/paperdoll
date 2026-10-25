@@ -1,58 +1,15 @@
 [
   {
-    "post": [
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box",
-      "box"
-    ],
+    "post": [{ "tag": "div", "cls": ["card__inner"] }],
     "fields": {
       "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 1 },
-        { "shape": "card", "nth": 0 }
+        [{ "tag": "a", "cls": ["button", "button--text_link", "icon-right"] }]
       ],
-      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
+      "thumbnail": [[{ "tag": "img", "cls": ["picture__image"] }]],
       "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3", "nth": 0 }
+        [{ "tag": "h3", "cls": ["heading-4", "card__title"] }],
+        [{ "tag": "h3", "cls": ["heading-6", "card__title"] }]
       ]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box"],
-    "fields": {
-      "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 1 },
-        { "shape": "card", "nth": 0 }
-      ],
-      "thumbnail": [{ "shape": "img+link", "nth": 0 }],
-      "title": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "h3", "nth": 0 }
-      ]
-    },
-    "exclude": []
-  },
-  {
-    "post": ["box", "box", "box", "box", "box", "box", "box", "box", "box"],
-    "fields": {
-      "link": [
-        { "shape": "box", "nth": 0 },
-        { "shape": "box", "nth": 1 },
-        { "shape": "card", "nth": 0 }
-      ],
-      "title": [{ "shape": "h3", "nth": 0 }]
     },
     "exclude": []
   }
