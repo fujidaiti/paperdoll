@@ -90,6 +90,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   void _toggleField(PostField field, SemanticTreeNode node) {
     setState(() {
       _matcher = _matcher.withField(
+        widget.args.tree,
         field,
         _post,
         identical(_fieldNode(field), node) ? null : node,
@@ -202,6 +203,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
             else
               _StatusFooter(
                 matcher: _matcher,
+                post: _post,
                 onDone: () => context.pop(_matcher),
               ),
           ],
@@ -251,7 +253,12 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
               TextButton(
                 onPressed: () => setState(() {
                   for (final field in labels) {
-                    _matcher = _matcher.withField(field, _post, null);
+                    _matcher = _matcher.withField(
+                      widget.args.tree,
+                      field,
+                      _post,
+                      null,
+                    );
                   }
                 }),
                 child: const Text('Remove'),
@@ -291,17 +298,17 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 }
 
-/// Which fields are labeled so far, with a button to finish labeling, which
-/// is enabled once the title and the link are labeled.
+/// Which fields are found in [post] so far, with a button to finish
+/// labeling, which is enabled once the title and the link are found.
 class const _StatusFooter({
   required final PostMatcher matcher,
+  required final SemanticTreeNode post,
   required final VoidCallback onDone,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final canFinish =
-        matcher.fields.containsKey(PostField.title) &&
-        matcher.fields.containsKey(PostField.link);
+    bool isSet(PostField field) => matcher.matchField(post, field) != null;
+    final canFinish = isSet(PostField.title) && isSet(PostField.link);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -318,10 +325,7 @@ class const _StatusFooter({
                     runSpacing: spacingXs,
                     children: [
                       for (final field in PostField.values)
-                        _FieldStatus(
-                          field: field,
-                          isSet: matcher.fields.containsKey(field),
-                        ),
+                        _FieldStatus(field: field, isSet: isSet(field)),
                     ],
                   ),
                 ),

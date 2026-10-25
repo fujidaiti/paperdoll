@@ -41,19 +41,94 @@ enum PostField {
   };
 }
 
-/// One step of the path from a post node to a field: the child with [shape]
-/// at the zero-based index [nth] among the children with that shape.
-class FieldStep {
-  const new({required this.shape, required this.nth});
+/// Selects nodes by their tag and classes, as a step of a CSS descendant
+/// selector does: the descendants of a node that have [tag] and every class in
+/// [cls]. A step without [tag] selects plain texts, which have no tag. When
+/// [nth] is set, only the one at that zero-based index among them in document
+/// order is selected.
+class Step {
+  const new({this.tag, this.cls = const [], this.nth});
 
-  factory fromJson(Map<String, Object?> json) =>
-      FieldStep(shape: json['shape']! as String, nth: json['nth']! as int);
+  /// The step of [node]: its tag and the classes that other nodes of [tree]
+  /// have too. A class of [node] alone, such as an ID, cannot be shared by
+  /// two posts.
+  factory of(SemanticTree tree, SemanticTreeNode node) => Step(
+    tag: node.tag,
+    cls: [
+      for (final c in node.cls)
+        if ((tree.classCounts[c] ?? 0) >= 2) c,
+    ],
+  );
 
-  final String shape;
-  final int nth;
+  factory fromJson(Map<String, Object?> json) => Step(
+    tag: json['tag'] as String?,
+    cls: (json['cls'] as List<Object?>? ?? const []).cast<String>(),
+    nth: json['nth'] as int?,
+  );
 
-  Map<String, Object?> toJson() => {'shape': shape, 'nth': nth};
+  final String? tag;
+  final List<String> cls;
+  final int? nth;
+
+  bool matches(SemanticTreeNode node) =>
+      node.tag == tag && cls.every(node.cls.contains);
+
+  Map<String, Object?> toJson() => {
+    'tag': ?tag,
+    if (cls.isNotEmpty) 'cls': cls,
+    'nth': ?nth,
+  };
 }
+
+/// The nodes that [chain] selects from [start], in document order. With
+/// [children], each step after the first selects among the children of the
+/// nodes that the previous step selects, instead of their descendants.
+List<SemanticTreeNode> _selectNodes(
+  SemanticTreeNode start,
+  List<Step> chain, {
+  required bool children,
+}) {
+  var nodes = [start];
+  for (final (i, step) in chain.indexed) {
+    final next = <SemanticTreeNode>{};
+    for (final n in nodes) {
+      final matches = <SemanticTreeNode>[];
+      void visit(SemanticTreeNode n) {
+        for (final c in n.children) {
+          if (step.matches(c)) {
+            matches.add(c);
+          }
+          if (!children || i == 0) {
+            visit(c);
+          }
+        }
+      }
+
+      visit(n);
+      if (step.nth case final nth?) {
+        if (nth < matches.length) {
+          next.add(matches[nth]);
+        }
+      } else {
+        next.addAll(matches);
+      }
+    }
+    nodes = next.toList();
+  }
+  return nodes;
+}
+
+/// The first node that [chain] selects from [postNode] and that [field]
+/// accepts, if any.
+SemanticTreeNode? _resolveChain(
+  SemanticTreeNode postNode,
+  PostField field,
+  List<Step> chain,
+) => _selectNodes(
+  postNode,
+  chain,
+  children: false,
+).where(field.accepts).firstOrNull;
 
 /// The host and path of [link], which exclude patterns match.
 String _hostPath(String link) {
@@ -103,13 +178,17 @@ String? _mergePattern(String pattern, String hostPath) {
   ].join('/');
 }
 
-/// A rule that finds the posts of one shape in a page and extracts their
+/// A rule that finds the posts of one kind in a page and extracts their
 /// fields (see PostMatcher in server/feature/feed/post_matcher.go).
 ///
-/// [post] is the shape path of the post nodes from the root, and each field
-/// is the path of steps from a post node to its value. A node at [post] is
-/// a post only when all labeled fields are found, and when its link matches
-/// none of the patterns in [exclude].
+/// [post] is the chain of steps to the post nodes: the first step selects
+/// descendants of the root, and each later step selects children of the
+/// nodes that the previous step selects. Each field has chains of steps from
+/// a post node to the node of its value, tried in order; an empty chain is
+/// the post node itself. A node that [post] selects is a post only when its
+/// title and link are found, when they are labeled, and when its link matches
+/// none of the patterns in [exclude]. A node that contains another node that
+/// [post] selects is not a post, since it is a list of posts.
 class PostMatcher {
   const new({
     required this.post,
@@ -119,42 +198,70 @@ class PostMatcher {
 
   /// Parses the JSON produced by [toJson].
   factory fromJson(Map<String, Object?> json) => PostMatcher(
-    post: (json['post']! as List<Object?>).cast<String>(),
+    post: [
+      for (final s in json['post']! as List<Object?>)
+        Step.fromJson(s! as Map<String, Object?>),
+    ],
     fields: {
       for (final MapEntry(:key, :value)
           in (json['fields']! as Map<String, Object?>).entries)
         PostField.values.byName(key): [
-          for (final s in value! as List<Object?>)
-            FieldStep.fromJson(s! as Map<String, Object?>),
+          for (final chain in value! as List<Object?>)
+            [
+              for (final s in chain! as List<Object?>)
+                Step.fromJson(s! as Map<String, Object?>),
+            ],
         ],
     },
     exclude: (json['exclude'] as List<Object?>? ?? const []).cast<String>(),
   );
 
-  /// A matcher whose posts are at the shape path of [node].
-  factory fromNode(SemanticTreeNode node) => PostMatcher(
-    post: [for (SemanticTreeNode? n = node; n != null; n = n.parent) n.shape]
-        .reversed
-        .toList(),
-  );
+  /// A matcher whose posts are selected as [node] is: by the step of [node]
+  /// when it has classes, or else by the steps of the nodes from its nearest
+  /// ancestor with classes, or from the top of the tree below the root, down
+  /// to [node].
+  factory fromNode(SemanticTree tree, SemanticTreeNode node) {
+    final chain = [Step.of(tree, node)];
+    for (var n = node; chain.first.cls.isEmpty && n.parent?.parent != null;) {
+      n = n.parent!;
+      chain.insert(0, Step.of(tree, n));
+    }
+    return PostMatcher(post: chain);
+  }
 
-  final List<String> post;
-  final Map<PostField, List<FieldStep>> fields;
+  final List<Step> post;
+  final Map<PostField, List<List<Step>>> fields;
   final List<String> exclude;
 
-  /// The nodes at [post] that have all labeled fields, including the
-  /// excluded ones.
+  /// The nodes that [post] selects and that have the labeled title and link,
+  /// including the excluded ones. The other fields are optional, since posts
+  /// of one kind often lack some of them, such as the date of a featured
+  /// post.
   List<SemanticTreeNode> _candidates(SemanticTree tree) {
-    var nodes = [if (tree.root.shape == post.first) tree.root];
-    for (final shape in post.skip(1)) {
-      nodes = [
-        for (final n in nodes) ...n.children.where((c) => c.shape == shape),
-      ];
+    if (post.isEmpty) {
+      return const [];
     }
-    return [
-      for (final n in nodes)
-        if (fields.values.every((steps) => _resolve(n, steps) != null)) n,
-    ];
+    final selected = _selectNodes(tree.root, post, children: true).toSet();
+    final posts = <SemanticTreeNode>[];
+    // Returns whether n is or contains a selected node.
+    bool visit(SemanticTreeNode n) {
+      var inner = false;
+      for (final c in n.children) {
+        inner = visit(c) || inner;
+      }
+      if (selected.contains(n) &&
+          !inner &&
+          [
+            PostField.title,
+            PostField.link,
+          ].every((f) => !fields.containsKey(f) || matchField(n, f) != null)) {
+        posts.add(n);
+      }
+      return inner || selected.contains(n);
+    }
+
+    visit(tree.root);
+    return posts;
   }
 
   List<SemanticTreeNode> matchPosts(SemanticTree tree) => [
@@ -186,54 +293,128 @@ class PostMatcher {
   String? _linkOf(SemanticTreeNode postNode) =>
       matchField(postNode, PostField.link)?.link;
 
-  static SemanticTreeNode? _resolve(
-    SemanticTreeNode from,
-    List<FieldStep> steps,
-  ) {
-    var node = from;
-    for (final step in steps) {
-      final matches = node.children.where((c) => c.shape == step.shape);
-      if (step.nth >= matches.length) {
-        return null;
+  /// The node that provides [field] in [postNode]: the first node that the
+  /// first chain of [field] selects with a node that [field] accepts, if any.
+  SemanticTreeNode? matchField(SemanticTreeNode postNode, PostField field) {
+    for (final chain in fields[field] ?? const <List<Step>>[]) {
+      if (_resolveChain(postNode, field, chain) case final n?) {
+        return n;
       }
-      node = matches.elementAt(step.nth);
     }
-    return node;
+    return null;
   }
-
-  /// The node that provides [field] in [postNode], if any.
-  SemanticTreeNode? matchField(SemanticTreeNode postNode, PostField field) =>
-      switch (fields[field]) {
-        final steps? => _resolve(postNode, steps),
-        null => null,
-      };
 
   /// Maps [field] to [valueNode] inside [postNode], or removes the mapping
   /// when [valueNode] is null.
+  ///
+  /// The chain that selects [valueNode] is added after the other chains of
+  /// [field] when they find nothing in [postNode], and before them when they
+  /// find another node, so that the other posts of the group keep the nodes
+  /// that they find. Removing a mapping removes the chains that find the
+  /// node of [field] in [postNode].
   PostMatcher withField(
+    SemanticTree tree,
     PostField field,
     SemanticTreeNode postNode,
     SemanticTreeNode? valueNode,
   ) {
-    List<FieldStep> steps(SemanticTreeNode node) => [
-      for (var n = node; !identical(n, postNode); n = n.parent!)
-        FieldStep(
-          shape: n.shape,
-          nth: n.parent!.children
-              .where((c) => c.shape == n.shape)
-              .toList()
-              .indexOf(n),
-        ),
-    ].reversed.toList();
+    final chains = fields[field] ?? const <List<Step>>[];
+    final current = matchField(postNode, field);
+    final List<List<Step>> updated;
+    if (valueNode == null) {
+      updated = [
+        for (final c in chains)
+          if (!identical(_resolveChain(postNode, field, c), current)) c,
+      ];
+    } else if (identical(current, valueNode)) {
+      return this;
+    } else if (_fieldChain(tree, field, postNode, valueNode)
+        case final chain?) {
+      updated = current == null ? [...chains, chain] : [chain, ...chains];
+    } else {
+      return this;
+    }
     return PostMatcher(
       post: post,
       fields: {
         for (final MapEntry(:key, :value) in fields.entries)
           if (key != field) key: value,
-        if (valueNode != null) field: steps(valueNode),
+        if (updated.isNotEmpty) field: updated,
       },
       exclude: exclude,
     );
+  }
+
+  /// The chain that finds [node] as [field] in [postNode]: the shortest tail
+  /// of the steps of the nodes from [postNode] down to [node] that does, and
+  /// that has a step with classes when any of the nodes has classes. It falls
+  /// back to all the steps, with [Step.nth] on the last one. Null when no
+  /// chain finds [node].
+  static List<Step>? _fieldChain(
+    SemanticTree tree,
+    PostField field,
+    SemanticTreeNode postNode,
+    SemanticTreeNode node,
+  ) {
+    final path = [
+      for (var n = node; !identical(n, postNode); n = n.parent!)
+        Step.of(tree, n),
+    ].reversed.toList();
+    bool hasCls(List<Step> chain) => chain.any((s) => s.cls.isNotEmpty);
+    for (var i = path.length; i >= 0; i--) {
+      final chain = path.sublist(i);
+      // The empty chain finds only the post node itself.
+      if ((i == path.length && path.isNotEmpty) ||
+          (hasCls(path) && !hasCls(chain))) {
+        continue;
+      }
+      if (identical(_resolveChain(postNode, field, chain), node)) {
+        return chain;
+      }
+    }
+    if (path.isEmpty) {
+      return null;
+    }
+    for (var nth = 0; ; nth++) {
+      final last = path.last;
+      final chain = [
+        ...path.take(path.length - 1),
+        Step(tag: last.tag, cls: last.cls, nth: nth),
+      ];
+      if (_selectNodes(postNode, chain, children: false).isEmpty) {
+        return null;
+      }
+      if (identical(_resolveChain(postNode, field, chain), node)) {
+        return chain;
+      }
+    }
+  }
+
+  /// This matcher widened to find [postNode] too: each step of [post] keeps
+  /// only the classes that it shares with [postNode], or with the ancestor of
+  /// [postNode] at its level. Null when [postNode] or such an ancestor has
+  /// another tag.
+  PostMatcher? withExample(SemanticTree tree, SemanticTreeNode postNode) {
+    final chain = [...post];
+    SemanticTreeNode? n = postNode;
+    for (var i = chain.length - 1; i >= 0; i--) {
+      if (i < chain.length - 1) {
+        n = n?.parent;
+      }
+      if (n == null || n.tag != chain[i].tag) {
+        return null;
+      }
+      final shared = Step.of(tree, n).cls;
+      chain[i] = Step(
+        tag: chain[i].tag,
+        cls: [
+          for (final c in chain[i].cls)
+            if (shared.contains(c)) c,
+        ],
+        nth: chain[i].nth,
+      );
+    }
+    return PostMatcher(post: chain, fields: fields, exclude: exclude);
   }
 
   /// Labels the fields that are evident in [postNode]: the only link or time,
@@ -252,7 +433,7 @@ class PostMatcher {
   /// title in it. Of those, the post node itself is labeled, or else the one
   /// with text. A title with a link of its own provides the link of the post,
   /// even when there are other links.
-  PostMatcher withEvidentFields(SemanticTreeNode postNode) {
+  PostMatcher withEvidentFields(SemanticTree tree, SemanticTreeNode postNode) {
     final nodes = <SemanticTreeNode>[];
     void collect(SemanticTreeNode n) {
       nodes.add(n);
@@ -265,7 +446,7 @@ class PostMatcher {
     var matcher = this;
     void label(PostField field, SemanticTreeNode? node) {
       if (node != null && field.accepts(node)) {
-        matcher = matcher.withField(field, postNode, node);
+        matcher = matcher.withField(tree, field, postNode, node);
       }
     }
 
@@ -284,7 +465,9 @@ class PostMatcher {
       label(PostField.thumbnail, only(images.where((n) => n.depth == top)));
     }
     label(PostField.pubDate, only(nodes.where((n) => n.isTime)));
-    final headings = nodes.where((n) => n.headingLevel != null).toList();
+    final headings = nodes
+        .where((n) => n.isValue && n.headingLevel != null)
+        .toList();
     SemanticTreeNode? title;
     if (headings.isEmpty) {
       title = only(nodes.where(PostField.title.accepts));
@@ -308,7 +491,9 @@ class PostMatcher {
     final paragraphs = nodes.where(
       (n) =>
           n.isValue &&
-          n.kind == null &&
+          n.headingLevel == null &&
+          !n.isImage &&
+          !n.isTime &&
           n.link == null &&
           (n.val?.length ?? 0) >= 80 &&
           !labeled.any((l) => identical(l, n)),
@@ -365,10 +550,12 @@ class PostMatcher {
   );
 
   Map<String, Object?> toJson() => {
-    'post': post,
+    'post': [for (final s in post) s.toJson()],
     'fields': {
       for (final MapEntry(:key, :value) in fields.entries)
-        key.name: [for (final s in value) s.toJson()],
+        key.name: [
+          for (final chain in value) [for (final s in chain) s.toJson()],
+        ],
     },
     'exclude': exclude,
   };

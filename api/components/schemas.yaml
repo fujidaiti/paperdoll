@@ -197,10 +197,18 @@ SemanticTreeNode:
     A value, which has no children, or a container, which has children.
   type: object
   properties:
-    kind:
+    tag:
       description:
-        "`h1`..`h6` for a heading, `img` for an image, `time` for a time."
+        The tag name of the element that the node comes from. `img` for an
+        image, `time` for a time. Missing for a plain text that does not come
+        from one element.
       type: string
+    cls:
+      description:
+        The classes of the element, without generated parts such as hashes.
+      type: array
+      items:
+        type: string
     val:
       description:
         Plain text, the alt text of an image, or the RFC 3339 timestamp of a
@@ -216,51 +224,71 @@ SemanticTreeNode:
 
 PostMatcher:
   description:
-    A rule that finds the posts of one shape in a page and extracts their
-    fields. See PostMatcher in `server/feature/feed/post_matcher.go`.
+    A rule that finds the posts of one kind in a page and extracts their fields.
+    See PostMatcher in `server/feature/feed/post_matcher.go`.
   type: object
   required: [post, fields, exclude]
   properties:
     post:
-      description: The shape path of the post nodes from the root.
+      description: The chain of steps from the root to the post nodes.
       type: array
       items:
-        type: string
+        $ref: "#/Step"
     fields:
-      description: The path from a post node to each labeled field.
+      description:
+        The chains of steps from a post node to each labeled field, tried in
+        order.
       type: object
       properties:
         title:
           type: array
           items:
-            $ref: "#/FieldStep"
+            type: array
+            items:
+              $ref: "#/Step"
         body:
           type: array
           items:
-            $ref: "#/FieldStep"
+            type: array
+            items:
+              $ref: "#/Step"
         link:
           type: array
           items:
-            $ref: "#/FieldStep"
+            type: array
+            items:
+              $ref: "#/Step"
         thumbnail:
           type: array
           items:
-            $ref: "#/FieldStep"
+            type: array
+            items:
+              $ref: "#/Step"
         pubDate:
           type: array
           items:
-            $ref: "#/FieldStep"
+            type: array
+            items:
+              $ref: "#/Step"
     exclude:
       description: Glob patterns of the links of nodes that are not posts.
       type: array
       items:
         type: string
 
-FieldStep:
+Step:
+  description:
+    Selects nodes by their tag and classes, as a step of a CSS descendant
+    selector does. A step without a tag selects plain texts.
   type: object
-  required: [shape, nth]
   properties:
-    shape:
+    tag:
       type: string
+    cls:
+      type: array
+      items:
+        type: string
     nth:
+      description:
+        The zero-based index in document order of the only selected node.
       type: integer

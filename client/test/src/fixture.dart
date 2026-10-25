@@ -201,37 +201,43 @@ class _Pages {
     'url': 'https://blog.example.com/',
     'title': 'Example Blog',
     'root': {
+      'tag': 'body',
       'ch': [
         {
+          'tag': 'article',
+          'cls': ['post'],
           'ch': [
             {
-              'kind': 'h2',
+              'tag': 'h2',
               'val': 'First post',
               'link': 'https://blog.example.com/first',
             },
-            {'val': 'The first post.'},
+            {'tag': 'p', 'val': 'The first post.'},
           ],
         },
         {
+          'tag': 'article',
+          'cls': ['post'],
           'ch': [
             {
-              'kind': 'h2',
+              'tag': 'h2',
               'val': 'Second post',
               'link': 'https://blog.example.com/second',
             },
-            {'val': 'The second post.'},
+            {'tag': 'p', 'val': 'The second post.'},
           ],
         },
       ],
     },
   };
 
-  /// [exampleBlog] with two newsletter cards of the same shape as the posts,
+  /// [exampleBlog] with two newsletter cards like the posts,
   /// whose links differ only in the query.
   final exampleBlogWithNewsletters = <String, Object?>{
     'url': 'https://blog.example.com/',
     'title': 'Example Blog',
     'root': {
+      'tag': 'body',
       'ch': [
         for (final (title, link) in [
           ('First post', 'https://blog.example.com/first'),
@@ -239,9 +245,11 @@ class _Pages {
           ('Monthly digest', 'https://blog.example.com/newsletters?monthly'),
         ])
           {
+            'tag': 'article',
+            'cls': ['post'],
             'ch': [
-              {'kind': 'h2', 'val': title, 'link': link},
-              {'val': 'Read $title.'},
+              {'tag': 'h2', 'val': title, 'link': link},
+              {'tag': 'p', 'val': 'Read $title.'},
             ],
           },
       ],
@@ -250,13 +258,22 @@ class _Pages {
 
   /// A matcher of the posts in [exampleBlog].
   final exampleBlogMatcher = <String, Object?>{
-    'post': ['box', 'box'],
+    'post': [
+      {
+        'tag': 'article',
+        'cls': ['post'],
+      },
+    ],
     'fields': {
       'title': [
-        {'shape': 'h2+link', 'nth': 0},
+        [
+          {'tag': 'h2'},
+        ],
       ],
       'link': [
-        {'shape': 'h2+link', 'nth': 0},
+        [
+          {'tag': 'h2'},
+        ],
       ],
     },
     'exclude': <String>[],

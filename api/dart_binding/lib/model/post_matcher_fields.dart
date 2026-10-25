@@ -20,15 +20,15 @@ class PostMatcherFields {
     this.pubDate = const [],
   });
 
-  List<FieldStep> title;
+  List<List<Step>> title;
 
-  List<FieldStep> body;
+  List<List<Step>> body;
 
-  List<FieldStep> link;
+  List<List<Step>> link;
 
-  List<FieldStep> thumbnail;
+  List<List<Step>> thumbnail;
 
-  List<FieldStep> pubDate;
+  List<List<Step>> pubDate;
 
   @override
   bool operator ==(Object other) =>
@@ -78,11 +78,31 @@ class PostMatcherFields {
       }());
 
       return PostMatcherFields(
-        title: FieldStep.listFromJson(json[r'title']),
-        body: FieldStep.listFromJson(json[r'body']),
-        link: FieldStep.listFromJson(json[r'link']),
-        thumbnail: FieldStep.listFromJson(json[r'thumbnail']),
-        pubDate: FieldStep.listFromJson(json[r'pubDate']),
+        title: json[r'title'] is List
+            ? (json[r'title'] as List)
+                .map((e) => e == null ? const <Step>[] : Step.listFromJson(e))
+                .toList()
+            : const [],
+        body: json[r'body'] is List
+            ? (json[r'body'] as List)
+                .map((e) => e == null ? const <Step>[] : Step.listFromJson(e))
+                .toList()
+            : const [],
+        link: json[r'link'] is List
+            ? (json[r'link'] as List)
+                .map((e) => e == null ? const <Step>[] : Step.listFromJson(e))
+                .toList()
+            : const [],
+        thumbnail: json[r'thumbnail'] is List
+            ? (json[r'thumbnail'] as List)
+                .map((e) => e == null ? const <Step>[] : Step.listFromJson(e))
+                .toList()
+            : const [],
+        pubDate: json[r'pubDate'] is List
+            ? (json[r'pubDate'] as List)
+                .map((e) => e == null ? const <Step>[] : Step.listFromJson(e))
+                .toList()
+            : const [],
       );
     }
     return null;

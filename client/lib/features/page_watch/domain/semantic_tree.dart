@@ -6,6 +6,7 @@ class SemanticTree {
     required this.title,
     required this.root,
     required this.nodes,
+    required this.classCounts,
   });
 
   /// Parses the JSON built by the server (see SemanticTree in
@@ -21,7 +22,8 @@ class SemanticTree {
         id: nodes.length,
         parent: parent,
         depth: depth,
-        kind: json['kind'] as String?,
+        tag: json['tag'] as String?,
+        cls: (json['cls'] as List<Object?>? ?? const []).cast<String>(),
         val: json['val'] as String?,
         link: json['link'] as String?,
       );
@@ -35,11 +37,18 @@ class SemanticTree {
     }
 
     final root = parse(json['root']! as Map<String, Object?>, null, 0);
+    final classCounts = <String, int>{};
+    for (final n in nodes) {
+      for (final c in n.cls) {
+        classCounts.update(c, (count) => count + 1, ifAbsent: () => 1);
+      }
+    }
     return SemanticTree._(
       url: json['url']! as String,
       title: json['title'] as String? ?? '',
       root: root,
       nodes: nodes,
+      classCounts: classCounts,
     );
   }
 
@@ -49,6 +58,9 @@ class SemanticTree {
 
   /// All nodes in document order, indexed by [SemanticTreeNode.id].
   final List<SemanticTreeNode> nodes;
+
+  /// The number of nodes that have each class.
+  final Map<String, int> classCounts;
 }
 
 /// A node of a [SemanticTree]: a value without children, or a container.
@@ -57,7 +69,8 @@ class SemanticTreeNode {
     required this.id,
     required this.parent,
     required this.depth,
-    required this.kind,
+    required this.tag,
+    required this.cls,
     required this.val,
     required this.link,
   });
@@ -67,9 +80,13 @@ class SemanticTreeNode {
   final SemanticTreeNode? parent;
   final int depth;
 
-  /// `h1`..`h6`, `img` or `time` for such a value, or null for a plain text
-  /// and for a container.
-  final String? kind;
+  /// The tag name of the element that this node comes from, such as `h2`,
+  /// `img` or `time`, or null for a plain text that does not come from one
+  /// element.
+  final String? tag;
+
+  /// The classes of that element, without generated parts such as hashes.
+  final List<String> cls;
 
   /// The plain text of a value: the alt text of an image, or the RFC 3339
   /// timestamp of a time.
@@ -80,24 +97,18 @@ class SemanticTreeNode {
   final List<SemanticTreeNode> children = [];
 
   bool get isValue => children.isEmpty;
-  bool get isImage => kind == 'img';
-  bool get isTime => kind == 'time';
+  bool get isImage => tag == 'img';
+  bool get isTime => tag == 'time';
 
   /// The level of a heading (1 for h1), or null for other nodes.
-  int? get headingLevel => switch (kind) {
-    'h1' || 'h2' || 'h3' || 'h4' || 'h5' || 'h6' => int.parse(kind![1]),
+  int? get headingLevel => switch (tag) {
+    'h1' || 'h2' || 'h3' || 'h4' || 'h5' || 'h6' => int.parse(tag![1]),
     _ => null,
   };
 
   /// The link of the page that this node points to: [link], except for an
   /// image, whose link is the image itself.
   String? get pageLink => isImage ? null : link;
-
-  /// The shape of this node, such as `card`, `h2` or `txt+link` (see shape in
-  /// server/feature/feed/post_matcher.go).
-  String get shape => isValue
-      ? '${kind ?? 'txt'}${link != null ? '+link' : ''}'
-      : (link != null ? 'card' : 'box');
 
   /// All text in this subtree without the alt texts of images, joined with
   /// spaces.

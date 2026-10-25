@@ -13,20 +13,24 @@ part of openapi.api;
 class SemanticTreeNode {
   /// Returns a new [SemanticTreeNode] instance.
   SemanticTreeNode({
-    this.kind,
+    this.tag,
+    this.cls = const [],
     this.val,
     this.link,
     this.ch = const [],
   });
 
-  /// `h1`..`h6` for a heading, `img` for an image, `time` for a time.
+  /// The tag name of the element that the node comes from. `img` for an image, `time` for a time. Missing for a plain text that does not come from one element.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? kind;
+  String? tag;
+
+  /// The classes of the element, without generated parts such as hashes.
+  List<String> cls;
 
   /// Plain text, the alt text of an image, or the RFC 3339 timestamp of a time.
   ///
@@ -52,7 +56,8 @@ class SemanticTreeNode {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is SemanticTreeNode &&
-          other.kind == kind &&
+          other.tag == tag &&
+          _deepEquality.equals(other.cls, cls) &&
           other.val == val &&
           other.link == link &&
           _deepEquality.equals(other.ch, ch);
@@ -60,22 +65,24 @@ class SemanticTreeNode {
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (kind == null ? 0 : kind!.hashCode) +
+      (tag == null ? 0 : tag!.hashCode) +
+      (cls.hashCode) +
       (val == null ? 0 : val!.hashCode) +
       (link == null ? 0 : link!.hashCode) +
       (ch.hashCode);
 
   @override
   String toString() =>
-      'SemanticTreeNode[kind=$kind, val=$val, link=$link, ch=$ch]';
+      'SemanticTreeNode[tag=$tag, cls=$cls, val=$val, link=$link, ch=$ch]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.kind != null) {
-      json[r'kind'] = this.kind;
+    if (this.tag != null) {
+      json[r'tag'] = this.tag;
     } else {
-      json[r'kind'] = null;
+      json[r'tag'] = null;
     }
+    json[r'cls'] = this.cls;
     if (this.val != null) {
       json[r'val'] = this.val;
     } else {
@@ -105,7 +112,10 @@ class SemanticTreeNode {
       }());
 
       return SemanticTreeNode(
-        kind: mapValueOfType<String>(json, r'kind'),
+        tag: mapValueOfType<String>(json, r'tag'),
+        cls: json[r'cls'] is Iterable
+            ? (json[r'cls'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         val: mapValueOfType<String>(json, r'val'),
         link: mapValueOfType<String>(json, r'link'),
         ch: SemanticTreeNode.listFromJson(json[r'ch']),

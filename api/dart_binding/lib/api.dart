@@ -23,7 +23,7 @@ part 'model/error.dart';
 part 'model/feed.dart';
 part 'model/feed_candidate.dart';
 part 'model/feed_entry.dart';
-part 'model/field_step.dart';
+part 'model/step.dart';
 part 'model/get_feed_matchers200_response.dart';
 part 'model/get_feed_timeline200_response.dart';
 part 'model/get_feeds200_response.dart';

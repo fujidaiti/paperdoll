@@ -33,11 +33,13 @@ import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.da
 /// it as the post's fields on [PostFieldsScreen]. An area is selected by
 /// tapping a line, which selects the narrowest element around it that can be
 /// a post, and
-/// widening the selection to the elements around that one. Areas at the same
-/// shape path as the selected post become posts of the same group
-/// automatically, with their fields found at the same positions. Each group
-/// results in one [PostMatcher]. A post of a group that is not a post, such as
-/// a promotion, can be excluded by its link.
+/// widening the selection to the elements around that one. Areas with the
+/// same tags and classes as the selected post become posts of the same group
+/// automatically, with their fields found in the same elements. Each group
+/// results in one [PostMatcher]. An area that a group does not find can be
+/// added to the group as an example, which widens the group to the areas like
+/// it. A post of a group that is not a post, such as a promotion, can be
+/// excluded by its link.
 ///
 /// The page is the one of the unstructured feed [feedId], and the matchers
 /// saved for the feed are shown as the initial groups. Saving replaces them.
@@ -64,7 +66,7 @@ class const PageAnnotationScreen({required final int feedId, super.key})
   }
 }
 
-/// Posts that share one shape, defined by [matcher].
+/// Posts of one kind, defined by [matcher].
 class _Group {
   new({required this.number, required this.matcher});
 
@@ -182,9 +184,9 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
 
   /// Why [node] cannot become a post, or null if it can.
   ///
-  /// Only [node] itself is checked. Other nodes at its shape path can be posts
-  /// of another group, since the labeled fields decide which of them are
-  /// posts, such as cards whose date is at a different position.
+  /// Only [node] itself is checked. Other nodes that its group would select
+  /// can be posts of another group, since the labeled fields decide which of
+  /// them are posts, such as cards whose title is in a different element.
   String? _postRejection(SemanticTreeNode node, _Marks marks) {
     for (final MapEntry(key: id, value: group) in marks.posts.entries) {
       if (_tree.nodes[id].overlaps(node)) {
@@ -214,7 +216,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   Future<void> _markAsPost(SemanticTreeNode node) async {
     final number = _nextGroupNumber;
     final matcher = await _labelFields(
-      matcher: PostMatcher.fromNode(node).withEvidentFields(node),
+      matcher: PostMatcher.fromNode(_tree, node).withEvidentFields(_tree, node),
       post: node,
       groupNumber: number,
     );
@@ -228,17 +230,24 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     });
   }
 
-  Future<void> _editGroup(_Group group, SemanticTreeNode post) async {
-    final matcher = await _labelFields(
-      matcher: group.matcher,
+  /// Labels the fields of [post] in [group]. [matcher] is the matcher of
+  /// [group] by default, or the matcher widened to find [post] when [post]
+  /// is added to [group] as an example.
+  Future<void> _editGroup(
+    _Group group,
+    SemanticTreeNode post, {
+    PostMatcher? matcher,
+  }) async {
+    final edited = await _labelFields(
+      matcher: matcher ?? group.matcher,
       post: post,
       groupNumber: group.number,
     );
-    if (matcher == null || !mounted) {
+    if (edited == null || !mounted) {
       return;
     }
     setState(() {
-      group.matcher = matcher;
+      group.matcher = edited;
       _selected = null;
     });
   }
@@ -441,17 +450,31 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   Widget _buildSheet(SemanticTreeNode selected, _Marks marks) {
     final group = marks.posts[selected.id];
     final excluded = marks.excluded[selected.id];
+    final rejection = group == null && excluded == null
+        ? _postRejection(selected, marks)
+        : null;
+    // The groups that [selected] can be added to as an example.
+    final examples = group == null && excluded == null && rejection == null
+        ? [
+            for (final g in _groups)
+              if (g.matcher.withExample(_tree, selected) case final m?)
+                (group: g, matcher: m),
+          ]
+        : const <({_Group group, PostMatcher matcher})>[];
     return _SelectionSheet(
       selected: selected,
       levels: selectionLevels(_tapped ?? selected),
       onSelect: _select,
       group: group,
       excluded: excluded,
-      rejection: group == null && excluded == null
-          ? _postRejection(selected, marks)
-          : null,
+      rejection: rejection,
       onCancel: () => _select(null),
       onMarkAsPost: () => unawaited(_markAsPost(selected)),
+      addableGroups: [for (final e in examples) e.group.number],
+      onAddToGroup: (number) {
+        final e = examples.firstWhere((e) => e.group.number == number);
+        unawaited(_editGroup(e.group, selected, matcher: e.matcher));
+      },
       onEditGroup: group == null
           ? null
           : () => unawaited(_editGroup(group, selected)),
@@ -509,7 +532,8 @@ class const _StatusFooter({
 /// What the selected element holds and what can be done with it. The
 /// element is a post of [group] if it is not null, a post excluded from a
 /// group if [excluded] is not null, and cannot become a post for the reason
-/// in [rejection] if it is not null.
+/// in [rejection] if it is not null. Otherwise it can become a post of a new
+/// group, or of one of the groups in [addableGroups], by their numbers.
 class const _SelectionSheet({
   required final SemanticTreeNode selected,
   required final _Group? group,
@@ -519,6 +543,8 @@ class const _SelectionSheet({
   required final void Function(SemanticTreeNode node) onSelect,
   required final VoidCallback onCancel,
   required final VoidCallback onMarkAsPost,
+  required final List<int> addableGroups,
+  required final void Function(int groupNumber) onAddToGroup,
   required final VoidCallback? onEditGroup,
   required final VoidCallback? onExclude,
   required final VoidCallback? onRestore,
@@ -594,11 +620,30 @@ class const _SelectionSheet({
               ),
             ] else if (excluded != null)
               FilledButton(onPressed: onRestore, child: const Text('Restore'))
-            else if (rejection == null)
+            else if (rejection == null) ...[
+              if (addableGroups.isNotEmpty) ...[
+                PopupMenuButton<int>(
+                  tooltip: 'Add to group',
+                  onSelected: onAddToGroup,
+                  itemBuilder: (context) => [
+                    for (final number in addableGroups)
+                      PopupMenuItem(
+                        value: number,
+                        child: Text('Group $number'),
+                      ),
+                  ],
+                  child: const Padding(
+                    padding: EdgeInsets.all(spacingSm),
+                    child: Text('Add to group'),
+                  ),
+                ),
+                const Gap(spacingSm),
+              ],
               FilledButton(
                 onPressed: onMarkAsPost,
                 child: const Text('Mark as post'),
               ),
+            ],
           ],
         ),
       ],

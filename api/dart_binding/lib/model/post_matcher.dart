@@ -18,8 +18,8 @@ class PostMatcher {
     this.exclude = const [],
   });
 
-  /// The shape path of the post nodes from the root.
-  List<String> post;
+  /// The chain of steps from the root to the post nodes.
+  List<Step> post;
 
   PostMatcherFields fields;
 
@@ -78,9 +78,7 @@ class PostMatcher {
       }());
 
       return PostMatcher(
-        post: json[r'post'] is Iterable
-            ? (json[r'post'] as Iterable).cast<String>().toList(growable: false)
-            : const [],
+        post: Step.listFromJson(json[r'post']),
         fields: PostMatcherFields.fromJson(json[r'fields'])!,
         exclude: json[r'exclude'] is Iterable
             ? (json[r'exclude'] as Iterable)
