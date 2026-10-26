@@ -2,42 +2,6 @@
   {
     "post": [{ "tag": "div", "cls": ["lb-row", "lb-snap"] }],
     "fields": {
-      "body": [
-        [
-          { "tag": "section", "cls": ["blog-post-excerpt", "lb-rtxt"] },
-          { "tag": "p" }
-        ],
-        [{ "tag": "section", "cls": ["blog-post-excerpt", "lb-rtxt"] }]
-      ],
-      "link": [
-        [
-          { "tag": "div", "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"] },
-          { "tag": "a" }
-        ]
-      ],
-      "pubDate": [
-        [
-          { "tag": "footer", "cls": ["blog-post-meta"] },
-          { "tag": "span" },
-          { "tag": "time" }
-        ]
-      ],
-      "thumbnail": [
-        [
-          {
-            "tag": "img",
-            "cls": ["attachment-large", "size-large", "wp-post-image"]
-          }
-        ],
-        [{ "tag": "img", "cls": ["wp-post-image"] }]
-      ],
-      "title": [[{ "tag": "h2", "cls": ["lb-bold", "blog-post-title"] }]]
-    },
-    "exclude": ["aws.amazon.com/jp/blogs/news/software-factory-1000-prs/"]
-  },
-  {
-    "post": [{ "tag": "div", "cls": ["lb-row", "lb-snap"] }],
-    "fields": {
       "body": [[{ "tag": "section", "cls": ["blog-post-excerpt", "lb-rtxt"] }]],
       "link": [
         [
@@ -60,6 +24,33 @@
           }
         ]
       ],
+      "title": [[{ "tag": "h2", "cls": ["lb-bold", "blog-post-title"] }]]
+    },
+    "exclude": []
+  },
+  {
+    "post": [{ "tag": "div", "cls": ["lb-row", "lb-snap"] }],
+    "fields": {
+      "body": [
+        [
+          { "tag": "section", "cls": ["blog-post-excerpt", "lb-rtxt"] },
+          { "tag": "p" }
+        ]
+      ],
+      "link": [
+        [
+          { "tag": "div", "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"] },
+          { "tag": "a" }
+        ]
+      ],
+      "pubDate": [
+        [
+          { "tag": "footer", "cls": ["blog-post-meta"] },
+          { "tag": "span" },
+          { "tag": "time" }
+        ]
+      ],
+      "thumbnail": [[{ "tag": "img", "cls": ["wp-post-image"] }]],
       "title": [[{ "tag": "h2", "cls": ["lb-bold", "blog-post-title"] }]]
     },
     "exclude": []

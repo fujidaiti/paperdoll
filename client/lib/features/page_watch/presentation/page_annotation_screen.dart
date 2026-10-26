@@ -28,21 +28,19 @@ import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.da
 ///
 /// The page is shown as its content, line by line, except that each post
 /// found so far is shown as a card of the values extracted from it. The user
-/// repeats two
-/// steps: select the area that holds one post, then label the content inside
-/// it as the post's fields on [PostFieldsScreen]. An area is selected by
-/// tapping a line, which selects the narrowest element around it that can be
-/// a post, and
-/// widening the selection to the elements around that one. Areas with the
-/// same tags and classes as the selected post become posts of the same group
-/// automatically, with their fields found in the same elements. Each group
-/// results in one [PostMatcher]. An area that a group does not find can be
-/// added to the group as an example, which widens the group to the areas like
-/// it. A post of a group that is not a post, such as a promotion, can be
-/// excluded by its link.
+/// marks a post by selecting the area that holds it and labeling the content
+/// inside it as the post's fields on [PostFieldsScreen]. An area is selected
+/// by tapping a line, which selects the narrowest element around it that can
+/// be a post, and widening the selection to the elements around that one.
 ///
-/// The page is the one of the unstructured feed [feedId], and the matchers
-/// saved for the feed are shown as the initial groups. Saving replaces them.
+/// The matchers are generated from the posts that the user marked and the
+/// links that the user marked as not posts (see [generateMatchers]), so the
+/// posts that look like a marked one are found automatically. The user never
+/// sees the matchers: a card is either a post that the user marked or one that
+/// was found automatically, and a post that is not one can be marked as such.
+///
+/// The page is the one of the unstructured feed [feedId]. The matchers saved
+/// for the feed are shown as one post for each of them. Saving replaces them.
 class const PageAnnotationScreen({required final int feedId, super.key})
     extends ConsumerWidget {
   @override
@@ -66,37 +64,18 @@ class const PageAnnotationScreen({required final int feedId, super.key})
   }
 }
 
-/// Posts of one kind, defined by [matcher].
-class _Group {
-  new({required this.number, required this.matcher});
-
-  /// A stable label that also picks the group's color.
-  final int number;
-  PostMatcher matcher;
-
-  Color get color => _groupColors[(number - 1) % _groupColors.length];
-}
-
-const _groupColors = [
-  Color(0xFF1565C0),
-  Color(0xFF2E7D32),
-  Color(0xFFEF6C00),
-  Color(0xFF6A1B9A),
-  Color(0xFFC62828),
-  Color(0xFF00838F),
-];
-
 /// Whether [node] or the content inside it has a link to a page.
 bool _hasLink(SemanticTreeNode node) =>
     node.pageLink != null || node.children.any(_hasLink);
 
-/// The posts of all groups in the tree, and the excluded ones with the
-/// pattern that excludes them, by node id.
+/// The posts that the matchers find in the tree, by node id, with the
+/// matcher that finds each, and the excluded ones, by node id, with the host
+/// and path that excludes them.
 class _Marks {
-  final posts = <int, _Group>{};
-  final excluded = <int, ({_Group group, String pattern})>{};
+  final posts = <int, PostMatcher>{};
+  final excluded = <int, String>{};
 
-  /// The post of a group that contains [node], if any.
+  /// The post that contains [node], if any.
   SemanticTreeNode? postOf(SemanticTreeNode node) {
     for (SemanticTreeNode? n = node; n != null; n = n.parent) {
       if (posts.containsKey(n.id)) {
@@ -127,12 +106,38 @@ class const _Annotator({
 }
 
 class _AnnotatorState extends ConsumerState<_Annotator> {
-  late final _groups = [
-    for (final (i, matcher) in widget.matchers.indexed)
-      _Group(number: i + 1, matcher: matcher),
-  ];
-  late var _nextGroupNumber = _groups.length + 1;
+  /// The posts that the user marked, by node id.
+  late final _labeled = {
+    for (final p in sampleLabeledPosts(widget.tree, widget.matchers))
+      p.node.id: p,
+  };
+
+  /// The host and path of the links that the user marked as not posts.
+  late final _excluded = {for (final m in widget.matchers) ...m.exclude};
+
+  late List<PostMatcher> _matchers;
+  late _Marks _marks;
   var _saving = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _update();
+  }
+
+  /// Generates the matchers again after the marks changed.
+  void _update() {
+    _matchers = generateMatchers(_tree, _labeled.values, _excluded);
+    _marks = _Marks();
+    for (final matcher in _matchers) {
+      for (final post in matcher.matchPosts(_tree)) {
+        _marks.posts.putIfAbsent(post.id, () => matcher);
+      }
+      for (final post in matcher.matchExcluded(_tree)) {
+        _marks.excluded[post.id] = matcher.excludedBy(post)!;
+      }
+    }
+  }
 
   /// The element shown on the selection sheet, while the sheet is open.
   SemanticTreeNode? _selected;
@@ -166,147 +171,73 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     return null;
   }
 
-  _Marks _computeMarks() {
-    final marks = _Marks();
-    for (final group in _groups) {
-      for (final post in group.matcher.matchPosts(_tree)) {
-        marks.posts[post.id] = group;
-      }
-      for (final post in group.matcher.matchExcluded(_tree)) {
-        marks.excluded[post.id] = (
-          group: group,
-          pattern: group.matcher.excludedBy(post)!,
-        );
-      }
-    }
-    return marks;
-  }
-
   /// Why [node] cannot become a post, or null if it can.
   ///
-  /// Only [node] itself is checked. Other nodes that its group would select
-  /// can be posts of another group, since the labeled fields decide which of
+  /// Only [node] itself is checked. Other nodes that its matcher would select
+  /// can be posts of another matcher, since the labeled fields decide which of
   /// them are posts, such as cards whose title is in a different element.
-  String? _postRejection(SemanticTreeNode node, _Marks marks) {
-    for (final MapEntry(key: id, value: group) in marks.posts.entries) {
+  String? _postRejection(SemanticTreeNode node) {
+    for (final id in _marks.posts.keys) {
       if (_tree.nodes[id].overlaps(node)) {
-        return 'This overlaps with the posts of group ${group.number}.';
+        return 'This overlaps with a post.';
       }
     }
     return null;
   }
 
-  /// Opens the screen that labels the fields of [post], and returns the
-  /// updated matcher, or null if the user left without finishing.
-  Future<PostMatcher?> _labelFields({
-    required PostMatcher matcher,
-    required SemanticTreeNode post,
-    required int groupNumber,
-  }) => context.pushNamed<PostMatcher>(
-    routePostFieldsName,
-    pathParameters: GoRouterState.of(context).pathParameters,
-    extra: (
-      tree: _tree,
-      matcher: matcher,
-      post: post,
-      groupNumber: groupNumber,
-    ),
-  );
+  /// The nodes that [matcher] labels as the fields of [post].
+  PostFields _fieldsOf(PostMatcher matcher, SemanticTreeNode post) => {
+    for (final field in PostField.values)
+      field: ?matcher.matchField(post, field),
+  };
 
-  Future<void> _markAsPost(SemanticTreeNode node) async {
-    final number = _nextGroupNumber;
-    final matcher = await _labelFields(
-      matcher: PostMatcher.fromNode(_tree, node).withEvidentFields(_tree, node),
-      post: node,
-      groupNumber: number,
+  /// Opens the screen that labels the fields of [post], and marks [post] as a
+  /// post with them, or does nothing if the user left without finishing.
+  Future<void> _markAsPost(SemanticTreeNode post, PostFields fields) async {
+    final labeled = await context.pushNamed<PostFields>(
+      routePostFieldsName,
+      pathParameters: GoRouterState.of(context).pathParameters,
+      extra: (post: post, fields: fields),
     );
-    if (matcher == null || !mounted) {
+    if (labeled == null || !mounted) {
       return;
     }
     setState(() {
-      _nextGroupNumber++;
-      _groups.add(_Group(number: number, matcher: matcher));
+      _labeled[post.id] = (node: post, fields: labeled);
+      _excluded.remove(hostPathOf(labeled[PostField.link]!.link!));
+      _update();
       _selected = null;
     });
   }
 
-  /// Labels the fields of [post] in [group]. [matcher] is the matcher of
-  /// [group] by default, or the matcher widened to find [post] when [post]
-  /// is added to [group] as an example.
-  Future<void> _editGroup(
-    _Group group,
-    SemanticTreeNode post, {
-    PostMatcher? matcher,
-  }) async {
-    final edited = await _labelFields(
-      matcher: matcher ?? group.matcher,
-      post: post,
-      groupNumber: group.number,
+  /// Marks the link of [post] as not a post, which also unmarks the posts that
+  /// the user marked with the same host and path.
+  void _markAsNotPost(SemanticTreeNode post) {
+    final hostPath = hostPathOf(
+      _marks.posts[post.id]!.matchField(post, PostField.link)!.link!,
     );
-    if (edited == null || !mounted) {
-      return;
-    }
     setState(() {
-      group.matcher = edited;
-      _selected = null;
-    });
-  }
-
-  /// Excludes the link of [post] from [group]. The user confirms it first
-  /// when it also excludes other posts of the group, whose links have the
-  /// same host and path.
-  Future<void> _exclude(_Group group, SemanticTreeNode post) async {
-    final link = group.matcher.matchField(post, PostField.link)!.link!;
-    final matcher = group.matcher.withExcluded(_tree, link);
-    final others = group.matcher
-        .matchPosts(_tree)
-        .where(
-          (p) =>
-              matcher.excludedBy(p) != null &&
-              group.matcher.matchField(p, PostField.link)!.link != link,
-        )
-        .length;
-    if (others > 0) {
-      final confirmed = await showDialog<bool>(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Exclude $others more post(s)?'),
-          content: Text(
-            'The links of $others other post(s) of group ${group.number} '
-            'have the same host and path, so they are excluded too.',
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context, false),
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, true),
-              child: const Text('Exclude'),
-            ),
-          ],
-        ),
+      _excluded.add(hostPath);
+      _labeled.removeWhere(
+        (_, p) => hostPathOf(p.fields[PostField.link]!.link!) == hostPath,
       );
-      if (!(confirmed ?? false) || !mounted) {
-        return;
-      }
-    }
-    setState(() {
-      group.matcher = matcher;
+      _update();
       _selected = null;
     });
   }
 
-  void _restore(_Group group, String pattern) {
+  void _restore(String hostPath) {
     setState(() {
-      group.matcher = group.matcher.withoutExcluded(pattern);
+      _excluded.remove(hostPath);
+      _update();
       _selected = null;
     });
   }
 
-  void _removeGroup(_Group group) {
+  void _clearMark(SemanticTreeNode post) {
     setState(() {
-      _groups.remove(group);
+      _labeled.remove(post.id);
+      _update();
       _selected = null;
     });
   }
@@ -316,9 +247,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     final router = GoRouter.of(context);
     setState(() => _saving = true);
     try {
-      await ref.read(matcherRepositoryProvider).save(widget.feedId, [
-        for (final g in _groups) g.matcher,
-      ]);
+      await ref.read(matcherRepositoryProvider).save(widget.feedId, _matchers);
       ref.invalidate(feedMatchersProvider(widget.feedId));
       messenger.showSnackBar(
         const SnackBar(
@@ -348,7 +277,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
           maxChildSize: 0.95,
           builder: (context, controller) => _Preview(
             tree: _tree,
-            groups: _groups,
+            matchers: _matchers,
             scrollController: controller,
           ),
         ),
@@ -358,7 +287,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
 
   @override
   Widget build(BuildContext context) {
-    final marks = _computeMarks();
+    final marks = _marks;
     final selected = _selected;
     // The lines of a post are replaced by its card. They are next to each
     // other, since the lines are in document order.
@@ -388,7 +317,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
         actions: [
           TextButton(
             key: AppDebugKey.saveMatchersButton,
-            onPressed: _groups.isEmpty || _saving
+            onPressed: _matchers.isEmpty || _saving
                 ? null
                 : () => unawaited(_save()),
             child: const Text('Save'),
@@ -403,16 +332,15 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
               itemCount: items.length,
               itemBuilder: (context, index) {
                 final line = items[index];
-                if (marks.posts[line.id] case final group?) {
+                if (marks.posts[line.id] case final matcher?) {
                   return _PostCard(
                     key: ValueKey(line.id),
                     values: {
                       for (final field in PostField.values)
-                        if (group.matcher.matchField(line, field)
-                            case final node?)
+                        if (matcher.matchField(line, field) case final node?)
                           field: ?field.valueOf(node),
                     },
-                    group: group,
+                    isMarked: _labeled.containsKey(line.id),
                     isSelected: selected?.contains(line) ?? false,
                     onTap: () => _select(line, tapped: line),
                   );
@@ -435,10 +363,9 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
             ),
           ),
           if (selected != null)
-            SelectionSheet(child: _buildSheet(selected, marks))
-          else if (_groups.isNotEmpty)
+            SelectionSheet(child: _buildSheet(selected))
+          else if (_matchers.isNotEmpty)
             _StatusFooter(
-              groupCount: _groups.length,
               postCount: marks.posts.length,
               onPreview: _showPreview,
             ),
@@ -447,52 +374,40 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     );
   }
 
-  Widget _buildSheet(SemanticTreeNode selected, _Marks marks) {
-    final group = marks.posts[selected.id];
-    final excluded = marks.excluded[selected.id];
-    final rejection = group == null && excluded == null
-        ? _postRejection(selected, marks)
+  Widget _buildSheet(SemanticTreeNode selected) {
+    final matcher = _marks.posts[selected.id];
+    final excluded = _marks.excluded[selected.id];
+    final rejection = matcher == null && excluded == null
+        ? _postRejection(selected)
         : null;
-    // The groups that [selected] can be added to as an example.
-    final examples = group == null && excluded == null && rejection == null
-        ? [
-            for (final g in _groups)
-              if (g.matcher.withExample(_tree, selected) case final m?)
-                (group: g, matcher: m),
-          ]
-        : const <({_Group group, PostMatcher matcher})>[];
     return _SelectionSheet(
       selected: selected,
       levels: selectionLevels(_tapped ?? selected),
       onSelect: _select,
-      group: group,
-      excluded: excluded,
+      isPost: matcher != null,
+      isMarked: _labeled.containsKey(selected.id),
+      isExcluded: excluded != null,
       rejection: rejection,
       onCancel: () => _select(null),
-      onMarkAsPost: () => unawaited(_markAsPost(selected)),
-      addableGroups: [for (final e in examples) e.group.number],
-      onAddToGroup: (number) {
-        final e = examples.firstWhere((e) => e.group.number == number);
-        unawaited(_editGroup(e.group, selected, matcher: e.matcher));
-      },
-      onEditGroup: group == null
+      onMarkAsPost: () =>
+          unawaited(_markAsPost(selected, evidentFields(selected))),
+      onEditFields: matcher == null
           ? null
-          : () => unawaited(_editGroup(group, selected)),
-      onExclude: group == null
-          ? null
-          : () => unawaited(_exclude(group, selected)),
-      onRestore: excluded == null
-          ? null
-          : () => _restore(excluded.group, excluded.pattern),
-      onRemoveGroup: group == null ? null : () => _removeGroup(group),
+          : () => unawaited(
+              _markAsPost(
+                selected,
+                _labeled[selected.id]?.fields ?? _fieldsOf(matcher, selected),
+              ),
+            ),
+      onNotPost: matcher == null ? null : () => _markAsNotPost(selected),
+      onClearMark: () => _clearMark(selected),
+      onRestore: excluded == null ? null : () => _restore(excluded),
     );
   }
 }
 
-/// How many groups and posts the page has so far, with a button to preview
-/// the posts.
+/// How many posts the page has so far, with a button to preview them.
 class const _StatusFooter({
-  required final int groupCount,
   required final int postCount,
   required final VoidCallback onPreview,
 }) extends StatelessWidget {
@@ -511,11 +426,7 @@ class const _StatusFooter({
             ),
             child: Row(
               children: [
-                Expanded(
-                  child: CaptionText(
-                    '$groupCount group(s), $postCount post(s) found.',
-                  ),
-                ),
+                Expanded(child: CaptionText('$postCount post(s) found.')),
                 TextButton(
                   onPressed: onPreview,
                   child: const Text('Preview posts'),
@@ -529,31 +440,28 @@ class const _StatusFooter({
   }
 }
 
-/// What the selected element holds and what can be done with it. The
-/// element is a post of [group] if it is not null, a post excluded from a
-/// group if [excluded] is not null, and cannot become a post for the reason
-/// in [rejection] if it is not null. Otherwise it can become a post of a new
-/// group, or of one of the groups in [addableGroups], by their numbers.
+/// What the selected element holds and what can be done with it. The element
+/// is a post if [isPost] is true, and one that the user marked if [isMarked]
+/// is true. It is a post that the user marked as not one if [isExcluded] is
+/// true, and cannot become a post for the reason in [rejection] if it is not
+/// null. Otherwise it can be marked as a post.
 class const _SelectionSheet({
   required final SemanticTreeNode selected,
-  required final _Group? group,
-  required final ({_Group group, String pattern})? excluded,
+  required final bool isPost,
+  required final bool isMarked,
+  required final bool isExcluded,
   required final String? rejection,
   required final List<SemanticTreeNode> levels,
   required final void Function(SemanticTreeNode node) onSelect,
   required final VoidCallback onCancel,
   required final VoidCallback onMarkAsPost,
-  required final List<int> addableGroups,
-  required final void Function(int groupNumber) onAddToGroup,
-  required final VoidCallback? onEditGroup,
-  required final VoidCallback? onExclude,
+  required final VoidCallback? onEditFields,
+  required final VoidCallback? onNotPost,
+  required final VoidCallback onClearMark,
   required final VoidCallback? onRestore,
-  required final VoidCallback? onRemoveGroup,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final group = this.group;
-    final excluded = this.excluded;
     final rejection = this.rejection;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -576,7 +484,7 @@ class const _SelectionSheet({
           ],
         ),
         // A post is selected as a whole.
-        if (group == null && excluded == null)
+        if (!isPost && !isExcluded)
           SelectionSlider(
             selected: selected,
             levels: levels,
@@ -587,63 +495,41 @@ class const _SelectionSheet({
           CaptionText(rejection),
           const Gap(spacingSm),
         ],
-        if (excluded != null) ...[
-          CaptionText(
-            'Excluded from group ${excluded.group.number} by '
-            '${excluded.pattern}.',
-          ),
+        if (isExcluded) ...[
+          const CaptionText('Marked as not a post.'),
           const Gap(spacingSm),
         ],
         Row(
           children: [
             const Spacer(),
-            if (group != null) ...[
+            if (isPost) ...[
               // Actions that are used rarely are kept in a menu, since the
               // row is too narrow for all of them.
-              PopupMenuButton<VoidCallback>(
-                icon: const Icon(Icons.more_vert),
-                tooltip: 'More',
-                onSelected: (action) => action(),
-                itemBuilder: (context) => [
-                  if (onRemoveGroup case final onRemoveGroup?)
+              if (isMarked)
+                PopupMenuButton<VoidCallback>(
+                  icon: const Icon(Icons.more_vert),
+                  tooltip: 'More',
+                  onSelected: (action) => action(),
+                  itemBuilder: (context) => [
                     PopupMenuItem(
-                      value: onRemoveGroup,
-                      child: const Text('Remove group'),
+                      value: onClearMark,
+                      child: const Text('Clear mark'),
                     ),
-                ],
-              ),
-              TextButton(onPressed: onExclude, child: const Text('Exclude')),
+                  ],
+                ),
+              TextButton(onPressed: onNotPost, child: const Text('Not a post')),
               const Gap(spacingSm),
               FilledButton(
-                onPressed: onEditGroup,
+                onPressed: onEditFields,
                 child: const Text('Edit fields'),
               ),
-            ] else if (excluded != null)
+            ] else if (isExcluded)
               FilledButton(onPressed: onRestore, child: const Text('Restore'))
-            else if (rejection == null) ...[
-              if (addableGroups.isNotEmpty) ...[
-                PopupMenuButton<int>(
-                  tooltip: 'Add to group',
-                  onSelected: onAddToGroup,
-                  itemBuilder: (context) => [
-                    for (final number in addableGroups)
-                      PopupMenuItem(
-                        value: number,
-                        child: Text('Group $number'),
-                      ),
-                  ],
-                  child: const Padding(
-                    padding: EdgeInsets.all(spacingSm),
-                    child: Text('Add to group'),
-                  ),
-                ),
-                const Gap(spacingSm),
-              ],
+            else if (rejection == null)
               FilledButton(
                 onPressed: onMarkAsPost,
                 child: const Text('Mark as post'),
               ),
-            ],
           ],
         ),
       ],
@@ -651,15 +537,15 @@ class const _SelectionSheet({
   }
 }
 
-/// A post found by [group], shown as a card of the field [values] extracted
-/// from it, so that the user can check them without reading the content of
-/// the post. The fields without a value are left out, and the card has the
-/// color of the group.
+/// A post, shown as a card of the field [values] extracted from it, so that
+/// the user can check them without reading the content of the post. The
+/// fields without a value are left out. The card of a post that the user
+/// marked has a thicker border than one found automatically.
 ///
 /// A long press opens the link of the post in the in-app browser.
 class const _PostCard({
   required final Map<PostField, String> values,
-  required final _Group group,
+  final bool isMarked = false,
   final bool isSelected = false,
   final VoidCallback? onTap,
   super.key,
@@ -683,12 +569,12 @@ class const _PostCard({
       child: Material(
         color: isSelected
             ? colorText.withValues(alpha: 0.08)
-            : group.color.withValues(alpha: 0.06),
+            : colorAccent.withValues(alpha: 0.06),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(spacingSm),
           side: BorderSide(
-            color: isSelected ? colorText : group.color,
-            width: isSelected ? 2 : 1,
+            color: isSelected ? colorText : colorAccent,
+            width: isSelected || isMarked ? 2 : 1,
           ),
         ),
         clipBehavior: Clip.antiAlias,
@@ -804,12 +690,12 @@ class const _Thumbnail({required final String url, required final double size})
 /// The posts extracted with the current matchers, merged by link.
 class const _Preview({
   required final SemanticTree tree,
-  required final List<_Group> groups,
+  required final List<PostMatcher> matchers,
   required final ScrollController scrollController,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final posts = extractPosts(tree, [for (final g in groups) g.matcher]);
+    final posts = extractPosts(tree, matchers);
     return ListView(
       controller: scrollController,
       // The cards have their own side padding.
@@ -817,30 +703,10 @@ class const _Preview({
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: spacingMd),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeadingText('${posts.length} post(s)'),
-              for (final group in groups)
-                if (group.matcher.exclude.isNotEmpty)
-                  Row(
-                    children: [
-                      GroupDot(color: group.color),
-                      const Gap(spacingSm),
-                      Expanded(
-                        child: CaptionText(
-                          'Group ${group.number} excludes '
-                          '${group.matcher.exclude.join(', ')}',
-                        ),
-                      ),
-                    ],
-                  ),
-            ],
-          ),
+          child: HeadingText('${posts.length} post(s)'),
         ),
         const Gap(spacingSm),
-        for (final post in posts)
-          _PostCard(values: post.values, group: groups[post.matcher]),
+        for (final post in posts) _PostCard(values: post.values),
       ],
     );
   }

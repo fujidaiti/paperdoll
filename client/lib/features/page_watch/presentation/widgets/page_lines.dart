@@ -235,18 +235,6 @@ class const _Content({required final SemanticTreeNode node})
   }
 }
 
-class const GroupDot({required final Color color, super.key})
-    extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 12,
-      height: 12,
-      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-    );
-  }
-}
-
 /// The color of the tint over the content labeled as [field].
 Color fieldColor(PostField field) => switch (field) {
   PostField.title => const Color(0xFF1565C0),
@@ -257,7 +245,7 @@ Color fieldColor(PostField field) => switch (field) {
 };
 
 /// The tint of the selection. It is gray so that it differs from the colors
-/// of groups and fields.
+/// of fields.
 PageArea selectionArea(SemanticTreeNode node, {bool linkOnly = false}) =>
     (node: node, color: colorText, linkOnly: linkOnly);
 

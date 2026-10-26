@@ -130,8 +130,9 @@ SemanticTreeNode? _resolveChain(
   children: false,
 ).where(field.accepts).firstOrNull;
 
-/// The host and path of [link], which exclude patterns match.
-String _hostPath(String link) {
+/// The host and path of [link], which exclude patterns match and by which
+/// the user excludes a link.
+String hostPathOf(String link) {
   final uri = Uri.parse(link);
   return '${uri.host}${uri.path}';
 }
@@ -156,26 +157,6 @@ bool _globMatches(String pattern, String hostPath) {
   }
   re.write(r'$');
   return RegExp(re.toString()).hasMatch(hostPath);
-}
-
-/// The pattern that matches both [pattern] and [hostPath], made by turning
-/// the segments that differ into `*`, or null when there is none. Only a
-/// pattern that the client generates can be merged: a host followed by
-/// segments that are either `*` or literal.
-String? _mergePattern(String pattern, String hostPath) {
-  final a = pattern.split('/');
-  final b = hostPath.split('/');
-  if (pattern.contains('**') ||
-      pattern.contains('?') ||
-      a.any((s) => s != '*' && s.contains('*')) ||
-      a.length != b.length ||
-      a.first != b.first) {
-    return null;
-  }
-  return [
-    for (var i = 0; i < a.length; i++)
-      if (a[i] == b[i]) a[i] else '*',
-  ].join('/');
 }
 
 /// A rule that finds the posts of one kind in a page and extracts their
@@ -281,7 +262,7 @@ class PostMatcher {
     if (link == null) {
       return null;
     }
-    final hostPath = _hostPath(link);
+    final hostPath = hostPathOf(link);
     for (final pattern in exclude) {
       if (_globMatches(pattern, hostPath)) {
         return pattern;
@@ -304,42 +285,32 @@ class PostMatcher {
     return null;
   }
 
-  /// Maps [field] to [valueNode] inside [postNode], or removes the mapping
-  /// when [valueNode] is null.
+  /// Maps [field] to [valueNode] inside [postNode].
   ///
   /// The chain that selects [valueNode] is added after the other chains of
   /// [field] when they find nothing in [postNode], and before them when they
-  /// find another node, so that the other posts of the group keep the nodes
-  /// that they find. Removing a mapping removes the chains that find the
-  /// node of [field] in [postNode].
-  PostMatcher withField(
+  /// find another node, so that the posts that the other chains serve keep the
+  /// nodes that they find. Nothing changes when no chain finds [valueNode].
+  PostMatcher _withField(
     SemanticTree tree,
     PostField field,
     SemanticTreeNode postNode,
-    SemanticTreeNode? valueNode,
+    SemanticTreeNode valueNode,
   ) {
     final chains = fields[field] ?? const <List<Step>>[];
     final current = matchField(postNode, field);
-    final List<List<Step>> updated;
-    if (valueNode == null) {
-      updated = [
-        for (final c in chains)
-          if (!identical(_resolveChain(postNode, field, c), current)) c,
-      ];
-    } else if (identical(current, valueNode)) {
+    if (identical(current, valueNode)) {
       return this;
-    } else if (_fieldChain(tree, field, postNode, valueNode)
-        case final chain?) {
-      updated = current == null ? [...chains, chain] : [chain, ...chains];
-    } else {
+    }
+    final chain = _fieldChain(tree, field, postNode, valueNode);
+    if (chain == null) {
       return this;
     }
     return PostMatcher(
       post: post,
       fields: {
-        for (final MapEntry(:key, :value) in fields.entries)
-          if (key != field) key: value,
-        if (updated.isNotEmpty) field: updated,
+        ...fields,
+        field: current == null ? [...chains, chain] : [chain, ...chains],
       },
       exclude: exclude,
     );
@@ -390,165 +361,6 @@ class PostMatcher {
     }
   }
 
-  /// This matcher widened to find [postNode] too: each step of [post] keeps
-  /// only the classes that it shares with [postNode], or with the ancestor of
-  /// [postNode] at its level. Null when [postNode] or such an ancestor has
-  /// another tag.
-  PostMatcher? withExample(SemanticTree tree, SemanticTreeNode postNode) {
-    final chain = [...post];
-    SemanticTreeNode? n = postNode;
-    for (var i = chain.length - 1; i >= 0; i--) {
-      if (i < chain.length - 1) {
-        n = n?.parent;
-      }
-      if (n == null || n.tag != chain[i].tag) {
-        return null;
-      }
-      final shared = Step.of(tree, n).cls;
-      chain[i] = Step(
-        tag: chain[i].tag,
-        cls: [
-          for (final c in chain[i].cls)
-            if (shared.contains(c)) c,
-        ],
-        nth: chain[i].nth,
-      );
-    }
-    return PostMatcher(post: chain, fields: fields, exclude: exclude);
-  }
-
-  /// Labels the fields that are evident in [postNode]: the only link or time,
-  /// the only image at the shallowest level as the thumbnail, and the only
-  /// heading of the highest level as the title. Without headings, the title
-  /// is the only text, such as the text of a post that is a single link.
-  /// Without such a heading or text, a text labeled as the link is also the
-  /// title, such as the title link of a card with other texts.
-  ///
-  /// The body is the only paragraph, which is a plain text long enough not to
-  /// be a title or metadata such as an author. A container with two or more
-  /// paragraphs stands for them, unless it is the post node or holds other
-  /// fields, since a body cannot contain other fields.
-  ///
-  /// Nodes that link to the same URL count as one link, such as a card and a
-  /// title in it. Of those, the post node itself is labeled, or else the one
-  /// with text. A title with a link of its own provides the link of the post,
-  /// even when there are other links.
-  PostMatcher withEvidentFields(SemanticTree tree, SemanticTreeNode postNode) {
-    final nodes = <SemanticTreeNode>[];
-    void collect(SemanticTreeNode n) {
-      nodes.add(n);
-      n.children.forEach(collect);
-    }
-
-    collect(postNode);
-    SemanticTreeNode? only(Iterable<SemanticTreeNode> matches) =>
-        matches.length == 1 ? matches.first : null;
-    var matcher = this;
-    void label(PostField field, SemanticTreeNode? node) {
-      if (node != null && field.accepts(node)) {
-        matcher = matcher.withField(tree, field, postNode, node);
-      }
-    }
-
-    final links = nodes.where((n) => n.pageLink != null);
-    if (links.map((n) => n.link).toSet().length == 1) {
-      label(
-        PostField.link,
-        links.where((n) => identical(n, postNode)).firstOrNull ??
-            links.where((n) => n.textContent.isNotEmpty).firstOrNull ??
-            links.first,
-      );
-    }
-    final images = nodes.where((n) => n.isImage).toList();
-    if (images.isNotEmpty) {
-      final top = images.map((n) => n.depth).reduce((a, b) => a < b ? a : b);
-      label(PostField.thumbnail, only(images.where((n) => n.depth == top)));
-    }
-    label(PostField.pubDate, only(nodes.where((n) => n.isTime)));
-    final headings = nodes
-        .where((n) => n.isValue && n.headingLevel != null)
-        .toList();
-    SemanticTreeNode? title;
-    if (headings.isEmpty) {
-      title = only(nodes.where(PostField.title.accepts));
-    } else {
-      final top = headings
-          .map((n) => n.headingLevel!)
-          .reduce((a, b) => a < b ? a : b);
-      title = only(headings.where((n) => n.headingLevel == top));
-    }
-    title ??= matcher.matchField(postNode, PostField.link);
-    label(PostField.title, title);
-    if (title?.pageLink case final link?
-        when matcher.matchField(postNode, PostField.link)?.link != link) {
-      label(PostField.link, title);
-    }
-
-    final labeled = [
-      for (final field in matcher.fields.keys)
-        ?matcher.matchField(postNode, field),
-    ];
-    final paragraphs = nodes.where(
-      (n) =>
-          n.isValue &&
-          n.headingLevel == null &&
-          !n.isImage &&
-          !n.isTime &&
-          n.link == null &&
-          (n.val?.length ?? 0) >= 80 &&
-          !labeled.any((l) => identical(l, n)),
-    );
-    final containers = {
-      for (final p in paragraphs)
-        if (!identical(p.parent, postNode) &&
-            paragraphs.where((q) => identical(q.parent, p.parent)).length >=
-                2 &&
-            !labeled.any(p.parent!.contains))
-          p.parent!,
-    };
-    label(
-      PostField.body,
-      only([
-        ...containers,
-        ...paragraphs.where((p) => !containers.contains(p.parent)),
-      ]),
-    );
-    return matcher;
-  }
-
-  /// Adds a pattern that excludes [link]. [link] is merged into a pattern in
-  /// [exclude] when the merged pattern excludes no post of [tree] with
-  /// another link. Otherwise the host and path of [link] are added, which
-  /// also exclude the posts whose links differ from [link] only in the query
-  /// or the fragment.
-  PostMatcher withExcluded(SemanticTree tree, String link) {
-    final hostPath = _hostPath(link);
-    final kept = [
-      for (final p in matchPosts(tree))
-        if (_linkOf(p) case final l? when l != link) _hostPath(l),
-    ];
-    PostMatcher withExclude(List<String> exclude) =>
-        PostMatcher(post: post, fields: fields, exclude: exclude);
-
-    for (final (i, pattern) in exclude.indexed) {
-      if (_mergePattern(pattern, hostPath) case final merged?
-          when !kept.any((l) => _globMatches(merged, l))) {
-        return withExclude([...exclude]..[i] = merged);
-      }
-    }
-    return withExclude([...exclude, hostPath]);
-  }
-
-  /// Removes [pattern] from [exclude], so the posts it excluded come back.
-  PostMatcher withoutExcluded(String pattern) => PostMatcher(
-    post: post,
-    fields: fields,
-    exclude: [
-      for (final p in exclude)
-        if (p != pattern) p,
-    ],
-  );
-
   Map<String, Object?> toJson() => {
     'post': [for (final s in post) s.toJson()],
     'fields': {
@@ -559,6 +371,228 @@ class PostMatcher {
     },
     'exclude': exclude,
   };
+}
+
+/// A post that the user labeled: its node, and the nodes of its fields.
+typedef LabeledPost = ({
+  SemanticTreeNode node,
+  Map<PostField, SemanticTreeNode> fields,
+});
+
+/// This matcher widened to find [node] too: each step of [chain] keeps only the
+/// classes that it shares with [node], or with the ancestor of [node] at its
+/// level. Null when [node] or such an ancestor has another tag.
+List<Step>? _widen(SemanticTree tree, List<Step> chain, SemanticTreeNode node) {
+  final widened = [...chain];
+  SemanticTreeNode? n = node;
+  for (var i = widened.length - 1; i >= 0; i--) {
+    if (i < widened.length - 1) {
+      n = n?.parent;
+    }
+    if (n == null || n.tag != widened[i].tag) {
+      return null;
+    }
+    final shared = Step.of(tree, n).cls;
+    widened[i] = Step(
+      tag: widened[i].tag,
+      cls: [
+        for (final c in widened[i].cls)
+          if (shared.contains(c)) c,
+      ],
+      nth: widened[i].nth,
+    );
+  }
+  return widened;
+}
+
+/// The chain that selects every post of [group]: the one of its first post,
+/// widened to the others. Null when they have different shapes.
+List<Step>? _chainOf(SemanticTree tree, List<LabeledPost> group) {
+  var chain = PostMatcher.fromNode(tree, group.first.node).post;
+  for (final post in group.skip(1)) {
+    final widened = _widen(tree, chain, post.node);
+    if (widened == null) {
+      return null;
+    }
+    chain = widened;
+  }
+  return chain;
+}
+
+/// The matchers that find the [posts] that the user labeled, and none of the
+/// posts whose links the user excluded. [excluded] holds the host and path of
+/// each such link. The matchers depend on the posts and the links, not on the
+/// order in which the user marked them. A link of [excluded] must not be the
+/// link of a post.
+///
+/// The posts are grouped by their shapes, in document order: a post joins the
+/// first group whose chain it can widen (see [_widen]), and otherwise starts a
+/// new group. Each group results in one matcher, whose fields find the nodes
+/// that the user labeled in each of its posts. A post that its group does not
+/// find with its fields, such as one whose fields an earlier post's chains
+/// find in other nodes, is moved to a group of its own.
+List<PostMatcher> generateMatchers(
+  SemanticTree tree,
+  Iterable<LabeledPost> posts,
+  Set<String> excluded,
+) {
+  final exclude = excluded.toList()..sort();
+  final groups = <List<LabeledPost>>[];
+  for (final post in [
+    ...posts,
+  ]..sort((a, b) => a.node.id.compareTo(b.node.id))) {
+    final group = groups
+        .where((g) => _chainOf(tree, [...g, post]) != null)
+        .firstOrNull;
+    if (group == null) {
+      groups.add([post]);
+    } else {
+      group.add(post);
+    }
+  }
+
+  final matchers = <PostMatcher>[];
+  for (var i = 0; i < groups.length; i++) {
+    final group = groups[i];
+    var matcher = PostMatcher(post: _chainOf(tree, group)!, exclude: exclude);
+    for (final post in group) {
+      for (final MapEntry(:key, :value) in post.fields.entries) {
+        matcher = matcher._withField(tree, key, post.node, value);
+      }
+    }
+    final found = matcher.matchPosts(tree);
+    final isFound = group.every(
+      (p) =>
+          found.any((n) => identical(n, p.node)) &&
+          p.fields.entries.every(
+            (f) => identical(matcher.matchField(p.node, f.key), f.value),
+          ),
+    );
+    if (group.length > 1 && !isFound) {
+      groups.add([group.removeLast()]);
+      i--;
+    } else {
+      matchers.add(matcher);
+    }
+  }
+  return matchers;
+}
+
+/// One post for each of [matchers] that finds one in [tree], with the nodes
+/// of its fields, so that the user can see what each matcher finds.
+List<LabeledPost> sampleLabeledPosts(
+  SemanticTree tree,
+  List<PostMatcher> matchers,
+) {
+  final samples = <LabeledPost>[];
+  for (final matcher in matchers) {
+    final node = matcher.matchPosts(tree).firstOrNull;
+    if (node != null && !samples.any((s) => identical(s.node, node))) {
+      samples.add((
+        node: node,
+        fields: {
+          for (final field in matcher.fields.keys)
+            field: ?matcher.matchField(node, field),
+        },
+      ));
+    }
+  }
+  return samples;
+}
+
+/// The fields that are evident in [postNode]: the only link or time, the only
+/// image at the shallowest level as the thumbnail, and the only heading of the
+/// highest level as the title. Without headings, the title is the only text,
+/// such as the text of a post that is a single link. Without such a heading or
+/// text, a text labeled as the link is also the title, such as the title link
+/// of a card with other texts.
+///
+/// The body is the only paragraph, which is a plain text long enough not to be
+/// a title or metadata such as an author. A container with two or more
+/// paragraphs stands for them, unless it is the post node or holds other
+/// fields, since a body cannot contain other fields.
+///
+/// Nodes that link to the same URL count as one link, such as a card and a
+/// title in it. Of those, the post node itself is labeled, or else the one
+/// with text. A title with a link of its own provides the link of the post,
+/// even when there are other links.
+Map<PostField, SemanticTreeNode> evidentFields(SemanticTreeNode postNode) {
+  final nodes = <SemanticTreeNode>[];
+  void collect(SemanticTreeNode n) {
+    nodes.add(n);
+    n.children.forEach(collect);
+  }
+
+  collect(postNode);
+  SemanticTreeNode? only(Iterable<SemanticTreeNode> matches) =>
+      matches.length == 1 ? matches.first : null;
+  final fields = <PostField, SemanticTreeNode>{};
+  void label(PostField field, SemanticTreeNode? node) {
+    if (node != null && field.accepts(node)) {
+      fields[field] = node;
+    }
+  }
+
+  final links = nodes.where((n) => n.pageLink != null);
+  if (links.map((n) => n.link).toSet().length == 1) {
+    label(
+      PostField.link,
+      links.where((n) => identical(n, postNode)).firstOrNull ??
+          links.where((n) => n.textContent.isNotEmpty).firstOrNull ??
+          links.first,
+    );
+  }
+  final images = nodes.where((n) => n.isImage).toList();
+  if (images.isNotEmpty) {
+    final top = images.map((n) => n.depth).reduce((a, b) => a < b ? a : b);
+    label(PostField.thumbnail, only(images.where((n) => n.depth == top)));
+  }
+  label(PostField.pubDate, only(nodes.where((n) => n.isTime)));
+  final headings = nodes
+      .where((n) => n.isValue && n.headingLevel != null)
+      .toList();
+  SemanticTreeNode? title;
+  if (headings.isEmpty) {
+    title = only(nodes.where(PostField.title.accepts));
+  } else {
+    final top = headings
+        .map((n) => n.headingLevel!)
+        .reduce((a, b) => a < b ? a : b);
+    title = only(headings.where((n) => n.headingLevel == top));
+  }
+  title ??= fields[PostField.link];
+  label(PostField.title, title);
+  if (title?.pageLink case final link?
+      when fields[PostField.link]?.link != link) {
+    label(PostField.link, title);
+  }
+
+  final labeled = fields.values.toList();
+  final paragraphs = nodes.where(
+    (n) =>
+        n.isValue &&
+        n.headingLevel == null &&
+        !n.isImage &&
+        !n.isTime &&
+        n.link == null &&
+        (n.val?.length ?? 0) >= 80 &&
+        !labeled.any((l) => identical(l, n)),
+  );
+  final containers = {
+    for (final p in paragraphs)
+      if (!identical(p.parent, postNode) &&
+          paragraphs.where((q) => identical(q.parent, p.parent)).length >= 2 &&
+          !labeled.any(p.parent!.contains))
+        p.parent!,
+  };
+  label(
+    PostField.body,
+    only([
+      ...containers,
+      ...paragraphs.where((p) => !containers.contains(p.parent)),
+    ]),
+  );
+  return fields;
 }
 
 /// A post extracted from a page: its node, the index of the matcher that

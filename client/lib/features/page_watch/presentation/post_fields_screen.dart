@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -12,19 +11,20 @@ import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
 import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
 import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.dart';
 
-/// The arguments of [PostFieldsScreen]: the group of posts to label, and the
-/// post of the group whose content is shown.
+/// The arguments of [PostFieldsScreen]: the post to label, and the nodes that
+/// are labeled as its fields so far.
 typedef PostFieldsArgs = ({
-  SemanticTree tree,
-  PostMatcher matcher,
   SemanticTreeNode post,
-  int groupNumber,
+  Map<PostField, SemanticTreeNode> fields,
 });
 
-/// Lets the user label the content of one post as the post's fields. The
-/// other posts of the group get their fields at the same positions.
+/// The nodes that the user labeled as the fields of a post.
+typedef PostFields = Map<PostField, SemanticTreeNode>;
+
+/// Lets the user label the content of one post as the post's fields. Other
+/// posts like it get their fields at the same positions.
 ///
-/// The screen pops with the updated [PostMatcher] when the user is done, or
+/// The screen pops with the labeled [PostFields] when the user is done, or
 /// with nothing when the user leaves without finishing. Leaving asks first
 /// when there are changes, so that they are not lost by accident.
 ///
@@ -38,7 +38,7 @@ class const PostFieldsScreen({required final PostFieldsArgs args, super.key})
 }
 
 class _PostFieldsScreenState extends State<PostFieldsScreen> {
-  late var _matcher = widget.args.matcher;
+  late var _fields = widget.args.fields;
   late final _lines = layOutLines([_post]);
 
   /// The element shown on the selection sheet, while the sheet is shown.
@@ -55,8 +55,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
 
   SemanticTreeNode get _post => widget.args.post;
 
-  SemanticTreeNode? _fieldNode(PostField field) =>
-      _matcher.matchField(_post, field);
+  SemanticTreeNode? _fieldNode(PostField field) => _fields[field];
 
   /// Whether [field] can be labeled on [node]: a body cannot contain other
   /// fields, and other fields cannot be part of the body.
@@ -89,12 +88,11 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   /// Labels [node] as [field], or removes the label if [node] has it.
   void _toggleField(PostField field, SemanticTreeNode node) {
     setState(() {
-      _matcher = _matcher.withField(
-        widget.args.tree,
-        field,
-        _post,
-        identical(_fieldNode(field), node) ? null : node,
-      );
+      _fields = {
+        for (final MapEntry(:key, :value) in _fields.entries)
+          if (key != field) key: value,
+        if (!identical(_fieldNode(field), node)) field: node,
+      };
       _isLabeling = true;
     });
   }
@@ -168,8 +166,10 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
         selectionArea(selected, linkOnly: identical(selected, _tapped)),
     ];
     final isChanged =
-        jsonEncode(_matcher.toJson()) !=
-        jsonEncode(widget.args.matcher.toJson());
+        _fields.length != widget.args.fields.length ||
+        _fields.entries.any(
+          (e) => !identical(widget.args.fields[e.key], e.value),
+        );
     return PopScope(
       canPop: selected == null && !isChanged,
       onPopInvokedWithResult: (didPop, _) {
@@ -178,9 +178,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Group ${widget.args.groupNumber}: label the fields'),
-        ),
+        appBar: AppBar(title: const Text('Label the fields')),
         body: Column(
           children: [
             Expanded(
@@ -202,9 +200,8 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
               SelectionSheet(child: _buildSheet(selected))
             else
               _StatusFooter(
-                matcher: _matcher,
-                post: _post,
-                onDone: () => context.pop(_matcher),
+                fields: _fields,
+                onDone: () => context.pop(_fields),
               ),
           ],
         ),
@@ -252,14 +249,10 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
               Expanded(child: BodyText(labels.map((f) => f.label).join(', '))),
               TextButton(
                 onPressed: () => setState(() {
-                  for (final field in labels) {
-                    _matcher = _matcher.withField(
-                      widget.args.tree,
-                      field,
-                      _post,
-                      null,
-                    );
-                  }
+                  _fields = {
+                    for (final MapEntry(:key, :value) in _fields.entries)
+                      if (!labels.contains(key)) key: value,
+                  };
                 }),
                 child: const Text('Remove'),
               ),
@@ -298,16 +291,15 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 }
 
-/// Which fields are found in [post] so far, with a button to finish
+/// Which fields are labeled in the post so far, with a button to finish
 /// labeling, which is enabled once the title and the link are found.
 class const _StatusFooter({
-  required final PostMatcher matcher,
-  required final SemanticTreeNode post,
+  required final PostFields fields,
   required final VoidCallback onDone,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    bool isSet(PostField field) => matcher.matchField(post, field) != null;
+    bool isSet(PostField field) => fields.containsKey(field);
     final canFinish = isSet(PostField.title) && isSet(PostField.link);
     return Column(
       mainAxisSize: MainAxisSize.min,

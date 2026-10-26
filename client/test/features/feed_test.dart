@@ -243,9 +243,7 @@ void main() {
     await t('Edit fields').waitUntilVisible();
   });
 
-  patrolWidgetTest('Exclude posts whose links differ only in the query', (
-    t,
-  ) async {
+  patrolWidgetTest('Mark a post as not a post by its link', (t) async {
     final blog = fixture.feeds.exampleBlog;
     final server = _stubFeedSubscription(blog)
       ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
@@ -262,15 +260,19 @@ void main() {
     await t(AppDebugKey.feedDetailMenuButton).tap();
     await t(AppDebugKey.editFeedMenuItem).tap();
     await t(AppDebugKey.editMatchersButton).tap();
-    await t('1 group(s), 3 post(s) found.').waitUntilVisible();
+    await t('3 post(s) found.').waitUntilVisible();
 
-    // The pattern of a newsletter link also excludes the other newsletter,
-    // so the app asks first.
+    // The link of a newsletter is excluded by its host and path, so the other
+    // newsletter, whose link differs only in the query, is excluded too.
     await t('Weekly digest').tap();
-    await t('Exclude').tap();
-    await t('Exclude 1 more post(s)?').waitUntilVisible();
-    await t(AlertDialog).$('Exclude').tap();
-    await t('1 group(s), 1 post(s) found.').waitUntilVisible();
+    await t('Not a post').tap();
+    await t('1 post(s) found.').waitUntilVisible();
+
+    // The excluded posts are shown as such, and can be restored.
+    await t('Weekly digest').tap();
+    await t('Marked as not a post.').waitUntilVisible();
+    await t('Restore').tap();
+    await t('3 post(s) found.').waitUntilVisible();
   });
 
   patrolWidgetTest('Edit a web feed', (t) async {

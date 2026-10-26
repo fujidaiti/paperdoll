@@ -85,10 +85,11 @@ func TestPerfectMatchersGolden(t *testing.T) {
 			readJSON(t, f, &posts)
 			var tree SemanticTree
 			readJSON(t, filepath.Join("testdata/tree", name+".json"), &tree)
-			matchers, err := perfectMatchers(&tree, posts)
+			matchers, marks, err := perfectMatchers(&tree, posts)
 			if err != nil {
 				t.Fatal(err)
 			}
+			t.Logf("%d marks for %d posts", marks, len(posts))
 			checkGolden(t, filepath.Join("testdata/matcher", name+".json"), matchers)
 		})
 	}

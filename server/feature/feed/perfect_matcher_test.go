@@ -6,13 +6,13 @@ import (
 	"maps"
 	"net/url"
 	"slices"
-	"strings"
 )
 
 // This file builds the matchers of a page from its fixture posts in the same
-// way as a user of the client: the user selects a post, labels its fields,
-// and excludes the posts that a group gets wrong. The client's code that each
-// step follows is named in its comment.
+// way as a user of the client: the user marks the first post that the matchers
+// get wrong, as a post with its fields labeled, or as a post to exclude, and
+// the client generates the matchers again from all marks. The client's code
+// that each step follows is named in its comment.
 
 // treeIndex is a SemanticTree with the parent of each node, which the
 // client's SemanticTreeNode has, and the number of nodes with each class.
@@ -157,12 +157,12 @@ func (t *treeIndex) fieldChain(post *SemanticTreeNode, f PostField, n *SemanticT
 	return nil
 }
 
-// withExample returns m widened to find post too, as a user of the client
-// makes it by tapping a post that m does not find: each step keeps only the
-// classes that it shares with post, or with the ancestor of post at its
-// level. It returns nil when post or such an ancestor has another tag.
-func (t *treeIndex) withExample(m PostMatcher, post *SemanticTreeNode) *PostMatcher {
-	chain := slices.Clone(m.Post)
+// widen returns chain widened to find post too, as the client does when it
+// groups posts by their shapes: each step keeps only the classes that it shares
+// with post, or with the ancestor of post at its level. It returns nil when
+// post or such an ancestor has another tag. It follows _widen of the client.
+func (t *treeIndex) widen(chain []Step, post *SemanticTreeNode) []Step {
+	chain = slices.Clone(chain)
 	n := post
 	for i := len(chain) - 1; i >= 0; i-- {
 		if i < len(chain)-1 {
@@ -177,44 +177,116 @@ func (t *treeIndex) withExample(m PostMatcher, post *SemanticTreeNode) *PostMatc
 			func(c string) bool { return !slices.Contains(s.Cls, c) },
 		)
 	}
-	m.Post = chain
-	return &m
+	return chain
 }
 
-// withFields returns m with the chains that resolve the fields of post to the
-// nodes that the user labels for the values in target, or nil when post does
-// not have a labeled title or link of m, or a value of target. A chain is added after
-// the others when no chain resolves the field in post, and before them when
-// one resolves it to another node.
-func (t *treeIndex) withFields(m PostMatcher, post *SemanticTreeNode, target ExtractedPost) *PostMatcher {
-	fields := make(map[PostField][][]Step)
-	for f, chains := range m.Fields {
-		if _, ok := target[f]; !ok && (f == PostTitle || f == PostLink) {
+// chainOf returns the chain that selects every post of group: the one of its
+// first post, widened to the others. It returns nil when they have different
+// shapes. It follows _chainOf of the client.
+func (t *treeIndex) chainOf(group []labeledPost) []Step {
+	chain := t.postChain(group[0].node)
+	for _, p := range group[1:] {
+		if chain = t.widen(chain, p.node); chain == nil {
 			return nil
 		}
-		fields[f] = chains
+	}
+	return chain
+}
+
+// withField returns m with the chain that resolves f from post to n. The chain
+// is added after the others when none resolves f in post, and before them when
+// one resolves it to another node. m is returned as it is when no chain
+// resolves f to n. It follows PostMatcher._withField of the client.
+func (t *treeIndex) withField(m PostMatcher, post *SemanticTreeNode, f PostField, n *SemanticTreeNode) PostMatcher {
+	got := m.resolveField(post, f)
+	if got == n {
+		return m
+	}
+	chain := t.fieldChain(post, f, n)
+	if chain == nil {
+		return m
+	}
+	fields := maps.Clone(m.Fields)
+	if got == nil {
+		fields[f] = append(slices.Clone(fields[f]), chain)
+	} else {
+		fields[f] = append([][]Step{chain}, fields[f]...)
 	}
 	m.Fields = fields
-	for f, v := range target {
-		n := t.fieldNode(post, f, v)
-		if n == nil {
-			return nil
-		}
-		got := m.resolveField(post, f)
-		if got == n {
-			continue
-		}
-		chain := t.fieldChain(post, f, n)
-		if chain == nil {
-			return nil
-		}
-		if got == nil {
-			m.Fields[f] = append(slices.Clone(m.Fields[f]), chain)
+	return m
+}
+
+// labeledPost is a post that the user labeled: its node and the nodes of its
+// fields.
+type labeledPost struct {
+	node   *SemanticTreeNode
+	fields map[PostField]*SemanticTreeNode
+}
+
+// generateMatchers returns the matchers that find the posts that the user
+// labeled, and none of the posts whose links the user excluded, which excluded
+// holds by host and path. The posts are grouped by their shapes in document
+// order, and each group results in one matcher. A post that its group does not
+// find with its fields is moved to a group of its own. It follows
+// generateMatchers of the client.
+func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bool) []PostMatcher {
+	exclude := slices.Sorted(maps.Keys(excluded))
+	if exclude == nil {
+		exclude = []string{}
+	}
+	index := map[*SemanticTreeNode]int{}
+	for i, n := range t.nodes {
+		index[n] = i
+	}
+	posts = slices.Clone(posts)
+	slices.SortFunc(posts, func(a, b labeledPost) int { return index[a.node] - index[b.node] })
+
+	var groups [][]labeledPost
+	for _, p := range posts {
+		i := slices.IndexFunc(groups, func(g []labeledPost) bool {
+			return t.chainOf(append(slices.Clone(g), p)) != nil
+		})
+		if i < 0 {
+			groups = append(groups, []labeledPost{p})
 		} else {
-			m.Fields[f] = append([][]Step{chain}, m.Fields[f]...)
+			groups[i] = append(groups[i], p)
 		}
 	}
-	return &m
+
+	var matchers []PostMatcher
+	for i := 0; i < len(groups); i++ {
+		group := groups[i]
+		m := PostMatcher{
+			Post:    t.chainOf(group),
+			Fields:  make(map[PostField][][]Step),
+			Exclude: slices.Clone(exclude),
+		}
+		for _, p := range group {
+			for _, f := range slices.Sorted(maps.Keys(p.fields)) {
+				m = t.withField(m, p.node, f, p.fields[f])
+			}
+		}
+		found := m.matchPosts(t.tree)
+		isFound := true
+		for _, p := range group {
+			if !slices.Contains(found, p.node) {
+				isFound = false
+			}
+			for f, n := range p.fields {
+				if m.resolveField(p.node, f) != n {
+					isFound = false
+				}
+			}
+		}
+		if len(group) > 1 && !isFound {
+			groups[i] = group[:len(group)-1]
+			groups = append(groups, []labeledPost{group[len(group)-1]})
+			i--
+			continue
+		}
+		matchers = append(matchers, m)
+	}
+	return matchers
 }
 
 // values returns the field values that m extracts from post.
@@ -238,55 +310,6 @@ func hostPath(link string) string {
 	return u.Host + u.Path
 }
 
-// mergePattern returns the pattern that matches both pattern and hostPath,
-// made by turning the segments that differ into "*", or "" when there is
-// none. It follows _mergePattern of the client.
-func mergePattern(pattern, hostPath string) string {
-	a, b := strings.Split(pattern, "/"), strings.Split(hostPath, "/")
-	if strings.Contains(pattern, "**") || strings.Contains(pattern, "?") || len(a) != len(b) || a[0] != b[0] {
-		return ""
-	}
-	merged := make([]string, len(a))
-	for i := range a {
-		if a[i] != "*" && strings.Contains(a[i], "*") {
-			return ""
-		}
-		merged[i] = a[i]
-		if a[i] != b[i] {
-			merged[i] = "*"
-		}
-	}
-	return strings.Join(merged, "/")
-}
-
-// withExcluded returns m with a pattern that excludes link. link is merged
-// into a pattern of m when the merged pattern excludes no post of m with
-// another link. Otherwise the host and path of link are added, which also
-// exclude the posts whose links differ from link only in the query or the
-// fragment. It follows PostMatcher.withExcluded of the client.
-func withExcluded(m PostMatcher, tree *SemanticTree, link string) PostMatcher {
-	hp := hostPath(link)
-	var kept []string
-	for _, p := range m.matchPosts(tree) {
-		if l := values(&m, p)[PostLink]; l != "" && l != link {
-			kept = append(kept, hostPath(l))
-		}
-	}
-	m.Exclude = slices.Clone(m.Exclude)
-	for i, pattern := range m.Exclude {
-		if merged := mergePattern(
-			pattern,
-			hp,
-		); merged != "" &&
-			!slices.ContainsFunc(kept, func(l string) bool { return globMatches(merged, l) }) {
-			m.Exclude[i] = merged
-			return m
-		}
-	}
-	m.Exclude = append(m.Exclude, hp)
-	return m
-}
-
 func equalPosts(a, b ExtractedPost) bool {
 	if len(a) != len(b) {
 		return false
@@ -300,23 +323,24 @@ func equalPosts(a, b ExtractedPost) bool {
 }
 
 // perfectMatchers returns matchers that extract exactly posts from tree, built
-// as a user of the client would build them. Until every post is extracted
-// with its values, the user:
+// as a user of the client would build them, and the number of marks that the
+// user made. The client generates the matchers from the posts that the user
+// marked and the links that the user excluded (see generateMatchers), and the
+// user repeats, until every post is extracted with its values:
 //
-//  1. takes the first post that is not extracted with its values,
-//  2. taps the line of its link and widens the selection until it holds all
-//     values of the post, and edits the group that it is a post of, or adds
-//     it as an example to a group (see withExample), or marks it as a post
-//     of a new group,
-//  3. labels each field of the post that the group does not resolve to the
-//     node of its value (see withFields),
-//  4. excludes the link of each post that a group gets wrong: a post that is
-//     not in posts, or that has a value that differs from the one in posts.
-//     Another group extracts the post with the right values.
+//  1. If a node that the matchers find is wrong, the user marks it. A node
+//     whose link is not in posts is marked as not a post, which excludes the
+//     host and path of its link, and unmarks the posts that the user marked
+//     with them. A node that has a value that differs from the one in posts is
+//     labeled as a post with the nodes of the values.
+//  2. Otherwise, the user takes the first post that is not extracted with its
+//     values, taps the line of its link, widens the selection until it holds
+//     all values of the post, and labels the nodes of the values as its fields.
 //
-// It fails when a step cannot be done, or when the steps come back to the
-// same matchers.
-func perfectMatchers(tree *SemanticTree, posts []ExtractedPost) ([]PostMatcher, error) {
+// In every round, every labeled post must be found and no excluded link must
+// be extracted. It fails when a step cannot be done, when a guarantee does not
+// hold, or when the marks come back to the same state.
+func perfectMatchers(tree *SemanticTree, posts []ExtractedPost) ([]PostMatcher, int, error) {
 	t := newTreeIndex(tree)
 	want := map[string]ExtractedPost{}
 	for _, p := range posts {
@@ -334,40 +358,109 @@ func perfectMatchers(tree *SemanticTree, posts []ExtractedPost) ([]PostMatcher, 
 		}
 		return false
 	}
+	index := map[*SemanticTreeNode]int{}
+	for i, n := range t.nodes {
+		index[n] = i
+	}
 
-	var matchers []PostMatcher
-	// The states of matchers so far. Editing a group can drop posts that
-	// other groups then take, but coming back to a state would never end.
-	seen := map[string]bool{}
-	for {
-		for i := range matchers {
-			m := &matchers[i]
-			for _, n := range m.matchPosts(tree) {
-				v := values(m, n)
-				if m.isExcluded(n) || !isWrong(v) {
-					continue
-				}
-				// The client asks before excluding other posts of the group
-				// too, and the user agrees only when they are also wrong.
-				excluded := withExcluded(*m, tree, v[PostLink])
-				for _, p := range m.matchPosts(tree) {
-					if p != n && excluded.isExcluded(p) && !isWrong(values(m, p)) {
-						return nil, fmt.Errorf(
-							"group %d gets %s wrong, but excluding it also excludes %s",
-							i+1,
-							v[PostLink],
-							values(m, p)[PostLink],
-						)
-					}
-				}
-				*m = excluded
+	labeled := map[*SemanticTreeNode]labeledPost{}
+	excluded := map[string]bool{}
+	// label marks post as a post with the nodes of the values in target.
+	label := func(post *SemanticTreeNode, target ExtractedPost) error {
+		p := labeledPost{node: post, fields: make(map[PostField]*SemanticTreeNode)}
+		for f, v := range target {
+			if p.fields[f] = t.fieldNode(post, f, v); p.fields[f] == nil {
+				return fmt.Errorf("post %s: no node of %s has the value %q", target[PostLink], f, v)
 			}
 		}
+		labeled[post] = p
+		delete(excluded, hostPath(target[PostLink]))
+		return nil
+	}
 
+	marks := 0
+	seen := map[string]bool{}
+	for {
+		var labeledPosts []labeledPost
+		for _, p := range labeled {
+			labeledPosts = append(labeledPosts, p)
+		}
+		matchers := t.generateMatchers(labeledPosts, excluded)
+
+		// The matcher that the user sees a node as found by is the first one.
+		finder := map[*SemanticTreeNode]*PostMatcher{}
+		for i := range matchers {
+			for _, n := range matchers[i].matchPosts(tree) {
+				if finder[n] == nil {
+					finder[n] = &matchers[i]
+				}
+			}
+		}
+		for n := range labeled {
+			if finder[n] == nil {
+				return nil, marks, fmt.Errorf(
+					"the labeled post %s is not found: %v",
+					values(&matchers[0], n)[PostLink],
+					matchers,
+				)
+			}
+		}
 		got := map[string]ExtractedPost{}
 		for _, p := range ExtractPosts(tree, matchers) {
+			if excluded[hostPath(p[PostLink])] {
+				return nil, marks, fmt.Errorf("the excluded link %s is extracted", p[PostLink])
+			}
 			got[p[PostLink]] = p
 		}
+
+		state, err := json.Marshal(matchers)
+		if err != nil {
+			return nil, marks, err
+		}
+		var marked []int
+		for _, p := range labeledPosts {
+			marked = append(marked, index[p.node])
+		}
+		slices.Sort(marked)
+		key := fmt.Sprint(string(state), slices.Sorted(maps.Keys(excluded)), marked)
+		if seen[key] {
+			return nil, marks, fmt.Errorf("the marks come back to the same state, with matchers %s", state)
+		}
+		seen[key] = true
+
+		// A node of a post that has a value that differs from the one in
+		// posts, and that does not hold the values in posts, such as a card of
+		// another title with the link of the post, cannot be labeled. The
+		// user cannot exclude it either, since that also excludes the post.
+		acted := false
+		for _, n := range t.nodes {
+			m := finder[n]
+			if m == nil || !isWrong(values(m, n)) {
+				continue
+			}
+			link := values(m, n)[PostLink]
+			if w, ok := want[link]; ok {
+				if label(n, w) != nil {
+					continue
+				}
+				marks++
+			} else {
+				hp := hostPath(link)
+				excluded[hp] = true
+				for n, p := range labeled {
+					if hostPath(p.fields[PostLink].Link) == hp {
+						delete(labeled, n)
+					}
+				}
+				marks++
+			}
+			acted = true
+			break
+		}
+		if acted {
+			continue
+		}
+
 		var target ExtractedPost
 		for _, p := range posts {
 			if !equalPosts(got[p[PostLink]], p) {
@@ -376,18 +469,9 @@ func perfectMatchers(tree *SemanticTree, posts []ExtractedPost) ([]PostMatcher, 
 			}
 		}
 		if target == nil {
-			break
+			return matchers, marks, nil
 		}
 		link := target[PostLink]
-		state, err := json.Marshal(matchers)
-		if err != nil {
-			return nil, err
-		}
-		if seen[string(state)] {
-			return nil, fmt.Errorf("post %s is extracted as %v, want %v", link, got[link], target)
-		}
-		seen[string(state)] = true
-
 		var start *SemanticTreeNode
 		for _, n := range t.nodes {
 			if PostLink.accepts(n) && n.Link == link {
@@ -396,7 +480,7 @@ func perfectMatchers(tree *SemanticTree, posts []ExtractedPost) ([]PostMatcher, 
 			}
 		}
 		if start == nil {
-			return nil, fmt.Errorf("post %s: no node has the link", link)
+			return nil, marks, fmt.Errorf("post %s: no node has the link", link)
 		}
 		var post *SemanticTreeNode
 		for _, n := range t.selectionLevels(start, nil) {
@@ -413,76 +497,18 @@ func perfectMatchers(tree *SemanticTree, posts []ExtractedPost) ([]PostMatcher, 
 			}
 		}
 		if post == nil {
-			return nil, fmt.Errorf("post %s: no node holds all of its values: %v", link, target)
+			return nil, marks, fmt.Errorf("post %s: no node holds all of its values: %v", link, target)
 		}
-		// A post of a group is edited in that group. The client does not let
-		// a new post overlap a post of a group.
-		var m *PostMatcher
-		for i := range matchers {
-			for _, p := range matchers[i].matchPosts(tree) {
-				switch {
-				case p == post:
-					m = &matchers[i]
-				case t.contains(p, post) || t.contains(post, p):
-					return nil, fmt.Errorf(
-						"post %s overlaps with the post %s of group %d: %v",
-						link,
-						values(&matchers[i], p)[PostLink],
-						i+1,
-						matchers[i],
-					)
-				}
+		// The client does not let a new post overlap a post that it finds.
+		for n, m := range finder {
+			if n != post && (t.contains(n, post) || t.contains(post, n)) {
+				return nil, marks, fmt.Errorf(
+					"post %s overlaps with the post %s: %v", link, values(m, n)[PostLink], m)
 			}
 		}
-		if m != nil {
-			edited := t.withFields(*m, post, target)
-			if edited == nil {
-				return nil, fmt.Errorf("post %s: cannot label its fields in its group: %v", link, target)
-			}
-			*m = *edited
-			continue
-		}
-		// The user adds the post as an example to the first group that then
-		// extracts it with its values, and gets no other post wrong that it
-		// did not get wrong before.
-		score := func(ms []PostMatcher) (right map[string]bool, wrong int) {
-			right = map[string]bool{}
-			for _, p := range ExtractPosts(tree, ms) {
-				if isWrong(p) {
-					wrong++
-				} else {
-					right[p[PostLink]] = true
-				}
-			}
-			return right, wrong
-		}
-		right, wrong := score(matchers)
-		for i := range matchers {
-			widened := t.withExample(matchers[i], post)
-			if widened == nil {
-				continue
-			}
-			if widened = t.withFields(*widened, post, target); widened == nil {
-				continue
-			}
-			trial := slices.Clone(matchers)
-			trial[i] = *widened
-			r, w := score(trial)
-			if w > wrong || !r[link] ||
-				slices.ContainsFunc(slices.Collect(maps.Keys(right)), func(l string) bool { return !r[l] }) {
-				continue
-			}
-			m = &matchers[i]
-			*m = *widened
-			break
-		}
-		if m == nil {
-			created := t.withFields(PostMatcher{Post: t.postChain(post), Exclude: []string{}}, post, target)
-			if created == nil {
-				return nil, fmt.Errorf("post %s: cannot label its fields: %v", link, target)
-			}
-			matchers = append(matchers, *created)
+		marks++
+		if err := label(post, target); err != nil {
+			return nil, marks, err
 		}
 	}
-	return matchers, nil
 }
