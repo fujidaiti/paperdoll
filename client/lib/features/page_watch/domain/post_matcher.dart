@@ -1,11 +1,11 @@
-import 'package:paperdoll/features/page_watch/domain/body_markup.dart';
+import 'package:paperdoll/features/page_watch/domain/body_text.dart';
 import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
 
 /// The attributes of a post that the user can map to nodes of a page.
 enum PostField {
   title('Title'),
 
-  /// The content of the post as marked-up text (see [bodyMarkup]). A body
+  /// The text of the post as one line (see [bodyText]). A body
   /// node cannot contain the nodes of other fields.
   body('Body'),
   link('Link'),
@@ -27,7 +27,7 @@ enum PostField {
           !node.isImage &&
           !node.isTime &&
           (node.val?.isNotEmpty ?? false),
-    body => !node.isImage && !node.isTime && bodyMarkup(node).isNotEmpty,
+    body => !node.isImage && !node.isTime && bodyText(node).isNotEmpty,
     link => node.pageLink != null,
     thumbnail => node.isImage,
     pubDate => node.isTime,
@@ -36,7 +36,7 @@ enum PostField {
   /// The value this field takes when it is mapped to [node].
   String? valueOf(SemanticTreeNode node) => switch (this) {
     title || pubDate => node.val,
-    body => bodyMarkup(node),
+    body => bodyText(node),
     link || thumbnail => node.link,
   };
 }

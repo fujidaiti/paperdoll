@@ -631,11 +631,7 @@ class const _PostCard({
                 ),
                 if (body != null) ...[
                   const Gap(spacingXs),
-                  BodyText(
-                    _plainText(body),
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                  BodyText(body, maxLines: 3, overflow: TextOverflow.ellipsis),
                 ],
                 if (link != null) ...[
                   const Gap(spacingXs),
@@ -653,16 +649,6 @@ class const _PostCard({
     );
   }
 }
-
-/// The text of the body [markup] (see `bodyMarkup`) without the markup:
-/// the images are left out, and the headings and links become their text.
-String _plainText(String markup) => markup
-    .replaceAll(RegExp(r'!\[[^\]]*\]\([^)]*\)'), '')
-    .replaceAllMapped(RegExp(r'\[([^\]]*)\]\([^)]*\)'), (m) => m[1]!)
-    .replaceAll(RegExp('^#+ ', multiLine: true), '')
-    .split('\n')
-    .where((line) => line.trim().isNotEmpty)
-    .join('\n');
 
 class const _Thumbnail({required final String url, required final double size})
     extends StatelessWidget {
