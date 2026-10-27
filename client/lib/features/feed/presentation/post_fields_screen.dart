@@ -7,9 +7,9 @@ import 'package:paperdoll/core/ui/widgets/app_divider.dart';
 import 'package:paperdoll/core/ui/widgets/body_text.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
-import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
-import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
-import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.dart';
+import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 
 /// The arguments of [PostFieldsScreen]: the post to label, and the nodes that
 /// are labeled as its fields so far.

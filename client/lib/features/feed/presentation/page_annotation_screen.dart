@@ -16,12 +16,12 @@ import 'package:paperdoll/core/ui/widgets/heading_text.dart';
 import 'package:paperdoll/core/util/date_format.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:paperdoll/debug_keys.dart';
-import 'package:paperdoll/features/page_watch/data/matcher_repository.dart';
-import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
-import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
-import 'package:paperdoll/features/page_watch/presentation/post_fields_screen.dart';
-import 'package:paperdoll/features/page_watch/presentation/providers/page_watch_providers.dart';
-import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.dart';
+import 'package:paperdoll/features/feed/data/matcher_repository.dart';
+import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/presentation/post_fields_screen.dart';
+import 'package:paperdoll/features/feed/presentation/providers/matcher_providers.dart';
+import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 
 /// Lets the user tell which parts of a web page are posts, so that the page
 /// can be watched like a feed.

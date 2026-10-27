@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
-import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
-import 'package:paperdoll/features/page_watch/presentation/widgets/page_lines.dart';
+import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 
 // The server's test pages (see server/feature/feed/testdata/README.md) check
 // that the client generates the matchers of each page, from the posts that a

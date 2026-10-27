@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:paperdoll/core/network/request_runner.dart';
-import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
-import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 
 /// The semantic tree of the page of an unstructured feed and the post
 /// matchers saved for it, which are empty when none are saved.

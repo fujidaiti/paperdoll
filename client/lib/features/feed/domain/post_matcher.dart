@@ -1,5 +1,5 @@
-import 'package:paperdoll/features/page_watch/domain/body_text.dart';
-import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/body_text.dart';
+import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 
 /// The attributes of a post that the user can map to nodes of a page.
 enum PostField {

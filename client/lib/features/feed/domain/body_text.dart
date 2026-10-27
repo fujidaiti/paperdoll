@@ -1,4 +1,4 @@
-import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 
 /// Marks the boundary between the texts of two values, which becomes a space
 /// unless it is next to a punctuation mark.

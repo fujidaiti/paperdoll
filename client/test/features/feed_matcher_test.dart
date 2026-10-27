@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:paperdoll/features/page_watch/domain/post_matcher.dart';
-import 'package:paperdoll/features/page_watch/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 
 import '../src/fixture.dart';
 

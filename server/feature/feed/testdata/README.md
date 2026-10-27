@@ -1,7 +1,7 @@
 # Test pages
 
-Web pages saved with `curl` (without running JavaScript) for the page watch
-feature. Each directory has the same pages under the same file names.
+Web pages saved with `curl` (without running JavaScript) for matching the posts
+of a page. Each directory has the same pages under the same file names.
 
 - `source/`: the pages as first fetched, on which post matchers are built.
 - `robustness/`: the same pages fetched again on 2026-10-11, after their content
