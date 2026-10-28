@@ -16,51 +16,7 @@
         [
           {
             "tag": "a",
-            "cls": [
-              "container__link",
-              "container__link--type-article",
-              "container_lead-plus-headlines__link"
-            ]
-          }
-        ],
-        [
-          {
-            "tag": "a",
-            "cls": [
-              "container__link",
-              "container__link--type-live-story",
-              "container_lead-plus-headlines__link"
-            ]
-          }
-        ],
-        [
-          {
-            "tag": "a",
-            "cls": [
-              "container__link",
-              "container__link--type-article",
-              "container_vertical-strip__link"
-            ]
-          }
-        ],
-        [
-          {
-            "tag": "a",
-            "cls": [
-              "container__link",
-              "container__link--type-video",
-              "container_lead-plus-headlines__link"
-            ]
-          }
-        ],
-        [
-          {
-            "tag": "a",
-            "cls": [
-              "container__link",
-              "container__link--type-video",
-              "container_grid-4__link"
-            ]
+            "cls": ["container__link", "container__link--type-article"]
           }
         ]
       ],
@@ -71,25 +27,31 @@
         [
           {
             "tag": "div",
-            "cls": [
-              "container__headline",
-              "container_lead-plus-headlines__headline",
-              "container__headline-text"
-            ]
-          }
-        ],
-        [{ "tag": "span", "cls": ["container__headline-text"] }],
-        [
-          {
-            "tag": "div",
-            "cls": [
-              "container__headline",
-              "container_vertical-strip__headline",
-              "container__headline-text"
-            ]
+            "cls": ["container__headline", "container__headline-text"]
           }
         ]
       ]
+    },
+    "exclude": []
+  },
+  {
+    "post": [
+      {
+        "tag": "li",
+        "cls": [
+          "card",
+          "container__item",
+          "container__item--type-media-image",
+          "container__item--type-section"
+        ]
+      }
+    ],
+    "fields": {
+      "link": [[{ "tag": "a", "cls": ["container__link"] }]],
+      "thumbnail": [
+        [{ "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }]
+      ],
+      "title": [[{ "tag": "span", "cls": ["container__headline-text"] }]]
     },
     "exclude": []
   }

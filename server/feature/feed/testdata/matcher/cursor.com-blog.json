@@ -1,6 +1,11 @@
 [
   {
-    "post": [{ "tag": "a" }],
+    "post": [
+      {
+        "tag": "a",
+        "cls": ["card", "card--feature", "flex", "h-full", "flex-col"]
+      }
+    ],
     "fields": {
       "body": [
         [
@@ -25,20 +30,6 @@
           },
           { "tag": "time" }
         ],
-        [
-          {
-            "tag": "div",
-            "cls": [
-              "type-base",
-              "text-theme-text-mid",
-              "flex",
-              "flex-wrap",
-              "items-start",
-              "self-start"
-            ]
-          },
-          { "tag": "time" }
-        ],
         [{ "tag": "time", "cls": ["type-base"] }]
       ],
       "thumbnail": [
@@ -56,19 +47,48 @@
         ],
         [{ "tag": "img", "cls": ["object-cover"] }]
       ],
-      "title": [
+      "title": [[{ "tag": "p", "cls": ["text-theme-text"] }]]
+    },
+    "exclude": []
+  },
+  {
+    "post": [{ "tag": "a", "cls": ["blog-directory__row", "block"] }],
+    "fields": {
+      "link": [[]],
+      "pubDate": [
         [
           {
-            "tag": "p",
-            "cls": ["type-md-lg", "text-theme-text", "text-balance"]
-          }
-        ],
-        [{ "tag": "p", "cls": ["type-md", "text-theme-text", "text-balance"] }],
-        [
-          { "tag": "p", "cls": ["type-base", "text-theme-text", "text-pretty"] }
-        ],
-        [{ "tag": "p", "cls": ["type-base", "text-theme-text"] }]
+            "tag": "div",
+            "cls": [
+              "type-base",
+              "text-theme-text-mid",
+              "flex",
+              "flex-wrap",
+              "items-start",
+              "self-start"
+            ]
+          },
+          { "tag": "time" }
+        ]
+      ],
+      "title": [
+        [{ "tag": "p", "cls": ["type-base", "text-theme-text", "text-pretty"] }]
       ]
+    },
+    "exclude": []
+  },
+  {
+    "post": [
+      {
+        "tag": "a",
+        "cls": ["card", "flex", "h-full", "grow-1", "flex-col", "pb-g2"]
+      }
+    ],
+    "fields": {
+      "link": [[]],
+      "pubDate": [[{ "tag": "time", "cls": ["type-base"] }]],
+      "thumbnail": [[{ "tag": "img", "cls": ["object-cover"] }]],
+      "title": [[{ "tag": "p", "cls": ["type-base", "text-theme-text"] }]]
     },
     "exclude": []
   }

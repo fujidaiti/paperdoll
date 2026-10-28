@@ -1,23 +1,46 @@
 [
   {
-    "post": [{ "tag": "div", "cls": ["mx-auto"] }, { "tag": "div" }],
+    "post": [
+      { "tag": "div", "cls": ["mx-auto", "max-w-ycdc-page", "px-4"] },
+      { "tag": "div" }
+    ],
     "fields": {
       "body": [
         [
           { "tag": "div", "cls": ["relative"] },
           { "tag": "div" },
           { "tag": "p" }
-        ],
-        [{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-700"] }]
+        ]
       ],
       "link": [
         [
           { "tag": "div", "cls": ["relative"] },
           { "tag": "div" },
           { "tag": "a" }
-        ],
-        [{ "tag": "div", "cls": ["shrink-0"] }, { "tag": "a" }]
+        ]
       ],
+      "thumbnail": [[{ "tag": "img", "cls": ["w-full"] }]],
+      "title": [
+        [
+          { "tag": "div", "cls": ["relative"] },
+          { "tag": "div" },
+          { "tag": "a" },
+          { "tag": "h2" }
+        ]
+      ]
+    },
+    "exclude": []
+  },
+  {
+    "post": [
+      {
+        "tag": "div",
+        "cls": ["flex", "flex-col", "overflow-hidden", "rounded", "shadow-sm"]
+      }
+    ],
+    "fields": {
+      "body": [[{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-700"] }]],
+      "link": [[{ "tag": "div", "cls": ["shrink-0"] }, { "tag": "a" }]],
       "pubDate": [
         [
           {
@@ -28,14 +51,10 @@
           { "tag": "time" }
         ]
       ],
-      "thumbnail": [[{ "tag": "img", "cls": ["w-full"] }]],
+      "thumbnail": [
+        [{ "tag": "img", "cls": ["h-48", "w-full", "object-cover"] }]
+      ],
       "title": [
-        [
-          { "tag": "div", "cls": ["relative"] },
-          { "tag": "div" },
-          { "tag": "a" },
-          { "tag": "h2" }
-        ],
         [{ "tag": "p", "cls": ["text-xl", "font-semibold", "text-gray-900"] }]
       ]
     },

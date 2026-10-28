@@ -1,16 +1,13 @@
 [
   {
     "post": [
-      { "tag": "div" },
+      { "tag": "div", "cls": ["container-evo"] },
       { "tag": "section" },
       { "tag": "div" },
       { "tag": "div" }
     ],
     "fields": {
-      "body": [
-        [{ "tag": "div", "cls": ["fs-16", "mb-16", "postexcerpt"] }],
-        [{ "tag": "p", "cls": ["excerpt-body", "mt-16", "mb-24"] }]
-      ],
+      "body": [[{ "tag": "div", "cls": ["fs-16", "mb-16", "postexcerpt"] }]],
       "link": [
         [
           {
@@ -22,7 +19,48 @@
               "excerpt-title"
             ]
           }
-        ],
+        ]
+      ],
+      "thumbnail": [[{ "tag": "img" }]],
+      "title": [
+        [
+          {
+            "tag": "h3",
+            "cls": [
+              "mt-16",
+              "netsposts-posttitle-link",
+              "single-click",
+              "excerpt-title"
+            ]
+          }
+        ]
+      ]
+    },
+    "exclude": []
+  },
+  {
+    "post": [
+      {
+        "tag": "div",
+        "cls": [
+          "masonry-card",
+          "box",
+          "bg-white",
+          "d-flex",
+          "justify-content-between",
+          "flex-column",
+          "p-16",
+          "rounded",
+          "shadow",
+          "position-relative",
+          "border-1",
+          "post-card"
+        ]
+      }
+    ],
+    "fields": {
+      "body": [[{ "tag": "p", "cls": ["excerpt-body", "mt-16", "mb-24"] }]],
+      "link": [
         [
           {
             "tag": "h3",
@@ -47,19 +85,11 @@
           { "tag": "time" }
         ]
       ],
-      "thumbnail": [[{ "tag": "img" }]],
+      "thumbnail": [
+        [{ "tag": "img", "cls": ["post-thumbnail", "wp-image", "lazyload"] }],
+        [{ "tag": "img", "cls": ["post-thumbnail", "lazyload"] }]
+      ],
       "title": [
-        [
-          {
-            "tag": "h3",
-            "cls": [
-              "mt-16",
-              "netsposts-posttitle-link",
-              "single-click",
-              "excerpt-title"
-            ]
-          }
-        ],
         [
           {
             "tag": "h3",

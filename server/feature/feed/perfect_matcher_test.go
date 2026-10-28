@@ -118,15 +118,31 @@ func (t *treeIndex) postChain(post *SemanticTreeNode) []Step {
 	return chain
 }
 
-// fieldChain returns the chain that resolves f from post to n: the shortest
-// tail of the steps of the nodes from post to n that does, and that has a
-// step with classes when any of the nodes has classes. It falls back to all
-// the steps, with Nth on the last one. It returns nil when no chain resolves
-// to n.
-func (t *treeIndex) fieldChain(post *SemanticTreeNode, f PostField, n *SemanticTreeNode) []Step {
+// pathOf returns the steps of the nodes from post, exclusive, down to n.
+func (t *treeIndex) pathOf(post, n *SemanticTreeNode) []Step {
 	var path []Step
 	for a := n; a != post; a = t.parent[a] {
 		path = append([]Step{t.step(a)}, path...)
+	}
+	return path
+}
+
+// fieldTarget is a post node and the node of a field in it.
+type fieldTarget struct{ post, node *SemanticTreeNode }
+
+// fieldChain returns the chain that resolves f to the node of each target in
+// its post node: the shortest tail of path that does, and that has a step
+// with classes when path has one. It falls back to all of path, with Nth on
+// the last step. It returns nil when no chain resolves to the nodes. It
+// follows PostMatcher._fieldChain of the client.
+func (t *treeIndex) fieldChain(f PostField, targets []fieldTarget, path []Step) []Step {
+	resolvesAll := func(chain []Step) bool {
+		for _, tg := range targets {
+			if resolveChain(tg.post, f, chain) != tg.node {
+				return false
+			}
+		}
+		return true
 	}
 	hasCls := func(chain []Step) bool {
 		return slices.ContainsFunc(chain, func(s Step) bool { return len(s.Cls) > 0 })
@@ -136,7 +152,7 @@ func (t *treeIndex) fieldChain(post *SemanticTreeNode, f PostField, n *SemanticT
 		if (i == len(path) && len(path) > 0) || hasCls(path) && !hasCls(chain) {
 			continue
 		}
-		if resolveChain(post, f, chain) == n {
+		if resolvesAll(chain) {
 			return chain
 		}
 	}
@@ -146,11 +162,16 @@ func (t *treeIndex) fieldChain(post *SemanticTreeNode, f PostField, n *SemanticT
 	for nth := 0; nth < len(t.nodes); nth++ {
 		chain := slices.Clone(path)
 		chain[len(chain)-1].Nth = &nth
-		got := selectNodes(post, chain, false)
-		if len(got) == 0 {
+		selected := false
+		for _, tg := range targets {
+			if len(selectNodes(tg.post, chain, false)) > 0 {
+				selected = true
+			}
+		}
+		if !selected {
 			return nil
 		}
-		if resolveChain(post, f, chain) == n {
+		if resolvesAll(chain) {
 			return chain
 		}
 	}
@@ -180,17 +201,58 @@ func (t *treeIndex) widen(chain []Step, post *SemanticTreeNode) []Step {
 	return chain
 }
 
-// chainOf returns the chain that selects every post of group: the one of its
-// first post, widened to the others. It returns nil when they have different
-// shapes. It follows _chainOf of the client.
-func (t *treeIndex) chainOf(group []labeledPost) []Step {
-	chain := t.postChain(group[0].node)
+// keyFields are the fields that make a node a post. A matcher resolves each of
+// them by one chain, so posts that reach them by different paths are of
+// different kinds.
+var keyFields = []PostField{PostTitle, PostLink}
+
+// postShape is the chain that selects the posts of a group, and for each of
+// keyFields, the path from a post node to the node of the field.
+type postShape struct {
+	post  []Step
+	paths map[PostField][]Step
+}
+
+// shapeOf returns the shape of the posts of group: each chain or path is the
+// one of the first post, whose steps keep only the classes that the other
+// posts share (see widen). It returns false when the posts have different
+// tags on any of them. It follows _shapeOf of the client.
+func (t *treeIndex) shapeOf(group []labeledPost) (postShape, bool) {
+	pathOf := func(p labeledPost, f PostField) []Step {
+		if n := p.fields[f]; n != nil {
+			return t.pathOf(p.node, n)
+		}
+		return nil
+	}
+	shape := postShape{post: t.postChain(group[0].node), paths: make(map[PostField][]Step)}
+	for _, f := range keyFields {
+		shape.paths[f] = pathOf(group[0], f)
+	}
 	for _, p := range group[1:] {
-		if chain = t.widen(chain, p.node); chain == nil {
-			return nil
+		if shape.post = t.widen(shape.post, p.node); shape.post == nil {
+			return postShape{}, false
+		}
+		for _, f := range keyFields {
+			// A nil path is also the one of a field on the post node itself.
+			if (p.fields[f] == nil) != (group[0].fields[f] == nil) {
+				return postShape{}, false
+			}
+			path, other := shape.paths[f], pathOf(p, f)
+			if len(path) != len(other) {
+				return postShape{}, false
+			}
+			for i := range path {
+				if path[i].Tag != other[i].Tag {
+					return postShape{}, false
+				}
+				path[i].Cls = slices.DeleteFunc(
+					slices.Clone(path[i].Cls),
+					func(c string) bool { return !slices.Contains(other[i].Cls, c) },
+				)
+			}
 		}
 	}
-	return chain
+	return shape, true
 }
 
 // withField returns m with the chain that resolves f from post to n. The chain
@@ -202,7 +264,7 @@ func (t *treeIndex) withField(m PostMatcher, post *SemanticTreeNode, f PostField
 	if got == n {
 		return m
 	}
-	chain := t.fieldChain(post, f, n)
+	chain := t.fieldChain(f, []fieldTarget{{post, n}}, t.pathOf(post, n))
 	if chain == nil {
 		return m
 	}
@@ -225,8 +287,9 @@ type labeledPost struct {
 
 // generateMatchers returns the matchers that find the posts that the user
 // labeled, and none of the posts whose links the user excluded, which excluded
-// holds by host and path. The posts are grouped by their shapes in document
-// order, and each group results in one matcher. A post that its group does not
+// holds by host and path. The posts are grouped by their shapes (see shapeOf)
+// in document order, and each group results in one matcher, which resolves
+// the title and the link by one chain each. A post that its group does not
 // find with its fields is moved to a group of its own. It follows
 // generateMatchers of the client.
 func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bool) []PostMatcher {
@@ -244,7 +307,8 @@ func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bo
 	var groups [][]labeledPost
 	for _, p := range posts {
 		i := slices.IndexFunc(groups, func(g []labeledPost) bool {
-			return t.chainOf(append(slices.Clone(g), p)) != nil
+			_, ok := t.shapeOf(append(slices.Clone(g), p))
+			return ok
 		})
 		if i < 0 {
 			groups = append(groups, []labeledPost{p})
@@ -256,14 +320,29 @@ func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bo
 	var matchers []PostMatcher
 	for i := 0; i < len(groups); i++ {
 		group := groups[i]
+		shape, _ := t.shapeOf(group)
 		m := PostMatcher{
-			Post:    t.chainOf(group),
+			Post:    shape.post,
 			Fields:  make(map[PostField][][]Step),
 			Exclude: slices.Clone(exclude),
 		}
+		for _, f := range keyFields {
+			if group[0].fields[f] == nil {
+				continue
+			}
+			var targets []fieldTarget
+			for _, p := range group {
+				targets = append(targets, fieldTarget{p.node, p.fields[f]})
+			}
+			if chain := t.fieldChain(f, targets, shape.paths[f]); chain != nil {
+				m.Fields[f] = [][]Step{chain}
+			}
+		}
 		for _, p := range group {
 			for _, f := range slices.Sorted(maps.Keys(p.fields)) {
-				m = t.withField(m, p.node, f, p.fields[f])
+				if !slices.Contains(keyFields, f) {
+					m = t.withField(m, p.node, f, p.fields[f])
+				}
 			}
 		}
 		found := m.matchPosts(t.tree)

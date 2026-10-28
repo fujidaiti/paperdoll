@@ -24,8 +24,39 @@
           }
         ]
       ],
+      "title": [[{ "tag": "h2", "cls": ["headline-4"] }]]
+    },
+    "exclude": []
+  },
+  {
+    "post": [
+      {
+        "tag": "a",
+        "cls": [
+          "FeaturedGrid-module-scss-module__sideLink",
+          "FeaturedGrid-module-scss-module__gridItem"
+        ]
+      }
+    ],
+    "fields": {
+      "body": [
+        [
+          {
+            "tag": "p",
+            "cls": ["body-3", "serif", "FeaturedGrid-module-scss-module__body"]
+          }
+        ]
+      ],
+      "link": [[]],
+      "pubDate": [
+        [
+          {
+            "tag": "time",
+            "cls": ["FeaturedGrid-module-scss-module__date", "caption", "bold"]
+          }
+        ]
+      ],
       "title": [
-        [{ "tag": "h2", "cls": ["headline-4"] }],
         [
           {
             "tag": "h4",

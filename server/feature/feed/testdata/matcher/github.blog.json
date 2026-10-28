@@ -108,6 +108,34 @@
     "exclude": []
   },
   {
+    "post": [
+      {
+        "tag": "div",
+        "cls": [
+          "position-relative",
+          "pl-5",
+          "pl-lg-0",
+          "pt-lg-5",
+          "mb-5",
+          "mb-6"
+        ]
+      }
+    ],
+    "fields": {
+      "link": [[{ "tag": "h3", "cls": ["h6-mktg", "Link--primary"] }]],
+      "pubDate": [
+        [
+          {
+            "tag": "time",
+            "cls": ["d-block", "text-mono", "color-fg-muted", "no-wrap", "mt-2"]
+          }
+        ]
+      ],
+      "title": [[{ "tag": "h3", "cls": ["h6-mktg", "Link--primary"] }]]
+    },
+    "exclude": []
+  },
+  {
     "post": [{ "tag": "div", "cls": ["d-flex", "flex-column"] }],
     "fields": {
       "body": [
@@ -145,34 +173,6 @@
           }
         ]
       ]
-    },
-    "exclude": []
-  },
-  {
-    "post": [
-      {
-        "tag": "div",
-        "cls": [
-          "position-relative",
-          "pl-5",
-          "pl-lg-0",
-          "pt-lg-5",
-          "mb-5",
-          "mb-6"
-        ]
-      }
-    ],
-    "fields": {
-      "link": [[{ "tag": "h3", "cls": ["h6-mktg", "Link--primary"] }]],
-      "pubDate": [
-        [
-          {
-            "tag": "time",
-            "cls": ["d-block", "text-mono", "color-fg-muted", "no-wrap", "mt-2"]
-          }
-        ]
-      ],
-      "title": [[{ "tag": "h3", "cls": ["h6-mktg", "Link--primary"] }]]
     },
     "exclude": []
   }

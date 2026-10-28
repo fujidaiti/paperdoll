@@ -42,8 +42,7 @@
       "body": [
         [{ "tag": "p", "cls": ["Dundee-styles__DescriptionStyled-sc-0"] }],
         [{ "tag": "p", "cls": ["Manchester-styles__DescriptionStyled-sc-0"] }],
-        [{ "tag": "p", "cls": ["Edinburgh-styles__DescriptionStyled-sc-4"] }],
-        [{ "tag": "h2", "cls": ["Ipswich-styles__BrandNameStyled-sc-1"] }]
+        [{ "tag": "p", "cls": ["Edinburgh-styles__DescriptionStyled-sc-4"] }]
       ],
       "link": [[]],
       "thumbnail": [
@@ -72,7 +71,33 @@
             "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
           },
           { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
-        ],
+        ]
+      ],
+      "title": [
+        [
+          {
+            "tag": "h2",
+            "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3"]
+          }
+        ]
+      ]
+    },
+    "exclude": [
+      "session.bbc.com/session",
+      "www.bbc.com/newsletters",
+      "www.bbc.com/pages/download-the-bbc-app",
+      "www.bbc.com/video/docs",
+      "www.britbox.com/"
+    ]
+  },
+  {
+    "post": [{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }],
+    "fields": {
+      "body": [
+        [{ "tag": "h2", "cls": ["Ipswich-styles__BrandNameStyled-sc-1"] }]
+      ],
+      "link": [[]],
+      "thumbnail": [
         [
           {
             "tag": "div",
@@ -86,50 +111,7 @@
         ]
       ],
       "title": [
-        [
-          {
-            "tag": "h2",
-            "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3"]
-          }
-        ],
         [{ "tag": "h3", "cls": ["Ipswich-styles__EpisodeNameStyled-sc-2"] }]
-      ]
-    },
-    "exclude": [
-      "session.bbc.com/session",
-      "www.bbc.com/newsletters",
-      "www.bbc.com/pages/download-the-bbc-app",
-      "www.bbc.com/video/docs",
-      "www.britbox.com/"
-    ]
-  },
-  {
-    "post": [{ "tag": "div", "cls": ["Grid-styles__GridStyled-sc-0"] }],
-    "fields": {
-      "body": [
-        [{ "tag": "div", "cls": ["Windsor-styles__DescriptionStyled-sc-0"] }]
-      ],
-      "link": [[{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }]],
-      "thumbnail": [
-        [
-          { "tag": "div", "cls": ["GridItem-styles__GridItemStyled-sc-0"] },
-          { "tag": "div", "cls": ["Windsor-styles__MediaStyled-sc-1"] },
-          { "tag": "div" },
-          { "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] },
-          {
-            "tag": "div",
-            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
-          },
-          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
-        ]
-      ],
-      "title": [
-        [
-          {
-            "tag": "h2",
-            "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3"]
-          }
-        ]
       ]
     },
     "exclude": [
@@ -170,6 +152,43 @@
           {
             "tag": "h2",
             "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3", "GrFgy"]
+          }
+        ]
+      ]
+    },
+    "exclude": [
+      "session.bbc.com/session",
+      "www.bbc.com/newsletters",
+      "www.bbc.com/pages/download-the-bbc-app",
+      "www.bbc.com/video/docs",
+      "www.britbox.com/"
+    ]
+  },
+  {
+    "post": [{ "tag": "div", "cls": ["Grid-styles__GridStyled-sc-0"] }],
+    "fields": {
+      "body": [
+        [{ "tag": "div", "cls": ["Windsor-styles__DescriptionStyled-sc-0"] }]
+      ],
+      "link": [[{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }]],
+      "thumbnail": [
+        [
+          { "tag": "div", "cls": ["GridItem-styles__GridItemStyled-sc-0"] },
+          { "tag": "div", "cls": ["Windsor-styles__MediaStyled-sc-1"] },
+          { "tag": "div" },
+          { "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] },
+          {
+            "tag": "div",
+            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+          },
+          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
+        ]
+      ],
+      "title": [
+        [
+          {
+            "tag": "h2",
+            "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3"]
           }
         ]
       ]
