@@ -265,6 +265,36 @@ void main() {
           {for (final p in posts) p[PostField.link]!: p},
         );
       });
+
+      test('finds the same posts after the editor opens the matchers', () {
+        // The editor does not keep the marks, so it labels the posts that the
+        // saved matchers find, and generates the matchers again from them when
+        // the user saves without changes. A post that another matcher also
+        // finds is extracted anyway, so the nodes are compared too.
+        final matchers = generateMatchers(
+          tree,
+          labelFoundPosts(tree, goldens),
+          {for (final m in goldens) ...m.exclude},
+        );
+
+        expect(
+          {
+            for (final m in matchers)
+              for (final n in m.matchPosts(tree)) n.id,
+          },
+          {
+            for (final m in goldens)
+              for (final n in m.matchPosts(tree)) n.id,
+          },
+        );
+        expect(
+          {
+            for (final p in extractPosts(tree, matchers))
+              p.values[PostField.link]!: p.values,
+          },
+          {for (final p in posts) p[PostField.link]!: p},
+        );
+      });
     });
   }
 }

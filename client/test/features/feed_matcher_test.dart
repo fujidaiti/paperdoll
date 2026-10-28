@@ -56,28 +56,72 @@ void main() {
     });
   });
 
-  group('sampleLabeledPosts', () {
-    test('takes the first post of each matcher with its fields', () {
-      final matchers = generateMatchers(
-        tree,
-        [labeled(articles[0])],
-        {'blog.example.com/newsletters'},
-      );
+  group('labelFoundPosts', () {
+    test('labels every post that the matchers find with its fields', () {
+      final matchers = generateMatchers(tree, [labeled(articles[0])], {});
 
-      final samples = sampleLabeledPosts(tree, matchers);
+      final posts = labelFoundPosts(tree, matchers);
 
-      expect(samples, hasLength(1));
-      expect(samples.single.node, same(articles[0]));
+      expect([for (final p in posts) p.node], articles);
       expect(
-        samples.single.fields[PostField.link],
-        same(articles[0].children.first),
+        [for (final p in posts) p.fields],
+        [
+          for (final a in articles)
+            {
+              PostField.title: a.children.first,
+              PostField.link: a.children.first,
+            },
+        ],
       );
     });
 
-    test('drops a matcher that finds no post', () {
+    test('takes each field of a post from the first matcher that has it', () {
+      const titles = PostMatcher(
+        post: [Step(tag: 'article')],
+        fields: {
+          PostField.title: [
+            [Step(tag: 'h2')],
+          ],
+          PostField.link: [
+            [Step(tag: 'h2')],
+          ],
+        },
+      );
+      const bodies = PostMatcher(
+        post: [Step(tag: 'article')],
+        fields: {
+          PostField.title: [
+            [Step(tag: 'p')],
+          ],
+          PostField.link: [
+            [Step(tag: 'h2')],
+          ],
+          PostField.body: [
+            [Step(tag: 'p')],
+          ],
+        },
+      );
+
+      final posts = labelFoundPosts(tree, [titles, bodies]);
+
+      expect([for (final p in posts) p.node], articles);
+      expect(
+        [for (final p in posts) p.fields],
+        [
+          for (final a in articles)
+            {
+              PostField.title: a.children.first,
+              PostField.link: a.children.first,
+              PostField.body: a.children.last,
+            },
+        ],
+      );
+    });
+
+    test('labels nothing when the matchers find no post', () {
       const matcher = PostMatcher(post: [Step(tag: 'section')]);
 
-      expect(sampleLabeledPosts(tree, [matcher]), isEmpty);
+      expect(labelFoundPosts(tree, [matcher]), isEmpty);
     });
   });
 }

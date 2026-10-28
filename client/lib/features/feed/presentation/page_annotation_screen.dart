@@ -106,11 +106,15 @@ class const _Annotator({
 }
 
 class _AnnotatorState extends ConsumerState<_Annotator> {
-  /// The posts that the user marked, by node id.
-  late final _labeled = {
-    for (final p in sampleLabeledPosts(widget.tree, widget.matchers))
-      p.node.id: p,
+  /// The posts that the saved matchers find, by node id. The matchers are
+  /// generated from them too, so that they keep finding the same posts, but
+  /// they are not shown as marked, since the user did not mark them here.
+  late final _found = {
+    for (final p in labelFoundPosts(widget.tree, widget.matchers)) p.node.id: p,
   };
+
+  /// The posts that the user marked, by node id.
+  final _labeled = <int, LabeledPost>{};
 
   /// The host and path of the links that the user marked as not posts.
   late final _excluded = {for (final m in widget.matchers) ...m.exclude};
@@ -127,7 +131,11 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
 
   /// Generates the matchers again after the marks changed.
   void _update() {
-    _matchers = generateMatchers(_tree, _labeled.values, _excluded);
+    _matchers = generateMatchers(
+      _tree,
+      {..._found, ..._labeled}.values,
+      _excluded,
+    );
     _marks = _Marks();
     for (final matcher in _matchers) {
       for (final post in matcher.matchPosts(_tree)) {
@@ -211,16 +219,18 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   }
 
   /// Marks the link of [post] as not a post, which also unmarks the posts that
-  /// the user marked with the same host and path.
+  /// the user marked, or that the saved matchers found, with the same host and
+  /// path.
   void _markAsNotPost(SemanticTreeNode post) {
     final hostPath = hostPathOf(
       _marks.posts[post.id]!.matchField(post, PostField.link)!.link!,
     );
+    bool hasHostPath(int _, LabeledPost p) =>
+        hostPathOf(p.fields[PostField.link]!.link!) == hostPath;
     setState(() {
       _excluded.add(hostPath);
-      _labeled.removeWhere(
-        (_, p) => hostPathOf(p.fields[PostField.link]!.link!) == hostPath,
-      );
+      _labeled.removeWhere(hasHostPath);
+      _found.removeWhere(hasHostPath);
       _update();
       _selected = null;
     });

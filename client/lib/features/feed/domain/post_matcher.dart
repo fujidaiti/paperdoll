@@ -546,26 +546,34 @@ List<PostMatcher> generateMatchers(
   return matchers;
 }
 
-/// One post for each of [matchers] that finds one in [tree], with the nodes
-/// of its fields, so that the user can see what each matcher finds.
-List<LabeledPost> sampleLabeledPosts(
+/// Every post that [matchers] find in [tree], with the nodes of its fields, so
+/// that the matchers can be generated again from them, since the marks of the
+/// user are not saved. All of them are needed, since [generateMatchers] keeps
+/// only the classes that all the labeled posts of a group share, and fewer
+/// posts would make the matchers find fewer posts. A post that several
+/// matchers find takes each field from the first matcher that finds it.
+List<LabeledPost> labelFoundPosts(
   SemanticTree tree,
   List<PostMatcher> matchers,
 ) {
-  final samples = <LabeledPost>[];
+  final posts = <LabeledPost>[];
   for (final matcher in matchers) {
-    final node = matcher.matchPosts(tree).firstOrNull;
-    if (node != null && !samples.any((s) => identical(s.node, node))) {
-      samples.add((
-        node: node,
-        fields: {
-          for (final field in matcher.fields.keys)
-            field: ?matcher.matchField(node, field),
-        },
-      ));
+    for (final node in matcher.matchPosts(tree)) {
+      final fields = {
+        for (final field in matcher.fields.keys)
+          field: ?matcher.matchField(node, field),
+      };
+      final i = posts.indexWhere((p) => identical(p.node, node));
+      if (i < 0) {
+        posts.add((node: node, fields: fields));
+      } else {
+        for (final MapEntry(:key, :value) in fields.entries) {
+          posts[i].fields.putIfAbsent(key, () => value);
+        }
+      }
     }
   }
-  return samples;
+  return posts;
 }
 
 /// The fields that are evident in [postNode]: the only link or time, the only
