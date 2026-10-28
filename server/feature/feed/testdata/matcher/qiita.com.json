@@ -2,10 +2,9 @@
   {
     "post": [{ "tag": "article", "cls": ["style"] }],
     "fields": {
-      "link": [[{ "tag": "h2", "cls": ["style"] }]],
+      "link": [{ "tag": "h2", "cls": ["style"] }],
       "pubDate": [[{ "tag": "span", "cls": ["style"] }, { "tag": "time" }]],
-      "title": [[{ "tag": "h2", "cls": ["style"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "h2", "cls": ["style"] }]
+    }
   }
 ]

@@ -9,7 +9,7 @@
         ]
       ],
       "link": [
-        [{ "tag": "h3", "cls": ["mb-3", "Link--primary", "post-card__link"] }]
+        { "tag": "h3", "cls": ["mb-3", "Link--primary", "post-card__link"] }
       ],
       "pubDate": [
         [{ "tag": "time", "cls": ["text-mono", "color-fg-muted", "no-wrap"] }]
@@ -28,10 +28,9 @@
         ]
       ],
       "title": [
-        [{ "tag": "h3", "cls": ["mb-3", "Link--primary", "post-card__link"] }]
+        { "tag": "h3", "cls": ["mb-3", "Link--primary", "post-card__link"] }
       ]
-    },
-    "exclude": []
+    }
   },
   {
     "post": [{ "tag": "div", "cls": ["d-flex", "flex-column"] }],
@@ -40,12 +39,10 @@
         [{ "tag": "div", "cls": ["f4-mktg", "color-fg-muted"] }, { "tag": "p" }]
       ],
       "link": [
-        [
-          {
-            "tag": "h3",
-            "cls": ["h6-mktg", "mb-2", "Link--primary", "post-card__link"]
-          }
-        ]
+        {
+          "tag": "h3",
+          "cls": ["h6-mktg", "mb-2", "Link--primary", "post-card__link"]
+        }
       ],
       "pubDate": [
         [{ "tag": "time", "cls": ["text-mono", "color-fg-muted", "no-wrap"] }]
@@ -64,14 +61,11 @@
         ]
       ],
       "title": [
-        [
-          {
-            "tag": "h3",
-            "cls": ["h6-mktg", "mb-2", "Link--primary", "post-card__link"]
-          }
-        ]
+        {
+          "tag": "h3",
+          "cls": ["h6-mktg", "mb-2", "Link--primary", "post-card__link"]
+        }
       ]
-    },
-    "exclude": []
+    }
   }
 ]

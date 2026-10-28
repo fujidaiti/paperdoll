@@ -8,7 +8,7 @@
     ],
     "fields": {
       "body": [[{ "tag": "p" }], [{ "tag": "li" }]],
-      "link": [[{ "tag": "h1", "cls": ["font-header", "unstyled"] }]],
+      "link": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
       "pubDate": [
         [
           { "tag": "div", "cls": ["Breadcrumbs"] },
@@ -16,8 +16,7 @@
           { "tag": "time" }
         ]
       ],
-      "title": [[{ "tag": "h1", "cls": ["font-header", "unstyled"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }]
+    }
   }
 ]

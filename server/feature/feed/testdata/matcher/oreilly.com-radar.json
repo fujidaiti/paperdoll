@@ -3,7 +3,7 @@
     "post": [{ "tag": "a", "cls": ["feed-item"] }],
     "fields": {
       "body": [[{ "tag": "p", "cls": ["dek"] }]],
-      "link": [[]],
+      "link": [],
       "pubDate": [[{ "tag": "p", "cls": ["meta"] }, { "tag": "time" }]],
       "thumbnail": [
         [{ "tag": "figure", "cls": ["article"] }, { "tag": "img" }],
@@ -13,8 +13,7 @@
           { "tag": "img" }
         ]
       ],
-      "title": [[{ "tag": "div", "cls": ["item-text"] }, { "tag": "h2" }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "div", "cls": ["item-text"] }, { "tag": "h2" }]
+    }
   }
 ]

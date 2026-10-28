@@ -1,6 +1,8 @@
 package feed
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/url"
 	"regexp"
 	"slices"
@@ -86,13 +88,65 @@ func (s Step) matches(n *SemanticTreeNode) bool {
 // descendants of the root, and each later step selects children of the nodes
 // that the previous step selects. Each field has
 // chains of steps from a post node to the node of its value, tried in order;
-// an empty chain is the post node itself. A node that Post selects is a post
-// only when its title and link are found (see hasFields), and when its link
-// matches none of the patterns in Exclude.
+// an empty chain is the post node itself. The title and the link have one
+// chain each, which the JSON holds as the chain itself. A node that Post
+// selects is a post only when its title and link are found (see hasFields),
+// and when its link matches none of the patterns in Exclude.
 type PostMatcher struct {
-	Post    []Step                 `json:"post"`
-	Fields  map[PostField][][]Step `json:"fields"`
-	Exclude []string               `json:"exclude"`
+	Post    []Step
+	Fields  map[PostField][][]Step
+	Exclude []string
+}
+
+// postMatcherJSON is the JSON of PostMatcher, whose fields hold a chain for
+// the title and the link, and a list of chains for the other fields.
+type postMatcherJSON struct {
+	Post    []Step                        `json:"post"`
+	Fields  map[PostField]json.RawMessage `json:"fields"`
+	Exclude []string                      `json:"exclude,omitempty"`
+}
+
+func (m PostMatcher) MarshalJSON() ([]byte, error) {
+	j := postMatcherJSON{Post: m.Post, Fields: make(map[PostField]json.RawMessage), Exclude: m.Exclude}
+	for f, chains := range m.Fields {
+		var v any = chains
+		if f == PostTitle || f == PostLink {
+			if len(chains) != 1 {
+				return nil, fmt.Errorf("%s has %d chains, want 1", f, len(chains))
+			}
+			v = chains[0]
+		}
+		raw, err := json.Marshal(v)
+		if err != nil {
+			return nil, err
+		}
+		j.Fields[f] = raw
+	}
+	return json.Marshal(j)
+}
+
+func (m *PostMatcher) UnmarshalJSON(data []byte) error {
+	var j postMatcherJSON
+	if err := json.Unmarshal(data, &j); err != nil {
+		return err
+	}
+	*m = PostMatcher{Post: j.Post, Fields: make(map[PostField][][]Step), Exclude: j.Exclude}
+	for f, raw := range j.Fields {
+		if f == PostTitle || f == PostLink {
+			var chain []Step
+			if err := json.Unmarshal(raw, &chain); err != nil {
+				return err
+			}
+			m.Fields[f] = [][]Step{chain}
+		} else {
+			var chains [][]Step
+			if err := json.Unmarshal(raw, &chains); err != nil {
+				return err
+			}
+			m.Fields[f] = chains
+		}
+	}
+	return nil
 }
 
 // selectNodes returns the nodes that chain selects from start, in document

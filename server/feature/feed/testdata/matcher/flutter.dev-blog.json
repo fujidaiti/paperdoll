@@ -3,13 +3,12 @@
     "post": [{ "tag": "a", "cls": ["blog-card"] }],
     "fields": {
       "body": [[{ "tag": "p", "cls": ["blog-card-description"] }]],
-      "link": [[]],
+      "link": [],
       "pubDate": [[{ "tag": "span", "cls": ["date"] }, { "tag": "time" }]],
       "thumbnail": [
         [{ "tag": "div", "cls": ["blog-card-image"] }, { "tag": "img" }]
       ],
-      "title": [[{ "tag": "h3", "cls": ["blog-card-title"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "h3", "cls": ["blog-card-title"] }]
+    }
   }
 ]

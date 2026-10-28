@@ -266,16 +266,11 @@ class _Pages {
     ],
     'fields': {
       'title': [
-        [
-          {'tag': 'h2'},
-        ],
+        {'tag': 'h2'},
       ],
       'link': [
-        [
-          {'tag': 'h2'},
-        ],
+        {'tag': 'h2'},
       ],
     },
-    'exclude': <String>[],
   };
 }

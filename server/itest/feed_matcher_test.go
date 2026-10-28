@@ -112,7 +112,7 @@ func TestFeed_Matchers(t *testing.T) {
 		t.Errorf("matchers = %q, want none", matchers)
 	}
 
-	raw := `[{"post":[{"tag":"article","cls":["post"]}],"fields":{"title":[[{"tag":"h2"}]]},"exclude":[]}]`
+	raw := `[{"post":[{"tag":"article","cls":["post"]}],"fields":{"title":[{"tag":"h2"}]}}]`
 	if err := s.SaveMatchers(t.Context(), page.ID, raw); err != nil {
 		t.Fatalf("SaveMatchers: %v", err)
 	}

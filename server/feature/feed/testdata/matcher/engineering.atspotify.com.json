@@ -3,18 +3,17 @@
     "post": [{ "tag": "main" }, { "tag": "section" }, { "tag": "div" }],
     "fields": {
       "body": [[{ "tag": "div" }, { "tag": "div" }]],
-      "link": [[{ "tag": "a" }]],
+      "link": [{ "tag": "a" }],
       "pubDate": [[{ "tag": "time" }]],
       "thumbnail": [[{ "tag": "img" }]],
-      "title": [[{ "tag": "h4" }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "h4" }]
+    }
   },
   {
     "post": [{ "tag": "div", "cls": ["post-card"] }],
     "fields": {
       "body": [[{ "tag": "div", "cls": ["post-card__description"] }]],
-      "link": [[{ "tag": "div", "cls": ["post-card__image"] }, { "tag": "a" }]],
+      "link": [{ "tag": "div", "cls": ["post-card__image"] }, { "tag": "a" }],
       "pubDate": [
         [{ "tag": "div", "cls": ["post-card__date"] }, { "tag": "time" }]
       ],
@@ -25,8 +24,7 @@
           { "tag": "img" }
         ]
       ],
-      "title": [[{ "tag": "h4", "cls": ["post-card__title"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "h4", "cls": ["post-card__title"] }]
+    }
   }
 ]

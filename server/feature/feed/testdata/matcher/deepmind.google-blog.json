@@ -3,11 +3,10 @@
     "post": [{ "tag": "div", "cls": ["card__inner"] }],
     "fields": {
       "link": [
-        [{ "tag": "a", "cls": ["button", "button--text_link", "icon-right"] }]
+        { "tag": "a", "cls": ["button", "button--text_link", "icon-right"] }
       ],
       "thumbnail": [[{ "tag": "img", "cls": ["picture__image"] }]],
-      "title": [[{ "tag": "h3", "cls": ["card__title"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "h3", "cls": ["card__title"] }]
+    }
   }
 ]

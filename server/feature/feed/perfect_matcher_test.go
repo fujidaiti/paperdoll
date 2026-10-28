@@ -294,9 +294,6 @@ type labeledPost struct {
 // generateMatchers of the client.
 func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bool) []PostMatcher {
 	exclude := slices.Sorted(maps.Keys(excluded))
-	if exclude == nil {
-		exclude = []string{}
-	}
 	index := map[*SemanticTreeNode]int{}
 	for i, n := range t.nodes {
 		index[n] = i

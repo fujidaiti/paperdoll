@@ -14,11 +14,10 @@
       }
     ],
     "fields": {
-      "link": [[{ "tag": "a" }]],
+      "link": [{ "tag": "a" }],
       "pubDate": [[{ "tag": "time", "cls": ["entry-date", "published"] }]],
       "thumbnail": [[{ "tag": "img" }]],
-      "title": [[{ "tag": "div", "cls": ["entry-title"] }, { "tag": "div" }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "div", "cls": ["entry-title"] }, { "tag": "div" }]
+    }
   }
 ]

@@ -2,10 +2,9 @@
   {
     "post": [{ "tag": "p", "cls": ["blogtitle"] }],
     "fields": {
-      "link": [[{ "tag": "a" }]],
+      "link": [{ "tag": "a" }],
       "pubDate": [[{ "tag": "span", "cls": ["date"] }, { "tag": "time" }]],
-      "title": [[{ "tag": "a" }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "a" }]
+    }
   }
 ]

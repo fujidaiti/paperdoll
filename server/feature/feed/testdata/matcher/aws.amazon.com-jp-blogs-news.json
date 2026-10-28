@@ -4,10 +4,8 @@
     "fields": {
       "body": [[{ "tag": "section", "cls": ["blog-post-excerpt", "lb-rtxt"] }]],
       "link": [
-        [
-          { "tag": "div", "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"] },
-          { "tag": "a" }
-        ]
+        { "tag": "div", "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"] },
+        { "tag": "a" }
       ],
       "pubDate": [
         [
@@ -24,9 +22,8 @@
           }
         ]
       ],
-      "title": [[{ "tag": "h2", "cls": ["lb-bold", "blog-post-title"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "h2", "cls": ["lb-bold", "blog-post-title"] }]
+    }
   },
   {
     "post": [{ "tag": "div", "cls": ["lb-row", "lb-snap"] }],
@@ -38,10 +35,8 @@
         ]
       ],
       "link": [
-        [
-          { "tag": "div", "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"] },
-          { "tag": "a" }
-        ]
+        { "tag": "div", "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"] },
+        { "tag": "a" }
       ],
       "pubDate": [
         [
@@ -51,8 +46,7 @@
         ]
       ],
       "thumbnail": [[{ "tag": "img", "cls": ["wp-post-image"] }]],
-      "title": [[{ "tag": "h2", "cls": ["lb-bold", "blog-post-title"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "h2", "cls": ["lb-bold", "blog-post-title"] }]
+    }
   }
 ]

@@ -20,11 +20,11 @@ class PostMatcherFields {
     this.pubDate = const [],
   });
 
-  List<List<Step>> title;
+  List<Step> title;
 
   List<List<Step>> body;
 
-  List<List<Step>> link;
+  List<Step> link;
 
   List<List<Step>> thumbnail;
 
@@ -78,21 +78,13 @@ class PostMatcherFields {
       }());
 
       return PostMatcherFields(
-        title: json[r'title'] is List
-            ? (json[r'title'] as List)
-                .map((e) => e == null ? const <Step>[] : Step.listFromJson(e))
-                .toList()
-            : const [],
+        title: Step.listFromJson(json[r'title']),
         body: json[r'body'] is List
             ? (json[r'body'] as List)
                 .map((e) => e == null ? const <Step>[] : Step.listFromJson(e))
                 .toList()
             : const [],
-        link: json[r'link'] is List
-            ? (json[r'link'] as List)
-                .map((e) => e == null ? const <Step>[] : Step.listFromJson(e))
-                .toList()
-            : const [],
+        link: Step.listFromJson(json[r'link']),
         thumbnail: json[r'thumbnail'] is List
             ? (json[r'thumbnail'] as List)
                 .map((e) => e == null ? const <Step>[] : Step.listFromJson(e))

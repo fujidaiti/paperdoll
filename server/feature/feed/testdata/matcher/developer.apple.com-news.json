@@ -18,13 +18,12 @@
     ],
     "fields": {
       "body": [[{ "tag": "span", "cls": ["article-text"] }]],
-      "link": [[{ "tag": "a", "cls": ["article-title"] }]],
+      "link": [{ "tag": "a", "cls": ["article-title"] }],
       "pubDate": [
         [{ "tag": "p", "cls": ["lighter", "article-date"] }, { "tag": "time" }]
       ],
       "thumbnail": [[{ "tag": "img", "cls": ["article-image"] }]],
-      "title": [[{ "tag": "a", "cls": ["article-title"] }, { "tag": "h2" }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "a", "cls": ["article-title"] }, { "tag": "h2" }]
+    }
   }
 ]

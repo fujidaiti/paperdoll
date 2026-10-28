@@ -13,26 +13,21 @@
     ],
     "fields": {
       "link": [
-        [
-          {
-            "tag": "a",
-            "cls": ["container__link", "container__link--type-article"]
-          }
-        ]
+        {
+          "tag": "a",
+          "cls": ["container__link", "container__link--type-article"]
+        }
       ],
       "thumbnail": [
         [{ "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }]
       ],
       "title": [
-        [
-          {
-            "tag": "div",
-            "cls": ["container__headline", "container__headline-text"]
-          }
-        ]
+        {
+          "tag": "div",
+          "cls": ["container__headline", "container__headline-text"]
+        }
       ]
-    },
-    "exclude": []
+    }
   },
   {
     "post": [
@@ -47,12 +42,11 @@
       }
     ],
     "fields": {
-      "link": [[{ "tag": "a", "cls": ["container__link"] }]],
+      "link": [{ "tag": "a", "cls": ["container__link"] }],
       "thumbnail": [
         [{ "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }]
       ],
-      "title": [[{ "tag": "span", "cls": ["container__headline-text"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "span", "cls": ["container__headline-text"] }]
+    }
   }
 ]

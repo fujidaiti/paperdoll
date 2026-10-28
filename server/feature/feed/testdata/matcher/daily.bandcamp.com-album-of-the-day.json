@@ -2,15 +2,14 @@
   {
     "post": [{ "tag": "div", "cls": ["list-article", "aotd"] }],
     "fields": {
-      "link": [[{ "tag": "a", "cls": ["thumb", "aotd-image"] }]],
+      "link": [{ "tag": "a", "cls": ["thumb", "aotd-image"] }],
       "pubDate": [
         [{ "tag": "div", "cls": ["article-info-text"] }, { "tag": "time" }]
       ],
       "thumbnail": [
         [{ "tag": "a", "cls": ["thumb", "aotd-image"] }, { "tag": "img" }]
       ],
-      "title": [[{ "tag": "div", "cls": ["title-wrapper", "title"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "div", "cls": ["title-wrapper", "title"] }]
+    }
   }
 ]

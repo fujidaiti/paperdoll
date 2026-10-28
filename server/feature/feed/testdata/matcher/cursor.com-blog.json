@@ -15,7 +15,7 @@
           }
         ]
       ],
-      "link": [[]],
+      "link": [],
       "pubDate": [
         [
           {
@@ -47,14 +47,13 @@
         ],
         [{ "tag": "img", "cls": ["object-cover"] }]
       ],
-      "title": [[{ "tag": "p", "cls": ["text-theme-text"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "p", "cls": ["text-theme-text"] }]
+    }
   },
   {
     "post": [{ "tag": "a", "cls": ["blog-directory__row", "block"] }],
     "fields": {
-      "link": [[]],
+      "link": [],
       "pubDate": [
         [
           {
@@ -72,10 +71,9 @@
         ]
       ],
       "title": [
-        [{ "tag": "p", "cls": ["type-base", "text-theme-text", "text-pretty"] }]
+        { "tag": "p", "cls": ["type-base", "text-theme-text", "text-pretty"] }
       ]
-    },
-    "exclude": []
+    }
   },
   {
     "post": [
@@ -85,11 +83,10 @@
       }
     ],
     "fields": {
-      "link": [[]],
+      "link": [],
       "pubDate": [[{ "tag": "time", "cls": ["type-base"] }]],
       "thumbnail": [[{ "tag": "img", "cls": ["object-cover"] }]],
-      "title": [[{ "tag": "p", "cls": ["type-base", "text-theme-text"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "p", "cls": ["type-base", "text-theme-text"] }]
+    }
   }
 ]

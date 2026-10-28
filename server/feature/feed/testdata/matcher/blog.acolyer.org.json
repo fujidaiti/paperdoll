@@ -14,10 +14,9 @@
     ],
     "fields": {
       "body": [[{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }]],
-      "link": [[{ "tag": "h1", "cls": ["entry-title"] }]],
+      "link": [{ "tag": "h1", "cls": ["entry-title"] }],
       "pubDate": [[{ "tag": "time", "cls": ["updated"] }]],
-      "title": [[{ "tag": "h1", "cls": ["entry-title"] }]]
-    },
-    "exclude": []
+      "title": [{ "tag": "h1", "cls": ["entry-title"] }]
+    }
   }
 ]

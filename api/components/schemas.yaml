@@ -227,7 +227,7 @@ PostMatcher:
     A rule that finds the posts of one kind in a page and extracts their fields.
     See PostMatcher in `server/feature/feed/post_matcher.go`.
   type: object
-  required: [post, fields, exclude]
+  required: [post, fields]
   properties:
     post:
       description: The chain of steps from the root to the post nodes.
@@ -237,15 +237,13 @@ PostMatcher:
     fields:
       description:
         The chains of steps from a post node to each labeled field, tried in
-        order.
+        order. The title and the link have one chain each.
       type: object
       properties:
         title:
           type: array
           items:
-            type: array
-            items:
-              $ref: "#/Step"
+            $ref: "#/Step"
         body:
           type: array
           items:
@@ -255,9 +253,7 @@ PostMatcher:
         link:
           type: array
           items:
-            type: array
-            items:
-              $ref: "#/Step"
+            $ref: "#/Step"
         thumbnail:
           type: array
           items:
@@ -271,7 +267,9 @@ PostMatcher:
             items:
               $ref: "#/Step"
     exclude:
-      description: Glob patterns of the links of nodes that are not posts.
+      description:
+        Glob patterns of the links of nodes that are not posts. It is left out
+        when there are none.
       type: array
       items:
         type: string

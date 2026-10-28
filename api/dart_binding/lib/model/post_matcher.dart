@@ -23,7 +23,7 @@ class PostMatcher {
 
   PostMatcherFields fields;
 
-  /// Glob patterns of the links of nodes that are not posts.
+  /// Glob patterns of the links of nodes that are not posts. It is left out when there are none.
   List<String> exclude;
 
   @override
@@ -70,10 +70,6 @@ class PostMatcher {
             'Required key "PostMatcher[fields]" is missing from JSON.');
         assert(json[r'fields'] != null,
             'Required key "PostMatcher[fields]" has a null value in JSON.');
-        assert(json.containsKey(r'exclude'),
-            'Required key "PostMatcher[exclude]" is missing from JSON.');
-        assert(json[r'exclude'] != null,
-            'Required key "PostMatcher[exclude]" has a null value in JSON.');
         return true;
       }());
 
@@ -143,6 +139,5 @@ class PostMatcher {
   static const requiredKeys = <String>{
     'post',
     'fields',
-    'exclude',
   };
 }

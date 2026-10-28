@@ -179,24 +179,24 @@ class PostMatcher {
   });
 
   /// Parses the JSON produced by [toJson].
-  factory fromJson(Map<String, Object?> json) => PostMatcher(
-    post: [
-      for (final s in json['post']! as List<Object?>)
+  factory fromJson(Map<String, Object?> json) {
+    List<Step> chainOf(Object? json) => [
+      for (final s in json! as List<Object?>)
         Step.fromJson(s! as Map<String, Object?>),
-    ],
-    fields: {
-      for (final MapEntry(:key, :value)
-          in (json['fields']! as Map<String, Object?>).entries)
-        PostField.values.byName(key): [
-          for (final chain in value! as List<Object?>)
-            [
-              for (final s in chain! as List<Object?>)
-                Step.fromJson(s! as Map<String, Object?>),
-            ],
-        ],
-    },
-    exclude: (json['exclude'] as List<Object?>? ?? const []).cast<String>(),
-  );
+    ];
+    return PostMatcher(
+      post: chainOf(json['post']),
+      fields: {
+        for (final MapEntry(:key, :value)
+            in (json['fields']! as Map<String, Object?>).entries)
+          if (PostField.values.byName(key) case final field)
+            field: _keyFields.contains(field)
+                ? [chainOf(value)]
+                : [for (final chain in value! as List<Object?>) chainOf(chain)],
+      },
+      exclude: (json['exclude'] as List<Object?>? ?? const []).cast<String>(),
+    );
+  }
 
   /// A matcher whose posts are selected as [node] is: by the step of [node]
   /// when it has classes, or else by the steps of the nodes from its nearest
@@ -363,15 +363,19 @@ class PostMatcher {
     }
   }
 
+  /// The title and the link are written as their only chain, not as a list
+  /// of chains.
   Map<String, Object?> toJson() => {
     'post': [for (final s in post) s.toJson()],
     'fields': {
       for (final MapEntry(:key, :value) in fields.entries)
-        key.name: [
-          for (final chain in value) [for (final s in chain) s.toJson()],
-        ],
+        key.name: _keyFields.contains(key)
+            ? [for (final s in value.single) s.toJson()]
+            : [
+                for (final chain in value) [for (final s in chain) s.toJson()],
+              ],
     },
-    'exclude': exclude,
+    if (exclude.isNotEmpty) 'exclude': exclude,
   };
 }
 
