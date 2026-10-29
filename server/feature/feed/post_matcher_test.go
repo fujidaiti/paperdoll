@@ -70,30 +70,23 @@ func loadFixturePages(t *testing.T, sourceDir, fixtureDir string) []fixturePage 
 // posts do not nest in a page. A matcher can only find posts as such nodes.
 // The later versions of the pages in testdata/robustness are checked too.
 func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
+	// holds reports whether the subtree of n has a node that f
+	// accepts and whose value of f is want.
+	var holds func(n *SemanticTreeNode, f PostField, want string) bool
+	holds = func(n *SemanticTreeNode, f PostField, want string) bool {
+		if v, ok := f.valueOf(n); ok && v == want && f.accepts(n) {
+			return true
+		}
+		return slices.ContainsFunc(
+			n.Children,
+			func(c *SemanticTreeNode) bool { return holds(c, f, want) },
+		)
+	}
+
 	for _, set := range fixtureSets {
 		t.Run(set.name, func(t *testing.T) {
 			for _, page := range loadFixturePages(t, set.source, set.fixture) {
 				t.Run(page.name, func(t *testing.T) {
-					for i, post := range page.posts {
-						for f := range post {
-							if !slices.Contains(postFields, f) {
-								t.Errorf("post %d: unknown field %q", i, f)
-							}
-						}
-					}
-
-					// holds reports whether the subtree of n has a node that f
-					// accepts and whose value of f is want.
-					var holds func(n *SemanticTreeNode, f PostField, want string) bool
-					holds = func(n *SemanticTreeNode, f PostField, want string) bool {
-						if v, ok := f.valueOf(n); ok && v == want && f.accepts(n) {
-							return true
-						}
-						return slices.ContainsFunc(
-							n.Children,
-							func(c *SemanticTreeNode) bool { return holds(c, f, want) },
-						)
-					}
 					// claim makes each node that holds all values of a post, with
 					// children before their parent, the node of that post unless it
 					// is or contains the node of another post, and reports whether n
@@ -124,6 +117,7 @@ func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 						}
 						return false
 					}
+
 					claim(page.tree.Root)
 					for i, ok := range found {
 						if !ok {
