@@ -4,11 +4,14 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 )
 
-var postFields = []PostField{PostTitle, PostBody, PostLink, PostThumbnail, PostPubDate}
+// postFields are the fields of a post, with the body last, since building the
+// body of a node is slow.
+var postFields = []PostField{PostTitle, PostLink, PostThumbnail, PostPubDate, PostBody}
 
 // fixturePage is a test page with its fixture: the posts that a correct
 // matcher finds on it (see testdata/README.md).
@@ -71,97 +74,55 @@ func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 		t.Run(set.name, func(t *testing.T) {
 			for _, page := range loadFixturePages(t, set.source, set.fixture) {
 				t.Run(page.name, func(t *testing.T) {
-					// The nodes that hold each value that a matcher can take from
-					// them, by field. A field is mapped only to nodes that it
-					// accepts, as the client's PostField.accepts tells.
-					holders := make(map[PostField]map[string][]*SemanticTreeNode)
-					for _, f := range postFields {
-						holders[f] = map[string][]*SemanticTreeNode{}
-					}
-					parent := map[*SemanticTreeNode]*SemanticTreeNode{}
-					add := func(f PostField, n *SemanticTreeNode) {
-						if v, ok := f.valueOf(n); ok {
-							holders[f][v] = append(holders[f][v], n)
-						}
-					}
-					var visit func(n *SemanticTreeNode)
-					visit = func(n *SemanticTreeNode) {
-						switch n.Tag {
-						case "img":
-							add(PostThumbnail, n)
-						case "time":
-							add(PostPubDate, n)
-						default:
-							if n.isValue() {
-								add(PostTitle, n)
-							}
-							add(PostBody, n)
-							add(PostLink, n)
-						}
-						for _, c := range n.Children {
-							parent[c] = n
-							visit(c)
-						}
-					}
-					visit(page.tree.Root)
-
-					// The number of values of each post that the subtree of each node
-					// holds, and the number of values of each post.
-					counts := make([]map[*SemanticTreeNode]int, len(page.posts))
-					fields := make([]int, len(page.posts))
 					for i, post := range page.posts {
 						for f := range post {
-							if holders[f] == nil {
+							if !slices.Contains(postFields, f) {
 								t.Errorf("post %d: unknown field %q", i, f)
 							}
 						}
-						counts[i] = map[*SemanticTreeNode]int{}
-						for _, f := range postFields {
-							want, ok := post[f]
-							if !ok {
-								continue
-							}
-							if len(holders[f][want]) == 0 {
-								t.Errorf("post %d: %s %q is missing", i, f, want)
-							}
-							// Each node is counted once per field, however many of
-							// its descendants hold the value.
-							marked := map[*SemanticTreeNode]bool{}
-							for _, n := range holders[f][want] {
-								for ; n != nil && !marked[n]; n = parent[n] {
-									marked[n] = true
-								}
-							}
-							for n := range marked {
-								counts[i][n]++
-							}
-							fields[i]++
-						}
 					}
 
-					// Each node that holds all values of a post, with children
-					// before their parent, is the node of that post unless it is or
-					// contains the node of another post. A post that gets no node
-					// overlaps another post.
+					// holds reports whether the subtree of n has a node that f
+					// accepts and whose value of f is want.
+					var holds func(n *SemanticTreeNode, f PostField, want string) bool
+					holds = func(n *SemanticTreeNode, f PostField, want string) bool {
+						if v, ok := f.valueOf(n); ok && v == want && f.accepts(n) {
+							return true
+						}
+						return slices.ContainsFunc(
+							n.Children,
+							func(c *SemanticTreeNode) bool { return holds(c, f, want) },
+						)
+					}
+					// claim makes each node that holds all values of a post, with
+					// children before their parent, the node of that post unless it
+					// is or contains the node of another post, and reports whether n
+					// is or contains such a node. A post that gets no node overlaps
+					// another post.
 					found := make([]bool, len(page.posts))
-					taken := map[*SemanticTreeNode]bool{}
-					var claim func(n *SemanticTreeNode)
-					claim = func(n *SemanticTreeNode) {
+					var claim func(n *SemanticTreeNode) bool
+					claim = func(n *SemanticTreeNode) bool {
+						taken := false
 						for _, c := range n.Children {
-							claim(c)
+							taken = claim(c) || taken
 						}
-						if taken[n] {
-							return
+						if taken {
+							return true
 						}
-						for i := range page.posts {
-							if !found[i] && counts[i][n] == fields[i] {
-								found[i] = true
-								for a := n; a != nil && !taken[a]; a = parent[a] {
-									taken[a] = true
-								}
-								return
+					posts:
+						for i, post := range page.posts {
+							if found[i] {
+								continue
 							}
+							for _, f := range postFields {
+								if want, ok := post[f]; ok && !holds(n, f, want) {
+									continue posts
+								}
+							}
+							found[i] = true
+							return true
 						}
+						return false
 					}
 					claim(page.tree.Root)
 					for i, ok := range found {
