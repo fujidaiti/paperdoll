@@ -166,15 +166,20 @@ bool _globMatches(String pattern, String hostPath) {
 /// descendants of the root, and each later step selects children of the
 /// nodes that the previous step selects. Each field has chains of steps from
 /// a post node to the node of its value, tried in order; an empty chain is
-/// the post node itself. The title and the link have one chain each, since
-/// they define the kind of posts. A node that [post] selects is a post only
-/// when its title and link are found, when they are labeled, and when its link
-/// matches none of the patterns in [exclude]. A node that contains another
+/// the post node itself. The [title] and the [link] have one chain each, or
+/// none when they are not labeled, since they define the kind of posts. A
+/// node that [post] selects is a post only when its title and link are found,
+/// when they are labeled, and when its link matches none of the patterns in
+/// [exclude]. A node that contains another
 /// node that [post] selects is not a post, since it is a list of posts.
 class PostMatcher {
   const new({
     required this.post,
-    this.fields = const {},
+    this.title,
+    this.link,
+    this.body = const [],
+    this.thumbnail = const [],
+    this.pubDate = const [],
     this.exclude = const [],
   });
 
@@ -184,16 +189,24 @@ class PostMatcher {
       for (final s in json! as List<Object?>)
         Step.fromJson(s! as Map<String, Object?>),
     ];
+    final fields = json['fields']! as Map<String, Object?>;
+    List<List<Step>> chainsOf(PostField field) => [
+      for (final chain in fields[field.name] as List<Object?>? ?? const [])
+        chainOf(chain),
+    ];
     return PostMatcher(
       post: chainOf(json['post']),
-      fields: {
-        for (final MapEntry(:key, :value)
-            in (json['fields']! as Map<String, Object?>).entries)
-          if (PostField.values.byName(key) case final field)
-            field: _keyFields.contains(field)
-                ? [chainOf(value)]
-                : [for (final chain in value! as List<Object?>) chainOf(chain)],
+      title: switch (fields[PostField.title.name]) {
+        final chain? => chainOf(chain),
+        null => null,
       },
+      link: switch (fields[PostField.link.name]) {
+        final chain? => chainOf(chain),
+        null => null,
+      },
+      body: chainsOf(PostField.body),
+      thumbnail: chainsOf(PostField.thumbnail),
+      pubDate: chainsOf(PostField.pubDate),
       exclude: (json['exclude'] as List<Object?>? ?? const []).cast<String>(),
     );
   }
@@ -212,8 +225,28 @@ class PostMatcher {
   }
 
   final List<Step> post;
-  final Map<PostField, List<List<Step>>> fields;
+  final List<Step>? title;
+  final List<Step>? link;
+  final List<List<Step>> body;
+  final List<List<Step>> thumbnail;
+  final List<List<Step>> pubDate;
   final List<String> exclude;
+
+  /// The chains of [field], tried in order.
+  List<List<Step>> _chainsOf(PostField field) => switch (field) {
+    PostField.title => [?title],
+    PostField.link => [?link],
+    PostField.body => body,
+    PostField.thumbnail => thumbnail,
+    PostField.pubDate => pubDate,
+  };
+
+  /// The chains of each field that has any.
+  Map<PostField, List<List<Step>>> get fields => {
+    for (final field in PostField.values)
+      if (_chainsOf(field) case final chains when chains.isNotEmpty)
+        field: chains,
+  };
 
   /// The nodes that [post] selects and that have the labeled title and link,
   /// including the excluded ones. The other fields are optional, since posts
@@ -233,10 +266,8 @@ class PostMatcher {
       }
       if (selected.contains(n) &&
           !inner &&
-          [
-            PostField.title,
-            PostField.link,
-          ].every((f) => !fields.containsKey(f) || matchField(n, f) != null)) {
+          (title == null || matchField(n, PostField.title) != null) &&
+          (link == null || matchField(n, PostField.link) != null)) {
         posts.add(n);
       }
       return inner || selected.contains(n);
@@ -278,7 +309,7 @@ class PostMatcher {
   /// The node that provides [field] in [postNode]: the first node that the
   /// first chain of [field] selects with a node that [field] accepts, if any.
   SemanticTreeNode? matchField(SemanticTreeNode postNode, PostField field) {
-    for (final chain in fields[field] ?? const <List<Step>>[]) {
+    for (final chain in _chainsOf(field)) {
       if (_resolveChain(postNode, field, chain) case final n?) {
         return n;
       }
@@ -286,7 +317,8 @@ class PostMatcher {
     return null;
   }
 
-  /// Maps [field] to [valueNode] inside [postNode].
+  /// Maps [field], which is not one of [_keyFields], to [valueNode] inside
+  /// [postNode].
   ///
   /// The chain that selects [valueNode] is added after the other chains of
   /// [field] when they find nothing in [postNode], and before them when they
@@ -298,7 +330,6 @@ class PostMatcher {
     SemanticTreeNode postNode,
     SemanticTreeNode valueNode,
   ) {
-    final chains = fields[field] ?? const <List<Step>>[];
     final current = matchField(postNode, field);
     if (identical(current, valueNode)) {
       return this;
@@ -309,12 +340,15 @@ class PostMatcher {
     if (chain == null) {
       return this;
     }
+    final chains = _chainsOf(field);
+    final updated = current == null ? [...chains, chain] : [chain, ...chains];
     return PostMatcher(
       post: post,
-      fields: {
-        ...fields,
-        field: current == null ? [...chains, chain] : [chain, ...chains],
-      },
+      title: title,
+      link: link,
+      body: field == PostField.body ? updated : body,
+      thumbnail: field == PostField.thumbnail ? updated : thumbnail,
+      pubDate: field == PostField.pubDate ? updated : pubDate,
       exclude: exclude,
     );
   }
@@ -438,6 +472,7 @@ const _keyFields = [PostField.title, PostField.link];
         final n? => _pathOf(tree, p.node, n),
         null => null,
       };
+
   final first = group.first;
   var chain = PostMatcher.fromNode(tree, first.node).post;
   final paths = {for (final f in _keyFields) f: pathOf(first, f)};
@@ -447,8 +482,9 @@ const _keyFields = [PostField.title, PostField.link];
       return null;
     }
     chain = widened;
-    for (final f in _keyFields) {
-      final (path, other) = (paths[f], pathOf(post, f));
+
+    for (final field in _keyFields) {
+      final (path, other) = (paths[field], pathOf(post, field));
       if (path == null || other == null) {
         if (path != other) {
           return null;
@@ -458,14 +494,14 @@ const _keyFields = [PostField.title, PostField.link];
       if (path.length != other.length) {
         return null;
       }
-      for (final (i, s) in path.indexed) {
-        if (s.tag != other[i].tag) {
+      for (final (i, step) in path.indexed) {
+        if (step.tag != other[i].tag) {
           return null;
         }
         path[i] = Step(
-          tag: s.tag,
+          tag: step.tag,
           cls: [
-            for (final c in s.cls)
+            for (final c in step.cls)
               if (other[i].cls.contains(c)) c,
           ],
         );
@@ -512,17 +548,16 @@ List<PostMatcher> generateMatchers(
   for (var i = 0; i < groups.length; i++) {
     final group = groups[i];
     final shape = _shapeOf(tree, group)!;
+    List<Step>? keyChain(PostField f) => switch (shape.paths[f]) {
+      final path? => PostMatcher._fieldChain(f, [
+        for (final p in group) (p.node, p.fields[f]!),
+      ], path),
+      null => null,
+    };
     var matcher = PostMatcher(
       post: shape.post,
-      fields: {
-        for (final f in _keyFields)
-          if (shape.paths[f] case final path?)
-            if (PostMatcher._fieldChain(f, [
-                  for (final p in group) (p.node, p.fields[f]!),
-                ], path)
-                case final chain?)
-              f: [chain],
-      },
+      title: keyChain(PostField.title),
+      link: keyChain(PostField.link),
       exclude: exclude,
     );
     for (final post in group) {

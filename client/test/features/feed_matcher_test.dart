@@ -78,28 +78,16 @@ void main() {
     test('takes each field of a post from the first matcher that has it', () {
       const titles = PostMatcher(
         post: [Step(tag: 'article')],
-        fields: {
-          PostField.title: [
-            [Step(tag: 'h2')],
-          ],
-          PostField.link: [
-            [Step(tag: 'h2')],
-          ],
-        },
+        title: [Step(tag: 'h2')],
+        link: [Step(tag: 'h2')],
       );
       const bodies = PostMatcher(
         post: [Step(tag: 'article')],
-        fields: {
-          PostField.title: [
-            [Step(tag: 'p')],
-          ],
-          PostField.link: [
-            [Step(tag: 'h2')],
-          ],
-          PostField.body: [
-            [Step(tag: 'p')],
-          ],
-        },
+        title: [Step(tag: 'p')],
+        link: [Step(tag: 'h2')],
+        body: [
+          [Step(tag: 'p')],
+        ],
       );
 
       final posts = labelFoundPosts(tree, [titles, bodies]);
