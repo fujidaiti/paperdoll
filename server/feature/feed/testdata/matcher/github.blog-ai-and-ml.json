@@ -1,49 +1,18 @@
 [
   {
-    "post": [{ "tag": "div", "cls": ["col-12"] }],
+    "post": [
+      { "tag": "article", "cls": ["color-border-muted", "post-card"] },
+      { "tag": "div" }
+    ],
     "fields": {
       "body": [
         [
           { "tag": "div", "cls": ["mb-2", "f4-mktg", "color-fg-muted"] },
           { "tag": "p" }
-        ]
-      ],
-      "link": [
-        { "tag": "h3", "cls": ["mb-3", "Link--primary", "post-card__link"] }
-      ],
-      "pubDate": [
-        [{ "tag": "time", "cls": ["text-mono", "color-fg-muted", "no-wrap"] }]
-      ],
-      "thumbnail": [
-        [
-          {
-            "tag": "img",
-            "cls": [
-              "d-block",
-              "tease-thumbnail__img",
-              "cover-image",
-              "wp-post-image"
-            ]
-          }
-        ]
-      ],
-      "title": [
-        { "tag": "h3", "cls": ["mb-3", "Link--primary", "post-card__link"] }
-      ]
-    }
-  },
-  {
-    "post": [{ "tag": "div", "cls": ["d-flex", "flex-column"] }],
-    "fields": {
-      "body": [
+        ],
         [{ "tag": "div", "cls": ["f4-mktg", "color-fg-muted"] }, { "tag": "p" }]
       ],
-      "link": [
-        {
-          "tag": "h3",
-          "cls": ["h6-mktg", "mb-2", "Link--primary", "post-card__link"]
-        }
-      ],
+      "link": [{ "tag": "h3", "cls": ["Link--primary", "post-card__link"] }],
       "pubDate": [
         [{ "tag": "time", "cls": ["text-mono", "color-fg-muted", "no-wrap"] }]
       ],
@@ -53,19 +22,14 @@
             "tag": "img",
             "cls": [
               "d-block",
-              "cover-image",
               "tease-thumbnail__img",
+              "cover-image",
               "wp-post-image"
             ]
           }
         ]
       ],
-      "title": [
-        {
-          "tag": "h3",
-          "cls": ["h6-mktg", "mb-2", "Link--primary", "post-card__link"]
-        }
-      ]
+      "title": [{ "tag": "h3", "cls": ["Link--primary", "post-card__link"] }]
     }
   }
 ]

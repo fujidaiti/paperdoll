@@ -252,6 +252,30 @@ func (t *treeIndex) shapeOf(group []labeledPost) (postShape, bool) {
 			}
 		}
 	}
+	// When the posts share no class at the top of the chain, the chain starts
+	// from their ancestors as well, as postChain does for one post, so that it
+	// does not select every node of the tag, such as the cards of different
+	// layouts in a list of posts.
+	for len(shape.post[0].Cls) == 0 {
+		top := group[0].node
+		for i := 1; i < len(shape.post); i++ {
+			top = t.parent[top]
+		}
+		above := t.parent[top]
+		if above == nil || t.parent[above] == nil {
+			break
+		}
+		chain := append([]Step{t.step(above)}, shape.post...)
+		for _, p := range group[1:] {
+			if chain = t.widen(chain, p.node); chain == nil {
+				break
+			}
+		}
+		if chain == nil {
+			break
+		}
+		shape.post = chain
+	}
 	return shape, true
 }
 

@@ -500,6 +500,28 @@ const _keyFields = [PostField.title, PostField.link];
       }
     }
   }
+  // When the posts share no class at the top of the chain, the chain starts
+  // from their ancestors as well, as _postChainOf does for one post, so that it
+  // does not select every node of the tag, such as the cards of different
+  // layouts in a list of posts.
+  while (chain.first.cls.isEmpty) {
+    var top = first.node;
+    for (var i = 1; i < chain.length; i++) {
+      top = top.parent!;
+    }
+    final above = top.parent;
+    if (above == null || above.parent == null) {
+      break;
+    }
+    final grown = group.skip(1).fold<List<Step>?>([
+      Step.of(tree, above),
+      ...chain,
+    ], (c, post) => c == null ? null : _widen(tree, c, post.node));
+    if (grown == null) {
+      break;
+    }
+    chain = grown;
+  }
   return (post: chain, paths: paths);
 }
 
