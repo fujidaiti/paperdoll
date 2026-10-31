@@ -7,7 +7,7 @@
       { "tag": "div" }
     ],
     "fields": {
-      "body": [[{ "tag": "div", "cls": ["fs-16", "mb-16", "postexcerpt"] }]],
+      "body": [{ "tag": "div", "cls": ["fs-16", "mb-16", "postexcerpt"] }],
       "link": [
         {
           "tag": "h3",
@@ -19,7 +19,7 @@
           ]
         }
       ],
-      "thumbnail": [[{ "tag": "img" }]],
+      "thumbnail": [{ "tag": "img" }],
       "title": [
         {
           "tag": "h3",
@@ -54,7 +54,7 @@
       }
     ],
     "fields": {
-      "body": [[{ "tag": "p", "cls": ["excerpt-body", "mt-16", "mb-24"] }]],
+      "body": [{ "tag": "p", "cls": ["excerpt-body", "mt-16", "mb-24"] }],
       "link": [
         {
           "tag": "h3",
@@ -62,26 +62,75 @@
         }
       ],
       "pubDate": [
-        [
-          {
-            "tag": "div",
-            "cls": [
-              "d-flex",
-              "align-items-center",
-              "justify-content-between",
-              "gap-12",
-              "mt-16",
-              "mb-16"
-            ]
-          },
-          { "tag": "div" },
-          { "tag": "time" }
-        ]
+        {
+          "tag": "div",
+          "cls": [
+            "d-flex",
+            "align-items-center",
+            "justify-content-between",
+            "gap-12",
+            "mt-16",
+            "mb-16"
+          ]
+        },
+        { "tag": "div" },
+        { "tag": "time" }
       ],
       "thumbnail": [
-        [{ "tag": "img", "cls": ["post-thumbnail", "wp-image", "lazyload"] }],
-        [{ "tag": "img", "cls": ["post-thumbnail", "lazyload"] }]
+        { "tag": "img", "cls": ["post-thumbnail", "wp-image", "lazyload"] }
       ],
+      "title": [
+        {
+          "tag": "h3",
+          "cls": ["fs-24", "fw-600", "mb-16", "single-click", "excerpt-title"]
+        }
+      ]
+    }
+  },
+  {
+    "post": [
+      {
+        "tag": "div",
+        "cls": [
+          "masonry-card",
+          "box",
+          "bg-white",
+          "d-flex",
+          "justify-content-between",
+          "flex-column",
+          "p-16",
+          "rounded",
+          "shadow",
+          "position-relative",
+          "border-1",
+          "post-card"
+        ]
+      }
+    ],
+    "fields": {
+      "body": [{ "tag": "p", "cls": ["excerpt-body", "mt-16", "mb-24"] }],
+      "link": [
+        {
+          "tag": "h3",
+          "cls": ["fs-24", "fw-600", "mb-16", "single-click", "excerpt-title"]
+        }
+      ],
+      "pubDate": [
+        {
+          "tag": "div",
+          "cls": [
+            "d-flex",
+            "align-items-center",
+            "justify-content-between",
+            "gap-12",
+            "mt-16",
+            "mb-16"
+          ]
+        },
+        { "tag": "div" },
+        { "tag": "time" }
+      ],
+      "thumbnail": [{ "tag": "img", "cls": ["post-thumbnail", "lazyload"] }],
       "title": [
         {
           "tag": "h3",

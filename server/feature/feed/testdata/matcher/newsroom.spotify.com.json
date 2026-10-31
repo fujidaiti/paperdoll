@@ -1,12 +1,15 @@
 [
   {
     "post": [
-      { "tag": "article", "cls": ["featured-slide", "slick-slide", "white"] },
+      {
+        "tag": "article",
+        "cls": ["featured-slide", "slick-slide", "white", "half"]
+      },
       { "tag": "a" }
     ],
     "fields": {
       "link": [],
-      "thumbnail": [[{ "tag": "img" }]],
+      "thumbnail": [{ "tag": "img" }],
       "title": [
         { "tag": "div", "cls": ["cell", "small-12", "text-container"] },
         { "tag": "h2" }
@@ -14,16 +17,31 @@
     }
   },
   {
-    "post": [{ "tag": "article", "cls": ["post-box", "v2"] }],
+    "post": [
+      {
+        "tag": "article",
+        "cls": ["featured-slide", "slick-slide", "white", "full-width"]
+      },
+      { "tag": "a" }
+    ],
     "fields": {
-      "link": [{ "tag": "div", "cls": ["image"] }, { "tag": "a" }],
+      "link": [],
+      "thumbnail": [{ "tag": "img" }],
+      "title": [
+        { "tag": "div", "cls": ["cell", "small-12", "text-container"] },
+        { "tag": "h2" }
+      ]
+    }
+  },
+  {
+    "post": [{ "tag": "article", "cls": ["post-box", "mobile-column", "v2"] }],
+    "fields": {
+      "link": [{ "tag": "a", "cls": ["square-image"] }],
       "thumbnail": [
-        [
-          {
-            "tag": "img",
-            "cls": ["attachment-large", "size-large", "wp-post-image"]
-          }
-        ]
+        {
+          "tag": "img",
+          "cls": ["attachment-large", "size-large", "wp-post-image"]
+        }
       ],
       "title": [{ "tag": "div", "cls": ["title"] }, { "tag": "h3" }]
     }
@@ -32,14 +50,25 @@
     "post": [{ "tag": "article", "cls": ["spotlight-item"] }],
     "fields": {
       "body": [
-        [
-          { "tag": "div", "cls": ["spotlight-text"] },
-          { "tag": "p", "nth": 1 }
-        ]
+        { "tag": "div", "cls": ["spotlight-text"] },
+        { "tag": "p", "nth": 1 }
       ],
       "link": [{ "tag": "a", "cls": ["wide-image"] }],
-      "thumbnail": [[{ "tag": "a", "cls": ["wide-image"] }, { "tag": "img" }]],
+      "thumbnail": [{ "tag": "a", "cls": ["wide-image"] }, { "tag": "img" }],
       "title": [{ "tag": "h3", "cls": ["clamp"] }]
+    }
+  },
+  {
+    "post": [{ "tag": "article", "cls": ["post-box", "mobile-row", "v2"] }],
+    "fields": {
+      "link": [{ "tag": "a", "cls": ["wide-image"] }],
+      "thumbnail": [
+        {
+          "tag": "img",
+          "cls": ["attachment-large", "size-large", "wp-post-image"]
+        }
+      ],
+      "title": [{ "tag": "div", "cls": ["title"] }, { "tag": "h3" }]
     }
   }
 ]

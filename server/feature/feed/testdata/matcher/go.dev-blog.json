@@ -3,7 +3,7 @@
     "post": [{ "tag": "p", "cls": ["blogtitle"] }],
     "fields": {
       "link": [{ "tag": "a" }],
-      "pubDate": [[{ "tag": "span", "cls": ["date"] }, { "tag": "time" }]],
+      "pubDate": [{ "tag": "span", "cls": ["date"] }, { "tag": "time" }],
       "title": [{ "tag": "a" }]
     }
   }

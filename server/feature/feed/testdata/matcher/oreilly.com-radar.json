@@ -1,17 +1,22 @@
 [
   {
+    "post": [{ "tag": "a", "cls": ["feed-item", "sticky"] }],
+    "fields": {
+      "body": [{ "tag": "p", "cls": ["dek"] }],
+      "link": [],
+      "pubDate": [{ "tag": "p", "cls": ["meta"] }, { "tag": "time" }],
+      "thumbnail": [{ "tag": "figure", "cls": ["article"] }, { "tag": "img" }],
+      "title": [{ "tag": "div", "cls": ["item-text"] }, { "tag": "h2" }]
+    }
+  },
+  {
     "post": [{ "tag": "a", "cls": ["feed-item"] }],
     "fields": {
-      "body": [[{ "tag": "p", "cls": ["dek"] }]],
       "link": [],
-      "pubDate": [[{ "tag": "p", "cls": ["meta"] }, { "tag": "time" }]],
       "thumbnail": [
-        [{ "tag": "figure", "cls": ["article"] }, { "tag": "img" }],
-        [
-          { "tag": "div", "cls": ["inner"] },
-          { "tag": "figure" },
-          { "tag": "img" }
-        ]
+        { "tag": "div", "cls": ["inner"] },
+        { "tag": "figure" },
+        { "tag": "img" }
       ],
       "title": [{ "tag": "div", "cls": ["item-text"] }, { "tag": "h2" }]
     }

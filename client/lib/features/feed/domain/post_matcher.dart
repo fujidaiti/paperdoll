@@ -164,42 +164,40 @@ bool _globMatches(String pattern, String hostPath) {
 ///
 /// [post] is the chain of steps to the post nodes: the first step selects
 /// descendants of the root, and each later step selects children of the
-/// nodes that the previous step selects. Each field has chains of steps from
-/// a post node to the node of its value, tried in order; an empty chain is
-/// the post node itself. The [title] and the [link] have one chain each,
-/// since they define the kind of posts. A node that [post] selects is a post
-/// only when its title and link are found, and when its link matches none of
-/// the patterns in [exclude]. A node that contains another node that [post]
-/// selects is not a post, since it is a list of posts.
+/// nodes that the previous step selects. Each field has one chain of steps
+/// from a post node to the node of its value; an empty chain is the post node
+/// itself. The [title] and the [link] are required, since they define the
+/// kind of posts, and the other fields are null when the posts have none. A
+/// node that [post] selects is a post only when its title and link are found,
+/// and when its link matches none of the patterns in [exclude]. A node that
+/// contains another such node is not a post, since it is a list of posts.
 class PostMatcher {
   const new({
     required this.post,
     required this.title,
     required this.link,
-    this.body = const [],
-    this.thumbnail = const [],
-    this.pubDate = const [],
+    this.body,
+    this.thumbnail,
+    this.pubDate,
     this.exclude = const [],
   });
 
   /// Parses the JSON produced by [toJson].
   factory fromJson(Map<String, Object?> json) {
-    List<Step> chainOf(Object? json) => [
-      for (final s in json! as List<Object?>)
-        Step.fromJson(s! as Map<String, Object?>),
-    ];
+    List<Step>? chainOf(Object? json) => switch (json) {
+      final List<Object?> steps => [
+        for (final s in steps) Step.fromJson(s! as Map<String, Object?>),
+      ],
+      _ => null,
+    };
     final fields = json['fields']! as Map<String, Object?>;
-    List<List<Step>> chainsOf(PostField field) => [
-      for (final chain in fields[field.name] as List<Object?>? ?? const [])
-        chainOf(chain),
-    ];
     return PostMatcher(
-      post: chainOf(json['post']),
-      title: chainOf(fields[PostField.title.name]),
-      link: chainOf(fields[PostField.link.name]),
-      body: chainsOf(PostField.body),
-      thumbnail: chainsOf(PostField.thumbnail),
-      pubDate: chainsOf(PostField.pubDate),
+      post: chainOf(json['post'])!,
+      title: chainOf(fields[PostField.title.name])!,
+      link: chainOf(fields[PostField.link.name])!,
+      body: chainOf(fields[PostField.body.name]),
+      thumbnail: chainOf(fields[PostField.thumbnail.name]),
+      pubDate: chainOf(fields[PostField.pubDate.name]),
       exclude: (json['exclude'] as List<Object?>? ?? const []).cast<String>(),
     );
   }
@@ -207,50 +205,51 @@ class PostMatcher {
   final List<Step> post;
   final List<Step> title;
   final List<Step> link;
-  final List<List<Step>> body;
-  final List<List<Step>> thumbnail;
-  final List<List<Step>> pubDate;
+  final List<Step>? body;
+  final List<Step>? thumbnail;
+  final List<Step>? pubDate;
   final List<String> exclude;
 
-  /// The chains of [field], tried in order.
-  List<List<Step>> _chainsOf(PostField field) => switch (field) {
-    PostField.title => [title],
-    PostField.link => [link],
+  /// The chain of [field], if any.
+  List<Step>? _chainOf(PostField field) => switch (field) {
+    PostField.title => title,
+    PostField.link => link,
     PostField.body => body,
     PostField.thumbnail => thumbnail,
     PostField.pubDate => pubDate,
   };
 
-  /// The chains of each field that has any.
-  Map<PostField, List<List<Step>>> get fields => {
-    for (final field in PostField.values)
-      if (_chainsOf(field) case final chains when chains.isNotEmpty)
-        field: chains,
+  /// The chain of each field that has one.
+  Map<PostField, List<Step>> get fields => {
+    for (final field in PostField.values) field: ?_chainOf(field),
   };
 
   /// The nodes that [post] selects and that have the title and the link,
   /// including the excluded ones. The other fields are optional, since posts
   /// of one kind often lack some of them, such as the date of a featured
-  /// post.
+  /// post. Other nodes that [post] selects inside a post, such as a footer
+  /// with the same classes, do not matter.
   List<SemanticTreeNode> _candidates(SemanticTree tree) {
     if (post.isEmpty) {
       return const [];
     }
     final selected = _selectNodes(tree.root, post, children: true).toSet();
     final posts = <SemanticTreeNode>[];
-    // Returns whether n is or contains a selected node.
+    // Returns whether n is or contains a selected node with the title and the
+    // link.
     bool visit(SemanticTreeNode n) {
       var inner = false;
       for (final c in n.children) {
         inner = visit(c) || inner;
       }
-      if (selected.contains(n) &&
-          !inner &&
+      final isPost =
+          selected.contains(n) &&
           matchField(n, PostField.title) != null &&
-          matchField(n, PostField.link) != null) {
+          matchField(n, PostField.link) != null;
+      if (isPost && !inner) {
         posts.add(n);
       }
-      return inner || selected.contains(n);
+      return inner || isPost;
     }
 
     visit(tree.root);
@@ -287,107 +286,18 @@ class PostMatcher {
       matchField(postNode, PostField.link)?.link;
 
   /// The node that provides [field] in [postNode]: the first node that the
-  /// first chain of [field] selects with a node that [field] accepts, if any.
-  SemanticTreeNode? matchField(SemanticTreeNode postNode, PostField field) {
-    for (final chain in _chainsOf(field)) {
-      if (_resolveChain(postNode, field, chain) case final n?) {
-        return n;
-      }
-    }
-    return null;
-  }
+  /// chain of [field] selects and that [field] accepts, if any.
+  SemanticTreeNode? matchField(SemanticTreeNode postNode, PostField field) =>
+      switch (_chainOf(field)) {
+        final chain? => _resolveChain(postNode, field, chain),
+        null => null,
+      };
 
-  /// Maps [field], which is not one of [_keyFields], to [valueNode] inside
-  /// [postNode].
-  ///
-  /// The chain that selects [valueNode] is added after the other chains of
-  /// [field] when they find nothing in [postNode], and before them when they
-  /// find another node, so that the posts that the other chains serve keep the
-  /// nodes that they find. Nothing changes when no chain finds [valueNode].
-  PostMatcher _withField(
-    SemanticTree tree,
-    PostField field,
-    SemanticTreeNode postNode,
-    SemanticTreeNode valueNode,
-  ) {
-    final current = matchField(postNode, field);
-    if (identical(current, valueNode)) {
-      return this;
-    }
-    final chain = _fieldChain(field, [
-      (postNode, valueNode),
-    ], _pathOf(tree, postNode, valueNode));
-    if (chain == null) {
-      return this;
-    }
-    final chains = _chainsOf(field);
-    final updated = current == null ? [...chains, chain] : [chain, ...chains];
-    return PostMatcher(
-      post: post,
-      title: title,
-      link: link,
-      body: field == PostField.body ? updated : body,
-      thumbnail: field == PostField.thumbnail ? updated : thumbnail,
-      pubDate: field == PostField.pubDate ? updated : pubDate,
-      exclude: exclude,
-    );
-  }
-
-  /// The chain that finds each node of [targets] as [field] in its post node:
-  /// the shortest tail of [path] that does, and that has a step with classes
-  /// when [path] has one. It falls back to all of [path], with [Step.nth] on
-  /// the last step. Null when no chain finds the nodes.
-  static List<Step>? _fieldChain(
-    PostField field,
-    List<(SemanticTreeNode, SemanticTreeNode)> targets,
-    List<Step> path,
-  ) {
-    bool findsAll(List<Step> chain) => targets.every(
-      (t) => identical(_resolveChain(t.$1, field, chain), t.$2),
-    );
-    bool hasCls(List<Step> chain) => chain.any((s) => s.cls.isNotEmpty);
-    for (var i = path.length; i >= 0; i--) {
-      final chain = path.sublist(i);
-      // The empty chain finds only the post node itself.
-      if ((i == path.length && path.isNotEmpty) ||
-          (hasCls(path) && !hasCls(chain))) {
-        continue;
-      }
-      if (findsAll(chain)) {
-        return chain;
-      }
-    }
-    if (path.isEmpty) {
-      return null;
-    }
-    for (var nth = 0; ; nth++) {
-      final last = path.last;
-      final chain = [
-        ...path.take(path.length - 1),
-        Step(tag: last.tag, cls: last.cls, nth: nth),
-      ];
-      if (targets.every(
-        (t) => _selectNodes(t.$1, chain, children: false).isEmpty,
-      )) {
-        return null;
-      }
-      if (findsAll(chain)) {
-        return chain;
-      }
-    }
-  }
-
-  /// The title and the link are written as their only chain, not as a list
-  /// of chains.
   Map<String, Object?> toJson() => {
     'post': [for (final s in post) s.toJson()],
     'fields': {
       for (final MapEntry(:key, :value) in fields.entries)
-        key.name: _keyFields.contains(key)
-            ? [for (final s in value.single) s.toJson()]
-            : [
-                for (final chain in value) [for (final s in chain) s.toJson()],
-              ],
+        key.name: [for (final s in value) s.toJson()],
     },
     if (exclude.isNotEmpty) 'exclude': exclude,
   };
@@ -398,32 +308,6 @@ typedef LabeledPost = ({
   SemanticTreeNode node,
   Map<PostField, SemanticTreeNode> fields,
 });
-
-/// This matcher widened to find [node] too: each step of [chain] keeps only the
-/// classes that it shares with [node], or with the ancestor of [node] at its
-/// level. Null when [node] or such an ancestor has another tag.
-List<Step>? _widen(SemanticTree tree, List<Step> chain, SemanticTreeNode node) {
-  final widened = [...chain];
-  SemanticTreeNode? n = node;
-  for (var i = widened.length - 1; i >= 0; i--) {
-    if (i < widened.length - 1) {
-      n = n?.parent;
-    }
-    if (n == null || n.tag != widened[i].tag) {
-      return null;
-    }
-    final shared = Step.of(tree, n).cls;
-    widened[i] = Step(
-      tag: widened[i].tag,
-      cls: [
-        for (final c in widened[i].cls)
-          if (shared.contains(c)) c,
-      ],
-      nth: widened[i].nth,
-    );
-  }
-  return widened;
-}
 
 /// The chain that selects [node] from the root: the step of [node] when it has
 /// classes, or else the steps of the nodes from its nearest ancestor with
@@ -446,83 +330,145 @@ List<Step> _pathOf(
   for (var n = node; !identical(n, postNode); n = n.parent!) Step.of(tree, n),
 ].reversed.toList();
 
-/// The fields that make a node a post. A matcher finds each of them by one
-/// chain, so posts that reach them by different paths are of different kinds.
-const _keyFields = [PostField.title, PostField.link];
-
-/// The shape of the posts of [group]: the chain that selects them, and for
-/// each of [_keyFields], the path from a post node to the node of the field.
-/// Each is the one of the first post, whose steps keep only the classes that
-/// the other posts share (see [_widen]). Null when the posts have different
-/// tags on any of them.
-({List<Step> post, Map<PostField, List<Step>?> paths})? _shapeOf(
+/// The chain that finds [node] as [field] in [postNode]: the shortest tail of
+/// the path from [postNode] to [node] that does, and that has a step with
+/// classes when the path has one. It falls back to the whole path, with
+/// [Step.nth] on the last step. Null when no chain finds [node].
+List<Step>? _fieldChain(
   SemanticTree tree,
-  List<LabeledPost> group,
+  PostField field,
+  SemanticTreeNode postNode,
+  SemanticTreeNode node,
 ) {
-  List<Step>? pathOf(LabeledPost p, PostField field) =>
-      switch (p.fields[field]) {
-        final n? => _pathOf(tree, p.node, n),
-        null => null,
-      };
-
-  final first = group.first;
-  var chain = _postChainOf(tree, first.node);
-  final paths = {for (final f in _keyFields) f: pathOf(first, f)};
-  for (final post in group.skip(1)) {
-    final widened = _widen(tree, chain, post.node);
-    if (widened == null) {
+  final path = _pathOf(tree, postNode, node);
+  bool finds(List<Step> chain) =>
+      identical(_resolveChain(postNode, field, chain), node);
+  bool hasCls(List<Step> chain) => chain.any((s) => s.cls.isNotEmpty);
+  for (var i = path.length; i >= 0; i--) {
+    final chain = path.sublist(i);
+    // The empty chain finds only the post node itself.
+    if ((i == path.length && path.isNotEmpty) ||
+        (hasCls(path) && !hasCls(chain))) {
+      continue;
+    }
+    if (finds(chain)) {
+      return chain;
+    }
+  }
+  if (path.isEmpty) {
+    return null;
+  }
+  for (var nth = 0; ; nth++) {
+    final last = path.last;
+    final chain = [
+      ...path.take(path.length - 1),
+      Step(tag: last.tag, cls: last.cls, nth: nth),
+    ];
+    if (_selectNodes(postNode, chain, children: false).isEmpty) {
       return null;
     }
-    chain = widened;
+    if (finds(chain)) {
+      return chain;
+    }
+  }
+}
 
-    for (final field in _keyFields) {
-      final (path, other) = (paths[field], pathOf(post, field));
-      if (path == null || other == null) {
-        if (path != other) {
-          return null;
-        }
-        continue;
-      }
-      if (path.length != other.length) {
-        return null;
-      }
-      for (final (i, step) in path.indexed) {
-        if (step.tag != other[i].tag) {
-          return null;
-        }
-        path[i] = Step(
-          tag: step.tag,
-          cls: [
-            for (final c in step.cls)
-              if (other[i].cls.contains(c)) c,
-          ],
-        );
-      }
+/// The matcher that finds [post] with its fields. Null when no chain finds
+/// its title or link. A field that no chain finds is left out.
+PostMatcher? _matcherOf(
+  SemanticTree tree,
+  LabeledPost post,
+  List<String> exclude,
+) {
+  List<Step>? chainOf(PostField field) => switch (post.fields[field]) {
+    final n? => _fieldChain(tree, field, post.node, n),
+    null => null,
+  };
+  final (title, link) = (chainOf(PostField.title), chainOf(PostField.link));
+  if (title == null || link == null) {
+    return null;
+  }
+  return PostMatcher(
+    post: _postChainOf(tree, post.node),
+    title: title,
+    link: link,
+    body: chainOf(PostField.body),
+    thumbnail: chainOf(PostField.thumbnail),
+    pubDate: chainOf(PostField.pubDate),
+    exclude: exclude,
+  );
+}
+
+/// Whether [a] and [b] have the same steps, with the classes of each step in
+/// any order.
+bool _sameChains(List<Step> a, List<Step> b) =>
+    a.length == b.length &&
+    a.indexed.every((e) {
+      final (x, y) = (e.$2, b[e.$1]);
+      return x.tag == y.tag &&
+          x.nth == y.nth &&
+          x.cls.length == y.cls.length &&
+          x.cls.every(y.cls.contains);
+    });
+
+/// The matcher that finds the posts of [a] and of [b] with their fields, or
+/// null when they cannot merge. They merge when their post chains have the
+/// same tags and the same classes except on the last step, and when they have
+/// the same title and link chains, and no other field with different chains.
+/// The last step of the merged post chain keeps the classes that [a] and [b]
+/// share, and the merge fails when no step has classes left, since such a
+/// chain selects any node of its tags.
+///
+/// The merged matcher finds the posts of [a] and of [b] without a check on
+/// the tree: its post chain selects their nodes, and their fields resolve by
+/// the same chains as before.
+PostMatcher? _merge(PostMatcher a, PostMatcher b) {
+  if (a.post.length != b.post.length) {
+    return null;
+  }
+  final last = a.post.length - 1;
+  for (final (i, step) in a.post.indexed) {
+    if (step.tag != b.post[i].tag ||
+        (i < last && !_sameChains([step], [b.post[i]]))) {
+      return null;
     }
   }
-  // When the posts share no class at the top of the chain, the chain starts
-  // from their ancestors as well, as _postChainOf does for one post, so that it
-  // does not select every node of the tag, such as the cards of different
-  // layouts in a list of posts.
-  while (chain.first.cls.isEmpty) {
-    var top = first.node;
-    for (var i = 1; i < chain.length; i++) {
-      top = top.parent!;
-    }
-    final above = top.parent;
-    if (above == null || above.parent == null) {
-      break;
-    }
-    final grown = group.skip(1).fold<List<Step>?>([
-      Step.of(tree, above),
-      ...chain,
-    ], (c, post) => c == null ? null : _widen(tree, c, post.node));
-    if (grown == null) {
-      break;
-    }
-    chain = grown;
+  final post = [
+    ...a.post.take(last),
+    Step(
+      tag: a.post[last].tag,
+      cls: [
+        for (final c in a.post[last].cls)
+          if (b.post[last].cls.contains(c)) c,
+      ],
+    ),
+  ];
+  if (post.every((s) => s.cls.isEmpty) ||
+      !_sameChains(a.title, b.title) ||
+      !_sameChains(a.link, b.link)) {
+    return null;
   }
-  return (post: chain, paths: paths);
+  final optional = <PostField, List<Step>?>{};
+  for (final field in [
+    PostField.body,
+    PostField.thumbnail,
+    PostField.pubDate,
+  ]) {
+    final (chain, other) = (a._chainOf(field), b._chainOf(field));
+    if (chain != null && other != null && !_sameChains(chain, other)) {
+      return null;
+    }
+    optional[field] = chain ?? other;
+  }
+  return PostMatcher(
+    post: post,
+    title: a.title,
+    link: a.link,
+    body: optional[PostField.body],
+    thumbnail: optional[PostField.thumbnail],
+    pubDate: optional[PostField.pubDate],
+    exclude: a.exclude,
+  );
 }
 
 /// The matchers that find the [posts] that the user labeled, and none of the
@@ -531,79 +477,35 @@ const _keyFields = [PostField.title, PostField.link];
 /// order in which the user marked them. A link of [excluded] must not be the
 /// link of a post.
 ///
-/// The posts are grouped by their shapes, in document order: a post joins the
-/// first group whose shape it shares (see [_shapeOf]), and otherwise starts a
-/// new group. Each group results in one matcher, which finds the title and the
-/// link of its posts by one chain each, and the other fields by as many chains
-/// as their nodes need. A post that its group does not find with its fields,
-/// such as one whose fields an earlier post's chains find in other nodes, is
-/// moved to a group of its own. A post whose title or link no chain finds
-/// gets no matcher.
+/// Each post starts with its own matcher (see [_matcherOf]), in document
+/// order, and the first two matchers that can merge (see [_merge]) are
+/// replaced by the merged one, until no two can merge. A post whose title or
+/// link no chain finds gets no matcher.
 List<PostMatcher> generateMatchers(
   SemanticTree tree,
   Iterable<LabeledPost> posts,
   Set<String> excluded,
 ) {
   final exclude = excluded.toList()..sort();
-  final groups = <List<LabeledPost>>[];
-  for (final post in [
-    ...posts,
-  ]..sort((a, b) => a.node.id.compareTo(b.node.id))) {
-    final group = groups
-        .where((g) => _shapeOf(tree, [...g, post]) != null)
-        .firstOrNull;
-    if (group == null) {
-      groups.add([post]);
-    } else {
-      group.add(post);
-    }
-  }
-
-  final matchers = <PostMatcher>[];
-  for (var i = 0; i < groups.length; i++) {
-    final group = groups[i];
-    final shape = _shapeOf(tree, group)!;
-    List<Step>? keyChain(PostField f) => switch (shape.paths[f]) {
-      final path? => PostMatcher._fieldChain(f, [
-        for (final p in group) (p.node, p.fields[f]!),
-      ], path),
-      null => null,
-    };
-    final title = keyChain(PostField.title);
-    final link = keyChain(PostField.link);
-    if (title == null || link == null) {
-      if (group.length > 1) {
-        groups.add([group.removeLast()]);
-        i--;
-      }
-      continue;
-    }
-    var matcher = PostMatcher(
-      post: shape.post,
-      title: title,
-      link: link,
-      exclude: exclude,
-    );
-    for (final post in group) {
-      for (final MapEntry(:key, :value) in post.fields.entries) {
-        if (!_keyFields.contains(key)) {
-          matcher = matcher._withField(tree, key, post.node, value);
+  final matchers = [
+    for (final post in [
+      ...posts,
+    ]..sort((a, b) => a.node.id.compareTo(b.node.id)))
+      ?_matcherOf(tree, post, exclude),
+  ];
+  for (var merged = true; merged;) {
+    merged = false;
+    pairs:
+    for (var i = 0; i < matchers.length; i++) {
+      for (var j = i + 1; j < matchers.length; j++) {
+        if (_merge(matchers[i], matchers[j]) case final m?) {
+          matchers
+            ..[i] = m
+            ..removeAt(j);
+          merged = true;
+          break pairs;
         }
       }
-    }
-    final found = matcher.matchPosts(tree);
-    final isFound = group.every(
-      (p) =>
-          found.any((n) => identical(n, p.node)) &&
-          p.fields.entries.every(
-            (f) => identical(matcher.matchField(p.node, f.key), f.value),
-          ),
-    );
-    if (group.length > 1 && !isFound) {
-      groups.add([group.removeLast()]);
-      i--;
-    } else {
-      matchers.add(matcher);
     }
   }
   return matchers;
@@ -611,9 +513,9 @@ List<PostMatcher> generateMatchers(
 
 /// Every post that [matchers] find in [tree], with the nodes of its fields, so
 /// that the matchers can be generated again from them, since the marks of the
-/// user are not saved. All of them are needed, since [generateMatchers] keeps
-/// only the classes that all the labeled posts of a group share, and fewer
-/// posts would make the matchers find fewer posts. A post that several
+/// user are not saved. All of them are needed, since a merged matcher keeps
+/// only the classes that all of its posts share, and fewer posts would make
+/// the matchers find fewer posts. A post that several
 /// matchers find takes each field from the first matcher that finds it.
 List<LabeledPost> labelFoundPosts(
   SemanticTree tree,
@@ -751,19 +653,27 @@ List<ExtractedPost> extractPosts(
   SemanticTree tree,
   List<PostMatcher> matchers,
 ) {
-  final found = <ExtractedPost>[
-    for (final (i, matcher) in matchers.indexed)
-      for (final node in matcher.matchPosts(tree))
-        (
-          node: node,
-          matcher: i,
-          values: {
-            for (final field in matcher.fields.keys)
-              if (matcher.matchField(node, field) case final n?)
-                field: ?field.valueOf(n),
-          },
-        ),
-  ]..sort((a, b) => a.node.id.compareTo(b.node.id));
+  final found =
+      <ExtractedPost>[
+          for (final (i, matcher) in matchers.indexed)
+            for (final node in matcher.matchPosts(tree))
+              (
+                node: node,
+                matcher: i,
+                values: {
+                  for (final field in matcher.fields.keys)
+                    if (matcher.matchField(node, field) case final n?)
+                      field: ?field.valueOf(n),
+                },
+              ),
+        ]
+        // A node that several matchers find takes its fields from the first one
+        // first, since List.sort is not stable.
+        ..sort(
+          (a, b) => a.node.id != b.node.id
+              ? a.node.id.compareTo(b.node.id)
+              : a.matcher.compareTo(b.matcher),
+        );
   final byLink = <String, ExtractedPost>{};
   for (final post in found) {
     final link = post.values[PostField.link];

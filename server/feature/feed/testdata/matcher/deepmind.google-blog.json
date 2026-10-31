@@ -5,8 +5,18 @@
       "link": [
         { "tag": "a", "cls": ["button", "button--text_link", "icon-right"] }
       ],
-      "thumbnail": [[{ "tag": "img", "cls": ["picture__image"] }]],
-      "title": [{ "tag": "h3", "cls": ["card__title"] }]
+      "thumbnail": [{ "tag": "img", "cls": ["picture__image"] }],
+      "title": [{ "tag": "h3", "cls": ["heading-4", "card__title"] }]
+    }
+  },
+  {
+    "post": [{ "tag": "div", "cls": ["card__inner"] }],
+    "fields": {
+      "link": [
+        { "tag": "a", "cls": ["button", "button--text_link", "icon-right"] }
+      ],
+      "thumbnail": [{ "tag": "img", "cls": ["picture__image"] }],
+      "title": [{ "tag": "h3", "cls": ["heading-6", "card__title"] }]
     }
   }
 ]

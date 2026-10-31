@@ -9,14 +9,38 @@
           "status-publish",
           "format-standard",
           "has-post-thumbnail",
-          "hentry"
+          "hentry",
+          "category-security",
+          "fb_content_type-article"
         ]
       }
     ],
     "fields": {
       "link": [{ "tag": "a" }],
-      "pubDate": [[{ "tag": "time", "cls": ["entry-date", "published"] }]],
-      "thumbnail": [[{ "tag": "img" }]],
+      "thumbnail": [{ "tag": "img" }],
+      "title": [{ "tag": "div", "cls": ["entry-title"] }, { "tag": "div" }]
+    }
+  },
+  {
+    "post": [
+      {
+        "tag": "article",
+        "cls": [
+          "post",
+          "type-post",
+          "status-publish",
+          "format-standard",
+          "has-post-thumbnail",
+          "hentry"
+        ]
+      }
+    ],
+    "fields": {
+      "link": [{ "tag": "a", "cls": ["feat-image"] }],
+      "pubDate": [{ "tag": "time", "cls": ["entry-date", "published"] }],
+      "thumbnail": [
+        { "tag": "img", "cls": ["attachment-thumbnail", "size-thumbnail"] }
+      ],
       "title": [{ "tag": "div", "cls": ["entry-title"] }, { "tag": "div" }]
     }
   }

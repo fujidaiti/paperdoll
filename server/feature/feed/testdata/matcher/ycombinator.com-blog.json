@@ -6,18 +6,16 @@
     ],
     "fields": {
       "body": [
-        [
-          { "tag": "div", "cls": ["relative"] },
-          { "tag": "div" },
-          { "tag": "p" }
-        ]
+        { "tag": "div", "cls": ["relative"] },
+        { "tag": "div" },
+        { "tag": "p" }
       ],
       "link": [
         { "tag": "div", "cls": ["relative"] },
         { "tag": "div" },
         { "tag": "a" }
       ],
-      "thumbnail": [[{ "tag": "img", "cls": ["w-full"] }]],
+      "thumbnail": [{ "tag": "img", "cls": ["w-full"] }],
       "title": [
         { "tag": "div", "cls": ["relative"] },
         { "tag": "div" },
@@ -34,20 +32,18 @@
       }
     ],
     "fields": {
-      "body": [[{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-700"] }]],
+      "body": [{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-700"] }],
       "link": [{ "tag": "div", "cls": ["shrink-0"] }, { "tag": "a" }],
       "pubDate": [
-        [
-          {
-            "tag": "div",
-            "cls": ["flex", "space-x-1", "text-sm", "text-gray-500"]
-          },
-          { "tag": "span" },
-          { "tag": "time" }
-        ]
+        {
+          "tag": "div",
+          "cls": ["flex", "space-x-1", "text-sm", "text-gray-500"]
+        },
+        { "tag": "span" },
+        { "tag": "time" }
       ],
       "thumbnail": [
-        [{ "tag": "img", "cls": ["h-48", "w-full", "object-cover"] }]
+        { "tag": "img", "cls": ["h-48", "w-full", "object-cover"] }
       ],
       "title": [
         { "tag": "p", "cls": ["text-xl", "font-semibold", "text-gray-900"] }
@@ -57,13 +53,11 @@
   {
     "post": [{ "tag": "div", "cls": ["flex-1"] }],
     "fields": {
-      "body": [[{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-800"] }]],
+      "body": [{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-800"] }],
       "link": [{ "tag": "a", "cls": ["mt-2", "block"] }],
       "pubDate": [
-        [
-          { "tag": "span", "cls": ["ml-4", "text-sm", "font-normal"] },
-          { "tag": "time" }
-        ]
+        { "tag": "span", "cls": ["ml-4", "text-sm", "font-normal"] },
+        { "tag": "time" }
       ],
       "title": [
         { "tag": "p", "cls": ["text-3xl", "font-semibold", "text-gray-900"] }

@@ -7,14 +7,30 @@
       }
     ],
     "fields": {
-      "body": [[{ "tag": "p" }], [{ "tag": "li" }]],
+      "body": [{ "tag": "p" }],
       "link": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
       "pubDate": [
-        [
-          { "tag": "div", "cls": ["Breadcrumbs"] },
-          { "tag": "div" },
-          { "tag": "time" }
-        ]
+        { "tag": "div", "cls": ["Breadcrumbs"] },
+        { "tag": "div" },
+        { "tag": "time" }
+      ],
+      "title": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }]
+    }
+  },
+  {
+    "post": [
+      {
+        "tag": "article",
+        "cls": ["Article", "prose", "Blog__article--longForm"]
+      }
+    ],
+    "fields": {
+      "body": [{ "tag": "li" }],
+      "link": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
+      "pubDate": [
+        { "tag": "div", "cls": ["Breadcrumbs"] },
+        { "tag": "div" },
+        { "tag": "time" }
       ],
       "title": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }]
     }

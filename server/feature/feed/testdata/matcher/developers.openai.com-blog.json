@@ -17,12 +17,35 @@
       }
     ],
     "fields": {
+      "body": [{ "tag": "p", "cls": ["px-4", "text-default", "line-clamp-3"] }],
+      "link": [],
+      "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }],
+      "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }]
+    }
+  },
+  {
+    "post": [
+      {
+        "tag": "a",
+        "cls": [
+          "resource-item",
+          "not-prose",
+          "cursor-pointer",
+          "overflow-hidden",
+          "flex",
+          "w-full",
+          "flex-col",
+          "text-inherit",
+          "no-underline"
+        ]
+      }
+    ],
+    "fields": {
       "body": [
-        [{ "tag": "p", "cls": ["px-4", "text-default", "line-clamp-3"] }],
-        [{ "tag": "div", "cls": ["px-4", "pt-2", "text-sm", "text-secondary"] }]
+        { "tag": "div", "cls": ["px-4", "pt-2", "text-sm", "text-secondary"] }
       ],
       "link": [],
-      "thumbnail": [[{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }]],
+      "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }],
       "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }]
     }
   }

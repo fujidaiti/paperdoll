@@ -12,12 +12,13 @@
     ],
     "fields": {
       "body": [
-        [{ "tag": "div", "cls": ["storyCard__description"] }, { "tag": "p" }]
+        { "tag": "div", "cls": ["storyCard__description"] },
+        { "tag": "p" }
       ],
       "link": [
         { "tag": "h3", "cls": ["storyCard__title", "storyCard__titleLink"] }
       ],
-      "thumbnail": [[{ "tag": "img", "cls": ["image__img"] }]],
+      "thumbnail": [{ "tag": "img", "cls": ["image__img"] }],
       "title": [
         { "tag": "h3", "cls": ["storyCard__title", "storyCard__titleLink"] }
       ]
@@ -42,7 +43,7 @@
     ],
     "fields": {
       "link": [{ "tag": "h2" }],
-      "thumbnail": [[{ "tag": "img", "cls": ["image__img"] }]],
+      "thumbnail": [{ "tag": "img", "cls": ["image__img"] }],
       "title": [{ "tag": "h2" }]
     },
     "exclude": [
@@ -65,9 +66,24 @@
     ],
     "fields": {
       "body": [
-        [{ "tag": "div", "cls": ["homepageStoryCard__dek"] }, { "tag": "p" }],
-        [{ "tag": "div", "cls": ["homepageStoryCard__dek"] }]
+        { "tag": "div", "cls": ["homepageStoryCard__dek"] },
+        { "tag": "p" }
       ],
+      "link": [{ "tag": "a" }],
+      "title": [{ "tag": "h3", "cls": ["homepageStoryCard__hed"] }]
+    },
+    "exclude": [
+      "www.technologyreview.com/2026/08/12/1141032/scaling-ai-agents-with-trustworthy-data/",
+      "www.technologyreview.com/magazines/a-home-for-responsible-optimists/"
+    ]
+  },
+  {
+    "post": [
+      { "tag": "div", "cls": ["homepageStoryCard__cardContent"] },
+      { "tag": "div" }
+    ],
+    "fields": {
+      "body": [{ "tag": "div", "cls": ["homepageStoryCard__dek"] }],
       "link": [{ "tag": "a" }],
       "title": [{ "tag": "h3", "cls": ["homepageStoryCard__hed"] }]
     },

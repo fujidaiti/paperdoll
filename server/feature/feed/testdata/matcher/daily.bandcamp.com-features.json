@@ -4,9 +4,10 @@
     "fields": {
       "link": [{ "tag": "a", "cls": ["thumb"] }],
       "pubDate": [
-        [{ "tag": "div", "cls": ["article-info-text"] }, { "tag": "time" }]
+        { "tag": "div", "cls": ["article-info-text"] },
+        { "tag": "time" }
       ],
-      "thumbnail": [[{ "tag": "a", "cls": ["thumb"] }, { "tag": "img" }]],
+      "thumbnail": [{ "tag": "a", "cls": ["thumb"] }, { "tag": "img" }],
       "title": [{ "tag": "div", "cls": ["title-wrapper", "title"] }]
     }
   }

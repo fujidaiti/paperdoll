@@ -85,9 +85,7 @@ void main() {
         post: [Step(tag: 'article')],
         title: [Step(tag: 'p')],
         link: [Step(tag: 'h2')],
-        body: [
-          [Step(tag: 'p')],
-        ],
+        body: [Step(tag: 'p')],
       );
 
       final posts = labelFoundPosts(tree, [titles, bodies]);

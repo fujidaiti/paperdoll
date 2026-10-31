@@ -4,7 +4,8 @@
     "fields": {
       "link": [],
       "pubDate": [
-        [{ "tag": "span", "cls": ["list-group__date"] }, { "tag": "time" }]
+        { "tag": "span", "cls": ["list-group__date"] },
+        { "tag": "time" }
       ],
       "title": [
         {

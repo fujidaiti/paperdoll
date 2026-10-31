@@ -6,18 +6,16 @@
       { "tag": "div" }
     ],
     "fields": {
-      "body": [[{ "tag": "p" }]],
+      "body": [{ "tag": "p" }],
       "link": [{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }],
       "thumbnail": [
-        [
-          { "tag": "div" },
-          { "tag": "div" },
-          {
-            "tag": "div",
-            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
-          },
-          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
-        ]
+        { "tag": "div" },
+        { "tag": "div" },
+        {
+          "tag": "div",
+          "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+        },
+        { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
       ],
       "title": [
         {
@@ -38,38 +36,21 @@
     "post": [{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }],
     "fields": {
       "body": [
-        [{ "tag": "p", "cls": ["Dundee-styles__DescriptionStyled-sc-0"] }],
-        [{ "tag": "p", "cls": ["Manchester-styles__DescriptionStyled-sc-0"] }],
-        [{ "tag": "p", "cls": ["Edinburgh-styles__DescriptionStyled-sc-4"] }]
+        { "tag": "p", "cls": ["Dundee-styles__DescriptionStyled-sc-0"] }
       ],
       "link": [],
       "thumbnail": [
-        [
-          { "tag": "div", "cls": ["Dundee-styles__CardStyled-sc-1"] },
-          { "tag": "div", "cls": ["Dundee-styles__ImageWrapperStyled-sc-3"] },
-          {
-            "tag": "div",
-            "cls": ["Dundee-styles__CardMediaStyled-sc-4", "gZwtmn"]
-          },
-          {
-            "tag": "div",
-            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
-          },
-          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
-        ],
-        [
-          { "tag": "div", "cls": ["Edinburgh-styles__CardStyled-sc-0"] },
-          {
-            "tag": "div",
-            "cls": ["Edinburgh-styles__MediaWrapperStyled-sc-1"]
-          },
-          { "tag": "div", "cls": ["Edinburgh-styles__MediaStyled-sc-2"] },
-          {
-            "tag": "div",
-            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
-          },
-          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
-        ]
+        { "tag": "div", "cls": ["Dundee-styles__CardStyled-sc-1"] },
+        { "tag": "div", "cls": ["Dundee-styles__ImageWrapperStyled-sc-3"] },
+        {
+          "tag": "div",
+          "cls": ["Dundee-styles__CardMediaStyled-sc-4", "gZwtmn"]
+        },
+        {
+          "tag": "div",
+          "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+        },
+        { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
       ],
       "title": [
         {
@@ -90,21 +71,70 @@
     "post": [{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }],
     "fields": {
       "body": [
-        [{ "tag": "h2", "cls": ["Ipswich-styles__BrandNameStyled-sc-1"] }]
+        { "tag": "p", "cls": ["Manchester-styles__DescriptionStyled-sc-0"] }
+      ],
+      "link": [],
+      "title": [
+        {
+          "tag": "h2",
+          "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3"]
+        }
+      ]
+    },
+    "exclude": [
+      "session.bbc.com/session",
+      "www.bbc.com/newsletters",
+      "www.bbc.com/pages/download-the-bbc-app",
+      "www.bbc.com/video/docs",
+      "www.britbox.com/"
+    ]
+  },
+  {
+    "post": [{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }],
+    "fields": {
+      "body": [
+        { "tag": "p", "cls": ["Edinburgh-styles__DescriptionStyled-sc-4"] }
       ],
       "link": [],
       "thumbnail": [
-        [
-          {
-            "tag": "div",
-            "cls": ["Ipswich-styles__ImageContainerStyled-sc-0"]
-          },
-          {
-            "tag": "div",
-            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
-          },
-          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
-        ]
+        { "tag": "div", "cls": ["Edinburgh-styles__CardStyled-sc-0"] },
+        { "tag": "div", "cls": ["Edinburgh-styles__MediaWrapperStyled-sc-1"] },
+        { "tag": "div", "cls": ["Edinburgh-styles__MediaStyled-sc-2"] },
+        {
+          "tag": "div",
+          "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+        },
+        { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
+      ],
+      "title": [
+        {
+          "tag": "h2",
+          "cls": ["IndexCardHeading-styles__CardHeadlineStyled-sc-3"]
+        }
+      ]
+    },
+    "exclude": [
+      "session.bbc.com/session",
+      "www.bbc.com/newsletters",
+      "www.bbc.com/pages/download-the-bbc-app",
+      "www.bbc.com/video/docs",
+      "www.britbox.com/"
+    ]
+  },
+  {
+    "post": [{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }],
+    "fields": {
+      "body": [
+        { "tag": "h2", "cls": ["Ipswich-styles__BrandNameStyled-sc-1"] }
+      ],
+      "link": [],
+      "thumbnail": [
+        { "tag": "div", "cls": ["Ipswich-styles__ImageContainerStyled-sc-0"] },
+        {
+          "tag": "div",
+          "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+        },
+        { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
       ],
       "title": [
         { "tag": "h3", "cls": ["Ipswich-styles__EpisodeNameStyled-sc-2"] }
@@ -122,26 +152,21 @@
     "post": [{ "tag": "div", "cls": ["Grid-styles__GridStyled-sc-0"] }],
     "fields": {
       "body": [
-        [{ "tag": "p", "cls": ["London-styles__LondonDescriptionStyled-sc-5"] }]
+        { "tag": "p", "cls": ["London-styles__LondonDescriptionStyled-sc-5"] }
       ],
       "link": [
         { "tag": "a", "cls": ["London-styles__LondonMediaAnchorStyled-sc-4"] }
       ],
       "thumbnail": [
-        [
-          { "tag": "div", "cls": ["GridItem-styles__GridItemStyled-sc-0"] },
-          { "tag": "div", "cls": ["London-styles__LondonMediaStyled-sc-3"] },
-          { "tag": "div" },
-          {
-            "tag": "a",
-            "cls": ["London-styles__LondonMediaAnchorStyled-sc-4"]
-          },
-          {
-            "tag": "div",
-            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
-          },
-          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
-        ]
+        { "tag": "div", "cls": ["GridItem-styles__GridItemStyled-sc-0"] },
+        { "tag": "div", "cls": ["London-styles__LondonMediaStyled-sc-3"] },
+        { "tag": "div" },
+        { "tag": "a", "cls": ["London-styles__LondonMediaAnchorStyled-sc-4"] },
+        {
+          "tag": "div",
+          "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+        },
+        { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
       ],
       "title": [
         {
@@ -162,21 +187,19 @@
     "post": [{ "tag": "div", "cls": ["Grid-styles__GridStyled-sc-0"] }],
     "fields": {
       "body": [
-        [{ "tag": "div", "cls": ["Windsor-styles__DescriptionStyled-sc-0"] }]
+        { "tag": "div", "cls": ["Windsor-styles__DescriptionStyled-sc-0"] }
       ],
       "link": [{ "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] }],
       "thumbnail": [
-        [
-          { "tag": "div", "cls": ["GridItem-styles__GridItemStyled-sc-0"] },
-          { "tag": "div", "cls": ["Windsor-styles__MediaStyled-sc-1"] },
-          { "tag": "div" },
-          { "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] },
-          {
-            "tag": "div",
-            "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
-          },
-          { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
-        ]
+        { "tag": "div", "cls": ["GridItem-styles__GridItemStyled-sc-0"] },
+        { "tag": "div", "cls": ["Windsor-styles__MediaStyled-sc-1"] },
+        { "tag": "div" },
+        { "tag": "a", "cls": ["Anchor-styles__AnchorStyled-sc-0"] },
+        {
+          "tag": "div",
+          "cls": ["Image-styles__ImageCardStyled-sc-1", "erovmj"]
+        },
+        { "tag": "img", "cls": ["Image-styles__ImageStyled-sc-0"], "nth": 1 }
       ],
       "title": [
         {
