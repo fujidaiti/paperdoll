@@ -255,7 +255,8 @@ func (t *treeIndex) shapeOf(group []labeledPost) (postShape, bool) {
 	return shape, true
 }
 
-// withField returns m with the chain that resolves f from post to n. The chain
+// withField returns m with the chain that resolves f, which is not one of
+// keyFields, from post to n. The chain
 // is added after the others when none resolves f in post, and before them when
 // one resolves it to another node. m is returned as it is when no chain
 // resolves f to n. It follows PostMatcher._withField of the client.
@@ -268,13 +269,23 @@ func (t *treeIndex) withField(m PostMatcher, post *SemanticTreeNode, f PostField
 	if chain == nil {
 		return m
 	}
-	fields := maps.Clone(m.Fields)
+	chains := m.chainsOf(f)
+	var updated [][]Step
 	if got == nil {
-		fields[f] = append(slices.Clone(fields[f]), chain)
+		updated = append(slices.Clone(chains), chain)
 	} else {
-		fields[f] = append([][]Step{chain}, fields[f]...)
+		updated = append([][]Step{chain}, chains...)
 	}
-	m.Fields = fields
+	switch f {
+	case PostBody:
+		m.Body = updated
+	case PostThumbnail:
+		m.Thumbnail = updated
+	case PostPubDate:
+		m.PubDate = updated
+	case PostTitle, PostLink:
+		panic(fmt.Sprintf("%s has one chain", f))
+	}
 	return m
 }
 
@@ -318,22 +329,21 @@ func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bo
 	for i := 0; i < len(groups); i++ {
 		group := groups[i]
 		shape, _ := t.shapeOf(group)
-		m := PostMatcher{
-			Post:    shape.post,
-			Fields:  make(map[PostField][][]Step),
-			Exclude: slices.Clone(exclude),
-		}
-		for _, f := range keyFields {
+		keyChain := func(f PostField) []Step {
 			if group[0].fields[f] == nil {
-				continue
+				return nil
 			}
 			var targets []fieldTarget
 			for _, p := range group {
 				targets = append(targets, fieldTarget{p.node, p.fields[f]})
 			}
-			if chain := t.fieldChain(f, targets, shape.paths[f]); chain != nil {
-				m.Fields[f] = [][]Step{chain}
-			}
+			return t.fieldChain(f, targets, shape.paths[f])
+		}
+		m := PostMatcher{
+			Post:    shape.post,
+			Title:   keyChain(PostTitle),
+			Link:    keyChain(PostLink),
+			Exclude: slices.Clone(exclude),
 		}
 		for _, p := range group {
 			for _, f := range slices.Sorted(maps.Keys(p.fields)) {
@@ -368,7 +378,7 @@ func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bo
 // values returns the field values that m extracts from post.
 func values(m *PostMatcher, post *SemanticTreeNode) ExtractedPost {
 	values := make(ExtractedPost)
-	for f := range m.Fields {
+	for f := range m.Fields() {
 		if n := m.resolveField(post, f); n != nil {
 			if v, ok := f.valueOf(n); ok {
 				values[f] = v

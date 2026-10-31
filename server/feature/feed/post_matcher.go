@@ -88,14 +88,51 @@ func (s Step) matches(n *SemanticTreeNode) bool {
 // descendants of the root, and each later step selects children of the nodes
 // that the previous step selects. Each field has
 // chains of steps from a post node to the node of its value, tried in order;
-// an empty chain is the post node itself. The title and the link have one
-// chain each, which the JSON holds as the chain itself. A node that Post
+// an empty chain is the post node itself. Title and Link have one chain each,
+// which the JSON holds as the chain itself, or nil when they are not labeled.
+// Since an empty chain is a valid chain, nil and empty differ. A node that Post
 // selects is a post only when its title and link are found (see hasFields),
 // and when its link matches none of the patterns in Exclude.
 type PostMatcher struct {
-	Post    []Step
-	Fields  map[PostField][][]Step
-	Exclude []string
+	Post      []Step
+	Title     []Step
+	Link      []Step
+	Body      [][]Step
+	Thumbnail [][]Step
+	PubDate   [][]Step
+	Exclude   []string
+}
+
+// chainsOf returns the chains of f, tried in order.
+func (m *PostMatcher) chainsOf(f PostField) [][]Step {
+	switch f {
+	case PostTitle:
+		if m.Title != nil {
+			return [][]Step{m.Title}
+		}
+	case PostLink:
+		if m.Link != nil {
+			return [][]Step{m.Link}
+		}
+	case PostBody:
+		return m.Body
+	case PostThumbnail:
+		return m.Thumbnail
+	case PostPubDate:
+		return m.PubDate
+	}
+	return nil
+}
+
+// Fields returns the chains of each field that has any.
+func (m *PostMatcher) Fields() map[PostField][][]Step {
+	fields := make(map[PostField][][]Step)
+	for _, f := range []PostField{PostTitle, PostBody, PostLink, PostThumbnail, PostPubDate} {
+		if chains := m.chainsOf(f); len(chains) > 0 {
+			fields[f] = chains
+		}
+	}
+	return fields
 }
 
 // postMatcherJSON is the JSON of PostMatcher, whose fields hold a chain for
@@ -108,12 +145,9 @@ type postMatcherJSON struct {
 
 func (m PostMatcher) MarshalJSON() ([]byte, error) {
 	j := postMatcherJSON{Post: m.Post, Fields: make(map[PostField]json.RawMessage), Exclude: m.Exclude}
-	for f, chains := range m.Fields {
+	for f, chains := range m.Fields() {
 		var v any = chains
 		if f == PostTitle || f == PostLink {
-			if len(chains) != 1 {
-				return nil, fmt.Errorf("%s has %d chains, want 1", f, len(chains))
-			}
 			v = chains[0]
 		}
 		raw, err := json.Marshal(v)
@@ -130,20 +164,25 @@ func (m *PostMatcher) UnmarshalJSON(data []byte) error {
 	if err := json.Unmarshal(data, &j); err != nil {
 		return err
 	}
-	*m = PostMatcher{Post: j.Post, Fields: make(map[PostField][][]Step), Exclude: j.Exclude}
+	*m = PostMatcher{Post: j.Post, Exclude: j.Exclude}
 	for f, raw := range j.Fields {
-		if f == PostTitle || f == PostLink {
-			var chain []Step
-			if err := json.Unmarshal(raw, &chain); err != nil {
-				return err
-			}
-			m.Fields[f] = [][]Step{chain}
-		} else {
-			var chains [][]Step
-			if err := json.Unmarshal(raw, &chains); err != nil {
-				return err
-			}
-			m.Fields[f] = chains
+		var dst any
+		switch f {
+		case PostTitle:
+			dst = &m.Title
+		case PostLink:
+			dst = &m.Link
+		case PostBody:
+			dst = &m.Body
+		case PostThumbnail:
+			dst = &m.Thumbnail
+		case PostPubDate:
+			dst = &m.PubDate
+		default:
+			return fmt.Errorf("unknown field %q", f)
+		}
+		if err := json.Unmarshal(raw, dst); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -221,18 +260,14 @@ func (m *PostMatcher) matchPosts(tree *SemanticTree) []*SemanticTreeNode {
 // labeled. The other fields are optional, since posts of one kind often lack
 // some of them, such as the date of a featured post.
 func (m *PostMatcher) hasFields(post *SemanticTreeNode) bool {
-	for _, f := range []PostField{PostTitle, PostLink} {
-		if _, ok := m.Fields[f]; ok && m.resolveField(post, f) == nil {
-			return false
-		}
-	}
-	return true
+	return (m.Title == nil || m.resolveField(post, PostTitle) != nil) &&
+		(m.Link == nil || m.resolveField(post, PostLink) != nil)
 }
 
 // resolveField returns the node of f in post: the first node that the first
 // chain of f selects with a node that f accepts, or nil when there is none.
 func (m *PostMatcher) resolveField(post *SemanticTreeNode, f PostField) *SemanticTreeNode {
-	for _, chain := range m.Fields[f] {
+	for _, chain := range m.chainsOf(f) {
 		if n := resolveChain(post, f, chain); n != nil {
 			return n
 		}
@@ -321,7 +356,7 @@ func ExtractPosts(tree *SemanticTree, matchers []PostMatcher) []ExtractedPost {
 	for _, m := range matchers {
 		for _, n := range m.matchPosts(tree) {
 			values := make(ExtractedPost)
-			for field := range m.Fields {
+			for field := range m.Fields() {
 				if v := m.resolveField(n, field); v != nil {
 					if val, ok := field.valueOf(v); ok {
 						values[field] = val
