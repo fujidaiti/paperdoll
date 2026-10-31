@@ -133,9 +133,9 @@ type fieldTarget struct{ post, node *SemanticTreeNode }
 // fieldChain returns the chain that resolves f to the node of each target in
 // its post node: the shortest tail of path that does, and that has a step
 // with classes when path has one. It falls back to all of path, with Nth on
-// the last step. It returns nil when no chain resolves to the nodes. It
+// the last step. It returns false when no chain resolves to the nodes. It
 // follows PostMatcher._fieldChain of the client.
-func (t *treeIndex) fieldChain(f PostField, targets []fieldTarget, path []Step) []Step {
+func (t *treeIndex) fieldChain(f PostField, targets []fieldTarget, path []Step) ([]Step, bool) {
 	resolvesAll := func(chain []Step) bool {
 		for _, tg := range targets {
 			if resolveChain(tg.post, f, chain) != tg.node {
@@ -153,11 +153,11 @@ func (t *treeIndex) fieldChain(f PostField, targets []fieldTarget, path []Step) 
 			continue
 		}
 		if resolvesAll(chain) {
-			return chain
+			return chain, true
 		}
 	}
 	if len(path) == 0 {
-		return nil
+		return nil, false
 	}
 	for nth := 0; nth < len(t.nodes); nth++ {
 		chain := slices.Clone(path)
@@ -169,13 +169,13 @@ func (t *treeIndex) fieldChain(f PostField, targets []fieldTarget, path []Step) 
 			}
 		}
 		if !selected {
-			return nil
+			return nil, false
 		}
 		if resolvesAll(chain) {
-			return chain
+			return chain, true
 		}
 	}
-	return nil
+	return nil, false
 }
 
 // widen returns chain widened to find post too, as the client does when it
@@ -256,17 +256,16 @@ func (t *treeIndex) shapeOf(group []labeledPost) (postShape, bool) {
 }
 
 // withField returns m with the chain that resolves f, which is not one of
-// keyFields, from post to n. The chain
-// is added after the others when none resolves f in post, and before them when
-// one resolves it to another node. m is returned as it is when no chain
+// keyFields, from post to n. The chain is added after the others when none
+// resolves f in post, and before them when one resolves it to another node. m is returned as it is when no chain
 // resolves f to n. It follows PostMatcher._withField of the client.
 func (t *treeIndex) withField(m PostMatcher, post *SemanticTreeNode, f PostField, n *SemanticTreeNode) PostMatcher {
 	got := m.resolveField(post, f)
 	if got == n {
 		return m
 	}
-	chain := t.fieldChain(f, []fieldTarget{{post, n}}, t.pathOf(post, n))
-	if chain == nil {
+	chain, ok := t.fieldChain(f, []fieldTarget{{post, n}}, t.pathOf(post, n))
+	if !ok {
 		return m
 	}
 	chains := m.chainsOf(f)
@@ -301,8 +300,9 @@ type labeledPost struct {
 // holds by host and path. The posts are grouped by their shapes (see shapeOf)
 // in document order, and each group results in one matcher, which resolves
 // the title and the link by one chain each. A post that its group does not
-// find with its fields is moved to a group of its own. It follows
-// generateMatchers of the client.
+// find with its fields is moved to a group of its own. A post whose title or
+// link no chain resolves gets no matcher. It follows generateMatchers of the
+// client.
 func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bool) []PostMatcher {
 	exclude := slices.Sorted(maps.Keys(excluded))
 	index := map[*SemanticTreeNode]int{}
@@ -329,9 +329,9 @@ func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bo
 	for i := 0; i < len(groups); i++ {
 		group := groups[i]
 		shape, _ := t.shapeOf(group)
-		keyChain := func(f PostField) []Step {
+		keyChain := func(f PostField) ([]Step, bool) {
 			if group[0].fields[f] == nil {
-				return nil
+				return nil, false
 			}
 			var targets []fieldTarget
 			for _, p := range group {
@@ -339,10 +339,20 @@ func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bo
 			}
 			return t.fieldChain(f, targets, shape.paths[f])
 		}
+		title, okTitle := keyChain(PostTitle)
+		link, okLink := keyChain(PostLink)
+		if !okTitle || !okLink {
+			if len(group) > 1 {
+				groups[i] = group[:len(group)-1]
+				groups = append(groups, []labeledPost{group[len(group)-1]})
+				i--
+			}
+			continue
+		}
 		m := PostMatcher{
 			Post:    shape.post,
-			Title:   keyChain(PostTitle),
-			Link:    keyChain(PostLink),
+			Title:   title,
+			Link:    link,
 			Exclude: slices.Clone(exclude),
 		}
 		for _, p := range group {

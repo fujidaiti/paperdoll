@@ -107,7 +107,11 @@ void main() {
     });
 
     test('labels nothing when the matchers find no post', () {
-      const matcher = PostMatcher(post: [Step(tag: 'section')]);
+      const matcher = PostMatcher(
+        post: [Step(tag: 'section')],
+        title: [Step(tag: 'h2')],
+        link: [Step(tag: 'h2')],
+      );
 
       expect(labelFoundPosts(tree, [matcher]), isEmpty);
     });

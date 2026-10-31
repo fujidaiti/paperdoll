@@ -166,17 +166,16 @@ bool _globMatches(String pattern, String hostPath) {
 /// descendants of the root, and each later step selects children of the
 /// nodes that the previous step selects. Each field has chains of steps from
 /// a post node to the node of its value, tried in order; an empty chain is
-/// the post node itself. The [title] and the [link] have one chain each, or
-/// none when they are not labeled, since they define the kind of posts. A
-/// node that [post] selects is a post only when its title and link are found,
-/// when they are labeled, and when its link matches none of the patterns in
-/// [exclude]. A node that contains another
-/// node that [post] selects is not a post, since it is a list of posts.
+/// the post node itself. The [title] and the [link] have one chain each,
+/// since they define the kind of posts. A node that [post] selects is a post
+/// only when its title and link are found, and when its link matches none of
+/// the patterns in [exclude]. A node that contains another node that [post]
+/// selects is not a post, since it is a list of posts.
 class PostMatcher {
   const new({
     required this.post,
-    this.title,
-    this.link,
+    required this.title,
+    required this.link,
     this.body = const [],
     this.thumbnail = const [],
     this.pubDate = const [],
@@ -196,14 +195,8 @@ class PostMatcher {
     ];
     return PostMatcher(
       post: chainOf(json['post']),
-      title: switch (fields[PostField.title.name]) {
-        final chain? => chainOf(chain),
-        null => null,
-      },
-      link: switch (fields[PostField.link.name]) {
-        final chain? => chainOf(chain),
-        null => null,
-      },
+      title: chainOf(fields[PostField.title.name]),
+      link: chainOf(fields[PostField.link.name]),
       body: chainsOf(PostField.body),
       thumbnail: chainsOf(PostField.thumbnail),
       pubDate: chainsOf(PostField.pubDate),
@@ -211,22 +204,9 @@ class PostMatcher {
     );
   }
 
-  /// A matcher whose posts are selected as [node] is: by the step of [node]
-  /// when it has classes, or else by the steps of the nodes from its nearest
-  /// ancestor with classes, or from the top of the tree below the root, down
-  /// to [node].
-  factory fromNode(SemanticTree tree, SemanticTreeNode node) {
-    final chain = [Step.of(tree, node)];
-    for (var n = node; chain.first.cls.isEmpty && n.parent?.parent != null;) {
-      n = n.parent!;
-      chain.insert(0, Step.of(tree, n));
-    }
-    return PostMatcher(post: chain);
-  }
-
   final List<Step> post;
-  final List<Step>? title;
-  final List<Step>? link;
+  final List<Step> title;
+  final List<Step> link;
   final List<List<Step>> body;
   final List<List<Step>> thumbnail;
   final List<List<Step>> pubDate;
@@ -234,8 +214,8 @@ class PostMatcher {
 
   /// The chains of [field], tried in order.
   List<List<Step>> _chainsOf(PostField field) => switch (field) {
-    PostField.title => [?title],
-    PostField.link => [?link],
+    PostField.title => [title],
+    PostField.link => [link],
     PostField.body => body,
     PostField.thumbnail => thumbnail,
     PostField.pubDate => pubDate,
@@ -248,7 +228,7 @@ class PostMatcher {
         field: chains,
   };
 
-  /// The nodes that [post] selects and that have the labeled title and link,
+  /// The nodes that [post] selects and that have the title and the link,
   /// including the excluded ones. The other fields are optional, since posts
   /// of one kind often lack some of them, such as the date of a featured
   /// post.
@@ -266,8 +246,8 @@ class PostMatcher {
       }
       if (selected.contains(n) &&
           !inner &&
-          (title == null || matchField(n, PostField.title) != null) &&
-          (link == null || matchField(n, PostField.link) != null)) {
+          matchField(n, PostField.title) != null &&
+          matchField(n, PostField.link) != null) {
         posts.add(n);
       }
       return inner || selected.contains(n);
@@ -445,6 +425,18 @@ List<Step>? _widen(SemanticTree tree, List<Step> chain, SemanticTreeNode node) {
   return widened;
 }
 
+/// The chain that selects [node] from the root: the step of [node] when it has
+/// classes, or else the steps of the nodes from its nearest ancestor with
+/// classes, or from the top of the tree below the root, down to [node].
+List<Step> _postChainOf(SemanticTree tree, SemanticTreeNode node) {
+  final chain = [Step.of(tree, node)];
+  for (var n = node; chain.first.cls.isEmpty && n.parent?.parent != null;) {
+    n = n.parent!;
+    chain.insert(0, Step.of(tree, n));
+  }
+  return chain;
+}
+
 /// The steps of the nodes from [postNode], exclusive, down to [node].
 List<Step> _pathOf(
   SemanticTree tree,
@@ -474,7 +466,7 @@ const _keyFields = [PostField.title, PostField.link];
       };
 
   final first = group.first;
-  var chain = PostMatcher.fromNode(tree, first.node).post;
+  var chain = _postChainOf(tree, first.node);
   final paths = {for (final f in _keyFields) f: pathOf(first, f)};
   for (final post in group.skip(1)) {
     final widened = _widen(tree, chain, post.node);
@@ -523,7 +515,8 @@ const _keyFields = [PostField.title, PostField.link];
 /// link of its posts by one chain each, and the other fields by as many chains
 /// as their nodes need. A post that its group does not find with its fields,
 /// such as one whose fields an earlier post's chains find in other nodes, is
-/// moved to a group of its own.
+/// moved to a group of its own. A post whose title or link no chain finds
+/// gets no matcher.
 List<PostMatcher> generateMatchers(
   SemanticTree tree,
   Iterable<LabeledPost> posts,
@@ -554,10 +547,19 @@ List<PostMatcher> generateMatchers(
       ], path),
       null => null,
     };
+    final title = keyChain(PostField.title);
+    final link = keyChain(PostField.link);
+    if (title == null || link == null) {
+      if (group.length > 1) {
+        groups.add([group.removeLast()]);
+        i--;
+      }
+      continue;
+    }
     var matcher = PostMatcher(
       post: shape.post,
-      title: keyChain(PostField.title),
-      link: keyChain(PostField.link),
+      title: title,
+      link: link,
       exclude: exclude,
     );
     for (final post in group) {

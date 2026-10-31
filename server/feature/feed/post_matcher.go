@@ -86,13 +86,12 @@ func (s Step) matches(n *SemanticTreeNode) bool {
 //
 // Post is the chain of steps to the post nodes: the first step selects
 // descendants of the root, and each later step selects children of the nodes
-// that the previous step selects. Each field has
-// chains of steps from a post node to the node of its value, tried in order;
-// an empty chain is the post node itself. Title and Link have one chain each,
-// which the JSON holds as the chain itself, or nil when they are not labeled.
-// Since an empty chain is a valid chain, nil and empty differ. A node that Post
-// selects is a post only when its title and link are found (see hasFields),
-// and when its link matches none of the patterns in Exclude.
+// that the previous step selects. Each field has chains of steps from a post
+// node to the node of its value, tried in order; an empty chain is the post
+// node itself. Title and Link have one chain each, which the JSON holds as the
+// chain itself, since they define the kind of posts. A node that Post selects
+// is a post only when its title and link are found (see hasFields), and when
+// its link matches none of the patterns in Exclude.
 type PostMatcher struct {
 	Post      []Step
 	Title     []Step
@@ -107,13 +106,9 @@ type PostMatcher struct {
 func (m *PostMatcher) chainsOf(f PostField) [][]Step {
 	switch f {
 	case PostTitle:
-		if m.Title != nil {
-			return [][]Step{m.Title}
-		}
+		return [][]Step{m.Title}
 	case PostLink:
-		if m.Link != nil {
-			return [][]Step{m.Link}
-		}
+		return [][]Step{m.Link}
 	case PostBody:
 		return m.Body
 	case PostThumbnail:
@@ -183,6 +178,11 @@ func (m *PostMatcher) UnmarshalJSON(data []byte) error {
 		}
 		if err := json.Unmarshal(raw, dst); err != nil {
 			return err
+		}
+	}
+	for _, f := range []PostField{PostTitle, PostLink} {
+		if _, ok := j.Fields[f]; !ok {
+			return fmt.Errorf("no chain of %s", f)
 		}
 	}
 	return nil
@@ -256,12 +256,11 @@ func (m *PostMatcher) matchPosts(tree *SemanticTree) []*SemanticTreeNode {
 	return posts
 }
 
-// hasFields reports whether post has the title and the link, when they are
-// labeled. The other fields are optional, since posts of one kind often lack
-// some of them, such as the date of a featured post.
+// hasFields reports whether post has the title and the link. The other fields
+// are optional, since posts of one kind often lack some of them, such as the
+// date of a featured post.
 func (m *PostMatcher) hasFields(post *SemanticTreeNode) bool {
-	return (m.Title == nil || m.resolveField(post, PostTitle) != nil) &&
-		(m.Link == nil || m.resolveField(post, PostLink) != nil)
+	return m.resolveField(post, PostTitle) != nil && m.resolveField(post, PostLink) != nil
 }
 
 // resolveField returns the node of f in post: the first node that the first
