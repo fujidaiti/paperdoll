@@ -112,7 +112,7 @@ func TestFeed_Selectors(t *testing.T) {
 		t.Errorf("selectors = %q, want none", selectors)
 	}
 
-	raw := `[{"post":[{"tag":"article","cls":["post"]}],"fields":{"title":[{"tag":"h2"}]}}]`
+	raw := `[{"post":[{"tag":"article","cls":["post"]}],"fields":{"title":[{"tag":"h2"}],"link":[{"tag":"a"}]}}]`
 	if err := s.SaveSelectors(t.Context(), page.ID, raw); err != nil {
 		t.Fatalf("SaveSelectors: %v", err)
 	}
