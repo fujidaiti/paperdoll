@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:html/dom.dart';
+import 'package:html/parser.dart' as html;
 import 'package:paperdoll/features/feed/domain/post_selector.dart';
 import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
@@ -221,9 +223,28 @@ void main() {
 
   for (final name in fixtures) {
     group(name, () {
-      final page = SimplifiedPage.parse(
+      // Prettier formats the pages, which adds whitespace between elements
+      // and inside texts. The server never sends a text of only whitespace
+      // and normalizes the whitespace of every text, so doing the same gives
+      // back the page that the server sends.
+      final document = html.parse(
         File('$_testdata/simplified/$name.html').readAsStringSync(),
       );
+      void normalize(Node n) {
+        for (final c in n.nodes.toList()) {
+          if (c is Text) {
+            c.data = c.data.trim().replaceAll(RegExp(r'\s+'), ' ');
+            if (c.data.isEmpty) {
+              c.remove();
+            }
+          } else {
+            normalize(c);
+          }
+        }
+      }
+
+      normalize(document);
+      final page = SimplifiedPage.parse(document.outerHtml);
       final posts = [
         for (final p
             in _readJson('$_testdata/fixture/$name.fixture.json')!

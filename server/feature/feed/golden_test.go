@@ -17,10 +17,11 @@ import (
 var update = flag.Bool("update", false, "update the golden files in testdata/simplified and testdata/selector")
 
 // checkGolden compares got, an HTML page or compact JSON, with the golden file
-// at path, or writes got to it with -update. A JSON file is written without
+// at path, or writes got to it with -update. A file is written without
 // formatting, which Prettier does on commit, and is compared without the
-// whitespace between JSON tokens. On a difference, both are split after each
-// ">" or "}", so that the diff shows the parts that differ.
+// whitespace that Prettier adds (see parseGoldenPage for an HTML page). On a
+// difference, both are split after each ">" or "}", so that the diff shows the
+// parts that differ.
 func checkGolden(t *testing.T, path string, got []byte) {
 	t.Helper()
 	if *update {
@@ -36,9 +37,20 @@ func checkGolden(t *testing.T, path string, got []byte) {
 	if err != nil {
 		t.Fatalf("%v", err)
 	}
-	if filepath.Ext(path) == ".json" {
+	switch filepath.Ext(path) {
+	case ".json":
 		var b bytes.Buffer
 		if err := json.Compact(&b, want); err != nil {
+			t.Fatalf("%s: %v", path, err)
+		}
+		want = b.Bytes()
+	case ".html":
+		doc, err := parseGoldenPage(want)
+		if err != nil {
+			t.Fatalf("%s: %v", path, err)
+		}
+		var b bytes.Buffer
+		if err := html.Render(&b, doc); err != nil {
 			t.Fatalf("%s: %v", path, err)
 		}
 		want = b.Bytes()
@@ -50,6 +62,34 @@ func checkGolden(t *testing.T, path string, got []byte) {
 	if diff := cmp.Diff(lines(want), lines(got)); diff != "" {
 		t.Errorf("%s differs (-want +got):\n%s", path, diff)
 	}
+}
+
+// parseGoldenPage parses a simplified page in testdata/simplified. Prettier
+// formats the pages, which adds whitespace between elements and inside texts.
+// SimplifyPage never writes a text of only whitespace and normalizes the
+// whitespace of every text, so doing the same after parsing gives back the
+// page that it wrote.
+func parseGoldenPage(raw []byte) (*html.Node, error) {
+	doc, err := html.Parse(bytes.NewReader(raw))
+	if err != nil {
+		return nil, err
+	}
+	var visit func(n *html.Node)
+	visit = func(n *html.Node) {
+		for c := n.FirstChild; c != nil; {
+			next := c.NextSibling
+			if c.Type == html.TextNode {
+				if c.Data = normalizeSpace(c.Data); c.Data == "" {
+					n.RemoveChild(c)
+				}
+			} else {
+				visit(c)
+			}
+			c = next
+		}
+	}
+	visit(doc)
+	return doc, nil
 }
 
 // TestSimplifyPageGolden checks that the simplified page of each test page in
@@ -94,7 +134,7 @@ func TestPerfectSelectorsGolden(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			page, err := html.Parse(bytes.NewReader(raw))
+			page, err := parseGoldenPage(raw)
 			if err != nil {
 				t.Fatal(err)
 			}
