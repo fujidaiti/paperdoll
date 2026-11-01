@@ -16,6 +16,9 @@ of a page. Each directory has the same pages under the same file names.
 - `matcher/`: the matchers of each page with a fixture, as the database stores
   them. They are built on `tree/` in the same way as a user of the app builds
   them, and find exactly the posts in `fixture/` (see perfect_matcher_test.go).
+- `extract/`: small pages written by hand, one for each case of
+  `TestExtractPosts`, with the posts that the matchers of the case find in
+  `<case>.posts.json`.
 
 `tree/` and `matcher/` are golden files. After changing the tree builder, the
 matchers or a fixture, update them with:

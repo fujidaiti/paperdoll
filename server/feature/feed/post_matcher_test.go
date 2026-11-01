@@ -7,6 +7,8 @@ import (
 	"slices"
 	"strings"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
 
 // postFields are the fields of a post, with the body last, since building the
@@ -164,5 +166,249 @@ func TestExtractPostsFindsFixturePosts(t *testing.T) {
 				})
 			}
 		})
+	}
+}
+
+// TestExtractPosts checks that ExtractPosts finds the posts in
+// testdata/extract/<case>.posts.json on the page testdata/extract/<case>.html,
+// with one small page for each case.
+func TestExtractPosts(t *testing.T) {
+	tests := []struct {
+		name     string
+		matchers []PostMatcher
+	}{
+		{
+			// Each post has every field that it has a value of, and leaves out the
+			// others, such as the thumbnail of the second post. The body joins the
+			// texts of its node.
+			name: "fields",
+			matchers: []PostMatcher{{
+				Post:      []Step{{Tag: "article", Cls: []string{"post"}}},
+				Title:     []Step{{Tag: "h2"}},
+				Link:      []Step{{Tag: "h2"}},
+				Body:      []Step{{Tag: "div", Cls: []string{"summary"}}},
+				Thumbnail: []Step{{Tag: "img"}},
+				PubDate:   []Step{{Tag: "time"}},
+			}},
+		},
+		{
+			// A node without the title or the link is not a post.
+			name: "required-fields",
+			matchers: []PostMatcher{{
+				Post:  []Step{{Tag: "article", Cls: []string{"post"}}},
+				Title: []Step{{Tag: "h2"}},
+				Link:  []Step{{Tag: "h2"}},
+			}},
+		},
+		{
+			// A post is left out when the host and the path of its link match a
+			// pattern in Exclude. The query does not matter.
+			name: "exclude",
+			matchers: []PostMatcher{{
+				Post:    []Step{{Tag: "article", Cls: []string{"post"}}},
+				Title:   []Step{{Tag: "h2"}},
+				Link:    []Step{{Tag: "h2"}},
+				Exclude: []string{"example.com/newsletters"},
+			}},
+		},
+		{
+			// A node that contains posts is a list of posts rather than a post, even
+			// when it has a title and a link of its own.
+			name: "list",
+			matchers: []PostMatcher{{
+				Post:  []Step{{Tag: "div", Cls: []string{"card"}}},
+				Title: []Step{{Tag: "h2"}},
+				Link:  []Step{{Tag: "h2"}},
+			}},
+		},
+		{
+			// A node that Post selects inside a post and that has no title and link
+			// does not make the post a list.
+			name: "inner-node",
+			matchers: []PostMatcher{{
+				Post:  []Step{{Tag: "div", Cls: []string{"card"}}},
+				Title: []Step{{Tag: "h2"}},
+				Link:  []Step{{Tag: "h2"}},
+			}},
+		},
+		{
+			// Each step of Post after the first selects children, so that the
+			// article inside the related list is not a post.
+			name: "children",
+			matchers: []PostMatcher{{
+				Post:  []Step{{Tag: "section", Cls: []string{"latest"}}, {Tag: "article"}},
+				Title: []Step{{Tag: "h2"}},
+				Link:  []Step{{Tag: "h2"}},
+			}},
+		},
+		{
+			// A step with Nth selects only the node at that index.
+			name: "nth",
+			matchers: []PostMatcher{{
+				Post:  []Step{{Tag: "article", Cls: []string{"post"}}},
+				Title: []Step{{Tag: "p", Nth: new(1)}},
+				Link:  []Step{{Tag: "p", Nth: new(1)}},
+			}},
+		},
+		{
+			// A field takes the first node that its chain selects and that it
+			// accepts: the body skips the paragraph that has only an image.
+			name: "accepted-node",
+			matchers: []PostMatcher{{
+				Post:      []Step{{Tag: "article", Cls: []string{"post"}}},
+				Title:     []Step{{Tag: "h2"}},
+				Link:      []Step{{Tag: "h2"}},
+				Body:      []Step{{Tag: "p"}},
+				Thumbnail: []Step{{Tag: "img"}},
+			}},
+		},
+		{
+			// An empty chain selects the post node itself.
+			name: "post-node",
+			matchers: []PostMatcher{{
+				Post:  []Step{{Tag: "a", Cls: []string{"card"}}},
+				Title: []Step{{Tag: "h3"}},
+				Link:  []Step{},
+				Body:  []Step{{Tag: "p"}},
+			}},
+		},
+		{
+			// The posts of all matchers are in document order.
+			name: "matchers",
+			matchers: []PostMatcher{
+				{
+					Post:  []Step{{Tag: "article", Cls: []string{"post"}}},
+					Title: []Step{{Tag: "h2"}},
+					Link:  []Step{{Tag: "h2"}},
+				},
+				{
+					Post:  []Step{{Tag: "div", Cls: []string{"featured"}}},
+					Title: []Step{{Tag: "h3"}},
+					Link:  []Step{{Tag: "h3"}},
+				},
+			},
+		},
+		{
+			// Posts with the same link are merged into the first one in document
+			// order, which keeps its values of the fields that both have, even when
+			// its matcher comes later.
+			name: "same-link-first-wins",
+			matchers: []PostMatcher{
+				{
+					Post:  []Step{{Tag: "div", Cls: []string{"card"}}},
+					Title: []Step{{Tag: "h2"}},
+					Link:  []Step{{Tag: "h2"}},
+				},
+				{
+					Post:  []Step{{Tag: "div", Cls: []string{"teaser"}}},
+					Title: []Step{{Tag: "h3"}},
+					Link:  []Step{{Tag: "h3"}},
+				},
+			},
+		},
+		{
+			// The first post of a link takes the fields that it does not have from
+			// the later posts with the same link.
+			name: "same-link-missing-fields",
+			matchers: []PostMatcher{
+				{
+					Post:      []Step{{Tag: "div", Cls: []string{"teaser"}}},
+					Title:     []Step{{Tag: "h3"}},
+					Link:      []Step{{Tag: "h3"}},
+					Thumbnail: []Step{{Tag: "img"}},
+				},
+				{
+					Post:  []Step{{Tag: "div", Cls: []string{"card"}}},
+					Title: []Step{{Tag: "h3"}},
+					Link:  []Step{{Tag: "h3"}},
+					Body:  []Step{{Tag: "p"}},
+				},
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			raw, err := os.ReadFile(filepath.Join("testdata/extract", tt.name+".html"))
+			if err != nil {
+				t.Fatal(err)
+			}
+			tree, err := BuildSemanticTree(raw, "https://example.com/")
+			if err != nil {
+				t.Fatal(err)
+			}
+			var want []ExtractedPost
+			readJSON(t, filepath.Join("testdata/extract", tt.name+".posts.json"), &want)
+			if diff := cmp.Diff(want, ExtractPosts(tree, tt.matchers)); diff != "" {
+				t.Errorf("posts differ (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestPostMatcherJSON(t *testing.T) {
+	t.Run("round trip", func(t *testing.T) {
+		m := PostMatcher{
+			Post:    []Step{{Tag: "a", Cls: []string{"card"}}},
+			Title:   []Step{{Tag: "h3"}},
+			Link:    []Step{},
+			PubDate: []Step{{Tag: "time", Nth: new(0)}},
+			Exclude: []string{"example.com/newsletters"},
+		}
+
+		data, err := json.Marshal(m)
+		if err != nil {
+			t.Fatal(err)
+		}
+		want := `{"post":[{"tag":"a","cls":["card"]}],` +
+			`"fields":{"link":[],"pubDate":[{"tag":"time","nth":0}],"title":[{"tag":"h3"}]},` +
+			`"exclude":["example.com/newsletters"]}`
+		if string(data) != want {
+			t.Errorf("JSON is %s, want %s", data, want)
+		}
+
+		// The empty chain of the link stays empty instead of becoming nil, which
+		// would mean that the matcher has no link.
+		var got PostMatcher
+		if err := json.Unmarshal(data, &got); err != nil {
+			t.Fatal(err)
+		}
+		if diff := cmp.Diff(m, got); diff != "" {
+			t.Errorf("matcher differs (-want +got):\n%s", diff)
+		}
+	})
+
+	errors := []struct{ name, json string }{
+		{"unknown field", `{"post":[{"tag":"article"}],"fields":{"title":[],"link":[],"author":[]}}`},
+		{"no title", `{"post":[{"tag":"article"}],"fields":{"link":[]}}`},
+		{"no link", `{"post":[{"tag":"article"}],"fields":{"title":[]}}`},
+	}
+	for _, tt := range errors {
+		t.Run(tt.name, func(t *testing.T) {
+			var m PostMatcher
+			if err := json.Unmarshal([]byte(tt.json), &m); err == nil {
+				t.Errorf("no error for %s", tt.json)
+			}
+		})
+	}
+}
+
+func TestGlobMatches(t *testing.T) {
+	tests := []struct {
+		pattern, hostPath string
+		want              bool
+	}{
+		{"example.com/blog", "example.com/blog", true},
+		{"example.com/blog", "example.com/blog/first", false},
+		{"example.com", "exampleXcom", false},
+		{"example.com/*", "example.com/blog", true},
+		{"example.com/*", "example.com/blog/first", false},
+		{"example.com/**", "example.com/blog/first", true},
+		{"example.com/blog-?", "example.com/blog-1", true},
+		{"example.com/blog?", "example.com/blog/", false},
+	}
+	for _, tt := range tests {
+		if got := globMatches(tt.pattern, tt.hostPath); got != tt.want {
+			t.Errorf("globMatches(%q, %q) = %v, want %v", tt.pattern, tt.hostPath, got, tt.want)
+		}
 	}
 }
