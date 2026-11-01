@@ -42,12 +42,12 @@ collection:
                   title: "Anthropic Engineering Blog"
                   description: "Inside the team building reliable AI systems"
                   subscribed: true
-                  has_matchers: false
+                  has_selectors: false
                 - id: 30
                   url: "https://blog.golang.org/feed.atom"
                   title: "The Go Blog"
                   subscribed: true
-                  has_matchers: false
+                  has_selectors: false
                 - id: 29
                   url: "https://dart.dev/blog/feed.xml"
                   site_url: "https://dart.dev/blog"
@@ -56,7 +56,7 @@ collection:
                     "Dart is an approachable, portable, and productive language
                     for high-quality apps on any platform."
                   subscribed: true
-                  has_matchers: false
+                  has_selectors: false
       "500":
         $ref: "../components/responses.yaml#/InternalServerError"
   put:
@@ -98,7 +98,7 @@ collection:
                 "Dart is an approachable, portable, and productive language for
                 high-quality apps on any platform."
               subscribed: true
-              has_matchers: false
+              has_selectors: false
       "400":
         $ref: "../components/responses.yaml#/BadRequest"
       "500":
@@ -175,7 +175,7 @@ item:
               title: "Anthropic Engineering Blog"
               description: "Inside the team building reliable AI systems"
               subscribed: true
-              has_matchers: false
+              has_selectors: false
       "400":
         $ref: "../components/responses.yaml#/BadRequest"
       "404":
@@ -270,14 +270,14 @@ timeline:
       "500":
         $ref: "../components/responses.yaml#/InternalServerError"
 
-matcher:
+selector:
   get:
-    summary: Get the semantic tree and post matchers of an unstructured feed
+    summary: Get the semantic tree and post selectors of an unstructured feed
     description:
       Fetches the page of the feed and returns it as a semantic tree, together
-      with the saved post matchers. This is the entry point for editing the
-      matchers. Matchers are shared by all users, as feeds are.
-    operationId: getFeedMatchers
+      with the saved post selectors. This is the entry point for editing the
+      selectors. Selectors are shared by all users, as feeds are.
+    operationId: getFeedSelectors
     tags: [Feeds]
     parameters:
       - name: id
@@ -296,11 +296,11 @@ matcher:
               properties:
                 semantic_tree:
                   $ref: "../components/schemas.yaml#/SemanticTree"
-                matchers:
-                  description: Absent when no matchers are saved.
+                selectors:
+                  description: Absent when no selectors are saved.
                   type: array
                   items:
-                    $ref: "../components/schemas.yaml#/PostMatcher"
+                    $ref: "../components/schemas.yaml#/PostSelector"
             example:
               semantic_tree:
                 url: "https://example.com/blog"
@@ -312,7 +312,7 @@ matcher:
                           val: "First post"
                           link: "https://example.com/blog/first"
                         - val: "The first post."
-              matchers:
+              selectors:
                 - post: ["box"]
                   fields:
                     title: [{ shape: "h2+link", nth: 0 }]
@@ -329,11 +329,11 @@ matcher:
       "502":
         $ref: "../components/responses.yaml#/BadGateway"
   put:
-    summary: Save the post matchers of an unstructured feed
+    summary: Save the post selectors of an unstructured feed
     description:
-      Replaces the post matchers of the feed. Fails with 409 if the feed is not
+      Replaces the post selectors of the feed. Fails with 409 if the feed is not
       an unstructured feed.
-    operationId: saveFeedMatchers
+    operationId: saveFeedSelectors
     tags: [Feeds]
     parameters:
       - name: id
@@ -347,15 +347,15 @@ matcher:
         application/json:
           schema:
             type: object
-            required: [matchers]
+            required: [selectors]
             properties:
-              matchers:
+              selectors:
                 type: array
                 minItems: 1
                 items:
-                  $ref: "../components/schemas.yaml#/PostMatcher"
+                  $ref: "../components/schemas.yaml#/PostSelector"
           example:
-            matchers:
+            selectors:
               - post: ["box"]
                 fields:
                   title: [{ shape: "h2+link", nth: 0 }]

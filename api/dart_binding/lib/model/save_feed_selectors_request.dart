@@ -10,38 +10,38 @@
 
 part of openapi.api;
 
-class SaveFeedMatchersRequest {
-  /// Returns a new [SaveFeedMatchersRequest] instance.
-  SaveFeedMatchersRequest({
-    this.matchers = const [],
+class SaveFeedSelectorsRequest {
+  /// Returns a new [SaveFeedSelectorsRequest] instance.
+  SaveFeedSelectorsRequest({
+    this.selectors = const [],
   });
 
-  List<PostMatcher> matchers;
+  List<PostSelector> selectors;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SaveFeedMatchersRequest &&
-          _deepEquality.equals(other.matchers, matchers);
+      other is SaveFeedSelectorsRequest &&
+          _deepEquality.equals(other.selectors, selectors);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (matchers.hashCode);
+      (selectors.hashCode);
 
   @override
-  String toString() => 'SaveFeedMatchersRequest[matchers=$matchers]';
+  String toString() => 'SaveFeedSelectorsRequest[selectors=$selectors]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'matchers'] = this.matchers;
+    json[r'selectors'] = this.selectors;
     return json;
   }
 
-  /// Returns a new [SaveFeedMatchersRequest] instance and imports its values from
+  /// Returns a new [SaveFeedSelectorsRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SaveFeedMatchersRequest? fromJson(dynamic value) {
+  static SaveFeedSelectorsRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -49,28 +49,28 @@ class SaveFeedMatchersRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        assert(json.containsKey(r'matchers'),
-            'Required key "SaveFeedMatchersRequest[matchers]" is missing from JSON.');
-        assert(json[r'matchers'] != null,
-            'Required key "SaveFeedMatchersRequest[matchers]" has a null value in JSON.');
+        assert(json.containsKey(r'selectors'),
+            'Required key "SaveFeedSelectorsRequest[selectors]" is missing from JSON.');
+        assert(json[r'selectors'] != null,
+            'Required key "SaveFeedSelectorsRequest[selectors]" has a null value in JSON.');
         return true;
       }());
 
-      return SaveFeedMatchersRequest(
-        matchers: PostMatcher.listFromJson(json[r'matchers']),
+      return SaveFeedSelectorsRequest(
+        selectors: PostSelector.listFromJson(json[r'selectors']),
       );
     }
     return null;
   }
 
-  static List<SaveFeedMatchersRequest> listFromJson(
+  static List<SaveFeedSelectorsRequest> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <SaveFeedMatchersRequest>[];
+    final result = <SaveFeedSelectorsRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SaveFeedMatchersRequest.fromJson(row);
+        final value = SaveFeedSelectorsRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -79,12 +79,12 @@ class SaveFeedMatchersRequest {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SaveFeedMatchersRequest> mapFromJson(dynamic json) {
-    final map = <String, SaveFeedMatchersRequest>{};
+  static Map<String, SaveFeedSelectorsRequest> mapFromJson(dynamic json) {
+    final map = <String, SaveFeedSelectorsRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SaveFeedMatchersRequest.fromJson(entry.value);
+        final value = SaveFeedSelectorsRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -93,17 +93,17 @@ class SaveFeedMatchersRequest {
     return map;
   }
 
-  // maps a json object with a list of SaveFeedMatchersRequest-objects as value to a dart map
-  static Map<String, List<SaveFeedMatchersRequest>> mapListFromJson(
+  // maps a json object with a list of SaveFeedSelectorsRequest-objects as value to a dart map
+  static Map<String, List<SaveFeedSelectorsRequest>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<SaveFeedMatchersRequest>>{};
+    final map = <String, List<SaveFeedSelectorsRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SaveFeedMatchersRequest.listFromJson(
+        map[entry.key] = SaveFeedSelectorsRequest.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -114,6 +114,6 @@ class SaveFeedMatchersRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'matchers',
+    'selectors',
   };
 }

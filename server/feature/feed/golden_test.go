@@ -12,7 +12,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-var update = flag.Bool("update", false, "update the golden files in testdata/tree and testdata/matcher")
+var update = flag.Bool("update", false, "update the golden files in testdata/tree and testdata/selector")
 
 // checkGolden compares got with the golden file at path, or writes got to it
 // with -update. The file is written without formatting, which Prettier does
@@ -47,7 +47,7 @@ func checkGolden(t *testing.T, path string, got any) {
 
 // TestSemanticTreeGolden checks that the semantic tree built from each test
 // page in testdata/source is the tree in testdata/tree. It runs before
-// TestPerfectMatchersGolden, which reads the trees.
+// TestPerfectSelectorsGolden, which reads the trees.
 func TestSemanticTreeGolden(t *testing.T) {
 	files, err := filepath.Glob("testdata/source/*.html")
 	if err != nil {
@@ -69,11 +69,11 @@ func TestSemanticTreeGolden(t *testing.T) {
 	}
 }
 
-// TestPerfectMatchersGolden checks that the matchers built on the semantic
-// tree of each test page from its fixture are the matchers in
-// testdata/matcher. A matcher file has the JSON that the database stores for
+// TestPerfectSelectorsGolden checks that the selectors built on the semantic
+// tree of each test page from its fixture are the selectors in
+// testdata/selector. A selector file has the JSON that the database stores for
 // the page.
-func TestPerfectMatchersGolden(t *testing.T) {
+func TestPerfectSelectorsGolden(t *testing.T) {
 	files, err := filepath.Glob("testdata/fixture/*.fixture.json")
 	if err != nil {
 		t.Fatal(err)
@@ -85,12 +85,12 @@ func TestPerfectMatchersGolden(t *testing.T) {
 			readJSON(t, f, &posts)
 			var tree SemanticTree
 			readJSON(t, filepath.Join("testdata/tree", name+".json"), &tree)
-			matchers, marks, err := perfectMatchers(&tree, posts)
+			selectors, marks, err := perfectSelectors(&tree, posts)
 			if err != nil {
 				t.Fatal(err)
 			}
 			t.Logf("%d marks for %d posts", marks, len(posts))
-			checkGolden(t, filepath.Join("testdata/matcher", name+".json"), matchers)
+			checkGolden(t, filepath.Join("testdata/selector", name+".json"), selectors)
 		})
 	}
 }

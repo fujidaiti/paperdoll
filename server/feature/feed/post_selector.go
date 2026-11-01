@@ -80,8 +80,8 @@ func (s Step) matches(n *SemanticTreeNode) bool {
 	return true
 }
 
-// PostMatcher is a rule that finds the posts of one kind in a page and
-// extracts their fields. The client builds matchers when the user annotates
+// PostSelector is a rule that finds the posts of one kind in a page and
+// extracts their fields. The client builds selectors when the user annotates
 // a page, and the server runs them on each fetch of the page.
 //
 // Post is the chain of steps to the post nodes: the first step selects
@@ -93,7 +93,7 @@ func (s Step) matches(n *SemanticTreeNode) bool {
 // selects is a post only when its title and link are found (see hasFields),
 // when its link matches none of the patterns in Exclude, and when it contains
 // no other such node (see matchPosts).
-type PostMatcher struct {
+type PostSelector struct {
 	Post      []Step
 	Title     []Step
 	Link      []Step
@@ -104,7 +104,7 @@ type PostMatcher struct {
 }
 
 // chainOf returns the chain of f, or false when m has none.
-func (m *PostMatcher) chainOf(f PostField) ([]Step, bool) {
+func (m *PostSelector) chainOf(f PostField) ([]Step, bool) {
 	var chain []Step
 	switch f {
 	case PostTitle:
@@ -122,7 +122,7 @@ func (m *PostMatcher) chainOf(f PostField) ([]Step, bool) {
 }
 
 // Fields returns the chain of each field that has one.
-func (m *PostMatcher) Fields() map[PostField][]Step {
+func (m *PostSelector) Fields() map[PostField][]Step {
 	fields := make(map[PostField][]Step)
 	for _, f := range []PostField{PostTitle, PostBody, PostLink, PostThumbnail, PostPubDate} {
 		if chain, ok := m.chainOf(f); ok {
@@ -132,24 +132,24 @@ func (m *PostMatcher) Fields() map[PostField][]Step {
 	return fields
 }
 
-// postMatcherJSON is the JSON of PostMatcher, whose fields hold the chain of
+// postSelectorJSON is the JSON of PostSelector, whose fields hold the chain of
 // each field that has one.
-type postMatcherJSON struct {
+type postSelectorJSON struct {
 	Post    []Step               `json:"post"`
 	Fields  map[PostField][]Step `json:"fields"`
 	Exclude []string             `json:"exclude,omitempty"`
 }
 
-func (m PostMatcher) MarshalJSON() ([]byte, error) {
-	return json.Marshal(postMatcherJSON{Post: m.Post, Fields: m.Fields(), Exclude: m.Exclude})
+func (m PostSelector) MarshalJSON() ([]byte, error) {
+	return json.Marshal(postSelectorJSON{Post: m.Post, Fields: m.Fields(), Exclude: m.Exclude})
 }
 
-func (m *PostMatcher) UnmarshalJSON(data []byte) error {
-	var j postMatcherJSON
+func (m *PostSelector) UnmarshalJSON(data []byte) error {
+	var j postSelectorJSON
 	if err := json.Unmarshal(data, &j); err != nil {
 		return err
 	}
-	*m = PostMatcher{Post: j.Post, Exclude: j.Exclude}
+	*m = PostSelector{Post: j.Post, Exclude: j.Exclude}
 	for f, chain := range j.Fields {
 		// An empty chain is the post node itself, which nil would leave out.
 		if chain == nil {
@@ -221,7 +221,7 @@ func selectNodes(start *SemanticTreeNode, chain []Step, children bool) []*Semant
 // is left out, since it is a list of posts rather than a post. Other nodes
 // that Post selects inside a post, such as a footer with the same classes, do
 // not matter.
-func (m *PostMatcher) matchPosts(tree *SemanticTree) []*SemanticTreeNode {
+func (m *PostSelector) matchPosts(tree *SemanticTree) []*SemanticTreeNode {
 	if len(m.Post) == 0 {
 		return nil
 	}
@@ -255,13 +255,13 @@ func (m *PostMatcher) matchPosts(tree *SemanticTree) []*SemanticTreeNode {
 // hasFields reports whether post has the title and the link. The other fields
 // are optional, since posts of one kind often lack some of them, such as the
 // date of a featured post.
-func (m *PostMatcher) hasFields(post *SemanticTreeNode) bool {
+func (m *PostSelector) hasFields(post *SemanticTreeNode) bool {
 	return m.resolveField(post, PostTitle) != nil && m.resolveField(post, PostLink) != nil
 }
 
 // resolveField returns the node of f in post: the first node that the chain
 // of f selects and that f accepts, or nil when there is none.
-func (m *PostMatcher) resolveField(post *SemanticTreeNode, f PostField) *SemanticTreeNode {
+func (m *PostSelector) resolveField(post *SemanticTreeNode, f PostField) *SemanticTreeNode {
 	chain, ok := m.chainOf(f)
 	if !ok {
 		return nil
@@ -282,7 +282,7 @@ func resolveChain(post *SemanticTreeNode, f PostField, chain []Step) *SemanticTr
 
 // isExcluded reports whether the link of post matches one of exclude, the
 // compiled patterns of Exclude.
-func (m *PostMatcher) isExcluded(post *SemanticTreeNode, exclude []*regexp.Regexp) bool {
+func (m *PostSelector) isExcluded(post *SemanticTreeNode, exclude []*regexp.Regexp) bool {
 	n := m.resolveField(post, PostLink)
 	if n == nil {
 		return false
@@ -323,16 +323,16 @@ func globRegexp(pattern string) *regexp.Regexp {
 	return regexp.MustCompile(re.String())
 }
 
-// ExtractedPost is a post that a matcher found in a page, by its field
+// ExtractedPost is a post that a selector found in a page, by its field
 // values.
 type ExtractedPost map[PostField]string
 
-// ExtractPosts returns the posts that matchers find in tree, in document order.
+// ExtractPosts returns the posts that selectors find in tree, in document order.
 // Posts with the same link are merged into the first one, which takes the
 // fields that it does not have from the later ones, since some pages split a
 // post into sibling cards with the same link, such as one with the image and
 // one with the title. Posts without a link are dropped.
-func ExtractPosts(tree *SemanticTree, matchers []PostMatcher) []ExtractedPost {
+func ExtractPosts(tree *SemanticTree, selectors []PostSelector) []ExtractedPost {
 	order := map[*SemanticTreeNode]int{}
 	var number func(n *SemanticTreeNode)
 	number = func(n *SemanticTreeNode) {
@@ -348,7 +348,7 @@ func ExtractPosts(tree *SemanticTree, matchers []PostMatcher) []ExtractedPost {
 		values ExtractedPost
 	}
 	var posts []found
-	for _, m := range matchers {
+	for _, m := range selectors {
 		for _, n := range m.matchPosts(tree) {
 			values := make(ExtractedPost)
 			for field := range m.Fields() {

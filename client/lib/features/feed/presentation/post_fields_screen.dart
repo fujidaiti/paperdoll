@@ -7,7 +7,7 @@ import 'package:paperdoll/core/ui/widgets/app_divider.dart';
 import 'package:paperdoll/core/ui/widgets/body_text.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
-import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/domain/post_selector.dart';
 import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 

@@ -26,7 +26,7 @@ type SemanticTreeNode struct {
 func (n *SemanticTreeNode) isValue() bool { return len(n.Children) == 0 }
 
 // SemanticTree is a web page simplified into a semantic tree, which post
-// matchers run on (see PostMatcher).
+// selectors run on (see PostSelector).
 //
 // A tree is serialized as JSON:
 //
@@ -626,7 +626,7 @@ var (
 )
 
 // cleanClasses returns the classes of n without the parts that change while
-// the role of n stays the same, so that a matcher does not depend on them:
+// the role of n stays the same, so that a selector does not depend on them:
 //
 //   - Classes with characters other than letters, digits, "-" and "_" are
 //     dropped. These are utility classes with a variant or an arbitrary

@@ -76,7 +76,7 @@ func TestFeed_SearchFeeds_Page(t *testing.T) {
 	}
 }
 
-func TestFeed_Matchers(t *testing.T) {
+func TestFeed_Selectors(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	testenv.StubHTTP("blog.example.com", "/", "./testdata/feed/page_without_feed.html")
 	testenv.StubHTTP("www.nasa.gov", "/news-release/feed/", "./testdata/feed/nasa_news_release.xml")
@@ -90,8 +90,8 @@ func TestFeed_Matchers(t *testing.T) {
 	if page.SiteURL == nil || page.SiteURL.String() != page.URL.String() {
 		t.Errorf("site URL = %v, want the page URL %s", page.SiteURL, page.URL.String())
 	}
-	if page.HasMatchers {
-		t.Error("HasMatchers = true for a new feed, want false")
+	if page.HasSelectors {
+		t.Error("HasSelectors = true for a new feed, want false")
 	}
 	again, err := s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/")))
 	if err != nil {
@@ -101,36 +101,36 @@ func TestFeed_Matchers(t *testing.T) {
 		t.Errorf("subscribing again registered feed %d, want %d", again.ID, page.ID)
 	}
 
-	tree, matchers, err := s.Matchers(t.Context(), page.ID)
+	tree, selectors, err := s.Selectors(t.Context(), page.ID)
 	if err != nil {
-		t.Fatalf("Matchers: %v", err)
+		t.Fatalf("Selectors: %v", err)
 	}
 	if tree.Title != "Example Blog" || tree.Root == nil {
 		t.Errorf("page = %+v, want the semantic tree", tree)
 	}
-	if matchers != "" {
-		t.Errorf("matchers = %q, want none", matchers)
+	if selectors != "" {
+		t.Errorf("selectors = %q, want none", selectors)
 	}
 
 	raw := `[{"post":[{"tag":"article","cls":["post"]}],"fields":{"title":[{"tag":"h2"}]}}]`
-	if err := s.SaveMatchers(t.Context(), page.ID, raw); err != nil {
-		t.Fatalf("SaveMatchers: %v", err)
+	if err := s.SaveSelectors(t.Context(), page.ID, raw); err != nil {
+		t.Fatalf("SaveSelectors: %v", err)
 	}
-	if _, matchers, err = s.Matchers(t.Context(), page.ID); err != nil {
-		t.Fatalf("Matchers after saving: %v", err)
+	if _, selectors, err = s.Selectors(t.Context(), page.ID); err != nil {
+		t.Fatalf("Selectors after saving: %v", err)
 	}
 	var got, want any
-	_ = json.Unmarshal([]byte(matchers), &got)
+	_ = json.Unmarshal([]byte(selectors), &got)
 	_ = json.Unmarshal([]byte(raw), &want)
 	if d := cmp.Diff(want, got); d != "" {
-		t.Errorf("saved matchers mismatch:\n%s", d)
+		t.Errorf("saved selectors mismatch:\n%s", d)
 	}
 	again, err = s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/")))
 	if err != nil {
 		t.Fatalf("Subscribe after saving: %v", err)
 	}
-	if !again.HasMatchers {
-		t.Error("HasMatchers = false after saving, want true")
+	if !again.HasSelectors {
+		t.Error("HasSelectors = false after saving, want true")
 	}
 
 	for _, invalid := range []string{
@@ -140,8 +140,8 @@ func TestFeed_Matchers(t *testing.T) {
 		`not json`,
 		`[{"post":["box","box"],"fields":{"title":[{"shape":"h2+link","nth":0}]},"exclude":[]}]`,
 	} {
-		if err := s.SaveMatchers(t.Context(), page.ID, invalid); !errors.Is(err, feed.ErrInvalidMatchers) {
-			t.Errorf("SaveMatchers(%s) = %v, want ErrInvalidMatchers", invalid, err)
+		if err := s.SaveSelectors(t.Context(), page.ID, invalid); !errors.Is(err, feed.ErrInvalidSelectors) {
+			t.Errorf("SaveSelectors(%s) = %v, want ErrInvalidSelectors", invalid, err)
 		}
 	}
 
@@ -149,13 +149,13 @@ func TestFeed_Matchers(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Subscribe to RSS: %v", err)
 	}
-	if err := s.SaveMatchers(t.Context(), rss.ID, raw); !errors.Is(err, feed.ErrNotUnstructured) {
-		t.Errorf("SaveMatchers on an RSS feed = %v, want ErrNotUnstructured", err)
+	if err := s.SaveSelectors(t.Context(), rss.ID, raw); !errors.Is(err, feed.ErrNotUnstructured) {
+		t.Errorf("SaveSelectors on an RSS feed = %v, want ErrNotUnstructured", err)
 	}
-	if _, _, err := s.Matchers(t.Context(), rss.ID); !errors.Is(err, feed.ErrNotUnstructured) {
-		t.Errorf("Matchers on an RSS feed = %v, want ErrNotUnstructured", err)
+	if _, _, err := s.Selectors(t.Context(), rss.ID); !errors.Is(err, feed.ErrNotUnstructured) {
+		t.Errorf("Selectors on an RSS feed = %v, want ErrNotUnstructured", err)
 	}
-	if err := s.SaveMatchers(t.Context(), 1_000_000, raw); !errors.Is(err, feed.ErrFeedNotFound) {
-		t.Errorf("SaveMatchers on a missing feed = %v, want ErrFeedNotFound", err)
+	if err := s.SaveSelectors(t.Context(), 1_000_000, raw); !errors.Is(err, feed.ErrFeedNotFound) {
+		t.Errorf("SaveSelectors on a missing feed = %v, want ErrFeedNotFound", err)
 	}
 }

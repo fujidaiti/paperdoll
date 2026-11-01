@@ -10,45 +10,45 @@
 
 part of openapi.api;
 
-class GetFeedMatchers200Response {
-  /// Returns a new [GetFeedMatchers200Response] instance.
-  GetFeedMatchers200Response({
+class GetFeedSelectors200Response {
+  /// Returns a new [GetFeedSelectors200Response] instance.
+  GetFeedSelectors200Response({
     required this.semanticTree,
-    this.matchers = const [],
+    this.selectors = const [],
   });
 
   SemanticTree semanticTree;
 
-  /// Absent when no matchers are saved.
-  List<PostMatcher> matchers;
+  /// Absent when no selectors are saved.
+  List<PostSelector> selectors;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is GetFeedMatchers200Response &&
+      other is GetFeedSelectors200Response &&
           other.semanticTree == semanticTree &&
-          _deepEquality.equals(other.matchers, matchers);
+          _deepEquality.equals(other.selectors, selectors);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (semanticTree.hashCode) + (matchers.hashCode);
+      (semanticTree.hashCode) + (selectors.hashCode);
 
   @override
   String toString() =>
-      'GetFeedMatchers200Response[semanticTree=$semanticTree, matchers=$matchers]';
+      'GetFeedSelectors200Response[semanticTree=$semanticTree, selectors=$selectors]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'semantic_tree'] = this.semanticTree;
-    json[r'matchers'] = this.matchers;
+    json[r'selectors'] = this.selectors;
     return json;
   }
 
-  /// Returns a new [GetFeedMatchers200Response] instance and imports its values from
+  /// Returns a new [GetFeedSelectors200Response] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetFeedMatchers200Response? fromJson(dynamic value) {
+  static GetFeedSelectors200Response? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -57,28 +57,28 @@ class GetFeedMatchers200Response {
       // Note 2: this code is stripped in release mode!
       assert(() {
         assert(json.containsKey(r'semantic_tree'),
-            'Required key "GetFeedMatchers200Response[semantic_tree]" is missing from JSON.');
+            'Required key "GetFeedSelectors200Response[semantic_tree]" is missing from JSON.');
         assert(json[r'semantic_tree'] != null,
-            'Required key "GetFeedMatchers200Response[semantic_tree]" has a null value in JSON.');
+            'Required key "GetFeedSelectors200Response[semantic_tree]" has a null value in JSON.');
         return true;
       }());
 
-      return GetFeedMatchers200Response(
+      return GetFeedSelectors200Response(
         semanticTree: SemanticTree.fromJson(json[r'semantic_tree'])!,
-        matchers: PostMatcher.listFromJson(json[r'matchers']),
+        selectors: PostSelector.listFromJson(json[r'selectors']),
       );
     }
     return null;
   }
 
-  static List<GetFeedMatchers200Response> listFromJson(
+  static List<GetFeedSelectors200Response> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <GetFeedMatchers200Response>[];
+    final result = <GetFeedSelectors200Response>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetFeedMatchers200Response.fromJson(row);
+        final value = GetFeedSelectors200Response.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -87,12 +87,12 @@ class GetFeedMatchers200Response {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetFeedMatchers200Response> mapFromJson(dynamic json) {
-    final map = <String, GetFeedMatchers200Response>{};
+  static Map<String, GetFeedSelectors200Response> mapFromJson(dynamic json) {
+    final map = <String, GetFeedSelectors200Response>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetFeedMatchers200Response.fromJson(entry.value);
+        final value = GetFeedSelectors200Response.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -101,17 +101,17 @@ class GetFeedMatchers200Response {
     return map;
   }
 
-  // maps a json object with a list of GetFeedMatchers200Response-objects as value to a dart map
-  static Map<String, List<GetFeedMatchers200Response>> mapListFromJson(
+  // maps a json object with a list of GetFeedSelectors200Response-objects as value to a dart map
+  static Map<String, List<GetFeedSelectors200Response>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<GetFeedMatchers200Response>>{};
+    final map = <String, List<GetFeedSelectors200Response>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = GetFeedMatchers200Response.listFromJson(
+        map[entry.key] = GetFeedSelectors200Response.listFromJson(
           entry.value,
           growable: growable,
         );

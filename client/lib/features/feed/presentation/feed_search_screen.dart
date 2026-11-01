@@ -55,8 +55,8 @@ class _FeedSearchScreenState extends ConsumerState<FeedSearchScreen> {
       );
       router.pop();
       // The posts of a page without an RSS feed cannot be extracted until
-      // the user builds its post matchers.
-      if (feed.url == feed.siteUrl && !feed.hasMatchers) {
+      // the user builds its post selectors.
+      if (feed.url == feed.siteUrl && !feed.hasSelectors) {
         unawaited(
           router.pushNamed(
             routePageAnnotationName,

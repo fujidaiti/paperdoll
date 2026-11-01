@@ -9,7 +9,7 @@ final _gapAfterBracket = RegExp('([(\\[])$_gap+');
 
 /// The text of the values in the subtree of [node] as one line, without the
 /// alt texts of images and the times (see bodyText in
-/// server/feature/feed/post_matcher.go).
+/// server/feature/feed/post_selector.go).
 String bodyText(SemanticTreeNode node) {
   final texts = <String>[];
   void visit(SemanticTreeNode n) {

@@ -144,7 +144,7 @@ void main() {
         body: api.SearchFeeds200Response(feeds: [candidate]).toJson(),
       )
       ..stubGet(
-        '/feeds/${blog.id}/matcher',
+        '/feeds/${blog.id}/selector',
         body: {'semantic_tree': fixture.pages.exampleBlog},
       );
 
@@ -155,39 +155,39 @@ void main() {
     await t(AppDebugKey.feedSearchButton).tap();
     await t(AppDebugKey.feedCandidateTile(candidate.title)).tap();
 
-    // The page has no matchers yet, so the app asks for them.
+    // The page has no selectors yet, so the app asks for them.
     await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
     await t('First post').waitUntilVisible();
     expect(
-      t.tester.widget<TextButton>(t(AppDebugKey.saveMatchersButton)).onPressed,
+      t.tester.widget<TextButton>(t(AppDebugKey.saveSelectorsButton)).onPressed,
       isNull,
     );
   });
 
-  patrolWidgetTest('Save the post matchers of a web page', (t) async {
+  patrolWidgetTest('Save the post selectors of a web page', (t) async {
     final candidate = fixture.feedCandidates.exampleBlog;
     final blog = fixture.feeds.exampleBlog;
-    final matcher = fixture.pages.exampleBlogMatcher;
+    final selector = fixture.pages.exampleBlogSelector;
     final server = StubServer.withDefaultResponses()
       ..stubPut('/feeds', body: blog.toJson())
       ..stubGet(
         '/feeds/search',
         body: api.SearchFeeds200Response(feeds: [candidate]).toJson(),
       )
-      // Another user saved matchers after this user subscribed, so the
+      // Another user saved selectors after this user subscribed, so the
       // editor starts with them.
       ..stubGet(
-        '/feeds/${blog.id}/matcher',
+        '/feeds/${blog.id}/selector',
         body: {
           'semantic_tree': fixture.pages.exampleBlog,
-          'matchers': [matcher],
+          'selectors': [selector],
         },
       )
       ..stubPut(
-        '/feeds/${blog.id}/matcher',
+        '/feeds/${blog.id}/selector',
         status: 204,
         bodyMatcher: {
-          'matchers': [matcher],
+          'selectors': [selector],
         },
       );
 
@@ -198,20 +198,20 @@ void main() {
     await t(AppDebugKey.feedSearchButton).tap();
     await t(AppDebugKey.feedCandidateTile(candidate.title)).tap();
 
-    await t(AppDebugKey.saveMatchersButton).tap();
-    await t(AppDebugKey.saveMatchersSuccessSnackBar).waitUntilVisible();
+    await t(AppDebugKey.saveSelectorsButton).tap();
+    await t(AppDebugKey.saveSelectorsSuccessSnackBar).waitUntilVisible();
     await t(AppDebugKey.feedsScreen).waitUntilVisible();
   });
 
-  patrolWidgetTest('Edit the post matchers of a web page', (t) async {
+  patrolWidgetTest('Edit the post selectors of a web page', (t) async {
     final blog = fixture.feeds.exampleBlog;
     final server = _stubFeedSubscription(blog)
       ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
       ..stubGet(
-        '/feeds/${blog.id}/matcher',
+        '/feeds/${blog.id}/selector',
         body: {
           'semantic_tree': fixture.pages.exampleBlog,
-          'matchers': [fixture.pages.exampleBlogMatcher],
+          'selectors': [fixture.pages.exampleBlogSelector],
         },
       );
 
@@ -222,7 +222,7 @@ void main() {
     await t(AppDebugKey.feedEditScreen).waitUntilVisible();
     expect(t(blog.url), findsOneWidget);
 
-    await t(AppDebugKey.editMatchersButton).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
     await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
     // The posts are shown as cards of their extracted values, without the
     // content that is not extracted, such as the summaries.
@@ -248,10 +248,10 @@ void main() {
     final server = _stubFeedSubscription(blog)
       ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
       ..stubGet(
-        '/feeds/${blog.id}/matcher',
+        '/feeds/${blog.id}/selector',
         body: {
           'semantic_tree': fixture.pages.exampleBlogWithNewsletters,
-          'matchers': [fixture.pages.exampleBlogMatcher],
+          'selectors': [fixture.pages.exampleBlogSelector],
         },
       );
 
@@ -259,7 +259,7 @@ void main() {
     await _openTimeline(t, blog);
     await t(AppDebugKey.feedDetailMenuButton).tap();
     await t(AppDebugKey.editFeedMenuItem).tap();
-    await t(AppDebugKey.editMatchersButton).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
     await t('3 post(s) found.').waitUntilVisible();
 
     // The link of a newsletter is excluded by its host and path, so the other
@@ -287,8 +287,8 @@ void main() {
     await t(AppDebugKey.editFeedMenuItem).tap();
     await t(AppDebugKey.feedEditScreen).waitUntilVisible();
     expect(t(nasa.url), findsOneWidget);
-    // The matchers are only for pages without a feed.
-    expect(t(AppDebugKey.editMatchersButton), findsNothing);
+    // The selectors are only for pages without a feed.
+    expect(t(AppDebugKey.editSelectorsButton), findsNothing);
   });
 }
 

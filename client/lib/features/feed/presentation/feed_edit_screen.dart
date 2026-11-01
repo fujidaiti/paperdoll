@@ -16,7 +16,7 @@ import 'package:paperdoll/features/feed/presentation/providers/feed_providers.da
 import 'package:paperdoll/features/feed/presentation/widgets/feed_icon.dart';
 
 /// Feed Edit: the attributes of a feed, and the entry to the editor of the
-/// post matchers of an unstructured feed. Feeds are shared across all users,
+/// post selectors of an unstructured feed. Feeds are shared across all users,
 /// so is what is edited here.
 class const FeedEditScreen({required final int id, super.key})
     extends ConsumerWidget {
@@ -41,7 +41,7 @@ class const _FeedAttributes({required final Feed feed})
   Widget build(BuildContext context) {
     final description = feed.description;
     final siteUrl = feed.siteUrl;
-    // A page without an RSS feed, whose posts are extracted with the matchers
+    // A page without an RSS feed, whose posts are extracted with the selectors
     // that the user builds.
     final unstructured = feed.url == siteUrl;
     return ListView(
@@ -78,12 +78,12 @@ class const _FeedAttributes({required final Feed feed})
         if (unstructured) ...[
           const Gap(spacingMd),
           FilledButton(
-            key: AppDebugKey.editMatchersButton,
+            key: AppDebugKey.editSelectorsButton,
             onPressed: () => context.pushNamed(
               routePageAnnotationName,
               pathParameters: {'id': feed.id.toString()},
             ),
-            child: const Text('Edit post matchers'),
+            child: const Text('Edit post selectors'),
           ),
         ],
       ],

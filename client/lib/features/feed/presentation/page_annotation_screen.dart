@@ -16,11 +16,11 @@ import 'package:paperdoll/core/ui/widgets/heading_text.dart';
 import 'package:paperdoll/core/util/date_format.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:paperdoll/debug_keys.dart';
-import 'package:paperdoll/features/feed/data/matcher_repository.dart';
-import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/data/selector_repository.dart';
+import 'package:paperdoll/features/feed/domain/post_selector.dart';
 import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 import 'package:paperdoll/features/feed/presentation/post_fields_screen.dart';
-import 'package:paperdoll/features/feed/presentation/providers/matcher_providers.dart';
+import 'package:paperdoll/features/feed/presentation/providers/selector_providers.dart';
 import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 
 /// Lets the user tell which parts of a web page are posts, so that the page
@@ -33,31 +33,31 @@ import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 /// by tapping a line, which selects the narrowest element around it that can
 /// be a post, and widening the selection to the elements around that one.
 ///
-/// The matchers are generated from the posts that the user marked and the
-/// links that the user marked as not posts (see [generateMatchers]), so the
+/// The selectors are generated from the posts that the user marked and the
+/// links that the user marked as not posts (see [generateSelectors]), so the
 /// posts that look like a marked one are found automatically. The user never
-/// sees the matchers: a card is either a post that the user marked or one that
+/// sees the selectors: a card is either a post that the user marked or one that
 /// was found automatically, and a post that is not one can be marked as such.
 ///
-/// The page is the one of the unstructured feed [feedId]. The matchers saved
+/// The page is the one of the unstructured feed [feedId]. The selectors saved
 /// for the feed are shown as one post for each of them. Saving replaces them.
 class const PageAnnotationScreen({required final int feedId, super.key})
     extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final matchers = ref.watch(feedMatchersProvider(feedId));
-    if (matchers case AsyncData(:final value)) {
+    final selectors = ref.watch(feedSelectorsProvider(feedId));
+    if (selectors case AsyncData(:final value)) {
       return _Annotator(
         feedId: feedId,
         tree: value.tree,
-        matchers: value.matchers,
+        selectors: value.selectors,
       );
     }
     return Scaffold(
       appBar: AppBar(),
-      body: AsyncValueView<FeedMatchers>(
-        value: matchers,
-        onRetry: () => ref.invalidate(feedMatchersProvider(feedId)),
+      body: AsyncValueView<FeedSelectors>(
+        value: selectors,
+        onRetry: () => ref.invalidate(feedSelectorsProvider(feedId)),
         data: (_) => const SizedBox.shrink(),
       ),
     );
@@ -68,11 +68,11 @@ class const PageAnnotationScreen({required final int feedId, super.key})
 bool _hasLink(SemanticTreeNode node) =>
     node.pageLink != null || node.children.any(_hasLink);
 
-/// The posts that the matchers find in the tree, by node id, with the
-/// matcher that finds each, and the excluded ones, by node id, with the host
+/// The posts that the selectors find in the tree, by node id, with the
+/// selector that finds each, and the excluded ones, by node id, with the host
 /// and path that excludes them.
 class _Marks {
-  final posts = <int, PostMatcher>{};
+  final posts = <int, PostSelector>{};
   final excluded = <int, String>{};
 
   /// The post that contains [node], if any.
@@ -99,27 +99,28 @@ class _Marks {
 class const _Annotator({
   required final int feedId,
   required final SemanticTree tree,
-  required final List<PostMatcher> matchers,
+  required final List<PostSelector> selectors,
 }) extends ConsumerStatefulWidget {
   @override
   ConsumerState<_Annotator> createState() => _AnnotatorState();
 }
 
 class _AnnotatorState extends ConsumerState<_Annotator> {
-  /// The posts that the saved matchers find, by node id. The matchers are
+  /// The posts that the saved selectors find, by node id. The selectors are
   /// generated from them too, so that they keep finding the same posts, but
   /// they are not shown as marked, since the user did not mark them here.
   late final _found = {
-    for (final p in labelFoundPosts(widget.tree, widget.matchers)) p.node.id: p,
+    for (final p in labelFoundPosts(widget.tree, widget.selectors))
+      p.node.id: p,
   };
 
   /// The posts that the user marked, by node id.
   final _labeled = <int, LabeledPost>{};
 
   /// The host and path of the links that the user marked as not posts.
-  late final _excluded = {for (final m in widget.matchers) ...m.exclude};
+  late final _excluded = {for (final m in widget.selectors) ...m.exclude};
 
-  late List<PostMatcher> _matchers;
+  late List<PostSelector> _selectors;
   late _Marks _marks;
   var _saving = false;
 
@@ -129,20 +130,20 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     _update();
   }
 
-  /// Generates the matchers again after the marks changed.
+  /// Generates the selectors again after the marks changed.
   void _update() {
-    _matchers = generateMatchers(
+    _selectors = generateSelectors(
       _tree,
       {..._found, ..._labeled}.values,
       _excluded,
     );
     _marks = _Marks();
-    for (final matcher in _matchers) {
-      for (final post in matcher.matchPosts(_tree)) {
-        _marks.posts.putIfAbsent(post.id, () => matcher);
+    for (final selector in _selectors) {
+      for (final post in selector.matchPosts(_tree)) {
+        _marks.posts.putIfAbsent(post.id, () => selector);
       }
-      for (final post in matcher.matchExcluded(_tree)) {
-        _marks.excluded[post.id] = matcher.excludedBy(post)!;
+      for (final post in selector.matchExcluded(_tree)) {
+        _marks.excluded[post.id] = selector.excludedBy(post)!;
       }
     }
   }
@@ -181,8 +182,8 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
 
   /// Why [node] cannot become a post, or null if it can.
   ///
-  /// Only [node] itself is checked. Other nodes that its matcher would select
-  /// can be posts of another matcher, since the labeled fields decide which of
+  /// Only [node] itself is checked. Other nodes that its selector would select
+  /// can be posts of another selector, since the labeled fields decide which of
   /// them are posts, such as cards whose title is in a different element.
   String? _postRejection(SemanticTreeNode node) {
     for (final id in _marks.posts.keys) {
@@ -193,10 +194,10 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     return null;
   }
 
-  /// The nodes that [matcher] labels as the fields of [post].
-  PostFields _fieldsOf(PostMatcher matcher, SemanticTreeNode post) => {
+  /// The nodes that [selector] labels as the fields of [post].
+  PostFields _fieldsOf(PostSelector selector, SemanticTreeNode post) => {
     for (final field in PostField.values)
-      field: ?matcher.matchField(post, field),
+      field: ?selector.matchField(post, field),
   };
 
   /// Opens the screen that labels the fields of [post], and marks [post] as a
@@ -219,7 +220,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   }
 
   /// Marks the link of [post] as not a post, which also unmarks the posts that
-  /// the user marked, or that the saved matchers found, with the same host and
+  /// the user marked, or that the saved selectors found, with the same host and
   /// path.
   void _markAsNotPost(SemanticTreeNode post) {
     final hostPath = hostPathOf(
@@ -257,11 +258,13 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     final router = GoRouter.of(context);
     setState(() => _saving = true);
     try {
-      await ref.read(matcherRepositoryProvider).save(widget.feedId, _matchers);
-      ref.invalidate(feedMatchersProvider(widget.feedId));
+      await ref
+          .read(selectorRepositoryProvider)
+          .save(widget.feedId, _selectors);
+      ref.invalidate(feedSelectorsProvider(widget.feedId));
       messenger.showSnackBar(
         const SnackBar(
-          key: AppDebugKey.saveMatchersSuccessSnackBar,
+          key: AppDebugKey.saveSelectorsSuccessSnackBar,
           content: Text('Saved the posts of the page.'),
         ),
       );
@@ -287,7 +290,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
           maxChildSize: 0.95,
           builder: (context, controller) => _Preview(
             tree: _tree,
-            matchers: _matchers,
+            selectors: _selectors,
             scrollController: controller,
           ),
         ),
@@ -326,8 +329,8 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
         ),
         actions: [
           TextButton(
-            key: AppDebugKey.saveMatchersButton,
-            onPressed: _matchers.isEmpty || _saving
+            key: AppDebugKey.saveSelectorsButton,
+            onPressed: _selectors.isEmpty || _saving
                 ? null
                 : () => unawaited(_save()),
             child: const Text('Save'),
@@ -342,12 +345,12 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
               itemCount: items.length,
               itemBuilder: (context, index) {
                 final line = items[index];
-                if (marks.posts[line.id] case final matcher?) {
+                if (marks.posts[line.id] case final selector?) {
                   return _PostCard(
                     key: ValueKey(line.id),
                     values: {
                       for (final field in PostField.values)
-                        if (matcher.matchField(line, field) case final node?)
+                        if (selector.matchField(line, field) case final node?)
                           field: ?field.valueOf(node),
                     },
                     isMarked: _labeled.containsKey(line.id),
@@ -374,7 +377,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
           ),
           if (selected != null)
             SelectionSheet(child: _buildSheet(selected))
-          else if (_matchers.isNotEmpty)
+          else if (_selectors.isNotEmpty)
             _StatusFooter(
               postCount: marks.posts.length,
               onPreview: _showPreview,
@@ -385,31 +388,31 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   }
 
   Widget _buildSheet(SemanticTreeNode selected) {
-    final matcher = _marks.posts[selected.id];
+    final selector = _marks.posts[selected.id];
     final excluded = _marks.excluded[selected.id];
-    final rejection = matcher == null && excluded == null
+    final rejection = selector == null && excluded == null
         ? _postRejection(selected)
         : null;
     return _SelectionSheet(
       selected: selected,
       levels: selectionLevels(_tapped ?? selected),
       onSelect: _select,
-      isPost: matcher != null,
+      isPost: selector != null,
       isMarked: _labeled.containsKey(selected.id),
       isExcluded: excluded != null,
       rejection: rejection,
       onCancel: () => _select(null),
       onMarkAsPost: () =>
           unawaited(_markAsPost(selected, evidentFields(selected))),
-      onEditFields: matcher == null
+      onEditFields: selector == null
           ? null
           : () => unawaited(
               _markAsPost(
                 selected,
-                _labeled[selected.id]?.fields ?? _fieldsOf(matcher, selected),
+                _labeled[selected.id]?.fields ?? _fieldsOf(selector, selected),
               ),
             ),
-      onNotPost: matcher == null ? null : () => _markAsNotPost(selected),
+      onNotPost: selector == null ? null : () => _markAsNotPost(selected),
       onClearMark: () => _clearMark(selected),
       onRestore: excluded == null ? null : () => _restore(excluded),
     );
@@ -683,15 +686,15 @@ class const _Thumbnail({required final String url, required final double size})
   }
 }
 
-/// The posts extracted with the current matchers, merged by link.
+/// The posts extracted with the current selectors, merged by link.
 class const _Preview({
   required final SemanticTree tree,
-  required final List<PostMatcher> matchers,
+  required final List<PostSelector> selectors,
   required final ScrollController scrollController,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final posts = extractPosts(tree, matchers);
+    final posts = extractPosts(tree, selectors);
     return ListView(
       controller: scrollController,
       // The cards have their own side padding.

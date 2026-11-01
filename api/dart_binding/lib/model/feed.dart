@@ -20,7 +20,7 @@ class Feed {
     required this.title,
     this.description,
     required this.subscribed,
-    required this.hasMatchers,
+    required this.hasSelectors,
   });
 
   int id;
@@ -56,8 +56,8 @@ class Feed {
   /// Whether the calling user is subscribed to this feed.
   bool subscribed;
 
-  /// Whether post matchers are saved for this feed. Only an unstructured feed can have them.
-  bool hasMatchers;
+  /// Whether post selectors are saved for this feed. Only an unstructured feed can have them.
+  bool hasSelectors;
 
   @override
   bool operator ==(Object other) =>
@@ -70,7 +70,7 @@ class Feed {
           other.title == title &&
           other.description == description &&
           other.subscribed == subscribed &&
-          other.hasMatchers == hasMatchers;
+          other.hasSelectors == hasSelectors;
 
   @override
   int get hashCode =>
@@ -82,11 +82,11 @@ class Feed {
       (title.hashCode) +
       (description == null ? 0 : description!.hashCode) +
       (subscribed.hashCode) +
-      (hasMatchers.hashCode);
+      (hasSelectors.hashCode);
 
   @override
   String toString() =>
-      'Feed[id=$id, url=$url, siteUrl=$siteUrl, iconUrl=$iconUrl, title=$title, description=$description, subscribed=$subscribed, hasMatchers=$hasMatchers]';
+      'Feed[id=$id, url=$url, siteUrl=$siteUrl, iconUrl=$iconUrl, title=$title, description=$description, subscribed=$subscribed, hasSelectors=$hasSelectors]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -109,7 +109,7 @@ class Feed {
       json[r'description'] = null;
     }
     json[r'subscribed'] = this.subscribed;
-    json[r'has_matchers'] = this.hasMatchers;
+    json[r'has_selectors'] = this.hasSelectors;
     return json;
   }
 
@@ -140,10 +140,10 @@ class Feed {
             'Required key "Feed[subscribed]" is missing from JSON.');
         assert(json[r'subscribed'] != null,
             'Required key "Feed[subscribed]" has a null value in JSON.');
-        assert(json.containsKey(r'has_matchers'),
-            'Required key "Feed[has_matchers]" is missing from JSON.');
-        assert(json[r'has_matchers'] != null,
-            'Required key "Feed[has_matchers]" has a null value in JSON.');
+        assert(json.containsKey(r'has_selectors'),
+            'Required key "Feed[has_selectors]" is missing from JSON.');
+        assert(json[r'has_selectors'] != null,
+            'Required key "Feed[has_selectors]" has a null value in JSON.');
         return true;
       }());
 
@@ -155,7 +155,7 @@ class Feed {
         title: mapValueOfType<String>(json, r'title')!,
         description: mapValueOfType<String>(json, r'description'),
         subscribed: mapValueOfType<bool>(json, r'subscribed')!,
-        hasMatchers: mapValueOfType<bool>(json, r'has_matchers')!,
+        hasSelectors: mapValueOfType<bool>(json, r'has_selectors')!,
       );
     }
     return null;
@@ -216,6 +216,6 @@ class Feed {
     'url',
     'title',
     'subscribed',
-    'has_matchers',
+    'has_selectors',
   };
 }

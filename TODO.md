@@ -4,9 +4,9 @@
 
 ### Fields at different positions in posts of one kind
 
-A field step is a shape and an index (see `tool/semantictree/MATCHER.md`), so
-one matcher has only one path to each field. When posts of one kind have a field
-at different positions, the user must annotate them as several groups.
+A field step is a shape and an index (see `tool/semantictree/SELECTOR.md`), so
+one selector has only one path to each field. When posts of one kind have a
+field at different positions, the user must annotate them as several groups.
 
 The simplifier no longer merges a wrapper around a single node, which moved the
 values of a post one level up when the post lacked an optional value, such as
@@ -29,6 +29,6 @@ paragraph with a link in it is a container and a paragraph without one is a
 value. A body labeled on the container of its paragraphs keeps its path in every
 post. Some pages have no such container, such as chsmc.org, whose posts hold the
 header and the paragraphs side by side. There, a body can only be labeled on one
-paragraph. In posts whose paragraph has a different shape, the matcher takes
+paragraph. In posts whose paragraph has a different shape, the selector takes
 another paragraph as the body, or finds none and drops the post, since the body
-is a required field. This is accepted as a limitation of matchers.
+is a required field. This is accepted as a limitation of selectors.

@@ -1,10 +1,10 @@
 Feed:
   description:
     A web feed, or an unstructured feed, which is a web page without a feed
-    whose posts are extracted with post matchers. The `url` and `site_url` of an
-    unstructured feed are both the page's URL.
+    whose posts are extracted with post selectors. The `url` and `site_url` of
+    an unstructured feed are both the page's URL.
   type: object
-  required: [id, url, title, subscribed, has_matchers]
+  required: [id, url, title, subscribed, has_selectors]
   properties:
     id:
       type: integer
@@ -24,10 +24,10 @@ Feed:
     subscribed:
       description: Whether the calling user is subscribed to this feed.
       type: boolean
-    has_matchers:
+    has_selectors:
       description:
-        Whether post matchers are saved for this feed. Only an unstructured feed
-        can have them.
+        Whether post selectors are saved for this feed. Only an unstructured
+        feed can have them.
       type: boolean
 
 FeedCandidate:
@@ -179,7 +179,7 @@ SignUpTicket:
 
 SemanticTree:
   description:
-    A web page simplified into a semantic tree, on which post matchers run. See
+    A web page simplified into a semantic tree, on which post selectors run. See
     SemanticTree in `server/feature/feed/semantic_tree.go` for the format.
   type: object
   required: [url, title, root]
@@ -222,10 +222,10 @@ SemanticTreeNode:
       items:
         $ref: "#/SemanticTreeNode"
 
-PostMatcher:
+PostSelector:
   description:
     A rule that finds the posts of one kind in a page and extracts their fields.
-    See PostMatcher in `server/feature/feed/post_matcher.go`.
+    See PostSelector in `server/feature/feed/post_selector.go`.
   type: object
   required: [post, fields]
   properties:

@@ -9,7 +9,7 @@ abstract final class AppDebugKey {
   static const archivedReadingListScreen = Key('archivedReadingListScreen');
   static const unarchiveSuccessSnackBar = Key('unarchiveSuccessSnackBar');
   static const editFeedMenuItem = Key('editFeedMenuItem');
-  static const editMatchersButton = Key('editMatchersButton');
+  static const editSelectorsButton = Key('editSelectorsButton');
   static const feedDetailScreen = Key('feedDetailScreen');
   static const feedEditScreen = Key('feedEditScreen');
   static const feedDetailMenuButton = Key('feedDetailMenuButton');
@@ -51,8 +51,10 @@ abstract final class AppDebugKey {
   static const saveToReadingListSuccessSnackBar = Key(
     'saveToReadingListSuccessSnackBar',
   );
-  static const saveMatchersButton = Key('saveMatchersButton');
-  static const saveMatchersSuccessSnackBar = Key('saveMatchersSuccessSnackBar');
+  static const saveSelectorsButton = Key('saveSelectorsButton');
+  static const saveSelectorsSuccessSnackBar = Key(
+    'saveSelectorsSuccessSnackBar',
+  );
   static const settingsButton = Key('settingsButton');
   static const settingsScreen = Key('settingsScreen');
   static const signOutButton = Key('signOutButton');

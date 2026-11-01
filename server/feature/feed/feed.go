@@ -21,10 +21,10 @@ import (
 type Feed struct {
 	ID int
 	FeedAttrs
-	// HasMatchers reports whether the post matchers of an unstructured feed,
+	// HasSelectors reports whether the post selectors of an unstructured feed,
 	// a web page without an RSS feed whose URL and site URL are the page's URL,
 	// have been saved.
-	HasMatchers bool
+	HasSelectors bool
 }
 
 type FeedAttrs struct {
@@ -65,8 +65,8 @@ func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (F
 		INSERT INTO feeds (url, site_url, icon_url, title, description)
 		VALUES ($1, $2, $3, $4, $5)
 		ON CONFLICT (url) DO UPDATE SET url = EXCLUDED.url
-		RETURNING id, matchers IS NOT NULL;
-	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID, &f.HasMatchers)
+		RETURNING id, selectors IS NOT NULL;
+	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID, &f.HasSelectors)
 	if err != nil {
 		return Feed{}, err
 	}
@@ -254,21 +254,21 @@ func feedAttrs(u url.URL, raw *gofeed.Feed) FeedAttrs {
 }
 
 var (
-	ErrFeedNotFound    = errors.New("feed not found")
-	ErrNotUnstructured = errors.New("feed is not unstructured")
-	ErrInvalidMatchers = errors.New("invalid matchers")
+	ErrFeedNotFound     = errors.New("feed not found")
+	ErrNotUnstructured  = errors.New("feed is not unstructured")
+	ErrInvalidSelectors = errors.New("invalid selectors")
 )
 
-// Matchers returns the semantic tree of the page of the unstructured feed id,
-// on which its post matchers are edited, and the matchers saved for it, which
+// Selectors returns the semantic tree of the page of the unstructured feed id,
+// on which its post selectors are edited, and the selectors saved for it, which
 // are empty when none are saved.
-func (s *Service) Matchers(ctx context.Context, id int) (*SemanticTree, string, error) {
+func (s *Service) Selectors(ctx context.Context, id int) (*SemanticTree, string, error) {
 	var fu string
-	var matchers sql.NullString
+	var selectors sql.NullString
 	var unstructured bool
 	err := s.DB.QueryRowContext(ctx, `
-		SELECT url, matchers, (url = site_url) IS TRUE FROM feeds WHERE id = $1;
-	`, id).Scan(&fu, &matchers, &unstructured)
+		SELECT url, selectors, (url = site_url) IS TRUE FROM feeds WHERE id = $1;
+	`, id).Scan(&fu, &selectors, &unstructured)
 	if errors.Is(err, sql.ErrNoRows) {
 		return nil, "", ErrFeedNotFound
 	} else if err != nil {
@@ -289,24 +289,24 @@ func (s *Service) Matchers(ctx context.Context, id int) (*SemanticTree, string, 
 	if err != nil {
 		return nil, "", err
 	}
-	return tree, matchers.String, nil
+	return tree, selectors.String, nil
 }
 
-// SaveMatchers replaces the post matchers of the unstructured feed id with
-// raw, a JSON array of PostMatcher. The matchers are shared by all
+// SaveSelectors replaces the post selectors of the unstructured feed id with
+// raw, a JSON array of PostSelector. The selectors are shared by all
 // subscribers, as the feed is, so any user can replace them.
-func (s *Service) SaveMatchers(ctx context.Context, id int, raw string) error {
-	var ms []PostMatcher
+func (s *Service) SaveSelectors(ctx context.Context, id int, raw string) error {
+	var ms []PostSelector
 	if err := json.Unmarshal([]byte(raw), &ms); err != nil || len(ms) == 0 {
-		return ErrInvalidMatchers
+		return ErrInvalidSelectors
 	}
 	for _, m := range ms {
 		if len(m.Post) == 0 {
-			return ErrInvalidMatchers
+			return ErrInvalidSelectors
 		}
 	}
 	res, err := s.DB.ExecContext(ctx, `
-		UPDATE feeds SET matchers = $1 WHERE id = $2 AND url = site_url;
+		UPDATE feeds SET selectors = $1 WHERE id = $2 AND url = site_url;
 	`, raw, id)
 	if err != nil {
 		return err

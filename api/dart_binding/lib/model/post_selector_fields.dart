@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PostMatcherFields {
-  /// Returns a new [PostMatcherFields] instance.
-  PostMatcherFields({
+class PostSelectorFields {
+  /// Returns a new [PostSelectorFields] instance.
+  PostSelectorFields({
     this.title = const [],
     this.body = const [],
     this.link = const [],
@@ -33,7 +33,7 @@ class PostMatcherFields {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PostMatcherFields &&
+      other is PostSelectorFields &&
           _deepEquality.equals(other.title, title) &&
           _deepEquality.equals(other.body, body) &&
           _deepEquality.equals(other.link, link) &&
@@ -51,7 +51,7 @@ class PostMatcherFields {
 
   @override
   String toString() =>
-      'PostMatcherFields[title=$title, body=$body, link=$link, thumbnail=$thumbnail, pubDate=$pubDate]';
+      'PostSelectorFields[title=$title, body=$body, link=$link, thumbnail=$thumbnail, pubDate=$pubDate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -63,10 +63,10 @@ class PostMatcherFields {
     return json;
   }
 
-  /// Returns a new [PostMatcherFields] instance and imports its values from
+  /// Returns a new [PostSelectorFields] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PostMatcherFields? fromJson(dynamic value) {
+  static PostSelectorFields? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -77,7 +77,7 @@ class PostMatcherFields {
         return true;
       }());
 
-      return PostMatcherFields(
+      return PostSelectorFields(
         title: Step.listFromJson(json[r'title']),
         body: json[r'body'] is List
             ? (json[r'body'] as List)
@@ -100,14 +100,14 @@ class PostMatcherFields {
     return null;
   }
 
-  static List<PostMatcherFields> listFromJson(
+  static List<PostSelectorFields> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <PostMatcherFields>[];
+    final result = <PostSelectorFields>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PostMatcherFields.fromJson(row);
+        final value = PostSelectorFields.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -116,12 +116,12 @@ class PostMatcherFields {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PostMatcherFields> mapFromJson(dynamic json) {
-    final map = <String, PostMatcherFields>{};
+  static Map<String, PostSelectorFields> mapFromJson(dynamic json) {
+    final map = <String, PostSelectorFields>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PostMatcherFields.fromJson(entry.value);
+        final value = PostSelectorFields.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -130,17 +130,17 @@ class PostMatcherFields {
     return map;
   }
 
-  // maps a json object with a list of PostMatcherFields-objects as value to a dart map
-  static Map<String, List<PostMatcherFields>> mapListFromJson(
+  // maps a json object with a list of PostSelectorFields-objects as value to a dart map
+  static Map<String, List<PostSelectorFields>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<PostMatcherFields>>{};
+    final map = <String, List<PostSelectorFields>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PostMatcherFields.listFromJson(
+        map[entry.key] = PostSelectorFields.listFromJson(
           entry.value,
           growable: growable,
         );

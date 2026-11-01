@@ -7,7 +7,7 @@ import 'package:paperdoll/core/ui/tokens/app_text_styles.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
-import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/domain/post_selector.dart';
 import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 
 // Widgets that show a page as its content, shared by the screen that selects

@@ -24,7 +24,7 @@ class _Feeds {
     title: 'BBC News',
     description: 'BBC News - News Front Page',
     subscribed: true,
-    hasMatchers: false,
+    hasSelectors: false,
   );
 
   final nasa = api.Feed(
@@ -35,7 +35,7 @@ class _Feeds {
     description:
         'Official National Aeronautics and Space Administration Website',
     subscribed: true,
-    hasMatchers: false,
+    hasSelectors: false,
   );
 
   final stackOverflow = api.Feed(
@@ -45,7 +45,7 @@ class _Feeds {
     title: 'Recent Questions - Stack Overflow',
     description: 'most recent 30 from stackoverflow.com',
     subscribed: true,
-    hasMatchers: false,
+    hasSelectors: false,
   );
 
   final wikipedia = api.Feed(
@@ -55,7 +55,7 @@ class _Feeds {
     title: 'Wikipedia  - Recent changes [en]',
     description: 'Track the most recent changes to the wiki in this feed.',
     subscribed: true,
-    hasMatchers: false,
+    hasSelectors: false,
   );
 
   // A web page without an RSS feed, whose URL and site URL are the page's.
@@ -65,7 +65,7 @@ class _Feeds {
     siteUrl: 'https://blog.example.com/',
     title: 'Example Blog',
     subscribed: true,
-    hasMatchers: false,
+    hasSelectors: false,
   );
 }
 
@@ -193,7 +193,7 @@ class _ReadingList {
 
 final _pages = _Pages();
 
-/// Raw responses of `GET /feeds/{id}/matcher`. They are written as JSON, since
+/// Raw responses of `GET /feeds/{id}/selector`. They are written as JSON, since
 /// the generated models write an empty list for each field that is not
 /// labeled, which would label it at the post node.
 class _Pages {
@@ -256,8 +256,8 @@ class _Pages {
     },
   };
 
-  /// A matcher of the posts in [exampleBlog].
-  final exampleBlogMatcher = <String, Object?>{
+  /// A selector of the posts in [exampleBlog].
+  final exampleBlogSelector = <String, Object?>{
     'post': [
       {
         'tag': 'article',

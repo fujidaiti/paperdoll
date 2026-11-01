@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class PostMatcher {
-  /// Returns a new [PostMatcher] instance.
-  PostMatcher({
+class PostSelector {
+  /// Returns a new [PostSelector] instance.
+  PostSelector({
     this.post = const [],
     required this.fields,
     this.exclude = const [],
@@ -21,7 +21,7 @@ class PostMatcher {
   /// The chain of steps from the root to the post nodes.
   List<Step> post;
 
-  PostMatcherFields fields;
+  PostSelectorFields fields;
 
   /// Glob patterns of the links of nodes that are not posts. It is left out when there are none.
   List<String> exclude;
@@ -29,7 +29,7 @@ class PostMatcher {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PostMatcher &&
+      other is PostSelector &&
           _deepEquality.equals(other.post, post) &&
           other.fields == fields &&
           _deepEquality.equals(other.exclude, exclude);
@@ -41,7 +41,7 @@ class PostMatcher {
 
   @override
   String toString() =>
-      'PostMatcher[post=$post, fields=$fields, exclude=$exclude]';
+      'PostSelector[post=$post, fields=$fields, exclude=$exclude]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -51,10 +51,10 @@ class PostMatcher {
     return json;
   }
 
-  /// Returns a new [PostMatcher] instance and imports its values from
+  /// Returns a new [PostSelector] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PostMatcher? fromJson(dynamic value) {
+  static PostSelector? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -63,19 +63,19 @@ class PostMatcher {
       // Note 2: this code is stripped in release mode!
       assert(() {
         assert(json.containsKey(r'post'),
-            'Required key "PostMatcher[post]" is missing from JSON.');
+            'Required key "PostSelector[post]" is missing from JSON.');
         assert(json[r'post'] != null,
-            'Required key "PostMatcher[post]" has a null value in JSON.');
+            'Required key "PostSelector[post]" has a null value in JSON.');
         assert(json.containsKey(r'fields'),
-            'Required key "PostMatcher[fields]" is missing from JSON.');
+            'Required key "PostSelector[fields]" is missing from JSON.');
         assert(json[r'fields'] != null,
-            'Required key "PostMatcher[fields]" has a null value in JSON.');
+            'Required key "PostSelector[fields]" has a null value in JSON.');
         return true;
       }());
 
-      return PostMatcher(
+      return PostSelector(
         post: Step.listFromJson(json[r'post']),
-        fields: PostMatcherFields.fromJson(json[r'fields'])!,
+        fields: PostSelectorFields.fromJson(json[r'fields'])!,
         exclude: json[r'exclude'] is Iterable
             ? (json[r'exclude'] as Iterable)
                 .cast<String>()
@@ -86,14 +86,14 @@ class PostMatcher {
     return null;
   }
 
-  static List<PostMatcher> listFromJson(
+  static List<PostSelector> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <PostMatcher>[];
+    final result = <PostSelector>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = PostMatcher.fromJson(row);
+        final value = PostSelector.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -102,12 +102,12 @@ class PostMatcher {
     return result.toList(growable: growable);
   }
 
-  static Map<String, PostMatcher> mapFromJson(dynamic json) {
-    final map = <String, PostMatcher>{};
+  static Map<String, PostSelector> mapFromJson(dynamic json) {
+    final map = <String, PostSelector>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PostMatcher.fromJson(entry.value);
+        final value = PostSelector.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -116,17 +116,17 @@ class PostMatcher {
     return map;
   }
 
-  // maps a json object with a list of PostMatcher-objects as value to a dart map
-  static Map<String, List<PostMatcher>> mapListFromJson(
+  // maps a json object with a list of PostSelector-objects as value to a dart map
+  static Map<String, List<PostSelector>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<PostMatcher>>{};
+    final map = <String, List<PostSelector>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PostMatcher.listFromJson(
+        map[entry.key] = PostSelector.listFromJson(
           entry.value,
           growable: growable,
         );

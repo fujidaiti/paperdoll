@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/domain/post_selector.dart';
 import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 
 // The server's test pages (see server/feature/feed/testdata/README.md) check
-// that the client generates the matchers of each page, from the posts that a
-// user of the client marks, and that the matchers extract the posts of the
+// that the client generates the selectors of each page, from the posts that a
+// user of the client marks, and that the selectors extract the posts of the
 // fixture. The server's tests do the same with their own port of the client's
 // generator, so that the two implementations agree.
 
@@ -16,10 +16,11 @@ const _testdata = '../server/feature/feed/testdata';
 
 typedef _Values = Map<PostField, String>;
 
-/// The field values that [matcher] extracts from [post].
-_Values _valuesOf(PostMatcher matcher, SemanticTreeNode post) => {
-  for (final field in matcher.fields.keys)
-    if (matcher.matchField(post, field) case final n?) field: ?field.valueOf(n),
+/// The field values that [selector] extracts from [post].
+_Values _valuesOf(PostSelector selector, SemanticTreeNode post) => {
+  for (final field in selector.fields.keys)
+    if (selector.matchField(post, field) case final n?)
+      field: ?field.valueOf(n),
 };
 
 bool _equalValues(_Values? a, _Values b) =>
@@ -61,13 +62,13 @@ SemanticTreeNode? _fieldNode(
   return null;
 }
 
-/// The matchers that a user of the client builds for [tree], who wants to
+/// The selectors that a user of the client builds for [tree], who wants to
 /// extract exactly [posts], and the number of marks that the user makes. The
-/// client generates the matchers from the posts that the user marked and the
-/// links that the user excluded (see [generateMatchers]), and the user
+/// client generates the selectors from the posts that the user marked and the
+/// links that the user excluded (see [generateSelectors]), and the user
 /// repeats, until every post is extracted with its values:
 ///
-///  1. If a node that the matchers find is wrong, the user marks it. A node
+///  1. If a node that the selectors find is wrong, the user marks it. A node
 ///     whose link is not in [posts] is marked as not a post, which excludes
 ///     the host and path of its link, and unmarks the posts that the user
 ///     marked with them. A node that has a value that differs from the one in
@@ -80,7 +81,7 @@ SemanticTreeNode? _fieldNode(
 /// In every round, every labeled post must be found and no excluded link must
 /// be extracted. It throws when a step cannot be done, when a guarantee does
 /// not hold, or when the marks come back to the same state.
-(List<PostMatcher>, int) _perfectMatchers(
+(List<PostSelector>, int) _perfectSelectors(
   SemanticTree tree,
   List<_Values> posts,
 ) {
@@ -111,11 +112,11 @@ SemanticTreeNode? _fieldNode(
   var marks = 0;
   final seen = <String>{};
   while (true) {
-    final matchers = generateMatchers(tree, labeled.values, excluded);
+    final selectors = generateSelectors(tree, labeled.values, excluded);
 
-    // The matcher that the user sees a node as found by is the first one.
-    final finder = <SemanticTreeNode, PostMatcher>{};
-    for (final m in matchers) {
+    // The selector that the user sees a node as found by is the first one.
+    final finder = <SemanticTreeNode, PostSelector>{};
+    for (final m in selectors) {
       for (final n in m.matchPosts(tree)) {
         finder.putIfAbsent(n, () => m);
       }
@@ -124,12 +125,12 @@ SemanticTreeNode? _fieldNode(
       if (!finder.containsKey(n)) {
         throw StateError(
           'the labeled post ${labeled[n]!.fields[PostField.link]?.link} is not '
-          'found: ${jsonEncode(matchers)}',
+          'found: ${jsonEncode(selectors)}',
         );
       }
     }
     final got = <String, _Values>{};
-    for (final p in extractPosts(tree, matchers)) {
+    for (final p in extractPosts(tree, selectors)) {
       if (excluded.contains(hostPathOf(p.values[PostField.link]!))) {
         throw StateError('the excluded link is extracted: ${p.values}');
       }
@@ -137,7 +138,7 @@ SemanticTreeNode? _fieldNode(
     }
 
     final state = jsonEncode([
-      matchers,
+      selectors,
       excluded.toList()..sort(),
       [for (final n in labeled.keys) n.id]..sort(),
     ]);
@@ -179,7 +180,7 @@ SemanticTreeNode? _fieldNode(
         .where((p) => !_equalValues(got[p[PostField.link]], p))
         .firstOrNull;
     if (target == null) {
-      return (matchers, marks);
+      return (selectors, marks);
     }
     final link = target[PostField.link]!;
     final start = tree.nodes
@@ -241,20 +242,20 @@ void main() {
       ];
       final goldens = [
         for (final m
-            in _readJson('$_testdata/matcher/$name.json')! as List<Object?>)
-          PostMatcher.fromJson(m! as Map<String, Object?>),
+            in _readJson('$_testdata/selector/$name.json')! as List<Object?>)
+          PostSelector.fromJson(m! as Map<String, Object?>),
       ];
 
-      test('generates the golden matchers from the marks of a user', () {
-        final (matchers, _) = _perfectMatchers(tree, posts);
+      test('generates the golden selectors from the marks of a user', () {
+        final (selectors, _) = _perfectSelectors(tree, posts);
 
         expect(
-          jsonDecode(jsonEncode(matchers)),
+          jsonDecode(jsonEncode(selectors)),
           jsonDecode(jsonEncode(goldens)),
         );
       });
 
-      test('extracts the posts in the fixture with the golden matchers', () {
+      test('extracts the posts in the fixture with the golden selectors', () {
         // The posts are compared by link, since a fixture does not always
         // list them in the order of the page.
         expect(
@@ -266,12 +267,12 @@ void main() {
         );
       });
 
-      test('finds the same posts after the editor opens the matchers', () {
+      test('finds the same posts after the editor opens the selectors', () {
         // The editor does not keep the marks, so it labels the posts that the
-        // saved matchers find, and generates the matchers again from them when
-        // the user saves without changes. A post that another matcher also
-        // finds is extracted anyway, so the nodes are compared too.
-        final matchers = generateMatchers(
+        // saved selectors find, and generates the selectors again from them
+        // when the user saves without changes. A post that another selector
+        // also finds is extracted anyway, so the nodes are compared too.
+        final selectors = generateSelectors(
           tree,
           labelFoundPosts(tree, goldens),
           {for (final m in goldens) ...m.exclude},
@@ -279,7 +280,7 @@ void main() {
 
         expect(
           {
-            for (final m in matchers)
+            for (final m in selectors)
               for (final n in m.matchPosts(tree)) n.id,
           },
           {
@@ -289,7 +290,7 @@ void main() {
         );
         expect(
           {
-            for (final p in extractPosts(tree, matchers))
+            for (final p in extractPosts(tree, selectors))
               p.values[PostField.link]!: p.values,
           },
           {for (final p in posts) p[PostField.link]!: p},

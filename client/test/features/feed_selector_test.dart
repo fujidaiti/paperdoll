@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:paperdoll/features/feed/domain/post_matcher.dart';
+import 'package:paperdoll/features/feed/domain/post_selector.dart';
 import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 
 import '../src/fixture.dart';
@@ -19,16 +19,16 @@ void main() {
     },
   );
 
-  List<String> links(List<PostMatcher> matchers) => [
-    for (final p in extractPosts(tree, matchers)) p.values[PostField.link]!,
+  List<String> links(List<PostSelector> selectors) => [
+    for (final p in extractPosts(tree, selectors)) p.values[PostField.link]!,
   ];
 
-  group('generateMatchers', () {
+  group('generateSelectors', () {
     test('finds the posts that look like a labeled post', () {
-      final matchers = generateMatchers(tree, [labeled(articles[0])], {});
+      final selectors = generateSelectors(tree, [labeled(articles[0])], {});
 
-      expect(matchers, hasLength(1));
-      expect(links(matchers), [
+      expect(selectors, hasLength(1));
+      expect(links(selectors), [
         'https://blog.example.com/first',
         'https://blog.example.com/newsletters?weekly',
         'https://blog.example.com/newsletters?monthly',
@@ -36,18 +36,18 @@ void main() {
     });
 
     test('excludes the host and path of a link, and nothing else', () {
-      final matchers = generateMatchers(
+      final selectors = generateSelectors(
         tree,
         [labeled(articles[0])],
         {'blog.example.com/newsletters'},
       );
 
-      expect(links(matchers), ['https://blog.example.com/first']);
+      expect(links(selectors), ['https://blog.example.com/first']);
     });
 
     test('does not depend on the order of the labeled posts', () {
       String generate(List<LabeledPost> posts) =>
-          jsonEncode(generateMatchers(tree, posts, {}));
+          jsonEncode(generateSelectors(tree, posts, {}));
 
       expect(
         generate([labeled(articles[0]), labeled(articles[2])]),
@@ -57,10 +57,10 @@ void main() {
   });
 
   group('labelFoundPosts', () {
-    test('labels every post that the matchers find with its fields', () {
-      final matchers = generateMatchers(tree, [labeled(articles[0])], {});
+    test('labels every post that the selectors find with its fields', () {
+      final selectors = generateSelectors(tree, [labeled(articles[0])], {});
 
-      final posts = labelFoundPosts(tree, matchers);
+      final posts = labelFoundPosts(tree, selectors);
 
       expect([for (final p in posts) p.node], articles);
       expect(
@@ -75,13 +75,13 @@ void main() {
       );
     });
 
-    test('takes each field of a post from the first matcher that has it', () {
-      const titles = PostMatcher(
+    test('takes each field of a post from the first selector that has it', () {
+      const titles = PostSelector(
         post: [Step(tag: 'article')],
         title: [Step(tag: 'h2')],
         link: [Step(tag: 'h2')],
       );
-      const bodies = PostMatcher(
+      const bodies = PostSelector(
         post: [Step(tag: 'article')],
         title: [Step(tag: 'p')],
         link: [Step(tag: 'h2')],
@@ -104,14 +104,14 @@ void main() {
       );
     });
 
-    test('labels nothing when the matchers find no post', () {
-      const matcher = PostMatcher(
+    test('labels nothing when the selectors find no post', () {
+      const selector = PostSelector(
         post: [Step(tag: 'section')],
         title: [Step(tag: 'h2')],
         link: [Step(tag: 'h2')],
       );
 
-      expect(labelFoundPosts(tree, [matcher]), isEmpty);
+      expect(labelFoundPosts(tree, [selector]), isEmpty);
     });
   });
 }

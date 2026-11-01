@@ -160,7 +160,7 @@ bool _globMatches(String pattern, String hostPath) {
 }
 
 /// A rule that finds the posts of one kind in a page and extracts their
-/// fields (see PostMatcher in server/feature/feed/post_matcher.go).
+/// fields (see PostSelector in server/feature/feed/post_selector.go).
 ///
 /// [post] is the chain of steps to the post nodes: the first step selects
 /// descendants of the root, and each later step selects children of the
@@ -171,7 +171,7 @@ bool _globMatches(String pattern, String hostPath) {
 /// node that [post] selects is a post only when its title and link are found,
 /// and when its link matches none of the patterns in [exclude]. A node that
 /// contains another such node is not a post, since it is a list of posts.
-class PostMatcher {
+class PostSelector {
   const new({
     required this.post,
     required this.title,
@@ -191,7 +191,7 @@ class PostMatcher {
       _ => null,
     };
     final fields = json['fields']! as Map<String, Object?>;
-    return PostMatcher(
+    return PostSelector(
       post: chainOf(json['post'])!,
       title: chainOf(fields[PostField.title.name])!,
       link: chainOf(fields[PostField.link.name])!,
@@ -403,9 +403,9 @@ List<Step>? _fieldChain(
   }
 }
 
-/// The matcher that finds [post] with its fields. Null when no chain finds
+/// The selector that finds [post] with its fields. Null when no chain finds
 /// its title or link. A field that no chain finds is left out.
-PostMatcher? _matcherOf(
+PostSelector? _selectorOf(
   SemanticTree tree,
   LabeledPost post,
   List<String> exclude,
@@ -418,7 +418,7 @@ PostMatcher? _matcherOf(
   if (title == null || link == null) {
     return null;
   }
-  return PostMatcher(
+  return PostSelector(
     post: _postChainOf(tree, post.node),
     title: title,
     link: link,
@@ -441,7 +441,7 @@ bool _sameChains(List<Step> a, List<Step> b) =>
           x.cls.every(y.cls.contains);
     });
 
-/// The matcher that finds the posts of [a] and of [b] with their fields, or
+/// The selector that finds the posts of [a] and of [b] with their fields, or
 /// null when they cannot merge. They merge when their post chains have the
 /// same tags and the same classes except on the last step, and when they have
 /// the same title and link chains, and no other field with different chains.
@@ -449,10 +449,10 @@ bool _sameChains(List<Step> a, List<Step> b) =>
 /// share, and the merge fails when no step has classes left, since such a
 /// chain selects any node of its tags.
 ///
-/// The merged matcher finds the posts of [a] and of [b] without a check on
+/// The merged selector finds the posts of [a] and of [b] without a check on
 /// the tree: its post chain selects their nodes, and their fields resolve by
 /// the same chains as before.
-PostMatcher? _merge(PostMatcher a, PostMatcher b) {
+PostSelector? _merge(PostSelector a, PostSelector b) {
   if (a.post.length != b.post.length) {
     return null;
   }
@@ -490,7 +490,7 @@ PostMatcher? _merge(PostMatcher a, PostMatcher b) {
     }
     optional[field] = chain ?? other;
   }
-  return PostMatcher(
+  return PostSelector(
     post: post,
     title: a.title,
     link: a.link,
@@ -501,60 +501,60 @@ PostMatcher? _merge(PostMatcher a, PostMatcher b) {
   );
 }
 
-/// The matchers that find the [posts] that the user labeled, and none of the
+/// The selectors that find the [posts] that the user labeled, and none of the
 /// posts whose links the user excluded. [excluded] holds the host and path of
-/// each such link. The matchers depend on the posts and the links, not on the
+/// each such link. The selectors depend on the posts and the links, not on the
 /// order in which the user marked them. A link of [excluded] must not be the
 /// link of a post.
 ///
-/// Each post starts with its own matcher (see [_matcherOf]), in document
-/// order, and the first two matchers that can merge (see [_merge]) are
+/// Each post starts with its own selector (see [_selectorOf]), in document
+/// order, and the first two selectors that can merge (see [_merge]) are
 /// replaced by the merged one, until no two can merge. A post whose title or
-/// link no chain finds gets no matcher.
-List<PostMatcher> generateMatchers(
+/// link no chain finds gets no selector.
+List<PostSelector> generateSelectors(
   SemanticTree tree,
   Iterable<LabeledPost> posts,
   Set<String> excluded,
 ) {
   final exclude = excluded.toList()..sort();
-  final matchers = [
+  final selectors = [
     for (final post in [
       ...posts,
     ]..sort((a, b) => a.node.id.compareTo(b.node.id)))
-      ?_matcherOf(tree, post, exclude),
+      ?_selectorOf(tree, post, exclude),
   ];
   merging:
   while (true) {
-    for (var i = 0; i < matchers.length; i++) {
-      for (var j = i + 1; j < matchers.length; j++) {
-        if (_merge(matchers[i], matchers[j]) case final m?) {
-          matchers
+    for (var i = 0; i < selectors.length; i++) {
+      for (var j = i + 1; j < selectors.length; j++) {
+        if (_merge(selectors[i], selectors[j]) case final m?) {
+          selectors
             ..[i] = m
             ..removeAt(j);
           continue merging;
         }
       }
     }
-    return matchers;
+    return selectors;
   }
 }
 
-/// Every post that [matchers] find in [tree], with the nodes of its fields, so
-/// that the matchers can be generated again from them, since the marks of the
-/// user are not saved. All of them are needed, since a merged matcher keeps
+/// Every post that [selectors] find in [tree], with the nodes of its fields, so
+/// that the selectors can be generated again from them, since the marks of the
+/// user are not saved. All of them are needed, since a merged selector keeps
 /// only the classes that all of its posts share, and fewer posts would make
-/// the matchers find fewer posts. A post that several
-/// matchers find takes each field from the first matcher that finds it.
+/// the selectors find fewer posts. A post that several
+/// selectors find takes each field from the first selector that finds it.
 List<LabeledPost> labelFoundPosts(
   SemanticTree tree,
-  List<PostMatcher> matchers,
+  List<PostSelector> selectors,
 ) {
   final posts = <LabeledPost>[];
-  for (final matcher in matchers) {
-    for (final node in matcher.matchPosts(tree)) {
+  for (final selector in selectors) {
+    for (final node in selector.matchPosts(tree)) {
       final fields = {
-        for (final field in matcher.fields.keys)
-          field: ?matcher.matchField(node, field),
+        for (final field in selector.fields.keys)
+          field: ?selector.matchField(node, field),
       };
       final i = posts.indexWhere((p) => identical(p.node, node));
       if (i < 0) {
@@ -664,43 +664,43 @@ Map<PostField, SemanticTreeNode> evidentFields(SemanticTreeNode postNode) {
   return fields;
 }
 
-/// A post extracted from a page: its node, the index of the matcher that
+/// A post extracted from a page: its node, the index of the selector that
 /// found it, and its field values.
 typedef ExtractedPost = ({
   SemanticTreeNode node,
-  int matcher,
+  int selector,
   Map<PostField, String> values,
 });
 
-/// The posts that [matchers] find in [tree], in document order. Posts
+/// The posts that [selectors] find in [tree], in document order. Posts
 /// with the same link are merged into the first one, which takes the fields
 /// that it does not have from the later ones, since some pages split a post
 /// into sibling cards with the same link, such as one with the image and one
 /// with the title.
 List<ExtractedPost> extractPosts(
   SemanticTree tree,
-  List<PostMatcher> matchers,
+  List<PostSelector> selectors,
 ) {
   final found =
       <ExtractedPost>[
-          for (final (i, matcher) in matchers.indexed)
-            for (final node in matcher.matchPosts(tree))
+          for (final (i, selector) in selectors.indexed)
+            for (final node in selector.matchPosts(tree))
               (
                 node: node,
-                matcher: i,
+                selector: i,
                 values: {
-                  for (final field in matcher.fields.keys)
-                    if (matcher.matchField(node, field) case final n?)
+                  for (final field in selector.fields.keys)
+                    if (selector.matchField(node, field) case final n?)
                       field: ?field.valueOf(n),
                 },
               ),
         ]
-        // A node that several matchers find takes its fields from the first one
-        // first, since List.sort is not stable.
+        // A node that several selectors find takes its fields from the first
+        // one first, since List.sort is not stable.
         ..sort(
           (a, b) => a.node.id != b.node.id
               ? a.node.id.compareTo(b.node.id)
-              : a.matcher.compareTo(b.matcher),
+              : a.selector.compareTo(b.selector),
         );
   final byLink = <String, ExtractedPost>{};
   for (final post in found) {
