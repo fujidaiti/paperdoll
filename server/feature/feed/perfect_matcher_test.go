@@ -335,21 +335,19 @@ func (t *treeIndex) generateMatchers(posts []labeledPost, excluded map[string]bo
 			matchers = append(matchers, m)
 		}
 	}
-	for merged := true; merged; {
-		merged = false
-	pairs:
+merging:
+	for {
 		for i := range matchers {
 			for j := i + 1; j < len(matchers); j++ {
 				if m, ok := merge(matchers[i], matchers[j]); ok {
 					matchers[i] = m
 					matchers = slices.Delete(matchers, j, j+1)
-					merged = true
-					break pairs
+					continue merging
 				}
 			}
 		}
+		return matchers
 	}
-	return matchers
 }
 
 // values returns the field values that m extracts from post.

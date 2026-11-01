@@ -523,22 +523,20 @@ List<PostMatcher> generateMatchers(
     ]..sort((a, b) => a.node.id.compareTo(b.node.id)))
       ?_matcherOf(tree, post, exclude),
   ];
-  for (var merged = true; merged;) {
-    merged = false;
-    pairs:
+  merging:
+  while (true) {
     for (var i = 0; i < matchers.length; i++) {
       for (var j = i + 1; j < matchers.length; j++) {
         if (_merge(matchers[i], matchers[j]) case final m?) {
           matchers
             ..[i] = m
             ..removeAt(j);
-          merged = true;
-          break pairs;
+          continue merging;
         }
       }
     }
+    return matchers;
   }
-  return matchers;
 }
 
 /// Every post that [matchers] find in [tree], with the nodes of its fields, so
