@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:paperdoll/features/feed/domain/post_selector.dart';
-import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 
 // The server's test pages (see server/feature/feed/testdata/README.md) check
@@ -17,7 +17,7 @@ const _testdata = '../server/feature/feed/testdata';
 typedef _Values = Map<PostField, String>;
 
 /// The field values that [selector] extracts from [post].
-_Values _valuesOf(PostSelector selector, SemanticTreeNode post) => {
+_Values _valuesOf(PostSelector selector, Node post) => {
   for (final field in selector.fields.keys)
     if (selector.matchField(post, field) case final n?)
       field: ?field.valueOf(n),
@@ -34,16 +34,10 @@ bool _equalValues(_Values? a, _Values b) =>
 /// itself, or for a body, a line of its text. A line that is not part of the
 /// value, such as the date above a body, would reach a wider node with the
 /// same text.
-SemanticTreeNode? _fieldNode(
-  SemanticTree tree,
-  SemanticTreeNode post,
-  PostField field,
-  String want,
-) {
-  bool isValueNode(SemanticTreeNode n) =>
-      field.valueOf(n) == want && field.accepts(n);
-  for (final line in tree.nodes) {
-    if (!post.contains(line)) {
+Node? _fieldNode(SimplifiedPage page, Node post, PostField field, String want) {
+  bool isValueNode(Node n) => field.valueOf(n) == want && field.accepts(n);
+  for (final line in page.nodes) {
+    if (!post.includes(line)) {
       continue;
     }
     if (field == PostField.body) {
@@ -62,7 +56,7 @@ SemanticTreeNode? _fieldNode(
   return null;
 }
 
-/// The selectors that a user of the client builds for [tree], who wants to
+/// The selectors that a user of the client builds for [page], who wants to
 /// extract exactly [posts], and the number of marks that the user makes. The
 /// client generates the selectors from the posts that the user marked and the
 /// links that the user excluded (see [generateSelectors]), and the user
@@ -82,7 +76,7 @@ SemanticTreeNode? _fieldNode(
 /// be extracted. It throws when a step cannot be done, when a guarantee does
 /// not hold, or when the marks come back to the same state.
 (List<PostSelector>, int) _perfectSelectors(
-  SemanticTree tree,
+  SimplifiedPage page,
   List<_Values> posts,
 ) {
   final want = {for (final p in posts) p[PostField.link]!: p};
@@ -91,14 +85,14 @@ SemanticTreeNode? _fieldNode(
     return p == null || v.entries.any((e) => p[e.key] != e.value);
   }
 
-  final labeled = <SemanticTreeNode, LabeledPost>{};
+  final labeled = <Node, LabeledPost>{};
   final excluded = <String>{};
   // Labels [post] as a post with the nodes of the values in [target]. Returns
   // false when a value has no node.
-  bool label(SemanticTreeNode post, _Values target) {
-    final fields = <PostField, SemanticTreeNode>{};
+  bool label(Node post, _Values target) {
+    final fields = <PostField, Node>{};
     for (final MapEntry(:key, :value) in target.entries) {
-      final n = _fieldNode(tree, post, key, value);
+      final n = _fieldNode(page, post, key, value);
       if (n == null) {
         return false;
       }
@@ -112,12 +106,12 @@ SemanticTreeNode? _fieldNode(
   var marks = 0;
   final seen = <String>{};
   while (true) {
-    final selectors = generateSelectors(tree, labeled.values, excluded);
+    final selectors = generateSelectors(page, labeled.values, excluded);
 
     // The selector that the user sees a node as found by is the first one.
-    final finder = <SemanticTreeNode, PostSelector>{};
+    final finder = <Node, PostSelector>{};
     for (final m in selectors) {
-      for (final n in m.selectPosts(tree)) {
+      for (final n in m.selectPosts(page)) {
         finder.putIfAbsent(n, () => m);
       }
     }
@@ -130,7 +124,7 @@ SemanticTreeNode? _fieldNode(
       }
     }
     final got = <String, _Values>{};
-    for (final p in extractPosts(tree, selectors)) {
+    for (final p in extractPosts(page, selectors)) {
       if (excluded.contains(hostPathOf(p.values[PostField.link]!))) {
         throw StateError('the excluded link is extracted: ${p.values}');
       }
@@ -140,7 +134,7 @@ SemanticTreeNode? _fieldNode(
     final state = jsonEncode([
       selectors,
       excluded.toList()..sort(),
-      [for (final n in labeled.keys) n.id]..sort(),
+      [for (final n in labeled.keys) page.orderOf(n)]..sort(),
     ]);
     if (!seen.add(state)) {
       throw StateError('the marks come back to the same state: $state');
@@ -151,7 +145,7 @@ SemanticTreeNode? _fieldNode(
     // title with the link of the post, cannot be labeled. The user cannot
     // exclude it either, since that also excludes the post.
     var acted = false;
-    for (final n in tree.nodes) {
+    for (final n in page.nodes) {
       final m = finder[n];
       if (m == null || !isWrong(_valuesOf(m, n))) {
         continue;
@@ -183,7 +177,7 @@ SemanticTreeNode? _fieldNode(
       return (selectors, marks);
     }
     final link = target[PostField.link]!;
-    final start = tree.nodes
+    final start = page.nodes
         .where((n) => PostField.link.accepts(n) && n.link == link)
         .firstOrNull;
     if (start == null) {
@@ -191,7 +185,7 @@ SemanticTreeNode? _fieldNode(
     }
     final post = selectionLevels(start).where((n) {
       return target.entries.every(
-        (e) => _fieldNode(tree, n, e.key, e.value) != null,
+        (e) => _fieldNode(page, n, e.key, e.value) != null,
       );
     }).firstOrNull;
     if (post == null) {
@@ -227,8 +221,8 @@ void main() {
 
   for (final name in fixtures) {
     group(name, () {
-      final tree = SemanticTree.fromJson(
-        _readJson('$_testdata/tree/$name.json')! as Map<String, Object?>,
+      final page = SimplifiedPage.parse(
+        File('$_testdata/simplified/$name.html').readAsStringSync(),
       );
       final posts = [
         for (final p
@@ -247,7 +241,7 @@ void main() {
       ];
 
       test('generates the golden selectors from the marks of a user', () {
-        final (selectors, _) = _perfectSelectors(tree, posts);
+        final (selectors, _) = _perfectSelectors(page, posts);
 
         expect(
           jsonDecode(jsonEncode(selectors)),
@@ -260,7 +254,7 @@ void main() {
         // list them in the order of the page.
         expect(
           {
-            for (final p in extractPosts(tree, goldens))
+            for (final p in extractPosts(page, goldens))
               p.values[PostField.link]!: p.values,
           },
           {for (final p in posts) p[PostField.link]!: p},
@@ -273,24 +267,24 @@ void main() {
         // when the user saves without changes. A post that another selector
         // also finds is extracted anyway, so the nodes are compared too.
         final selectors = generateSelectors(
-          tree,
-          labelFoundPosts(tree, goldens),
+          page,
+          labelFoundPosts(page, goldens),
           {for (final m in goldens) ...m.exclude},
         );
 
         expect(
           {
             for (final m in selectors)
-              for (final n in m.selectPosts(tree)) n.id,
+              for (final n in m.selectPosts(page)) page.orderOf(n),
           },
           {
             for (final m in goldens)
-              for (final n in m.selectPosts(tree)) n.id,
+              for (final n in m.selectPosts(page)) page.orderOf(n),
           },
         );
         expect(
           {
-            for (final p in extractPosts(tree, selectors))
+            for (final p in extractPosts(page, selectors))
               p.values[PostField.link]!: p.values,
           },
           {for (final p in posts) p[PostField.link]!: p},

@@ -8,7 +8,7 @@ import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:paperdoll/features/feed/domain/post_selector.dart';
-import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 
 // Widgets that show a page as its content, shared by the screen that selects
 // posts and the screen that labels the fields of a post.
@@ -16,13 +16,13 @@ import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
 /// Splits the content of [nodes] into lines: one line for each value, and
 /// one for each container with a link, such as a card, which shows its target
 /// before its content.
-List<SemanticTreeNode> layOutLines(Iterable<SemanticTreeNode> nodes) {
-  final lines = <SemanticTreeNode>[];
-  void visit(SemanticTreeNode node) {
+List<Node> layOutLines(Iterable<Node> nodes) {
+  final lines = <Node>[];
+  void visit(Node node) {
     if (node.isValue || node.link != null) {
       lines.add(node);
     }
-    node.children.forEach(visit);
+    node.pageChildren.forEach(visit);
   }
 
   nodes.forEach(visit);
@@ -30,16 +30,16 @@ List<SemanticTreeNode> layOutLines(Iterable<SemanticTreeNode> nodes) {
 }
 
 /// The node of the first line of [node].
-SemanticTreeNode firstLeaf(SemanticTreeNode node) {
+Node firstLeaf(Node node) {
   var n = node;
-  while (n.children.isNotEmpty && n.link == null) {
-    n = n.children.first;
+  while (n.pageChildren.isNotEmpty && n.link == null) {
+    n = n.pageChildren.first;
   }
   return n;
 }
 
 /// A short description of what [node] holds.
-String describeNode(SemanticTreeNode node) {
+String describeNode(Node node) {
   if (node.isImage) {
     return 'An image';
   }
@@ -49,7 +49,7 @@ String describeNode(SemanticTreeNode node) {
   var texts = 0;
   var links = 0;
   var images = 0;
-  void visit(SemanticTreeNode n) {
+  void visit(Node n) {
     if (n.pageLink != null) {
       links++;
     }
@@ -58,7 +58,7 @@ String describeNode(SemanticTreeNode node) {
     } else if (n.isValue) {
       texts++;
     }
-    n.children.forEach(visit);
+    n.pageChildren.forEach(visit);
   }
 
   visit(node);
@@ -77,15 +77,15 @@ String describeNode(SemanticTreeNode node) {
 /// When `linkOnly` is true and `node` is a link around other content, only
 /// the line that shows the link's target is tinted, because the area is about
 /// the link rather than its content.
-typedef PageArea = ({SemanticTreeNode node, Color color, bool linkOnly});
+typedef PageArea = ({Node node, Color color, bool linkOnly});
 
 bool _isLinkOnly(PageArea area) =>
     area.linkOnly && area.node.link != null && !area.node.isValue;
 
-SemanticTreeNode _lastLeaf(SemanticTreeNode node) {
+Node _lastLeaf(Node node) {
   var n = node;
-  while (n.children.isNotEmpty) {
-    n = n.children.last;
+  while (n.pageChildren.isNotEmpty) {
+    n = n.pageChildren.last;
   }
   return n;
 }
@@ -96,9 +96,9 @@ SemanticTreeNode _lastLeaf(SemanticTreeNode node) {
 /// A line is at least as tall as a touch target. A long press on a link opens
 /// it in the in-app browser.
 class const PageLine({
-  required final SemanticTreeNode node,
+  required final Node node,
   required final List<PageArea> areas,
-  required final void Function(SemanticTreeNode node) onTap,
+  required final void Function(Node node) onTap,
   super.key,
 }) extends StatelessWidget {
   @override
@@ -109,7 +109,7 @@ class const PageLine({
             .where(
               (a) => _isLinkOnly(a)
                   ? identical(node, a.node)
-                  : a.node.contains(node),
+                  : a.node.includes(node),
             )
             .toList()
           ..sort((a, b) => a.node.depth.compareTo(b.node.depth));
@@ -167,7 +167,7 @@ const _tintAlpha = 0.14;
 ///
 /// Lines touch each other so that the tint of an area is continuous; the
 /// space between lines is inside the innermost tint.
-Widget _frameLine(SemanticTreeNode first, Widget content) => Container(
+Widget _frameLine(Node first, Widget content) => Container(
   constraints: const BoxConstraints(minHeight: kMinInteractiveDimension),
   alignment: Alignment.centerLeft,
   padding: EdgeInsets.only(
@@ -179,7 +179,7 @@ Widget _frameLine(SemanticTreeNode first, Widget content) => Container(
 
 /// The text of [node], styled the way the page would show it. The text of a
 /// link without text, such as a card, is its target.
-TextSpan _textSpan(SemanticTreeNode node) {
+TextSpan _textSpan(Node node) {
   var style = switch (node.headingLevel) {
     1 => textTitle.copyWith(fontSize: 26),
     2 => textTitle,
@@ -197,8 +197,7 @@ TextSpan _textSpan(SemanticTreeNode node) {
 
 /// A value, or the link line of a container, shown as it would appear on the
 /// page.
-class const _Content({required final SemanticTreeNode node})
-    extends StatelessWidget {
+class const _Content({required final Node node}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (node.isImage) {
@@ -246,7 +245,7 @@ Color fieldColor(PostField field) => switch (field) {
 
 /// The tint of the selection. It is gray so that it differs from the colors
 /// of fields.
-PageArea selectionArea(SemanticTreeNode node, {bool linkOnly = false}) =>
+PageArea selectionArea(Node node, {bool linkOnly = false}) =>
     (node: node, color: colorText, linkOnly: linkOnly);
 
 /// A sheet at the bottom of a screen that shows the selection and what can be
@@ -293,9 +292,9 @@ class const SelectionSheet({required final Widget child, super.key})
 /// narrowest to the widest that can be selected. [selected] is one of
 /// [levels].
 class const SelectionSlider({
-  required final SemanticTreeNode selected,
-  required final List<SemanticTreeNode> levels,
-  required final void Function(SemanticTreeNode node) onSelect,
+  required final Node selected,
+  required final List<Node> levels,
+  required final void Function(Node node) onSelect,
   super.key,
 }) extends StatelessWidget {
   @override
@@ -321,20 +320,19 @@ class const SelectionSlider({
 }
 
 /// [from] and the elements around it, from the narrowest to the widest, up
-/// to [top], or up to the outermost element below the root if [top] is null.
+/// to [top], or up to the outermost element below the body if [top] is null.
 ///
 /// An element around a single element, without a link line of its own, looks
 /// the same as that element on the page, so it is left out. Otherwise moving
 /// the slider would change nothing that the user can see.
-List<SemanticTreeNode> selectionLevels(
-  SemanticTreeNode from, {
-  SemanticTreeNode? top,
-}) {
+List<Node> selectionLevels(Node from, {Node? top}) {
   final levels = [from];
   var n = from;
-  while (!identical(n, top) && n.parent?.parent != null) {
-    n = n.parent!;
-    if (n.children.length > 1 || n.link != null) {
+  // The body is the only element with its tag, since it is the root of the
+  // page.
+  while (!identical(n, top) && n.parentNode!.tag != 'body') {
+    n = n.parentNode!;
+    if (n.pageChildren.length > 1 || n.link != null) {
       levels.add(n);
     }
   }

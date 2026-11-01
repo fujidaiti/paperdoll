@@ -272,11 +272,11 @@ timeline:
 
 selector:
   get:
-    summary: Get the semantic tree and post selectors of an unstructured feed
+    summary: Get the simplified page and post selectors of an unstructured feed
     description:
-      Fetches the page of the feed and returns it as a semantic tree, together
-      with the saved post selectors. This is the entry point for editing the
-      selectors. Selectors are shared by all users, as feeds are.
+      Fetches the page of the feed and returns it as a simplified HTML document,
+      together with the saved post selectors. This is the entry point for
+      editing the selectors. Selectors are shared by all users, as feeds are.
     operationId: getFeedSelectors
     tags: [Feeds]
     parameters:
@@ -292,32 +292,31 @@ selector:
           application/json:
             schema:
               type: object
-              required: [semantic_tree]
+              required: [page]
               properties:
-                semantic_tree:
-                  $ref: "../components/schemas.yaml#/SemanticTree"
+                page:
+                  description:
+                    The page simplified into an HTML document, on which post
+                    selectors run. See SimplifyPage in
+                    `server/feature/feed/simplify.go` for the format.
+                  type: string
                 selectors:
                   description: Absent when no selectors are saved.
                   type: array
                   items:
                     $ref: "../components/schemas.yaml#/PostSelector"
             example:
-              semantic_tree:
-                url: "https://example.com/blog"
-                title: "Example Blog"
-                root:
-                  ch:
-                    - ch:
-                        - kind: "h2"
-                          val: "First post"
-                          link: "https://example.com/blog/first"
-                        - val: "The first post."
+              page:
+                '<!DOCTYPE html><html><head><title>Example Blog</title><link
+                rel="canonical"
+                href="https://example.com/blog"/></head><body><article
+                class="post"><h2 href="https://example.com/blog/first">First
+                post</h2><p>The first post.</p></article></body></html>'
               selectors:
-                - post: ["box"]
+                - post: [{ tag: "article", cls: ["post"] }]
                   fields:
-                    title: [{ shape: "h2+link", nth: 0 }]
-                    link: [{ shape: "h2+link", nth: 0 }]
-                  exclude: []
+                    title: [{ tag: "h2" }]
+                    link: [{ tag: "h2" }]
       "400":
         $ref: "../components/responses.yaml#/BadRequest"
       "404":
@@ -356,11 +355,10 @@ selector:
                   $ref: "../components/schemas.yaml#/PostSelector"
           example:
             selectors:
-              - post: ["box"]
+              - post: [{ tag: "article", cls: ["post"] }]
                 fields:
-                  title: [{ shape: "h2+link", nth: 0 }]
-                  link: [{ shape: "h2+link", nth: 0 }]
-                exclude: []
+                  title: [{ tag: "h2" }]
+                  link: [{ tag: "h2" }]
     responses:
       "204":
         description: No Content

@@ -3,12 +3,88 @@ package feed
 import (
 	"encoding/json"
 	"fmt"
+	"iter"
 	"net/url"
 	"regexp"
 	"slices"
 	"sort"
 	"strings"
+
+	"golang.org/x/net/html"
 )
+
+// The functions below read a node of a simplified page (see SimplifyPage).
+// The client reads its nodes by the same rules.
+
+// tagOf returns the tag of the element n, or "" for a text node.
+func tagOf(n *html.Node) string {
+	if n.Type != html.ElementNode {
+		return ""
+	}
+	return n.Data
+}
+
+func classesOf(n *html.Node) []string {
+	return strings.Fields(attr(n, "class"))
+}
+
+// isValue reports whether n is a value: a text node, or an element without
+// child elements. Other elements are containers.
+func isValue(n *html.Node) bool {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		if c.Type == html.ElementNode {
+			return false
+		}
+	}
+	return true
+}
+
+// childrenOf returns the child nodes of the container n, or none when n is a
+// value, since the text of a value element is a part of it rather than a node
+// of its own.
+func childrenOf(n *html.Node) iter.Seq[*html.Node] {
+	if isValue(n) {
+		return func(func(*html.Node) bool) {}
+	}
+	return n.ChildNodes()
+}
+
+// textOf returns the text of the value n: the alt text of an image, or else
+// the text in n.
+func textOf(n *html.Node) string {
+	switch {
+	case n.Type == html.TextNode:
+		return n.Data
+	case n.Data == "img":
+		return attr(n, "alt")
+	}
+	var b strings.Builder
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		if c.Type == html.TextNode {
+			b.WriteString(c.Data)
+		}
+	}
+	return b.String()
+}
+
+// linkOf returns the link of n: the URL of an image, or else the link target.
+func linkOf(n *html.Node) string {
+	if tagOf(n) == "img" {
+		return attr(n, "src")
+	}
+	return attr(n, "href")
+}
+
+// pageBody returns the body of page, a simplified page parsed by html.Parse,
+// which always adds a body.
+func pageBody(page *html.Node) *html.Node {
+	for n := range page.Descendants() {
+		if n.Type == html.ElementNode && n.Data == "body" {
+			return n
+		}
+	}
+	return nil
+}
 
 // PostField is an attribute of a post that the user maps to nodes of a page.
 type PostField string
@@ -24,31 +100,31 @@ const (
 
 // valueOf returns the value that f takes when it is mapped to n, or false
 // when n has none, such as an image without alt text mapped to a title.
-func (f PostField) valueOf(n *SemanticTreeNode) (string, bool) {
+func (f PostField) valueOf(n *html.Node) (string, bool) {
+	var v string
 	switch f {
 	case PostBody:
-		t := bodyText(n)
-		return t, t != ""
+		v = bodyText(n)
 	case PostLink, PostThumbnail:
-		return n.Link, n.Link != ""
+		v = linkOf(n)
 	case PostTitle, PostPubDate:
-		return n.Val, n.Val != ""
+		v = textOf(n)
 	}
-	return "", false
+	return v, v != ""
 }
 
 // accepts reports whether f can take a value from n: a title from a text, a
 // link from a node with a link other than an image, a thumbnail from an
 // image, a pub date from a time, and a body from a node with text.
-func (f PostField) accepts(n *SemanticTreeNode) bool {
-	img, time := n.Tag == "img", n.Tag == "time"
+func (f PostField) accepts(n *html.Node) bool {
+	img, time := tagOf(n) == "img", tagOf(n) == "time"
 	switch f {
 	case PostTitle:
-		return n.isValue() && !img && !time && n.Val != ""
+		return isValue(n) && !img && !time && textOf(n) != ""
 	case PostBody:
 		return !img && !time && bodyText(n) != ""
 	case PostLink:
-		return !img && n.Link != ""
+		return !img && linkOf(n) != ""
 	case PostThumbnail:
 		return img
 	case PostPubDate:
@@ -68,12 +144,13 @@ type Step struct {
 	Nth *int     `json:"nth,omitempty"`
 }
 
-func (s Step) matches(n *SemanticTreeNode) bool {
-	if n.Tag != s.Tag {
+func (s Step) matches(n *html.Node) bool {
+	if tagOf(n) != s.Tag {
 		return false
 	}
+	cls := classesOf(n)
 	for _, c := range s.Cls {
-		if !slices.Contains(n.Cls, c) {
+		if !slices.Contains(cls, c) {
 			return false
 		}
 	}
@@ -179,16 +256,16 @@ func (m *PostSelector) UnmarshalJSON(data []byte) error {
 // selectNodes returns the nodes that path selects from start, in document
 // order. With children, each step after the first selects among the children
 // of the nodes that the previous step selects, instead of their descendants.
-func selectNodes(start *SemanticTreeNode, path []Step, children bool) []*SemanticTreeNode {
-	nodes := []*SemanticTreeNode{start}
+func selectNodes(start *html.Node, path []Step, children bool) []*html.Node {
+	nodes := []*html.Node{start}
 	for i, step := range path {
-		var next []*SemanticTreeNode
-		seen := map[*SemanticTreeNode]bool{}
+		var next []*html.Node
+		seen := map[*html.Node]bool{}
 		for _, n := range nodes {
-			var matches []*SemanticTreeNode
-			var visit func(n *SemanticTreeNode)
-			visit = func(n *SemanticTreeNode) {
-				for _, c := range n.Children {
+			var matches []*html.Node
+			var visit func(n *html.Node)
+			visit = func(n *html.Node) {
+				for c := range childrenOf(n) {
 					if step.matches(c) {
 						matches = append(matches, c)
 					}
@@ -216,30 +293,31 @@ func selectNodes(start *SemanticTreeNode, path []Step, children bool) []*Semanti
 	return nodes
 }
 
-// selectPosts returns the post nodes that m finds in tree. A node that
+// selectPosts returns the post nodes that m finds in body, the body of a
+// simplified page. A node that
 // contains another node that Post selects and that has the title and the link
 // is left out, since it is a list of posts rather than a post. Other nodes
 // that Post selects inside a post, such as a footer with the same classes, do
 // not matter.
-func (m *PostSelector) selectPosts(tree *SemanticTree) []*SemanticTreeNode {
+func (m *PostSelector) selectPosts(body *html.Node) []*html.Node {
 	if len(m.Post) == 0 {
 		return nil
 	}
-	selected := map[*SemanticTreeNode]bool{}
-	for _, n := range selectNodes(tree.Root, m.Post, true) {
+	selected := map[*html.Node]bool{}
+	for _, n := range selectNodes(body, m.Post, true) {
 		selected[n] = true
 	}
 	exclude := make([]*regexp.Regexp, len(m.Exclude))
 	for i, p := range m.Exclude {
 		exclude[i] = globRegexp(p)
 	}
-	var posts []*SemanticTreeNode
+	var posts []*html.Node
 	// visit returns whether n is or contains a selected node with the title
 	// and the link.
-	var visit func(n *SemanticTreeNode) bool
-	visit = func(n *SemanticTreeNode) bool {
+	var visit func(n *html.Node) bool
+	visit = func(n *html.Node) bool {
 		inner := false
-		for _, c := range n.Children {
+		for c := range childrenOf(n) {
 			inner = visit(c) || inner
 		}
 		isPost := selected[n] && m.hasFields(n)
@@ -248,20 +326,20 @@ func (m *PostSelector) selectPosts(tree *SemanticTree) []*SemanticTreeNode {
 		}
 		return inner || isPost
 	}
-	visit(tree.Root)
+	visit(body)
 	return posts
 }
 
 // hasFields reports whether post has the title and the link. The other fields
 // are optional, since posts of one kind often lack some of them, such as the
 // date of a featured post.
-func (m *PostSelector) hasFields(post *SemanticTreeNode) bool {
+func (m *PostSelector) hasFields(post *html.Node) bool {
 	return m.resolveField(post, PostTitle) != nil && m.resolveField(post, PostLink) != nil
 }
 
 // resolveField returns the node of f in post: the first node that the path
 // of f selects and that f accepts, or nil when there is none.
-func (m *PostSelector) resolveField(post *SemanticTreeNode, f PostField) *SemanticTreeNode {
+func (m *PostSelector) resolveField(post *html.Node, f PostField) *html.Node {
 	path, ok := m.pathOf(f)
 	if !ok {
 		return nil
@@ -271,7 +349,7 @@ func (m *PostSelector) resolveField(post *SemanticTreeNode, f PostField) *Semant
 
 // resolvePath returns the first node that path selects from post and that
 // f accepts, or nil when there is none.
-func resolvePath(post *SemanticTreeNode, f PostField, path []Step) *SemanticTreeNode {
+func resolvePath(post *html.Node, f PostField, path []Step) *html.Node {
 	for _, n := range selectNodes(post, path, false) {
 		if f.accepts(n) {
 			return n
@@ -282,12 +360,12 @@ func resolvePath(post *SemanticTreeNode, f PostField, path []Step) *SemanticTree
 
 // isExcluded reports whether the link of post matches one of exclude, the
 // compiled patterns of Exclude.
-func (m *PostSelector) isExcluded(post *SemanticTreeNode, exclude []*regexp.Regexp) bool {
+func (m *PostSelector) isExcluded(post *html.Node, exclude []*regexp.Regexp) bool {
 	n := m.resolveField(post, PostLink)
 	if n == nil {
 		return false
 	}
-	u, err := url.Parse(n.Link)
+	u, err := url.Parse(linkOf(n))
 	if err != nil {
 		return false
 	}
@@ -327,29 +405,26 @@ func globRegexp(pattern string) *regexp.Regexp {
 // values.
 type ExtractedPost map[PostField]string
 
-// ExtractPosts returns the posts that selectors find in tree, in document order.
+// ExtractPosts returns the posts that selectors find in page, a simplified
+// page parsed by html.Parse, in document order.
 // Posts with the same link are merged into the first one, which takes the
 // fields that it does not have from the later ones, since some pages split a
 // post into sibling cards with the same link, such as one with the image and
 // one with the title. Posts without a link are dropped.
-func ExtractPosts(tree *SemanticTree, selectors []PostSelector) []ExtractedPost {
-	order := map[*SemanticTreeNode]int{}
-	var number func(n *SemanticTreeNode)
-	number = func(n *SemanticTreeNode) {
+func ExtractPosts(page *html.Node, selectors []PostSelector) []ExtractedPost {
+	body := pageBody(page)
+	order := map[*html.Node]int{}
+	for n := range body.Descendants() {
 		order[n] = len(order)
-		for _, c := range n.Children {
-			number(c)
-		}
 	}
-	number(tree.Root)
 
 	type found struct {
-		node   *SemanticTreeNode
+		node   *html.Node
 		values ExtractedPost
 	}
 	var posts []found
 	for _, m := range selectors {
-		for _, n := range m.selectPosts(tree) {
+		for _, n := range m.selectPosts(body) {
 			values := make(ExtractedPost)
 			for field := range m.Fields() {
 				if v := m.resolveField(n, field); v != nil {
@@ -390,14 +465,17 @@ func ExtractPosts(tree *SemanticTree, selectors []PostSelector) []ExtractedPost 
 // "’s". Images and times are left out, and links keep only their text. A
 // body is a short summary shown below the title of a post, so its structure
 // does not matter.
-func bodyText(n *SemanticTreeNode) string {
+func bodyText(n *html.Node) string {
 	var texts []string
-	var visit func(n *SemanticTreeNode)
-	visit = func(n *SemanticTreeNode) {
-		if n.Tag != "img" && n.Tag != "time" {
-			texts = append(texts, n.Val)
+	var visit func(n *html.Node)
+	visit = func(n *html.Node) {
+		if tag := tagOf(n); tag == "img" || tag == "time" {
+			return
 		}
-		for _, c := range n.Children {
+		if n.Type == html.TextNode {
+			texts = append(texts, n.Data)
+		}
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
 			visit(c)
 		}
 	}

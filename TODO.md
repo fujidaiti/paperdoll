@@ -4,9 +4,9 @@
 
 ### Fields at different positions in posts of one kind
 
-A field step is a shape and an index (see `tool/semantictree/SELECTOR.md`), so
-one selector has only one path to each field. When posts of one kind have a
-field at different positions, the user must annotate them as several groups.
+A field step is a shape and an index, so one selector has only one path to each
+field. When posts of one kind have a field at different positions, the user must
+annotate them as several groups.
 
 The simplifier no longer merges a wrapper around a single node, which moved the
 values of a post one level up when the post lacked an optional value, such as

@@ -8,6 +8,8 @@ import (
 	"regexp"
 	"slices"
 	"testing"
+
+	"golang.org/x/net/html"
 )
 
 // This file builds the selectors of a page from its fixture posts in the same
@@ -16,35 +18,33 @@ import (
 // the client generates the selectors again from all marks. The client's code
 // that each step follows is named in its comment.
 
-// treeIndex is a SemanticTree with the parent of each node, which the
-// client's SemanticTreeNode has, and the number of nodes with each class.
-type treeIndex struct {
-	tree    *SemanticTree
-	nodes   []*SemanticTreeNode // in document order
-	parent  map[*SemanticTreeNode]*SemanticTreeNode
+// pageIndex is the body of a simplified page with its nodes in document order
+// and the number of nodes with each class, as the client's Page has.
+type pageIndex struct {
+	body    *html.Node
+	nodes   []*html.Node
 	classes map[string]int
 }
 
-func newTreeIndex(tree *SemanticTree) *treeIndex {
-	t := &treeIndex{tree: tree, parent: map[*SemanticTreeNode]*SemanticTreeNode{}, classes: map[string]int{}}
-	var visit func(n *SemanticTreeNode)
-	visit = func(n *SemanticTreeNode) {
+func newPageIndex(body *html.Node) *pageIndex {
+	t := &pageIndex{body: body, classes: map[string]int{}}
+	var visit func(n *html.Node)
+	visit = func(n *html.Node) {
 		t.nodes = append(t.nodes, n)
-		for _, c := range n.Cls {
+		for _, c := range classesOf(n) {
 			t.classes[c]++
 		}
-		for _, c := range n.Children {
-			t.parent[c] = n
+		for c := range childrenOf(n) {
 			visit(c)
 		}
 	}
-	visit(tree.Root)
+	visit(body)
 	return t
 }
 
 // contains reports whether n is a or one of its descendants.
-func (t *treeIndex) contains(a, n *SemanticTreeNode) bool {
-	for ; n != nil; n = t.parent[n] {
+func (t *pageIndex) contains(a, n *html.Node) bool {
+	for ; n != nil; n = n.Parent {
 		if n == a {
 			return true
 		}
@@ -53,15 +53,15 @@ func (t *treeIndex) contains(a, n *SemanticTreeNode) bool {
 }
 
 // selectionLevels returns from and the nodes around it, from the narrowest to
-// the widest, up to top, or up to the outermost node below the root if top is
+// the widest, up to top, or up to the outermost node below the body if top is
 // nil. A node around a single node without a link of its own is left out. It
 // follows selectionLevels of the client, by which the user widens a
 // selection.
-func (t *treeIndex) selectionLevels(from, top *SemanticTreeNode) []*SemanticTreeNode {
-	levels := []*SemanticTreeNode{from}
-	for n := from; n != top && t.parent[t.parent[n]] != nil; {
-		n = t.parent[n]
-		if len(n.Children) > 1 || n.Link != "" {
+func (t *pageIndex) selectionLevels(from, top *html.Node) []*html.Node {
+	levels := []*html.Node{from}
+	for n := from; n != top && n.Parent != t.body; {
+		n = n.Parent
+		if n.FirstChild != n.LastChild || linkOf(n) != "" {
 			levels = append(levels, n)
 		}
 	}
@@ -74,13 +74,13 @@ func (t *treeIndex) selectionLevels(from, top *SemanticTreeNode) []*SemanticTree
 // itself, or for a body, a line of its text. A line that is not part of the
 // value, such as the date above a body, would reach a wider node with the
 // same text.
-func (t *treeIndex) fieldNode(post *SemanticTreeNode, f PostField, want string) *SemanticTreeNode {
+func (t *pageIndex) fieldNode(post *html.Node, f PostField, want string) *html.Node {
 	for _, line := range t.nodes {
 		if !t.contains(post, line) {
 			continue
 		}
 		if f == PostBody {
-			if !line.isValue() || line.Tag == "img" || line.Tag == "time" {
+			if !isValue(line) || tagOf(line) == "img" || tagOf(line) == "time" {
 				continue
 			}
 		} else if v, ok := f.valueOf(line); !ok || v != want || !f.accepts(line) {
@@ -97,9 +97,9 @@ func (t *treeIndex) fieldNode(post *SemanticTreeNode, f PostField, want string) 
 
 // step returns the step of n: its tag and the classes that other nodes have
 // too. A class of n alone, such as an ID, cannot be shared by two posts.
-func (t *treeIndex) step(n *SemanticTreeNode) Step {
-	s := Step{Tag: n.Tag}
-	for _, c := range n.Cls {
+func (t *pageIndex) step(n *html.Node) Step {
+	s := Step{Tag: tagOf(n)}
+	for _, c := range classesOf(n) {
 		if t.classes[c] >= 2 {
 			s.Cls = append(s.Cls, c)
 		}
@@ -162,25 +162,25 @@ func TestPostClasses(t *testing.T) {
 	}
 }
 
-// postPath returns the path that selects post from the root: the step of
+// postPath returns the path that selects post from the body: the step of
 // post when it has classes left (see postClasses), or else the steps of the
-// nodes from its nearest ancestor with classes, or from the top of the tree
-// below the root, down to post.
-func (t *treeIndex) postPath(post *SemanticTreeNode) []Step {
+// nodes from its nearest ancestor with classes, or from the top of the page
+// below the body, down to post.
+func (t *pageIndex) postPath(post *html.Node) []Step {
 	s := t.step(post)
 	s.Cls = postClasses(s.Cls)
 	path := []Step{s}
-	for n := post; len(path[0].Cls) == 0 && t.parent[t.parent[n]] != nil; {
-		n = t.parent[n]
+	for n := post; len(path[0].Cls) == 0 && n.Parent != t.body; {
+		n = n.Parent
 		path = append([]Step{t.step(n)}, path...)
 	}
 	return path
 }
 
 // fullPathOf returns the steps of the nodes from post, exclusive, down to n.
-func (t *treeIndex) fullPathOf(post, n *SemanticTreeNode) []Step {
+func (t *pageIndex) fullPathOf(post, n *html.Node) []Step {
 	var fullPath []Step
-	for a := n; a != post; a = t.parent[a] {
+	for a := n; a != post; a = a.Parent {
 		fullPath = append([]Step{t.step(a)}, fullPath...)
 	}
 	return fullPath
@@ -191,7 +191,7 @@ func (t *treeIndex) fullPathOf(post, n *SemanticTreeNode) []Step {
 // classes when the full path has one. It falls back to the full path, with Nth
 // on the last step. It returns false when no path resolves to n. It follows
 // _fieldPath of the client.
-func (t *treeIndex) fieldPath(f PostField, post, n *SemanticTreeNode) ([]Step, bool) {
+func (t *pageIndex) fieldPath(f PostField, post, n *html.Node) ([]Step, bool) {
 	fullPath := t.fullPathOf(post, n)
 	hasCls := func(path []Step) bool {
 		return slices.ContainsFunc(path, func(s Step) bool { return len(s.Cls) > 0 })
@@ -224,8 +224,8 @@ func (t *treeIndex) fieldPath(f PostField, post, n *SemanticTreeNode) ([]Step, b
 // labeledPost is a post that the user labeled: its node and the nodes of its
 // fields.
 type labeledPost struct {
-	node   *SemanticTreeNode
-	fields map[PostField]*SemanticTreeNode
+	node   *html.Node
+	fields map[PostField]*html.Node
 }
 
 // setPath sets the path of f in m.
@@ -247,7 +247,7 @@ func setPath(m *PostSelector, f PostField, path []Step) {
 // selectorOf returns the selector that finds post with its fields, or false when
 // no path resolves its title or link. A field that no path resolves is left
 // out. It follows _selectorOf of the client.
-func (t *treeIndex) selectorOf(post labeledPost, exclude []string) (PostSelector, bool) {
+func (t *pageIndex) selectorOf(post labeledPost, exclude []string) (PostSelector, bool) {
 	m := PostSelector{Post: t.postPath(post.node), Exclude: exclude}
 	for f, n := range post.fields {
 		if path, ok := t.fieldPath(f, post.node, n); ok {
@@ -277,7 +277,7 @@ func samePaths(a, b []Step) bool {
 // such a path selects any node of its tags. It follows _merge of the client.
 //
 // The merged selector finds the posts of a and of b without a check on the
-// tree: its post path selects their nodes, and their fields resolve by the
+// page: its post path selects their nodes, and their fields resolve by the
 // same paths as before.
 func merge(a, b PostSelector) (PostSelector, bool) {
 	if len(a.Post) != len(b.Post) {
@@ -320,9 +320,9 @@ func merge(a, b PostSelector) (PostSelector, bool) {
 // (see merge) are replaced by the merged one, until no two can merge. A post
 // whose title or link no path resolves gets no selector. It follows
 // generateSelectors of the client.
-func (t *treeIndex) generateSelectors(posts []labeledPost, excluded map[string]bool) []PostSelector {
+func (t *pageIndex) generateSelectors(posts []labeledPost, excluded map[string]bool) []PostSelector {
 	exclude := slices.Sorted(maps.Keys(excluded))
-	index := map[*SemanticTreeNode]int{}
+	index := map[*html.Node]int{}
 	for i, n := range t.nodes {
 		index[n] = i
 	}
@@ -351,7 +351,7 @@ merging:
 }
 
 // values returns the field values that m extracts from post.
-func values(m *PostSelector, post *SemanticTreeNode) ExtractedPost {
+func values(m *PostSelector, post *html.Node) ExtractedPost {
 	values := make(ExtractedPost)
 	for f := range m.Fields() {
 		if n := m.resolveField(post, f); n != nil {
@@ -383,7 +383,8 @@ func equalPosts(a, b ExtractedPost) bool {
 	return true
 }
 
-// perfectSelectors returns selectors that extract exactly posts from tree, built
+// perfectSelectors returns selectors that extract exactly posts from page, a
+// simplified page parsed by html.Parse, built
 // as a user of the client would build them, and the number of marks that the
 // user made. The client generates the selectors from the posts that the user
 // marked and the links that the user excluded (see generateSelectors), and the
@@ -401,8 +402,8 @@ func equalPosts(a, b ExtractedPost) bool {
 // In every round, every labeled post must be found and no excluded link must
 // be extracted. It fails when a step cannot be done, when a guarantee does not
 // hold, or when the marks come back to the same state.
-func perfectSelectors(tree *SemanticTree, posts []ExtractedPost) ([]PostSelector, int, error) {
-	t := newTreeIndex(tree)
+func perfectSelectors(page *html.Node, posts []ExtractedPost) ([]PostSelector, int, error) {
+	t := newPageIndex(pageBody(page))
 	want := map[string]ExtractedPost{}
 	for _, p := range posts {
 		want[p[PostLink]] = p
@@ -419,16 +420,16 @@ func perfectSelectors(tree *SemanticTree, posts []ExtractedPost) ([]PostSelector
 		}
 		return false
 	}
-	index := map[*SemanticTreeNode]int{}
+	index := map[*html.Node]int{}
 	for i, n := range t.nodes {
 		index[n] = i
 	}
 
-	labeled := map[*SemanticTreeNode]labeledPost{}
+	labeled := map[*html.Node]labeledPost{}
 	excluded := map[string]bool{}
 	// label marks post as a post with the nodes of the values in target.
-	label := func(post *SemanticTreeNode, target ExtractedPost) error {
-		p := labeledPost{node: post, fields: make(map[PostField]*SemanticTreeNode)}
+	label := func(post *html.Node, target ExtractedPost) error {
+		p := labeledPost{node: post, fields: make(map[PostField]*html.Node)}
 		for f, v := range target {
 			if p.fields[f] = t.fieldNode(post, f, v); p.fields[f] == nil {
 				return fmt.Errorf("post %s: no node of %s has the value %q", target[PostLink], f, v)
@@ -449,9 +450,9 @@ func perfectSelectors(tree *SemanticTree, posts []ExtractedPost) ([]PostSelector
 		selectors := t.generateSelectors(labeledPosts, excluded)
 
 		// The selector that the user sees a node as found by is the first one.
-		finder := map[*SemanticTreeNode]*PostSelector{}
+		finder := map[*html.Node]*PostSelector{}
 		for i := range selectors {
-			for _, n := range selectors[i].selectPosts(tree) {
+			for _, n := range selectors[i].selectPosts(t.body) {
 				if finder[n] == nil {
 					finder[n] = &selectors[i]
 				}
@@ -467,7 +468,7 @@ func perfectSelectors(tree *SemanticTree, posts []ExtractedPost) ([]PostSelector
 			}
 		}
 		got := map[string]ExtractedPost{}
-		for _, p := range ExtractPosts(tree, selectors) {
+		for _, p := range ExtractPosts(page, selectors) {
 			if excluded[hostPath(p[PostLink])] {
 				return nil, marks, fmt.Errorf("the excluded link %s is extracted", p[PostLink])
 			}
@@ -509,7 +510,7 @@ func perfectSelectors(tree *SemanticTree, posts []ExtractedPost) ([]PostSelector
 				hp := hostPath(link)
 				excluded[hp] = true
 				for n, p := range labeled {
-					if hostPath(p.fields[PostLink].Link) == hp {
+					if hostPath(linkOf(p.fields[PostLink])) == hp {
 						delete(labeled, n)
 					}
 				}
@@ -533,9 +534,9 @@ func perfectSelectors(tree *SemanticTree, posts []ExtractedPost) ([]PostSelector
 			return selectors, marks, nil
 		}
 		link := target[PostLink]
-		var start *SemanticTreeNode
+		var start *html.Node
 		for _, n := range t.nodes {
-			if PostLink.accepts(n) && n.Link == link {
+			if PostLink.accepts(n) && linkOf(n) == link {
 				start = n
 				break
 			}
@@ -543,7 +544,7 @@ func perfectSelectors(tree *SemanticTree, posts []ExtractedPost) ([]PostSelector
 		if start == nil {
 			return nil, marks, fmt.Errorf("post %s: no node has the link", link)
 		}
-		var post *SemanticTreeNode
+		var post *html.Node
 		for _, n := range t.selectionLevels(start, nil) {
 			holds := true
 			for f, v := range target {

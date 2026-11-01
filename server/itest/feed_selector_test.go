@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"net/url"
+	"strings"
 	"testing"
 	"time"
 
@@ -101,12 +102,12 @@ func TestFeed_Selectors(t *testing.T) {
 		t.Errorf("subscribing again registered feed %d, want %d", again.ID, page.ID)
 	}
 
-	tree, selectors, err := s.Selectors(t.Context(), page.ID)
+	simplified, selectors, err := s.Selectors(t.Context(), page.ID)
 	if err != nil {
 		t.Fatalf("Selectors: %v", err)
 	}
-	if tree.Title != "Example Blog" || tree.Root == nil {
-		t.Errorf("page = %+v, want the semantic tree", tree)
+	if !strings.Contains(simplified, "<title>Example Blog</title>") {
+		t.Errorf("page = %q, want the simplified page of Example Blog", simplified)
 	}
 	if selectors != "" {
 		t.Errorf("selectors = %q, want none", selectors)

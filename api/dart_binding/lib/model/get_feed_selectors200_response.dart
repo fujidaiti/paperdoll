@@ -13,11 +13,12 @@ part of openapi.api;
 class GetFeedSelectors200Response {
   /// Returns a new [GetFeedSelectors200Response] instance.
   GetFeedSelectors200Response({
-    required this.semanticTree,
+    required this.page,
     this.selectors = const [],
   });
 
-  SemanticTree semanticTree;
+  /// The page simplified into an HTML document, on which post selectors run. See SimplifyPage in `server/feature/feed/simplify.go` for the format.
+  String page;
 
   /// Absent when no selectors are saved.
   List<PostSelector> selectors;
@@ -26,21 +27,21 @@ class GetFeedSelectors200Response {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is GetFeedSelectors200Response &&
-          other.semanticTree == semanticTree &&
+          other.page == page &&
           _deepEquality.equals(other.selectors, selectors);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (semanticTree.hashCode) + (selectors.hashCode);
+      (page.hashCode) + (selectors.hashCode);
 
   @override
   String toString() =>
-      'GetFeedSelectors200Response[semanticTree=$semanticTree, selectors=$selectors]';
+      'GetFeedSelectors200Response[page=$page, selectors=$selectors]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'semantic_tree'] = this.semanticTree;
+    json[r'page'] = this.page;
     json[r'selectors'] = this.selectors;
     return json;
   }
@@ -56,15 +57,15 @@ class GetFeedSelectors200Response {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        assert(json.containsKey(r'semantic_tree'),
-            'Required key "GetFeedSelectors200Response[semantic_tree]" is missing from JSON.');
-        assert(json[r'semantic_tree'] != null,
-            'Required key "GetFeedSelectors200Response[semantic_tree]" has a null value in JSON.');
+        assert(json.containsKey(r'page'),
+            'Required key "GetFeedSelectors200Response[page]" is missing from JSON.');
+        assert(json[r'page'] != null,
+            'Required key "GetFeedSelectors200Response[page]" has a null value in JSON.');
         return true;
       }());
 
       return GetFeedSelectors200Response(
-        semanticTree: SemanticTree.fromJson(json[r'semantic_tree'])!,
+        page: mapValueOfType<String>(json, r'page')!,
         selectors: PostSelector.listFromJson(json[r'selectors']),
       );
     }
@@ -122,6 +123,6 @@ class GetFeedSelectors200Response {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'semantic_tree',
+    'page',
   };
 }

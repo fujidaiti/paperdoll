@@ -1,5 +1,5 @@
 import 'package:paperdoll/features/feed/domain/body_text.dart';
-import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 
 /// The attributes of a post that the user can map to nodes of a page.
 enum PostField {
@@ -21,7 +21,7 @@ enum PostField {
   /// A title is a text value. An image or a time alone is not a body. A pub
   /// date is a time value, since the simplifier makes one from every text
   /// that is a full date.
-  bool accepts(SemanticTreeNode node) => switch (this) {
+  bool accepts(Node node) => switch (this) {
     title =>
       node.isValue &&
           !node.isImage &&
@@ -34,7 +34,7 @@ enum PostField {
   };
 
   /// The value this field takes when it is mapped to [node].
-  String? valueOf(SemanticTreeNode node) => switch (this) {
+  String? valueOf(Node node) => switch (this) {
     title || pubDate => node.val,
     body => bodyText(node),
     link || thumbnail => node.link,
@@ -49,14 +49,14 @@ enum PostField {
 class Step {
   const new({this.tag, this.cls = const [], this.nth});
 
-  /// The step of [node]: its tag and the classes that other nodes of [tree]
+  /// The step of [node]: its tag and the classes that other nodes of [page]
   /// have too. A class of [node] alone, such as an ID, cannot be shared by
   /// two posts.
-  factory of(SemanticTree tree, SemanticTreeNode node) => Step(
+  factory of(SimplifiedPage page, Node node) => Step(
     tag: node.tag,
     cls: [
       for (final c in node.cls)
-        if ((tree.classCounts[c] ?? 0) >= 2) c,
+        if ((page.classCounts[c] ?? 0) >= 2) c,
     ],
   );
 
@@ -70,8 +70,13 @@ class Step {
   final List<String> cls;
   final int? nth;
 
-  bool matches(SemanticTreeNode node) =>
-      node.tag == tag && cls.every(node.cls.contains);
+  bool matches(Node node) {
+    if (node.tag != tag) {
+      return false;
+    }
+    final nodeCls = node.cls;
+    return cls.every(nodeCls.contains);
+  }
 
   Map<String, Object?> toJson() => {
     'tag': ?tag,
@@ -83,18 +88,14 @@ class Step {
 /// The nodes that [path] selects from [start], in document order. With
 /// [children], each step after the first selects among the children of the
 /// nodes that the previous step selects, instead of their descendants.
-List<SemanticTreeNode> _selectNodes(
-  SemanticTreeNode start,
-  List<Step> path, {
-  required bool children,
-}) {
+List<Node> _selectNodes(Node start, List<Step> path, {required bool children}) {
   var nodes = [start];
   for (final (i, step) in path.indexed) {
-    final next = <SemanticTreeNode>{};
+    final next = <Node>{};
     for (final n in nodes) {
-      final matches = <SemanticTreeNode>[];
-      void visit(SemanticTreeNode n) {
-        for (final c in n.children) {
+      final matches = <Node>[];
+      void visit(Node n) {
+        for (final c in n.pageChildren) {
           if (step.matches(c)) {
             matches.add(c);
           }
@@ -120,15 +121,12 @@ List<SemanticTreeNode> _selectNodes(
 
 /// The first node that [path] selects from [postNode] and that [field]
 /// accepts, if any.
-SemanticTreeNode? _resolvePath(
-  SemanticTreeNode postNode,
-  PostField field,
-  List<Step> path,
-) => _selectNodes(
-  postNode,
-  path,
-  children: false,
-).where(field.accepts).firstOrNull;
+Node? _resolvePath(Node postNode, PostField field, List<Step> path) =>
+    _selectNodes(
+      postNode,
+      path,
+      children: false,
+    ).where(field.accepts).firstOrNull;
 
 /// The host and path of [link], which exclude patterns match and by which
 /// the user excludes a link.
@@ -163,7 +161,7 @@ bool _globMatches(String pattern, String hostPath) {
 /// fields (see PostSelector in server/feature/feed/post_selector.go).
 ///
 /// [post] is the path of steps to the post nodes: the first step selects
-/// descendants of the root, and each later step selects children of the
+/// descendants of the body, and each later step selects children of the
 /// nodes that the previous step selects. Each field has one path of steps
 /// from a post node to the node of its value; an empty path is the post node
 /// itself. The [title] and the [link] are required, since they define the
@@ -229,17 +227,17 @@ class PostSelector {
   /// of one kind often lack some of them, such as the date of a featured
   /// post. Other nodes that [post] selects inside a post, such as a footer
   /// with the same classes, do not matter.
-  List<SemanticTreeNode> _candidates(SemanticTree tree) {
+  List<Node> _candidates(SimplifiedPage page) {
     if (post.isEmpty) {
       return const [];
     }
-    final selected = _selectNodes(tree.root, post, children: true).toSet();
-    final posts = <SemanticTreeNode>[];
+    final selected = _selectNodes(page.body, post, children: true).toSet();
+    final posts = <Node>[];
     // Returns whether n is or contains a selected node with the title and the
     // link.
-    bool visit(SemanticTreeNode n) {
+    bool visit(Node n) {
       var inner = false;
-      for (final c in n.children) {
+      for (final c in n.pageChildren) {
         inner = visit(c) || inner;
       }
       final isPost =
@@ -252,23 +250,23 @@ class PostSelector {
       return inner || isPost;
     }
 
-    visit(tree.root);
+    visit(page.body);
     return posts;
   }
 
-  List<SemanticTreeNode> selectPosts(SemanticTree tree) => [
-    for (final n in _candidates(tree))
+  List<Node> selectPosts(SimplifiedPage page) => [
+    for (final n in _candidates(page))
       if (excludedBy(n) == null) n,
   ];
 
   /// The nodes that would be posts if their links were not excluded.
-  List<SemanticTreeNode> matchExcluded(SemanticTree tree) => [
-    for (final n in _candidates(tree))
+  List<Node> matchExcluded(SimplifiedPage page) => [
+    for (final n in _candidates(page))
       if (excludedBy(n) != null) n,
   ];
 
   /// The first pattern in [exclude] that matches the link of [postNode].
-  String? excludedBy(SemanticTreeNode postNode) {
+  String? excludedBy(Node postNode) {
     final link = _linkOf(postNode);
     if (link == null) {
       return null;
@@ -282,16 +280,14 @@ class PostSelector {
     return null;
   }
 
-  String? _linkOf(SemanticTreeNode postNode) =>
-      matchField(postNode, PostField.link)?.link;
+  String? _linkOf(Node postNode) => matchField(postNode, PostField.link)?.link;
 
   /// The node that provides [field] in [postNode]: the first node that the
   /// path of [field] selects and that [field] accepts, if any.
-  SemanticTreeNode? matchField(SemanticTreeNode postNode, PostField field) =>
-      switch (_pathOf(field)) {
-        final path? => _resolvePath(postNode, field, path),
-        null => null,
-      };
+  Node? matchField(Node postNode, PostField field) => switch (_pathOf(field)) {
+    final path? => _resolvePath(postNode, field, path),
+    null => null,
+  };
 
   Map<String, Object?> toJson() => {
     'post': [for (final s in post) s.toJson()],
@@ -304,10 +300,7 @@ class PostSelector {
 }
 
 /// A post that the user labeled: its node, and the nodes of its fields.
-typedef LabeledPost = ({
-  SemanticTreeNode node,
-  Map<PostField, SemanticTreeNode> fields,
-});
+typedef LabeledPost = ({Node node, Map<PostField, Node> fields});
 
 /// The classes that differ between the posts of a list, such as the ID and
 /// the categories of a WordPress post.
@@ -337,27 +330,27 @@ List<String> _postClasses(List<String> cls) {
   return kinds.isNotEmpty ? kinds : kept;
 }
 
-/// The path that selects [node] from the root: the step of [node] when it has
+/// The path that selects [node] from the body: the step of [node] when it has
 /// classes left (see [_postClasses]), or else the steps of the nodes from its
-/// nearest ancestor with classes, or from the top of the tree below the root,
+/// nearest ancestor with classes, or from the top of the page below the body,
 /// down to [node].
-List<Step> _postPathOf(SemanticTree tree, SemanticTreeNode node) {
-  final step = Step.of(tree, node);
+List<Step> _postPathOf(SimplifiedPage page, Node node) {
+  final step = Step.of(page, node);
   final path = [Step(tag: step.tag, cls: _postClasses(step.cls))];
-  for (var n = node; path.first.cls.isEmpty && n.parent?.parent != null;) {
-    n = n.parent!;
-    path.insert(0, Step.of(tree, n));
+  for (
+    var n = node;
+    path.first.cls.isEmpty && !identical(n.parentNode, page.body);
+  ) {
+    n = n.parentNode!;
+    path.insert(0, Step.of(page, n));
   }
   return path;
 }
 
 /// The steps of the nodes from [postNode], exclusive, down to [node].
-List<Step> _fullPathOf(
-  SemanticTree tree,
-  SemanticTreeNode postNode,
-  SemanticTreeNode node,
-) => [
-  for (var n = node; !identical(n, postNode); n = n.parent!) Step.of(tree, n),
+List<Step> _fullPathOf(SimplifiedPage page, Node postNode, Node node) => [
+  for (var n = node; !identical(n, postNode); n = n.parentNode!)
+    Step.of(page, n),
 ].reversed.toList();
 
 /// The path that finds [node] as [field] in [postNode]: the shortest tail of
@@ -365,12 +358,12 @@ List<Step> _fullPathOf(
 /// classes when the full path has one. It falls back to the full path, with
 /// [Step.nth] on the last step. Null when no path finds [node].
 List<Step>? _fieldPath(
-  SemanticTree tree,
+  SimplifiedPage page,
   PostField field,
-  SemanticTreeNode postNode,
-  SemanticTreeNode node,
+  Node postNode,
+  Node node,
 ) {
-  final fullPath = _fullPathOf(tree, postNode, node);
+  final fullPath = _fullPathOf(page, postNode, node);
   bool finds(List<Step> path) =>
       identical(_resolvePath(postNode, field, path), node);
   bool hasCls(List<Step> path) => path.any((s) => s.cls.isNotEmpty);
@@ -406,12 +399,12 @@ List<Step>? _fieldPath(
 /// The selector that finds [post] with its fields. Null when no path finds
 /// its title or link. A field that no path finds is left out.
 PostSelector? _selectorOf(
-  SemanticTree tree,
+  SimplifiedPage page,
   LabeledPost post,
   List<String> exclude,
 ) {
   List<Step>? pathOf(PostField field) => switch (post.fields[field]) {
-    final n? => _fieldPath(tree, field, post.node, n),
+    final n? => _fieldPath(page, field, post.node, n),
     null => null,
   };
   final (title, link) = (pathOf(PostField.title), pathOf(PostField.link));
@@ -419,7 +412,7 @@ PostSelector? _selectorOf(
     return null;
   }
   return PostSelector(
-    post: _postPathOf(tree, post.node),
+    post: _postPathOf(page, post.node),
     title: title,
     link: link,
     body: pathOf(PostField.body),
@@ -450,7 +443,7 @@ bool _samePaths(List<Step> a, List<Step> b) =>
 /// path selects any node of its tags.
 ///
 /// The merged selector finds the posts of [a] and of [b] without a check on
-/// the tree: its post path selects their nodes, and their fields resolve by
+/// the page: its post path selects their nodes, and their fields resolve by
 /// the same paths as before.
 PostSelector? _merge(PostSelector a, PostSelector b) {
   if (a.post.length != b.post.length) {
@@ -512,7 +505,7 @@ PostSelector? _merge(PostSelector a, PostSelector b) {
 /// replaced by the merged one, until no two can merge. A post whose title or
 /// link no path finds gets no selector.
 List<PostSelector> generateSelectors(
-  SemanticTree tree,
+  SimplifiedPage page,
   Iterable<LabeledPost> posts,
   Set<String> excluded,
 ) {
@@ -520,8 +513,8 @@ List<PostSelector> generateSelectors(
   final selectors = [
     for (final post in [
       ...posts,
-    ]..sort((a, b) => a.node.id.compareTo(b.node.id)))
-      ?_selectorOf(tree, post, exclude),
+    ]..sort((a, b) => page.orderOf(a.node).compareTo(page.orderOf(b.node))))
+      ?_selectorOf(page, post, exclude),
   ];
   merging:
   while (true) {
@@ -539,19 +532,19 @@ List<PostSelector> generateSelectors(
   }
 }
 
-/// Every post that [selectors] find in [tree], with the nodes of its fields, so
+/// Every post that [selectors] find in [page], with the nodes of its fields, so
 /// that the selectors can be generated again from them, since the marks of the
 /// user are not saved. All of them are needed, since a merged selector keeps
 /// only the classes that all of its posts share, and fewer posts would make
 /// the selectors find fewer posts. A post that several
 /// selectors find takes each field from the first selector that finds it.
 List<LabeledPost> labelFoundPosts(
-  SemanticTree tree,
+  SimplifiedPage page,
   List<PostSelector> selectors,
 ) {
   final posts = <LabeledPost>[];
   for (final selector in selectors) {
-    for (final node in selector.selectPosts(tree)) {
+    for (final node in selector.selectPosts(page)) {
       final fields = {
         for (final field in selector.fields.keys)
           field: ?selector.matchField(node, field),
@@ -585,18 +578,18 @@ List<LabeledPost> labelFoundPosts(
 /// title in it. Of those, the post node itself is labeled, or else the one
 /// with text. A title with a link of its own provides the link of the post,
 /// even when there are other links.
-Map<PostField, SemanticTreeNode> evidentFields(SemanticTreeNode postNode) {
-  final nodes = <SemanticTreeNode>[];
-  void collect(SemanticTreeNode n) {
+Map<PostField, Node> evidentFields(Node postNode) {
+  final nodes = <Node>[];
+  void collect(Node n) {
     nodes.add(n);
-    n.children.forEach(collect);
+    n.pageChildren.forEach(collect);
   }
 
   collect(postNode);
-  SemanticTreeNode? only(Iterable<SemanticTreeNode> matches) =>
+  Node? only(Iterable<Node> matches) =>
       matches.length == 1 ? matches.first : null;
-  final fields = <PostField, SemanticTreeNode>{};
-  void label(PostField field, SemanticTreeNode? node) {
+  final fields = <PostField, Node>{};
+  void label(PostField field, Node? node) {
     if (node != null && field.accepts(node)) {
       fields[field] = node;
     }
@@ -607,20 +600,21 @@ Map<PostField, SemanticTreeNode> evidentFields(SemanticTreeNode postNode) {
     label(
       PostField.link,
       links.where((n) => identical(n, postNode)).firstOrNull ??
-          links.where((n) => n.textContent.isNotEmpty).firstOrNull ??
+          links.where((n) => n.allText.isNotEmpty).firstOrNull ??
           links.first,
     );
   }
   final images = nodes.where((n) => n.isImage).toList();
   if (images.isNotEmpty) {
-    final top = images.map((n) => n.depth).reduce((a, b) => a < b ? a : b);
-    label(PostField.thumbnail, only(images.where((n) => n.depth == top)));
+    final depths = {for (final n in images) n: n.depth};
+    final top = depths.values.reduce((a, b) => a < b ? a : b);
+    label(PostField.thumbnail, only(images.where((n) => depths[n] == top)));
   }
   label(PostField.pubDate, only(nodes.where((n) => n.isTime)));
   final headings = nodes
       .where((n) => n.isValue && n.headingLevel != null)
       .toList();
-  SemanticTreeNode? title;
+  Node? title;
   if (headings.isEmpty) {
     title = only(nodes.where(PostField.title.accepts));
   } else {
@@ -649,16 +643,19 @@ Map<PostField, SemanticTreeNode> evidentFields(SemanticTreeNode postNode) {
   );
   final containers = {
     for (final p in paragraphs)
-      if (!identical(p.parent, postNode) &&
-          paragraphs.where((q) => identical(q.parent, p.parent)).length >= 2 &&
-          !labeled.any(p.parent!.contains))
-        p.parent!,
+      if (!identical(p.parentNode, postNode) &&
+          paragraphs
+                  .where((q) => identical(q.parentNode, p.parentNode))
+                  .length >=
+              2 &&
+          !labeled.any(p.parentNode!.includes))
+        p.parentNode!,
   };
   label(
     PostField.body,
     only([
       ...containers,
-      ...paragraphs.where((p) => !containers.contains(p.parent)),
+      ...paragraphs.where((p) => !containers.contains(p.parentNode)),
     ]),
   );
   return fields;
@@ -667,24 +664,24 @@ Map<PostField, SemanticTreeNode> evidentFields(SemanticTreeNode postNode) {
 /// A post extracted from a page: its node, the index of the selector that
 /// found it, and its field values.
 typedef ExtractedPost = ({
-  SemanticTreeNode node,
+  Node node,
   int selector,
   Map<PostField, String> values,
 });
 
-/// The posts that [selectors] find in [tree], in document order. Posts
+/// The posts that [selectors] find in [page], in document order. Posts
 /// with the same link are merged into the first one, which takes the fields
 /// that it does not have from the later ones, since some pages split a post
 /// into sibling cards with the same link, such as one with the image and one
 /// with the title.
 List<ExtractedPost> extractPosts(
-  SemanticTree tree,
+  SimplifiedPage page,
   List<PostSelector> selectors,
 ) {
   final found =
       <ExtractedPost>[
           for (final (i, selector) in selectors.indexed)
-            for (final node in selector.selectPosts(tree))
+            for (final node in selector.selectPosts(page))
               (
                 node: node,
                 selector: i,
@@ -698,8 +695,8 @@ List<ExtractedPost> extractPosts(
         // A node that several selectors find takes its fields from the first
         // one first, since List.sort is not stable.
         ..sort(
-          (a, b) => a.node.id != b.node.id
-              ? a.node.id.compareTo(b.node.id)
+          (a, b) => !identical(a.node, b.node)
+              ? page.orderOf(a.node).compareTo(page.orderOf(b.node))
               : a.selector.compareTo(b.selector),
         );
   final byLink = <String, ExtractedPost>{};

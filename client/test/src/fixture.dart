@@ -193,68 +193,49 @@ class _ReadingList {
 
 final _pages = _Pages();
 
-/// Raw responses of `GET /feeds/{id}/selector`. They are written as JSON, since
-/// the generated models write an empty list for each field that is not
-/// labeled, which would label it at the post node.
+/// The pages and selectors in `GET /feeds/{id}/selector`. The selectors are
+/// written as JSON, since the generated models write an empty list for each
+/// field that is not labeled, which would label it at the post node.
 class _Pages {
-  final exampleBlog = <String, Object?>{
-    'url': 'https://blog.example.com/',
-    'title': 'Example Blog',
-    'root': {
-      'tag': 'body',
-      'ch': [
-        {
-          'tag': 'article',
-          'cls': ['post'],
-          'ch': [
-            {
-              'tag': 'h2',
-              'val': 'First post',
-              'link': 'https://blog.example.com/first',
-            },
-            {'tag': 'p', 'val': 'The first post.'},
-          ],
-        },
-        {
-          'tag': 'article',
-          'cls': ['post'],
-          'ch': [
-            {
-              'tag': 'h2',
-              'val': 'Second post',
-              'link': 'https://blog.example.com/second',
-            },
-            {'tag': 'p', 'val': 'The second post.'},
-          ],
-        },
-      ],
-    },
-  };
+  /// A simplified page (see SimplifyPage in server/feature/feed/simplify.go),
+  /// which has no whitespace between its nodes.
+  final exampleBlog = [
+    '<!DOCTYPE html><html><head><title>Example Blog</title>',
+    '<link rel="canonical" href="https://blog.example.com/"/></head>',
+    '<body>',
+    '<article class="post">',
+    '<h2 href="https://blog.example.com/first">First post</h2>',
+    '<p>The first post.</p>',
+    '</article>',
+    '<article class="post">',
+    '<h2 href="https://blog.example.com/second">Second post</h2>',
+    '<p>The second post.</p>',
+    '</article>',
+    '</body></html>',
+  ].join();
 
   /// [exampleBlog] with two newsletter cards like the posts,
   /// whose links differ only in the query.
-  final exampleBlogWithNewsletters = <String, Object?>{
-    'url': 'https://blog.example.com/',
-    'title': 'Example Blog',
-    'root': {
-      'tag': 'body',
-      'ch': [
-        for (final (title, link) in [
-          ('First post', 'https://blog.example.com/first'),
-          ('Weekly digest', 'https://blog.example.com/newsletters?weekly'),
-          ('Monthly digest', 'https://blog.example.com/newsletters?monthly'),
-        ])
-          {
-            'tag': 'article',
-            'cls': ['post'],
-            'ch': [
-              {'tag': 'h2', 'val': title, 'link': link},
-              {'tag': 'p', 'val': 'Read $title.'},
-            ],
-          },
-      ],
-    },
-  };
+  final exampleBlogWithNewsletters = [
+    '<!DOCTYPE html><html><head><title>Example Blog</title>',
+    '<link rel="canonical" href="https://blog.example.com/"/></head>',
+    '<body>',
+    '<article class="post">',
+    '<h2 href="https://blog.example.com/first">First post</h2>',
+    '<p>Read First post.</p>',
+    '</article>',
+    '<article class="post">',
+    '<h2 href="https://blog.example.com/newsletters?weekly">',
+    'Weekly digest</h2>',
+    '<p>Read Weekly digest.</p>',
+    '</article>',
+    '<article class="post">',
+    '<h2 href="https://blog.example.com/newsletters?monthly">',
+    'Monthly digest</h2>',
+    '<p>Read Monthly digest.</p>',
+    '</article>',
+    '</body></html>',
+  ].join();
 
   /// A selector of the posts in [exampleBlog].
   final exampleBlogSelector = <String, Object?>{

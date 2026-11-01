@@ -2,30 +2,30 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:paperdoll/features/feed/domain/post_selector.dart';
-import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 
 import '../src/fixture.dart';
 
 void main() {
-  final tree = SemanticTree.fromJson(fixture.pages.exampleBlogWithNewsletters);
-  final articles = tree.root.children;
+  final page = SimplifiedPage.parse(fixture.pages.exampleBlogWithNewsletters);
+  final articles = page.body.pageChildren;
 
   /// [article] labeled as a post, with its heading as the title and the link.
-  LabeledPost labeled(SemanticTreeNode article) => (
+  LabeledPost labeled(Node article) => (
     node: article,
     fields: {
-      PostField.title: article.children.first,
-      PostField.link: article.children.first,
+      PostField.title: article.pageChildren.first,
+      PostField.link: article.pageChildren.first,
     },
   );
 
   List<String> links(List<PostSelector> selectors) => [
-    for (final p in extractPosts(tree, selectors)) p.values[PostField.link]!,
+    for (final p in extractPosts(page, selectors)) p.values[PostField.link]!,
   ];
 
   group('generateSelectors', () {
     test('finds the posts that look like a labeled post', () {
-      final selectors = generateSelectors(tree, [labeled(articles[0])], {});
+      final selectors = generateSelectors(page, [labeled(articles[0])], {});
 
       expect(selectors, hasLength(1));
       expect(links(selectors), [
@@ -37,7 +37,7 @@ void main() {
 
     test('excludes the host and path of a link, and nothing else', () {
       final selectors = generateSelectors(
-        tree,
+        page,
         [labeled(articles[0])],
         {'blog.example.com/newsletters'},
       );
@@ -47,7 +47,7 @@ void main() {
 
     test('does not depend on the order of the labeled posts', () {
       String generate(List<LabeledPost> posts) =>
-          jsonEncode(generateSelectors(tree, posts, {}));
+          jsonEncode(generateSelectors(page, posts, {}));
 
       expect(
         generate([labeled(articles[0]), labeled(articles[2])]),
@@ -58,9 +58,9 @@ void main() {
 
   group('labelFoundPosts', () {
     test('labels every post that the selectors find with its fields', () {
-      final selectors = generateSelectors(tree, [labeled(articles[0])], {});
+      final selectors = generateSelectors(page, [labeled(articles[0])], {});
 
-      final posts = labelFoundPosts(tree, selectors);
+      final posts = labelFoundPosts(page, selectors);
 
       expect([for (final p in posts) p.node], articles);
       expect(
@@ -68,8 +68,8 @@ void main() {
         [
           for (final a in articles)
             {
-              PostField.title: a.children.first,
-              PostField.link: a.children.first,
+              PostField.title: a.pageChildren.first,
+              PostField.link: a.pageChildren.first,
             },
         ],
       );
@@ -88,7 +88,7 @@ void main() {
         body: [Step(tag: 'p')],
       );
 
-      final posts = labelFoundPosts(tree, [titles, bodies]);
+      final posts = labelFoundPosts(page, [titles, bodies]);
 
       expect([for (final p in posts) p.node], articles);
       expect(
@@ -96,9 +96,9 @@ void main() {
         [
           for (final a in articles)
             {
-              PostField.title: a.children.first,
-              PostField.link: a.children.first,
-              PostField.body: a.children.last,
+              PostField.title: a.pageChildren.first,
+              PostField.link: a.pageChildren.first,
+              PostField.body: a.pageChildren.last,
             },
         ],
       );
@@ -111,7 +111,7 @@ void main() {
         link: [Step(tag: 'h2')],
       );
 
-      expect(labelFoundPosts(tree, [selector]), isEmpty);
+      expect(labelFoundPosts(page, [selector]), isEmpty);
     });
   });
 }

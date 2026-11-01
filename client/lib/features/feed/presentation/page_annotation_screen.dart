@@ -18,7 +18,7 @@ import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:paperdoll/debug_keys.dart';
 import 'package:paperdoll/features/feed/data/selector_repository.dart';
 import 'package:paperdoll/features/feed/domain/post_selector.dart';
-import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 import 'package:paperdoll/features/feed/presentation/post_fields_screen.dart';
 import 'package:paperdoll/features/feed/presentation/providers/selector_providers.dart';
 import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
@@ -49,7 +49,7 @@ class const PageAnnotationScreen({required final int feedId, super.key})
     if (selectors case AsyncData(:final value)) {
       return _Annotator(
         feedId: feedId,
-        tree: value.tree,
+        page: value.page,
         selectors: value.selectors,
       );
     }
@@ -65,20 +65,20 @@ class const PageAnnotationScreen({required final int feedId, super.key})
 }
 
 /// Whether [node] or the content inside it has a link to a page.
-bool _hasLink(SemanticTreeNode node) =>
-    node.pageLink != null || node.children.any(_hasLink);
+bool _hasLink(Node node) =>
+    node.pageLink != null || node.pageChildren.any(_hasLink);
 
-/// The posts that the selectors find in the tree, by node id, with the
-/// selector that finds each, and the excluded ones, by node id, with the host
-/// and path that excludes them.
+/// The posts that the selectors find in the page, with the selector that
+/// finds each, and the excluded ones, with the host and path that excludes
+/// them.
 class _Marks {
-  final posts = <int, PostSelector>{};
-  final excluded = <int, String>{};
+  final posts = <Node, PostSelector>{};
+  final excluded = <Node, String>{};
 
   /// The post that contains [node], if any.
-  SemanticTreeNode? postOf(SemanticTreeNode node) {
-    for (SemanticTreeNode? n = node; n != null; n = n.parent) {
-      if (posts.containsKey(n.id)) {
+  Node? postOf(Node node) {
+    for (Node? n = node; n != null; n = n.parentNode) {
+      if (posts.containsKey(n)) {
         return n;
       }
     }
@@ -86,9 +86,9 @@ class _Marks {
   }
 
   /// The post or excluded post that contains [node], if any.
-  SemanticTreeNode? enclosingPost(SemanticTreeNode node) {
-    for (SemanticTreeNode? n = node; n != null; n = n.parent) {
-      if (posts.containsKey(n.id) || excluded.containsKey(n.id)) {
+  Node? enclosingPost(Node node) {
+    for (Node? n = node; n != null; n = n.parentNode) {
+      if (posts.containsKey(n) || excluded.containsKey(n)) {
         return n;
       }
     }
@@ -98,7 +98,7 @@ class _Marks {
 
 class const _Annotator({
   required final int feedId,
-  required final SemanticTree tree,
+  required final SimplifiedPage page,
   required final List<PostSelector> selectors,
 }) extends ConsumerStatefulWidget {
   @override
@@ -106,16 +106,15 @@ class const _Annotator({
 }
 
 class _AnnotatorState extends ConsumerState<_Annotator> {
-  /// The posts that the saved selectors find, by node id. The selectors are
+  /// The posts that the saved selectors find, by node. The selectors are
   /// generated from them too, so that they keep finding the same posts, but
   /// they are not shown as marked, since the user did not mark them here.
   late final _found = {
-    for (final p in labelFoundPosts(widget.tree, widget.selectors))
-      p.node.id: p,
+    for (final p in labelFoundPosts(widget.page, widget.selectors)) p.node: p,
   };
 
-  /// The posts that the user marked, by node id.
-  final _labeled = <int, LabeledPost>{};
+  /// The posts that the user marked, by node.
+  final _labeled = <Node, LabeledPost>{};
 
   /// The host and path of the links that the user marked as not posts.
   late final _excluded = {for (final m in widget.selectors) ...m.exclude};
@@ -133,47 +132,47 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// Generates the selectors again after the marks changed.
   void _update() {
     _selectors = generateSelectors(
-      _tree,
+      _page,
       {..._found, ..._labeled}.values,
       _excluded,
     );
     _marks = _Marks();
     for (final selector in _selectors) {
-      for (final post in selector.selectPosts(_tree)) {
-        _marks.posts.putIfAbsent(post.id, () => selector);
+      for (final post in selector.selectPosts(_page)) {
+        _marks.posts.putIfAbsent(post, () => selector);
       }
-      for (final post in selector.matchExcluded(_tree)) {
-        _marks.excluded[post.id] = selector.excludedBy(post)!;
+      for (final post in selector.matchExcluded(_page)) {
+        _marks.excluded[post] = selector.excludedBy(post)!;
       }
     }
   }
 
   /// The element shown on the selection sheet, while the sheet is open.
-  SemanticTreeNode? _selected;
+  Node? _selected;
 
   /// The content the user tapped last. The selection can be narrowed back
   /// down to it after being widened.
-  SemanticTreeNode? _tapped;
+  Node? _tapped;
 
-  void _select(SemanticTreeNode? node, {SemanticTreeNode? tapped}) {
+  void _select(Node? node, {Node? tapped}) {
     setState(() {
       _selected = node;
       _tapped = tapped ?? _tapped;
     });
   }
 
-  SemanticTree get _tree => widget.tree;
+  SimplifiedPage get _page => widget.page;
 
   /// The lines of the whole page. They are built lazily by a list, since a
   /// page can have thousands of them.
-  late final _lines = layOutLines([_tree.root]);
+  late final _lines = layOutLines([_page.body]);
 
   /// [line] or the narrowest element around it that can be a post, if any.
   /// A post needs a link and a text for its title, and the whole page cannot
   /// be a post.
-  SemanticTreeNode? _selectableElement(SemanticTreeNode line) {
-    for (var n = line; n.parent != null; n = n.parent!) {
-      if (_hasLink(n) && n.textContent.trim().isNotEmpty) {
+  Node? _selectableElement(Node line) {
+    for (var n = line; !identical(n, _page.body); n = n.parentNode!) {
+      if (_hasLink(n) && n.allText.trim().isNotEmpty) {
         return n;
       }
     }
@@ -185,9 +184,9 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// Only [node] itself is checked. Other nodes that its selector would select
   /// can be posts of another selector, since the labeled fields decide which of
   /// them are posts, such as cards whose title is in a different element.
-  String? _postRejection(SemanticTreeNode node) {
-    for (final id in _marks.posts.keys) {
-      if (_tree.nodes[id].overlaps(node)) {
+  String? _postRejection(Node node) {
+    for (final post in _marks.posts.keys) {
+      if (post.overlaps(node)) {
         return 'This overlaps with a post.';
       }
     }
@@ -195,14 +194,14 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   }
 
   /// The nodes that [selector] labels as the fields of [post].
-  PostFields _fieldsOf(PostSelector selector, SemanticTreeNode post) => {
+  PostFields _fieldsOf(PostSelector selector, Node post) => {
     for (final field in PostField.values)
       field: ?selector.matchField(post, field),
   };
 
   /// Opens the screen that labels the fields of [post], and marks [post] as a
   /// post with them, or does nothing if the user left without finishing.
-  Future<void> _markAsPost(SemanticTreeNode post, PostFields fields) async {
+  Future<void> _markAsPost(Node post, PostFields fields) async {
     final labeled = await context.pushNamed<PostFields>(
       routePostFieldsName,
       pathParameters: GoRouterState.of(context).pathParameters,
@@ -212,7 +211,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       return;
     }
     setState(() {
-      _labeled[post.id] = (node: post, fields: labeled);
+      _labeled[post] = (node: post, fields: labeled);
       _excluded.remove(hostPathOf(labeled[PostField.link]!.link!));
       _update();
       _selected = null;
@@ -222,11 +221,11 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// Marks the link of [post] as not a post, which also unmarks the posts that
   /// the user marked, or that the saved selectors found, with the same host and
   /// path.
-  void _markAsNotPost(SemanticTreeNode post) {
+  void _markAsNotPost(Node post) {
     final hostPath = hostPathOf(
-      _marks.posts[post.id]!.matchField(post, PostField.link)!.link!,
+      _marks.posts[post]!.matchField(post, PostField.link)!.link!,
     );
-    bool hasHostPath(int _, LabeledPost p) =>
+    bool hasHostPath(Node _, LabeledPost p) =>
         hostPathOf(p.fields[PostField.link]!.link!) == hostPath;
     setState(() {
       _excluded.add(hostPath);
@@ -245,9 +244,9 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     });
   }
 
-  void _clearMark(SemanticTreeNode post) {
+  void _clearMark(Node post) {
     setState(() {
-      _labeled.remove(post.id);
+      _labeled.remove(post);
       _update();
       _selected = null;
     });
@@ -289,7 +288,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
           initialChildSize: 0.8,
           maxChildSize: 0.95,
           builder: (context, controller) => _Preview(
-            tree: _tree,
+            page: _page,
             selectors: _selectors,
             scrollController: controller,
           ),
@@ -304,7 +303,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     final selected = _selected;
     // The lines of a post are replaced by its card. They are next to each
     // other, since the lines are in document order.
-    final items = <SemanticTreeNode>[];
+    final items = <Node>[];
     for (final line in _lines) {
       final post = marks.postOf(line);
       if (post == null) {
@@ -314,8 +313,8 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       }
     }
     final areas = <PageArea>[
-      for (final id in marks.excluded.keys)
-        (node: _tree.nodes[id], color: colorTextMuted, linkOnly: false),
+      for (final node in marks.excluded.keys)
+        (node: node, color: colorTextMuted, linkOnly: false),
       if (selected != null) selectionArea(selected),
     ];
 
@@ -323,7 +322,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       key: AppDebugKey.pageAnnotationScreen,
       appBar: AppBar(
         title: Text(
-          _tree.title.isEmpty ? _tree.url : _tree.title,
+          _page.title.isEmpty ? _page.url : _page.title,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -345,21 +344,21 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
               itemCount: items.length,
               itemBuilder: (context, index) {
                 final line = items[index];
-                if (marks.posts[line.id] case final selector?) {
+                if (marks.posts[line] case final selector?) {
                   return _PostCard(
-                    key: ValueKey(line.id),
+                    key: ObjectKey(line),
                     values: {
                       for (final field in PostField.values)
                         if (selector.matchField(line, field) case final node?)
                           field: ?field.valueOf(node),
                     },
-                    isMarked: _labeled.containsKey(line.id),
-                    isSelected: selected?.contains(line) ?? false,
+                    isMarked: _labeled.containsKey(line),
+                    isSelected: selected?.includes(line) ?? false,
                     onTap: () => _select(line, tapped: line),
                   );
                 }
                 return PageLine(
-                  key: ValueKey(line.id),
+                  key: ObjectKey(line),
                   node: line,
                   areas: areas,
                   onTap: (line) {
@@ -387,9 +386,9 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     );
   }
 
-  Widget _buildSheet(SemanticTreeNode selected) {
-    final selector = _marks.posts[selected.id];
-    final excluded = _marks.excluded[selected.id];
+  Widget _buildSheet(Node selected) {
+    final selector = _marks.posts[selected];
+    final excluded = _marks.excluded[selected];
     final rejection = selector == null && excluded == null
         ? _postRejection(selected)
         : null;
@@ -398,7 +397,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       levels: selectionLevels(_tapped ?? selected),
       onSelect: _select,
       isPost: selector != null,
-      isMarked: _labeled.containsKey(selected.id),
+      isMarked: _labeled.containsKey(selected),
       isExcluded: excluded != null,
       rejection: rejection,
       onCancel: () => _select(null),
@@ -409,7 +408,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
           : () => unawaited(
               _markAsPost(
                 selected,
-                _labeled[selected.id]?.fields ?? _fieldsOf(selector, selected),
+                _labeled[selected]?.fields ?? _fieldsOf(selector, selected),
               ),
             ),
       onNotPost: selector == null ? null : () => _markAsNotPost(selected),
@@ -459,13 +458,13 @@ class const _StatusFooter({
 /// true, and cannot become a post for the reason in [rejection] if it is not
 /// null. Otherwise it can be marked as a post.
 class const _SelectionSheet({
-  required final SemanticTreeNode selected,
+  required final Node selected,
   required final bool isPost,
   required final bool isMarked,
   required final bool isExcluded,
   required final String? rejection,
-  required final List<SemanticTreeNode> levels,
-  required final void Function(SemanticTreeNode node) onSelect,
+  required final List<Node> levels,
+  required final void Function(Node node) onSelect,
   required final VoidCallback onCancel,
   required final VoidCallback onMarkAsPost,
   required final VoidCallback? onEditFields,
@@ -688,13 +687,13 @@ class const _Thumbnail({required final String url, required final double size})
 
 /// The posts extracted with the current selectors, merged by link.
 class const _Preview({
-  required final SemanticTree tree,
+  required final SimplifiedPage page,
   required final List<PostSelector> selectors,
   required final ScrollController scrollController,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final posts = extractPosts(tree, selectors);
+    final posts = extractPosts(page, selectors);
     return ListView(
       controller: scrollController,
       // The cards have their own side padding.

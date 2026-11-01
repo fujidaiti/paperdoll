@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"golang.org/x/net/html"
 )
 
 // postFields are the fields of a post, with the body last, since building the
@@ -18,8 +19,9 @@ var postFields = []PostField{PostTitle, PostLink, PostThumbnail, PostPubDate, Po
 // fixturePage is a test page with its fixture: the posts that a correct
 // selector finds on it (see testdata/README.md).
 type fixturePage struct {
-	name  string
-	tree  *SemanticTree
+	name string
+	// doc is the simplified page parsed by html.Parse.
+	doc   *html.Node
 	posts []ExtractedPost
 }
 
@@ -56,33 +58,39 @@ func loadFixturePages(t *testing.T, sourceDir, fixtureDir string) []fixturePage 
 		if err != nil {
 			t.Fatal(err)
 		}
-		tree, err := BuildSemanticTree(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
+		page, err := SimplifyPage(raw, "https://"+strings.ReplaceAll(name, "-", "/"))
 		if err != nil {
 			t.Fatalf("%s: %v", name, err)
 		}
-		pages = append(pages, fixturePage{name, tree, posts})
+		doc, err := html.Parse(strings.NewReader(page))
+		if err != nil {
+			t.Fatalf("%s: %v", name, err)
+		}
+		pages = append(pages, fixturePage{name, doc, posts})
 	}
 	return pages
 }
 
-// TestBuildSemanticTreeKeepsFixtureValues checks that the semantic tree of
-// each test page keeps every value of the posts in its fixture, and that each
+// TestSimplifyPageKeepsFixtureValues checks that the simplified page of each
+// test page keeps every value of the posts in its fixture, and that each
 // post has its own subtree: a smallest node that holds all values of the post
 // and neither is nor contains nor is inside such a node of another post, since
 // posts do not nest in a page. A selector can only find posts as such nodes.
 // The later versions of the pages in testdata/robustness are checked too.
-func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
+func TestSimplifyPageKeepsFixtureValues(t *testing.T) {
 	// holds reports whether the subtree of n has a node that f
 	// accepts and whose value of f is want.
-	var holds func(n *SemanticTreeNode, f PostField, want string) bool
-	holds = func(n *SemanticTreeNode, f PostField, want string) bool {
+	var holds func(n *html.Node, f PostField, want string) bool
+	holds = func(n *html.Node, f PostField, want string) bool {
 		if v, ok := f.valueOf(n); ok && v == want && f.accepts(n) {
 			return true
 		}
-		return slices.ContainsFunc(
-			n.Children,
-			func(c *SemanticTreeNode) bool { return holds(c, f, want) },
-		)
+		for c := range childrenOf(n) {
+			if holds(c, f, want) {
+				return true
+			}
+		}
+		return false
 	}
 
 	for _, set := range fixtureSets {
@@ -95,10 +103,10 @@ func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 					// is or contains such a node. A post that gets no node overlaps
 					// another post.
 					found := make([]bool, len(page.posts))
-					var claim func(n *SemanticTreeNode) bool
-					claim = func(n *SemanticTreeNode) bool {
+					var claim func(n *html.Node) bool
+					claim = func(n *html.Node) bool {
 						taken := false
-						for _, c := range n.Children {
+						for c := range childrenOf(n) {
 							taken = claim(c) || taken
 						}
 						if taken {
@@ -120,7 +128,7 @@ func TestBuildSemanticTreeKeepsFixtureValues(t *testing.T) {
 						return false
 					}
 
-					claim(page.tree.Root)
+					claim(pageBody(page.doc))
 					for i, ok := range found {
 						if !ok {
 							t.Errorf("post %d (%s) has no node of its own", i, page.posts[i][PostLink])
@@ -150,7 +158,7 @@ func TestExtractPostsFindsFixturePosts(t *testing.T) {
 						want[p[PostLink]] = p
 					}
 					got := map[string]ExtractedPost{}
-					for _, p := range ExtractPosts(page.tree, selectors) {
+					for _, p := range ExtractPosts(page.doc, selectors) {
 						got[p[PostLink]] = p
 						if w, ok := want[p[PostLink]]; !ok {
 							t.Errorf("extra post: %v", p)
@@ -332,13 +340,17 @@ func TestExtractPosts(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			tree, err := BuildSemanticTree(raw, "https://example.com/")
+			page, err := SimplifyPage(raw, "https://example.com/")
+			if err != nil {
+				t.Fatal(err)
+			}
+			doc, err := html.Parse(strings.NewReader(page))
 			if err != nil {
 				t.Fatal(err)
 			}
 			var want []ExtractedPost
 			readJSON(t, filepath.Join("testdata/extract", tt.name+".posts.json"), &want)
-			if diff := cmp.Diff(want, ExtractPosts(tree, tt.selectors)); diff != "" {
+			if diff := cmp.Diff(want, ExtractPosts(doc, tt.selectors)); diff != "" {
 				t.Errorf("posts differ (-want +got):\n%s", diff)
 			}
 		})
@@ -420,10 +432,15 @@ func TestBodyText(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	tree, err := BuildSemanticTree(raw, "https://example.com/")
+	page, err := SimplifyPage(raw, "https://example.com/")
 	if err != nil {
 		t.Fatal(err)
 	}
+	doc, err := html.Parse(strings.NewReader(page))
+	if err != nil {
+		t.Fatal(err)
+	}
+	nodes := slices.Collect(pageBody(doc).ChildNodes())
 
 	tests := []struct{ name, want string }{
 		{"value", "The summary of a post."},
@@ -441,13 +458,13 @@ func TestBodyText(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			i := slices.IndexFunc(tree.Root.Children, func(n *SemanticTreeNode) bool {
-				return slices.Contains(n.Cls, tt.name)
+			i := slices.IndexFunc(nodes, func(n *html.Node) bool {
+				return slices.Contains(classesOf(n), tt.name)
 			})
 			if i < 0 {
 				t.Fatalf("no node with the class %q", tt.name)
 			}
-			if got := bodyText(tree.Root.Children[i]); got != tt.want {
+			if got := bodyText(nodes[i]); got != tt.want {
 				t.Errorf("bodyText is %q, want %q", got, tt.want)
 			}
 		})

@@ -145,7 +145,7 @@ void main() {
       )
       ..stubGet(
         '/feeds/${blog.id}/selector',
-        body: {'semantic_tree': fixture.pages.exampleBlog},
+        body: {'page': fixture.pages.exampleBlog},
       );
 
     await pumpAppWithAuth(t, server);
@@ -179,7 +179,7 @@ void main() {
       ..stubGet(
         '/feeds/${blog.id}/selector',
         body: {
-          'semantic_tree': fixture.pages.exampleBlog,
+          'page': fixture.pages.exampleBlog,
           'selectors': [selector],
         },
       )
@@ -210,7 +210,7 @@ void main() {
       ..stubGet(
         '/feeds/${blog.id}/selector',
         body: {
-          'semantic_tree': fixture.pages.exampleBlog,
+          'page': fixture.pages.exampleBlog,
           'selectors': [fixture.pages.exampleBlogSelector],
         },
       );
@@ -250,7 +250,7 @@ void main() {
       ..stubGet(
         '/feeds/${blog.id}/selector',
         body: {
-          'semantic_tree': fixture.pages.exampleBlogWithNewsletters,
+          'page': fixture.pages.exampleBlogWithNewsletters,
           'selectors': [fixture.pages.exampleBlogSelector],
         },
       );

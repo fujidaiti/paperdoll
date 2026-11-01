@@ -12,18 +12,20 @@ of a page. Each directory has the same pages under the same file names.
   and `pubDate`. A post leaves out the fields it does not have. Most were
   extracted with selectors built by hand and corrected by hand where the
   selectors were wrong. `go.dev-blog` was written by hand from the page.
-- `tree/`: the semantic tree of each page in `source/`.
+- `simplified/`: the simplified page of each page in `source/` (see
+  `SimplifyPage`).
 - `selector/`: the selectors of each page with a fixture, as the database stores
-  them. They are built on `tree/` in the same way as a user of the app builds
-  them, and find exactly the posts in `fixture/` (see perfect_selector_test.go).
+  them. They are built on `simplified/` in the same way as a user of the app
+  builds them, and find exactly the posts in `fixture/` (see
+  perfect_selector_test.go).
 - `extract/`: small pages written by hand, one for each case of
   `TestExtractPosts`, with the posts that the selectors of the case find in
   `<case>.posts.json`.
 - `body-text.html`: a small page written by hand, with one node for each case of
   `TestBodyText`.
 
-`tree/` and `selector/` are golden files. After changing the tree builder, the
-selectors or a fixture, update them with:
+`simplified/` and `selector/` are golden files. After changing the simplifier,
+the selectors or a fixture, update them with:
 
 ```console
 go test ./feature/feed -run Golden -update

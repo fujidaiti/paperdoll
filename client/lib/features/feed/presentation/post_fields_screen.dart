@@ -8,18 +8,15 @@ import 'package:paperdoll/core/ui/widgets/body_text.dart';
 import 'package:paperdoll/core/ui/widgets/caption_text.dart';
 import 'package:paperdoll/core/ui/widgets/gap.dart';
 import 'package:paperdoll/features/feed/domain/post_selector.dart';
-import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 
 /// The arguments of [PostFieldsScreen]: the post to label, and the nodes that
 /// are labeled as its fields so far.
-typedef PostFieldsArgs = ({
-  SemanticTreeNode post,
-  Map<PostField, SemanticTreeNode> fields,
-});
+typedef PostFieldsArgs = ({Node post, Map<PostField, Node> fields});
 
 /// The nodes that the user labeled as the fields of a post.
-typedef PostFields = Map<PostField, SemanticTreeNode>;
+typedef PostFields = Map<PostField, Node>;
 
 /// Lets the user label the content of one post as the post's fields. Other
 /// posts like it get their fields at the same positions.
@@ -42,37 +39,37 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   late final _lines = layOutLines([_post]);
 
   /// The element shown on the selection sheet, while the sheet is shown.
-  SemanticTreeNode? _selected;
+  Node? _selected;
 
   /// The content the user tapped last. The selection can be narrowed back
   /// down to it after being widened.
-  SemanticTreeNode? _tapped;
+  Node? _tapped;
 
   /// Whether the user has labeled the selection since it was selected. The
   /// labels of such a selection can still be changed on the sheet, while a
   /// selection that was already labeled shows only its labels.
   var _isLabeling = false;
 
-  SemanticTreeNode get _post => widget.args.post;
+  Node get _post => widget.args.post;
 
-  SemanticTreeNode? _fieldNode(PostField field) => _fields[field];
+  Node? _fieldNode(PostField field) => _fields[field];
 
   /// Whether [field] can be labeled on [node]: a body cannot contain other
   /// fields, and other fields cannot be part of the body.
-  bool _canLabel(PostField field, SemanticTreeNode node) {
+  bool _canLabel(PostField field, Node node) {
     if (field == PostField.body) {
       for (final other in PostField.values) {
         if (other == PostField.body) {
           continue;
         }
-        if (_fieldNode(other) case final n? when node.contains(n)) {
+        if (_fieldNode(other) case final n? when node.includes(n)) {
           return false;
         }
       }
       return true;
     }
     final body = _fieldNode(PostField.body);
-    return body == null || !body.contains(node);
+    return body == null || !body.includes(node);
   }
 
   /// Whether [field] cannot be added to an element labeled with [labels].
@@ -86,7 +83,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 
   /// Labels [node] as [field], or removes the label if [node] has it.
-  void _toggleField(PostField field, SemanticTreeNode node) {
+  void _toggleField(PostField field, Node node) {
     setState(() {
       _fields = {
         for (final MapEntry(:key, :value) in _fields.entries)
@@ -125,10 +122,10 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     }
   }
 
-  void _onTapLine(SemanticTreeNode line) {
+  void _onTapLine(Node line) {
     // The innermost labeled element that the line is part of. A container
     // labeled as the link is labeled only on its own line, as it is tinted.
-    SemanticTreeNode? labeled;
+    Node? labeled;
     for (final field in PostField.values) {
       final n = _fieldNode(field);
       if (n == null) {
@@ -136,8 +133,8 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       }
       final covers = field == PostField.link && !n.isValue
           ? identical(line, n)
-          : n.contains(line);
-      if (covers && (labeled == null || labeled.contains(n))) {
+          : n.includes(line);
+      if (covers && (labeled == null || labeled.includes(n))) {
         labeled = n;
       }
     }
@@ -188,7 +185,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
                 itemBuilder: (context, index) {
                   final line = _lines[index];
                   return PageLine(
-                    key: ValueKey(line.id),
+                    key: ObjectKey(line),
                     node: line,
                     areas: areas,
                     onTap: _onTapLine,
@@ -209,7 +206,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     );
   }
 
-  Widget _buildSheet(SemanticTreeNode selected) {
+  Widget _buildSheet(Node selected) {
     final from = _tapped ?? selected;
     final labels = [
       for (final field in PostField.values)

@@ -177,51 +177,6 @@ SignUpTicket:
         code. Valid for 10 minutes.
       type: string
 
-SemanticTree:
-  description:
-    A web page simplified into a semantic tree, on which post selectors run. See
-    SemanticTree in `server/feature/feed/semantic_tree.go` for the format.
-  type: object
-  required: [url, title, root]
-  properties:
-    url:
-      type: string
-      format: uri
-    title:
-      type: string
-    root:
-      $ref: "#/SemanticTreeNode"
-
-SemanticTreeNode:
-  description:
-    A value, which has no children, or a container, which has children.
-  type: object
-  properties:
-    tag:
-      description:
-        The tag name of the element that the node comes from. `img` for an
-        image, `time` for a time. Missing for a plain text that does not come
-        from one element.
-      type: string
-    cls:
-      description:
-        The classes of the element, without generated parts such as hashes.
-      type: array
-      items:
-        type: string
-    val:
-      description:
-        Plain text, the alt text of an image, or the RFC 3339 timestamp of a
-        time.
-      type: string
-    link:
-      description: The link target, or the URL of an image.
-      type: string
-    ch:
-      type: array
-      items:
-        $ref: "#/SemanticTreeNode"
-
 PostSelector:
   description:
     A rule that finds the posts of one kind in a page and extracts their fields.

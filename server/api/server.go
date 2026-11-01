@@ -796,14 +796,15 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 }
 
 type getFeedSelectorsResBody struct {
-	SemanticTree *feed.SemanticTree `json:"semantic_tree"`
+	// Page is the simplified page of the feed (see feed.SimplifyPage).
+	Page string `json:"page"`
 	// Selectors is the JSON array of feed.PostSelector as it was saved, and is
 	// omitted when none are saved.
 	Selectors json.RawMessage `json:"selectors,omitempty"`
 }
 
 // getFeedSelectors returns what the client needs to edit the post selectors of
-// an unstructured feed: its page as a semantic tree and the saved selectors.
+// an unstructured feed: its simplified page and the saved selectors.
 func (h *Handler) getFeedSelectors(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.PathValue("id"))
 	if err != nil {
@@ -811,7 +812,7 @@ func (h *Handler) getFeedSelectors(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusBadRequest, "Invalid feed id")
 		return
 	}
-	tree, selectors, err := h.FeedService.Selectors(r.Context(), id)
+	page, selectors, err := h.FeedService.Selectors(r.Context(), id)
 	switch {
 	case errors.Is(err, feed.ErrFeedNotFound):
 		serverError(w, http.StatusNotFound, "No feed found")
@@ -824,7 +825,7 @@ func (h *Handler) getFeedSelectors(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusBadGateway, "Failed to fetch the page")
 		return
 	}
-	res := getFeedSelectorsResBody{SemanticTree: tree}
+	res := getFeedSelectorsResBody{Page: page}
 	if selectors != "" {
 		res.Selectors = json.RawMessage(selectors)
 	}

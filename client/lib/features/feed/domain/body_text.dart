@@ -1,4 +1,4 @@
-import 'package:paperdoll/features/feed/domain/semantic_tree.dart';
+import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 
 /// Marks the boundary between the texts of two values, which becomes a space
 /// unless it is next to a punctuation mark.
@@ -10,13 +10,13 @@ final _gapAfterBracket = RegExp('([(\\[])$_gap+');
 /// The text of the values in the subtree of [node] as one line, without the
 /// alt texts of images and the times (see bodyText in
 /// server/feature/feed/post_selector.go).
-String bodyText(SemanticTreeNode node) {
+String bodyText(Node node) {
   final texts = <String>[];
-  void visit(SemanticTreeNode n) {
+  void visit(Node n) {
     if (!n.isImage && !n.isTime) {
       texts.add(n.val ?? '');
     }
-    n.children.forEach(visit);
+    n.pageChildren.forEach(visit);
   }
 
   visit(node);

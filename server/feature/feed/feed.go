@@ -259,10 +259,10 @@ var (
 	ErrInvalidSelectors = errors.New("invalid selectors")
 )
 
-// Selectors returns the semantic tree of the page of the unstructured feed id,
-// on which its post selectors are edited, and the selectors saved for it, which
-// are empty when none are saved.
-func (s *Service) Selectors(ctx context.Context, id int) (*SemanticTree, string, error) {
+// Selectors returns the simplified page of the unstructured feed id (see
+// SimplifyPage), on which its post selectors are edited, and the selectors
+// saved for it, which are empty when none are saved.
+func (s *Service) Selectors(ctx context.Context, id int) (string, string, error) {
 	var fu string
 	var selectors sql.NullString
 	var unstructured bool
@@ -270,26 +270,26 @@ func (s *Service) Selectors(ctx context.Context, id int) (*SemanticTree, string,
 		SELECT url, selectors, (url = site_url) IS TRUE FROM feeds WHERE id = $1;
 	`, id).Scan(&fu, &selectors, &unstructured)
 	if errors.Is(err, sql.ErrNoRows) {
-		return nil, "", ErrFeedNotFound
+		return "", "", ErrFeedNotFound
 	} else if err != nil {
-		return nil, "", err
+		return "", "", err
 	}
 	if !unstructured {
-		return nil, "", ErrNotUnstructured
+		return "", "", ErrNotUnstructured
 	}
 	u, err := url.Parse(fu)
 	if err != nil {
-		return nil, "", err
+		return "", "", err
 	}
 	raw, _, err := s.fetch(ctx, *u)
 	if err != nil {
-		return nil, "", err
+		return "", "", err
 	}
-	tree, err := BuildSemanticTree(raw, fu)
+	page, err := SimplifyPage(raw, fu)
 	if err != nil {
-		return nil, "", err
+		return "", "", err
 	}
-	return tree, selectors.String, nil
+	return page, selectors.String, nil
 }
 
 // SaveSelectors replaces the post selectors of the unstructured feed id with
