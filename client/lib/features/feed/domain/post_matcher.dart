@@ -309,11 +309,41 @@ typedef LabeledPost = ({
   Map<PostField, SemanticTreeNode> fields,
 });
 
+/// The classes that differ between the posts of a list, such as the ID and
+/// the categories of a WordPress post.
+final _variedPostClass = RegExp(
+  r'^(post-\d+|category-.+|tag-.+|has-post-thumbnail)$',
+);
+
+/// The classes with the word "post" or "card", which name the kind of item
+/// rather than its layout or state. A word starts at the start of the class,
+/// after "-" or "_", or with an uppercase letter, and ends at the end of the
+/// class, before "-" or "_", or before an uppercase letter.
+final _postKindClass = RegExp(
+  r'(^|[-_])(post|card)($|[-_A-Z])|(Post|Card)($|[-_A-Z])',
+);
+
+/// The classes of [cls] that a post node keeps in its step: the ones that
+/// [_postKindClass] matches, or all when none does, without the ones that
+/// [_variedPostClass] matches. A step built from a single post would
+/// otherwise keep the classes of that post alone, and miss the other posts of
+/// the list.
+List<String> _postClasses(List<String> cls) {
+  final kept = [
+    for (final c in cls)
+      if (!_variedPostClass.hasMatch(c)) c,
+  ];
+  final kinds = kept.where(_postKindClass.hasMatch).toList();
+  return kinds.isNotEmpty ? kinds : kept;
+}
+
 /// The chain that selects [node] from the root: the step of [node] when it has
-/// classes, or else the steps of the nodes from its nearest ancestor with
-/// classes, or from the top of the tree below the root, down to [node].
+/// classes left (see [_postClasses]), or else the steps of the nodes from its
+/// nearest ancestor with classes, or from the top of the tree below the root,
+/// down to [node].
 List<Step> _postChainOf(SemanticTree tree, SemanticTreeNode node) {
-  final chain = [Step.of(tree, node)];
+  final step = Step.of(tree, node);
+  final chain = [Step(tag: step.tag, cls: _postClasses(step.cls))];
   for (var n = node; chain.first.cls.isEmpty && n.parent?.parent != null;) {
     n = n.parent!;
     chain.insert(0, Step.of(tree, n));

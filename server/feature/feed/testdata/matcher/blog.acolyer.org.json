@@ -1,17 +1,6 @@
 [
   {
-    "post": [
-      {
-        "tag": "article",
-        "cls": [
-          "post",
-          "type-post",
-          "status-publish",
-          "format-standard",
-          "hentry"
-        ]
-      }
-    ],
+    "post": [{ "tag": "article", "cls": ["post", "type-post"] }],
     "fields": {
       "body": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
       "link": [{ "tag": "h1", "cls": ["entry-title"] }],

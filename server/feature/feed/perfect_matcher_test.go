@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"maps"
 	"net/url"
+	"regexp"
 	"slices"
+	"testing"
 )
 
 // This file builds the matchers of a page from its fixture posts in the same
@@ -105,12 +107,69 @@ func (t *treeIndex) step(n *SemanticTreeNode) Step {
 	return s
 }
 
+var (
+	// variedPostClass matches the classes that differ between the posts of a
+	// list, such as the ID and the categories of a WordPress post.
+	variedPostClass = regexp.MustCompile(`^(post-\d+|category-.+|tag-.+|has-post-thumbnail)$`)
+	// postKindClass matches the classes with the word "post" or "card", which
+	// name the kind of item rather than its layout or state. A word starts at
+	// the start of the class, after "-" or "_", or with an uppercase letter,
+	// and ends at the end of the class, before "-" or "_", or before an
+	// uppercase letter.
+	postKindClass = regexp.MustCompile(`(^|[-_])(post|card)($|[-_A-Z])|(Post|Card)($|[-_A-Z])`)
+)
+
+// postClasses returns the classes of cls that a post node keeps in its step:
+// the ones that postKindClass matches, or all when none does, without the
+// ones that variedPostClass matches. A step built from a single post would
+// otherwise keep the classes of that post alone, and miss the other posts
+// of the list. It follows _postClasses of the client.
+func postClasses(cls []string) []string {
+	cls = slices.DeleteFunc(slices.Clone(cls), variedPostClass.MatchString)
+	if kinds := slices.DeleteFunc(slices.Clone(cls), func(c string) bool {
+		return !postKindClass.MatchString(c)
+	}); len(kinds) > 0 {
+		return kinds
+	}
+	return cls
+}
+
+func TestPostClasses(t *testing.T) {
+	for _, tt := range []struct{ cls, want []string }{
+		{[]string{"post", "other"}, []string{"post"}},
+		{[]string{"type-post", "other"}, []string{"type-post"}},
+		{[]string{"post-card", "other"}, []string{"post-card"}},
+		{[]string{"masonry-card", "other"}, []string{"masonry-card"}},
+		{[]string{"card__inner", "other"}, []string{"card__inner"}},
+		{[]string{"storyCard__linked", "other"}, []string{"storyCard__linked"}},
+		{[]string{"IndexCardStyled", "other"}, []string{"IndexCardStyled"}},
+		{[]string{"AdPost", "other"}, []string{"AdPost"}},
+		{[]string{"adpost", "other"}, []string{"adpost", "other"}},
+		{[]string{"compost", "other"}, []string{"compost", "other"}},
+		{[]string{"greencard", "other"}, []string{"greencard", "other"}},
+		{[]string{"postcard", "other"}, []string{"postcard", "other"}},
+		{[]string{"cardinal", "other"}, []string{"cardinal", "other"}},
+		{[]string{"post-9818", "other"}, []string{"other"}},
+		{[]string{"category-security", "other"}, []string{"other"}},
+		{[]string{"tag-whatsapp", "other"}, []string{"other"}},
+		{[]string{"has-post-thumbnail", "other"}, []string{"other"}},
+		{[]string{"post", "type-post", "hentry", "post-9818", "category-security"}, []string{"post", "type-post"}},
+		{[]string{"post-9818", "category-security"}, []string{}},
+	} {
+		if got := postClasses(tt.cls); !slices.Equal(got, tt.want) {
+			t.Errorf("postClasses(%q) = %q, want %q", tt.cls, got, tt.want)
+		}
+	}
+}
+
 // postChain returns the chain that selects post from the root: the step of
-// post when it has classes, or else the steps of the nodes from its nearest
-// ancestor with classes, or from the top of the tree below the root, down to
-// post.
+// post when it has classes left (see postClasses), or else the steps of the
+// nodes from its nearest ancestor with classes, or from the top of the tree
+// below the root, down to post.
 func (t *treeIndex) postChain(post *SemanticTreeNode) []Step {
-	chain := []Step{t.step(post)}
+	s := t.step(post)
+	s.Cls = postClasses(s.Cls)
+	chain := []Step{s}
 	for n := post; len(chain[0].Cls) == 0 && t.parent[t.parent[n]] != nil; {
 		n = t.parent[n]
 		chain = append([]Step{t.step(n)}, chain...)
