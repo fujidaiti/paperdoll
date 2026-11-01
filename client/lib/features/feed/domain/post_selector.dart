@@ -256,7 +256,7 @@ class PostSelector {
     return posts;
   }
 
-  List<SemanticTreeNode> matchPosts(SemanticTree tree) => [
+  List<SemanticTreeNode> selectPosts(SemanticTree tree) => [
     for (final n in _candidates(tree))
       if (excludedBy(n) == null) n,
   ];
@@ -551,7 +551,7 @@ List<LabeledPost> labelFoundPosts(
 ) {
   final posts = <LabeledPost>[];
   for (final selector in selectors) {
-    for (final node in selector.matchPosts(tree)) {
+    for (final node in selector.selectPosts(tree)) {
       final fields = {
         for (final field in selector.fields.keys)
           field: ?selector.matchField(node, field),
@@ -684,7 +684,7 @@ List<ExtractedPost> extractPosts(
   final found =
       <ExtractedPost>[
           for (final (i, selector) in selectors.indexed)
-            for (final node in selector.matchPosts(tree))
+            for (final node in selector.selectPosts(tree))
               (
                 node: node,
                 selector: i,

@@ -92,7 +92,7 @@ func (s Step) matches(n *SemanticTreeNode) bool {
 // Thumbnail and PubDate are nil when the posts have none. A node that Post
 // selects is a post only when its title and link are found (see hasFields),
 // when its link matches none of the patterns in Exclude, and when it contains
-// no other such node (see matchPosts).
+// no other such node (see selectPosts).
 type PostSelector struct {
 	Post      []Step
 	Title     []Step
@@ -216,12 +216,12 @@ func selectNodes(start *SemanticTreeNode, path []Step, children bool) []*Semanti
 	return nodes
 }
 
-// matchPosts returns the post nodes that m finds in tree. A node that
+// selectPosts returns the post nodes that m finds in tree. A node that
 // contains another node that Post selects and that has the title and the link
 // is left out, since it is a list of posts rather than a post. Other nodes
 // that Post selects inside a post, such as a footer with the same classes, do
 // not matter.
-func (m *PostSelector) matchPosts(tree *SemanticTree) []*SemanticTreeNode {
+func (m *PostSelector) selectPosts(tree *SemanticTree) []*SemanticTreeNode {
 	if len(m.Post) == 0 {
 		return nil
 	}
@@ -349,7 +349,7 @@ func ExtractPosts(tree *SemanticTree, selectors []PostSelector) []ExtractedPost 
 	}
 	var posts []found
 	for _, m := range selectors {
-		for _, n := range m.matchPosts(tree) {
+		for _, n := range m.selectPosts(tree) {
 			values := make(ExtractedPost)
 			for field := range m.Fields() {
 				if v := m.resolveField(n, field); v != nil {

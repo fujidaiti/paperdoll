@@ -139,7 +139,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     );
     _marks = _Marks();
     for (final selector in _selectors) {
-      for (final post in selector.matchPosts(_tree)) {
+      for (final post in selector.selectPosts(_tree)) {
         _marks.posts.putIfAbsent(post.id, () => selector);
       }
       for (final post in selector.matchExcluded(_tree)) {

@@ -117,7 +117,7 @@ SemanticTreeNode? _fieldNode(
     // The selector that the user sees a node as found by is the first one.
     final finder = <SemanticTreeNode, PostSelector>{};
     for (final m in selectors) {
-      for (final n in m.matchPosts(tree)) {
+      for (final n in m.selectPosts(tree)) {
         finder.putIfAbsent(n, () => m);
       }
     }
@@ -281,11 +281,11 @@ void main() {
         expect(
           {
             for (final m in selectors)
-              for (final n in m.matchPosts(tree)) n.id,
+              for (final n in m.selectPosts(tree)) n.id,
           },
           {
             for (final m in goldens)
-              for (final n in m.matchPosts(tree)) n.id,
+              for (final n in m.selectPosts(tree)) n.id,
           },
         );
         expect(

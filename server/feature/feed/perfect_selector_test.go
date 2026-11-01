@@ -451,7 +451,7 @@ func perfectSelectors(tree *SemanticTree, posts []ExtractedPost) ([]PostSelector
 		// The selector that the user sees a node as found by is the first one.
 		finder := map[*SemanticTreeNode]*PostSelector{}
 		for i := range selectors {
-			for _, n := range selectors[i].matchPosts(tree) {
+			for _, n := range selectors[i].selectPosts(tree) {
 				if finder[n] == nil {
 					finder[n] = &selectors[i]
 				}
