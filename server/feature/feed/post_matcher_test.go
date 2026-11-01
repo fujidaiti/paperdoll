@@ -392,7 +392,7 @@ func TestPostMatcherJSON(t *testing.T) {
 	}
 }
 
-func TestGlobMatches(t *testing.T) {
+func TestGlobRegexp(t *testing.T) {
 	tests := []struct {
 		pattern, hostPath string
 		want              bool
@@ -407,8 +407,8 @@ func TestGlobMatches(t *testing.T) {
 		{"example.com/blog?", "example.com/blog/", false},
 	}
 	for _, tt := range tests {
-		if got := globMatches(tt.pattern, tt.hostPath); got != tt.want {
-			t.Errorf("globMatches(%q, %q) = %v, want %v", tt.pattern, tt.hostPath, got, tt.want)
+		if got := globRegexp(tt.pattern).MatchString(tt.hostPath); got != tt.want {
+			t.Errorf("globRegexp(%q) matches %q: %v, want %v", tt.pattern, tt.hostPath, got, tt.want)
 		}
 	}
 }

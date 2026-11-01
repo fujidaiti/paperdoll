@@ -229,6 +229,10 @@ func (m *PostMatcher) matchPosts(tree *SemanticTree) []*SemanticTreeNode {
 	for _, n := range selectNodes(tree.Root, m.Post, true) {
 		selected[n] = true
 	}
+	exclude := make([]*regexp.Regexp, len(m.Exclude))
+	for i, p := range m.Exclude {
+		exclude[i] = globRegexp(p)
+	}
 	var posts []*SemanticTreeNode
 	// visit returns whether n is or contains a selected node with the title
 	// and the link.
@@ -239,7 +243,7 @@ func (m *PostMatcher) matchPosts(tree *SemanticTree) []*SemanticTreeNode {
 			inner = visit(c) || inner
 		}
 		isPost := selected[n] && m.hasFields(n)
-		if isPost && !inner && !m.isExcluded(n) {
+		if isPost && !inner && !m.isExcluded(n, exclude) {
 			posts = append(posts, n)
 		}
 		return inner || isPost
@@ -276,8 +280,9 @@ func resolveChain(post *SemanticTreeNode, f PostField, chain []Step) *SemanticTr
 	return nil
 }
 
-// isExcluded reports whether the link of post matches a pattern in Exclude.
-func (m *PostMatcher) isExcluded(post *SemanticTreeNode) bool {
+// isExcluded reports whether the link of post matches one of exclude, the
+// compiled patterns of Exclude.
+func (m *PostMatcher) isExcluded(post *SemanticTreeNode, exclude []*regexp.Regexp) bool {
 	n := m.resolveField(post, PostLink)
 	if n == nil {
 		return false
@@ -287,18 +292,18 @@ func (m *PostMatcher) isExcluded(post *SemanticTreeNode) bool {
 		return false
 	}
 	hostPath := u.Host + u.Path
-	for _, p := range m.Exclude {
-		if globMatches(p, hostPath) {
+	for _, re := range exclude {
+		if re.MatchString(hostPath) {
 			return true
 		}
 	}
 	return false
 }
 
-// globMatches reports whether the file glob pattern matches hostPath: "*"
-// matches any characters except "/", "**" matches any characters, and "?"
-// matches one character except "/".
-func globMatches(pattern, hostPath string) bool {
+// globRegexp compiles the file glob pattern into a regexp that matches a
+// whole host and path: "*" matches any characters except "/", "**" matches
+// any characters, and "?" matches one character except "/".
+func globRegexp(pattern string) *regexp.Regexp {
 	var re strings.Builder
 	re.WriteString("^")
 	for i := 0; i < len(pattern); i++ {
@@ -315,7 +320,7 @@ func globMatches(pattern, hostPath string) bool {
 		}
 	}
 	re.WriteString("$")
-	return regexp.MustCompile(re.String()).MatchString(hostPath)
+	return regexp.MustCompile(re.String())
 }
 
 // ExtractedPost is a post that a matcher found in a page, by its field
