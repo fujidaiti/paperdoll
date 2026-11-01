@@ -251,7 +251,7 @@ func TestExtractPosts(t *testing.T) {
 			}},
 		},
 		{
-			// A field takes the first node that its chain selects and that it
+			// A field takes the first node that its path selects and that it
 			// accepts: the body skips the paragraph that has only an image.
 			name: "accepted-node",
 			selectors: []PostSelector{{
@@ -263,7 +263,7 @@ func TestExtractPosts(t *testing.T) {
 			}},
 		},
 		{
-			// An empty chain selects the post node itself.
+			// An empty path selects the post node itself.
 			name: "post-node",
 			selectors: []PostSelector{{
 				Post:  []Step{{Tag: "a", Cls: []string{"card"}}},
@@ -366,7 +366,7 @@ func TestPostSelectorJSON(t *testing.T) {
 			t.Errorf("JSON is %s, want %s", data, want)
 		}
 
-		// The empty chain of the link stays empty instead of becoming nil, which
+		// The empty path of the link stays empty instead of becoming nil, which
 		// would mean that the selector has no link.
 		var got PostSelector
 		if err := json.Unmarshal(data, &got); err != nil {

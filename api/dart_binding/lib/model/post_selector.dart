@@ -18,7 +18,7 @@ class PostSelector {
     this.exclude = const [],
   });
 
-  /// The chain of steps from the root to the post nodes.
+  /// The path of steps from the root to the post nodes.
   List<Step> post;
 
   PostSelectorFields fields;

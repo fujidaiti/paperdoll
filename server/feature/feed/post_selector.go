@@ -84,10 +84,10 @@ func (s Step) matches(n *SemanticTreeNode) bool {
 // extracts their fields. The client builds selectors when the user annotates
 // a page, and the server runs them on each fetch of the page.
 //
-// Post is the chain of steps to the post nodes: the first step selects
+// Post is the path of steps to the post nodes: the first step selects
 // descendants of the root, and each later step selects children of the nodes
-// that the previous step selects. Each field has one chain of steps from a
-// post node to the node of its value; an empty chain is the post node itself.
+// that the previous step selects. Each field has one path of steps from a
+// post node to the node of its value; an empty path is the post node itself.
 // Title and Link are required, since they define the kind of posts. Body,
 // Thumbnail and PubDate are nil when the posts have none. A node that Post
 // selects is a post only when its title and link are found (see hasFields),
@@ -103,36 +103,36 @@ type PostSelector struct {
 	Exclude   []string
 }
 
-// chainOf returns the chain of f, or false when m has none.
-func (m *PostSelector) chainOf(f PostField) ([]Step, bool) {
-	var chain []Step
+// pathOf returns the path of f, or false when m has none.
+func (m *PostSelector) pathOf(f PostField) ([]Step, bool) {
+	var path []Step
 	switch f {
 	case PostTitle:
-		chain = m.Title
+		path = m.Title
 	case PostLink:
-		chain = m.Link
+		path = m.Link
 	case PostBody:
-		chain = m.Body
+		path = m.Body
 	case PostThumbnail:
-		chain = m.Thumbnail
+		path = m.Thumbnail
 	case PostPubDate:
-		chain = m.PubDate
+		path = m.PubDate
 	}
-	return chain, chain != nil
+	return path, path != nil
 }
 
-// Fields returns the chain of each field that has one.
+// Fields returns the path of each field that has one.
 func (m *PostSelector) Fields() map[PostField][]Step {
 	fields := make(map[PostField][]Step)
 	for _, f := range []PostField{PostTitle, PostBody, PostLink, PostThumbnail, PostPubDate} {
-		if chain, ok := m.chainOf(f); ok {
-			fields[f] = chain
+		if path, ok := m.pathOf(f); ok {
+			fields[f] = path
 		}
 	}
 	return fields
 }
 
-// postSelectorJSON is the JSON of PostSelector, whose fields hold the chain of
+// postSelectorJSON is the JSON of PostSelector, whose fields hold the path of
 // each field that has one.
 type postSelectorJSON struct {
 	Post    []Step               `json:"post"`
@@ -150,38 +150,38 @@ func (m *PostSelector) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	*m = PostSelector{Post: j.Post, Exclude: j.Exclude}
-	for f, chain := range j.Fields {
-		// An empty chain is the post node itself, which nil would leave out.
-		if chain == nil {
-			chain = []Step{}
+	for f, path := range j.Fields {
+		// An empty path is the post node itself, which nil would leave out.
+		if path == nil {
+			path = []Step{}
 		}
 		switch f {
 		case PostTitle:
-			m.Title = chain
+			m.Title = path
 		case PostLink:
-			m.Link = chain
+			m.Link = path
 		case PostBody:
-			m.Body = chain
+			m.Body = path
 		case PostThumbnail:
-			m.Thumbnail = chain
+			m.Thumbnail = path
 		case PostPubDate:
-			m.PubDate = chain
+			m.PubDate = path
 		default:
 			return fmt.Errorf("unknown field %q", f)
 		}
 	}
 	if m.Title == nil || m.Link == nil {
-		return fmt.Errorf("no chain of the title or the link")
+		return fmt.Errorf("no path of the title or the link")
 	}
 	return nil
 }
 
-// selectNodes returns the nodes that chain selects from start, in document
+// selectNodes returns the nodes that path selects from start, in document
 // order. With children, each step after the first selects among the children
 // of the nodes that the previous step selects, instead of their descendants.
-func selectNodes(start *SemanticTreeNode, chain []Step, children bool) []*SemanticTreeNode {
+func selectNodes(start *SemanticTreeNode, path []Step, children bool) []*SemanticTreeNode {
 	nodes := []*SemanticTreeNode{start}
-	for i, step := range chain {
+	for i, step := range path {
 		var next []*SemanticTreeNode
 		seen := map[*SemanticTreeNode]bool{}
 		for _, n := range nodes {
@@ -259,20 +259,20 @@ func (m *PostSelector) hasFields(post *SemanticTreeNode) bool {
 	return m.resolveField(post, PostTitle) != nil && m.resolveField(post, PostLink) != nil
 }
 
-// resolveField returns the node of f in post: the first node that the chain
+// resolveField returns the node of f in post: the first node that the path
 // of f selects and that f accepts, or nil when there is none.
 func (m *PostSelector) resolveField(post *SemanticTreeNode, f PostField) *SemanticTreeNode {
-	chain, ok := m.chainOf(f)
+	path, ok := m.pathOf(f)
 	if !ok {
 		return nil
 	}
-	return resolveChain(post, f, chain)
+	return resolvePath(post, f, path)
 }
 
-// resolveChain returns the first node that chain selects from post and that
+// resolvePath returns the first node that path selects from post and that
 // f accepts, or nil when there is none.
-func resolveChain(post *SemanticTreeNode, f PostField, chain []Step) *SemanticTreeNode {
-	for _, n := range selectNodes(post, chain, false) {
+func resolvePath(post *SemanticTreeNode, f PostField, path []Step) *SemanticTreeNode {
+	for _, n := range selectNodes(post, path, false) {
 		if f.accepts(n) {
 			return n
 		}

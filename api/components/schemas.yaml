@@ -230,14 +230,14 @@ PostSelector:
   required: [post, fields]
   properties:
     post:
-      description: The chain of steps from the root to the post nodes.
+      description: The path of steps from the root to the post nodes.
       type: array
       items:
         $ref: "#/Step"
     fields:
       description:
-        The chains of steps from a post node to each labeled field, tried in
-        order. The title and the link have one chain each.
+        The paths of steps from a post node to each labeled field, tried in
+        order. The title and the link have one path each.
       type: object
       properties:
         title:
