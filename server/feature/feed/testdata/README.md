@@ -19,6 +19,8 @@ of a page. Each directory has the same pages under the same file names.
 - `extract/`: small pages written by hand, one for each case of
   `TestExtractPosts`, with the posts that the matchers of the case find in
   `<case>.posts.json`.
+- `body-text.html`: a small page written by hand, with one node for each case of
+  `TestBodyText`.
 
 `tree/` and `matcher/` are golden files. After changing the tree builder, the
 matchers or a fixture, update them with:

@@ -412,3 +412,44 @@ func TestGlobMatches(t *testing.T) {
 		}
 	}
 }
+
+// TestBodyText checks bodyText against the nodes of testdata/body-text.html,
+// one node for each case, with the name of the case as its class.
+func TestBodyText(t *testing.T) {
+	raw, err := os.ReadFile("testdata/body-text.html")
+	if err != nil {
+		t.Fatal(err)
+	}
+	tree, err := BuildSemanticTree(raw, "https://example.com/")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	tests := []struct{ name, want string }{
+		{"value", "The summary of a post."},
+		// The texts are joined in document order, at any depth.
+		{"values", "The first line. The second line."},
+		{"nested", "The first line. The second line. The third line."},
+		// No space is put before closing punctuation or after an opening bracket.
+		{"punctuation", "Tools, Kiro (beta)"},
+		// A link keeps only its text.
+		{"link", "The summary of a post. Read more"},
+		// Images and times are left out, even with an alt text or a timestamp.
+		{"image", "The summary of a post."},
+		{"time", "The summary of a post."},
+		{"only-image", ""},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			i := slices.IndexFunc(tree.Root.Children, func(n *SemanticTreeNode) bool {
+				return slices.Contains(n.Cls, tt.name)
+			})
+			if i < 0 {
+				t.Fatalf("no node with the class %q", tt.name)
+			}
+			if got := bodyText(tree.Root.Children[i]); got != tt.want {
+				t.Errorf("bodyText is %q, want %q", got, tt.want)
+			}
+		})
+	}
+}
