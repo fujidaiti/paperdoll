@@ -47,7 +47,7 @@ class const _FeedAttributes({required final Feed feed})
     return ListView(
       padding: const EdgeInsets.all(spacingMd),
       children: [
-        // TODO: Let the user change the icon.
+        // TODO(#221): Let the user change the icon.
         _Attribute(
           label: 'Icon',
           child: Align(
@@ -55,9 +55,9 @@ class const _FeedAttributes({required final Feed feed})
             child: FeedIcon(url: feed.iconUrl),
           ),
         ),
-        // TODO: Let the user change the title.
+        // TODO(#221): Let the user change the title.
         _Attribute(label: 'Title', child: BodyText(feed.title)),
-        // TODO: Let the user change the description.
+        // TODO(#221): Let the user change the description.
         _Attribute(
           label: 'Description',
           child: BodyText(description ?? 'No description'),
