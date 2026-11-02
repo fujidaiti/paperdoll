@@ -22,8 +22,5 @@ CREATE TABLE selector_editors (
 
 CREATE INDEX idx_selector_editors_expires_at ON selector_editors (expires_at);
 
-ALTER TABLE feeds ALTER COLUMN selectors TYPE json USING selectors::json;
-
 -- +goose Down
-ALTER TABLE feeds ALTER COLUMN selectors TYPE text;
 DROP TABLE selector_editors;
