@@ -7,38 +7,44 @@ export 'package:html/dom.dart' show Node;
 /// annotates to tell which parts of the page are posts. See SimplifyPage in
 /// server/feature/feed/simplify.go for the format, and [PageNode] for how its
 /// nodes are read.
+///
+/// Each node has an ID, which is its position in [nodes]. The server and the
+/// client refer to the nodes of a page by their IDs. Each element carries its
+/// ID in a `data-id` attribute, and a text takes the ID of its position (see
+/// withNodeIDs in server/feature/feed/selector_editor.go).
 class SimplifiedPage {
   new _({
     required this.url,
     required this.title,
     required this.body,
     required this.nodes,
-    required this.classCounts,
   });
 
+  /// Parses [source], a simplified page with node IDs. Throws a
+  /// [FormatException] when the `data-id` of an element is not its position,
+  /// so that an ID never refers to a node other than the one that the server
+  /// gave it to, even if the HTML parsers of the two build different trees.
   factory parse(String source) {
     final document = html.parse(source);
     final body = document.body!;
     final nodes = <Node>[];
     void visit(Node n) {
+      if (n is Element && n.attributes['data-id'] != '${nodes.length}') {
+        throw FormatException(
+          'node ${nodes.length} has the data-id ${n.attributes['data-id']}',
+        );
+      }
       nodes.add(n);
       n.pageChildren.forEach(visit);
     }
 
     visit(body);
-    final classCounts = <String, int>{};
-    for (final n in nodes) {
-      for (final c in n.cls) {
-        classCounts.update(c, (count) => count + 1, ifAbsent: () => 1);
-      }
-    }
     final head = document.head;
     return SimplifiedPage._(
       url: head?.querySelector('link[rel=canonical]')?.attributes['href'] ?? '',
       title: head?.querySelector('title')?.text ?? '',
       body: body,
       nodes: nodes,
-      classCounts: classCounts,
     );
   }
 
@@ -51,13 +57,16 @@ class SimplifiedPage {
   /// All nodes of [body] in document order, including [body] itself.
   final List<Node> nodes;
 
-  /// The number of nodes that have each class.
-  final Map<String, int> classCounts;
+  late final _ids = {for (final (i, n) in nodes.indexed) n: i};
 
-  late final _order = {for (final (i, n) in nodes.indexed) n: i};
+  /// The ID of [node].
+  int idOf(Node node) => _ids[node]!;
 
-  /// The position of [node] in document order.
-  int orderOf(Node node) => _order[node]!;
+  /// The node with the ID [id]. Throws a [FormatException] when there is
+  /// none.
+  Node nodeOf(int id) => id >= 0 && id < nodes.length
+      ? nodes[id]
+      : throw FormatException('no node $id');
 }
 
 /// Reads a node of a [SimplifiedPage] by the same rules as the server (see

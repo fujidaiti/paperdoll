@@ -9,125 +9,50 @@ part of 'selector_providers.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(selectorRepository)
-final selectorRepositoryProvider = SelectorRepositoryProvider._();
+@ProviderFor(selectorEditorRepository)
+final selectorEditorRepositoryProvider = SelectorEditorRepositoryProvider._();
 
-final class SelectorRepositoryProvider
+final class SelectorEditorRepositoryProvider
     extends
         $FunctionalProvider<
-          SelectorRepository,
-          SelectorRepository,
-          SelectorRepository
+          SelectorEditorRepository,
+          SelectorEditorRepository,
+          SelectorEditorRepository
         >
-    with $Provider<SelectorRepository> {
-  SelectorRepositoryProvider._()
+    with $Provider<SelectorEditorRepository> {
+  SelectorEditorRepositoryProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'selectorRepositoryProvider',
+        name: r'selectorEditorRepositoryProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$selectorRepositoryHash();
+  String debugGetCreateSourceHash() => _$selectorEditorRepositoryHash();
 
   @$internal
   @override
-  $ProviderElement<SelectorRepository> $createElement(
+  $ProviderElement<SelectorEditorRepository> $createElement(
     $ProviderPointer pointer,
   ) => $ProviderElement(pointer);
 
   @override
-  SelectorRepository create(Ref ref) {
-    return selectorRepository(ref);
+  SelectorEditorRepository create(Ref ref) {
+    return selectorEditorRepository(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(SelectorRepository value) {
+  Override overrideWithValue(SelectorEditorRepository value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<SelectorRepository>(value),
+      providerOverride: $SyncValueProvider<SelectorEditorRepository>(value),
     );
   }
 }
 
-String _$selectorRepositoryHash() =>
-    r'b80034945653c156c0c62e8038e1531c01f4916a';
-
-@ProviderFor(feedSelectors)
-final feedSelectorsProvider = FeedSelectorsFamily._();
-
-final class FeedSelectorsProvider
-    extends
-        $FunctionalProvider<
-          AsyncValue<FeedSelectors>,
-          FeedSelectors,
-          FutureOr<FeedSelectors>
-        >
-    with $FutureModifier<FeedSelectors>, $FutureProvider<FeedSelectors> {
-  FeedSelectorsProvider._({
-    required FeedSelectorsFamily super.from,
-    required int super.argument,
-  }) : super(
-         retry: null,
-         name: r'feedSelectorsProvider',
-         isAutoDispose: true,
-         dependencies: null,
-         $allTransitiveDependencies: null,
-       );
-
-  @override
-  String debugGetCreateSourceHash() => _$feedSelectorsHash();
-
-  @override
-  String toString() {
-    return r'feedSelectorsProvider'
-        ''
-        '($argument)';
-  }
-
-  @$internal
-  @override
-  $FutureProviderElement<FeedSelectors> $createElement(
-    $ProviderPointer pointer,
-  ) => $FutureProviderElement(pointer);
-
-  @override
-  FutureOr<FeedSelectors> create(Ref ref) {
-    final argument = this.argument as int;
-    return feedSelectors(ref, argument);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is FeedSelectorsProvider && other.argument == argument;
-  }
-
-  @override
-  int get hashCode {
-    return argument.hashCode;
-  }
-}
-
-String _$feedSelectorsHash() => r'51366322472e2d07caac938a31972b1dde61d1cc';
-
-final class FeedSelectorsFamily extends $Family
-    with $FunctionalFamilyOverride<FutureOr<FeedSelectors>, int> {
-  FeedSelectorsFamily._()
-    : super(
-        retry: null,
-        name: r'feedSelectorsProvider',
-        dependencies: null,
-        $allTransitiveDependencies: null,
-        isAutoDispose: true,
-      );
-
-  FeedSelectorsProvider call(int feedId) =>
-      FeedSelectorsProvider._(argument: feedId, from: this);
-
-  @override
-  String toString() => r'feedSelectorsProvider';
-}
+String _$selectorEditorRepositoryHash() =>
+    r'79a1f15c4f30866ead0c095eb72f9e4aeffd5bea';

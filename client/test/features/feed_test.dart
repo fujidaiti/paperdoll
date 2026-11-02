@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:openapi/api.dart' as api;
 import 'package:paperdoll/debug_keys.dart';
 import 'package:patrol_finders/patrol_finders.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../src/boilerplate.dart';
 import '../src/fixture.dart';
@@ -143,9 +144,10 @@ void main() {
         '/feeds/search',
         body: api.SearchFeeds200Response(feeds: [candidate]).toJson(),
       )
-      ..stubGet(
-        '/feeds/${blog.id}/selector',
-        body: {'page': fixture.pages.exampleBlog},
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogEditor,
       );
 
     await pumpAppWithAuth(t, server);
@@ -162,12 +164,57 @@ void main() {
       t.tester.widget<TextButton>(t(AppDebugKey.saveSelectorsButton)).onPressed,
       isNull,
     );
+    // The editor is remembered until it ends, so that it can be continued
+    // after the app is killed.
+    expect(
+      await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
+      42,
+    );
+  });
+
+  patrolWidgetTest('Mark a post on a web page', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogEditor,
+      )
+      ..stubPut(
+        '/feeds/${blog.id}/selector-editors/42/marks',
+        bodyMatcher: {
+          'labeled_posts': [
+            {'box': 2, 'title': 2, 'link': 2},
+          ],
+          'excluded_links': <Object?>[],
+        },
+        body: fixture.pages.exampleBlogHeadingsFound,
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+
+    // The heading is a post with itself as the title and the link.
+    await t('First post').tap();
+    await t('Mark as post').tap();
+    await t('Done').tap();
+
+    // The server finds the other heading too.
+    await t('2 post(s) found.').waitUntilVisible();
+    expect(
+      t.tester.widget<TextButton>(t(AppDebugKey.saveSelectorsButton)).onPressed,
+      isNotNull,
+    );
   });
 
   patrolWidgetTest('Save the post selectors of a web page', (t) async {
     final candidate = fixture.feedCandidates.exampleBlog;
     final blog = fixture.feeds.exampleBlog;
-    final selector = fixture.pages.exampleBlogSelector;
     final server = StubServer.withDefaultResponses()
       ..stubPut('/feeds', body: blog.toJson())
       ..stubGet(
@@ -175,21 +222,13 @@ void main() {
         body: api.SearchFeeds200Response(feeds: [candidate]).toJson(),
       )
       // Another user saved selectors after this user subscribed, so the
-      // editor starts with them.
-      ..stubGet(
-        '/feeds/${blog.id}/selector',
-        body: {
-          'page': fixture.pages.exampleBlog,
-          'selectors': [selector],
-        },
+      // editor starts with the posts that they find.
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogSavedEditor,
       )
-      ..stubPut(
-        '/feeds/${blog.id}/selector',
-        status: 204,
-        bodyMatcher: {
-          'selectors': [selector],
-        },
-      );
+      ..stubPost('/feeds/${blog.id}/selector-editors/42/commit', status: 204);
 
     await pumpAppWithAuth(t, server);
     await t(AppDebugKey.feedsNavDestination).tap();
@@ -201,18 +240,21 @@ void main() {
     await t(AppDebugKey.saveSelectorsButton).tap();
     await t(AppDebugKey.saveSelectorsSuccessSnackBar).waitUntilVisible();
     await t(AppDebugKey.feedsScreen).waitUntilVisible();
+    // The committed editor has ended, so it is not offered to continue.
+    expect(
+      await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
+      isNull,
+    );
   });
 
   patrolWidgetTest('Edit the post selectors of a web page', (t) async {
     final blog = fixture.feeds.exampleBlog;
     final server = _stubFeedSubscription(blog)
       ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
-      ..stubGet(
-        '/feeds/${blog.id}/selector',
-        body: {
-          'page': fixture.pages.exampleBlog,
-          'selectors': [fixture.pages.exampleBlogSelector],
-        },
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogSavedEditor,
       );
 
     await pumpAppWithAuth(t, server);
@@ -247,12 +289,31 @@ void main() {
     final blog = fixture.feeds.exampleBlog;
     final server = _stubFeedSubscription(blog)
       ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
-      ..stubGet(
-        '/feeds/${blog.id}/selector',
-        body: {
-          'page': fixture.pages.exampleBlogWithNewsletters,
-          'selectors': [fixture.pages.exampleBlogSelector],
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogWithNewslettersEditor,
+      )
+      // The newsletters are unmarked, since their link is excluded.
+      ..stubPut(
+        '/feeds/${blog.id}/selector-editors/42/marks',
+        bodyMatcher: {
+          'labeled_posts': [
+            {'box': 1, 'title': 2, 'link': 2},
+          ],
+          'excluded_links': ['blog.example.com/newsletters'],
         },
+        body: fixture.pages.exampleBlogWithNewslettersExcluded,
+      )
+      ..stubPut(
+        '/feeds/${blog.id}/selector-editors/42/marks',
+        bodyMatcher: {
+          'labeled_posts': [
+            {'box': 1, 'title': 2, 'link': 2},
+          ],
+          'excluded_links': <Object?>[],
+        },
+        body: fixture.pages.exampleBlogWithNewslettersAllFound,
       );
 
     await pumpAppWithAuth(t, server);
@@ -274,6 +335,235 @@ void main() {
     await t('Restore').tap();
     await t('3 post(s) found.').waitUntilVisible();
   });
+
+  patrolWidgetTest('Tell that the editor expired when marking a post', (
+    t,
+  ) async {
+    final blog = fixture.feeds.exampleBlog;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogEditor,
+      )
+      ..stubPut(
+        '/feeds/${blog.id}/selector-editors/42/marks',
+        status: 410,
+        body: {'message': 'The selector editor expired'},
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+
+    await t('First post').tap();
+    await t('Mark as post').tap();
+    await t('Done').tap();
+
+    // The editor expired, so the marks cannot be saved anymore.
+    await t(AppDebugKey.selectorEditorExpiredDialog).waitUntilVisible();
+    await t('OK').tap();
+    await t(AppDebugKey.feedEditScreen).waitUntilVisible();
+    expect(t(AppDebugKey.pageAnnotationScreen), findsNothing);
+    expect(
+      await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
+      isNull,
+    );
+  });
+
+  patrolWidgetTest('Tell that the editor expired when saving', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogSavedEditor,
+      )
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors/42/commit',
+        status: 410,
+        body: {'message': 'The selector editor expired'},
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+
+    await t(AppDebugKey.saveSelectorsButton).tap();
+
+    // The editor expired, so the selectors are not saved.
+    await t(AppDebugKey.selectorEditorExpiredDialog).waitUntilVisible();
+    await t('OK').tap();
+    await t(AppDebugKey.feedEditScreen).waitUntilVisible();
+    expect(t(AppDebugKey.pageAnnotationScreen), findsNothing);
+    expect(
+      await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
+      isNull,
+    );
+  });
+
+  patrolWidgetTest('Leave the editor of a web page without saving', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    var closed = false;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogSavedEditor,
+      )
+      ..onDelete(
+        '/feeds/${blog.id}/selector-editors/42',
+        respond: (_) {
+          closed = true;
+          return (204, null);
+        },
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+
+    // Going back asks first, and canceling keeps the editor open.
+    await t.tester.pageBack();
+    await t.pumpAndSettle();
+    await t('Leave without saving?').waitUntilVisible();
+    await t('Cancel').tap();
+    expect(t(AppDebugKey.pageAnnotationScreen), findsOneWidget);
+    expect(closed, isFalse);
+
+    await t.tester.pageBack();
+    await t.pumpAndSettle();
+    await t('Leave').tap();
+    await t(AppDebugKey.feedEditScreen).waitUntilVisible();
+    expect(t(AppDebugKey.pageAnnotationScreen), findsNothing);
+    expect(closed, isTrue);
+    expect(
+      await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
+      isNull,
+    );
+  });
+
+  patrolWidgetTest('Continue the previous edits of a web page', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubGet(
+        '/feeds/${blog.id}/selector-editors/41',
+        body: {...fixture.pages.exampleBlogSavedEditor, 'id': 41},
+      );
+
+    await pumpAppWithAuth(t, server);
+    // The app was killed while the editor 41 was open.
+    await SharedPreferencesAsync().setInt('selector_editor.${blog.id}', 41);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
+
+    await t('Continue your previous edits?').waitUntilVisible();
+    await t('Continue').tap();
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t('2 post(s) found.').waitUntilVisible();
+    expect(
+      await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
+      41,
+    );
+  });
+
+  patrolWidgetTest('Start over the previous edits of a web page', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    var closed = false;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubGet(
+        '/feeds/${blog.id}/selector-editors/41',
+        body: {...fixture.pages.exampleBlogSavedEditor, 'id': 41},
+      )
+      ..onDelete(
+        '/feeds/${blog.id}/selector-editors/41',
+        respond: (_) {
+          closed = true;
+          return (204, null);
+        },
+      )
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogEditor,
+      );
+
+    await pumpAppWithAuth(t, server);
+    // The app was killed while the editor 41 was open.
+    await SharedPreferencesAsync().setInt('selector_editor.${blog.id}', 41);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
+
+    await t('Continue your previous edits?').waitUntilVisible();
+    await t('Start over').tap();
+    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    // The new editor has no marks.
+    await t('First post').waitUntilVisible();
+    expect(t('2 post(s) found.'), findsNothing);
+    expect(closed, isTrue);
+    expect(
+      await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
+      42,
+    );
+  });
+
+  for (final (status, reason) in [(410, 'expired'), (404, 'was deleted')]) {
+    patrolWidgetTest('Start a new editor when the previous one $reason', (
+      t,
+    ) async {
+      final blog = fixture.feeds.exampleBlog;
+      final server = _stubFeedSubscription(blog)
+        ..stubGet(
+          '/feeds',
+          body: api.GetFeeds200Response(feeds: [blog]).toJson(),
+        )
+        ..stubGet(
+          '/feeds/${blog.id}/selector-editors/41',
+          status: status,
+          body: {'message': 'The selector editor $reason'},
+        )
+        ..stubPost(
+          '/feeds/${blog.id}/selector-editors',
+          status: 201,
+          body: fixture.pages.exampleBlogEditor,
+        );
+
+      await pumpAppWithAuth(t, server);
+      // The app was killed while the editor 41 was open.
+      await SharedPreferencesAsync().setInt('selector_editor.${blog.id}', 41);
+      await _openTimeline(t, blog);
+      await t(AppDebugKey.feedDetailMenuButton).tap();
+      await t(AppDebugKey.editFeedMenuItem).tap();
+      await t(AppDebugKey.editSelectorsButton).tap();
+
+      // The previous editor cannot be saved anymore, so the app does not ask
+      // about it.
+      await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+      expect(t('Continue your previous edits?'), findsNothing);
+      expect(
+        await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
+        42,
+      );
+    });
+  }
 
   patrolWidgetTest('Edit a web feed', (t) async {
     final nasa = fixture.feeds.nasa;

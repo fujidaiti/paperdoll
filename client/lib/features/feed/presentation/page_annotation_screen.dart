@@ -16,8 +16,9 @@ import 'package:paperdoll/core/ui/widgets/heading_text.dart';
 import 'package:paperdoll/core/util/date_format.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:paperdoll/debug_keys.dart';
-import 'package:paperdoll/features/feed/data/selector_repository.dart';
-import 'package:paperdoll/features/feed/domain/post_selector.dart';
+import 'package:paperdoll/features/feed/data/selector_editor_repository.dart';
+import 'package:paperdoll/features/feed/domain/post_field.dart';
+import 'package:paperdoll/features/feed/domain/selector_editor.dart';
 import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 import 'package:paperdoll/features/feed/presentation/post_fields_screen.dart';
 import 'package:paperdoll/features/feed/presentation/providers/selector_providers.dart';
@@ -33,31 +34,119 @@ import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 /// by tapping a line, which selects the narrowest element around it that can
 /// be a post, and widening the selection to the elements around that one.
 ///
-/// The selectors are generated from the posts that the user marked and the
-/// links that the user marked as not posts (see [generateSelectors]), so the
-/// posts that look like a marked one are found automatically. The user never
-/// sees the selectors: a card is either a post that the user marked or one that
-/// was found automatically, and a post that is not one can be marked as such.
+/// The page is the one of the unstructured feed [feedId], and is edited in a
+/// selector editor on the server (see [SelectorEditor]). The server generates
+/// the selectors from the posts that the user marked and the links that the
+/// user marked as not posts, so the posts that look like a marked one are
+/// found automatically. The user never sees the selectors: a card is either a
+/// post that is marked or one that was found automatically, and a post that
+/// is not one can be marked as such. The posts that the saved selectors find
+/// start as marked. Saving replaces the saved selectors.
 ///
-/// The page is the one of the unstructured feed [feedId]. The selectors saved
-/// for the feed are shown as one post for each of them. Saving replaces them.
+/// The editor of the feed is remembered on the device until it is saved or
+/// left, so that the user can continue it after the app was killed.
 class const PageAnnotationScreen({required final int feedId, super.key})
-    extends ConsumerWidget {
+    extends ConsumerStatefulWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final selectors = ref.watch(feedSelectorsProvider(feedId));
-    if (selectors case AsyncData(:final value)) {
-      return _Annotator(
-        feedId: feedId,
-        page: value.page,
-        selectors: value.selectors,
-      );
+  ConsumerState<PageAnnotationScreen> createState() =>
+      _PageAnnotationScreenState();
+}
+
+class _PageAnnotationScreenState extends ConsumerState<PageAnnotationScreen> {
+  AsyncValue<SelectorEditor> _editor = const AsyncLoading();
+
+  @override
+  void initState() {
+    super.initState();
+    unawaited(_open());
+  }
+
+  /// Resumes the editor of the feed that has not ended on this device, if the
+  /// server still has it and the user wants to continue it, or else starts a
+  /// new editor and remembers it. An editor that expired, or that the server
+  /// deleted after it expired, cannot be saved anymore, so a new one is
+  /// started without asking.
+  Future<void> _open() async {
+    final repository = ref.read(selectorEditorRepositoryProvider);
+    final feedId = widget.feedId;
+    try {
+      if (await repository.storedEditorId(feedId) case final storedId?) {
+        try {
+          final editor = await repository.resume(feedId, storedId);
+          if (!mounted) {
+            return;
+          }
+          if (await _askToContinue()) {
+            setState(() => _editor = AsyncData(editor));
+            return;
+          }
+          // The server deletes the editor once it expires, if this request
+          // does not reach it.
+          unawaited(repository.close(feedId, storedId).catchError((_) {}));
+        } on DomainError catch (error) {
+          if (error is! GoneError && error is! NotFoundError) {
+            rethrow;
+          }
+          await repository.storeEditorId(feedId, null);
+        }
+      }
+      final editor = await repository.start(feedId);
+      if (!mounted) {
+        // The user left before the editor started.
+        unawaited(repository.close(feedId, editor.id).catchError((_) {}));
+        return;
+      }
+      await repository.storeEditorId(feedId, editor.id);
+      if (mounted) {
+        setState(() => _editor = AsyncData(editor));
+      }
+    } on DomainError catch (error, stackTrace) {
+      if (mounted) {
+        setState(() => _editor = AsyncError(error, stackTrace));
+      }
+    }
+  }
+
+  /// Asks whether to continue the editor that the user left without saving
+  /// or leaving it, such as when the app was killed. Going back from the
+  /// question continues it, so that the edits are not lost by accident.
+  Future<bool> _askToContinue() async {
+    final keep = await showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        title: const Text('Continue your previous edits?'),
+        content: const Text(
+          'The posts you marked on this page last time were not saved.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Start over'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Continue'),
+          ),
+        ],
+      ),
+    );
+    return keep ?? true;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_editor case AsyncData(:final value)) {
+      return _Annotator(feedId: widget.feedId, editor: value);
     }
     return Scaffold(
       appBar: AppBar(),
-      body: AsyncValueView<FeedSelectors>(
-        value: selectors,
-        onRetry: () => ref.invalidate(feedSelectorsProvider(feedId)),
+      body: AsyncValueView<SelectorEditor>(
+        value: _editor,
+        onRetry: () {
+          setState(() => _editor = const AsyncLoading());
+          unawaited(_open());
+        },
         data: (_) => const SizedBox.shrink(),
       ),
     );
@@ -68,84 +157,28 @@ class const PageAnnotationScreen({required final int feedId, super.key})
 bool _hasLink(Node node) =>
     node.pageLink != null || node.pageChildren.any(_hasLink);
 
-/// The posts that the selectors find in the page, with the selector that
-/// finds each, and the excluded ones, with the host and path that excludes
-/// them.
-class _Marks {
-  final posts = <Node, PostSelector>{};
-  final excluded = <Node, String>{};
-
-  /// The post that contains [node], if any.
-  Node? postOf(Node node) {
-    for (Node? n = node; n != null; n = n.parentNode) {
-      if (posts.containsKey(n)) {
-        return n;
-      }
-    }
-    return null;
-  }
-
-  /// The post or excluded post that contains [node], if any.
-  Node? enclosingPost(Node node) {
-    for (Node? n = node; n != null; n = n.parentNode) {
-      if (posts.containsKey(n) || excluded.containsKey(n)) {
-        return n;
-      }
-    }
-    return null;
-  }
-}
-
 class const _Annotator({
   required final int feedId,
-  required final SimplifiedPage page,
-  required final List<PostSelector> selectors,
+  required final SelectorEditor editor,
 }) extends ConsumerStatefulWidget {
   @override
   ConsumerState<_Annotator> createState() => _AnnotatorState();
 }
 
 class _AnnotatorState extends ConsumerState<_Annotator> {
-  /// The posts that the saved selectors find, by node. The selectors are
-  /// generated from them too, so that they keep finding the same posts, but
-  /// they are not shown as marked, since the user did not mark them here.
-  late final _found = {
-    for (final p in labelFoundPosts(widget.page, widget.selectors)) p.node: p,
-  };
-
-  /// The posts that the user marked, by node.
-  final _labeled = <Node, LabeledPost>{};
+  /// The marked posts, by node.
+  late var _labeled = {for (final p in widget.editor.labeledPosts) p.node: p};
 
   /// The host and path of the links that the user marked as not posts.
-  late final _excluded = {for (final m in widget.selectors) ...m.exclude};
+  late var _excluded = widget.editor.excludedLinks;
 
-  late List<PostSelector> _selectors;
-  late _Marks _marks;
-  var _saving = false;
+  /// What the selectors generated from the marks find.
+  late var _state = widget.editor.state;
 
-  @override
-  void initState() {
-    super.initState();
-    _update();
-  }
-
-  /// Generates the selectors again after the marks changed.
-  void _update() {
-    _selectors = generateSelectors(
-      _page,
-      {..._found, ..._labeled}.values,
-      _excluded,
-    );
-    _marks = _Marks();
-    for (final selector in _selectors) {
-      for (final post in selector.selectPosts(_page)) {
-        _marks.posts.putIfAbsent(post, () => selector);
-      }
-      for (final post in selector.matchExcluded(_page)) {
-        _marks.excluded[post] = selector.excludedBy(post)!;
-      }
-    }
-  }
+  /// Whether a request to the editor is in flight. The marks cannot change
+  /// meanwhile, so that the responses cannot arrive out of order and saving
+  /// saves the selectors of the last marks.
+  var _pending = false;
 
   /// The element shown on the selection sheet, while the sheet is open.
   Node? _selected;
@@ -161,11 +194,35 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     });
   }
 
-  SimplifiedPage get _page => widget.page;
+  SimplifiedPage get _page => widget.editor.page;
+
+  SelectorEditorRepository get _repository =>
+      ref.read(selectorEditorRepositoryProvider);
 
   /// The lines of the whole page. They are built lazily by a list, since a
   /// page can have thousands of them.
   late final _lines = layOutLines([_page.body]);
+
+  /// The post that contains [node], if any.
+  Node? _postOf(Node node) {
+    for (Node? n = node; n != null; n = n.parentNode) {
+      if (_state.matchedPosts.containsKey(n)) {
+        return n;
+      }
+    }
+    return null;
+  }
+
+  /// The post or excluded post that contains [node], if any.
+  Node? _enclosingPost(Node node) {
+    for (Node? n = node; n != null; n = n.parentNode) {
+      if (_state.matchedPosts.containsKey(n) ||
+          _state.excludedPosts.containsKey(n)) {
+        return n;
+      }
+    }
+    return null;
+  }
 
   /// [line] or the narrowest element around it that can be a post, if any.
   /// A post needs a link and a text for its title, and the whole page cannot
@@ -185,7 +242,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// can be posts of another selector, since the labeled fields decide which of
   /// them are posts, such as cards whose title is in a different element.
   String? _postRejection(Node node) {
-    for (final post in _marks.posts.keys) {
+    for (final post in _state.matchedPosts.keys) {
       if (post.overlaps(node)) {
         return 'This overlaps with a post.';
       }
@@ -193,11 +250,42 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     return null;
   }
 
-  /// The nodes that [selector] labels as the fields of [post].
-  PostFields _fieldsOf(PostSelector selector, Node post) => {
-    for (final field in PostField.values)
-      field: ?selector.matchField(post, field),
-  };
+  /// Sends [labeled] and [excluded] as all marks of the editor, and applies
+  /// them with what the selectors generated from them find once the server
+  /// accepts them. If the request fails, the previous marks stay.
+  Future<void> _updateMarks(
+    Map<Node, LabeledPost> labeled,
+    Set<String> excluded,
+  ) async {
+    final messenger = ScaffoldMessenger.of(context);
+    setState(() => _pending = true);
+    try {
+      final state = await _repository.updateMarks(
+        widget.feedId,
+        widget.editor,
+        labeled.values,
+        excluded,
+      );
+      if (mounted) {
+        setState(() {
+          _labeled = labeled;
+          _excluded = excluded;
+          _state = state;
+          _selected = null;
+        });
+      }
+    } on DomainError catch (error) {
+      if (error is GoneError || error is NotFoundError) {
+        await _showExpired();
+      } else {
+        messenger.showSnackBar(SnackBar(content: Text(describeError(error))));
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _pending = false);
+      }
+    }
+  }
 
   /// Opens the screen that labels the fields of [post], and marks [post] as a
   /// post with them, or does nothing if the user left without finishing.
@@ -210,57 +298,46 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     if (labeled == null || !mounted) {
       return;
     }
-    setState(() {
-      _labeled[post] = (node: post, fields: labeled);
-      _excluded.remove(hostPathOf(labeled[PostField.link]!.link!));
-      _update();
-      _selected = null;
-    });
+    await _updateMarks({
+      ..._labeled,
+      post: (node: post, fields: labeled),
+    }, {..._excluded}..remove(hostPathOf(labeled[PostField.link]!.link!)));
   }
 
-  /// Marks the link of [post] as not a post, which also unmarks the posts that
-  /// the user marked, or that the saved selectors found, with the same host and
-  /// path.
+  /// Marks the link of [post] as not a post, which also unmarks the marked
+  /// posts with the same host and path.
   void _markAsNotPost(Node post) {
     final hostPath = hostPathOf(
-      _marks.posts[post]!.matchField(post, PostField.link)!.link!,
+      _state.matchedPosts[post]!.fields[PostField.link]!.link!,
     );
-    bool hasHostPath(Node _, LabeledPost p) =>
-        hostPathOf(p.fields[PostField.link]!.link!) == hostPath;
-    setState(() {
-      _excluded.add(hostPath);
-      _labeled.removeWhere(hasHostPath);
-      _found.removeWhere(hasHostPath);
-      _update();
-      _selected = null;
-    });
+    unawaited(
+      _updateMarks(
+        {
+          for (final MapEntry(:key, :value) in _labeled.entries)
+            if (hostPathOf(value.fields[PostField.link]!.link!) != hostPath)
+              key: value,
+        },
+        {..._excluded, hostPath},
+      ),
+    );
   }
 
+  /// Restores the posts that the excluded link [hostPath] excludes.
   void _restore(String hostPath) {
-    setState(() {
-      _excluded.remove(hostPath);
-      _update();
-      _selected = null;
-    });
+    unawaited(_updateMarks(_labeled, {..._excluded}..remove(hostPath)));
   }
 
   void _clearMark(Node post) {
-    setState(() {
-      _labeled.remove(post);
-      _update();
-      _selected = null;
-    });
+    unawaited(_updateMarks({..._labeled}..remove(post), _excluded));
   }
 
   Future<void> _save() async {
     final messenger = ScaffoldMessenger.of(context);
     final router = GoRouter.of(context);
-    setState(() => _saving = true);
+    setState(() => _pending = true);
     try {
-      await ref
-          .read(selectorRepositoryProvider)
-          .save(widget.feedId, _selectors);
-      ref.invalidate(feedSelectorsProvider(widget.feedId));
+      await _repository.commit(widget.feedId, widget.editor.id);
+      await _repository.storeEditorId(widget.feedId, null);
       messenger.showSnackBar(
         const SnackBar(
           key: AppDebugKey.saveSelectorsSuccessSnackBar,
@@ -269,11 +346,85 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       );
       router.pop();
     } on DomainError catch (error) {
-      messenger.showSnackBar(SnackBar(content: Text(describeError(error))));
+      if (error is GoneError || error is NotFoundError) {
+        await _showExpired();
+      } else {
+        messenger.showSnackBar(SnackBar(content: Text(describeError(error))));
+      }
     } finally {
       if (mounted) {
-        setState(() => _saving = false);
+        setState(() => _pending = false);
       }
+    }
+  }
+
+  /// Tells the user that the editor expired, and leaves the screen. The server
+  /// keeps an expired editor until a periodic job deletes it, so a missing
+  /// editor is one that expired too.
+  Future<void> _showExpired() async {
+    await _repository.storeEditorId(widget.feedId, null);
+    if (!mounted) {
+      return;
+    }
+    await showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        key: AppDebugKey.selectorEditorExpiredDialog,
+        title: const Text('The editor expired'),
+        content: const Text(
+          'The page may have changed since you opened the editor. Open it '
+          'again to mark the posts.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+    if (mounted) {
+      context.pop();
+    }
+  }
+
+  /// Closes the sheet on back, and asks before leaving the editor without
+  /// saving.
+  Future<void> _onBack() async {
+    if (_selected != null) {
+      _select(null);
+      return;
+    }
+    final leave = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Leave without saving?'),
+        content: const Text(
+          'The changes to the posts of this page will be lost.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Leave'),
+          ),
+        ],
+      ),
+    );
+    if (!(leave ?? false) || !mounted) {
+      return;
+    }
+    // The server deletes the editor once it expires, if this request does
+    // not reach it.
+    unawaited(
+      _repository.close(widget.feedId, widget.editor.id).catchError((_) {}),
+    );
+    await _repository.storeEditorId(widget.feedId, null);
+    if (mounted) {
+      context.pop();
     }
   }
 
@@ -287,11 +438,8 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
           expand: false,
           initialChildSize: 0.8,
           maxChildSize: 0.95,
-          builder: (context, controller) => _Preview(
-            page: _page,
-            selectors: _selectors,
-            scrollController: controller,
-          ),
+          builder: (context, controller) =>
+              _Preview(posts: _state.preview, scrollController: controller),
         ),
       ),
     );
@@ -299,13 +447,13 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
 
   @override
   Widget build(BuildContext context) {
-    final marks = _marks;
+    final matched = _state.matchedPosts;
     final selected = _selected;
     // The lines of a post are replaced by its card. They are next to each
     // other, since the lines are in document order.
     final items = <Node>[];
     for (final line in _lines) {
-      final post = marks.postOf(line);
+      final post = _postOf(line);
       if (post == null) {
         items.add(line);
       } else if (items.isEmpty || !identical(items.last, post)) {
@@ -313,107 +461,125 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       }
     }
     final areas = <PageArea>[
-      for (final node in marks.excluded.keys)
+      for (final node in _state.excludedPosts.keys)
         (node: node, color: colorTextMuted, linkOnly: false),
       if (selected != null) selectionArea(selected),
     ];
 
-    return Scaffold(
-      key: AppDebugKey.pageAnnotationScreen,
-      appBar: AppBar(
-        title: Text(
-          _page.title.isEmpty ? _page.url : _page.title,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+    // Going back asks first, since it ends the editor without saving.
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) {
+          unawaited(_onBack());
+        }
+      },
+      child: Scaffold(
+        key: AppDebugKey.pageAnnotationScreen,
+        appBar: AppBar(
+          title: Text(
+            _page.title.isEmpty ? _page.url : _page.title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          actions: [
+            TextButton(
+              key: AppDebugKey.saveSelectorsButton,
+              onPressed: matched.isEmpty || _pending
+                  ? null
+                  : () => unawaited(_save()),
+              child: const Text('Save'),
+            ),
+          ],
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(4),
+            child: _pending
+                ? const LinearProgressIndicator()
+                : const SizedBox.shrink(),
+          ),
         ),
-        actions: [
-          TextButton(
-            key: AppDebugKey.saveSelectorsButton,
-            onPressed: _selectors.isEmpty || _saving
-                ? null
-                : () => unawaited(_save()),
-            child: const Text('Save'),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: spacingSm),
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                final line = items[index];
-                if (marks.posts[line] case final selector?) {
-                  return _PostCard(
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: spacingSm),
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  final line = items[index];
+                  if (matched[line] case final post?) {
+                    return _PostCard(
+                      key: ObjectKey(line),
+                      values: post.values,
+                      isMarked: _labeled.containsKey(line),
+                      isSelected: selected?.includes(line) ?? false,
+                      onTap: () => _select(line, tapped: line),
+                    );
+                  }
+                  return PageLine(
                     key: ObjectKey(line),
-                    values: {
-                      for (final field in PostField.values)
-                        if (selector.matchField(line, field) case final node?)
-                          field: ?field.valueOf(node),
+                    node: line,
+                    areas: areas,
+                    onTap: (line) {
+                      // A tap on a line selects the narrowest element around
+                      // it that can be a post, or the post that contains it.
+                      final element = _selectableElement(line);
+                      if (element != null) {
+                        final target = _enclosingPost(element) ?? element;
+                        _select(target, tapped: target);
+                      }
                     },
-                    isMarked: _labeled.containsKey(line),
-                    isSelected: selected?.includes(line) ?? false,
-                    onTap: () => _select(line, tapped: line),
                   );
-                }
-                return PageLine(
-                  key: ObjectKey(line),
-                  node: line,
-                  areas: areas,
-                  onTap: (line) {
-                    // A tap on a line selects the narrowest element around it
-                    // that can be a post, or the post that contains it.
-                    final element = _selectableElement(line);
-                    if (element != null) {
-                      final target = marks.enclosingPost(element) ?? element;
-                      _select(target, tapped: target);
-                    }
-                  },
-                );
-              },
+                },
+              ),
             ),
-          ),
-          if (selected != null)
-            SelectionSheet(child: _buildSheet(selected))
-          else if (_selectors.isNotEmpty)
-            _StatusFooter(
-              postCount: marks.posts.length,
-              onPreview: _showPreview,
-            ),
-        ],
+            if (selected != null)
+              SelectionSheet(child: _buildSheet(selected))
+            else if (matched.isNotEmpty)
+              _StatusFooter(postCount: matched.length, onPreview: _showPreview),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildSheet(Node selected) {
-    final selector = _marks.posts[selected];
-    final excluded = _marks.excluded[selected];
-    final rejection = selector == null && excluded == null
+    final post = _state.matchedPosts[selected];
+    final excluded = _state.excludedPosts[selected];
+    final rejection = post == null && excluded == null
         ? _postRejection(selected)
         : null;
+    // The marks cannot change while a request is in flight.
+    VoidCallback? unlessPending(VoidCallback? action) =>
+        _pending ? null : action;
     return _SelectionSheet(
       selected: selected,
       levels: selectionLevels(_tapped ?? selected),
       onSelect: _select,
-      isPost: selector != null,
+      isPost: post != null,
       isMarked: _labeled.containsKey(selected),
       isExcluded: excluded != null,
       rejection: rejection,
       onCancel: () => _select(null),
-      onMarkAsPost: () =>
-          unawaited(_markAsPost(selected, evidentFields(selected))),
-      onEditFields: selector == null
-          ? null
-          : () => unawaited(
-              _markAsPost(
-                selected,
-                _labeled[selected]?.fields ?? _fieldsOf(selector, selected),
+      onMarkAsPost: unlessPending(
+        () => unawaited(_markAsPost(selected, evidentFields(selected))),
+      ),
+      onEditFields: unlessPending(
+        post == null
+            ? null
+            : () => unawaited(
+                _markAsPost(
+                  selected,
+                  _labeled[selected]?.fields ?? post.fields,
+                ),
               ),
-            ),
-      onNotPost: selector == null ? null : () => _markAsNotPost(selected),
-      onClearMark: () => _clearMark(selected),
-      onRestore: excluded == null ? null : () => _restore(excluded),
+      ),
+      onNotPost: unlessPending(
+        post == null ? null : () => _markAsNotPost(selected),
+      ),
+      onClearMark: unlessPending(() => _clearMark(selected)),
+      onRestore: unlessPending(
+        excluded == null ? null : () => _restore(excluded),
+      ),
     );
   }
 }
@@ -466,10 +632,10 @@ class const _SelectionSheet({
   required final List<Node> levels,
   required final void Function(Node node) onSelect,
   required final VoidCallback onCancel,
-  required final VoidCallback onMarkAsPost,
+  required final VoidCallback? onMarkAsPost,
   required final VoidCallback? onEditFields,
   required final VoidCallback? onNotPost,
-  required final VoidCallback onClearMark,
+  required final VoidCallback? onClearMark,
   required final VoidCallback? onRestore,
 }) extends StatelessWidget {
   @override
@@ -525,6 +691,7 @@ class const _SelectionSheet({
                   itemBuilder: (context) => [
                     PopupMenuItem(
                       value: onClearMark,
+                      enabled: onClearMark != null,
                       child: const Text('Clear mark'),
                     ),
                   ],
@@ -687,13 +854,11 @@ class const _Thumbnail({required final String url, required final double size})
 
 /// The posts extracted with the current selectors, merged by link.
 class const _Preview({
-  required final SimplifiedPage page,
-  required final List<PostSelector> selectors,
+  required final List<Map<PostField, String>> posts,
   required final ScrollController scrollController,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final posts = extractPosts(page, selectors);
     return ListView(
       controller: scrollController,
       // The cards have their own side padding.
@@ -704,7 +869,7 @@ class const _Preview({
           child: HeadingText('${posts.length} post(s)'),
         ),
         const Gap(spacingSm),
-        for (final post in posts) _PostCard(values: post.values),
+        for (final post in posts) _PostCard(values: post),
       ],
     );
   }

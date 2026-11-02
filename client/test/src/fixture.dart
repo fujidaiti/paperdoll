@@ -193,23 +193,25 @@ class _ReadingList {
 
 final _pages = _Pages();
 
-/// The pages and selectors in `GET /feeds/{id}/selector`. The selectors are
-/// written as JSON, since the generated models write an empty list for each
-/// field that is not labeled, which would label it at the post node.
+/// The simplified pages and the selector editors of the selector editor
+/// endpoints (`/feeds/{id}/selector-editors`). The editors are written as JSON
+/// as the server sends them, since the generated models write null for each
+/// field that a post does not have.
 class _Pages {
-  /// A simplified page (see SimplifyPage in server/feature/feed/simplify.go),
-  /// which has no whitespace between its nodes.
+  /// A simplified page with node IDs (see withNodeIDs in
+  /// server/feature/feed/selector_editor.go), which has no whitespace between
+  /// its nodes.
   final exampleBlog = [
     '<!DOCTYPE html><html><head><title>Example Blog</title>',
     '<link rel="canonical" href="https://blog.example.com/"/></head>',
-    '<body>',
-    '<article class="post">',
-    '<h2 href="https://blog.example.com/first">First post</h2>',
-    '<p>The first post.</p>',
+    '<body data-id="0">',
+    '<article class="post" data-id="1">',
+    '<h2 href="https://blog.example.com/first" data-id="2">First post</h2>',
+    '<p data-id="3">The first post.</p>',
     '</article>',
-    '<article class="post">',
-    '<h2 href="https://blog.example.com/second">Second post</h2>',
-    '<p>The second post.</p>',
+    '<article class="post" data-id="4">',
+    '<h2 href="https://blog.example.com/second" data-id="5">Second post</h2>',
+    '<p data-id="6">The second post.</p>',
     '</article>',
     '</body></html>',
   ].join();
@@ -219,39 +221,186 @@ class _Pages {
   final exampleBlogWithNewsletters = [
     '<!DOCTYPE html><html><head><title>Example Blog</title>',
     '<link rel="canonical" href="https://blog.example.com/"/></head>',
-    '<body>',
-    '<article class="post">',
-    '<h2 href="https://blog.example.com/first">First post</h2>',
-    '<p>Read First post.</p>',
+    '<body data-id="0">',
+    '<article class="post" data-id="1">',
+    '<h2 href="https://blog.example.com/first" data-id="2">First post</h2>',
+    '<p data-id="3">Read First post.</p>',
     '</article>',
-    '<article class="post">',
-    '<h2 href="https://blog.example.com/newsletters?weekly">',
+    '<article class="post" data-id="4">',
+    '<h2 href="https://blog.example.com/newsletters?weekly" data-id="5">',
     'Weekly digest</h2>',
-    '<p>Read Weekly digest.</p>',
+    '<p data-id="6">Read Weekly digest.</p>',
     '</article>',
-    '<article class="post">',
-    '<h2 href="https://blog.example.com/newsletters?monthly">',
+    '<article class="post" data-id="7">',
+    '<h2 href="https://blog.example.com/newsletters?monthly" data-id="8">',
     'Monthly digest</h2>',
-    '<p>Read Monthly digest.</p>',
+    '<p data-id="9">Read Monthly digest.</p>',
     '</article>',
     '</body></html>',
   ].join();
 
-  /// A selector of the posts in [exampleBlog].
-  final exampleBlogSelector = <String, Object?>{
-    'post': [
+  /// A new editor of [exampleBlog] for a feed without saved selectors.
+  late final exampleBlogEditor = <String, Object?>{
+    'id': 42,
+    'expires_at': '2026-07-03T13:30:00Z',
+    'page': exampleBlog,
+    'labeled_posts': <Object?>[],
+    'excluded_links': <Object?>[],
+    'matched_posts': <Object?>[],
+    'excluded_posts': <Object?>[],
+    'preview': <Object?>[],
+  };
+
+  /// What the selectors find in [exampleBlog] after the heading of the first
+  /// post is marked as a post with itself as the title and the link: the
+  /// headings of both posts.
+  final exampleBlogHeadingsFound = <String, Object?>{
+    'matched_posts': [
       {
-        'tag': 'article',
-        'cls': ['post'],
+        'box': 2,
+        'title': 2,
+        'link': 2,
+        'values': {
+          'title': 'First post',
+          'link': 'https://blog.example.com/first',
+        },
+      },
+      {
+        'box': 5,
+        'title': 5,
+        'link': 5,
+        'values': {
+          'title': 'Second post',
+          'link': 'https://blog.example.com/second',
+        },
       },
     ],
-    'fields': {
-      'title': [
-        {'tag': 'h2'},
-      ],
-      'link': [
-        {'tag': 'h2'},
-      ],
-    },
+    'excluded_posts': <Object?>[],
+    'preview': [
+      {'title': 'First post', 'link': 'https://blog.example.com/first'},
+      {'title': 'Second post', 'link': 'https://blog.example.com/second'},
+    ],
+  };
+
+  /// A new editor of [exampleBlog] for a feed whose saved selectors find both
+  /// posts, which start as labeled.
+  late final exampleBlogSavedEditor = <String, Object?>{
+    'id': 42,
+    'expires_at': '2026-07-03T13:30:00Z',
+    'page': exampleBlog,
+    'labeled_posts': [
+      {'box': 1, 'title': 2, 'link': 2},
+      {'box': 4, 'title': 5, 'link': 5},
+    ],
+    'excluded_links': <Object?>[],
+    'matched_posts': [
+      {
+        'box': 1,
+        'title': 2,
+        'link': 2,
+        'values': {
+          'title': 'First post',
+          'link': 'https://blog.example.com/first',
+        },
+      },
+      {
+        'box': 4,
+        'title': 5,
+        'link': 5,
+        'values': {
+          'title': 'Second post',
+          'link': 'https://blog.example.com/second',
+        },
+      },
+    ],
+    'excluded_posts': <Object?>[],
+    'preview': [
+      {'title': 'First post', 'link': 'https://blog.example.com/first'},
+      {'title': 'Second post', 'link': 'https://blog.example.com/second'},
+    ],
+  };
+
+  /// What the selectors find in [exampleBlogWithNewsletters] when the first
+  /// post is labeled and no link is excluded: all three posts.
+  final exampleBlogWithNewslettersAllFound = <String, Object?>{
+    'matched_posts': [
+      {
+        'box': 1,
+        'title': 2,
+        'link': 2,
+        'values': {
+          'title': 'First post',
+          'link': 'https://blog.example.com/first',
+        },
+      },
+      {
+        'box': 4,
+        'title': 5,
+        'link': 5,
+        'values': {
+          'title': 'Weekly digest',
+          'link': 'https://blog.example.com/newsletters?weekly',
+        },
+      },
+      {
+        'box': 7,
+        'title': 8,
+        'link': 8,
+        'values': {
+          'title': 'Monthly digest',
+          'link': 'https://blog.example.com/newsletters?monthly',
+        },
+      },
+    ],
+    'excluded_posts': <Object?>[],
+    'preview': [
+      {'title': 'First post', 'link': 'https://blog.example.com/first'},
+      {
+        'title': 'Weekly digest',
+        'link': 'https://blog.example.com/newsletters?weekly',
+      },
+      {
+        'title': 'Monthly digest',
+        'link': 'https://blog.example.com/newsletters?monthly',
+      },
+    ],
+  };
+
+  /// What the selectors find in [exampleBlogWithNewsletters] when the first
+  /// post is labeled and the link of the newsletters is excluded.
+  final exampleBlogWithNewslettersExcluded = <String, Object?>{
+    'matched_posts': [
+      {
+        'box': 1,
+        'title': 2,
+        'link': 2,
+        'values': {
+          'title': 'First post',
+          'link': 'https://blog.example.com/first',
+        },
+      },
+    ],
+    'excluded_posts': [
+      {'box': 4, 'link': 'blog.example.com/newsletters'},
+      {'box': 7, 'link': 'blog.example.com/newsletters'},
+    ],
+    'preview': [
+      {'title': 'First post', 'link': 'https://blog.example.com/first'},
+    ],
+  };
+
+  /// A new editor of [exampleBlogWithNewsletters] for a feed whose saved
+  /// selectors find all three posts, which start as labeled.
+  late final exampleBlogWithNewslettersEditor = <String, Object?>{
+    'id': 42,
+    'expires_at': '2026-07-03T13:30:00Z',
+    'page': exampleBlogWithNewsletters,
+    'labeled_posts': [
+      {'box': 1, 'title': 2, 'link': 2},
+      {'box': 4, 'title': 5, 'link': 5},
+      {'box': 7, 'title': 8, 'link': 8},
+    ],
+    'excluded_links': <Object?>[],
+    ...exampleBlogWithNewslettersAllFound,
   };
 }

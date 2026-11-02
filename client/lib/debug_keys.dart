@@ -52,6 +52,7 @@ abstract final class AppDebugKey {
     'saveToReadingListSuccessSnackBar',
   );
   static const saveSelectorsButton = Key('saveSelectorsButton');
+  static const selectorEditorExpiredDialog = Key('selectorEditorExpiredDialog');
   static const saveSelectorsSuccessSnackBar = Key(
     'saveSelectorsSuccessSnackBar',
   );
