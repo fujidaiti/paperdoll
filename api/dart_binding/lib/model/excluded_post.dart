@@ -10,38 +10,42 @@
 
 part of openapi.api;
 
-class SaveFeedSelectorsRequest {
-  /// Returns a new [SaveFeedSelectorsRequest] instance.
-  SaveFeedSelectorsRequest({
-    this.selectors = const [],
+class ExcludedPost {
+  /// Returns a new [ExcludedPost] instance.
+  ExcludedPost({
+    required this.box,
+    required this.link,
   });
 
-  List<PostSelector> selectors;
+  int box;
+
+  /// The excluded link that excludes the post.
+  String link;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SaveFeedSelectorsRequest &&
-          _deepEquality.equals(other.selectors, selectors);
+      other is ExcludedPost && other.box == box && other.link == link;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (selectors.hashCode);
+      (box.hashCode) + (link.hashCode);
 
   @override
-  String toString() => 'SaveFeedSelectorsRequest[selectors=$selectors]';
+  String toString() => 'ExcludedPost[box=$box, link=$link]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'selectors'] = this.selectors;
+    json[r'box'] = this.box;
+    json[r'link'] = this.link;
     return json;
   }
 
-  /// Returns a new [SaveFeedSelectorsRequest] instance and imports its values from
+  /// Returns a new [ExcludedPost] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static SaveFeedSelectorsRequest? fromJson(dynamic value) {
+  static ExcludedPost? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -49,28 +53,33 @@ class SaveFeedSelectorsRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        assert(json.containsKey(r'selectors'),
-            'Required key "SaveFeedSelectorsRequest[selectors]" is missing from JSON.');
-        assert(json[r'selectors'] != null,
-            'Required key "SaveFeedSelectorsRequest[selectors]" has a null value in JSON.');
+        assert(json.containsKey(r'box'),
+            'Required key "ExcludedPost[box]" is missing from JSON.');
+        assert(json[r'box'] != null,
+            'Required key "ExcludedPost[box]" has a null value in JSON.');
+        assert(json.containsKey(r'link'),
+            'Required key "ExcludedPost[link]" is missing from JSON.');
+        assert(json[r'link'] != null,
+            'Required key "ExcludedPost[link]" has a null value in JSON.');
         return true;
       }());
 
-      return SaveFeedSelectorsRequest(
-        selectors: PostSelector.listFromJson(json[r'selectors']),
+      return ExcludedPost(
+        box: mapValueOfType<int>(json, r'box')!,
+        link: mapValueOfType<String>(json, r'link')!,
       );
     }
     return null;
   }
 
-  static List<SaveFeedSelectorsRequest> listFromJson(
+  static List<ExcludedPost> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <SaveFeedSelectorsRequest>[];
+    final result = <ExcludedPost>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = SaveFeedSelectorsRequest.fromJson(row);
+        final value = ExcludedPost.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -79,12 +88,12 @@ class SaveFeedSelectorsRequest {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SaveFeedSelectorsRequest> mapFromJson(dynamic json) {
-    final map = <String, SaveFeedSelectorsRequest>{};
+  static Map<String, ExcludedPost> mapFromJson(dynamic json) {
+    final map = <String, ExcludedPost>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SaveFeedSelectorsRequest.fromJson(entry.value);
+        final value = ExcludedPost.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -93,17 +102,17 @@ class SaveFeedSelectorsRequest {
     return map;
   }
 
-  // maps a json object with a list of SaveFeedSelectorsRequest-objects as value to a dart map
-  static Map<String, List<SaveFeedSelectorsRequest>> mapListFromJson(
+  // maps a json object with a list of ExcludedPost-objects as value to a dart map
+  static Map<String, List<ExcludedPost>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<SaveFeedSelectorsRequest>>{};
+    final map = <String, List<ExcludedPost>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SaveFeedSelectorsRequest.listFromJson(
+        map[entry.key] = ExcludedPost.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -114,6 +123,7 @@ class SaveFeedSelectorsRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'selectors',
+    'box',
+    'link',
   };
 }

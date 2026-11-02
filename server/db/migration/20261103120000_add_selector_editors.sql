@@ -1,0 +1,29 @@
+-- +goose Up
+-- A temporary editor in which a user edits the post selectors of an
+-- unstructured feed (see feed.SelectorEditor).
+CREATE TABLE selector_editors (
+    id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id int NOT NULL REFERENCES users (id),
+    feed_id bigint NOT NULL REFERENCES feeds (id),
+    -- The simplified page with a data-id on each element.
+    simplified_page text NOT NULL,
+    -- The labeled posts, as a JSON array of
+    -- {"box": id, "title": id, "link": id, ...}. They start as the posts that
+    -- the saved selectors find.
+    labeled_posts json NOT NULL,
+    -- The host and path of each excluded link.
+    excluded_links text[] NOT NULL,
+    -- The selectors generated from the labeled posts and the excluded links,
+    -- as a JSON array of feed.PostSelector.
+    selectors json NOT NULL,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    expires_at timestamptz NOT NULL
+);
+
+CREATE INDEX idx_selector_editors_expires_at ON selector_editors (expires_at);
+
+ALTER TABLE feeds ALTER COLUMN selectors TYPE json USING selectors::json;
+
+-- +goose Down
+ALTER TABLE feeds ALTER COLUMN selectors TYPE text;
+DROP TABLE selector_editors;

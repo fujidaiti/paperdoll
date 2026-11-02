@@ -177,71 +177,145 @@ SignUpTicket:
         code. Valid for 10 minutes.
       type: string
 
-PostSelector:
+SelectorEditor:
   description:
-    A rule that finds the posts of one kind in a page and extracts their fields.
-    See PostSelector in `server/feature/feed/post_selector.go`.
+    A temporary editor of the post selectors of an unstructured feed. See
+    SelectorEditor in `server/feature/feed/selector_editor.go`.
   type: object
-  required: [post, fields]
+  required:
+    [
+      id,
+      expires_at,
+      page,
+      labeled_posts,
+      excluded_links,
+      matched_posts,
+      excluded_posts,
+      preview,
+    ]
   properties:
-    post:
-      description: The path of steps from the root to the post nodes.
-      type: array
-      items:
-        $ref: "#/Step"
-    fields:
-      description:
-        The paths of steps from a post node to each labeled field, tried in
-        order. The title and the link have one path each.
-      type: object
-      properties:
-        title:
-          type: array
-          items:
-            $ref: "#/Step"
-        body:
-          type: array
-          items:
-            type: array
-            items:
-              $ref: "#/Step"
-        link:
-          type: array
-          items:
-            $ref: "#/Step"
-        thumbnail:
-          type: array
-          items:
-            type: array
-            items:
-              $ref: "#/Step"
-        pubDate:
-          type: array
-          items:
-            type: array
-            items:
-              $ref: "#/Step"
-    exclude:
-      description:
-        Glob patterns of the links of nodes that are not posts. It is left out
-        when there are none.
-      type: array
-      items:
-        type: string
-
-Step:
-  description:
-    Selects nodes by their tag and classes, as a step of a CSS descendant
-    selector does. A step without a tag selects plain texts.
-  type: object
-  properties:
-    tag:
-      type: string
-    cls:
-      type: array
-      items:
-        type: string
-    nth:
-      description:
-        The zero-based index in document order of the only selected node.
+    id:
       type: integer
+    expires_at:
+      type: string
+      format: date-time
+    page:
+      description:
+        The page simplified into an HTML document, with the node ID of each
+        element in its `data-id` attribute. The node ID of a node is its
+        position among the nodes of the page in document order, and a text takes
+        the ID of its position too. See SimplifyPage in
+        `server/feature/feed/simplify.go` for the format.
+      type: string
+    labeled_posts:
+      description:
+        The posts labeled so far. A new editor starts with the posts that the
+        saved selectors find.
+      type: array
+      items:
+        $ref: "#/LabeledPost"
+    excluded_links:
+      description:
+        The host and path of each excluded link. A new editor starts with the
+        ones of the saved selectors.
+      type: array
+      items:
+        type: string
+    matched_posts:
+      $ref: "#/SelectorEditorState/properties/matched_posts"
+    excluded_posts:
+      $ref: "#/SelectorEditorState/properties/excluded_posts"
+    preview:
+      $ref: "#/SelectorEditorState/properties/preview"
+
+SelectorEditorState:
+  description: What the selectors generated from the marks of an editor find.
+  type: object
+  required: [matched_posts, excluded_posts, preview]
+  properties:
+    matched_posts:
+      description: The posts that the selectors find, in document order.
+      type: array
+      items:
+        $ref: "#/MatchedPost"
+    excluded_posts:
+      description:
+        The nodes that would be posts if their links were not excluded, in
+        document order.
+      type: array
+      items:
+        $ref: "#/ExcludedPost"
+    preview:
+      description:
+        The posts extracted from the page, merged by link, as the polling job
+        will save them.
+      type: array
+      items:
+        $ref: "#/ExtractedPost"
+
+LabeledPost:
+  description:
+    A post by node IDs, the post node under `box` and the node of each labeled
+    field under the name of the field.
+  type: object
+  required: [box, title, link]
+  properties:
+    box:
+      type: integer
+    title:
+      type: integer
+    body:
+      type: integer
+    link:
+      type: integer
+    thumbnail:
+      type: integer
+    pubDate:
+      type: integer
+
+MatchedPost:
+  description:
+    A post that the selectors find, by node IDs as in LabeledPost, with the
+    value of each field that it has.
+  type: object
+  required: [box, title, link, values]
+  properties:
+    box:
+      type: integer
+    title:
+      type: integer
+    body:
+      type: integer
+    link:
+      type: integer
+    thumbnail:
+      type: integer
+    pubDate:
+      type: integer
+    values:
+      $ref: "#/ExtractedPost"
+
+ExcludedPost:
+  type: object
+  required: [box, link]
+  properties:
+    box:
+      type: integer
+    link:
+      description: The excluded link that excludes the post.
+      type: string
+
+ExtractedPost:
+  description: The value of each field of a post.
+  type: object
+  properties:
+    title:
+      type: string
+    body:
+      type: string
+    link:
+      type: string
+    thumbnail:
+      type: string
+    pubDate:
+      type: string

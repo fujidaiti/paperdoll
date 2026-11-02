@@ -81,6 +81,21 @@ func StartScheduler(ctx context.Context) {
 	}
 
 	_, err = scheduler.NewJob(
+		gocron.DurationJob(time.Hour),
+		gocron.NewTask(func() {
+			n, err := feed.DeleteExpiredSelectorEditors(ctx, db)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+			fmt.Printf("Deleted %d expired selector editors.\n", n)
+		}),
+	)
+	if err != nil {
+		panic(err)
+	}
+
+	_, err = scheduler.NewJob(
 		gocron.DurationJob(5*time.Minute),
 		gocron.NewTask(func() {
 			jobs, err := newspaper.CollectJobs(ctx, db, time.Now())

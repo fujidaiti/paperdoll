@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"strings"
 	"testing"
 
@@ -160,5 +161,60 @@ func readJSON(t *testing.T, path string, v any) {
 	}
 	if err := json.Unmarshal(data, v); err != nil {
 		t.Fatalf("%s: %v", path, err)
+	}
+}
+
+// TestLabelFoundPostsGolden checks that the selectors generated from the posts
+// that the golden selectors of each test page find (see labelFoundPosts) find
+// the same posts with the same values, as when a user starts an editor of the
+// feed and commits it without changes. A post that another selector also finds
+// is extracted anyway, so the post nodes are compared too.
+func TestLabelFoundPostsGolden(t *testing.T) {
+	files, err := filepath.Glob("testdata/selector/*.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, f := range files {
+		name := strings.TrimSuffix(filepath.Base(f), ".json")
+		t.Run(name, func(t *testing.T) {
+			var golden []PostSelector
+			readJSON(t, f, &golden)
+			raw, err := os.ReadFile(filepath.Join("testdata/simplified", name+".html"))
+			if err != nil {
+				t.Fatal(err)
+			}
+			doc, err := parseGoldenPage(raw)
+			if err != nil {
+				t.Fatal(err)
+			}
+			index := newPageIndex(pageBody(doc))
+			excluded := map[string]bool{}
+			for _, m := range golden {
+				for _, l := range m.Exclude {
+					excluded[l] = true
+				}
+			}
+
+			selectors := index.generateSelectors(index.labelFoundPosts(golden), excluded)
+
+			postNodes := func(selectors []PostSelector) []int {
+				var ids []int
+				for _, m := range selectors {
+					for _, n := range m.selectPosts(index.body) {
+						if !slices.Contains(ids, index.index[n]) {
+							ids = append(ids, index.index[n])
+						}
+					}
+				}
+				slices.Sort(ids)
+				return ids
+			}
+			if d := cmp.Diff(postNodes(golden), postNodes(selectors)); d != "" {
+				t.Errorf("post nodes differ (-golden +got):\n%s", d)
+			}
+			if d := cmp.Diff(ExtractPosts(doc, golden), ExtractPosts(doc, selectors)); d != "" {
+				t.Errorf("extracted posts differ (-golden +got):\n%s", d)
+			}
+		})
 	}
 }

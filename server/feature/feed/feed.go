@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"database/sql"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -254,75 +253,6 @@ func feedAttrs(u url.URL, raw *gofeed.Feed) FeedAttrs {
 }
 
 var (
-	ErrFeedNotFound     = errors.New("feed not found")
-	ErrNotUnstructured  = errors.New("feed is not unstructured")
-	ErrInvalidSelectors = errors.New("invalid selectors")
+	ErrFeedNotFound    = errors.New("feed not found")
+	ErrNotUnstructured = errors.New("feed is not unstructured")
 )
-
-// Selectors returns the simplified page of the unstructured feed id (see
-// SimplifyPage), on which its post selectors are edited, and the selectors
-// saved for it, which are empty when none are saved.
-func (s *Service) Selectors(ctx context.Context, id int) (string, string, error) {
-	var fu string
-	var selectors sql.NullString
-	var unstructured bool
-	err := s.DB.QueryRowContext(ctx, `
-		SELECT url, selectors, (url = site_url) IS TRUE FROM feeds WHERE id = $1;
-	`, id).Scan(&fu, &selectors, &unstructured)
-	if errors.Is(err, sql.ErrNoRows) {
-		return "", "", ErrFeedNotFound
-	} else if err != nil {
-		return "", "", err
-	}
-	if !unstructured {
-		return "", "", ErrNotUnstructured
-	}
-	u, err := url.Parse(fu)
-	if err != nil {
-		return "", "", err
-	}
-	raw, _, err := s.fetch(ctx, *u)
-	if err != nil {
-		return "", "", err
-	}
-	page, err := SimplifyPage(raw, fu)
-	if err != nil {
-		return "", "", err
-	}
-	return page, selectors.String, nil
-}
-
-// SaveSelectors replaces the post selectors of the unstructured feed id with
-// raw, a JSON array of PostSelector. The selectors are shared by all
-// subscribers, as the feed is, so any user can replace them.
-func (s *Service) SaveSelectors(ctx context.Context, id int, raw string) error {
-	var ms []PostSelector
-	if err := json.Unmarshal([]byte(raw), &ms); err != nil || len(ms) == 0 {
-		return ErrInvalidSelectors
-	}
-	for _, m := range ms {
-		if len(m.Post) == 0 {
-			return ErrInvalidSelectors
-		}
-	}
-	res, err := s.DB.ExecContext(ctx, `
-		UPDATE feeds SET selectors = $1 WHERE id = $2 AND url = site_url;
-	`, raw, id)
-	if err != nil {
-		return err
-	}
-	if n, err := res.RowsAffected(); err != nil {
-		return err
-	} else if n > 0 {
-		return nil
-	}
-	var exists bool
-	err = s.DB.QueryRowContext(ctx, `SELECT EXISTS (SELECT 1 FROM feeds WHERE id = $1);`, id).Scan(&exists)
-	if err != nil {
-		return err
-	}
-	if !exists {
-		return ErrFeedNotFound
-	}
-	return ErrNotUnstructured
-}

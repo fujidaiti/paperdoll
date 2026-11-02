@@ -270,14 +270,16 @@ timeline:
       "500":
         $ref: "../components/responses.yaml#/InternalServerError"
 
-selector:
-  get:
-    summary: Get the simplified page and post selectors of an unstructured feed
+selectorEditors:
+  post:
+    summary: Start a selector editor of an unstructured feed
     description:
-      Fetches the page of the feed and returns it as a simplified HTML document,
-      together with the saved post selectors. This is the entry point for
-      editing the selectors. Selectors are shared by all users, as feeds are.
-    operationId: getFeedSelectors
+      Fetches the page of the feed, simplifies it, and starts a temporary editor
+      of the post selectors of the feed for the calling user. The marks start
+      with the posts that the saved selectors find and the links that they
+      exclude. The editor expires 48 hours after it starts. Each call starts a
+      new editor.
+    operationId: startSelectorEditor
     tags: [Feeds]
     parameters:
       - name: id
@@ -286,37 +288,34 @@ selector:
         schema:
           type: integer
     responses:
-      "200":
-        description: OK
+      "201":
+        description: Created
         content:
           application/json:
             schema:
-              type: object
-              required: [page]
-              properties:
-                page:
-                  description:
-                    The page simplified into an HTML document, on which post
-                    selectors run. See SimplifyPage in
-                    `server/feature/feed/simplify.go` for the format.
-                  type: string
-                selectors:
-                  description: Absent when no selectors are saved.
-                  type: array
-                  items:
-                    $ref: "../components/schemas.yaml#/PostSelector"
+              $ref: "../components/schemas.yaml#/SelectorEditor"
             example:
+              id: 42
+              expires_at: "2026-11-04T10:00:00Z"
               page:
-                '<!DOCTYPE html><html><head><title>Example Blog</title><link
-                rel="canonical"
-                href="https://example.com/blog"/></head><body><article
-                class="post"><h2 href="https://example.com/blog/first">First
-                post</h2><p>The first post.</p></article></body></html>'
-              selectors:
-                - post: [{ tag: "article", cls: ["post"] }]
-                  fields:
-                    title: [{ tag: "h2" }]
-                    link: [{ tag: "h2" }]
+                '<!DOCTYPE html><html><head><title>Example
+                Blog</title></head><body data-id="0"><article data-id="1"
+                class="post"><h2 data-id="2"
+                href="https://blog.example.com/first">First
+                post</h2></article></body></html>'
+              labeled_posts: [{ box: 1, title: 2, link: 2 }]
+              excluded_links: []
+              matched_posts:
+                - box: 1
+                  title: 2
+                  link: 2
+                  values:
+                    title: "First post"
+                    link: "https://blog.example.com/first"
+              excluded_posts: []
+              preview:
+                - title: "First post"
+                  link: "https://blog.example.com/first"
       "400":
         $ref: "../components/responses.yaml#/BadRequest"
       "404":
@@ -327,38 +326,113 @@ selector:
         $ref: "../components/responses.yaml#/InternalServerError"
       "502":
         $ref: "../components/responses.yaml#/BadGateway"
-  put:
-    summary: Save the post selectors of an unstructured feed
+
+selectorEditor:
+  get:
+    summary: Resume a selector editor
     description:
-      Replaces the post selectors of the feed. Fails with 409 if the feed is not
-      an unstructured feed.
-    operationId: saveFeedSelectors
+      Returns a selector editor of the calling user with its stored marks, as
+      the start does for a new editor. The page is not fetched again, and the
+      expiry is not extended.
+    operationId: resumeSelectorEditor
     tags: [Feeds]
     parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+      - $ref: "#/parameters/feedId"
+      - $ref: "#/parameters/editorId"
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "../components/schemas.yaml#/SelectorEditor"
+      "400":
+        $ref: "../components/responses.yaml#/BadRequest"
+      "404":
+        $ref: "../components/responses.yaml#/NotFound"
+      "410":
+        $ref: "../components/responses.yaml#/Gone"
+      "500":
+        $ref: "../components/responses.yaml#/InternalServerError"
+  delete:
+    summary: Close a selector editor
+    description:
+      Deletes a selector editor of the calling user without saving its
+      selectors.
+    operationId: closeSelectorEditor
+    tags: [Feeds]
+    parameters:
+      - $ref: "#/parameters/feedId"
+      - $ref: "#/parameters/editorId"
+    responses:
+      "204":
+        description: No Content
+      "400":
+        $ref: "../components/responses.yaml#/BadRequest"
+      "404":
+        $ref: "../components/responses.yaml#/NotFound"
+      "500":
+        $ref: "../components/responses.yaml#/InternalServerError"
+
+selectorEditorMarks:
+  put:
+    summary: Replace the marks of a selector editor
+    description:
+      Replaces all marks of the editor, generates the selectors again from them,
+      and returns what the selectors find.
+    operationId: updateSelectorEditorMarks
+    tags: [Feeds]
+    parameters:
+      - $ref: "#/parameters/feedId"
+      - $ref: "#/parameters/editorId"
     requestBody:
       required: true
       content:
         application/json:
           schema:
             type: object
-            required: [selectors]
+            required: [labeled_posts, excluded_links]
             properties:
-              selectors:
+              labeled_posts:
                 type: array
-                minItems: 1
                 items:
-                  $ref: "../components/schemas.yaml#/PostSelector"
+                  $ref: "../components/schemas.yaml#/LabeledPost"
+              excluded_links:
+                description: The host and path of each excluded link.
+                type: array
+                items:
+                  type: string
           example:
-            selectors:
-              - post: [{ tag: "article", cls: ["post"] }]
-                fields:
-                  title: [{ tag: "h2" }]
-                  link: [{ tag: "h2" }]
+            labeled_posts: [{ box: 1, title: 2, link: 2 }]
+            excluded_links: ["blog.example.com/newsletters"]
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "../components/schemas.yaml#/SelectorEditorState"
+      "400":
+        $ref: "../components/responses.yaml#/BadRequest"
+      "404":
+        $ref: "../components/responses.yaml#/NotFound"
+      "410":
+        $ref: "../components/responses.yaml#/Gone"
+      "500":
+        $ref: "../components/responses.yaml#/InternalServerError"
+
+selectorEditorCommit:
+  post:
+    summary: Commit a selector editor
+    description:
+      Saves the selectors of the editor to the feed, replacing the saved ones,
+      and deletes the editor. Selectors are shared by all users, as feeds are,
+      and the last commit wins. Fails with 409 if the editor has no selectors.
+    operationId: commitSelectorEditor
+    tags: [Feeds]
+    parameters:
+      - $ref: "#/parameters/feedId"
+      - $ref: "#/parameters/editorId"
     responses:
       "204":
         description: No Content
@@ -368,5 +442,21 @@ selector:
         $ref: "../components/responses.yaml#/NotFound"
       "409":
         $ref: "../components/responses.yaml#/Conflict"
+      "410":
+        $ref: "../components/responses.yaml#/Gone"
       "500":
         $ref: "../components/responses.yaml#/InternalServerError"
+
+parameters:
+  feedId:
+    name: id
+    in: path
+    required: true
+    schema:
+      type: integer
+  editorId:
+    name: eid
+    in: path
+    required: true
+    schema:
+      type: integer

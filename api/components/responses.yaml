@@ -34,6 +34,15 @@ Conflict:
       example:
         message: "Email already exists"
 
+Gone:
+  description: Gone
+  content:
+    application/json:
+      schema:
+        $ref: "./schemas.yaml#/Error"
+      example:
+        message: "The selector editor expired"
+
 InternalServerError:
   description: Internal server error
   content:

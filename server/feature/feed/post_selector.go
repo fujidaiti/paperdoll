@@ -158,8 +158,9 @@ func (s Step) matches(n *html.Node) bool {
 }
 
 // PostSelector is a rule that finds the posts of one kind in a page and
-// extracts their fields. The client builds selectors when the user annotates
-// a page, and the server runs them on each fetch of the page.
+// extracts their fields. A selector editor generates selectors from the posts
+// that the user labels on a page (see SelectorEditor), and the server runs
+// them on each fetch of the page.
 //
 // Post is the path of steps to the post nodes: the first step selects
 // descendants of the root, and each later step selects children of the nodes
@@ -169,7 +170,7 @@ func (s Step) matches(n *html.Node) bool {
 // Thumbnail and PubDate are nil when the posts have none. A node that Post
 // selects is a post only when its title and link are found (see hasFields),
 // when its link matches none of the patterns in Exclude, and when it contains
-// no other such node (see selectPosts).
+// no other such node (see candidates).
 type PostSelector struct {
 	Post      []Step
 	Title     []Step
@@ -294,22 +295,28 @@ func selectNodes(start *html.Node, path []Step, children bool) []*html.Node {
 }
 
 // selectPosts returns the post nodes that m finds in body, the body of a
-// simplified page. A node that
-// contains another node that Post selects and that has the title and the link
-// is left out, since it is a list of posts rather than a post. Other nodes
-// that Post selects inside a post, such as a footer with the same classes, do
-// not matter.
+// simplified page: the candidates (see candidates) whose links match none of
+// the patterns in Exclude.
 func (m *PostSelector) selectPosts(body *html.Node) []*html.Node {
+	exclude := m.compileExclude()
+	return slices.DeleteFunc(m.candidates(body), func(n *html.Node) bool {
+		_, excluded := m.excludedBy(n, exclude)
+		return excluded
+	})
+}
+
+// candidates returns the nodes in body that Post selects and that have the
+// title and the link, including the ones whose links are excluded. A node that
+// contains another such node is left out, since it is a list of posts rather
+// than a post. Other nodes that Post selects inside a post, such as a footer
+// with the same classes, do not matter.
+func (m *PostSelector) candidates(body *html.Node) []*html.Node {
 	if len(m.Post) == 0 {
 		return nil
 	}
 	selected := map[*html.Node]bool{}
 	for _, n := range selectNodes(body, m.Post, true) {
 		selected[n] = true
-	}
-	exclude := make([]*regexp.Regexp, len(m.Exclude))
-	for i, p := range m.Exclude {
-		exclude[i] = globRegexp(p)
 	}
 	var posts []*html.Node
 	// visit returns whether n is or contains a selected node with the title
@@ -321,7 +328,7 @@ func (m *PostSelector) selectPosts(body *html.Node) []*html.Node {
 			inner = visit(c) || inner
 		}
 		isPost := selected[n] && m.hasFields(n)
-		if isPost && !inner && !m.isExcluded(n, exclude) {
+		if isPost && !inner {
 			posts = append(posts, n)
 		}
 		return inner || isPost
@@ -358,24 +365,34 @@ func resolvePath(post *html.Node, f PostField, path []Step) *html.Node {
 	return nil
 }
 
-// isExcluded reports whether the link of post matches one of exclude, the
-// compiled patterns of Exclude.
-func (m *PostSelector) isExcluded(post *html.Node, exclude []*regexp.Regexp) bool {
+// compileExclude returns the regexps of the patterns in Exclude.
+func (m *PostSelector) compileExclude() []*regexp.Regexp {
+	exclude := make([]*regexp.Regexp, len(m.Exclude))
+	for i, p := range m.Exclude {
+		exclude[i] = globRegexp(p)
+	}
+	return exclude
+}
+
+// excludedBy returns the first pattern in Exclude that matches the host and
+// path of the link of post, or false when none does. exclude holds the
+// compiled patterns (see compileExclude).
+func (m *PostSelector) excludedBy(post *html.Node, exclude []*regexp.Regexp) (string, bool) {
 	n := m.resolveField(post, PostLink)
 	if n == nil {
-		return false
+		return "", false
 	}
 	u, err := url.Parse(linkOf(n))
 	if err != nil {
-		return false
+		return "", false
 	}
 	hostPath := u.Host + u.Path
-	for _, re := range exclude {
+	for i, re := range exclude {
 		if re.MatchString(hostPath) {
-			return true
+			return m.Exclude[i], true
 		}
 	}
-	return false
+	return "", false
 }
 
 // globRegexp compiles the file glob pattern into a regexp that matches a

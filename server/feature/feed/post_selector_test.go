@@ -470,3 +470,30 @@ func TestBodyText(t *testing.T) {
 		})
 	}
 }
+func TestPostClasses(t *testing.T) {
+	for _, tt := range []struct{ cls, want []string }{
+		{[]string{"post", "other"}, []string{"post"}},
+		{[]string{"type-post", "other"}, []string{"type-post"}},
+		{[]string{"post-card", "other"}, []string{"post-card"}},
+		{[]string{"masonry-card", "other"}, []string{"masonry-card"}},
+		{[]string{"card__inner", "other"}, []string{"card__inner"}},
+		{[]string{"storyCard__linked", "other"}, []string{"storyCard__linked"}},
+		{[]string{"IndexCardStyled", "other"}, []string{"IndexCardStyled"}},
+		{[]string{"AdPost", "other"}, []string{"AdPost"}},
+		{[]string{"adpost", "other"}, []string{"adpost", "other"}},
+		{[]string{"compost", "other"}, []string{"compost", "other"}},
+		{[]string{"greencard", "other"}, []string{"greencard", "other"}},
+		{[]string{"postcard", "other"}, []string{"postcard", "other"}},
+		{[]string{"cardinal", "other"}, []string{"cardinal", "other"}},
+		{[]string{"post-9818", "other"}, []string{"other"}},
+		{[]string{"category-security", "other"}, []string{"other"}},
+		{[]string{"tag-whatsapp", "other"}, []string{"other"}},
+		{[]string{"has-post-thumbnail", "other"}, []string{"other"}},
+		{[]string{"post", "type-post", "hentry", "post-9818", "category-security"}, []string{"post", "type-post"}},
+		{[]string{"post-9818", "category-security"}, []string{}},
+	} {
+		if got := postClasses(tt.cls); !slices.Equal(got, tt.want) {
+			t.Errorf("postClasses(%q) = %q, want %q", tt.cls, got, tt.want)
+		}
+	}
+}
