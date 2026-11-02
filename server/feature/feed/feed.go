@@ -39,9 +39,9 @@ type FeedAttrs struct {
 // operation is idempotent; subscribing to the same feed (URL) twice has no
 // additional effect.
 func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (Feed, error) {
-	// TODO: Check if the f already exists first to avoid making an unnecessary request
-	// TODO: Validate and cleanup the url (check schema, remove tracking params, etc.)
-	// TODO: Save fetched entries to DB
+	// TODO(#123): Check if the f already exists first to avoid making an unnecessary request
+	// TODO(#115): Validate and cleanup the url (check schema, remove tracking params, etc.)
+	// TODO(#121): Save fetched entries to DB
 	var f Feed
 	if a, err := s.discover(ctx, fu); err != nil {
 		fmt.Println(err)
@@ -100,8 +100,8 @@ func (s *Service) Unsubscribe(ctx context.Context, uid user.UserID, feedID int) 
 
 // SearchFeeds searches subscriptable feeds by the given query.
 func (s *Service) SearchFeeds(ctx context.Context, query string) ([]FeedAttrs, error) {
-	// TODO: Accept arbitrary keywards as a query
-	// TODO: Validate and cleanup the url (check schema, remove tracking params, etc.)
+	// TODO(#125): Accept arbitrary keywards as a query
+	// TODO(#115): Validate and cleanup the url (check schema, remove tracking params, etc.)
 	u, err := url.Parse(query)
 	if err != nil {
 		return []FeedAttrs{}, nil
@@ -224,7 +224,7 @@ func (s *Service) fetch(ctx context.Context, u url.URL) ([]byte, *url.URL, error
 	if res.StatusCode != http.StatusOK {
 		return nil, nil, fmt.Errorf("failed to fetch %s: %s", u.String(), res.Status)
 	}
-	// TODO: Limit body size
+	// TODO(#113): Limit body size
 	raw, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, nil, err

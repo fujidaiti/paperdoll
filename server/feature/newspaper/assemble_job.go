@@ -10,7 +10,7 @@ import (
 	"github.com/fujidaiti/paperdoll/server/feature/user"
 )
 
-// TODO: do the same task in a single batch instead of creating a job per user
+// TODO(#140): do the same task in a single batch instead of creating a job per user
 func CollectJobs(ctx context.Context, db *sql.DB, now time.Time) ([]Job, error) {
 	ei, err := FindEditorialInterval(ctx, db, now)
 	pubDate := ei.Next
@@ -55,7 +55,7 @@ func CollectJobs(ctx context.Context, db *sql.DB, now time.Time) ([]Job, error) 
 			RETURNING id;
 		`, uid, pubDate).Scan(&newspaperID)
 		if errors.Is(err, sql.ErrNoRows) {
-			// TODO: Handle the case where a record exists but the newspaper was not assembled due to a server outage.
+			// TODO(#141): Handle the case where a record exists but the newspaper was not assembled due to a server outage.
 			fmt.Printf(
 				"The newspaper for user %d at %s already exists or is being assembled. Skipping.\n",
 				uid, pubDate,

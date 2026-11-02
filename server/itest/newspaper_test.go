@@ -16,7 +16,7 @@ import (
 // clock time (only the time-of-day component matters; minute_of_date is
 // relative to at's own local midnight, matching schedule.go's own calc).
 //
-// TODO: refactor to use a domain function once per-user schedule is supported
+// TODO(#155): refactor to use a domain function once per-user schedule is supported
 func seedSchedule(t *testing.T, label string, at time.Time) {
 	t.Helper()
 	local := at.Local()

@@ -1,4 +1,4 @@
-// TODO: Garbage-collect expired tokens
+// TODO(#118): Garbage-collect expired tokens
 package user
 
 import (
@@ -37,10 +37,10 @@ var (
 	ErrTokenExpired      = errors.New("token is expired")
 )
 
-// TODO: re-define this as a named type
+// TODO(#119): re-define this as a named type
 type UserID = int
 
-// TODO: re-define this as a named type of string
+// TODO(#119): re-define this as a named type of string
 type ValidPassword struct{ value string }
 
 // Printable ASCII characters only; 15-64 characters
@@ -64,8 +64,8 @@ func (p ValidPassword) Match(passwordHash []byte) bool {
 	return bcrypt.CompareHashAndPassword(passwordHash, []byte(p.value)) == nil
 }
 
-// TODO: Rename to CanonicalEmailAddr
-// TODO: re-define this as a named type of string
+// TODO(#119): Rename to CanonicalEmailAddr
+// TODO(#119): re-define this as a named type of string
 type CanonicalEmail struct{ value string }
 
 func ParseEmail(addr string) (CanonicalEmail, error) {
@@ -424,7 +424,7 @@ func (s *Service) SignOut(ctx context.Context, t string) error {
 // VerifyAuthToken checks if the encoded token t is valid and finds the user who
 // owns that token. Reports an [ErrTokenInvalid] if the token is malformed or no user
 // is associated with it, and an [ErrTokenExpired] if the token is expired.
-// TODO: Garbage-collect expired tokens
+// TODO(#118): Garbage-collect expired tokens
 func (s *Service) VerifyAuthToken(ctx context.Context, t string) (UserID, error) {
 	token, err := DecodeToken(t)
 	if err != nil {
