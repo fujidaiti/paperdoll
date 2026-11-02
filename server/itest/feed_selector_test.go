@@ -65,7 +65,7 @@ func editorRowExists(t *testing.T, id int) bool {
 	return scanValOrFatal[bool](t, `SELECT EXISTS (SELECT 1 FROM selector_editors WHERE id = $1)`, id)
 }
 
-func TestFeed_StartSelectorEditor(t *testing.T) {
+func TestFeed_OpenSelectorEditor(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	testenv.StubHTTP("blog.example.com", "/", "./testdata/feed/page_without_feed.html")
 	testenv.StubHTTP("www.nasa.gov", "/news-release/feed/", "./testdata/feed/nasa_news_release.xml")
@@ -74,9 +74,9 @@ func TestFeed_StartSelectorEditor(t *testing.T) {
 	page := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/"))))
 
 	t.Run("feed without selectors", func(t *testing.T) {
-		e, err := s.StartSelectorEditor(t.Context(), uid, page.ID)
+		e, err := s.OpenSelectorEditor(t.Context(), uid, page.ID)
 		if err != nil {
-			t.Fatalf("StartSelectorEditor: %v", err)
+			t.Fatalf("OpenSelectorEditor: %v", err)
 		}
 		wantPage := `<!DOCTYPE html><html><head><title>Example Blog</title>` +
 			`<link rel="canonical" href="http://blog.example.com/"/></head>` +
@@ -115,9 +115,9 @@ func TestFeed_StartSelectorEditor(t *testing.T) {
 		saved := must(os.ReadFile("./testdata/feed/page_without_feed_selectors.json"))
 		execOrFatal(t, `UPDATE feeds SET selectors = $1 WHERE id = $2`, string(saved), page.ID)
 
-		e, err := s.StartSelectorEditor(t.Context(), uid, page.ID)
+		e, err := s.OpenSelectorEditor(t.Context(), uid, page.ID)
 		if err != nil {
-			t.Fatalf("StartSelectorEditor: %v", err)
+			t.Fatalf("OpenSelectorEditor: %v", err)
 		}
 		// The posts that the saved selectors find are labeled.
 		if d := cmp.Diff(firstPostMarks, e.Marks); d != "" {
@@ -127,14 +127,14 @@ func TestFeed_StartSelectorEditor(t *testing.T) {
 	})
 
 	t.Run("no feed", func(t *testing.T) {
-		if _, err := s.StartSelectorEditor(t.Context(), uid, 1_000_000); !errors.Is(err, feed.ErrFeedNotFound) {
+		if _, err := s.OpenSelectorEditor(t.Context(), uid, 1_000_000); !errors.Is(err, feed.ErrFeedNotFound) {
 			t.Errorf("got %v, want ErrFeedNotFound", err)
 		}
 	})
 
 	t.Run("RSS feed", func(t *testing.T) {
 		rss := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://www.nasa.gov/news-release/feed/"))))
-		if _, err := s.StartSelectorEditor(t.Context(), uid, rss.ID); !errors.Is(err, feed.ErrNotUnstructured) {
+		if _, err := s.OpenSelectorEditor(t.Context(), uid, rss.ID); !errors.Is(err, feed.ErrNotUnstructured) {
 			t.Errorf("got %v, want ErrNotUnstructured", err)
 		}
 	})
@@ -144,7 +144,7 @@ func TestFeed_StartSelectorEditor(t *testing.T) {
 			INSERT INTO feeds (url, site_url, title)
 			VALUES ('http://gone.example.com/', 'http://gone.example.com/', 'Gone')
 			RETURNING id`)
-		_, err := s.StartSelectorEditor(t.Context(), uid, id)
+		_, err := s.OpenSelectorEditor(t.Context(), uid, id)
 		if err == nil || errors.Is(err, feed.ErrFeedNotFound) || errors.Is(err, feed.ErrNotUnstructured) {
 			t.Errorf("got %v, want a fetch error", err)
 		}
@@ -158,7 +158,7 @@ func TestFeed_UpdateSelectorEditorMarks(t *testing.T) {
 	other, _ := provisionTestAccount(t, "other@example.com", "test#password$1234", "Pixel9a/Android", time.Now())
 	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
 	page := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/"))))
-	e := must(s.StartSelectorEditor(t.Context(), uid, page.ID))
+	e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
 
 	state, err := s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks)
 	if err != nil {
@@ -243,23 +243,23 @@ func TestFeed_UpdateSelectorEditorMarks(t *testing.T) {
 	})
 }
 
-func TestFeed_ResumeSelectorEditor(t *testing.T) {
+func TestFeed_GetSelectorEditor(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	testenv.StubHTTP("blog.example.com", "/", "./testdata/feed/page_without_feed.html")
 	uid := provisionDefaultTestAccount(t, time.Now())
 	other, _ := provisionTestAccount(t, "other@example.com", "test#password$1234", "Pixel9a/Android", time.Now())
 	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
 	page := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/"))))
-	started := must(s.StartSelectorEditor(t.Context(), uid, page.ID))
-	must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, started.ID, firstPostMarks))
+	opened := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
+	must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, opened.ID, firstPostMarks))
 
-	e, err := s.ResumeSelectorEditor(t.Context(), uid, page.ID, started.ID)
+	e, err := s.GetSelectorEditor(t.Context(), uid, page.ID, opened.ID)
 	if err != nil {
-		t.Fatalf("ResumeSelectorEditor: %v", err)
+		t.Fatalf("GetSelectorEditor: %v", err)
 	}
-	if e.ID != started.ID || !e.ExpiresAt.Equal(started.ExpiresAt) || e.Page != started.Page {
-		t.Errorf("got the editor %d expiring at %v, want the started one %d expiring at %v with its page",
-			e.ID, e.ExpiresAt, started.ID, started.ExpiresAt)
+	if e.ID != opened.ID || !e.ExpiresAt.Equal(opened.ExpiresAt) || e.Page != opened.Page {
+		t.Errorf("got the editor %d expiring at %v, want the opened one %d expiring at %v with its page",
+			e.ID, e.ExpiresAt, opened.ID, opened.ExpiresAt)
 	}
 	if d := cmp.Diff(firstPostMarks, e.Marks); d != "" {
 		t.Errorf("marks mismatch:\n%s", d)
@@ -267,11 +267,11 @@ func TestFeed_ResumeSelectorEditor(t *testing.T) {
 	checkJSON(t, "./testdata/feed/page_without_feed_state.json", e.EditorState)
 
 	t.Run("editor of another user", func(t *testing.T) {
-		if _, err := s.ResumeSelectorEditor(
+		if _, err := s.GetSelectorEditor(
 			t.Context(),
 			other,
 			page.ID,
-			started.ID,
+			opened.ID,
 		); !errors.Is(
 			err,
 			feed.ErrEditorNotFound,
@@ -281,12 +281,12 @@ func TestFeed_ResumeSelectorEditor(t *testing.T) {
 	})
 
 	t.Run("expired editor", func(t *testing.T) {
-		execOrFatal(t, `UPDATE selector_editors SET expires_at = now() - interval '1 minute' WHERE id = $1`, started.ID)
-		if _, err := s.ResumeSelectorEditor(
+		execOrFatal(t, `UPDATE selector_editors SET expires_at = now() - interval '1 minute' WHERE id = $1`, opened.ID)
+		if _, err := s.GetSelectorEditor(
 			t.Context(),
 			uid,
 			page.ID,
-			started.ID,
+			opened.ID,
 		); !errors.Is(
 			err,
 			feed.ErrEditorExpired,
@@ -305,14 +305,14 @@ func TestFeed_CommitSelectorEditor(t *testing.T) {
 	page := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/"))))
 
 	t.Run("editor without selectors", func(t *testing.T) {
-		e := must(s.StartSelectorEditor(t.Context(), uid, page.ID))
+		e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
 		if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); !errors.Is(err, feed.ErrNoSelectors) {
 			t.Errorf("got %v, want ErrNoSelectors", err)
 		}
 	})
 
 	t.Run("editor of another user", func(t *testing.T) {
-		e := must(s.StartSelectorEditor(t.Context(), uid, page.ID))
+		e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
 		must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks))
 		if err := s.CommitSelectorEditor(t.Context(), other, page.ID, e.ID); !errors.Is(err, feed.ErrEditorNotFound) {
 			t.Errorf("got %v, want ErrEditorNotFound", err)
@@ -320,7 +320,7 @@ func TestFeed_CommitSelectorEditor(t *testing.T) {
 	})
 
 	t.Run("expired editor", func(t *testing.T) {
-		e := must(s.StartSelectorEditor(t.Context(), uid, page.ID))
+		e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
 		must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks))
 		execOrFatal(t, `UPDATE selector_editors SET expires_at = now() - interval '1 minute' WHERE id = $1`, e.ID)
 		if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); !errors.Is(err, feed.ErrEditorExpired) {
@@ -335,7 +335,7 @@ func TestFeed_CommitSelectorEditor(t *testing.T) {
 		t.Fatal("HasSelectors = true before a commit, want false")
 	}
 
-	e := must(s.StartSelectorEditor(t.Context(), uid, page.ID))
+	e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
 	must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks))
 	if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); err != nil {
 		t.Fatalf("CommitSelectorEditor: %v", err)
@@ -364,7 +364,7 @@ func TestFeed_CloseSelectorEditor(t *testing.T) {
 	other, _ := provisionTestAccount(t, "other@example.com", "test#password$1234", "Pixel9a/Android", time.Now())
 	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
 	page := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/"))))
-	e := must(s.StartSelectorEditor(t.Context(), uid, page.ID))
+	e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
 
 	if err := s.CloseSelectorEditor(t.Context(), other, page.ID, e.ID); !errors.Is(err, feed.ErrEditorNotFound) {
 		t.Errorf("closing the editor of another user: got %v, want ErrEditorNotFound", err)
@@ -390,8 +390,8 @@ func TestFeed_DeleteExpiredSelectorEditors(t *testing.T) {
 	uid := provisionDefaultTestAccount(t, time.Now())
 	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
 	page := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/"))))
-	expired := must(s.StartSelectorEditor(t.Context(), uid, page.ID))
-	valid := must(s.StartSelectorEditor(t.Context(), uid, page.ID))
+	expired := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
+	valid := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
 	execOrFatal(t, `UPDATE selector_editors SET expires_at = now() - interval '1 minute' WHERE id = $1`, expired.ID)
 
 	n, err := feed.DeleteExpiredSelectorEditors(t.Context(), testenv.DB())

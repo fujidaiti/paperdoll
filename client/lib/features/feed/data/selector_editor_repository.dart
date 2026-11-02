@@ -4,7 +4,7 @@ import 'package:paperdoll/features/feed/domain/post_field.dart';
 import 'package:paperdoll/features/feed/domain/selector_editor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Starts, edits, commits and closes the selector editors of unstructured
+/// Opens, edits, commits and closes the selector editors of unstructured
 /// feeds on the server, and remembers the editor of each feed on the device
 /// until it ends, so that the editor can be resumed after the app is killed.
 class const SelectorEditorRepository(
@@ -12,7 +12,7 @@ class const SelectorEditorRepository(
   final SharedPreferencesAsync _preferences,
 ) {
   /// `POST /feeds/{id}/selector-editors` → a new editor of the feed.
-  Future<SelectorEditor> start(int feedId) {
+  Future<SelectorEditor> open(int feedId) {
     return runRequest(() async {
       final res = await _dio.post<Map<String, dynamic>>(
         '/feeds/$feedId/selector-editors',
@@ -23,7 +23,7 @@ class const SelectorEditorRepository(
 
   /// `GET /feeds/{id}/selector-editors/{eid}` → the editor with its stored
   /// marks.
-  Future<SelectorEditor> resume(int feedId, int editorId) {
+  Future<SelectorEditor> get(int feedId, int editorId) {
     return runRequest(() async {
       final res = await _dio.get<Map<String, dynamic>>(
         '/feeds/$feedId/selector-editors/$editorId',

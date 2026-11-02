@@ -272,14 +272,15 @@ timeline:
 
 selectorEditors:
   post:
-    summary: Start a selector editor of an unstructured feed
+    summary: Open a new selector editor
     description:
-      Fetches the page of the feed, simplifies it, and starts a temporary editor
-      of the post selectors of the feed for the calling user. The marks start
-      with the posts that the saved selectors find and the links that they
-      exclude. The editor expires 48 hours after it starts. Each call starts a
-      new editor.
-    operationId: startSelectorEditor
+      Opens a new editor of the post selectors of an unstructured feed for the
+      caller, with the current page of the feed. The editor starts with the
+      marks of the saved selectors, which are the posts that they find and the
+      links that they exclude. The editor is available until `expires_at`. Fails
+      with 409 if the feed is not an unstructured feed, and with 502 if the page
+      cannot be fetched.
+    operationId: openSelectorEditor
     tags: [Feeds]
     parameters:
       - name: id
@@ -329,12 +330,12 @@ selectorEditors:
 
 selectorEditor:
   get:
-    summary: Resume a selector editor
+    summary: Get a selector editor
     description:
-      Returns a selector editor of the calling user with its stored marks, as
-      the start does for a new editor. The page is not fetched again, and the
-      expiry is not extended.
-    operationId: resumeSelectorEditor
+      Returns a selector editor of the caller with its latest marks. The page is
+      the one from when the editor was opened. Getting the editor does not
+      extend `expires_at`. Fails with 410 if the editor has expired.
+    operationId: getSelectorEditor
     tags: [Feeds]
     parameters:
       - $ref: "#/parameters/feedId"
@@ -357,8 +358,8 @@ selectorEditor:
   delete:
     summary: Close a selector editor
     description:
-      Deletes a selector editor of the calling user without saving its
-      selectors.
+      Closes a selector editor of the caller and discards its marks. The saved
+      selectors of the feed do not change.
     operationId: closeSelectorEditor
     tags: [Feeds]
     parameters:
@@ -376,10 +377,13 @@ selectorEditor:
 
 selectorEditorMarks:
   put:
-    summary: Replace the marks of a selector editor
+    summary: Update the marks of a selector editor
     description:
-      Replaces all marks of the editor, generates the selectors again from them,
-      and returns what the selectors find.
+      Replaces all marks of the editor, and returns the posts that the editor
+      finds with the new marks. The saved selectors of the feed do not change
+      until the editor is committed. Fails with 400 if a mark refers to a node
+      that is not on the page of the editor, and with 410 if the editor has
+      expired.
     operationId: updateSelectorEditorMarks
     tags: [Feeds]
     parameters:
@@ -426,8 +430,9 @@ selectorEditorCommit:
     summary: Commit a selector editor
     description:
       Saves the selectors of the editor to the feed, replacing the saved ones,
-      and deletes the editor. Selectors are shared by all users, as feeds are,
-      and the last commit wins. Fails with 409 if the editor has no selectors.
+      and closes the editor. Selectors are shared by all users, as feeds are,
+      and the last commit wins. Fails with 409 if the marks of the editor find
+      no posts, and with 410 if the editor has expired.
     operationId: commitSelectorEditor
     tags: [Feeds]
     parameters:

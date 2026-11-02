@@ -24,8 +24,8 @@ import (
 // the feed, the marks of the user, and the selectors generated from them. The
 // client sends all marks with each update, and the server generates the
 // selectors again and returns what they find, so that the client never runs
-// selectors. An editor belongs to the user who started it, and expires 48
-// hours after it starts, so that selectors built on a stale layout of the page
+// selectors. An editor belongs to the user who opened it, and expires 48
+// hours after it opens, so that selectors built on a stale layout of the page
 // are not saved.
 
 var (
@@ -263,12 +263,12 @@ func (t *pageIndex) idsOf(posts []labeledPost) []LabeledPostIDs {
 	return ids
 }
 
-// StartSelectorEditor starts a selector editor of the unstructured feed
+// OpenSelectorEditor opens a new selector editor of the unstructured feed
 // feedID for the user uid. It fetches the page of the feed, and labels the
 // posts that the saved selectors of the feed find, which keeps them found when
 // the user adds new marks, since the saved selectors do not keep the marks of
 // the user. The excluded links start as the ones of the saved selectors.
-func (s *Service) StartSelectorEditor(ctx context.Context, uid user.UserID, feedID int) (SelectorEditor, error) {
+func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedID int) (SelectorEditor, error) {
 	var fu string
 	var saved sql.NullString
 	var unstructured bool
@@ -380,11 +380,11 @@ func (s *Service) loadSelectorEditor(
 	return page, marks, expiresAt, nil
 }
 
-// ResumeSelectorEditor returns the editor id of the user uid on the feed
+// GetSelectorEditor returns the editor id of the user uid on the feed
 // feedID with its stored marks, such as after the app was killed while the
 // editor was open. The page is not fetched again, since the marks refer to the
-// nodes of the stored page. Resuming does not extend the expiry.
-func (s *Service) ResumeSelectorEditor(ctx context.Context, uid user.UserID, feedID, id int) (SelectorEditor, error) {
+// nodes of the stored page. Getting it does not extend the expiry.
+func (s *Service) GetSelectorEditor(ctx context.Context, uid user.UserID, feedID, id int) (SelectorEditor, error) {
 	page, marks, expiresAt, err := s.loadSelectorEditor(ctx, uid, feedID, id)
 	if err != nil {
 		return SelectorEditor{}, err
@@ -493,7 +493,7 @@ func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, fee
 	if len(ms) == 0 {
 		return ErrNoSelectors
 	}
-	// The start checked that the feed is unstructured, and a feed never
+	// The open checked that the feed is unstructured, and a feed never
 	// changes its kind.
 	if _, err := tx.ExecContext(ctx, `UPDATE feeds SET selectors = $1 WHERE id = $2;`, selectors, feedID); err != nil {
 		return err

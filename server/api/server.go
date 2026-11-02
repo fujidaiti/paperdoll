@@ -100,8 +100,8 @@ func NewServer(db *sql.DB, httpProxy *url.URL, emailSender infra.EmailSender) *h
 	authorized.HandleFunc("GET /feeds/{id}", h.getFeed)
 	authorized.HandleFunc("DELETE /feeds/{id}", h.unsubscribeFromFeed)
 	authorized.HandleFunc("GET /feeds/{id}/timeline", h.getFeedTimeline)
-	authorized.HandleFunc("POST /feeds/{id}/selector-editors", h.startSelectorEditor)
-	authorized.HandleFunc("GET /feeds/{id}/selector-editors/{eid}", h.resumeSelectorEditor)
+	authorized.HandleFunc("POST /feeds/{id}/selector-editors", h.openSelectorEditor)
+	authorized.HandleFunc("GET /feeds/{id}/selector-editors/{eid}", h.getSelectorEditor)
 	authorized.HandleFunc("PUT /feeds/{id}/selector-editors/{eid}/marks", h.updateSelectorEditorMarks)
 	authorized.HandleFunc("POST /feeds/{id}/selector-editors/{eid}/commit", h.commitSelectorEditor)
 	authorized.HandleFunc("DELETE /feeds/{id}/selector-editors/{eid}", h.closeSelectorEditor)
@@ -798,9 +798,9 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 	_, _ = w.Write(jres)
 }
 
-// startSelectorEditor starts a selector editor of an unstructured feed (see
+// openSelectorEditor opens a new selector editor of an unstructured feed (see
 // feed.SelectorEditor) for the caller.
-func (h *Handler) startSelectorEditor(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) openSelectorEditor(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.PathValue("id"))
 	if err != nil {
 		fmt.Print(err)
@@ -812,7 +812,7 @@ func (h *Handler) startSelectorEditor(w http.ResponseWriter, r *http.Request) {
 		serverError(w, http.StatusUnauthorized, "unauthorized")
 		return
 	}
-	e, err := h.FeedService.StartSelectorEditor(r.Context(), uid, id)
+	e, err := h.FeedService.OpenSelectorEditor(r.Context(), uid, id)
 	switch {
 	case errors.Is(err, feed.ErrFeedNotFound):
 		serverError(w, http.StatusNotFound, "No feed found")
@@ -857,14 +857,14 @@ func selectorEditorParams(w http.ResponseWriter, r *http.Request) (user.UserID, 
 	return uid, id, eid, true
 }
 
-// resumeSelectorEditor returns a selector editor of the caller with its stored
-// marks, as startSelectorEditor does for a new one.
-func (h *Handler) resumeSelectorEditor(w http.ResponseWriter, r *http.Request) {
+// getSelectorEditor returns a selector editor of the caller with its stored
+// marks, as openSelectorEditor does for a new one.
+func (h *Handler) getSelectorEditor(w http.ResponseWriter, r *http.Request) {
 	uid, id, eid, ok := selectorEditorParams(w, r)
 	if !ok {
 		return
 	}
-	e, err := h.FeedService.ResumeSelectorEditor(r.Context(), uid, id, eid)
+	e, err := h.FeedService.GetSelectorEditor(r.Context(), uid, id, eid)
 	switch {
 	case errors.Is(err, feed.ErrEditorNotFound):
 		serverError(w, http.StatusNotFound, "No selector editor found")
@@ -874,7 +874,7 @@ func (h *Handler) resumeSelectorEditor(w http.ResponseWriter, r *http.Request) {
 		return
 	case err != nil:
 		fmt.Println(err)
-		serverError(w, http.StatusInternalServerError, "Failed to resume the selector editor")
+		serverError(w, http.StatusInternalServerError, "Failed to get the selector editor")
 		return
 	}
 	jres, err := json.Marshal(e)

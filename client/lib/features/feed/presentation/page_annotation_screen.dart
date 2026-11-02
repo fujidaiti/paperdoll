@@ -72,7 +72,7 @@ class _PageAnnotationScreenState extends ConsumerState<PageAnnotationScreen> {
     try {
       if (await repository.storedEditorId(feedId) case final storedId?) {
         try {
-          final editor = await repository.resume(feedId, storedId);
+          final editor = await repository.get(feedId, storedId);
           if (!mounted) {
             return;
           }
@@ -90,9 +90,9 @@ class _PageAnnotationScreenState extends ConsumerState<PageAnnotationScreen> {
           await repository.storeEditorId(feedId, null);
         }
       }
-      final editor = await repository.start(feedId);
+      final editor = await repository.open(feedId);
       if (!mounted) {
-        // The user left before the editor started.
+        // The user left before the editor opened.
         unawaited(repository.close(feedId, editor.id).catchError((_) {}));
         return;
       }
