@@ -34,6 +34,15 @@ Conflict:
       example:
         message: "Email already exists"
 
+Gone:
+  description: Gone
+  content:
+    application/json:
+      schema:
+        $ref: "./schemas.yaml#/Error"
+      example:
+        message: "The selector editor expired"
+
 InternalServerError:
   description: Internal server error
   content:
@@ -51,3 +60,12 @@ TooManyRequests:
         $ref: "./schemas.yaml#/Error"
       example:
         message: "Too many verification emails sent to this address"
+
+BadGateway:
+  description: The server failed to fetch a resource from another server
+  content:
+    application/json:
+      schema:
+        $ref: "./schemas.yaml#/Error"
+      example:
+        message: "Failed to fetch the page"

@@ -78,7 +78,7 @@ class const _FeedDetailBody({
             pinned: true,
             centerTitle: false,
             title: BodyText(feed.title),
-            actions: [_SubscriptionMenu(feed: feed)],
+            actions: [_FeedMenu(feed: feed)],
           ),
           SliverToBoxAdapter(child: _FeedDetails(feed: feed)),
           ...timeline.when(
@@ -140,21 +140,22 @@ class const _FeedDetailBody({
   }
 }
 
-/// The app bar's overflow menu, offering the single subscription action that
-/// applies right now: "Unsubscribe" while subscribed, "Subscribe" once not.
+/// The app bar's overflow menu. It offers the subscription action that applies
+/// right now, "Unsubscribe" while subscribed and "Subscribe" once not, and
+/// "Edit", which opens the feed's edit screen.
 ///
 /// The feed's state and both mutations live in [feedDetailControllerProvider];
 /// this widget only reflects [feed] and shows snackbars. Unsubscribing does not
 /// leave the screen — the feed is shared across all users and survives, so its
 /// timeline stays readable. The menu is disabled while a request it started is
 /// in flight so a second tap can't fire the opposite mutation on stale state.
-class const _SubscriptionMenu({required final Feed feed})
+class const _FeedMenu({required final Feed feed})
     extends ConsumerStatefulWidget {
   @override
-  ConsumerState<_SubscriptionMenu> createState() => _SubscriptionMenuState();
+  ConsumerState<_FeedMenu> createState() => _FeedMenuState();
 }
 
-class _SubscriptionMenuState extends ConsumerState<_SubscriptionMenu> {
+class _FeedMenuState extends ConsumerState<_FeedMenu> {
   var _busy = false;
 
   FeedDetailController get _controller =>
@@ -174,6 +175,14 @@ class _SubscriptionMenuState extends ConsumerState<_SubscriptionMenu> {
           enabled: !_busy,
           onTap: () => unawaited(subscribed ? _unsubscribe() : _subscribe()),
           child: Text(subscribed ? 'Unsubscribe' : 'Subscribe'),
+        ),
+        PopupMenuItem<void>(
+          key: AppDebugKey.editFeedMenuItem,
+          onTap: () => context.pushNamed(
+            routeFeedEditName,
+            pathParameters: {'id': widget.feed.id.toString()},
+          ),
+          child: const Text('Edit'),
         ),
       ],
     );

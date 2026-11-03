@@ -1,0 +1,40 @@
+{
+  "selectors": [
+    {
+      "box": [
+        {
+          "tag": "div",
+          "cls": ["flex", "flex-col", "overflow-hidden", "rounded", "shadow-sm"]
+        }
+      ],
+      "title": [
+        { "tag": "p", "cls": ["text-xl", "font-semibold", "text-gray-900"] }
+      ],
+      "link": [{ "tag": "div", "cls": ["shrink-0"] }, { "tag": "a" }],
+      "body": [{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-700"] }],
+      "thumbnail": [
+        { "tag": "img", "cls": ["h-48", "w-full", "object-cover"] }
+      ],
+      "pubDate": [
+        {
+          "tag": "div",
+          "cls": ["flex", "space-x-1", "text-sm", "text-gray-500"]
+        },
+        { "tag": "span" },
+        { "tag": "time" }
+      ]
+    },
+    {
+      "box": [{ "tag": "div", "cls": ["flex-1"] }],
+      "title": [
+        { "tag": "p", "cls": ["text-3xl", "font-semibold", "text-gray-900"] }
+      ],
+      "link": [{ "tag": "a", "cls": ["mt-2", "block"] }],
+      "body": [{ "tag": "p", "cls": ["mt-3", "text-base", "text-gray-800"] }],
+      "pubDate": [
+        { "tag": "span", "cls": ["ml-4", "text-sm", "font-normal"] },
+        { "tag": "time" }
+      ]
+    }
+  ]
+}

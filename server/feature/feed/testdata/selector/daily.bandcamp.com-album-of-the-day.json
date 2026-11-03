@@ -1,0 +1,17 @@
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "div", "cls": ["list-article", "aotd"] }],
+      "title": [{ "tag": "div", "cls": ["title-wrapper", "title"] }],
+      "link": [{ "tag": "a", "cls": ["thumb", "aotd-image"] }],
+      "thumbnail": [
+        { "tag": "a", "cls": ["thumb", "aotd-image"] },
+        { "tag": "img" }
+      ],
+      "pubDate": [
+        { "tag": "div", "cls": ["article-info-text"] },
+        { "tag": "time" }
+      ]
+    }
+  ]
+}

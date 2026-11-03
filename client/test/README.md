@@ -3,7 +3,7 @@
 Tests live in `test/` and run on the Flutter test framework — **no device
 needed**. The whole app is booted with `patrolWidgetTest`; HTTP is answered
 in-process by a `StubServer` Dio interceptor, and platform plugins (secure
-storage, device info) are replaced with in-memory stand-ins.
+storage, shared preferences, device info) are replaced with in-memory stand-ins.
 
 ```sh
 make test        # or: fvm flutter test  (run from the project root)

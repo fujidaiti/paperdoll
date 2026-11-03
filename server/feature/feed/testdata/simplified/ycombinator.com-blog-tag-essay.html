@@ -1,0 +1,883 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Y Combinator</title>
+    <link rel="canonical" href="https://ycombinator.com/blog/tag/essay" />
+  </head>
+  <body class="blog posts_by_tag">
+    <div>
+      <div class="no-scroll-behind sticky top-0 isolate z-50 bg-beige-light">
+        <div>
+          <header class="w-full bg-beige-light leading-tight">
+            <nav
+              class="relative hidden items-center justify-center bg-beige-light px-5"
+            >
+              <div class="flex w-full items-center gap-6">
+                <div class="flex flex-1 items-center justify-end gap-4">
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/about"
+                  >
+                    About
+                  </div>
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/companies"
+                  >
+                    Companies
+                  </div>
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/library"
+                  >
+                    Library
+                  </div>
+                </div>
+                <div class="flex flex-1 items-center justify-start gap-4">
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/partners"
+                  >
+                    Partners
+                  </div>
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/library"
+                  >
+                    Resources
+                  </div>
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/jobs"
+                  >
+                    Startup Jobs
+                  </div>
+                </div>
+              </div>
+              <div class="absolute right-5 flex items-center gap-4">
+                <a
+                  class="text-sm transition-opacity"
+                  href="https://account.ycombinator.com/?continue=https://www.ycombinator.com/blog/tag/essay"
+                  >Log in</a
+                ><a
+                  class="flex h-10 items-center justify-center rounded-full bg-black px-5 text-sm font-normal italic text-white transition-opacity"
+                  href="https://ycombinator.com/apply"
+                  >Apply</a
+                >
+              </div>
+            </nav>
+          </header>
+        </div>
+      </div>
+      <div class="relative isolate z-0 pt-6 pb-6">
+        <div class="mx-auto max-w-ycdc-page px-4">
+          <div>
+            <div class="hidden">
+              <div>
+                <nav class="mb-px flex space-x-8">
+                  <a
+                    class="border-transparent text-gray-500 whitespace-nowrap border-b-2 px-1 py-2 text-sm font-medium"
+                    href="https://ycombinator.com/blog"
+                    >All Posts</a
+                  ><a
+                    class="border-transparent text-gray-500 whitespace-nowrap border-b-2 px-1 py-2 text-sm font-medium"
+                    href="https://ycombinator.com/blog/jobs"
+                    >Startup Jobs</a
+                  ><a
+                    class="border-transparent text-gray-500 whitespace-nowrap border-b-2 px-1 py-2 text-sm font-medium"
+                    href="https://ycombinator.com/blog/startup-school"
+                    >Startup School</a
+                  >
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative isolate z-0 pt-6 pb-6">
+        <div class="mx-auto max-w-ycdc-page px-4">
+          <h3
+            class="text-xl font-semibold uppercase tracking-wider text-yellow-600"
+          >
+            Recent Posts (Essay)
+          </h3>
+          <div class="mx-auto mt-12 grid max-w-lg gap-9">
+            <div class="flex flex-col overflow-hidden rounded shadow-sm">
+              <div class="shrink-0">
+                <a
+                  href="https://ycombinator.com/blog/why-would-you-work-at-a-startup-in-an-economic-downturn"
+                  ><img
+                    class="h-48 w-full object-cover"
+                    src="https://ycombinator.com/blog/content/images/2023/02/BlogTwitter-Image-Template--5-.png"
+                /></a>
+              </div>
+              <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                <div class="flex-1">
+                  <a
+                    class="mt-2 block"
+                    href="https://ycombinator.com/blog/why-would-you-work-at-a-startup-in-an-economic-downturn"
+                    ><p class="text-xl font-semibold text-gray-900">
+                      Why would you work at a startup in an economic downturn?
+                    </p>
+                    <p class="mt-3 text-base text-gray-700">
+                      Now is as good a time as any to start a startup –
+                      especially if you get into YC. But what about joining a
+                      startup in this economy? We’re obviously biased, but we
+                      think it’s a great time to join a startup too. Here are
+                      three reasons to consider.
+                    </p></a
+                  >
+                </div>
+                <div class="mt-2">
+                  <p class="text-sm font-medium text-indigo-600">
+                    <a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/jobs"
+                      >Jobs</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/essay"
+                      >Essay</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/yc-news"
+                      >YC News</a
+                    >
+                  </p>
+                </div>
+                <div class="mt-6 flex items-center">
+                  <div class="shrink-0">
+                    <a href="https://ycombinator.com/blog/author/rchoi"
+                      ><span class="sr-only">Ryan Choi</span
+                      ><img
+                        class="h-10 w-10 rounded-full"
+                        src="https://www.gravatar.com/avatar/36ba914c5f191f813e96db0296154469?s=250&amp;d=mm&amp;r=x"
+                    /></a>
+                  </div>
+                  <div class="ml-4">
+                    <p
+                      class="text-sm font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/author/rchoi"
+                    >
+                      Ryan Choi
+                    </p>
+                    <div class="flex space-x-1 text-sm text-gray-500">
+                      <span><time>2023-02-23T00:00:00Z</time></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col overflow-hidden rounded shadow-sm">
+              <div class="shrink-0">
+                <a
+                  href="https://ycombinator.com/blog/why-would-you-start-a-startup-in-an-economic-downturn"
+                  ><img
+                    class="h-48 w-full object-cover"
+                    src="https://ycombinator.com/blog/content/images/2023/02/stephblog.png"
+                /></a>
+              </div>
+              <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                <div class="flex-1">
+                  <a
+                    class="mt-2 block"
+                    href="https://ycombinator.com/blog/why-would-you-start-a-startup-in-an-economic-downturn"
+                    ><p class="text-xl font-semibold text-gray-900">
+                      Why would you start a startup in an economic downturn?
+                    </p>
+                    <p class="mt-3 text-base text-gray-700">
+                      In an economic downturn, there are obvious downsides of
+                      starting a startup — but there are also powerful upsides;
+                      because to survive, you have to *actually* build something
+                      people want.
+                    </p></a
+                  >
+                </div>
+                <div class="mt-2">
+                  <p class="text-sm font-medium text-indigo-600">
+                    <a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/yc-news"
+                      >YC News</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/essay"
+                      >Essay</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/admissions"
+                      >Admissions</a
+                    >
+                  </p>
+                </div>
+                <div class="mt-6 flex items-center">
+                  <div class="shrink-0">
+                    <a href="https://ycombinator.com/blog/author/stephanie"
+                      ><span class="sr-only">Stephanie Simon</span
+                      ><img
+                        class="h-10 w-10 rounded-full"
+                        src="https://ycombinator.com/blog/content/images/2022/02/steph-af6b11e61b7a3c55b099c780fe0a359236ceaab496850b530d178aedb8cefb2c.jpg"
+                    /></a>
+                  </div>
+                  <div class="ml-4">
+                    <p
+                      class="text-sm font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/author/stephanie"
+                    >
+                      Stephanie Simon
+                    </p>
+                    <div class="flex space-x-1 text-sm text-gray-500">
+                      <span><time>2023-02-21T00:00:00Z</time></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col overflow-hidden rounded shadow-sm">
+              <div class="shrink-0">
+                <a
+                  href="https://ycombinator.com/blog/how-to-maintain-engineering-velocity-as-you-scale"
+                  ><img
+                    class="h-48 w-full object-cover"
+                    src="https://ycombinator.com/blog/content/images/2022/10/BlogTwitter-Image-Template-2.jpeg"
+                /></a>
+              </div>
+              <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                <div class="flex-1">
+                  <a
+                    class="mt-2 block"
+                    href="https://ycombinator.com/blog/how-to-maintain-engineering-velocity-as-you-scale"
+                    ><p class="text-xl font-semibold text-gray-900">
+                      How to maintain engineering velocity as you scale
+                    </p>
+                    <p class="mt-3 text-base text-gray-700">
+                      Faire’s engineering team grew from five to over 100
+                      engineers in three years. Throughout this growth, we were
+                      able to sustain our pace of engineering execution by
+                      adhering to four guiding principles.
+                    </p></a
+                  >
+                </div>
+                <div class="mt-2">
+                  <p class="text-sm font-medium text-indigo-600">
+                    <a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/essay"
+                      >Essay</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/yc-continuity"
+                      >YC Continuity</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/technical"
+                      >Technical</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/startups"
+                      >Startups</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/leadership"
+                      >Leadership</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/company-building"
+                      >Company Building</a
+                    ><a
+                      class="mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/tag/growth"
+                      >Growth</a
+                    >
+                  </p>
+                </div>
+                <div class="mt-6 flex items-center">
+                  <div class="shrink-0">
+                    <a href="https://ycombinator.com/blog/author/marcelo-cortes"
+                      ><span class="sr-only">Marcelo Cortes</span
+                      ><img
+                        class="h-10 w-10 rounded-full"
+                        src="https://ycombinator.com/blog/content/images/2022/10/Instagram-Image-Template--Square---7-.jpg"
+                    /></a>
+                  </div>
+                  <div class="ml-4">
+                    <p
+                      class="text-sm font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/author/marcelo-cortes"
+                    >
+                      Marcelo Cortes
+                    </p>
+                    <div class="flex space-x-1 text-sm text-gray-500">
+                      <span><time>2022-10-25T00:00:00Z</time></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative isolate z-0 pt-6 pb-6">
+        <div class="mx-auto max-w-ycdc-page px-4">
+          <div class="mt-2 grid max-w-lg gap-5">
+            <div class="col-span-2">
+              <h3
+                class="text-xl font-semibold uppercase tracking-wider text-yellow-600"
+              >
+                All Posts
+              </h3>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/2021-yc-year-in-review"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        2021 — YC Year in Review
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/geoff-ralston"
+                        >Geoff Ralston</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2022-01-19T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      In 2021, many YC founders led their companies to achieve
+                      outstanding results, and we are honored to be part of
+                      these companies’ history.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/2021-yc-year-in-review"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/venture-debt-101-basics-and-approach"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        Venture Debt 101: Basics and Approach
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/jon-levy"
+                        >Jon Levy</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2021-08-26T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      In this guide, YC Managing Director Jon Levy talks about
+                      venture debt. He covers what it is, walks through some of
+                      its benefits and risks, and gives advice on how to
+                      approach the process of taking on venture debt.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/venture-debt-101-basics-and-approach"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/2020-year-in-review"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        2020 — Year in Review
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/geoff-ralston"
+                        >Geoff Ralston</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2020-12-22T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      In early 2020 the entire world underwent a transformation.
+                      The planet was consumed by a pandemic that altered life as
+                      we knew it. Most of our normal routines changed
+                      immediately. At YC, like most businesses, we closed our
+                      offices. We were forced to rethink the end of our Winter
+                      2020 batch and transformed its demo day to an online-only
+                      event.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/2020-year-in-review"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/how-biotech-startup-funding-will-change-in-the-next-10-years"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        How Biotech Startup Funding Will Change in the Next 10
+                        Years
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/jared-friedman"
+                        >Jared Friedman</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2019-08-05T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      Back when YC was getting started about 10 years ago, Paul
+                      Graham wrote some essays that predicted the way startup
+                      fundraising would change in the next decade – accurately,
+                      it turns out. Paul Graham predicted that there would be
+                      way more startups, that they’d be cheaper to start, that
+                      new kinds of investors would fund them, that founders
+                      would be more technical, and that founders would keep
+                      control of their companies. All of those seem to have come
+                      true.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/how-biotech-startup-funding-will-change-in-the-next-10-years"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/yc-has-changed"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        YC Has Changed
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/michael-seibel-2"
+                        >Michael Seibel</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2018-09-28T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      As YC grows, founders are wondering how it’s improved over
+                      time. This is a valid line of questioning – clearly much
+                      has changed about YC over 13 years. We have new
+                      leadership, much larger batch sizes, we invest more money,
+                      we have a growth fund, a series A program, a massive MOOC,
+                      and an internal social network for YC founders named
+                      Bookface.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/yc-has-changed"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/why-does-your-company-deserve-more-money"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        Why Does Your Company Deserve More Money?
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/michael-seibel"
+                        >Michael Seibel</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2018-07-09T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      The hardest conversation I have to have with a founder is
+                      when they’ve spent their 1-2 million dollar angel round
+                      but haven’t found product market fit. Unfortunately, I
+                      have to ask them a very unforgiving question: why does
+                      your company deserve more money?
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/why-does-your-company-deserve-more-money"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/one-order-of-operations-for-starting-a-startup"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        One Order of Operations for Starting a Startup
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/michael-seibel"
+                        >Michael Seibel</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2018-03-20T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      More often than not, when I talk to a talented technical
+                      person who’s thinking about becoming a founder, their
+                      number one blocker is that they don’t have an idea. At
+                      some point during their formative years they learned that
+                      every great startup started with a great idea and if the
+                      idea isn’t amazing (usually as judged by peers, parents,
+                      or other people with little startup experience), the
+                      startup will fail.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/one-order-of-operations-for-starting-a-startup"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <nav
+                class="flex items-center justify-between border-t border-gray-200 py-3"
+              >
+                <div class="hidden">
+                  <p class="text-sm text-gray-700">
+                    Showing<span class="font-medium">1</span>to<span
+                      class="font-medium"
+                      >10</span
+                    >of<span class="font-medium">37</span>total posts
+                  </p>
+                </div>
+                <div
+                  class="flex flex-1 justify-between relative ml-3 inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700"
+                >
+                  Next
+                </div>
+              </nav>
+            </div>
+            <div class="ml-20">
+              <div class="mb-4">
+                <p
+                  class="text-xl font-semibold tracking-wider text-gray-800 uppercase mb-2"
+                >
+                  Categories
+                </p>
+                <a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/admissions"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Admissions
+                  </div></a
+                ><a class="flex" href="https://ycombinator.com/blog/tag/advice"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Advice
+                  </div></a
+                ><a class="flex" href="https://ycombinator.com/blog/tag/biotech"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Biotech
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/blockchain"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Blockchain
+                  </div></a
+                ><a class="flex" href="https://ycombinator.com/blog/tag/essay"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Essay
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/female-founders"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Female Founders
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/founder-stories"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Founder Stories
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/interview"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Interviews
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/startup-school"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Startup School
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/work-at-a-startup"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Work at a Startup
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/yc-events"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    YC Events
+                  </div></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="relative isolate z-0 pt-6 pb-6 flex items-center justify-center"
+      >
+        <div class="mx-auto max-w-ycdc-page px-4">
+          <div class="w-96">
+            <p class="mb-6 font-light">
+              Want to sign up for weekly updates from YC?<a
+                class="text-link underline decoration-gray-500 underline-offset-2 transition-all"
+                href="https://ycombinator.com/newsletter/subscribe?signup_source=ycdc_blog"
+                >Sign up for the newsletter</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <footer class="bg-black text-beige-light">
+        <div class="mx-auto max-w-ycdc-page px-6 py-12">
+          <div class="flex flex-col space-y-8">
+            <div class="flex flex-col items-start">
+              <div class="flex flex-row items-center gap-3">
+                <a class="block shrink-0" href="https://ycombinator.com/"
+                  ><span class="sr-only">Y Combinator</span></a
+                >
+                <h3 class="font-light text-base text-beige-light">
+                  Make something people want.
+                </h3>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 items-start gap-8">
+              <div>
+                <h3 class="font-medium tracking-wider text-sm text-beige-light">
+                  Programs
+                </h3>
+                <ul class="mt-2 space-y-1">
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/about"
+                  >
+                    YC Program
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://startupschool.org"
+                  >
+                    Startup School
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/jobs"
+                  >
+                    Work at a Startup
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/cofounder-matching"
+                  >
+                    Co-Founder Matching
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="font-medium tracking-wider text-sm text-beige-light">
+                  Resources
+                </h3>
+                <ul class="mt-2 space-y-1">
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/companies"
+                  >
+                    Startup Directory
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/library"
+                  >
+                    Startup Library
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/investors"
+                  >
+                    Investors
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/demoday"
+                  >
+                    Demo Day
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/safe"
+                  >
+                    SAFE
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://news.ycombinator.com/"
+                  >
+                    Hacker News
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/launches"
+                  >
+                    Launch YC
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://deals.ycombinator.com"
+                  >
+                    YC Deals
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="font-medium tracking-wider text-sm text-beige-light">
+                  Company
+                </h3>
+                <ul class="mt-2 space-y-1">
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/blog"
+                  >
+                    YC Blog
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/contact"
+                  >
+                    Contact
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/press"
+                  >
+                    Press
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/people"
+                  >
+                    People
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/software"
+                  >
+                    Careers
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/legal#privacy"
+                  >
+                    Privacy Policy
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/legal#notice-at-collection"
+                  >
+                    Notice at Collection
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/security"
+                  >
+                    Security
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/legal#tou"
+                  >
+                    Terms of Use
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 border-t border-gray-200 pt-8">
+            <p class="mt-8 font-light text-sm text-beige-light">
+              © 2026 Y Combinator
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

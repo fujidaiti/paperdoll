@@ -1,0 +1,66 @@
+{
+  "selectors": [
+    {
+      "box": [
+        {
+          "tag": "article",
+          "cls": ["featured-slide", "slick-slide", "white", "half"]
+        },
+        { "tag": "a" }
+      ],
+      "title": [
+        { "tag": "div", "cls": ["cell", "small-12", "text-container"] },
+        { "tag": "h2" }
+      ],
+      "link": [],
+      "thumbnail": [{ "tag": "img" }]
+    },
+    {
+      "box": [
+        {
+          "tag": "article",
+          "cls": ["featured-slide", "slick-slide", "white", "full-width"]
+        },
+        { "tag": "a" }
+      ],
+      "title": [
+        { "tag": "div", "cls": ["cell", "small-12", "text-container"] },
+        { "tag": "h2" }
+      ],
+      "link": [],
+      "thumbnail": [{ "tag": "img" }]
+    },
+    {
+      "box": [{ "tag": "article", "cls": ["post-box"] }],
+      "title": [{ "tag": "div", "cls": ["title"] }, { "tag": "h3" }],
+      "link": [{ "tag": "a", "cls": ["square-image"] }],
+      "thumbnail": [
+        {
+          "tag": "img",
+          "cls": ["attachment-large", "size-large", "wp-post-image"]
+        }
+      ]
+    },
+    {
+      "box": [{ "tag": "article", "cls": ["spotlight-item"] }],
+      "title": [{ "tag": "h3", "cls": ["clamp"] }],
+      "link": [{ "tag": "a", "cls": ["wide-image"] }],
+      "body": [
+        { "tag": "div", "cls": ["spotlight-text"] },
+        { "tag": "p", "nth": 1 }
+      ],
+      "thumbnail": [{ "tag": "a", "cls": ["wide-image"] }, { "tag": "img" }]
+    },
+    {
+      "box": [{ "tag": "article", "cls": ["post-box"] }],
+      "title": [{ "tag": "div", "cls": ["title"] }, { "tag": "h3" }],
+      "link": [{ "tag": "a", "cls": ["wide-image"] }],
+      "thumbnail": [
+        {
+          "tag": "img",
+          "cls": ["attachment-large", "size-large", "wp-post-image"]
+        }
+      ]
+    }
+  ]
+}

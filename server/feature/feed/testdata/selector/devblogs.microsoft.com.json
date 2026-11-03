@@ -1,0 +1,102 @@
+{
+  "selectors": [
+    {
+      "box": [
+        { "tag": "div", "cls": ["container-evo"] },
+        { "tag": "section" },
+        { "tag": "div" },
+        { "tag": "div" }
+      ],
+      "title": [
+        {
+          "tag": "h3",
+          "cls": [
+            "mt-16",
+            "netsposts-posttitle-link",
+            "single-click",
+            "excerpt-title"
+          ]
+        }
+      ],
+      "link": [
+        {
+          "tag": "h3",
+          "cls": [
+            "mt-16",
+            "netsposts-posttitle-link",
+            "single-click",
+            "excerpt-title"
+          ]
+        }
+      ],
+      "body": [{ "tag": "div", "cls": ["fs-16", "mb-16", "postexcerpt"] }],
+      "thumbnail": [{ "tag": "img" }]
+    },
+    {
+      "box": [{ "tag": "div", "cls": ["masonry-card", "post-card"] }],
+      "title": [
+        {
+          "tag": "h3",
+          "cls": ["fs-24", "fw-600", "mb-16", "single-click", "excerpt-title"]
+        }
+      ],
+      "link": [
+        {
+          "tag": "h3",
+          "cls": ["fs-24", "fw-600", "mb-16", "single-click", "excerpt-title"]
+        }
+      ],
+      "body": [{ "tag": "p", "cls": ["excerpt-body", "mt-16", "mb-24"] }],
+      "thumbnail": [
+        { "tag": "img", "cls": ["post-thumbnail", "wp-image", "lazyload"] }
+      ],
+      "pubDate": [
+        {
+          "tag": "div",
+          "cls": [
+            "d-flex",
+            "align-items-center",
+            "justify-content-between",
+            "gap-12",
+            "mt-16",
+            "mb-16"
+          ]
+        },
+        { "tag": "div" },
+        { "tag": "time" }
+      ]
+    },
+    {
+      "box": [{ "tag": "div", "cls": ["masonry-card", "post-card"] }],
+      "title": [
+        {
+          "tag": "h3",
+          "cls": ["fs-24", "fw-600", "mb-16", "single-click", "excerpt-title"]
+        }
+      ],
+      "link": [
+        {
+          "tag": "h3",
+          "cls": ["fs-24", "fw-600", "mb-16", "single-click", "excerpt-title"]
+        }
+      ],
+      "body": [{ "tag": "p", "cls": ["excerpt-body", "mt-16", "mb-24"] }],
+      "thumbnail": [{ "tag": "img", "cls": ["post-thumbnail", "lazyload"] }],
+      "pubDate": [
+        {
+          "tag": "div",
+          "cls": [
+            "d-flex",
+            "align-items-center",
+            "justify-content-between",
+            "gap-12",
+            "mt-16",
+            "mb-16"
+          ]
+        },
+        { "tag": "div" },
+        { "tag": "time" }
+      ]
+    }
+  ]
+}

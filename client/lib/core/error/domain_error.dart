@@ -31,6 +31,13 @@ final class const ConflictError([super.message]) extends DomainError {
   String get defaultMessage => 'That already exists.';
 }
 
+/// The resource existed but no longer does, such as an expired selector
+/// editor.
+final class const GoneError([super.message]) extends DomainError {
+  @override
+  String get defaultMessage => 'This is no longer available.';
+}
+
 final class const TooManyRequestsError([super.message]) extends DomainError {
   @override
   String get defaultMessage => 'Too many requests. Please wait and try again.';

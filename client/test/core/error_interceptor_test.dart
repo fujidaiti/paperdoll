@@ -16,6 +16,7 @@ void main() {
     expect(await mapStatus(401), isA<UnauthorizedError>());
     expect(await mapStatus(404), isA<NotFoundError>());
     expect(await mapStatus(409), isA<ConflictError>());
+    expect(await mapStatus(410), isA<GoneError>());
     expect(await mapStatus(429), isA<TooManyRequestsError>());
     expect(await mapStatus(500), isA<ServerError>());
   });
