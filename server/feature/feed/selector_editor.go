@@ -231,16 +231,16 @@ func (t *pageIndex) editorState(doc *html.Node, rules ExtractionRules) EditorSta
 	found := map[*html.Node]bool{}
 	excluded := map[*html.Node]bool{}
 	skip := rules.excludedNodes(t.body)
-	exclude := rules.compileExclude()
+	excludedLinks := rules.excludedLinks()
 	for i := range rules.Selectors {
 		m := &rules.Selectors[i]
 		for _, n := range m.candidates(t.body, skip) {
-			if j, ok := m.excludedBy(n, exclude, skip); ok {
+			if l, ok := m.excludedLink(n, excludedLinks, skip); ok {
 				if !excluded[n] {
 					excluded[n] = true
 					s.ExcludedPosts = append(
 						s.ExcludedPosts,
-						ExcludedPost{Box: t.index[n], Link: rules.ExcludePatterns[j]},
+						ExcludedPost{Box: t.index[n], Link: l},
 					)
 				}
 				continue
@@ -303,9 +303,9 @@ func (t *pageIndex) idsOf(posts []markedPost) []MarkedPostIDs {
 // feedID for the user uid. It fetches the page of the feed, and marks the
 // posts that a user would mark to get the posts that the saved rules of the
 // feed find (see marksFor), since the saved rules do not keep the marks of the
-// user. The excluded links start as the patterns of the saved rules, and the
-// excluded nodes as the nodes that their paths select on the new page. A
-// path that selects no node is dropped.
+// user. The excluded links start as the excluded links of the saved rules,
+// and the excluded nodes as the nodes that their paths select on the new page.
+// A path that selects no node is dropped.
 func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedID int) (SelectorEditor, error) {
 	var fu string
 	var saved sql.NullString
@@ -348,10 +348,7 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 		return SelectorEditor{}, err
 	}
 
-	excluded := map[string]bool{}
-	for _, l := range rules.ExcludePatterns {
-		excluded[l] = true
-	}
+	excluded := rules.excludedLinks()
 	excludedNodes := rules.excludedNodes(t.body)
 	posts, generated := t.marksFor(t.markFoundPosts(rules), excluded, excludedNodes)
 	e := SelectorEditor{

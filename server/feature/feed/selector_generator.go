@@ -273,7 +273,7 @@ func (t *pageIndex) generateRules(
 	excluded map[string]bool,
 	excludedNodes map[*html.Node]bool,
 ) ExtractionRules {
-	rules := ExtractionRules{ExcludePatterns: slices.Sorted(maps.Keys(excluded))}
+	rules := ExtractionRules{ExcludeLinks: slices.Sorted(maps.Keys(excluded))}
 	nodes := slices.SortedFunc(maps.Keys(excludedNodes), func(a, b *html.Node) int { return t.index[a] - t.index[b] })
 	for _, n := range nodes {
 		rules.ExcludeNodes = append(rules.ExcludeNodes, t.positionPath(n))
@@ -342,10 +342,10 @@ func (t *pageIndex) markFoundPosts(rules ExtractionRules) []markedPost {
 	var posts []markedPost
 	byNode := map[*html.Node]markedPost{}
 	skip := rules.excludedNodes(t.body)
-	exclude := rules.compileExclude()
+	excluded := rules.excludedLinks()
 	for i := range rules.Selectors {
 		m := &rules.Selectors[i]
-		for _, n := range m.selectPosts(t.body, skip, exclude) {
+		for _, n := range m.selectPosts(t.body, skip, excluded) {
 			p, ok := byNode[n]
 			if !ok {
 				p = markedPost{box: n, fields: make(map[PostField]*html.Node)}

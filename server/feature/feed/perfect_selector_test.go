@@ -155,9 +155,8 @@ func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int,
 
 		// The selector that the user sees a node as found by is the first one.
 		finder := map[*html.Node]*PostSelector{}
-		exclude := rules.compileExclude()
 		for i := range rules.Selectors {
-			for _, n := range rules.Selectors[i].selectPosts(t.body, nil, exclude) {
+			for _, n := range rules.Selectors[i].selectPosts(t.body, nil, excluded) {
 				if finder[n] == nil {
 					finder[n] = &rules.Selectors[i]
 				}

@@ -209,8 +209,8 @@ func TestExtractPosts(t *testing.T) {
 			}}},
 		},
 		{
-			// A post is left out when the host and the path of its link match a
-			// pattern in ExcludePatterns. The query does not matter.
+			// A post is left out when the host and the path of its link are in
+			// ExcludeLinks. The query does not matter.
 			name: "exclude",
 			rules: ExtractionRules{
 				Selectors: []PostSelector{{
@@ -218,7 +218,7 @@ func TestExtractPosts(t *testing.T) {
 					Title: []Step{{Tag: "h2"}},
 					Link:  []Step{{Tag: "h2"}},
 				}},
-				ExcludePatterns: []string{"example.com/newsletters"},
+				ExcludeLinks: []string{"example.com/newsletters"},
 			},
 		},
 		{
@@ -440,8 +440,8 @@ func TestExtractionRulesJSON(t *testing.T) {
 				Title: []Step{{Tag: "h2"}},
 				Link:  []Step{{Tag: "a"}},
 			}},
-			ExcludePatterns: []string{"example.com/newsletters"},
-			ExcludeNodes:    [][]Step{{{Tag: "nav", Nth: new(0)}}},
+			ExcludeLinks: []string{"example.com/newsletters"},
+			ExcludeNodes: [][]Step{{{Tag: "nav", Nth: new(0)}}},
 		}
 
 		data, err := json.Marshal(rules)
@@ -449,7 +449,7 @@ func TestExtractionRulesJSON(t *testing.T) {
 			t.Fatal(err)
 		}
 		want := `{"selectors":[{"box":[{"tag":"article"}],"title":[{"tag":"h2"}],"link":[{"tag":"a"}]}],` +
-			`"excludePatterns":["example.com/newsletters"],` +
+			`"excludeLinks":["example.com/newsletters"],` +
 			`"excludeNodes":[[{"tag":"nav","nth":0}]]}`
 		if string(data) != want {
 			t.Errorf("JSON is %s, want %s", data, want)
@@ -475,27 +475,6 @@ func TestExtractionRulesJSON(t *testing.T) {
 			t.Errorf("JSON is %s, want %s", data, want)
 		}
 	})
-}
-
-func TestGlobRegexp(t *testing.T) {
-	tests := []struct {
-		pattern, hostPath string
-		want              bool
-	}{
-		{"example.com/blog", "example.com/blog", true},
-		{"example.com/blog", "example.com/blog/first", false},
-		{"example.com", "exampleXcom", false},
-		{"example.com/*", "example.com/blog", true},
-		{"example.com/*", "example.com/blog/first", false},
-		{"example.com/**", "example.com/blog/first", true},
-		{"example.com/blog-?", "example.com/blog-1", true},
-		{"example.com/blog?", "example.com/blog/", false},
-	}
-	for _, tt := range tests {
-		if got := globRegexp(tt.pattern).MatchString(tt.hostPath); got != tt.want {
-			t.Errorf("globRegexp(%q) matches %q: %v, want %v", tt.pattern, tt.hostPath, got, tt.want)
-		}
-	}
 }
 
 // TestBodyText checks bodyText against the nodes of testdata/body-text.html,

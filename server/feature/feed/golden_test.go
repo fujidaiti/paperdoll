@@ -187,21 +187,16 @@ func TestMarksForGolden(t *testing.T) {
 				t.Fatal(err)
 			}
 			index := newPageIndex(pageBody(doc))
-			excluded := map[string]bool{}
-			for _, l := range golden.ExcludePatterns {
-				excluded[l] = true
-			}
-
 			targets := index.markFoundPosts(golden)
-			marks, rules := index.marksFor(targets, excluded, golden.excludedNodes(index.body))
+			marks, rules := index.marksFor(targets, golden.excludedLinks(), golden.excludedNodes(index.body))
 			t.Logf("%d marks for %d posts", len(marks), len(targets))
 
 			postNodes := func(rules ExtractionRules) []int {
 				var ids []int
 				skip := rules.excludedNodes(index.body)
-				exclude := rules.compileExclude()
+				excluded := rules.excludedLinks()
 				for _, m := range rules.Selectors {
-					for _, n := range m.selectPosts(index.body, skip, exclude) {
+					for _, n := range m.selectPosts(index.body, skip, excluded) {
 						if !slices.Contains(ids, index.index[n]) {
 							ids = append(ids, index.index[n])
 						}

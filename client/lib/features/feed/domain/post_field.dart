@@ -34,8 +34,7 @@ enum PostField {
   };
 }
 
-/// The host and path of [link], which exclude patterns match and by which
-/// the user excludes a link.
+/// The host and path of [link], by which the user excludes a link.
 String hostPathOf(String link) {
   final uri = Uri.parse(link);
   return '${uri.host}${uri.path}';

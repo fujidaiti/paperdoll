@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"iter"
 	"net/url"
-	"regexp"
 	"slices"
 	"sort"
 	"strings"
@@ -170,8 +169,8 @@ func (s Step) matches(n *html.Node) bool {
 // Title and Link are required, since they define the kind of posts. Body,
 // Thumbnail and PubDate are nil when the posts have none. A node that Box
 // selects is a post only when its title and link are found (see hasFields),
-// when its link matches none of the patterns in ExcludePatterns of its
-// ExtractionRules, and when it contains no other such node (see candidates).
+// when its link is not in ExcludeLinks of its ExtractionRules, and when it
+// contains no other such node (see candidates).
 type PostSelector struct {
 	Box []Step `json:"box"`
 	// omitzero leaves out the fields that the selector does not have, and
@@ -233,9 +232,9 @@ func (m *PostSelector) UnmarshalJSON(data []byte) error {
 // ExtractionRules are the rules that extract the posts of a page: the post
 // selectors, and the exclusions that apply to all of them.
 //
-// ExcludePatterns holds the patterns of the links that the user excluded, by
-// host and path (see globRegexp). A post whose link matches one of them is
-// not a post.
+// ExcludeLinks holds the host and path of each link that the user excluded.
+// A post whose link has the host and path of one of them is not a post,
+// whatever the scheme, the query and the fragment of the link are.
 //
 // ExcludeNodes holds the paths of the nodes that the user excluded with their
 // subtrees, such as a menu. Each step of such a path selects children, from
@@ -244,9 +243,9 @@ func (m *PostSelector) UnmarshalJSON(data []byte) error {
 // selects a node by its position in the page. The selectors run as if the
 // subtrees of these nodes were not in the page.
 type ExtractionRules struct {
-	Selectors       []PostSelector `json:"selectors"`
-	ExcludePatterns []string       `json:"excludePatterns,omitempty"`
-	ExcludeNodes    [][]Step       `json:"excludeNodes,omitempty"`
+	Selectors    []PostSelector `json:"selectors"`
+	ExcludeLinks []string       `json:"excludeLinks,omitempty"`
+	ExcludeNodes [][]Step       `json:"excludeNodes,omitempty"`
 }
 
 // selectNodes returns the nodes that path selects from start, in document
@@ -326,13 +325,13 @@ paths:
 }
 
 // selectPosts returns the post nodes that m finds in body, the body of a
-// simplified page: the candidates (see candidates) whose links match none of
-// the excluded patterns. skip holds the excluded nodes (see excludedNodes),
-// and exclude the compiled patterns (see compileExclude).
-func (m *PostSelector) selectPosts(body *html.Node, skip map[*html.Node]bool, exclude []*regexp.Regexp) []*html.Node {
+// simplified page: the candidates (see candidates) whose links are not
+// excluded. skip holds the excluded nodes (see excludedNodes), and excluded
+// the excluded links (see excludedLinks).
+func (m *PostSelector) selectPosts(body *html.Node, skip map[*html.Node]bool, excluded map[string]bool) []*html.Node {
 	return slices.DeleteFunc(m.candidates(body, skip), func(n *html.Node) bool {
-		_, excluded := m.excludedBy(n, exclude, skip)
-		return excluded
+		_, ok := m.excludedLink(n, excluded, skip)
+		return ok
 	})
 }
 
@@ -400,58 +399,36 @@ func resolvePath(post *html.Node, f PostField, path []Step, skip map[*html.Node]
 	return nil
 }
 
-// compileExclude returns the regexps of the patterns in ExcludePatterns.
-func (r *ExtractionRules) compileExclude() []*regexp.Regexp {
-	exclude := make([]*regexp.Regexp, len(r.ExcludePatterns))
-	for i, p := range r.ExcludePatterns {
-		exclude[i] = globRegexp(p)
+// excludedLinks returns the set of the links in ExcludeLinks.
+func (r *ExtractionRules) excludedLinks() map[string]bool {
+	excluded := map[string]bool{}
+	for _, l := range r.ExcludeLinks {
+		excluded[l] = true
 	}
-	return exclude
+	return excluded
 }
 
-// excludedBy returns the index of the first pattern in exclude, the compiled
-// patterns of ExcludePatterns (see compileExclude), that matches the host and
-// path of the link of post, or false when none does. skip holds the excluded
-// nodes.
-func (m *PostSelector) excludedBy(post *html.Node, exclude []*regexp.Regexp, skip map[*html.Node]bool) (int, bool) {
+// excludedLink returns the host and path of the link of post when they are
+// in excluded, the excluded links (see excludedLinks), or false when they are
+// not. skip holds the excluded nodes.
+func (m *PostSelector) excludedLink(
+	post *html.Node,
+	excluded map[string]bool,
+	skip map[*html.Node]bool,
+) (string, bool) {
 	n := m.resolveField(post, PostLink, skip)
 	if n == nil {
-		return 0, false
+		return "", false
 	}
 	u, err := url.Parse(linkOf(n))
 	if err != nil {
-		return 0, false
+		return "", false
 	}
 	hostPath := u.Host + u.Path
-	for i, re := range exclude {
-		if re.MatchString(hostPath) {
-			return i, true
-		}
+	if !excluded[hostPath] {
+		return "", false
 	}
-	return 0, false
-}
-
-// globRegexp compiles the file glob pattern into a regexp that matches a
-// whole host and path: "*" matches any characters except "/", "**" matches
-// any characters, and "?" matches one character except "/".
-func globRegexp(pattern string) *regexp.Regexp {
-	var re strings.Builder
-	re.WriteString("^")
-	for i := 0; i < len(pattern); i++ {
-		switch {
-		case strings.HasPrefix(pattern[i:], "**"):
-			re.WriteString(".*")
-			i++
-		case pattern[i] == '*':
-			re.WriteString("[^/]*")
-		case pattern[i] == '?':
-			re.WriteString("[^/]")
-		default:
-			re.WriteString(regexp.QuoteMeta(pattern[i : i+1]))
-		}
-	}
-	re.WriteString("$")
-	return regexp.MustCompile(re.String())
+	return hostPath, true
 }
 
 // ExtractedPost is a post that a selector found in a page, by its field
@@ -477,9 +454,9 @@ func ExtractPosts(page *html.Node, rules ExtractionRules) []ExtractedPost {
 	}
 	var posts []found
 	skip := rules.excludedNodes(body)
-	exclude := rules.compileExclude()
+	excluded := rules.excludedLinks()
 	for _, m := range rules.Selectors {
-		for _, n := range m.selectPosts(body, skip, exclude) {
+		for _, n := range m.selectPosts(body, skip, excluded) {
 			values := make(ExtractedPost)
 			for field := range m.Fields() {
 				if v := m.resolveField(n, field, skip); v != nil {
