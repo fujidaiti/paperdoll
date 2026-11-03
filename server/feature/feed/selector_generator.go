@@ -197,7 +197,7 @@ func (t *pageIndex) selectorOf(
 	excludeNodes [][]Step,
 	skip map[*html.Node]bool,
 ) (PostSelector, bool) {
-	m := PostSelector{Post: t.postPath(post.node), ExcludePatterns: exclude, ExcludeNodes: excludeNodes}
+	m := PostSelector{Box: t.postPath(post.node), ExcludePatterns: exclude, ExcludeNodes: excludeNodes}
 	for f, n := range post.fields {
 		if path, ok := t.fieldPath(f, post.node, n, skip); ok {
 			setPath(&m, f, path)
@@ -229,19 +229,19 @@ func samePaths(a, b []Step) bool {
 // page: its post path selects their nodes, and their fields resolve by the
 // same paths as before.
 func merge(a, b PostSelector) (PostSelector, bool) {
-	if len(a.Post) != len(b.Post) {
+	if len(a.Box) != len(b.Box) {
 		return PostSelector{}, false
 	}
-	last := len(a.Post) - 1
-	for i := range a.Post {
-		if a.Post[i].Tag != b.Post[i].Tag || i < last && !samePaths(a.Post[i:i+1], b.Post[i:i+1]) {
+	last := len(a.Box) - 1
+	for i := range a.Box {
+		if a.Box[i].Tag != b.Box[i].Tag || i < last && !samePaths(a.Box[i:i+1], b.Box[i:i+1]) {
 			return PostSelector{}, false
 		}
 	}
-	post := slices.Clone(a.Post)
+	post := slices.Clone(a.Box)
 	post[last].Cls = slices.DeleteFunc(
 		slices.Clone(post[last].Cls),
-		func(c string) bool { return !slices.Contains(b.Post[last].Cls, c) },
+		func(c string) bool { return !slices.Contains(b.Box[last].Cls, c) },
 	)
 	if !slices.ContainsFunc(post, func(s Step) bool { return len(s.Cls) > 0 }) {
 		return PostSelector{}, false
@@ -250,7 +250,7 @@ func merge(a, b PostSelector) (PostSelector, bool) {
 		return PostSelector{}, false
 	}
 	m := PostSelector{
-		Post:            post,
+		Box:             post,
 		Title:           a.Title,
 		Link:            a.Link,
 		ExcludePatterns: a.ExcludePatterns,

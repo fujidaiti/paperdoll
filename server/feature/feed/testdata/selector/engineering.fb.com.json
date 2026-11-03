@@ -1,21 +1,17 @@
 [
   {
-    "post": [{ "tag": "article", "cls": ["post", "type-post"] }],
-    "fields": {
-      "link": [{ "tag": "a" }],
-      "thumbnail": [{ "tag": "img" }],
-      "title": [{ "tag": "div", "cls": ["entry-title"] }, { "tag": "div" }]
-    }
+    "box": [{ "tag": "article", "cls": ["post", "type-post"] }],
+    "title": [{ "tag": "div", "cls": ["entry-title"] }, { "tag": "div" }],
+    "link": [{ "tag": "a" }],
+    "thumbnail": [{ "tag": "img" }]
   },
   {
-    "post": [{ "tag": "article", "cls": ["post", "type-post"] }],
-    "fields": {
-      "link": [{ "tag": "a", "cls": ["feat-image"] }],
-      "pubDate": [{ "tag": "time", "cls": ["entry-date", "published"] }],
-      "thumbnail": [
-        { "tag": "img", "cls": ["attachment-thumbnail", "size-thumbnail"] }
-      ],
-      "title": [{ "tag": "div", "cls": ["entry-title"] }, { "tag": "div" }]
-    }
+    "box": [{ "tag": "article", "cls": ["post", "type-post"] }],
+    "title": [{ "tag": "div", "cls": ["entry-title"] }, { "tag": "div" }],
+    "link": [{ "tag": "a", "cls": ["feat-image"] }],
+    "thumbnail": [
+      { "tag": "img", "cls": ["attachment-thumbnail", "size-thumbnail"] }
+    ],
+    "pubDate": [{ "tag": "time", "cls": ["entry-date", "published"] }]
   }
 ]

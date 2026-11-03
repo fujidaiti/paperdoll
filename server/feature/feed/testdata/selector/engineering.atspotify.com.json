@@ -1,29 +1,22 @@
 [
   {
-    "post": [{ "tag": "main" }, { "tag": "section" }, { "tag": "div" }],
-    "fields": {
-      "body": [{ "tag": "div" }, { "tag": "div" }],
-      "link": [{ "tag": "a" }],
-      "pubDate": [{ "tag": "time" }],
-      "thumbnail": [{ "tag": "img" }],
-      "title": [{ "tag": "h4" }]
-    }
+    "box": [{ "tag": "main" }, { "tag": "section" }, { "tag": "div" }],
+    "title": [{ "tag": "h4" }],
+    "link": [{ "tag": "a" }],
+    "body": [{ "tag": "div" }, { "tag": "div" }],
+    "thumbnail": [{ "tag": "img" }],
+    "pubDate": [{ "tag": "time" }]
   },
   {
-    "post": [{ "tag": "div", "cls": ["post-card"] }],
-    "fields": {
-      "body": [{ "tag": "div", "cls": ["post-card__description"] }],
-      "link": [{ "tag": "div", "cls": ["post-card__image"] }, { "tag": "a" }],
-      "pubDate": [
-        { "tag": "div", "cls": ["post-card__date"] },
-        { "tag": "time" }
-      ],
-      "thumbnail": [
-        { "tag": "div", "cls": ["post-card__image"] },
-        { "tag": "a" },
-        { "tag": "img" }
-      ],
-      "title": [{ "tag": "h4", "cls": ["post-card__title"] }]
-    }
+    "box": [{ "tag": "div", "cls": ["post-card"] }],
+    "title": [{ "tag": "h4", "cls": ["post-card__title"] }],
+    "link": [{ "tag": "div", "cls": ["post-card__image"] }, { "tag": "a" }],
+    "body": [{ "tag": "div", "cls": ["post-card__description"] }],
+    "thumbnail": [
+      { "tag": "div", "cls": ["post-card__image"] },
+      { "tag": "a" },
+      { "tag": "img" }
+    ],
+    "pubDate": [{ "tag": "div", "cls": ["post-card__date"] }, { "tag": "time" }]
   }
 ]

@@ -1,6 +1,7 @@
 package feed
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"iter"
@@ -162,12 +163,12 @@ func (s Step) matches(n *html.Node) bool {
 // that the user labels on a page (see SelectorEditor), and the server runs
 // them on each fetch of the page.
 //
-// Post is the path of steps to the post nodes: the first step selects
+// Box is the path of steps to the post nodes: the first step selects
 // descendants of the root, and each later step selects children of the nodes
 // that the previous step selects. Each field has one path of steps from a
 // post node to the node of its value; an empty path is the post node itself.
 // Title and Link are required, since they define the kind of posts. Body,
-// Thumbnail and PubDate are nil when the posts have none. A node that Post
+// Thumbnail and PubDate are nil when the posts have none. A node that Box
 // selects is a post only when its title and link are found (see hasFields),
 // when its link matches none of the patterns in ExcludePatterns, and when it
 // contains no other such node (see candidates).
@@ -179,14 +180,16 @@ func (s Step) matches(n *html.Node) bool {
 // selects a node by its position in the page. The selector runs as if the
 // subtrees of these nodes were not in the page.
 type PostSelector struct {
-	Post            []Step
-	Title           []Step
-	Link            []Step
-	Body            []Step
-	Thumbnail       []Step
-	PubDate         []Step
-	ExcludePatterns []string
-	ExcludeNodes    [][]Step
+	Box []Step `json:"box"`
+	// omitzero leaves out the fields that the selector does not have, and
+	// keeps an empty path, which is the post node itself, as [].
+	Title           []Step   `json:"title,omitzero"`
+	Link            []Step   `json:"link,omitzero"`
+	Body            []Step   `json:"body,omitzero"`
+	Thumbnail       []Step   `json:"thumbnail,omitzero"`
+	PubDate         []Step   `json:"pubDate,omitzero"`
+	ExcludePatterns []string `json:"excludePatterns,omitempty"`
+	ExcludeNodes    [][]Step `json:"excludeNodes,omitempty"`
 }
 
 // pathOf returns the path of f, or false when m has none.
@@ -218,53 +221,21 @@ func (m *PostSelector) Fields() map[PostField][]Step {
 	return fields
 }
 
-// postSelectorJSON is the JSON of PostSelector, whose fields hold the path of
-// each field that has one.
-type postSelectorJSON struct {
-	Post            []Step               `json:"post"`
-	Fields          map[PostField][]Step `json:"fields"`
-	ExcludePatterns []string             `json:"excludePatterns,omitempty"`
-	ExcludeNodes    [][]Step             `json:"excludeNodes,omitempty"`
-}
-
-func (m PostSelector) MarshalJSON() ([]byte, error) {
-	return json.Marshal(postSelectorJSON{
-		Post:            m.Post,
-		Fields:          m.Fields(),
-		ExcludePatterns: m.ExcludePatterns,
-		ExcludeNodes:    m.ExcludeNodes,
-	})
-}
-
+// UnmarshalJSON fails on an unknown key, such as a field that PostField does
+// not define, and when the title or the link has no path.
 func (m *PostSelector) UnmarshalJSON(data []byte) error {
-	var j postSelectorJSON
-	if err := json.Unmarshal(data, &j); err != nil {
+	// postSelector has the fields of PostSelector without this method.
+	type postSelector PostSelector
+	d := json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	var j postSelector
+	if err := d.Decode(&j); err != nil {
 		return err
 	}
-	*m = PostSelector{Post: j.Post, ExcludePatterns: j.ExcludePatterns, ExcludeNodes: j.ExcludeNodes}
-	for f, path := range j.Fields {
-		// An empty path is the post node itself, which nil would leave out.
-		if path == nil {
-			path = []Step{}
-		}
-		switch f {
-		case PostTitle:
-			m.Title = path
-		case PostLink:
-			m.Link = path
-		case PostBody:
-			m.Body = path
-		case PostThumbnail:
-			m.Thumbnail = path
-		case PostPubDate:
-			m.PubDate = path
-		default:
-			return fmt.Errorf("unknown field %q", f)
-		}
-	}
-	if m.Title == nil || m.Link == nil {
+	if j.Title == nil || j.Link == nil {
 		return fmt.Errorf("no path of the title or the link")
 	}
+	*m = PostSelector(j)
 	return nil
 }
 
@@ -356,18 +327,18 @@ func (m *PostSelector) selectPosts(body *html.Node, skip map[*html.Node]bool) []
 	})
 }
 
-// candidates returns the nodes in body that Post selects and that have the
+// candidates returns the nodes in body that Box selects and that have the
 // title and the link, including the ones whose links are excluded. A node that
 // contains another such node is left out, since it is a list of posts rather
-// than a post. Other nodes that Post selects inside a post, such as a footer
+// than a post. Other nodes that Box selects inside a post, such as a footer
 // with the same classes, do not matter. The subtrees of the nodes in skip are
 // left out.
 func (m *PostSelector) candidates(body *html.Node, skip map[*html.Node]bool) []*html.Node {
-	if len(m.Post) == 0 {
+	if len(m.Box) == 0 {
 		return nil
 	}
 	selected := map[*html.Node]bool{}
-	for _, n := range selectNodes(body, m.Post, true, skip) {
+	for _, n := range selectNodes(body, m.Box, true, skip) {
 		selected[n] = true
 	}
 	var posts []*html.Node

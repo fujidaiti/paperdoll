@@ -191,7 +191,7 @@ func TestExtractPosts(t *testing.T) {
 			// texts of its node.
 			name: "fields",
 			selectors: []PostSelector{{
-				Post:      []Step{{Tag: "article", Cls: []string{"post"}}},
+				Box:       []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title:     []Step{{Tag: "h2"}},
 				Link:      []Step{{Tag: "h2"}},
 				Body:      []Step{{Tag: "div", Cls: []string{"summary"}}},
@@ -203,7 +203,7 @@ func TestExtractPosts(t *testing.T) {
 			// A node without the title or the link is not a post.
 			name: "required-fields",
 			selectors: []PostSelector{{
-				Post:  []Step{{Tag: "article", Cls: []string{"post"}}},
+				Box:   []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title: []Step{{Tag: "h2"}},
 				Link:  []Step{{Tag: "h2"}},
 			}},
@@ -213,7 +213,7 @@ func TestExtractPosts(t *testing.T) {
 			// pattern in Exclude. The query does not matter.
 			name: "exclude",
 			selectors: []PostSelector{{
-				Post:            []Step{{Tag: "article", Cls: []string{"post"}}},
+				Box:             []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title:           []Step{{Tag: "h2"}},
 				Link:            []Step{{Tag: "h2"}},
 				ExcludePatterns: []string{"example.com/newsletters"},
@@ -224,7 +224,7 @@ func TestExtractPosts(t *testing.T) {
 			// such as the menu in the first section.
 			name: "exclude-nodes",
 			selectors: []PostSelector{{
-				Post:         []Step{{Tag: "article", Cls: []string{"post"}}},
+				Box:          []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title:        []Step{{Tag: "h2"}},
 				Link:         []Step{{Tag: "h2"}},
 				ExcludeNodes: [][]Step{{{Tag: "section", Nth: new(0)}}},
@@ -236,7 +236,7 @@ func TestExtractPosts(t *testing.T) {
 			// of the section.
 			name: "exclude-nodes-in-post",
 			selectors: []PostSelector{{
-				Post:         []Step{{Tag: "article", Cls: []string{"post"}}},
+				Box:          []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title:        []Step{{Tag: "h2"}},
 				Link:         []Step{{Tag: "h2"}},
 				Body:         []Step{{Tag: "p"}},
@@ -248,27 +248,27 @@ func TestExtractPosts(t *testing.T) {
 			// when it has a title and a link of its own.
 			name: "list",
 			selectors: []PostSelector{{
-				Post:  []Step{{Tag: "div", Cls: []string{"card"}}},
+				Box:   []Step{{Tag: "div", Cls: []string{"card"}}},
 				Title: []Step{{Tag: "h2"}},
 				Link:  []Step{{Tag: "h2"}},
 			}},
 		},
 		{
-			// A node that Post selects inside a post and that has no title and link
+			// A node that Box selects inside a post and that has no title and link
 			// does not make the post a list.
 			name: "inner-node",
 			selectors: []PostSelector{{
-				Post:  []Step{{Tag: "div", Cls: []string{"card"}}},
+				Box:   []Step{{Tag: "div", Cls: []string{"card"}}},
 				Title: []Step{{Tag: "h2"}},
 				Link:  []Step{{Tag: "h2"}},
 			}},
 		},
 		{
-			// Each step of Post after the first selects children, so that the
+			// Each step of Box after the first selects children, so that the
 			// article inside the related list is not a post.
 			name: "children",
 			selectors: []PostSelector{{
-				Post:  []Step{{Tag: "section", Cls: []string{"latest"}}, {Tag: "article"}},
+				Box:   []Step{{Tag: "section", Cls: []string{"latest"}}, {Tag: "article"}},
 				Title: []Step{{Tag: "h2"}},
 				Link:  []Step{{Tag: "h2"}},
 			}},
@@ -277,7 +277,7 @@ func TestExtractPosts(t *testing.T) {
 			// A step with Nth selects only the node at that index.
 			name: "nth",
 			selectors: []PostSelector{{
-				Post:  []Step{{Tag: "article", Cls: []string{"post"}}},
+				Box:   []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title: []Step{{Tag: "p", Nth: new(1)}},
 				Link:  []Step{{Tag: "p", Nth: new(1)}},
 			}},
@@ -287,7 +287,7 @@ func TestExtractPosts(t *testing.T) {
 			// accepts: the body skips the paragraph that has only an image.
 			name: "accepted-node",
 			selectors: []PostSelector{{
-				Post:      []Step{{Tag: "article", Cls: []string{"post"}}},
+				Box:       []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title:     []Step{{Tag: "h2"}},
 				Link:      []Step{{Tag: "h2"}},
 				Body:      []Step{{Tag: "p"}},
@@ -298,7 +298,7 @@ func TestExtractPosts(t *testing.T) {
 			// An empty path selects the post node itself.
 			name: "post-node",
 			selectors: []PostSelector{{
-				Post:  []Step{{Tag: "a", Cls: []string{"card"}}},
+				Box:   []Step{{Tag: "a", Cls: []string{"card"}}},
 				Title: []Step{{Tag: "h3"}},
 				Link:  []Step{},
 				Body:  []Step{{Tag: "p"}},
@@ -309,12 +309,12 @@ func TestExtractPosts(t *testing.T) {
 			name: "selectors",
 			selectors: []PostSelector{
 				{
-					Post:  []Step{{Tag: "article", Cls: []string{"post"}}},
+					Box:   []Step{{Tag: "article", Cls: []string{"post"}}},
 					Title: []Step{{Tag: "h2"}},
 					Link:  []Step{{Tag: "h2"}},
 				},
 				{
-					Post:  []Step{{Tag: "div", Cls: []string{"featured"}}},
+					Box:   []Step{{Tag: "div", Cls: []string{"featured"}}},
 					Title: []Step{{Tag: "h3"}},
 					Link:  []Step{{Tag: "h3"}},
 				},
@@ -327,12 +327,12 @@ func TestExtractPosts(t *testing.T) {
 			name: "same-link-first-wins",
 			selectors: []PostSelector{
 				{
-					Post:  []Step{{Tag: "div", Cls: []string{"card"}}},
+					Box:   []Step{{Tag: "div", Cls: []string{"card"}}},
 					Title: []Step{{Tag: "h2"}},
 					Link:  []Step{{Tag: "h2"}},
 				},
 				{
-					Post:  []Step{{Tag: "div", Cls: []string{"teaser"}}},
+					Box:   []Step{{Tag: "div", Cls: []string{"teaser"}}},
 					Title: []Step{{Tag: "h3"}},
 					Link:  []Step{{Tag: "h3"}},
 				},
@@ -344,13 +344,13 @@ func TestExtractPosts(t *testing.T) {
 			name: "same-link-missing-fields",
 			selectors: []PostSelector{
 				{
-					Post:      []Step{{Tag: "div", Cls: []string{"teaser"}}},
+					Box:       []Step{{Tag: "div", Cls: []string{"teaser"}}},
 					Title:     []Step{{Tag: "h3"}},
 					Link:      []Step{{Tag: "h3"}},
 					Thumbnail: []Step{{Tag: "img"}},
 				},
 				{
-					Post:  []Step{{Tag: "div", Cls: []string{"card"}}},
+					Box:   []Step{{Tag: "div", Cls: []string{"card"}}},
 					Title: []Step{{Tag: "h3"}},
 					Link:  []Step{{Tag: "h3"}},
 					Body:  []Step{{Tag: "p"}},
@@ -384,7 +384,7 @@ func TestExtractPosts(t *testing.T) {
 func TestPostSelectorJSON(t *testing.T) {
 	t.Run("round trip", func(t *testing.T) {
 		m := PostSelector{
-			Post:            []Step{{Tag: "a", Cls: []string{"card"}}},
+			Box:             []Step{{Tag: "a", Cls: []string{"card"}}},
 			Title:           []Step{{Tag: "h3"}},
 			Link:            []Step{},
 			PubDate:         []Step{{Tag: "time", Nth: new(0)}},
@@ -396,8 +396,8 @@ func TestPostSelectorJSON(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		want := `{"post":[{"tag":"a","cls":["card"]}],` +
-			`"fields":{"link":[],"pubDate":[{"tag":"time","nth":0}],"title":[{"tag":"h3"}]},` +
+		want := `{"box":[{"tag":"a","cls":["card"]}],` +
+			`"title":[{"tag":"h3"}],"link":[],"pubDate":[{"tag":"time","nth":0}],` +
 			`"excludePatterns":["example.com/newsletters"],` +
 			`"excludeNodes":[[{"tag":"nav","nth":0}]]}`
 		if string(data) != want {
@@ -416,9 +416,9 @@ func TestPostSelectorJSON(t *testing.T) {
 	})
 
 	errors := []struct{ name, json string }{
-		{"unknown field", `{"post":[{"tag":"article"}],"fields":{"title":[],"link":[],"author":[]}}`},
-		{"no title", `{"post":[{"tag":"article"}],"fields":{"link":[]}}`},
-		{"no link", `{"post":[{"tag":"article"}],"fields":{"title":[]}}`},
+		{"unknown field", `{"box":[{"tag":"article"}],"title":[],"link":[],"author":[]}`},
+		{"no title", `{"box":[{"tag":"article"}],"link":[]}`},
+		{"no link", `{"box":[{"tag":"article"}],"title":[]}`},
 	}
 	for _, tt := range errors {
 		t.Run(tt.name, func(t *testing.T) {

@@ -1,124 +1,108 @@
 [
   {
-    "post": [{ "tag": "a", "cls": ["card", "card--media", "card--feature"] }],
-    "fields": {
-      "body": [
-        {
-          "tag": "p",
-          "cls": ["type-base", "text-theme-text-sec", "text-pretty"]
-        }
-      ],
-      "link": [],
-      "pubDate": [
-        {
-          "tag": "div",
-          "cls": [
-            "type-base",
-            "text-theme-text-mid",
-            "flex",
-            "flex-wrap",
-            "items-center"
-          ]
-        },
-        { "tag": "time" }
-      ],
-      "thumbnail": [
-        {
-          "tag": "img",
-          "cls": [
-            "h-full",
-            "w-full",
-            "object-cover",
-            "transition-opacity",
-            "opacity-0"
-          ]
-        }
-      ],
-      "title": [
-        { "tag": "p", "cls": ["type-md-lg", "text-theme-text", "text-balance"] }
-      ]
-    }
+    "box": [{ "tag": "a", "cls": ["card", "card--media", "card--feature"] }],
+    "title": [
+      { "tag": "p", "cls": ["type-md-lg", "text-theme-text", "text-balance"] }
+    ],
+    "link": [],
+    "body": [
+      { "tag": "p", "cls": ["type-base", "text-theme-text-sec", "text-pretty"] }
+    ],
+    "thumbnail": [
+      {
+        "tag": "img",
+        "cls": [
+          "h-full",
+          "w-full",
+          "object-cover",
+          "transition-opacity",
+          "opacity-0"
+        ]
+      }
+    ],
+    "pubDate": [
+      {
+        "tag": "div",
+        "cls": [
+          "type-base",
+          "text-theme-text-mid",
+          "flex",
+          "flex-wrap",
+          "items-center"
+        ]
+      },
+      { "tag": "time" }
+    ]
   },
   {
-    "post": [{ "tag": "a", "cls": ["card", "card--media", "card--feature"] }],
-    "fields": {
-      "body": [
-        {
-          "tag": "p",
-          "cls": ["type-base", "text-theme-text-sec", "text-pretty"]
-        }
-      ],
-      "link": [],
-      "pubDate": [
-        {
-          "tag": "div",
-          "cls": [
-            "type-base",
-            "text-theme-text-mid",
-            "flex",
-            "flex-wrap",
-            "items-center"
-          ]
-        },
-        { "tag": "time" }
-      ],
-      "thumbnail": [
-        {
-          "tag": "img",
-          "cls": [
-            "h-full",
-            "w-full",
-            "object-cover",
-            "transition-opacity",
-            "opacity-0"
-          ]
-        }
-      ],
-      "title": [
-        { "tag": "p", "cls": ["type-md", "text-theme-text", "text-balance"] }
-      ]
-    }
+    "box": [{ "tag": "a", "cls": ["card", "card--media", "card--feature"] }],
+    "title": [
+      { "tag": "p", "cls": ["type-md", "text-theme-text", "text-balance"] }
+    ],
+    "link": [],
+    "body": [
+      { "tag": "p", "cls": ["type-base", "text-theme-text-sec", "text-pretty"] }
+    ],
+    "thumbnail": [
+      {
+        "tag": "img",
+        "cls": [
+          "h-full",
+          "w-full",
+          "object-cover",
+          "transition-opacity",
+          "opacity-0"
+        ]
+      }
+    ],
+    "pubDate": [
+      {
+        "tag": "div",
+        "cls": [
+          "type-base",
+          "text-theme-text-mid",
+          "flex",
+          "flex-wrap",
+          "items-center"
+        ]
+      },
+      { "tag": "time" }
+    ]
   },
   {
-    "post": [{ "tag": "a", "cls": ["blog-directory__row", "block"] }],
-    "fields": {
-      "link": [],
-      "pubDate": [
-        {
-          "tag": "div",
-          "cls": [
-            "type-base",
-            "text-theme-text-mid",
-            "flex",
-            "flex-wrap",
-            "items-start",
-            "self-start"
-          ]
-        },
-        { "tag": "time" }
-      ],
-      "title": [
-        { "tag": "p", "cls": ["type-base", "text-theme-text", "text-pretty"] }
-      ]
-    }
+    "box": [{ "tag": "a", "cls": ["blog-directory__row", "block"] }],
+    "title": [
+      { "tag": "p", "cls": ["type-base", "text-theme-text", "text-pretty"] }
+    ],
+    "link": [],
+    "pubDate": [
+      {
+        "tag": "div",
+        "cls": [
+          "type-base",
+          "text-theme-text-mid",
+          "flex",
+          "flex-wrap",
+          "items-start",
+          "self-start"
+        ]
+      },
+      { "tag": "time" }
+    ]
   },
   {
-    "post": [{ "tag": "a", "cls": ["card"] }],
-    "fields": {
-      "link": [],
-      "pubDate": [{ "tag": "time", "cls": ["type-base"] }],
-      "thumbnail": [{ "tag": "img", "cls": ["object-cover"] }],
-      "title": [
-        { "tag": "p", "cls": ["type-base", "text-theme-text", "text-pretty"] }
-      ]
-    }
+    "box": [{ "tag": "a", "cls": ["card"] }],
+    "title": [
+      { "tag": "p", "cls": ["type-base", "text-theme-text", "text-pretty"] }
+    ],
+    "link": [],
+    "thumbnail": [{ "tag": "img", "cls": ["object-cover"] }],
+    "pubDate": [{ "tag": "time", "cls": ["type-base"] }]
   },
   {
-    "post": [{ "tag": "a", "cls": ["card"] }],
-    "fields": {
-      "link": [],
-      "pubDate": [{ "tag": "time", "cls": ["type-base"] }],
-      "title": [{ "tag": "p", "cls": ["type-base", "text-theme-text"] }]
-    }
+    "box": [{ "tag": "a", "cls": ["card"] }],
+    "title": [{ "tag": "p", "cls": ["type-base", "text-theme-text"] }],
+    "link": [],
+    "pubDate": [{ "tag": "time", "cls": ["type-base"] }]
   }
 ]

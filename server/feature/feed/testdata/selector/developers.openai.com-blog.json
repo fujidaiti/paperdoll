@@ -1,6 +1,6 @@
 [
   {
-    "post": [
+    "box": [
       {
         "tag": "a",
         "cls": [
@@ -16,15 +16,13 @@
         ]
       }
     ],
-    "fields": {
-      "body": [{ "tag": "p", "cls": ["px-4", "text-default", "line-clamp-3"] }],
-      "link": [],
-      "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }],
-      "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }]
-    }
+    "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }],
+    "link": [],
+    "body": [{ "tag": "p", "cls": ["px-4", "text-default", "line-clamp-3"] }],
+    "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }]
   },
   {
-    "post": [
+    "box": [
       {
         "tag": "a",
         "cls": [
@@ -40,13 +38,11 @@
         ]
       }
     ],
-    "fields": {
-      "body": [
-        { "tag": "div", "cls": ["px-4", "pt-2", "text-sm", "text-secondary"] }
-      ],
-      "link": [],
-      "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }],
-      "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }]
-    }
+    "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }],
+    "link": [],
+    "body": [
+      { "tag": "div", "cls": ["px-4", "pt-2", "text-sm", "text-secondary"] }
+    ],
+    "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }]
   }
 ]
