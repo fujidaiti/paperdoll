@@ -42,8 +42,8 @@ func TestPositionPath(t *testing.T) {
 	if d := cmp.Diff(want, path); d != "" {
 		t.Errorf("path differs (-want +got):\n%s", d)
 	}
-	m := PostSelector{ExcludeNodes: [][]Step{path}}
-	if got := slices.Collect(maps.Keys(m.excludedNodes(index.body))); !slices.Equal(got, []*html.Node{target}) {
+	rules := ExtractionRules{ExcludeNodes: [][]Step{path}}
+	if got := slices.Collect(maps.Keys(rules.excludedNodes(index.body))); !slices.Equal(got, []*html.Node{target}) {
 		t.Errorf("the path selects %d nodes, want only the target", len(got))
 	}
 }

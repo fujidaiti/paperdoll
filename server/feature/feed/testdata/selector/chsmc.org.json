@@ -1,34 +1,36 @@
-[
-  {
-    "box": [
-      {
-        "tag": "article",
-        "cls": ["Article", "prose", "Blog__article--longForm"]
-      }
-    ],
-    "title": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
-    "link": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
-    "body": [{ "tag": "p" }],
-    "pubDate": [
-      { "tag": "div", "cls": ["Breadcrumbs"] },
-      { "tag": "div" },
-      { "tag": "time" }
-    ]
-  },
-  {
-    "box": [
-      {
-        "tag": "article",
-        "cls": ["Article", "prose", "Blog__article--longForm"]
-      }
-    ],
-    "title": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
-    "link": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
-    "body": [{ "tag": "li" }],
-    "pubDate": [
-      { "tag": "div", "cls": ["Breadcrumbs"] },
-      { "tag": "div" },
-      { "tag": "time" }
-    ]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [
+        {
+          "tag": "article",
+          "cls": ["Article", "prose", "Blog__article--longForm"]
+        }
+      ],
+      "title": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
+      "link": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
+      "body": [{ "tag": "p" }],
+      "pubDate": [
+        { "tag": "div", "cls": ["Breadcrumbs"] },
+        { "tag": "div" },
+        { "tag": "time" }
+      ]
+    },
+    {
+      "box": [
+        {
+          "tag": "article",
+          "cls": ["Article", "prose", "Blog__article--longForm"]
+        }
+      ],
+      "title": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
+      "link": [{ "tag": "h1", "cls": ["font-header", "unstyled"] }],
+      "body": [{ "tag": "li" }],
+      "pubDate": [
+        { "tag": "div", "cls": ["Breadcrumbs"] },
+        { "tag": "div" },
+        { "tag": "time" }
+      ]
+    }
+  ]
+}

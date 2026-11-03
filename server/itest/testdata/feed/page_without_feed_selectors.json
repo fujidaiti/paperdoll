@@ -1,8 +1,10 @@
-[
-  {
-    "box": [{ "tag": "main" }, { "tag": "article" }],
-    "title": [{ "tag": "h2" }],
-    "link": [{ "tag": "h2" }],
-    "excludePatterns": ["blog.example.com/posts/second"]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "main" }, { "tag": "article" }],
+      "title": [{ "tag": "h2" }],
+      "link": [{ "tag": "h2" }]
+    }
+  ],
+  "excludePatterns": ["blog.example.com/posts/second"]
+}

@@ -15,9 +15,9 @@ CREATE TABLE selector_editors (
     excluded_links text[] NOT NULL,
     -- The node ID of each node that is excluded with its subtree.
     excluded_nodes int[] NOT NULL,
-    -- The selectors generated from the marks, as a JSON array of
-    -- feed.PostSelector.
-    selectors json NOT NULL,
+    -- The extraction rules generated from the marks, as a JSON object of
+    -- feed.ExtractionRules.
+    extraction_rules json NOT NULL,
     created_at timestamptz NOT NULL DEFAULT now(),
     expires_at timestamptz NOT NULL
 );

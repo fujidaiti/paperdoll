@@ -104,7 +104,7 @@ func (t *pageIndex) postPath(post *html.Node) []Step {
 }
 
 // positionPath returns the path that selects n by its position (see
-// ExcludeNodes of PostSelector).
+// ExcludeNodes of ExtractionRules).
 func (t *pageIndex) positionPath(n *html.Node) []Step {
 	var path []Step
 	for ; n != t.body; n = n.Parent {
@@ -189,15 +189,9 @@ func setPath(m *PostSelector, f PostField, path []Step) {
 
 // selectorOf returns the selector that finds post with its fields, or false when
 // no path resolves its title or link. A field that no path resolves is left
-// out. exclude and excludeNodes are the ExcludePatterns and ExcludeNodes of
-// the selector, and skip holds the nodes of excludeNodes.
-func (t *pageIndex) selectorOf(
-	post labeledPost,
-	exclude []string,
-	excludeNodes [][]Step,
-	skip map[*html.Node]bool,
-) (PostSelector, bool) {
-	m := PostSelector{Box: t.postPath(post.node), ExcludePatterns: exclude, ExcludeNodes: excludeNodes}
+// out. skip holds the excluded nodes.
+func (t *pageIndex) selectorOf(post labeledPost, skip map[*html.Node]bool) (PostSelector, bool) {
+	m := PostSelector{Box: t.postPath(post.node)}
 	for f, n := range post.fields {
 		if path, ok := t.fieldPath(f, post.node, n, skip); ok {
 			setPath(&m, f, path)
@@ -249,13 +243,7 @@ func merge(a, b PostSelector) (PostSelector, bool) {
 	if !samePaths(a.Title, b.Title) || !samePaths(a.Link, b.Link) {
 		return PostSelector{}, false
 	}
-	m := PostSelector{
-		Box:             post,
-		Title:           a.Title,
-		Link:            a.Link,
-		ExcludePatterns: a.ExcludePatterns,
-		ExcludeNodes:    a.ExcludeNodes,
-	}
+	m := PostSelector{Box: post, Title: a.Title, Link: a.Link}
 	for _, f := range []PostField{PostBody, PostThumbnail, PostPubDate} {
 		path, ok := a.pathOf(f)
 		if other, okOther := b.pathOf(f); !ok {
@@ -268,35 +256,34 @@ func merge(a, b PostSelector) (PostSelector, bool) {
 	return m, true
 }
 
-// generateSelectors returns the selectors that find the posts that the user
-// labeled, and none of the posts whose links the user excluded, which excluded
-// holds by host and path, and nothing in the subtrees of excludedNodes. The
-// selectors depend on the posts, the links and the nodes, not on the order in
-// which the user marked them. A link of excluded must not be the link of a
-// post, and a post and its fields must not be in the subtree of an excluded
-// node.
+// generateRules returns the rules whose selectors find the posts that the
+// user labeled, and none of the posts whose links the user excluded, which
+// excluded holds by host and path, and nothing in the subtrees of
+// excludedNodes. The rules depend on the posts, the links and the nodes, not
+// on the order in which the user marked them. A link of excluded must not be
+// the link of a post, and a post and its fields must not be in the subtree of
+// an excluded node.
 //
 // Each post starts with its own selector (see selectorOf), in document order,
 // and the first two selectors that can merge (see merge) are replaced by the
 // merged one, until no two can merge. A post whose title or link no path
 // resolves gets no selector.
-func (t *pageIndex) generateSelectors(
+func (t *pageIndex) generateRules(
 	posts []labeledPost,
 	excluded map[string]bool,
 	excludedNodes map[*html.Node]bool,
-) []PostSelector {
-	exclude := slices.Sorted(maps.Keys(excluded))
+) ExtractionRules {
+	rules := ExtractionRules{ExcludePatterns: slices.Sorted(maps.Keys(excluded))}
 	nodes := slices.SortedFunc(maps.Keys(excludedNodes), func(a, b *html.Node) int { return t.index[a] - t.index[b] })
-	var excludeNodes [][]Step
 	for _, n := range nodes {
-		excludeNodes = append(excludeNodes, t.positionPath(n))
+		rules.ExcludeNodes = append(rules.ExcludeNodes, t.positionPath(n))
 	}
 	posts = slices.Clone(posts)
 	slices.SortFunc(posts, func(a, b labeledPost) int { return t.index[a.node] - t.index[b.node] })
 
-	var selectors []PostSelector
+	selectors := []PostSelector{}
 	for _, p := range posts {
-		if m, ok := t.selectorOf(p, exclude, excludeNodes, excludedNodes); ok {
+		if m, ok := t.selectorOf(p, excludedNodes); ok {
 			selectors = append(selectors, m)
 		}
 	}
@@ -311,24 +298,26 @@ merging:
 				}
 			}
 		}
-		return selectors
+		rules.Selectors = selectors
+		return rules
 	}
 }
 
-// labelFoundPosts returns every post that selectors find, with the nodes of
-// its fields, in document order, so that the selectors can be generated again
-// from them, since saved selectors do not keep the marks of the user. All of
+// labelFoundPosts returns every post that rules find, with the nodes of its
+// fields, in document order, so that the rules can be generated again from
+// them, since saved rules do not keep the marks of the user. All of
 // them are needed, since a merged selector keeps only the classes that all of
 // its posts share, and fewer posts would make the selectors find fewer posts.
 // A post that several selectors find takes each field from the first selector
 // that finds it.
-func (t *pageIndex) labelFoundPosts(selectors []PostSelector) []labeledPost {
+func (t *pageIndex) labelFoundPosts(rules ExtractionRules) []labeledPost {
 	var posts []labeledPost
 	byNode := map[*html.Node]labeledPost{}
-	for i := range selectors {
-		m := &selectors[i]
-		skip := m.excludedNodes(t.body)
-		for _, n := range m.selectPosts(t.body, skip) {
+	skip := rules.excludedNodes(t.body)
+	exclude := rules.compileExclude()
+	for i := range rules.Selectors {
+		m := &rules.Selectors[i]
+		for _, n := range m.selectPosts(t.body, skip, exclude) {
 			p, ok := byNode[n]
 			if !ok {
 				p = labeledPost{node: n, fields: make(map[PostField]*html.Node)}

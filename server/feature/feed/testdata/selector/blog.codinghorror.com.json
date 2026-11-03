@@ -1,11 +1,13 @@
-[
-  {
-    "box": [{ "tag": "article", "cls": ["post"] }],
-    "title": [{ "tag": "h1", "cls": ["gh-article-title", "is-title"] }],
-    "link": [{ "tag": "h1", "cls": ["gh-article-title", "is-title"] }],
-    "body": [
-      { "tag": "section", "cls": ["gh-content", "gh-canvas", "is-body"] }
-    ],
-    "pubDate": [{ "tag": "time", "cls": ["gh-article-meta-date"] }]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "article", "cls": ["post"] }],
+      "title": [{ "tag": "h1", "cls": ["gh-article-title", "is-title"] }],
+      "link": [{ "tag": "h1", "cls": ["gh-article-title", "is-title"] }],
+      "body": [
+        { "tag": "section", "cls": ["gh-content", "gh-canvas", "is-body"] }
+      ],
+      "pubDate": [{ "tag": "time", "cls": ["gh-article-meta-date"] }]
+    }
+  ]
+}

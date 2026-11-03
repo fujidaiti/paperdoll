@@ -140,17 +140,17 @@ func TestSimplifyPageKeepsFixtureValues(t *testing.T) {
 	}
 }
 
-// TestExtractPostsFindsFixturePosts checks that the selectors of each test page
-// (testdata/selector) extract exactly the posts in its fixture. The selectors
-// are built on testdata/source, and must still extract exactly the posts of
+// TestExtractPostsFindsFixturePosts checks that the rules of each test page
+// (testdata/selector) extract exactly the posts in its fixture. The rules are
+// built on testdata/source, and must still extract exactly the posts of
 // the later version of each page in testdata/robustness.
 func TestExtractPostsFindsFixturePosts(t *testing.T) {
 	for _, set := range fixtureSets {
 		t.Run(set.name, func(t *testing.T) {
 			for _, page := range loadFixturePages(t, set.source, set.fixture) {
 				t.Run(page.name, func(t *testing.T) {
-					var selectors []PostSelector
-					readJSON(t, filepath.Join("testdata/selector", page.name+".json"), &selectors)
+					var rules ExtractionRules
+					readJSON(t, filepath.Join("testdata/selector", page.name+".json"), &rules)
 					// The posts are compared by link, since a fixture does not always
 					// list them in the order of the page.
 					want := map[string]ExtractedPost{}
@@ -158,7 +158,7 @@ func TestExtractPostsFindsFixturePosts(t *testing.T) {
 						want[p[PostLink]] = p
 					}
 					got := map[string]ExtractedPost{}
-					for _, p := range ExtractPosts(page.doc, selectors) {
+					for _, p := range ExtractPosts(page.doc, rules) {
 						got[p[PostLink]] = p
 						if w, ok := want[p[PostLink]]; !ok {
 							t.Errorf("extra post: %v", p)
@@ -182,132 +182,138 @@ func TestExtractPostsFindsFixturePosts(t *testing.T) {
 // with one small page for each case.
 func TestExtractPosts(t *testing.T) {
 	tests := []struct {
-		name      string
-		selectors []PostSelector
+		name  string
+		rules ExtractionRules
 	}{
 		{
 			// Each post has every field that it has a value of, and leaves out the
 			// others, such as the thumbnail of the second post. The body joins the
 			// texts of its node.
 			name: "fields",
-			selectors: []PostSelector{{
+			rules: ExtractionRules{Selectors: []PostSelector{{
 				Box:       []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title:     []Step{{Tag: "h2"}},
 				Link:      []Step{{Tag: "h2"}},
 				Body:      []Step{{Tag: "div", Cls: []string{"summary"}}},
 				Thumbnail: []Step{{Tag: "img"}},
 				PubDate:   []Step{{Tag: "time"}},
-			}},
+			}}},
 		},
 		{
 			// A node without the title or the link is not a post.
 			name: "required-fields",
-			selectors: []PostSelector{{
+			rules: ExtractionRules{Selectors: []PostSelector{{
 				Box:   []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title: []Step{{Tag: "h2"}},
 				Link:  []Step{{Tag: "h2"}},
-			}},
+			}}},
 		},
 		{
 			// A post is left out when the host and the path of its link match a
-			// pattern in Exclude. The query does not matter.
+			// pattern in ExcludePatterns. The query does not matter.
 			name: "exclude",
-			selectors: []PostSelector{{
-				Box:             []Step{{Tag: "article", Cls: []string{"post"}}},
-				Title:           []Step{{Tag: "h2"}},
-				Link:            []Step{{Tag: "h2"}},
+			rules: ExtractionRules{
+				Selectors: []PostSelector{{
+					Box:   []Step{{Tag: "article", Cls: []string{"post"}}},
+					Title: []Step{{Tag: "h2"}},
+					Link:  []Step{{Tag: "h2"}},
+				}},
 				ExcludePatterns: []string{"example.com/newsletters"},
-			}},
+			},
 		},
 		{
 			// No post is found in the subtree of a node that ExcludeNodes selects,
 			// such as the menu in the first section.
 			name: "exclude-nodes",
-			selectors: []PostSelector{{
-				Box:          []Step{{Tag: "article", Cls: []string{"post"}}},
-				Title:        []Step{{Tag: "h2"}},
-				Link:         []Step{{Tag: "h2"}},
+			rules: ExtractionRules{
+				Selectors: []PostSelector{{
+					Box:   []Step{{Tag: "article", Cls: []string{"post"}}},
+					Title: []Step{{Tag: "h2"}},
+					Link:  []Step{{Tag: "h2"}},
+				}},
 				ExcludeNodes: [][]Step{{{Tag: "section", Nth: new(0)}}},
-			}},
+			},
 		},
 		{
 			// A post that contains an excluded node is still a post, but its fields
 			// are not resolved in the excluded node: the body skips the paragraphs
 			// of the section.
 			name: "exclude-nodes-in-post",
-			selectors: []PostSelector{{
-				Box:          []Step{{Tag: "article", Cls: []string{"post"}}},
-				Title:        []Step{{Tag: "h2"}},
-				Link:         []Step{{Tag: "h2"}},
-				Body:         []Step{{Tag: "p"}},
+			rules: ExtractionRules{
+				Selectors: []PostSelector{{
+					Box:   []Step{{Tag: "article", Cls: []string{"post"}}},
+					Title: []Step{{Tag: "h2"}},
+					Link:  []Step{{Tag: "h2"}},
+					Body:  []Step{{Tag: "p"}},
+				}},
 				ExcludeNodes: [][]Step{{{Tag: "article", Nth: new(0)}, {Tag: "section", Nth: new(0)}}},
-			}},
+			},
 		},
 		{
 			// A node that contains posts is a list of posts rather than a post, even
 			// when it has a title and a link of its own.
 			name: "list",
-			selectors: []PostSelector{{
+			rules: ExtractionRules{Selectors: []PostSelector{{
 				Box:   []Step{{Tag: "div", Cls: []string{"card"}}},
 				Title: []Step{{Tag: "h2"}},
 				Link:  []Step{{Tag: "h2"}},
-			}},
+			}}},
 		},
 		{
 			// A node that Box selects inside a post and that has no title and link
 			// does not make the post a list.
 			name: "inner-node",
-			selectors: []PostSelector{{
+			rules: ExtractionRules{Selectors: []PostSelector{{
 				Box:   []Step{{Tag: "div", Cls: []string{"card"}}},
 				Title: []Step{{Tag: "h2"}},
 				Link:  []Step{{Tag: "h2"}},
-			}},
+			}}},
 		},
 		{
 			// Each step of Box after the first selects children, so that the
 			// article inside the related list is not a post.
 			name: "children",
-			selectors: []PostSelector{{
+			rules: ExtractionRules{Selectors: []PostSelector{{
 				Box:   []Step{{Tag: "section", Cls: []string{"latest"}}, {Tag: "article"}},
 				Title: []Step{{Tag: "h2"}},
 				Link:  []Step{{Tag: "h2"}},
-			}},
+			}}},
 		},
 		{
 			// A step with Nth selects only the node at that index.
 			name: "nth",
-			selectors: []PostSelector{{
+			rules: ExtractionRules{Selectors: []PostSelector{{
 				Box:   []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title: []Step{{Tag: "p", Nth: new(1)}},
 				Link:  []Step{{Tag: "p", Nth: new(1)}},
-			}},
+			}}},
 		},
 		{
 			// A field takes the first node that its path selects and that it
 			// accepts: the body skips the paragraph that has only an image.
 			name: "accepted-node",
-			selectors: []PostSelector{{
+			rules: ExtractionRules{Selectors: []PostSelector{{
 				Box:       []Step{{Tag: "article", Cls: []string{"post"}}},
 				Title:     []Step{{Tag: "h2"}},
 				Link:      []Step{{Tag: "h2"}},
 				Body:      []Step{{Tag: "p"}},
 				Thumbnail: []Step{{Tag: "img"}},
-			}},
+			}}},
 		},
 		{
 			// An empty path selects the post node itself.
 			name: "post-node",
-			selectors: []PostSelector{{
+			rules: ExtractionRules{Selectors: []PostSelector{{
 				Box:   []Step{{Tag: "a", Cls: []string{"card"}}},
 				Title: []Step{{Tag: "h3"}},
 				Link:  []Step{},
 				Body:  []Step{{Tag: "p"}},
-			}},
+			}}},
 		},
 		{
 			// The posts of all selectors are in document order.
 			name: "selectors",
-			selectors: []PostSelector{
+			rules: ExtractionRules{Selectors: []PostSelector{
 				{
 					Box:   []Step{{Tag: "article", Cls: []string{"post"}}},
 					Title: []Step{{Tag: "h2"}},
@@ -318,14 +324,14 @@ func TestExtractPosts(t *testing.T) {
 					Title: []Step{{Tag: "h3"}},
 					Link:  []Step{{Tag: "h3"}},
 				},
-			},
+			}},
 		},
 		{
 			// Posts with the same link are merged into the first one in document
 			// order, which keeps its values of the fields that both have, even when
 			// its selector comes later.
 			name: "same-link-first-wins",
-			selectors: []PostSelector{
+			rules: ExtractionRules{Selectors: []PostSelector{
 				{
 					Box:   []Step{{Tag: "div", Cls: []string{"card"}}},
 					Title: []Step{{Tag: "h2"}},
@@ -336,13 +342,13 @@ func TestExtractPosts(t *testing.T) {
 					Title: []Step{{Tag: "h3"}},
 					Link:  []Step{{Tag: "h3"}},
 				},
-			},
+			}},
 		},
 		{
 			// The first post of a link takes the fields that it does not have from
 			// the later posts with the same link.
 			name: "same-link-missing-fields",
-			selectors: []PostSelector{
+			rules: ExtractionRules{Selectors: []PostSelector{
 				{
 					Box:       []Step{{Tag: "div", Cls: []string{"teaser"}}},
 					Title:     []Step{{Tag: "h3"}},
@@ -355,7 +361,7 @@ func TestExtractPosts(t *testing.T) {
 					Link:  []Step{{Tag: "h3"}},
 					Body:  []Step{{Tag: "p"}},
 				},
-			},
+			}},
 		},
 	}
 	for _, tt := range tests {
@@ -374,7 +380,7 @@ func TestExtractPosts(t *testing.T) {
 			}
 			var want []ExtractedPost
 			readJSON(t, filepath.Join("testdata/extract", tt.name+".posts.json"), &want)
-			if diff := cmp.Diff(want, ExtractPosts(doc, tt.selectors)); diff != "" {
+			if diff := cmp.Diff(want, ExtractPosts(doc, tt.rules)); diff != "" {
 				t.Errorf("posts differ (-want +got):\n%s", diff)
 			}
 		})
@@ -384,12 +390,10 @@ func TestExtractPosts(t *testing.T) {
 func TestPostSelectorJSON(t *testing.T) {
 	t.Run("round trip", func(t *testing.T) {
 		m := PostSelector{
-			Box:             []Step{{Tag: "a", Cls: []string{"card"}}},
-			Title:           []Step{{Tag: "h3"}},
-			Link:            []Step{},
-			PubDate:         []Step{{Tag: "time", Nth: new(0)}},
-			ExcludePatterns: []string{"example.com/newsletters"},
-			ExcludeNodes:    [][]Step{{{Tag: "nav", Nth: new(0)}}},
+			Box:     []Step{{Tag: "a", Cls: []string{"card"}}},
+			Title:   []Step{{Tag: "h3"}},
+			Link:    []Step{},
+			PubDate: []Step{{Tag: "time", Nth: new(0)}},
 		}
 
 		data, err := json.Marshal(m)
@@ -397,9 +401,7 @@ func TestPostSelectorJSON(t *testing.T) {
 			t.Fatal(err)
 		}
 		want := `{"box":[{"tag":"a","cls":["card"]}],` +
-			`"title":[{"tag":"h3"}],"link":[],"pubDate":[{"tag":"time","nth":0}],` +
-			`"excludePatterns":["example.com/newsletters"],` +
-			`"excludeNodes":[[{"tag":"nav","nth":0}]]}`
+			`"title":[{"tag":"h3"}],"link":[],"pubDate":[{"tag":"time","nth":0}]}`
 		if string(data) != want {
 			t.Errorf("JSON is %s, want %s", data, want)
 		}
@@ -428,6 +430,51 @@ func TestPostSelectorJSON(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestExtractionRulesJSON(t *testing.T) {
+	t.Run("round trip", func(t *testing.T) {
+		rules := ExtractionRules{
+			Selectors: []PostSelector{{
+				Box:   []Step{{Tag: "article"}},
+				Title: []Step{{Tag: "h2"}},
+				Link:  []Step{{Tag: "a"}},
+			}},
+			ExcludePatterns: []string{"example.com/newsletters"},
+			ExcludeNodes:    [][]Step{{{Tag: "nav", Nth: new(0)}}},
+		}
+
+		data, err := json.Marshal(rules)
+		if err != nil {
+			t.Fatal(err)
+		}
+		want := `{"selectors":[{"box":[{"tag":"article"}],"title":[{"tag":"h2"}],"link":[{"tag":"a"}]}],` +
+			`"excludePatterns":["example.com/newsletters"],` +
+			`"excludeNodes":[[{"tag":"nav","nth":0}]]}`
+		if string(data) != want {
+			t.Errorf("JSON is %s, want %s", data, want)
+		}
+
+		var got ExtractionRules
+		if err := json.Unmarshal(data, &got); err != nil {
+			t.Fatal(err)
+		}
+		if diff := cmp.Diff(rules, got); diff != "" {
+			t.Errorf("rules differ (-want +got):\n%s", diff)
+		}
+	})
+
+	// Rules without selectors and exclusions keep the selectors as an array, and
+	// leave out the empty lists.
+	t.Run("empty", func(t *testing.T) {
+		data, err := json.Marshal(ExtractionRules{Selectors: []PostSelector{}})
+		if err != nil {
+			t.Fatal(err)
+		}
+		if want := `{"selectors":[]}`; string(data) != want {
+			t.Errorf("JSON is %s, want %s", data, want)
+		}
+	})
 }
 
 func TestGlobRegexp(t *testing.T) {

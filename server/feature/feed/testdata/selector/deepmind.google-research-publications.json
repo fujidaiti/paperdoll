@@ -1,21 +1,23 @@
-[
-  {
-    "box": [{ "tag": "a", "cls": ["list-group__link"] }],
-    "title": [
-      {
-        "tag": "dd",
-        "cls": [
-          "grid__column--span-4-xs",
-          "grid__column--span-8-sm",
-          "grid__column--span-10-md",
-          "list-group__description"
-        ]
-      }
-    ],
-    "link": [],
-    "pubDate": [
-      { "tag": "span", "cls": ["list-group__date"] },
-      { "tag": "time" }
-    ]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "a", "cls": ["list-group__link"] }],
+      "title": [
+        {
+          "tag": "dd",
+          "cls": [
+            "grid__column--span-4-xs",
+            "grid__column--span-8-sm",
+            "grid__column--span-10-md",
+            "list-group__description"
+          ]
+        }
+      ],
+      "link": [],
+      "pubDate": [
+        { "tag": "span", "cls": ["list-group__date"] },
+        { "tag": "time" }
+      ]
+    }
+  ]
+}

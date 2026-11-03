@@ -1,105 +1,107 @@
-[
-  {
-    "box": [{ "tag": "li", "cls": ["card"] }],
-    "title": [
-      {
-        "tag": "div",
-        "cls": [
-          "container__headline",
-          "container_lead-plus-headlines__headline",
-          "container__headline-text"
-        ]
-      }
-    ],
-    "link": [
-      {
-        "tag": "a",
-        "cls": [
-          "container__link",
-          "container__link--type-article",
-          "container_lead-plus-headlines__link"
-        ]
-      }
-    ],
-    "thumbnail": [
-      { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
-    ]
-  },
-  {
-    "box": [{ "tag": "li", "cls": ["card"] }],
-    "title": [{ "tag": "span", "cls": ["container__headline-text"] }],
-    "link": [
-      {
-        "tag": "a",
-        "cls": [
-          "container__link",
-          "container__link--type-live-story",
-          "container_lead-plus-headlines__link"
-        ]
-      }
-    ],
-    "thumbnail": [
-      { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
-    ]
-  },
-  {
-    "box": [{ "tag": "li", "cls": ["card"] }],
-    "title": [
-      {
-        "tag": "div",
-        "cls": [
-          "container__headline",
-          "container_vertical-strip__headline",
-          "container__headline-text"
-        ]
-      }
-    ],
-    "link": [
-      {
-        "tag": "a",
-        "cls": [
-          "container__link",
-          "container__link--type-article",
-          "container_vertical-strip__link"
-        ]
-      }
-    ],
-    "thumbnail": [
-      { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
-    ]
-  },
-  {
-    "box": [{ "tag": "li", "cls": ["card"] }],
-    "title": [{ "tag": "span", "cls": ["container__headline-text"] }],
-    "link": [
-      {
-        "tag": "a",
-        "cls": [
-          "container__link",
-          "container__link--type-video",
-          "container_lead-plus-headlines__link"
-        ]
-      }
-    ],
-    "thumbnail": [
-      { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
-    ]
-  },
-  {
-    "box": [{ "tag": "li", "cls": ["card"] }],
-    "title": [{ "tag": "span", "cls": ["container__headline-text"] }],
-    "link": [
-      {
-        "tag": "a",
-        "cls": [
-          "container__link",
-          "container__link--type-video",
-          "container_grid-4__link"
-        ]
-      }
-    ],
-    "thumbnail": [
-      { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
-    ]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "li", "cls": ["card"] }],
+      "title": [
+        {
+          "tag": "div",
+          "cls": [
+            "container__headline",
+            "container_lead-plus-headlines__headline",
+            "container__headline-text"
+          ]
+        }
+      ],
+      "link": [
+        {
+          "tag": "a",
+          "cls": [
+            "container__link",
+            "container__link--type-article",
+            "container_lead-plus-headlines__link"
+          ]
+        }
+      ],
+      "thumbnail": [
+        { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
+      ]
+    },
+    {
+      "box": [{ "tag": "li", "cls": ["card"] }],
+      "title": [{ "tag": "span", "cls": ["container__headline-text"] }],
+      "link": [
+        {
+          "tag": "a",
+          "cls": [
+            "container__link",
+            "container__link--type-live-story",
+            "container_lead-plus-headlines__link"
+          ]
+        }
+      ],
+      "thumbnail": [
+        { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
+      ]
+    },
+    {
+      "box": [{ "tag": "li", "cls": ["card"] }],
+      "title": [
+        {
+          "tag": "div",
+          "cls": [
+            "container__headline",
+            "container_vertical-strip__headline",
+            "container__headline-text"
+          ]
+        }
+      ],
+      "link": [
+        {
+          "tag": "a",
+          "cls": [
+            "container__link",
+            "container__link--type-article",
+            "container_vertical-strip__link"
+          ]
+        }
+      ],
+      "thumbnail": [
+        { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
+      ]
+    },
+    {
+      "box": [{ "tag": "li", "cls": ["card"] }],
+      "title": [{ "tag": "span", "cls": ["container__headline-text"] }],
+      "link": [
+        {
+          "tag": "a",
+          "cls": [
+            "container__link",
+            "container__link--type-video",
+            "container_lead-plus-headlines__link"
+          ]
+        }
+      ],
+      "thumbnail": [
+        { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
+      ]
+    },
+    {
+      "box": [{ "tag": "li", "cls": ["card"] }],
+      "title": [{ "tag": "span", "cls": ["container__headline-text"] }],
+      "link": [
+        {
+          "tag": "a",
+          "cls": [
+            "container__link",
+            "container__link--type-video",
+            "container_grid-4__link"
+          ]
+        }
+      ],
+      "thumbnail": [
+        { "tag": "img", "cls": ["image__dam-img", "image__dam-img--loading"] }
+      ]
+    }
+  ]
+}

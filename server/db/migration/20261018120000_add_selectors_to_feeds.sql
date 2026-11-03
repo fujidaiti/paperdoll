@@ -1,7 +1,7 @@
 -- +goose Up
--- The post selectors of an unstructured feed, as a JSON array of
--- feed.PostSelector.
-ALTER TABLE feeds ADD COLUMN selectors json;
+-- The extraction rules of an unstructured feed, as a JSON object of
+-- feed.ExtractionRules.
+ALTER TABLE feeds ADD COLUMN extraction_rules json;
 
 -- +goose Down
-ALTER TABLE feeds DROP COLUMN selectors;
+ALTER TABLE feeds DROP COLUMN extraction_rules;

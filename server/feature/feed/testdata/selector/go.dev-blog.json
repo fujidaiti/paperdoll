@@ -1,8 +1,10 @@
-[
-  {
-    "box": [{ "tag": "p", "cls": ["blogtitle"] }],
-    "title": [{ "tag": "a" }],
-    "link": [{ "tag": "a" }],
-    "pubDate": [{ "tag": "span", "cls": ["date"] }, { "tag": "time" }]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "p", "cls": ["blogtitle"] }],
+      "title": [{ "tag": "a" }],
+      "link": [{ "tag": "a" }],
+      "pubDate": [{ "tag": "span", "cls": ["date"] }, { "tag": "time" }]
+    }
+  ]
+}

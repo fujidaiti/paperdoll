@@ -64,7 +64,7 @@ func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (F
 		INSERT INTO feeds (url, site_url, icon_url, title, description)
 		VALUES ($1, $2, $3, $4, $5)
 		ON CONFLICT (url) DO UPDATE SET url = EXCLUDED.url
-		RETURNING id, selectors IS NOT NULL;
+		RETURNING id, extraction_rules IS NOT NULL;
 	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID, &f.HasSelectors)
 	if err != nil {
 		return Feed{}, err

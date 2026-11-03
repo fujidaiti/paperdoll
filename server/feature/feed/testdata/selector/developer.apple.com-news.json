@@ -1,28 +1,30 @@
-[
-  {
-    "box": [
-      {
-        "tag": "section",
-        "cls": [
-          "article-content-container",
-          "column",
-          "large-centered",
-          "large-9",
-          "medium-9",
-          "small-12",
-          "no-padding-left",
-          "padding-top",
-          "padding-bottom-small"
-        ]
-      }
-    ],
-    "title": [{ "tag": "a", "cls": ["article-title"] }, { "tag": "h2" }],
-    "link": [{ "tag": "a", "cls": ["article-title"] }],
-    "body": [{ "tag": "span", "cls": ["article-text"] }],
-    "thumbnail": [{ "tag": "img", "cls": ["article-image"] }],
-    "pubDate": [
-      { "tag": "p", "cls": ["lighter", "article-date"] },
-      { "tag": "time" }
-    ]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [
+        {
+          "tag": "section",
+          "cls": [
+            "article-content-container",
+            "column",
+            "large-centered",
+            "large-9",
+            "medium-9",
+            "small-12",
+            "no-padding-left",
+            "padding-top",
+            "padding-bottom-small"
+          ]
+        }
+      ],
+      "title": [{ "tag": "a", "cls": ["article-title"] }, { "tag": "h2" }],
+      "link": [{ "tag": "a", "cls": ["article-title"] }],
+      "body": [{ "tag": "span", "cls": ["article-text"] }],
+      "thumbnail": [{ "tag": "img", "cls": ["article-image"] }],
+      "pubDate": [
+        { "tag": "p", "cls": ["lighter", "article-date"] },
+        { "tag": "time" }
+      ]
+    }
+  ]
+}

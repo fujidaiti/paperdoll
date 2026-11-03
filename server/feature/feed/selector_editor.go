@@ -20,13 +20,12 @@ import (
 )
 
 // A selector editor is a temporary editor on the server in which a user edits
-// the post selectors of an unstructured feed. It holds the simplified page of
-// the feed, the marks of the user, and the selectors generated from them. The
-// client sends all marks with each update, and the server generates the
-// selectors again and returns what they find, so that the client never runs
-// selectors. An editor belongs to the user who opened it, and expires 48
-// hours after it opens, so that selectors built on a stale layout of the page
-// are not saved.
+// the extraction rules of an unstructured feed. It holds the simplified page
+// of the feed, the marks of the user, and the rules generated from them. The
+// client sends all marks with each update, and the server generates the rules
+// again and returns what they find, so that the client never runs rules. An
+// editor belongs to the user who opened it, and expires 48 hours after it
+// opens, so that rules built on a stale layout of the page are not saved.
 
 var (
 	ErrEditorNotFound = errors.New("selector editor not found")
@@ -43,14 +42,14 @@ type LabeledPostIDs map[string]int
 // Marks are the marks of a user in a selector editor: the posts that the user
 // labeled, the host and path of each link that the user excluded, and the node
 // ID of each node that the user excluded with its subtree (see
-// generateSelectors).
+// generateRules).
 type Marks struct {
 	LabeledPosts  []LabeledPostIDs `json:"labeled_posts"`
 	ExcludedLinks []string         `json:"excluded_links"`
 	ExcludedNodes []int            `json:"excluded_nodes"`
 }
 
-// MatchedPost is a post that the selectors of an editor find: the node IDs of
+// MatchedPost is a post that the rules of an editor find: the node IDs of
 // the post and of its fields, as in LabeledPostIDs, and the field values.
 type MatchedPost struct {
 	IDs    LabeledPostIDs
@@ -72,7 +71,7 @@ type ExcludedPost struct {
 	Link string `json:"link"`
 }
 
-// EditorState is what the selectors of an editor find on its page: the
+// EditorState is what the rules of an editor find on its page: the
 // matched posts and the excluded posts in document order, and the posts that
 // ExtractPosts extracts, which the polling job will save.
 type EditorState struct {
@@ -82,7 +81,7 @@ type EditorState struct {
 }
 
 // SelectorEditor is a selector editor as the client sees it: its page with
-// node IDs, the marks, and what the selectors generated from them find.
+// node IDs, the marks, and what the rules generated from them find.
 type SelectorEditor struct {
 	ID        int       `json:"id"`
 	ExpiresAt time.Time `json:"expires_at"`
@@ -225,21 +224,24 @@ func (t *pageIndex) resolveMarks(marks Marks) ([]labeledPost, map[string]bool, m
 	return posts, excluded, excludedNodes, nil
 }
 
-// editorState returns what selectors find in doc, the page of t. A node that
+// editorState returns what rules find in doc, the page of t. A node that
 // several selectors find takes its fields from the first one.
-func (t *pageIndex) editorState(doc *html.Node, selectors []PostSelector) EditorState {
+func (t *pageIndex) editorState(doc *html.Node, rules ExtractionRules) EditorState {
 	s := EditorState{MatchedPosts: []MatchedPost{}, ExcludedPosts: []ExcludedPost{}}
 	matched := map[*html.Node]bool{}
 	excluded := map[*html.Node]bool{}
-	for i := range selectors {
-		m := &selectors[i]
-		exclude := m.compileExclude()
-		skip := m.excludedNodes(t.body)
+	skip := rules.excludedNodes(t.body)
+	exclude := rules.compileExclude()
+	for i := range rules.Selectors {
+		m := &rules.Selectors[i]
 		for _, n := range m.candidates(t.body, skip) {
-			if link, ok := m.excludedBy(n, exclude, skip); ok {
+			if j, ok := m.excludedBy(n, exclude, skip); ok {
 				if !excluded[n] {
 					excluded[n] = true
-					s.ExcludedPosts = append(s.ExcludedPosts, ExcludedPost{Box: t.index[n], Link: link})
+					s.ExcludedPosts = append(
+						s.ExcludedPosts,
+						ExcludedPost{Box: t.index[n], Link: rules.ExcludePatterns[j]},
+					)
 				}
 				continue
 			}
@@ -261,14 +263,14 @@ func (t *pageIndex) editorState(doc *html.Node, selectors []PostSelector) Editor
 	}
 	slices.SortFunc(s.MatchedPosts, func(a, b MatchedPost) int { return a.IDs["box"] - b.IDs["box"] })
 	slices.SortFunc(s.ExcludedPosts, func(a, b ExcludedPost) int { return a.Box - b.Box })
-	s.Preview = ExtractPosts(doc, selectors)
+	s.Preview = ExtractPosts(doc, rules)
 	if s.Preview == nil {
 		s.Preview = []ExtractedPost{}
 	}
 	return s
 }
 
-// generate returns the selectors generated from posts, excluded and
+// generate returns the rules generated from posts, excluded and
 // excludedNodes, as JSON, and what they find in doc, the page of t.
 func (t *pageIndex) generate(
 	doc *html.Node,
@@ -276,15 +278,12 @@ func (t *pageIndex) generate(
 	excluded map[string]bool,
 	excludedNodes map[*html.Node]bool,
 ) (string, EditorState, error) {
-	selectors := t.generateSelectors(posts, excluded, excludedNodes)
-	if selectors == nil {
-		selectors = []PostSelector{}
-	}
-	raw, err := json.Marshal(selectors)
+	rules := t.generateRules(posts, excluded, excludedNodes)
+	raw, err := json.Marshal(rules)
 	if err != nil {
 		return "", EditorState{}, err
 	}
-	return string(raw), t.editorState(doc, selectors), nil
+	return string(raw), t.editorState(doc, rules), nil
 }
 
 // idsOf returns posts by node IDs.
@@ -302,17 +301,17 @@ func (t *pageIndex) idsOf(posts []labeledPost) []LabeledPostIDs {
 
 // OpenSelectorEditor opens a new selector editor of the unstructured feed
 // feedID for the user uid. It fetches the page of the feed, and labels the
-// posts that the saved selectors of the feed find, which keeps them found when
-// the user adds new marks, since the saved selectors do not keep the marks of
-// the user. The excluded links start as the ones of the saved selectors, and
-// the excluded nodes as the nodes that their paths select on the new page. A
+// posts that the saved rules of the feed find, which keeps them found when the
+// user adds new marks, since the saved rules do not keep the marks of the
+// user. The excluded links start as the patterns of the saved rules, and the
+// excluded nodes as the nodes that their paths select on the new page. A
 // path that selects no node is dropped.
 func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedID int) (SelectorEditor, error) {
 	var fu string
 	var saved sql.NullString
 	var unstructured bool
 	err := s.DB.QueryRowContext(ctx, `
-		SELECT url, selectors, (url = site_url) IS TRUE FROM feeds WHERE id = $1;
+		SELECT url, extraction_rules, (url = site_url) IS TRUE FROM feeds WHERE id = $1;
 	`, feedID).Scan(&fu, &saved, &unstructured)
 	if errors.Is(err, sql.ErrNoRows) {
 		return SelectorEditor{}, ErrFeedNotFound
@@ -322,9 +321,9 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 	if !unstructured {
 		return SelectorEditor{}, ErrNotUnstructured
 	}
-	var selectors []PostSelector
+	var rules ExtractionRules
 	if saved.Valid {
-		if err := json.Unmarshal([]byte(saved.String), &selectors); err != nil {
+		if err := json.Unmarshal([]byte(saved.String), &rules); err != nil {
 			return SelectorEditor{}, err
 		}
 	}
@@ -349,15 +348,12 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 		return SelectorEditor{}, err
 	}
 
-	posts := t.labelFoundPosts(selectors)
+	posts := t.labelFoundPosts(rules)
 	excluded := map[string]bool{}
-	excludedNodes := map[*html.Node]bool{}
-	for i := range selectors {
-		for _, l := range selectors[i].ExcludePatterns {
-			excluded[l] = true
-		}
-		maps.Copy(excludedNodes, selectors[i].excludedNodes(t.body))
+	for _, l := range rules.ExcludePatterns {
+		excluded[l] = true
 	}
+	excludedNodes := rules.excludedNodes(t.body)
 	e := SelectorEditor{
 		Page:          page,
 		LabeledPosts:  t.idsOf(posts),
@@ -382,7 +378,7 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 	}
 	err = s.DB.QueryRowContext(ctx, `
 		INSERT INTO selector_editors
-			(user_id, feed_id, simplified_page, labeled_posts, excluded_links, excluded_nodes, selectors, expires_at)
+			(user_id, feed_id, simplified_page, labeled_posts, excluded_links, excluded_nodes, extraction_rules, expires_at)
 		VALUES ($1, $2, $3, $4, $5, $6, $7, now() + interval '48 hours')
 		RETURNING id, expires_at;
 	`, uid, feedID, page, string(labeled), e.ExcludedLinks, e.ExcludedNodes, generated).Scan(&e.ID, &e.ExpiresAt)
@@ -457,7 +453,7 @@ func (s *Service) GetSelectorEditor(ctx context.Context, uid user.UserID, feedID
 }
 
 // UpdateSelectorEditorMarks replaces the marks of the editor id of the user
-// uid on the feed feedID with marks, generates the selectors again, and
+// uid on the feed feedID with marks, generates the rules again, and
 // returns what they find. It fails with ErrInvalidMarks when marks are not
 // valid on the page of the editor (see resolveMarks).
 func (s *Service) UpdateSelectorEditorMarks(
@@ -499,7 +495,7 @@ func (s *Service) UpdateSelectorEditorMarks(
 	}
 	res, err := s.DB.ExecContext(ctx, `
 		UPDATE selector_editors
-		SET labeled_posts = $4, excluded_links = $5, excluded_nodes = $6, selectors = $7
+		SET labeled_posts = $4, excluded_links = $5, excluded_nodes = $6, extraction_rules = $7
 		WHERE id = $1 AND user_id = $2 AND feed_id = $3;
 	`, id, uid, feedID, string(labeled), marks.ExcludedLinks, marks.ExcludedNodes, generated)
 	if err != nil {
@@ -514,10 +510,10 @@ func (s *Service) UpdateSelectorEditorMarks(
 	return state, nil
 }
 
-// CommitSelectorEditor saves the selectors of the editor id of the user uid
-// to the feed feedID, and deletes the editor. The selectors are shared by all
+// CommitSelectorEditor saves the rules of the editor id of the user uid to
+// the feed feedID, and deletes the editor. The rules are shared by all
 // subscribers, as the feed is, and the last commit wins. It fails with
-// ErrNoSelectors when the editor has no selectors. An expired editor is kept,
+// ErrNoSelectors when the rules of the editor have no selectors. An expired editor is kept,
 // as it is until DeleteExpiredSelectorEditors deletes it.
 func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, feedID, id int) error {
 	tx, err := s.DB.BeginTx(ctx, nil)
@@ -525,14 +521,14 @@ func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, fee
 		return err
 	}
 	defer func() { _ = tx.Rollback() }()
-	var selectors string
+	var rules string
 	var expired bool
 	err = tx.QueryRowContext(ctx, `
-		SELECT selectors, expires_at <= now()
+		SELECT extraction_rules, expires_at <= now()
 		FROM selector_editors
 		WHERE id = $1 AND user_id = $2 AND feed_id = $3
 		FOR UPDATE;
-	`, id, uid, feedID).Scan(&selectors, &expired)
+	`, id, uid, feedID).Scan(&rules, &expired)
 	if errors.Is(err, sql.ErrNoRows) {
 		return ErrEditorNotFound
 	} else if err != nil {
@@ -541,16 +537,23 @@ func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, fee
 	if expired {
 		return ErrEditorExpired
 	}
-	var ms []json.RawMessage
-	if err := json.Unmarshal([]byte(selectors), &ms); err != nil {
+	var r struct {
+		Selectors []json.RawMessage `json:"selectors"`
+	}
+	if err := json.Unmarshal([]byte(rules), &r); err != nil {
 		return err
 	}
-	if len(ms) == 0 {
+	if len(r.Selectors) == 0 {
 		return ErrNoSelectors
 	}
 	// The open checked that the feed is unstructured, and a feed never
 	// changes its kind.
-	if _, err := tx.ExecContext(ctx, `UPDATE feeds SET selectors = $1 WHERE id = $2;`, selectors, feedID); err != nil {
+	if _, err := tx.ExecContext(
+		ctx,
+		`UPDATE feeds SET extraction_rules = $1 WHERE id = $2;`,
+		rules,
+		feedID,
+	); err != nil {
 		return err
 	}
 	if _, err := tx.ExecContext(ctx, `DELETE FROM selector_editors WHERE id = $1;`, id); err != nil {
@@ -560,7 +563,7 @@ func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, fee
 }
 
 // CloseSelectorEditor deletes the editor id of the user uid on the feed
-// feedID without saving its selectors. An expired editor is deleted too.
+// feedID without saving its rules. An expired editor is deleted too.
 func (s *Service) CloseSelectorEditor(ctx context.Context, uid user.UserID, feedID, id int) error {
 	res, err := s.DB.ExecContext(ctx, `
 		DELETE FROM selector_editors WHERE id = $1 AND user_id = $2 AND feed_id = $3;

@@ -14,9 +14,9 @@ of a page. Each directory has the same pages under the same file names.
   selectors were wrong. `go.dev-blog` was written by hand from the page.
 - `simplified/`: the simplified page of each page in `source/` (see
   `SimplifyPage`).
-- `selector/`: the selectors of each page with a fixture, as the database stores
-  them. They are built on `simplified/` in the same way as a user of the app
-  builds them, and find exactly the posts in `fixture/` (see
+- `selector/`: the extraction rules of each page with a fixture, as the database
+  stores them. They are built on `simplified/` in the same way as a user of the
+  app builds them, and find exactly the posts in `fixture/` (see
   perfect_selector_test.go).
 - `extract/`: small pages written by hand, one for each case of
   `TestExtractPosts`, with the posts that the selectors of the case find in

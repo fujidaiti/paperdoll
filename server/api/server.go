@@ -418,7 +418,7 @@ func (h *Handler) getFeeds(w http.ResponseWriter, r *http.Request) {
 	rows, err := h.DB.QueryContext(ctx, fmt.Sprintf(`
 		SELECT *
 		FROM (
-			SELECT f.id, f.url, f.site_url, f.icon_url, f.title, f.description, f.selectors IS NOT NULL,
+			SELECT f.id, f.url, f.site_url, f.icon_url, f.title, f.description, f.extraction_rules IS NOT NULL,
 				LEFT(title, %d) AS sort_key
 			FROM feed_subscriptions s JOIN feeds f
 			ON s.user_id = $1 AND s.feed_id = f.id
@@ -517,7 +517,7 @@ func (h *Handler) getFeed(w http.ResponseWriter, r *http.Request) {
 	var su, iu, desc sql.NullString
 	err = h.DB.QueryRowContext(ctx, `
 		SELECT
-			id, url, site_url, icon_url, title, description, selectors IS NOT NULL,
+			id, url, site_url, icon_url, title, description, extraction_rules IS NOT NULL,
 			EXISTS (
 				SELECT 1 FROM feed_subscriptions
 				WHERE user_id = $2 AND feed_id = feeds.id

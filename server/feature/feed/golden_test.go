@@ -95,7 +95,7 @@ func parseGoldenPage(raw []byte) (*html.Node, error) {
 
 // TestSimplifyPageGolden checks that the simplified page of each test page in
 // testdata/source is the page in testdata/simplified. It runs before
-// TestPerfectSelectorsGolden, which reads the simplified pages.
+// TestPerfectRulesGolden, which reads the simplified pages.
 func TestSimplifyPageGolden(t *testing.T) {
 	files, err := filepath.Glob("testdata/source/*.html")
 	if err != nil {
@@ -117,11 +117,10 @@ func TestSimplifyPageGolden(t *testing.T) {
 	}
 }
 
-// TestPerfectSelectorsGolden checks that the selectors built on the simplified
-// page of each test page from its fixture are the selectors in
-// testdata/selector. A selector file has the JSON that the database stores for
-// the page.
-func TestPerfectSelectorsGolden(t *testing.T) {
+// TestPerfectRulesGolden checks that the rules built on the simplified page of
+// each test page from its fixture are the rules in testdata/selector. A file
+// there has the JSON that the database stores for the page.
+func TestPerfectRulesGolden(t *testing.T) {
 	files, err := filepath.Glob("testdata/fixture/*.fixture.json")
 	if err != nil {
 		t.Fatal(err)
@@ -139,12 +138,12 @@ func TestPerfectSelectorsGolden(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			selectors, marks, err := perfectSelectors(page, posts)
+			rules, marks, err := perfectRules(page, posts)
 			if err != nil {
 				t.Fatal(err)
 			}
 			t.Logf("%d marks for %d posts", marks, len(posts))
-			got, err := json.Marshal(selectors)
+			got, err := json.Marshal(rules)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -164,8 +163,8 @@ func readJSON(t *testing.T, path string, v any) {
 	}
 }
 
-// TestLabelFoundPostsGolden checks that the selectors generated from the posts
-// that the golden selectors of each test page find (see labelFoundPosts) find
+// TestLabelFoundPostsGolden checks that the rules generated from the posts
+// that the golden rules of each test page find (see labelFoundPosts) find
 // the same posts with the same values, as when a user starts an editor of the
 // feed and commits it without changes. A post that another selector also finds
 // is extracted anyway, so the post nodes are compared too.
@@ -177,7 +176,7 @@ func TestLabelFoundPostsGolden(t *testing.T) {
 	for _, f := range files {
 		name := strings.TrimSuffix(filepath.Base(f), ".json")
 		t.Run(name, func(t *testing.T) {
-			var golden []PostSelector
+			var golden ExtractionRules
 			readJSON(t, f, &golden)
 			raw, err := os.ReadFile(filepath.Join("testdata/simplified", name+".html"))
 			if err != nil {
@@ -189,18 +188,18 @@ func TestLabelFoundPostsGolden(t *testing.T) {
 			}
 			index := newPageIndex(pageBody(doc))
 			excluded := map[string]bool{}
-			for _, m := range golden {
-				for _, l := range m.ExcludePatterns {
-					excluded[l] = true
-				}
+			for _, l := range golden.ExcludePatterns {
+				excluded[l] = true
 			}
 
-			selectors := index.generateSelectors(index.labelFoundPosts(golden), excluded, nil)
+			rules := index.generateRules(index.labelFoundPosts(golden), excluded, golden.excludedNodes(index.body))
 
-			postNodes := func(selectors []PostSelector) []int {
+			postNodes := func(rules ExtractionRules) []int {
 				var ids []int
-				for _, m := range selectors {
-					for _, n := range m.selectPosts(index.body, nil) {
+				skip := rules.excludedNodes(index.body)
+				exclude := rules.compileExclude()
+				for _, m := range rules.Selectors {
+					for _, n := range m.selectPosts(index.body, skip, exclude) {
 						if !slices.Contains(ids, index.index[n]) {
 							ids = append(ids, index.index[n])
 						}
@@ -209,10 +208,10 @@ func TestLabelFoundPostsGolden(t *testing.T) {
 				slices.Sort(ids)
 				return ids
 			}
-			if d := cmp.Diff(postNodes(golden), postNodes(selectors)); d != "" {
+			if d := cmp.Diff(postNodes(golden), postNodes(rules)); d != "" {
 				t.Errorf("post nodes differ (-golden +got):\n%s", d)
 			}
-			if d := cmp.Diff(ExtractPosts(doc, golden), ExtractPosts(doc, selectors)); d != "" {
+			if d := cmp.Diff(ExtractPosts(doc, golden), ExtractPosts(doc, rules)); d != "" {
 				t.Errorf("extracted posts differ (-golden +got):\n%s", d)
 			}
 		})

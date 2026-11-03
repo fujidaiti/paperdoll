@@ -1,12 +1,14 @@
-[
-  {
-    "box": [{ "tag": "div", "cls": ["list-article"] }],
-    "title": [{ "tag": "div", "cls": ["title-wrapper", "title"] }],
-    "link": [{ "tag": "a", "cls": ["thumb"] }],
-    "thumbnail": [{ "tag": "a", "cls": ["thumb"] }, { "tag": "img" }],
-    "pubDate": [
-      { "tag": "div", "cls": ["article-info-text"] },
-      { "tag": "time" }
-    ]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "div", "cls": ["list-article"] }],
+      "title": [{ "tag": "div", "cls": ["title-wrapper", "title"] }],
+      "link": [{ "tag": "a", "cls": ["thumb"] }],
+      "thumbnail": [{ "tag": "a", "cls": ["thumb"] }, { "tag": "img" }],
+      "pubDate": [
+        { "tag": "div", "cls": ["article-info-text"] },
+        { "tag": "time" }
+      ]
+    }
+  ]
+}

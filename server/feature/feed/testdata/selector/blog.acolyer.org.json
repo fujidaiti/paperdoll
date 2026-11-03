@@ -1,9 +1,11 @@
-[
-  {
-    "box": [{ "tag": "article", "cls": ["post", "type-post"] }],
-    "title": [{ "tag": "h1", "cls": ["entry-title"] }],
-    "link": [{ "tag": "h1", "cls": ["entry-title"] }],
-    "body": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
-    "pubDate": [{ "tag": "time", "cls": ["updated"] }]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "article", "cls": ["post", "type-post"] }],
+      "title": [{ "tag": "h1", "cls": ["entry-title"] }],
+      "link": [{ "tag": "h1", "cls": ["entry-title"] }],
+      "body": [{ "tag": "div", "cls": ["entry-content"] }, { "tag": "p" }],
+      "pubDate": [{ "tag": "time", "cls": ["updated"] }]
+    }
+  ]
+}

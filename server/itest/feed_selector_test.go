@@ -33,10 +33,11 @@ import (
 //	  </main>
 //	</body>
 //
-// testdata/feed/page_without_feed_selectors.json holds the selectors that are
-// generated from firstPostMarks, and testdata/feed/page_without_feed_state.json
-// holds what they find. testdata/feed/page_without_feed_excluded_node_state.json
-// holds what the selectors generated from excludedNodeMarks find.
+// testdata/feed/page_without_feed_selectors.json holds the extraction rules
+// that are generated from firstPostMarks, and
+// testdata/feed/page_without_feed_state.json holds what they find.
+// testdata/feed/page_without_feed_excluded_node_state.json holds what the rules
+// generated from excludedNodeMarks find.
 
 // firstPostMarks labels the first article, and excludes the link of the
 // second one.
@@ -126,7 +127,7 @@ func TestFeed_OpenSelectorEditor(t *testing.T) {
 
 	t.Run("feed with selectors", func(t *testing.T) {
 		saved := must(os.ReadFile("./testdata/feed/page_without_feed_selectors.json"))
-		execOrFatal(t, `UPDATE feeds SET selectors = $1 WHERE id = $2`, string(saved), page.ID)
+		execOrFatal(t, `UPDATE feeds SET extraction_rules = $1 WHERE id = $2`, string(saved), page.ID)
 
 		e, err := s.OpenSelectorEditor(t.Context(), uid, page.ID)
 		if err != nil {
@@ -165,7 +166,7 @@ func TestFeed_OpenSelectorEditor(t *testing.T) {
 
 	t.Run("saved path that selects no node", func(t *testing.T) {
 		saved := must(os.ReadFile("./testdata/feed/page_without_feed_selectors_missing_node.json"))
-		execOrFatal(t, `UPDATE feeds SET selectors = $1 WHERE id = $2`, string(saved), page.ID)
+		execOrFatal(t, `UPDATE feeds SET extraction_rules = $1 WHERE id = $2`, string(saved), page.ID)
 
 		e, err := s.OpenSelectorEditor(t.Context(), uid, page.ID)
 		if err != nil {
@@ -177,15 +178,15 @@ func TestFeed_OpenSelectorEditor(t *testing.T) {
 		if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); err != nil {
 			t.Fatalf("CommitSelectorEditor: %v", err)
 		}
-		// The path is dropped from the saved selectors.
+		// The path is dropped from the saved rules.
 		var got, want any
 		_ = json.Unmarshal(
-			[]byte(scanValOrFatal[string](t, `SELECT selectors FROM feeds WHERE id = $1`, page.ID)),
+			[]byte(scanValOrFatal[string](t, `SELECT extraction_rules FROM feeds WHERE id = $1`, page.ID)),
 			&got,
 		)
 		_ = json.Unmarshal(must(os.ReadFile("./testdata/feed/page_without_feed_selectors.json")), &want)
 		if d := cmp.Diff(want, got); d != "" {
-			t.Errorf("saved selectors mismatch:\n%s", d)
+			t.Errorf("saved rules mismatch:\n%s", d)
 		}
 	})
 
@@ -424,10 +425,13 @@ func TestFeed_CommitSelectorEditor(t *testing.T) {
 		t.Fatalf("CommitSelectorEditor: %v", err)
 	}
 	var got, want any
-	_ = json.Unmarshal([]byte(scanValOrFatal[string](t, `SELECT selectors FROM feeds WHERE id = $1`, page.ID)), &got)
+	_ = json.Unmarshal(
+		[]byte(scanValOrFatal[string](t, `SELECT extraction_rules FROM feeds WHERE id = $1`, page.ID)),
+		&got,
+	)
 	_ = json.Unmarshal(must(os.ReadFile("./testdata/feed/page_without_feed_selectors.json")), &want)
 	if d := cmp.Diff(want, got); d != "" {
-		t.Errorf("saved selectors mismatch:\n%s", d)
+		t.Errorf("saved rules mismatch:\n%s", d)
 	}
 	if editorRowExists(t, e.ID) {
 		t.Error("the committed editor is kept, want it deleted")

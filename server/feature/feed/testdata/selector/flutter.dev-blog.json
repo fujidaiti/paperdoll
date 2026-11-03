@@ -1,13 +1,15 @@
-[
-  {
-    "box": [{ "tag": "a", "cls": ["blog-card"] }],
-    "title": [{ "tag": "h3", "cls": ["blog-card-title"] }],
-    "link": [],
-    "body": [{ "tag": "p", "cls": ["blog-card-description"] }],
-    "thumbnail": [
-      { "tag": "div", "cls": ["blog-card-image"] },
-      { "tag": "img" }
-    ],
-    "pubDate": [{ "tag": "span", "cls": ["date"] }, { "tag": "time" }]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "a", "cls": ["blog-card"] }],
+      "title": [{ "tag": "h3", "cls": ["blog-card-title"] }],
+      "link": [],
+      "body": [{ "tag": "p", "cls": ["blog-card-description"] }],
+      "thumbnail": [
+        { "tag": "div", "cls": ["blog-card-image"] },
+        { "tag": "img" }
+      ],
+      "pubDate": [{ "tag": "span", "cls": ["date"] }, { "tag": "time" }]
+    }
+  ]
+}

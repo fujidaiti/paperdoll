@@ -1,48 +1,50 @@
-[
-  {
-    "box": [
-      {
-        "tag": "a",
-        "cls": [
-          "resource-item",
-          "not-prose",
-          "cursor-pointer",
-          "overflow-hidden",
-          "flex",
-          "w-full",
-          "flex-col",
-          "text-inherit",
-          "no-underline"
-        ]
-      }
-    ],
-    "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }],
-    "link": [],
-    "body": [{ "tag": "p", "cls": ["px-4", "text-default", "line-clamp-3"] }],
-    "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }]
-  },
-  {
-    "box": [
-      {
-        "tag": "a",
-        "cls": [
-          "resource-item",
-          "not-prose",
-          "cursor-pointer",
-          "overflow-hidden",
-          "flex",
-          "w-full",
-          "flex-col",
-          "text-inherit",
-          "no-underline"
-        ]
-      }
-    ],
-    "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }],
-    "link": [],
-    "body": [
-      { "tag": "div", "cls": ["px-4", "pt-2", "text-sm", "text-secondary"] }
-    ],
-    "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }]
-  }
-]
+{
+  "selectors": [
+    {
+      "box": [
+        {
+          "tag": "a",
+          "cls": [
+            "resource-item",
+            "not-prose",
+            "cursor-pointer",
+            "overflow-hidden",
+            "flex",
+            "w-full",
+            "flex-col",
+            "text-inherit",
+            "no-underline"
+          ]
+        }
+      ],
+      "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }],
+      "link": [],
+      "body": [{ "tag": "p", "cls": ["px-4", "text-default", "line-clamp-3"] }],
+      "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }]
+    },
+    {
+      "box": [
+        {
+          "tag": "a",
+          "cls": [
+            "resource-item",
+            "not-prose",
+            "cursor-pointer",
+            "overflow-hidden",
+            "flex",
+            "w-full",
+            "flex-col",
+            "text-inherit",
+            "no-underline"
+          ]
+        }
+      ],
+      "title": [{ "tag": "div", "cls": ["flex-1", "line-clamp-2"] }],
+      "link": [],
+      "body": [
+        { "tag": "div", "cls": ["px-4", "pt-2", "text-sm", "text-secondary"] }
+      ],
+      "thumbnail": [{ "tag": "img", "cls": ["block", "w-full", "h-auto"] }]
+    }
+  ]
+}

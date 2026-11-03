@@ -92,12 +92,12 @@ func equalPosts(a, b ExtractedPost) bool {
 	return true
 }
 
-// perfectSelectors returns selectors that extract exactly posts from page, a
+// perfectRules returns rules that extract exactly posts from page, a
 // simplified page parsed by html.Parse, built
 // as a user of the client would build them, and the number of marks that the
-// user made. The selector editor generates the selectors from the posts that
+// user made. The selector editor generates the rules from the posts that
 // the user marked and the links that the user excluded (see
-// generateSelectors), and the user repeats, until every post is extracted with its values:
+// generateRules), and the user repeats, until every post is extracted with its values:
 //
 //  1. If a node that the selectors find is wrong, the user marks it. A node
 //     whose link is not in posts is marked as not a post, which excludes the
@@ -111,7 +111,7 @@ func equalPosts(a, b ExtractedPost) bool {
 // In every round, every labeled post must be found and no excluded link must
 // be extracted. It fails when a step cannot be done, when a guarantee does not
 // hold, or when the marks come back to the same state.
-func perfectSelectors(page *html.Node, posts []ExtractedPost) ([]PostSelector, int, error) {
+func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int, error) {
 	t := newPageIndex(pageBody(page))
 	want := map[string]ExtractedPost{}
 	for _, p := range posts {
@@ -151,37 +151,38 @@ func perfectSelectors(page *html.Node, posts []ExtractedPost) ([]PostSelector, i
 		for _, p := range labeled {
 			labeledPosts = append(labeledPosts, p)
 		}
-		selectors := t.generateSelectors(labeledPosts, excluded, nil)
+		rules := t.generateRules(labeledPosts, excluded, nil)
 
 		// The selector that the user sees a node as found by is the first one.
 		finder := map[*html.Node]*PostSelector{}
-		for i := range selectors {
-			for _, n := range selectors[i].selectPosts(t.body, nil) {
+		exclude := rules.compileExclude()
+		for i := range rules.Selectors {
+			for _, n := range rules.Selectors[i].selectPosts(t.body, nil, exclude) {
 				if finder[n] == nil {
-					finder[n] = &selectors[i]
+					finder[n] = &rules.Selectors[i]
 				}
 			}
 		}
 		for n := range labeled {
 			if finder[n] == nil {
-				return nil, marks, fmt.Errorf(
+				return ExtractionRules{}, marks, fmt.Errorf(
 					"the labeled post %s is not found: %v",
-					values(&selectors[0], n)[PostLink],
-					selectors,
+					values(&rules.Selectors[0], n)[PostLink],
+					rules,
 				)
 			}
 		}
 		got := map[string]ExtractedPost{}
-		for _, p := range ExtractPosts(page, selectors) {
+		for _, p := range ExtractPosts(page, rules) {
 			if excluded[hostPath(p[PostLink])] {
-				return nil, marks, fmt.Errorf("the excluded link %s is extracted", p[PostLink])
+				return ExtractionRules{}, marks, fmt.Errorf("the excluded link %s is extracted", p[PostLink])
 			}
 			got[p[PostLink]] = p
 		}
 
-		state, err := json.Marshal(selectors)
+		state, err := json.Marshal(rules)
 		if err != nil {
-			return nil, marks, err
+			return ExtractionRules{}, marks, err
 		}
 		var marked []int
 		for _, p := range labeledPosts {
@@ -190,7 +191,7 @@ func perfectSelectors(page *html.Node, posts []ExtractedPost) ([]PostSelector, i
 		slices.Sort(marked)
 		key := fmt.Sprint(string(state), slices.Sorted(maps.Keys(excluded)), marked)
 		if seen[key] {
-			return nil, marks, fmt.Errorf("the marks come back to the same state, with selectors %s", state)
+			return ExtractionRules{}, marks, fmt.Errorf("the marks come back to the same state, with rules %s", state)
 		}
 		seen[key] = true
 
@@ -235,7 +236,7 @@ func perfectSelectors(page *html.Node, posts []ExtractedPost) ([]PostSelector, i
 			}
 		}
 		if target == nil {
-			return selectors, marks, nil
+			return rules, marks, nil
 		}
 		link := target[PostLink]
 		var start *html.Node
@@ -246,7 +247,7 @@ func perfectSelectors(page *html.Node, posts []ExtractedPost) ([]PostSelector, i
 			}
 		}
 		if start == nil {
-			return nil, marks, fmt.Errorf("post %s: no node has the link", link)
+			return ExtractionRules{}, marks, fmt.Errorf("post %s: no node has the link", link)
 		}
 		var post *html.Node
 		for _, n := range t.selectionLevels(start, nil) {
@@ -263,18 +264,18 @@ func perfectSelectors(page *html.Node, posts []ExtractedPost) ([]PostSelector, i
 			}
 		}
 		if post == nil {
-			return nil, marks, fmt.Errorf("post %s: no node holds all of its values: %v", link, target)
+			return ExtractionRules{}, marks, fmt.Errorf("post %s: no node holds all of its values: %v", link, target)
 		}
 		// The client does not let a new post overlap a post that it finds.
 		for n, m := range finder {
 			if n != post && (t.contains(n, post) || t.contains(post, n)) {
-				return nil, marks, fmt.Errorf(
+				return ExtractionRules{}, marks, fmt.Errorf(
 					"post %s overlaps with the post %s: %v", link, values(m, n)[PostLink], m)
 			}
 		}
 		marks++
 		if err := label(post, target); err != nil {
-			return nil, marks, err
+			return ExtractionRules{}, marks, err
 		}
 	}
 }
