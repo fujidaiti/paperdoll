@@ -213,10 +213,34 @@ func TestExtractPosts(t *testing.T) {
 			// pattern in Exclude. The query does not matter.
 			name: "exclude",
 			selectors: []PostSelector{{
-				Post:    []Step{{Tag: "article", Cls: []string{"post"}}},
-				Title:   []Step{{Tag: "h2"}},
-				Link:    []Step{{Tag: "h2"}},
-				Exclude: []string{"example.com/newsletters"},
+				Post:            []Step{{Tag: "article", Cls: []string{"post"}}},
+				Title:           []Step{{Tag: "h2"}},
+				Link:            []Step{{Tag: "h2"}},
+				ExcludePatterns: []string{"example.com/newsletters"},
+			}},
+		},
+		{
+			// No post is found in the subtree of a node that ExcludeNodes selects,
+			// such as the menu in the first section.
+			name: "exclude-nodes",
+			selectors: []PostSelector{{
+				Post:         []Step{{Tag: "article", Cls: []string{"post"}}},
+				Title:        []Step{{Tag: "h2"}},
+				Link:         []Step{{Tag: "h2"}},
+				ExcludeNodes: [][]Step{{{Tag: "section", Nth: new(0)}}},
+			}},
+		},
+		{
+			// A post that contains an excluded node is still a post, but its fields
+			// are not resolved in the excluded node: the body skips the paragraphs
+			// of the section.
+			name: "exclude-nodes-in-post",
+			selectors: []PostSelector{{
+				Post:         []Step{{Tag: "article", Cls: []string{"post"}}},
+				Title:        []Step{{Tag: "h2"}},
+				Link:         []Step{{Tag: "h2"}},
+				Body:         []Step{{Tag: "p"}},
+				ExcludeNodes: [][]Step{{{Tag: "article", Nth: new(0)}, {Tag: "section", Nth: new(0)}}},
 			}},
 		},
 		{
@@ -360,11 +384,12 @@ func TestExtractPosts(t *testing.T) {
 func TestPostSelectorJSON(t *testing.T) {
 	t.Run("round trip", func(t *testing.T) {
 		m := PostSelector{
-			Post:    []Step{{Tag: "a", Cls: []string{"card"}}},
-			Title:   []Step{{Tag: "h3"}},
-			Link:    []Step{},
-			PubDate: []Step{{Tag: "time", Nth: new(0)}},
-			Exclude: []string{"example.com/newsletters"},
+			Post:            []Step{{Tag: "a", Cls: []string{"card"}}},
+			Title:           []Step{{Tag: "h3"}},
+			Link:            []Step{},
+			PubDate:         []Step{{Tag: "time", Nth: new(0)}},
+			ExcludePatterns: []string{"example.com/newsletters"},
+			ExcludeNodes:    [][]Step{{{Tag: "nav", Nth: new(0)}}},
 		}
 
 		data, err := json.Marshal(m)
@@ -373,7 +398,8 @@ func TestPostSelectorJSON(t *testing.T) {
 		}
 		want := `{"post":[{"tag":"a","cls":["card"]}],` +
 			`"fields":{"link":[],"pubDate":[{"tag":"time","nth":0}],"title":[{"tag":"h3"}]},` +
-			`"exclude":["example.com/newsletters"]}`
+			`"excludePatterns":["example.com/newsletters"],` +
+			`"excludeNodes":[[{"tag":"nav","nth":0}]]}`
 		if string(data) != want {
 			t.Errorf("JSON is %s, want %s", data, want)
 		}

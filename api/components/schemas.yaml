@@ -189,6 +189,7 @@ SelectorEditor:
       page,
       labeled_posts,
       excluded_links,
+      excluded_nodes,
       matched_posts,
       excluded_posts,
       preview,
@@ -221,6 +222,15 @@ SelectorEditor:
       type: array
       items:
         type: string
+    excluded_nodes:
+      description:
+        The node ID of each node that is excluded with its subtree. No post and
+        no field is found in an excluded node, even when it is labeled. A new
+        editor starts with the nodes of the saved selectors that the page still
+        has.
+      type: array
+      items:
+        type: integer
     matched_posts:
       $ref: "#/SelectorEditorState/properties/matched_posts"
     excluded_posts:

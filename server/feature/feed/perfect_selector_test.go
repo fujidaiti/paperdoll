@@ -63,7 +63,7 @@ func (t *pageIndex) fieldNode(post *html.Node, f PostField, want string) *html.N
 func values(m *PostSelector, post *html.Node) ExtractedPost {
 	values := make(ExtractedPost)
 	for f := range m.Fields() {
-		if n := m.resolveField(post, f); n != nil {
+		if n := m.resolveField(post, f, nil); n != nil {
 			if v, ok := f.valueOf(n); ok {
 				values[f] = v
 			}
@@ -151,12 +151,12 @@ func perfectSelectors(page *html.Node, posts []ExtractedPost) ([]PostSelector, i
 		for _, p := range labeled {
 			labeledPosts = append(labeledPosts, p)
 		}
-		selectors := t.generateSelectors(labeledPosts, excluded)
+		selectors := t.generateSelectors(labeledPosts, excluded, nil)
 
 		// The selector that the user sees a node as found by is the first one.
 		finder := map[*html.Node]*PostSelector{}
 		for i := range selectors {
-			for _, n := range selectors[i].selectPosts(t.body) {
+			for _, n := range selectors[i].selectPosts(t.body, nil) {
 				if finder[n] == nil {
 					finder[n] = &selectors[i]
 				}

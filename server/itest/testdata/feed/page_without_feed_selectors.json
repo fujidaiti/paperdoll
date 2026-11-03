@@ -2,6 +2,6 @@
   {
     "post": [{ "tag": "main" }, { "tag": "article" }],
     "fields": { "title": [{ "tag": "h2" }], "link": [{ "tag": "h2" }] },
-    "exclude": ["blog.example.com/posts/second"]
+    "excludePatterns": ["blog.example.com/posts/second"]
   }
 ]

@@ -169,16 +169,24 @@ func (s Step) matches(n *html.Node) bool {
 // Title and Link are required, since they define the kind of posts. Body,
 // Thumbnail and PubDate are nil when the posts have none. A node that Post
 // selects is a post only when its title and link are found (see hasFields),
-// when its link matches none of the patterns in Exclude, and when it contains
-// no other such node (see candidates).
+// when its link matches none of the patterns in ExcludePatterns, and when it
+// contains no other such node (see candidates).
+//
+// ExcludeNodes holds the paths of the nodes that the user excluded with their
+// subtrees, such as a menu. Each step of such a path selects children, from
+// the body to the node, and has the tag of its node and Nth, the index of the
+// node among the children of its parent with the same tag, so that a path
+// selects a node by its position in the page. The selector runs as if the
+// subtrees of these nodes were not in the page.
 type PostSelector struct {
-	Post      []Step
-	Title     []Step
-	Link      []Step
-	Body      []Step
-	Thumbnail []Step
-	PubDate   []Step
-	Exclude   []string
+	Post            []Step
+	Title           []Step
+	Link            []Step
+	Body            []Step
+	Thumbnail       []Step
+	PubDate         []Step
+	ExcludePatterns []string
+	ExcludeNodes    [][]Step
 }
 
 // pathOf returns the path of f, or false when m has none.
@@ -213,13 +221,19 @@ func (m *PostSelector) Fields() map[PostField][]Step {
 // postSelectorJSON is the JSON of PostSelector, whose fields hold the path of
 // each field that has one.
 type postSelectorJSON struct {
-	Post    []Step               `json:"post"`
-	Fields  map[PostField][]Step `json:"fields"`
-	Exclude []string             `json:"exclude,omitempty"`
+	Post            []Step               `json:"post"`
+	Fields          map[PostField][]Step `json:"fields"`
+	ExcludePatterns []string             `json:"excludePatterns,omitempty"`
+	ExcludeNodes    [][]Step             `json:"excludeNodes,omitempty"`
 }
 
 func (m PostSelector) MarshalJSON() ([]byte, error) {
-	return json.Marshal(postSelectorJSON{Post: m.Post, Fields: m.Fields(), Exclude: m.Exclude})
+	return json.Marshal(postSelectorJSON{
+		Post:            m.Post,
+		Fields:          m.Fields(),
+		ExcludePatterns: m.ExcludePatterns,
+		ExcludeNodes:    m.ExcludeNodes,
+	})
 }
 
 func (m *PostSelector) UnmarshalJSON(data []byte) error {
@@ -227,7 +241,7 @@ func (m *PostSelector) UnmarshalJSON(data []byte) error {
 	if err := json.Unmarshal(data, &j); err != nil {
 		return err
 	}
-	*m = PostSelector{Post: j.Post, Exclude: j.Exclude}
+	*m = PostSelector{Post: j.Post, ExcludePatterns: j.ExcludePatterns, ExcludeNodes: j.ExcludeNodes}
 	for f, path := range j.Fields {
 		// An empty path is the post node itself, which nil would leave out.
 		if path == nil {
@@ -257,7 +271,8 @@ func (m *PostSelector) UnmarshalJSON(data []byte) error {
 // selectNodes returns the nodes that path selects from start, in document
 // order. With children, each step after the first selects among the children
 // of the nodes that the previous step selects, instead of their descendants.
-func selectNodes(start *html.Node, path []Step, children bool) []*html.Node {
+// The subtrees of the nodes in skip are left out.
+func selectNodes(start *html.Node, path []Step, children bool, skip map[*html.Node]bool) []*html.Node {
 	nodes := []*html.Node{start}
 	for i, step := range path {
 		var next []*html.Node
@@ -267,6 +282,9 @@ func selectNodes(start *html.Node, path []Step, children bool) []*html.Node {
 			var visit func(n *html.Node)
 			visit = func(n *html.Node) {
 				for c := range childrenOf(n) {
+					if skip[c] {
+						continue
+					}
 					if step.matches(c) {
 						matches = append(matches, c)
 					}
@@ -294,13 +312,46 @@ func selectNodes(start *html.Node, path []Step, children bool) []*html.Node {
 	return nodes
 }
 
+// excludedNodes returns the nodes in body that the paths of ExcludeNodes
+// select. A path that selects no node is left out.
+func (m *PostSelector) excludedNodes(body *html.Node) map[*html.Node]bool {
+	excluded := map[*html.Node]bool{}
+paths:
+	for _, path := range m.ExcludeNodes {
+		n := body
+		for _, step := range path {
+			var next *html.Node
+			i := 0
+			for c := range childrenOf(n) {
+				if !step.matches(c) {
+					continue
+				}
+				if step.Nth == nil || i == *step.Nth {
+					next = c
+					break
+				}
+				i++
+			}
+			if next == nil {
+				continue paths
+			}
+			n = next
+		}
+		if n != body {
+			excluded[n] = true
+		}
+	}
+	return excluded
+}
+
 // selectPosts returns the post nodes that m finds in body, the body of a
 // simplified page: the candidates (see candidates) whose links match none of
-// the patterns in Exclude.
-func (m *PostSelector) selectPosts(body *html.Node) []*html.Node {
+// the patterns in ExcludePatterns. skip holds the excluded nodes (see
+// excludedNodes).
+func (m *PostSelector) selectPosts(body *html.Node, skip map[*html.Node]bool) []*html.Node {
 	exclude := m.compileExclude()
-	return slices.DeleteFunc(m.candidates(body), func(n *html.Node) bool {
-		_, excluded := m.excludedBy(n, exclude)
+	return slices.DeleteFunc(m.candidates(body, skip), func(n *html.Node) bool {
+		_, excluded := m.excludedBy(n, exclude, skip)
 		return excluded
 	})
 }
@@ -309,13 +360,14 @@ func (m *PostSelector) selectPosts(body *html.Node) []*html.Node {
 // title and the link, including the ones whose links are excluded. A node that
 // contains another such node is left out, since it is a list of posts rather
 // than a post. Other nodes that Post selects inside a post, such as a footer
-// with the same classes, do not matter.
-func (m *PostSelector) candidates(body *html.Node) []*html.Node {
+// with the same classes, do not matter. The subtrees of the nodes in skip are
+// left out.
+func (m *PostSelector) candidates(body *html.Node, skip map[*html.Node]bool) []*html.Node {
 	if len(m.Post) == 0 {
 		return nil
 	}
 	selected := map[*html.Node]bool{}
-	for _, n := range selectNodes(body, m.Post, true) {
+	for _, n := range selectNodes(body, m.Post, true, skip) {
 		selected[n] = true
 	}
 	var posts []*html.Node
@@ -325,9 +377,11 @@ func (m *PostSelector) candidates(body *html.Node) []*html.Node {
 	visit = func(n *html.Node) bool {
 		inner := false
 		for c := range childrenOf(n) {
-			inner = visit(c) || inner
+			if !skip[c] {
+				inner = visit(c) || inner
+			}
 		}
-		isPost := selected[n] && m.hasFields(n)
+		isPost := selected[n] && m.hasFields(n, skip)
 		if isPost && !inner {
 			posts = append(posts, n)
 		}
@@ -340,24 +394,25 @@ func (m *PostSelector) candidates(body *html.Node) []*html.Node {
 // hasFields reports whether post has the title and the link. The other fields
 // are optional, since posts of one kind often lack some of them, such as the
 // date of a featured post.
-func (m *PostSelector) hasFields(post *html.Node) bool {
-	return m.resolveField(post, PostTitle) != nil && m.resolveField(post, PostLink) != nil
+func (m *PostSelector) hasFields(post *html.Node, skip map[*html.Node]bool) bool {
+	return m.resolveField(post, PostTitle, skip) != nil && m.resolveField(post, PostLink, skip) != nil
 }
 
 // resolveField returns the node of f in post: the first node that the path
-// of f selects and that f accepts, or nil when there is none.
-func (m *PostSelector) resolveField(post *html.Node, f PostField) *html.Node {
+// of f selects outside the subtrees of skip and that f accepts, or nil when
+// there is none.
+func (m *PostSelector) resolveField(post *html.Node, f PostField, skip map[*html.Node]bool) *html.Node {
 	path, ok := m.pathOf(f)
 	if !ok {
 		return nil
 	}
-	return resolvePath(post, f, path)
+	return resolvePath(post, f, path, skip)
 }
 
-// resolvePath returns the first node that path selects from post and that
-// f accepts, or nil when there is none.
-func resolvePath(post *html.Node, f PostField, path []Step) *html.Node {
-	for _, n := range selectNodes(post, path, false) {
+// resolvePath returns the first node that path selects from post outside the
+// subtrees of skip and that f accepts, or nil when there is none.
+func resolvePath(post *html.Node, f PostField, path []Step, skip map[*html.Node]bool) *html.Node {
+	for _, n := range selectNodes(post, path, false, skip) {
 		if f.accepts(n) {
 			return n
 		}
@@ -365,20 +420,20 @@ func resolvePath(post *html.Node, f PostField, path []Step) *html.Node {
 	return nil
 }
 
-// compileExclude returns the regexps of the patterns in Exclude.
+// compileExclude returns the regexps of the patterns in ExcludePatterns.
 func (m *PostSelector) compileExclude() []*regexp.Regexp {
-	exclude := make([]*regexp.Regexp, len(m.Exclude))
-	for i, p := range m.Exclude {
+	exclude := make([]*regexp.Regexp, len(m.ExcludePatterns))
+	for i, p := range m.ExcludePatterns {
 		exclude[i] = globRegexp(p)
 	}
 	return exclude
 }
 
-// excludedBy returns the first pattern in Exclude that matches the host and
-// path of the link of post, or false when none does. exclude holds the
-// compiled patterns (see compileExclude).
-func (m *PostSelector) excludedBy(post *html.Node, exclude []*regexp.Regexp) (string, bool) {
-	n := m.resolveField(post, PostLink)
+// excludedBy returns the first pattern in ExcludePatterns that matches the
+// host and path of the link of post, or false when none does. exclude holds
+// the compiled patterns (see compileExclude), and skip the excluded nodes.
+func (m *PostSelector) excludedBy(post *html.Node, exclude []*regexp.Regexp, skip map[*html.Node]bool) (string, bool) {
+	n := m.resolveField(post, PostLink, skip)
 	if n == nil {
 		return "", false
 	}
@@ -389,7 +444,7 @@ func (m *PostSelector) excludedBy(post *html.Node, exclude []*regexp.Regexp) (st
 	hostPath := u.Host + u.Path
 	for i, re := range exclude {
 		if re.MatchString(hostPath) {
-			return m.Exclude[i], true
+			return m.ExcludePatterns[i], true
 		}
 	}
 	return "", false
@@ -441,10 +496,11 @@ func ExtractPosts(page *html.Node, selectors []PostSelector) []ExtractedPost {
 	}
 	var posts []found
 	for _, m := range selectors {
-		for _, n := range m.selectPosts(body) {
+		skip := m.excludedNodes(body)
+		for _, n := range m.selectPosts(body, skip) {
 			values := make(ExtractedPost)
 			for field := range m.Fields() {
-				if v := m.resolveField(n, field); v != nil {
+				if v := m.resolveField(n, field, skip); v != nil {
 					if val, ok := field.valueOf(v); ok {
 						values[field] = val
 					}

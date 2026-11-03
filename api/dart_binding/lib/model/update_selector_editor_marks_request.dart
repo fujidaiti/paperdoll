@@ -15,6 +15,7 @@ class UpdateSelectorEditorMarksRequest {
   UpdateSelectorEditorMarksRequest({
     this.labeledPosts = const [],
     this.excludedLinks = const [],
+    this.excludedNodes = const [],
   });
 
   List<LabeledPost> labeledPosts;
@@ -22,26 +23,33 @@ class UpdateSelectorEditorMarksRequest {
   /// The host and path of each excluded link.
   List<String> excludedLinks;
 
+  /// The node ID of each node that is excluded with its subtree. An excluded node wins over the other marks, so a labeled post or a field in an excluded node is ignored.
+  List<int> excludedNodes;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is UpdateSelectorEditorMarksRequest &&
           _deepEquality.equals(other.labeledPosts, labeledPosts) &&
-          _deepEquality.equals(other.excludedLinks, excludedLinks);
+          _deepEquality.equals(other.excludedLinks, excludedLinks) &&
+          _deepEquality.equals(other.excludedNodes, excludedNodes);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (labeledPosts.hashCode) + (excludedLinks.hashCode);
+      (labeledPosts.hashCode) +
+      (excludedLinks.hashCode) +
+      (excludedNodes.hashCode);
 
   @override
   String toString() =>
-      'UpdateSelectorEditorMarksRequest[labeledPosts=$labeledPosts, excludedLinks=$excludedLinks]';
+      'UpdateSelectorEditorMarksRequest[labeledPosts=$labeledPosts, excludedLinks=$excludedLinks, excludedNodes=$excludedNodes]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'labeled_posts'] = this.labeledPosts;
     json[r'excluded_links'] = this.excludedLinks;
+    json[r'excluded_nodes'] = this.excludedNodes;
     return json;
   }
 
@@ -64,6 +72,10 @@ class UpdateSelectorEditorMarksRequest {
             'Required key "UpdateSelectorEditorMarksRequest[excluded_links]" is missing from JSON.');
         assert(json[r'excluded_links'] != null,
             'Required key "UpdateSelectorEditorMarksRequest[excluded_links]" has a null value in JSON.');
+        assert(json.containsKey(r'excluded_nodes'),
+            'Required key "UpdateSelectorEditorMarksRequest[excluded_nodes]" is missing from JSON.');
+        assert(json[r'excluded_nodes'] != null,
+            'Required key "UpdateSelectorEditorMarksRequest[excluded_nodes]" has a null value in JSON.');
         return true;
       }());
 
@@ -72,6 +84,11 @@ class UpdateSelectorEditorMarksRequest {
         excludedLinks: json[r'excluded_links'] is Iterable
             ? (json[r'excluded_links'] as Iterable)
                 .cast<String>()
+                .toList(growable: false)
+            : const [],
+        excludedNodes: json[r'excluded_nodes'] is Iterable
+            ? (json[r'excluded_nodes'] as Iterable)
+                .cast<int>()
                 .toList(growable: false)
             : const [],
       );
@@ -133,5 +150,6 @@ class UpdateSelectorEditorMarksRequest {
   static const requiredKeys = <String>{
     'labeled_posts',
     'excluded_links',
+    'excluded_nodes',
   };
 }

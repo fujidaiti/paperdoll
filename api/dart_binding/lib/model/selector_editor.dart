@@ -18,6 +18,7 @@ class SelectorEditor {
     required this.page,
     this.labeledPosts = const [],
     this.excludedLinks = const [],
+    this.excludedNodes = const [],
     this.matchedPosts = const [],
     this.excludedPosts = const [],
     this.preview = const [],
@@ -35,6 +36,9 @@ class SelectorEditor {
 
   /// The host and path of each excluded link. A new editor starts with the ones of the saved selectors.
   List<String> excludedLinks;
+
+  /// The node ID of each node that is excluded with its subtree. No post and no field is found in an excluded node, even when it is labeled. A new editor starts with the nodes of the saved selectors that the page still has.
+  List<int> excludedNodes;
 
   /// The posts that the selectors find, in document order.
   List<MatchedPost> matchedPosts;
@@ -54,6 +58,7 @@ class SelectorEditor {
           other.page == page &&
           _deepEquality.equals(other.labeledPosts, labeledPosts) &&
           _deepEquality.equals(other.excludedLinks, excludedLinks) &&
+          _deepEquality.equals(other.excludedNodes, excludedNodes) &&
           _deepEquality.equals(other.matchedPosts, matchedPosts) &&
           _deepEquality.equals(other.excludedPosts, excludedPosts) &&
           _deepEquality.equals(other.preview, preview);
@@ -66,13 +71,14 @@ class SelectorEditor {
       (page.hashCode) +
       (labeledPosts.hashCode) +
       (excludedLinks.hashCode) +
+      (excludedNodes.hashCode) +
       (matchedPosts.hashCode) +
       (excludedPosts.hashCode) +
       (preview.hashCode);
 
   @override
   String toString() =>
-      'SelectorEditor[id=$id, expiresAt=$expiresAt, page=$page, labeledPosts=$labeledPosts, excludedLinks=$excludedLinks, matchedPosts=$matchedPosts, excludedPosts=$excludedPosts, preview=$preview]';
+      'SelectorEditor[id=$id, expiresAt=$expiresAt, page=$page, labeledPosts=$labeledPosts, excludedLinks=$excludedLinks, excludedNodes=$excludedNodes, matchedPosts=$matchedPosts, excludedPosts=$excludedPosts, preview=$preview]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -81,6 +87,7 @@ class SelectorEditor {
     json[r'page'] = this.page;
     json[r'labeled_posts'] = this.labeledPosts;
     json[r'excluded_links'] = this.excludedLinks;
+    json[r'excluded_nodes'] = this.excludedNodes;
     json[r'matched_posts'] = this.matchedPosts;
     json[r'excluded_posts'] = this.excludedPosts;
     json[r'preview'] = this.preview;
@@ -118,6 +125,10 @@ class SelectorEditor {
             'Required key "SelectorEditor[excluded_links]" is missing from JSON.');
         assert(json[r'excluded_links'] != null,
             'Required key "SelectorEditor[excluded_links]" has a null value in JSON.');
+        assert(json.containsKey(r'excluded_nodes'),
+            'Required key "SelectorEditor[excluded_nodes]" is missing from JSON.');
+        assert(json[r'excluded_nodes'] != null,
+            'Required key "SelectorEditor[excluded_nodes]" has a null value in JSON.');
         assert(json.containsKey(r'matched_posts'),
             'Required key "SelectorEditor[matched_posts]" is missing from JSON.');
         assert(json[r'matched_posts'] != null,
@@ -141,6 +152,11 @@ class SelectorEditor {
         excludedLinks: json[r'excluded_links'] is Iterable
             ? (json[r'excluded_links'] as Iterable)
                 .cast<String>()
+                .toList(growable: false)
+            : const [],
+        excludedNodes: json[r'excluded_nodes'] is Iterable
+            ? (json[r'excluded_nodes'] as Iterable)
+                .cast<int>()
                 .toList(growable: false)
             : const [],
         matchedPosts: MatchedPost.listFromJson(json[r'matched_posts']),
@@ -207,6 +223,7 @@ class SelectorEditor {
     'page',
     'labeled_posts',
     'excluded_links',
+    'excluded_nodes',
     'matched_posts',
     'excluded_posts',
     'preview',

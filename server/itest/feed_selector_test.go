@@ -35,13 +35,26 @@ import (
 //
 // testdata/feed/page_without_feed_selectors.json holds the selectors that are
 // generated from firstPostMarks, and testdata/feed/page_without_feed_state.json
-// holds what they find.
+// holds what they find. testdata/feed/page_without_feed_excluded_node_state.json
+// holds what the selectors generated from excludedNodeMarks find.
 
 // firstPostMarks labels the first article, and excludes the link of the
 // second one.
 var firstPostMarks = feed.Marks{
 	LabeledPosts:  []feed.LabeledPostIDs{{"box": 2, "title": 3, "link": 3}},
 	ExcludedLinks: []string{"blog.example.com/posts/second"},
+	ExcludedNodes: []int{},
+}
+
+// excludedNodeMarks labels both articles, and excludes the second one as a
+// node, which wins over its label.
+var excludedNodeMarks = feed.Marks{
+	LabeledPosts: []feed.LabeledPostIDs{
+		{"box": 2, "title": 3, "link": 3},
+		{"box": 5, "title": 6, "link": 6},
+	},
+	ExcludedLinks: []string{},
+	ExcludedNodes: []int{5},
 }
 
 // checkJSON compares the JSON of got with the JSON file at path.
@@ -90,7 +103,7 @@ func TestFeed_OpenSelectorEditor(t *testing.T) {
 			t.Errorf("page = %s, want %s", e.Page, wantPage)
 		}
 		if d := cmp.Diff(
-			feed.Marks{LabeledPosts: []feed.LabeledPostIDs{}, ExcludedLinks: []string{}},
+			feed.Marks{LabeledPosts: []feed.LabeledPostIDs{}, ExcludedLinks: []string{}, ExcludedNodes: []int{}},
 			e.Marks,
 		); d != "" {
 			t.Errorf("marks mismatch:\n%s", d)
@@ -124,6 +137,56 @@ func TestFeed_OpenSelectorEditor(t *testing.T) {
 			t.Errorf("marks mismatch:\n%s", d)
 		}
 		checkJSON(t, "./testdata/feed/page_without_feed_state.json", e.EditorState)
+	})
+
+	t.Run("feed with excluded nodes", func(t *testing.T) {
+		e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
+		must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, excludedNodeMarks))
+		if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); err != nil {
+			t.Fatalf("CommitSelectorEditor: %v", err)
+		}
+
+		e, err := s.OpenSelectorEditor(t.Context(), uid, page.ID)
+		if err != nil {
+			t.Fatalf("OpenSelectorEditor: %v", err)
+		}
+		// The excluded node is excluded again. The second article was labeled, but
+		// the saved selectors do not find it, so it is not labeled.
+		want := feed.Marks{
+			LabeledPosts:  []feed.LabeledPostIDs{{"box": 2, "title": 3, "link": 3}},
+			ExcludedLinks: []string{},
+			ExcludedNodes: []int{5},
+		}
+		if d := cmp.Diff(want, e.Marks); d != "" {
+			t.Errorf("marks mismatch:\n%s", d)
+		}
+		checkJSON(t, "./testdata/feed/page_without_feed_excluded_node_state.json", e.EditorState)
+	})
+
+	t.Run("saved path that selects no node", func(t *testing.T) {
+		saved := must(os.ReadFile("./testdata/feed/page_without_feed_selectors_missing_node.json"))
+		execOrFatal(t, `UPDATE feeds SET selectors = $1 WHERE id = $2`, string(saved), page.ID)
+
+		e, err := s.OpenSelectorEditor(t.Context(), uid, page.ID)
+		if err != nil {
+			t.Fatalf("OpenSelectorEditor: %v", err)
+		}
+		if d := cmp.Diff(firstPostMarks, e.Marks); d != "" {
+			t.Errorf("marks mismatch:\n%s", d)
+		}
+		if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); err != nil {
+			t.Fatalf("CommitSelectorEditor: %v", err)
+		}
+		// The path is dropped from the saved selectors.
+		var got, want any
+		_ = json.Unmarshal(
+			[]byte(scanValOrFatal[string](t, `SELECT selectors FROM feeds WHERE id = $1`, page.ID)),
+			&got,
+		)
+		_ = json.Unmarshal(must(os.ReadFile("./testdata/feed/page_without_feed_selectors.json")), &want)
+		if d := cmp.Diff(want, got); d != "" {
+			t.Errorf("saved selectors mismatch:\n%s", d)
+		}
 	})
 
 	t.Run("no feed", func(t *testing.T) {
@@ -167,14 +230,32 @@ func TestFeed_UpdateSelectorEditorMarks(t *testing.T) {
 	checkJSON(t, "./testdata/feed/page_without_feed_state.json", state)
 	var labeled string
 	var excluded []string
-	scanRowOrFatal(t, `SELECT labeled_posts, excluded_links FROM selector_editors WHERE id = $1`,
-		[]any{e.ID}, &labeled, pgtype.NewMap().SQLScanner(&excluded))
+	var excludedNodes []int
+	types := pgtype.NewMap()
+	scanRowOrFatal(t, `SELECT labeled_posts, excluded_links, excluded_nodes FROM selector_editors WHERE id = $1`,
+		[]any{e.ID}, &labeled, types.SQLScanner(&excluded), types.SQLScanner(&excludedNodes))
 	if d := cmp.Diff(`[{"box":2,"link":3,"title":3}]`, labeled); d != "" {
 		t.Errorf("stored labeled posts mismatch:\n%s", d)
 	}
 	if d := cmp.Diff([]string{"blog.example.com/posts/second"}, excluded); d != "" {
 		t.Errorf("stored excluded links mismatch:\n%s", d)
 	}
+	if d := cmp.Diff([]int{}, excludedNodes); d != "" {
+		t.Errorf("stored excluded nodes mismatch:\n%s", d)
+	}
+
+	t.Run("excluded node with a labeled post", func(t *testing.T) {
+		state, err := s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, excludedNodeMarks)
+		if err != nil {
+			t.Fatalf("UpdateSelectorEditorMarks: %v", err)
+		}
+		// The second article is not a post, but stays labeled.
+		checkJSON(t, "./testdata/feed/page_without_feed_excluded_node_state.json", state)
+		got := must(s.GetSelectorEditor(t.Context(), uid, page.ID, e.ID))
+		if d := cmp.Diff(excludedNodeMarks, got.Marks); d != "" {
+			t.Errorf("stored marks mismatch:\n%s", d)
+		}
+	})
 
 	for _, tt := range []struct {
 		name  string
@@ -194,6 +275,8 @@ func TestFeed_UpdateSelectorEditorMarks(t *testing.T) {
 			LabeledPosts:  []feed.LabeledPostIDs{{"box": 2, "title": 3, "link": 3}},
 			ExcludedLinks: []string{"blog.example.com/posts/first"},
 		}},
+		{"excluded node that is not on the page", feed.Marks{ExcludedNodes: []int{99}}},
+		{"excluded body", feed.Marks{ExcludedNodes: []int{0}}},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
 			if _, err := s.UpdateSelectorEditorMarks(

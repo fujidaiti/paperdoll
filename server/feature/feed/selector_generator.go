@@ -103,6 +103,22 @@ func (t *pageIndex) postPath(post *html.Node) []Step {
 	return path
 }
 
+// positionPath returns the path that selects n by its position (see
+// ExcludeNodes of PostSelector).
+func (t *pageIndex) positionPath(n *html.Node) []Step {
+	var path []Step
+	for ; n != t.body; n = n.Parent {
+		nth := 0
+		for s := n.PrevSibling; s != nil; s = s.PrevSibling {
+			if tagOf(s) == tagOf(n) {
+				nth++
+			}
+		}
+		path = append([]Step{{Tag: tagOf(n), Nth: &nth}}, path...)
+	}
+	return path
+}
+
 // fullPathOf returns the steps of the nodes from post, exclusive, down to n.
 func (t *pageIndex) fullPathOf(post, n *html.Node) []Step {
 	var fullPath []Step
@@ -115,8 +131,9 @@ func (t *pageIndex) fullPathOf(post, n *html.Node) []Step {
 // fieldPath returns the path that resolves f to n in post: the shortest
 // tail of the full path from post to n that does, and that has a step with
 // classes when the full path has one. It falls back to the full path, with Nth
-// on the last step. It returns false when no path resolves to n.
-func (t *pageIndex) fieldPath(f PostField, post, n *html.Node) ([]Step, bool) {
+// on the last step. It returns false when no path resolves to n. The subtrees
+// of the excluded nodes in skip are left out, as when the selector runs.
+func (t *pageIndex) fieldPath(f PostField, post, n *html.Node, skip map[*html.Node]bool) ([]Step, bool) {
 	fullPath := t.fullPathOf(post, n)
 	hasCls := func(path []Step) bool {
 		return slices.ContainsFunc(path, func(s Step) bool { return len(s.Cls) > 0 })
@@ -127,7 +144,7 @@ func (t *pageIndex) fieldPath(f PostField, post, n *html.Node) ([]Step, bool) {
 		if (i == len(fullPath) && len(fullPath) > 0) || hasCls(fullPath) && !hasCls(path) {
 			continue
 		}
-		if resolvePath(post, f, path) == n {
+		if resolvePath(post, f, path, skip) == n {
 			return path, true
 		}
 	}
@@ -137,10 +154,10 @@ func (t *pageIndex) fieldPath(f PostField, post, n *html.Node) ([]Step, bool) {
 	for nth := 0; nth < len(t.nodes); nth++ {
 		path := slices.Clone(fullPath)
 		path[len(path)-1].Nth = &nth
-		if len(selectNodes(post, path, false)) == 0 {
+		if len(selectNodes(post, path, false, skip)) == 0 {
 			return nil, false
 		}
-		if resolvePath(post, f, path) == n {
+		if resolvePath(post, f, path, skip) == n {
 			return path, true
 		}
 	}
@@ -172,11 +189,17 @@ func setPath(m *PostSelector, f PostField, path []Step) {
 
 // selectorOf returns the selector that finds post with its fields, or false when
 // no path resolves its title or link. A field that no path resolves is left
-// out.
-func (t *pageIndex) selectorOf(post labeledPost, exclude []string) (PostSelector, bool) {
-	m := PostSelector{Post: t.postPath(post.node), Exclude: exclude}
+// out. exclude and excludeNodes are the ExcludePatterns and ExcludeNodes of
+// the selector, and skip holds the nodes of excludeNodes.
+func (t *pageIndex) selectorOf(
+	post labeledPost,
+	exclude []string,
+	excludeNodes [][]Step,
+	skip map[*html.Node]bool,
+) (PostSelector, bool) {
+	m := PostSelector{Post: t.postPath(post.node), ExcludePatterns: exclude, ExcludeNodes: excludeNodes}
 	for f, n := range post.fields {
-		if path, ok := t.fieldPath(f, post.node, n); ok {
+		if path, ok := t.fieldPath(f, post.node, n, skip); ok {
 			setPath(&m, f, path)
 		}
 	}
@@ -226,7 +249,13 @@ func merge(a, b PostSelector) (PostSelector, bool) {
 	if !samePaths(a.Title, b.Title) || !samePaths(a.Link, b.Link) {
 		return PostSelector{}, false
 	}
-	m := PostSelector{Post: post, Title: a.Title, Link: a.Link, Exclude: a.Exclude}
+	m := PostSelector{
+		Post:            post,
+		Title:           a.Title,
+		Link:            a.Link,
+		ExcludePatterns: a.ExcludePatterns,
+		ExcludeNodes:    a.ExcludeNodes,
+	}
 	for _, f := range []PostField{PostBody, PostThumbnail, PostPubDate} {
 		path, ok := a.pathOf(f)
 		if other, okOther := b.pathOf(f); !ok {
@@ -241,22 +270,33 @@ func merge(a, b PostSelector) (PostSelector, bool) {
 
 // generateSelectors returns the selectors that find the posts that the user
 // labeled, and none of the posts whose links the user excluded, which excluded
-// holds by host and path. The selectors depend on the posts and the links, not
-// on the order in which the user marked them. A link of excluded must not be
-// the link of a post.
+// holds by host and path, and nothing in the subtrees of excludedNodes. The
+// selectors depend on the posts, the links and the nodes, not on the order in
+// which the user marked them. A link of excluded must not be the link of a
+// post, and a post and its fields must not be in the subtree of an excluded
+// node.
 //
 // Each post starts with its own selector (see selectorOf), in document order,
 // and the first two selectors that can merge (see merge) are replaced by the
 // merged one, until no two can merge. A post whose title or link no path
 // resolves gets no selector.
-func (t *pageIndex) generateSelectors(posts []labeledPost, excluded map[string]bool) []PostSelector {
+func (t *pageIndex) generateSelectors(
+	posts []labeledPost,
+	excluded map[string]bool,
+	excludedNodes map[*html.Node]bool,
+) []PostSelector {
 	exclude := slices.Sorted(maps.Keys(excluded))
+	nodes := slices.SortedFunc(maps.Keys(excludedNodes), func(a, b *html.Node) int { return t.index[a] - t.index[b] })
+	var excludeNodes [][]Step
+	for _, n := range nodes {
+		excludeNodes = append(excludeNodes, t.positionPath(n))
+	}
 	posts = slices.Clone(posts)
 	slices.SortFunc(posts, func(a, b labeledPost) int { return t.index[a.node] - t.index[b.node] })
 
 	var selectors []PostSelector
 	for _, p := range posts {
-		if m, ok := t.selectorOf(p, exclude); ok {
+		if m, ok := t.selectorOf(p, exclude, excludeNodes, excludedNodes); ok {
 			selectors = append(selectors, m)
 		}
 	}
@@ -287,7 +327,8 @@ func (t *pageIndex) labelFoundPosts(selectors []PostSelector) []labeledPost {
 	byNode := map[*html.Node]labeledPost{}
 	for i := range selectors {
 		m := &selectors[i]
-		for _, n := range m.selectPosts(t.body) {
+		skip := m.excludedNodes(t.body)
+		for _, n := range m.selectPosts(t.body, skip) {
 			p, ok := byNode[n]
 			if !ok {
 				p = labeledPost{node: n, fields: make(map[PostField]*html.Node)}
@@ -298,7 +339,7 @@ func (t *pageIndex) labelFoundPosts(selectors []PostSelector) []labeledPost {
 				if _, ok := p.fields[f]; ok {
 					continue
 				}
-				if v := m.resolveField(n, f); v != nil {
+				if v := m.resolveField(n, f, skip); v != nil {
 					p.fields[f] = v
 				}
 			}

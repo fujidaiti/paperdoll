@@ -190,17 +190,17 @@ func TestLabelFoundPostsGolden(t *testing.T) {
 			index := newPageIndex(pageBody(doc))
 			excluded := map[string]bool{}
 			for _, m := range golden {
-				for _, l := range m.Exclude {
+				for _, l := range m.ExcludePatterns {
 					excluded[l] = true
 				}
 			}
 
-			selectors := index.generateSelectors(index.labelFoundPosts(golden), excluded)
+			selectors := index.generateSelectors(index.labelFoundPosts(golden), excluded, nil)
 
 			postNodes := func(selectors []PostSelector) []int {
 				var ids []int
 				for _, m := range selectors {
-					for _, n := range m.selectPosts(index.body) {
+					for _, n := range m.selectPosts(index.body, nil) {
 						if !slices.Contains(ids, index.index[n]) {
 							ids = append(ids, index.index[n])
 						}

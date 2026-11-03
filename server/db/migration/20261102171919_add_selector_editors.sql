@@ -13,8 +13,10 @@ CREATE TABLE selector_editors (
     labeled_posts json NOT NULL,
     -- The host and path of each excluded link.
     excluded_links text[] NOT NULL,
-    -- The selectors generated from the labeled posts and the excluded links,
-    -- as a JSON array of feed.PostSelector.
+    -- The node ID of each node that is excluded with its subtree.
+    excluded_nodes int[] NOT NULL,
+    -- The selectors generated from the marks, as a JSON array of
+    -- feed.PostSelector.
     selectors json NOT NULL,
     created_at timestamptz NOT NULL DEFAULT now(),
     expires_at timestamptz NOT NULL
