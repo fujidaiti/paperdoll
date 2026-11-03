@@ -31,7 +31,7 @@ class SelectorEditor {
   /// The page simplified into an HTML document, with the node ID of each element in its `data-id` attribute. The node ID of a node is its position among the nodes of the page in document order, and a text takes the ID of its position too. See SimplifyPage in `server/feature/feed/simplify.go` for the format.
   String page;
 
-  /// The posts marked so far. A new editor starts with the posts that the saved selectors find.
+  /// The posts marked so far. A new editor starts with the posts that a user would mark to find the posts that the saved selectors find.
   List<MarkedPost> markedPosts;
 
   /// The host and path of each excluded link. A new editor starts with the ones of the saved selectors.

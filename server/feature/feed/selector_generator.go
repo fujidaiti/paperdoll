@@ -303,13 +303,41 @@ merging:
 	}
 }
 
+// marksFor returns the marks that a user would make to get targets, posts in
+// document order, and the rules generated from them, excluded and
+// excludedNodes (see generateRules). It marks the first unmarked target that
+// the rules of the marks so far do not find with the nodes of its fields,
+// until there is none, so it marks each target at most once. A post that only
+// the rules find is not marked. The targets must meet the conditions of
+// generateRules on the posts.
+func (t *pageIndex) marksFor(
+	targets []markedPost,
+	excluded map[string]bool,
+	excludedNodes map[*html.Node]bool,
+) ([]markedPost, ExtractionRules) {
+	marks := []markedPost{}
+	marked := map[*html.Node]bool{}
+	for {
+		rules := t.generateRules(marks, excluded, excludedNodes)
+		found := map[*html.Node]markedPost{}
+		for _, p := range t.markFoundPosts(rules) {
+			found[p.box] = p
+		}
+		i := slices.IndexFunc(targets, func(p markedPost) bool {
+			f, ok := found[p.box]
+			return !marked[p.box] && (!ok || !maps.Equal(f.fields, p.fields))
+		})
+		if i < 0 {
+			return marks, rules
+		}
+		marks = append(marks, targets[i])
+		marked[targets[i].box] = true
+	}
+}
+
 // markFoundPosts returns every post that rules find, with the nodes of its
-// fields, in document order, so that the rules can be generated again from
-// them, since saved rules do not keep the marks of the user. All of
-// them are needed, since a merged selector keeps only the classes that all of
-// its posts share, and fewer posts would make the selectors find fewer posts.
-// A post that several selectors find takes each field from the first selector
-// that finds it.
+// fields, in document order. A post that several selectors find takes each
+// field from the first selector that finds it.
 func (t *pageIndex) markFoundPosts(rules ExtractionRules) []markedPost {
 	var posts []markedPost
 	byNode := map[*html.Node]markedPost{}

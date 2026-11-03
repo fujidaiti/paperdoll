@@ -133,7 +133,7 @@ func TestFeed_OpenSelectorEditor(t *testing.T) {
 		if err != nil {
 			t.Fatalf("OpenSelectorEditor: %v", err)
 		}
-		// The posts that the saved selectors find are marked.
+		// The one post that the saved selectors find is marked.
 		if d := cmp.Diff(firstPostMarks, e.Marks); d != "" {
 			t.Errorf("marks mismatch:\n%s", d)
 		}

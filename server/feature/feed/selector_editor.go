@@ -301,8 +301,8 @@ func (t *pageIndex) idsOf(posts []markedPost) []MarkedPostIDs {
 
 // OpenSelectorEditor opens a new selector editor of the unstructured feed
 // feedID for the user uid. It fetches the page of the feed, and marks the
-// posts that the saved rules of the feed find, which keeps them found when the
-// user adds new marks, since the saved rules do not keep the marks of the
+// posts that a user would mark to get the posts that the saved rules of the
+// feed find (see marksFor), since the saved rules do not keep the marks of the
 // user. The excluded links start as the patterns of the saved rules, and the
 // excluded nodes as the nodes that their paths select on the new page. A
 // path that selects no node is dropped.
@@ -348,12 +348,12 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 		return SelectorEditor{}, err
 	}
 
-	posts := t.markFoundPosts(rules)
 	excluded := map[string]bool{}
 	for _, l := range rules.ExcludePatterns {
 		excluded[l] = true
 	}
 	excludedNodes := rules.excludedNodes(t.body)
+	posts, generated := t.marksFor(t.markFoundPosts(rules), excluded, excludedNodes)
 	e := SelectorEditor{
 		Page:          page,
 		MarkedPosts:   t.idsOf(posts),
@@ -367,11 +367,11 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 		e.ExcludedNodes = append(e.ExcludedNodes, t.index[n])
 	}
 	slices.Sort(e.ExcludedNodes)
-	generated, state, err := t.generate(doc, posts, excluded, excludedNodes)
+	encoded, err := json.Marshal(generated)
 	if err != nil {
 		return SelectorEditor{}, err
 	}
-	e.EditorState = state
+	e.EditorState = t.editorState(doc, generated)
 	marked, err := json.Marshal(e.MarkedPosts)
 	if err != nil {
 		return SelectorEditor{}, err
@@ -381,7 +381,7 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 			(user_id, feed_id, simplified_page, marked_posts, excluded_links, excluded_nodes, extraction_rules, expires_at)
 		VALUES ($1, $2, $3, $4, $5, $6, $7, now() + interval '48 hours')
 		RETURNING id, expires_at;
-	`, uid, feedID, page, string(marked), e.ExcludedLinks, e.ExcludedNodes, generated).Scan(&e.ID, &e.ExpiresAt)
+	`, uid, feedID, page, string(marked), e.ExcludedLinks, e.ExcludedNodes, string(encoded)).Scan(&e.ID, &e.ExpiresAt)
 	if err != nil {
 		return SelectorEditor{}, err
 	}

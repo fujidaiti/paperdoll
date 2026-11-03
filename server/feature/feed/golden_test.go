@@ -163,12 +163,12 @@ func readJSON(t *testing.T, path string, v any) {
 	}
 }
 
-// TestMarkFoundPostsGolden checks that the rules generated from the posts
-// that the golden rules of each test page find (see markFoundPosts) find
-// the same posts with the same values, as when a user starts an editor of the
-// feed and commits it without changes. A post that another selector also finds
-// is extracted anyway, so the post nodes are compared too.
-func TestMarkFoundPostsGolden(t *testing.T) {
+// TestMarksForGolden checks that the rules generated from the marks for the
+// posts that the golden rules of each test page find (see marksFor) find the
+// same posts with the same values, as when a user starts an editor of the feed
+// and commits it without changes. A post that another selector also finds is
+// extracted anyway, so the post nodes are compared too.
+func TestMarksForGolden(t *testing.T) {
 	files, err := filepath.Glob("testdata/selector/*.json")
 	if err != nil {
 		t.Fatal(err)
@@ -192,7 +192,9 @@ func TestMarkFoundPostsGolden(t *testing.T) {
 				excluded[l] = true
 			}
 
-			rules := index.generateRules(index.markFoundPosts(golden), excluded, golden.excludedNodes(index.body))
+			targets := index.markFoundPosts(golden)
+			marks, rules := index.marksFor(targets, excluded, golden.excludedNodes(index.body))
+			t.Logf("%d marks for %d posts", len(marks), len(targets))
 
 			postNodes := func(rules ExtractionRules) []int {
 				var ids []int

@@ -42,8 +42,8 @@ import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 /// post that is marked or one that was found automatically, and a post that
 /// is not one can be marked as such. A section that holds no posts, such as a
 /// menu, can be excluded as a whole, and is shown as a placeholder line. The
-/// posts that the saved selectors find start as marked. Saving replaces the
-/// saved selectors.
+/// editor starts with the marks that find the posts that the saved selectors
+/// find. Saving replaces the saved selectors.
 ///
 /// The editor of the feed is remembered on the device until it is saved or
 /// left, so that the user can continue it after the app was killed.

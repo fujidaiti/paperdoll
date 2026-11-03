@@ -39,9 +39,9 @@ class SelectorEditor {
   final int id;
   final SimplifiedPage page;
 
-  /// The posts marked so far. A new editor starts with the posts that the
-  /// saved selectors find, since the saved selectors do not keep the marks of
-  /// the user.
+  /// The posts marked so far. A new editor starts with the posts that a user
+  /// would mark to find the posts that the saved selectors find, since the
+  /// saved selectors do not keep the marks of the user.
   final List<MarkedPost> markedPosts;
 
   /// The host and path of each excluded link (see [hostPathOf]).

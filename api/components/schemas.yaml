@@ -210,8 +210,8 @@ SelectorEditor:
       type: string
     marked_posts:
       description:
-        The posts marked so far. A new editor starts with the posts that the
-        saved selectors find.
+        The posts marked so far. A new editor starts with the posts that a user
+        would mark to find the posts that the saved selectors find.
       type: array
       items:
         $ref: "#/MarkedPost"
