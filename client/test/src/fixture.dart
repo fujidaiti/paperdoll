@@ -246,6 +246,7 @@ class _Pages {
     'page': exampleBlog,
     'labeled_posts': <Object?>[],
     'excluded_links': <Object?>[],
+    'excluded_nodes': <Object?>[],
     'matched_posts': <Object?>[],
     'excluded_posts': <Object?>[],
     'preview': <Object?>[],
@@ -293,6 +294,7 @@ class _Pages {
       {'box': 4, 'title': 5, 'link': 5},
     ],
     'excluded_links': <Object?>[],
+    'excluded_nodes': <Object?>[],
     'matched_posts': [
       {
         'box': 1,
@@ -389,18 +391,184 @@ class _Pages {
     ],
   };
 
-  /// A new editor of [exampleBlogWithNewsletters] for a feed whose saved
-  /// selectors find all three posts, which start as labeled.
+  /// An editor of [exampleBlogWithNewsletters] in which the first post is
+  /// labeled, and the selectors find the newsletters too.
   late final exampleBlogWithNewslettersEditor = <String, Object?>{
     'id': 42,
     'expires_at': '2026-07-03T13:30:00Z',
     'page': exampleBlogWithNewsletters,
     'labeled_posts': [
       {'box': 1, 'title': 2, 'link': 2},
-      {'box': 4, 'title': 5, 'link': 5},
-      {'box': 7, 'title': 8, 'link': 8},
     ],
     'excluded_links': <Object?>[],
+    'excluded_nodes': <Object?>[],
     ...exampleBlogWithNewslettersAllFound,
+  };
+
+  /// [exampleBlog] with a menu above the posts, whose links look like the
+  /// titles of the posts.
+  final exampleBlogWithMenu = [
+    '<!DOCTYPE html><html><head><title>Example Blog</title>',
+    '<link rel="canonical" href="https://blog.example.com/"/></head>',
+    '<body data-id="0">',
+    '<nav data-id="1">',
+    '<p data-id="2">Menu</p>',
+    '<h2 href="https://blog.example.com/about" data-id="3">About</h2>',
+    '<h2 href="https://blog.example.com/contact" data-id="4">Contact</h2>',
+    '</nav>',
+    '<article class="post" data-id="5">',
+    '<h2 href="https://blog.example.com/first" data-id="6">First post</h2>',
+    '<p data-id="7">The first post.</p>',
+    '</article>',
+    '<article class="post" data-id="8">',
+    '<h2 href="https://blog.example.com/second" data-id="9">Second post</h2>',
+    '<p data-id="10">The second post.</p>',
+    '</article>',
+    '</body></html>',
+  ].join();
+
+  /// What the selectors find in [exampleBlogWithMenu] when nothing is
+  /// excluded: the links of the menu and both posts.
+  final exampleBlogWithMenuAllFound = <String, Object?>{
+    'matched_posts': [
+      {
+        'box': 3,
+        'title': 3,
+        'link': 3,
+        'values': {'title': 'About', 'link': 'https://blog.example.com/about'},
+      },
+      {
+        'box': 4,
+        'title': 4,
+        'link': 4,
+        'values': {
+          'title': 'Contact',
+          'link': 'https://blog.example.com/contact',
+        },
+      },
+      {
+        'box': 5,
+        'title': 6,
+        'link': 6,
+        'values': {
+          'title': 'First post',
+          'link': 'https://blog.example.com/first',
+        },
+      },
+      {
+        'box': 8,
+        'title': 9,
+        'link': 9,
+        'values': {
+          'title': 'Second post',
+          'link': 'https://blog.example.com/second',
+        },
+      },
+    ],
+    'excluded_posts': <Object?>[],
+    'preview': [
+      {'title': 'About', 'link': 'https://blog.example.com/about'},
+      {'title': 'Contact', 'link': 'https://blog.example.com/contact'},
+      {'title': 'First post', 'link': 'https://blog.example.com/first'},
+      {'title': 'Second post', 'link': 'https://blog.example.com/second'},
+    ],
+  };
+
+  /// What the selectors find in [exampleBlogWithMenu] when the menu is
+  /// excluded: both posts.
+  final exampleBlogWithMenuExcluded = <String, Object?>{
+    'matched_posts': [
+      {
+        'box': 5,
+        'title': 6,
+        'link': 6,
+        'values': {
+          'title': 'First post',
+          'link': 'https://blog.example.com/first',
+        },
+      },
+      {
+        'box': 8,
+        'title': 9,
+        'link': 9,
+        'values': {
+          'title': 'Second post',
+          'link': 'https://blog.example.com/second',
+        },
+      },
+    ],
+    'excluded_posts': <Object?>[],
+    'preview': [
+      {'title': 'First post', 'link': 'https://blog.example.com/first'},
+      {'title': 'Second post', 'link': 'https://blog.example.com/second'},
+    ],
+  };
+
+  /// What the selectors find in [exampleBlogWithMenu] when the second post is
+  /// excluded: the links of the menu and the first post.
+  final exampleBlogWithMenuSecondPostExcluded = <String, Object?>{
+    'matched_posts': [
+      {
+        'box': 3,
+        'title': 3,
+        'link': 3,
+        'values': {'title': 'About', 'link': 'https://blog.example.com/about'},
+      },
+      {
+        'box': 4,
+        'title': 4,
+        'link': 4,
+        'values': {
+          'title': 'Contact',
+          'link': 'https://blog.example.com/contact',
+        },
+      },
+      {
+        'box': 5,
+        'title': 6,
+        'link': 6,
+        'values': {
+          'title': 'First post',
+          'link': 'https://blog.example.com/first',
+        },
+      },
+    ],
+    'excluded_posts': <Object?>[],
+    'preview': [
+      {'title': 'About', 'link': 'https://blog.example.com/about'},
+      {'title': 'Contact', 'link': 'https://blog.example.com/contact'},
+      {'title': 'First post', 'link': 'https://blog.example.com/first'},
+    ],
+  };
+
+  /// An editor of [exampleBlogWithMenu] in which the first post is labeled,
+  /// and the selectors find the links of the menu too.
+  late final exampleBlogWithMenuEditor = <String, Object?>{
+    'id': 42,
+    'expires_at': '2026-07-03T13:30:00Z',
+    'page': exampleBlogWithMenu,
+    'labeled_posts': [
+      {'box': 5, 'title': 6, 'link': 6},
+    ],
+    'excluded_links': <Object?>[],
+    'excluded_nodes': <Object?>[],
+    ...exampleBlogWithMenuAllFound,
+  };
+
+  /// A new editor of [exampleBlogWithMenu] for a feed whose saved selectors
+  /// find the links of the menu and both posts, which start as labeled.
+  late final exampleBlogWithMenuSavedEditor = <String, Object?>{
+    'id': 42,
+    'expires_at': '2026-07-03T13:30:00Z',
+    'page': exampleBlogWithMenu,
+    'labeled_posts': [
+      {'box': 3, 'title': 3, 'link': 3},
+      {'box': 4, 'title': 4, 'link': 4},
+      {'box': 5, 'title': 6, 'link': 6},
+      {'box': 8, 'title': 9, 'link': 9},
+    ],
+    'excluded_links': <Object?>[],
+    'excluded_nodes': <Object?>[],
+    ...exampleBlogWithMenuAllFound,
   };
 }

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:paperdoll/core/network/request_runner.dart';
 import 'package:paperdoll/features/feed/domain/post_field.dart';
 import 'package:paperdoll/features/feed/domain/selector_editor.dart';
+import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Opens, edits, commits and closes the selector editors of unstructured
@@ -39,6 +40,7 @@ class const SelectorEditorRepository(
     SelectorEditor editor,
     Iterable<LabeledPost> labeledPosts,
     Set<String> excludedLinks,
+    Set<Node> excludedNodes,
   ) {
     return runRequest(() async {
       final res = await _dio.put<Map<String, dynamic>>(
@@ -48,6 +50,9 @@ class const SelectorEditorRepository(
             for (final p in labeledPosts) labeledPostToJson(editor.page, p),
           ],
           'excluded_links': excludedLinks.toList(),
+          'excluded_nodes': [
+            for (final n in excludedNodes) editor.page.idOf(n),
+          ],
         },
       );
       return EditorState.fromJson(editor.page, res.data!);

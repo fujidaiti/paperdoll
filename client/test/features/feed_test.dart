@@ -188,6 +188,7 @@ void main() {
             {'box': 2, 'title': 2, 'link': 2},
           ],
           'excluded_links': <Object?>[],
+          'excluded_nodes': <Object?>[],
         },
         body: fixture.pages.exampleBlogHeadingsFound,
       );
@@ -302,6 +303,7 @@ void main() {
             {'box': 1, 'title': 2, 'link': 2},
           ],
           'excluded_links': ['blog.example.com/newsletters'],
+          'excluded_nodes': <Object?>[],
         },
         body: fixture.pages.exampleBlogWithNewslettersExcluded,
       )
@@ -312,6 +314,7 @@ void main() {
             {'box': 1, 'title': 2, 'link': 2},
           ],
           'excluded_links': <Object?>[],
+          'excluded_nodes': <Object?>[],
         },
         body: fixture.pages.exampleBlogWithNewslettersAllFound,
       );
@@ -334,6 +337,156 @@ void main() {
     await t('Marked as not a post.').waitUntilVisible();
     await t('Restore').tap();
     await t('3 post(s) found.').waitUntilVisible();
+  });
+
+  patrolWidgetTest('Exclude a section of a web page', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogWithMenuEditor,
+      )
+      ..stubPut(
+        '/feeds/${blog.id}/selector-editors/42/marks',
+        bodyMatcher: {
+          'labeled_posts': [
+            {'box': 5, 'title': 6, 'link': 6},
+          ],
+          'excluded_links': <Object?>[],
+          'excluded_nodes': [1],
+        },
+        body: fixture.pages.exampleBlogWithMenuExcluded,
+      )
+      ..stubPut(
+        '/feeds/${blog.id}/selector-editors/42/marks',
+        bodyMatcher: {
+          'labeled_posts': [
+            {'box': 5, 'title': 6, 'link': 6},
+          ],
+          'excluded_links': <Object?>[],
+          'excluded_nodes': <Object?>[],
+        },
+        body: fixture.pages.exampleBlogWithMenuAllFound,
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
+    await t('4 post(s) found.').waitUntilVisible();
+
+    // A tap on the text of the menu selects the whole menu, whose links are
+    // found as posts.
+    await t('Menu').tap();
+    await t('Exclude').tap();
+
+    // The menu is shown as one line instead of its content.
+    await t('2 post(s) found.').waitUntilVisible();
+    expect(t('About'), findsNothing);
+    await t('Excluded: 3 texts, 2 links').tap();
+    await t('Excluded from posts.').waitUntilVisible();
+    await t('Restore').tap();
+    await t('4 post(s) found.').waitUntilVisible();
+    expect(t('About'), findsOneWidget);
+  });
+
+  patrolWidgetTest('Exclude a section with marked posts', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    final labeled = [
+      {'box': 3, 'title': 3, 'link': 3},
+      {'box': 4, 'title': 4, 'link': 4},
+      {'box': 5, 'title': 6, 'link': 6},
+      {'box': 8, 'title': 9, 'link': 9},
+    ];
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogWithMenuSavedEditor,
+      )
+      // The links of the menu keep their marks while the menu is excluded.
+      ..stubPut(
+        '/feeds/${blog.id}/selector-editors/42/marks',
+        bodyMatcher: {
+          'labeled_posts': labeled,
+          'excluded_links': <Object?>[],
+          'excluded_nodes': [1],
+        },
+        body: fixture.pages.exampleBlogWithMenuExcluded,
+      )
+      ..stubPut(
+        '/feeds/${blog.id}/selector-editors/42/marks',
+        bodyMatcher: {
+          'labeled_posts': labeled,
+          'excluded_links': <Object?>[],
+          'excluded_nodes': <Object?>[],
+        },
+        body: fixture.pages.exampleBlogWithMenuAllFound,
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
+    await t('4 post(s) found.').waitUntilVisible();
+
+    // The links of the menu are marked, so the app asks first.
+    await t('Menu').tap();
+    await t('Exclude').tap();
+    await t(
+      'This contains 2 marked post(s). They are not posts while it is '
+      'excluded.',
+    ).waitUntilVisible();
+    await t(AlertDialog).$('Exclude').tap();
+    await t('2 post(s) found.').waitUntilVisible();
+
+    // The links of the menu are still marked, so they are found again.
+    await t('Excluded: 3 texts, 2 links').tap();
+    await t('Restore').tap();
+    await t('4 post(s) found.').waitUntilVisible();
+    expect(t('About'), findsOneWidget);
+  });
+
+  patrolWidgetTest('Exclude a found post', (t) async {
+    final blog = fixture.feeds.exampleBlog;
+    final server = _stubFeedSubscription(blog)
+      ..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [blog]).toJson())
+      ..stubPost(
+        '/feeds/${blog.id}/selector-editors',
+        status: 201,
+        body: fixture.pages.exampleBlogWithMenuEditor,
+      )
+      ..stubPut(
+        '/feeds/${blog.id}/selector-editors/42/marks',
+        bodyMatcher: {
+          'labeled_posts': [
+            {'box': 5, 'title': 6, 'link': 6},
+          ],
+          'excluded_links': <Object?>[],
+          'excluded_nodes': [8],
+        },
+        body: fixture.pages.exampleBlogWithMenuSecondPostExcluded,
+      );
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, blog);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.editSelectorsButton).tap();
+    await t('4 post(s) found.').waitUntilVisible();
+
+    // The card of the post is replaced by the line of the excluded node.
+    await t('Second post').tap();
+    await t(find.byTooltip('More')).tap();
+    await t('Exclude').tap();
+    await t('3 post(s) found.').waitUntilVisible();
+    expect(t('Second post'), findsNothing);
+    expect(t('Excluded: 2 texts, 1 link'), findsOneWidget);
   });
 
   patrolWidgetTest('Tell that the editor expired when marking a post', (

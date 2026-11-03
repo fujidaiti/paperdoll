@@ -12,6 +12,7 @@ class SelectorEditor {
     required this.page,
     required this.labeledPosts,
     required this.excludedLinks,
+    required this.excludedNodes,
     required this.state,
   });
 
@@ -27,6 +28,10 @@ class SelectorEditor {
       excludedLinks: {
         ...(json['excluded_links']! as List<Object?>).cast<String>(),
       },
+      excludedNodes: {
+        for (final id in json['excluded_nodes']! as List<Object?>)
+          page.nodeOf(id! as int),
+      },
       state: EditorState.fromJson(page, json),
     );
   }
@@ -41,6 +46,11 @@ class SelectorEditor {
 
   /// The host and path of each excluded link (see [hostPathOf]).
   final Set<String> excludedLinks;
+
+  /// The nodes that are excluded with their subtrees, such as a menu. No post
+  /// is found in them, even one that is labeled. A new editor starts with the
+  /// nodes of the saved selectors that the page still has.
+  final Set<Node> excludedNodes;
 
   final EditorState state;
 }

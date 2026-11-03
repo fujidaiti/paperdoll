@@ -40,8 +40,10 @@ import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 /// user marked as not posts, so the posts that look like a marked one are
 /// found automatically. The user never sees the selectors: a card is either a
 /// post that is marked or one that was found automatically, and a post that
-/// is not one can be marked as such. The posts that the saved selectors find
-/// start as marked. Saving replaces the saved selectors.
+/// is not one can be marked as such. A section that holds no posts, such as a
+/// menu, can be excluded as a whole, and is shown as a placeholder line. The
+/// posts that the saved selectors find start as marked. Saving replaces the
+/// saved selectors.
 ///
 /// The editor of the feed is remembered on the device until it is saved or
 /// left, so that the user can continue it after the app was killed.
@@ -172,6 +174,11 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// The host and path of the links that the user marked as not posts.
   late var _excluded = widget.editor.excludedLinks;
 
+  /// The nodes that the user excluded with their subtrees. An exclusion wins
+  /// over the other marks: a marked post in an excluded node keeps its mark,
+  /// but is not a post while the node is excluded.
+  late var _excludedNodes = widget.editor.excludedNodes;
+
   /// What the selectors generated from the marks find.
   late var _state = widget.editor.state;
 
@@ -213,6 +220,17 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     return null;
   }
 
+  /// The outermost excluded node that is or contains [node], if any.
+  Node? _excludedNodeOf(Node node) {
+    Node? excluded;
+    for (Node? n = node; n != null; n = n.parentNode) {
+      if (_excludedNodes.contains(n)) {
+        excluded = n;
+      }
+    }
+    return excluded;
+  }
+
   /// The post or excluded post that contains [node], if any.
   Node? _enclosingPost(Node node) {
     for (Node? n = node; n != null; n = n.parentNode) {
@@ -247,15 +265,21 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
         return 'This overlaps with a post.';
       }
     }
+    // The fields inside an excluded node cannot be labeled.
+    if (_excludedNodes.any(node.overlaps)) {
+      return 'This contains an excluded section.';
+    }
     return null;
   }
 
-  /// Sends [labeled] and [excluded] as all marks of the editor, and applies
-  /// them with what the selectors generated from them find once the server
-  /// accepts them. If the request fails, the previous marks stay.
+  /// Sends [labeled], [excluded] and [excludedNodes] as all marks of the
+  /// editor, and applies them with what the selectors generated from them find
+  /// once the server accepts them. If the request fails, the previous marks
+  /// stay.
   Future<void> _updateMarks(
     Map<Node, LabeledPost> labeled,
     Set<String> excluded,
+    Set<Node> excludedNodes,
   ) async {
     final messenger = ScaffoldMessenger.of(context);
     setState(() => _pending = true);
@@ -265,11 +289,13 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
         widget.editor,
         labeled.values,
         excluded,
+        excludedNodes,
       );
       if (mounted) {
         setState(() {
           _labeled = labeled;
           _excluded = excluded;
+          _excludedNodes = excludedNodes;
           _state = state;
           _selected = null;
         });
@@ -298,10 +324,11 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     if (labeled == null || !mounted) {
       return;
     }
-    await _updateMarks({
-      ..._labeled,
-      post: (node: post, fields: labeled),
-    }, {..._excluded}..remove(hostPathOf(labeled[PostField.link]!.link!)));
+    await _updateMarks(
+      {..._labeled, post: (node: post, fields: labeled)},
+      {..._excluded}..remove(hostPathOf(labeled[PostField.link]!.link!)),
+      _excludedNodes,
+    );
   }
 
   /// Marks the link of [post] as not a post, which also unmarks the marked
@@ -318,17 +345,62 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
               key: value,
         },
         {..._excluded, hostPath},
+        _excludedNodes,
       ),
     );
   }
 
   /// Restores the posts that the excluded link [hostPath] excludes.
   void _restore(String hostPath) {
-    unawaited(_updateMarks(_labeled, {..._excluded}..remove(hostPath)));
+    unawaited(
+      _updateMarks(_labeled, {..._excluded}..remove(hostPath), _excludedNodes),
+    );
   }
 
   void _clearMark(Node post) {
-    unawaited(_updateMarks({..._labeled}..remove(post), _excluded));
+    unawaited(
+      _updateMarks({..._labeled}..remove(post), _excluded, _excludedNodes),
+    );
+  }
+
+  /// Excludes [node] with its subtree, after asking when it contains marked
+  /// posts, which keep their marks but are not posts while it is excluded.
+  Future<void> _exclude(Node node) async {
+    final marked = _labeled.keys.where(node.includes).length;
+    if (marked > 0) {
+      final exclude = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Exclude this section?'),
+          content: Text(
+            'This contains $marked marked post(s). They are not posts while '
+            'it is excluded.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Exclude'),
+            ),
+          ],
+        ),
+      );
+      if (!(exclude ?? false) || !mounted) {
+        return;
+      }
+    }
+    await _updateMarks(_labeled, _excluded, {..._excludedNodes, node});
+  }
+
+  /// Shows the content of the excluded [node] again. The marks inside it are
+  /// kept while it is excluded, so the posts that it contains come back.
+  void _restoreNode(Node node) {
+    unawaited(
+      _updateMarks(_labeled, _excluded, {..._excludedNodes}..remove(node)),
+    );
   }
 
   Future<void> _save() async {
@@ -449,15 +521,16 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   Widget build(BuildContext context) {
     final matched = _state.matchedPosts;
     final selected = _selected;
-    // The lines of a post are replaced by its card. They are next to each
-    // other, since the lines are in document order.
+    // The lines of an excluded node are replaced by its placeholder, and the
+    // lines of a post by its card. They are next to each other, since the
+    // lines are in document order.
     final items = <Node>[];
     for (final line in _lines) {
-      final post = _postOf(line);
-      if (post == null) {
+      final group = _excludedNodeOf(line) ?? _postOf(line);
+      if (group == null) {
         items.add(line);
-      } else if (items.isEmpty || !identical(items.last, post)) {
-        items.add(post);
+      } else if (items.isEmpty || !identical(items.last, group)) {
+        items.add(group);
       }
     }
     final areas = <PageArea>[
@@ -506,6 +579,14 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   final line = items[index];
+                  if (_excludedNodes.contains(line)) {
+                    return _ExcludedPlaceholder(
+                      key: ObjectKey(line),
+                      node: line,
+                      isSelected: identical(selected, line),
+                      onTap: () => _select(line, tapped: line),
+                    );
+                  }
                   if (matched[line] case final post?) {
                     return _PostCard(
                       key: ObjectKey(line),
@@ -545,7 +626,8 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   Widget _buildSheet(Node selected) {
     final post = _state.matchedPosts[selected];
     final excluded = _state.excludedPosts[selected];
-    final rejection = post == null && excluded == null
+    final isExcludedNode = _excludedNodes.contains(selected);
+    final rejection = post == null && excluded == null && !isExcludedNode
         ? _postRejection(selected)
         : null;
     // The marks cannot change while a request is in flight.
@@ -557,7 +639,8 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       onSelect: _select,
       isPost: post != null,
       isMarked: _labeled.containsKey(selected),
-      isExcluded: excluded != null,
+      isExcludedByLink: excluded != null,
+      isExcludedNode: isExcludedNode,
       rejection: rejection,
       onCancel: () => _select(null),
       onMarkAsPost: unlessPending(
@@ -577,8 +660,13 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
         post == null ? null : () => _markAsNotPost(selected),
       ),
       onClearMark: unlessPending(() => _clearMark(selected)),
+      onExclude: unlessPending(() => unawaited(_exclude(selected))),
       onRestore: unlessPending(
-        excluded == null ? null : () => _restore(excluded),
+        isExcludedNode
+            ? () => _restoreNode(selected)
+            : excluded == null
+            ? null
+            : () => _restore(excluded),
       ),
     );
   }
@@ -620,14 +708,19 @@ class const _StatusFooter({
 
 /// What the selected element holds and what can be done with it. The element
 /// is a post if [isPost] is true, and one that the user marked if [isMarked]
-/// is true. It is a post that the user marked as not one if [isExcluded] is
-/// true, and cannot become a post for the reason in [rejection] if it is not
-/// null. Otherwise it can be marked as a post.
+/// is true. It is a post that the user marked as not one if
+/// [isExcludedByLink] is true, and a node that the user excluded if
+/// [isExcludedNode] is true. Otherwise it can be excluded, and marked as a
+/// post unless [rejection] tells why it cannot become one.
+///
+/// A post that the user marked cannot be excluded, since a user rarely marks
+/// a post and then excludes it.
 class const _SelectionSheet({
   required final Node selected,
   required final bool isPost,
   required final bool isMarked,
-  required final bool isExcluded,
+  required final bool isExcludedByLink,
+  required final bool isExcludedNode,
   required final String? rejection,
   required final List<Node> levels,
   required final void Function(Node node) onSelect,
@@ -636,6 +729,7 @@ class const _SelectionSheet({
   required final VoidCallback? onEditFields,
   required final VoidCallback? onNotPost,
   required final VoidCallback? onClearMark,
+  required final VoidCallback? onExclude,
   required final VoidCallback? onRestore,
 }) extends StatelessWidget {
   @override
@@ -661,8 +755,8 @@ class const _SelectionSheet({
             ),
           ],
         ),
-        // A post is selected as a whole.
-        if (!isPost && !isExcluded)
+        // A post and an excluded node are selected as a whole.
+        if (!isPost && !isExcludedByLink && !isExcludedNode)
           SelectionSlider(
             selected: selected,
             levels: levels,
@@ -673,8 +767,12 @@ class const _SelectionSheet({
           CaptionText(rejection),
           const Gap(spacingSm),
         ],
-        if (isExcluded) ...[
+        if (isExcludedByLink) ...[
           const CaptionText('Marked as not a post.'),
+          const Gap(spacingSm),
+        ],
+        if (isExcludedNode) ...[
+          const CaptionText('Excluded from posts.'),
           const Gap(spacingSm),
         ],
         Row(
@@ -683,35 +781,85 @@ class const _SelectionSheet({
             if (isPost) ...[
               // Actions that are used rarely are kept in a menu, since the
               // row is too narrow for all of them.
-              if (isMarked)
-                PopupMenuButton<VoidCallback>(
-                  icon: const Icon(Icons.more_vert),
-                  tooltip: 'More',
-                  onSelected: (action) => action(),
-                  itemBuilder: (context) => [
+              PopupMenuButton<VoidCallback>(
+                icon: const Icon(Icons.more_vert),
+                tooltip: 'More',
+                onSelected: (action) => action(),
+                itemBuilder: (context) => [
+                  if (isMarked)
                     PopupMenuItem(
                       value: onClearMark,
                       enabled: onClearMark != null,
                       child: const Text('Clear mark'),
+                    )
+                  else
+                    PopupMenuItem(
+                      value: onExclude,
+                      enabled: onExclude != null,
+                      child: const Text('Exclude'),
                     ),
-                  ],
+                ],
+              ),
+              if (!isMarked) ...[
+                TextButton(
+                  onPressed: onNotPost,
+                  child: const Text('Not a post'),
                 ),
-              TextButton(onPressed: onNotPost, child: const Text('Not a post')),
-              const Gap(spacingSm),
+                const Gap(spacingSm),
+              ],
               FilledButton(
                 onPressed: onEditFields,
                 child: const Text('Edit fields'),
               ),
-            ] else if (isExcluded)
+            ] else if (isExcludedByLink || isExcludedNode)
               FilledButton(onPressed: onRestore, child: const Text('Restore'))
-            else if (rejection == null)
+            else ...[
+              TextButton(onPressed: onExclude, child: const Text('Exclude')),
+              const Gap(spacingSm),
               FilledButton(
-                onPressed: onMarkAsPost,
+                onPressed: rejection == null ? onMarkAsPost : null,
                 child: const Text('Mark as post'),
               ),
+            ],
           ],
         ),
       ],
+    );
+  }
+}
+
+/// A node that the user excluded with its subtree, shown as one muted line
+/// instead of its content.
+class const _ExcludedPlaceholder({
+  required final Node node,
+  required final bool isSelected,
+  required final VoidCallback onTap,
+  super.key,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        color: isSelected ? colorText.withValues(alpha: 0.08) : null,
+        padding: const EdgeInsets.symmetric(
+          horizontal: spacingMd,
+          vertical: spacingXs,
+        ),
+        child: Row(
+          children: [
+            const Icon(Icons.block, size: 16, color: colorTextMuted),
+            const Gap(spacingXs),
+            Expanded(
+              child: CaptionText(
+                'Excluded: ${describeNode(node)}',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
