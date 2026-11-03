@@ -10,15 +10,16 @@
 
 part of openapi.api;
 
-class LabeledPost {
-  /// Returns a new [LabeledPost] instance.
-  LabeledPost({
+class FoundPost {
+  /// Returns a new [FoundPost] instance.
+  FoundPost({
     required this.box,
     required this.title,
     this.body,
     required this.link,
     this.thumbnail,
     this.pubDate,
+    required this.values,
   });
 
   int box;
@@ -51,16 +52,19 @@ class LabeledPost {
   ///
   int? pubDate;
 
+  ExtractedPost values;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LabeledPost &&
+      other is FoundPost &&
           other.box == box &&
           other.title == title &&
           other.body == body &&
           other.link == link &&
           other.thumbnail == thumbnail &&
-          other.pubDate == pubDate;
+          other.pubDate == pubDate &&
+          other.values == values;
 
   @override
   int get hashCode =>
@@ -70,11 +74,12 @@ class LabeledPost {
       (body == null ? 0 : body!.hashCode) +
       (link.hashCode) +
       (thumbnail == null ? 0 : thumbnail!.hashCode) +
-      (pubDate == null ? 0 : pubDate!.hashCode);
+      (pubDate == null ? 0 : pubDate!.hashCode) +
+      (values.hashCode);
 
   @override
   String toString() =>
-      'LabeledPost[box=$box, title=$title, body=$body, link=$link, thumbnail=$thumbnail, pubDate=$pubDate]';
+      'FoundPost[box=$box, title=$title, body=$body, link=$link, thumbnail=$thumbnail, pubDate=$pubDate, values=$values]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -96,13 +101,14 @@ class LabeledPost {
     } else {
       json[r'pubDate'] = null;
     }
+    json[r'values'] = this.values;
     return json;
   }
 
-  /// Returns a new [LabeledPost] instance and imports its values from
+  /// Returns a new [FoundPost] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static LabeledPost? fromJson(dynamic value) {
+  static FoundPost? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -111,40 +117,45 @@ class LabeledPost {
       // Note 2: this code is stripped in release mode!
       assert(() {
         assert(json.containsKey(r'box'),
-            'Required key "LabeledPost[box]" is missing from JSON.');
+            'Required key "FoundPost[box]" is missing from JSON.');
         assert(json[r'box'] != null,
-            'Required key "LabeledPost[box]" has a null value in JSON.');
+            'Required key "FoundPost[box]" has a null value in JSON.');
         assert(json.containsKey(r'title'),
-            'Required key "LabeledPost[title]" is missing from JSON.');
+            'Required key "FoundPost[title]" is missing from JSON.');
         assert(json[r'title'] != null,
-            'Required key "LabeledPost[title]" has a null value in JSON.');
+            'Required key "FoundPost[title]" has a null value in JSON.');
         assert(json.containsKey(r'link'),
-            'Required key "LabeledPost[link]" is missing from JSON.');
+            'Required key "FoundPost[link]" is missing from JSON.');
         assert(json[r'link'] != null,
-            'Required key "LabeledPost[link]" has a null value in JSON.');
+            'Required key "FoundPost[link]" has a null value in JSON.');
+        assert(json.containsKey(r'values'),
+            'Required key "FoundPost[values]" is missing from JSON.');
+        assert(json[r'values'] != null,
+            'Required key "FoundPost[values]" has a null value in JSON.');
         return true;
       }());
 
-      return LabeledPost(
+      return FoundPost(
         box: mapValueOfType<int>(json, r'box')!,
         title: mapValueOfType<int>(json, r'title')!,
         body: mapValueOfType<int>(json, r'body'),
         link: mapValueOfType<int>(json, r'link')!,
         thumbnail: mapValueOfType<int>(json, r'thumbnail'),
         pubDate: mapValueOfType<int>(json, r'pubDate'),
+        values: ExtractedPost.fromJson(json[r'values'])!,
       );
     }
     return null;
   }
 
-  static List<LabeledPost> listFromJson(
+  static List<FoundPost> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <LabeledPost>[];
+    final result = <FoundPost>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = LabeledPost.fromJson(row);
+        final value = FoundPost.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -153,12 +164,12 @@ class LabeledPost {
     return result.toList(growable: growable);
   }
 
-  static Map<String, LabeledPost> mapFromJson(dynamic json) {
-    final map = <String, LabeledPost>{};
+  static Map<String, FoundPost> mapFromJson(dynamic json) {
+    final map = <String, FoundPost>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = LabeledPost.fromJson(entry.value);
+        final value = FoundPost.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -167,17 +178,17 @@ class LabeledPost {
     return map;
   }
 
-  // maps a json object with a list of LabeledPost-objects as value to a dart map
-  static Map<String, List<LabeledPost>> mapListFromJson(
+  // maps a json object with a list of FoundPost-objects as value to a dart map
+  static Map<String, List<FoundPost>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<LabeledPost>>{};
+    final map = <String, List<FoundPost>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = LabeledPost.listFromJson(
+        map[entry.key] = FoundPost.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -191,5 +202,6 @@ class LabeledPost {
     'box',
     'title',
     'link',
+    'values',
   };
 }

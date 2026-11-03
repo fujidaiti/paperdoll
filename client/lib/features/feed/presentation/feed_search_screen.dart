@@ -59,7 +59,7 @@ class _FeedSearchScreenState extends ConsumerState<FeedSearchScreen> {
       if (feed.url == feed.siteUrl && !feed.hasSelectors) {
         unawaited(
           router.pushNamed(
-            routePageAnnotationName,
+            routeSelectorEditorName,
             pathParameters: {'id': '${feed.id}'},
           ),
         );

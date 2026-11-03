@@ -244,10 +244,10 @@ class _Pages {
     'id': 42,
     'expires_at': '2026-07-03T13:30:00Z',
     'page': exampleBlog,
-    'labeled_posts': <Object?>[],
+    'marked_posts': <Object?>[],
     'excluded_links': <Object?>[],
     'excluded_nodes': <Object?>[],
-    'matched_posts': <Object?>[],
+    'found_posts': <Object?>[],
     'excluded_posts': <Object?>[],
     'preview': <Object?>[],
   };
@@ -256,7 +256,7 @@ class _Pages {
   /// post is marked as a post with itself as the title and the link: the
   /// headings of both posts.
   final exampleBlogHeadingsFound = <String, Object?>{
-    'matched_posts': [
+    'found_posts': [
       {
         'box': 2,
         'title': 2,
@@ -284,18 +284,18 @@ class _Pages {
   };
 
   /// A new editor of [exampleBlog] for a feed whose saved selectors find both
-  /// posts, which start as labeled.
+  /// posts, which start as marked.
   late final exampleBlogSavedEditor = <String, Object?>{
     'id': 42,
     'expires_at': '2026-07-03T13:30:00Z',
     'page': exampleBlog,
-    'labeled_posts': [
+    'marked_posts': [
       {'box': 1, 'title': 2, 'link': 2},
       {'box': 4, 'title': 5, 'link': 5},
     ],
     'excluded_links': <Object?>[],
     'excluded_nodes': <Object?>[],
-    'matched_posts': [
+    'found_posts': [
       {
         'box': 1,
         'title': 2,
@@ -323,9 +323,9 @@ class _Pages {
   };
 
   /// What the selectors find in [exampleBlogWithNewsletters] when the first
-  /// post is labeled and no link is excluded: all three posts.
+  /// post is marked and no link is excluded: all three posts.
   final exampleBlogWithNewslettersAllFound = <String, Object?>{
-    'matched_posts': [
+    'found_posts': [
       {
         'box': 1,
         'title': 2,
@@ -369,9 +369,9 @@ class _Pages {
   };
 
   /// What the selectors find in [exampleBlogWithNewsletters] when the first
-  /// post is labeled and the link of the newsletters is excluded.
+  /// post is marked and the link of the newsletters is excluded.
   final exampleBlogWithNewslettersExcluded = <String, Object?>{
-    'matched_posts': [
+    'found_posts': [
       {
         'box': 1,
         'title': 2,
@@ -392,12 +392,12 @@ class _Pages {
   };
 
   /// An editor of [exampleBlogWithNewsletters] in which the first post is
-  /// labeled, and the selectors find the newsletters too.
+  /// marked, and the selectors find the newsletters too.
   late final exampleBlogWithNewslettersEditor = <String, Object?>{
     'id': 42,
     'expires_at': '2026-07-03T13:30:00Z',
     'page': exampleBlogWithNewsletters,
-    'labeled_posts': [
+    'marked_posts': [
       {'box': 1, 'title': 2, 'link': 2},
     ],
     'excluded_links': <Object?>[],
@@ -430,7 +430,7 @@ class _Pages {
   /// What the selectors find in [exampleBlogWithMenu] when nothing is
   /// excluded: the links of the menu and both posts.
   final exampleBlogWithMenuAllFound = <String, Object?>{
-    'matched_posts': [
+    'found_posts': [
       {
         'box': 3,
         'title': 3,
@@ -477,7 +477,7 @@ class _Pages {
   /// What the selectors find in [exampleBlogWithMenu] when the menu is
   /// excluded: both posts.
   final exampleBlogWithMenuExcluded = <String, Object?>{
-    'matched_posts': [
+    'found_posts': [
       {
         'box': 5,
         'title': 6,
@@ -507,7 +507,7 @@ class _Pages {
   /// What the selectors find in [exampleBlogWithMenu] when the second post is
   /// excluded: the links of the menu and the first post.
   final exampleBlogWithMenuSecondPostExcluded = <String, Object?>{
-    'matched_posts': [
+    'found_posts': [
       {
         'box': 3,
         'title': 3,
@@ -541,13 +541,13 @@ class _Pages {
     ],
   };
 
-  /// An editor of [exampleBlogWithMenu] in which the first post is labeled,
+  /// An editor of [exampleBlogWithMenu] in which the first post is marked,
   /// and the selectors find the links of the menu too.
   late final exampleBlogWithMenuEditor = <String, Object?>{
     'id': 42,
     'expires_at': '2026-07-03T13:30:00Z',
     'page': exampleBlogWithMenu,
-    'labeled_posts': [
+    'marked_posts': [
       {'box': 5, 'title': 6, 'link': 6},
     ],
     'excluded_links': <Object?>[],
@@ -556,12 +556,12 @@ class _Pages {
   };
 
   /// A new editor of [exampleBlogWithMenu] for a feed whose saved selectors
-  /// find the links of the menu and both posts, which start as labeled.
+  /// find the links of the menu and both posts, which start as marked.
   late final exampleBlogWithMenuSavedEditor = <String, Object?>{
     'id': 42,
     'expires_at': '2026-07-03T13:30:00Z',
     'page': exampleBlogWithMenu,
-    'labeled_posts': [
+    'marked_posts': [
       {'box': 3, 'title': 3, 'link': 3},
       {'box': 4, 'title': 4, 'link': 4},
       {'box': 5, 'title': 6, 'link': 6},

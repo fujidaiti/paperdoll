@@ -80,7 +80,7 @@ class const _FeedAttributes({required final Feed feed})
           FilledButton(
             key: AppDebugKey.editSelectorsButton,
             onPressed: () => context.pushNamed(
-              routePageAnnotationName,
+              routeSelectorEditorName,
               pathParameters: {'id': feed.id.toString()},
             ),
             child: const Text('Edit post selectors'),

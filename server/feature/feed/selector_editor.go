@@ -34,29 +34,29 @@ var (
 	ErrNoSelectors    = errors.New("no selectors")
 )
 
-// LabeledPostIDs is a labeled post by node IDs (see withNodeIDs): the ID of
-// the post node under "box", and the ID of the node of each labeled field
+// MarkedPostIDs is a marked post by node IDs (see withNodeIDs): the ID of
+// the box under "box", and the ID of the node of each marked field
 // under the name of the field.
-type LabeledPostIDs map[string]int
+type MarkedPostIDs map[string]int
 
 // Marks are the marks of a user in a selector editor: the posts that the user
-// labeled, the host and path of each link that the user excluded, and the node
+// marked, the host and path of each link that the user excluded, and the node
 // ID of each node that the user excluded with its subtree (see
 // generateRules).
 type Marks struct {
-	LabeledPosts  []LabeledPostIDs `json:"labeled_posts"`
-	ExcludedLinks []string         `json:"excluded_links"`
-	ExcludedNodes []int            `json:"excluded_nodes"`
+	MarkedPosts   []MarkedPostIDs `json:"marked_posts"`
+	ExcludedLinks []string        `json:"excluded_links"`
+	ExcludedNodes []int           `json:"excluded_nodes"`
 }
 
-// MatchedPost is a post that the rules of an editor find: the node IDs of
-// the post and of its fields, as in LabeledPostIDs, and the field values.
-type MatchedPost struct {
-	IDs    LabeledPostIDs
+// FoundPost is a post that the rules of an editor find: the node IDs of
+// the post and of its fields, as in MarkedPostIDs, and the field values.
+type FoundPost struct {
+	IDs    MarkedPostIDs
 	Values ExtractedPost
 }
 
-func (p MatchedPost) MarshalJSON() ([]byte, error) {
+func (p FoundPost) MarshalJSON() ([]byte, error) {
 	j := map[string]any{"values": p.Values}
 	for k, id := range p.IDs {
 		j[k] = id
@@ -72,10 +72,10 @@ type ExcludedPost struct {
 }
 
 // EditorState is what the rules of an editor find on its page: the
-// matched posts and the excluded posts in document order, and the posts that
+// found posts and the excluded posts in document order, and the posts that
 // ExtractPosts extracts, which the polling job will save.
 type EditorState struct {
-	MatchedPosts  []MatchedPost   `json:"matched_posts"`
+	FoundPosts    []FoundPost     `json:"found_posts"`
 	ExcludedPosts []ExcludedPost  `json:"excluded_posts"`
 	Preview       []ExtractedPost `json:"preview"`
 }
@@ -131,7 +131,7 @@ func parseEditorPage(page string) (*html.Node, *pageIndex, error) {
 	return doc, t, nil
 }
 
-// resolveMarks returns the labeled posts of marks as nodes of t, the excluded
+// resolveMarks returns the marked posts of marks as nodes of t, the excluded
 // links as a set, and the excluded nodes as a set. It fails with
 // ErrInvalidMarks when an ID is not a node of t, when a post or an excluded
 // node is the body or not an element, when a field node is outside its post or
@@ -143,7 +143,7 @@ func parseEditorPage(page string) (*html.Node, *pageIndex, error) {
 // subtree, which leaves out a post that loses its title or link this way. The
 // marks keep them, so that they come back when the node is no longer
 // excluded.
-func (t *pageIndex) resolveMarks(marks Marks) ([]labeledPost, map[string]bool, map[*html.Node]bool, error) {
+func (t *pageIndex) resolveMarks(marks Marks) ([]markedPost, map[string]bool, map[*html.Node]bool, error) {
 	nodeOf := func(id int) (*html.Node, error) {
 		if id < 0 || id >= len(t.nodes) {
 			return nil, fmt.Errorf("%w: no node %d", ErrInvalidMarks, id)
@@ -173,8 +173,8 @@ func (t *pageIndex) resolveMarks(marks Marks) ([]labeledPost, map[string]bool, m
 	for _, l := range marks.ExcludedLinks {
 		excluded[l] = true
 	}
-	var posts []labeledPost
-	for _, ids := range marks.LabeledPosts {
+	var posts []markedPost
+	for _, ids := range marks.MarkedPosts {
 		box, ok := ids["box"]
 		if !ok {
 			return nil, nil, nil, fmt.Errorf("%w: a post has no box", ErrInvalidMarks)
@@ -186,7 +186,7 @@ func (t *pageIndex) resolveMarks(marks Marks) ([]labeledPost, map[string]bool, m
 		if post == t.body || post.Type != html.ElementNode {
 			return nil, nil, nil, fmt.Errorf("%w: node %d cannot be a post", ErrInvalidMarks, box)
 		}
-		p := labeledPost{node: post, fields: make(map[PostField]*html.Node)}
+		p := markedPost{box: post, fields: make(map[PostField]*html.Node)}
 		for k, id := range ids {
 			f := PostField(k)
 			switch f {
@@ -227,8 +227,8 @@ func (t *pageIndex) resolveMarks(marks Marks) ([]labeledPost, map[string]bool, m
 // editorState returns what rules find in doc, the page of t. A node that
 // several selectors find takes its fields from the first one.
 func (t *pageIndex) editorState(doc *html.Node, rules ExtractionRules) EditorState {
-	s := EditorState{MatchedPosts: []MatchedPost{}, ExcludedPosts: []ExcludedPost{}}
-	matched := map[*html.Node]bool{}
+	s := EditorState{FoundPosts: []FoundPost{}, ExcludedPosts: []ExcludedPost{}}
+	found := map[*html.Node]bool{}
 	excluded := map[*html.Node]bool{}
 	skip := rules.excludedNodes(t.body)
 	exclude := rules.compileExclude()
@@ -245,11 +245,11 @@ func (t *pageIndex) editorState(doc *html.Node, rules ExtractionRules) EditorSta
 				}
 				continue
 			}
-			if matched[n] {
+			if found[n] {
 				continue
 			}
-			matched[n] = true
-			p := MatchedPost{IDs: LabeledPostIDs{"box": t.index[n]}, Values: make(ExtractedPost)}
+			found[n] = true
+			p := FoundPost{IDs: MarkedPostIDs{"box": t.index[n]}, Values: make(ExtractedPost)}
 			for f := range m.Fields() {
 				if v := m.resolveField(n, f, skip); v != nil {
 					p.IDs[string(f)] = t.index[v]
@@ -258,10 +258,10 @@ func (t *pageIndex) editorState(doc *html.Node, rules ExtractionRules) EditorSta
 					}
 				}
 			}
-			s.MatchedPosts = append(s.MatchedPosts, p)
+			s.FoundPosts = append(s.FoundPosts, p)
 		}
 	}
-	slices.SortFunc(s.MatchedPosts, func(a, b MatchedPost) int { return a.IDs["box"] - b.IDs["box"] })
+	slices.SortFunc(s.FoundPosts, func(a, b FoundPost) int { return a.IDs["box"] - b.IDs["box"] })
 	slices.SortFunc(s.ExcludedPosts, func(a, b ExcludedPost) int { return a.Box - b.Box })
 	s.Preview = ExtractPosts(doc, rules)
 	if s.Preview == nil {
@@ -274,7 +274,7 @@ func (t *pageIndex) editorState(doc *html.Node, rules ExtractionRules) EditorSta
 // excludedNodes, as JSON, and what they find in doc, the page of t.
 func (t *pageIndex) generate(
 	doc *html.Node,
-	posts []labeledPost,
+	posts []markedPost,
 	excluded map[string]bool,
 	excludedNodes map[*html.Node]bool,
 ) (string, EditorState, error) {
@@ -287,10 +287,10 @@ func (t *pageIndex) generate(
 }
 
 // idsOf returns posts by node IDs.
-func (t *pageIndex) idsOf(posts []labeledPost) []LabeledPostIDs {
-	ids := []LabeledPostIDs{}
+func (t *pageIndex) idsOf(posts []markedPost) []MarkedPostIDs {
+	ids := []MarkedPostIDs{}
 	for _, p := range posts {
-		j := LabeledPostIDs{"box": t.index[p.node]}
+		j := MarkedPostIDs{"box": t.index[p.box]}
 		for f, n := range p.fields {
 			j[string(f)] = t.index[n]
 		}
@@ -300,7 +300,7 @@ func (t *pageIndex) idsOf(posts []labeledPost) []LabeledPostIDs {
 }
 
 // OpenSelectorEditor opens a new selector editor of the unstructured feed
-// feedID for the user uid. It fetches the page of the feed, and labels the
+// feedID for the user uid. It fetches the page of the feed, and marks the
 // posts that the saved rules of the feed find, which keeps them found when the
 // user adds new marks, since the saved rules do not keep the marks of the
 // user. The excluded links start as the patterns of the saved rules, and the
@@ -348,7 +348,7 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 		return SelectorEditor{}, err
 	}
 
-	posts := t.labelFoundPosts(rules)
+	posts := t.markFoundPosts(rules)
 	excluded := map[string]bool{}
 	for _, l := range rules.ExcludePatterns {
 		excluded[l] = true
@@ -356,7 +356,7 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 	excludedNodes := rules.excludedNodes(t.body)
 	e := SelectorEditor{
 		Page:          page,
-		LabeledPosts:  t.idsOf(posts),
+		MarkedPosts:   t.idsOf(posts),
 		ExcludedLinks: slices.Sorted(maps.Keys(excluded)),
 		ExcludedNodes: []int{},
 	}
@@ -372,16 +372,16 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 		return SelectorEditor{}, err
 	}
 	e.EditorState = state
-	labeled, err := json.Marshal(e.LabeledPosts)
+	marked, err := json.Marshal(e.MarkedPosts)
 	if err != nil {
 		return SelectorEditor{}, err
 	}
 	err = s.DB.QueryRowContext(ctx, `
 		INSERT INTO selector_editors
-			(user_id, feed_id, simplified_page, labeled_posts, excluded_links, excluded_nodes, extraction_rules, expires_at)
+			(user_id, feed_id, simplified_page, marked_posts, excluded_links, excluded_nodes, extraction_rules, expires_at)
 		VALUES ($1, $2, $3, $4, $5, $6, $7, now() + interval '48 hours')
 		RETURNING id, expires_at;
-	`, uid, feedID, page, string(labeled), e.ExcludedLinks, e.ExcludedNodes, generated).Scan(&e.ID, &e.ExpiresAt)
+	`, uid, feedID, page, string(marked), e.ExcludedLinks, e.ExcludedNodes, generated).Scan(&e.ID, &e.ExpiresAt)
 	if err != nil {
 		return SelectorEditor{}, err
 	}
@@ -397,18 +397,18 @@ func (s *Service) loadSelectorEditor(
 	uid user.UserID,
 	feedID, id int,
 ) (string, Marks, time.Time, error) {
-	var page, labeled string
+	var page, marked string
 	var marks Marks
 	var expiresAt time.Time
 	var expired bool
 	types := pgtype.NewMap()
 	err := s.DB.QueryRowContext(ctx, `
-		SELECT simplified_page, labeled_posts, excluded_links, excluded_nodes, expires_at, expires_at <= now()
+		SELECT simplified_page, marked_posts, excluded_links, excluded_nodes, expires_at, expires_at <= now()
 		FROM selector_editors
 		WHERE id = $1 AND user_id = $2 AND feed_id = $3;
 	`, id, uid, feedID).Scan(
 		&page,
-		&labeled,
+		&marked,
 		types.SQLScanner(&marks.ExcludedLinks),
 		types.SQLScanner(&marks.ExcludedNodes),
 		&expiresAt,
@@ -422,7 +422,7 @@ func (s *Service) loadSelectorEditor(
 	if expired {
 		return "", Marks{}, time.Time{}, ErrEditorExpired
 	}
-	if err := json.Unmarshal([]byte(labeled), &marks.LabeledPosts); err != nil {
+	if err := json.Unmarshal([]byte(marked), &marks.MarkedPosts); err != nil {
 		return "", Marks{}, time.Time{}, err
 	}
 	return page, marks, expiresAt, nil
@@ -480,8 +480,8 @@ func (s *Service) UpdateSelectorEditorMarks(
 	if err != nil {
 		return EditorState{}, err
 	}
-	if marks.LabeledPosts == nil {
-		marks.LabeledPosts = []LabeledPostIDs{}
+	if marks.MarkedPosts == nil {
+		marks.MarkedPosts = []MarkedPostIDs{}
 	}
 	if marks.ExcludedLinks == nil {
 		marks.ExcludedLinks = []string{}
@@ -489,15 +489,15 @@ func (s *Service) UpdateSelectorEditorMarks(
 	if marks.ExcludedNodes == nil {
 		marks.ExcludedNodes = []int{}
 	}
-	labeled, err := json.Marshal(marks.LabeledPosts)
+	marked, err := json.Marshal(marks.MarkedPosts)
 	if err != nil {
 		return EditorState{}, err
 	}
 	res, err := s.DB.ExecContext(ctx, `
 		UPDATE selector_editors
-		SET labeled_posts = $4, excluded_links = $5, excluded_nodes = $6, extraction_rules = $7
+		SET marked_posts = $4, excluded_links = $5, excluded_nodes = $6, extraction_rules = $7
 		WHERE id = $1 AND user_id = $2 AND feed_id = $3;
-	`, id, uid, feedID, string(labeled), marks.ExcludedLinks, marks.ExcludedNodes, generated)
+	`, id, uid, feedID, string(marked), marks.ExcludedLinks, marks.ExcludedNodes, generated)
 	if err != nil {
 		return EditorState{}, err
 	}

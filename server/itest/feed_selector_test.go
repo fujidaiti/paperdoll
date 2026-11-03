@@ -39,18 +39,18 @@ import (
 // testdata/feed/page_without_feed_excluded_node_state.json holds what the rules
 // generated from excludedNodeMarks find.
 
-// firstPostMarks labels the first article, and excludes the link of the
+// firstPostMarks marks the first article, and excludes the link of the
 // second one.
 var firstPostMarks = feed.Marks{
-	LabeledPosts:  []feed.LabeledPostIDs{{"box": 2, "title": 3, "link": 3}},
+	MarkedPosts:   []feed.MarkedPostIDs{{"box": 2, "title": 3, "link": 3}},
 	ExcludedLinks: []string{"blog.example.com/posts/second"},
 	ExcludedNodes: []int{},
 }
 
-// excludedNodeMarks labels both articles, and excludes the second one as a
-// node, which wins over its label.
+// excludedNodeMarks marks both articles, and excludes the second one as a
+// node, which wins over its mark.
 var excludedNodeMarks = feed.Marks{
-	LabeledPosts: []feed.LabeledPostIDs{
+	MarkedPosts: []feed.MarkedPostIDs{
 		{"box": 2, "title": 3, "link": 3},
 		{"box": 5, "title": 6, "link": 6},
 	},
@@ -104,13 +104,13 @@ func TestFeed_OpenSelectorEditor(t *testing.T) {
 			t.Errorf("page = %s, want %s", e.Page, wantPage)
 		}
 		if d := cmp.Diff(
-			feed.Marks{LabeledPosts: []feed.LabeledPostIDs{}, ExcludedLinks: []string{}, ExcludedNodes: []int{}},
+			feed.Marks{MarkedPosts: []feed.MarkedPostIDs{}, ExcludedLinks: []string{}, ExcludedNodes: []int{}},
 			e.Marks,
 		); d != "" {
 			t.Errorf("marks mismatch:\n%s", d)
 		}
 		wantState := feed.EditorState{
-			MatchedPosts:  []feed.MatchedPost{},
+			FoundPosts:    []feed.FoundPost{},
 			ExcludedPosts: []feed.ExcludedPost{},
 			Preview:       []feed.ExtractedPost{},
 		}
@@ -133,7 +133,7 @@ func TestFeed_OpenSelectorEditor(t *testing.T) {
 		if err != nil {
 			t.Fatalf("OpenSelectorEditor: %v", err)
 		}
-		// The posts that the saved selectors find are labeled.
+		// The posts that the saved selectors find are marked.
 		if d := cmp.Diff(firstPostMarks, e.Marks); d != "" {
 			t.Errorf("marks mismatch:\n%s", d)
 		}
@@ -151,10 +151,10 @@ func TestFeed_OpenSelectorEditor(t *testing.T) {
 		if err != nil {
 			t.Fatalf("OpenSelectorEditor: %v", err)
 		}
-		// The excluded node is excluded again. The second article was labeled, but
-		// the saved selectors do not find it, so it is not labeled.
+		// The excluded node is excluded again. The second article was marked, but
+		// the saved selectors do not find it, so it is not marked.
 		want := feed.Marks{
-			LabeledPosts:  []feed.LabeledPostIDs{{"box": 2, "title": 3, "link": 3}},
+			MarkedPosts:   []feed.MarkedPostIDs{{"box": 2, "title": 3, "link": 3}},
 			ExcludedLinks: []string{},
 			ExcludedNodes: []int{5},
 		}
@@ -229,14 +229,14 @@ func TestFeed_UpdateSelectorEditorMarks(t *testing.T) {
 		t.Fatalf("UpdateSelectorEditorMarks: %v", err)
 	}
 	checkJSON(t, "./testdata/feed/page_without_feed_state.json", state)
-	var labeled string
+	var marked string
 	var excluded []string
 	var excludedNodes []int
 	types := pgtype.NewMap()
-	scanRowOrFatal(t, `SELECT labeled_posts, excluded_links, excluded_nodes FROM selector_editors WHERE id = $1`,
-		[]any{e.ID}, &labeled, types.SQLScanner(&excluded), types.SQLScanner(&excludedNodes))
-	if d := cmp.Diff(`[{"box":2,"link":3,"title":3}]`, labeled); d != "" {
-		t.Errorf("stored labeled posts mismatch:\n%s", d)
+	scanRowOrFatal(t, `SELECT marked_posts, excluded_links, excluded_nodes FROM selector_editors WHERE id = $1`,
+		[]any{e.ID}, &marked, types.SQLScanner(&excluded), types.SQLScanner(&excludedNodes))
+	if d := cmp.Diff(`[{"box":2,"link":3,"title":3}]`, marked); d != "" {
+		t.Errorf("stored marked posts mismatch:\n%s", d)
 	}
 	if d := cmp.Diff([]string{"blog.example.com/posts/second"}, excluded); d != "" {
 		t.Errorf("stored excluded links mismatch:\n%s", d)
@@ -245,12 +245,12 @@ func TestFeed_UpdateSelectorEditorMarks(t *testing.T) {
 		t.Errorf("stored excluded nodes mismatch:\n%s", d)
 	}
 
-	t.Run("excluded node with a labeled post", func(t *testing.T) {
+	t.Run("excluded node with a marked post", func(t *testing.T) {
 		state, err := s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, excludedNodeMarks)
 		if err != nil {
 			t.Fatalf("UpdateSelectorEditorMarks: %v", err)
 		}
-		// The second article is not a post, but stays labeled.
+		// The second article is not a post, but stays marked.
 		checkJSON(t, "./testdata/feed/page_without_feed_excluded_node_state.json", state)
 		got := must(s.GetSelectorEditor(t.Context(), uid, page.ID, e.ID))
 		if d := cmp.Diff(excludedNodeMarks, got.Marks); d != "" {
@@ -262,18 +262,18 @@ func TestFeed_UpdateSelectorEditorMarks(t *testing.T) {
 		name  string
 		marks feed.Marks
 	}{
-		{"no node", feed.Marks{LabeledPosts: []feed.LabeledPostIDs{{"box": 2, "title": 3, "link": 99}}}},
-		{"body as a post", feed.Marks{LabeledPosts: []feed.LabeledPostIDs{{"box": 0, "title": 3, "link": 3}}}},
-		{"no box", feed.Marks{LabeledPosts: []feed.LabeledPostIDs{{"title": 3, "link": 3}}}},
-		{"field outside the post", feed.Marks{LabeledPosts: []feed.LabeledPostIDs{{"box": 2, "title": 6, "link": 3}}}},
+		{"no node", feed.Marks{MarkedPosts: []feed.MarkedPostIDs{{"box": 2, "title": 3, "link": 99}}}},
+		{"body as a post", feed.Marks{MarkedPosts: []feed.MarkedPostIDs{{"box": 0, "title": 3, "link": 3}}}},
+		{"no box", feed.Marks{MarkedPosts: []feed.MarkedPostIDs{{"title": 3, "link": 3}}}},
+		{"field outside the post", feed.Marks{MarkedPosts: []feed.MarkedPostIDs{{"box": 2, "title": 6, "link": 3}}}},
 		{"field that does not accept the node", feed.Marks{
-			LabeledPosts: []feed.LabeledPostIDs{{"box": 2, "title": 2, "link": 3}},
+			MarkedPosts: []feed.MarkedPostIDs{{"box": 2, "title": 2, "link": 3}},
 		}},
-		{"no link", feed.Marks{LabeledPosts: []feed.LabeledPostIDs{{"box": 2, "title": 3}}}},
-		{"no title", feed.Marks{LabeledPosts: []feed.LabeledPostIDs{{"box": 2, "link": 3}}}},
-		{"unknown field", feed.Marks{LabeledPosts: []feed.LabeledPostIDs{{"box": 2, "title": 3, "link": 3, "author": 4}}}},
+		{"no link", feed.Marks{MarkedPosts: []feed.MarkedPostIDs{{"box": 2, "title": 3}}}},
+		{"no title", feed.Marks{MarkedPosts: []feed.MarkedPostIDs{{"box": 2, "link": 3}}}},
+		{"unknown field", feed.Marks{MarkedPosts: []feed.MarkedPostIDs{{"box": 2, "title": 3, "link": 3, "author": 4}}}},
 		{"excluded link of a post", feed.Marks{
-			LabeledPosts:  []feed.LabeledPostIDs{{"box": 2, "title": 3, "link": 3}},
+			MarkedPosts:   []feed.MarkedPostIDs{{"box": 2, "title": 3, "link": 3}},
 			ExcludedLinks: []string{"blog.example.com/posts/first"},
 		}},
 		{"excluded node that is not on the page", feed.Marks{ExcludedNodes: []int{99}}},

@@ -160,7 +160,7 @@ func (s Step) matches(n *html.Node) bool {
 
 // PostSelector is a rule that finds the posts of one kind in a page and
 // extracts their fields. A selector editor generates selectors from the posts
-// that the user labels on a page (see SelectorEditor), and the server runs
+// that the user marks on a page (see SelectorEditor), and the server runs
 // them on each fetch of the page.
 //
 // Box is the path of steps to the post nodes: the first step selects

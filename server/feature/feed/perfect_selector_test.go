@@ -12,7 +12,7 @@ import (
 
 // This file builds the selectors of a page from its fixture posts in the same
 // way as a user of the client: the user marks the first post that the selectors
-// get wrong, as a post with its fields labeled, or as a post to exclude, and
+// get wrong, as a post with its fields marked, or as a post to exclude, and
 // the selector editor generates the selectors again from all marks. The
 // client's code that a step of the user follows is named in its comment.
 
@@ -32,7 +32,7 @@ func (t *pageIndex) selectionLevels(from, top *html.Node) []*html.Node {
 	return levels
 }
 
-// fieldNode returns the node in post that the user labels as f to get the
+// fieldNode returns the node in post that the user marks as f to get the
 // value want, or nil when there is none. The user taps a line of the value
 // and widens the selection until it shows the value: a line with the value
 // itself, or for a body, a line of its text. A line that is not part of the
@@ -103,12 +103,12 @@ func equalPosts(a, b ExtractedPost) bool {
 //     whose link is not in posts is marked as not a post, which excludes the
 //     host and path of its link, and unmarks the posts that the user marked
 //     with them. A node that has a value that differs from the one in posts is
-//     labeled as a post with the nodes of the values.
+//     marked as a post with the nodes of the values.
 //  2. Otherwise, the user takes the first post that is not extracted with its
 //     values, taps the line of its link, widens the selection until it holds
-//     all values of the post, and labels the nodes of the values as its fields.
+//     all values of the post, and marks the nodes of the values as its fields.
 //
-// In every round, every labeled post must be found and no excluded link must
+// In every round, every marked post must be found and no excluded link must
 // be extracted. It fails when a step cannot be done, when a guarantee does not
 // hold, or when the marks come back to the same state.
 func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int, error) {
@@ -129,17 +129,17 @@ func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int,
 		}
 		return false
 	}
-	labeled := map[*html.Node]labeledPost{}
+	marked := map[*html.Node]markedPost{}
 	excluded := map[string]bool{}
-	// label marks post as a post with the nodes of the values in target.
-	label := func(post *html.Node, target ExtractedPost) error {
-		p := labeledPost{node: post, fields: make(map[PostField]*html.Node)}
+	// mark marks post as a post with the nodes of the values in target.
+	mark := func(post *html.Node, target ExtractedPost) error {
+		p := markedPost{box: post, fields: make(map[PostField]*html.Node)}
 		for f, v := range target {
 			if p.fields[f] = t.fieldNode(post, f, v); p.fields[f] == nil {
 				return fmt.Errorf("post %s: no node of %s has the value %q", target[PostLink], f, v)
 			}
 		}
-		labeled[post] = p
+		marked[post] = p
 		delete(excluded, hostPath(target[PostLink]))
 		return nil
 	}
@@ -147,11 +147,11 @@ func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int,
 	marks := 0
 	seen := map[string]bool{}
 	for {
-		var labeledPosts []labeledPost
-		for _, p := range labeled {
-			labeledPosts = append(labeledPosts, p)
+		var markedPosts []markedPost
+		for _, p := range marked {
+			markedPosts = append(markedPosts, p)
 		}
-		rules := t.generateRules(labeledPosts, excluded, nil)
+		rules := t.generateRules(markedPosts, excluded, nil)
 
 		// The selector that the user sees a node as found by is the first one.
 		finder := map[*html.Node]*PostSelector{}
@@ -163,10 +163,10 @@ func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int,
 				}
 			}
 		}
-		for n := range labeled {
+		for n := range marked {
 			if finder[n] == nil {
 				return ExtractionRules{}, marks, fmt.Errorf(
-					"the labeled post %s is not found: %v",
+					"the marked post %s is not found: %v",
 					values(&rules.Selectors[0], n)[PostLink],
 					rules,
 				)
@@ -184,12 +184,12 @@ func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int,
 		if err != nil {
 			return ExtractionRules{}, marks, err
 		}
-		var marked []int
-		for _, p := range labeledPosts {
-			marked = append(marked, t.index[p.node])
+		var boxes []int
+		for _, p := range markedPosts {
+			boxes = append(boxes, t.index[p.box])
 		}
-		slices.Sort(marked)
-		key := fmt.Sprint(string(state), slices.Sorted(maps.Keys(excluded)), marked)
+		slices.Sort(boxes)
+		key := fmt.Sprint(string(state), slices.Sorted(maps.Keys(excluded)), boxes)
 		if seen[key] {
 			return ExtractionRules{}, marks, fmt.Errorf("the marks come back to the same state, with rules %s", state)
 		}
@@ -197,7 +197,7 @@ func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int,
 
 		// A node of a post that has a value that differs from the one in
 		// posts, and that does not hold the values in posts, such as a card of
-		// another title with the link of the post, cannot be labeled. The
+		// another title with the link of the post, cannot be marked. The
 		// user cannot exclude it either, since that also excludes the post.
 		acted := false
 		for _, n := range t.nodes {
@@ -207,16 +207,16 @@ func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int,
 			}
 			link := values(m, n)[PostLink]
 			if w, ok := want[link]; ok {
-				if label(n, w) != nil {
+				if mark(n, w) != nil {
 					continue
 				}
 				marks++
 			} else {
 				hp := hostPath(link)
 				excluded[hp] = true
-				for n, p := range labeled {
+				for n, p := range marked {
 					if hostPath(linkOf(p.fields[PostLink])) == hp {
-						delete(labeled, n)
+						delete(marked, n)
 					}
 				}
 				marks++
@@ -274,7 +274,7 @@ func perfectRules(page *html.Node, posts []ExtractedPost) (ExtractionRules, int,
 			}
 		}
 		marks++
-		if err := label(post, target); err != nil {
+		if err := mark(post, target); err != nil {
 			return ExtractionRules{}, marks, err
 		}
 	}

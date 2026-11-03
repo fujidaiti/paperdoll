@@ -10,7 +10,7 @@ class SelectorEditor {
   const new({
     required this.id,
     required this.page,
-    required this.labeledPosts,
+    required this.markedPosts,
     required this.excludedLinks,
     required this.excludedNodes,
     required this.state,
@@ -21,9 +21,9 @@ class SelectorEditor {
     return SelectorEditor(
       id: json['id']! as int,
       page: page,
-      labeledPosts: [
-        for (final p in json['labeled_posts']! as List<Object?>)
-          _labeledPostFromJson(page, p! as Map<String, Object?>),
+      markedPosts: [
+        for (final p in json['marked_posts']! as List<Object?>)
+          _markedPostFromJson(page, p! as Map<String, Object?>),
       ],
       excludedLinks: {
         ...(json['excluded_links']! as List<Object?>).cast<String>(),
@@ -39,16 +39,16 @@ class SelectorEditor {
   final int id;
   final SimplifiedPage page;
 
-  /// The posts labeled so far. A new editor starts with the posts that the
+  /// The posts marked so far. A new editor starts with the posts that the
   /// saved selectors find, since the saved selectors do not keep the marks of
   /// the user.
-  final List<LabeledPost> labeledPosts;
+  final List<MarkedPost> markedPosts;
 
   /// The host and path of each excluded link (see [hostPathOf]).
   final Set<String> excludedLinks;
 
   /// The nodes that are excluded with their subtrees, such as a menu. No post
-  /// is found in them, even one that is labeled. A new editor starts with the
+  /// is found in them, even one that is marked. A new editor starts with the
   /// nodes of the saved selectors that the page still has.
   final Set<Node> excludedNodes;
 
@@ -58,15 +58,15 @@ class SelectorEditor {
 /// What the selectors generated from the marks of an editor find on its page.
 class EditorState {
   const new({
-    required this.matchedPosts,
+    required this.foundPosts,
     required this.excludedPosts,
     required this.preview,
   });
 
   factory fromJson(SimplifiedPage page, Map<String, Object?> json) {
     return EditorState(
-      matchedPosts: {
-        for (final p in json['matched_posts']! as List<Object?>)
+      foundPosts: {
+        for (final p in json['found_posts']! as List<Object?>)
           if (p case final Map<String, Object?> p)
             page.nodeOf(p['box']! as int): (
               fields: _fieldsFromJson(page, p),
@@ -94,7 +94,7 @@ class EditorState {
   }
 
   /// The posts that the selectors find, in document order.
-  final Map<Node, MatchedPost> matchedPosts;
+  final Map<Node, FoundPost> foundPosts;
 
   /// The nodes that would be posts if their links were not excluded, with the
   /// excluded link that excludes each.
@@ -106,13 +106,13 @@ class EditorState {
 }
 
 /// A post that the selectors find: the nodes of its fields, and their values.
-typedef MatchedPost = ({
+typedef FoundPost = ({
   Map<PostField, Node> fields,
   Map<PostField, String> values,
 });
 
-/// The nodes of the fields in [json], a post by node IDs with the node of
-/// the post under `box` and the node of each field under its name.
+/// The nodes of the fields in [json], a post by node IDs with the box under
+/// `box` and the node of each field under its name.
 Map<PostField, Node> _fieldsFromJson(
   SimplifiedPage page,
   Map<String, Object?> json,
@@ -121,18 +121,17 @@ Map<PostField, Node> _fieldsFromJson(
     if (json[field.name] case final int id) field: page.nodeOf(id),
 };
 
-LabeledPost _labeledPostFromJson(
+MarkedPost _markedPostFromJson(
   SimplifiedPage page,
   Map<String, Object?> json,
 ) => (
-  node: page.nodeOf(json['box']! as int),
+  box: page.nodeOf(json['box']! as int),
   fields: _fieldsFromJson(page, json),
 );
 
 /// [post] by node IDs, as the server takes it.
-Map<String, Object?> labeledPostToJson(SimplifiedPage page, LabeledPost post) =>
-    {
-      'box': page.idOf(post.node),
-      for (final MapEntry(:key, :value) in post.fields.entries)
-        key.name: page.idOf(value),
-    };
+Map<String, Object?> markedPostToJson(SimplifiedPage page, MarkedPost post) => {
+  'box': page.idOf(post.box),
+  for (final MapEntry(:key, :value) in post.fields.entries)
+    key.name: page.idOf(value),
+};

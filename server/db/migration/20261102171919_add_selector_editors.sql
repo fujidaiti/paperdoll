@@ -7,10 +7,10 @@ CREATE TABLE selector_editors (
     feed_id bigint NOT NULL REFERENCES feeds (id),
     -- The simplified page with a data-id on each element.
     simplified_page text NOT NULL,
-    -- The labeled posts, as a JSON array of
+    -- The marked posts, as a JSON array of
     -- {"box": id, "title": id, "link": id, ...}. They start as the posts that
     -- the saved selectors find.
-    labeled_posts json NOT NULL,
+    marked_posts json NOT NULL,
     -- The host and path of each excluded link.
     excluded_links text[] NOT NULL,
     -- The node ID of each node that is excluded with its subtree.

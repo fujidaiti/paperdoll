@@ -187,10 +187,10 @@ SelectorEditor:
       id,
       expires_at,
       page,
-      labeled_posts,
+      marked_posts,
       excluded_links,
       excluded_nodes,
-      matched_posts,
+      found_posts,
       excluded_posts,
       preview,
     ]
@@ -208,13 +208,13 @@ SelectorEditor:
         the ID of its position too. See SimplifyPage in
         `server/feature/feed/simplify.go` for the format.
       type: string
-    labeled_posts:
+    marked_posts:
       description:
-        The posts labeled so far. A new editor starts with the posts that the
+        The posts marked so far. A new editor starts with the posts that the
         saved selectors find.
       type: array
       items:
-        $ref: "#/LabeledPost"
+        $ref: "#/MarkedPost"
     excluded_links:
       description:
         The host and path of each excluded link. A new editor starts with the
@@ -225,14 +225,14 @@ SelectorEditor:
     excluded_nodes:
       description:
         The node ID of each node that is excluded with its subtree. No post and
-        no field is found in an excluded node, even when it is labeled. A new
+        no field is found in an excluded node, even when it is marked. A new
         editor starts with the nodes of the saved selectors that the page still
         has.
       type: array
       items:
         type: integer
-    matched_posts:
-      $ref: "#/SelectorEditorState/properties/matched_posts"
+    found_posts:
+      $ref: "#/SelectorEditorState/properties/found_posts"
     excluded_posts:
       $ref: "#/SelectorEditorState/properties/excluded_posts"
     preview:
@@ -241,13 +241,13 @@ SelectorEditor:
 SelectorEditorState:
   description: What the selectors generated from the marks of an editor find.
   type: object
-  required: [matched_posts, excluded_posts, preview]
+  required: [found_posts, excluded_posts, preview]
   properties:
-    matched_posts:
+    found_posts:
       description: The posts that the selectors find, in document order.
       type: array
       items:
-        $ref: "#/MatchedPost"
+        $ref: "#/FoundPost"
     excluded_posts:
       description:
         The nodes that would be posts if their links were not excluded, in
@@ -263,10 +263,10 @@ SelectorEditorState:
       items:
         $ref: "#/ExtractedPost"
 
-LabeledPost:
+MarkedPost:
   description:
-    A post by node IDs, the post node under `box` and the node of each labeled
-    field under the name of the field.
+    A post by node IDs, the box under `box` and the node of each marked field
+    under the name of the field.
   type: object
   required: [box, title, link]
   properties:
@@ -283,10 +283,10 @@ LabeledPost:
     pubDate:
       type: integer
 
-MatchedPost:
+FoundPost:
   description:
-    A post that the selectors find, by node IDs as in LabeledPost, with the
-    value of each field that it has.
+    A post that the selectors find, by node IDs as in MarkedPost, with the value
+    of each field that it has.
   type: object
   required: [box, title, link, values]
   properties:

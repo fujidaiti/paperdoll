@@ -29,7 +29,7 @@ import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 ///
 /// The page is shown as its content, line by line, except that each post
 /// found so far is shown as a card of the values extracted from it. The user
-/// marks a post by selecting the area that holds it and labeling the content
+/// marks a post by selecting the area that holds it and marking the content
 /// inside it as the post's fields on [PostFieldsScreen]. An area is selected
 /// by tapping a line, which selects the narrowest element around it that can
 /// be a post, and widening the selection to the elements around that one.
@@ -47,14 +47,14 @@ import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 ///
 /// The editor of the feed is remembered on the device until it is saved or
 /// left, so that the user can continue it after the app was killed.
-class const PageAnnotationScreen({required final int feedId, super.key})
+class const SelectorEditorScreen({required final int feedId, super.key})
     extends ConsumerStatefulWidget {
   @override
-  ConsumerState<PageAnnotationScreen> createState() =>
-      _PageAnnotationScreenState();
+  ConsumerState<SelectorEditorScreen> createState() =>
+      _SelectorEditorScreenState();
 }
 
-class _PageAnnotationScreenState extends ConsumerState<PageAnnotationScreen> {
+class _SelectorEditorScreenState extends ConsumerState<SelectorEditorScreen> {
   AsyncValue<SelectorEditor> _editor = const AsyncLoading();
 
   @override
@@ -139,7 +139,7 @@ class _PageAnnotationScreenState extends ConsumerState<PageAnnotationScreen> {
   @override
   Widget build(BuildContext context) {
     if (_editor case AsyncData(:final value)) {
-      return _Annotator(feedId: widget.feedId, editor: value);
+      return _EditorView(feedId: widget.feedId, editor: value);
     }
     return Scaffold(
       appBar: AppBar(),
@@ -159,17 +159,17 @@ class _PageAnnotationScreenState extends ConsumerState<PageAnnotationScreen> {
 bool _hasLink(Node node) =>
     node.pageLink != null || node.pageChildren.any(_hasLink);
 
-class const _Annotator({
+class const _EditorView({
   required final int feedId,
   required final SelectorEditor editor,
 }) extends ConsumerStatefulWidget {
   @override
-  ConsumerState<_Annotator> createState() => _AnnotatorState();
+  ConsumerState<_EditorView> createState() => _EditorViewState();
 }
 
-class _AnnotatorState extends ConsumerState<_Annotator> {
+class _EditorViewState extends ConsumerState<_EditorView> {
   /// The marked posts, by node.
-  late var _labeled = {for (final p in widget.editor.labeledPosts) p.node: p};
+  late var _marked = {for (final p in widget.editor.markedPosts) p.box: p};
 
   /// The host and path of the links that the user marked as not posts.
   late var _excluded = widget.editor.excludedLinks;
@@ -213,7 +213,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// The post that contains [node], if any.
   Node? _postOf(Node node) {
     for (Node? n = node; n != null; n = n.parentNode) {
-      if (_state.matchedPosts.containsKey(n)) {
+      if (_state.foundPosts.containsKey(n)) {
         return n;
       }
     }
@@ -234,7 +234,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// The post or excluded post that contains [node], if any.
   Node? _enclosingPost(Node node) {
     for (Node? n = node; n != null; n = n.parentNode) {
-      if (_state.matchedPosts.containsKey(n) ||
+      if (_state.foundPosts.containsKey(n) ||
           _state.excludedPosts.containsKey(n)) {
         return n;
       }
@@ -257,27 +257,27 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// Why [node] cannot become a post, or null if it can.
   ///
   /// Only [node] itself is checked. Other nodes that its selector would select
-  /// can be posts of another selector, since the labeled fields decide which of
+  /// can be posts of another selector, since the marked fields decide which of
   /// them are posts, such as cards whose title is in a different element.
   String? _postRejection(Node node) {
-    for (final post in _state.matchedPosts.keys) {
+    for (final post in _state.foundPosts.keys) {
       if (post.overlaps(node)) {
         return 'This overlaps with a post.';
       }
     }
-    // The fields inside an excluded node cannot be labeled.
+    // The fields inside an excluded node cannot be marked.
     if (_excludedNodes.any(node.overlaps)) {
       return 'This contains an excluded section.';
     }
     return null;
   }
 
-  /// Sends [labeled], [excluded] and [excludedNodes] as all marks of the
+  /// Sends [marked], [excluded] and [excludedNodes] as all marks of the
   /// editor, and applies them with what the selectors generated from them find
   /// once the server accepts them. If the request fails, the previous marks
   /// stay.
   Future<void> _updateMarks(
-    Map<Node, LabeledPost> labeled,
+    Map<Node, MarkedPost> marked,
     Set<String> excluded,
     Set<Node> excludedNodes,
   ) async {
@@ -287,13 +287,13 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       final state = await _repository.updateMarks(
         widget.feedId,
         widget.editor,
-        labeled.values,
+        marked.values,
         excluded,
         excludedNodes,
       );
       if (mounted) {
         setState(() {
-          _labeled = labeled;
+          _marked = marked;
           _excluded = excluded;
           _excludedNodes = excludedNodes;
           _state = state;
@@ -313,20 +313,20 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
     }
   }
 
-  /// Opens the screen that labels the fields of [post], and marks [post] as a
+  /// Opens the screen that marks the fields of [post], and marks [post] as a
   /// post with them, or does nothing if the user left without finishing.
   Future<void> _markAsPost(Node post, PostFields fields) async {
-    final labeled = await context.pushNamed<PostFields>(
+    final marked = await context.pushNamed<PostFields>(
       routePostFieldsName,
       pathParameters: GoRouterState.of(context).pathParameters,
       extra: (post: post, fields: fields),
     );
-    if (labeled == null || !mounted) {
+    if (marked == null || !mounted) {
       return;
     }
     await _updateMarks(
-      {..._labeled, post: (node: post, fields: labeled)},
-      {..._excluded}..remove(hostPathOf(labeled[PostField.link]!.link!)),
+      {..._marked, post: (box: post, fields: marked)},
+      {..._excluded}..remove(hostPathOf(marked[PostField.link]!.link!)),
       _excludedNodes,
     );
   }
@@ -335,12 +335,12 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// posts with the same host and path.
   void _markAsNotPost(Node post) {
     final hostPath = hostPathOf(
-      _state.matchedPosts[post]!.fields[PostField.link]!.link!,
+      _state.foundPosts[post]!.fields[PostField.link]!.link!,
     );
     unawaited(
       _updateMarks(
         {
-          for (final MapEntry(:key, :value) in _labeled.entries)
+          for (final MapEntry(:key, :value) in _marked.entries)
             if (hostPathOf(value.fields[PostField.link]!.link!) != hostPath)
               key: value,
         },
@@ -353,20 +353,20 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   /// Restores the posts that the excluded link [hostPath] excludes.
   void _restore(String hostPath) {
     unawaited(
-      _updateMarks(_labeled, {..._excluded}..remove(hostPath), _excludedNodes),
+      _updateMarks(_marked, {..._excluded}..remove(hostPath), _excludedNodes),
     );
   }
 
   void _clearMark(Node post) {
     unawaited(
-      _updateMarks({..._labeled}..remove(post), _excluded, _excludedNodes),
+      _updateMarks({..._marked}..remove(post), _excluded, _excludedNodes),
     );
   }
 
   /// Excludes [node] with its subtree, after asking when it contains marked
   /// posts, which keep their marks but are not posts while it is excluded.
   Future<void> _exclude(Node node) async {
-    final marked = _labeled.keys.where(node.includes).length;
+    final marked = _marked.keys.where(node.includes).length;
     if (marked > 0) {
       final exclude = await showDialog<bool>(
         context: context,
@@ -392,14 +392,14 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
         return;
       }
     }
-    await _updateMarks(_labeled, _excluded, {..._excludedNodes, node});
+    await _updateMarks(_marked, _excluded, {..._excludedNodes, node});
   }
 
   /// Shows the content of the excluded [node] again. The marks inside it are
   /// kept while it is excluded, so the posts that it contains come back.
   void _restoreNode(Node node) {
     unawaited(
-      _updateMarks(_labeled, _excluded, {..._excludedNodes}..remove(node)),
+      _updateMarks(_marked, _excluded, {..._excludedNodes}..remove(node)),
     );
   }
 
@@ -519,7 +519,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
 
   @override
   Widget build(BuildContext context) {
-    final matched = _state.matchedPosts;
+    final found = _state.foundPosts;
     final selected = _selected;
     // The lines of an excluded node are replaced by its placeholder, and the
     // lines of a post by its card. They are next to each other, since the
@@ -548,7 +548,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
         }
       },
       child: Scaffold(
-        key: AppDebugKey.pageAnnotationScreen,
+        key: AppDebugKey.selectorEditorScreen,
         appBar: AppBar(
           title: Text(
             _page.title.isEmpty ? _page.url : _page.title,
@@ -558,7 +558,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
           actions: [
             TextButton(
               key: AppDebugKey.saveSelectorsButton,
-              onPressed: matched.isEmpty || _pending
+              onPressed: found.isEmpty || _pending
                   ? null
                   : () => unawaited(_save()),
               child: const Text('Save'),
@@ -587,11 +587,11 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
                       onTap: () => _select(line, tapped: line),
                     );
                   }
-                  if (matched[line] case final post?) {
+                  if (found[line] case final post?) {
                     return _PostCard(
                       key: ObjectKey(line),
                       values: post.values,
-                      isMarked: _labeled.containsKey(line),
+                      isMarked: _marked.containsKey(line),
                       isSelected: selected?.includes(line) ?? false,
                       onTap: () => _select(line, tapped: line),
                     );
@@ -615,8 +615,8 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
             ),
             if (selected != null)
               SelectionSheet(child: _buildSheet(selected))
-            else if (matched.isNotEmpty)
-              _StatusFooter(postCount: matched.length, onPreview: _showPreview),
+            else if (found.isNotEmpty)
+              _StatusFooter(postCount: found.length, onPreview: _showPreview),
           ],
         ),
       ),
@@ -624,7 +624,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
   }
 
   Widget _buildSheet(Node selected) {
-    final post = _state.matchedPosts[selected];
+    final post = _state.foundPosts[selected];
     final excluded = _state.excludedPosts[selected];
     final isExcludedNode = _excludedNodes.contains(selected);
     final rejection = post == null && excluded == null && !isExcludedNode
@@ -638,7 +638,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
       levels: selectionLevels(_tapped ?? selected),
       onSelect: _select,
       isPost: post != null,
-      isMarked: _labeled.containsKey(selected),
+      isMarked: _marked.containsKey(selected),
       isExcludedByLink: excluded != null,
       isExcludedNode: isExcludedNode,
       rejection: rejection,
@@ -650,10 +650,7 @@ class _AnnotatorState extends ConsumerState<_Annotator> {
         post == null
             ? null
             : () => unawaited(
-                _markAsPost(
-                  selected,
-                  _labeled[selected]?.fields ?? post.fields,
-                ),
+                _markAsPost(selected, _marked[selected]?.fields ?? post.fields),
               ),
       ),
       onNotPost: unlessPending(

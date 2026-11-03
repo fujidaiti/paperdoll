@@ -33,7 +33,7 @@ abstract final class AppDebugKey {
   static const feedSearchTextField = Key('feedSearchTextField');
   static const feedsNavDestination = Key('feedsNavDestination');
   static const feedsScreen = Key('feedsScreen');
-  static const pageAnnotationScreen = Key('pageAnnotationScreen');
+  static const selectorEditorScreen = Key('selectorEditorScreen');
   static const readingListNavDestination = Key('readingListNavDestination');
   static const readingListScreen = Key('readingListScreen');
   static const readerArticleTab = Key('readerArticleTab');

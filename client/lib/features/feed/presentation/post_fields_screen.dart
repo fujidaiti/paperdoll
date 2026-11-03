@@ -11,23 +11,23 @@ import 'package:paperdoll/features/feed/domain/post_field.dart';
 import 'package:paperdoll/features/feed/domain/simplified_page.dart';
 import 'package:paperdoll/features/feed/presentation/widgets/page_lines.dart';
 
-/// The arguments of [PostFieldsScreen]: the post to label, and the nodes that
-/// are labeled as its fields so far.
+/// The arguments of [PostFieldsScreen]: the post to mark, and the nodes that
+/// are marked as its fields so far.
 typedef PostFieldsArgs = ({Node post, Map<PostField, Node> fields});
 
-/// The nodes that the user labeled as the fields of a post.
+/// The nodes that the user marked as the fields of a post.
 typedef PostFields = Map<PostField, Node>;
 
-/// Lets the user label the content of one post as the post's fields. Other
+/// Lets the user mark the content of one post as the post's fields. Other
 /// posts like it get their fields at the same positions.
 ///
-/// The screen pops with the labeled [PostFields] when the user is done, or
+/// The screen pops with the marked [PostFields] when the user is done, or
 /// with nothing when the user leaves without finishing. Leaving asks first
 /// when there are changes, so that they are not lost by accident.
 ///
-/// A labeled element is selected as a whole, so a tap inside it selects the
+/// A marked element is selected as a whole, so a tap inside it selects the
 /// element rather than the content under the finger. A body is converted as a
-/// whole, so the content inside it cannot be labeled.
+/// whole, so the content inside it cannot be marked.
 class const PostFieldsScreen({required final PostFieldsArgs args, super.key})
     extends StatefulWidget {
   @override
@@ -45,18 +45,18 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   /// down to it after being widened.
   Node? _tapped;
 
-  /// Whether the user has labeled the selection since it was selected. The
-  /// labels of such a selection can still be changed on the sheet, while a
-  /// selection that was already labeled shows only its labels.
-  var _isLabeling = false;
+  /// Whether the user has marked the selection since it was selected. The
+  /// marks of such a selection can still be changed on the sheet, while a
+  /// selection that was already marked shows only its marks.
+  var _isMarking = false;
 
   Node get _post => widget.args.post;
 
   Node? _fieldNode(PostField field) => _fields[field];
 
-  /// Whether [field] can be labeled on [node]: a body cannot contain other
+  /// Whether [field] can be marked on [node]: a body cannot contain other
   /// fields, and other fields cannot be part of the body.
-  bool _canLabel(PostField field, Node node) {
+  bool _canMark(PostField field, Node node) {
     if (field == PostField.body) {
       for (final other in PostField.values) {
         if (other == PostField.body) {
@@ -72,17 +72,17 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
     return body == null || !body.includes(node);
   }
 
-  /// Whether [field] cannot be added to an element labeled with [labels].
+  /// Whether [field] cannot be added to an element marked with [marks].
   /// An element provides at most one text value: a title, a body or a date.
   /// A link can be added to any of them, such as a title that links to the
   /// post.
-  bool _conflicts(PostField field, List<PostField> labels) {
+  bool _conflicts(PostField field, List<PostField> marks) {
     const texts = {PostField.title, PostField.body, PostField.pubDate};
     return texts.contains(field) &&
-        labels.any((label) => label != field && texts.contains(label));
+        marks.any((mark) => mark != field && texts.contains(mark));
   }
 
-  /// Labels [node] as [field], or removes the label if [node] has it.
+  /// Marks [node] as [field], or removes the mark if [node] has it.
   void _toggleField(PostField field, Node node) {
     setState(() {
       _fields = {
@@ -90,7 +90,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
           if (key != field) key: value,
         if (!identical(_fieldNode(field), node)) field: node,
       };
-      _isLabeling = true;
+      _isMarking = true;
     });
   }
 
@@ -104,11 +104,11 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Discard the changes?'),
-        content: const Text('The fields you labeled will be lost.'),
+        content: const Text('The fields you marked will be lost.'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Keep labeling'),
+            child: const Text('Keep marking'),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
@@ -123,9 +123,9 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
   }
 
   void _onTapLine(Node line) {
-    // The innermost labeled element that the line is part of. A container
-    // labeled as the link is labeled only on its own line, as it is tinted.
-    Node? labeled;
+    // The innermost marked element that the line is part of. A container
+    // marked as the link is marked only on its own line, as it is tinted.
+    Node? marked;
     for (final field in PostField.values) {
       final n = _fieldNode(field);
       if (n == null) {
@@ -134,23 +134,23 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       final covers = field == PostField.link && !n.isValue
           ? identical(line, n)
           : n.includes(line);
-      if (covers && (labeled == null || labeled.includes(n))) {
-        labeled = n;
+      if (covers && (marked == null || marked.includes(n))) {
+        marked = n;
       }
     }
     setState(() {
-      _selected = labeled ?? line;
+      _selected = marked ?? line;
       _tapped = line;
-      _isLabeling = false;
+      _isMarking = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final selected = _selected;
-    // A link around other content is labeled or selected as a link when the
+    // A link around other content is marked or selected as a link when the
     // user taps its own line, so only that line is tinted. Reached by widening
-    // or labeled as the body, it stands for its whole content.
+    // or marked as the body, it stands for its whole content.
     final areas = <PageArea>[
       for (final field in PostField.values)
         if (_fieldNode(field) case final node?)
@@ -175,7 +175,7 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('Label the fields')),
+        appBar: AppBar(title: const Text('Mark the fields')),
         body: Column(
           children: [
             Expanded(
@@ -208,19 +208,19 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
 
   Widget _buildSheet(Node selected) {
     final from = _tapped ?? selected;
-    final labels = [
+    final marks = [
       for (final field in PostField.values)
         if (identical(_fieldNode(field), selected)) field,
     ];
-    // The fields that can be labeled. One that cannot is left out rather
+    // The fields that can be marked. One that cannot is left out rather
     // than disabled, since a disabled chip does not tell why.
     final fields = [
       for (final field in PostField.values)
-        if (labels.contains(field) ||
-            (field.accepts(selected) && _canLabel(field, selected)))
+        if (marks.contains(field) ||
+            (field.accepts(selected) && _canMark(field, selected)))
           field,
     ];
-    // A labeled element from an earlier session can be one that the slider
+    // A marked element from an earlier session can be one that the slider
     // leaves out.
     var levels = selectionLevels(from, top: _post);
     if (!levels.contains(selected)) {
@@ -230,35 +230,35 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        // A labeled element is selected as a whole.
-        if (labels.isEmpty)
+        // A marked element is selected as a whole.
+        if (marks.isEmpty)
           SelectionSlider(
             selected: selected,
             levels: levels,
             onSelect: (node) => setState(() {
               _selected = node;
-              _isLabeling = false;
+              _isMarking = false;
             }),
           )
         else
           Row(
             children: [
-              Expanded(child: BodyText(labels.map((f) => f.label).join(', '))),
+              Expanded(child: BodyText(marks.map((f) => f.label).join(', '))),
               TextButton(
                 onPressed: () => setState(() {
                   _fields = {
                     for (final MapEntry(:key, :value) in _fields.entries)
-                      if (!labels.contains(key)) key: value,
+                      if (!marks.contains(key)) key: value,
                   };
                 }),
                 child: const Text('Remove'),
               ),
             ],
           ),
-        if (labels.isEmpty || _isLabeling) ...[
+        if (marks.isEmpty || _isMarking) ...[
           const Gap(spacingXs),
           if (fields.isEmpty)
-            const CaptionText('This cannot be labeled.')
+            const CaptionText('This cannot be marked.')
           else
             Wrap(
               spacing: spacingXs,
@@ -269,8 +269,8 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
                     label: Text(field.label),
                     side: BorderSide(color: fieldColor(field)),
                     selectedColor: fieldColor(field).withValues(alpha: 0.2),
-                    selected: labels.contains(field),
-                    onSelected: _conflicts(field, labels)
+                    selected: marks.contains(field),
+                    onSelected: _conflicts(field, marks)
                         ? null
                         : (_) => _toggleField(field, selected),
                   ),
@@ -280,16 +280,16 @@ class _PostFieldsScreenState extends State<PostFieldsScreen> {
         const Gap(spacingSm),
         TextButton(
           onPressed: () => setState(() => _selected = null),
-          // A labeled element has nothing waiting to be done.
-          child: Text(labels.isEmpty ? 'Cancel' : 'Close'),
+          // A marked element has nothing waiting to be done.
+          child: Text(marks.isEmpty ? 'Cancel' : 'Close'),
         ),
       ],
     );
   }
 }
 
-/// Which fields are labeled in the post so far, with a button to finish
-/// labeling, which is enabled once the title and the link are found.
+/// Which fields are marked in the post so far, with a button to finish
+/// marking, which is enabled once the title and the link are found.
 class const _StatusFooter({
   required final PostFields fields,
   required final VoidCallback onDone,

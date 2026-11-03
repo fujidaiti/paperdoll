@@ -41,37 +41,37 @@ String hostPathOf(String link) {
   return '${uri.host}${uri.path}';
 }
 
-/// A post that the user labeled: its node, and the nodes of its fields.
-typedef LabeledPost = ({Node node, Map<PostField, Node> fields});
+/// A post that the user marked: its box, and the nodes of its fields.
+typedef MarkedPost = ({Node box, Map<PostField, Node> fields});
 
-/// The fields that are evident in [postNode]: the only link or time, the only
+/// The fields that are evident in [box]: the only link or time, the only
 /// image at the shallowest level as the thumbnail, and the only heading of the
 /// highest level as the title. Without headings, the title is the only text,
 /// such as the text of a post that is a single link. Without such a heading or
-/// text, a text labeled as the link is also the title, such as the title link
+/// text, a text marked as the link is also the title, such as the title link
 /// of a card with other texts.
 ///
 /// The body is the only paragraph, which is a plain text long enough not to be
 /// a title or metadata such as an author. A container with two or more
-/// paragraphs stands for them, unless it is the post node or holds other
+/// paragraphs stands for them, unless it is the box or holds other
 /// fields, since a body cannot contain other fields.
 ///
 /// Nodes that link to the same URL count as one link, such as a card and a
-/// title in it. Of those, the post node itself is labeled, or else the one
+/// title in it. Of those, the box itself is marked, or else the one
 /// with text. A title with a link of its own provides the link of the post,
 /// even when there are other links.
-Map<PostField, Node> evidentFields(Node postNode) {
+Map<PostField, Node> evidentFields(Node box) {
   final nodes = <Node>[];
   void collect(Node n) {
     nodes.add(n);
     n.pageChildren.forEach(collect);
   }
 
-  collect(postNode);
+  collect(box);
   Node? only(Iterable<Node> matches) =>
       matches.length == 1 ? matches.first : null;
   final fields = <PostField, Node>{};
-  void label(PostField field, Node? node) {
+  void mark(PostField field, Node? node) {
     if (node != null && field.accepts(node)) {
       fields[field] = node;
     }
@@ -79,9 +79,9 @@ Map<PostField, Node> evidentFields(Node postNode) {
 
   final links = nodes.where((n) => n.pageLink != null);
   if (links.map((n) => n.link).toSet().length == 1) {
-    label(
+    mark(
       PostField.link,
-      links.where((n) => identical(n, postNode)).firstOrNull ??
+      links.where((n) => identical(n, box)).firstOrNull ??
           links.where((n) => n.allText.isNotEmpty).firstOrNull ??
           links.first,
     );
@@ -90,9 +90,9 @@ Map<PostField, Node> evidentFields(Node postNode) {
   if (images.isNotEmpty) {
     final depths = {for (final n in images) n: n.depth};
     final top = depths.values.reduce((a, b) => a < b ? a : b);
-    label(PostField.thumbnail, only(images.where((n) => depths[n] == top)));
+    mark(PostField.thumbnail, only(images.where((n) => depths[n] == top)));
   }
-  label(PostField.pubDate, only(nodes.where((n) => n.isTime)));
+  mark(PostField.pubDate, only(nodes.where((n) => n.isTime)));
   final headings = nodes
       .where((n) => n.isValue && n.headingLevel != null)
       .toList();
@@ -106,13 +106,13 @@ Map<PostField, Node> evidentFields(Node postNode) {
     title = only(headings.where((n) => n.headingLevel == top));
   }
   title ??= fields[PostField.link];
-  label(PostField.title, title);
+  mark(PostField.title, title);
   if (title?.pageLink case final link?
       when fields[PostField.link]?.link != link) {
-    label(PostField.link, title);
+    mark(PostField.link, title);
   }
 
-  final labeled = fields.values.toList();
+  final marked = fields.values.toList();
   final paragraphs = nodes.where(
     (n) =>
         n.isValue &&
@@ -121,19 +121,19 @@ Map<PostField, Node> evidentFields(Node postNode) {
         !n.isTime &&
         n.link == null &&
         (n.val?.length ?? 0) >= 80 &&
-        !labeled.any((l) => identical(l, n)),
+        !marked.any((l) => identical(l, n)),
   );
   final containers = {
     for (final p in paragraphs)
-      if (!identical(p.parentNode, postNode) &&
+      if (!identical(p.parentNode, box) &&
           paragraphs
                   .where((q) => identical(q.parentNode, p.parentNode))
                   .length >=
               2 &&
-          !labeled.any(p.parentNode!.includes))
+          !marked.any(p.parentNode!.includes))
         p.parentNode!,
   };
-  label(
+  mark(
     PostField.body,
     only([
       ...containers,

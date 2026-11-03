@@ -4,7 +4,7 @@ import 'package:html/parser.dart' as html;
 export 'package:html/dom.dart' show Node;
 
 /// A web page simplified by the server into an HTML document, which the user
-/// annotates to tell which parts of the page are posts. See SimplifyPage in
+/// marks to tell which parts of the page are posts. See SimplifyPage in
 /// server/feature/feed/simplify.go for the format, and [PageNode] for how its
 /// nodes are read.
 ///
@@ -51,7 +51,7 @@ class SimplifiedPage {
   final String url;
   final String title;
 
-  /// The root of the nodes that the user annotates.
+  /// The root of the nodes that the user marks.
   final Element body;
 
   /// All nodes of [body] in document order, including [body] itself.

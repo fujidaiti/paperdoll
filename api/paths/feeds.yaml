@@ -304,10 +304,10 @@ selectorEditors:
                 class="post"><h2 data-id="2"
                 href="https://blog.example.com/first">First
                 post</h2></article></body></html>'
-              labeled_posts: [{ box: 1, title: 2, link: 2 }]
+              marked_posts: [{ box: 1, title: 2, link: 2 }]
               excluded_links: []
               excluded_nodes: []
-              matched_posts:
+              found_posts:
                 - box: 1
                   title: 2
                   link: 2
@@ -396,12 +396,12 @@ selectorEditorMarks:
         application/json:
           schema:
             type: object
-            required: [labeled_posts, excluded_links, excluded_nodes]
+            required: [marked_posts, excluded_links, excluded_nodes]
             properties:
-              labeled_posts:
+              marked_posts:
                 type: array
                 items:
-                  $ref: "../components/schemas.yaml#/LabeledPost"
+                  $ref: "../components/schemas.yaml#/MarkedPost"
               excluded_links:
                 description: The host and path of each excluded link.
                 type: array
@@ -410,13 +410,13 @@ selectorEditorMarks:
               excluded_nodes:
                 description:
                   The node ID of each node that is excluded with its subtree. An
-                  excluded node wins over the other marks, so a labeled post or
-                  a field in an excluded node is ignored.
+                  excluded node wins over the other marks, so a marked post or a
+                  field in an excluded node is ignored.
                 type: array
                 items:
                   type: integer
           example:
-            labeled_posts: [{ box: 1, title: 2, link: 2 }]
+            marked_posts: [{ box: 1, title: 2, link: 2 }]
             excluded_links: ["blog.example.com/newsletters"]
             excluded_nodes: [15]
     responses:

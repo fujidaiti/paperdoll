@@ -11,8 +11,8 @@ import 'package:paperdoll/features/feed/presentation/feed_detail_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_edit_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feed_search_screen.dart';
 import 'package:paperdoll/features/feed/presentation/feeds_screen.dart';
-import 'package:paperdoll/features/feed/presentation/page_annotation_screen.dart';
 import 'package:paperdoll/features/feed/presentation/post_fields_screen.dart';
+import 'package:paperdoll/features/feed/presentation/selector_editor_screen.dart';
 import 'package:paperdoll/features/feed_entry/presentation/feed_entry_reader_screen.dart';
 import 'package:paperdoll/features/newspaper/presentation/today_screen.dart';
 import 'package:paperdoll/features/reading_list/presentation/archived_reading_list_screen.dart';
@@ -176,11 +176,11 @@ GoRouter goRouter(Ref ref) {
                             FeedEditScreen(id: _idParam(state, 'id')),
                       ),
                       GoRoute(
-                        path: routePageAnnotationPath,
-                        name: routePageAnnotationName,
+                        path: routeSelectorEditorPath,
+                        name: routeSelectorEditorName,
                         parentNavigatorKey: _rootNavigatorKey,
                         builder: (context, state) =>
-                            PageAnnotationScreen(feedId: _idParam(state, 'id')),
+                            SelectorEditorScreen(feedId: _idParam(state, 'id')),
                         routes: [
                           GoRoute(
                             path: routePostFieldsPath,

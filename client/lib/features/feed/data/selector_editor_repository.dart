@@ -38,7 +38,7 @@ class const SelectorEditorRepository(
   Future<EditorState> updateMarks(
     int feedId,
     SelectorEditor editor,
-    Iterable<LabeledPost> labeledPosts,
+    Iterable<MarkedPost> markedPosts,
     Set<String> excludedLinks,
     Set<Node> excludedNodes,
   ) {
@@ -46,8 +46,8 @@ class const SelectorEditorRepository(
       final res = await _dio.put<Map<String, dynamic>>(
         '/feeds/$feedId/selector-editors/${editor.id}/marks',
         data: {
-          'labeled_posts': [
-            for (final p in labeledPosts) labeledPostToJson(editor.page, p),
+          'marked_posts': [
+            for (final p in markedPosts) markedPostToJson(editor.page, p),
           ],
           'excluded_links': excludedLinks.toList(),
           'excluded_nodes': [

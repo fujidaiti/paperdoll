@@ -9,7 +9,7 @@ import (
 )
 
 // The functions below generate the post selectors of a page from the posts
-// that a user labeled in a selector editor (see SelectorEditor).
+// that a user marked in a selector editor (see SelectorEditor).
 
 // pageIndex is the body of a simplified page with its page nodes in document
 // order, and the number of nodes with each class. The page nodes are the body
@@ -164,10 +164,10 @@ func (t *pageIndex) fieldPath(f PostField, post, n *html.Node, skip map[*html.No
 	return nil, false
 }
 
-// labeledPost is a post that the user labeled: its node and the nodes of its
+// markedPost is a post that the user marked: its box and the nodes of its
 // fields.
-type labeledPost struct {
-	node   *html.Node
+type markedPost struct {
+	box    *html.Node
 	fields map[PostField]*html.Node
 }
 
@@ -190,10 +190,10 @@ func setPath(m *PostSelector, f PostField, path []Step) {
 // selectorOf returns the selector that finds post with its fields, or false when
 // no path resolves its title or link. A field that no path resolves is left
 // out. skip holds the excluded nodes.
-func (t *pageIndex) selectorOf(post labeledPost, skip map[*html.Node]bool) (PostSelector, bool) {
-	m := PostSelector{Box: t.postPath(post.node)}
+func (t *pageIndex) selectorOf(post markedPost, skip map[*html.Node]bool) (PostSelector, bool) {
+	m := PostSelector{Box: t.postPath(post.box)}
 	for f, n := range post.fields {
-		if path, ok := t.fieldPath(f, post.node, n, skip); ok {
+		if path, ok := t.fieldPath(f, post.box, n, skip); ok {
 			setPath(&m, f, path)
 		}
 	}
@@ -257,7 +257,7 @@ func merge(a, b PostSelector) (PostSelector, bool) {
 }
 
 // generateRules returns the rules whose selectors find the posts that the
-// user labeled, and none of the posts whose links the user excluded, which
+// user marked, and none of the posts whose links the user excluded, which
 // excluded holds by host and path, and nothing in the subtrees of
 // excludedNodes. The rules depend on the posts, the links and the nodes, not
 // on the order in which the user marked them. A link of excluded must not be
@@ -269,7 +269,7 @@ func merge(a, b PostSelector) (PostSelector, bool) {
 // merged one, until no two can merge. A post whose title or link no path
 // resolves gets no selector.
 func (t *pageIndex) generateRules(
-	posts []labeledPost,
+	posts []markedPost,
 	excluded map[string]bool,
 	excludedNodes map[*html.Node]bool,
 ) ExtractionRules {
@@ -279,7 +279,7 @@ func (t *pageIndex) generateRules(
 		rules.ExcludeNodes = append(rules.ExcludeNodes, t.positionPath(n))
 	}
 	posts = slices.Clone(posts)
-	slices.SortFunc(posts, func(a, b labeledPost) int { return t.index[a.node] - t.index[b.node] })
+	slices.SortFunc(posts, func(a, b markedPost) int { return t.index[a.box] - t.index[b.box] })
 
 	selectors := []PostSelector{}
 	for _, p := range posts {
@@ -303,16 +303,16 @@ merging:
 	}
 }
 
-// labelFoundPosts returns every post that rules find, with the nodes of its
+// markFoundPosts returns every post that rules find, with the nodes of its
 // fields, in document order, so that the rules can be generated again from
 // them, since saved rules do not keep the marks of the user. All of
 // them are needed, since a merged selector keeps only the classes that all of
 // its posts share, and fewer posts would make the selectors find fewer posts.
 // A post that several selectors find takes each field from the first selector
 // that finds it.
-func (t *pageIndex) labelFoundPosts(rules ExtractionRules) []labeledPost {
-	var posts []labeledPost
-	byNode := map[*html.Node]labeledPost{}
+func (t *pageIndex) markFoundPosts(rules ExtractionRules) []markedPost {
+	var posts []markedPost
+	byNode := map[*html.Node]markedPost{}
 	skip := rules.excludedNodes(t.body)
 	exclude := rules.compileExclude()
 	for i := range rules.Selectors {
@@ -320,7 +320,7 @@ func (t *pageIndex) labelFoundPosts(rules ExtractionRules) []labeledPost {
 		for _, n := range m.selectPosts(t.body, skip, exclude) {
 			p, ok := byNode[n]
 			if !ok {
-				p = labeledPost{node: n, fields: make(map[PostField]*html.Node)}
+				p = markedPost{box: n, fields: make(map[PostField]*html.Node)}
 				byNode[n] = p
 				posts = append(posts, p)
 			}
@@ -334,6 +334,6 @@ func (t *pageIndex) labelFoundPosts(rules ExtractionRules) []labeledPost {
 			}
 		}
 	}
-	slices.SortFunc(posts, func(a, b labeledPost) int { return t.index[a.node] - t.index[b.node] })
+	slices.SortFunc(posts, func(a, b markedPost) int { return t.index[a.box] - t.index[b.box] })
 	return posts
 }

@@ -71,7 +71,7 @@ String describeNode(Node node) {
   return counts.join(', ');
 }
 
-/// An annotated area of the page, drawn as a translucent tint of `color`
+/// A marked area of the page, drawn as a translucent tint of `color`
 /// over its lines.
 ///
 /// When `linkOnly` is true and `node` is a link around other content, only
@@ -114,7 +114,7 @@ class const PageLine({
             .toList()
           ..sort((a, b) => a.node.depth.compareTo(b.node.depth));
     // The tints are painted over the content rather than wrapped around it,
-    // so that annotating does not change the layout, and so that images do
+    // so that marking does not change the layout, and so that images do
     // not hide them. A tint leaves a thin gap at the ends of its area to keep
     // adjacent areas apart.
     final content = Stack(
@@ -234,7 +234,7 @@ class const _Content({required final Node node}) extends StatelessWidget {
   }
 }
 
-/// The color of the tint over the content labeled as [field].
+/// The color of the tint over the content marked as [field].
 Color fieldColor(PostField field) => switch (field) {
   PostField.title => const Color(0xFF1565C0),
   PostField.body => const Color(0xFF6A1B9A),

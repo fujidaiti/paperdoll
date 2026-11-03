@@ -10,16 +10,15 @@
 
 part of openapi.api;
 
-class MatchedPost {
-  /// Returns a new [MatchedPost] instance.
-  MatchedPost({
+class MarkedPost {
+  /// Returns a new [MarkedPost] instance.
+  MarkedPost({
     required this.box,
     required this.title,
     this.body,
     required this.link,
     this.thumbnail,
     this.pubDate,
-    required this.values,
   });
 
   int box;
@@ -52,19 +51,16 @@ class MatchedPost {
   ///
   int? pubDate;
 
-  ExtractedPost values;
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MatchedPost &&
+      other is MarkedPost &&
           other.box == box &&
           other.title == title &&
           other.body == body &&
           other.link == link &&
           other.thumbnail == thumbnail &&
-          other.pubDate == pubDate &&
-          other.values == values;
+          other.pubDate == pubDate;
 
   @override
   int get hashCode =>
@@ -74,12 +70,11 @@ class MatchedPost {
       (body == null ? 0 : body!.hashCode) +
       (link.hashCode) +
       (thumbnail == null ? 0 : thumbnail!.hashCode) +
-      (pubDate == null ? 0 : pubDate!.hashCode) +
-      (values.hashCode);
+      (pubDate == null ? 0 : pubDate!.hashCode);
 
   @override
   String toString() =>
-      'MatchedPost[box=$box, title=$title, body=$body, link=$link, thumbnail=$thumbnail, pubDate=$pubDate, values=$values]';
+      'MarkedPost[box=$box, title=$title, body=$body, link=$link, thumbnail=$thumbnail, pubDate=$pubDate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -101,14 +96,13 @@ class MatchedPost {
     } else {
       json[r'pubDate'] = null;
     }
-    json[r'values'] = this.values;
     return json;
   }
 
-  /// Returns a new [MatchedPost] instance and imports its values from
+  /// Returns a new [MarkedPost] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static MatchedPost? fromJson(dynamic value) {
+  static MarkedPost? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -117,45 +111,40 @@ class MatchedPost {
       // Note 2: this code is stripped in release mode!
       assert(() {
         assert(json.containsKey(r'box'),
-            'Required key "MatchedPost[box]" is missing from JSON.');
+            'Required key "MarkedPost[box]" is missing from JSON.');
         assert(json[r'box'] != null,
-            'Required key "MatchedPost[box]" has a null value in JSON.');
+            'Required key "MarkedPost[box]" has a null value in JSON.');
         assert(json.containsKey(r'title'),
-            'Required key "MatchedPost[title]" is missing from JSON.');
+            'Required key "MarkedPost[title]" is missing from JSON.');
         assert(json[r'title'] != null,
-            'Required key "MatchedPost[title]" has a null value in JSON.');
+            'Required key "MarkedPost[title]" has a null value in JSON.');
         assert(json.containsKey(r'link'),
-            'Required key "MatchedPost[link]" is missing from JSON.');
+            'Required key "MarkedPost[link]" is missing from JSON.');
         assert(json[r'link'] != null,
-            'Required key "MatchedPost[link]" has a null value in JSON.');
-        assert(json.containsKey(r'values'),
-            'Required key "MatchedPost[values]" is missing from JSON.');
-        assert(json[r'values'] != null,
-            'Required key "MatchedPost[values]" has a null value in JSON.');
+            'Required key "MarkedPost[link]" has a null value in JSON.');
         return true;
       }());
 
-      return MatchedPost(
+      return MarkedPost(
         box: mapValueOfType<int>(json, r'box')!,
         title: mapValueOfType<int>(json, r'title')!,
         body: mapValueOfType<int>(json, r'body'),
         link: mapValueOfType<int>(json, r'link')!,
         thumbnail: mapValueOfType<int>(json, r'thumbnail'),
         pubDate: mapValueOfType<int>(json, r'pubDate'),
-        values: ExtractedPost.fromJson(json[r'values'])!,
       );
     }
     return null;
   }
 
-  static List<MatchedPost> listFromJson(
+  static List<MarkedPost> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <MatchedPost>[];
+    final result = <MarkedPost>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = MatchedPost.fromJson(row);
+        final value = MarkedPost.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -164,12 +153,12 @@ class MatchedPost {
     return result.toList(growable: growable);
   }
 
-  static Map<String, MatchedPost> mapFromJson(dynamic json) {
-    final map = <String, MatchedPost>{};
+  static Map<String, MarkedPost> mapFromJson(dynamic json) {
+    final map = <String, MarkedPost>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = MatchedPost.fromJson(entry.value);
+        final value = MarkedPost.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -178,17 +167,17 @@ class MatchedPost {
     return map;
   }
 
-  // maps a json object with a list of MatchedPost-objects as value to a dart map
-  static Map<String, List<MatchedPost>> mapListFromJson(
+  // maps a json object with a list of MarkedPost-objects as value to a dart map
+  static Map<String, List<MarkedPost>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<MatchedPost>>{};
+    final map = <String, List<MarkedPost>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = MatchedPost.listFromJson(
+        map[entry.key] = MarkedPost.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -202,6 +191,5 @@ class MatchedPost {
     'box',
     'title',
     'link',
-    'values',
   };
 }

@@ -158,7 +158,7 @@ void main() {
     await t(AppDebugKey.feedCandidateTile(candidate.title)).tap();
 
     // The page has no selectors yet, so the app asks for them.
-    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t(AppDebugKey.selectorEditorScreen).waitUntilVisible();
     await t('First post').waitUntilVisible();
     expect(
       t.tester.widget<TextButton>(t(AppDebugKey.saveSelectorsButton)).onPressed,
@@ -184,7 +184,7 @@ void main() {
       ..stubPut(
         '/feeds/${blog.id}/selector-editors/42/marks',
         bodyMatcher: {
-          'labeled_posts': [
+          'marked_posts': [
             {'box': 2, 'title': 2, 'link': 2},
           ],
           'excluded_links': <Object?>[],
@@ -198,7 +198,7 @@ void main() {
     await t(AppDebugKey.feedDetailMenuButton).tap();
     await t(AppDebugKey.editFeedMenuItem).tap();
     await t(AppDebugKey.editSelectorsButton).tap();
-    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t(AppDebugKey.selectorEditorScreen).waitUntilVisible();
 
     // The heading is a post with itself as the title and the link.
     await t('First post').tap();
@@ -266,7 +266,7 @@ void main() {
     expect(t(blog.url), findsOneWidget);
 
     await t(AppDebugKey.editSelectorsButton).tap();
-    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t(AppDebugKey.selectorEditorScreen).waitUntilVisible();
     // The posts are shown as cards of their extracted values, without the
     // content that is not extracted, such as the summaries.
     await t('First post').waitUntilVisible();
@@ -299,7 +299,7 @@ void main() {
       ..stubPut(
         '/feeds/${blog.id}/selector-editors/42/marks',
         bodyMatcher: {
-          'labeled_posts': [
+          'marked_posts': [
             {'box': 1, 'title': 2, 'link': 2},
           ],
           'excluded_links': ['blog.example.com/newsletters'],
@@ -310,7 +310,7 @@ void main() {
       ..stubPut(
         '/feeds/${blog.id}/selector-editors/42/marks',
         bodyMatcher: {
-          'labeled_posts': [
+          'marked_posts': [
             {'box': 1, 'title': 2, 'link': 2},
           ],
           'excluded_links': <Object?>[],
@@ -351,7 +351,7 @@ void main() {
       ..stubPut(
         '/feeds/${blog.id}/selector-editors/42/marks',
         bodyMatcher: {
-          'labeled_posts': [
+          'marked_posts': [
             {'box': 5, 'title': 6, 'link': 6},
           ],
           'excluded_links': <Object?>[],
@@ -362,7 +362,7 @@ void main() {
       ..stubPut(
         '/feeds/${blog.id}/selector-editors/42/marks',
         bodyMatcher: {
-          'labeled_posts': [
+          'marked_posts': [
             {'box': 5, 'title': 6, 'link': 6},
           ],
           'excluded_links': <Object?>[],
@@ -395,7 +395,7 @@ void main() {
 
   patrolWidgetTest('Exclude a section with marked posts', (t) async {
     final blog = fixture.feeds.exampleBlog;
-    final labeled = [
+    final marked = [
       {'box': 3, 'title': 3, 'link': 3},
       {'box': 4, 'title': 4, 'link': 4},
       {'box': 5, 'title': 6, 'link': 6},
@@ -412,7 +412,7 @@ void main() {
       ..stubPut(
         '/feeds/${blog.id}/selector-editors/42/marks',
         bodyMatcher: {
-          'labeled_posts': labeled,
+          'marked_posts': marked,
           'excluded_links': <Object?>[],
           'excluded_nodes': [1],
         },
@@ -421,7 +421,7 @@ void main() {
       ..stubPut(
         '/feeds/${blog.id}/selector-editors/42/marks',
         bodyMatcher: {
-          'labeled_posts': labeled,
+          'marked_posts': marked,
           'excluded_links': <Object?>[],
           'excluded_nodes': <Object?>[],
         },
@@ -464,7 +464,7 @@ void main() {
       ..stubPut(
         '/feeds/${blog.id}/selector-editors/42/marks',
         bodyMatcher: {
-          'labeled_posts': [
+          'marked_posts': [
             {'box': 5, 'title': 6, 'link': 6},
           ],
           'excluded_links': <Object?>[],
@@ -511,7 +511,7 @@ void main() {
     await t(AppDebugKey.feedDetailMenuButton).tap();
     await t(AppDebugKey.editFeedMenuItem).tap();
     await t(AppDebugKey.editSelectorsButton).tap();
-    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t(AppDebugKey.selectorEditorScreen).waitUntilVisible();
 
     await t('First post').tap();
     await t('Mark as post').tap();
@@ -521,7 +521,7 @@ void main() {
     await t(AppDebugKey.selectorEditorExpiredDialog).waitUntilVisible();
     await t('OK').tap();
     await t(AppDebugKey.feedEditScreen).waitUntilVisible();
-    expect(t(AppDebugKey.pageAnnotationScreen), findsNothing);
+    expect(t(AppDebugKey.selectorEditorScreen), findsNothing);
     expect(
       await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
       isNull,
@@ -548,7 +548,7 @@ void main() {
     await t(AppDebugKey.feedDetailMenuButton).tap();
     await t(AppDebugKey.editFeedMenuItem).tap();
     await t(AppDebugKey.editSelectorsButton).tap();
-    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t(AppDebugKey.selectorEditorScreen).waitUntilVisible();
 
     await t(AppDebugKey.saveSelectorsButton).tap();
 
@@ -556,7 +556,7 @@ void main() {
     await t(AppDebugKey.selectorEditorExpiredDialog).waitUntilVisible();
     await t('OK').tap();
     await t(AppDebugKey.feedEditScreen).waitUntilVisible();
-    expect(t(AppDebugKey.pageAnnotationScreen), findsNothing);
+    expect(t(AppDebugKey.selectorEditorScreen), findsNothing);
     expect(
       await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
       isNull,
@@ -586,21 +586,21 @@ void main() {
     await t(AppDebugKey.feedDetailMenuButton).tap();
     await t(AppDebugKey.editFeedMenuItem).tap();
     await t(AppDebugKey.editSelectorsButton).tap();
-    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t(AppDebugKey.selectorEditorScreen).waitUntilVisible();
 
     // Going back asks first, and canceling keeps the editor open.
     await t.tester.pageBack();
     await t.pumpAndSettle();
     await t('Leave without saving?').waitUntilVisible();
     await t('Cancel').tap();
-    expect(t(AppDebugKey.pageAnnotationScreen), findsOneWidget);
+    expect(t(AppDebugKey.selectorEditorScreen), findsOneWidget);
     expect(closed, isFalse);
 
     await t.tester.pageBack();
     await t.pumpAndSettle();
     await t('Leave').tap();
     await t(AppDebugKey.feedEditScreen).waitUntilVisible();
-    expect(t(AppDebugKey.pageAnnotationScreen), findsNothing);
+    expect(t(AppDebugKey.selectorEditorScreen), findsNothing);
     expect(closed, isTrue);
     expect(
       await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
@@ -627,7 +627,7 @@ void main() {
 
     await t('Continue your previous edits?').waitUntilVisible();
     await t('Continue').tap();
-    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t(AppDebugKey.selectorEditorScreen).waitUntilVisible();
     await t('2 post(s) found.').waitUntilVisible();
     expect(
       await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),
@@ -667,7 +667,7 @@ void main() {
 
     await t('Continue your previous edits?').waitUntilVisible();
     await t('Start over').tap();
-    await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+    await t(AppDebugKey.selectorEditorScreen).waitUntilVisible();
     // The new editor has no marks.
     await t('First post').waitUntilVisible();
     expect(t('2 post(s) found.'), findsNothing);
@@ -709,7 +709,7 @@ void main() {
 
       // The previous editor cannot be saved anymore, so the app does not ask
       // about it.
-      await t(AppDebugKey.pageAnnotationScreen).waitUntilVisible();
+      await t(AppDebugKey.selectorEditorScreen).waitUntilVisible();
       expect(t('Continue your previous edits?'), findsNothing);
       expect(
         await SharedPreferencesAsync().getInt('selector_editor.${blog.id}'),

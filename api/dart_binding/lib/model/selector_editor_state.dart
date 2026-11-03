@@ -13,13 +13,13 @@ part of openapi.api;
 class SelectorEditorState {
   /// Returns a new [SelectorEditorState] instance.
   SelectorEditorState({
-    this.matchedPosts = const [],
+    this.foundPosts = const [],
     this.excludedPosts = const [],
     this.preview = const [],
   });
 
   /// The posts that the selectors find, in document order.
-  List<MatchedPost> matchedPosts;
+  List<FoundPost> foundPosts;
 
   /// The nodes that would be posts if their links were not excluded, in document order.
   List<ExcludedPost> excludedPosts;
@@ -31,22 +31,22 @@ class SelectorEditorState {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is SelectorEditorState &&
-          _deepEquality.equals(other.matchedPosts, matchedPosts) &&
+          _deepEquality.equals(other.foundPosts, foundPosts) &&
           _deepEquality.equals(other.excludedPosts, excludedPosts) &&
           _deepEquality.equals(other.preview, preview);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (matchedPosts.hashCode) + (excludedPosts.hashCode) + (preview.hashCode);
+      (foundPosts.hashCode) + (excludedPosts.hashCode) + (preview.hashCode);
 
   @override
   String toString() =>
-      'SelectorEditorState[matchedPosts=$matchedPosts, excludedPosts=$excludedPosts, preview=$preview]';
+      'SelectorEditorState[foundPosts=$foundPosts, excludedPosts=$excludedPosts, preview=$preview]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'matched_posts'] = this.matchedPosts;
+    json[r'found_posts'] = this.foundPosts;
     json[r'excluded_posts'] = this.excludedPosts;
     json[r'preview'] = this.preview;
     return json;
@@ -63,10 +63,10 @@ class SelectorEditorState {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        assert(json.containsKey(r'matched_posts'),
-            'Required key "SelectorEditorState[matched_posts]" is missing from JSON.');
-        assert(json[r'matched_posts'] != null,
-            'Required key "SelectorEditorState[matched_posts]" has a null value in JSON.');
+        assert(json.containsKey(r'found_posts'),
+            'Required key "SelectorEditorState[found_posts]" is missing from JSON.');
+        assert(json[r'found_posts'] != null,
+            'Required key "SelectorEditorState[found_posts]" has a null value in JSON.');
         assert(json.containsKey(r'excluded_posts'),
             'Required key "SelectorEditorState[excluded_posts]" is missing from JSON.');
         assert(json[r'excluded_posts'] != null,
@@ -79,7 +79,7 @@ class SelectorEditorState {
       }());
 
       return SelectorEditorState(
-        matchedPosts: MatchedPost.listFromJson(json[r'matched_posts']),
+        foundPosts: FoundPost.listFromJson(json[r'found_posts']),
         excludedPosts: ExcludedPost.listFromJson(json[r'excluded_posts']),
         preview: ExtractedPost.listFromJson(json[r'preview']),
       );
@@ -138,7 +138,7 @@ class SelectorEditorState {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'matched_posts',
+    'found_posts',
     'excluded_posts',
     'preview',
   };

@@ -1,6 +1,6 @@
 # Test pages
 
-Web pages saved with `curl` (without running JavaScript) for matching the posts
+Web pages saved with `curl` (without running JavaScript) for finding the posts
 of a page. Each directory has the same pages under the same file names.
 
 - `source/`: the pages as first fetched, on which post selectors are built.

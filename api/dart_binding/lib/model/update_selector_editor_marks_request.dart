@@ -13,41 +13,41 @@ part of openapi.api;
 class UpdateSelectorEditorMarksRequest {
   /// Returns a new [UpdateSelectorEditorMarksRequest] instance.
   UpdateSelectorEditorMarksRequest({
-    this.labeledPosts = const [],
+    this.markedPosts = const [],
     this.excludedLinks = const [],
     this.excludedNodes = const [],
   });
 
-  List<LabeledPost> labeledPosts;
+  List<MarkedPost> markedPosts;
 
   /// The host and path of each excluded link.
   List<String> excludedLinks;
 
-  /// The node ID of each node that is excluded with its subtree. An excluded node wins over the other marks, so a labeled post or a field in an excluded node is ignored.
+  /// The node ID of each node that is excluded with its subtree. An excluded node wins over the other marks, so a marked post or a field in an excluded node is ignored.
   List<int> excludedNodes;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is UpdateSelectorEditorMarksRequest &&
-          _deepEquality.equals(other.labeledPosts, labeledPosts) &&
+          _deepEquality.equals(other.markedPosts, markedPosts) &&
           _deepEquality.equals(other.excludedLinks, excludedLinks) &&
           _deepEquality.equals(other.excludedNodes, excludedNodes);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (labeledPosts.hashCode) +
+      (markedPosts.hashCode) +
       (excludedLinks.hashCode) +
       (excludedNodes.hashCode);
 
   @override
   String toString() =>
-      'UpdateSelectorEditorMarksRequest[labeledPosts=$labeledPosts, excludedLinks=$excludedLinks, excludedNodes=$excludedNodes]';
+      'UpdateSelectorEditorMarksRequest[markedPosts=$markedPosts, excludedLinks=$excludedLinks, excludedNodes=$excludedNodes]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'labeled_posts'] = this.labeledPosts;
+    json[r'marked_posts'] = this.markedPosts;
     json[r'excluded_links'] = this.excludedLinks;
     json[r'excluded_nodes'] = this.excludedNodes;
     return json;
@@ -64,10 +64,10 @@ class UpdateSelectorEditorMarksRequest {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        assert(json.containsKey(r'labeled_posts'),
-            'Required key "UpdateSelectorEditorMarksRequest[labeled_posts]" is missing from JSON.');
-        assert(json[r'labeled_posts'] != null,
-            'Required key "UpdateSelectorEditorMarksRequest[labeled_posts]" has a null value in JSON.');
+        assert(json.containsKey(r'marked_posts'),
+            'Required key "UpdateSelectorEditorMarksRequest[marked_posts]" is missing from JSON.');
+        assert(json[r'marked_posts'] != null,
+            'Required key "UpdateSelectorEditorMarksRequest[marked_posts]" has a null value in JSON.');
         assert(json.containsKey(r'excluded_links'),
             'Required key "UpdateSelectorEditorMarksRequest[excluded_links]" is missing from JSON.');
         assert(json[r'excluded_links'] != null,
@@ -80,7 +80,7 @@ class UpdateSelectorEditorMarksRequest {
       }());
 
       return UpdateSelectorEditorMarksRequest(
-        labeledPosts: LabeledPost.listFromJson(json[r'labeled_posts']),
+        markedPosts: MarkedPost.listFromJson(json[r'marked_posts']),
         excludedLinks: json[r'excluded_links'] is Iterable
             ? (json[r'excluded_links'] as Iterable)
                 .cast<String>()
@@ -148,7 +148,7 @@ class UpdateSelectorEditorMarksRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'labeled_posts',
+    'marked_posts',
     'excluded_links',
     'excluded_nodes',
   };

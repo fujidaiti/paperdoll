@@ -16,10 +16,10 @@ class SelectorEditor {
     required this.id,
     required this.expiresAt,
     required this.page,
-    this.labeledPosts = const [],
+    this.markedPosts = const [],
     this.excludedLinks = const [],
     this.excludedNodes = const [],
-    this.matchedPosts = const [],
+    this.foundPosts = const [],
     this.excludedPosts = const [],
     this.preview = const [],
   });
@@ -31,17 +31,17 @@ class SelectorEditor {
   /// The page simplified into an HTML document, with the node ID of each element in its `data-id` attribute. The node ID of a node is its position among the nodes of the page in document order, and a text takes the ID of its position too. See SimplifyPage in `server/feature/feed/simplify.go` for the format.
   String page;
 
-  /// The posts labeled so far. A new editor starts with the posts that the saved selectors find.
-  List<LabeledPost> labeledPosts;
+  /// The posts marked so far. A new editor starts with the posts that the saved selectors find.
+  List<MarkedPost> markedPosts;
 
   /// The host and path of each excluded link. A new editor starts with the ones of the saved selectors.
   List<String> excludedLinks;
 
-  /// The node ID of each node that is excluded with its subtree. No post and no field is found in an excluded node, even when it is labeled. A new editor starts with the nodes of the saved selectors that the page still has.
+  /// The node ID of each node that is excluded with its subtree. No post and no field is found in an excluded node, even when it is marked. A new editor starts with the nodes of the saved selectors that the page still has.
   List<int> excludedNodes;
 
   /// The posts that the selectors find, in document order.
-  List<MatchedPost> matchedPosts;
+  List<FoundPost> foundPosts;
 
   /// The nodes that would be posts if their links were not excluded, in document order.
   List<ExcludedPost> excludedPosts;
@@ -56,10 +56,10 @@ class SelectorEditor {
           other.id == id &&
           other.expiresAt == expiresAt &&
           other.page == page &&
-          _deepEquality.equals(other.labeledPosts, labeledPosts) &&
+          _deepEquality.equals(other.markedPosts, markedPosts) &&
           _deepEquality.equals(other.excludedLinks, excludedLinks) &&
           _deepEquality.equals(other.excludedNodes, excludedNodes) &&
-          _deepEquality.equals(other.matchedPosts, matchedPosts) &&
+          _deepEquality.equals(other.foundPosts, foundPosts) &&
           _deepEquality.equals(other.excludedPosts, excludedPosts) &&
           _deepEquality.equals(other.preview, preview);
 
@@ -69,26 +69,26 @@ class SelectorEditor {
       (id.hashCode) +
       (expiresAt.hashCode) +
       (page.hashCode) +
-      (labeledPosts.hashCode) +
+      (markedPosts.hashCode) +
       (excludedLinks.hashCode) +
       (excludedNodes.hashCode) +
-      (matchedPosts.hashCode) +
+      (foundPosts.hashCode) +
       (excludedPosts.hashCode) +
       (preview.hashCode);
 
   @override
   String toString() =>
-      'SelectorEditor[id=$id, expiresAt=$expiresAt, page=$page, labeledPosts=$labeledPosts, excludedLinks=$excludedLinks, excludedNodes=$excludedNodes, matchedPosts=$matchedPosts, excludedPosts=$excludedPosts, preview=$preview]';
+      'SelectorEditor[id=$id, expiresAt=$expiresAt, page=$page, markedPosts=$markedPosts, excludedLinks=$excludedLinks, excludedNodes=$excludedNodes, foundPosts=$foundPosts, excludedPosts=$excludedPosts, preview=$preview]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'id'] = this.id;
     json[r'expires_at'] = this.expiresAt.toUtc().toIso8601String();
     json[r'page'] = this.page;
-    json[r'labeled_posts'] = this.labeledPosts;
+    json[r'marked_posts'] = this.markedPosts;
     json[r'excluded_links'] = this.excludedLinks;
     json[r'excluded_nodes'] = this.excludedNodes;
-    json[r'matched_posts'] = this.matchedPosts;
+    json[r'found_posts'] = this.foundPosts;
     json[r'excluded_posts'] = this.excludedPosts;
     json[r'preview'] = this.preview;
     return json;
@@ -117,10 +117,10 @@ class SelectorEditor {
             'Required key "SelectorEditor[page]" is missing from JSON.');
         assert(json[r'page'] != null,
             'Required key "SelectorEditor[page]" has a null value in JSON.');
-        assert(json.containsKey(r'labeled_posts'),
-            'Required key "SelectorEditor[labeled_posts]" is missing from JSON.');
-        assert(json[r'labeled_posts'] != null,
-            'Required key "SelectorEditor[labeled_posts]" has a null value in JSON.');
+        assert(json.containsKey(r'marked_posts'),
+            'Required key "SelectorEditor[marked_posts]" is missing from JSON.');
+        assert(json[r'marked_posts'] != null,
+            'Required key "SelectorEditor[marked_posts]" has a null value in JSON.');
         assert(json.containsKey(r'excluded_links'),
             'Required key "SelectorEditor[excluded_links]" is missing from JSON.');
         assert(json[r'excluded_links'] != null,
@@ -129,10 +129,10 @@ class SelectorEditor {
             'Required key "SelectorEditor[excluded_nodes]" is missing from JSON.');
         assert(json[r'excluded_nodes'] != null,
             'Required key "SelectorEditor[excluded_nodes]" has a null value in JSON.');
-        assert(json.containsKey(r'matched_posts'),
-            'Required key "SelectorEditor[matched_posts]" is missing from JSON.');
-        assert(json[r'matched_posts'] != null,
-            'Required key "SelectorEditor[matched_posts]" has a null value in JSON.');
+        assert(json.containsKey(r'found_posts'),
+            'Required key "SelectorEditor[found_posts]" is missing from JSON.');
+        assert(json[r'found_posts'] != null,
+            'Required key "SelectorEditor[found_posts]" has a null value in JSON.');
         assert(json.containsKey(r'excluded_posts'),
             'Required key "SelectorEditor[excluded_posts]" is missing from JSON.');
         assert(json[r'excluded_posts'] != null,
@@ -148,7 +148,7 @@ class SelectorEditor {
         id: mapValueOfType<int>(json, r'id')!,
         expiresAt: mapDateTime(json, r'expires_at', r'')!,
         page: mapValueOfType<String>(json, r'page')!,
-        labeledPosts: LabeledPost.listFromJson(json[r'labeled_posts']),
+        markedPosts: MarkedPost.listFromJson(json[r'marked_posts']),
         excludedLinks: json[r'excluded_links'] is Iterable
             ? (json[r'excluded_links'] as Iterable)
                 .cast<String>()
@@ -159,7 +159,7 @@ class SelectorEditor {
                 .cast<int>()
                 .toList(growable: false)
             : const [],
-        matchedPosts: MatchedPost.listFromJson(json[r'matched_posts']),
+        foundPosts: FoundPost.listFromJson(json[r'found_posts']),
         excludedPosts: ExcludedPost.listFromJson(json[r'excluded_posts']),
         preview: ExtractedPost.listFromJson(json[r'preview']),
       );
@@ -221,10 +221,10 @@ class SelectorEditor {
     'id',
     'expires_at',
     'page',
-    'labeled_posts',
+    'marked_posts',
     'excluded_links',
     'excluded_nodes',
-    'matched_posts',
+    'found_posts',
     'excluded_posts',
     'preview',
   };
