@@ -270,22 +270,6 @@ func (t *pageIndex) editorState(doc *html.Node, rules ExtractionRules) EditorSta
 	return s
 }
 
-// generate returns the rules generated from posts, excluded and
-// excludedNodes, as JSON, and what they find in doc, the page of t.
-func (t *pageIndex) generate(
-	doc *html.Node,
-	posts []markedPost,
-	excluded map[string]bool,
-	excludedNodes map[*html.Node]bool,
-) (string, EditorState, error) {
-	rules := t.generateRules(posts, excluded, excludedNodes)
-	raw, err := json.Marshal(rules)
-	if err != nil {
-		return "", EditorState{}, err
-	}
-	return string(raw), t.editorState(doc, rules), nil
-}
-
 // idsOf returns posts by node IDs.
 func (t *pageIndex) idsOf(posts []markedPost) []MarkedPostIDs {
 	ids := []MarkedPostIDs{}
@@ -385,22 +369,25 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 	return e, nil
 }
 
-// loadSelectorEditor returns the page and the marks of the editor id of the
-// user uid on the feed feedID, and when the editor expires. It fails with
-// ErrEditorNotFound when there is no such editor, and with ErrEditorExpired
-// when it expired.
+// loadSelectorEditor returns the page, the marks and the rules of the editor
+// id of the user uid on the feed feedID, and when the editor expires. It fails
+// with ErrEditorNotFound when there is no such editor, and with
+// ErrEditorExpired when it expired.
 func (s *Service) loadSelectorEditor(
 	ctx context.Context,
 	uid user.UserID,
 	feedID, id int,
-) (string, Marks, time.Time, error) {
-	var page, marked string
+) (string, Marks, ExtractionRules, time.Time, error) {
+	var page, marked, stored string
 	var marks Marks
+	var rules ExtractionRules
 	var expiresAt time.Time
 	var expired bool
 	types := pgtype.NewMap()
 	err := s.DB.QueryRowContext(ctx, `
-		SELECT simplified_page, marked_posts, excluded_links, excluded_nodes, expires_at, expires_at <= now()
+		SELECT
+			simplified_page, marked_posts, excluded_links, excluded_nodes, extraction_rules,
+			expires_at, expires_at <= now()
 		FROM selector_editors
 		WHERE id = $1 AND user_id = $2 AND feed_id = $3;
 	`, id, uid, feedID).Scan(
@@ -408,29 +395,34 @@ func (s *Service) loadSelectorEditor(
 		&marked,
 		types.SQLScanner(&marks.ExcludedLinks),
 		types.SQLScanner(&marks.ExcludedNodes),
+		&stored,
 		&expiresAt,
 		&expired,
 	)
 	if errors.Is(err, sql.ErrNoRows) {
-		return "", Marks{}, time.Time{}, ErrEditorNotFound
+		return "", Marks{}, ExtractionRules{}, time.Time{}, ErrEditorNotFound
 	} else if err != nil {
-		return "", Marks{}, time.Time{}, err
+		return "", Marks{}, ExtractionRules{}, time.Time{}, err
 	}
 	if expired {
-		return "", Marks{}, time.Time{}, ErrEditorExpired
+		return "", Marks{}, ExtractionRules{}, time.Time{}, ErrEditorExpired
 	}
 	if err := json.Unmarshal([]byte(marked), &marks.MarkedPosts); err != nil {
-		return "", Marks{}, time.Time{}, err
+		return "", Marks{}, ExtractionRules{}, time.Time{}, err
 	}
-	return page, marks, expiresAt, nil
+	if err := json.Unmarshal([]byte(stored), &rules); err != nil {
+		return "", Marks{}, ExtractionRules{}, time.Time{}, err
+	}
+	return page, marks, rules, expiresAt, nil
 }
 
 // GetSelectorEditor returns the editor id of the user uid on the feed
-// feedID with its stored marks, such as after the app was killed while the
-// editor was open. The page is not fetched again, since the marks refer to the
-// nodes of the stored page. Getting it does not extend the expiry.
+// feedID with its stored marks and what its stored rules find, such as after
+// the app was killed while the editor was open. The page is not fetched again,
+// since the marks refer to the nodes of the stored page. Getting it does not
+// extend the expiry.
 func (s *Service) GetSelectorEditor(ctx context.Context, uid user.UserID, feedID, id int) (SelectorEditor, error) {
-	page, marks, expiresAt, err := s.loadSelectorEditor(ctx, uid, feedID, id)
+	page, marks, rules, expiresAt, err := s.loadSelectorEditor(ctx, uid, feedID, id)
 	if err != nil {
 		return SelectorEditor{}, err
 	}
@@ -438,14 +430,7 @@ func (s *Service) GetSelectorEditor(ctx context.Context, uid user.UserID, feedID
 	if err != nil {
 		return SelectorEditor{}, err
 	}
-	posts, excluded, excludedNodes, err := t.resolveMarks(marks)
-	if err != nil {
-		return SelectorEditor{}, err
-	}
-	_, state, err := t.generate(doc, posts, excluded, excludedNodes)
-	if err != nil {
-		return SelectorEditor{}, err
-	}
+	state := t.editorState(doc, rules)
 	return SelectorEditor{ID: id, ExpiresAt: expiresAt, Page: page, Marks: marks, EditorState: state}, nil
 }
 
@@ -459,7 +444,7 @@ func (s *Service) UpdateSelectorEditorMarks(
 	feedID, id int,
 	marks Marks,
 ) (EditorState, error) {
-	page, _, _, err := s.loadSelectorEditor(ctx, uid, feedID, id)
+	page, _, _, _, err := s.loadSelectorEditor(ctx, uid, feedID, id)
 	if err != nil {
 		return EditorState{}, err
 	}
@@ -473,7 +458,8 @@ func (s *Service) UpdateSelectorEditorMarks(
 	if err != nil {
 		return EditorState{}, err
 	}
-	generated, state, err := t.generate(doc, posts, excluded, excludedNodes)
+	rules := t.generateRules(posts, excluded, excludedNodes)
+	generated, err := json.Marshal(rules)
 	if err != nil {
 		return EditorState{}, err
 	}
@@ -494,7 +480,7 @@ func (s *Service) UpdateSelectorEditorMarks(
 		UPDATE selector_editors
 		SET marked_posts = $4, excluded_links = $5, excluded_nodes = $6, extraction_rules = $7
 		WHERE id = $1 AND user_id = $2 AND feed_id = $3;
-	`, id, uid, feedID, string(marked), marks.ExcludedLinks, marks.ExcludedNodes, generated)
+	`, id, uid, feedID, string(marked), marks.ExcludedLinks, marks.ExcludedNodes, string(generated))
 	if err != nil {
 		return EditorState{}, err
 	}
@@ -504,7 +490,7 @@ func (s *Service) UpdateSelectorEditorMarks(
 	} else if n == 0 {
 		return EditorState{}, ErrEditorNotFound
 	}
-	return state, nil
+	return t.editorState(doc, rules), nil
 }
 
 // CommitSelectorEditor saves the rules of the editor id of the user uid to
