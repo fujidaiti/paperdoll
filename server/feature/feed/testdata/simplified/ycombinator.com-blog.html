@@ -1,0 +1,831 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Y Combinator</title>
+    <link rel="canonical" href="https://ycombinator.com/blog" />
+  </head>
+  <body class="blog">
+    <div>
+      <div class="no-scroll-behind sticky top-0 isolate z-50 bg-beige-light">
+        <div>
+          <header class="w-full bg-beige-light leading-tight">
+            <nav
+              class="relative hidden items-center justify-center bg-beige-light px-5"
+            >
+              <div class="flex w-full items-center gap-6">
+                <div class="flex flex-1 items-center justify-end gap-4">
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/about"
+                  >
+                    About
+                  </div>
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/companies"
+                  >
+                    Companies
+                  </div>
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/library"
+                  >
+                    Library
+                  </div>
+                </div>
+                <div class="flex flex-1 items-center justify-start gap-4">
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/partners"
+                  >
+                    Partners
+                  </div>
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/library"
+                  >
+                    Resources
+                  </div>
+                  <div
+                    class="relative inline-block nav-link inline-flex items-center gap-1 cursor-pointer"
+                    href="https://ycombinator.com/jobs"
+                  >
+                    Startup Jobs
+                  </div>
+                </div>
+              </div>
+              <div class="absolute right-5 flex items-center gap-4">
+                <a
+                  class="text-sm transition-opacity"
+                  href="https://account.ycombinator.com/?continue=https://www.ycombinator.com/blog"
+                  >Log in</a
+                ><a
+                  class="flex h-10 items-center justify-center rounded-full bg-black px-5 text-sm font-normal italic text-white transition-opacity"
+                  href="https://ycombinator.com/apply"
+                  >Apply</a
+                >
+              </div>
+            </nav>
+          </header>
+        </div>
+      </div>
+      <div class="relative isolate z-0 pt-6 pb-6">
+        <div class="mx-auto max-w-ycdc-page px-4">
+          <div>
+            <div class="hidden">
+              <div>
+                <nav class="mb-px flex space-x-8">
+                  <a
+                    class="border-transparent text-gray-500 whitespace-nowrap border-b-2 px-1 py-2 text-sm font-medium"
+                    href="https://ycombinator.com/blog"
+                    >All Posts</a
+                  ><a
+                    class="border-transparent text-gray-500 whitespace-nowrap border-b-2 px-1 py-2 text-sm font-medium"
+                    href="https://ycombinator.com/blog/jobs"
+                    >Startup Jobs</a
+                  ><a
+                    class="border-transparent text-gray-500 whitespace-nowrap border-b-2 px-1 py-2 text-sm font-medium"
+                    href="https://ycombinator.com/blog/startup-school"
+                    >Startup School</a
+                  >
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative isolate z-0 pt-6 pb-6">
+        <div class="mx-auto max-w-ycdc-page px-4">
+          <div>
+            <div class="relative">
+              <div class="prose prose-lg">
+                <a
+                  href="https://ycombinator.com/blog/chris-golda-and-grey-baker-general-partners"
+                  ><h2>
+                    Christopher Golda and Grey Baker Join YC as General Partners
+                  </h2></a
+                >
+                <p>
+                  We&#39;re excited to announce that Christopher Golda and Grey
+                  Baker are joining YC as General Partners.
+                </p>
+              </div>
+              <p
+                class="mt-4 flex flex-col space-y-3 pl-3 font-medium text-linkColor mr-4 inline-flex flex-nowrap items-center text-base"
+                href="https://ycombinator.com/blog/chris-golda-and-grey-baker-general-partners"
+              >
+                Read More
+              </p>
+            </div>
+            <div class="relative mx-2 mt-4">
+              <div
+                class="isolate ml-12 flex flex-row flex-nowrap justify-center"
+              >
+                <figure>
+                  <a
+                    href="https://ycombinator.com/blog/chris-golda-and-grey-baker-general-partners"
+                    ><img
+                      class="w-full rounded-2xl shadow-lg"
+                      src="https://ycombinator.com/blog/content/images/2026/06/BlogTwitter-Image-Template.jpg"
+                  /></a>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative isolate z-0 pt-6 pb-6">
+        <div class="mx-auto max-w-ycdc-page px-4">
+          <h3
+            class="text-xl font-semibold uppercase tracking-wider text-yellow-600"
+          >
+            Recent Posts
+          </h3>
+          <div class="mx-auto mt-12 grid max-w-lg gap-9">
+            <div class="flex flex-col overflow-hidden rounded shadow-sm">
+              <div class="shrink-0">
+                <a href="https://ycombinator.com/blog/diana-hu-managing-partner"
+                  ><img
+                    class="h-48 w-full object-cover"
+                    src="https://ycombinator.com/blog/content/images/2026/06/S25-Kick-Off-Day-1_128.jpg"
+                /></a>
+              </div>
+              <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                <div class="flex-1">
+                  <a
+                    class="mt-2 block"
+                    href="https://ycombinator.com/blog/diana-hu-managing-partner"
+                    ><p class="text-xl font-semibold text-gray-900">
+                      Diana Hu Is YC&#39;s Newest Managing Partner
+                    </p>
+                    <p class="mt-3 text-base text-gray-700">
+                      We&#39;re thrilled to announce that Diana Hu has been
+                      promoted to Managing Partner at Y Combinator. Few people
+                      have built a startup from zero and also shipped tech to
+                      100 million people. Diana has done both.
+                    </p></a
+                  >
+                </div>
+                <div class="mt-2">
+                  <p
+                    class="text-sm font-medium text-indigo-600 mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs text-gray-800"
+                    href="https://ycombinator.com/blog/tag/yc-news"
+                  >
+                    YC News
+                  </p>
+                </div>
+                <div class="mt-6 flex items-center">
+                  <div class="shrink-0">
+                    <a href="https://ycombinator.com/blog/author/garry"
+                      ><span class="sr-only">Garry Tan</span
+                      ><img
+                        class="h-10 w-10 rounded-full"
+                        src="https://ycombinator.com/blog/content/images/2023/03/Instagram-Image-Template--Square---21-.png"
+                    /></a>
+                  </div>
+                  <div class="ml-4">
+                    <p
+                      class="text-sm font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/author/garry"
+                    >
+                      Garry Tan
+                    </p>
+                    <div class="flex space-x-1 text-sm text-gray-500">
+                      <span><time>2026-06-11T00:00:00Z</time></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col overflow-hidden rounded shadow-sm">
+              <div class="shrink-0">
+                <a href="https://ycombinator.com/blog/welcome-harshita"
+                  ><img
+                    class="h-48 w-full object-cover"
+                    src="https://ycombinator.com/blog/content/images/2026/04/2025-YC-Intern-Happy-Hour-0708_013.jpg"
+                /></a>
+              </div>
+              <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                <div class="flex-1">
+                  <a
+                    class="mt-2 block"
+                    href="https://ycombinator.com/blog/welcome-harshita"
+                    ><p class="text-xl font-semibold text-gray-900">
+                      Harshita Arora Joins YC as General Partner
+                    </p>
+                    <p class="mt-3 text-base text-gray-700">
+                      We&#39;re thrilled to announce that Harshita Arora is
+                      joining Y Combinator as a General Partner. She brings deep
+                      fintech and infrastructure experience, a founder&#39;s
+                      instinct for product, and the perspective of someone
+                      who&#39;s been building companies since she was a
+                      teenager.
+                    </p></a
+                  >
+                </div>
+                <div class="mt-2">
+                  <p
+                    class="text-sm font-medium text-indigo-600 mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs text-gray-800"
+                    href="https://ycombinator.com/blog/tag/yc-news"
+                  >
+                    YC News
+                  </p>
+                </div>
+                <div class="mt-6 flex items-center">
+                  <div class="shrink-0">
+                    <a href="https://ycombinator.com/blog/author/garry"
+                      ><span class="sr-only">Garry Tan</span
+                      ><img
+                        class="h-10 w-10 rounded-full"
+                        src="https://ycombinator.com/blog/content/images/2023/03/Instagram-Image-Template--Square---21-.png"
+                    /></a>
+                  </div>
+                  <div class="ml-4">
+                    <p
+                      class="text-sm font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/author/garry"
+                    >
+                      Garry Tan
+                    </p>
+                    <div class="flex space-x-1 text-sm text-gray-500">
+                      <span><time>2026-04-06T00:00:00Z</time></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col overflow-hidden rounded shadow-sm">
+              <div class="shrink-0">
+                <a href="https://ycombinator.com/blog/adding-canada-back"
+                  ><img
+                    class="h-48 w-full object-cover"
+                    src="https://ycombinator.com/vite/assets/yc-blog-placeholder-Cx3N3yop.png"
+                /></a>
+              </div>
+              <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                <div class="flex-1">
+                  <a
+                    class="mt-2 block"
+                    href="https://ycombinator.com/blog/adding-canada-back"
+                    ><p class="text-xl font-semibold text-gray-900">
+                      Adding Canada Back to Our List of Accepted Countries of
+                      Incorporation
+                    </p>
+                    <p class="mt-3 text-base text-gray-700">
+                      After hearing feedback from Canadian founders in our
+                      network, we are adding Canada back to our list of accepted
+                      countries of incorporation.
+                    </p></a
+                  >
+                </div>
+                <div class="mt-2">
+                  <p
+                    class="text-sm font-medium text-indigo-600 mb-2 mr-4 inline-flex items-center rounded bg-gray-200 px-2 text-xs text-gray-800"
+                    href="https://ycombinator.com/blog/tag/yc-news"
+                  >
+                    YC News
+                  </p>
+                </div>
+                <div class="mt-6 flex items-center">
+                  <div class="shrink-0">
+                    <a href="https://ycombinator.com/blog/author/garry"
+                      ><span class="sr-only">Garry Tan</span
+                      ><img
+                        class="h-10 w-10 rounded-full"
+                        src="https://ycombinator.com/blog/content/images/2023/03/Instagram-Image-Template--Square---21-.png"
+                    /></a>
+                  </div>
+                  <div class="ml-4">
+                    <p
+                      class="text-sm font-medium text-gray-800"
+                      href="https://ycombinator.com/blog/author/garry"
+                    >
+                      Garry Tan
+                    </p>
+                    <div class="flex space-x-1 text-sm text-gray-500">
+                      <span><time>2026-02-05T00:00:00Z</time></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative isolate z-0 pt-6 pb-6">
+        <div class="mx-auto max-w-ycdc-page px-4">
+          <div class="mt-2 grid max-w-lg gap-5">
+            <div class="col-span-2">
+              <h3
+                class="text-xl font-semibold uppercase tracking-wider text-yellow-600"
+              >
+                All Posts
+              </h3>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/congratulations-to-equipmentshare"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        Congratulations to EquipmentShare on Going Public
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/garry"
+                        >Garry Tan</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2026-01-23T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      Today, EquipmentShare (YC W15) goes public. From Missouri
+                      to 373 locations nationwide, they&#39;ve built the
+                      operating system construction has been missing—built by
+                      contractors, for contractors. Congrats to Jabbok, Willy,
+                      and the EquipmentShare team on a huge milestone.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/congratulations-to-equipmentshare"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/the-yc-ai-student-starter-pack"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        Announcing the YC AI Stack
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/ankit-gupta"
+                        >Ankit Gupta</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2026-01-16T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      We&#39;ve partnered with nearly two dozen companies to
+                      offer students who attend YC events a suite of over
+                      $25,000 in free credits for AI devtools.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/the-yc-ai-student-starter-pack"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/2026-demo-days"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        2026 Demo Day Dates
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/yc"
+                        >Y Combinator</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2025-12-18T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      We’re excited to share the Demo Day dates for 2026 so
+                      founders, investors, and our broader community can plan
+                      ahead.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/2026-demo-days"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/meesho-goes-public"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        Meesho Goes Public
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/tim-brady"
+                        >Tim Brady</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2025-12-10T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      Meesho goes public today. From S16 to IPO, they’ve built
+                      one of India’s largest e-commerce platforms—empowering
+                      millions of small merchants to grow their businesses.
+                      Congrats to Vidit and Sanjeev on a decade of relentless
+                      building and listening to users!
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/meesho-goes-public"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/groww"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        Congratulations to Groww
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/jon-levy"
+                        >Jon Levy</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2025-11-12T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      Today, Groww, India&#39;s leading digital investing
+                      platform, goes public. Tens of millions use Groww to
+                      invest simply and confidently in stocks, mutual funds, and
+                      ETFs. As YC&#39;s first company to list in India, we
+                      couldn&#39;t be more proud.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/groww"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col overflow-hidden rounded-lg">
+                <div class="mb-6 mr-6 flex flex-1 flex-col justify-between">
+                  <div class="flex-1">
+                    <a
+                      class="mt-2 block"
+                      href="https://ycombinator.com/blog/billiontoone"
+                      ><p class="text-3xl font-semibold text-gray-900">
+                        BillionToOne Goes Public — The Startup That Made Genetic
+                        Testing Universal
+                      </p></a
+                    >
+                    <p class="text-md py-2 text-gray-500">
+                      by<a
+                        class="text-blue-500"
+                        href="https://ycombinator.com/blog/author/jared-friedman"
+                        >Jared Friedman</a
+                      ><span class="ml-4 text-sm font-normal"
+                        ><time>2025-11-06T00:00:00Z</time></span
+                      >
+                    </p>
+                    <p class="mt-3 text-base text-gray-800">
+                      Today, BillionToOne goes public, becoming YC&#39;s fourth
+                      publicly traded biotech company. More importantly, they
+                      have built one of the most important genetic tests in the
+                      U.S. Today, 1 in 11 babies born in the US are tested with
+                      BillionToOne&#39;s fetal genetic test.
+                    </p>
+                    <div
+                      class="mt-4 inline-flex text-sm font-medium text-blue-500"
+                      href="https://ycombinator.com/blog/billiontoone"
+                    >
+                      Read More
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <nav
+                class="flex items-center justify-between border-t border-gray-200 py-3"
+              >
+                <div class="hidden">
+                  <p class="text-sm text-gray-700">
+                    Showing<span class="font-medium">1</span>to<span
+                      class="font-medium"
+                      >10</span
+                    >of<span class="font-medium">2681</span>total posts
+                  </p>
+                </div>
+                <div
+                  class="flex flex-1 justify-between relative ml-3 inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700"
+                >
+                  Next
+                </div>
+              </nav>
+            </div>
+            <div class="ml-20">
+              <div class="mb-4">
+                <p
+                  class="text-xl font-semibold tracking-wider text-gray-800 uppercase mb-2"
+                >
+                  Categories
+                </p>
+                <a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/admissions"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Admissions
+                  </div></a
+                ><a class="flex" href="https://ycombinator.com/blog/tag/advice"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Advice
+                  </div></a
+                ><a class="flex" href="https://ycombinator.com/blog/tag/biotech"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Biotech
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/blockchain"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Blockchain
+                  </div></a
+                ><a class="flex" href="https://ycombinator.com/blog/tag/essay"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Essay
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/female-founders"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Female Founders
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/founder-stories"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Founder Stories
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/interview"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Interviews
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/startup-school"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Startup School
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/work-at-a-startup"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    Work at a Startup
+                  </div></a
+                ><a
+                  class="flex"
+                  href="https://ycombinator.com/blog/tag/yc-events"
+                  ><div
+                    class="text-md mb-3 rounded bg-beige-medium px-2 py-1 font-medium text-gray-800"
+                  >
+                    YC Events
+                  </div></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="relative isolate z-0 pt-6 pb-6 flex items-center justify-center"
+      >
+        <div class="mx-auto max-w-ycdc-page px-4">
+          <div class="w-96">
+            <p class="mb-6 font-light">
+              Want to sign up for weekly updates from YC?<a
+                class="text-link underline decoration-gray-500 underline-offset-2 transition-all"
+                href="https://ycombinator.com/newsletter/subscribe?signup_source=ycdc_blog"
+                >Sign up for the newsletter</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <footer class="bg-black text-beige-light">
+        <div class="mx-auto max-w-ycdc-page px-6 py-12">
+          <div class="flex flex-col space-y-8">
+            <div class="flex flex-col items-start">
+              <div class="flex flex-row items-center gap-3">
+                <a class="block shrink-0" href="https://ycombinator.com/"
+                  ><span class="sr-only">Y Combinator</span></a
+                >
+                <h3 class="font-light text-base text-beige-light">
+                  Make something people want.
+                </h3>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 items-start gap-8">
+              <div>
+                <h3 class="font-medium tracking-wider text-sm text-beige-light">
+                  Programs
+                </h3>
+                <ul class="mt-2 space-y-1">
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/about"
+                  >
+                    YC Program
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://startupschool.org"
+                  >
+                    Startup School
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/jobs"
+                  >
+                    Work at a Startup
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/cofounder-matching"
+                  >
+                    Co-Founder Matching
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="font-medium tracking-wider text-sm text-beige-light">
+                  Resources
+                </h3>
+                <ul class="mt-2 space-y-1">
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/companies"
+                  >
+                    Startup Directory
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/library"
+                  >
+                    Startup Library
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/investors"
+                  >
+                    Investors
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/demoday"
+                  >
+                    Demo Day
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/safe"
+                  >
+                    SAFE
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://news.ycombinator.com/"
+                  >
+                    Hacker News
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/launches"
+                  >
+                    Launch YC
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://deals.ycombinator.com"
+                  >
+                    YC Deals
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="font-medium tracking-wider text-sm text-beige-light">
+                  Company
+                </h3>
+                <ul class="mt-2 space-y-1">
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/blog"
+                  >
+                    YC Blog
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/contact"
+                  >
+                    Contact
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/press"
+                  >
+                    Press
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/people"
+                  >
+                    People
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/software"
+                  >
+                    Careers
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/legal#privacy"
+                  >
+                    Privacy Policy
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/legal#notice-at-collection"
+                  >
+                    Notice at Collection
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/security"
+                  >
+                    Security
+                  </li>
+                  <li
+                    class="font-light text-sm text-beige-light transition-colors"
+                    href="https://ycombinator.com/legal#tou"
+                  >
+                    Terms of Use
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 border-t border-gray-200 pt-8">
+            <p class="mt-8 font-light text-sm text-beige-light">
+              © 2026 Y Combinator
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

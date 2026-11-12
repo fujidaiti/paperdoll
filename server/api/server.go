@@ -100,6 +100,11 @@ func NewServer(db *sql.DB, httpProxy *url.URL, emailSender infra.EmailSender) *h
 	authorized.HandleFunc("GET /feeds/{id}", h.getFeed)
 	authorized.HandleFunc("DELETE /feeds/{id}", h.unsubscribeFromFeed)
 	authorized.HandleFunc("GET /feeds/{id}/timeline", h.getFeedTimeline)
+	authorized.HandleFunc("POST /feeds/{id}/selector-editors", h.openSelectorEditor)
+	authorized.HandleFunc("GET /feeds/{id}/selector-editors/{eid}", h.getSelectorEditor)
+	authorized.HandleFunc("PUT /feeds/{id}/selector-editors/{eid}/marks", h.updateSelectorEditorMarks)
+	authorized.HandleFunc("POST /feeds/{id}/selector-editors/{eid}/commit", h.commitSelectorEditor)
+	authorized.HandleFunc("DELETE /feeds/{id}/selector-editors/{eid}", h.closeSelectorEditor)
 	authorized.HandleFunc("GET /feed-entries/{id}", h.getFeedEntry)
 	authorized.HandleFunc("GET /web-clips/{id}", h.getWebClip)
 	authorized.HandleFunc("POST /reading-list", h.saveToReadingList)
@@ -372,6 +377,9 @@ type feedSchema struct {
 	// Subscribed reports whether the calling user is subscribed to this feed.
 	// The feeds row itself is shared across all users.
 	Subscribed bool `json:"subscribed"`
+	// HasSelectors reports whether post selectors are saved for the feed, which
+	// only an unstructured feed can have.
+	HasSelectors bool `json:"has_selectors"`
 }
 
 type getFeedsResBody struct {
@@ -410,7 +418,8 @@ func (h *Handler) getFeeds(w http.ResponseWriter, r *http.Request) {
 	rows, err := h.DB.QueryContext(ctx, fmt.Sprintf(`
 		SELECT *
 		FROM (
-			SELECT f.id, f.url, f.site_url, f.icon_url, f.title, f.description, LEFT(title, %d) AS sort_key
+			SELECT f.id, f.url, f.site_url, f.icon_url, f.title, f.description, f.extraction_rules IS NOT NULL,
+				LEFT(title, %d) AS sort_key
 			FROM feed_subscriptions s JOIN feeds f
 			ON s.user_id = $1 AND s.feed_id = f.id
 		)
@@ -431,7 +440,7 @@ func (h *Handler) getFeeds(w http.ResponseWriter, r *http.Request) {
 	for rows.Next() {
 		var f feedSchema
 		var su, iu, desc sql.NullString
-		err := rows.Scan(&f.ID, &f.URL, &su, &iu, &f.Title, &desc, new(string))
+		err := rows.Scan(&f.ID, &f.URL, &su, &iu, &f.Title, &desc, &f.HasSelectors, new(string))
 		if err != nil {
 			fmt.Print(err)
 			serverError(w, http.StatusInternalServerError, "Failed to fetch feeds")
@@ -508,14 +517,14 @@ func (h *Handler) getFeed(w http.ResponseWriter, r *http.Request) {
 	var su, iu, desc sql.NullString
 	err = h.DB.QueryRowContext(ctx, `
 		SELECT
-			id, url, site_url, icon_url, title, description,
+			id, url, site_url, icon_url, title, description, extraction_rules IS NOT NULL,
 			EXISTS (
 				SELECT 1 FROM feed_subscriptions
 				WHERE user_id = $2 AND feed_id = feeds.id
 			)
 		FROM feeds
 		WHERE id = $1;
-	`, id, uid).Scan(&res.ID, &res.URL, &su, &iu, &res.Title, &desc, &res.Subscribed)
+	`, id, uid).Scan(&res.ID, &res.URL, &su, &iu, &res.Title, &desc, &res.HasSelectors, &res.Subscribed)
 	if errors.Is(err, sql.ErrNoRows) {
 		fmt.Print(err)
 		serverError(w, http.StatusNotFound, "No feed found")
@@ -753,6 +762,7 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 	uid, ok := UserIDFromContext(ctx)
 	if !ok {
 		serverError(w, http.StatusUnauthorized, "unauthorized")
+		return
 	}
 
 	fd, err := h.FeedService.Subscribe(ctx, uid, *u)
@@ -763,10 +773,11 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res := subscribeToFeedResBody{
-		ID:         fd.ID,
-		URL:        fd.URL.String(),
-		Title:      fd.Title,
-		Subscribed: true,
+		ID:           fd.ID,
+		URL:          fd.URL.String(),
+		Title:        fd.Title,
+		Subscribed:   true,
+		HasSelectors: fd.HasSelectors,
 	}
 	if u := fd.SiteURL; u != nil {
 		res.SiteURL = u.String()
@@ -785,6 +796,181 @@ func (h *Handler) subscribeToFeed(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	_, _ = w.Write(jres)
+}
+
+// openSelectorEditor opens a new selector editor of an unstructured feed (see
+// feed.SelectorEditor) for the caller.
+func (h *Handler) openSelectorEditor(w http.ResponseWriter, r *http.Request) {
+	id, err := strconv.Atoi(r.PathValue("id"))
+	if err != nil {
+		fmt.Print(err)
+		serverError(w, http.StatusBadRequest, "Invalid feed id")
+		return
+	}
+	uid, ok := UserIDFromContext(r.Context())
+	if !ok {
+		serverError(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	e, err := h.FeedService.OpenSelectorEditor(r.Context(), uid, id)
+	switch {
+	case errors.Is(err, feed.ErrFeedNotFound):
+		serverError(w, http.StatusNotFound, "No feed found")
+		return
+	case errors.Is(err, feed.ErrNotUnstructured):
+		serverError(w, http.StatusConflict, "The feed is not an unstructured feed")
+		return
+	case err != nil:
+		fmt.Println(err)
+		serverError(w, http.StatusBadGateway, "Failed to fetch the page")
+		return
+	}
+	jres, err := json.Marshal(e)
+	if err != nil {
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to construct JSON")
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	_, _ = w.Write(jres)
+}
+
+// selectorEditorParams returns the caller, the feed ID and the editor ID of a
+// request to a selector editor, or writes an error and returns false.
+func selectorEditorParams(w http.ResponseWriter, r *http.Request) (user.UserID, int, int, bool) {
+	id, err := strconv.Atoi(r.PathValue("id"))
+	if err != nil {
+		serverError(w, http.StatusBadRequest, "Invalid feed id")
+		return 0, 0, 0, false
+	}
+	eid, err := strconv.Atoi(r.PathValue("eid"))
+	if err != nil {
+		serverError(w, http.StatusBadRequest, "Invalid selector editor id")
+		return 0, 0, 0, false
+	}
+	uid, ok := UserIDFromContext(r.Context())
+	if !ok {
+		serverError(w, http.StatusUnauthorized, "unauthorized")
+		return 0, 0, 0, false
+	}
+	return uid, id, eid, true
+}
+
+// getSelectorEditor returns a selector editor of the caller with its stored
+// marks, as openSelectorEditor does for a new one.
+func (h *Handler) getSelectorEditor(w http.ResponseWriter, r *http.Request) {
+	uid, id, eid, ok := selectorEditorParams(w, r)
+	if !ok {
+		return
+	}
+	e, err := h.FeedService.GetSelectorEditor(r.Context(), uid, id, eid)
+	switch {
+	case errors.Is(err, feed.ErrEditorNotFound):
+		serverError(w, http.StatusNotFound, "No selector editor found")
+		return
+	case errors.Is(err, feed.ErrEditorExpired):
+		serverError(w, http.StatusGone, "The selector editor expired")
+		return
+	case err != nil:
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to get the selector editor")
+		return
+	}
+	jres, err := json.Marshal(e)
+	if err != nil {
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to construct JSON")
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	_, _ = w.Write(jres)
+}
+
+// updateSelectorEditorMarks replaces the marks of a selector editor of the
+// caller, and returns what the selectors generated from them find.
+func (h *Handler) updateSelectorEditorMarks(w http.ResponseWriter, r *http.Request) {
+	uid, id, eid, ok := selectorEditorParams(w, r)
+	if !ok {
+		return
+	}
+	var marks feed.Marks
+	// TODO(#113): Limit request body size (http.MaxBytesReader)
+	if err := json.NewDecoder(r.Body).Decode(&marks); err != nil {
+		fmt.Print(err)
+		serverError(w, http.StatusBadRequest, "Failed to parse request body")
+		return
+	}
+	state, err := h.FeedService.UpdateSelectorEditorMarks(r.Context(), uid, id, eid, marks)
+	switch {
+	case errors.Is(err, feed.ErrInvalidMarks):
+		serverError(w, http.StatusBadRequest, err.Error())
+		return
+	case errors.Is(err, feed.ErrEditorNotFound):
+		serverError(w, http.StatusNotFound, "No selector editor found")
+		return
+	case errors.Is(err, feed.ErrEditorExpired):
+		serverError(w, http.StatusGone, "The selector editor expired")
+		return
+	case err != nil:
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to update the marks")
+		return
+	}
+	jres, err := json.Marshal(state)
+	if err != nil {
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to construct JSON")
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	_, _ = w.Write(jres)
+}
+
+// commitSelectorEditor saves the selectors of a selector editor of the caller
+// to its feed, and deletes the editor.
+func (h *Handler) commitSelectorEditor(w http.ResponseWriter, r *http.Request) {
+	uid, id, eid, ok := selectorEditorParams(w, r)
+	if !ok {
+		return
+	}
+	err := h.FeedService.CommitSelectorEditor(r.Context(), uid, id, eid)
+	switch {
+	case errors.Is(err, feed.ErrEditorNotFound):
+		serverError(w, http.StatusNotFound, "No selector editor found")
+		return
+	case errors.Is(err, feed.ErrEditorExpired):
+		serverError(w, http.StatusGone, "The selector editor expired")
+		return
+	case errors.Is(err, feed.ErrNoSelectors):
+		serverError(w, http.StatusConflict, "The selector editor has no selectors")
+		return
+	case err != nil:
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to save selectors")
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
+}
+
+// closeSelectorEditor deletes a selector editor of the caller without saving
+// its selectors.
+func (h *Handler) closeSelectorEditor(w http.ResponseWriter, r *http.Request) {
+	uid, id, eid, ok := selectorEditorParams(w, r)
+	if !ok {
+		return
+	}
+	err := h.FeedService.CloseSelectorEditor(r.Context(), uid, id, eid)
+	switch {
+	case errors.Is(err, feed.ErrEditorNotFound):
+		serverError(w, http.StatusNotFound, "No selector editor found")
+		return
+	case err != nil:
+		fmt.Println(err)
+		serverError(w, http.StatusInternalServerError, "Failed to close the selector editor")
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
 }
 
 type saveToReadingListReqBody struct {

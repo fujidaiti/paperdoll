@@ -1,0 +1,42 @@
+{
+  "selectors": [
+    {
+      "box": [{ "tag": "div", "cls": ["lb-row", "lb-snap"] }],
+      "title": [{ "tag": "h2", "cls": ["lb-bold", "blog-post-title"] }],
+      "link": [
+        { "tag": "div", "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"] },
+        { "tag": "a" }
+      ],
+      "body": [{ "tag": "section", "cls": ["blog-post-excerpt", "lb-rtxt"] }],
+      "thumbnail": [
+        {
+          "tag": "img",
+          "cls": ["attachment-large", "size-large", "wp-post-image"]
+        }
+      ],
+      "pubDate": [
+        { "tag": "footer", "cls": ["blog-post-meta"] },
+        { "tag": "span" },
+        { "tag": "time" }
+      ]
+    },
+    {
+      "box": [{ "tag": "div", "cls": ["lb-row", "lb-snap"] }],
+      "title": [{ "tag": "h2", "cls": ["lb-bold", "blog-post-title"] }],
+      "link": [
+        { "tag": "div", "cls": ["lb-col", "lb-mid-6", "lb-tiny-24"] },
+        { "tag": "a" }
+      ],
+      "body": [
+        { "tag": "section", "cls": ["blog-post-excerpt", "lb-rtxt"] },
+        { "tag": "p" }
+      ],
+      "thumbnail": [{ "tag": "img", "cls": ["wp-post-image"] }],
+      "pubDate": [
+        { "tag": "footer", "cls": ["blog-post-meta"] },
+        { "tag": "span" },
+        { "tag": "time" }
+      ]
+    }
+  ]
+}

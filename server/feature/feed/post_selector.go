@@ -1,0 +1,516 @@
+package feed
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"iter"
+	"net/url"
+	"slices"
+	"sort"
+	"strings"
+
+	"golang.org/x/net/html"
+)
+
+// The functions below read a node of a simplified page (see SimplifyPage).
+// The client reads its nodes by the same rules.
+
+// tagOf returns the tag of the element n, or "" for a text node.
+func tagOf(n *html.Node) string {
+	if n.Type != html.ElementNode {
+		return ""
+	}
+	return n.Data
+}
+
+func classesOf(n *html.Node) []string {
+	return strings.Fields(attr(n, "class"))
+}
+
+// isValue reports whether n is a value: a text node, or an element without
+// child elements. Other elements are containers.
+func isValue(n *html.Node) bool {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		if c.Type == html.ElementNode {
+			return false
+		}
+	}
+	return true
+}
+
+// childrenOf returns the child nodes of the container n, or none when n is a
+// value, since the text of a value element is a part of it rather than a node
+// of its own.
+func childrenOf(n *html.Node) iter.Seq[*html.Node] {
+	if isValue(n) {
+		return func(func(*html.Node) bool) {}
+	}
+	return n.ChildNodes()
+}
+
+// textOf returns the text of the value n: the alt text of an image, or else
+// the text in n.
+func textOf(n *html.Node) string {
+	switch {
+	case n.Type == html.TextNode:
+		return n.Data
+	case n.Data == "img":
+		return attr(n, "alt")
+	}
+	var b strings.Builder
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		if c.Type == html.TextNode {
+			b.WriteString(c.Data)
+		}
+	}
+	return b.String()
+}
+
+// linkOf returns the link of n: the URL of an image, or else the link target.
+func linkOf(n *html.Node) string {
+	if tagOf(n) == "img" {
+		return attr(n, "src")
+	}
+	return attr(n, "href")
+}
+
+// pageBody returns the body of page, a simplified page parsed by html.Parse,
+// which always adds a body.
+func pageBody(page *html.Node) *html.Node {
+	for n := range page.Descendants() {
+		if n.Type == html.ElementNode && n.Data == "body" {
+			return n
+		}
+	}
+	return nil
+}
+
+// PostField is an attribute of a post that the user maps to nodes of a page.
+type PostField string
+
+const (
+	PostTitle PostField = "title"
+	// PostBody is the text of a post as one line (see bodyText).
+	PostBody      PostField = "body"
+	PostLink      PostField = "link"
+	PostThumbnail PostField = "thumbnail"
+	PostPubDate   PostField = "pubDate"
+)
+
+// valueOf returns the value that f takes when it is mapped to n, or false
+// when n has none, such as an image without alt text mapped to a title.
+func (f PostField) valueOf(n *html.Node) (string, bool) {
+	var v string
+	switch f {
+	case PostBody:
+		v = bodyText(n)
+	case PostLink, PostThumbnail:
+		v = linkOf(n)
+	case PostTitle, PostPubDate:
+		v = textOf(n)
+	}
+	return v, v != ""
+}
+
+// accepts reports whether f can take a value from n: a title from a text, a
+// link from a node with a link other than an image, a thumbnail from an
+// image, a pub date from a time, and a body from a node with text.
+func (f PostField) accepts(n *html.Node) bool {
+	img, time := tagOf(n) == "img", tagOf(n) == "time"
+	switch f {
+	case PostTitle:
+		return isValue(n) && !img && !time && textOf(n) != ""
+	case PostBody:
+		return !img && !time && bodyText(n) != ""
+	case PostLink:
+		return !img && linkOf(n) != ""
+	case PostThumbnail:
+		return img
+	case PostPubDate:
+		return time
+	}
+	return false
+}
+
+// Step selects nodes by their tag and classes, as a step of a CSS descendant
+// selector does: the descendants of a node that have Tag and every class in
+// Cls. A step without Tag selects plain texts, which have no tag. When Nth is
+// set, only the one at that zero-based index among them in document order is
+// selected.
+type Step struct {
+	Tag string   `json:"tag,omitempty"`
+	Cls []string `json:"cls,omitempty"`
+	Nth *int     `json:"nth,omitempty"`
+}
+
+func (s Step) matches(n *html.Node) bool {
+	if tagOf(n) != s.Tag {
+		return false
+	}
+	cls := classesOf(n)
+	for _, c := range s.Cls {
+		if !slices.Contains(cls, c) {
+			return false
+		}
+	}
+	return true
+}
+
+// PostSelector is a rule that finds the posts of one kind in a page and
+// extracts their fields. A selector editor generates selectors from the posts
+// that the user marks on a page (see SelectorEditor), and the server runs
+// them on each fetch of the page.
+//
+// Box is the path of steps to the post nodes: the first step selects
+// descendants of the root, and each later step selects children of the nodes
+// that the previous step selects. Each field has one path of steps from a
+// post node to the node of its value; an empty path is the post node itself.
+// Title and Link are required, since they define the kind of posts. Body,
+// Thumbnail and PubDate are nil when the posts have none. A node that Box
+// selects is a post only when its title and link are found (see hasFields),
+// when its link is not in ExcludeLinks of its ExtractionRules, and when it
+// contains no other such node (see candidates).
+type PostSelector struct {
+	Box []Step `json:"box"`
+	// omitzero leaves out the fields that the selector does not have, and
+	// keeps an empty path, which is the post node itself, as [].
+	Title     []Step `json:"title,omitzero"`
+	Link      []Step `json:"link,omitzero"`
+	Body      []Step `json:"body,omitzero"`
+	Thumbnail []Step `json:"thumbnail,omitzero"`
+	PubDate   []Step `json:"pubDate,omitzero"`
+}
+
+// pathOf returns the path of f, or false when m has none.
+func (m *PostSelector) pathOf(f PostField) ([]Step, bool) {
+	var path []Step
+	switch f {
+	case PostTitle:
+		path = m.Title
+	case PostLink:
+		path = m.Link
+	case PostBody:
+		path = m.Body
+	case PostThumbnail:
+		path = m.Thumbnail
+	case PostPubDate:
+		path = m.PubDate
+	}
+	return path, path != nil
+}
+
+// Fields returns the path of each field that has one.
+func (m *PostSelector) Fields() map[PostField][]Step {
+	fields := make(map[PostField][]Step)
+	for _, f := range []PostField{PostTitle, PostBody, PostLink, PostThumbnail, PostPubDate} {
+		if path, ok := m.pathOf(f); ok {
+			fields[f] = path
+		}
+	}
+	return fields
+}
+
+// UnmarshalJSON fails on an unknown key, such as a field that PostField does
+// not define, and when the title or the link has no path.
+func (m *PostSelector) UnmarshalJSON(data []byte) error {
+	// postSelector has the fields of PostSelector without this method.
+	type postSelector PostSelector
+	d := json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	var j postSelector
+	if err := d.Decode(&j); err != nil {
+		return err
+	}
+	if j.Title == nil || j.Link == nil {
+		return fmt.Errorf("no path of the title or the link")
+	}
+	*m = PostSelector(j)
+	return nil
+}
+
+// ExtractionRules are the rules that extract the posts of a page: the post
+// selectors, and the exclusions that apply to all of them.
+//
+// ExcludeLinks holds the host and path of each link that the user excluded.
+// A post whose link has the host and path of one of them is not a post,
+// whatever the scheme, the query and the fragment of the link are.
+//
+// ExcludeNodes holds the paths of the nodes that the user excluded with their
+// subtrees, such as a menu. Each step of such a path selects children, from
+// the body to the node, and has the tag of its node and Nth, the index of the
+// node among the children of its parent with the same tag, so that a path
+// selects a node by its position in the page. The selectors run as if the
+// subtrees of these nodes were not in the page.
+type ExtractionRules struct {
+	Selectors    []PostSelector `json:"selectors"`
+	ExcludeLinks []string       `json:"excludeLinks,omitempty"`
+	ExcludeNodes [][]Step       `json:"excludeNodes,omitempty"`
+}
+
+// selectNodes returns the nodes that path selects from start, in document
+// order. With children, each step after the first selects among the children
+// of the nodes that the previous step selects, instead of their descendants.
+// The subtrees of the nodes in skip are left out.
+func selectNodes(start *html.Node, path []Step, children bool, skip map[*html.Node]bool) []*html.Node {
+	nodes := []*html.Node{start}
+	for i, step := range path {
+		var next []*html.Node
+		seen := map[*html.Node]bool{}
+		for _, n := range nodes {
+			var matches []*html.Node
+			var visit func(n *html.Node)
+			visit = func(n *html.Node) {
+				for c := range childrenOf(n) {
+					if skip[c] {
+						continue
+					}
+					if step.matches(c) {
+						matches = append(matches, c)
+					}
+					if !children || i == 0 {
+						visit(c)
+					}
+				}
+			}
+			visit(n)
+			if step.Nth != nil {
+				if *step.Nth >= len(matches) {
+					continue
+				}
+				matches = matches[*step.Nth : *step.Nth+1]
+			}
+			for _, m := range matches {
+				if !seen[m] {
+					seen[m] = true
+					next = append(next, m)
+				}
+			}
+		}
+		nodes = next
+	}
+	return nodes
+}
+
+// excludedNodes returns the nodes in body that the paths of ExcludeNodes
+// select. A path that selects no node is left out.
+func (r *ExtractionRules) excludedNodes(body *html.Node) map[*html.Node]bool {
+	excluded := map[*html.Node]bool{}
+paths:
+	for _, path := range r.ExcludeNodes {
+		n := body
+		for _, step := range path {
+			var next *html.Node
+			i := 0
+			for c := range childrenOf(n) {
+				if !step.matches(c) {
+					continue
+				}
+				if step.Nth == nil || i == *step.Nth {
+					next = c
+					break
+				}
+				i++
+			}
+			if next == nil {
+				continue paths
+			}
+			n = next
+		}
+		if n != body {
+			excluded[n] = true
+		}
+	}
+	return excluded
+}
+
+// selectPosts returns the post nodes that m finds in body, the body of a
+// simplified page: the candidates (see candidates) whose links are not
+// excluded. skip holds the excluded nodes (see excludedNodes), and excluded
+// the excluded links (see excludedLinks).
+func (m *PostSelector) selectPosts(body *html.Node, skip map[*html.Node]bool, excluded map[string]bool) []*html.Node {
+	return slices.DeleteFunc(m.candidates(body, skip), func(n *html.Node) bool {
+		_, ok := m.excludedLink(n, excluded, skip)
+		return ok
+	})
+}
+
+// candidates returns the nodes in body that Box selects and that have the
+// title and the link, including the ones whose links are excluded. A node that
+// contains another such node is left out, since it is a list of posts rather
+// than a post. Other nodes that Box selects inside a post, such as a footer
+// with the same classes, do not matter. The subtrees of the nodes in skip are
+// left out.
+func (m *PostSelector) candidates(body *html.Node, skip map[*html.Node]bool) []*html.Node {
+	if len(m.Box) == 0 {
+		return nil
+	}
+	selected := map[*html.Node]bool{}
+	for _, n := range selectNodes(body, m.Box, true, skip) {
+		selected[n] = true
+	}
+	var posts []*html.Node
+	// visit returns whether n is or contains a selected node with the title
+	// and the link.
+	var visit func(n *html.Node) bool
+	visit = func(n *html.Node) bool {
+		inner := false
+		for c := range childrenOf(n) {
+			if !skip[c] {
+				inner = visit(c) || inner
+			}
+		}
+		isPost := selected[n] && m.hasFields(n, skip)
+		if isPost && !inner {
+			posts = append(posts, n)
+		}
+		return inner || isPost
+	}
+	visit(body)
+	return posts
+}
+
+// hasFields reports whether post has the title and the link. The other fields
+// are optional, since posts of one kind often lack some of them, such as the
+// date of a featured post.
+func (m *PostSelector) hasFields(post *html.Node, skip map[*html.Node]bool) bool {
+	return m.resolveField(post, PostTitle, skip) != nil && m.resolveField(post, PostLink, skip) != nil
+}
+
+// resolveField returns the node of f in post: the first node that the path
+// of f selects outside the subtrees of skip and that f accepts, or nil when
+// there is none.
+func (m *PostSelector) resolveField(post *html.Node, f PostField, skip map[*html.Node]bool) *html.Node {
+	path, ok := m.pathOf(f)
+	if !ok {
+		return nil
+	}
+	return resolvePath(post, f, path, skip)
+}
+
+// resolvePath returns the first node that path selects from post outside the
+// subtrees of skip and that f accepts, or nil when there is none.
+func resolvePath(post *html.Node, f PostField, path []Step, skip map[*html.Node]bool) *html.Node {
+	for _, n := range selectNodes(post, path, false, skip) {
+		if f.accepts(n) {
+			return n
+		}
+	}
+	return nil
+}
+
+// excludedLinks returns the set of the links in ExcludeLinks.
+func (r *ExtractionRules) excludedLinks() map[string]bool {
+	excluded := map[string]bool{}
+	for _, l := range r.ExcludeLinks {
+		excluded[l] = true
+	}
+	return excluded
+}
+
+// excludedLink returns the host and path of the link of post when they are
+// in excluded, the excluded links (see excludedLinks), or false when they are
+// not. skip holds the excluded nodes.
+func (m *PostSelector) excludedLink(
+	post *html.Node,
+	excluded map[string]bool,
+	skip map[*html.Node]bool,
+) (string, bool) {
+	n := m.resolveField(post, PostLink, skip)
+	if n == nil {
+		return "", false
+	}
+	u, err := url.Parse(linkOf(n))
+	if err != nil {
+		return "", false
+	}
+	hostPath := u.Host + u.Path
+	if !excluded[hostPath] {
+		return "", false
+	}
+	return hostPath, true
+}
+
+// ExtractedPost is a post that a selector found in a page, by its field
+// values.
+type ExtractedPost map[PostField]string
+
+// ExtractPosts returns the posts that rules find in page, a simplified page
+// parsed by html.Parse, in document order.
+// Posts with the same link are merged into the first one, which takes the
+// fields that it does not have from the later ones, since some pages split a
+// post into sibling cards with the same link, such as one with the image and
+// one with the title. Posts without a link are dropped.
+func ExtractPosts(page *html.Node, rules ExtractionRules) []ExtractedPost {
+	body := pageBody(page)
+	order := map[*html.Node]int{}
+	for n := range body.Descendants() {
+		order[n] = len(order)
+	}
+
+	type found struct {
+		node   *html.Node
+		values ExtractedPost
+	}
+	var posts []found
+	skip := rules.excludedNodes(body)
+	excluded := rules.excludedLinks()
+	for _, m := range rules.Selectors {
+		for _, n := range m.selectPosts(body, skip, excluded) {
+			values := make(ExtractedPost)
+			for field := range m.Fields() {
+				if v := m.resolveField(n, field, skip); v != nil {
+					if val, ok := field.valueOf(v); ok {
+						values[field] = val
+					}
+				}
+			}
+			posts = append(posts, found{n, values})
+		}
+	}
+	sort.SliceStable(posts, func(i, j int) bool { return order[posts[i].node] < order[posts[j].node] })
+
+	var result []ExtractedPost
+	byLink := map[string]ExtractedPost{}
+	for _, p := range posts {
+		link, ok := p.values[PostLink]
+		if !ok {
+			continue
+		}
+		first, ok := byLink[link]
+		if !ok {
+			byLink[link] = p.values
+			result = append(result, p.values)
+			continue
+		}
+		for field, v := range p.values {
+			if _, ok := first[field]; !ok {
+				first[field] = v
+			}
+		}
+	}
+	return result
+}
+
+// bodyText returns the text of the values in the subtree of n, joined with
+// spaces as in the page, such as "Review’s" from the values "Review" and
+// "’s". Images and times are left out, and links keep only their text. A
+// body is a short summary shown below the title of a post, so its structure
+// does not matter.
+func bodyText(n *html.Node) string {
+	var texts []string
+	var visit func(n *html.Node)
+	visit = func(n *html.Node) {
+		if tag := tagOf(n); tag == "img" || tag == "time" {
+			return
+		}
+		if n.Type == html.TextNode {
+			texts = append(texts, n.Data)
+		}
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			visit(c)
+		}
+	}
+	visit(n)
+	return normalizeSpace(closeGaps(strings.Join(texts, gap)))
+}
