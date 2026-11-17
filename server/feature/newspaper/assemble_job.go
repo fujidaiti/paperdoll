@@ -23,6 +23,15 @@ func CollectJobs(ctx context.Context, db *sql.DB, now time.Time) ([]Job, error) 
 	}
 	fmt.Printf("Prepare for next schedule: %s\n", pubDate)
 
+	// Newspapers are assembled a few minutes before they are published. Entries
+	// published in the previous interval but stored after its newspaper was
+	// assembled go into this newspaper, so the window also covers that interval.
+	prev, err := FindEditorialInterval(ctx, db, ei.Last.Add(-time.Nanosecond))
+	if err != nil {
+		return nil, err
+	}
+	window := EditorialInterval{Last: prev.Last, Next: ei.Next}
+
 	// Collect user IDs
 	rows, err := db.QueryContext(ctx, `SELECT id FROM users;`)
 	if err != nil {
@@ -64,16 +73,21 @@ func CollectJobs(ctx context.Context, db *sql.DB, now time.Time) ([]Job, error) 
 		} else if err != nil {
 			return nil, err
 		}
-		jobs = append(jobs, Job{db, uid, newspaperID})
+		jobs = append(jobs, Job{db, uid, newspaperID, window})
 	}
 
 	return jobs, nil
 }
 
+// Job assembles and publishes a newspaper for a user. The newspaper consists
+// of stories drafted from the entries of the user's subscribed feeds that were
+// published within Window, except for entries that the user already got as
+// stories in earlier newspapers.
 type Job struct {
 	DB          *sql.DB
 	UserID      user.UserID
 	NewspaperID int
+	Window      EditorialInterval
 }
 
 func (j *Job) Timeout() time.Duration {
@@ -111,11 +125,18 @@ func (j *Job) assembleAndPublish(ctx context.Context) (int64, error) {
 		}
 	}()
 
+	// TODO(#131): apply user-defined filters to feed entries
 	res, err := tx.ExecContext(ctx, `
-		UPDATE stories
-		SET newspaper_id = $1
-		WHERE newspaper_id IS NULL AND user_id = $2;
-	`, j.NewspaperID, j.UserID)
+		INSERT INTO stories (user_id, newspaper_id, feed_entry_id, title, description, source, published_at)
+		SELECT s.user_id, $2, e.id, e.title, e.description, f.title, e.published_at
+		FROM feed_subscriptions s
+		JOIN feeds f ON f.id = s.feed_id
+		JOIN feed_entries e ON e.feed_id = s.feed_id
+		WHERE s.user_id = $1
+			AND e.published_at > $3 AND e.published_at < $4
+			AND e.title <> ''
+		ON CONFLICT (user_id, feed_entry_id) DO NOTHING;
+	`, j.UserID, j.NewspaperID, j.Window.Last, j.Window.Next)
 	if err != nil {
 		return 0, err
 	}
