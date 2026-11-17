@@ -233,10 +233,9 @@ func TestFeed_Subscribe_StoresEntriesOfNewFeed(t *testing.T) {
 	}
 }
 
-// Subscribing to a feed that already exists on the server does not store its
-// items. New items are left to the polling job, which drafts stories from them
-// for the existing subscribers only when it is the first to store them.
-func TestFeed_Subscribe_LeavesEntriesOfExistingFeedToPolling(t *testing.T) {
+// Subscribing to a feed that already exists on the server stores its new items,
+// without duplicating the items that are already stored.
+func TestFeed_Subscribe_StoresNewEntriesOfExistingFeed(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	uidAlice, _ := provisionTestAccount(
 		t, "alice@example.com", "alice#password$123", "Pixel9a/Android",
@@ -264,7 +263,7 @@ func TestFeed_Subscribe_LeavesEntriesOfExistingFeedToPolling(t *testing.T) {
 	`, nil, func(rows *sql.Rows, k *string) error {
 		return rows.Scan(k)
 	})
-	want := []string{"subscribe-first", "subscribe-second"}
+	want := []string{"subscribe-first", "subscribe-second", "subscribe-third"}
 	if d := cmp.Diff(want, got); d != "" {
 		t.Errorf("stored feed entries mismatch:\n%s", d)
 	}

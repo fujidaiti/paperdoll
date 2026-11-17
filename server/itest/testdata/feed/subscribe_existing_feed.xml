@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Same feed as subscribe_new_feed.xml with one new item. Subscribing to it
-  while the feed already exists on the server should not store the new item,
-  which is left to the polling job.
+  while the feed already exists on the server should store only the new item.
 -->
 <rss version="2.0">
   <channel>
