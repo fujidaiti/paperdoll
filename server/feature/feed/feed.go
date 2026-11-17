@@ -27,16 +27,19 @@ type FeedAttrs struct {
 // Subscribe creates a new subscription to a web feed for the user, from its URL.
 // Feeds are identified by the URL and this operation is idempotent; subscribing
 // to the same feed (URL) twice has no additional effect.
+//
+// When the feed is new to the server, its current entries are stored too, so
+// that they are available before the first polling run.
 func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (Feed, error) {
 	// TODO: Check if the f already exists first to avoid making an unnecessary request
 	// TODO: Validate and cleanup the url (check schema, remove tracking params, etc.)
-	// TODO: Save fetched entries to DB
 	var f Feed
-	if a, err := s.fetchFeed(ctx, fu); err != nil {
+	var items []*gofeed.Item
+	if a, is, err := s.fetchFeed(ctx, fu); err != nil {
 		fmt.Println(err)
 		return Feed{}, err
 	} else {
-		f = Feed{FeedAttrs: a}
+		f, items = Feed{FeedAttrs: a}, is
 	}
 	var su, iu, desc sql.NullString
 	if u := f.IconURL; u != nil {
@@ -49,14 +52,25 @@ func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (F
 		desc = sql.NullString{String: *d, Valid: true}
 	}
 
+	// xmax is 0 only for a row inserted by this statement, not for an existing
+	// row touched by the ON CONFLICT update.
+	var created bool
 	err := s.DB.QueryRowContext(ctx, `
 		INSERT INTO feeds (url, site_url, icon_url, title, description)
 		VALUES ($1, $2, $3, $4, $5)
 		ON CONFLICT (url) DO UPDATE SET url = EXCLUDED.url
-		RETURNING id;
-	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID)
+		RETURNING id, xmax = 0;
+	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID, &created)
 	if err != nil {
 		return Feed{}, err
+	}
+	// Entries of an existing feed are left to the polling job. If they were
+	// stored here, the polling job would no longer see them as new, and would
+	// not draft stories from them for the existing subscribers.
+	if created {
+		if _, err := saveEntries(ctx, s.DB, f.ID, items); err != nil {
+			return Feed{}, err
+		}
 	}
 	_, err = s.DB.ExecContext(ctx, `
 		INSERT INTO feed_subscriptions (user_id, feed_id) VALUES ($1, $2)
@@ -95,17 +109,19 @@ func (s *Service) SearchFeeds(ctx context.Context, query string) ([]FeedAttrs, e
 	if err != nil {
 		return []FeedAttrs{}, nil
 	}
-	a, err := s.fetchFeed(ctx, *u)
+	a, _, err := s.fetchFeed(ctx, *u)
 	if err != nil {
 		return nil, err
 	}
 	return []FeedAttrs{a}, nil
 }
 
-func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) {
+// fetchFeed downloads and parses the feed, returning its attributes and its
+// current items.
+func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, []*gofeed.Item, error) {
 	res, err := s.scraper.Fetch(ctx, fu)
 	if err != nil {
-		return FeedAttrs{}, err
+		return FeedAttrs{}, nil, err
 	}
 	defer func() {
 		if err := res.Body.Close(); err != nil {
@@ -113,12 +129,12 @@ func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) 
 		}
 	}()
 	if res.StatusCode != http.StatusOK {
-		return FeedAttrs{}, fmt.Errorf("failed to fetch feed: %s", fu.String())
+		return FeedAttrs{}, nil, fmt.Errorf("failed to fetch feed: %s", fu.String())
 	}
 	// TODO: Limit body size
 	raw, err := gofeed.NewParser().Parse(res.Body)
 	if err != nil {
-		return FeedAttrs{}, err
+		return FeedAttrs{}, nil, err
 	}
 
 	a := FeedAttrs{URL: fu, Title: raw.Title}
@@ -135,5 +151,5 @@ func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) 
 	if raw.Description != "" {
 		a.Description = &raw.Description
 	}
-	return a, nil
+	return a, raw.Items, nil
 }

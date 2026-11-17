@@ -183,6 +183,93 @@ func TestFeed_Subscribe(t *testing.T) {
 	}
 }
 
+// Subscribing to a feed that is new to the server stores its current items as
+// entries, without waiting for the first polling run.
+func TestFeed_Subscribe_StoresEntriesOfNewFeed(t *testing.T) {
+	t.Cleanup(testenv.TearDown)
+	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
+	testenv.StubHTTP("subscribe.test", "/rss", "./testdata/feed/subscribe_new_feed.xml")
+
+	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
+	fd, err := s.Subscribe(t.Context(), uid, *must(url.Parse("http://subscribe.test/rss")))
+	if err != nil {
+		t.Fatalf("got %q, want a nil error", err)
+	}
+
+	type feedEntryRow struct {
+		DedupKey    string
+		FeedID      int
+		URL         string
+		Title       string
+		Description sql.NullString
+		Content     sql.NullString
+		PublishedAt sql.NullTime
+	}
+	got := scanRowsOrFatal(t, `
+		SELECT dedup_key, feed_id, url, title, description, content, published_at
+		FROM feed_entries ORDER BY dedup_key
+	`, nil, func(rows *sql.Rows, e *feedEntryRow) error {
+		return rows.Scan(&e.DedupKey, &e.FeedID, &e.URL, &e.Title, &e.Description, &e.Content, &e.PublishedAt)
+	})
+	want := []feedEntryRow{
+		{
+			DedupKey:    "subscribe-first",
+			FeedID:      fd.ID,
+			URL:         "http://articles.test/subscribe-first",
+			Title:       "First item",
+			Description: sql.NullString{String: "First desc", Valid: true},
+			PublishedAt: sql.NullTime{Time: mustTimeUTC("2026-07-15 09:00:00"), Valid: true},
+		},
+		{
+			DedupKey:    "subscribe-second",
+			FeedID:      fd.ID,
+			URL:         "http://articles.test/subscribe-second",
+			Title:       "Second item",
+			PublishedAt: sql.NullTime{Time: mustTimeUTC("2026-07-15 10:00:00"), Valid: true},
+		},
+	}
+	if d := cmp.Diff(want, got); d != "" {
+		t.Errorf("stored feed entries mismatch:\n%s", d)
+	}
+}
+
+// Subscribing to a feed that already exists on the server does not store its
+// items. New items are left to the polling job, which drafts stories from them
+// for the existing subscribers only when it is the first to store them.
+func TestFeed_Subscribe_LeavesEntriesOfExistingFeedToPolling(t *testing.T) {
+	t.Cleanup(testenv.TearDown)
+	uidAlice, _ := provisionTestAccount(
+		t, "alice@example.com", "alice#password$123", "Pixel9a/Android",
+		mustTimeUTC("2026-07-15 10:00:00"),
+	)
+	uidBob, _ := provisionTestAccount(
+		t, "bob@example.com", "bob#password$123", "iPhone17/iOS",
+		mustTimeUTC("2026-07-15 10:00:00"),
+	)
+	feedURL := must(url.Parse("http://subscribe.test/rss"))
+	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
+
+	testenv.StubHTTP("subscribe.test", "/rss", "./testdata/feed/subscribe_new_feed.xml")
+	if _, err := s.Subscribe(t.Context(), uidAlice, *feedURL); err != nil {
+		t.Fatalf("got %q, want a nil error for the first subscription", err)
+	}
+
+	testenv.StubHTTP("subscribe.test", "/rss", "./testdata/feed/subscribe_existing_feed.xml")
+	if _, err := s.Subscribe(t.Context(), uidBob, *feedURL); err != nil {
+		t.Fatalf("got %q, want a nil error for the second subscription", err)
+	}
+
+	got := scanRowsOrFatal(t, `
+		SELECT dedup_key FROM feed_entries ORDER BY dedup_key
+	`, nil, func(rows *sql.Rows, k *string) error {
+		return rows.Scan(k)
+	})
+	want := []string{"subscribe-first", "subscribe-second"}
+	if d := cmp.Diff(want, got); d != "" {
+		t.Errorf("stored feed entries mismatch:\n%s", d)
+	}
+}
+
 func TestFeed_Unsubscribe(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 

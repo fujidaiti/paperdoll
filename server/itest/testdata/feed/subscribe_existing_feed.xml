@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Same feed as subscribe_new_feed.xml with one new item. Subscribing to it
+  while the feed already exists on the server should not store the new item,
+  which is left to the polling job.
+-->
+<rss version="2.0">
+  <channel>
+    <title>Subscribe Test Feed</title>
+    <link>http://subscribe.test/</link>
+    <description>Feed used by feed subscription integration tests</description>
+    <item>
+      <title>First item</title>
+      <link>http://articles.test/subscribe-first</link>
+      <guid>subscribe-first</guid>
+      <description>First desc</description>
+      <pubDate>Wed, 15 Jul 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Second item</title>
+      <link>http://articles.test/subscribe-second</link>
+      <guid>subscribe-second</guid>
+      <pubDate>Wed, 15 Jul 2026 10:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Third item</title>
+      <link>http://articles.test/subscribe-third</link>
+      <guid>subscribe-third</guid>
+      <pubDate>Wed, 15 Jul 2026 11:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

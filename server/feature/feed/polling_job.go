@@ -81,57 +81,8 @@ func (j *Job) Do(ctx context.Context) error {
 
 	fmt.Printf("Got %d entries from %s\n", len(raw.Items), feed.URL)
 
-	// TODO: Batch insertions if the feed is too large
-	ncols := 7
-	vals := make([]string, 0, len(raw.Items))
-	args := make([]any, 0, len(raw.Items)*ncols)
-	snapshotAt := time.Now()
-	for i, item := range raw.Items {
-		j := i * ncols
-		vals = append(
-			vals,
-			fmt.Sprintf("($%d, $%d, $%d, $%d, $%d, $%d, $%d)", j+1, j+2, j+3, j+4, j+5, j+6, j+7),
-		)
-		e := normalizeEntry(item, feed.ID)
-		args = append(
-			args, e.dedupKey, e.feedId, e.url, e.title, e.description, snapshotAt, e.publishedAt,
-		)
-	}
-	sql := fmt.Sprintf(`
-		INSERT INTO feed_entries (dedup_key, feed_id, url, title, description, snapshot_at, published_at)
-		VALUES %s
-		ON CONFLICT (dedup_key) DO NOTHING
-		RETURNING id, dedup_key, feed_id, url, title, description, published_at;
-	`, strings.Join(vals, ","))
-	rows, err := db.QueryContext(ctx, sql, args...)
+	newEntries, err := saveEntries(ctx, db, feed.ID, raw.Items)
 	if err != nil {
-		return err
-	}
-	defer func() {
-		if err := rows.Close(); err != nil {
-			fmt.Println(err)
-		}
-	}()
-
-	var newEntries []entryRecord
-	for rows.Next() {
-		e := entryRecord{}
-		err := rows.Scan(
-			&e.id,
-			&e.dedupKey,
-			&e.feedId,
-			&e.url,
-			&e.title,
-			&e.description,
-			&e.publishedAt,
-		)
-		if err != nil {
-			// TODO: Make this case fail-soft instead of exiting.
-			return err
-		}
-		newEntries = append(newEntries, e)
-	}
-	if err := rows.Err(); err != nil {
 		return err
 	}
 	if len(newEntries) == 0 {
@@ -205,6 +156,70 @@ func CollectJobs(
 	}
 
 	return jobs, nil
+}
+
+// saveEntries stores the feed items as entries of the feed and returns only
+// the ones that were not stored yet. Items that are already stored, identified
+// by their dedup key, are left unchanged.
+func saveEntries(ctx context.Context, db *sql.DB, feedID int, items []*gofeed.Item) ([]entryRecord, error) {
+	if len(items) == 0 {
+		return nil, nil
+	}
+
+	// TODO: Batch insertions if the feed is too large
+	ncols := 7
+	vals := make([]string, 0, len(items))
+	args := make([]any, 0, len(items)*ncols)
+	snapshotAt := time.Now()
+	for i, item := range items {
+		j := i * ncols
+		vals = append(
+			vals,
+			fmt.Sprintf("($%d, $%d, $%d, $%d, $%d, $%d, $%d)", j+1, j+2, j+3, j+4, j+5, j+6, j+7),
+		)
+		e := normalizeEntry(item, feedID)
+		args = append(
+			args, e.dedupKey, e.feedId, e.url, e.title, e.description, snapshotAt, e.publishedAt,
+		)
+	}
+	sql := fmt.Sprintf(`
+		INSERT INTO feed_entries (dedup_key, feed_id, url, title, description, snapshot_at, published_at)
+		VALUES %s
+		ON CONFLICT (dedup_key) DO NOTHING
+		RETURNING id, dedup_key, feed_id, url, title, description, published_at;
+	`, strings.Join(vals, ","))
+	rows, err := db.QueryContext(ctx, sql, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		if err := rows.Close(); err != nil {
+			fmt.Println(err)
+		}
+	}()
+
+	var newEntries []entryRecord
+	for rows.Next() {
+		e := entryRecord{}
+		err := rows.Scan(
+			&e.id,
+			&e.dedupKey,
+			&e.feedId,
+			&e.url,
+			&e.title,
+			&e.description,
+			&e.publishedAt,
+		)
+		if err != nil {
+			// TODO: Make this case fail-soft instead of exiting.
+			return nil, err
+		}
+		newEntries = append(newEntries, e)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return newEntries, nil
 }
 
 func normalizeEntry(entry *gofeed.Item, feedId int) entryRecord {
