@@ -21,7 +21,7 @@ func newHttpClient(proxy *url.URL) *httpClient {
 }
 
 func (c *httpClient) Do(req *http.Request) (*http.Response, error) {
-	// TODO: update app version in the user-agent
+	// TODO(#135): update app version in the user-agent
 	req.Header.Set("User-Agent", "Paperdoll/0.1.0")
 	return c.base.Do(req)
 }

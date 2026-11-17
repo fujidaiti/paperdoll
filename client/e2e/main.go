@@ -65,7 +65,7 @@ func run() error {
 		}
 		cancel()
 	}()
-	// TODO: make the stub server address configurable
+	// TODO(#159): make the stub server address configurable
 	err := testenv.SetUp(ctx, "127.0.0.1:8081", testenv.LaunchOption{
 		EnableMailServer:   true,
 		MailServerHost:     netip.MustParseAddr(mailServerHost),
@@ -120,12 +120,12 @@ func runTests(ctx context.Context, extraArgs []string) error {
 	args := []string{
 		"test",
 		"--flutter-command",
-		// TODO: make flutter command path configurable
+		// TODO(#159): make flutter command path configurable
 		"../.fvm/flutter_sdk/bin/flutter",
 		"-d",
-		// TODO: make the target device configurable
+		// TODO(#159): make the target device configurable
 		"emulator-5554",
-		// TODO: make the API base URL configurable.
+		// TODO(#159): make the API base URL configurable.
 		"--dart-define",
 		"API_BASE_URL=http://10.0.2.2:8080",
 	}
@@ -150,7 +150,7 @@ type messageBody struct {
 	SeederID string `json:"seeder_id"`
 }
 
-// TODO: make this address configurable to avoid port conflictions
+// TODO(#159): make this address configurable to avoid port conflictions
 const (
 	mailServerHost     = "127.0.0.1"
 	mailServerSMTPPort = "1026"
@@ -217,7 +217,7 @@ func messageHandler(ctx context.Context, msgc chan<- message) error {
 	})
 
 	srv := http.Server{
-		// TODO: make the host ip and port number configurable
+		// TODO(#159): make the host ip and port number configurable
 		Addr:         ":9000",
 		Handler:      mux,
 		ReadTimeout:  30 * time.Second,
@@ -271,7 +271,7 @@ func session(ctx context.Context, done chan struct{}, msg message) {
 	defer testenv.TearDown()
 	if err := seedDB(ctx, testenv.DB(), msg.body.SeederID); err != nil {
 		fmt.Fprintf(os.Stderr, "failed to seed DB for scenario %q: %v", msg.body.SeederID, err)
-		// TODO: return a better response message
+		// TODO(#160): return a better response message
 		msg.resultc <- "failed to seed DB"
 		return
 	}
@@ -282,7 +282,7 @@ func session(ctx context.Context, done chan struct{}, msg message) {
 		Port: mailServerSMTPPort,
 	}
 
-	// TODO: make stub HTTP server address configurable
+	// TODO(#159): make stub HTTP server address configurable
 	proxyURL, _ := url.Parse("http://127.0.0.1:8081")
 	srv := api.NewServer(testenv.DB(), proxyURL, emailSender)
 	defer func() {
@@ -300,7 +300,7 @@ func session(ctx context.Context, done chan struct{}, msg message) {
 	}
 	errc := make(chan error, 1)
 	go func() { errc <- srv.Serve(ln) }()
-	// TODO: return a cleaner response
+	// TODO(#160): return a cleaner response
 	msg.resultc <- "ready"
 
 	select {

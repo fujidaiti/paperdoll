@@ -44,6 +44,10 @@ void main() {
     await t(AppDebugKey.feedEntryRow(entry.title)).tap();
     await t(AppDebugKey.feedEntryReaderScreen).waitUntilVisible();
     await t(AppDebugKey.readerTitle(entry.title)).waitUntilVisible();
+    expect(
+      t.tester.getSemantics(find.byKey(AppDebugKey.readerArticleTab)),
+      isSemantics(isSelected: true),
+    );
   });
 
   patrolWidgetTest('Unsubscribe from a feed and subscribe again', (t) async {

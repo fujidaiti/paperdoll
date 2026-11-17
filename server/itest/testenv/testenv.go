@@ -84,7 +84,7 @@ func ShutDown(ctx context.Context) error {
 	return errors.Join(err1, err2, err3, err4)
 }
 
-// TODO: return an error if any
+// TODO(#156): return an error if any
 func TearDown() {
 	// container.Restore force-kills open connections to the db, so a later
 	// test could be handed a dead pooled connection and fail. Close/reopen

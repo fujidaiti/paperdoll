@@ -40,7 +40,7 @@ Future<void> pumpAppWithAuth(PatrolIntegrationTester $) async {
 
 /// Builds a URL to the runner's message server. It listens on the host, reached
 /// from the Android emulator via 10.0.2.2.
-// TODO: make the host and port number configurable (assumes an Android
+// TODO(#159): make the host and port number configurable (assumes an Android
 // emulator).
 Uri _runnerUri(String path) =>
     Uri(scheme: 'http', host: '10.0.2.2', port: 9000, path: path);

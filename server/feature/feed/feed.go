@@ -31,8 +31,8 @@ type FeedAttrs struct {
 // When the feed is new to the server, its current entries are stored too, so
 // that they are available before the first polling run.
 func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (Feed, error) {
-	// TODO: Check if the f already exists first to avoid making an unnecessary request
-	// TODO: Validate and cleanup the url (check schema, remove tracking params, etc.)
+	// TODO(#123): Check if the f already exists first to avoid making an unnecessary request
+	// TODO(#115): Validate and cleanup the url (check schema, remove tracking params, etc.)
 	var f Feed
 	var items []*gofeed.Item
 	if a, is, err := s.fetchFeed(ctx, fu); err != nil {
@@ -103,8 +103,8 @@ func (s *Service) Unsubscribe(ctx context.Context, uid user.UserID, feedID int) 
 
 // SearchFeeds searches subscriptable feeds by the given query.
 func (s *Service) SearchFeeds(ctx context.Context, query string) ([]FeedAttrs, error) {
-	// TODO: Accept arbitrary keywards as a query
-	// TODO: Validate and cleanup the url (check schema, remove tracking params, etc.)
+	// TODO(#125): Accept arbitrary keywards as a query
+	// TODO(#115): Validate and cleanup the url (check schema, remove tracking params, etc.)
 	u, err := url.Parse(query)
 	if err != nil {
 		return []FeedAttrs{}, nil
@@ -131,7 +131,7 @@ func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, []*gofe
 	if res.StatusCode != http.StatusOK {
 		return FeedAttrs{}, nil, fmt.Errorf("failed to fetch feed: %s", fu.String())
 	}
-	// TODO: Limit body size
+	// TODO(#113): Limit body size
 	raw, err := gofeed.NewParser().Parse(res.Body)
 	if err != nil {
 		return FeedAttrs{}, nil, err

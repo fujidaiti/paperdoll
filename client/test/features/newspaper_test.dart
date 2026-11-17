@@ -28,5 +28,33 @@ void main() {
     await t(AppDebugKey.storyCard(story.title)).tap();
     await t(AppDebugKey.feedEntryReaderScreen).waitUntilVisible();
     await t(AppDebugKey.readerTitle(entry.title)).waitUntilVisible();
+    expect(
+      t.tester.getSemantics(find.byKey(AppDebugKey.readerArticleTab)),
+      isSemantics(isSelected: true),
+    );
+  });
+
+  patrolWidgetTest('Read a story without content on the web', (t) async {
+    final story = fixture.stories.houthiStrikes;
+    final entry = fixture.entries.houthiStrikes;
+
+    final server = StubServer.withDefaultResponses()
+      ..stubGet(
+        '/newspapers/today',
+        body: api.GetTodaysNewspaper200Response(
+          id: 1,
+          publishedAt: DateTime.utc(2026, 7, 1),
+          stories: [story],
+        ).toJson(),
+      )
+      ..stubGet('/feed-entries/${entry.id}', body: entry.toJson());
+    await pumpAppWithAuth(t, server);
+
+    await t(AppDebugKey.storyCard(story.title)).tap();
+    await t(AppDebugKey.feedEntryReaderScreen).waitUntilVisible();
+    expect(
+      t.tester.getSemantics(find.byKey(AppDebugKey.readerWebTab)),
+      isSemantics(isSelected: true),
+    );
   });
 }

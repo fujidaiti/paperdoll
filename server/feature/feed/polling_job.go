@@ -10,12 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"codeberg.org/readeck/go-readability/v2"
 	"github.com/fujidaiti/paperdoll/server/feature/newspaper"
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
 	_ "github.com/jackc/pgx/v5/stdlib"
-	"github.com/microcosm-cc/bluemonday"
 	"github.com/mmcdole/gofeed"
 )
 
@@ -91,7 +89,7 @@ func (j *Job) Do(ctx context.Context) error {
 	}
 
 	var entriesToBeStories []entryRecord
-	// TODO: Mark the entry as queued in DB to avoid duplicate jobs for the same entry
+	// TODO(#129): Mark the entry as queued in DB to avoid duplicate jobs for the same entry
 	for _, e := range newEntries {
 		if e.publishedAt.Valid && j.Interval.Contains(e.publishedAt.Time) {
 			entriesToBeStories = append(entriesToBeStories, e)
@@ -101,7 +99,7 @@ func (j *Job) Do(ctx context.Context) error {
 			if err != nil {
 				fmt.Print(err)
 			}
-			// TODO: Respect Crawl-delay in robot.txt
+			// TODO(#13): Respect Crawl-delay in robot.txt
 			if dt := time.Since(st); dt < time.Second {
 				time.Sleep(time.Second - dt)
 			}
@@ -128,7 +126,7 @@ func CollectJobs(
 		fmt.Print(err)
 		// Fail-soft: we don't exit here.
 	}
-	// TODO: Create an index for next_poll_at column
+	// TODO(#110): Create an index for next_poll_at column
 	rows, err := db.QueryContext(ctx, `
 		SELECT id, url, title
 		FROM feeds;
@@ -166,7 +164,7 @@ func saveEntries(ctx context.Context, db *sql.DB, feedID int, items []*gofeed.It
 		return nil, nil
 	}
 
-	// TODO: Batch insertions if the feed is too large
+	// TODO(#128): Batch insertions if the feed is too large
 	ncols := 7
 	vals := make([]string, 0, len(items))
 	args := make([]any, 0, len(items)*ncols)
@@ -211,7 +209,7 @@ func saveEntries(ctx context.Context, db *sql.DB, feedID int, items []*gofeed.It
 			&e.publishedAt,
 		)
 		if err != nil {
-			// TODO: Make this case fail-soft instead of exiting.
+			// TODO(#127): Make this case fail-soft instead of exiting.
 			return nil, err
 		}
 		newEntries = append(newEntries, e)
@@ -225,12 +223,12 @@ func saveEntries(ctx context.Context, db *sql.DB, feedID int, items []*gofeed.It
 func normalizeEntry(entry *gofeed.Item, feedId int) entryRecord {
 	e := entryRecord{
 		feedId: feedId,
-		// TODO: Cleanup the link
+		// TODO(#126): Cleanup the link
 		url:   entry.Link,
 		title: entry.Title,
 	}
 
-	// TODO: Sanitize the description
+	// TODO(#126): Sanitize the description
 	if desc := entry.Description; len(desc) > 0 {
 		e.description.String = desc
 		e.description.Valid = true
@@ -242,7 +240,7 @@ func normalizeEntry(entry *gofeed.Item, feedId int) entryRecord {
 	if guid := entry.GUID; len(guid) > 0 {
 		e.dedupKey = guid
 	} else {
-		// TODO: Synthesize a guid for this entry
+		// TODO(#126): Synthesize a guid for this entry
 		e.dedupKey = entry.Link
 	}
 
@@ -294,7 +292,7 @@ func writeStoriesForUser(
 	f FeedRecord,
 	es []entryRecord,
 ) error {
-	// TODO: apply user-defined filters to feed entries
+	// TODO(#131): apply user-defined filters to feed entries
 	var ss []newspaper.Story
 	for _, e := range es {
 		var pubDate time.Time
@@ -318,18 +316,6 @@ func writeStoriesForUser(
 	return svc.SubmitStories(ctx, ss)
 }
 
-const contentTemplate = `
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-%s
-</body>
-</html>
-`
-
 func fetchContent(ctx context.Context, scrp *scraper.Service, entry entryRecord, db *sql.DB) error {
 	entryUrl, err := url.Parse(entry.url)
 	if err != nil {
@@ -349,39 +335,21 @@ func fetchContent(ctx context.Context, scrp *scraper.Service, entry entryRecord,
 		}
 	}()
 
-	buf := bluemonday.UGCPolicy().SanitizeReader(res.Body)
-	if buf.Len() == 0 {
-		return fmt.Errorf("the body is empty")
-	}
-
-	baseUrl := new(*entryUrl)
-	baseUrl.Path = ""
-	baseUrl.RawPath = ""
-	baseUrl.Fragment = ""
-	baseUrl.RawFragment = ""
-	baseUrl.RawQuery = ""
-	baseUrl.User = nil
-
-	article, err := readability.FromReader(buf, baseUrl)
+	// The entry's title and description come from the feed, so the page's
+	// metadata is ignored.
+	page, err := scraper.Extract(res.Body, *entryUrl)
 	if err != nil {
 		return err
 	}
-
-	buf.Reset()
-	err = article.RenderHTML(buf)
-	if err != nil {
-		return err
-	}
-	if buf.Len() == 0 {
+	if page.Content == "" {
 		return fmt.Errorf("failed to extract content")
 	}
-	content := fmt.Sprintf(contentTemplate, buf)
 
 	_, err = db.ExecContext(ctx, `
 		UPDATE feed_entries
 		SET content = $1, snapshot_at = $2
 		WHERE id = $3;
-	`, content, time.Now(), entry.id)
+	`, page.Content, time.Now(), entry.id)
 	if err != nil {
 		return fmt.Errorf("failed to fetch content")
 	}

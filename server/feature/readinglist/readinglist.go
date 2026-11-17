@@ -9,9 +9,8 @@ import (
 	"net/url"
 	"time"
 
-	"codeberg.org/readeck/go-readability/v2"
+	"github.com/fujidaiti/paperdoll/server/feature/scraper"
 	"github.com/fujidaiti/paperdoll/server/feature/user"
-	"github.com/microcosm-cc/bluemonday"
 )
 
 // ErrItemNotFound is returned when the item doesn't exist or doesn't belong
@@ -21,7 +20,7 @@ var ErrItemNotFound = errors.New("item not found")
 // DeleteItem removes an item from the list.
 // Reports false with no error if the id does not exist, true otherwise.
 //
-// TODO: Garbage-collect orphaned web clips in the background. Deleting the
+// TODO(#139): Garbage-collect orphaned web clips in the background. Deleting the
 // join row here leaves the backing web_clips row unreachable (it can only be
 // reached via a reading_list_items row), so a background job should periodically
 // delete web_clips that have no referencing reading_list_items.
@@ -84,7 +83,7 @@ func (s *Service) SaveFeedEntry(ctx context.Context, uid user.UserID, id int) (S
 		WHERE id = $1
 		RETURNING id, feed_entry_id, kind, title, description, saved_at;
 	`, id, uid).Scan(&it.ID, &it.ResourceID, &it.Kind, &it.Title, &it.Description, &it.SavedAt)
-	// TODO: Return a dedicated error for the case where the id doesn't exist
+	// TODO(#114): Return a dedicated error for the case where the id doesn't exist
 	return it, err
 }
 
@@ -99,7 +98,7 @@ func (s *Service) SaveWebClipByID(ctx context.Context, uid user.UserID, id int) 
 		WHERE id = $1
 		RETURNING id, web_clip_id, kind, title, description, saved_at;
 	`, id, uid).Scan(&it.ID, &it.ResourceID, &it.Kind, &it.Title, &it.Description, &it.SavedAt)
-	// TODO: Return a dedicated error for the case where the id doesn't exist
+	// TODO(#114): Return a dedicated error for the case where the id doesn't exist
 	return it, err
 }
 
@@ -110,8 +109,8 @@ func (s *Service) SaveWebClipByID(ctx context.Context, uid user.UserID, id int) 
 // It then tries fetching the clip itself asynchronously, and fills the
 // placeholders with actual metadata.
 func (s *Service) SaveWebClip(ctx context.Context, uid user.UserID, ln url.URL, title string) (SavedItem, error) {
-	// TODO: Cleanup URL
-	// TODO: Validate URL (schema, host)
+	// TODO(#115): Cleanup URL
+	// TODO(#115): Validate URL (schema, host)
 	var it SavedItem
 	tx, err := s.DB.BeginTx(ctx, nil)
 	if err != nil {
@@ -143,7 +142,7 @@ func (s *Service) SaveWebClip(ctx context.Context, uid user.UserID, ln url.URL, 
 		return it, err
 	}
 	go func() {
-		// TODO: Recover from panic
+		// TODO(#136): Recover from panic
 		err := s.tryFetchWebClip(it.ID, clipID, ln)
 		if err != nil {
 			fmt.Println(err)
@@ -171,7 +170,11 @@ func (s *Service) tryFetchWebClip(rID, clipID int, ln url.URL) error {
 	return err
 }
 
-// TODO: DRY scraping logic
+// fetchWebClip fills in the clip's metadata and content from the page.
+// The metadata is saved even if the content can't be extracted, in which
+// case an error is reported.
+//
+// TODO(#132): DRY scraping logic
 func (s *Service) fetchWebClip(rID, clipID int, ln url.URL) error {
 	fmt.Printf("Fetching reading list clip from %s\n", ln.String())
 	res, err := s.scraper.Fetch(context.Background(), ln)
@@ -187,33 +190,10 @@ func (s *Service) fetchWebClip(rID, clipID int, ln url.URL) error {
 		return fmt.Errorf("HTTP GET failed with status code %d", res.StatusCode)
 	}
 
-	buf := bluemonday.UGCPolicy().AllowElements("head", "title").SanitizeReader(res.Body)
-	if buf.Len() == 0 {
-		return fmt.Errorf("the body is empty")
-	}
-
-	baseUrl := new(ln)
-	baseUrl.Path = ""
-	baseUrl.RawPath = ""
-	baseUrl.Fragment = ""
-	baseUrl.RawFragment = ""
-	baseUrl.RawQuery = ""
-	baseUrl.User = nil
-
-	article, err := readability.FromReader(buf, baseUrl)
+	page, err := scraper.Extract(res.Body, ln)
 	if err != nil {
 		return err
 	}
-
-	buf.Reset()
-	err = article.RenderHTML(buf)
-	if err != nil {
-		return err
-	}
-	if buf.Len() == 0 {
-		return fmt.Errorf("failed to extract content")
-	}
-	content := fmt.Sprintf(contentTemplate, buf)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
@@ -226,50 +206,41 @@ func (s *Service) fetchWebClip(rID, clipID int, ln url.URL) error {
 			fmt.Println(err)
 		}
 	}()
-	// Only overwrite the title when the fetch actually extracted one; otherwise
-	// keep the existing (placeholder) title rather than clobbering it with ''.
-	if t := article.Title(); t != "" {
-		_, err = tx.ExecContext(ctx, `
-			UPDATE reading_list_items
-			SET title = $1
-			WHERE id = $2;
-		`, t, rID)
-		if err != nil {
-			return err
-		}
-		_, err = tx.ExecContext(ctx, `
-			UPDATE web_clips
-			SET title = $1, content = $2, fetch_status = 'done'
-			WHERE id = $3;
-		`, t, content, clipID)
-		if err != nil {
-			return err
-		}
-	} else {
-		_, err = tx.ExecContext(ctx, `
-			UPDATE web_clips
-			SET content = $1, fetch_status = 'done'
-			WHERE id = $2;
-		`, content, clipID)
-		if err != nil {
-			return err
-		}
-	}
-	if err := tx.Commit(); err != nil {
+	// Only overwrite the title and description when the page actually has
+	// them; otherwise keep the existing (placeholder) values rather than
+	// clobbering them with ''.
+	_, err = tx.ExecContext(ctx, `
+		UPDATE reading_list_items
+		SET title = COALESCE(NULLIF($1, ''), title),
+			description = COALESCE(NULLIF($2, ''), description)
+		WHERE id = $3;
+	`, page.Title, page.Description, rID)
+	if err != nil {
 		return err
 	}
-
-	return nil
+	_, err = tx.ExecContext(ctx, `
+		UPDATE web_clips
+		SET title = COALESCE(NULLIF($1, ''), title),
+			description = COALESCE(NULLIF($2, ''), description)
+		WHERE id = $3;
+	`, page.Title, page.Description, clipID)
+	if err != nil {
+		return err
+	}
+	if page.Content == "" {
+		// Save the metadata anyway; tryFetchWebClip marks the clip as failed.
+		if err := tx.Commit(); err != nil {
+			return err
+		}
+		return fmt.Errorf("failed to extract content")
+	}
+	_, err = tx.ExecContext(ctx, `
+		UPDATE web_clips
+		SET content = $1, fetch_status = 'done'
+		WHERE id = $2;
+	`, page.Content, clipID)
+	if err != nil {
+		return err
+	}
+	return tx.Commit()
 }
-
-const contentTemplate = `
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-%s
-</body>
-</html>
-`

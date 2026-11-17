@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:paperdoll/core/ui/widgets/archived_banner.dart';
 import 'package:paperdoll/core/ui/widgets/async_value_view.dart';
 import 'package:paperdoll/core/ui/widgets/heading_text.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
@@ -17,7 +16,6 @@ class const FeedEntryReaderScreen({required final int id, super.key})
   Widget build(BuildContext context, WidgetRef ref) {
     final entryAsync = ref.watch(feedEntryControllerProvider(id: id));
     final entry = entryAsync.asData?.value;
-    final archived = entry?.archived ?? false;
     return Scaffold(
       key: AppDebugKey.feedEntryReaderScreen,
       appBar: AppBar(
@@ -36,21 +34,10 @@ class const FeedEntryReaderScreen({required final int id, super.key})
             ),
         ],
       ),
-      body: Column(
-        children: [
-          if (archived)
-            const ArchivedBanner(
-              key: AppDebugKey.feedEntryReaderArchivedBanner,
-            ),
-          Expanded(
-            child: AsyncValueView<FeedEntry>(
-              value: entryAsync,
-              onRetry: () =>
-                  ref.invalidate(feedEntryControllerProvider(id: id)),
-              data: (entry) => FeedEntryReaderView(entry: entry),
-            ),
-          ),
-        ],
+      body: AsyncValueView<FeedEntry>(
+        value: entryAsync,
+        onRetry: () => ref.invalidate(feedEntryControllerProvider(id: id)),
+        data: (entry) => FeedEntryReaderView(entry: entry),
       ),
     );
   }

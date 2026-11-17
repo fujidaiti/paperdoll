@@ -25,7 +25,7 @@ func (ei *EditorialInterval) Contains(t time.Time) bool {
 	return ei.Valid() && t.After(ei.Last) && t.Before(ei.Next)
 }
 
-// TODO: rename Schedule to PublicationSchedule
+// TODO(#154): rename Schedule to PublicationSchedule
 func getSchedules(ctx context.Context, db *sql.DB, t time.Time) ([]time.Time, error) {
 	rows, err := db.QueryContext(ctx, `SELECT minute_of_date FROM newspaper_schedules;`)
 	if err != nil {

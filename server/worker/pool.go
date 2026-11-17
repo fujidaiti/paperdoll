@@ -60,7 +60,7 @@ func process(ctx context.Context, j job) {
 	}
 }
 
-// TODO: Pass a context to set a timeout
+// TODO(#142): Pass a context to set a timeout
 func (p *pool) shutdown() {
 	close(p.jobs)
 	p.wg.Wait()

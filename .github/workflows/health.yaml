@@ -36,7 +36,7 @@ jobs:
       - name: Install golangci-lint
         uses: golangci/golangci-lint-action@v9
         with:
-          version: v2.13.2
+          version: v2.14.0
           install-only: true
 
       - name: Check server formatting
@@ -55,6 +55,14 @@ jobs:
 
       - name: Validate API spec
         run: npx redocly lint api/api.yaml
+
+      - name: Verify generated API docs
+        run: |
+          make -C api gen-docs
+          git diff --exit-code
+
+      - name: Lint TODO comments
+        run: tool/lint-todos.sh --strict
 
   client_test:
     name: Client Test
