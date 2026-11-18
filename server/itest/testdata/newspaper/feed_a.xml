@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Items around a newspaper published at 10:03Z, whose editorial interval
-  starts at 09:58Z and whose previous interval starts at 08:00Z:
-  - a-old is older than both intervals.
-  - a-carried is in the previous interval.
-  - a-current is in the newspaper's own interval.
-  - a-future is after the newspaper is published.
+  starts at 09:58Z:
+  - a-earlier is before the interval.
+  - a-current is in the interval.
+  - a-later is after the newspaper is published.
   - a-undated has no publication date.
 -->
 <rss version="2.0">
@@ -14,15 +13,9 @@
     <link>http://feed-a.test/</link>
     <description>Feed used by newspaper assembly integration tests</description>
     <item>
-      <title>Old item</title>
-      <link>http://articles.test/a-old</link>
-      <guid>a-old</guid>
-      <pubDate>Wed, 15 Jul 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Carried item</title>
-      <link>http://articles.test/a-carried</link>
-      <guid>a-carried</guid>
+      <title>Earlier item</title>
+      <link>http://articles.test/a-earlier</link>
+      <guid>a-earlier</guid>
       <pubDate>Wed, 15 Jul 2026 09:00:00 +0000</pubDate>
     </item>
     <item>
@@ -33,9 +26,9 @@
       <pubDate>Wed, 15 Jul 2026 10:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Future item</title>
-      <link>http://articles.test/a-future</link>
-      <guid>a-future</guid>
+      <title>Later item</title>
+      <link>http://articles.test/a-later</link>
+      <guid>a-later</guid>
       <pubDate>Wed, 15 Jul 2026 10:30:00 +0000</pubDate>
     </item>
     <item>

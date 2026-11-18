@@ -23,15 +23,6 @@ func CollectJobs(ctx context.Context, db *sql.DB, now time.Time) ([]Job, error) 
 	}
 	fmt.Printf("Prepare for next schedule: %s\n", pubDate)
 
-	// Newspapers are assembled a few minutes before they are published. Entries
-	// published in the previous interval but stored after its newspaper was
-	// assembled go into this newspaper, so the window also covers that interval.
-	prev, err := FindEditorialInterval(ctx, db, ei.Last.Add(-time.Nanosecond))
-	if err != nil {
-		return nil, err
-	}
-	window := EditorialInterval{Last: prev.Last, Next: ei.Next}
-
 	// Collect user IDs
 	rows, err := db.QueryContext(ctx, `SELECT id FROM users;`)
 	if err != nil {
@@ -73,7 +64,7 @@ func CollectJobs(ctx context.Context, db *sql.DB, now time.Time) ([]Job, error) 
 		} else if err != nil {
 			return nil, err
 		}
-		jobs = append(jobs, Job{db, uid, newspaperID, window})
+		jobs = append(jobs, Job{db, uid, newspaperID, ei})
 	}
 
 	return jobs, nil
@@ -81,13 +72,12 @@ func CollectJobs(ctx context.Context, db *sql.DB, now time.Time) ([]Job, error) 
 
 // Job assembles and publishes a newspaper for a user. The newspaper consists
 // of stories drafted from the entries of the user's subscribed feeds that were
-// published within Window, except for entries that the user already got as
-// stories in earlier newspapers.
+// published within Interval.
 type Job struct {
 	DB          *sql.DB
 	UserID      user.UserID
 	NewspaperID int
-	Window      EditorialInterval
+	Interval    EditorialInterval
 }
 
 func (j *Job) Timeout() time.Duration {
@@ -134,9 +124,8 @@ func (j *Job) assembleAndPublish(ctx context.Context) (int64, error) {
 		JOIN feed_entries e ON e.feed_id = s.feed_id
 		WHERE s.user_id = $1
 			AND e.published_at > $3 AND e.published_at < $4
-			AND e.title <> ''
-		ON CONFLICT (user_id, feed_entry_id) DO NOTHING;
-	`, j.UserID, j.NewspaperID, j.Window.Last, j.Window.Next)
+			AND e.title <> '';
+	`, j.UserID, j.NewspaperID, j.Interval.Last, j.Interval.Next)
 	if err != nil {
 		return 0, err
 	}
