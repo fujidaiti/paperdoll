@@ -1,0 +1,20 @@
+A person marks the first post of a small blog, and the editor finds both posts.
+-- page.html --
+<html><head><title>Example Blog</title></head><body><main>
+  <article class="post"><h2><a href="/first">First post</a></h2><p>The first post.</p></article>
+  <article class="post"><h2><a href="/second">Second post</a></h2><p>The second post.</p></article>
+</main></body></html>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3}], "excluded_links": [], "excluded_nodes": []}
+-- state.json --
+{
+  "found_posts": [
+    {"box": 2, "title": 3, "link": 3, "values": {"title": "First post", "link": "http://blog.example.com/first"}},
+    {"box": 5, "title": 6, "link": 6, "values": {"title": "Second post", "link": "http://blog.example.com/second"}}
+  ],
+  "excluded_posts": [],
+  "preview": [
+    {"title": "First post", "link": "http://blog.example.com/first"},
+    {"title": "Second post", "link": "http://blog.example.com/second"}
+  ]
+}
