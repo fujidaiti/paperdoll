@@ -150,9 +150,8 @@ func scanNewspaperStories(t *testing.T, uid user.UserID) []newspaperStoryRow {
 }
 
 // Assembling a user's newspaper drafts stories from the entries of the user's
-// subscribed feeds that were published in the newspaper's editorial interval
-// or in the interval before it. Other users' stories and newspapers are left
-// untouched.
+// subscribed feeds that were published in the newspaper's editorial interval.
+// Other users' stories and newspapers are left untouched.
 func TestNewspaperAssemble_DraftsStoriesFromSubscribedFeeds(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := mustTimeUTC("2026-07-15 10:00:00").Local()
@@ -160,7 +159,6 @@ func TestNewspaperAssemble_DraftsStoriesFromSubscribedFeeds(t *testing.T) {
 		"alice@example.com", "alice#password$123", "Pixel9a", now)
 	uidBob, _ := provisionTestAccount(t,
 		"bob@example.com", "bob#password$123", "Pixel9a", now)
-	seedSchedule(t, "earlier", now.Add(-2*time.Hour))
 	seedSchedule(t, "before", now.Add(-2*time.Minute))
 	seedSchedule(t, "after", now.Add(3*time.Minute))
 
@@ -194,13 +192,6 @@ func TestNewspaperAssemble_DraftsStoriesFromSubscribedFeeds(t *testing.T) {
 	}
 
 	want := []newspaperStoryRow{
-		{
-			EntryKey:    "a-carried",
-			NewspaperID: aliceJob.NewspaperID,
-			Title:       "Carried item",
-			Source:      sql.NullString{String: "Feed A", Valid: true},
-			PublishedAt: sql.NullTime{Time: mustTimeUTC("2026-07-15 09:00:00"), Valid: true},
-		},
 		{
 			EntryKey:    "a-current",
 			NewspaperID: aliceJob.NewspaperID,
@@ -237,7 +228,6 @@ func TestNewspaperAssemble_LaterSubscriberGetsStories(t *testing.T) {
 		"alice@example.com", "alice#password$123", "Pixel9a", now)
 	uidBob, _ := provisionTestAccount(t,
 		"bob@example.com", "bob#password$123", "Pixel9a", now)
-	seedSchedule(t, "earlier", now.Add(-2*time.Hour))
 	seedSchedule(t, "before", now.Add(-2*time.Minute))
 	seedSchedule(t, "after", now.Add(3*time.Minute))
 
@@ -273,13 +263,12 @@ func TestNewspaperAssemble_LaterSubscriberGetsStories(t *testing.T) {
 	}
 }
 
-// An entry that a user already got as a story is not drafted again, even
-// when it is still within the window of the user's next newspaper.
-func TestNewspaperAssemble_DoesNotRepeatStories(t *testing.T) {
+// Each newspaper covers only its own editorial interval, so consecutive
+// newspapers get stories from different entries.
+func TestNewspaperAssemble_CoversOwnIntervalOnly(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	now := mustTimeUTC("2026-07-15 10:00:00").Local()
 	uid := provisionDefaultTestAccount(t, now)
-	seedSchedule(t, "earlier", now.Add(-2*time.Hour))
 	seedSchedule(t, "before", now.Add(-2*time.Minute))
 	seedSchedule(t, "after", now.Add(3*time.Minute))
 
@@ -294,12 +283,11 @@ func TestNewspaperAssemble_DoesNotRepeatStories(t *testing.T) {
 	}
 
 	// The first newspaper is published at 10:03Z. The second one is published
-	// at 08:00Z on the next day, and its window starts at 09:58Z, so it covers
-	// a-current again.
+	// at 09:58Z on the next day, and its interval starts at 10:03Z.
 	var newspaperIDs []int
 	for _, at := range []time.Time{
 		now,
-		mustTimeUTC("2026-07-16 07:55:00").Local(),
+		mustTimeUTC("2026-07-16 09:50:00").Local(),
 	} {
 		jobs, err := newspaper.CollectJobs(t.Context(), testenv.DB(), at)
 		if err != nil {
@@ -323,9 +311,8 @@ func TestNewspaperAssemble_DoesNotRepeatStories(t *testing.T) {
 		got = append(got, storyRef{s.EntryKey, s.NewspaperID})
 	}
 	want := []storyRef{
-		{"a-carried", newspaperIDs[0]},
 		{"a-current", newspaperIDs[0]},
-		{"a-future", newspaperIDs[1]},
+		{"a-later", newspaperIDs[1]},
 	}
 	if d := cmp.Diff(want, got); d != "" {
 		t.Errorf("stories mismatch:\n%s", d)
