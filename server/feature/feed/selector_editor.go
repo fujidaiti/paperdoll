@@ -16,6 +16,7 @@ import (
 
 	"github.com/fujidaiti/paperdoll/server/feature/user"
 	"github.com/jackc/pgx/v5/pgtype"
+	"github.com/mmcdole/gofeed"
 	"golang.org/x/net/html"
 )
 
@@ -494,7 +495,10 @@ func (s *Service) UpdateSelectorEditorMarks(
 }
 
 // CommitSelectorEditor saves the rules of the editor id of the user uid to
-// the feed feedID, and deletes the editor. The rules are shared by all
+// the feed feedID, stores the posts that they find on the page of the editor
+// as entries of the feed, and deletes the editor. A web page has no selectors
+// when it is subscribed, so this is when its first entries appear. Entries
+// that are already stored are left unchanged. The rules are shared by all
 // subscribers, as the feed is, and the last commit wins. It fails with
 // ErrNoSelectors when the rules of the editor have no selectors. An expired editor is kept,
 // as it is until DeleteExpiredSelectorEditors deletes it.
@@ -504,14 +508,14 @@ func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, fee
 		return err
 	}
 	defer func() { _ = tx.Rollback() }()
-	var rules string
+	var page, rules string
 	var expired bool
 	err = tx.QueryRowContext(ctx, `
-		SELECT extraction_rules, expires_at <= now()
+		SELECT simplified_page, extraction_rules, expires_at <= now()
 		FROM selector_editors
 		WHERE id = $1 AND user_id = $2 AND feed_id = $3
 		FOR UPDATE;
-	`, id, uid, feedID).Scan(&rules, &expired)
+	`, id, uid, feedID).Scan(&page, &rules, &expired)
 	if errors.Is(err, sql.ErrNoRows) {
 		return ErrEditorNotFound
 	} else if err != nil {
@@ -520,14 +524,16 @@ func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, fee
 	if expired {
 		return ErrEditorExpired
 	}
-	var r struct {
-		Selectors []json.RawMessage `json:"selectors"`
-	}
+	var r ExtractionRules
 	if err := json.Unmarshal([]byte(rules), &r); err != nil {
 		return err
 	}
 	if len(r.Selectors) == 0 {
 		return ErrNoSelectors
+	}
+	doc, _, err := parseEditorPage(page)
+	if err != nil {
+		return err
 	}
 	// The open checked that the feed is unstructured, and a feed never
 	// changes its kind.
@@ -540,6 +546,16 @@ func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, fee
 		return err
 	}
 	if _, err := tx.ExecContext(ctx, `DELETE FROM selector_editors WHERE id = $1;`, id); err != nil {
+		return err
+	}
+	// The entries are stored before the commit, so that a failure keeps the
+	// editor for another try. Storing them again changes nothing.
+	posts := ExtractPosts(doc, r)
+	items := make([]*gofeed.Item, 0, len(posts))
+	for _, p := range posts {
+		items = append(items, itemOfPost(p))
+	}
+	if _, err := saveEntries(ctx, s.DB, feedID, items); err != nil {
 		return err
 	}
 	return tx.Commit()

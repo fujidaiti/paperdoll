@@ -436,6 +436,10 @@ func TestFeed_CommitSelectorEditor(t *testing.T) {
 	if editorRowExists(t, e.ID) {
 		t.Error("the committed editor is kept, want it deleted")
 	}
+	// The rules of firstPostMarks find only the first post.
+	if n := scanValOrFatal[int](t, `SELECT count(*) FROM feed_entries WHERE feed_id = $1`, page.ID); n != 1 {
+		t.Errorf("the feed has %d entries, want 1", n)
+	}
 	if again := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/")))); !again.HasSelectors {
 		t.Error("HasSelectors = false after a commit, want true")
 	}
