@@ -46,15 +46,20 @@ func checkGolden(t *testing.T, path string, got []byte) {
 		}
 		want = b.Bytes()
 	case ".html":
-		doc, err := parseGoldenPage(want)
-		if err != nil {
-			t.Fatalf("%s: %v", path, err)
+		// The parser reorders the attributes of some elements, so both pages are
+		// compared as they render after parsing.
+		render := func(raw []byte) []byte {
+			doc, err := parseGoldenPage(raw)
+			if err != nil {
+				t.Fatalf("%s: %v", path, err)
+			}
+			var b bytes.Buffer
+			if err := html.Render(&b, doc); err != nil {
+				t.Fatalf("%s: %v", path, err)
+			}
+			return b.Bytes()
 		}
-		var b bytes.Buffer
-		if err := html.Render(&b, doc); err != nil {
-			t.Fatalf("%s: %v", path, err)
-		}
-		want = b.Bytes()
+		want, got = render(want), render(got)
 	}
 	split := regexp.MustCompile(`[>}]`)
 	lines := func(b []byte) []string {

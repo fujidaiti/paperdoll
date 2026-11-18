@@ -46,6 +46,12 @@ import (
 //     https URLs.
 //
 // There is no whitespace between the nodes, since every text is a value.
+//
+// Each element of the body has its node ID in a "data-id" attribute. The node
+// ID of a node is its position among the page nodes of the page in document
+// order (see pageIndex), so the body is 0. A text node cannot carry an
+// attribute, so a reader of the page computes the IDs of the plain texts as it
+// walks the page nodes.
 func SimplifyPage(raw []byte, fallbackURL string) (string, error) {
 	root, err := html.Parse(bytes.NewReader(raw))
 	if err != nil {
@@ -132,8 +138,24 @@ func SimplifyPage(raw []byte, fallbackURL string) (string, error) {
 	doc := &html.Node{Type: html.DocumentNode}
 	doc.AppendChild(&html.Node{Type: html.DoctypeNode, Data: "html"})
 	doc.AppendChild(htmlElem)
+	var rendered strings.Builder
+	if err := html.Render(&rendered, doc); err != nil {
+		return "", err
+	}
+	// The IDs are the positions in the tree that a reader of the page parses,
+	// which can differ from the tree above: the parser moves or splits some
+	// nodes, such as a block element inside a paragraph.
+	parsed, err := html.Parse(strings.NewReader(rendered.String()))
+	if err != nil {
+		return "", err
+	}
+	for i, n := range newPageIndex(pageBody(parsed)).nodes {
+		if n.Type == html.ElementNode {
+			n.Attr = append(n.Attr, html.Attribute{Key: "data-id", Val: strconv.Itoa(i)})
+		}
+	}
 	var b strings.Builder
-	if err := html.Render(&b, doc); err != nil {
+	if err := html.Render(&b, parsed); err != nil {
 		return "", err
 	}
 	return b.String(), nil

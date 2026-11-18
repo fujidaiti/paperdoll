@@ -1,7 +1,6 @@
 package feed
 
 import (
-	"bytes"
 	"context"
 	"database/sql"
 	"encoding/json"
@@ -35,7 +34,7 @@ var (
 	ErrNoSelectors    = errors.New("no selectors")
 )
 
-// MarkedPostIDs is a marked post by node IDs (see withNodeIDs): the ID of
+// MarkedPostIDs is a marked post by node IDs (see SimplifyPage): the ID of
 // the box under "box", and the ID of the node of each marked field
 // under the name of the field.
 type MarkedPostIDs map[string]int
@@ -91,31 +90,8 @@ type SelectorEditor struct {
 	EditorState
 }
 
-// withNodeIDs returns page, a simplified page, with the node ID of each
-// element in its data-id attribute. The node ID of a node is its position in
-// the page nodes of the page in document order (see pageIndex). A text node
-// cannot carry an attribute, so a reader of the page computes the IDs of the
-// texts as it walks the page nodes.
-func withNodeIDs(page string) (string, error) {
-	doc, err := html.Parse(strings.NewReader(page))
-	if err != nil {
-		return "", err
-	}
-	t := newPageIndex(pageBody(doc))
-	for i, n := range t.nodes {
-		if n.Type == html.ElementNode {
-			n.Attr = append(n.Attr, html.Attribute{Key: "data-id", Val: strconv.Itoa(i)})
-		}
-	}
-	var b bytes.Buffer
-	if err := html.Render(&b, doc); err != nil {
-		return "", err
-	}
-	return b.String(), nil
-}
-
 // parseEditorPage parses page, a simplified page with node IDs (see
-// withNodeIDs). It fails when the data-id of an element differs from the
+// SimplifyPage). It fails when the data-id of an element differs from the
 // position of the element, so that an ID never resolves to a node other than
 // the one that it was given to.
 func parseEditorPage(page string) (*html.Node, *pageIndex, error) {
@@ -320,11 +296,7 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 	if err != nil {
 		return SelectorEditor{}, err
 	}
-	simplified, err := SimplifyPage(raw, fu)
-	if err != nil {
-		return SelectorEditor{}, err
-	}
-	page, err := withNodeIDs(simplified)
+	page, err := SimplifyPage(raw, fu)
 	if err != nil {
 		return SelectorEditor{}, err
 	}

@@ -11,7 +11,7 @@ export 'package:html/dom.dart' show Node;
 /// Each node has an ID, which is its position in [nodes]. The server and the
 /// client refer to the nodes of a page by their IDs. Each element carries its
 /// ID in a `data-id` attribute, and a text takes the ID of its position (see
-/// withNodeIDs in server/feature/feed/selector_editor.go).
+/// SimplifyPage in server/feature/feed/simplify.go).
 class SimplifiedPage {
   new _({
     required this.url,

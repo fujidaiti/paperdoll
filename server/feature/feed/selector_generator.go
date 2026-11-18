@@ -14,7 +14,7 @@ import (
 // pageIndex is the body of a simplified page with its page nodes in document
 // order, and the number of nodes with each class. The page nodes are the body
 // and every node that childrenOf yields below it, and the position of a node
-// in nodes is its node ID (see withNodeIDs).
+// in nodes is its node ID (see SimplifyPage).
 type pageIndex struct {
 	body    *html.Node
 	nodes   []*html.Node
