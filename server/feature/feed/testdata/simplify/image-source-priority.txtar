@@ -1,0 +1,9 @@
+An image takes src, then data-src, then srcset, then data-srcset.
+-- input.html --
+<body><img src="/s.png" data-src="/d.png"><img data-src="/d.png" srcset="/e.png 1x">
+<img srcset="/e.png 1x, /f.png 2x" data-srcset="/g.png 1x"><img data-srcset="/g.png 1x"></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><img src="http://example.com/s.png" data-id="1"/><img src="http://example.com/d.png" data-id="2"/>
+<img src="http://example.com/e.png" data-id="3"/><img src="http://example.com/g.png" data-id="4"/></body></html>

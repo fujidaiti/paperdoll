@@ -1,0 +1,7 @@
+A class that several merged elements have appears once.
+-- input.html --
+<body><div class="a b"><span class="b c">Text</span></div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div class="a b c" data-id="1">Text</div></body></html>

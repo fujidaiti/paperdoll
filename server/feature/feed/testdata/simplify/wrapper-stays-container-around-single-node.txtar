@@ -1,0 +1,7 @@
+A wrapper stays a container, so that a post keeps its depth.
+-- input.html --
+<body><section><div><p>Text</p></div></section></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><section data-id="1"><div data-id="2"><p data-id="3">Text</p></div></section></body></html>

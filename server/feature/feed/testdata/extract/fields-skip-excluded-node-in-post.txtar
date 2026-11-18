@@ -1,0 +1,19 @@
+A post that contains an excluded node is still a post, but its fields skip that node.
+-- page.html --
+<body data-id="0">
+<article class="post" data-id="1">
+<h2 href="http://example.com/first" data-id="2">First post</h2>
+<section data-id="3">
+<p data-id="4">Related</p>
+<p data-id="5">The second post.</p></section>
+<p data-id="6">The summary of the first post.</p></article></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}], "body": [{"tag": "p"}]}], "excludeNodes": [[{"tag": "article", "nth": 0}, {"tag": "section", "nth": 0}]]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first",
+    "body": "The summary of the first post."
+  }
+]

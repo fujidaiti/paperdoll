@@ -1,0 +1,7 @@
+A br separates words, and a wbr joins the two parts of a word.
+-- input.html --
+<body><p>One<br>Two</p><p>super<wbr>word</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">One Two</p><p data-id="2">superword</p></body></html>

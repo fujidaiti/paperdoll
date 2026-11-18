@@ -395,7 +395,7 @@ final class FeedSearchControllerProvider
 }
 
 String _$feedSearchControllerHash() =>
-    r'ca1049cf6563a5ac646514f9f3a3b26739c025c5';
+    r'08f5b898c5ed7edf57200cb1d97db1d06553af6c';
 
 /// Drives the Feed Search / Subscribe screen. [search] populates the candidate
 /// list; [subscribe] adds a feed and refreshes the Feeds list.

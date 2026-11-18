@@ -1,0 +1,7 @@
+Spans laid out side by side are separate values.
+-- input.html --
+<body><div><span>Video</span> <span>Title</span> <span>0:48</span></div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div data-id="1"><span data-id="2">Video</span><span data-id="3">Title</span><span data-id="4">0:48</span></div></body></html>

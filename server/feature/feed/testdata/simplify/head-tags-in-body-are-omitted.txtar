@@ -1,0 +1,7 @@
+The tags of a head are omitted when they appear in the body.
+-- input.html --
+<body><link rel="stylesheet" href="/x"><meta name="a" content="b"><p>Kept</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

@@ -1,0 +1,16 @@
+An excluded node is saved as the path of its position in the page.
+-- page.html --
+<body data-id="0">
+  <nav data-id="1"><p data-id="2">Menu</p></nav>
+  <main data-id="3">
+    <article class="post" data-id="4"><h2 href="http://example.com/a" data-id="5">A</h2></article>
+    <article class="post" data-id="6"><h2 href="http://example.com/b" data-id="7">B</h2></article>
+  </main>
+</body>
+-- marks.json --
+{"marked_posts": [{"box": 4, "title": 5, "link": 5}], "excluded_links": [], "excluded_nodes": [1]}
+-- rules.json --
+{
+  "selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}],
+  "excludeNodes": [[{"tag": "nav", "nth": 0}]]
+}

@@ -1,19 +1,29 @@
 package feed
 
 import (
+	"bytes"
 	"context"
 	"database/sql"
+	"errors"
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
+	"slices"
+	"strings"
 
 	"github.com/fujidaiti/paperdoll/server/feature/user"
 	"github.com/mmcdole/gofeed"
+	"golang.org/x/net/html"
 )
 
 type Feed struct {
 	ID int
 	FeedAttrs
+	// HasSelectors reports whether the post selectors of an unstructured feed,
+	// a web page without an RSS feed whose URL and site URL are the page's URL,
+	// have been saved.
+	HasSelectors bool
 }
 
 type FeedAttrs struct {
@@ -24,15 +34,16 @@ type FeedAttrs struct {
 	Description *string
 }
 
-// Subscribe creates a new subscription to a web feed for the user, from its URL.
-// Feeds are identified by the URL and this operation is idempotent; subscribing
-// to the same feed (URL) twice has no additional effect.
+// Subscribe creates a new subscription to a web feed for the user, from its URL
+// or the URL of a page (see discover). Feeds are identified by the URL and this
+// operation is idempotent; subscribing to the same feed (URL) twice has no
+// additional effect.
 func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (Feed, error) {
 	// TODO(#123): Check if the f already exists first to avoid making an unnecessary request
 	// TODO(#115): Validate and cleanup the url (check schema, remove tracking params, etc.)
 	// TODO(#121): Save fetched entries to DB
 	var f Feed
-	if a, err := s.fetchFeed(ctx, fu); err != nil {
+	if a, err := s.discover(ctx, fu); err != nil {
 		fmt.Println(err)
 		return Feed{}, err
 	} else {
@@ -53,8 +64,8 @@ func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (F
 		INSERT INTO feeds (url, site_url, icon_url, title, description)
 		VALUES ($1, $2, $3, $4, $5)
 		ON CONFLICT (url) DO UPDATE SET url = EXCLUDED.url
-		RETURNING id;
-	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID)
+		RETURNING id, extraction_rules IS NOT NULL;
+	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID, &f.HasSelectors)
 	if err != nil {
 		return Feed{}, err
 	}
@@ -95,17 +106,115 @@ func (s *Service) SearchFeeds(ctx context.Context, query string) ([]FeedAttrs, e
 	if err != nil {
 		return []FeedAttrs{}, nil
 	}
-	a, err := s.fetchFeed(ctx, *u)
+	a, err := s.discover(ctx, *u)
 	if err != nil {
 		return nil, err
 	}
 	return []FeedAttrs{a}, nil
 }
 
-func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) {
-	res, err := s.scraper.Fetch(ctx, fu)
+// discover returns the feed at u. When u is an HTML page, the feed is the
+// first RSS, Atom or JSON feed that the page links as an alternate in its
+// head, or else the first feed that the page links from its body at one of
+// rootFeedPaths, or else the page itself as an unstructured feed.
+func (s *Service) discover(ctx context.Context, u url.URL) (FeedAttrs, error) {
+	raw, pageURL, err := s.fetch(ctx, u)
 	if err != nil {
 		return FeedAttrs{}, err
+	}
+	if f, err := gofeed.NewParser().Parse(bytes.NewReader(raw)); err == nil {
+		return feedAttrs(u, f), nil
+	}
+	root, err := html.Parse(bytes.NewReader(raw))
+	if err != nil {
+		return FeedAttrs{}, err
+	}
+	var head *html.Node
+	for n := range root.Descendants() {
+		if n.Type == html.ElementNode && n.Data == "head" {
+			head = n
+			break
+		}
+	}
+	var title string
+	var alternate *url.URL
+	if head != nil {
+		for n := range head.Descendants() {
+			if n.Type != html.ElementNode {
+				continue
+			}
+			switch n.Data {
+			case "title":
+				if title == "" && n.FirstChild != nil {
+					title = normalizeSpace(n.FirstChild.Data)
+				}
+			case "link":
+				rels := strings.Fields(strings.ToLower(attr(n, "rel")))
+				if alternate != nil || !slices.Contains(rels, "alternate") {
+					continue
+				}
+				switch strings.ToLower(attr(n, "type")) {
+				case "application/rss+xml", "application/atom+xml", "application/feed+json":
+					if h, err := pageURL.Parse(attr(n, "href")); err == nil {
+						alternate = h
+					}
+				}
+			}
+		}
+	}
+	if alternate != nil {
+		raw, _, err := s.fetch(ctx, *alternate)
+		if err != nil {
+			return FeedAttrs{}, err
+		}
+		f, err := gofeed.NewParser().Parse(bytes.NewReader(raw))
+		if err != nil {
+			return FeedAttrs{}, err
+		}
+		return feedAttrs(*alternate, f), nil
+	}
+	// Some pages link their feed only from the body, such as a feed icon in
+	// the footer. Only a link to one of the usual feed paths at the root of
+	// the same host is taken, so that a feed of another site or a comment
+	// feed is not taken for the page's feed.
+	seen := map[string]bool{}
+	for n := range root.Descendants() {
+		if n.Type != html.ElementNode || n.Data != "a" {
+			continue
+		}
+		h, err := pageURL.Parse(attr(n, "href"))
+		if err != nil || h.Host != pageURL.Host ||
+			!slices.Contains(rootFeedPaths, strings.TrimSuffix(h.Path, "/")) ||
+			seen[h.String()] {
+			continue
+		}
+		seen[h.String()] = true
+		raw, _, err := s.fetch(ctx, *h)
+		if err != nil {
+			continue
+		}
+		if f, err := gofeed.NewParser().Parse(bytes.NewReader(raw)); err == nil {
+			return feedAttrs(*h, f), nil
+		}
+	}
+	if title == "" {
+		title = pageURL.Host
+	}
+	site := *pageURL
+	return FeedAttrs{URL: *pageURL, SiteURL: &site, Title: title}, nil
+}
+
+// rootFeedPaths are the paths at which sites commonly serve their feed, such
+// as /feed of WordPress, /rss of Ghost and /index.xml of Hugo.
+var rootFeedPaths = []string{
+	"/feed", "/rss", "/atom", "/feed.xml", "/rss.xml", "/atom.xml", "/index.xml",
+}
+
+// fetch returns the body of the resource at u and its URL after redirects.
+func (s *Service) fetch(ctx context.Context, u url.URL) ([]byte, *url.URL, error) {
+	res, err := s.scraper.Fetch(ctx, u)
+	if err != nil {
+		return nil, nil, err
 	}
 	defer func() {
 		if err := res.Body.Close(); err != nil {
@@ -113,18 +222,23 @@ func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) 
 		}
 	}()
 	if res.StatusCode != http.StatusOK {
-		return FeedAttrs{}, fmt.Errorf("failed to fetch feed: %s", fu.String())
+		return nil, nil, fmt.Errorf("failed to fetch %s: %s", u.String(), res.Status)
 	}
 	// TODO(#113): Limit body size
-	raw, err := gofeed.NewParser().Parse(res.Body)
+	raw, err := io.ReadAll(res.Body)
 	if err != nil {
-		return FeedAttrs{}, err
+		return nil, nil, err
 	}
+	return raw, res.Request.URL, nil
+}
 
-	a := FeedAttrs{URL: fu, Title: raw.Title}
-	if raw.Link != "" {
-		if u, err := url.Parse(raw.Link); err == nil {
-			a.SiteURL = u
+func feedAttrs(u url.URL, raw *gofeed.Feed) FeedAttrs {
+	a := FeedAttrs{URL: u, Title: raw.Title}
+	// A feed whose site link is the feed itself is given no site URL, since a
+	// site URL equal to the URL marks an unstructured feed.
+	if raw.Link != "" && raw.Link != u.String() {
+		if su, err := url.Parse(raw.Link); err == nil {
+			a.SiteURL = su
 		}
 	}
 	if raw.Image != nil && raw.Image.URL != "" {
@@ -135,5 +249,10 @@ func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) 
 	if raw.Description != "" {
 		a.Description = &raw.Description
 	}
-	return a, nil
+	return a
 }
+
+var (
+	ErrFeedNotFound    = errors.New("feed not found")
+	ErrNotUnstructured = errors.New("feed is not unstructured")
+)

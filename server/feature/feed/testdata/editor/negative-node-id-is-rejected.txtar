@@ -1,0 +1,18 @@
+A negative ID is not a node of the page.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2">
+    <h2 href="http://example.com/first" data-id="3">First</h2>
+    <img src="http://example.com/first.png" alt="A cover" data-id="4"/>
+    <p data-id="5">The first post.</p>
+  </article>
+  <article class="post" data-id="6">
+    <h2 href="http://example.com/second" data-id="7">Second</h2>
+    Loose text
+    <p data-id="9">The second post.</p>
+  </article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": -1, "title": 3, "link": 3}], "excluded_links": [], "excluded_nodes": []}
+-- error.txt --
+invalid marks: no node -1

@@ -1,0 +1,26 @@
+No post is found in the subtree of an excluded node.
+-- page.html --
+<body data-id="0">
+<section data-id="1">
+<article class="post" data-id="2">
+<h2 href="http://example.com/about" data-id="3">About</h2></article>
+<article class="post" data-id="4">
+<h2 href="http://example.com/contact" data-id="5">Contact</h2></article></section>
+<section data-id="6">
+<article class="post" data-id="7">
+<h2 href="http://example.com/first" data-id="8">First post</h2></article>
+<article class="post" data-id="9">
+<h2 href="http://example.com/second" data-id="10">Second post</h2></article></section></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}], "excludeNodes": [[{"tag": "section", "nth": 0}]]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first"
+  },
+  {
+    "title": "Second post",
+    "link": "http://example.com/second"
+  }
+]

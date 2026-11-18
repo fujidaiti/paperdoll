@@ -1,0 +1,10 @@
+A field whose path selects an earlier node first takes the index of its node.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2"><span data-id="3">Label</span><span data-id="4">A</span><a href="http://example.com/a" data-id="5">Read</a></article>
+  <article class="post" data-id="6"><span data-id="7">Label</span><span data-id="8">B</span><a href="http://example.com/b" data-id="9">Read</a></article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 4, "link": 5}], "excluded_links": [], "excluded_nodes": []}
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "span", "nth": 1}], "link": [{"tag": "a"}]}]}

@@ -1,0 +1,17 @@
+The exclusions of the saved rules stay in the marks.
+-- page.html --
+<body data-id="0">
+  <nav data-id="1"><p data-id="2">Menu</p></nav>
+  <main data-id="3">
+    <article class="post" data-id="4"><h2 href="http://example.com/a" data-id="5">A</h2></article>
+    <article class="post" data-id="6"><h2 href="http://example.com/about" data-id="7">About</h2></article>
+  </main>
+</body>
+-- rules.json --
+{
+  "selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}],
+  "excludeLinks": ["example.com/about"],
+  "excludeNodes": [[{"tag": "nav", "nth": 0}]]
+}
+-- marks.json --
+{"marked_posts": [{"box": 4, "title": 5, "link": 5}], "excluded_links": ["example.com/about"], "excluded_nodes": [1]}

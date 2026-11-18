@@ -1,0 +1,14 @@
+The preview merges the found posts that share a link into the first one.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2"><h2 href="http://example.com/a" data-id="3">Image card</h2></article>
+  <article class="post" data-id="4"><h2 href="http://example.com/a" data-id="5">Text card</h2><p data-id="6">The body.</p></article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3}, {"box": 4, "title": 5, "link": 5, "body": 6}], "excluded_links": [], "excluded_nodes": []}
+-- state.json --
+{
+  "found_posts": [{"box": 2, "title": 3, "link": 3, "values": {"title": "Image card", "link": "http://example.com/a"}}, {"box": 4, "title": 5, "link": 5, "body": 6, "values": {"title": "Text card", "link": "http://example.com/a", "body": "The body."}}],
+  "excluded_posts": [],
+  "preview": [{"title": "Image card", "link": "http://example.com/a", "body": "The body."}]
+}

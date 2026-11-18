@@ -9,6 +9,7 @@ Before touching any test, identify the category and read the matching reference 
 
 - Client widget tests: `client/test/README.md`
 - Server integration tests: `server/itest/README.md`
+- Server unit tests of the post selectors (txtar cases and web pages): `server/feature/feed/testdata/README.md`
 - E2E tests: `client/e2e/README.md`
 
 ## Basic rules

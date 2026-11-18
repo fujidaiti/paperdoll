@@ -23,6 +23,7 @@ class _Feeds {
     title: 'BBC News',
     description: 'BBC News - News Front Page',
     subscribed: true,
+    hasSelectors: false,
   );
 
   final nasa = api.Feed(
@@ -33,6 +34,7 @@ class _Feeds {
     description:
         'Official National Aeronautics and Space Administration Website',
     subscribed: true,
+    hasSelectors: false,
   );
 
   final stackOverflow = api.Feed(
@@ -42,6 +44,7 @@ class _Feeds {
     title: 'Recent Questions - Stack Overflow',
     description: 'most recent 30 from stackoverflow.com',
     subscribed: true,
+    hasSelectors: false,
   );
 
   final wikipedia = api.Feed(
@@ -51,6 +54,7 @@ class _Feeds {
     title: 'Wikipedia  - Recent changes [en]',
     description: 'Track the most recent changes to the wiki in this feed.',
     subscribed: true,
+    hasSelectors: false,
   );
 }
 

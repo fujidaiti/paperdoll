@@ -1,0 +1,7 @@
+A date can be written in Japanese.
+-- input.html --
+<body><p>2026年1月2日</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1"><time data-id="2">2026-01-02T00:00:00Z</time></p></body></html>

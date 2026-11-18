@@ -1,0 +1,7 @@
+An image keeps its absolute URL, its normalized alt text and its classes.
+-- input.html --
+<body><img class="hero" src="/a.png" alt=" An   image "></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><img class="hero" src="http://example.com/a.png" alt="An image" data-id="1"/></body></html>

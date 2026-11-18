@@ -1,0 +1,7 @@
+A post links to a web page or a file, so other links are dropped.
+-- input.html --
+<body><p><a href="mailto:a@example.com">Mail</a></p><p><a href="feed:x">Feed</a></p><p><a href="javascript:void(0)">Script</a></p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Mail</p><p data-id="2">Feed</p><p data-id="3">Script</p></body></html>

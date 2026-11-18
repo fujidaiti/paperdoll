@@ -1,0 +1,12 @@
+A merged selector keeps the classes that its posts share.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="entry wide" data-id="2"><h2 href="http://example.com/a" data-id="3">A</h2></article>
+  <article class="entry wide" data-id="4"><h2 href="http://example.com/b" data-id="5">B</h2></article>
+  <article class="entry narrow" data-id="6"><h2 href="http://example.com/c" data-id="7">C</h2></article>
+  <article class="entry narrow" data-id="8"><h2 href="http://example.com/d" data-id="9">D</h2></article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3}, {"box": 6, "title": 7, "link": 7}], "excluded_links": [], "excluded_nodes": []}
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["entry"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}]}

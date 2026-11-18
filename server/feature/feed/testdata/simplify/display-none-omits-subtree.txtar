@@ -1,0 +1,7 @@
+An inline style that hides an element omits its subtree, with or without spaces.
+-- input.html --
+<body><div style="display:none"><p>A</p></div><div style="color: red; display : none"><p>B</p></div><p>Kept</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

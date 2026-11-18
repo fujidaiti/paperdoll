@@ -1,0 +1,8 @@
+The head keeps the normalized title and the canonical link of the page.
+-- input.html --
+<html><head><title>  A   title </title><link rel="canonical" href="https://example.org/page"></head>
+<body><p>Kept</p></body></html>
+-- want.html --
+<!DOCTYPE html><html><head><title>A title</title>
+<link rel="canonical" href="https://example.org/page"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

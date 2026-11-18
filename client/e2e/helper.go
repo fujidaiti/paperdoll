@@ -19,6 +19,7 @@ var seeders = map[string]seeder{
 	"auth_signed_in":           seedAuthSuit_SignedIn,
 	"feed_bbc_news":            seedFeedSuit_BbcNews,
 	"feed_nasa_candidate":      seedFeedSuit_NasaCandidate,
+	"feed_web_page":            seedFeedSuit_WebPage,
 	"reading_list_item":        seedReadingListSuit_Item,
 	"reading_list_web_clip":    seedReadingListSuit_WebClip,
 	"reading_list_archived":    seedReadingListSuit_Archived,

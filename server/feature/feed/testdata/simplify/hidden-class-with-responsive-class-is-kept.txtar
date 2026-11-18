@@ -1,0 +1,7 @@
+A responsive class shows a hidden element on some screens, so it is kept.
+-- input.html --
+<body><div class="hidden xl:block"><p>Shown</p></div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div class="hidden" data-id="1"><p data-id="2">Shown</p></div></body></html>

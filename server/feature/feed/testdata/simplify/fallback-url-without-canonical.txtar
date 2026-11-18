@@ -1,0 +1,7 @@
+A page without a canonical link takes the URL that it was fetched from.
+-- input.html --
+<html><head><title>Title</title></head><body><p>Kept</p></body></html>
+-- want.html --
+<!DOCTYPE html><html><head><title>Title</title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

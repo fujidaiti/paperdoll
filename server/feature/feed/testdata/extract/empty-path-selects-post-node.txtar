@@ -1,0 +1,16 @@
+An empty path selects the post node itself.
+-- page.html --
+<body data-id="0">
+<a class="card" href="http://example.com/first" data-id="1">
+<h3 data-id="2">First post</h3>
+<p data-id="3">The summary of the first post.</p></a></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "a", "cls": ["card"]}], "title": [{"tag": "h3"}], "link": [], "body": [{"tag": "p"}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first",
+    "body": "The summary of the first post."
+  }
+]

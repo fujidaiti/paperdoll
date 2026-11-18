@@ -28,6 +28,14 @@ paths:
     $ref: "./paths/feeds.yaml#/item"
   /feeds/{id}/timeline:
     $ref: "./paths/feeds.yaml#/timeline"
+  /feeds/{id}/selector-editors:
+    $ref: "./paths/feeds.yaml#/selectorEditors"
+  /feeds/{id}/selector-editors/{eid}:
+    $ref: "./paths/feeds.yaml#/selectorEditor"
+  /feeds/{id}/selector-editors/{eid}/marks:
+    $ref: "./paths/feeds.yaml#/selectorEditorMarks"
+  /feeds/{id}/selector-editors/{eid}/commit:
+    $ref: "./paths/feeds.yaml#/selectorEditorCommit"
   /feed-entries/{id}:
     $ref: "./paths/feed-entries.yaml"
   /web-clips/{id}:
@@ -76,6 +84,8 @@ components:
       $ref: "./components/responses.yaml#/NotFound"
     Conflict:
       $ref: "./components/responses.yaml#/Conflict"
+    Gone:
+      $ref: "./components/responses.yaml#/Gone"
     TooManyRequests:
       $ref: "./components/responses.yaml#/TooManyRequests"
     InternalServerError:

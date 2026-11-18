@@ -1,0 +1,7 @@
+A link at any depth of a chain of only children puts its target on the value.
+-- input.html --
+<body><div><span><a href="/post">Title</a></span></div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div href="http://example.com/post" data-id="1">Title</div></body></html>

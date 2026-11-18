@@ -1,0 +1,16 @@
+Posts with the same link merge into the first one in document order, which keeps its values.
+-- page.html --
+<body data-id="0">
+<div class="teaser" data-id="1">
+<h3 href="http://example.com/first" data-id="2">First post</h3></div>
+<div class="card" data-id="3">
+<h2 href="http://example.com/first" data-id="4">First post: the full title</h2></div></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "div", "cls": ["card"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}, {"box": [{"tag": "div", "cls": ["teaser"]}], "title": [{"tag": "h3"}], "link": [{"tag": "h3"}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first"
+  }
+]

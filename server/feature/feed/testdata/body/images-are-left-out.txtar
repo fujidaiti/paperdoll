@@ -1,0 +1,5 @@
+An image adds nothing to the body, even with an alt text.
+-- page.html --
+<body data-id="0"><div data-id="1"><img src="http://example.com/first.png" alt="An image" data-id="2"/><p data-id="3">The summary of a post.</p></div></body>
+-- want.txt --
+The summary of a post.

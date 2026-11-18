@@ -1,0 +1,8 @@
+The whitespace of a text is collapsed and trimmed.
+-- input.html --
+<body><p>  Many
+   spaces	here </p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Many spaces here</p></body></html>

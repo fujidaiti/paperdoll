@@ -1,0 +1,7 @@
+A heading around one text is a value with the classes of both elements.
+-- input.html --
+<body><h2 class="head"><span class="inner">One</span></h2><h3 class="head"><div class="inner">Two</div></h3></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><h2 class="head inner" data-id="1">One</h2><h3 class="head inner" data-id="2">Two</h3></body></html>

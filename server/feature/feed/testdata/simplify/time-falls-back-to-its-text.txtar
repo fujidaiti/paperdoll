@@ -1,0 +1,7 @@
+A datetime that is not a date gives way to the displayed text.
+-- input.html --
+<body><time datetime="soon">Sep 23, 2026</time></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><time data-id="1">2026-09-23T00:00:00Z</time></body></html>

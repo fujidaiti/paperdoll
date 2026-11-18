@@ -1,0 +1,7 @@
+Nested elements around one text merge into the outermost one, with all classes.
+-- input.html --
+<body><div><span class="a"><b class="b">T</b></span></div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div class="a b" data-id="1">T</div></body></html>

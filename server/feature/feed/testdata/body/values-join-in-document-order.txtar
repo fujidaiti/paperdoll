@@ -1,0 +1,5 @@
+The texts of a container are joined in document order.
+-- page.html --
+<body data-id="0"><div data-id="1"><p data-id="2">The first line.</p><p data-id="3">The second line.</p></div></body>
+-- want.txt --
+The first line. The second line.
