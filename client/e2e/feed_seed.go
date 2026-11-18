@@ -66,3 +66,18 @@ func seedFeedSuit_NasaCandidate(ctx context.Context, db *sql.DB) error {
 	testenv.StubHTTP("www.nasa.gov", "/news-release/feed/", "./testdata/nasa_news_release.xml")
 	return nil
 }
+
+// seedFeedSuit_WebPage only provisions the test account and stubs a web page
+// without a feed; the subscription and its selectors are made through the UI
+// during the test. The page is a test page of the server's selector tests.
+func seedFeedSuit_WebPage(ctx context.Context, db *sql.DB) error {
+	if _, err := provisionTestAccount(ctx, db); err != nil {
+		return err
+	}
+	testenv.StubHTTP(
+		"blog.codinghorror.com",
+		"/",
+		"../../server/feature/feed/testdata/webpage/blog.codinghorror.com/source.html",
+	)
+	return nil
+}
