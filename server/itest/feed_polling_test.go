@@ -48,7 +48,6 @@ func TestCollectJobs_OneJobPerFeed(t *testing.T) {
 	jobs, err := feed.CollectJobs(
 		t.Context(),
 		testenv.DB(),
-		&newspaper.Service{DB: testenv.DB()},
 		scraper.NewService(stubServerAddr),
 		time.Date(2026, 7, 15, 10, 0, 0, 0, time.Local),
 	)
@@ -77,7 +76,6 @@ func TestCollectJobs_NoFeeds(t *testing.T) {
 	jobs, err := feed.CollectJobs(
 		t.Context(),
 		testenv.DB(),
-		&newspaper.Service{DB: testenv.DB()},
 		scraper.NewService(stubServerAddr),
 		time.Date(2026, 7, 15, 10, 0, 0, 0, time.Local),
 	)
@@ -114,7 +112,6 @@ func TestCollectJobs_IntervalFromSchedule(t *testing.T) {
 	jobs, err := feed.CollectJobs(
 		t.Context(),
 		testenv.DB(),
-		&newspaper.Service{DB: testenv.DB()},
 		scraper.NewService(stubServerAddr),
 		now,
 	)
@@ -142,7 +139,6 @@ func TestCollectJobs_FailSoftWithoutSchedule(t *testing.T) {
 	jobs, err := feed.CollectJobs(
 		t.Context(),
 		testenv.DB(),
-		&newspaper.Service{DB: testenv.DB()},
 		scraper.NewService(stubServerAddr),
 		time.Date(2026, 7, 15, 10, 0, 0, 0, time.Local),
 	)
@@ -157,10 +153,8 @@ func TestCollectJobs_FailSoftWithoutSchedule(t *testing.T) {
 	}
 }
 
-// A full polling job end-to-end: an in-interval item is stored with its
-// fetched article content and drafted into a story for the subscriber,
-// while an out-of-interval item is stored but skipped for both content
-// fetching and story drafting.
+// A full polling job end-to-end: both items are stored, and only the
+// in-interval item gets its article content fetched.
 func TestFeedPolling_HappyPath(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
@@ -176,8 +170,7 @@ func TestFeedPolling_HappyPath(t *testing.T) {
 			Last: mustTimeUTC("2026-07-15 09:55:00"),
 			Next: mustTimeUTC("2026-07-15 10:05:00"),
 		},
-		NewspaperSvc: &newspaper.Service{DB: testenv.DB()},
-		ScrpSvc:      scraper.NewService(stubServerAddr),
+		ScrpSvc: scraper.NewService(stubServerAddr),
 	}
 	if err := j.Do(t.Context()); err != nil {
 		t.Fatalf("job.Do returned an unexpected error: %v", err)
@@ -232,57 +225,28 @@ func TestFeedPolling_HappyPath(t *testing.T) {
 	if outEntry.Content.Valid {
 		t.Errorf("out-of-interval entry: want content to stay NULL, got %q", outEntry.Content.String)
 	}
-
-	type storyRow struct {
-		FeedEntryID int
-		UserID      user.UserID
-		Title       string
-		Description sql.NullString
-		Source      sql.NullString
-	}
-	stories := scanRowsOrFatal(t, `
-		SELECT feed_entry_id, user_id, title, description, source FROM stories
-	`, nil, func(rows *sql.Rows, s *storyRow) error {
-		return rows.Scan(&s.FeedEntryID, &s.UserID, &s.Title, &s.Description, &s.Source)
-	})
-	if len(stories) != 1 {
-		t.Fatalf("got %d stories, want exactly 1", len(stories))
-	}
-	inEntryID := scanValOrFatal[int](t, `SELECT id FROM feed_entries WHERE dedup_key = 'happy-in'`)
-	want := storyRow{
-		FeedEntryID: inEntryID,
-		UserID:      uid,
-		Title:       "In interval",
-		Description: sql.NullString{String: "In desc", Valid: true},
-		Source:      sql.NullString{String: "Test Feed", Valid: true},
-	}
-	if d := cmp.Diff(want, stories[0]); d != "" {
-		t.Errorf("story mismatch:\n%s", d)
-	}
 }
 
-// Polling the same feed twice does not duplicate entries or stories for
-// items already seen, but does add a new entry and story when a second poll
-// picks up a genuinely new item.
+// Polling the same feed twice does not duplicate entries for items already
+// seen, but does add a new entry when a second poll picks up a genuinely new
+// item.
 func TestFeedPolling_RePoll(t *testing.T) {
 	tests := []struct {
-		name                           string
-		firstFixture, secondFixture    string
-		wantEntryCount, wantStoryCount int
+		name                        string
+		firstFixture, secondFixture string
+		wantEntryCount              int
 	}{
 		{
 			name:           "no duplicates",
 			firstFixture:   "./testdata/feed_polling/polling_repoll_nodup.xml",
 			secondFixture:  "./testdata/feed_polling/polling_repoll_nodup.xml",
 			wantEntryCount: 1,
-			wantStoryCount: 1,
 		},
 		{
 			name:           "new item added",
 			firstFixture:   "./testdata/feed_polling/polling_repoll_new_item_before.xml",
 			secondFixture:  "./testdata/feed_polling/polling_repoll_new_item_after.xml",
 			wantEntryCount: 2,
-			wantStoryCount: 2,
 		},
 	}
 
@@ -298,8 +262,7 @@ func TestFeedPolling_RePoll(t *testing.T) {
 					Last: mustTimeUTC("2026-07-15 09:55:00"),
 					Next: mustTimeUTC("2026-07-15 10:05:00"),
 				},
-				NewspaperSvc: &newspaper.Service{DB: testenv.DB()},
-				ScrpSvc:      scraper.NewService(stubServerAddr),
+				ScrpSvc: scraper.NewService(stubServerAddr),
 			}
 
 			testenv.StubHTTP("feed.test", "/rss", tt.firstFixture)
@@ -315,15 +278,11 @@ func TestFeedPolling_RePoll(t *testing.T) {
 			if n := scanValOrFatal[int](t, `SELECT count(*) FROM feed_entries`); n != tt.wantEntryCount {
 				t.Errorf("got %d feed_entries after re-poll, want %d", n, tt.wantEntryCount)
 			}
-			if n := scanValOrFatal[int](t, `SELECT count(*) FROM stories`); n != tt.wantStoryCount {
-				t.Errorf("got %d stories after re-poll, want %d", n, tt.wantStoryCount)
-			}
 		})
 	}
 }
 
-// A feed with no subscribers still gets its item stored as a feed_entry,
-// but no story is drafted since there's no one to draft it for.
+// A feed with no subscribers still gets its item stored as a feed_entry.
 func TestFeedPolling_NoSubscribers(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	// Inserted directly rather than via feed.Subscribe (bypassing business
@@ -348,8 +307,7 @@ func TestFeedPolling_NoSubscribers(t *testing.T) {
 			Last: mustTimeUTC("2026-07-15 09:55:00"),
 			Next: mustTimeUTC("2026-07-15 10:05:00"),
 		},
-		NewspaperSvc: &newspaper.Service{DB: testenv.DB()},
-		ScrpSvc:      scraper.NewService(stubServerAddr),
+		ScrpSvc: scraper.NewService(stubServerAddr),
 	}
 	if err := j.Do(t.Context()); err != nil {
 		t.Fatalf("job.Do returned an unexpected error: %v", err)
@@ -358,14 +316,10 @@ func TestFeedPolling_NoSubscribers(t *testing.T) {
 	if n := scanValOrFatal[int](t, `SELECT count(*) FROM feed_entries`); n != 1 {
 		t.Errorf("got %d feed_entries, want 1", n)
 	}
-	if n := scanValOrFatal[int](t, `SELECT count(*) FROM stories`); n != 0 {
-		t.Errorf("got %d stories, want 0", n)
-	}
 }
 
 // A failure to fetch an item's article page is fail-soft: the entry is
-// stored with NULL content and the story is still drafted, and job.Do
-// itself returns no error.
+// stored with NULL content, and job.Do itself returns no error.
 func TestFeedPolling_ArticleFetchFails(t *testing.T) {
 	t.Cleanup(testenv.TearDown)
 	uid := provisionDefaultTestAccount(t, mustTimeUTC("2026-07-15 10:00:00"))
@@ -380,8 +334,7 @@ func TestFeedPolling_ArticleFetchFails(t *testing.T) {
 			Last: mustTimeUTC("2026-07-15 09:55:00"),
 			Next: mustTimeUTC("2026-07-15 10:05:00"),
 		},
-		NewspaperSvc: &newspaper.Service{DB: testenv.DB()},
-		ScrpSvc:      scraper.NewService(stubServerAddr),
+		ScrpSvc: scraper.NewService(stubServerAddr),
 	}
 	if err := j.Do(t.Context()); err != nil {
 		t.Errorf("job.Do returned %v, want nil (article fetch failures are fail-soft)", err)
@@ -390,9 +343,6 @@ func TestFeedPolling_ArticleFetchFails(t *testing.T) {
 	content := scanValOrFatal[sql.NullString](t, `SELECT content FROM feed_entries WHERE dedup_key = 'fetch-fail'`)
 	if content.Valid {
 		t.Errorf("want content to stay NULL after a failed article fetch, got %q", content.String)
-	}
-	if n := scanValOrFatal[int](t, `SELECT count(*) FROM stories`); n != 1 {
-		t.Errorf("got %d stories, want 1 (story is queued before the article fetch runs)", n)
 	}
 }
 
@@ -415,8 +365,7 @@ func TestFeedPolling_FeedFetchFailure(t *testing.T) {
 			Last: mustTimeUTC("2026-07-15 09:55:00"),
 			Next: mustTimeUTC("2026-07-15 10:05:00"),
 		},
-		NewspaperSvc: &newspaper.Service{DB: testenv.DB()},
-		ScrpSvc:      scraper.NewService(stubServerAddr),
+		ScrpSvc: scraper.NewService(stubServerAddr),
 	}
 	if err := j.Do(t.Context()); err == nil {
 		t.Error("want an error when the feed itself fails to fetch, got nil")
@@ -442,51 +391,12 @@ func TestFeedPolling_EmptyFeed(t *testing.T) {
 			Last: mustTimeUTC("2026-07-15 09:55:00"),
 			Next: mustTimeUTC("2026-07-15 10:05:00"),
 		},
-		NewspaperSvc: &newspaper.Service{DB: testenv.DB()},
-		ScrpSvc:      scraper.NewService(stubServerAddr),
+		ScrpSvc: scraper.NewService(stubServerAddr),
 	}
 	if err := j.Do(t.Context()); err == nil {
 		t.Error("want an error for a feed with zero items, got nil")
 	}
 	if n := scanValOrFatal[int](t, `SELECT count(*) FROM feed_entries`); n != 0 {
 		t.Errorf("got %d feed_entries, want 0", n)
-	}
-}
-
-// A single in-interval item on a feed with multiple subscribers is drafted
-// into one story per subscriber.
-func TestFeedPolling_MultipleSubscribers(t *testing.T) {
-	t.Cleanup(testenv.TearDown)
-	uidAlice, _ := provisionTestAccount(
-		t, "alice@example.com", "alice#password$123", "Pixel9a/Android",
-		mustTimeUTC("2026-07-15 10:00:00"),
-	)
-	feedID := seedFeed(t, uidAlice, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
-	uidBob, _ := provisionTestAccount(
-		t, "bob@example.com", "bob#password$123", "iPhone17/iOS",
-		mustTimeUTC("2026-07-15 10:00:00"),
-	)
-	seedFeed(t, uidBob, "http://feed.test/rss", "./testdata/feed_polling/seed_test_feed.xml")
-	testenv.StubHTTP("feed.test", "/rss", "./testdata/feed_polling/polling_multiple_subscribers.xml")
-
-	j := &feed.Job{
-		DB:   testenv.DB(),
-		Feed: feed.FeedRecord{ID: feedID, URL: "http://feed.test/rss", Title: "Test Feed"},
-		Interval: newspaper.EditorialInterval{
-			Last: mustTimeUTC("2026-07-15 09:55:00"),
-			Next: mustTimeUTC("2026-07-15 10:05:00"),
-		},
-		NewspaperSvc: &newspaper.Service{DB: testenv.DB()},
-		ScrpSvc:      scraper.NewService(stubServerAddr),
-	}
-	if err := j.Do(t.Context()); err != nil {
-		t.Fatalf("job.Do returned an unexpected error: %v", err)
-	}
-
-	if n := scanValOrFatal[int](t, `SELECT count(*) FROM stories WHERE user_id = $1`, uidAlice); n != 1 {
-		t.Errorf("got %d stories for alice, want 1", n)
-	}
-	if n := scanValOrFatal[int](t, `SELECT count(*) FROM stories WHERE user_id = $1`, uidBob); n != 1 {
-		t.Errorf("got %d stories for bob, want 1", n)
 	}
 }

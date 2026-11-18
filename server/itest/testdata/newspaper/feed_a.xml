@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Items around a newspaper published at 10:03Z, whose editorial interval
+  starts at 09:58Z:
+  - a-earlier is before the interval.
+  - a-current is in the interval.
+  - a-later is after the newspaper is published.
+  - a-undated has no publication date.
+-->
+<rss version="2.0">
+  <channel>
+    <title>Feed A</title>
+    <link>http://feed-a.test/</link>
+    <description>Feed used by newspaper assembly integration tests</description>
+    <item>
+      <title>Earlier item</title>
+      <link>http://articles.test/a-earlier</link>
+      <guid>a-earlier</guid>
+      <pubDate>Wed, 15 Jul 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Current item</title>
+      <link>http://articles.test/a-current</link>
+      <guid>a-current</guid>
+      <description>Current desc</description>
+      <pubDate>Wed, 15 Jul 2026 10:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Later item</title>
+      <link>http://articles.test/a-later</link>
+      <guid>a-later</guid>
+      <pubDate>Wed, 15 Jul 2026 10:30:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Undated item</title>
+      <link>http://articles.test/a-undated</link>
+      <guid>a-undated</guid>
+    </item>
+  </channel>
+</rss>
