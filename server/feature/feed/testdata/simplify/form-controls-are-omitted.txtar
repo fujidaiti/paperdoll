@@ -1,0 +1,9 @@
+Form controls and dialogs are omitted with their subtrees.
+-- input.html --
+<body><form><p>In a form</p></form><input value="x"><button>Go</button>
+<select><option>A</option></select><textarea>T</textarea><label>L</label>
+<dialog><p>Dialog</p></dialog><p>Kept</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

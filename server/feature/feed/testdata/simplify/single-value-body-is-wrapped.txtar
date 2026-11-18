@@ -1,0 +1,7 @@
+A body of only a text is still the body of the page.
+-- input.html --
+<body>Just text</body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0">Just text</body></html>

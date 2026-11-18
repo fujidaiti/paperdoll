@@ -3,51 +3,69 @@ package feed
 import (
 	"encoding/json"
 	"maps"
-	"os"
 	"path/filepath"
 	"slices"
-	"strings"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"golang.org/x/net/html"
 )
 
-// TestPositionPath checks that the path of a node by its position selects only
-// that node, when its siblings have the same tag, on
-// testdata/position-path.html, whose target node has the class "target".
-func TestPositionPath(t *testing.T) {
-	raw, err := os.ReadFile("testdata/position-path.html")
-	if err != nil {
-		t.Fatal(err)
-	}
-	page, err := SimplifyPage(raw, "https://example.com/")
-	if err != nil {
-		t.Fatal(err)
-	}
-	doc, err := html.Parse(strings.NewReader(page))
-	if err != nil {
-		t.Fatal(err)
-	}
-	index := newPageIndex(pageBody(doc))
-	i := slices.IndexFunc(index.nodes, func(n *html.Node) bool {
-		return slices.Contains(classesOf(n), "target")
+// TestGenerateRules checks the rules that the marks of each case in
+// testdata/generate generate on a page that is already simplified.
+func TestGenerateRules(t *testing.T) {
+	runCases(t, "generate", "rules.json", func(t *testing.T, sections map[string]string) {
+		_, index := parseCasePage(t, sections["page.html"])
+		for _, section := range []string{"marks.json", "marks-reordered.json"} {
+			data, ok := sections[section]
+			if !ok {
+				continue
+			}
+			var marks Marks
+			if err := json.Unmarshal([]byte(data), &marks); err != nil {
+				t.Fatal(err)
+			}
+			posts, excluded, excludedNodes, err := index.resolveMarks(marks)
+			if err != nil {
+				t.Fatal(err)
+			}
+			checkJSON(t, sections["rules.json"], index.generateRules(posts, excluded, excludedNodes))
+		}
 	})
-	if i < 0 {
-		t.Fatalf("no node with the class \"target\": %s", page)
-	}
-	target := index.nodes[i]
+}
 
-	path := index.positionPath(target)
+// TestMarksFor checks the marks that a user would make to get what the rules
+// of each case in testdata/marks-for find, and that the rules generated from
+// them are the same rules, or the ones in regenerated.json when the case has it.
+func TestMarksFor(t *testing.T) {
+	runCases(t, "marks-for", "marks.json", func(t *testing.T, sections map[string]string) {
+		_, index := parseCasePage(t, sections["page.html"])
+		var rules ExtractionRules
+		if err := json.Unmarshal([]byte(sections["rules.json"]), &rules); err != nil {
+			t.Fatal(err)
+		}
+		excluded, excludedNodes := rules.excludedLinks(), rules.excludedNodes(index.body)
+		posts, generated := index.marksFor(index.markFoundPosts(rules), excluded, excludedNodes)
 
-	want := []Step{{Tag: "div", Nth: new(0)}, {Tag: "nav", Nth: new(1)}}
-	if d := cmp.Diff(want, path); d != "" {
-		t.Errorf("path differs (-want +got):\n%s", d)
-	}
-	rules := ExtractionRules{ExcludeNodes: [][]Step{path}}
-	if got := slices.Collect(maps.Keys(rules.excludedNodes(index.body))); !slices.Equal(got, []*html.Node{target}) {
-		t.Errorf("the path selects %d nodes, want only the target", len(got))
-	}
+		marks := Marks{
+			MarkedPosts:   index.idsOf(posts),
+			ExcludedLinks: slices.Sorted(maps.Keys(excluded)),
+			ExcludedNodes: []int{},
+		}
+		if marks.ExcludedLinks == nil {
+			marks.ExcludedLinks = []string{}
+		}
+		for n := range excludedNodes {
+			marks.ExcludedNodes = append(marks.ExcludedNodes, index.index[n])
+		}
+		slices.Sort(marks.ExcludedNodes)
+		checkJSON(t, sections["marks.json"], marks)
+
+		want, ok := sections["regenerated.json"]
+		if !ok {
+			want = sections["rules.json"]
+		}
+		checkJSON(t, want, generated)
+	})
 }
 
 // generateWebpageRules returns the rules that the marks of the fixture of the

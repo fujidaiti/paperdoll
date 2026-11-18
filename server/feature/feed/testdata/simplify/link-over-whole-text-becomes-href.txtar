@@ -1,0 +1,7 @@
+A link that covers the whole text puts its target on the value.
+-- input.html --
+<body><p><a href="/post">Whole</a></p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p href="http://example.com/post" data-id="1">Whole</p></body></html>

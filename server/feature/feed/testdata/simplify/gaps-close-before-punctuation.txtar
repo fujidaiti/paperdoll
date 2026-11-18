@@ -1,0 +1,7 @@
+No space is put before closing punctuation or after an opening bracket.
+-- input.html --
+<body><h2><span>Tools</span>, <span>Kiro</span> (<span>beta</span>)</h2></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><h2 data-id="1">Tools, Kiro (beta)</h2></body></html>

@@ -1,0 +1,7 @@
+A main that is never shown does not replace the body.
+-- input.html --
+<body><template><main><p>Template</p></main></template><div hidden><main><p>Hidden</p></main></div><p>Visible</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Visible</p></body></html>

@@ -1,0 +1,19 @@
+A field takes the first selected node that it accepts.
+-- page.html --
+<body data-id="0">
+<article class="post" data-id="1">
+<h2 href="http://example.com/first" data-id="2">First post</h2>
+<p data-id="3">
+<img src="http://example.com/first.png" data-id="4"/></p>
+<p data-id="5">The summary of the first post.</p></article></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}], "body": [{"tag": "p"}], "thumbnail": [{"tag": "img"}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first",
+    "body": "The summary of the first post.",
+    "thumbnail": "http://example.com/first.png"
+  }
+]

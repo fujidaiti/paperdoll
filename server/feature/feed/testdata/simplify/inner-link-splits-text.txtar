@@ -1,0 +1,7 @@
+A link inside a text splits it into the text before, the link and the text after.
+-- input.html --
+<body><p>Before <a href="/x">link</a> after</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Before<a href="http://example.com/x" data-id="3">link</a>after</p></body></html>

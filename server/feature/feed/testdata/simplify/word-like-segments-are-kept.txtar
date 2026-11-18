@@ -1,0 +1,7 @@
+Short or lowercase segments are words rather than generated hashes.
+-- input.html --
+<body><div class="post-abc main_title longmixedCase"><p>Text</p></div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div class="post-abc main_title longmixedCase" data-id="1"><p data-id="2">Text</p></div></body></html>

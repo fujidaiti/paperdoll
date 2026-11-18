@@ -1,0 +1,8 @@
+An ISO date or an RFC 3339 timestamp is converted to UTC.
+-- input.html --
+<body><p>2026-01-02</p><p>2026-01-02T09:00:00+09:00</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1"><time data-id="2">2026-01-02T00:00:00Z</time></p>
+<p data-id="3"><time data-id="4">2026-01-02T00:00:00Z</time></p></body></html>

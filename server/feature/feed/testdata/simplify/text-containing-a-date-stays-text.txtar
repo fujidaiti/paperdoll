@@ -1,0 +1,7 @@
+A text that only contains a date stays a text.
+-- input.html --
+<body><p>Updated Sep 25, 2026</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Updated Sep 25, 2026</p></body></html>

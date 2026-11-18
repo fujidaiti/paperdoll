@@ -1,0 +1,8 @@
+Formatting tags can be a part of a word, so they add no space.
+-- input.html --
+<body><p>un<b>believ</b>able</p>
+<p>w<i>o</i><em>r</em><strong>d</strong><small>a</small><code>b</code><mark>c</mark><sup>d</sup><sub>e</sub><u>f</u><s>g</s><abbr>h</abbr><cite>i</cite><q>j</q><kbd>k</kbd><font>l</font><bdi>m</bdi><bdo>n</bdo></p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">unbelievable</p><p data-id="2">wordabcdefghijklmn</p></body></html>

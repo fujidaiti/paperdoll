@@ -1,0 +1,9 @@
+Without classes on the way, the path starts at the top of the page.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article data-id="2"><h2 href="http://example.com/a" data-id="3">A</h2></article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3}], "excluded_links": [], "excluded_nodes": []}
+-- rules.json --
+{"selectors": [{"box": [{"tag": "main"}, {"tag": "article"}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}]}

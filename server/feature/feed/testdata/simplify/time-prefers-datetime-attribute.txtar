@@ -1,0 +1,7 @@
+A time takes its timestamp from the datetime attribute.
+-- input.html --
+<body><time datetime="2026-03-04">March</time></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><time data-id="1">2026-03-04T00:00:00Z</time></body></html>

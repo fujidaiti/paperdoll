@@ -1,0 +1,7 @@
+The header, the navigation and the footer outside the main are dropped.
+-- input.html --
+<body><header><p>Site</p></header><nav><p>Menu</p></nav><main><p>Post</p></main><footer><p>Foot</p></footer></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><main data-id="1"><p data-id="2">Post</p></main></body></html>

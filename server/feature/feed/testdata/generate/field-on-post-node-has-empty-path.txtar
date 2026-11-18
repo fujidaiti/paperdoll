@@ -1,0 +1,10 @@
+A card that is the link has an empty path to its link.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <a class="card" href="http://example.com/a" data-id="2"><h3 data-id="3">A</h3></a>
+  <a class="card" href="http://example.com/b" data-id="4"><h3 data-id="5">B</h3></a>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 2}], "excluded_links": [], "excluded_nodes": []}
+-- rules.json --
+{"selectors": [{"box": [{"tag": "a", "cls": ["card"]}], "title": [{"tag": "h3"}], "link": []}]}

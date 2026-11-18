@@ -1,0 +1,7 @@
+A class with nothing left after removing its generated segments is dropped.
+-- input.html --
+<body><div class="a1b2c3"><p>Text</p></div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div data-id="1"><p data-id="2">Text</p></div></body></html>

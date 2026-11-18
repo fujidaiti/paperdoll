@@ -1,0 +1,14 @@
+An optional field that no path resolves is left out of the selector.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2">
+    <h2 href="http://example.com/a" data-id="3">A</h2>
+    <div data-id="4"><p data-id="5">One</p><p data-id="6">Two</p></div>
+    <div data-id="7"><p data-id="8">Three</p><p data-id="9">Four</p></div>
+  </article>
+  <article class="post" data-id="10"><h2 href="http://example.com/b" data-id="11">B</h2></article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3, "body": 9}], "excluded_links": [], "excluded_nodes": []}
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}]}

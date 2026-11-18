@@ -1,0 +1,8 @@
+A relative link resolves against the canonical link of the page.
+-- input.html --
+<html><head><link rel="canonical" href="https://site.example/blog/"></head>
+<body><p><a href="post">Post</a></p></body></html>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="https://site.example/blog/"/></head>
+<body data-id="0"><p href="https://site.example/blog/post" data-id="1">Post</p></body></html>

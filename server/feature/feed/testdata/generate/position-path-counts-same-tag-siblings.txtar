@@ -1,0 +1,16 @@
+A position counts only the siblings with the same tag.
+-- page.html --
+<body data-id="0"><div data-id="1">
+  <nav data-id="2"><p data-id="3">First</p></nav>
+  <p data-id="4">Between</p>
+  <nav data-id="5"><p data-id="6">Second</p></nav>
+  <article class="post" data-id="7"><h2 href="http://example.com/a" data-id="8">A</h2></article>
+  <article class="post" data-id="9"><h2 href="http://example.com/b" data-id="10">B</h2></article>
+</div></body>
+-- marks.json --
+{"marked_posts": [{"box": 7, "title": 8, "link": 8}], "excluded_links": [], "excluded_nodes": [5]}
+-- rules.json --
+{
+  "selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}],
+  "excludeNodes": [[{"tag": "div", "nth": 0}, {"tag": "nav", "nth": 1}]]
+}

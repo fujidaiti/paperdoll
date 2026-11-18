@@ -1,0 +1,10 @@
+A post without classes is selected from its nearest ancestor with classes.
+-- page.html --
+<body data-id="0">
+  <section class="list" data-id="1"><article data-id="2"><h2 href="http://example.com/a" data-id="3">A</h2></article></section>
+  <section class="list" data-id="4"><article data-id="5"><h2 href="http://example.com/b" data-id="6">B</h2></article></section>
+</body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3}], "excluded_links": [], "excluded_nodes": []}
+-- rules.json --
+{"selectors": [{"box": [{"tag": "section", "cls": ["list"]}, {"tag": "article"}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}]}

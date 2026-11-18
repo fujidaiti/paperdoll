@@ -1,0 +1,22 @@
+A post is left out when the host and the path of its link are excluded, whatever its query is.
+-- page.html --
+<body data-id="0">
+<article class="post" data-id="1">
+<h2 href="http://example.com/first" data-id="2">First post</h2></article>
+<article class="post" data-id="3">
+<h2 href="http://example.com/newsletters?weekly" data-id="4">Weekly newsletter</h2></article>
+<article class="post" data-id="5">
+<h2 href="http://example.com/newsletters/first" data-id="6">First newsletter</h2></article></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}], "excludeLinks": ["example.com/newsletters"]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first"
+  },
+  {
+    "title": "First newsletter",
+    "link": "http://example.com/newsletters/first"
+  }
+]

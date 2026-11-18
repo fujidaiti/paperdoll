@@ -1,0 +1,17 @@
+A field path is resolved as if the excluded subtrees were not in the page.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2">
+    <div data-id="3"><span data-id="4">Sponsored</span></div>
+    <span data-id="5">A</span>
+    <a href="http://example.com/a" data-id="6">Read</a>
+  </article>
+  <article class="post" data-id="7"><span data-id="8">B</span><a href="http://example.com/b" data-id="9">Read</a></article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 5, "link": 6}], "excluded_links": [], "excluded_nodes": [3]}
+-- rules.json --
+{
+  "selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "span"}], "link": [{"tag": "a"}]}],
+  "excludeNodes": [[{"tag": "main", "nth": 0}, {"tag": "article", "nth": 0}, {"tag": "div", "nth": 0}]]
+}

@@ -1,0 +1,26 @@
+The posts of all selectors are in document order.
+-- page.html --
+<body data-id="0">
+<article class="post" data-id="1">
+<h2 href="http://example.com/first" data-id="2">First post</h2></article>
+<div class="featured" data-id="3">
+<h3 href="http://example.com/featured" data-id="4">Featured post</h3></div>
+<article class="post" data-id="5">
+<h2 href="http://example.com/second" data-id="6">Second post</h2></article></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}, {"box": [{"tag": "div", "cls": ["featured"]}], "title": [{"tag": "h3"}], "link": [{"tag": "h3"}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first"
+  },
+  {
+    "title": "Featured post",
+    "link": "http://example.com/featured"
+  },
+  {
+    "title": "Second post",
+    "link": "http://example.com/second"
+  }
+]

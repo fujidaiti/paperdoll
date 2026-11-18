@@ -1,0 +1,7 @@
+The runs of text between elements are plain texts.
+-- input.html --
+<body><div>Before<p>Middle</p>After</div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div data-id="1">Before<p data-id="3">Middle</p>After</div></body></html>

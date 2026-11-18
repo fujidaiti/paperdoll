@@ -1,0 +1,7 @@
+A page can have several mains, and all of them are kept in document order.
+-- input.html --
+<body><main><p>First</p></main><div><main><p>Second</p></main></div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><main data-id="1"><p data-id="2">First</p></main><main data-id="3"><p data-id="4">Second</p></main></body></html>

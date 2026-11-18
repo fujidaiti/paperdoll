@@ -1,0 +1,7 @@
+A link around other elements stays a container with its target.
+-- input.html --
+<body><a href="/card"><div><p>Title</p></div></a></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><a href="http://example.com/card" data-id="1"><div data-id="2"><p data-id="3">Title</p></div></a></body></html>

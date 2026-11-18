@@ -1,0 +1,18 @@
+A post that two selectors find takes each field from the first one that has it.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2">
+    <h2 href="http://example.com/a" data-id="3">A</h2>
+    <h3 href="http://example.com/a" data-id="4">Other title</h3>
+    <p data-id="5">The body.</p>
+  </article>
+</main></body>
+-- rules.json --
+{"selectors": [
+  {"box": [{"tag": "main"}, {"tag": "article"}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]},
+  {"box": [{"tag": "main"}, {"tag": "article"}], "title": [{"tag": "h3"}], "link": [{"tag": "h3"}], "body": [{"tag": "p"}]}
+]}
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3, "body": 5}], "excluded_links": [], "excluded_nodes": []}
+-- regenerated.json --
+{"selectors": [{"box": [{"tag": "main"}, {"tag": "article"}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}], "body": [{"tag": "p"}]}]}

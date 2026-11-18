@@ -12,6 +12,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"golang.org/x/net/html"
+	"golang.org/x/tools/txtar"
 )
 
 var update = flag.Bool("update", false, "update the golden files in testdata/webpage")
@@ -138,6 +139,81 @@ func checkGolden(t *testing.T, path string, got []byte) {
 	if diff := cmp.Diff(lines(want), lines(got)); diff != "" {
 		t.Errorf("%s differs (-want +got):\n%s", path, diff)
 	}
+}
+
+// runCases runs run as a subtest for each case in testdata/dir that has the
+// given section, with the sections of the case by name. A case is a txtar file,
+// whose comment documents the behaviour that it tests and whose name becomes
+// the name of the subtest.
+func runCases(t *testing.T, dir, section string, run func(t *testing.T, sections map[string]string)) {
+	t.Helper()
+	files, err := filepath.Glob(filepath.Join("testdata", dir, "*.txtar"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	ran := 0
+	for _, f := range files {
+		archive, err := txtar.ParseFile(f)
+		if err != nil {
+			t.Fatal(err)
+		}
+		sections := map[string]string{}
+		for _, s := range archive.Files {
+			sections[s.Name] = string(s.Data)
+		}
+		if _, ok := sections[section]; !ok {
+			continue
+		}
+		ran++
+		t.Run(strings.TrimSuffix(filepath.Base(f), ".txtar"), func(t *testing.T) { run(t, sections) })
+	}
+	if ran == 0 {
+		t.Fatalf("no cases with the section %s in testdata/%s", section, dir)
+	}
+}
+
+// parseCasePage parses the simplified page of a case, which may be indented.
+func parseCasePage(t *testing.T, page string) (*html.Node, *pageIndex) {
+	t.Helper()
+	doc, index, err := parseEditorPage(string(renderGoldenPage(t, []byte(page))))
+	if err != nil {
+		t.Fatal(err)
+	}
+	return doc, index
+}
+
+// checkJSON compares the JSON of got with want, a JSON document.
+func checkJSON(t *testing.T, want string, got any) {
+	t.Helper()
+	data, err := json.Marshal(got)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var w, g any
+	if err := json.Unmarshal([]byte(want), &w); err != nil {
+		t.Fatalf("%v in %s", err, want)
+	}
+	if err := json.Unmarshal(data, &g); err != nil {
+		t.Fatal(err)
+	}
+	if d := cmp.Diff(w, g); d != "" {
+		t.Errorf("JSON differs (-want +got):\n%s", d)
+	}
+}
+
+// TestSimplifyPage checks the output of SimplifyPage for each behaviour in
+// testdata/simplify.
+func TestSimplifyPage(t *testing.T) {
+	runCases(t, "simplify", "want.html", func(t *testing.T, sections map[string]string) {
+		got, err := SimplifyPage([]byte(sections["input.html"]), "http://example.com/")
+		if err != nil {
+			t.Fatal(err)
+		}
+		want := renderGoldenPage(t, []byte(sections["want.html"]))
+		if d := cmp.Diff(string(want), string(renderGoldenPage(t, []byte(got)))); d != "" {
+			t.Errorf("page differs (-want +got):\n%s", d)
+		}
+	})
 }
 
 // TestSimplifyPageGolden checks the simplified page of each version of each

@@ -1,0 +1,7 @@
+A node with the tag "time" always has a timestamp, so a partial date is a span.
+-- input.html --
+<body><time class="date" datetime="2026-09">September 2026</time></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><span data-id="1">September 2026</span></body></html>

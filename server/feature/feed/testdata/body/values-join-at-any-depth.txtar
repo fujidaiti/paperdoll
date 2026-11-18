@@ -1,0 +1,8 @@
+The texts are joined at any depth.
+-- page.html --
+<body data-id="0"><div data-id="1">
+  <div data-id="2"><p data-id="3">The first line.</p><div data-id="4"><p data-id="5">The second line.</p></div></div>
+  <p data-id="6">The third line.</p>
+</div></body>
+-- want.txt --
+The first line. The second line. The third line.

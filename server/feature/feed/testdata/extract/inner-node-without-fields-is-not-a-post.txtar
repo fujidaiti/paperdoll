@@ -1,0 +1,16 @@
+A selected node inside a post without a title and a link does not make the post a list.
+-- page.html --
+<body data-id="0">
+<div class="card" data-id="1">
+<h2 href="http://example.com/first" data-id="2">First post</h2>
+<div class="card" data-id="3">
+<p data-id="4">Share this post</p></div></div></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "div", "cls": ["card"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first"
+  }
+]

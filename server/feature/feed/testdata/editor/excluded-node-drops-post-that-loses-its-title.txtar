@@ -1,0 +1,22 @@
+A post whose title is excluded is no longer a post, even when it is marked.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2">
+    <h2 href="http://example.com/first" data-id="3">First</h2>
+    <img src="http://example.com/first.png" alt="A cover" data-id="4"/>
+    <p data-id="5">The first post.</p>
+  </article>
+  <article class="post" data-id="6">
+    <h2 href="http://example.com/second" data-id="7">Second</h2>
+    Loose text
+    <p data-id="9">The second post.</p>
+  </article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3}, {"box": 6, "title": 7, "link": 7}], "excluded_links": [], "excluded_nodes": [3]}
+-- state.json --
+{
+  "found_posts": [{"box": 6, "title": 7, "link": 7, "values": {"title": "Second", "link": "http://example.com/second"}}],
+  "excluded_posts": [],
+  "preview": [{"title": "Second", "link": "http://example.com/second"}]
+}

@@ -1,0 +1,7 @@
+An element with the class "hidden" is omitted with its subtree.
+-- input.html --
+<body><div class="hidden"><p>Gone</p></div><p>Kept</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

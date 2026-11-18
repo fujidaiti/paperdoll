@@ -1,0 +1,20 @@
+The first post of a link takes the fields that it lacks from the later posts of the link.
+-- page.html --
+<body data-id="0">
+<div class="teaser" data-id="1">
+<h3 href="http://example.com/first" data-id="2">First post</h3>
+<img src="http://example.com/first.png" data-id="3"/></div>
+<div class="card" data-id="4">
+<h3 href="http://example.com/first" data-id="5">First post</h3>
+<p data-id="6">The summary of the first post.</p></div></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "div", "cls": ["teaser"]}], "title": [{"tag": "h3"}], "link": [{"tag": "h3"}], "thumbnail": [{"tag": "img"}]}, {"box": [{"tag": "div", "cls": ["card"]}], "title": [{"tag": "h3"}], "link": [{"tag": "h3"}], "body": [{"tag": "p"}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first",
+    "thumbnail": "http://example.com/first.png",
+    "body": "The summary of the first post."
+  }
+]

@@ -1,0 +1,8 @@
+A heading around an image or a time does not take over its value.
+-- input.html --
+<body><h2><img src="/a.png" alt="A"></h2><h3><time datetime="2026-01-02">Jan 2</time></h3></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><h2 data-id="1"><img src="http://example.com/a.png" alt="A" data-id="2"/></h2>
+<h3 data-id="3"><time data-id="4">2026-01-02T00:00:00Z</time></h3></body></html>

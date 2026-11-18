@@ -1,0 +1,7 @@
+A text that is only a date becomes a time.
+-- input.html --
+<body><p>Sep 25, 2026</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1"><time data-id="2">2026-09-25T00:00:00Z</time></p></body></html>

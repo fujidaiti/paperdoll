@@ -1,0 +1,9 @@
+Text that only screen readers read is omitted, whatever the case of its class.
+-- input.html --
+<body><div class="screen-reader-text">a</div><div class="screen-reader-only">b</div>
+<div class="sr-only">c</div><div class="m-sr-only">d</div><div class="visually-hidden">e</div>
+<div class="visuallyhidden">f</div><div class="SR-ONLY">g</div><p>Kept</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

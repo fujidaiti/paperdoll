@@ -1,0 +1,5 @@
+A link adds its text to the body.
+-- page.html --
+<body data-id="0"><div data-id="1"><p data-id="2">The summary of a post.</p><a href="http://example.com/first" data-id="3">Read more</a></div></body>
+-- want.txt --
+The summary of a post. Read more

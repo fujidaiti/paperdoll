@@ -1,0 +1,16 @@
+The posts of all selectors are listed in document order.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2"><h2 href="http://example.com/a" data-id="3">A</h2></article>
+  <div class="teaser" data-id="4"><h3 href="http://example.com/b" data-id="5">B</h3></div>
+  <article class="post" data-id="6"><h2 href="http://example.com/c" data-id="7">C</h2></article>
+  <div class="teaser" data-id="8"><h3 href="http://example.com/d" data-id="9">D</h3></div>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3}, {"box": 4, "title": 5, "link": 5}], "excluded_links": [], "excluded_nodes": []}
+-- state.json --
+{
+  "found_posts": [{"box": 2, "title": 3, "link": 3, "values": {"title": "A", "link": "http://example.com/a"}}, {"box": 4, "title": 5, "link": 5, "values": {"title": "B", "link": "http://example.com/b"}}, {"box": 6, "title": 7, "link": 7, "values": {"title": "C", "link": "http://example.com/c"}}, {"box": 8, "title": 9, "link": 9, "values": {"title": "D", "link": "http://example.com/d"}}],
+  "excluded_posts": [],
+  "preview": [{"title": "A", "link": "http://example.com/a"}, {"title": "B", "link": "http://example.com/b"}, {"title": "C", "link": "http://example.com/c"}, {"title": "D", "link": "http://example.com/d"}]
+}

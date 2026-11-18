@@ -1,0 +1,10 @@
+The classes that differ between the posts of a list are not a part of the path.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="entry post-123 category-go tag-news has-post-thumbnail" data-id="2"><h2 href="http://example.com/a" data-id="3">A</h2></article>
+  <article class="entry post-123 category-go tag-news has-post-thumbnail" data-id="4"><h2 href="http://example.com/b" data-id="5">B</h2></article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3}], "excluded_links": [], "excluded_nodes": []}
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["entry"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}]}
