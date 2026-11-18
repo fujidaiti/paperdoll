@@ -16,9 +16,9 @@ var stubServerAddr = must(url.Parse("http://127.0.0.1:8081"))
 // real [feed.Service.Subscribe] (fetching the fixture via the stub HTTP
 // server, same as the API server does) rather than inserting feeds/
 // feed_subscriptions rows directly, so the seeded state matches what a real
-// subscription flow produces. A single entry is then inserted directly since
-// there's no public service method for entries outside the background
-// polling job.
+// subscription flow produces. The entries that the subscription stores are
+// replaced with a single entry with content, which the polling job would fetch
+// and which keeps the entry at the top of the timeline.
 func seedFeedSuit_BbcNews(ctx context.Context, db *sql.DB) error {
 	if _, err := provisionTestAccount(ctx, db); err != nil {
 		return err
@@ -36,6 +36,10 @@ func seedFeedSuit_BbcNews(ctx context.Context, db *sql.DB) error {
 	svc := feed.NewService(db, scraper.NewService(stubServerAddr))
 	f, err := svc.Subscribe(ctx, uid, *must(url.Parse("http://feeds.bbci.co.uk/news/rss.xml")))
 	if err != nil {
+		return err
+	}
+
+	if _, err := db.ExecContext(ctx, `DELETE FROM feed_entries WHERE feed_id = $1`, f.ID); err != nil {
 		return err
 	}
 
