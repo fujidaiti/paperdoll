@@ -1,32 +1,68 @@
-# Test pages
+# Test data of the post selectors
 
-Web pages saved with `curl` (without running JavaScript) for finding the posts
-of a page. Each directory has the same pages under the same file names.
+## Unit cases
 
-- `source/`: the pages as first fetched, on which post selectors are built.
-- `robustness/`: the same pages fetched again on 2026-10-11, after their content
-  had changed. They show whether selectors built on `source/` still find the
-  posts of a later version of a page. has an empty file or an empty list.
-- `fixture/`: the posts that a correct selector finds on each page in `source/`,
-  as a JSON list of objects with the fields `title`, `body`, `link`, `thumbnail`
-  and `pubDate`. A post leaves out the fields it does not have. Most were
-  extracted with selectors built by hand and corrected by hand where the
-  selectors were wrong. `go.dev-blog` was written by hand from the page.
-- `simplified/`: the simplified page of each page in `source/` (see
-  `SimplifyPage`).
-- `selector/`: the extraction rules of each page with a fixture, as the database
-  stores them. They are built on `simplified/` in the same way as a user of the
-  app builds them, and find exactly the posts in `fixture/` (see
-  perfect_selector_test.go).
-- `extract/`: small pages written by hand, one for each case of
-  `TestExtractPosts`, with the posts that the selectors of the case find in
-  `<case>.posts.json`.
-- `body-text.html`: a small page written by hand, with one node for each case of
-  `TestBodyText`.
+Each behaviour of the page simplifier, the rule generator, the extraction and
+the selector editor has its own case: a txtar file whose comment documents the
+behaviour and whose name becomes the name of the test. To add a case, add a
+file. The expected output of a case is its specification, so it is written by
+hand, and `-update` never touches it.
 
-`simplified/` and `selector/` are golden files. After changing the simplifier,
-the selectors or a fixture, update them with:
+| Directory    | Sections                                    | Test                |
+| ------------ | ------------------------------------------- | ------------------- |
+| `simplify/`  | `input.html`, `want.html`                   | `TestSimplifyPage`  |
+| `generate/`  | `page.html`, `marks.json`, `rules.json`     | `TestGenerateRules` |
+| `marks-for/` | `page.html`, `rules.json`, `marks.json`     | `TestMarksFor`      |
+| `extract/`   | `page.html`, `rules.json`, `posts.json`     | `TestExtractPosts`  |
+| `body/`      | `page.html`, `want.txt`                     | `TestBodyText`      |
+| `editor/`    | `page.html`, `marks.json`, and `state.json` | `TestEditorState`   |
+| `editor/`    | `page.html`, `marks.json`, and `error.txt`  | `TestResolveMarks`  |
+
+A `page.html` is a page that is already simplified, with the node ID of each
+element in `data-id`, so a bug in the simplifier does not fail these cases. It
+may be indented.
+
+- A `generate/` case can add `marks-reordered.json`, which must give the same
+  rules.
+- A `marks-for/` case can add `regenerated.json` when the rules generated from
+  the marks differ from `rules.json`.
+
+## Web pages
+
+`webpage/<name>/` holds a real page, which checks that the pieces hold up on
+messy HTML and when a page changes. Its test URL is `http://` plus the directory
+name with `-` read as `/`.
+
+| File                     | Kind    | Holds                                                                                                                              |
+| ------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `source.html`            | fixture | The page as fetched with `curl`, without JavaScript                                                                                |
+| `posts.fixture.json`     | fixture | The posts that the rules find, by node ID and value                                                                                |
+| `preview.fixture.json`   | fixture | The posts that the rules extract, merged by link                                                                                   |
+| `marks.fixture.json`     | fixture | The marks that a person makes to get those posts                                                                                   |
+| `simplified.golden.html` | golden  | The simplified page                                                                                                                |
+| `rules.golden.json`      | golden  | The rules generated from the marks                                                                                                 |
+| `later/`                 | both    | The same page fetched later, with its own `source.html`, `posts.fixture.json`, `preview.fixture.json` and `simplified.golden.html` |
+
+A post in `posts.fixture.json` takes each field from the first selector that
+finds its node, so `preview.fixture.json` holds the fields that the other
+selectors add.
+
+`viewer/` serves the pages with the posts of their fixtures highlighted, to
+check a fixture by eye:
+
+```console
+go run ./testdata/viewer
+```
+
+## Updating
+
+Golden files are outputs. After a change to the simplifier or the generator,
+rewrite them and review the diff:
 
 ```console
 go test ./feature/feed -run Golden -update
 ```
+
+Fixtures are the source of truth, and no test rewrites them. When a change moves
+the node IDs of a page, the web page tests fail even with `-update`, and a
+person fixes the fixtures by hand.
