@@ -263,6 +263,42 @@ func TestNewspaperAssemble_LaterSubscriberGetsStories(t *testing.T) {
 	}
 }
 
+// The first subscriber of a new feed gets stories from the entries stored by
+// the subscription, without waiting for a polling run.
+func TestNewspaperAssemble_FirstSubscriberGetsStoriesWithoutPolling(t *testing.T) {
+	t.Cleanup(testenv.TearDown)
+	now := mustTimeUTC("2026-07-15 10:00:00").Local()
+	uid := provisionDefaultTestAccount(t, now)
+	seedSchedule(t, "before", now.Add(-2*time.Minute))
+	seedSchedule(t, "after", now.Add(3*time.Minute))
+
+	seedFeed(t, uid, "http://feed-b.test/rss", "./testdata/newspaper/feed_b.xml")
+
+	jobs, err := newspaper.CollectJobs(t.Context(), testenv.DB(), now)
+	if err != nil {
+		t.Fatalf("CollectJobs returned an unexpected error: %v", err)
+	}
+	if n := len(jobs); n != 1 {
+		t.Fatalf("got %d jobs, want 1", n)
+	}
+	if err := jobs[0].Do(t.Context()); err != nil {
+		t.Fatalf("job.Do returned an unexpected error: %v", err)
+	}
+
+	want := []newspaperStoryRow{
+		{
+			EntryKey:    "b-current",
+			NewspaperID: jobs[0].NewspaperID,
+			Title:       "Current item",
+			Source:      sql.NullString{String: "Feed B", Valid: true},
+			PublishedAt: sql.NullTime{Time: mustTimeUTC("2026-07-15 10:00:00"), Valid: true},
+		},
+	}
+	if d := cmp.Diff(want, scanNewspaperStories(t, uid)); d != "" {
+		t.Errorf("stories mismatch:\n%s", d)
+	}
+}
+
 // Each newspaper covers only its own editorial interval, so consecutive
 // newspapers get stories from different entries.
 func TestNewspaperAssemble_CoversOwnIntervalOnly(t *testing.T) {
