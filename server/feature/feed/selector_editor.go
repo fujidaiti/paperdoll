@@ -64,6 +64,28 @@ func (p FoundPost) MarshalJSON() ([]byte, error) {
 	return json.Marshal(j)
 }
 
+func (p *FoundPost) UnmarshalJSON(data []byte) error {
+	var j map[string]json.RawMessage
+	if err := json.Unmarshal(data, &j); err != nil {
+		return err
+	}
+	p.IDs, p.Values = MarkedPostIDs{}, nil
+	for k, v := range j {
+		if k == "values" {
+			if err := json.Unmarshal(v, &p.Values); err != nil {
+				return err
+			}
+			continue
+		}
+		var id int
+		if err := json.Unmarshal(v, &id); err != nil {
+			return fmt.Errorf("the node ID of %q: %w", k, err)
+		}
+		p.IDs[k] = id
+	}
+	return nil
+}
+
 // ExcludedPost is a node that would be a post if its link were not excluded,
 // with the excluded link that excludes it.
 type ExcludedPost struct {
