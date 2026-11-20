@@ -1,0 +1,7 @@
+# Groups the server's units so a deploy restarts them together.
+[Unit]
+Description=Paperdoll server
+Wants=paperdoll-api.service paperdoll-scheduler.service
+
+[Install]
+WantedBy=multi-user.target

@@ -62,8 +62,12 @@ outside this repo, in an Xcode Cloud workflow configured to trigger on
 ### Server
 
 Same flow, driven by the `server-` tag prefix. Step 2 differs in what it
-deploys: `server-deploy.yaml` builds the OpenAPI documentation and publishes it
-to GitHub Pages. There's no Go build/compile step in this pipeline.
+deploys: `server-deploy.yaml` builds the server binary, attests its provenance,
+and attaches both to a GitHub Release for the tag. It also builds the OpenAPI
+documentation and publishes it to GitHub Pages. The VPS then picks the release
+up on its own; see [server/deploy/README.md].
+
+[server/deploy/README.md]: server/deploy/README.md
 
 ## Tag protection
 
@@ -86,11 +90,13 @@ release bot's GitHub App is the only bypass actor, set to _Always allow_.
   deploys the client app to Firebase App Distribution.
 - [ci_post_clone.sh], which prepares the Xcode Cloud build machine for the
   workflow triggered by an `ios-stg-*` tag.
-- [server-deploy.yaml], which is triggered by a `server-*` tag and publishes the
-  OpenAPI documentation to GitHub Pages.
+- [server-deploy.yaml], which is triggered by a `server-*` tag, releases the
+  server binary, and publishes the OpenAPI documentation to GitHub Pages.
+- [paperdoll-deploy.sh], which runs on the VPS and deploys new server releases.
 
 [version.sh]: tool/version.sh
 [version-tagging.yaml]: .github/workflows/version-tagging.yaml
 [android-stg-deploy.yaml]: .github/workflows/android-stg-deploy.yaml
 [ci_post_clone.sh]: .client/ios/ci_scripts/ci_post_clone.sh
 [server-deploy.yaml]: .github/workflows/server-deploy.yaml
+[paperdoll-deploy.sh]: server/deploy/paperdoll-deploy.sh

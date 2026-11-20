@@ -1,0 +1,29 @@
+# Runs the background job scheduler. Ordered after the API server so it starts
+# only once that unit's migrations have run.
+[Unit]
+Description=Paperdoll job scheduler
+PartOf=paperdoll.target
+Requires=paperdoll-api.service
+After=paperdoll-api.service
+
+[Service]
+Type=simple
+User=paperdoll
+Group=paperdoll
+EnvironmentFile=/etc/paperdoll/env
+ExecStart=/opt/paperdoll/current/app schedule
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=paperdoll.target

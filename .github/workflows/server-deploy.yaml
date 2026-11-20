@@ -1,7 +1,14 @@
-# Builds the OpenAPI documentation and publishes it to GitHub Pages.
+# Releases the server binary and publishes the OpenAPI documentation to GitHub
+# Pages.
 #
-# Triggered by the server-* tags that version-tagging.yaml pushes. The OAS
-# version comes from server/version.json's versionName at the tagged commit.
+# Triggered by the server-* tags that version-tagging.yaml pushes. The version
+# both ship as comes from server/version.json's versionName at the tagged
+# commit.
+#
+# The binary is attached to a GitHub Release for the tag, together with a
+# Sigstore bundle attesting that this workflow built it from that tag. The VPS
+# polls the releases and verifies the bundle before deploying; see
+# server/deploy/README.md.
 #
 # One repo/org-level variable is required:
 #
@@ -16,19 +23,95 @@ on:
     tags:
       - "server-*"
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: {}
 
 concurrency:
   group: server-deploy
   cancel-in-progress: false
 
 jobs:
+  release-server:
+    name: Build and release server binary
+    runs-on: ubuntu-latest
+    permissions:
+      # gh release create/upload.
+      contents: write
+      # actions/attest: request the OIDC token, store the attestation, and
+      # record the artifact's metadata.
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    steps:
+      - name: Verify tag was created by the release bot
+        if: github.actor != vars.NORELEASE_BOT_SLUG
+        run: |
+          echo "::error::Tag pushed by '${{ github.actor }}', not the release bot. Refusing to deploy."
+          exit 1
+
+      - uses: actions/checkout@v7
+
+      - name: Validate version file
+        run: tool/version.sh vet server/version.json
+
+      - name: Verify tag matches server/version.json
+        run: |
+          set -euo pipefail
+
+          # The VPS reads the version from the tag name, so it must agree with
+          # the version the binary reports from /health.
+          expected="server-$(jq -r '.versionName' server/version.json)"
+          if [[ "$GITHUB_REF_NAME" != "$expected" ]]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match server/version.json ($expected)"
+            exit 1
+          fi
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Build
+        run: make build-server-linux-amd64
+
+      - name: Attest build provenance
+        id: attest
+        uses: actions/attest@v4
+        with:
+          subject-path: build/paperdoll-server-linux-amd64
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUNDLE_PATH: ${{ steps.attest.outputs.bundle-path }}
+        run: |
+          set -euo pipefail
+
+          cp "$BUNDLE_PATH" build/paperdoll-server-linux-amd64.sigstore.json
+          assets=(
+            build/paperdoll-server-linux-amd64
+            build/paperdoll-server-linux-amd64.sigstore.json
+          )
+
+          # A re-run of this workflow finds the release already there.
+          if gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "${assets[@]}" --clobber
+            exit 0
+          fi
+
+          # Created as a draft first so the VPS, which only sees published
+          # releases, never finds one whose assets are still uploading.
+          gh release create "$GITHUB_REF_NAME" "${assets[@]}" \
+            --verify-tag \
+            --draft \
+            --title "$GITHUB_REF_NAME" \
+            --notes "Server release $GITHUB_REF_NAME"
+          gh release edit "$GITHUB_REF_NAME" --draft=false
+
   build-docs:
     name: Build documentation
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Verify tag was created by the release bot
         if: github.actor != vars.NORELEASE_BOT_SLUG
@@ -67,6 +150,9 @@ jobs:
     name: Deploy documentation
     needs: build-docs
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
