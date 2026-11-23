@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:paperdoll/debug_keys.dart';
-import 'package:paperdoll/features/feed_entry/presentation/widgets/original_page_webview.dart';
+import 'package:paperdoll/features/reader/presentation/reader_web_view.dart';
 
 /// Reader body shared by the Story, Feed Entry, and Web Clip Readers: an
 /// "Article" tab with the parsed content and a "Web" tab with the original
@@ -40,7 +40,7 @@ class const ReaderTabView({
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 article,
-                OriginalPageWebView(url: url),
+                ReaderWebView(url: url),
               ],
             ),
           ),
