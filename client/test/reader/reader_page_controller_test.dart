@@ -340,6 +340,19 @@ void main() {
       expect(openedLinks, ['https://coastal.example/2']);
     });
 
+    testWidgets('lets the article load at its base URL', (tester) async {
+      platform.extractionReply = _okMessage;
+      await createController(tester);
+
+      await pumpUntil(tester, () => webView().htmlLoads.isNotEmpty);
+      // WebKit asks to navigate to the base URL of a loading HTML string.
+      expect(await webView().navigate(_url), NavigationDecision.navigate);
+      webView().finishPage(_url);
+      // Once loaded, a link to the same URL opens in the in-app browser.
+      expect(await webView().navigate(_url), NavigationDecision.prevent);
+      expect(openedLinks, [_url]);
+    });
+
     testWidgets('opens links of the article in the in-app browser', (
       tester,
     ) async {

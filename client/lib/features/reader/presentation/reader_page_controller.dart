@@ -134,6 +134,11 @@ class ReaderPageController({
   /// The phase that starts once [_shownHtml] has finished loading. The cover
   /// stays up until then, so the original page does not show through.
   ReaderPhase? _pendingPhase;
+
+  /// The base URL of [_shownHtml] while it is loading. WebKit asks whether to
+  /// navigate to it when the HTML string loads, which is not a link the user
+  /// tapped.
+  String? _htmlLoadUrl;
   var _disposed = false;
   Timer? _documentReadyPoll;
   Timer? _settlePoll;
@@ -168,6 +173,7 @@ class ReaderPageController({
     _messageId = null;
     _shownHtml = null;
     _pendingPhase = null;
+    _htmlLoadUrl = null;
     _notify();
 
     final uri = _uri;
@@ -215,6 +221,7 @@ class ReaderPageController({
   }
 
   void _handlePageFinished() {
+    _htmlLoadUrl = null;
     if (_pendingPhase case final phase?) {
       _pendingPhase = null;
       _phase = phase;
@@ -385,6 +392,7 @@ class ReaderPageController({
   }) async {
     _shownHtml = (html: html, baseUrl: baseUrl);
     _pendingPhase = phase;
+    _htmlLoadUrl = baseUrl;
     await webViewController.setJavaScriptMode(JavaScriptMode.disabled);
     await webViewController.loadHtmlString(html, baseUrl: baseUrl);
   }
@@ -399,6 +407,7 @@ class ReaderPageController({
         error.errorType == WebResourceErrorType.webContentProcessTerminated;
     if (_shownHtml case final shown?) {
       if (terminated) {
+        _htmlLoadUrl = shown.baseUrl;
         unawaited(
           webViewController.loadHtmlString(shown.html, baseUrl: shown.baseUrl),
         );
@@ -437,6 +446,10 @@ class ReaderPageController({
     final url = request.url;
     final isWeb = url.startsWith('http://') || url.startsWith('https://');
     if (_shownHtml != null) {
+      if (url == _htmlLoadUrl) {
+        _htmlLoadUrl = null;
+        return NavigationDecision.navigate;
+      }
       if (!isWeb) {
         return NavigationDecision.navigate;
       }
