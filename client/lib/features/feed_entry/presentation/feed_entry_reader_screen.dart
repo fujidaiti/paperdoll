@@ -2,13 +2,14 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:paperdoll/core/ui/widgets/archived_banner.dart';
 import 'package:paperdoll/core/ui/widgets/async_value_view.dart';
 import 'package:paperdoll/core/ui/widgets/heading_text.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:paperdoll/debug_keys.dart';
 import 'package:paperdoll/features/feed_entry/domain/feed_entry.dart';
 import 'package:paperdoll/features/feed_entry/presentation/providers/feed_entry_providers.dart';
-import 'package:paperdoll/features/feed_entry/presentation/widgets/feed_entry_reader_view.dart';
+import 'package:paperdoll/features/reader/presentation/reader_view.dart';
 
 class const FeedEntryReaderScreen({required final int id, super.key})
     extends ConsumerWidget {
@@ -37,7 +38,15 @@ class const FeedEntryReaderScreen({required final int id, super.key})
       body: AsyncValueView<FeedEntry>(
         value: entryAsync,
         onRetry: () => ref.invalidate(feedEntryControllerProvider(id: id)),
-        data: (entry) => FeedEntryReaderView(entry: entry),
+        data: (entry) => ReaderView(
+          url: entry.url,
+          content: entry.content,
+          banner: (entry.archived ?? false)
+              ? const ArchivedBanner(
+                  key: AppDebugKey.feedEntryReaderArchivedBanner,
+                )
+              : null,
+        ),
       ),
     );
   }

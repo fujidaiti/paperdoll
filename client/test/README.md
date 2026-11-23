@@ -23,10 +23,15 @@ test/
     newspaper_test.dart     # today / newspaper
     feed_test.dart          # feeds
     reading_list_test.dart  # reading list
+    reader_test.dart        # the reader shared by stories, entries and clips
   core/
     error_interceptor_test.dart  # plain unit tests for lib/core/
+  reader/
+    reader_page_controller_test.dart  # unit tests for the reader's logic
+    article_html_test.dart            # the reader's HTML sanitizer
   src/
     boilerplate.dart        # pumpApp + in-memory platform fakes
+    fake_webview.dart       # scriptable fake WebView platform
     fixture.dart            # shared test data (feeds, entries, stories, …)
     stub_server.dart        # StubServer HTTP interceptor
 ```
@@ -34,7 +39,20 @@ test/
 Add a new `<feature>_test.dart` for each new feature; don't group unrelated
 features into one file. Shared setup belongs in `src/boilerplate.dart`.
 `test/core/` holds plain unit tests for the shared layer under `lib/core/`,
-which need no app boot.
+which need no app boot, and `test/reader/` holds those for the reader under
+`lib/features/reader/`.
+
+## Testing the reader
+
+The reader's WebView runs on the fake platform in `src/fake_webview.dart`.
+`pumpApp` returns it, and a test acts as the page through the WebView it created
+(`platform.controllers`): it answers scripts, posts the extraction's reply
+(`extractionReply`), finishes loads, fails, and requests navigations.
+
+The reader renders an article in an isolate, which fake time does not run. Wait
+for it with `pumpUntil`, which lets real time pass between frames. Also note
+that the loading cover animates, so an action that settles while it is up lets
+10 s of fake time pass.
 
 ## How mocking works
 
