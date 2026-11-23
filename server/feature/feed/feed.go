@@ -27,16 +27,19 @@ type FeedAttrs struct {
 // Subscribe creates a new subscription to a web feed for the user, from its URL.
 // Feeds are identified by the URL and this operation is idempotent; subscribing
 // to the same feed (URL) twice has no additional effect.
+//
+// The feed's current entries are stored too, so that they are available before
+// the next polling run.
 func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (Feed, error) {
 	// TODO(#123): Check if the f already exists first to avoid making an unnecessary request
 	// TODO(#115): Validate and cleanup the url (check schema, remove tracking params, etc.)
-	// TODO(#121): Save fetched entries to DB
 	var f Feed
-	if a, err := s.fetchFeed(ctx, fu); err != nil {
+	var items []*gofeed.Item
+	if a, is, err := s.fetchFeed(ctx, fu); err != nil {
 		fmt.Println(err)
 		return Feed{}, err
 	} else {
-		f = Feed{FeedAttrs: a}
+		f, items = Feed{FeedAttrs: a}, is
 	}
 	var su, iu, desc sql.NullString
 	if u := f.IconURL; u != nil {
@@ -56,6 +59,9 @@ func (s *Service) Subscribe(ctx context.Context, uid user.UserID, fu url.URL) (F
 		RETURNING id;
 	`, f.URL.String(), su, iu, f.Title, desc).Scan(&f.ID)
 	if err != nil {
+		return Feed{}, err
+	}
+	if _, err := saveEntries(ctx, s.DB, f.ID, items); err != nil {
 		return Feed{}, err
 	}
 	_, err = s.DB.ExecContext(ctx, `
@@ -95,17 +101,19 @@ func (s *Service) SearchFeeds(ctx context.Context, query string) ([]FeedAttrs, e
 	if err != nil {
 		return []FeedAttrs{}, nil
 	}
-	a, err := s.fetchFeed(ctx, *u)
+	a, _, err := s.fetchFeed(ctx, *u)
 	if err != nil {
 		return nil, err
 	}
 	return []FeedAttrs{a}, nil
 }
 
-func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) {
+// fetchFeed downloads and parses the feed, returning its attributes and its
+// current items.
+func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, []*gofeed.Item, error) {
 	res, err := s.scraper.Fetch(ctx, fu)
 	if err != nil {
-		return FeedAttrs{}, err
+		return FeedAttrs{}, nil, err
 	}
 	defer func() {
 		if err := res.Body.Close(); err != nil {
@@ -113,12 +121,12 @@ func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) 
 		}
 	}()
 	if res.StatusCode != http.StatusOK {
-		return FeedAttrs{}, fmt.Errorf("failed to fetch feed: %s", fu.String())
+		return FeedAttrs{}, nil, fmt.Errorf("failed to fetch feed: %s", fu.String())
 	}
 	// TODO(#113): Limit body size
 	raw, err := gofeed.NewParser().Parse(res.Body)
 	if err != nil {
-		return FeedAttrs{}, err
+		return FeedAttrs{}, nil, err
 	}
 
 	a := FeedAttrs{URL: fu, Title: raw.Title}
@@ -135,5 +143,5 @@ func (s *Service) fetchFeed(ctx context.Context, fu url.URL) (FeedAttrs, error) 
 	if raw.Description != "" {
 		a.Description = &raw.Description
 	}
-	return a, nil
+	return a, raw.Items, nil
 }

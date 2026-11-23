@@ -3,7 +3,6 @@ package feed
 import (
 	"context"
 	"database/sql"
-	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -12,7 +11,6 @@ import (
 
 	"github.com/fujidaiti/paperdoll/server/feature/newspaper"
 	"github.com/fujidaiti/paperdoll/server/feature/scraper"
-	"github.com/fujidaiti/paperdoll/server/feature/user"
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/mmcdole/gofeed"
 )
@@ -34,13 +32,13 @@ type entryRecord struct {
 	publishedAt sql.NullTime
 }
 
-// Job polls a single feed for new entries and drafts stories for its subscribers.
+// Job polls a single feed for new entries, and downloads the content of the
+// new entries published within Interval.
 type Job struct {
-	DB           *sql.DB
-	Feed         FeedRecord
-	Interval     newspaper.EditorialInterval
-	NewspaperSvc *newspaper.Service
-	ScrpSvc      *scraper.Service
+	DB       *sql.DB
+	Feed     FeedRecord
+	Interval newspaper.EditorialInterval
+	ScrpSvc  *scraper.Service
 }
 
 func (j *Job) Timeout() time.Duration {
@@ -79,57 +77,8 @@ func (j *Job) Do(ctx context.Context) error {
 
 	fmt.Printf("Got %d entries from %s\n", len(raw.Items), feed.URL)
 
-	// TODO(#128): Batch insertions if the feed is too large
-	ncols := 7
-	vals := make([]string, 0, len(raw.Items))
-	args := make([]any, 0, len(raw.Items)*ncols)
-	snapshotAt := time.Now()
-	for i, item := range raw.Items {
-		j := i * ncols
-		vals = append(
-			vals,
-			fmt.Sprintf("($%d, $%d, $%d, $%d, $%d, $%d, $%d)", j+1, j+2, j+3, j+4, j+5, j+6, j+7),
-		)
-		e := normalizeEntry(item, feed.ID)
-		args = append(
-			args, e.dedupKey, e.feedId, e.url, e.title, e.description, snapshotAt, e.publishedAt,
-		)
-	}
-	sql := fmt.Sprintf(`
-		INSERT INTO feed_entries (dedup_key, feed_id, url, title, description, snapshot_at, published_at)
-		VALUES %s
-		ON CONFLICT (dedup_key) DO NOTHING
-		RETURNING id, dedup_key, feed_id, url, title, description, published_at;
-	`, strings.Join(vals, ","))
-	rows, err := db.QueryContext(ctx, sql, args...)
+	newEntries, err := saveEntries(ctx, db, feed.ID, raw.Items)
 	if err != nil {
-		return err
-	}
-	defer func() {
-		if err := rows.Close(); err != nil {
-			fmt.Println(err)
-		}
-	}()
-
-	var newEntries []entryRecord
-	for rows.Next() {
-		e := entryRecord{}
-		err := rows.Scan(
-			&e.id,
-			&e.dedupKey,
-			&e.feedId,
-			&e.url,
-			&e.title,
-			&e.description,
-			&e.publishedAt,
-		)
-		if err != nil {
-			// TODO(#127): Make this case fail-soft instead of exiting.
-			return err
-		}
-		newEntries = append(newEntries, e)
-	}
-	if err := rows.Err(); err != nil {
 		return err
 	}
 	if len(newEntries) == 0 {
@@ -137,11 +86,9 @@ func (j *Job) Do(ctx context.Context) error {
 		return nil
 	}
 
-	var entriesToBeStories []entryRecord
 	// TODO(#129): Mark the entry as queued in DB to avoid duplicate jobs for the same entry
 	for _, e := range newEntries {
 		if e.publishedAt.Valid && j.Interval.Contains(e.publishedAt.Time) {
-			entriesToBeStories = append(entriesToBeStories, e)
 			fmt.Printf("Fetching content for %s\n", e.url)
 			st := time.Now()
 			err := fetchContent(ctx, j.ScrpSvc, e, db)
@@ -155,18 +102,12 @@ func (j *Job) Do(ctx context.Context) error {
 		}
 	}
 
-	err = writeStories(ctx, j.DB, j.NewspaperSvc, feed, entriesToBeStories)
-	if err != nil {
-		fmt.Printf("Something went wrong while writing stories: %s\n", err)
-	}
-
 	return nil
 }
 
 func CollectJobs(
 	ctx context.Context,
 	db *sql.DB,
-	newspaperSvc *newspaper.Service,
 	scrpSvc *scraper.Service,
 	now time.Time,
 ) ([]Job, error) {
@@ -196,13 +137,77 @@ func CollectJobs(
 		if err != nil {
 			return nil, err
 		}
-		jobs = append(jobs, Job{db, feed, ei, newspaperSvc, scrpSvc})
+		jobs = append(jobs, Job{db, feed, ei, scrpSvc})
 	}
 	if err := rows.Err(); err != nil {
 		return nil, err
 	}
 
 	return jobs, nil
+}
+
+// saveEntries stores the feed items as entries of the feed and returns only
+// the ones that were not stored yet. Items that are already stored, identified
+// by their dedup key, are left unchanged.
+func saveEntries(ctx context.Context, db *sql.DB, feedID int, items []*gofeed.Item) ([]entryRecord, error) {
+	if len(items) == 0 {
+		return nil, nil
+	}
+
+	// TODO(#128): Batch insertions if the feed is too large
+	ncols := 7
+	vals := make([]string, 0, len(items))
+	args := make([]any, 0, len(items)*ncols)
+	snapshotAt := time.Now()
+	for i, item := range items {
+		j := i * ncols
+		vals = append(
+			vals,
+			fmt.Sprintf("($%d, $%d, $%d, $%d, $%d, $%d, $%d)", j+1, j+2, j+3, j+4, j+5, j+6, j+7),
+		)
+		e := normalizeEntry(item, feedID)
+		args = append(
+			args, e.dedupKey, e.feedId, e.url, e.title, e.description, snapshotAt, e.publishedAt,
+		)
+	}
+	sql := fmt.Sprintf(`
+		INSERT INTO feed_entries (dedup_key, feed_id, url, title, description, snapshot_at, published_at)
+		VALUES %s
+		ON CONFLICT (dedup_key) DO NOTHING
+		RETURNING id, dedup_key, feed_id, url, title, description, published_at;
+	`, strings.Join(vals, ","))
+	rows, err := db.QueryContext(ctx, sql, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		if err := rows.Close(); err != nil {
+			fmt.Println(err)
+		}
+	}()
+
+	var newEntries []entryRecord
+	for rows.Next() {
+		e := entryRecord{}
+		err := rows.Scan(
+			&e.id,
+			&e.dedupKey,
+			&e.feedId,
+			&e.url,
+			&e.title,
+			&e.description,
+			&e.publishedAt,
+		)
+		if err != nil {
+			// TODO(#127): Make this case fail-soft instead of exiting.
+			return nil, err
+		}
+		newEntries = append(newEntries, e)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return newEntries, nil
 }
 
 func normalizeEntry(entry *gofeed.Item, feedId int) entryRecord {
@@ -230,75 +235,6 @@ func normalizeEntry(entry *gofeed.Item, feedId int) entryRecord {
 	}
 
 	return e
-}
-
-func writeStories(ctx context.Context, db *sql.DB, svc *newspaper.Service, f FeedRecord, es []entryRecord) error {
-	rows, err := db.QueryContext(ctx, `
-		SELECT u.id
-		FROM users u
-		JOIN feed_subscriptions s
-		ON s.user_id = u.id AND s.feed_id = $1
-	`, f.ID)
-	if err != nil {
-		return fmt.Errorf("failed to fetch subscribers for feed ID=%d: %w", f.ID, err)
-	}
-	defer func() {
-		if err := rows.Close(); err != nil {
-			fmt.Println(err)
-		}
-	}()
-
-	var subscribers []user.UserID
-	for rows.Next() {
-		var uid user.UserID
-		if err := rows.Scan(&uid); err != nil {
-			return fmt.Errorf("failed to scan subscriber's ID for feed ID=%d: %w", f.ID, err)
-		}
-		subscribers = append(subscribers, uid)
-	}
-	if err := rows.Err(); err != nil {
-		return fmt.Errorf("failed while scanning subscribers for feed ID=%d: %w", f.ID, err)
-	}
-	if len(subscribers) == 0 {
-		return nil
-	}
-
-	var errs []error
-	for _, uid := range subscribers {
-		errs = append(errs, writeStoriesForUser(ctx, svc, uid, f, es))
-	}
-	return errors.Join(errs...)
-}
-
-func writeStoriesForUser(
-	ctx context.Context,
-	svc *newspaper.Service,
-	uid user.UserID,
-	f FeedRecord,
-	es []entryRecord,
-) error {
-	// TODO(#131): apply user-defined filters to feed entries
-	var ss []newspaper.Story
-	for _, e := range es {
-		var pubDate time.Time
-		if e.publishedAt.Valid {
-			pubDate = e.publishedAt.Time
-		}
-		var desc string
-		if e.description.Valid {
-			desc = e.description.String
-		}
-		s, err := newspaper.DraftStory(uid, e.title, desc, f.Title, e.id, pubDate)
-		if err != nil {
-			fmt.Printf("Cannot write a story from this entry ID=%d. Skipping.\n", e.id)
-		} else {
-			ss = append(ss, s)
-		}
-	}
-	if len(ss) == 0 {
-		return nil
-	}
-	return svc.SubmitStories(ctx, ss)
 }
 
 func fetchContent(ctx context.Context, scrp *scraper.Service, entry entryRecord, db *sql.DB) error {
