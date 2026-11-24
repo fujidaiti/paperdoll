@@ -61,6 +61,11 @@ jobs:
           make -C api gen-docs
           git diff --exit-code
 
+      - name: Verify generated reader script
+        run: |
+          make reader-js
+          git diff --exit-code
+
       - name: Lint TODO comments
         run: tool/lint-todos.sh --strict
 
@@ -77,6 +82,19 @@ jobs:
       - name: Test client
         working-directory: client
         run: flutter test
+
+  reader_js_test:
+    name: Reader Script Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js tooling
+        uses: ./.github/actions/setup-node-tools
+
+      - name: Test reader script
+        run: make reader-js-test
 
   server_test:
     name: Server Test

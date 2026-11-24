@@ -15,6 +15,7 @@ dependencies:
   flutter_secure_storage: ^10.3.1
   freezed_annotation: ^3.1.0
   go_router: ^17.3.0
+  html: ^0.15.7
   logging: ^1.3.0
   material_ui: ^1.0.0
   openapi:
@@ -43,6 +44,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    # The reader's article template and the script it injects into pages,
+    # built from reader_js by `make reader-js` in the project root.
+    - assets/reader/extract.js
+    - assets/reader/reader.html
 
 patrol:
   app_name: Test

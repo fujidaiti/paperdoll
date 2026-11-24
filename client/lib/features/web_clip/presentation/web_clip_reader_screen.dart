@@ -2,16 +2,17 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:paperdoll/core/ui/widgets/archived_banner.dart';
 import 'package:paperdoll/core/ui/widgets/async_value_view.dart';
 import 'package:paperdoll/core/ui/widgets/heading_text.dart';
 import 'package:paperdoll/core/util/link_launcher.dart';
 import 'package:paperdoll/debug_keys.dart';
+import 'package:paperdoll/features/reader/presentation/reader_view.dart';
 import 'package:paperdoll/features/web_clip/domain/web_clip.dart';
 import 'package:paperdoll/features/web_clip/presentation/providers/web_clip_providers.dart';
-import 'package:paperdoll/features/web_clip/presentation/widgets/web_clip_reader_view.dart';
 
-/// Reader for a web clip: fetches the clip's details by its id and
-/// renders its content, falling back to a placeholder when there is none.
+/// Reader for a web clip: fetches the clip's details by its id and shows the
+/// clipped page in a [ReaderView].
 class const WebClipReaderScreen({
   required final int id,
 
@@ -50,7 +51,15 @@ class const WebClipReaderScreen({
       body: AsyncValueView<WebClip>(
         value: clipAsync,
         onRetry: () => ref.invalidate(webClipControllerProvider(id: id)),
-        data: (clip) => WebClipReaderView(clip: clip),
+        data: (clip) => ReaderView(
+          url: clip.url,
+          content: clip.content,
+          banner: (clip.archived ?? false)
+              ? const ArchivedBanner(
+                  key: AppDebugKey.webClipReaderArchivedBanner,
+                )
+              : null,
+        ),
       ),
     );
   }

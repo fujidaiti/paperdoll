@@ -1,7 +1,8 @@
 name: Set up Node.js tooling
 description:
   Sets up Node.js and installs pinned JS tools (redocly, prettier,
-  openapi-generator-cli) via npm ci
+  openapi-generator-cli, and the reader script's Readability, esbuild and jsdom)
+  via npm ci
 
 runs:
   using: composite

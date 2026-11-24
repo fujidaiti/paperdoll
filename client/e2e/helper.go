@@ -23,6 +23,7 @@ var seeders = map[string]seeder{
 	"reading_list_web_clip":    seedReadingListSuit_WebClip,
 	"reading_list_archived":    seedReadingListSuit_Archived,
 	"reading_list_share_sheet": seedReadingListSuit_ShareSheet,
+	"reader_article":           seedReaderSuit_Article,
 }
 
 const (

@@ -32,7 +32,8 @@ readonly KEYWORD_RE='(//|#|--|/\*|\*|<!--)[[:space:]]*(TODO|FIXME)([^A-Za-z0-9_]
 readonly VALID_RE='(TODO|FIXME)\(#[0-9]+\): [^ ]'
 
 count=0
-# Test data and the script itself contain these keywords as plain text.
+# Test data and the script itself contain these keywords as plain text, and
+# the reader script bundles third-party code with its own TODO comments.
 while IFS=: read -r path line text; do
   if [[ "$text" =~ $VALID_RE ]]; then
     continue
@@ -46,7 +47,8 @@ while IFS=: read -r path line text; do
   fi
   count=$((count + 1))
 done < <(git grep -niIE "$KEYWORD_RE" -- . \
-  ':!server/itest/testdata' ':!tool/lint-todos.sh' || true)
+  ':!server/itest/testdata' ':!tool/lint-todos.sh' \
+  ':!client/assets/reader/extract.js' || true)
 
 if [[ $count -gt 0 ]]; then
   echo "$count malformed TODO comment(s) found. Use 'TODO(#<issue number>): <description>'." >&2

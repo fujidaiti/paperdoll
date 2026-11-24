@@ -1,0 +1,121 @@
+<!doctype html>
+<!--
+  The template of the article the reader shows. ReaderPageController replaces
+  the placeholders in double braces below in one pass: the site name, title
+  and byline with HTML-escaped text, and the content with sanitized HTML. The
+  page is loaded with JavaScript disabled. Placeholders must not appear
+  anywhere else in this file, comments included.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src https:; style-src 'unsafe-inline'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <style>
+      :root {
+        --text: #1a1a1a;
+        --secondary-text: #5f6368;
+        --background: #ffffff;
+        --link: #1565c0;
+        --rule: #e0e0e0;
+        --code-background: #f3f4f6;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --text: #e8eaed;
+          --secondary-text: #9aa0a6;
+          --background: #121212;
+          --link: #8ab4f8;
+          --rule: #3c4043;
+          --code-background: #1f2023;
+        }
+      }
+      body {
+        font-family: -apple-system, system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 16px;
+        color: var(--text);
+        background: var(--background);
+        overflow-wrap: break-word;
+      }
+      header {
+        margin-bottom: 24px;
+      }
+      .site-name,
+      .byline {
+        color: var(--secondary-text);
+        font-size: 14px;
+        margin: 0;
+      }
+      h1.title {
+        font-size: 26px;
+        line-height: 1.3;
+        margin: 4px 0 8px;
+      }
+      .site-name:empty,
+      .title:empty,
+      .byline:empty {
+        display: none;
+      }
+      img,
+      picture {
+        max-width: 100%;
+        height: auto;
+      }
+      figure {
+        margin: 24px 0;
+      }
+      figcaption {
+        color: var(--secondary-text);
+        font-size: 14px;
+      }
+      a {
+        color: var(--link);
+      }
+      blockquote {
+        margin: 16px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--rule);
+        color: var(--secondary-text);
+      }
+      pre,
+      code {
+        background: var(--code-background);
+        border-radius: 4px;
+      }
+      pre {
+        padding: 12px;
+        white-space: pre-wrap;
+      }
+      table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid var(--rule);
+        padding: 4px 8px;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid var(--rule);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="site-name">{{site_name}}</p>
+      <h1 class="title">{{title}}</h1>
+      <p class="byline">{{byline}}</p>
+    </header>
+    <article>{{content}}</article>
+  </body>
+</html>
