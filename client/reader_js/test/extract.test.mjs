@@ -67,6 +67,15 @@ test("a page rendered by JavaScript yields its article", () => {
   assert.doesNotMatch(message.content, /Search/, "toolbar is dropped");
 });
 
+test("figures in blocks with media in their class names are kept", () => {
+  const { window, messages } = load("media_column.html");
+  const message = extract(window, messages);
+
+  assert.equal(message.status, "ok");
+  assert.match(message.content, /rubble-mound\.png/);
+  assert.match(message.content, /composite\.png/);
+});
+
 for (const fixture of ["index.html", "app_shell.html"]) {
   test(`${fixture} yields no article`, () => {
     const { window, messages } = load(fixture);

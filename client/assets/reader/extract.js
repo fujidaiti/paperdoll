@@ -2091,6 +2091,7 @@
 
   // client/reader_js/src/extract.js
   var import_readability = __toESM(require_readability());
+  var NEGATIVE_CLASSES = /-ad-|hidden|^hid$| hid$| hid |^hid |banner|combx|comment|com-|contact|footer|gdpr|masthead|meta|outbrain|promo|related|share|shoutbox|sidebar|skyscraper|sponsor|shopping|tags|widget/i;
   if (!window.__paperdollReader) {
     window.__paperdollReader = { extract };
   }
@@ -2108,7 +2109,9 @@
     };
     try {
       if ((0, import_readability.isProbablyReaderable)(document)) {
-        const article = new import_readability.Readability(document.cloneNode(true)).parse();
+        const reader = new import_readability.Readability(document.cloneNode(true));
+        reader.REGEXPS = { ...reader.REGEXPS, negative: NEGATIVE_CLASSES };
+        const article = reader.parse();
         if (article && article.content) {
           message.status = "ok";
           message.title = article.title || null;

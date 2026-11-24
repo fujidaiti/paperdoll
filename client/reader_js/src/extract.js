@@ -10,6 +10,14 @@
 
 import { Readability, isProbablyReaderable } from "@mozilla/readability";
 
+// The class and ID names that count against a block as article content.
+// Readability's own list also has "media" and "scroll", which match blocks of
+// the article itself, such as a "media-column" holding its figures, so those
+// figures were removed. This is the list of go-readability, which the server
+// extracts articles with.
+const NEGATIVE_CLASSES =
+  /-ad-|hidden|^hid$| hid$| hid |^hid |banner|combx|comment|com-|contact|footer|gdpr|masthead|meta|outbrain|promo|related|share|shoutbox|sidebar|skyscraper|sponsor|shopping|tags|widget/i;
+
 // Injecting the script twice keeps the first definition.
 if (!window.__paperdollReader) {
   window.__paperdollReader = { extract };
@@ -34,7 +42,11 @@ function extract(messageId) {
     if (isProbablyReaderable(document)) {
       // Readability modifies the document it parses. A clone keeps the live
       // page intact, because the reader may still show it as a fallback.
-      const article = new Readability(document.cloneNode(true)).parse();
+      const reader = new Readability(document.cloneNode(true));
+      // REGEXPS is not a public option: the extract.js tests fail if an
+      // upgrade of Readability stops reading it.
+      reader.REGEXPS = { ...reader.REGEXPS, negative: NEGATIVE_CLASSES };
+      const article = reader.parse();
       if (article && article.content) {
         message.status = "ok";
         message.title = article.title || null;
