@@ -365,13 +365,13 @@ func (s *Service) OpenSelectorEditor(ctx context.Context, uid user.UserID, feedI
 }
 
 // loadSelectorEditor returns the page, the marks and the rules of the editor
-// id of the user uid on the feed feedID, and when the editor expires. It fails
+// id of the user uid, and when the editor expires. It fails
 // with ErrEditorNotFound when there is no such editor, and with
 // ErrEditorExpired when it expired.
 func (s *Service) loadSelectorEditor(
 	ctx context.Context,
 	uid user.UserID,
-	feedID, id int,
+	id int,
 ) (string, Marks, ExtractionRules, time.Time, error) {
 	var page, marked, stored string
 	var marks Marks
@@ -384,8 +384,8 @@ func (s *Service) loadSelectorEditor(
 			simplified_page, marked_posts, excluded_links, excluded_nodes, extraction_rules,
 			expires_at, expires_at <= now()
 		FROM selector_editors
-		WHERE id = $1 AND user_id = $2 AND feed_id = $3;
-	`, id, uid, feedID).Scan(
+		WHERE id = $1 AND user_id = $2;
+	`, id, uid).Scan(
 		&page,
 		&marked,
 		types.SQLScanner(&marks.ExcludedLinks),
@@ -411,13 +411,13 @@ func (s *Service) loadSelectorEditor(
 	return page, marks, rules, expiresAt, nil
 }
 
-// GetSelectorEditor returns the editor id of the user uid on the feed
-// feedID with its stored marks and what its stored rules find, such as after
+// GetSelectorEditor returns the editor id of the user uid with its stored
+// marks and what its stored rules find, such as after
 // the app was killed while the editor was open. The page is not fetched again,
 // since the marks refer to the nodes of the stored page. Getting it does not
 // extend the expiry.
-func (s *Service) GetSelectorEditor(ctx context.Context, uid user.UserID, feedID, id int) (SelectorEditor, error) {
-	page, marks, rules, expiresAt, err := s.loadSelectorEditor(ctx, uid, feedID, id)
+func (s *Service) GetSelectorEditor(ctx context.Context, uid user.UserID, id int) (SelectorEditor, error) {
+	page, marks, rules, expiresAt, err := s.loadSelectorEditor(ctx, uid, id)
 	if err != nil {
 		return SelectorEditor{}, err
 	}
@@ -430,16 +430,16 @@ func (s *Service) GetSelectorEditor(ctx context.Context, uid user.UserID, feedID
 }
 
 // UpdateSelectorEditorMarks replaces the marks of the editor id of the user
-// uid on the feed feedID with marks, generates the rules again, and
+// uid with marks, generates the rules again, and
 // returns what they find. It fails with ErrInvalidMarks when marks are not
 // valid on the page of the editor (see resolveMarks).
 func (s *Service) UpdateSelectorEditorMarks(
 	ctx context.Context,
 	uid user.UserID,
-	feedID, id int,
+	id int,
 	marks Marks,
 ) (EditorState, error) {
-	page, _, _, _, err := s.loadSelectorEditor(ctx, uid, feedID, id)
+	page, _, _, _, err := s.loadSelectorEditor(ctx, uid, id)
 	if err != nil {
 		return EditorState{}, err
 	}
@@ -473,9 +473,9 @@ func (s *Service) UpdateSelectorEditorMarks(
 	}
 	res, err := s.DB.ExecContext(ctx, `
 		UPDATE selector_editors
-		SET marked_posts = $4, excluded_links = $5, excluded_nodes = $6, extraction_rules = $7
-		WHERE id = $1 AND user_id = $2 AND feed_id = $3;
-	`, id, uid, feedID, string(marked), marks.ExcludedLinks, marks.ExcludedNodes, string(generated))
+		SET marked_posts = $3, excluded_links = $4, excluded_nodes = $5, extraction_rules = $6
+		WHERE id = $1 AND user_id = $2;
+	`, id, uid, string(marked), marks.ExcludedLinks, marks.ExcludedNodes, string(generated))
 	if err != nil {
 		return EditorState{}, err
 	}
@@ -489,27 +489,28 @@ func (s *Service) UpdateSelectorEditorMarks(
 }
 
 // CommitSelectorEditor saves the rules of the editor id of the user uid to
-// the feed feedID, stores the posts that they find on the page of the editor
+// the feed of the editor, stores the posts that they find on the page of the editor
 // as entries of the feed, and deletes the editor. A web page has no selectors
 // when it is subscribed, so this is when its first entries appear. Entries
 // that are already stored are left unchanged. The rules are shared by all
 // subscribers, as the feed is, and the last commit wins. It fails with
 // ErrNoSelectors when the rules of the editor have no selectors. An expired editor is kept,
 // as it is until DeleteExpiredSelectorEditors deletes it.
-func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, feedID, id int) error {
+func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, id int) error {
 	tx, err := s.DB.BeginTx(ctx, nil)
 	if err != nil {
 		return err
 	}
 	defer func() { _ = tx.Rollback() }()
+	var feedID int
 	var page, rules string
 	var expired bool
 	err = tx.QueryRowContext(ctx, `
-		SELECT simplified_page, extraction_rules, expires_at <= now()
+		SELECT feed_id, simplified_page, extraction_rules, expires_at <= now()
 		FROM selector_editors
-		WHERE id = $1 AND user_id = $2 AND feed_id = $3
+		WHERE id = $1 AND user_id = $2
 		FOR UPDATE;
-	`, id, uid, feedID).Scan(&page, &rules, &expired)
+	`, id, uid).Scan(&feedID, &page, &rules, &expired)
 	if errors.Is(err, sql.ErrNoRows) {
 		return ErrEditorNotFound
 	} else if err != nil {
@@ -555,12 +556,12 @@ func (s *Service) CommitSelectorEditor(ctx context.Context, uid user.UserID, fee
 	return tx.Commit()
 }
 
-// CloseSelectorEditor deletes the editor id of the user uid on the feed
-// feedID without saving its rules. An expired editor is deleted too.
-func (s *Service) CloseSelectorEditor(ctx context.Context, uid user.UserID, feedID, id int) error {
+// CloseSelectorEditor deletes the editor id of the user uid without saving
+// its rules. An expired editor is deleted too.
+func (s *Service) CloseSelectorEditor(ctx context.Context, uid user.UserID, id int) error {
 	res, err := s.DB.ExecContext(ctx, `
-		DELETE FROM selector_editors WHERE id = $1 AND user_id = $2 AND feed_id = $3;
-	`, id, uid, feedID)
+		DELETE FROM selector_editors WHERE id = $1 AND user_id = $2;
+	`, id, uid)
 	if err != nil {
 		return err
 	}

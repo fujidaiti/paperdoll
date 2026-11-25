@@ -101,10 +101,10 @@ func NewServer(db *sql.DB, httpProxy *url.URL, emailSender infra.EmailSender) *h
 	authorized.HandleFunc("DELETE /feeds/{id}", h.unsubscribeFromFeed)
 	authorized.HandleFunc("GET /feeds/{id}/timeline", h.getFeedTimeline)
 	authorized.HandleFunc("POST /feeds/{id}/selector-editors", h.openSelectorEditor)
-	authorized.HandleFunc("GET /feeds/{id}/selector-editors/{eid}", h.getSelectorEditor)
-	authorized.HandleFunc("PUT /feeds/{id}/selector-editors/{eid}/marks", h.updateSelectorEditorMarks)
-	authorized.HandleFunc("POST /feeds/{id}/selector-editors/{eid}/commit", h.commitSelectorEditor)
-	authorized.HandleFunc("DELETE /feeds/{id}/selector-editors/{eid}", h.closeSelectorEditor)
+	authorized.HandleFunc("GET /feed-selector-editors/{id}", h.getSelectorEditor)
+	authorized.HandleFunc("PUT /feed-selector-editors/{id}/marks", h.updateSelectorEditorMarks)
+	authorized.HandleFunc("POST /feed-selector-editors/{id}/commit", h.commitSelectorEditor)
+	authorized.HandleFunc("DELETE /feed-selector-editors/{id}", h.closeSelectorEditor)
 	authorized.HandleFunc("GET /feed-entries/{id}", h.getFeedEntry)
 	authorized.HandleFunc("GET /web-clips/{id}", h.getWebClip)
 	authorized.HandleFunc("POST /reading-list", h.saveToReadingList)
@@ -836,35 +836,30 @@ func (h *Handler) openSelectorEditor(w http.ResponseWriter, r *http.Request) {
 	_, _ = w.Write(jres)
 }
 
-// selectorEditorParams returns the caller, the feed ID and the editor ID of a
-// request to a selector editor, or writes an error and returns false.
-func selectorEditorParams(w http.ResponseWriter, r *http.Request) (user.UserID, int, int, bool) {
+// selectorEditorParams returns the caller and the editor ID of a request to a
+// selector editor, or writes an error and returns false.
+func selectorEditorParams(w http.ResponseWriter, r *http.Request) (user.UserID, int, bool) {
 	id, err := strconv.Atoi(r.PathValue("id"))
 	if err != nil {
-		serverError(w, http.StatusBadRequest, "Invalid feed id")
-		return 0, 0, 0, false
-	}
-	eid, err := strconv.Atoi(r.PathValue("eid"))
-	if err != nil {
 		serverError(w, http.StatusBadRequest, "Invalid selector editor id")
-		return 0, 0, 0, false
+		return 0, 0, false
 	}
 	uid, ok := UserIDFromContext(r.Context())
 	if !ok {
 		serverError(w, http.StatusUnauthorized, "unauthorized")
-		return 0, 0, 0, false
+		return 0, 0, false
 	}
-	return uid, id, eid, true
+	return uid, id, true
 }
 
 // getSelectorEditor returns a selector editor of the caller with its stored
 // marks, as openSelectorEditor does for a new one.
 func (h *Handler) getSelectorEditor(w http.ResponseWriter, r *http.Request) {
-	uid, id, eid, ok := selectorEditorParams(w, r)
+	uid, id, ok := selectorEditorParams(w, r)
 	if !ok {
 		return
 	}
-	e, err := h.FeedService.GetSelectorEditor(r.Context(), uid, id, eid)
+	e, err := h.FeedService.GetSelectorEditor(r.Context(), uid, id)
 	switch {
 	case errors.Is(err, feed.ErrEditorNotFound):
 		serverError(w, http.StatusNotFound, "No selector editor found")
@@ -890,7 +885,7 @@ func (h *Handler) getSelectorEditor(w http.ResponseWriter, r *http.Request) {
 // updateSelectorEditorMarks replaces the marks of a selector editor of the
 // caller, and returns what the selectors generated from them find.
 func (h *Handler) updateSelectorEditorMarks(w http.ResponseWriter, r *http.Request) {
-	uid, id, eid, ok := selectorEditorParams(w, r)
+	uid, id, ok := selectorEditorParams(w, r)
 	if !ok {
 		return
 	}
@@ -901,7 +896,7 @@ func (h *Handler) updateSelectorEditorMarks(w http.ResponseWriter, r *http.Reque
 		serverError(w, http.StatusBadRequest, "Failed to parse request body")
 		return
 	}
-	state, err := h.FeedService.UpdateSelectorEditorMarks(r.Context(), uid, id, eid, marks)
+	state, err := h.FeedService.UpdateSelectorEditorMarks(r.Context(), uid, id, marks)
 	switch {
 	case errors.Is(err, feed.ErrInvalidMarks):
 		serverError(w, http.StatusBadRequest, err.Error())
@@ -930,11 +925,11 @@ func (h *Handler) updateSelectorEditorMarks(w http.ResponseWriter, r *http.Reque
 // commitSelectorEditor saves the selectors of a selector editor of the caller
 // to its feed, and deletes the editor.
 func (h *Handler) commitSelectorEditor(w http.ResponseWriter, r *http.Request) {
-	uid, id, eid, ok := selectorEditorParams(w, r)
+	uid, id, ok := selectorEditorParams(w, r)
 	if !ok {
 		return
 	}
-	err := h.FeedService.CommitSelectorEditor(r.Context(), uid, id, eid)
+	err := h.FeedService.CommitSelectorEditor(r.Context(), uid, id)
 	switch {
 	case errors.Is(err, feed.ErrEditorNotFound):
 		serverError(w, http.StatusNotFound, "No selector editor found")
@@ -956,11 +951,11 @@ func (h *Handler) commitSelectorEditor(w http.ResponseWriter, r *http.Request) {
 // closeSelectorEditor deletes a selector editor of the caller without saving
 // its selectors.
 func (h *Handler) closeSelectorEditor(w http.ResponseWriter, r *http.Request) {
-	uid, id, eid, ok := selectorEditorParams(w, r)
+	uid, id, ok := selectorEditorParams(w, r)
 	if !ok {
 		return
 	}
-	err := h.FeedService.CloseSelectorEditor(r.Context(), uid, id, eid)
+	err := h.FeedService.CloseSelectorEditor(r.Context(), uid, id)
 	switch {
 	case errors.Is(err, feed.ErrEditorNotFound):
 		serverError(w, http.StatusNotFound, "No selector editor found")

@@ -22,21 +22,19 @@ class const SelectorEditorRepository(
     });
   }
 
-  /// `GET /feeds/{id}/selector-editors/{eid}` → the editor with its stored
-  /// marks.
-  Future<SelectorEditor> get(int feedId, int editorId) {
+  /// `GET /feed-selector-editors/{id}` → the editor with its stored marks.
+  Future<SelectorEditor> get(int editorId) {
     return runRequest(() async {
       final res = await _dio.get<Map<String, dynamic>>(
-        '/feeds/$feedId/selector-editors/$editorId',
+        '/feed-selector-editors/$editorId',
       );
       return SelectorEditor.fromJson(res.data!);
     });
   }
 
-  /// `PUT /feeds/{id}/selector-editors/{eid}/marks` → replaces all marks of
+  /// `PUT /feed-selector-editors/{id}/marks` → replaces all marks of
   /// [editor], and returns what the selectors generated from them find.
   Future<EditorState> updateMarks(
-    int feedId,
     SelectorEditor editor,
     Iterable<MarkedPost> markedPosts,
     Set<String> excludedLinks,
@@ -44,7 +42,7 @@ class const SelectorEditorRepository(
   ) {
     return runRequest(() async {
       final res = await _dio.put<Map<String, dynamic>>(
-        '/feeds/$feedId/selector-editors/${editor.id}/marks',
+        '/feed-selector-editors/${editor.id}/marks',
         data: {
           'marked_posts': [
             for (final p in markedPosts) markedPostToJson(editor.page, p),
@@ -59,19 +57,19 @@ class const SelectorEditorRepository(
     });
   }
 
-  /// `POST /feeds/{id}/selector-editors/{eid}/commit` → saves the selectors
-  /// of the editor to the feed, and deletes the editor.
-  Future<void> commit(int feedId, int editorId) {
+  /// `POST /feed-selector-editors/{id}/commit` → saves the selectors of the
+  /// editor to its feed, and deletes the editor.
+  Future<void> commit(int editorId) {
     return runRequest(
-      () => _dio.post<void>('/feeds/$feedId/selector-editors/$editorId/commit'),
+      () => _dio.post<void>('/feed-selector-editors/$editorId/commit'),
     );
   }
 
-  /// `DELETE /feeds/{id}/selector-editors/{eid}` → deletes the editor without
-  /// saving its selectors.
-  Future<void> close(int feedId, int editorId) {
+  /// `DELETE /feed-selector-editors/{id}` → deletes the editor without saving
+  /// its selectors.
+  Future<void> close(int editorId) {
     return runRequest(
-      () => _dio.delete<void>('/feeds/$feedId/selector-editors/$editorId'),
+      () => _dio.delete<void>('/feed-selector-editors/$editorId'),
     );
   }
 

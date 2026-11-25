@@ -74,7 +74,7 @@ class _SelectorEditorScreenState extends ConsumerState<SelectorEditorScreen> {
     try {
       if (await repository.storedEditorId(feedId) case final storedId?) {
         try {
-          final editor = await repository.get(feedId, storedId);
+          final editor = await repository.get(storedId);
           if (!mounted) {
             return;
           }
@@ -84,7 +84,7 @@ class _SelectorEditorScreenState extends ConsumerState<SelectorEditorScreen> {
           }
           // The server deletes the editor once it expires, if this request
           // does not reach it.
-          unawaited(repository.close(feedId, storedId).catchError((_) {}));
+          unawaited(repository.close(storedId).catchError((_) {}));
         } on DomainError catch (error) {
           if (error is! GoneError && error is! NotFoundError) {
             rethrow;
@@ -95,7 +95,7 @@ class _SelectorEditorScreenState extends ConsumerState<SelectorEditorScreen> {
       final editor = await repository.open(feedId);
       if (!mounted) {
         // The user left before the editor opened.
-        unawaited(repository.close(feedId, editor.id).catchError((_) {}));
+        unawaited(repository.close(editor.id).catchError((_) {}));
         return;
       }
       await repository.storeEditorId(feedId, editor.id);
@@ -285,7 +285,6 @@ class _EditorViewState extends ConsumerState<_EditorView> {
     setState(() => _pending = true);
     try {
       final state = await _repository.updateMarks(
-        widget.feedId,
         widget.editor,
         marked.values,
         excluded,
@@ -408,7 +407,7 @@ class _EditorViewState extends ConsumerState<_EditorView> {
     final router = GoRouter.of(context);
     setState(() => _pending = true);
     try {
-      await _repository.commit(widget.feedId, widget.editor.id);
+      await _repository.commit(widget.editor.id);
       await _repository.storeEditorId(widget.feedId, null);
       messenger.showSnackBar(
         const SnackBar(
@@ -491,9 +490,7 @@ class _EditorViewState extends ConsumerState<_EditorView> {
     }
     // The server deletes the editor once it expires, if this request does
     // not reach it.
-    unawaited(
-      _repository.close(widget.feedId, widget.editor.id).catchError((_) {}),
-    );
+    unawaited(_repository.close(widget.editor.id).catchError((_) {}));
     await _repository.storeEditorId(widget.feedId, null);
     if (mounted) {
       context.pop();

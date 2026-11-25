@@ -333,7 +333,6 @@ selectorEditor:
     operationId: getSelectorEditor
     tags: [Feeds]
     parameters:
-      - $ref: "#/parameters/feedId"
       - $ref: "#/parameters/editorId"
     responses:
       "200":
@@ -356,7 +355,6 @@ selectorEditor:
     operationId: closeSelectorEditor
     tags: [Feeds]
     parameters:
-      - $ref: "#/parameters/feedId"
       - $ref: "#/parameters/editorId"
     responses:
       "204":
@@ -378,7 +376,6 @@ selectorEditorMarks:
     operationId: updateSelectorEditorMarks
     tags: [Feeds]
     parameters:
-      - $ref: "#/parameters/feedId"
       - $ref: "#/parameters/editorId"
     requestBody:
       required: true
@@ -433,7 +430,6 @@ selectorEditorCommit:
     operationId: commitSelectorEditor
     tags: [Feeds]
     parameters:
-      - $ref: "#/parameters/feedId"
       - $ref: "#/parameters/editorId"
     responses:
       "204":
@@ -450,14 +446,8 @@ selectorEditorCommit:
         $ref: "../components/responses.yaml#/InternalServerError"
 
 parameters:
-  feedId:
-    name: id
-    in: path
-    required: true
-    schema:
-      type: integer
   editorId:
-    name: eid
+    name: id
     in: path
     required: true
     schema:

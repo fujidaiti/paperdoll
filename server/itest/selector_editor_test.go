@@ -212,7 +212,7 @@ func TestSelectorEditor_UpdateMarks(t *testing.T) {
 	e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
 
 	t.Run("valid marks", func(t *testing.T) {
-		state, err := s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks)
+		state, err := s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, firstPostMarks)
 		if err != nil {
 			t.Fatalf("UpdateSelectorEditorMarks: %v", err)
 		}
@@ -226,7 +226,7 @@ func TestSelectorEditor_UpdateMarks(t *testing.T) {
 
 	t.Run("invalid marks", func(t *testing.T) {
 		invalid := feed.Marks{MarkedPosts: []feed.MarkedPostIDs{{"box": 99, "title": 3, "link": 3}}}
-		_, err := s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, invalid)
+		_, err := s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, invalid)
 		if !errors.Is(err, feed.ErrInvalidMarks) {
 			t.Errorf("got %v, want ErrInvalidMarks", err)
 		}
@@ -244,17 +244,17 @@ func TestSelectorEditor_UpdateMarks(t *testing.T) {
 			ExcludedLinks: []string{},
 			ExcludedNodes: []int{5},
 		}
-		if _, err := s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, marks); err != nil {
+		if _, err := s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, marks); err != nil {
 			t.Fatalf("UpdateSelectorEditorMarks: %v", err)
 		}
 		if d := cmp.Diff(marks, storedMarks(t, e.ID)); d != "" {
 			t.Errorf("stored marks mismatch:\n%s", d)
 		}
-		must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks))
+		must(s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, firstPostMarks))
 	})
 
 	t.Run("editor of another user", func(t *testing.T) {
-		_, err := s.UpdateSelectorEditorMarks(t.Context(), other, page.ID, e.ID, feed.Marks{})
+		_, err := s.UpdateSelectorEditorMarks(t.Context(), other, e.ID, feed.Marks{})
 		if !errors.Is(err, feed.ErrEditorNotFound) {
 			t.Errorf("got %v, want ErrEditorNotFound", err)
 		}
@@ -265,7 +265,7 @@ func TestSelectorEditor_UpdateMarks(t *testing.T) {
 
 	t.Run("expired editor", func(t *testing.T) {
 		expireEditor(t, e.ID)
-		_, err := s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, feed.Marks{})
+		_, err := s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, feed.Marks{})
 		if !errors.Is(err, feed.ErrEditorExpired) {
 			t.Errorf("got %v, want ErrEditorExpired", err)
 		}
@@ -283,10 +283,10 @@ func TestSelectorEditor_Get(t *testing.T) {
 	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
 	page := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/"))))
 	opened := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
-	must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, opened.ID, firstPostMarks))
+	must(s.UpdateSelectorEditorMarks(t.Context(), uid, opened.ID, firstPostMarks))
 
 	t.Run("own editor", func(t *testing.T) {
-		e, err := s.GetSelectorEditor(t.Context(), uid, page.ID, opened.ID)
+		e, err := s.GetSelectorEditor(t.Context(), uid, opened.ID)
 		if err != nil {
 			t.Fatalf("GetSelectorEditor: %v", err)
 		}
@@ -302,7 +302,6 @@ func TestSelectorEditor_Get(t *testing.T) {
 		if _, err := s.GetSelectorEditor(
 			t.Context(),
 			other,
-			page.ID,
 			opened.ID,
 		); !errors.Is(
 			err,
@@ -314,7 +313,7 @@ func TestSelectorEditor_Get(t *testing.T) {
 
 	t.Run("expired editor", func(t *testing.T) {
 		expireEditor(t, opened.ID)
-		if _, err := s.GetSelectorEditor(t.Context(), uid, page.ID, opened.ID); !errors.Is(err, feed.ErrEditorExpired) {
+		if _, err := s.GetSelectorEditor(t.Context(), uid, opened.ID); !errors.Is(err, feed.ErrEditorExpired) {
 			t.Errorf("got %v, want ErrEditorExpired", err)
 		}
 	})
@@ -334,7 +333,7 @@ func TestSelectorEditor_Commit(t *testing.T) {
 
 	t.Run("editor without selectors", func(t *testing.T) {
 		e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
-		if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); !errors.Is(err, feed.ErrNoSelectors) {
+		if err := s.CommitSelectorEditor(t.Context(), uid, e.ID); !errors.Is(err, feed.ErrNoSelectors) {
 			t.Errorf("got %v, want ErrNoSelectors", err)
 		}
 		if got := savedRules(t, page.ID); got != "" {
@@ -347,8 +346,8 @@ func TestSelectorEditor_Commit(t *testing.T) {
 
 	t.Run("editor of another user", func(t *testing.T) {
 		e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
-		must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks))
-		if err := s.CommitSelectorEditor(t.Context(), other, page.ID, e.ID); !errors.Is(err, feed.ErrEditorNotFound) {
+		must(s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, firstPostMarks))
+		if err := s.CommitSelectorEditor(t.Context(), other, e.ID); !errors.Is(err, feed.ErrEditorNotFound) {
 			t.Errorf("got %v, want ErrEditorNotFound", err)
 		}
 		if got := savedRules(t, page.ID); got != "" {
@@ -364,9 +363,9 @@ func TestSelectorEditor_Commit(t *testing.T) {
 
 	t.Run("expired editor", func(t *testing.T) {
 		e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
-		must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks))
+		must(s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, firstPostMarks))
 		expireEditor(t, e.ID)
-		if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); !errors.Is(err, feed.ErrEditorExpired) {
+		if err := s.CommitSelectorEditor(t.Context(), uid, e.ID); !errors.Is(err, feed.ErrEditorExpired) {
 			t.Errorf("got %v, want ErrEditorExpired", err)
 		}
 		if got := savedRules(t, page.ID); got != "" {
@@ -382,8 +381,8 @@ func TestSelectorEditor_Commit(t *testing.T) {
 
 	t.Run("editor with marks", func(t *testing.T) {
 		e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
-		must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks))
-		if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); err != nil {
+		must(s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, firstPostMarks))
+		if err := s.CommitSelectorEditor(t.Context(), uid, e.ID); err != nil {
 			t.Fatalf("CommitSelectorEditor: %v", err)
 		}
 		if editorRowExists(t, e.ID) {
@@ -406,10 +405,10 @@ func TestSelectorEditor_Close(t *testing.T) {
 	s := feed.NewService(testenv.DB(), scraper.NewService(stubServerAddr))
 	page := must(s.Subscribe(t.Context(), uid, *must(url.Parse("http://blog.example.com/"))))
 	e := must(s.OpenSelectorEditor(t.Context(), uid, page.ID))
-	must(s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, firstPostMarks))
+	must(s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, firstPostMarks))
 
 	t.Run("editor of another user", func(t *testing.T) {
-		if err := s.CloseSelectorEditor(t.Context(), other, page.ID, e.ID); !errors.Is(err, feed.ErrEditorNotFound) {
+		if err := s.CloseSelectorEditor(t.Context(), other, e.ID); !errors.Is(err, feed.ErrEditorNotFound) {
 			t.Errorf("got %v, want ErrEditorNotFound", err)
 		}
 		if !editorRowExists(t, e.ID) {
@@ -418,7 +417,7 @@ func TestSelectorEditor_Close(t *testing.T) {
 	})
 
 	t.Run("own editor", func(t *testing.T) {
-		if err := s.CloseSelectorEditor(t.Context(), uid, page.ID, e.ID); err != nil {
+		if err := s.CloseSelectorEditor(t.Context(), uid, e.ID); err != nil {
 			t.Fatalf("CloseSelectorEditor: %v", err)
 		}
 		if editorRowExists(t, e.ID) {
@@ -486,7 +485,7 @@ func TestSelectorEditor_BuildSelectorsForNewPage(t *testing.T) {
 	if err := json.Unmarshal(sections["marks.json"], &marks); err != nil {
 		t.Fatal(err)
 	}
-	state, err := s.UpdateSelectorEditorMarks(t.Context(), uid, page.ID, e.ID, marks)
+	state, err := s.UpdateSelectorEditorMarks(t.Context(), uid, e.ID, marks)
 	if err != nil {
 		t.Fatalf("UpdateSelectorEditorMarks: %v", err)
 	}
@@ -500,7 +499,7 @@ func TestSelectorEditor_BuildSelectorsForNewPage(t *testing.T) {
 	if d := cmp.Diff(want, got); d != "" {
 		t.Errorf("state mismatch (-want +got):\n%s", d)
 	}
-	if err := s.CommitSelectorEditor(t.Context(), uid, page.ID, e.ID); err != nil {
+	if err := s.CommitSelectorEditor(t.Context(), uid, e.ID); err != nil {
 		t.Fatalf("CommitSelectorEditor: %v", err)
 	}
 }

@@ -34,11 +34,11 @@ paths:
     $ref: "./paths/feeds.yaml#/timeline"
   /feeds/{id}/selector-editors:
     $ref: "./paths/feeds.yaml#/selectorEditors"
-  /feeds/{id}/selector-editors/{eid}:
+  /feed-selector-editors/{id}:
     $ref: "./paths/feeds.yaml#/selectorEditor"
-  /feeds/{id}/selector-editors/{eid}/marks:
+  /feed-selector-editors/{id}/marks:
     $ref: "./paths/feeds.yaml#/selectorEditorMarks"
-  /feeds/{id}/selector-editors/{eid}/commit:
+  /feed-selector-editors/{id}/commit:
     $ref: "./paths/feeds.yaml#/selectorEditorCommit"
   /feed-entries/{id}:
     $ref: "./paths/feed-entries.yaml"
