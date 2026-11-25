@@ -20,10 +20,10 @@ class UpdateSelectorEditorMarksRequest {
 
   List<MarkedPost> markedPosts;
 
-  /// The host and path of each excluded link.
+  /// The excluded links, by host and path.
   List<String> excludedLinks;
 
-  /// The node ID of each node that is excluded with its subtree. An excluded node wins over the other marks, so a marked post or a field in an excluded node is ignored.
+  /// The excluded nodes, by node ID.
   List<int> excludedNodes;
 
   @override

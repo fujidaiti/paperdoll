@@ -9,7 +9,11 @@ tags:
   - name: Newspapers
     description: The daily newspaper assembled from subscribed feeds.
   - name: Feeds
-    description: Feed subscriptions, feed discovery, and feed entries.
+    description:
+      Feed subscriptions, feed discovery, and feed entries, including
+      unstructured feeds and their selector editors. The terms of unstructured
+      feeds, such as post selectors, marks, found posts and node IDs, are
+      defined in `server/feature/feed/doc/unstructured-feeds.md`.
   - name: Reading List
     description: Items saved for later, including the archive.
   - name: Web Clips

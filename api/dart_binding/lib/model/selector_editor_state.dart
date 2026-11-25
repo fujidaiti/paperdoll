@@ -18,13 +18,13 @@ class SelectorEditorState {
     this.preview = const [],
   });
 
-  /// The posts that the selectors find, in document order.
+  /// The found posts, in document order.
   List<FoundPost> foundPosts;
 
-  /// The nodes that would be posts if their links were not excluded, in document order.
+  /// The excluded posts, in document order.
   List<ExcludedPost> excludedPosts;
 
-  /// The posts extracted from the page, merged by link, as the polling job will save them.
+  /// The posts as the feed will store them.
   List<ExtractedPost> preview;
 
   @override

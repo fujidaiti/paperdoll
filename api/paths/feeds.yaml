@@ -62,11 +62,10 @@ collection:
   put:
     summary: Subscribe to a feed
     description:
-      Creates the caller's subscription. The `url` can be a feed or a web page.
-      For a page, the feed is the one that the page links in its head, or the
-      page itself as an unstructured feed if it links none. The `subscribed` is
-      always `true`. This operation is idempotent, so subscribing to a feed the
-      caller is already subscribed to has no additional effect.
+      Creates the caller's subscription. The `url` can be a feed or a web page,
+      which feed discovery turns into a feed. The `subscribed` is always `true`.
+      This operation is idempotent, so subscribing to a feed the caller is
+      already subscribed to has no additional effect.
     operationId: subscribeToFeed
     tags: [Feeds]
     requestBody:
@@ -108,9 +107,8 @@ search:
   get:
     summary: Search for subscribable feeds
     description:
-      The `q` is the URL of a feed or a web page. For a page, the candidate is
-      the feed that the page links in its head, or the page itself as an
-      unstructured feed if it links none.
+      The `q` is the URL of a feed or a web page, which feed discovery turns
+      into a candidate.
     operationId: searchFeeds
     tags: [Feeds]
     parameters:
@@ -274,12 +272,9 @@ selectorEditors:
   post:
     summary: Open a new selector editor
     description:
-      Opens a new editor of the post selectors of an unstructured feed for the
-      caller, with the current page of the feed. The editor starts with the
-      marks of the saved selectors, which are the posts that they find, and the
-      links and the nodes that they exclude. The editor is available until
-      `expires_at`. Fails with 409 if the feed is not an unstructured feed, and
-      with 502 if the page cannot be fetched.
+      Opens a selector editor of an unstructured feed for the caller, on the
+      current page of the feed. Fails with 409 if the feed is not an
+      unstructured feed, and with 502 if the page cannot be fetched.
     operationId: openSelectorEditor
     tags: [Feeds]
     parameters:
@@ -333,9 +328,8 @@ selectorEditor:
   get:
     summary: Get a selector editor
     description:
-      Returns a selector editor of the caller with its latest marks. The page is
-      the one from when the editor was opened. Getting the editor does not
-      extend `expires_at`. Fails with 410 if the editor has expired.
+      Returns a selector editor of the caller with its latest marks. Fails with
+      410 if the editor has expired.
     operationId: getSelectorEditor
     tags: [Feeds]
     parameters:
@@ -358,9 +352,7 @@ selectorEditor:
         $ref: "../components/responses.yaml#/InternalServerError"
   delete:
     summary: Close a selector editor
-    description:
-      Closes a selector editor of the caller and discards its marks. The saved
-      selectors of the feed do not change.
+    description: Closes a selector editor of the caller without saving.
     operationId: closeSelectorEditor
     tags: [Feeds]
     parameters:
@@ -380,11 +372,9 @@ selectorEditorMarks:
   put:
     summary: Update the marks of a selector editor
     description:
-      Replaces all marks of the editor, and returns the posts that the editor
-      finds with the new marks. The saved selectors of the feed do not change
-      until the editor is committed. Fails with 400 if a mark refers to a node
-      that is not on the page of the editor or that cannot take the mark, such
-      as the body as an excluded node, and with 410 if the editor has expired.
+      Replaces all marks of the editor, and returns what the selectors generated
+      from them find. Fails with 400 if a mark refers to a node that is not on
+      the page or cannot take the mark, and with 410 if the editor has expired.
     operationId: updateSelectorEditorMarks
     tags: [Feeds]
     parameters:
@@ -403,15 +393,12 @@ selectorEditorMarks:
                 items:
                   $ref: "../components/schemas.yaml#/MarkedPost"
               excluded_links:
-                description: The host and path of each excluded link.
+                description: The excluded links, by host and path.
                 type: array
                 items:
                   type: string
               excluded_nodes:
-                description:
-                  The node ID of each node that is excluded with its subtree. An
-                  excluded node wins over the other marks, so a marked post or a
-                  field in an excluded node is ignored.
+                description: The excluded nodes, by node ID.
                 type: array
                 items:
                   type: integer
@@ -440,9 +427,9 @@ selectorEditorCommit:
     summary: Commit a selector editor
     description:
       Saves the selectors of the editor to the feed, replacing the saved ones,
-      and closes the editor. Selectors are shared by all users, as feeds are,
-      and the last commit wins. Fails with 409 if the marks of the editor find
-      no posts, and with 410 if the editor has expired.
+      stores the posts that they find as entries, and closes the editor. Fails
+      with 409 if the marks generate no selectors, and with 410 if the editor
+      has expired.
     operationId: commitSelectorEditor
     tags: [Feeds]
     parameters:

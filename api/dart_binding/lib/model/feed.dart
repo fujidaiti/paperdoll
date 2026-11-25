@@ -56,7 +56,7 @@ class Feed {
   /// Whether the calling user is subscribed to this feed.
   bool subscribed;
 
-  /// Whether post selectors are saved for this feed. Only an unstructured feed can have them.
+  /// Whether post selectors are saved for this feed, which only an unstructured feed can have.
   bool hasSelectors;
 
   @override

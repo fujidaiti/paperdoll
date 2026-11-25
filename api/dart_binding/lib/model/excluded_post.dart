@@ -19,7 +19,7 @@ class ExcludedPost {
 
   int box;
 
-  /// The excluded link that excludes the post.
+  /// The excluded link that removes the post.
   String link;
 
   @override

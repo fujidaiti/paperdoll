@@ -28,25 +28,25 @@ class SelectorEditor {
 
   DateTime expiresAt;
 
-  /// The page simplified into an HTML document, with the node ID of each element in its `data-id` attribute. The node ID of a node is its position among the nodes of the page in document order, and a text takes the ID of its position too. See SimplifyPage in `server/feature/feed/simplify.go` for the format.
+  /// The simplified page as an HTML document. Each element has its node ID in a `data-id` attribute. A plain text has a node ID too, but no attribute.
   String page;
 
-  /// The posts marked so far. A new editor starts with the posts that a user would mark to find the posts that the saved selectors find.
+  /// The marked posts. A new editor starts with the marks that reproduce what the saved selectors find.
   List<MarkedPost> markedPosts;
 
-  /// The host and path of each excluded link. A new editor starts with the ones of the saved selectors.
+  /// The excluded links, by host and path.
   List<String> excludedLinks;
 
-  /// The node ID of each node that is excluded with its subtree. No post and no field is found in an excluded node, even when it is marked. A new editor starts with the nodes of the saved selectors that the page still has.
+  /// The excluded nodes, by node ID.
   List<int> excludedNodes;
 
-  /// The posts that the selectors find, in document order.
+  /// The found posts, in document order.
   List<FoundPost> foundPosts;
 
-  /// The nodes that would be posts if their links were not excluded, in document order.
+  /// The excluded posts, in document order.
   List<ExcludedPost> excludedPosts;
 
-  /// The posts extracted from the page, merged by link, as the polling job will save them.
+  /// The posts as the feed will store them.
   List<ExtractedPost> preview;
 
   @override

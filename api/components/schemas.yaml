@@ -1,8 +1,7 @@
 Feed:
   description:
-    A web feed, or an unstructured feed, which is a web page without a feed
-    whose posts are extracted with post selectors. The `url` and `site_url` of
-    an unstructured feed are both the page's URL.
+    A web feed, or an unstructured feed, whose `url` and `site_url` are both the
+    URL of its page.
   type: object
   required: [id, url, title, subscribed, has_selectors]
   properties:
@@ -26,8 +25,8 @@ Feed:
       type: boolean
     has_selectors:
       description:
-        Whether post selectors are saved for this feed. Only an unstructured
-        feed can have them.
+        Whether post selectors are saved for this feed, which only an
+        unstructured feed can have.
       type: boolean
 
 FeedCandidate:
@@ -178,9 +177,7 @@ SignUpTicket:
       type: string
 
 SelectorEditor:
-  description:
-    A temporary editor of the post selectors of an unstructured feed. See
-    SelectorEditor in `server/feature/feed/selector_editor.go`.
+  description: A selector editor of an unstructured feed.
   type: object
   required:
     [
@@ -202,32 +199,23 @@ SelectorEditor:
       format: date-time
     page:
       description:
-        The page simplified into an HTML document, with the node ID of each
-        element in its `data-id` attribute. The node ID of a node is its
-        position among the nodes of the page in document order, and a text takes
-        the ID of its position too. See SimplifyPage in
-        `server/feature/feed/simplify.go` for the format.
+        The simplified page as an HTML document. Each element has its node ID in
+        a `data-id` attribute. A plain text has a node ID too, but no attribute.
       type: string
     marked_posts:
       description:
-        The posts marked so far. A new editor starts with the posts that a user
-        would mark to find the posts that the saved selectors find.
+        The marked posts. A new editor starts with the marks that reproduce what
+        the saved selectors find.
       type: array
       items:
         $ref: "#/MarkedPost"
     excluded_links:
-      description:
-        The host and path of each excluded link. A new editor starts with the
-        ones of the saved selectors.
+      description: The excluded links, by host and path.
       type: array
       items:
         type: string
     excluded_nodes:
-      description:
-        The node ID of each node that is excluded with its subtree. No post and
-        no field is found in an excluded node, even when it is marked. A new
-        editor starts with the nodes of the saved selectors that the page still
-        has.
+      description: The excluded nodes, by node ID.
       type: array
       items:
         type: integer
@@ -244,29 +232,23 @@ SelectorEditorState:
   required: [found_posts, excluded_posts, preview]
   properties:
     found_posts:
-      description: The posts that the selectors find, in document order.
+      description: The found posts, in document order.
       type: array
       items:
         $ref: "#/FoundPost"
     excluded_posts:
-      description:
-        The nodes that would be posts if their links were not excluded, in
-        document order.
+      description: The excluded posts, in document order.
       type: array
       items:
         $ref: "#/ExcludedPost"
     preview:
-      description:
-        The posts extracted from the page, merged by link, as the polling job
-        will save them.
+      description: The posts as the feed will store them.
       type: array
       items:
         $ref: "#/ExtractedPost"
 
 MarkedPost:
-  description:
-    A post by node IDs, the box under `box` and the node of each marked field
-    under the name of the field.
+  description: A marked post, by the node IDs of its box and its fields.
   type: object
   required: [box, title, link]
   properties:
@@ -285,8 +267,7 @@ MarkedPost:
 
 FoundPost:
   description:
-    A post that the selectors find, by node IDs as in MarkedPost, with the value
-    of each field that it has.
+    A found post, by node IDs as in MarkedPost, with the values of its fields.
   type: object
   required: [box, title, link, values]
   properties:
@@ -306,17 +287,18 @@ FoundPost:
       $ref: "#/ExtractedPost"
 
 ExcludedPost:
+  description: An excluded post, by the node ID of its box.
   type: object
   required: [box, link]
   properties:
     box:
       type: integer
     link:
-      description: The excluded link that excludes the post.
+      description: The excluded link that removes the post.
       type: string
 
 ExtractedPost:
-  description: The value of each field of a post.
+  description: The values of the fields of a post.
   type: object
   properties:
     title:
