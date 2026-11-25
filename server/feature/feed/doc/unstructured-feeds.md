@@ -1,10 +1,7 @@
 # Unstructured feeds
 
 Users can subscribe to a web page that publishes no feed, such as a blog index
-without RSS. This document introduces the concepts and the terms of this
-feature. Read it before the code and the tests.
-
-## Overview
+without RSS, by following these steps:
 
 1. **Subscribe.** The user enters a URL. If the URL is a feed, or the page links
    to one, the user subscribes to that feed as usual. Otherwise, the page itself
@@ -42,22 +39,22 @@ text formatting are removed. When the page marks its main content, the rest of
 the page, such as navigation and footers, is removed too. What remains becomes a
 tree of two kinds of nodes:
 
-- A **value** is a single piece of content: a text, a link, an image or a time.
-- A **container** groups other nodes and keeps the tag and the classes of the
+- A _value_ is a single piece of content: a text, a link, an image or a time.
+- A _container_ groups other nodes and keeps the tag and the classes of the
   original element.
 
 Selectors run on the simplified page, and the editor shows it to the user. Each
-node has a **node ID**, its position in the page in document order. Marks refer
-to nodes by their IDs, so an ID is meaningful only within one simplified page.
+node has a _node ID_, its position in the page in document order. Marks refer to
+nodes by their IDs, so an ID is meaningful only within one simplified page.
 
 ### Post, box and fields
 
-A **post** is one item that the page lists, such as one card of a blog index.
-Its **box** is the node that holds the whole post. Its **fields** are the nodes
-inside the box that hold its values:
+A _post_ is one item that the page lists, such as one card of a blog index. Its
+_box_ is the node that holds the whole post. Its _fields_ are the nodes inside
+the box that hold its values:
 
-- **title** and **link**, which every post has;
-- **body**, **thumbnail** and **pub date**, which a post may have.
+- _title_ and _link_, which every post has;
+- _body_, _thumbnail_ and _pub date_, which a post may have.
 
 ### Post selector
 
@@ -73,23 +70,23 @@ selectors find.
 Some nodes have the shape of a post but are not posts, and some parts of a page
 should be ignored. The user removes them in two ways:
 
-- An **excluded link** removes every post that links to it, such as a "Join our
+- An _excluded link_ removes every post that links to it, such as a "Join our
   newsletter" card in a list of articles.
-- An **excluded node** removes a part of the page as a whole, such as a menu or
-  a sidebar.
+- An _excluded node_ removes a part of the page as a whole, such as a menu or a
+  sidebar.
 
 Exclusions apply to all selectors of a feed.
 
 ### Extraction rules
 
 The post selectors and the exclusions of a feed together. They are what is saved
-on the feed. Running them on a simplified page is called **extraction**. Posts
+on the feed. Running them on a simplified page is called _extraction_. Posts
 with the same link are merged into one, since some pages show one post in
 several places.
 
 ### Marks
 
-What the user tells the editor: the **marked posts**, each with its box and its
+What the user tells the editor: the _marked posts_, each with its box and its
 field nodes, the excluded links, and the excluded nodes. Marks are the input and
 the extraction rules are the output. The server generates the rules from the
 marks, and the rules do not depend on the order in which the user made them.
@@ -103,8 +100,8 @@ the saved rules find, so the user can continue from there.
 The posts that the current rules find on the page, including the ones that the
 user did not mark. The editor shows each found post as a card of its values, so
 the user only needs to mark the posts that are missing or found with wrong
-values. The editor also shows the **excluded posts**, which an excluded link
-removes, and a **preview** of the posts as the feed will store them.
+values. The editor also shows the _excluded posts_, which an excluded link
+removes, and a _preview_ of the posts as the feed will store them.
 
 ### Selector editor
 
@@ -122,10 +119,3 @@ while the user edits. It holds the marks and the rules generated from them.
 
 An editor expires after a while, so that rules built on an old snapshot of the
 page are not saved.
-
-### Polling
-
-Web feeds are fetched periodically for new entries. Unstructured feeds will be
-polled in the same way: fetch the page, simplify it, extract the posts with the
-saved rules, and store the new ones as entries. Until polling is implemented
-(#222), the entries of an unstructured feed are stored only on commit.
