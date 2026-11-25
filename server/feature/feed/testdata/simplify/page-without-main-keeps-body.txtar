@@ -1,0 +1,8 @@
+A page without a main keeps everything in its body.
+-- input.html --
+<body><header><p>Site</p></header><div><p>Post</p></div><footer><p>Foot</p></footer></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><header data-id="1"><p data-id="2">Site</p></header><div data-id="3"><p data-id="4">Post</p></div>
+<footer data-id="5"><p data-id="6">Foot</p></footer></body></html>

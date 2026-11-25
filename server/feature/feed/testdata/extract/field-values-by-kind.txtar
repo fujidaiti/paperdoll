@@ -1,0 +1,12 @@
+A link and a thumbnail take the URL of their node, and a pub date its timestamp.
+-- page.html --
+<body data-id="0"><article class="post" data-id="1">
+  <h2 href="http://example.com/first" data-id="2">First post</h2>
+  <img src="http://example.com/first.png" alt="A cover" data-id="3"/>
+  <time data-id="4">2026-10-01T00:00:00Z</time>
+  <p data-id="5">The body.</p>
+</article></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}], "thumbnail": [{"tag": "img"}], "pubDate": [{"tag": "time"}], "body": [{"tag": "p"}]}]}
+-- posts.json --
+[{"title": "First post", "link": "http://example.com/first", "thumbnail": "http://example.com/first.png", "pubDate": "2026-10-01T00:00:00Z", "body": "The body."}]

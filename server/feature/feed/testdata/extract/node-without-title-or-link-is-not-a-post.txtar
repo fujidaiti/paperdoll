@@ -1,0 +1,18 @@
+A node without the title or the link is not a post.
+-- page.html --
+<body data-id="0">
+<article class="post" data-id="1">
+<h2 href="http://example.com/first" data-id="2">First post</h2></article>
+<article class="post" data-id="3">
+<h2 data-id="4">A post without a link</h2></article>
+<article class="post" data-id="5">
+<p data-id="6">A post without a title</p></article></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first"
+  }
+]

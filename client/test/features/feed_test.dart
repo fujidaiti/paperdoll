@@ -132,6 +132,22 @@ void main() {
     await t(AppDebugKey.subscribeSuccessSnackBar).waitUntilVisible();
     await t(AppDebugKey.feedRow(nasa.title)).waitUntilVisible();
   });
+
+  patrolWidgetTest('Edit a web feed', (t) async {
+    final nasa = fixture.feeds.nasa;
+    final server = _stubFeedSubscription(
+      nasa,
+    )..stubGet('/feeds', body: api.GetFeeds200Response(feeds: [nasa]).toJson());
+
+    await pumpAppWithAuth(t, server);
+    await _openTimeline(t, nasa);
+    await t(AppDebugKey.feedDetailMenuButton).tap();
+    await t(AppDebugKey.editFeedMenuItem).tap();
+    await t(AppDebugKey.feedEditScreen).waitUntilVisible();
+    expect(t(nasa.url), findsOneWidget);
+    // The selectors are only for pages without a feed.
+    expect(t(AppDebugKey.editSelectorsButton), findsNothing);
+  });
 }
 
 /// Stubs [feed]'s header, its timeline, and the two subscription routes, with

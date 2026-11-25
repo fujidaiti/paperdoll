@@ -1,0 +1,7 @@
+The text inside a value is a part of the value rather than a page node.
+-- input.html --
+<body><p>One</p><p>Two</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">One</p><p data-id="2">Two</p></body></html>

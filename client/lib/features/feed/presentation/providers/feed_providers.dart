@@ -119,10 +119,12 @@ class FeedSearchController extends _$FeedSearchController {
     );
   }
 
-  /// Subscribes to the given url. Throws a domain error on failure so the
-  /// caller can surface a snackbar; on success the Feeds list is invalidated.
-  Future<void> subscribe(String url) async {
-    await ref.read(feedRepositoryProvider).subscribe(url);
+  /// Subscribes to the given url and returns the feed. Throws a domain error
+  /// on failure so the caller can surface a snackbar; on success the Feeds
+  /// list is invalidated.
+  Future<Feed> subscribe(String url) async {
+    final feed = await ref.read(feedRepositoryProvider).subscribe(url);
     ref.invalidate(feedsProvider);
+    return feed;
   }
 }

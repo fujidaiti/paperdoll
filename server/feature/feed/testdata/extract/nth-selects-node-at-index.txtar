@@ -1,0 +1,15 @@
+A step with an index selects only the node at that index.
+-- page.html --
+<body data-id="0">
+<article class="post" data-id="1">
+<p data-id="2">News</p>
+<p href="http://example.com/first" data-id="3">First post</p></article></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "p", "nth": 1}], "link": [{"tag": "p", "nth": 1}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first"
+  }
+]

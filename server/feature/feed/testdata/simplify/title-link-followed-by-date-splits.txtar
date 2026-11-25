@@ -1,0 +1,8 @@
+A title link and the date after it are separate values.
+-- input.html --
+<body><p><a href="/x">Title</a> <span>Jan 2, 2026</span></p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1"><a href="http://example.com/x" data-id="2">Title</a>
+<span data-id="3"><time data-id="4">2026-01-02T00:00:00Z</time></span></p></body></html>

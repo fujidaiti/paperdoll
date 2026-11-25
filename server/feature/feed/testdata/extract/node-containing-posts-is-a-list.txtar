@@ -1,0 +1,22 @@
+A node that contains posts is a list of posts, even with a title and a link of its own.
+-- page.html --
+<body data-id="0">
+<div class="card" data-id="1">
+<h2 href="http://example.com/posts" data-id="2">All posts</h2>
+<div class="card" data-id="3">
+<h2 href="http://example.com/first" data-id="4">First post</h2></div>
+<div class="card" data-id="5">
+<h2 href="http://example.com/second" data-id="6">Second post</h2></div></div></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "div", "cls": ["card"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first"
+  },
+  {
+    "title": "Second post",
+    "link": "http://example.com/second"
+  }
+]

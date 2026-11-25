@@ -1,0 +1,7 @@
+An element with the role "main" is a main.
+-- input.html --
+<body><div><p>Side</p></div><div role="main"><p>Post</p></div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div data-id="1"><p data-id="2">Post</p></div></body></html>

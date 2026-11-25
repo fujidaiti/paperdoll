@@ -8,13 +8,17 @@ import 'package:paperdoll/core/platform/device.dart';
 import 'package:paperdoll/core/platform/secure_storage.dart';
 import 'package:paperdoll/features/auth/presentation/providers/auth_providers.dart';
 import 'package:patrol_finders/patrol_finders.dart';
+import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
+import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 
 import 'fake_webview.dart';
 import 'stub_server.dart';
 
 /// Boots the whole app on the Flutter test framework, with in-memory
 /// stand-ins for everything the app would otherwise get from a device: no
-/// network, no secure storage plugin, no device info plugin.
+/// network, no secure storage plugin, no device info plugin, and empty shared
+/// preferences, which a test can fill and read through
+/// `SharedPreferencesAsync()` after this returns.
 ///
 /// Every HTTP call goes through [server]; build and stub it in the test
 /// *before* calling this (start from [StubServer.withDefaultResponses] so the
@@ -29,6 +33,8 @@ import 'stub_server.dart';
 /// signed-in shortcut for feature tests that aren't about the auth flow.
 Future<void> pumpApp(PatrolTester $, StubServer server, {String? token}) async {
   installFakeWebViewPlatform();
+  SharedPreferencesAsyncPlatform.instance =
+      InMemorySharedPreferencesAsync.empty();
 
   final container = createPaperdollContainer(
     overrides: [

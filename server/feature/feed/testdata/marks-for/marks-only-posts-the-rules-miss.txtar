@@ -1,0 +1,11 @@
+One mark is enough when its rules find the other posts too.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2"><h2 href="http://example.com/a" data-id="3">A</h2></article>
+  <article class="post" data-id="4"><h2 href="http://example.com/b" data-id="5">B</h2></article>
+  <article class="post" data-id="6"><h2 href="http://example.com/c" data-id="7">C</h2></article>
+</main></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}]}]}
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 3, "link": 3}], "excluded_links": [], "excluded_nodes": []}

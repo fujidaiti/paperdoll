@@ -1,0 +1,8 @@
+Media that have no text of their own are omitted.
+-- input.html --
+<body><svg><text>S</text></svg><canvas>C</canvas><video>No video<source src="/v"></video>
+<audio>A</audio><source src="/s"><map><p>Area</p></map><p>Kept</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

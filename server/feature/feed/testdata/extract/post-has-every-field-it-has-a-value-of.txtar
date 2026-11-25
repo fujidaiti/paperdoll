@@ -1,0 +1,33 @@
+A post has every field that it has a value of, and leaves out the others.
+-- page.html --
+<body data-id="0">
+<article class="post" data-id="1">
+<h2 href="http://example.com/first" data-id="2">First post</h2>
+<img src="http://example.com/first.png" data-id="3"/>
+<time data-id="4">2026-10-01T00:00:00Z</time>
+<div class="summary" data-id="5">
+<p data-id="6">The first line.</p>
+<p data-id="7">The second line.</p></div></article>
+<article class="post" data-id="8">
+<h2 href="http://example.com/second" data-id="9">Second post</h2>
+<time data-id="10">2026-10-02T00:00:00Z</time>
+<div class="summary" data-id="11">
+<p data-id="12">The summary of the second post.</p></div></article></body>
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "h2"}], "link": [{"tag": "h2"}], "body": [{"tag": "div", "cls": ["summary"]}], "thumbnail": [{"tag": "img"}], "pubDate": [{"tag": "time"}]}]}
+-- posts.json --
+[
+  {
+    "title": "First post",
+    "link": "http://example.com/first",
+    "body": "The first line. The second line.",
+    "thumbnail": "http://example.com/first.png",
+    "pubDate": "2026-10-01T00:00:00Z"
+  },
+  {
+    "title": "Second post",
+    "link": "http://example.com/second",
+    "body": "The summary of the second post.",
+    "pubDate": "2026-10-02T00:00:00Z"
+  }
+]

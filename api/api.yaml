@@ -9,7 +9,11 @@ tags:
   - name: Newspapers
     description: The daily newspaper assembled from subscribed feeds.
   - name: Feeds
-    description: Feed subscriptions, feed discovery, and feed entries.
+    description:
+      Feed subscriptions, feed discovery, and feed entries, including
+      unstructured feeds and their selector editors. The terms of unstructured
+      feeds, such as post selectors, marks, found posts and node IDs, are
+      defined in `server/feature/feed/doc/unstructured-feeds.md`.
   - name: Reading List
     description: Items saved for later, including the archive.
   - name: Web Clips
@@ -28,6 +32,14 @@ paths:
     $ref: "./paths/feeds.yaml#/item"
   /feeds/{id}/timeline:
     $ref: "./paths/feeds.yaml#/timeline"
+  /feeds/{id}/selector-editors:
+    $ref: "./paths/feeds.yaml#/selectorEditors"
+  /feed-selector-editors/{id}:
+    $ref: "./paths/feeds.yaml#/selectorEditor"
+  /feed-selector-editors/{id}/marks:
+    $ref: "./paths/feeds.yaml#/selectorEditorMarks"
+  /feed-selector-editors/{id}/commit:
+    $ref: "./paths/feeds.yaml#/selectorEditorCommit"
   /feed-entries/{id}:
     $ref: "./paths/feed-entries.yaml"
   /web-clips/{id}:
@@ -76,6 +88,8 @@ components:
       $ref: "./components/responses.yaml#/NotFound"
     Conflict:
       $ref: "./components/responses.yaml#/Conflict"
+    Gone:
+      $ref: "./components/responses.yaml#/Gone"
     TooManyRequests:
       $ref: "./components/responses.yaml#/TooManyRequests"
     InternalServerError:

@@ -1,0 +1,8 @@
+A date can start with the day.
+-- input.html --
+<body><p>2 January 2026</p><p>2 Jan 2026</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1"><time data-id="2">2026-01-02T00:00:00Z</time></p>
+<p data-id="3"><time data-id="4">2026-01-02T00:00:00Z</time></p></body></html>

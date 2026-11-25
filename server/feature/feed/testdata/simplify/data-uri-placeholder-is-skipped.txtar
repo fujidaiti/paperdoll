@@ -1,0 +1,7 @@
+The inline placeholder of a lazy image is not its source.
+-- input.html --
+<body><img src="data:image/gif;base64,AAAA" data-src="/real.png"></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><img src="http://example.com/real.png" data-id="1"/></body></html>

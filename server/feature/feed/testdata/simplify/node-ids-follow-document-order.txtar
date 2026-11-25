@@ -1,0 +1,8 @@
+The body is node 0, and the elements are numbered in document order.
+-- input.html --
+<body><div><p>One</p><div><p>Two</p></div></div><p>Three</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div data-id="1"><p data-id="2">One</p><div data-id="3"><p data-id="4">Two</p></div></div>
+<p data-id="5">Three</p></body></html>

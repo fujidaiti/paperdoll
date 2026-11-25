@@ -66,6 +66,9 @@ func (j *Job) Do(ctx context.Context) error {
 		}
 	}()
 
+	// TODO(#222): For an unstructured feed, extract the entries from the page with
+	//       its selectors instead of parsing it as a feed (see CollectJobs):
+	//       SimplifyPage, html.Parse of the result, and ExtractPosts.
 	fp := gofeed.NewParser()
 	raw, err := fp.Parse(res.Body)
 	if err != nil {
@@ -117,9 +120,13 @@ func CollectJobs(
 		// Fail-soft: we don't exit here.
 	}
 	// TODO(#110): Create an index for next_poll_at column
+	// TODO(#222): Poll unstructured feeds (url = site_url) that have selectors: fetch
+	//       the page, run SimplifyPage, html.Parse and ExtractPosts, and save the
+	//       posts as entries. They are skipped for now, as their pages are not feeds.
 	rows, err := db.QueryContext(ctx, `
 		SELECT id, url, title
-		FROM feeds;
+		FROM feeds
+		WHERE site_url IS DISTINCT FROM url;
 	`)
 	if err != nil {
 		return nil, err
@@ -208,6 +215,21 @@ func saveEntries(ctx context.Context, db *sql.DB, feedID int, items []*gofeed.It
 		return nil, err
 	}
 	return newEntries, nil
+}
+
+// itemOfPost returns the feed item of a post that selectors extracted from a
+// web page. A post has no GUID, so its link identifies the entry. A pub date
+// is always in RFC 3339 (see SimplifyPage).
+func itemOfPost(post ExtractedPost) *gofeed.Item {
+	item := &gofeed.Item{
+		Link:        post[PostLink],
+		Title:       post[PostTitle],
+		Description: post[PostBody],
+	}
+	if date, err := time.Parse(time.RFC3339, post[PostPubDate]); err == nil {
+		item.PublishedParsed = &date
+	}
+	return item
 }
 
 func normalizeEntry(entry *gofeed.Item, feedId int) entryRecord {

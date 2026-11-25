@@ -1,0 +1,7 @@
+A container left with no children is omitted.
+-- input.html --
+<body><div><div></div><span> </span></div><p>Kept</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

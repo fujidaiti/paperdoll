@@ -1,0 +1,7 @@
+An image of at most 92 pixels on both sides is an icon.
+-- input.html --
+<body><img src="/a.png" width="92" height="92"><img src="/b.png" width="93" height="92"></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><img src="http://example.com/b.png" data-id="1"/></body></html>

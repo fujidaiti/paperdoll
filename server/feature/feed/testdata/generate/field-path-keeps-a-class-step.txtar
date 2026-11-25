@@ -1,0 +1,10 @@
+A field path keeps a step with classes when the full path has one.
+-- page.html --
+<body data-id="0"><main data-id="1">
+  <article class="post" data-id="2"><div class="meta" data-id="3"><span data-id="4">A</span></div><a href="http://example.com/a" data-id="5">Read</a></article>
+  <article class="post" data-id="6"><div class="meta" data-id="7"><span data-id="8">B</span></div><a href="http://example.com/b" data-id="9">Read</a></article>
+</main></body>
+-- marks.json --
+{"marked_posts": [{"box": 2, "title": 4, "link": 5}], "excluded_links": [], "excluded_nodes": []}
+-- rules.json --
+{"selectors": [{"box": [{"tag": "article", "cls": ["post"]}], "title": [{"tag": "div", "cls": ["meta"]}, {"tag": "span"}], "link": [{"tag": "a"}]}]}

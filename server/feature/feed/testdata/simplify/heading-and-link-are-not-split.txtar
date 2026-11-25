@@ -1,0 +1,7 @@
+A heading or a link is one title, so its spans stay together.
+-- input.html --
+<body><h2><span>One</span> <span>Two</span></h2><a href="/x"><span>Three</span> <span>Four</span></a></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><h2 data-id="1">One Two</h2><a href="http://example.com/x" data-id="2">Three Four</a></body></html>

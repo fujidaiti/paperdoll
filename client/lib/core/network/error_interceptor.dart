@@ -34,6 +34,9 @@ class const ErrorInterceptor() extends Interceptor {
       if (status == 409) {
         return ConflictError(message);
       }
+      if (status == 410) {
+        return GoneError(message);
+      }
       if (status == 429) {
         return TooManyRequestsError(message);
       }

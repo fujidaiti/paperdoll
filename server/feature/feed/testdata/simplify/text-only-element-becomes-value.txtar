@@ -1,0 +1,7 @@
+An element of only text and formatting becomes one value.
+-- input.html --
+<body><div>Some <b>bold</b> text</div></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><div data-id="1">Some bold text</div></body></html>

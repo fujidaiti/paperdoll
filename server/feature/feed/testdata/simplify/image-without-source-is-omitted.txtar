@@ -1,0 +1,7 @@
+An image without a usable source is omitted.
+-- input.html --
+<body><img alt="None"><img src="data:image/gif;base64,AAAA"><p>Kept</p></body>
+-- want.html --
+<!DOCTYPE html><html><head><title></title>
+<link rel="canonical" href="http://example.com/"/></head>
+<body data-id="0"><p data-id="1">Kept</p></body></html>

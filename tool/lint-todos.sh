@@ -46,7 +46,7 @@ while IFS=: read -r path line text; do
   fi
   count=$((count + 1))
 done < <(git grep -niIE "$KEYWORD_RE" -- . \
-  ':!server/itest/testdata' ':!tool/lint-todos.sh' || true)
+  ':!server/itest/testdata' ':!server/feature/feed/testdata' ':!tool/lint-todos.sh' || true)
 
 if [[ $count -gt 0 ]]; then
   echo "$count malformed TODO comment(s) found. Use 'TODO(#<issue number>): <description>'." >&2
